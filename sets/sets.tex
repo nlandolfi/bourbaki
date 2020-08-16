@@ -1,5 +1,6 @@
 \input{../format.tex}
 \input{../macros.tex}
+
 \input{./macros.tex}
 
 \begin{document}
@@ -7,18 +8,40 @@
 
 \section{Why}
 
-We want a a notion of a collection of objects, pre-specified or possessing some similar defining property.
-We here introduce and standardize this notion as a conceptual language of terms with notation.
-The development is standard and will be used in almost every sequel to this pamphlet.
+We want to speak of a collection of objects, pre-specified or possessing some similar defining property.
+%We here introduce and standardize a conceptual language of terms with notation to do so.
 
-\section{Basics}
+\section{Definition}
 
 A \definition{set} is a collection of objects.
 We use the term object in the usual sense of the English language.
 So a set is itself an object, but of the peculiar nature that it contains other objects.
-In thinking of sets, then, we regularly consider the objects they contain.
+In thinking of a set, then, we regularly consider the objects it contains.
 We call the objects contained in a set the \definition{members} or \definition{elements} of the set.
 So we say that an object contained in a set is a \definition{member of} or an \definition{element of} the set.
+
+\subsection{Notation}
+
+We denote sets by upper case latin letters: for example, $A$, $B$, and $C$.
+We denote elements of sets by lower case latin letters: for example, $a$, $b$, and $c$.
+We denote that an object $A$ is an element of a set $A$ by $a \in A$.
+We read the notation $a \in A$ aloud as \say{a in A.}
+The $\in$ is a stylized $\epsilon$, which possesses the mnemonic for element.
+
+If we can write down the elements of $A$, we do so using a brace notation.
+For example, if the set $A$ is such that it contains only the elements $a, b, c$, we denote $A$ by $\set{a, b, c}$.
+If the elements of a set are well-known we introduce the set in English and name it; often we select the name mnemonically.
+For example, let $L$ be the set of latin letters.
+
+If the elements of a set are such that they satisfy some common condition, we use the braces and include the condition.
+For example, if $V$ is the set of vowels we denote $V$ by $\Set{l \in L}{l \text{ is a vowel}}$.
+The $\mid$ is read aloud as \say{such that,} the notation reads aloud as \say{l in L such that l is a vowel.}
+We call the notation $\Set{l \in L}{l \text{ is a vowel}}$ \textbf{set-builder notation}.
+Set-builder notation is indispensable for sets definied implicitly by some condition.
+Here we could have alternatively denoted $V$ by $\set{\say{a},\say{e},\say{i},\say{o},\say{u}}$.
+We prefer the former, slighly more concise notation.
+
+\section{Two Sets}
 
 We now consider two sets at once.
 If each element of a first set is an element of second set, we say that the first set is a \definition{subset} of or is \definition{contained in} the second set.
@@ -33,27 +56,6 @@ We call the set consisting of the subsets of a set the \definition{powerset} of 
 The powerset contains the original set and the empty set.
 
 \subsection{Notation}
-
-We denote sets by upper case latin letters: for example, $A$, $B$, and $C$.
-We denote elements of sets by lower case latin letters: for example, $a$, $b$,and $c$.
-We denote that an object $A$ is an element of a set $A$ by $a \in A$.
-We read the notation $a \in A$ aloud as \say{a in A.}
-The $\in$ is a stylized $\epsilon$, which possesses the mnemonic for element.
-
-If we can write down the elements of $A$, we do so using a brace notation.
-For example, if the set $A$ is such that it contains only the numbers $1, 2, 3$, we denote $A$ by $\set{1, 2, 3}$.
-If the elements of a set are well-known we introduce the set in English and name it; often we select the name mnemonically.
-For example, let $N$ denote the set of natural numbers.
-
-If the elements of $A$ are such that they satisfy some common condition, we use the braces and include the condition.
-For example, $A$ is such that it contains only the natural numbers less than $10$, we denote $A$ by $\Set{n \in N}{n < 10}$.
-The $|$ is red aloud as \say{such that.}
-So the notation $\Set{n \in N}{n < 10}$ is read aloud as \say{n in N such that n is less than ten.}
-We refer to $\Set{n \in N}{n < 10}$ as the \definition{set-builder notation} for $A$.
-This notation is concise, but also indispensable for sets which we can not write down explicitly.
-Here we could alternatively denote $A$ by $\set{1, 2, 3, 4, 5, 6, 7, 8, 9}$.
-We prefer as a matter of style the more concise notation.
-
 We denote that the set $A$ is a subset of the set $B$ by $A \subset B$.
 We read the notation $A \subset B$ aloud as \say{A subset B}.
 We denote that the set $A$ is equal to $B$ by $A = B$.
@@ -61,146 +63,20 @@ We read the notation $A = B$ aloud as \say{A equals B}.
 We denote the empty set by $\set{}$ or by $\emptyset$; both notations are read aloud as \say{empty.}
 We denote the power set of $A$ by $P_A$.
 
+\section{Cartesian Products}
 
-\subsection{Results}
-
-\begin{prop}
-  For sets $A, B$, $A = B$ if and only if $A \subset B$ and $B \subset A$.
-\end{prop}
-
-\begin{prop}
-  For a set $A$, $A \in P_A$ and $\emptyset \in P_A$.
-\end{prop}
-
-\section{Operations}
-
-We now consider forming a new set from two sets.
-We call the set whose elements consist of those objects which are elements of either the first set or the second set as the \definition{union} of the first and second set.
-We call the set whose elements consist of those objects which are elements of both the first set and the second set \definition{intersection} of the first and second set.
-We call the set whose elements consist of those elements which are elements of the union of the sets but not the intersection sets as the \definition{symmetric difference} of the first and second set.
-If the first set is a subset of the second set, then we call the symmetric difference the \definition{complement} of the first set in the second set.
-
-\subsection{Notation}
-
-We denote the union of the set $A$ with the set $B$ by $A \union B$.
-We read the notation $A \union B$ aloud as \say{A union B.}
-We denote the intersection of the set $A$ with the set $B$ by $A \intersect B$.
-We read the notation $A \intersect B$ aloud as \say{A intersect B.}
-We denote the symmetric difference of the set $A$ with the set $B$ by $A \symdif B$.
-We read the notation $A \symdif B$ aloud as \say{the symmetric difference of A and B.}
-We denote the complement of $A$ in $B$ by $C_B(A)$.
-We read the notation $C_B(A)$ aloud as \say{the complement of A in B.}
-Alternatively, we denote the complement of $A$ in $B$ by $B - A$.
-We read the notation $B - A$ aloud as \say{B minus A}.
-
-\subsection{Results}
-
-\begin{prop}
-  For sets $A, B$: (a) $A \union B = B \union A$, (b) $A \intersect B = B \intersect A$, and (c)  $A \symdif B = B \symdif A$.
-\end{prop}
-
-\begin{prop}
-  For sets $A, B \subset S$,
-  \[
-    \begin{aligned}
-      \text{(1)} \quad & C_S(A \union B) = C_S(A) \intersect C_S(B) \\
-      \text{(2)} \quad & C_S(A \intersect B) = C_S(A) \union C_S(B)
-    \end{aligned}
-  \]
-\end{prop}
-
-\section{Families}
-
-We often refer to a collection of subsets of some set via some index which is an element of another set.
-We call the indexing set the \definition{index set} and set of indexed sets an \definition{indexed family}.
-We define the set whose elements are the objects which are contained in at least one family member the \definition{family union}.
-We define the set whose elements are the obejcts which are contained in all of the family members the \definition{family intersection}.
-
-\subsection{Notation}
-
-Let $S$ be a set.
-We often denote the index set by $I$, though this is not required.
-For each $\alpha \in I$, let $A_{\alpha} \subset S$.
-We denote the family of $A_{\alpha}$ indexed with $I$ by $\set{A_{\alpha}}_{\alpha \in I}$.
-We read this notation \say{A sub-alpha, alpha in I.}
-
-We denote the family union by $\union_{\alpha \in I} A_{\alpha}$.
-We read this notation as \say{union over alpha in I of A sub-alpha.}
-We denote family intersection by $\intersect_{\alpha \in I} A_{\alpha}$.
-We read this notation as \say{intersection over alpha in I of A sub-alpha.}
-
-\subsection{Results}
-
-\begin{prop}
-  For an indexed family $\set{A_{\alpha}}_{\alpha \in I}$ in $S$, if $I = \set{i, j}$ then
-  \[
-    \union_{\alpha \in I} A_{\alpha} = A_i \union A_j
-  \]
-  and
-  \[
-    \intersect_{\alpha \in I} A_{\alpha} = A_i \intersect A_j.
-  \]
-\end{prop}
-
-\begin{prop}
-  For an indexed family $\set{A_{\alpha}}_{\alpha \in I}$ in $S$, if $I = \emptyset$, then
-  \[
-    \union_{\alpha \in I} A_{\alpha} = \emptyset
-  \]
-  and
-  \[
-    \intersect_{\alpha \in I} A_{\alpha} = S.
-  \]
-\end{prop}
-
-\begin{prop}
-  For an indexed family $\set{A_{\alpha}}_{\alpha \in I}$ in $S$.
-  \[
-    C_S(\union_{\alpha \in I} A_{\alpha}) = \intersect_{\alpha \in I} C_S(A_{\alpha})
-  \]
-  and
-  \[
-    C_S(\intersect_{\alpha \in I} A_{\alpha}) = \union_{\alpha \in I} C_S(A_{\alpha}).
-  \]
-\end{prop}
-
-\section{Products}
-
-We define a fourth operation for two sets.
-Construct a new set that is the ordered pairs of elements of the sets: the first element of the pair is an element of the first set, the second element of the pair is an element of the second set.
-We call the set of all ordered pairs of two sets the \definition{cartesian product} of the first set with the second set.
+Given two sets, construct a new set that is the ordered pairs of elements of the sets: the first element of the pair is an element of the first set, the second element of the pair is an element of the second set.
+We call the set of all such ordered pairs the \definition{cartesian product} of the first set with the second set.
 
 Two ordered pairs are identical if they have identical elements in the same order.
 If we have two sets, the cartesian product of the first with the second is not the same as the second with the first.
 This asymmetry results from the ordering of the pairs.
 We refer to an ordered pair as a \definition{tuple}.
 
-We can generalize this notion of Cartesian product to families of sets indexed by the natural numbers from 1 through some number $n$.
-We define the \definition{direct product} of this family as the set whose elements are finite ordered sequences of elements from each set in the family.
-The ordering on the sequences comes from the natural ordering on $n$.
-We call the elements of this product \definition{$n$-tuples}.
-Further generalizing to an infinite family, we can take the indexing set to be the set of natural numbers.
-We definie the direct product in this case to be the set whose elements are ordered infinite sequences of elements from each set in teh ordered infinite sequence of sets.
-If all the the sets in the family are the same single set, we call the elements of the direct product the \definition{sequences} in that single set.
-
 \subsection{Notation}
 For sets $A, B$ we denote the cartesian product by $A \cross B$.
 We read the notation $A \cross B$ as \say{A cross B.}
 We denote elements of $A \cross B$ by $(a, b)$ with the understanding that $a \in A$ and $b \in B$.
 In this notation, we can write the observation that $A \cross B \neq B \cross A$.
-
-For a family $\set{A_{\alpha}}_{\alpha \in I}$ of $S$ with $I = \set{1, \dots, n}$, we denote the direct product by
-\[
-  \product_{i = 1}^{n} A_{i}.
-\]
-We read this notation as \say{product over alpha in I of A sub-alpha.}
-We denote an element of $\product_{i = 1}^{n} A_{i}$ by $(a_1, a_2, \dots, a_n)$ with the understanding that $a_1 \in A_1, a_2 \in A_2, \dots, a_n \in A_n$.
-
-If $I$ is the set of natural numbers we denote the direct product by
-\[
-  \product_{i = 1}^{\infty} A_{i}.
-\]
-We denote an element of $\product_{i = 1}^{\infty} A_{i}$ by $(a_i)$ with the understanding that $a_i \in A_i$ for all $i = 1,2,3,\dots$.
-If $A_i = A$ for all $i = 1, 2, 3,\dots$, then $(a_i)$ is a sequence in $A$.
 
 \end{document}
