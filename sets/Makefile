@@ -1,4 +1,4 @@
-sets.pdf: sets.tex
+sets.pdf: ../format.tex ../macros.tex ../trademark.pdf sets.tex macros.tex
 	pdflatex sets.tex
 	make defs
 

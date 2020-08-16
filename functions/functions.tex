@@ -1,7 +1,8 @@
 \input{../format.tex}
 \input{../macros.tex}
 
-\input{../sets/macros.tex}
+\reference{sets}
+\reference{relations}
 
 \input{./macros.tex}
 
@@ -13,55 +14,61 @@ We want a notion for a correspondence between two sets.
 
 \section{Definition}
 
-To each \term{sets}{element} of a first \term{sets}{set} we associate a unique \term{sets}{element} of a second \term{sets}{set}.
+To each \term{sets}{element} of a first \term{sets}{set} we associate an \term{sets}{element} of a second \term{sets}{set}.
 We call this correspondence a \definition{function}.
 We call the first set the \definition{domain} and the second set the \definition{codomain}.
-We say that the \term{functions}{function} \definition{maps} elements from the \term{functions}{domain} into \term{functions}{codomain}.
+We say that the \term{functions}{function} \definition{maps} elements from the \term{functions}{domain} into the \term{functions}{codomain}.
 
-We call the subset of ordered pairs whose first element is in the domain and whose second element is the corresponding element of the codomain the \definition{graph} of the \term{functions}{function}.
+We call the codomain element associated with the domain element the \definition{result} of \definition{applying} the function to the domain element.
+We call the subset of ordered pairs whose first element is in the domain and whose second element is the corresponding result the \definition{graph} of the \term{functions}{function}.
 The graph is a relation between the domain and codomain.
 So a function can be viewed as or specified as a relation between these two sets.
 
 \subsection{Notation}
-We commonly denote a \term{functions}{function} by a lower case latin letter, especially $f$, $g$, and $h$.
-Of course, $f$ is a mnemonic for \term{functions}{function}.
+We often denote \term{functions}{functions} by lower case latin letters, especially $f$, $g$, and $h$.
+Of course, $f$ is a mnemonic for \term{functions}{function}; $g$ and $h$ follow $f$ in the alphabet.
 Let $A$ and $B$ be two non-empty sets.
-When we want to be explicit that the domain of a function $f$ is $A$ and its codomain is $B$ we write $f: A \to B$ read \say{f from A to B.}
-For each element $a$ in the domain, we denote the unique element that $f$ maps to by $f(a)$, read aloud \say{f of a.}
+When we want to be explicit that the domain of a function $f$ is $A$ and its codomain is $B$ we write $f: A \to B$, read aloud as \say{f from A to B.}
 
-The set $\Set{(a, f(a))}{a \in A}$ of ordered pairs is the graph of $f$, and we commonly denote it by $\Gamma_f$.
-$\Gamma$ is a mnemonic for graph.
 
-\section{Other Sets}
+For each element $a$ in the domain, we denote the result of applying $f$ to $a$ by $f(a)$, read aloud \say{f of a.}
+We sometimes drop the parentheses, and write the result as $f_a$, read aloud as \say{f sub a.}
 
-For a function $f: A \to B$ and a set $C \subset A$, we call the set $\Set{f(c)}{c \in C}$ the \definition{image} of $C$.
+Let $g: A \times B \to C$.
+We often write $g(a,b)$ or $g_{ab}$ instead of $g((a,b))$. We read $g(a, b)$ aloud as \say{g of a and b}.
+We read $g_{ab}$ aloud as \say{g sub a b.}
+
+For  $f: A \to B$, the set $\Set{(a, f(a)) \in A \cross B}{a \in A}$ of ordered pairs is the graph of $f$.
+We often denote it by $\Gamma_f$; \say{gamma} is a mnemonic for graph.
+
+\section{Properties}
+
+For a function $f: A \to B$ and a set $C \subset A$, we call the set $\Set{f(c) \in B}{c \in C}$ the \definition{image} of $C$.
 We call the \term{functions}{image} of the \term{functions}{domain} the \definition{range} of the function.
 
-The range need not be the codomain; though it, like every other image, is a subset of the codomain.
-In the case that it the range and codomain are equal, we call the function \definition{onto}.
+The range need not equal the codomain; though it, like every other image, is a subset of the codomain.
+If the range and codomain are equal, we call the function \definition{onto}.
 We say that the function maps the domain onto the range.
 This language suggests that every element of the codomain is used by $f$.
 It means that for each element $b$ of the codomain, we can find an element $a$ of the domain so that $f(a) = b$.
 
-There may be multiple elements of the domain corresponding to any particular element of the codomain.
-By this we mean that the function uses an element of the codomain more than once.
-This overlapping of a function is a regular occurence.
-More interesting is the property which makes the correspondence unique in the sense that each element of the codomain only has one corresponding element of the domain.
-If a function has this property, we call it \definition{one-to-one}.
-This language is meant to suggest exactly this notion of a unique correspondence.
+An element of the codomain may be the result of several elements of the domain.
+This overlapping, using an element of the codomain more than once, is a regular occurrence.
+If a function is a unique correspondence in that every domain element has a different result, we call it \definition{one-to-one}.
+This language is meant to suggest that each element of the domain corresponds to one and exactly one element of the codomain, and vice versa.
 
 \subsection{Notation}
 
-let $f: A \to B$ and $C \subset C$.
-We denote the image of $C$ by $f(C)$, read aloud \say{f of C.}
+Let $f: A \to B$ and $C \subset A$.
+We denote the image of $C$ by $f(C)$, read aloud as \say{f of C.}
 The property that $f$ is onto can be written succintly as $f(A) = B$.
 
-There is some ambiguity here, as we have overloaded notation.
 Let $c \in C$.
 Notice that we have defined notation for $f(c)$ and $f(C)$.
-$f(c)$ is an element of the codomain, indeed the range, of $f$.
-$f(C)$ is a subset of the codomain, indeed the range, of $f$.
-They are both read \say{f of C} and so we must be careful to have specified what $C$ is.
-When we have taken this precaution, there is no trouble.
+In overloading notation, we have introduced ambiguity.
+$f(c)$ is an element of the codomain.
+$f(C)$ is a subset of the codomain.
+Read aloud, the two are indistinguishable, must be careful to have specified whether we mean an element $c$ or a set $C$.
+There is no trouble when we take this precaution.
 
 \end{document}
