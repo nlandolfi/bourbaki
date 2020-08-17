@@ -11,40 +11,53 @@
 
 \section{Why}
 
-We want to form a new set from two sets; we survey three useful operations.
+We want to consider the elements of two sets together at once, and other such sets created from two sets.
 
-\section{Basic Operations}
+\section{Definitions}
 
-We call the set whose elements consist of those objects which are elements of either the first set or the second set as the \definition{union} of the first and second set.
-We call the set whose elements consist of those objects which are elements of both the first set and the second set \definition{intersection} of the first and second set.
-We call the set whose elements consist of those elements which are elements of the union of the sets but not the intersection sets as the \definition{symmetric difference} of the first and second set.
-If the first set is a subset of the second set, then we call the symmetric difference the \definition{complement} of the first set in the second set.
+Let $A$ and $B$ be two sets.
+The \definition{union} of $A$ with $B$ is the set whose elements are in either $A$ \textit{or} $B$ \textit{or} both.
+The keyword in the definition is \textit{or}.
+The \definition{intersection} of $A$ with $B$ is the set whose elements are in both $A$ \textit{and} $B$.
+The keyword in the definition is \textit{and}.
+Viewed as operations, both union and intersection commute; this property justifies the language \say{with.}
+The intersection is a subset of $A$, of $B$, and of the union of $A$ with $B$.
+
+The \definition{symmetric difference} of $A$ and $B$ is the set whose elements are in the union but not in the intersection.
+The symmetric difference commutes because both union and intersection commute; this property justifies the language \say{and.}
+The symmetric difference is a subset of the union.
+
+
+Let $C$ a set containing $A$.
+The \definition{complement} of $A$ in $C$ is the symmetric difference of $A$ and $C$.
+Since $A \subset C$, the union is $C$ and the intersection is $A$.
+So the complement is the \say{left-over} elements of $B$ after removing the elements of $A$.
 
 \subsection{Notation}
 
-We denote the union of the set $A$ with the set $B$ by $A \union B$.
-We read the notation $A \union B$ aloud as \say{A union B.}
-We denote the intersection of the set $A$ with the set $B$ by $A \intersect B$.
-We read the notation $A \intersect B$ aloud as \say{A intersect B.}
-We denote the symmetric difference of the set $A$ with the set $B$ by $A \symdif B$.
-We read the notation $A \symdif B$ aloud as \say{the symmetric difference of A and B.}
-We denote the complement of $A$ in $B$ by $C_B(A)$.
-We read the notation $C_B(A)$ aloud as \say{the complement of A in B.}
-Alternatively, we denote the complement of $A$ in $B$ by $B - A$.
-We read the notation $B - A$ aloud as \say{B minus A}.
+Let $A, B$ be sets.
+We denote the union of $A$ with $B$ by $A \union B$, read aloud as \say{A union B.}
+$\union$ is a stylized U.
+We denote the intersection of $A$ with $B$ by $A \intersect B$, read aloud as \say{A intersect B.}
+We denote the symmetric difference of $A$ and $B$ by $A \symdiff B$, read aloud as \say{A symdiff B.}
+\say{Delta} is a mnemonic for difference.
+
+Let $C$ be a set containing $A$.
+We denote the complement of $A$ in $C$ by $C - A$, read aloud as \say{C minus A.}
 
 \subsection{Results}
 
 \begin{prop}
-  For sets $A, B$: (a) $A \union B = B \union A$, (b) $A \intersect B = B \intersect A$, and (c)  $A \symdif B = B \symdif A$.
+  For all sets $A$ and $B$ the operations $\union$, $\intersect$, and $\symdiff$ commute.
 \end{prop}
 
 \begin{prop}
-  For sets $A, B \subset S$,
+  Let $S$ a set.
+  For all sets $A, B \subset S$,
   \[
     \begin{aligned}
-      \text{(1)} \quad & C_S(A \union B) = C_S(A) \intersect C_S(B) \\
-      \text{(2)} \quad & C_S(A \intersect B) = C_S(A) \union C_S(B)
+      \text{(1)} \quad & S - (A \union B) = (S - A) \intersect (S - B) \\
+      \text{(2)} \quad & S - (A \intersect B) = (S - A) \union (S - B).
     \end{aligned}
   \]
 \end{prop}
