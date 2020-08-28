@@ -1,4 +1,4 @@
-direct_products.pdf: direct_products.tex
+direct_products.pdf: *.tex ../*.tex ../trademark.pdf
 	pdflatex direct_products.tex
 	make defs
 

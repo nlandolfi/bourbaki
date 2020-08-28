@@ -1,4 +1,4 @@
-equivalence_relations.pdf: equivalence_relations.tex
+equivalence_relations.pdf: *.tex ../*.tex ../trademark.pdf
 	pdflatex equivalence_relations.tex
 	make defs
 

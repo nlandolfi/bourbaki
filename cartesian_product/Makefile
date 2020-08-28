@@ -1,4 +1,4 @@
-cartesian_product.pdf: cartesian_product.tex
+cartesian_product.pdf: ../*.tex ../trademark.pdf *.tex
 	pdflatex cartesian_product.tex
 	make defs
 

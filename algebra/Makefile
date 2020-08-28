@@ -1,4 +1,4 @@
-algebra.pdf: algebra.tex
+algebra.pdf: *.tex ../*.tex ../trademark.pdf
 	pdflatex algebra.tex
 	make defs
 

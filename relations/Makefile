@@ -1,4 +1,4 @@
-relations.pdf: relations.tex
+relations.pdf: *.tex ../*.tex ../trademark.pdf
 	pdflatex relations.tex
 	make defs
 

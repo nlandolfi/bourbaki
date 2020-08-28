@@ -1,4 +1,4 @@
-order_relations.pdf: order_relations.tex
+order_relations.pdf: *.tex ../*.tex ../trademark.pdf
 	pdflatex order_relations.tex
 	make defs
 

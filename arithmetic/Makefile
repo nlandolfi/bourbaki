@@ -1,4 +1,4 @@
-arithmetic.pdf: ../format.tex ../macros.tex ../trademark.pdf arithmetic.tex macros.tex
+arithmetic.pdf: ../*.tex *.tex ../trademark.pdf
 	pdflatex arithmetic.tex
 	make defs
 

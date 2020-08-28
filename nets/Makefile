@@ -1,4 +1,4 @@
-nets.pdf: nets.tex macros.tex
+nets.pdf: *.tex ../*.tex ../trademark.pdf
 	pdflatex nets.tex
 	make defs
 

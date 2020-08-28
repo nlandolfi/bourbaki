@@ -1,4 +1,4 @@
-functions.pdf: ../format.tex ../macros.tex ../trademark.pdf functions.tex macros.tex
+functions.pdf: ../*.tex ../trademark.pdf *.tex
 	pdflatex functions.tex
 	make defs
 

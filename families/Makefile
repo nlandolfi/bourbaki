@@ -1,4 +1,4 @@
-families.pdf: families.tex
+families.pdf: *.tex ../*.tex ../trademark.pdf
 	pdflatex families.tex
 	make defs
 
