@@ -1,4 +1,4 @@
-categories.pdf: ../format.tex ../macros.tex ../trademark.pdf categories.tex macros.tex
+categories.pdf: ../*.tex *.tex ../trademark.pdf
 	pdflatex categories.tex
 	make defs
 
