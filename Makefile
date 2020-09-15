@@ -11,4 +11,9 @@ graph: graph.pdf
 open:
 	make graph
 
+clean:
+	rm */*.aux
+	rm */*.out
+	rm */*.log
+
 

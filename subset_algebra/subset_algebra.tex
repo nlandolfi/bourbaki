@@ -2,7 +2,9 @@
 \sbasic
 
 \sinput{../sets/macros.tex}
-\sinput{../cartesian_product/macros.tex}
+\sinput{../ordered_pairs/macros.tex}
+\sinput{../set_operations/macros.tex}
+\sinput{../cardinality/macros.tex}
 \input{../subset_algebra/macros.tex}
 
 \sstart
@@ -11,43 +13,100 @@
 
 \ssection{Why}
 
-We often talk about a \rt{set}{set} and
-a \rt{set}{set} of its \rt{subsets}{subset}
-satisfying properties.
+We speak of a subset space
+with set-algebraic
+properties.
 
 \ssection{Definition}
 
-A \ct{subset algbera}{subsetalgebra} is two
-sets: the second is a set of subsets of the
-first.
-
-We call the first \rt{set}{set} the
-\ct{base set}{baseset}.
-If the \rt{base set}{baseset} is finite,
-we call the subset algebra a
-\ct{finite subset algebra}{finitesubsetalgebra}.
-We call an \rt{element of}{element} the second
-\rt{set}{set} a \ct{distinguished subset}{distinguishedsubset}.
-A \rt{subset}{subset} is an
-\ct{undistingished subset}{undistinguishedsubset}
-if it is not \rt{distinguished}{distinguishedsubset}.
-
-Useful \rt{subset algebras}{subsetalgebra} are those for
-which the \rt{distinguished subsets}{distinguishedsubset}
-satisfy some \rt{set-algebraic}{setalgebraicoperations}
-properties.
-For one example, the distinguished sets may be closed under set union or
-set intersection.
-As a second example, the distinguished sets may include the base
-set.
-As a third example, the distinguished sets may be closed under
-complements or under subsets.
+A \ct{subset algebra}{subsetalgebra}
+a subset space for which
+(1) the base set is distinguished
+(2) the complement of a distinguished
+set is distinguished
+(3) the union of two distinguished sets
+is distinguished.
 
 \ssubsection{Notation}
 
-Let $A$ a set and $\mathcal{A} \subset \powerset{A}$.
+Let $A$ be a set and $\mathcal{A} \subset \powerset{A}$.
 We denote the subset algebra of $A$ and $\mathcal{A}$
 by $\tuple{A, \mathcal{A}}$, read aloud as \say{A, script
   A.}
+
+\ssection{Properties}
+
+\begin{prop}
+  For any subset algebra the empty set is distinguished.
+\end{prop}
+
+\begin{prop}
+  For any subset algebra $(A, \mathcal{A})$,
+  if $B, C \in \mathcal{A}$, then
+  (a) $B \intersect C \in \mathcal{A}$ and
+  (b) $B \symdiff C \in \mathcal{A}$.
+\end{prop}
+
+\begin{prop}
+  For any subset algebra $(A, \mathcal{A})$.
+  If $A_1, \dots, A_n \in \mathcal{A},$ then
+  (a) $\union_{i = 1}^{n} A_i \in \mathcal{A}$ and
+  (b) $\intersection_{i = 1}^{n} A_i \in \mathcal{A}$.
+\end{prop}
+
+\ssection{Examples}
+
+\begin{expl}
+  For any set $A$, $(A, 2^{A})$ is a subset algebra.
+\end{expl}
+
+\begin{expl}
+  For any set $A$, $(A, \set{A, \emptyset})$ is a subset algebra.
+\end{expl}
+
+\begin{expl}
+  For any infinite set $A$,
+  let $\mathcal{A}$ be the set
+  $$
+  \Set*{
+    B \subset A
+  }{
+    \card{B} < \aleph_0 \lor
+    \card{C_{A}(B)} < \aleph_0
+  }.
+  $$
+  $(A, \mathcal{A})$ is an algebra;
+  the
+  \ct{finite/co-finite algebra}{}.
+\end{expl}
+
+\begin{expl}
+  For any infinite set $A$,
+  let $\mathcal{A}$ be the set
+  $$
+  \Set*{
+    B \subset A
+  }{
+    \card{B} \leq \aleph_0 \lor
+    \card{C_{A}(B)} \leq \aleph_0
+  }.
+  $$
+  $(A, \mathcal{A})$ is an algebra;
+  the
+  \ct{countable/co-countable algebra}{}.
+\end{expl}
+
+\begin{expl}
+  For any infinite set $A$,
+  let $\mathcal{A}$ be the set
+  $$
+  \Set*{
+    B \subset A
+  }{
+    \card{B} \leq \aleph_0
+  }.
+  $$
+  $(A, \mathcal{A})$ is not an algebra.
+\end{expl}
 
 \strats
