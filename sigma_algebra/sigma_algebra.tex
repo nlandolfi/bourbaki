@@ -13,28 +13,33 @@
 
 \ssection{Why}
 
-We aim toward defining
-a notion of length on the
-real line, a function from
-subsets of the real numbers
-to a non-negative real number
-or infinity.
-A function with natural properties
-of length can not be defined
-for all subsets of the real numbers,
-but can on
-Such a function does not exist
-
-We fail for all sets,
-but we succeed on a
-subset space whose distinguished
-sets are a sigma algebra.
+For general measure theory,
+we need an algebra of sets
+closed under countable unions;
+we define such an object (TODO).
 
 \ssection{Definition}
 
-A \ct{sigma algebra}{sigmaalgebra}
-a subset algebra which is closed
-under countable unions.
+A \ct{countably summable subset algebra}{sigmaalgebra}
+is a subset space for which
+(1) the base set is distinguished
+(2) the complement of a distinguished
+set is distinguished
+(3) the union of a sequence of distinguished sets
+is distinguished.
+
+The name is justified, as
+each countably summable subset algebra is a
+\rt{subset algebra}{subsetalgebra},
+because the union of $A_1, \dots, A_n$
+coincides with the union of
+$A_1, \dots, A_n, A_n, A_n \dots$.
+
+We say that the set of distinguished
+sets a \ct{sigma algebra}{sigmaalgebra} on the
+base set; we justify this langauge, as for
+an algebra, by the closure properties
+under standard set operations.
 
 \ssubsection{Notation}
 
@@ -43,17 +48,54 @@ We denote the subset algebra of $A$ and $\mathcal{A}$
 by $\tuple{A, \mathcal{A}}$, read aloud as \say{A, script
   A.}
 
-\ssection{Properties}
+\ssection{Examples}
 
-\begin{prop}
+\begin{expl}
   For any set $A$, $2^{A}$ is a sigma algebra.
-\end{prop}
+\end{expl}
+
+\begin{expl}
+  For any set $A$,
+  $\set{A, \emptyset}$ is a sigma algebra.
+\end{expl}
+
+\begin{expl}
+  Let $A$ be an infinite set.
+  Let $\mathcal{A}$ the collection
+  of finite subsets of $A$.
+  $\mathcal{A}$ is not a sigma algebra.
+\end{expl}
+
+\begin{expl}
+  Let $A$ be an infinite set.
+  Let $\mathcal{A}$ be the collection
+  subsets of $A$ such that the set or its
+  complement is finite.
+  $\mathcal{A}$ is not a sigma algebra.
+\end{expl}
+
 
 \begin{prop}
   The intersection of a family of sigma algebras is
   a sigma algebra.
   \label{sigma_algebra:sigmaintersection}
 \end{prop}
+
+\begin{expl}
+  For any infinite set $A$,
+  let $\mathcal{A}$ be the set
+  $$
+  \Set*{
+    B \subset A
+  }{
+    \card{B} \leq \aleph_0 \lor
+    \card{C_{A}(B)} \leq \aleph_0
+  }.
+  $$
+  $\mathcal{A}$ is an algebra;
+  the
+  \ct{countable/co-countable algebra}{}.
+\end{expl}
 
 \ssection{Generation}
 
