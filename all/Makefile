@@ -9,5 +9,8 @@ make:
 open: all.pdf
 	open all.pdf
 
+graph:
+	cd .. && make open
+
 defs: all.tex
 	defs all.tex
