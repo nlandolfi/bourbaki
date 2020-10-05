@@ -7,6 +7,8 @@ www: ../*/*.pdf ../graph.pdf
 	cp ../ordered_pairs/ordered_pairs.pdf ./sheets/
 	cd ../relations/ && make relations.pdf
 	cp ../relations/relations.pdf ./sheets/
+	cd ../equivalence_relations/ && make equivalence_relations.pdf
+	cp ../equivalence_relations/equivalence_relations.pdf ./sheets/
 
 push: www
 	cp -r * /afs/ir.stanford.edu/users/l/a/lando/WWW/bourbaki/
