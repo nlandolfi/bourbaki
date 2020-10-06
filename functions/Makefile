@@ -10,3 +10,8 @@ open: functions.pdf
 
 defs: functions.tex
 	defs functions.tex
+
+clean:
+	rm *.aux
+	rm *.out
+	rm *.log
