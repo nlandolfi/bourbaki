@@ -1,0 +1,128 @@
+\input{../sheet.tex}
+\sbasic
+
+\sinput{../sets/macros.tex}
+\sinput{../set_operations/macros.tex}
+\sinput{../sequences/macros.tex}
+\sinput{../extended_real_numbers/macros.tex}
+\input{../signed_measures/macros.tex}
+
+\sstart
+
+\stitle{Signed Measures}
+
+\ssection{Why}
+
+We allow measures to take
+negative values.
+We want a vector space
+of finite measures.
+TODO
+
+\ssection{Definition}
+
+An extended-real-valued
+function on a
+sigma algebra is
+\ct{countably additive}{countablyadditive}
+if the result of the function applied to
+the union of a disjoint countable family of
+distinguished sets is the limit of the partial
+sums of the results of the function applied
+to each of the sets individually.
+The limit of the partial sums must
+exist irregardless of the summand order.
+
+A
+\ct{signed measure}{signedmeasure}
+is an extended-real-valued
+function on a
+sigma algebra that is
+(1) zero on the empty set and
+(2) countably additive.
+We call the result of the function
+applied to a set in the sigma
+algebra the
+\ct{signed measure}{signedmeasure}
+(or when no ambiguity arises, the
+\ct{measure}{})
+of the set.
+
+A
+\ct{finite}{finitesignedmeasure}
+signed measure is one for
+which the measure of every set
+is finite.
+This condition is equivalent
+to the base set having finite
+measure (see below).
+
+\ssubsection{Notation}
+
+We denote signed measures by $\mu$
+a mnemonic for \say{measure.}
+Let
+$(X, \mathcal{A})$
+be a measurable space
+and let
+$\mu: \mathcal{A} \to \eri$.
+Then $\mu$ is a signed measure if
+\begin{enumerate}
+  \item $\mu(\emptyset) = 0$ and
+  \item
+  $\mu(\union_{i} A_i) =
+    \lim_{n \to \infty}
+      \sum_{k = 1}^{n} \mu(A_k)$
+  for all disjoint families $\seq{A}$.
+\end{enumerate}
+
+\ssection{Infinite Exlcusivity}
+
+\begin{prop}
+\label{prop:finitesignedmeasures}
+A signed measure is finite
+if and only if it is finite
+on the base set.
+
+\begin{proof}
+Let $(X,\SA)$ be a measurable space.
+Let $\mu: \SA \to \eri$ be a signed measure.
+($\Rightarrow$) If $\mu$ is finite, then $\mu(X)$
+is finite since $X \in \mathcal{A}$.
+($\Leftarrow)$
+Next, suppose $\mu(X)$ is finite.
+Let $A \in \SA$.
+Then $X = A \union (X - A)$,
+with these sets disjoint,
+so by countable additivity
+of $\mu$,
+$\mu(X) = \mu(A) + \mu(X - A)$.
+Since $\mu(X)$ finite, $\mu(A)$
+and $\mu(X - A)$ are both finite.
+\end{proof}
+\end{prop}
+
+\begin{prop}
+A signed measure never takes
+both positive infinity and
+negative infinity.
+\begin{proof}
+Let $(X,\SA)$ be a measurable space.
+Let $\mu: \SA \to \eri$ be a signed measure.
+First, suppose $\mu(X)$ is finite,
+Then by
+Proposition~\ref{prop:finitesignedmeasures}
+$\mu$ is finite for each $A \in \SA$.
+
+Suppose $\mu(X) = \infty$.
+Let $A \in \SA$.
+As before,
+$\mu(X) = \mu(A) + \mu(X - A)$.
+Since $\mu(X) = +\infty$, then
+both of $\mu(A)$ and $\mu(X-A)$
+must be either finite or $+\infty$.
+Argue similarly for $\mu(X) = -\infty$.
+\end{proof}
+\end{prop}
+
+\strats
