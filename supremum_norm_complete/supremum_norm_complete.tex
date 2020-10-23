@@ -1,0 +1,114 @@
+\input{../sheet.tex}
+\sbasic
+
+\sinput{../sets/macros.tex}
+\sinput{../absolute_value/macros.tex}
+\sinput{../norms/macros.tex}
+\sinput{../sequences/macros.tex}
+\sinput{../real_limits/macros.tex}
+\sinput{../supremum_norm/macros.tex}
+\input{../supremum_norm_complete/macros.tex}
+
+\sstart
+
+\stitle{Supremum Norm Complete}
+
+\ssection{Why}
+
+We want a complete
+norm on the vector
+space of continuous
+functions.
+
+\ssection{Result}
+
+\begin{prop}
+The supremum norm
+is complete.
+
+\begin{proof}
+Let $R$ denote the real numbers.
+Let $\seq{f}$ be an egoprox sequence
+in $C[a, b]$.
+Then
+$\forall \epsilon > 0, \exists N$
+so that
+\[
+  m, n > N \implies \supnorm{f_n - f_m} < \epsilon.
+\]
+Since $\supnorm{f_n - f_m} < \epsilon \implies
+\abs{f_n(x) - f_m(x)} < \epsilon$ for
+all $x \in [a, b]$, the
+sequence of real numbers $\set{f_n(x)}_n$
+is egoprox for each $x \in [a, b]$.
+Since the metric space $(R, \abs{\cdot})$
+is complete, there is a limit $l_x$
+such that $f_n(x) \goesto l_x$ as
+$n \goesto \infty$, for each $x \in [a, b]$.
+Define $f: [a, b] \to R$
+by $f(x) = l_x$ for each $x \in [a, b]$.
+
+First, we argue that $f$ is continuous.
+Let $x_0 \in [a, b]$ and let $\epsilon > 0$.
+For each $n$, $f_n$ is a continuous function
+on a closed interval, and therefore is
+uniformly continuous:
+$\forall \epsilon > 0, \exists \delta > 0$
+so that $\forall x, y \in [a, b]$,
+\[
+  \abs{x - y} < \delta \implies \abs{f(x) - f(y)} < \epsilon.
+\]
+
+For $\epsilon/3 > 0$, there exists an $n_1$
+so that
+\[
+  n > n_1 \implies \abs{f_n(x_0) - f(x_0)} < \epsilon/3.
+\]
+For $\epsilon/3 > 0$, there exists an $n_2$
+so that
+\[
+  n > n_2 \implies \abs{f_n(x_0) - f(x_0)} < \epsilon/3.
+\]
+Let $n_0 = \max\set{n_1,n_2}$.
+The function $f_{n_0}$ is
+continuous, so for $\epsilon/3$,
+there is a $\delta > 0$ so that
+for all $x \in [a, b]$,
+\[
+  \abs{x_0 - x} < \delta \implies \abs{f_{n_0}(x_0) - f_{n_0}(x_0)} < \epsilon/3.
+\]
+By the triangle inequality,
+\[
+  \begin{aligned}
+    \abs{f(x_0) - f(x)} \leq \abs{f(x_0) - f_{n_0}(x_0)} + \abs{f_{n_0}(x_0) - f(x)}
+  \end{aligned}
+\]
+Since $n_0 \geq n_1$,
+$\abs{f(x_0) - f_{n_0}(x_0)} < \epsilon/3$.
+Using this fact, and the triangle inequality
+\[
+  \begin{aligned}
+    \abs{f(x_0) - f(x)} &< \epsilon/3 + \abs{f_{n_0}(x_0) - f(x)} \\
+    &\leq \epsilon/3 + \abs{f_{n_0}(x_0) - f_{n_0}(x)} + \abs{f_{n_0}(x_0) - f(x)} \\
+  \end{aligned}
+\]
+Since $\abs{x_0 - x} < \delta$,
+$\abs{f_{n_0}(x_0) - f_{n_0}(x)} < \epsilon/3$.
+Since $n_0 > n_2$,
+$\abs{f_{n_0}(x_0) - f(x)} < \epsilon/3$.
+We conclude
+\[
+  \begin{aligned}
+    \abs{f(x_0) - f(x)} &< \epsilon/3 + \epsilon/3 + \epsilon/3 = \epsilon.
+  \end{aligned}
+\]
+for all $\abs{x_0-x} < \delta$.
+Since $\epsilon$ was arbitrary, $f$
+is continuous at $x_0$.
+Since $x_0$ was arbitrary,
+$f$ is continuous everywhere.
+\end{proof}
+
+\end{prop}
+
+\strats
