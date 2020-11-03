@@ -8,6 +8,9 @@ make:
 open: functions.pdf
 	open functions.pdf
 
+o: open
+	make open
+
 defs: functions.tex
 	defs functions.tex
 
