@@ -8,5 +8,8 @@ make:
 open: sets.pdf
 	open sets.pdf
 
+o:
+	make open
+
 defs: sets.tex
 	defs sets.tex
