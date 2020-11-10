@@ -9,6 +9,9 @@ make:
 open: all.pdf
 	open all.pdf
 
+o:
+	make open
+
 graph:
 	cd .. && make open
 

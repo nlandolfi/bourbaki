@@ -8,5 +8,8 @@ make:
 open: measure_derivatives.pdf
 	open measure_derivatives.pdf
 
+o:
+	make open
+
 defs: measure_derivatives.tex
 	defs measure_derivatives.tex

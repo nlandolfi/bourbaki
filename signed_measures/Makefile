@@ -8,5 +8,8 @@ make:
 open: signed_measures.pdf
 	open signed_measures.pdf
 
+o: open
+	make open
+
 defs: signed_measures.tex
 	defs signed_measures.tex
