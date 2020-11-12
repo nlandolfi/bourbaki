@@ -8,5 +8,8 @@ make:
 open: measurable_functions.pdf
 	open measurable_functions.pdf
 
+o:
+	make open
+
 defs: measurable_functions.tex
 	defs measurable_functions.tex

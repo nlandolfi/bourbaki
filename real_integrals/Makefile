@@ -8,5 +8,8 @@ make:
 open: real_integrals.pdf
 	open real_integrals.pdf
 
+o:
+	make open
+
 defs: real_integrals.tex
 	defs real_integrals.tex
