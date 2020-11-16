@@ -8,5 +8,8 @@ make:
 open: natural_numbers.pdf
 	open natural_numbers.pdf
 
+o:
+	make open
+
 defs: natural_numbers.tex
 	defs natural_numbers.tex
