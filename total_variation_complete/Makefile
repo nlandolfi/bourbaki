@@ -8,5 +8,8 @@ make:
 open: total_variation_complete.pdf
 	open total_variation_complete.pdf
 
+o:
+	make open
+
 defs: total_variation_complete.tex
 	defs total_variation_complete.tex

@@ -3,6 +3,8 @@ www: ../*/*.pdf ../graph.pdf
 	cp ../graph.pdf ./
 	cd ../sets && make sets.pdf
 	cp ../sets/sets.pdf ./sheets/
+	cd ../subsets && make subsets.pdf
+	cp ../subsets/subsets.pdf ./sheets/
 	cd ../ordered_pairs/ && make ordered_pairs.pdf
 	cp ../ordered_pairs/ordered_pairs.pdf ./sheets/
 	cd ../relations/ && make relations.pdf

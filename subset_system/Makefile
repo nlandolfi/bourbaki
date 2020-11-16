@@ -8,5 +8,8 @@ make:
 open: subset_system.pdf
 	open subset_system.pdf
 
+o:
+	make open
+
 defs: subset_system.tex
 	defs subset_system.tex
