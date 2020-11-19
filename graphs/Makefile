@@ -8,5 +8,8 @@ make:
 open: graphs.pdf
 	open graphs.pdf
 
+o:
+	make open
+
 defs: graphs.tex
 	defs graphs.tex
