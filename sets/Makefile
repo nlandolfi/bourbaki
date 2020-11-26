@@ -13,3 +13,9 @@ o:
 
 defs: sets.tex
 	defs sets.tex
+
+spell:
+	aspell -c sets.tex
+
+s:
+	make spell
