@@ -8,5 +8,8 @@ make:
 open: length.pdf
 	open length.pdf
 
+o:
+	make open
+
 defs: length.tex
 	defs length.tex
