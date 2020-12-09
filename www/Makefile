@@ -30,3 +30,6 @@ push: www
 open: www
 	make push
 	open https://stanford.edu/~lando/bourbaki/
+
+o:
+	open index.html
