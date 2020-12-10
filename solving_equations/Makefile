@@ -10,3 +10,6 @@ open: solving_equations.pdf
 
 defs: solving_equations.tex
 	defs solving_equations.tex
+
+o:
+	make open
