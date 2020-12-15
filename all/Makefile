@@ -1,5 +1,7 @@
-all.pdf: ../*.tex ../trademark.pdf ../*/*.tex *.tex
+all.toc:
 	pdflatex all.tex
+
+all.pdf: ../*.tex ../trademark.pdf ../*/*.tex *.tex all.toc
 	pdflatex all.tex
 	make defs
 
