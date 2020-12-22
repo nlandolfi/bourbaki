@@ -95,13 +95,10 @@ digraph G {
   "Function Space" -> "Sequence Space"
   "Functionals"
   "Functionals" -> "Vectors"
-  "Functions" -> "Relations"
-  "Functions" [ href="https://stanford.edu/~lando/bourbaki/sheets/functions.pdf"; color = red ]
   "Generated Monotone Class"
   "Generated Monotone Class" -> "Monotone Class"
   "Generated Sigma Algebra"
   "Generated Sigma Algebra" -> "Sigma Algebra"
-  "Geometry"
   "Graph Cliques"
   "Graph Cliques" -> "Graphs"
   "Graphs"
@@ -193,8 +190,6 @@ digraph G {
   "Linear Independence" -> "Vectors"
   "Linear Maps"
   "Linear Maps" -> "Vectors"
-  "Lines"
-  "Lines" -> "Points"
   "Matrices"
   "Matrices" -> "Linear Maps"
   "Matroids" -> "Linear Independence"
@@ -275,7 +270,6 @@ digraph G {
   "Normed Spaces" -> "Norm Metrics"
   "Norms"
   "Norms" -> "Functionals"
-  "Objects" [ href="https://stanford.edu/~lando/bourbaki/sheets/objects.pdf"; color = red ]
   "Odd"
   "Odd" -> "Even"
   "Commutative Operations"
@@ -285,8 +279,6 @@ digraph G {
   "Operations"
   "Operations" -> "Functions"
   "Order Relations" -> "Relations"
-  "Ordered Pairs" -> "Subsets"
-  "Ordered Pairs" [ href="https://stanford.edu/~lando/bourbaki/sheets/ordered_pairs.pdf"; color = red ]
   "Orthogonality"
   "Orthogonality" -> "Inner Products"
   "Outer Cover Area"
@@ -313,11 +305,6 @@ digraph G {
   "Partition Refinement" -> "Partitions"
   "Partitions"
   "Partitions" -> "Families"
-  "Plane Figures"
-  "Plane Figures" -> "Squares"
-  "Plane Figures" -> "Triangles"
-  "Points"
-  "Points" -> "Geometry"
   "Primes"
   "Primes" -> "Divisors"
   "Probability Conditional Independence"
@@ -392,8 +379,6 @@ digraph G {
   "Rectangular Integrals" -> "Rectangular Functions"
   "Relation Properties" -> "Relations"
   "Relation Properties" [ href="https://stanford.edu/~lando/bourbaki/sheets/relation_properties.pdf"; color = red ]
-  "Relations" -> "Ordered Pairs"
-  "Relations" [ href="https://stanford.edu/~lando/bourbaki/sheets/relations.pdf"; color = red ]
   "Rings" -> "Groups"
   "Scaled Vectors"
   "Scaled Vectors" -> "Linear Maps"
@@ -408,14 +393,6 @@ digraph G {
   "Sequences"
   "Sequences" -> "Direct Products"
   "Sequences" -> "Infinite Process"
-  "Set Examples" -> "Sets"
-  "Set Examples" [ href="https://stanford.edu/~lando/bourbaki/sheets/set_examples.pdf"; color = red ]
-  "Set Operations"
-  "Set Operations" -> "Commutative Operations"
-  "Set-Builder Notation" -> "Sets"
-  "Set-Builder Notation" [ href="https://stanford.edu/~lando/bourbaki/sheets/set_builder_notation.pdf"; color = red ]
-  "Sets" -> "Objects"
-  "Sets" [ href="https://stanford.edu/~lando/bourbaki/sheets/sets.pdf"; color = red ]
   "Sigma Algebra Independence"
   "Sigma Algebra Independence" -> "Probability Measures"
   "Sigma Algebra"
@@ -456,8 +433,6 @@ digraph G {
   "Solving Equations" -> "Arithmetic"
   "Solving Equations" -> "Function Inverses"
   "Space"
-  "Squares"
-  "Squares" -> "Lines"
   "Squaring Properties"
   "Squaring Properties" -> "Odd"
   "Squaring Properties" -> "Squaring"
@@ -477,8 +452,6 @@ digraph G {
   "Subset Algebra"
   "Subset Algebra" -> "Subset System"
   "Subset System" -> "Set Operations"
-  "Subsets" -> "Extension"
-  "Subsets" [ href="https://stanford.edu/~lando/bourbaki/sheets/subsets.pdf"; color = red ]
   "Supremum Norm Completeness"
   "Supremum Norm Completeness" -> "Metric Completeness"
   "Supremum Norm Completeness" -> "Norm Metrics"
@@ -505,8 +478,6 @@ digraph G {
   "Trees" -> "Graphs"
   "Triangle Inequality"
   "Triangle Inequality" -> "Absolute Value"
-  "Triangles"
-  "Triangles" -> "Lines"
   "Uniform Continuity"
   "Uniform Continuity" -> "Real Continuity"
   "Variation Measure"
@@ -526,11 +497,51 @@ digraph G {
   "Inverse Elements"
   "Inverse Elements" -> "Function Inverses"
   "Inverse Elements" -> "Element Functions"
-  "Extension" -> "Sets"
   "Distance" -> "Triangles"
   "Metrics" -> "Distance"
   "Product Metric Space"
   "Product Metric Space" -> "Metrics"
   "Product Metric Space" -> "Direct Products"
+    "Set Operations" -> "Commutative Operations";
+    "Set Operations";
+
+  subgraph cluster_geometry {
+    label="Geometry";
+
+    "Geometry"
+    "Lines"
+    "Lines" -> "Points"
+    "Points"
+    "Points" -> "Geometry"
+    "Triangles"
+    "Triangles" -> "Lines"
+    "Squares"
+    "Squares" -> "Lines"
+    "Plane Figures"
+    "Plane Figures" -> "Squares"
+    "Plane Figures" -> "Triangles"
+  }
+
+  subgraph cluster_1 {
+    label="Sets";
+
+    "Functions" -> "Relations"
+    "Functions" [ href="https://stanford.edu/~lando/bourbaki/sheets/functions.pdf"; color = red ]
+    "Objects" [ href="https://stanford.edu/~lando/bourbaki/sheets/objects.pdf"; color = red ];
+    "Ordered Pairs" -> "Subsets";
+    "Ordered Pairs" [ href="https://stanford.edu/~lando/bourbaki/sheets/ordered_pairs.pdf"; color = red ];
+    "Relations" -> "Ordered Pairs"
+    "Relations" [ href="https://stanford.edu/~lando/bourbaki/sheets/relations.pdf"; color = red ]
+    "Set Examples" -> "Sets";
+    "Set Examples" [ href="https://stanford.edu/~lando/bourbaki/sheets/set_examples.pdf"; color = red ];
+    "Set Extension" -> "Sets";
+    "Set Extension" [ href="https://stanford.edu/~lando/bourbaki/sheets/set_extension.pdf"; color = red ];
+    "Set-Builder Notation" -> "Sets";
+    "Set-Builder Notation" [ href="https://stanford.edu/~lando/bourbaki/sheets/set_builder_notation.pdf"; color = red ];
+    "Sets" -> "Objects";
+    "Sets" [ href="https://stanford.edu/~lando/bourbaki/sheets/sets.pdf"; color = red ];
+    "Subsets" -> "Set Extension";
+    "Subsets" [ href="https://stanford.edu/~lando/bourbaki/sheets/subsets.pdf"; color = red ];
+  }
 }
 
