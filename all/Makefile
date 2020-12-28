@@ -1,4 +1,4 @@
-all.toc:
+all.toc: all.tex ../*.tex ../*/*.tex
 	pdflatex all.tex
 
 all.pdf: ../*.tex ../trademark.pdf ../*/*.tex *.tex all.toc
