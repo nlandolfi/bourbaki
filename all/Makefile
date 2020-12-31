@@ -1,3 +1,6 @@
+inputs.tex: sheets.csv inputs.go inputs.tmpl
+	go run inputs.go > inputs.tex
+
 all.toc: all.tex ../*.tex ../*/*.tex
 	pdflatex all.tex
 
