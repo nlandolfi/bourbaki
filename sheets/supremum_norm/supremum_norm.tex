@@ -1,0 +1,87 @@
+\sinput{../sheet.tex}
+\sbasic
+
+\sinput{../sets/macros.tex}
+\sinput{../absolute_value/macros.tex}
+\sinput{../norms/macros.tex}
+\sinput{../supremum_norm/macros.tex}
+
+\sstart
+
+\stitle{Supremum Norm}
+
+\ssection{Why}
+
+We want
+a norm on
+the vector space
+of continuous functions.
+
+\ssection{Definition}
+
+Consider a function
+from a closed real interval
+to the real numbers.
+The
+\ct{absolute supremum}{absolutesupremum}
+of the function is the
+absolute value of its results
+on the interval.
+Since the function is continuous
+and defined on a closed interval,
+the supremum is finite.
+
+
+\begin{prop}
+The functional mapping $f \in C[a, b]$
+to its absolute supremum is a norm.
+\begin{proof}
+Let $R$ denote the set of real numbers.
+Define $\phi: C[a, b] \to R$ by:
+\[
+  \phi(f) = \sup \Set{\abs{f(x)}}{x \in [a, b]}.
+\]
+\begin{enumerate}
+  \item
+  $\abs{f(x)} \geq 0$ for all $x \in [a, b]$,
+  so $\phi(f) \geq 0$.
+
+  \item
+  If $\phi(f) = 0$ then $\abs{f(x)} \leq 0$
+    for all $x$ and so $f(x) = 0$ for all $x \in [a, b]$.
+  If $f = 0$, then $\abs{f(x)} = 0$
+  for all $x \in [a, b]$
+
+  \item
+  For all $\alpha$ real,
+  $\abs{\alpha f(x)} = \abs{\alpha}\abs{f(x)}$.
+  so $\phi(\alpha f) = \abs{\alpha}\phi(f)$
+
+  \item
+  For all $f, g \in C[a, b]$,
+  and $x \in [a, b]$,
+  $\abs{f(x) + g(x)} \leq \abs{f(x)} + \abs{g(x)}$
+  by the triangle inequality for absolute value.
+  Thus,
+  \[
+    \begin{aligned}
+    \phi(f + g)
+      &\leq \sup \Set{\abs{f(x)} + \abs{g(x)}}{x \in [a, b]} \\
+      &\leq \sup \Set{\abs{f(x)}}{x \in [a,b]} + \sup \Set{\abs{g(x)}}{x \in [a, b]} \\
+      &= \phi(f) + \phi(g)
+    \end{aligned}
+  \]
+\end{enumerate}
+\end{proof}
+\end{prop}
+
+We call the functional $\phi$
+defined above the
+\ct{supremum norm}{supremumnorm}.
+
+\ssubsection{Notation}
+Let $f \in C[a, b]$.
+We denote the supremum norm of $f$
+by $\supnorm{f}$.
+
+\strats
