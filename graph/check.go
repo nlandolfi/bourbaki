@@ -60,7 +60,7 @@ func main() {
 
 	var nodirectories int
 	for s := range seen {
-		_, err := os.Stat(fmt.Sprintf("../%s", dirname(s)))
+		_, err := os.Stat(fmt.Sprintf("../sheets/%s", dirname(s)))
 		if os.IsNotExist(err) {
 			nodirectories += 1
 			log.Print(s)
@@ -70,7 +70,7 @@ func main() {
 	}
 	log.Printf("%d missing sheet directories", nodirectories)
 
-	files, err := ioutil.ReadDir("../")
+	files, err := ioutil.ReadDir("../sheets/")
 	if err != nil {
 		log.Fatal(err)
 	}
