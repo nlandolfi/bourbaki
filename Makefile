@@ -19,4 +19,4 @@ clean:
 	rm */*.out
 	rm */*.log
 
-
+# sed -i -e 's_find_replace_g" ./sheets/*/*.tex
