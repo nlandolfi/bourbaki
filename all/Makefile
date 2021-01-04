@@ -1,10 +1,10 @@
 inputs.tex: sheets.csv inputs.go inputs.tmpl
 	go run inputs.go > inputs.tex
 
-all.toc: all.tex ../*.tex ../*/*.tex
+all.toc: all.tex ../sheets/*/*.tex
 	pdflatex all.tex
 
-all.pdf: ../*.tex ../trademark.pdf ../*/*.tex *.tex all.toc
+all.pdf: inputs.tex all.toc all.tex ../*.tex ../trademark.pdf ../sheets/*/*.tex
 	pdflatex all.tex
 	make defs
 
