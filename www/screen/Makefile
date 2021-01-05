@@ -1,0 +1,2 @@
+o:
+	open sets.html
