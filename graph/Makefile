@@ -7,3 +7,5 @@ graph.pdf: graph.graphviz
 o: graph.pdf
 	go run check.go
 	open graph.pdf
+check:
+	go run check.go
