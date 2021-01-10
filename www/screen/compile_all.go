@@ -238,7 +238,7 @@ const IndexTemplate = `
 	<img src="../../trademark.pdf" id="trademark"><h1>HyperText Index</h1>
 <ul>
 {{ range $k, $v := .Compiled }}
-	<li> <a href="./sheets/{{ $v.DirName }}.html"> {{ $k }} </a> <br> (Needs: {{ range $k, $v := .Needs }} <a href="./sheets/{{ $v }}.html"> {{ $k }} </a> {{ end }} )</li>
+	<li> <a href="./sheets/{{ $v.DirName }}.html"> {{ $k }} </a> <br> (Needs: {{ range $k, $v := .Needs }}<a href="./sheets/{{ $v }}.html">{{ $k }};</a>{{ end }})</li>
 {{ end }}
 </ul>
 </div>
