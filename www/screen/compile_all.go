@@ -132,10 +132,18 @@ func dirname(s string) string {
 	return strings.Join(pieces, "_")
 }
 
-const HTMLTemplate = `<html>
+const HTMLTemplate = `<!DOCTYPE html>
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+		<link rel="stylesheet" href="../katex/katex.min.css">
+		<script defer src="../katex/katex.min.js"></script>
+		<script defer src="../katex/auto-render.min.js"
+						onload="renderMathInElement(document.body, {delimiters: [
+							{left: '$$', right: '$$', display: true},
+							{left: '$', right: '$', display: false},
+							{left: '\\(', right: '\\)', display: false},
+							{left: '\\[', right: '\\]', display: true}]});"></script>
   </head>
   <body>
 		{{ if .Needs }}
@@ -205,6 +213,18 @@ func compile(needs map[string]string, f *os.File, into io.Writer) {
 	// \sinput
 	contents = re13.ReplaceAll(contents, []byte(``))
 
+	// the order of these matters,
+	// since the second will match all of the enumerate block
+	re19 := regexp.MustCompile(`\\item((?s).+)\\item`)
+	contents = re19.ReplaceAll(contents, []byte(`<li>$1</li>\item`))
+	re18 := regexp.MustCompile(`\\item((?s).+)\\end\{enumerate\}`)
+	contents = re18.ReplaceAll(contents, []byte(`<li>$1</li>\end{enumerate}`))
+
+	re16 := regexp.MustCompile(`\\begin\{enumerate\}\n`)
+	contents = re16.ReplaceAll(contents, []byte(`<ol>`))
+	re17 := regexp.MustCompile(`\\end\{enumerate\}\n`)
+	contents = re17.ReplaceAll(contents, []byte(`</ol>`))
+
 	// paragraphs
 	re14 := regexp.MustCompile(`\n\n([A-z])`)
 	re15 := regexp.MustCompile(`([^>\n])(\n)\n`)
@@ -226,11 +246,21 @@ type Data struct {
 	Needs   map[string]string
 }
 
-const IndexTemplate = `
-<html>
+const IndexTemplate = `<!DOCTYPE html>
   <head>
+	  <head>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./fonts.css">
+
+		<link rel="stylesheet" href="./katex/katex.min.css">
+		<script defer src="./katex/katex.min.js"></script>
+		<script defer src="./katex/auto-render.min.js"
+						onload="renderMathInElement(document.body, { delimiters: [
+						  {left: "$$", right: "$$", display: true},
+							  {left: "$", right: "$", display: false},
+								  {left: "\\(", right: "\\)", display: false},
+									  {left: "\\[", right: "\\]", display: true}
+										]});"></script>
   </head>
   <body>
 	<div class="page">
