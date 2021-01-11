@@ -219,11 +219,43 @@ func compile(needs map[string]string, f *os.File, into io.Writer) {
 	contents = re19.ReplaceAll(contents, []byte(`<li>$1</li>\item`))
 	re18 := regexp.MustCompile(`\\item((?s).+)\\end\{enumerate\}`)
 	contents = re18.ReplaceAll(contents, []byte(`<li>$1</li>\end{enumerate}`))
+	re20 := regexp.MustCompile(`\\item((?s).+)\\end\{itemize\}`)
+	contents = re20.ReplaceAll(contents, []byte(`<li>$1</li>\end{itemize}`))
 
 	re16 := regexp.MustCompile(`\\begin\{enumerate\}\n`)
 	contents = re16.ReplaceAll(contents, []byte(`<ol>`))
 	re17 := regexp.MustCompile(`\\end\{enumerate\}\n`)
 	contents = re17.ReplaceAll(contents, []byte(`</ol>`))
+
+	reBeginProp := regexp.MustCompile(`\\begin\{prop\}\n`)
+	contents = reBeginProp.ReplaceAll(contents, []byte(`<div class="prop"><b> Proposition </b>`))
+	reEndProp := regexp.MustCompile(`\\end\{prop\}\n`)
+	contents = reEndProp.ReplaceAll(contents, []byte(`</div>`))
+
+	reBeginThm := regexp.MustCompile(`\\begin\{thm\}\n`)
+	contents = reBeginThm.ReplaceAll(contents, []byte(`<div class="thm"><b> Theorem </b>`))
+	reEndThm := regexp.MustCompile(`\\end\{thm\}\n`)
+	contents = reEndThm.ReplaceAll(contents, []byte(`</div>`))
+
+	reBeginDefn := regexp.MustCompile(`\\begin\{defn\}\n`)
+	contents = reBeginDefn.ReplaceAll(contents, []byte(`<div class="defn"><b> Definition </b>`))
+	reEndDefn := regexp.MustCompile(`\\end\{defn\}\n`)
+	contents = reEndDefn.ReplaceAll(contents, []byte(`</div>`))
+
+	reBeginExpl := regexp.MustCompile(`\\begin\{expl\}\n`)
+	contents = reBeginExpl.ReplaceAll(contents, []byte(`<div class="expl"><b> Example </b>`))
+	reEndExpl := regexp.MustCompile(`\\end\{expl\}\n`)
+	contents = reEndExpl.ReplaceAll(contents, []byte(`</div>`))
+
+	reBeginProof := regexp.MustCompile(`\\begin\{proof\}\n`)
+	contents = reBeginProof.ReplaceAll(contents, []byte(`<div class="expl"><i> Proof. </i>`))
+	reEndProof := regexp.MustCompile(`\\end\{proof\}\n`)
+	contents = reEndProof.ReplaceAll(contents, []byte(`</div>`))
+
+	reBeginItemize := regexp.MustCompile(`\\begin\{itemize\}\n`)
+	contents = reBeginItemize.ReplaceAll(contents, []byte(`<ul>`))
+	reEndItemize := regexp.MustCompile(`\\end\{itemize\}\n`)
+	contents = reEndItemize.ReplaceAll(contents, []byte(`</ul>`))
 
 	// paragraphs
 	re14 := regexp.MustCompile(`\n\n([A-z])`)
