@@ -72,17 +72,9 @@ Seen:
 		} else if err != nil {
 			log.Fatalf("os.Open: %v", err)
 		}
-		out, err := os.Open(fmt.Sprintf("./sheets/%s.html", dirname(s)))
-		if os.IsNotExist(err) {
-			out, err = os.Create(fmt.Sprintf("./sheets/%s.html", dirname(s)))
-			if err != nil {
-				log.Fatalf("os.Create: %v", err)
-			}
-			if err := out.Truncate(0); err != nil {
-				log.Fatal(err)
-			}
-		} else if err != nil {
-			log.Fatalf("os.Open: %v", err)
+		out, err := os.Create(fmt.Sprintf("./sheets/%s.html", dirname(s)))
+		if err != nil {
+			log.Fatalf("os.Create: %v", err)
 		}
 		needs := make(map[string]string)
 		if e, ok := entries[s]; ok {
@@ -100,16 +92,8 @@ Seen:
 		f.Close()
 	}
 
-	f, err = os.Open("./index.html")
-	if os.IsNotExist(err) {
-		f, err = os.Create("./index.html")
-		if err != nil {
-			log.Fatal(err)
-		}
-		if err := f.Truncate(0); err != nil {
-			log.Fatal(err)
-		}
-	} else if err != nil {
+	f, err = os.Create("./index.html")
+	if err != nil {
 		log.Fatal(err)
 	}
 	defer f.Close()
@@ -180,21 +164,28 @@ const HTMLTemplate2 = `<!DOCTYPE html>
 							{left: '\\[', right: '\\]', display: true}]});"></script>
   </head>
   <body>
-		{{ if .Needs }}
 		<div class="info">
+		{{ if .Needs }}
 		Needs:
 		<ul>
 			{{ range $k, $v := .Needs }}
 				<li> <a href="./{{ $v }}.html"> {{ $k }} </a> </li>
 			{{ end }}
 		</ul>
-		</div>
 		{{ else }}
-		<div class="info">
-		No needs. <a href="../index.html">Back to index</a>
-		</div>
+		No needs.
 		{{ end }}
+		<a href="../index.html">Back to index</a>
+		</div>
+
 		<iframe id="sheet" src="../../../sheets/{{ .DirName }}/{{ .DirName }}.pdf">
+		</iframe>
+
+		<div class="info">
+		<a href="../../../graph/clips/{{ .DirName }}.pdf"> See graph on own page </a>
+		</div>
+		<iframe id="graph" src="../../../graph/clips/{{ .DirName }}.pdf">
+		</iframe>
   </body>
 </html>`
 
