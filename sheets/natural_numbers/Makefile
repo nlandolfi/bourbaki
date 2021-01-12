@@ -1,4 +1,7 @@
-natural_numbers.pdf: ../format.tex ../macros.tex ../trademark.pdf natural_numbers.tex macros.tex
+natural_numbers.tex: sheet.tex
+	sheet -mode c -in sheet.tex > natural_numbers.tex
+
+natural_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex natural_numbers.tex
 	pdflatex natural_numbers.tex
 	make defs
 
@@ -13,3 +16,9 @@ o:
 
 defs: natural_numbers.tex
 	defs natural_numbers.tex
+
+spell:
+	aspell -c natural_numbers.tex
+
+s:
+	make spell

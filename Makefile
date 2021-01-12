@@ -12,7 +12,7 @@ open:
 	make graph
 
 o:
-	make open
+	open www/screen/index.html
 
 clean:
 	rm */*.aux
