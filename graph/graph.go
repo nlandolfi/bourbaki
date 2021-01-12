@@ -15,7 +15,10 @@ type Entry struct {
 	Needs []string
 }
 
-var templateFileFlag = flag.String("tmpl", "graph.tmpl", "which template")
+var (
+	inputFileFlag    = flag.String("csv", "graph.csv", "csv file")
+	templateFileFlag = flag.String("tmpl", "graph.tmpl", "which template")
+)
 
 func main() {
 	flag.Parse()
@@ -24,7 +27,7 @@ func main() {
 		template.ParseFiles(*templateFileFlag),
 	)
 
-	f, err := os.Open("graph.csv")
+	f, err := os.Open(*inputFileFlag)
 	if err != nil {
 		log.Fatal("os.Open: %v", err)
 	}
