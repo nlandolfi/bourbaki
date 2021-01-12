@@ -1,4 +1,7 @@
-vectors.pdf: ../../*.tex ../../trademark.pdf *.tex
+vectors.tex: sheet.tex
+	sheet -mode c -in sheet.tex > vectors.tex
+
+vectors.pdf: ../../*.tex ../../trademark.pdf *.tex vectors.tex
 	pdflatex vectors.tex
 	make defs
 
@@ -8,8 +11,14 @@ make:
 open: vectors.pdf
 	open vectors.pdf
 
+o:
+	make open
+
 defs: vectors.tex
 	defs vectors.tex
 
-o:
-	make open
+spell:
+	aspell -c vectors.tex
+
+s:
+	make spell
