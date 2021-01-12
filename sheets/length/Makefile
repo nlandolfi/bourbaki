@@ -1,4 +1,7 @@
-length.pdf: ../../*.tex ../../trademark.pdf *.tex
+length.tex: sheet.tex
+	sheet -mode c -in sheet.tex > length.tex
+
+length.pdf: ../../*.tex ../../trademark.pdf *.tex length.tex
 	pdflatex length.tex
 	make defs
 

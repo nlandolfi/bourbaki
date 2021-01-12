@@ -1,4 +1,7 @@
-algebras.pdf: *.tex ../*.tex ../trademark.pdf
+algebras.tex: sheet.tex
+	sheet -mode c -in sheet.tex > algebras.tex
+
+algebras.pdf: ../../*.tex ../../trademark.pdf *.tex algebras.tex
 	pdflatex algebras.tex
 	make defs
 
@@ -8,8 +11,14 @@ make:
 open: algebras.pdf
 	open algebras.pdf
 
+o:
+	make open
+
 defs: algebras.tex
 	defs algebras.tex
 
-o:
-	make open
+spell:
+	aspell -c algebras.tex
+
+s:
+	make spell
