@@ -106,7 +106,7 @@ const MacrosTemplate = `% {{ .Name }} macros`
 const MainTemplate = `\input{{"{"}}../../sheet.tex{{"}"}}
 \sbasic
 
-\sinput{{"{"}}{../{{ .Name }}/macros.tex{{"}"}}
+\sinput{{"{"}}../{{ .Name }}/macros.tex{{"}"}}
 
 \sstart
 
