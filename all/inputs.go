@@ -5,11 +5,13 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 	"text/template"
 )
 
 type Entry struct {
-	Name string
+	Title string
+	Name  string
 }
 
 func main() {
@@ -42,7 +44,8 @@ func main() {
 		log.Print(record[0])
 		entries = append(entries,
 			Entry{
-				Name: record[0],
+				Title: strings.Title(strings.Join(strings.Split(record[0], "_"), " ")),
+				Name:  record[0],
 			},
 		)
 	}

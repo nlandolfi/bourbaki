@@ -1,4 +1,4 @@
-objects.pdf: ../*.tex ../trademark.pdf *.tex
+objects.pdf: ../../*.tex ../../trademark.pdf *.tex
 	pdflatex objects.tex
 	make defs
 

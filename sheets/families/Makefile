@@ -1,4 +1,4 @@
-families.pdf: *.tex ../*.tex ../trademark.pdf
+families.pdf: *.tex ../../*.tex ../../trademark.pdf
 	pdflatex families.tex
 	make defs
 
@@ -10,3 +10,6 @@ open: families.pdf
 
 defs: families.tex
 	defs families.tex
+
+o:
+	make open

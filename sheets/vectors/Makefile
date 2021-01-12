@@ -1,12 +1,15 @@
-sets.pdf: ../*.tex ../trademark.pdf *.tex
-	pdflatex sets.tex
+vectors.pdf: ../../*.tex ../../trademark.pdf *.tex
+	pdflatex vectors.tex
 	make defs
 
 make:
-	make sets.pdf
+	make vectors.pdf
 
-open: sets.pdf
-	open sets.pdf
+open: vectors.pdf
+	open vectors.pdf
 
-defs: sets.tex
-	defs sets.tex
+defs: vectors.tex
+	defs vectors.tex
+
+o:
+	make open
