@@ -59,6 +59,12 @@ func main() {
 	if err := tmpl3.Execute(mainfile, T{Name: *name, Title: nodename(*name)}); err != nil {
 		log.Fatal(err)
 	}
+
+	contentfile, err := os.Create(fmt.Sprintf("./sheets/%s/content.tex", *name, *name))
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer contentfile.Close()
 }
 
 type T struct {
@@ -112,16 +118,6 @@ const MainTemplate = `\input{{"{"}}../../sheet.tex{{"}"}}
 
 \stitle{{"{"}}{{ .Title }}{{"}"}}
 
-\ssection{{"{"}}Why{{"}"}}
-
-TODO
-
-\ssection{{"{"}}Definition{{"}"}}
-
-TODO
-
-\ssubsection{{"{"}}Notation{{"}"}}
-
-TODO
+\input{content}
 
 \strats`

@@ -1,4 +1,7 @@
-set-builder_notation.pdf: ../../*.tex ../../trademark.pdf *.tex
+set-builder_notation.tex: sheet.tex
+	sheet -mode c -in sheet.tex > set-builder_notation.tex
+
+set-builder_notation.pdf: ../../*.tex ../../trademark.pdf *.tex set-builder_notation.tex
 	pdflatex set-builder_notation.tex
 	make defs
 

@@ -1,4 +1,7 @@
-set_extension.pdf: ../*.tex ../trademark.pdf *.tex
+set_extension.tex: sheet.tex
+	sheet -mode c -in sheet.tex > set_extension.tex
+
+set_extension.pdf: ../../*.tex ../../trademark.pdf *.tex set_extension.tex
 	pdflatex set_extension.tex
 	make defs
 
