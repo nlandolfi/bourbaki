@@ -90,7 +90,7 @@ Seen:
 				needs[ss] = dirname(ss)
 			}
 		}
-		compile(needs, f, out)
+		compile2(s, needs, f, out)
 		compiled[s] = &CompiledInfo{
 			DirName: dirname(s),
 			Needs:   needs,
@@ -166,7 +166,48 @@ const HTMLTemplate = `<!DOCTYPE html>
   </body>
 </html>`
 
-func compile(needs map[string]string, f *os.File, into io.Writer) {
+const HTMLTemplate2 = `<!DOCTYPE html>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+		<link rel="stylesheet" href="../katex/katex.min.css">
+		<script defer src="../katex/katex.min.js"></script>
+		<script defer src="../katex/auto-render.min.js"
+						onload="renderMathInElement(document.body, {delimiters: [
+							{left: '$$', right: '$$', display: true},
+							{left: '$', right: '$', display: false},
+							{left: '\\(', right: '\\)', display: false},
+							{left: '\\[', right: '\\]', display: true}]});"></script>
+  </head>
+  <body>
+		{{ if .Needs }}
+		<div class="info">
+		Needs:
+		<ul>
+			{{ range $k, $v := .Needs }}
+				<li> <a href="./{{ $v }}.html"> {{ $k }} </a> </li>
+			{{ end }}
+		</ul>
+		</div>
+		{{ else }}
+		<div class="info">
+		No needs. <a href="../index.html">Back to index</a>
+		</div>
+		{{ end }}
+		<iframe id="sheet" src="../../../sheets/{{ .DirName }}/{{ .DirName }}.pdf">
+  </body>
+</html>`
+
+func compile2(s string, needs map[string]string, f *os.File, into io.Writer) {
+	if err := tmpl2.Execute(into, Data{
+		Needs:   needs,
+		DirName: dirname(s),
+	}); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func compile(s string, needs map[string]string, f *os.File, into io.Writer) {
 	contents, err := ioutil.ReadAll(f)
 	if err != nil {
 		log.Fatalf("ioutil.ReadAll: %v", err)
@@ -264,6 +305,7 @@ func compile(needs map[string]string, f *os.File, into io.Writer) {
 	contents = re15.ReplaceAll(contents, []byte(`$1</p>`))
 
 	if err := tmpl.Execute(into, Data{
+		DirName: dirname(s),
 		Content: contents,
 		Needs:   needs,
 	}); err != nil {
@@ -272,8 +314,10 @@ func compile(needs map[string]string, f *os.File, into io.Writer) {
 }
 
 var tmpl = template.Must(template.New("").Parse(HTMLTemplate))
+var tmpl2 = template.Must(template.New("").Parse(HTMLTemplate2))
 
 type Data struct {
+	DirName string
 	Content []byte
 	Needs   map[string]string
 }
