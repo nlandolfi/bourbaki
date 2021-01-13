@@ -17,7 +17,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var entries [][]string
+	var entries [][]string = [][]string{
+		[]string{"name", "need"},
+	}
 	for _, f := range files {
 		//log.Print(f.Name())
 

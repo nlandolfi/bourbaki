@@ -1,4 +1,7 @@
-metrics.pdf: ../*.tex ../trademark.pdf *.tex
+metrics.tex: sheet.tex
+	sheet -mode c -in sheet.tex > metrics.tex
+
+metrics.pdf: ../../*.tex ../../trademark.pdf *.tex metrics.tex
 	pdflatex metrics.tex
 	make defs
 
