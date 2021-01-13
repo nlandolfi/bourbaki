@@ -9,8 +9,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
-
-	"github.com/alecthomas/template"
+	"text/template"
 )
 
 type Entry struct {
@@ -65,7 +64,7 @@ func main() {
 
 Seen:
 	for s := range seen {
-		f, err := os.Open(fmt.Sprintf("../../sheets/%s/%s.tex", dirname(s), dirname(s)))
+		f, err := os.Open(fmt.Sprintf("../../sheets/%s/sheet.tex", dirname(s)))
 		if os.IsNotExist(err) {
 			log.Printf("missing: %s", dirname(s))
 			continue Seen
