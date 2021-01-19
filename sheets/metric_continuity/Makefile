@@ -1,4 +1,7 @@
-metric_continuity.pdf: ../*.tex ../trademark.pdf *.tex
+metric_continuity.tex: sheet.tex
+	sheet -mode c -in sheet.tex > metric_continuity.tex
+
+metric_continuity.pdf: ../../*.tex ../../trademark.pdf *.tex metric_continuity.tex
 	pdflatex metric_continuity.tex
 	make defs
 
