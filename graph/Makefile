@@ -1,4 +1,4 @@
-graph.csv:
+graph.csv: ../sheets/*/*.tex
 	go run implicit_graph.go > graph.csv
 graph.graphviz: graph.csv graph.go *.tmpl
 	go run graph.go --tmpl graph.tmpl > graph.graphviz
@@ -7,7 +7,6 @@ force.csv: graph.csv graph.go *.tmpl
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 o: graph.pdf
-	go run check.go
 	open graph.pdf
 check:
 	go run check.go
