@@ -14,7 +14,7 @@ import (
 func main() {
 	files, err := ioutil.ReadDir("../sheets/")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("ioutil.ReadDir: error: %v", err)
 	}
 
 	var entries [][]string = [][]string{
@@ -68,7 +68,7 @@ func parse(f io.Reader) *Parse {
 		t := scanner.Text()
 		if strings.HasPrefix(t, namePrefix) {
 			if p.Name != "" {
-				log.Fatal("multiple name directives")
+				log.Fatal("%s: multiple name directives", p.Name)
 			}
 			p.Name = strings.TrimPrefix(t, namePrefix)
 			continue
