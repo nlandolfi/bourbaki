@@ -1,4 +1,7 @@
-graphs.pdf: ../*.tex ../trademark.pdf *.tex
+graphs.tex: sheet.tex
+	sheet -mode c -in sheet.tex > graphs.tex
+
+graphs.pdf: ../../*.tex ../../trademark.pdf *.tex graphs.tex
 	pdflatex graphs.tex
 	make defs
 
@@ -13,3 +16,9 @@ o:
 
 defs: graphs.tex
 	defs graphs.tex
+
+spell:
+	aspell -c graphs.tex
+
+s:
+	make spell
