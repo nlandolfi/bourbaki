@@ -1,12 +1,13 @@
-absolute_value.tex: ../length/sheet.tex
-	sheet -mode c -in ../length/sheet.tex > absolute_value.tex
+make:
+	make absolute_value.pdf
+
+absolute_value.tex: sheet.tex
+	sheet -mode c -in sheet.tex > absolute_value.tex
 
 absolute_value.pdf: ../../*.tex ../../trademark.pdf *.tex absolute_value.tex
 	pdflatex absolute_value.tex
 	make defs
 
-make:
-	make absolute_value.pdf
 
 open: absolute_value.pdf
 	open absolute_value.pdf

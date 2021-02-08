@@ -112,7 +112,7 @@ func main() {
 }
 
 func writeFile(p *Parse) {
-	log.Print("writing file: %v", p)
+	log.Printf("writing file: %v", p)
 	fmt.Fprintln(os.Stdout, "\\input{../../sheet.tex}")
 	fmt.Fprintln(os.Stdout, "\\sbasic")
 	for _, n := range p.NeedsParsed {
@@ -140,15 +140,18 @@ func dirname(s string) string {
 	return strings.Join(pieces, "_")
 }
 
-const MakefileTemplate = `{{ .Name }}.tex: sheet.tex
+const MakefileTemplate = `# generated automatically by sheet.go
+
+make:
+	make {{ .Name }}.pdf
+
+{{ .Name }}.tex: sheet.tex
 	sheet -mode c -in sheet.tex > {{ .Name }}.tex
 
 {{ .Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Name }}.tex
 	pdflatex {{ .Name }}.tex
 	make defs
 
-make:
-	make {{ .Name }}.pdf
 
 open: {{ .Name }}.pdf
 	open {{ .Name }}.pdf
