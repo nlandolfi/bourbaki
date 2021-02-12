@@ -1,26 +1,28 @@
 \input{../../sheet.tex}
 \sbasic
-\input{../tree_structured_distributions/macros.tex}
+\input{../tree-structured_distributions/macros.tex}
 \input{../relative_entropy/macros.tex}
+\input{../mutual_information_graph/macros.tex}
 \input{../conditional_distributions/macros.tex}
 \input{../rooted_trees/macros.tex}
 \input{../cross_entropy/macros.tex}
 \input{../entropy/macros.tex}
+\input{../graphs/macros.tex}
+\input{../mutual_information/macros.tex}
 \input{../marginal_distributions/macros.tex}
 \input{../trees/macros.tex}
 \input{../logarithm/macros.tex}
 \input{../distributions/macros.tex}
-\input{../graphs/macros.tex}
+\input{../relations/macros.tex}
 \input{../real_numbers/macros.tex}
 \input{../summation/macros.tex}
-\input{../relations/macros.tex}
-\input{../integer_numbers/macros.tex}
 \input{../ordered_pairs/macros.tex}
-\input{../solving_equations/macros.tex}
+\input{../integer_numbers/macros.tex}
 \input{../sets/macros.tex}
+\input{../solving_equations/macros.tex}
+\input{../objects/macros.tex}
 \input{../arithmetic/macros.tex}
 \input{../equations/macros.tex}
-\input{../objects/macros.tex}
 \input{../natural_numbers/macros.tex}
 \input{../operations/macros.tex}
 \input{../functions/macros.tex}
@@ -30,7 +32,7 @@
 
 \ssection{Why}
 
-\ssection{Problem Statement}
+\ssection{Problem}
 
 Tree-structured distribution
 approximation is a mathematical
@@ -59,4 +61,40 @@ $\set{1, \dots, n}$ to
     \text{subject to} &\quad p \text{ factors according to the tree } T
   \end{aligned}
 \]
+
+\ssection{Solution}
+
+\begin{prop}
+  Let $q$ be a distribution on $A$. Let $T$ be
+  a tree on $\set{1, \dots, d}$. Let $p_j$ be
+  the parent of vertex $j$ for the $T$ rooted
+  at vertex $i$, $j = 1,\dots,n$ and $j \neq i$.
+  Then the distribution $p$ on $A$ defined by
+  \[
+    p = q_i \prod_{j \neq i} q_{j \mid p_j}
+  \]
+  achieves minimum entropy relative to $q$ among
+  all distributions which factor according to $T$.
+\end{prop}
+
+\begin{prop}
+  Let $q$ be a distribution on $A$. Let $T$ be
+  a tree on $\set{1, \dots, d}$. Let $p_j$ be
+  the parent of vertex $j$ for the $T$ rooted
+  at vertex $i$, $j = 1,\dots,n$ and $j \neq i$.
+  Then the distribution $p$ on $A$ defined by
+  \[
+    p = q_i \prod_{j \neq i} q_{j \mid p_j}
+  \]
+  achieves minimum entropy relative to $q$ among
+  all distributions which factor according to $T$.
+\end{prop}
+
+\begin{prop}
+  Let $q$ be a distribution on $A$.
+  A tree
+  $T$ is a solution to the problem above
+  if and only if it is a minimum spanning
+  tree of the mutual information graph of $q$.
+\end{prop}
 \strats
