@@ -1,9 +1,15 @@
-probability.pdf: ../*.tex ../trademark.pdf *.tex
-	pdflatex probability.tex
-	make defs
+# generated automatically by sheet.go
 
 make:
 	make probability.pdf
+
+probability.tex: sheet.tex
+	sheet -mode c -in sheet.tex > probability.tex
+
+probability.pdf: ../../*.tex ../../trademark.pdf *.tex probability.tex
+	pdflatex probability.tex
+	make defs
+
 
 open: probability.pdf
 	open probability.pdf
