@@ -6,13 +6,15 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/alecthomas/template"
 )
 
 type Entry struct {
-	Name  string
-	Needs []string
+	Name    string
+	DirName string
+	Needs   []string
 }
 
 var (
@@ -53,7 +55,8 @@ func main() {
 		entry, ok := entries[name]
 		if !ok {
 			entry = &Entry{
-				Name: name,
+				Name:    name,
+				DirName: dirname(name),
 			}
 			entries[name] = entry
 		}
@@ -62,4 +65,12 @@ func main() {
 	}
 
 	tmpl.Execute(os.Stdout, entries)
+}
+
+func dirname(s string) string {
+	pieces := strings.Split(s, " ")
+	for i, p := range pieces {
+		pieces[i] = strings.ToLower(p)
+	}
+	return strings.Join(pieces, "_")
 }
