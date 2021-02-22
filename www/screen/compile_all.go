@@ -13,8 +13,9 @@ import (
 )
 
 type Entry struct {
-	Name  string
-	Needs []string
+	Name     string
+	Needs    []string
+	NeededBy []string
 }
 
 func main() {
@@ -52,6 +53,17 @@ func main() {
 		entry.Needs = append(entry.Needs, need)
 	}
 
+	for name, e := range entries {
+		for _, need := range e.Needs {
+			e2, ok := entries[need]
+			if !ok {
+				log.Printf("skipping %s", need)
+				continue
+			}
+			e2.NeededBy = append(e2.NeededBy, name)
+		}
+	}
+
 	seen := make(map[string]bool)
 	for _, e := range entries {
 		seen[e.Name] = true
@@ -81,10 +93,17 @@ Seen:
 				needs[ss] = dirname(ss)
 			}
 		}
-		compile2(s, needs, f, out)
+		needed_by := make(map[string]string)
+		if e, ok := entries[s]; ok {
+			for _, ss := range e.NeededBy {
+				needed_by[ss] = dirname(ss)
+			}
+		}
+		compile2(s, needs, needed_by, f, out)
 		compiled[s] = &CompiledInfo{
-			DirName: dirname(s),
-			Needs:   needs,
+			DirName:  dirname(s),
+			Needs:    needs,
+			NeededBy: needed_by,
 		}
 
 		out.Close()
@@ -137,6 +156,12 @@ const HTMLTemplate = `<!DOCTYPE html>
 				<li> <a href="./{{ $v }}.html"> {{ $k }} </a> </li>
 			{{ end }}
 		</ul>
+		Needed by:
+		<ul>
+			{{ range $k, $v := .NeededBy }}
+				<li> <a href="./{{ $v }}.html"> {{ $k }} </a> </li>
+			{{ end }}
+		</ul>
 		</div>
 		{{ else }}
 		<div class="info">
@@ -174,6 +199,15 @@ const HTMLTemplate2 = `<!DOCTYPE html>
 		{{ else }}
 		No needs.
 		{{ end }}
+		{{ if .NeededBy }}
+		Needed by:
+		<ul>
+			{{ range $k, $v := .NeededBy }}
+				<li> <a href="./{{ $v }}.html"> {{ $k }} </a> </li>
+			{{ end }}
+		</ul>
+		{{ else }}
+		{{ end }}
 		<a href="../index.html">Back to index</a>
 		</div>
 
@@ -188,10 +222,11 @@ const HTMLTemplate2 = `<!DOCTYPE html>
   </body>
 </html>`
 
-func compile2(s string, needs map[string]string, f *os.File, into io.Writer) {
+func compile2(s string, needs, needed_by map[string]string, f *os.File, into io.Writer) {
 	if err := tmpl2.Execute(into, Data{
-		Needs:   needs,
-		DirName: dirname(s),
+		Needs:    needs,
+		DirName:  dirname(s),
+		NeededBy: needed_by,
 	}); err != nil {
 		log.Fatal(err)
 	}
@@ -307,9 +342,10 @@ var tmpl = template.Must(template.New("").Parse(HTMLTemplate))
 var tmpl2 = template.Must(template.New("").Parse(HTMLTemplate2))
 
 type Data struct {
-	DirName string
-	Content []byte
-	Needs   map[string]string
+	DirName  string
+	Content  []byte
+	Needs    map[string]string
+	NeededBy map[string]string
 }
 
 const IndexTemplate = `<!DOCTYPE html>
@@ -351,4 +387,5 @@ type CompiledInfo struct {
 	Contents []byte
 	DirName  string
 	Needs    map[string]string
+	NeededBy map[string]string
 }

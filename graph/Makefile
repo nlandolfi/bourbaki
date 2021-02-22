@@ -1,5 +1,5 @@
 graph.csv: ../sheets/*/*.tex
-	go run implicit_graph.go > graph.csv
+	go run ./implicit_graph.go > graph.csv
 graph.graphviz: graph.csv graph.go *.tmpl
 	go run graph.go --tmpl graph.tmpl > graph.graphviz
 force.csv: graph.csv graph.go *.tmpl

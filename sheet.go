@@ -166,4 +166,7 @@ spell:
 	aspell -c {{ .Name }}.tex
 
 s:
-	make spell`
+	make spell
+
+remake:
+	sheet -mode mk > Makefile`

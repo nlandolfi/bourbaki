@@ -21,13 +21,11 @@ func main() {
 		[]string{"name", "need"},
 	}
 	for _, f := range files {
-		//log.Print(f.Name())
-
 		sheetfile, err := os.Open(fmt.Sprintf("../sheets/%s/sheet.tex", f.Name()))
 		if os.IsNotExist(err) {
 			continue
 		} else if err != nil {
-			log.Fatal(err)
+			log.Fatal("opening sheet.tex: %v", err)
 		}
 
 		p := parse(sheetfile)
@@ -68,7 +66,7 @@ func parse(f io.Reader) *Parse {
 		t := scanner.Text()
 		if strings.HasPrefix(t, namePrefix) {
 			if p.Name != "" {
-				log.Fatal("%s: multiple name directives", p.Name)
+				log.Fatalf("%s: multiple name directives", p.Name)
 			}
 			p.Name = strings.TrimPrefix(t, namePrefix)
 			continue

@@ -1,4 +1,6 @@
 digraph G {
-  {{ range $entry := . }}{{ range $i, $need := $entry.Needs}}{{ $entry.Name | printf "%q" }} -> {{ $need | printf "%q" }}
+  {{ range $entry := . }}
+  {{ $entry.Name | printf "%q" }} [ href="file:///Users/Nick/workspace/bourbaki/www/screen/sheets/{{ $entry.DirName }}.html"; color = red ]
+  {{ range $i, $need := $entry.Needs}}{{ $entry.Name | printf "%q" }} -> {{ $need | printf "%q" }}
   {{ end }}{{end}}
 }
