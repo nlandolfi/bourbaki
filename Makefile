@@ -20,3 +20,8 @@ clean:
 	rm */*.log
 
 # sed -i -e 's_find_replace_g" ./sheets/*/*.tex
+
+cp:
+	git add *
+	git commit -m "checkpoint"
+	git push

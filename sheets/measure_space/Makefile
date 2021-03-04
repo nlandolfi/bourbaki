@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make measure_space.pdf
+
 measure_space.tex: sheet.tex
 	sheet -mode c -in sheet.tex > measure_space.tex
 
@@ -5,8 +10,6 @@ measure_space.pdf: ../../*.tex ../../trademark.pdf *.tex measure_space.tex
 	pdflatex measure_space.tex
 	make defs
 
-make:
-	make measure_space.pdf
 
 open: measure_space.pdf
 	open measure_space.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile
