@@ -1,14 +1,36 @@
 %!name:nearest_neighbor_predictors
-%!need:predictors
 %!need:inductions
 
 \ssection{Why}
 
-A reasonable induction is
-to expect is to find a
-similar precept and expect
-its postcept.
+We might expect similar
+precepts to lead to
+similar postcepts.
 
 \ssection{Definition}
 
+Consider a set of precepts.
+We call a real-valued function on ordered
+pairs of precepts that is nonnegative and
+zero when applied to the a pair of the same
+precept a similarity function.
 
+\ssubsection{Notation}
+
+Let $n$ be a natural number.
+Let $\Xi$ be a length $n$ paired record sequence
+in $\CU \cross \CV$; so
+\[
+  \Xi = ((u^1, v^1), \dots, (u^n, v^n))
+\]
+with $u^i \in \CU$ and $v^i \in \CV$ for $i = 1,\dots,n$.
+
+The nearest neighbor induction associates
+$\Xi$ with the function $f_{\Xi}$ such that
+\[
+  f_{\Xi}(u) = v^j
+\]
+where $j < n$ is the largest integer such that
+\[
+  d(u, u^j) = \min_{i} \set{d(u, u^i)}.
+\]
