@@ -1,5 +1,5 @@
 graph.csv: ../sheets/*/*.tex
-	go run implicit_graph.go > graph.csv
+	bbk_implicit_graph > graph.csv
 graph.graphviz: graph.csv graph.go *.tmpl
 	go run graph.go --tmpl graph.tmpl > graph.graphviz
 force.csv: graph.csv graph.go *.tmpl
@@ -10,3 +10,5 @@ o: graph.pdf
 	open graph.pdf
 check:
 	go run check.go
+clean:
+	rm graph.csv

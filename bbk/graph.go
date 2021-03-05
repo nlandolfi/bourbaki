@@ -1,39 +1,17 @@
-package main
+package bbk
 
 import (
 	"encoding/csv"
-	"flag"
 	"io"
-	"log"
-	"os"
 	"strings"
-
-	"github.com/alecthomas/template"
 )
 
 type Entry struct {
-	Name    string
-	DirName string
-	Needs   []string
+	Name  string
+	Needs []string
 }
 
-var (
-	inputFileFlag    = flag.String("csv", "graph.csv", "csv file")
-	templateFileFlag = flag.String("tmpl", "graph.tmpl", "which template")
-)
-
-func main() {
-	flag.Parse()
-
-	tmpl := template.Must(
-		template.ParseFiles(*templateFileFlag),
-	)
-
-	f, err := os.Open(*inputFileFlag)
-	if err != nil {
-		log.Fatal("os.Open: %v", err)
-	}
-	defer f.Close()
+func ParseGraph(f io.Reader) (map[string]*Entry, error) {
 	r := csv.NewReader(f)
 	entries := make(map[string]*Entry)
 	var header = true
@@ -43,7 +21,7 @@ func main() {
 			break
 		}
 		if err != nil {
-			log.Fatal(err)
+			return nil, err
 		}
 
 		if header {
@@ -55,8 +33,7 @@ func main() {
 		entry, ok := entries[name]
 		if !ok {
 			entry = &Entry{
-				Name:    name,
-				DirName: dirname(name),
+				Name: name,
 			}
 			entries[name] = entry
 		}
@@ -64,10 +41,15 @@ func main() {
 		entry.Needs = append(entry.Needs, need)
 	}
 
-	tmpl.Execute(os.Stdout, entries)
+	return entries, nil
 }
 
-func dirname(s string) string {
+func NodeName(s string) string {
+	pieces := strings.Split(s, "_")
+	return strings.Title(strings.Join(pieces, " "))
+}
+
+func DirName(s string) string {
 	pieces := strings.Split(s, " ")
 	for i, p := range pieces {
 		pieces[i] = strings.ToLower(p)
