@@ -15,28 +15,53 @@
 \input{../objects/macros.tex}
 \input{./macros.tex}
 \sstart
-\stitle{Evaluators}
+\stitle{Loss Functions}
 
 \ssection{Why}
 
-We want to compare inductors.
+We want to compare inductors
+by comparing their produced predictors.
+We compare predictors by judging predictions.
 
 \ssection{Definition}
 
-An \ct{induction evaluator}{}
-is a real-valued function
-on inductors.
-We call the result under the
-evaluator of an inductor the
-\ct{induction error}{} or
-\ct{error of the inductor}.
+A \ct{loss function}{} is a nonnegative
+real-valued function on pairs
+which is zero only on repeated pairs.
+It need not by symmetric.
+We interpret the first argument of the
+loss function as our prediction
+and the second as the recorded value.
 
-A \ct{prediction evaluator}{}
-is a real-valued function on
-pairs of postcepts.
-We call result under the evaluator
-the \ct{prediction error}{} or
-\ct{error of the predictor}{}.
+The \ct{loss of a predictor on a pair}{} is the
+result of the loss function on the pair.
+Similarly, the \ct{loss of a predictor on  a sequence}{} of
+pairs is the sum of the losses on the pairs.
+The \ct{average loss of a predictor on a sequence}{} is
+the loss divided by the length of the sequence.
+
+\ssubsection{Notation}
+
+Let $(a, b) \in A \times B$
+where $A$ and $B$ are non-empty sets.
+Let $\loss: B \cross B \to \R$.
+Let $f: A \to B$.
+The loss of $f$ on $(a, b)$ is
+\[
+  \loss(f(a),b).
+\]
+Let $s = ((a^1, b^1), \dots, (a^n, b^n))$
+be a record sequence.
+The loss of $f$ on $s$ is
+\[
+  \sum_{k = 1}^{n} \loss(f(a^k), b^k).
+\]
+The average loss of $f$ on $s$ is
+\[
+  \frac{1}{n} \sum_{k = 1}^{n} \loss(f(a^k), b^k).
+\]
+
+
 
 \ssubsection{Dual Record Prediction Evaluators}
 
@@ -50,7 +75,6 @@ Then consider
 \[
   \sum_{i = 1}^{n} g(f(u^n), v^n)).
 \]
-
 
 
 Consider an inductor, two record
