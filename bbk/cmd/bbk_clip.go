@@ -92,10 +92,10 @@ func main() {
 	}
 	defer f.Close()
 
-	fmt.Fprintf(f, "all: ../graph.tmpl ../clip.go \n")
+	fmt.Fprintf(f, "all: ../graph.tmpl\n")
 	for _, s := range names {
 		d := bbk.DirName(s)
-		fmt.Fprintf(f, "\tgraph --csv %s.csv --tmpl ../graph.tmpl > %s.graphviz\n", d, d)
+		fmt.Fprintf(f, "\tbbk_graph --csv %s.csv --tmpl ../graph.tmpl > %s.graphviz\n", d, d)
 		fmt.Fprintf(f, "\tdot %s.graphviz -o %s.pdf -T pdf\n", d, d)
 	}
 }

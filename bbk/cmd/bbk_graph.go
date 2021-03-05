@@ -31,5 +31,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	tmpl.Execute(os.Stdout, entries)
+	if err := tmpl.Execute(os.Stdout, entries); err != nil {
+		log.Fatal(err)
+	}
 }
