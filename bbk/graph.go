@@ -7,8 +7,9 @@ import (
 )
 
 type Entry struct {
-	Name  string
-	Needs []string
+	Name    string
+	DirName string
+	Needs   []string
 }
 
 func ParseGraph(f io.Reader) (map[string]*Entry, error) {
@@ -33,7 +34,8 @@ func ParseGraph(f io.Reader) (map[string]*Entry, error) {
 		entry, ok := entries[name]
 		if !ok {
 			entry = &Entry{
-				Name: name,
+				Name:    name,
+				DirName: DirName(name),
 			}
 			entries[name] = entry
 		}
