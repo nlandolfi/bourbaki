@@ -1,48 +1,13 @@
-package main
+package bbk
 
 import (
 	"bufio"
-	"encoding/csv"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"strings"
 )
-
-func main() {
-	files, err := ioutil.ReadDir("../sheets/")
-	if err != nil {
-		log.Fatalf("ioutil.ReadDir: error: %v", err)
-	}
-
-	var entries [][]string = [][]string{
-		[]string{"name", "need"},
-	}
-	for _, f := range files {
-		sheetfile, err := os.Open(fmt.Sprintf("../sheets/%s/sheet.tex", f.Name()))
-		if os.IsNotExist(err) {
-			continue
-		} else if err != nil {
-			log.Fatal("opening sheet.tex: %v", err)
-		}
-
-		p := parse(sheetfile)
-		for _, n := range p.Needs {
-			entries = append(entries,
-				[]string{
-					title(p.Name), title(n),
-				})
-		}
-	}
-
-	w := csv.NewWriter(os.Stdout)
-
-	if err := w.WriteAll(entries); err != nil {
-		log.Fatal(err)
-	}
-}
 
 const (
 	namePrefix = "%!name:"
@@ -50,18 +15,18 @@ const (
 	mcroPrefix = "%!mcro:"
 )
 
-type Parse struct {
+type ParseResult struct {
 	Name        string
 	Needs       []string
 	Macros      []string
 	Lines       []string
-	NeedsParsed []*Parse
+	NeedsParsed []*ParseResult
 }
 
-func parse(f io.Reader) *Parse {
+func Parse(f io.Reader) *ParseResult {
 	scanner := bufio.NewScanner(f)
 
-	p := new(Parse)
+	p := new(ParseResult)
 	for scanner.Scan() {
 		t := scanner.Text()
 		if strings.HasPrefix(t, namePrefix) {
@@ -87,6 +52,6 @@ func parse(f io.Reader) *Parse {
 	return p
 }
 
-func title(s string) string {
+func Title(s string) string {
 	return strings.Title(strings.Join(strings.Split(s, "_"), " "))
 }

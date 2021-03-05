@@ -1,52 +1,30 @@
 package main
 
 import (
+	"bbk"
 	"encoding/csv"
+	"flag"
 	"fmt"
-	"io"
 	"log"
 	"os"
-	"strings"
 )
 
-type Entry struct {
-	Name  string
-	Needs []string
-}
+var (
+	graphFile = flag.String("graph-file", "graph.csv", "the graph to check")
+)
 
 func main() {
-	f, err := os.Open("graph.csv")
+	flag.Parse()
+
+	f, err := os.Open(*graphFile)
 	if err != nil {
-		log.Fatal("os.Open: %v", err)
+		log.Fatalf("os.Open: %q, %v", *graphFile, err)
 	}
 	defer f.Close()
-	r := csv.NewReader(f)
-	entries := make(map[string]*Entry)
-	var header = true
-	for {
-		record, err := r.Read()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Fatal(err)
-		}
 
-		if header {
-			header = false
-			continue
-		}
-
-		name := record[0]
-		entry, ok := entries[name]
-		if !ok {
-			entry = &Entry{
-				Name: name,
-			}
-			entries[name] = entry
-		}
-		need := record[1]
-		entry.Needs = append(entry.Needs, need)
+	entries, err := bbk.ParseGraph(f)
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	seen := make(map[string]bool)
@@ -59,7 +37,7 @@ func main() {
 
 	names := []string{}
 	for _, e := range entries {
-		_, err := os.Stat(fmt.Sprintf("../sheets/%s", dirname(e.Name)))
+		_, err := os.Stat(fmt.Sprintf("../sheets/%s", bbk.DirName(e.Name)))
 		if os.IsNotExist(err) {
 			continue
 			log.Print(e.Name)
@@ -94,7 +72,7 @@ func main() {
 			}
 		}
 
-		written := fmt.Sprintf("./clips/%s.csv", dirname(e.Name))
+		written := fmt.Sprintf("./clips/%s.csv", bbk.DirName(e.Name))
 		f, err := os.Create(written)
 		if err != nil {
 			log.Fatal(err)
@@ -116,21 +94,8 @@ func main() {
 
 	fmt.Fprintf(f, "all: ../graph.tmpl ../clip.go \n")
 	for _, s := range names {
-		d := dirname(s)
+		d := bbk.DirName(s)
 		fmt.Fprintf(f, "\tgraph --csv %s.csv --tmpl ../graph.tmpl > %s.graphviz\n", d, d)
 		fmt.Fprintf(f, "\tdot %s.graphviz -o %s.pdf -T pdf\n", d, d)
 	}
-}
-
-func nodename(s string) string {
-	pieces := strings.Split(s, "_")
-	return strings.Title(strings.Join(pieces, " "))
-}
-
-func dirname(s string) string {
-	pieces := strings.Split(s, " ")
-	for i, p := range pieces {
-		pieces[i] = strings.ToLower(p)
-	}
-	return strings.Join(pieces, "_")
 }
