@@ -148,7 +148,7 @@ const IndexTemplate = `<!DOCTYPE html>
 	<img src="../trademark.pdf" id="trademark"><h1>HyperText Index</h1>
 <ul>
 {{ range $k, $v := .Compiled }}
-	<li> <a href="./sheets/{{ $v.DirName }}.html"> {{ $k }} </a> <br> <a href="../../../graph/clips/{{ $v.DirName}}.pdf"> Graph </a> <br> (Needs: {{ range $k, $v := .Needs }}<a href="./sheets/{{ $v }}.html">{{ $k }};</a>{{ end }})</li>
+	<li> <a href="./sheets/{{ $v.DirName }}.html"> {{ $k }} </a> <br> <a href=".{{ $v.DirName}}_graph.pdf"> Graph </a> <br> (Needs: {{ range $k, $v := .Needs }}<a href="./sheets/{{ $v }}.html">{{ $k }};</a>{{ end }})</li>
 {{ end }}
 </ul>
 </div>
@@ -209,9 +209,9 @@ const SheetTemplate = `<!DOCTYPE html>
 		</iframe>
 
 		<div class="info">
-		<a href="./{{ .DirName }}_clip.pdf"> See graph on own page </a>
+		<a href="./{{ .DirName }}_graph.pdf"> See graph on own page </a>
 		</div>
-		<iframe id="graph" src="./{{ .DirName }}_clip.pdf">
+		<iframe id="graph" src="./{{ .DirName }}_graph.pdf">
 		</iframe>
   </body>
 </html>`
