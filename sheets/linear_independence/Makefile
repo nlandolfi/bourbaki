@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make linear_independence.pdf
+
 linear_independence.tex: sheet.tex
 	sheet -mode c -in sheet.tex > linear_independence.tex
 
@@ -5,8 +10,6 @@ linear_independence.pdf: ../../*.tex ../../trademark.pdf *.tex linear_independen
 	pdflatex linear_independence.tex
 	make defs
 
-make:
-	make linear_independence.pdf
 
 open: linear_independence.pdf
 	open linear_independence.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile

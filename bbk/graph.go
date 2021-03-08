@@ -3,13 +3,15 @@ package bbk
 import (
 	"encoding/csv"
 	"io"
+	"log"
 	"strings"
 )
 
 type Entry struct {
-	Name    string
-	DirName string
-	Needs   []string
+	Name     string
+	DirName  string
+	Needs    []string
+	NeededBy []string
 }
 
 func ParseGraph(f io.Reader) (map[string]*Entry, error) {
@@ -41,6 +43,17 @@ func ParseGraph(f io.Reader) (map[string]*Entry, error) {
 		}
 		need := record[1]
 		entry.Needs = append(entry.Needs, need)
+	}
+
+	for name, e := range entries {
+		for _, need := range e.Needs {
+			e2, ok := entries[need]
+			if !ok {
+				log.Printf("name: %s, need: %s, missing entry", name, need)
+				continue
+			}
+			e2.NeededBy = append(e2.NeededBy, name)
+		}
 	}
 
 	return entries, nil

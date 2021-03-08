@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make objects.pdf
+
 objects.tex: sheet.tex
 	sheet -mode c -in sheet.tex > objects.tex
 
@@ -5,8 +10,6 @@ objects.pdf: ../../*.tex ../../trademark.pdf *.tex objects.tex
 	pdflatex objects.tex
 	make defs
 
-make:
-	make objects.pdf
 
 open: objects.pdf
 	open objects.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile

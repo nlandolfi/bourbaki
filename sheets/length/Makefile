@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make length.pdf
+
 length.tex: sheet.tex
 	sheet -mode c -in sheet.tex > length.tex
 
@@ -5,8 +10,6 @@ length.pdf: ../../*.tex ../../trademark.pdf *.tex length.tex
 	pdflatex length.tex
 	make defs
 
-make:
-	make length.pdf
 
 open: length.pdf
 	open length.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile

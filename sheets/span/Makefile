@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make span.pdf
+
 span.tex: sheet.tex
 	sheet -mode c -in sheet.tex > span.tex
 
@@ -5,8 +10,6 @@ span.pdf: ../../*.tex ../../trademark.pdf *.tex span.tex
 	pdflatex span.tex
 	make defs
 
-make:
-	make span.pdf
 
 open: span.pdf
 	open span.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile
