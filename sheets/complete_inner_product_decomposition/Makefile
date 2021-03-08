@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make complete_inner_product_decomposition.pdf
+
 complete_inner_product_decomposition.tex: sheet.tex
 	sheet -mode c -in sheet.tex > complete_inner_product_decomposition.tex
 
@@ -5,8 +10,6 @@ complete_inner_product_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex 
 	pdflatex complete_inner_product_decomposition.tex
 	make defs
 
-make:
-	make complete_inner_product_decomposition.pdf
 
 open: complete_inner_product_decomposition.pdf
 	open complete_inner_product_decomposition.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile

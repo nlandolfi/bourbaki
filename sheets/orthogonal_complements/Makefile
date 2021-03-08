@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make orthogonal_complements.pdf
+
 orthogonal_complements.tex: sheet.tex
 	sheet -mode c -in sheet.tex > orthogonal_complements.tex
 
@@ -5,8 +10,6 @@ orthogonal_complements.pdf: ../../*.tex ../../trademark.pdf *.tex orthogonal_com
 	pdflatex orthogonal_complements.tex
 	make defs
 
-make:
-	make orthogonal_complements.pdf
 
 open: orthogonal_complements.pdf
 	open orthogonal_complements.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile

@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make length_common_notions.pdf
+
 length_common_notions.tex: sheet.tex
 	sheet -mode c -in sheet.tex > length_common_notions.tex
 
@@ -5,8 +10,6 @@ length_common_notions.pdf: ../../*.tex ../../trademark.pdf *.tex length_common_n
 	pdflatex length_common_notions.tex
 	make defs
 
-make:
-	make length_common_notions.pdf
 
 open: length_common_notions.pdf
 	open length_common_notions.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile

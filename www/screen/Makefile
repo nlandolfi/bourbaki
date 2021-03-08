@@ -1,13 +1,15 @@
-make:
-	go run compile_all.go
+compile:
+	bbk_compile_screen
 
-sets.html: compiler.go sets.tex
-	go run compiler.go --in sets.tex > sets.html
-
-index.html: compile_all.go
-	rm sheets/*
-	rm index.html
-	go run compile_all.go
+index.html:
+	bbk_compile_screen
 
 o: index.html
 	open index.html
+
+local:
+	go run server.go -static-dir ./static
+image:
+	gcloud builds submit --tag gcr.io/elos2-261103/bbk-www
+deploy:
+	gcloud run deploy --image gcr.io/elos2-261103/bbk-www --platform managed
