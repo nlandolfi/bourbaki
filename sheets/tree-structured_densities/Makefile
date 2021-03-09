@@ -1,27 +1,27 @@
 # generated automatically by sheet.go
 
 make:
-	make tree-structured_distributions.pdf
+	make tree-structured_densities.pdf
 
-tree-structured_distributions.tex: sheet.tex
-	sheet -mode c -in sheet.tex > tree-structured_distributions.tex
+tree-structured_densities.tex: sheet.tex
+	sheet -mode c -in sheet.tex > tree-structured_densities.tex
 
-tree-structured_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex tree-structured_distributions.tex
-	pdflatex tree-structured_distributions.tex
+tree-structured_densities.pdf: ../../*.tex ../../trademark.pdf *.tex tree-structured_densities.tex
+	pdflatex tree-structured_densities.tex
 	make defs
 
 
-open: tree-structured_distributions.pdf
-	open tree-structured_distributions.pdf
+open: tree-structured_densities.pdf
+	open tree-structured_densities.pdf
 
 o:
 	make open
 
-defs: tree-structured_distributions.tex
-	defs tree-structured_distributions.tex
+defs: tree-structured_densities.tex
+	defs tree-structured_densities.tex
 
 spell:
-	aspell -c tree-structured_distributions.tex
+	aspell -c tree-structured_densities.tex
 
 s:
 	make spell
