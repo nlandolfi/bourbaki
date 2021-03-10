@@ -51,7 +51,7 @@ Seen:
 	for s := range seen {
 		f, err := os.Open(fmt.Sprintf("../../sheets/%s/sheet.tex", bbk.DirName(s)))
 		if os.IsNotExist(err) {
-			log.Printf("missing: %s", bbk.DirName(s))
+			log.Printf("%s/sheet.tex does not exist", bbk.DirName(s))
 			continue Seen
 		} else if err != nil {
 			log.Fatalf("os.Open: %v", err)

@@ -3,7 +3,6 @@ package bbk
 import (
 	"encoding/csv"
 	"io"
-	"log"
 	"strings"
 )
 
@@ -49,8 +48,11 @@ func ParseGraph(f io.Reader) (map[string]*Entry, error) {
 		for _, need := range e.Needs {
 			e2, ok := entries[need]
 			if !ok {
-				log.Printf("name: %s, need: %s, missing entry", name, need)
-				continue
+				e2 = &Entry{
+					Name:    name,
+					DirName: DirName(name),
+				}
+				entries[need] = e2
 			}
 			e2.NeededBy = append(e2.NeededBy, name)
 		}
