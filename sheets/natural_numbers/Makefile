@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make natural_numbers.pdf
+
 natural_numbers.tex: sheet.tex
 	sheet -mode c -in sheet.tex > natural_numbers.tex
 
@@ -5,8 +10,6 @@ natural_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex natural_numbers.tex
 	pdflatex natural_numbers.tex
 	make defs
 
-make:
-	make natural_numbers.pdf
 
 open: natural_numbers.pdf
 	open natural_numbers.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile
