@@ -1,3 +1,8 @@
+# generated automatically by sheet.go
+
+make:
+	make real_sequences.pdf
+
 real_sequences.tex: sheet.tex
 	sheet -mode c -in sheet.tex > real_sequences.tex
 
@@ -5,8 +10,6 @@ real_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex real_sequences.tex
 	pdflatex real_sequences.tex
 	make defs
 
-make:
-	make real_sequences.pdf
 
 open: real_sequences.pdf
 	open real_sequences.pdf
@@ -22,3 +25,6 @@ spell:
 
 s:
 	make spell
+
+remake:
+	sheet -mode mk > Makefile
