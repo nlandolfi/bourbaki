@@ -40,7 +40,7 @@ func main() {
 		_, err := os.Stat(fmt.Sprintf("../sheets/%s", bbk.DirName(e.Name)))
 		if os.IsNotExist(err) {
 			continue
-			log.Print(e.Name)
+			log.Fatalf("sheets/%s does not exist", bbk.DirName(e.Name))
 		} else if err != nil {
 			log.Fatal(err)
 		}
@@ -70,6 +70,13 @@ func main() {
 				q = append(q, n)
 				rows = append(rows, []string{next, n})
 			}
+		}
+		// if no needs
+		if len(rows) == 1 {
+			// add a single entry for the node
+			rows = append(rows,
+				[]string{e.Name, ""},
+			)
 		}
 
 		written := fmt.Sprintf("./clips/%s.csv", bbk.DirName(e.Name))

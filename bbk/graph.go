@@ -41,7 +41,13 @@ func ParseGraph(f io.Reader) (map[string]*Entry, error) {
 			entries[name] = entry
 		}
 		need := record[1]
-		entry.Needs = append(entry.Needs, need)
+		// allow empty entries for example
+		// objects,
+		// to indicate objects is a leaf but
+		// should be included
+		if need != "" {
+			entry.Needs = append(entry.Needs, need)
+		}
 	}
 
 	for name, e := range entries {
