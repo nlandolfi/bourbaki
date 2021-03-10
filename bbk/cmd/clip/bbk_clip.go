@@ -27,19 +27,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	seen := make(map[string]bool)
-	for _, e := range entries {
-		seen[e.Name] = true
-		for _, n := range e.Needs {
-			seen[n] = true
-		}
-	}
-
 	names := []string{}
 	for _, e := range entries {
 		_, err := os.Stat(fmt.Sprintf("../sheets/%s", bbk.DirName(e.Name)))
 		if os.IsNotExist(err) {
-			continue
 			log.Fatalf("sheets/%s does not exist", bbk.DirName(e.Name))
 		} else if err != nil {
 			log.Fatal(err)

@@ -4,6 +4,7 @@
 \input{../tree-structured_distribution_approximation/macros.tex}
 \input{../differential_relative_entropy/macros.tex}
 \input{../differential_mutual_information_graph/macros.tex}
+\input{../optimization/macros.tex}
 \input{../conditional_densities/macros.tex}
 \input{../rooted_trees/macros.tex}
 \input{../tree-structured_distributions/macros.tex}
@@ -12,6 +13,7 @@
 \input{../differential_cross_entropy/macros.tex}
 \input{../graphs/macros.tex}
 \input{../differential_mutual_information/macros.tex}
+\input{../total_orders/macros.tex}
 \input{../marginal_densities/macros.tex}
 \input{../trees/macros.tex}
 \input{../conditional_distributions/macros.tex}
@@ -20,25 +22,27 @@
 \input{../mutual_information/macros.tex}
 \input{../differential_entropy/macros.tex}
 \input{../relations/macros.tex}
-\input{../multivariate_real_densities/macros.tex}
+\input{../partial_orders/macros.tex}
 \input{../set_specification/macros.tex}
+\input{../multivariate_real_densities/macros.tex}
 \input{../marginal_distributions/macros.tex}
 \input{../conditional_event_probability/macros.tex}
 \input{../probability_distributions/macros.tex}
 \input{../logarithm/macros.tex}
 \input{../ordered_pairs/macros.tex}
+\input{../relation_properties/macros.tex}
+\input{../set_extension/macros.tex}
 \input{../probability_densities/macros.tex}
 \input{../n-dimensional_space/macros.tex}
-\input{../set_extension/macros.tex}
 \input{../direct_products/macros.tex}
 \input{../event_probabilities/macros.tex}
 \input{../real_numbers/macros.tex}
 \input{../summation/macros.tex}
 \input{../probability_outcomes/macros.tex}
 \input{../sets/macros.tex}
+\input{../identity/macros.tex}
 \input{../probability_events/macros.tex}
 \input{../space/macros.tex}
-\input{../identity/macros.tex}
 \input{../natural_numbers/macros.tex}
 \input{../set_operations/macros.tex}
 \input{../integer_numbers/macros.tex}
@@ -61,26 +65,26 @@
 \ssection{Problem}
 
 Tree-structured density
-approximation is a mathematical
+approximation is an
 optimization problem in which we
-find a tree-structured density
-which minimizes its differential entropy relative
-to a given density over the set
-of all densities which factor
-according to trees.
+select a tree-structured density
+minimizing differential entropy
+relative to a given density over.
 
 \ssubsection{Notation}
 
 Let $g: \R^n \to \R$ be a density.
 Let $d$ denote the differential
-relative entropy.  We want to find a density $f: \R^n \to \R$
-and tree $T$ on
-$\set{1, \dots, n}$ to
+relative entropy.
+We want to
 \[
-  \begin{aligned}
-    \text{minimize}   &\quad d(q, p) \\
-    \text{subject to} &\quad p \text{ factors according to the tree } T.
-  \end{aligned}
+  \minimizationn{
+    \text{ density } f \text{ and tree } T \text{ on } \set{1, \dots, n}
+  }{
+    d(g, f)
+  }{
+    f \text{ factors according to } T.
+  }
 \]
 
 \ssection{Solution}
