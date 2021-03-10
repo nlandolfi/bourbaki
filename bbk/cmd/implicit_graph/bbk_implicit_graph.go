@@ -29,6 +29,10 @@ func main() {
 	}
 
 	for _, f := range files {
+		if !f.IsDir() {
+			continue
+		}
+
 		sheetfile, err := os.Open(fmt.Sprintf("../sheets/%s/sheet.tex", f.Name()))
 
 		if os.IsNotExist(err) {
@@ -38,11 +42,18 @@ func main() {
 		}
 
 		p := bbk.Parse(sheetfile)
+		if p.Name == "" {
+			log.Fatalf("no name for file %v", f)
+		}
 		for _, n := range p.Needs {
 			entries = append(entries,
 				[]string{
 					bbk.Title(p.Name), bbk.Title(n),
 				})
+		}
+		// add leaf entries
+		if len(p.Needs) == 0 {
+			entries = append(entries, []string{bbk.Title(p.Name), ""})
 		}
 	}
 

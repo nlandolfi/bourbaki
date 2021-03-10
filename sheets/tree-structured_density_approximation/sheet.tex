@@ -3,32 +3,33 @@
 %!need:tree-structured_distribution_approximation
 %!need:differential_relative_entropy
 %!need:differential_mutual_information_graph
+%!need:optimization
 
 \ssection{Why}
 
 \ssection{Problem}
 
 Tree-structured density
-approximation is a mathematical
+approximation is an
 optimization problem in which we
-find a tree-structured density
-which minimizes its differential entropy relative
-to a given density over the set
-of all densities which factor
-according to trees.
+select a tree-structured density
+minimizing differential entropy
+relative to a given density over.
 
 \ssubsection{Notation}
 
 Let $g: \R^n \to \R$ be a density.
 Let $d$ denote the differential
-relative entropy.  We want to find a density $f: \R^n \to \R$
-and tree $T$ on
-$\set{1, \dots, n}$ to
+relative entropy.
+We want to
 \[
-  \begin{aligned}
-    \text{minimize}   &\quad d(q, p) \\
-    \text{subject to} &\quad p \text{ factors according to the tree } T.
-  \end{aligned}
+  \minimizationn{
+    \text{ density } f \text{ and tree } T \text{ on } \set{1, \dots, n}
+  }{
+    d(g, f)
+  }{
+    f \text{ factors according to } T.
+  }
 \]
 
 \ssection{Solution}
