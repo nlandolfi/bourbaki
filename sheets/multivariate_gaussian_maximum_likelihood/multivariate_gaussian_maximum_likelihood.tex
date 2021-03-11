@@ -1,0 +1,92 @@
+\input{../../sheet.tex}
+\sbasic
+\input{../gaussian_maximum_likelihood/macros.tex}
+\input{../multivariate_gaussians/macros.tex}
+\input{../transpose/macros.tex}
+\input{../gaussian_densities/macros.tex}
+\input{../optimization/macros.tex}
+\input{../density_maximum_likelihood/macros.tex}
+\input{../multivariate_real_densities/macros.tex}
+\input{../positive_definite_matrices/macros.tex}
+\input{../matrix_determinants/macros.tex}
+\input{../vectors/macros.tex}
+\input{../probability_densities/macros.tex}
+\input{../total_orders/macros.tex}
+\input{../maximum_likelihood/macros.tex}
+\input{../density_selection/macros.tex}
+\input{../n-dimensional_space/macros.tex}
+\input{../quadratic_forms/macros.tex}
+\input{../symmetric_matrices/macros.tex}
+\input{../matrices/macros.tex}
+\input{../fields/macros.tex}
+\input{../groups/macros.tex}
+\input{../probability_outcomes/macros.tex}
+\input{../probability_distributions/macros.tex}
+\input{../partial_orders/macros.tex}
+\input{../set_specification/macros.tex}
+\input{../distribution_selection/macros.tex}
+\input{../dataset/macros.tex}
+\input{../space/macros.tex}
+\input{../real_numbers/macros.tex}
+\input{../identity_matrices/macros.tex}
+\input{../algebras/macros.tex}
+\input{../integer_numbers/macros.tex}
+\input{../probability/macros.tex}
+\input{../cardinality/macros.tex}
+\input{../real_summation/macros.tex}
+\input{../relation_properties/macros.tex}
+\input{../set_extension/macros.tex}
+\input{../direct_products/macros.tex}
+\input{../operations/macros.tex}
+\input{../solving_equations/macros.tex}
+\input{../natural_numbers/macros.tex}
+\input{../natural_summation/macros.tex}
+\input{../relations/macros.tex}
+\input{../identity/macros.tex}
+\input{../functions/macros.tex}
+\input{../arithmetic/macros.tex}
+\input{../equations/macros.tex}
+\input{../ordered_pairs/macros.tex}
+\input{../objects/macros.tex}
+\input{../sets/macros.tex}
+\input{./macros.tex}
+\sstart
+\stitle{Multivariate Gaussian Maximum Likelihood}
+
+\ssection{Why}
+
+What of the generalization to a multivariate gaussian.
+
+\ssection{Result}
+
+\begin{prop}
+Let $(x^1, \dots, x^n)$ be a dataset in $\R^d$.
+Let $f$ be a multivariate gaussian density with
+mean
+\[
+  \frac{1}{n} \sum_{k = 1}^{d} x^k
+\]
+and covariance
+\[
+  \frac{1}{n}
+  \sum_{k = 1}^{n}
+  %\left(
+  \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)
+  \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^\tp
+  %\right)
+  .
+\]
+Then $f$ is a maximum likelihood multivariate gaussian
+density.
+\begin{proof}
+  We express the log likelihood
+  \[
+    \sum_{k = 1}^{n} -\frac{1}{2}(x - \mu)^\tp \Sigma^{-1} (x-\mu)
+  \]
+\end{proof}
+\end{prop}
+We call these two objects
+the \ct{maximum likelihood mean}{}
+and \ct{maximum likelihood covariance}{}
+of the dataset.
+\strats
