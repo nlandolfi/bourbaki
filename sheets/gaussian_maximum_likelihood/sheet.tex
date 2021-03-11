@@ -2,7 +2,7 @@
 %!need:gaussian_densities
 %!need:optimization
 %!need:density_maximum_likelihood
-%!!need:calculus ;)
+%!!need:calculus ;) multivariate, too...
 
 \ssection{Why}
 
@@ -19,7 +19,7 @@ Following the principle of maximum likelihood,
 we want to solve
 \[
   \maximizationn{\mu,\sigma \in \R}{
-    \prod_{k = 1}^{n}  \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left(\frac{1}{2\sigma^2} (x - \mu)^2 \right)
+    \prod_{k = 1}^{n}  \gaussiandensity{x^k}{\mu}{\sigma}
   }{
     \sigma > 0 \\
   }
@@ -27,42 +27,53 @@ we want to solve
 We call a solution to the above problem
 a \ct{maximum likelihood gaussian density}{}.
 
-Let $f$ be a gaussian density with
-parameters $\mu \in \R$ and $sigma \in \R_+$.
-We want to find $\mu$ and $\sigma$ to
-\[
-  \text{maximize}
-\]
-
 \ssection{Solution}
 
 \begin{prop}
 Let $(x^1, \dots, x^n)$ be a dataset in $\R$.
-The gaussian density with mean
-\[
-  \mu = \frac{1}{n} \sum_{k = 1}^{n} x^k
-\]
+Let $f$ be a gaussian density with mean
+$$\frac{1}{n} \sum_{k = 1}^{n} x^k$$
 and covariance
-\[
-  \sigma^2 = \frac{1}{n} \sum_{k = 1}^{n} (x^k - \mu)^2
-\]
-is a maximum likelihood gaussian density.
+$$\frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^2.$$
+Then $f$ is a maximum likelihood gaussian density.
 \begin{proof}
-  We can maximize the log density likelihood
+  Every gaussian density has two parameters: the mean
+  and the covariance.
+  If the likelihood of one gaussian is less than or equal
+  to the likelihood of another, then so is are their
+  log likelihoods.
+  Let $f$ be a gaussian density with parameter $\mu$ and $\sigma^2$.
+  We express the log likelihood of
+  $f$ by
   \[
-    \sum_{k = 1}^{n} \frac{1}{2\sigma^2}(x^k - \mu)^2 - \frac{1}{2}\log2\pi\sigma^2.
+    \sum_{k = 1}^{n} \left( \frac{1}{2\sigma^2}(x^k - \mu)^2 - \frac{1}{2}\log2\pi\sigma^2\right)
   \]
-  The partial derivative of the log density likelihood with
-  respect to $\mu$ is
+  The partial derivative of the log likelihood with
+  respect to the mean $(\partial_{\mu} \ell): \R^2 \to \R$ is
   \[
-    - \sum_{k = 1}^{n} \frac{1}{\sigma^2}(x - \mu)^2.
+    (\partial_\mu \ell)(\mu, \sigma^2) = - \sum_{k = 1}^{n} \frac{1}{\sigma^2}(x - \mu)
   \]
-  For all $\sigma$, this partial derivative is zero
-  when $\mu = \frac{1}{n} \sum_{k = 1}^{n} x^k$.
-  The partial derivative of the log density likelihood with
-  respect to $\sigma^2$ is
+  and with respect to the covariance $(\partial_{\sigma^2} \ell): \R^2 \to \R$ is
   \[
-    \left(\frac{1}{2}\sum_{k = 1}^{n}(x^k - \mu)^2\right)(-2 \sigma^{-3}) - \frac{1}{2} \frac{1}{2\pi \sigma^2} 4\pi\sigma
+    (\partial_{\sigma^2} \ell)(\mu, \sigma^2) =
+    \left(\frac{-1}{2(\sigma^2)^{2}}\sum_{k = 1}^{n}(x^k - \mu)^2\right)- \frac{1}{2\sigma^2}
   \]
+  We are interested in finding $\mu_0 \in \R$ and $\sigma^2_0 > 0$, at which
+  $\partial_\mu \ell(\mu_0, \sigma^2_0) = 0$ and
+  $\partial_{\sigma^2} \ell(\mu_0, \sigma^2_0) = 0$.
+  So we have two equations.
+  First, notice that
+  $\partial_\mu \ell$ is zero if an only if
+  its first argument (the mean) is $\frac{1}{n} \sum_{k = 1}^{n} x^k$.
+  Second, notice that for all $\mu, \sigma^2$,
+  $\partial_{\sigma^2}\ell$ is zero if and only if
+  \[
+    \sigma^2 = \sum_{k = 1}^{n} (x^k - \mu)^2.
+  \]
+  So the pair
+  \[
+    \left(\frac{1}{n}\sum_{k = 1}^{k} x^k, \frac{1}{n} \sum_{k = 1}^{n} (x_k - \frac{1}{n} \sum_{k = 1}^{n}  x^k)^2\right)
+  \]
+  is a stationary point of $\ell$.
 \end{proof}
 \end{prop}
