@@ -10,6 +10,23 @@
 
 Let $x^1, \dots, x^n$ be a sequence
 of records in $\R$.
+We want to select a density from
+among gaussian densities.
+A gaussian density is parameterized
+by its mean and positive standard deviation.
+
+Following the principle of maximum likelihood,
+we want to solve
+\[
+  \maximizationn{\mu,\sigma \in \R}{
+    \prod_{k = 1}^{n}  \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left(\frac{1}{2\sigma^2} (x - \mu)^2 \right)
+  }{
+    \sigma > 0 \\
+  }
+\]
+We call a solution to the above problem
+a \ct{maximum likelihood gaussian density}{}.
+
 Let $f$ be a gaussian density with
 parameters $\mu \in \R$ and $sigma \in \R_+$.
 We want to find $\mu$ and $\sigma$ to
@@ -18,3 +35,34 @@ We want to find $\mu$ and $\sigma$ to
 \]
 
 \ssection{Solution}
+
+\begin{prop}
+Let $(x^1, \dots, x^n)$ be a dataset in $\R$.
+The gaussian density with mean
+\[
+  \mu = \frac{1}{n} \sum_{k = 1}^{n} x^k
+\]
+and covariance
+\[
+  \sigma^2 = \frac{1}{n} \sum_{k = 1}^{n} (x^k - \mu)^2
+\]
+is a maximum likelihood gaussian density.
+\begin{proof}
+  We can maximize the log density likelihood
+  \[
+    \sum_{k = 1}^{n} \frac{1}{2\sigma^2}(x^k - \mu)^2 - \frac{1}{2}\log2\pi\sigma^2.
+  \]
+  The partial derivative of the log density likelihood with
+  respect to $\mu$ is
+  \[
+    - \sum_{k = 1}^{n} \frac{1}{\sigma^2}(x - \mu)^2.
+  \]
+  For all $\sigma$, this partial derivative is zero
+  when $\mu = \frac{1}{n} \sum_{k = 1}^{n} x^k$.
+  The partial derivative of the log density likelihood with
+  respect to $\sigma^2$ is
+  \[
+    \left(\frac{1}{2}\sum_{k = 1}^{n}(x^k - \mu)^2\right)(-2 \sigma^{-3}) - \frac{1}{2} \frac{1}{2\pi \sigma^2} 4\pi\sigma
+  \]
+\end{proof}
+\end{prop}
