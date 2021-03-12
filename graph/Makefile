@@ -1,7 +1,7 @@
 graph.csv: ../sheets/*/*.tex
 	bbk_implicit_graph > graph.csv
 graph.graphviz: graph.csv *.tmpl
-	go run graph.go --tmpl graph.tmpl > graph.graphviz
+	bbk_graph --tmpl graph.tmpl > graph.graphviz
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 force.csv: graph.csv *.tmpl
