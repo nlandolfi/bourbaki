@@ -19,32 +19,6 @@ var (
 	sheetsDir = flag.String("sheets", "../", "where to find other sheets")
 )
 
-func parseNeeds(p *bbk.ParseResult) {
-	var q = make([]string, len(p.Needs))
-	copy(q, p.Needs)
-	seen := map[string]bool{}
-	for len(q) > 0 {
-		n := q[0]
-		q = q[1:]
-		if seen[n] {
-			continue
-		}
-		seen[n] = true
-
-		fn := fmt.Sprintf("%s%s/sheet.tex", *sheetsDir, n)
-		f, err := os.Open(fn)
-		if err != nil {
-			log.Fatal(err)
-		}
-		log.Printf("Parsing need: %s", n)
-		np := bbk.Parse(f)
-		for _, n := range np.Needs {
-			q = append(q, n)
-		}
-		p.NeedsParsed = append(p.NeedsParsed, np)
-	}
-}
-
 func main() {
 	flag.Parse()
 
@@ -55,7 +29,7 @@ func main() {
 
 	switch *mode {
 	case "c":
-		writeFile(p)
+		writeFile(rs, p)
 	case "g":
 		writeGraph(rs, p)
 	case "mk":
@@ -69,12 +43,24 @@ func main() {
 	}
 }
 
-func writeFile(p *bbk.ParseResult) {
-	log.Printf("writing file: %v", p)
+func writeFile(all map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 	fmt.Fprintln(os.Stdout, "\\input{../../sheet.tex}")
 	fmt.Fprintln(os.Stdout, "\\sbasic")
-	for _, n := range p.NeedsParsed {
-		fmt.Fprintf(os.Stdout, "\\input{../%s/macros.tex}\n", n.Name)
+	needs := make([]string, len(p.Needs))
+	seen := map[string]bool{}
+	copy(needs, p.Needs)
+	for len(needs) > 0 {
+		n := needs[0]
+		needs = needs[1:]
+		log.Print(n)
+		if seen[n] {
+			continue
+		}
+		seen[n] = true
+		fmt.Fprintf(os.Stdout, "\\input{../%s/macros.tex}\n", n)
+		for _, nn := range all[n].Needs {
+			needs = append(needs, nn)
+		}
 	}
 	fmt.Fprintln(os.Stdout, "\\input{./macros.tex}")
 	fmt.Fprintln(os.Stdout, "\\sstart")
