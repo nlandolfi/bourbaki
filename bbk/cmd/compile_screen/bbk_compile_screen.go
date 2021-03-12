@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io"
 	"log"
 	"os"
 	"text/template"
@@ -23,107 +22,51 @@ const (
 
 var (
 	graphCSVFile = flag.String("graph-csv", "../../graph/graph.csv", "csv of the graph; probably implicit")
+	sheetsDir    = flag.String("sheets-dir", "../sheets", "the sheets directory")
 )
 
 func main() {
 	flag.Parse()
-	f, err := os.Open(*graphCSVFile)
-	if err != nil {
-		log.Fatal("os.Open: %v", err)
-	}
-	defer f.Close()
-	entries, err := bbk.ParseGraph(f)
+
+	results, err := bbk.ParseAll(*sheetsDir)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	seen := make(map[string]bool)
-	for _, e := range entries {
-		seen[e.Name] = true
-		for _, n := range e.Needs {
-			seen[n] = true
-		}
-	}
-
-	compiled := make(map[string]*CompiledInfo)
-
-Seen:
-	for s := range seen {
-		f, err := os.Open(fmt.Sprintf("../../sheets/%s/sheet.tex", bbk.DirName(s)))
-		if os.IsNotExist(err) {
-			log.Printf("%s/sheet.tex does not exist", bbk.DirName(s))
-			continue Seen
-		} else if err != nil {
-			log.Fatalf("os.Open: %v", err)
-		}
-		out, err := os.Create(fmt.Sprintf("./static/sheets/%s.html", bbk.DirName(s)))
+	for name, p := range results {
+		out, err := os.Create(fmt.Sprintf("./static/sheets/%s.html", name))
 		if err != nil {
 			log.Fatalf("os.Create: %v", err)
 		}
-		needs := make(map[string]string)
-		if e, ok := entries[s]; ok {
-			for _, ss := range e.Needs {
-				needs[ss] = bbk.DirName(ss)
-			}
+		if err := sheetTemplate.Execute(out, p); err != nil {
+			log.Fatal(err)
 		}
-		needed_by := make(map[string]string)
-		if e, ok := entries[s]; ok {
-			for _, ss := range e.NeededBy {
-				needed_by[ss] = bbk.DirName(ss)
-			}
-		}
-		compile(s, needs, needed_by, f, out)
-		compiled[s] = &CompiledInfo{
-			DirName:  bbk.DirName(s),
-			Needs:    needs,
-			NeededBy: needed_by,
-		}
-
-		_, err = bbk.CopyFile(
-			fmt.Sprintf("../../sheets/%s/%s.pdf", bbk.DirName(s), bbk.DirName(s)),
-			fmt.Sprintf("./static/sheets/%s.pdf", bbk.DirName(s)),
-		)
-		if err != nil {
-			log.Printf("error: %v", err)
-		}
-
-		_, err = bbk.CopyFile(
-			fmt.Sprintf("../../graph/clips/%s.pdf", bbk.DirName(s)),
-			fmt.Sprintf("./static/sheets/%s_graph.pdf", bbk.DirName(s)),
-		)
-		if err != nil {
-			log.Printf("error: %v", err)
-		}
-
 		out.Close()
-		f.Close()
+
+		_, err = bbk.CopyFile(
+			fmt.Sprintf("../../sheets/%s/%s.pdf", name, name),
+			fmt.Sprintf("./static/sheets/%s.pdf", name),
+		)
+		if err != nil {
+			log.Printf("error: %v", err)
+		}
+
+		_, err = bbk.CopyFile(
+			fmt.Sprintf("../../sheets/%s/graph.pdf", name),
+			fmt.Sprintf("./static/sheets/%s_graph.pdf", name),
+		)
+		if err != nil {
+			//	log.Printf("error transferring graph: %v", err)
+		}
 	}
 
-	f, err = os.Create("./static/index.html")
+	f, err := os.Create("./static/index.html")
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer f.Close()
-	if err := indexTemplate.Execute(f, IndexData{compiled}); err != nil {
+	if err := indexTemplate.Execute(f, results); err != nil {
 		log.Fatal(err)
 	}
-}
-
-func compile(s string, needs, needed_by map[string]string, f *os.File, into io.Writer) {
-	if err := sheetTemplate.Execute(into, Data{
-		Needs:    needs,
-		DirName:  bbk.DirName(s),
-		NeededBy: needed_by,
-	}); err != nil {
-		log.Fatal(err)
-	}
-}
-
-type Data struct {
-	DirName  string
-	Content  []byte
-	Needs    map[string]string
-	NeededBy map[string]string
 }
 
 const IndexTemplate = `<!DOCTYPE html>
@@ -147,8 +90,8 @@ const IndexTemplate = `<!DOCTYPE html>
 	<div class="content">
 	<img src="../trademark.pdf" id="trademark"><h1>HyperText Index</h1>
 <ul>
-{{ range $k, $v := .Compiled }}
-	<li> <a href="./sheets/{{ $v.DirName }}.html"> {{ $k }} </a> <br> <a href=".{{ $v.DirName}}_graph.pdf"> Graph </a> <br> (Needs: {{ range $k, $v := .Needs }}<a href="./sheets/{{ $v }}.html">{{ $k }};</a>{{ end }})</li>
+{{ range $k, $v := . }}
+	<li> <a href="./sheets/{{ $v.Name }}.html"> {{ $k }} </a> <br> <a href=".{{ $v.Name}}_graph.pdf"> Graph </a> <br> (Needs: {{ range $k, $v := .Needs }}<a href="./sheets/{{ $v }}.html">{{ $k }};</a>{{ end }})</li>
 {{ end }}
 </ul>
 </div>
@@ -156,17 +99,6 @@ const IndexTemplate = `<!DOCTYPE html>
 </body>
 </html>
 `
-
-type IndexData struct {
-	Compiled map[string]*CompiledInfo
-}
-
-type CompiledInfo struct {
-	Contents []byte
-	DirName  string
-	Needs    map[string]string
-	NeededBy map[string]string
-}
 
 const SheetTemplate = `<!DOCTYPE html>
   <head>
