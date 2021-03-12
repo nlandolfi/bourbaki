@@ -22,7 +22,7 @@ const (
 
 var (
 	graphCSVFile = flag.String("graph-csv", "../../graph/graph.csv", "csv of the graph; probably implicit")
-	sheetsDir    = flag.String("sheets-dir", "../sheets", "the sheets directory")
+	sheetsDir    = flag.String("sheets-dir", "../../sheets", "the sheets directory")
 )
 
 func main() {
@@ -32,6 +32,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	log.Printf("%d sheets", len(results))
 
 	for name, p := range results {
 		out, err := os.Create(fmt.Sprintf("./static/sheets/%s.html", name))
@@ -137,13 +139,13 @@ const SheetTemplate = `<!DOCTYPE html>
 		<a href="../index.html">Back to index</a>
 		</div>
 
-		<iframe id="sheet" src="./{{ .DirName }}.pdf">
+		<iframe id="sheet" src="./{{ .Name }}.pdf">
 		</iframe>
 
 		<div class="info">
-		<a href="./{{ .DirName }}_graph.pdf"> See graph on own page </a>
+		<a href="./{{ .Name }}_graph.pdf"> See graph on own page </a>
 		</div>
-		<iframe id="graph" src="./{{ .DirName }}_graph.pdf">
+		<iframe id="graph" src="./{{ .Name }}_graph.pdf">
 		</iframe>
   </body>
 </html>`
