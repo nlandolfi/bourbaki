@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make direct_products.pdf
+	make graph.pdf
 
 direct_products.tex: sheet.tex
-	sheet -mode c -in sheet.tex > direct_products.tex
+	bbk_sheet -mode c -in sheet.tex > direct_products.tex
 
 direct_products.pdf: ../../*.tex ../../trademark.pdf *.tex direct_products.tex
 	pdflatex direct_products.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: direct_products.pdf
 	open direct_products.pdf
@@ -25,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm direct_products.*
+	make reset
+	bbk_sheet -mode mk > Makefile

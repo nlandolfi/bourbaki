@@ -46,4 +46,6 @@ clean:
 	make reset
 
 remake:
+	rm sets.*
+	make reset
 	bbk_sheet -mode mk > Makefile

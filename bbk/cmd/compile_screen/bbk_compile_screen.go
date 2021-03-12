@@ -126,7 +126,7 @@ const SheetTemplate = `<!DOCTYPE html>
 		Needs:
 		<ul>
 			{{ range $k, $v := .Needs }}
-				<li> <a href="./{{ $v }}.html"> {{ $v }} </a> </li>
+				<li> <a href="./{{ $v }}.html"> {{ title $v }} </a> </li>
 			{{ end }}
 		</ul>
 		{{ else }}
@@ -136,7 +136,7 @@ const SheetTemplate = `<!DOCTYPE html>
 		Needed by:
 		<ul>
 			{{ range $k, $v := .NeededBy }}
-				<li> <a href="./{{ $v }}.html"> {{ $v }} </a> </li>
+				<li> <a href="./{{ $v }}.html"> {{ title $v }} </a> </li>
 			{{ end }}
 		</ul>
 		{{ else }}
@@ -155,5 +155,7 @@ const SheetTemplate = `<!DOCTYPE html>
   </body>
 </html>`
 
-var sheetTemplate = template.Must(template.New("").Parse(SheetTemplate))
+var sheetTemplate = template.Must(template.New("").Funcs(template.FuncMap{
+	"title": bbk.Title,
+}).Parse(SheetTemplate))
 var indexTemplate = template.Must(template.New("").Parse(IndexTemplate))

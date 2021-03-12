@@ -1,12 +1,26 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make egoprox_sequences.pdf
+	make graph.pdf
+
 egoprox_sequences.tex: sheet.tex
-	sheet -mode c -in sheet.tex > egoprox_sequences.tex
+	bbk_sheet -mode c -in sheet.tex > egoprox_sequences.tex
 
 egoprox_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex egoprox_sequences.tex
 	pdflatex egoprox_sequences.tex
 	make defs
 
-make:
-	make egoprox_sequences.pdf
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: egoprox_sequences.pdf
 	open egoprox_sequences.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm egoprox_sequences.*
+	make reset
+	bbk_sheet -mode mk > Makefile
