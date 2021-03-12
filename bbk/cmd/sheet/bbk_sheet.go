@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 	"text/template"
 
 	"bbk"
@@ -14,7 +15,7 @@ import (
 var (
 	inFile = flag.String("in", "sheet.tex", "sheet file")
 	// create, makefile, graph
-	mode      = flag.String("mode", "c", "which mode {c, mk, g}")
+	mode      = flag.String("mode", "mk", "which mode {c, mk, g}")
 	sheetsDir = flag.String("sheets", "../", "where to find other sheets")
 )
 
@@ -47,18 +48,16 @@ func parseNeeds(p *bbk.ParseResult) {
 func main() {
 	flag.Parse()
 
-	f, err := os.Open(*inFile)
-	if err != nil {
-		log.Fatal(err)
-	}
-	p := bbk.Parse(f)
-	parseNeeds(p)
+	rs, _ := bbk.ParseAll(*sheetsDir)
+	wd, _ := os.Getwd()
+	name := path.Base(wd)
+	p := rs[name]
 
 	switch *mode {
 	case "c":
 		writeFile(p)
 	case "g":
-		writeGraph(p)
+		writeGraph(rs, p)
 	case "mk":
 		tmpl := template.Must(template.New("").Parse(MakefileTemplate))
 
@@ -86,7 +85,7 @@ func writeFile(p *bbk.ParseResult) {
 	fmt.Fprintln(os.Stdout, "\\strats")
 }
 
-func writeGraph(p *bbk.ParseResult) {
+func writeGraph(rs map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 	var rows = [][]string{
 		[]string{"name", "need"},
 	}
@@ -102,9 +101,9 @@ func writeGraph(p *bbk.ParseResult) {
 
 		seen[next] = true
 
-		for _, n := range next.NeedsParsed {
-			q = append(q, n)
-			rows = append(rows, []string{bbk.NodeName(next.Name), bbk.NodeName(n.Name)})
+		for _, n := range next.Needs {
+			q = append(q, rs[n])
+			rows = append(rows, []string{bbk.NodeName(next.Name), bbk.NodeName(n)})
 		}
 	}
 
