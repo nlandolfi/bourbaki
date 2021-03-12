@@ -93,7 +93,12 @@ const IndexTemplate = `<!DOCTYPE html>
 	<img src="../trademark.pdf" id="trademark"><h1>HyperText Index</h1>
 <ul>
 {{ range $k, $v := . }}
-	<li> <a href="./sheets/{{ $v.Name }}.html"> {{ $k }} </a> <br> <a href=".{{ $v.Name}}_graph.pdf"> Graph </a> <br> (Needs: {{ range $k, $v := .Needs }}<a href="./sheets/{{ $v }}.html">{{ $k }};</a>{{ end }})</li>
+	<li> <a href="./sheets/{{ $v.Name }}.html">{{ .Title }}</a>
+	<!--
+	<br> <a href=".{{ $v.Name}}_graph.pdf"> Graph </a> <br>
+	(Needs: {{ range $k, $v := .Needs }}<a href="./sheets/{{ $v }}.html">{{ $k }};</a>{{ end }})
+	-->
+	</li>
 {{ end }}
 </ul>
 </div>

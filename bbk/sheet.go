@@ -26,6 +26,9 @@ type ParseResult struct {
 	// only set if returned
 	//from ParseAll
 	NeededBy []string
+
+	// set in Parse
+	Title string
 }
 
 func Parse(f io.Reader) *ParseResult {
@@ -39,6 +42,7 @@ func Parse(f io.Reader) *ParseResult {
 				log.Fatalf("%s: multiple name directives", p.Name)
 			}
 			p.Name = strings.TrimPrefix(t, namePrefix)
+			p.Title = Title(p.Name)
 			continue
 		}
 		if strings.HasPrefix(t, needPrefix) {
