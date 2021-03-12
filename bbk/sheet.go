@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"os"
 	"strings"
@@ -21,6 +22,10 @@ type ParseResult struct {
 	Macros      []string
 	Lines       []string
 	NeedsParsed []*ParseResult
+
+	// only set if returned
+	//from ParseAll
+	NeededBy []string
 }
 
 func Parse(f io.Reader) *ParseResult {
@@ -54,4 +59,42 @@ func Parse(f io.Reader) *ParseResult {
 
 func Title(s string) string {
 	return strings.Title(strings.Join(strings.Split(s, "_"), " "))
+}
+
+func ParseAll(sheetsdir string) (map[string]*ParseResult, error) {
+	files, err := ioutil.ReadDir(sheetsdir)
+	if err != nil {
+		return nil, err
+	}
+	results := map[string]*ParseResult{}
+	for _, f := range files {
+		if !f.IsDir() {
+			continue
+		}
+
+		sheetfile, err := os.Open(fmt.Sprintf("%s/%s/sheet.tex", sheetsdir, f.Name()))
+		if os.IsNotExist(err) {
+			continue
+		} else if err != nil {
+			log.Fatal("opening sheet.tex: %v", err)
+		}
+
+		p := Parse(sheetfile)
+		if p.Name == "" {
+			log.Fatalf("no name for file %v", f)
+		}
+		results[p.Name] = p
+	}
+
+	for _, p := range results {
+		for _, n := range p.Needs {
+			o, ok := results[n]
+			if !ok {
+				log.Fatalf("missing %s", n)
+			}
+
+			o.NeededBy = append(o.NeededBy, p.Name)
+		}
+	}
+	return results, nil
 }

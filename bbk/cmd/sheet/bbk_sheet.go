@@ -174,4 +174,6 @@ clean:
 	make reset
 
 remake:
+	rm {{.Name}}.*
+	make reset
 	bbk_sheet -mode mk > Makefile`
