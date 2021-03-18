@@ -3,14 +3,14 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make introduction.pdf
+	make expectation_maximization.pdf
 	make graph.pdf
 
-introduction.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > introduction.tex
+expectation_maximization.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > expectation_maximization.tex
 
-introduction.pdf: ../../*.tex ../../trademark.pdf *.tex introduction.tex
-	pdflatex introduction.tex
+expectation_maximization.pdf: ../../*.tex ../../trademark.pdf *.tex expectation_maximization.tex
+	pdflatex expectation_maximization.tex
 	make defs
 
 graph.csv: sheet.tex
@@ -22,17 +22,17 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: introduction.pdf
-	open introduction.pdf
+open: expectation_maximization.pdf
+	open expectation_maximization.pdf
 
 o:
 	make open
 
-defs: introduction.tex
-	defs introduction.tex
+defs: expectation_maximization.tex
+	defs expectation_maximization.tex
 
 spell:
-	aspell -c introduction.tex
+	aspell -c expectation_maximization.tex
 
 s:
 	make spell
@@ -46,6 +46,6 @@ clean:
 	make reset
 
 remake:
-	rm introduction.*
+	rm expectation_maximization.*
 	make reset
 	bbk_sheet -mode mk > Makefile
