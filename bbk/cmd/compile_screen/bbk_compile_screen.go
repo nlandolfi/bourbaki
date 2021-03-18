@@ -91,6 +91,7 @@ const IndexTemplate = `<!DOCTYPE html>
 	<div class="page">
 	<div class="content">
 	<img src="../trademark.pdf" id="trademark"><h1>HyperText Index</h1>
+<a href="./sheets/introduction.html" style="margin:0px auto">View the project introduction.</a>
 <ul>
 {{ range $k, $v := . }}
 	<li> <a href="./sheets/{{ $v.Name }}.html">{{ .Title }}</a>
