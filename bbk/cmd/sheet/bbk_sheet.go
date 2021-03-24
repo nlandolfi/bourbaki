@@ -123,7 +123,7 @@ make:
 	bbk_sheet -mode c -in sheet.tex > {{ .Name }}.tex
 
 {{ .Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Name }}.tex
-	pdflatex {{ .Name }}.tex
+	pdflatex --file-line-error -interaction=nonstopmode {{ .Name }}.tex
 	make defs
 
 graph.csv: sheet.tex
