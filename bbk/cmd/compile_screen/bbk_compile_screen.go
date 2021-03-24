@@ -143,6 +143,8 @@ const SheetTemplate = `<!DOCTYPE html>
 		{{ else }}
 		{{ end }}
 		<a href="../index.html">Back to index</a>
+		<br>
+		<a href="./{{ .Name }}.pdf"> See sheet on own page </a>
 		</div>
 
 		<iframe id="sheet" src="./{{ .Name }}.pdf">
