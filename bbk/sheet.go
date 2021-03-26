@@ -61,10 +61,6 @@ func Parse(f io.Reader) *ParseResult {
 	return p
 }
 
-func Title(s string) string {
-	return strings.Title(strings.Join(strings.Split(s, "_"), " "))
-}
-
 func ParseAll(sheetsdir string) (map[string]*ParseResult, error) {
 	files, err := ioutil.ReadDir(sheetsdir)
 	if err != nil {
@@ -94,7 +90,7 @@ func ParseAll(sheetsdir string) (map[string]*ParseResult, error) {
 		for _, n := range p.Needs {
 			o, ok := results[n]
 			if !ok {
-				log.Fatalf("missing %s", n)
+				log.Fatalf("in needs for %s missing %s", p.Name, n)
 			}
 
 			o.NeededBy = append(o.NeededBy, p.Name)

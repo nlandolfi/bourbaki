@@ -1,0 +1,46 @@
+%!name:multivariate_normal_maximum_likelihood
+%!need:normal_maximum_likelihood
+%!need:multivariate_normals
+%!need:transpose
+
+\ssection{Why}
+
+What of the generalization to a multivariate gaussian.
+
+\ssection{Result}
+
+\begin{prop}
+Let $(x^1, \dots, x^n)$ be a dataset in $\R^d$.
+Let $f$ be a multivariate gaussian density with
+mean
+\[
+  \frac{1}{n} \sum_{k = 1}^{d} x^k
+\]
+and covariance
+\[
+  \frac{1}{n}
+  \sum_{k = 1}^{n}
+  %\left(
+  \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)
+  \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^\tp
+  %\right)
+  .
+\]
+Then $f$ is a maximum likelihood multivariate gaussian
+density.
+\begin{proof}
+  We express the log likelihood
+  \[
+    \sum_{k = 1}^{n} -\frac{1}{2}(x - \mu)^\tp \Sigma^{-1} (x-\mu) - \frac{1}{2}\log (2\pi)^d - \frac{1}{2} \log \det \Sigma
+  \]
+  Let $P = \Sigma^{-1}$. The $\log\det \Sigma$ is $\log\det P^{-1}$ is $\log \left(\det P\right)^{-1}$ is $- \log\det P$.
+  Use matrix calculus to get
+  \[
+    \frac{\partial \ell}{\partial P} = \sum_{k = 1}^{n} (x^k - \mu)(x^k - \mu)^\tp - P^{-1}.
+  \]
+\end{proof}
+\end{prop}
+We call these two objects
+the \ct{maximum likelihood mean}{}
+and \ct{maximum likelihood covariance}{}
+of the dataset.

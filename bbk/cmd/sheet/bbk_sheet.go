@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path"
 	"text/template"
 
 	"bbk"
@@ -22,10 +21,22 @@ var (
 func main() {
 	flag.Parse()
 
-	rs, _ := bbk.ParseAll(*sheetsDir)
-	wd, _ := os.Getwd()
-	name := path.Base(wd)
-	p := rs[name]
+	rs, err := bbk.ParseAll(*sheetsDir)
+	if err != nil {
+		log.Fatalf("bbk.ParseAll: %v", err)
+	}
+
+	// just want to get the name
+	f, err := os.Open("sheet.tex")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+	partialp := bbk.Parse(f)
+	p, ok := rs[partialp.Name]
+	if !ok {
+		log.Fatalf("name %q not found among sheets", partialp.Name)
+	}
 
 	switch *mode {
 	case "c":
