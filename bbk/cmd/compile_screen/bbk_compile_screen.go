@@ -10,16 +10,6 @@ import (
 	"bbk"
 )
 
-type Entry struct {
-	Name     string
-	Needs    []string
-	NeededBy []string
-}
-
-const (
-	sheetsFormat = "./static/sheets/%s.html"
-)
-
 var (
 	graphCSVFile = flag.String("graph-csv", "../../graph/graph.csv", "csv of the graph; probably implicit")
 	sheetsDir    = flag.String("sheets-dir", "../../sheets", "the sheets directory")
@@ -58,7 +48,7 @@ func main() {
 			fmt.Sprintf("./static/sheets/%s_graph.pdf", name),
 		)
 		if err != nil {
-			//	log.Printf("error transferring graph: %v", err)
+			log.Printf("error transferring graph: %v", err)
 		}
 	}
 
@@ -73,38 +63,21 @@ func main() {
 
 const IndexTemplate = `<!DOCTYPE html>
   <head>
-	  <head>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./fonts.css">
-
-		<link rel="stylesheet" href="./katex/katex.min.css">
-		<script defer src="./katex/katex.min.js"></script>
-		<script defer src="./katex/auto-render.min.js"
-						onload="renderMathInElement(document.body, { delimiters: [
-						  {left: "$$", right: "$$", display: true},
-							  {left: "$", right: "$", display: false},
-								  {left: "\\(", right: "\\)", display: false},
-									  {left: "\\[", right: "\\]", display: true}
-										]});"></script>
-  </head>
+	</head>
   <body>
-	<div class="page">
-	<div class="content">
-	<img src="../trademark.pdf" id="trademark"><h1>HyperText Index</h1>
-<a href="./sheets/introduction.html" style="margin:0px auto">View the project introduction.</a>
-<ul>
-{{ range $k, $v := . }}
-	<li> <a href="./sheets/{{ $v.Name }}.html">{{ .Title }}</a>
-	<!--
-	<br> <a href=".{{ $v.Name}}_graph.pdf"> Graph </a> <br>
-	(Needs: {{ range $k, $v := .Needs }}<a href="./sheets/{{ $v }}.html">{{ $k }};</a>{{ end }})
-	-->
-	</li>
-{{ end }}
-</ul>
-</div>
-</div>
-</body>
+		<div class="page">
+			<div class="content">
+				<img src="../trademark.pdf" id="trademark">
+				<h1>HyperText Index</h1>
+				<a href="./sheets/introduction.html" style="margin:0px auto">View the project introduction.</a>
+				<ul>
+				{{ range $k, $v := . }}<li> <a href="./sheets/{{ $v.Name }}.html">{{ .Title }}</a> </li>{{ end }}
+				</ul>
+		</div>
+	</div>
+	</body>
 </html>
 `
 
@@ -112,14 +85,6 @@ const SheetTemplate = `<!DOCTYPE html>
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
-		<link rel="stylesheet" href="../katex/katex.min.css">
-		<script defer src="../katex/katex.min.js"></script>
-		<script defer src="../katex/auto-render.min.js"
-						onload="renderMathInElement(document.body, {delimiters: [
-							{left: '$$', right: '$$', display: true},
-							{left: '$', right: '$', display: false},
-							{left: '\\(', right: '\\)', display: false},
-							{left: '\\[', right: '\\]', display: true}]});"></script>
   </head>
   <body>
 		<div class="info">
