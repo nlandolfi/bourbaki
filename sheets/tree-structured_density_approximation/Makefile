@@ -10,7 +10,7 @@ tree-structured_density_approximation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree-structured_density_approximation.tex
 
 tree-structured_density_approximation.pdf: ../../*.tex ../../trademark.pdf *.tex tree-structured_density_approximation.tex
-	pdflatex tree-structured_density_approximation.tex
+	pdflatex --file-line-error -interaction=nonstopmode tree-structured_density_approximation.tex
 	make defs
 
 graph.csv: sheet.tex

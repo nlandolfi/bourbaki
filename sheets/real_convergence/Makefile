@@ -10,7 +10,7 @@ real_convergence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_convergence.tex
 
 real_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex real_convergence.tex
-	pdflatex real_convergence.tex
+	pdflatex --file-line-error -interaction=nonstopmode real_convergence.tex
 	make defs
 
 graph.csv: sheet.tex

@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make matrix_determinants.pdf
+	make graph.pdf
 
 matrix_determinants.tex: sheet.tex
-	sheet -mode c -in sheet.tex > matrix_determinants.tex
+	bbk_sheet -mode c -in sheet.tex > matrix_determinants.tex
 
 matrix_determinants.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_determinants.tex
-	pdflatex matrix_determinants.tex
+	pdflatex --file-line-error -interaction=nonstopmode matrix_determinants.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: matrix_determinants.pdf
 	open matrix_determinants.pdf
@@ -26,5 +37,15 @@ spell:
 s:
 	make spell
 
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
 remake:
-	sheet -mode mk > Makefile
+	rm matrix_determinants.*
+	make reset
+	bbk_sheet -mode mk > Makefile

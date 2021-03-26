@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make sigma_algebra_event_independence.pdf
+	make graph.pdf
 
 sigma_algebra_event_independence.tex: sheet.tex
-	sheet -mode c -in sheet.tex > sigma_algebra_event_independence.tex
+	bbk_sheet -mode c -in sheet.tex > sigma_algebra_event_independence.tex
 
 sigma_algebra_event_independence.pdf: ../../*.tex ../../trademark.pdf *.tex sigma_algebra_event_independence.tex
-	pdflatex sigma_algebra_event_independence.tex
+	pdflatex --file-line-error -interaction=nonstopmode sigma_algebra_event_independence.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: sigma_algebra_event_independence.pdf
 	open sigma_algebra_event_independence.pdf
@@ -26,5 +37,15 @@ spell:
 s:
 	make spell
 
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
 remake:
-	sheet -mode mk > Makefile
+	rm sigma_algebra_event_independence.*
+	make reset
+	bbk_sheet -mode mk > Makefile

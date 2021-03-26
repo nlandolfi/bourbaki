@@ -10,7 +10,7 @@ subsets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subsets.tex
 
 subsets.pdf: ../../*.tex ../../trademark.pdf *.tex subsets.tex
-	pdflatex subsets.tex
+	pdflatex --file-line-error -interaction=nonstopmode subsets.tex
 	make defs
 
 graph.csv: sheet.tex

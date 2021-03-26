@@ -1,12 +1,26 @@
-groups.tex: sheet.tex
-	sheet -mode c -in sheet.tex > groups.tex
+# generated automatically by bbk_sheet
 
-groups.pdf: ../../*.tex ../../trademark.pdf *.tex groups.tex
-	pdflatex groups.tex
-	make defs
+.PHONY: make o spell s clean remake
 
 make:
 	make groups.pdf
+	make graph.pdf
+
+groups.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > groups.tex
+
+groups.pdf: ../../*.tex ../../trademark.pdf *.tex groups.tex
+	pdflatex --file-line-error -interaction=nonstopmode groups.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: groups.pdf
 	open groups.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm groups.*
+	make reset
+	bbk_sheet -mode mk > Makefile

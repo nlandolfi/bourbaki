@@ -1,12 +1,26 @@
-vector_bases.tex: sheet.tex
-	sheet -mode c -in sheet.tex > vector_bases.tex
+# generated automatically by bbk_sheet
 
-vector_bases.pdf: ../../*.tex ../../trademark.pdf *.tex vector_bases.tex
-	pdflatex vector_bases.tex
-	make defs
+.PHONY: make o spell s clean remake
 
 make:
 	make vector_bases.pdf
+	make graph.pdf
+
+vector_bases.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > vector_bases.tex
+
+vector_bases.pdf: ../../*.tex ../../trademark.pdf *.tex vector_bases.tex
+	pdflatex --file-line-error -interaction=nonstopmode vector_bases.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: vector_bases.pdf
 	open vector_bases.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm vector_bases.*
+	make reset
+	bbk_sheet -mode mk > Makefile

@@ -1,12 +1,26 @@
-set_operations.tex: sheet.tex
-	sheet -mode c -in sheet.tex > set_operations.tex
+# generated automatically by bbk_sheet
 
-set_operations.pdf: ../../*.tex ../../trademark.pdf *.tex set_operations.tex
-	pdflatex set_operations.tex
-	make defs
+.PHONY: make o spell s clean remake
 
 make:
 	make set_operations.pdf
+	make graph.pdf
+
+set_operations.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > set_operations.tex
+
+set_operations.pdf: ../../*.tex ../../trademark.pdf *.tex set_operations.tex
+	pdflatex --file-line-error -interaction=nonstopmode set_operations.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: set_operations.pdf
 	open set_operations.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm set_operations.*
+	make reset
+	bbk_sheet -mode mk > Makefile

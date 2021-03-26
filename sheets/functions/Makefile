@@ -10,7 +10,7 @@ functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > functions.tex
 
 functions.pdf: ../../*.tex ../../trademark.pdf *.tex functions.tex
-	pdflatex functions.tex
+	pdflatex --file-line-error -interaction=nonstopmode functions.tex
 	make defs
 
 graph.csv: sheet.tex

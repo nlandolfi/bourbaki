@@ -1,12 +1,26 @@
-complex_numbers.tex: sheet.tex
-	sheet -mode c -in sheet.tex > complex_numbers.tex
+# generated automatically by bbk_sheet
 
-complex_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex complex_numbers.tex
-	pdflatex complex_numbers.tex
-	make defs
+.PHONY: make o spell s clean remake
 
 make:
 	make complex_numbers.pdf
+	make graph.pdf
+
+complex_numbers.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > complex_numbers.tex
+
+complex_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex complex_numbers.tex
+	pdflatex --file-line-error -interaction=nonstopmode complex_numbers.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: complex_numbers.pdf
 	open complex_numbers.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm complex_numbers.*
+	make reset
+	bbk_sheet -mode mk > Makefile

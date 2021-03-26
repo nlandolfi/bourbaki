@@ -1,12 +1,26 @@
-metric_dense.tex: sheet.tex
-	sheet -mode c -in sheet.tex > metric_dense.tex
+# generated automatically by bbk_sheet
 
-metric_dense.pdf: ../../*.tex ../../trademark.pdf *.tex metric_dense.tex
-	pdflatex metric_dense.tex
-	make defs
+.PHONY: make o spell s clean remake
 
 make:
 	make metric_dense.pdf
+	make graph.pdf
+
+metric_dense.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > metric_dense.tex
+
+metric_dense.pdf: ../../*.tex ../../trademark.pdf *.tex metric_dense.tex
+	pdflatex --file-line-error -interaction=nonstopmode metric_dense.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: metric_dense.pdf
 	open metric_dense.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm metric_dense.*
+	make reset
+	bbk_sheet -mode mk > Makefile

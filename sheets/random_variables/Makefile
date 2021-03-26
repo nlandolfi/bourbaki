@@ -1,12 +1,26 @@
-random_variables.tex: sheet.tex
-	sheet -mode c -in sheet.tex > random_variables.tex
+# generated automatically by bbk_sheet
 
-random_variables.pdf: ../../*.tex ../../trademark.pdf *.tex random_variables.tex
-	pdflatex random_variables.tex
-	make defs
+.PHONY: make o spell s clean remake
 
 make:
 	make random_variables.pdf
+	make graph.pdf
+
+random_variables.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > random_variables.tex
+
+random_variables.pdf: ../../*.tex ../../trademark.pdf *.tex random_variables.tex
+	pdflatex --file-line-error -interaction=nonstopmode random_variables.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: random_variables.pdf
 	open random_variables.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm random_variables.*
+	make reset
+	bbk_sheet -mode mk > Makefile

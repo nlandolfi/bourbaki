@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make data_fitting.pdf
+	make graph.pdf
 
 data_fitting.tex: sheet.tex
-	sheet -mode c -in sheet.tex > data_fitting.tex
+	bbk_sheet -mode c -in sheet.tex > data_fitting.tex
 
 data_fitting.pdf: ../../*.tex ../../trademark.pdf *.tex data_fitting.tex
-	pdflatex data_fitting.tex
+	pdflatex --file-line-error -interaction=nonstopmode data_fitting.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: data_fitting.pdf
 	open data_fitting.pdf
@@ -25,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm data_fitting.*
+	make reset
+	bbk_sheet -mode mk > Makefile
