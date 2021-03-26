@@ -1,17 +1,15 @@
 \input{../../sheet.tex}
 \sbasic
 \input{../gaussian_maximum_likelihood/macros.tex}
-\input{../multivariate_gaussians/macros.tex}
+\input{../multivariate_normals/macros.tex}
 \input{../transpose/macros.tex}
 \input{../gaussian_densities/macros.tex}
-\input{../optimization/macros.tex}
 \input{../density_maximum_likelihood/macros.tex}
 \input{../multivariate_real_densities/macros.tex}
 \input{../positive_definite_matrices/macros.tex}
 \input{../matrix_determinants/macros.tex}
 \input{../vectors/macros.tex}
 \input{../probability_densities/macros.tex}
-\input{../total_orders/macros.tex}
 \input{../maximum_likelihood/macros.tex}
 \input{../density_selection/macros.tex}
 \input{../n-dimensional_space/macros.tex}
@@ -22,8 +20,7 @@
 \input{../groups/macros.tex}
 \input{../probability_outcomes/macros.tex}
 \input{../probability_distributions/macros.tex}
-\input{../partial_orders/macros.tex}
-\input{../set_specification/macros.tex}
+\input{../optimization/macros.tex}
 \input{../distribution_selection/macros.tex}
 \input{../dataset/macros.tex}
 \input{../space/macros.tex}
@@ -34,24 +31,28 @@
 \input{../probability/macros.tex}
 \input{../cardinality/macros.tex}
 \input{../real_summation/macros.tex}
-\input{../relation_properties/macros.tex}
-\input{../set_extension/macros.tex}
+\input{../total_orders/macros.tex}
 \input{../direct_products/macros.tex}
 \input{../operations/macros.tex}
 \input{../solving_equations/macros.tex}
+\input{../common_sense/macros.tex}
 \input{../natural_numbers/macros.tex}
 \input{../natural_summation/macros.tex}
-\input{../relations/macros.tex}
-\input{../identity/macros.tex}
+\input{../partial_orders/macros.tex}
+\input{../set_specification/macros.tex}
 \input{../functions/macros.tex}
 \input{../arithmetic/macros.tex}
 \input{../equations/macros.tex}
-\input{../ordered_pairs/macros.tex}
+\input{../relation_properties/macros.tex}
+\input{../set_extension/macros.tex}
+\input{../relations/macros.tex}
 \input{../objects/macros.tex}
+\input{../identity/macros.tex}
+\input{../ordered_pairs/macros.tex}
 \input{../sets/macros.tex}
 \input{./macros.tex}
 \sstart
-\stitle{Multivariate Gaussian Maximum Likelihood}
+\stitle{Multivariate Normal Maximum Likelihood}
 
 \ssection{Why}
 
@@ -81,7 +82,12 @@ density.
 \begin{proof}
   We express the log likelihood
   \[
-    \sum_{k = 1}^{n} -\frac{1}{2}(x - \mu)^\tp \Sigma^{-1} (x-\mu)
+    \sum_{k = 1}^{n} -\frac{1}{2}(x - \mu)^\tp \Sigma^{-1} (x-\mu) - \frac{1}{2}\log (2\pi)^d - \frac{1}{2} \log \det \Sigma
+  \]
+  Let $P = \Sigma^{-1}$. The $\log\det \Sigma$ is $\log\det P^{-1}$ is $\log \left(\det P\right)^{-1}$ is $- \log\det P$.
+  Use matrix calculus to get
+  \[
+    \frac{\partial \ell}{\partial P} = \sum_{k = 1}^{n} (x^k - \mu)(x^k - \mu)^\tp - P^{-1}.
   \]
 \end{proof}
 \end{prop}

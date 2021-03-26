@@ -48,7 +48,7 @@ func main() {
 			fmt.Sprintf("./static/sheets/%s_graph.pdf", name),
 		)
 		if err != nil {
-			log.Printf("error transferring graph: %v", err)
+			//	log.Printf("error transferring graph: %v", err)
 		}
 	}
 
