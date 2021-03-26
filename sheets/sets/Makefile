@@ -10,7 +10,7 @@ sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sets.tex
 
 sets.pdf: ../../*.tex ../../trademark.pdf *.tex sets.tex
-	pdflatex sets.tex
+	pdflatex --file-line-error -interaction=nonstopmode sets.tex
 	make defs
 
 graph.csv: sheet.tex

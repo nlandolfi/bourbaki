@@ -10,7 +10,7 @@ arithmetic.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > arithmetic.tex
 
 arithmetic.pdf: ../../*.tex ../../trademark.pdf *.tex arithmetic.tex
-	pdflatex arithmetic.tex
+	pdflatex --file-line-error -interaction=nonstopmode arithmetic.tex
 	make defs
 
 graph.csv: sheet.tex

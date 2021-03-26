@@ -10,7 +10,7 @@ metrics.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metrics.tex
 
 metrics.pdf: ../../*.tex ../../trademark.pdf *.tex metrics.tex
-	pdflatex metrics.tex
+	pdflatex --file-line-error -interaction=nonstopmode metrics.tex
 	make defs
 
 graph.csv: sheet.tex

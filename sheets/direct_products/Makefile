@@ -10,7 +10,7 @@ direct_products.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > direct_products.tex
 
 direct_products.pdf: ../../*.tex ../../trademark.pdf *.tex direct_products.tex
-	pdflatex direct_products.tex
+	pdflatex --file-line-error -interaction=nonstopmode direct_products.tex
 	make defs
 
 graph.csv: sheet.tex

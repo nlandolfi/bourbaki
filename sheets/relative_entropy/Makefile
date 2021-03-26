@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make relative_entropy.pdf
+	make graph.pdf
 
 relative_entropy.tex: sheet.tex
-	sheet -mode c -in sheet.tex > relative_entropy.tex
+	bbk_sheet -mode c -in sheet.tex > relative_entropy.tex
 
 relative_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex relative_entropy.tex
-	pdflatex relative_entropy.tex
+	pdflatex --file-line-error -interaction=nonstopmode relative_entropy.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: relative_entropy.pdf
 	open relative_entropy.pdf
@@ -25,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm relative_entropy.*
+	make reset
+	bbk_sheet -mode mk > Makefile

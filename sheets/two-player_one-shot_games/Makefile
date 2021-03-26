@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make two-player_one-shot_games.pdf
+	make graph.pdf
 
 two-player_one-shot_games.tex: sheet.tex
-	sheet -mode c -in sheet.tex > two-player_one-shot_games.tex
+	bbk_sheet -mode c -in sheet.tex > two-player_one-shot_games.tex
 
 two-player_one-shot_games.pdf: ../../*.tex ../../trademark.pdf *.tex two-player_one-shot_games.tex
-	pdflatex two-player_one-shot_games.tex
+	pdflatex --file-line-error -interaction=nonstopmode two-player_one-shot_games.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: two-player_one-shot_games.pdf
 	open two-player_one-shot_games.pdf
@@ -26,5 +37,15 @@ spell:
 s:
 	make spell
 
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
 remake:
-	sheet -mode mk > Makefile
+	rm two-player_one-shot_games.*
+	make reset
+	bbk_sheet -mode mk > Makefile

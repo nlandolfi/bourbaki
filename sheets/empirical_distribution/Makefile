@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make empirical_distribution.pdf
+	make graph.pdf
 
 empirical_distribution.tex: sheet.tex
-	sheet -mode c -in sheet.tex > empirical_distribution.tex
+	bbk_sheet -mode c -in sheet.tex > empirical_distribution.tex
 
 empirical_distribution.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_distribution.tex
-	pdflatex empirical_distribution.tex
+	pdflatex --file-line-error -interaction=nonstopmode empirical_distribution.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: empirical_distribution.pdf
 	open empirical_distribution.pdf
@@ -25,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm empirical_distribution.*
+	make reset
+	bbk_sheet -mode mk > Makefile

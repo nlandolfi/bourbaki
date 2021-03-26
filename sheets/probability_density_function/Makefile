@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make probability_density_function.pdf
+	make graph.pdf
 
 probability_density_function.tex: sheet.tex
-	sheet -mode c -in sheet.tex > probability_density_function.tex
+	bbk_sheet -mode c -in sheet.tex > probability_density_function.tex
 
 probability_density_function.pdf: ../../*.tex ../../trademark.pdf *.tex probability_density_function.tex
-	pdflatex probability_density_function.tex
+	pdflatex --file-line-error -interaction=nonstopmode probability_density_function.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: probability_density_function.pdf
 	open probability_density_function.pdf
@@ -26,5 +37,15 @@ spell:
 s:
 	make spell
 
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
 remake:
-	sheet -mode mk > Makefile
+	rm probability_density_function.*
+	make reset
+	bbk_sheet -mode mk > Makefile

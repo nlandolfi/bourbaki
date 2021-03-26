@@ -1,12 +1,26 @@
-linear_functions.tex: sheet.tex
-	sheet -mode c -in sheet.tex > linear_functions.tex
+# generated automatically by bbk_sheet
 
-linear_functions.pdf: ../../*.tex ../../trademark.pdf *.tex linear_functions.tex
-	pdflatex linear_functions.tex
-	make defs
+.PHONY: make o spell s clean remake
 
 make:
 	make linear_functions.pdf
+	make graph.pdf
+
+linear_functions.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > linear_functions.tex
+
+linear_functions.pdf: ../../*.tex ../../trademark.pdf *.tex linear_functions.tex
+	pdflatex --file-line-error -interaction=nonstopmode linear_functions.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: linear_functions.pdf
 	open linear_functions.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm linear_functions.*
+	make reset
+	bbk_sheet -mode mk > Makefile

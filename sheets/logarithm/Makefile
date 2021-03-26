@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make logarithm.pdf
+	make graph.pdf
 
 logarithm.tex: sheet.tex
-	sheet -mode c -in sheet.tex > logarithm.tex
+	bbk_sheet -mode c -in sheet.tex > logarithm.tex
 
 logarithm.pdf: ../../*.tex ../../trademark.pdf *.tex logarithm.tex
-	pdflatex logarithm.tex
+	pdflatex --file-line-error -interaction=nonstopmode logarithm.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: logarithm.pdf
 	open logarithm.pdf
@@ -25,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm logarithm.*
+	make reset
+	bbk_sheet -mode mk > Makefile

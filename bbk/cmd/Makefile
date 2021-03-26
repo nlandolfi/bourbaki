@@ -5,3 +5,4 @@ make:
 	go install implicit_graph/bbk_implicit_graph.go
 	go install compile_screen/bbk_compile_screen.go
 	go install sheet/bbk_sheet.go
+	go install sheets/bbk_sheets.go

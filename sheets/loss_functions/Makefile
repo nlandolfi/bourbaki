@@ -1,15 +1,26 @@
-# generated automatically by sheet.go
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make loss_functions.pdf
+	make graph.pdf
 
 loss_functions.tex: sheet.tex
-	sheet -mode c -in sheet.tex > loss_functions.tex
+	bbk_sheet -mode c -in sheet.tex > loss_functions.tex
 
 loss_functions.pdf: ../../*.tex ../../trademark.pdf *.tex loss_functions.tex
-	pdflatex loss_functions.tex
+	pdflatex --file-line-error -interaction=nonstopmode loss_functions.tex
 	make defs
 
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: loss_functions.pdf
 	open loss_functions.pdf
@@ -26,5 +37,15 @@ spell:
 s:
 	make spell
 
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
 remake:
-	sheet -mode mk > Makefile
+	rm loss_functions.*
+	make reset
+	bbk_sheet -mode mk > Makefile

@@ -10,7 +10,7 @@ sequences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sequences.tex
 
 sequences.pdf: ../../*.tex ../../trademark.pdf *.tex sequences.tex
-	pdflatex sequences.tex
+	pdflatex --file-line-error -interaction=nonstopmode sequences.tex
 	make defs
 
 graph.csv: sheet.tex

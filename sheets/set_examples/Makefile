@@ -1,12 +1,26 @@
-set_examples.tex: sheet.tex
-	sheet -mode c -in sheet.tex > set_examples.tex
+# generated automatically by bbk_sheet
 
-set_examples.pdf: ../../*.tex ../../trademark.pdf *.tex set_examples.tex
-	pdflatex set_examples.tex
-	make defs
+.PHONY: make o spell s clean remake
 
 make:
 	make set_examples.pdf
+	make graph.pdf
+
+set_examples.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > set_examples.tex
+
+set_examples.pdf: ../../*.tex ../../trademark.pdf *.tex set_examples.tex
+	pdflatex --file-line-error -interaction=nonstopmode set_examples.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: set_examples.pdf
 	open set_examples.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm set_examples.*
+	make reset
+	bbk_sheet -mode mk > Makefile

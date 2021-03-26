@@ -1,12 +1,26 @@
-real_numbers.tex: sheet.tex
-	sheet -mode c -in sheet.tex > real_numbers.tex
+# generated automatically by bbk_sheet
 
-real_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex real_numbers.tex
-	pdflatex real_numbers.tex
-	make defs
+.PHONY: make o spell s clean remake
 
 make:
 	make real_numbers.pdf
+	make graph.pdf
+
+real_numbers.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > real_numbers.tex
+
+real_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex real_numbers.tex
+	pdflatex --file-line-error -interaction=nonstopmode real_numbers.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: real_numbers.pdf
 	open real_numbers.pdf
@@ -22,3 +36,16 @@ spell:
 
 s:
 	make spell
+
+reset:
+	rm graph.pdf
+	rm graph.csv
+	rm graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm real_numbers.*
+	make reset
+	bbk_sheet -mode mk > Makefile
