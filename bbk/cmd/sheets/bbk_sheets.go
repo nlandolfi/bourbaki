@@ -35,6 +35,27 @@ func main() {
 	}
 	sort.Strings(names)
 
+	/*
+		for _, name := range names {
+			f, err := os.Open(path.Join(*sheetsDir, name, "sheet.tex"))
+			if err != nil {
+				log.Fatal(err)
+			}
+			h := sha256.New()
+			if _, err := io.Copy(h, f); err != nil {
+				log.Fatal(err)
+			}
+			f.Close()
+
+			fmt.Printf("%x", h.Sum(nil))
+
+			currentHashFile, err := os.Open(
+			f, err = os.Create(fmt.Sprintf("/tmp/bbk_sheets_%s",
+				name))
+
+		}
+	*/
+
 	tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate))
 	for _, name := range names {
 		out, err := os.Create(path.Join(*sheetsDir, name, "Makefile"))
