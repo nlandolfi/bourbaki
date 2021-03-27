@@ -1,17 +1,51 @@
-characteristic_functions.pdf: ../*.tex ../trademark.pdf *.tex
-	pdflatex characteristic_functions.tex
-	make defs
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make characteristic_functions.pdf
+	make graph.pdf
+
+characteristic_functions.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > characteristic_functions.tex
+
+characteristic_functions.pdf: ../../*.tex ../../trademark.pdf *.tex characteristic_functions.tex
+	pdflatex --file-line-error -interaction=nonstopmode characteristic_functions.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: characteristic_functions.pdf
 	open characteristic_functions.pdf
 
+o:
+	make open
+
 defs: characteristic_functions.tex
 	defs characteristic_functions.tex
 
+spell:
+	aspell -c characteristic_functions.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
 clean:
-	rm *.aux
-	rm *.out
-	rm *.log
+	make reset
+
+remake:
+	rm -f characteristic_functions.*
+	make reset
+	bbk_sheet -mode mk > Makefile

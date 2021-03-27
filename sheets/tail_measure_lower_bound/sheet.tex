@@ -1,0 +1,67 @@
+%!name:tail_measure_lower_bound
+%!need:variance
+
+\ssection{Why}
+
+\ssection{Result}
+We bound below the measure
+that a non-negative
+measurable real-valued
+function exceeds some
+value by its integral.
+
+\begin{prop}
+Let $(X, \SA, \mu)$
+be a measure space.
+Let $g: X \to [0, \infty]$
+be measurable
+and square-integrable.
+Then for all $t$ such that
+$\int t d\mu \in [0, \int g d\mu)$,
+\[
+  \mu(\Set*{x \in X}{g(x) > t}) \geq \frac{(\int (g - t) d\mu)^2}{\int g^2d\mu}.
+\]
+
+\begin{proof}
+  Let $t$ such that $\int t d\mu \in [0, \int g)$.
+  We have selected $t$ so that $\int (g - t)d\mu \geq 0$.
+  Define $h = (g - t)^+$
+  and $A = \Set*{x \in X}{h(x) > 0}$.
+  Then
+  \[
+    \begin{aligned}
+      \int (g - t) d\mu
+      \leq \int h d\mu
+      = \int h \chi_{A} d\mu
+      \leq \sqrt{\int h^2 d\mu \int \chi_{A}^2 \; d\mu}
+    \end{aligned}
+  \]
+\end{proof}
+Now $g^2 > h^2$, so $\int g^2 d\mu \geq \int h^2 d\mu$.
+Also $\chi_A^2 = \chi_A$ so $\int \chi_A^2 = \mu(A)$.
+$h(x) > 0$ if and only if $g(x) \geq t$ for all $x$.
+So $A = \Set*{x \in X}{g(x) \geq t}$.
+Combining we have:
+\[
+  \int (g - t)d\mu \leq \sqrt{\parens*{\int g^2 d\mu} \mu(A)}.
+\]
+
+\end{prop}
+
+\begin{prop}
+  Let $X$ be a random variable
+  with $\Expect(X^2) \leq \infty$.
+  Then for all $t \in [0, \Expect(X))$,
+  we have
+  \[
+    P\parens*{X > t} \geq
+    \frac{
+      \parens*{\Expect(X) - t}^2
+    }{
+      \Expect{X^2}
+    }.
+  \]
+\end{prop}
+
+The above is also called the
+\ct{Paley-Zygmund Inequality}{paleyzygmondinequality}.

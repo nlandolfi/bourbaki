@@ -38,14 +38,14 @@ s:
 	make spell
 
 reset:
-	rm graph.pdf
-	rm graph.csv
-	rm graph.graphviz
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
 
 clean:
 	make reset
 
 remake:
-	rm integer_numbers.*
+	rm -f integer_numbers.*
 	make reset
 	bbk_sheet -mode mk > Makefile

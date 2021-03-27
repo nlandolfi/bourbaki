@@ -38,14 +38,14 @@ s:
 	make spell
 
 reset:
-	rm graph.pdf
-	rm graph.csv
-	rm graph.graphviz
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
 
 clean:
 	make reset
 
 remake:
-	rm closest_point_property.*
+	rm -f closest_point_property.*
 	make reset
 	bbk_sheet -mode mk > Makefile

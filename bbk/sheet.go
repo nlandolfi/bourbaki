@@ -74,7 +74,7 @@ func ParseAll(sheetsdir string) (map[string]*ParseResult, error) {
 
 		sheetfile, err := os.Open(fmt.Sprintf("%s/%s/sheet.tex", sheetsdir, f.Name()))
 		if os.IsNotExist(err) {
-			// log.Printf("%q is a sheets directory, but is missing sheets.tex", f.Name())
+			log.Printf("%q is a sheets directory, but is missing sheets.tex", f.Name())
 			continue
 		} else if err != nil {
 			log.Fatalf("opening sheet.tex: %v", err)

@@ -38,14 +38,14 @@ s:
 	make spell
 
 reset:
-	rm graph.pdf
-	rm graph.csv
-	rm graph.graphviz
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
 
 clean:
 	make reset
 
 remake:
-	rm data_matrix.*
+	rm -f data_matrix.*
 	make reset
 	bbk_sheet -mode mk > Makefile
