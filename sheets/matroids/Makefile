@@ -1,12 +1,51 @@
-matroids.pdf: ../*.tex ../trademark.pdf *.tex
-	pdflatex matroids.tex
-	make defs
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make matroids.pdf
+	make graph.pdf
+
+matroids.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > matroids.tex
+
+matroids.pdf: ../../*.tex ../../trademark.pdf *.tex matroids.tex
+	pdflatex --file-line-error -interaction=nonstopmode matroids.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: matroids.pdf
 	open matroids.pdf
 
+o:
+	make open
+
 defs: matroids.tex
 	defs matroids.tex
+
+spell:
+	aspell -c matroids.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f matroids.*
+	make reset
+	bbk_sheet -mode mk > Makefile

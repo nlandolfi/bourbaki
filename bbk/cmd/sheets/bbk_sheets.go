@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"path"
+	"sort"
 	"sync"
 
 	"bbk"
@@ -28,17 +29,24 @@ func main() {
 
 	log.Printf("%d sheets", len(results))
 
-	for name, p := range results {
-		tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate))
+	names := make([]string, 0, len(results))
+	for n := range results {
+		names = append(names, n)
+	}
+	sort.Strings(names)
 
+	tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate))
+	for _, name := range names {
 		out, err := os.Create(path.Join(*sheetsDir, name, "Makefile"))
 		if err != nil {
 			log.Fatalf("os.Create: %v", err)
 		}
-		if err := tmpl.Execute(out, p); err != nil {
+		if err := tmpl.Execute(out, results[name]); err != nil {
 			log.Fatal(err)
 		}
-		out.Close()
+		if err := out.Close(); err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	/*
@@ -87,7 +95,7 @@ func main() {
 		}(ch)
 	}
 
-	for n := range results {
+	for _, n := range names {
 		wg.Add(1)
 		ch <- n
 	}
