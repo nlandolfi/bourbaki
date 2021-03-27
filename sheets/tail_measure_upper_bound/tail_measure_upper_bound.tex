@@ -1,0 +1,81 @@
+\input{../../sheet.tex}
+\sbasic
+\input{../variance/macros.tex}
+\input{../expectation/macros.tex}
+\input{../random_variables/macros.tex}
+\input{../probability_measures/macros.tex}
+\input{../measure_space/macros.tex}
+\input{../subset_algebras/macros.tex}
+\input{../set_operations/macros.tex}
+\input{../set_specification/macros.tex}
+\input{../cardinality/macros.tex}
+\input{../algebras/macros.tex}
+\input{../set_extension/macros.tex}
+\input{../natural_numbers/macros.tex}
+\input{../operations/macros.tex}
+\input{../identity/macros.tex}
+\input{../sets/macros.tex}
+\input{../functions/macros.tex}
+\input{../objects/macros.tex}
+\input{../relations/macros.tex}
+\input{../ordered_pairs/macros.tex}
+\input{./macros.tex}
+\sstart
+\stitle{Tail Measure Upper Bound}
+
+\ssection{Why}
+
+Consider bounding
+the measure where
+two functions differ.
+We would look at their
+absolute value, and the
+measure of where this
+is greater than zero.
+The absolute value of
+their difference is a
+non-negative measurable
+random variable.
+
+\ssection{Result}
+We bound the measure
+that a non-negative
+measurable real-valued
+function exceeds some
+value by its integral.
+
+\begin{prop}
+Let $(X, \SA, \mu)$
+be a measure space.
+Let $g: X \to [0, \infty]$
+be measurable.
+Then for all $t > 0$,
+\[
+  \mu(\Set*{x \in X}{g(x) \geq t}) \leq \frac{\int g d\mu}{t}.
+\]
+
+\begin{proof}
+  Let $A = \Set*{x \in X}{g(x) \geq t}$.
+  Define $h: X \to R$ by
+  \[
+    h(x) = \begin{cases}
+      1 & \text{ if } g(x) \geq t \\
+      0 & \text{ otherwise. }
+    \end{cases}
+  \]
+  First, $\mu(A) = \int h d\mu$.
+  Second, $h \leq g$.
+  So:
+  \[
+    \begin{aligned}
+    \mu(\Set*{x \in X}{g(x) \geq t})
+    &= \int h d\mu
+    &\leq \int g/t d\mu
+    &= \frac{\int g d\mu}{t}.
+    \end{aligned}
+  \]
+\end{proof}
+\end{prop}
+
+The above is also called \ct{Markov's Inequality}{chebychevsinequality}
+\strats

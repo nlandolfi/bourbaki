@@ -1,9 +1,26 @@
-convergence_in_measure.pdf: ../*.tex ../trademark.pdf *.tex
-	pdflatex convergence_in_measure.tex
-	make defs
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make convergence_in_measure.pdf
+	make graph.pdf
+
+convergence_in_measure.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > convergence_in_measure.tex
+
+convergence_in_measure.pdf: ../../*.tex ../../trademark.pdf *.tex convergence_in_measure.tex
+	pdflatex --file-line-error -interaction=nonstopmode convergence_in_measure.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: convergence_in_measure.pdf
 	open convergence_in_measure.pdf
@@ -13,3 +30,22 @@ o:
 
 defs: convergence_in_measure.tex
 	defs convergence_in_measure.tex
+
+spell:
+	aspell -c convergence_in_measure.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f convergence_in_measure.*
+	make reset
+	bbk_sheet -mode mk > Makefile
