@@ -1,12 +1,51 @@
-real_integral_limit_inferior_bound.pdf: ../*.tex ../trademark.pdf *.tex
-	pdflatex real_integral_limit_inferior_bound.tex
-	make defs
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make real_integral_limit_inferior_bound.pdf
+	make graph.pdf
+
+real_integral_limit_inferior_bound.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > real_integral_limit_inferior_bound.tex
+
+real_integral_limit_inferior_bound.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_limit_inferior_bound.tex
+	pdflatex --file-line-error -interaction=nonstopmode real_integral_limit_inferior_bound.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: real_integral_limit_inferior_bound.pdf
 	open real_integral_limit_inferior_bound.pdf
 
+o:
+	make open
+
 defs: real_integral_limit_inferior_bound.tex
 	defs real_integral_limit_inferior_bound.tex
+
+spell:
+	aspell -c real_integral_limit_inferior_bound.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f real_integral_limit_inferior_bound.*
+	make reset
+	bbk_sheet -mode mk > Makefile

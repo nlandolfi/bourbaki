@@ -85,6 +85,7 @@ func ParseAll(sheetsdir string) (map[string]*ParseResult, error) {
 			log.Fatalf("no name for file %v", f)
 		}
 		results[p.Name] = p
+		sheetfile.Close()
 	}
 
 	for _, p := range results {
