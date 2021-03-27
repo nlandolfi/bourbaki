@@ -38,14 +38,14 @@ s:
 	make spell
 
 reset:
-	rm graph.pdf
-	rm graph.csv
-	rm graph.graphviz
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
 
 clean:
 	make reset
 
 remake:
-	rm sigma_algebra_event_independence.*
+	rm -f sigma_algebra_event_independence.*
 	make reset
 	bbk_sheet -mode mk > Makefile
