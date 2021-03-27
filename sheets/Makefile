@@ -1,4 +1,4 @@
-.PHONY: all
+.PHONY: make
 
-all:
+make:
 	bbk_sheets
