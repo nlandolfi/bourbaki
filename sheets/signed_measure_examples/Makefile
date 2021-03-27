@@ -1,12 +1,51 @@
-signed_measure_examples.pdf: ../*.tex ../trademark.pdf *.tex
-	pdflatex signed_measure_examples.tex
-	make defs
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
 
 make:
 	make signed_measure_examples.pdf
+	make graph.pdf
+
+signed_measure_examples.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > signed_measure_examples.tex
+
+signed_measure_examples.pdf: ../../*.tex ../../trademark.pdf *.tex signed_measure_examples.tex
+	pdflatex --file-line-error -interaction=nonstopmode signed_measure_examples.tex
+	make defs
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
 
 open: signed_measure_examples.pdf
 	open signed_measure_examples.pdf
 
+o:
+	make open
+
 defs: signed_measure_examples.tex
 	defs signed_measure_examples.tex
+
+spell:
+	aspell -c signed_measure_examples.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f signed_measure_examples.*
+	make reset
+	bbk_sheet -mode mk > Makefile
