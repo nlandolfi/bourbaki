@@ -38,7 +38,7 @@ func main() {
 		if os.IsNotExist(err) {
 			continue
 		} else if err != nil {
-			log.Fatal("opening sheet.tex: %v", err)
+			log.Fatalf("opening sheet.tex: %v", err)
 		}
 
 		p := bbk.Parse(sheetfile)
@@ -55,6 +55,7 @@ func main() {
 		if len(p.Needs) == 0 {
 			entries = append(entries, []string{bbk.Title(p.Name), ""})
 		}
+		sheetfile.Close()
 	}
 
 	w := csv.NewWriter(os.Stdout)
