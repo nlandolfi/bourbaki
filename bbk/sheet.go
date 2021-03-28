@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -97,6 +98,11 @@ func ParseAll(sheetsdir string) (map[string]*ParseResult, error) {
 
 			o.NeededBy = append(o.NeededBy, p.Name)
 		}
+	}
+
+	for _, p := range results {
+		sort.Strings(p.Needs)
+		sort.Strings(p.NeededBy)
 	}
 	return results, nil
 }

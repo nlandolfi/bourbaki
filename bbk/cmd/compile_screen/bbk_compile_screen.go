@@ -11,8 +11,7 @@ import (
 )
 
 var (
-	graphCSVFile = flag.String("graph-csv", "../../graph/graph.csv", "csv of the graph; probably implicit")
-	sheetsDir    = flag.String("sheets-dir", "../../sheets", "the sheets directory")
+	sheetsDir = flag.String("sheets-dir", "../../sheets", "the sheets directory")
 )
 
 func main() {
@@ -40,7 +39,7 @@ func main() {
 			fmt.Sprintf("./static/sheets/%s.pdf", name),
 		)
 		if err != nil {
-			log.Printf("error: %v", err)
+			log.Fatalf("error transferring %s/sheet.pdf: %v", name, err)
 		}
 
 		_, err = bbk.CopyFile(
@@ -48,16 +47,16 @@ func main() {
 			fmt.Sprintf("./static/sheets/%s_graph.pdf", name),
 		)
 		if err != nil {
-			log.Printf("error transferring graph: %v", err)
+			log.Fatalf("error transferring %s/graph.pdf: %v", name, err)
 		}
 	}
 
 	f, err := os.Create("./static/index.html")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("os.Create index.html: %v", err)
 	}
 	if err := indexTemplate.Execute(f, results); err != nil {
-		log.Fatal(err)
+		log.Fatalf("executing index template: %v", err)
 	}
 }
 
