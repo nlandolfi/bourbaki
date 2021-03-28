@@ -93,7 +93,7 @@ func main() {
 	ch := make(chan string, len(results))
 
 	// these are the workers
-	for i := 0; i < 64; i++ {
+	for i := 0; i < 32; i++ {
 		go func(in <-chan string) {
 			for name := range ch {
 				c := exec.Command("make", "remake")
