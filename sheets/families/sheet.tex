@@ -1,124 +1,62 @@
 %!name:families
-%!need:set_operations
+%!need:functions
+%!need:set_specification
+%!need:subsets
 
 \ssection{Why}
 
-We want to generalize operations beyond
-two objects.
+It is useful to
+have some language and
+notation for talking about
+a set of sets.
 
 \ssection{Definition}
 
-Let $A,B$ be non-empty sets.
-A \ct{family}{family} of elements of a first
-set \ct{indexed}{familyindexing} by elements
-of a second set is the range of a function
-from the second set to the first set.
-We call second set the \ct{index set}{indexset}.
+A \ct{family} of sets
+is a set of sets.
+Experience shows that it is
+useful to have these associated
+with the elements of a well-known
+second set.
 
-If the index set is a finite set,
-we call the family a
-\ct{finite family}{finitefamily}.
-If the index set a countable set,
-we call the family a
-\ct{countable family}{countablefamily}.
-If the index set is an uncountable set,
-we call the family a
-\ct{uncountable family}{uncountablefamily}.
+An \ct{indexed family of sets}{} is a function
+from one set to the power set of a second set.
+We call the first set the \ct{index set}{}.
+We call the second set the \ct{base set}{}.
+We call the range of the family
+a \ct{family}{} of sets.
 
-If the codomain is a set of sets, we
-call the family a \ct{family of sets}{familyofsets}.
-We often use a subset of the whole natural numbers
-as the index set.
-In this case, and for other indexed sets with
-orders, we call the family an \ct{ordered family}.
+%If the index set is a finite set,
+%we call the family a
+%\ct{finite family}{finitefamily}.
+%If the index set a countable set,
+%we call the family a
+%\ct{countable family}{countablefamily}.
+%If the index set is an uncountable set,
+%we call the family a
+%\ct{uncountable family}{uncountablefamily}.
+
+%If the codomain is a set of sets, we
+%call the family a \ct{family of sets}{familyofsets}.
+%We often use a subset of the natural numbers
+%as the index set.
+%In this case, and for other indexed sets with
+%orders, we call the family an \ct{ordered family}.
 
 \ssubsection{Notation}
 
-Let $A$ be a non-empty set.
-We denote the index set by $I$, a mnemonic
-for index.
-For $i \in I$, let we denote the result of applying
-the function to $i$ by $a_{i}$; the notation evokes
-evokes function notation but avoids naming the
-function.
+Let $A$ and $I$ be be a non-empty sets.
+We use $I$ as a mnemonic for \say{index}
+set.
+Let $a: I \to \powerset{A}$ be a family.
+For $i \in I$, we follow the function notation
+and denote the result of applying $a$ to $i$ by
+$a_{i}$.
 
-We denote the family of $a_{\alpha}$ indexed with $I$
+We denote the range of the family by
+family of $a_{\alpha}$ indexed with $I$
 by $\set{a_{\alpha}}_{\alpha \in I}$, which is short-hand
 for \rt{set-builder notation}{setbuildernotation}.
 We read this notation \say{a sub-alpha, alpha in I.}
 %If for each $\alpha \in I$ we have $A_{\alpha} \subset S$, we'd write $\set{A_{\alpha}}{\alpha \in I}$.
 
-\ssection{Operations}
-
-The \ct{pairwise extension}{pairwiseextension}
-of a commutative operation is the function from
-finite families of the \rt{ground set}{groundset}
-to the \rt{ground set}{groundset} obtained by
-applying the operation pairwise to elements.
-
-The \ct{ordered pairwise extension}{orderedpairwiseextension}
-of an operation is the function from finite families
-\rt{ground set}{groundset} to the
-\rt{ground set}{groundset} obtained by
-applying the operation pairwise to elements in order.
-
-\ssubsection{Notation}
-
-Let $(A, +)$ be an \rt{algebra}{algebra} and
-$\set{A_{i}}_{i=1}^{n}$ a finite family
-of elements of $A$. We denote the pairwise
-extension by
-\[
-  \overset{n}{\underset{i=1}{+}} A_i
-\]
-
-\ssection{Family Set Algebra}
-
-We define the set whose elements are the objects
-which are contained in at least one family member
-the \ct{family union}{familyunion}.
-We define the set whose elements are the objects
-which are contained in all of the family members
-the \ct{family intersection}{familyintersection}.
-
-\ssubsection{Notation}
-
-We denote the family union by $\union_{\alpha \in I} A_{\alpha}$.
-We read this notation as \say{union over alpha in I of A sub-alpha.}
-We denote family intersection by $\intersect_{\alpha \in I} A_{\alpha}$.
-We read this notation as \say{intersection over alpha in I of A sub-alpha.}
-
-\ssubsection{Results}
-
-\begin{prop}
-  For an indexed family $\set{A_{\alpha}}_{\alpha \in I}$ in $S$, if $I = \set{i, j}$ then
-  \[
-    \union_{\alpha \in I} A_{\alpha} = A_i \union A_j
-  \]
-  and
-  \[
-    \intersect_{\alpha \in I} A_{\alpha} = A_i \intersect A_j.
-  \]
-\end{prop}
-
-\begin{prop}
-  For an indexed family $\set{A_{\alpha}}_{\alpha \in I}$ in $S$, if $I = \emptyset$, then
-  \[
-    \union_{\alpha \in I} A_{\alpha} = \emptyset
-  \]
-  and
-  \[
-    \intersect_{\alpha \in I} A_{\alpha} = S.
-  \]
-\end{prop}
-
-\begin{prop}
-  For an indexed family $\set{A_{\alpha}}_{\alpha \in I}$ in $S$.
-  \[
-    C_S(\union_{\alpha \in I} A_{\alpha}) = \intersect_{\alpha \in I} C_S(A_{\alpha})
-  \]
-  and
-  \[
-    C_S(\intersect_{\alpha \in I} A_{\alpha}) = \union_{\alpha \in I} C_S(A_{\alpha}).
-  \]
-\end{prop}
