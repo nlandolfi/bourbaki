@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"sort"
 	"text/template"
 
 	"bbk"
@@ -22,9 +23,16 @@ func main() {
 		log.Fatal(err)
 	}
 
+	names := make([]string, 0, len(results))
+	for n := range results {
+		names = append(names, n)
+	}
+	sort.Strings(names)
+
 	log.Printf("%d sheets", len(results))
 
-	for name, p := range results {
+	for _, name := range names {
+		p := results[name]
 		out, err := os.Create(fmt.Sprintf("./static/sheets/%s.html", name))
 		if err != nil {
 			log.Fatalf("os.Create: %v", err)
@@ -107,7 +115,8 @@ const SheetTemplate = `<!DOCTYPE html>
 		{{ else }}
 		{{ end }}
 		<a href="../index.html">Back to index</a>
-		<br>
+		<br/>
+		<br/>
 		<a href="./{{ .Name }}.pdf"> See sheet on own page </a>
 		</div>
 
