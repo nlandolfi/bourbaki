@@ -11,7 +11,7 @@ singular_measures.tex: sheet.tex
 
 singular_measures.pdf: ../../*.tex ../../trademark.pdf *.tex singular_measures.tex
 	pdflatex --file-line-error -interaction=nonstopmode singular_measures.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: singular_measures.pdf
 o:
 	make open
 
-defs: singular_measures.tex
-	defs singular_measures.tex
+terms: singular_measures.tex
+	bbk_sheet -mode ts singular_measures.tex
 
 spell:
 	aspell -c singular_measures.tex

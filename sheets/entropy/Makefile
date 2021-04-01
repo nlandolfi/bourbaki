@@ -11,7 +11,7 @@ entropy.tex: sheet.tex
 
 entropy.pdf: ../../*.tex ../../trademark.pdf *.tex entropy.tex
 	pdflatex --file-line-error -interaction=nonstopmode entropy.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: entropy.pdf
 o:
 	make open
 
-defs: entropy.tex
-	defs entropy.tex
+terms: entropy.tex
+	bbk_sheet -mode ts entropy.tex
 
 spell:
 	aspell -c entropy.tex

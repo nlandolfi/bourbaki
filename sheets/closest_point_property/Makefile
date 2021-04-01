@@ -11,7 +11,7 @@ closest_point_property.tex: sheet.tex
 
 closest_point_property.pdf: ../../*.tex ../../trademark.pdf *.tex closest_point_property.tex
 	pdflatex --file-line-error -interaction=nonstopmode closest_point_property.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: closest_point_property.pdf
 o:
 	make open
 
-defs: closest_point_property.tex
-	defs closest_point_property.tex
+terms: closest_point_property.tex
+	bbk_sheet -mode ts closest_point_property.tex
 
 spell:
 	aspell -c closest_point_property.tex

@@ -11,7 +11,7 @@ distance_asymmetry.tex: sheet.tex
 
 distance_asymmetry.pdf: ../../*.tex ../../trademark.pdf *.tex distance_asymmetry.tex
 	pdflatex --file-line-error -interaction=nonstopmode distance_asymmetry.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: distance_asymmetry.pdf
 o:
 	make open
 
-defs: distance_asymmetry.tex
-	defs distance_asymmetry.tex
+terms: distance_asymmetry.tex
+	bbk_sheet -mode ts distance_asymmetry.tex
 
 spell:
 	aspell -c distance_asymmetry.tex

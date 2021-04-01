@@ -11,7 +11,7 @@ natural_induction.tex: sheet.tex
 
 natural_induction.pdf: ../../*.tex ../../trademark.pdf *.tex natural_induction.tex
 	pdflatex --file-line-error -interaction=nonstopmode natural_induction.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: natural_induction.pdf
 o:
 	make open
 
-defs: natural_induction.tex
-	defs natural_induction.tex
+terms: natural_induction.tex
+	bbk_sheet -mode ts natural_induction.tex
 
 spell:
 	aspell -c natural_induction.tex

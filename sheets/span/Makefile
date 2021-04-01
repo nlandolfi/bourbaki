@@ -11,7 +11,7 @@ span.tex: sheet.tex
 
 span.pdf: ../../*.tex ../../trademark.pdf *.tex span.tex
 	pdflatex --file-line-error -interaction=nonstopmode span.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: span.pdf
 o:
 	make open
 
-defs: span.tex
-	defs span.tex
+terms: span.tex
+	bbk_sheet -mode ts span.tex
 
 spell:
 	aspell -c span.tex

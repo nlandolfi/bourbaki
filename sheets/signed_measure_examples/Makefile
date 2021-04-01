@@ -11,7 +11,7 @@ signed_measure_examples.tex: sheet.tex
 
 signed_measure_examples.pdf: ../../*.tex ../../trademark.pdf *.tex signed_measure_examples.tex
 	pdflatex --file-line-error -interaction=nonstopmode signed_measure_examples.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: signed_measure_examples.pdf
 o:
 	make open
 
-defs: signed_measure_examples.tex
-	defs signed_measure_examples.tex
+terms: signed_measure_examples.tex
+	bbk_sheet -mode ts signed_measure_examples.tex
 
 spell:
 	aspell -c signed_measure_examples.tex

@@ -11,7 +11,7 @@ correlation_and_independence.tex: sheet.tex
 
 correlation_and_independence.pdf: ../../*.tex ../../trademark.pdf *.tex correlation_and_independence.tex
 	pdflatex --file-line-error -interaction=nonstopmode correlation_and_independence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: correlation_and_independence.pdf
 o:
 	make open
 
-defs: correlation_and_independence.tex
-	defs correlation_and_independence.tex
+terms: correlation_and_independence.tex
+	bbk_sheet -mode ts correlation_and_independence.tex
 
 spell:
 	aspell -c correlation_and_independence.tex

@@ -11,7 +11,7 @@ topological_sigma_algebra.tex: sheet.tex
 
 topological_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex topological_sigma_algebra.tex
 	pdflatex --file-line-error -interaction=nonstopmode topological_sigma_algebra.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: topological_sigma_algebra.pdf
 o:
 	make open
 
-defs: topological_sigma_algebra.tex
-	defs topological_sigma_algebra.tex
+terms: topological_sigma_algebra.tex
+	bbk_sheet -mode ts topological_sigma_algebra.tex
 
 spell:
 	aspell -c topological_sigma_algebra.tex

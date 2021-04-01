@@ -11,7 +11,7 @@ isometries.tex: sheet.tex
 
 isometries.pdf: ../../*.tex ../../trademark.pdf *.tex isometries.tex
 	pdflatex --file-line-error -interaction=nonstopmode isometries.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: isometries.pdf
 o:
 	make open
 
-defs: isometries.tex
-	defs isometries.tex
+terms: isometries.tex
+	bbk_sheet -mode ts isometries.tex
 
 spell:
 	aspell -c isometries.tex

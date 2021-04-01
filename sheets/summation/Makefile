@@ -11,7 +11,7 @@ summation.tex: sheet.tex
 
 summation.pdf: ../../*.tex ../../trademark.pdf *.tex summation.tex
 	pdflatex --file-line-error -interaction=nonstopmode summation.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: summation.pdf
 o:
 	make open
 
-defs: summation.tex
-	defs summation.tex
+terms: summation.tex
+	bbk_sheet -mode ts summation.tex
 
 spell:
 	aspell -c summation.tex

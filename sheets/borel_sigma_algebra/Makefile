@@ -11,7 +11,7 @@ borel_sigma_algebra.tex: sheet.tex
 
 borel_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex borel_sigma_algebra.tex
 	pdflatex --file-line-error -interaction=nonstopmode borel_sigma_algebra.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: borel_sigma_algebra.pdf
 o:
 	make open
 
-defs: borel_sigma_algebra.tex
-	defs borel_sigma_algebra.tex
+terms: borel_sigma_algebra.tex
+	bbk_sheet -mode ts borel_sigma_algebra.tex
 
 spell:
 	aspell -c borel_sigma_algebra.tex

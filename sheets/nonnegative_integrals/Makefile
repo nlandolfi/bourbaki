@@ -11,7 +11,7 @@ nonnegative_integrals.tex: sheet.tex
 
 nonnegative_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex nonnegative_integrals.tex
 	pdflatex --file-line-error -interaction=nonstopmode nonnegative_integrals.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: nonnegative_integrals.pdf
 o:
 	make open
 
-defs: nonnegative_integrals.tex
-	defs nonnegative_integrals.tex
+terms: nonnegative_integrals.tex
+	bbk_sheet -mode ts nonnegative_integrals.tex
 
 spell:
 	aspell -c nonnegative_integrals.tex

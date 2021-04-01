@@ -11,7 +11,7 @@ real_integral_limit_inferior_bound.tex: sheet.tex
 
 real_integral_limit_inferior_bound.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_limit_inferior_bound.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_integral_limit_inferior_bound.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_integral_limit_inferior_bound.pdf
 o:
 	make open
 
-defs: real_integral_limit_inferior_bound.tex
-	defs real_integral_limit_inferior_bound.tex
+terms: real_integral_limit_inferior_bound.tex
+	bbk_sheet -mode ts real_integral_limit_inferior_bound.tex
 
 spell:
 	aspell -c real_integral_limit_inferior_bound.tex

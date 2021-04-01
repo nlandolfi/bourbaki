@@ -11,7 +11,7 @@ matrices.tex: sheet.tex
 
 matrices.pdf: ../../*.tex ../../trademark.pdf *.tex matrices.tex
 	pdflatex --file-line-error -interaction=nonstopmode matrices.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: matrices.pdf
 o:
 	make open
 
-defs: matrices.tex
-	defs matrices.tex
+terms: matrices.tex
+	bbk_sheet -mode ts matrices.tex
 
 spell:
 	aspell -c matrices.tex

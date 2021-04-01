@@ -11,7 +11,7 @@ empirical_law.tex: sheet.tex
 
 empirical_law.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_law.tex
 	pdflatex --file-line-error -interaction=nonstopmode empirical_law.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: empirical_law.pdf
 o:
 	make open
 
-defs: empirical_law.tex
-	defs empirical_law.tex
+terms: empirical_law.tex
+	bbk_sheet -mode ts empirical_law.tex
 
 spell:
 	aspell -c empirical_law.tex

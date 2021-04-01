@@ -11,7 +11,7 @@ linear_independence.tex: sheet.tex
 
 linear_independence.pdf: ../../*.tex ../../trademark.pdf *.tex linear_independence.tex
 	pdflatex --file-line-error -interaction=nonstopmode linear_independence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: linear_independence.pdf
 o:
 	make open
 
-defs: linear_independence.tex
-	defs linear_independence.tex
+terms: linear_independence.tex
+	bbk_sheet -mode ts linear_independence.tex
 
 spell:
 	aspell -c linear_independence.tex

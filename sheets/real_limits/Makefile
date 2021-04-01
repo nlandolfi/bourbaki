@@ -11,7 +11,7 @@ real_limits.tex: sheet.tex
 
 real_limits.pdf: ../../*.tex ../../trademark.pdf *.tex real_limits.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_limits.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_limits.pdf
 o:
 	make open
 
-defs: real_limits.tex
-	defs real_limits.tex
+terms: real_limits.tex
+	bbk_sheet -mode ts real_limits.tex
 
 spell:
 	aspell -c real_limits.tex

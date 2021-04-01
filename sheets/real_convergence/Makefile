@@ -11,7 +11,7 @@ real_convergence.tex: sheet.tex
 
 real_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex real_convergence.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_convergence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_convergence.pdf
 o:
 	make open
 
-defs: real_convergence.tex
-	defs real_convergence.tex
+terms: real_convergence.tex
+	bbk_sheet -mode ts real_convergence.tex
 
 spell:
 	aspell -c real_convergence.tex

@@ -11,7 +11,7 @@ event_independence.tex: sheet.tex
 
 event_independence.pdf: ../../*.tex ../../trademark.pdf *.tex event_independence.tex
 	pdflatex --file-line-error -interaction=nonstopmode event_independence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: event_independence.pdf
 o:
 	make open
 
-defs: event_independence.tex
-	defs event_independence.tex
+terms: event_independence.tex
+	bbk_sheet -mode ts event_independence.tex
 
 spell:
 	aspell -c event_independence.tex

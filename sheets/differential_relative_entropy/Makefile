@@ -11,7 +11,7 @@ differential_relative_entropy.tex: sheet.tex
 
 differential_relative_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex differential_relative_entropy.tex
 	pdflatex --file-line-error -interaction=nonstopmode differential_relative_entropy.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: differential_relative_entropy.pdf
 o:
 	make open
 
-defs: differential_relative_entropy.tex
-	defs differential_relative_entropy.tex
+terms: differential_relative_entropy.tex
+	bbk_sheet -mode ts differential_relative_entropy.tex
 
 spell:
 	aspell -c differential_relative_entropy.tex

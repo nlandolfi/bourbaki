@@ -14,7 +14,7 @@ import (
 var (
 	inFile = flag.String("in", "sheet.tex", "sheet file")
 	// create, makefile, graph
-	mode      = flag.String("mode", "mk", "which mode {c, mk, g}")
+	mode      = flag.String("mode", "mk", "which mode {c, mk, g, ts}")
 	sheetsDir = flag.String("sheets", "../", "where to find other sheets")
 )
 
@@ -43,6 +43,12 @@ func main() {
 		writeFile(rs, p)
 	case "g":
 		writeGraph(rs, p)
+	case "ts":
+		w := os.Stdout
+		fmt.Fprintf(w, "%d terms\n", len(p.Terms))
+		for _, t := range p.Terms {
+			fmt.Fprintf(w, " - %s\n", t)
+		}
 	case "mk":
 		tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate))
 

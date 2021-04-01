@@ -11,7 +11,7 @@ random_variable_independence.tex: sheet.tex
 
 random_variable_independence.pdf: ../../*.tex ../../trademark.pdf *.tex random_variable_independence.tex
 	pdflatex --file-line-error -interaction=nonstopmode random_variable_independence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: random_variable_independence.pdf
 o:
 	make open
 
-defs: random_variable_independence.tex
-	defs random_variable_independence.tex
+terms: random_variable_independence.tex
+	bbk_sheet -mode ts random_variable_independence.tex
 
 spell:
 	aspell -c random_variable_independence.tex

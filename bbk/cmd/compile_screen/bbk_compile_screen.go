@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/gob"
 	"flag"
 	"fmt"
 	"log"
@@ -66,6 +67,16 @@ func main() {
 	if err := indexTemplate.Execute(f, results); err != nil {
 		log.Fatalf("executing index template: %v", err)
 	}
+	f.Close()
+
+	f, err = os.Create("./static/results.gob")
+	if err != nil {
+		log.Fatalf("os.Create results.gob: %v", err)
+	}
+	if err := gob.NewEncoder(f).Encode(results); err != nil {
+		log.Fatalf("gob encoding results: %v", err)
+	}
+	f.Close()
 }
 
 const IndexTemplate = `<!DOCTYPE html>
@@ -80,7 +91,7 @@ const IndexTemplate = `<!DOCTYPE html>
 				<h1>HyperText Index</h1>
 				<a href="./sheets/introduction.html" style="margin:0px auto">View the project introduction.</a>
 				<ul>
-				{{ range $k, $v := . }}<li> <a href="./sheets/{{ $v.Name }}.html">{{ .Title }}</a> </li>{{ end }}
+				{{ range $k, $v := . }}<li> <a href="./sheets/{{ $v.Name }}.html">{{ title .Name }}</a> </li>{{ end }}
 				</ul>
 		</div>
 	</div>
@@ -134,4 +145,6 @@ const SheetTemplate = `<!DOCTYPE html>
 var sheetTemplate = template.Must(template.New("").Funcs(template.FuncMap{
 	"title": bbk.Title,
 }).Parse(SheetTemplate))
-var indexTemplate = template.Must(template.New("").Parse(IndexTemplate))
+var indexTemplate = template.Must(template.New("").Funcs(template.FuncMap{
+	"title": bbk.Title,
+}).Parse(IndexTemplate))

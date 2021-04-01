@@ -11,7 +11,7 @@ multivariate_normals.tex: sheet.tex
 
 multivariate_normals.pdf: ../../*.tex ../../trademark.pdf *.tex multivariate_normals.tex
 	pdflatex --file-line-error -interaction=nonstopmode multivariate_normals.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: multivariate_normals.pdf
 o:
 	make open
 
-defs: multivariate_normals.tex
-	defs multivariate_normals.tex
+terms: multivariate_normals.tex
+	bbk_sheet -mode ts multivariate_normals.tex
 
 spell:
 	aspell -c multivariate_normals.tex

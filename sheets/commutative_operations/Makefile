@@ -11,7 +11,7 @@ commutative_operations.tex: sheet.tex
 
 commutative_operations.pdf: ../../*.tex ../../trademark.pdf *.tex commutative_operations.tex
 	pdflatex --file-line-error -interaction=nonstopmode commutative_operations.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: commutative_operations.pdf
 o:
 	make open
 
-defs: commutative_operations.tex
-	defs commutative_operations.tex
+terms: commutative_operations.tex
+	bbk_sheet -mode ts commutative_operations.tex
 
 spell:
 	aspell -c commutative_operations.tex

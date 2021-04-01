@@ -11,7 +11,7 @@ cumulative_distribution_function_from_density.tex: sheet.tex
 
 cumulative_distribution_function_from_density.pdf: ../../*.tex ../../trademark.pdf *.tex cumulative_distribution_function_from_density.tex
 	pdflatex --file-line-error -interaction=nonstopmode cumulative_distribution_function_from_density.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: cumulative_distribution_function_from_density.pdf
 o:
 	make open
 
-defs: cumulative_distribution_function_from_density.tex
-	defs cumulative_distribution_function_from_density.tex
+terms: cumulative_distribution_function_from_density.tex
+	bbk_sheet -mode ts cumulative_distribution_function_from_density.tex
 
 spell:
 	aspell -c cumulative_distribution_function_from_density.tex

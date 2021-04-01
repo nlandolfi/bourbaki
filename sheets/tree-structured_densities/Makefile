@@ -11,7 +11,7 @@ tree-structured_densities.tex: sheet.tex
 
 tree-structured_densities.pdf: ../../*.tex ../../trademark.pdf *.tex tree-structured_densities.tex
 	pdflatex --file-line-error -interaction=nonstopmode tree-structured_densities.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: tree-structured_densities.pdf
 o:
 	make open
 
-defs: tree-structured_densities.tex
-	defs tree-structured_densities.tex
+terms: tree-structured_densities.tex
+	bbk_sheet -mode ts tree-structured_densities.tex
 
 spell:
 	aspell -c tree-structured_densities.tex

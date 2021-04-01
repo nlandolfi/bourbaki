@@ -11,7 +11,7 @@ algebras.tex: sheet.tex
 
 algebras.pdf: ../../*.tex ../../trademark.pdf *.tex algebras.tex
 	pdflatex --file-line-error -interaction=nonstopmode algebras.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: algebras.pdf
 o:
 	make open
 
-defs: algebras.tex
-	defs algebras.tex
+terms: algebras.tex
+	bbk_sheet -mode ts algebras.tex
 
 spell:
 	aspell -c algebras.tex

@@ -11,7 +11,7 @@ almost_everywhere.tex: sheet.tex
 
 almost_everywhere.pdf: ../../*.tex ../../trademark.pdf *.tex almost_everywhere.tex
 	pdflatex --file-line-error -interaction=nonstopmode almost_everywhere.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: almost_everywhere.pdf
 o:
 	make open
 
-defs: almost_everywhere.tex
-	defs almost_everywhere.tex
+terms: almost_everywhere.tex
+	bbk_sheet -mode ts almost_everywhere.tex
 
 spell:
 	aspell -c almost_everywhere.tex

@@ -11,7 +11,7 @@ probability_distributions.tex: sheet.tex
 
 probability_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex probability_distributions.tex
 	pdflatex --file-line-error -interaction=nonstopmode probability_distributions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: probability_distributions.pdf
 o:
 	make open
 
-defs: probability_distributions.tex
-	defs probability_distributions.tex
+terms: probability_distributions.tex
+	bbk_sheet -mode ts probability_distributions.tex
 
 spell:
 	aspell -c probability_distributions.tex

@@ -11,7 +11,7 @@ functionals.tex: sheet.tex
 
 functionals.pdf: ../../*.tex ../../trademark.pdf *.tex functionals.tex
 	pdflatex --file-line-error -interaction=nonstopmode functionals.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: functionals.pdf
 o:
 	make open
 
-defs: functionals.tex
-	defs functionals.tex
+terms: functionals.tex
+	bbk_sheet -mode ts functionals.tex
 
 spell:
 	aspell -c functionals.tex

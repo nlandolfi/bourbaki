@@ -11,7 +11,7 @@ length.tex: sheet.tex
 
 length.pdf: ../../*.tex ../../trademark.pdf *.tex length.tex
 	pdflatex --file-line-error -interaction=nonstopmode length.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: length.pdf
 o:
 	make open
 
-defs: length.tex
-	defs length.tex
+terms: length.tex
+	bbk_sheet -mode ts length.tex
 
 spell:
 	aspell -c length.tex

@@ -11,7 +11,7 @@ trees.tex: sheet.tex
 
 trees.pdf: ../../*.tex ../../trademark.pdf *.tex trees.tex
 	pdflatex --file-line-error -interaction=nonstopmode trees.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: trees.pdf
 o:
 	make open
 
-defs: trees.tex
-	defs trees.tex
+terms: trees.tex
+	bbk_sheet -mode ts trees.tex
 
 spell:
 	aspell -c trees.tex

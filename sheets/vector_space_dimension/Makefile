@@ -11,7 +11,7 @@ vector_space_dimension.tex: sheet.tex
 
 vector_space_dimension.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_dimension.tex
 	pdflatex --file-line-error -interaction=nonstopmode vector_space_dimension.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: vector_space_dimension.pdf
 o:
 	make open
 
-defs: vector_space_dimension.tex
-	defs vector_space_dimension.tex
+terms: vector_space_dimension.tex
+	bbk_sheet -mode ts vector_space_dimension.tex
 
 spell:
 	aspell -c vector_space_dimension.tex

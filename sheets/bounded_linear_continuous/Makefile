@@ -11,7 +11,7 @@ bounded_linear_continuous.tex: sheet.tex
 
 bounded_linear_continuous.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_linear_continuous.tex
 	pdflatex --file-line-error -interaction=nonstopmode bounded_linear_continuous.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: bounded_linear_continuous.pdf
 o:
 	make open
 
-defs: bounded_linear_continuous.tex
-	defs bounded_linear_continuous.tex
+terms: bounded_linear_continuous.tex
+	bbk_sheet -mode ts bounded_linear_continuous.tex
 
 spell:
 	aspell -c bounded_linear_continuous.tex

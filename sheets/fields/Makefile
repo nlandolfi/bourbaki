@@ -11,7 +11,7 @@ fields.tex: sheet.tex
 
 fields.pdf: ../../*.tex ../../trademark.pdf *.tex fields.tex
 	pdflatex --file-line-error -interaction=nonstopmode fields.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: fields.pdf
 o:
 	make open
 
-defs: fields.tex
-	defs fields.tex
+terms: fields.tex
+	bbk_sheet -mode ts fields.tex
 
 spell:
 	aspell -c fields.tex

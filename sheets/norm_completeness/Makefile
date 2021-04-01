@@ -11,7 +11,7 @@ norm_completeness.tex: sheet.tex
 
 norm_completeness.pdf: ../../*.tex ../../trademark.pdf *.tex norm_completeness.tex
 	pdflatex --file-line-error -interaction=nonstopmode norm_completeness.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: norm_completeness.pdf
 o:
 	make open
 
-defs: norm_completeness.tex
-	defs norm_completeness.tex
+terms: norm_completeness.tex
+	bbk_sheet -mode ts norm_completeness.tex
 
 spell:
 	aspell -c norm_completeness.tex

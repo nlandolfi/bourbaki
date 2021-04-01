@@ -11,7 +11,7 @@ complex_numbers.tex: sheet.tex
 
 complex_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex complex_numbers.tex
 	pdflatex --file-line-error -interaction=nonstopmode complex_numbers.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: complex_numbers.pdf
 o:
 	make open
 
-defs: complex_numbers.tex
-	defs complex_numbers.tex
+terms: complex_numbers.tex
+	bbk_sheet -mode ts complex_numbers.tex
 
 spell:
 	aspell -c complex_numbers.tex

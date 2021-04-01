@@ -11,7 +11,7 @@ supervised_learning.tex: sheet.tex
 
 supervised_learning.pdf: ../../*.tex ../../trademark.pdf *.tex supervised_learning.tex
 	pdflatex --file-line-error -interaction=nonstopmode supervised_learning.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: supervised_learning.pdf
 o:
 	make open
 
-defs: supervised_learning.tex
-	defs supervised_learning.tex
+terms: supervised_learning.tex
+	bbk_sheet -mode ts supervised_learning.tex
 
 spell:
 	aspell -c supervised_learning.tex

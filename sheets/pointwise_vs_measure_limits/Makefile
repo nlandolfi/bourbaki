@@ -11,7 +11,7 @@ pointwise_vs_measure_limits.tex: sheet.tex
 
 pointwise_vs_measure_limits.pdf: ../../*.tex ../../trademark.pdf *.tex pointwise_vs_measure_limits.tex
 	pdflatex --file-line-error -interaction=nonstopmode pointwise_vs_measure_limits.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: pointwise_vs_measure_limits.pdf
 o:
 	make open
 
-defs: pointwise_vs_measure_limits.tex
-	defs pointwise_vs_measure_limits.tex
+terms: pointwise_vs_measure_limits.tex
+	bbk_sheet -mode ts pointwise_vs_measure_limits.tex
 
 spell:
 	aspell -c pointwise_vs_measure_limits.tex

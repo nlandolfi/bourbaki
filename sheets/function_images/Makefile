@@ -11,7 +11,7 @@ function_images.tex: sheet.tex
 
 function_images.pdf: ../../*.tex ../../trademark.pdf *.tex function_images.tex
 	pdflatex --file-line-error -interaction=nonstopmode function_images.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: function_images.pdf
 o:
 	make open
 
-defs: function_images.tex
-	defs function_images.tex
+terms: function_images.tex
+	bbk_sheet -mode ts function_images.tex
 
 spell:
 	aspell -c function_images.tex

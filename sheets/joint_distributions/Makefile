@@ -11,7 +11,7 @@ joint_distributions.tex: sheet.tex
 
 joint_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex joint_distributions.tex
 	pdflatex --file-line-error -interaction=nonstopmode joint_distributions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: joint_distributions.pdf
 o:
 	make open
 
-defs: joint_distributions.tex
-	defs joint_distributions.tex
+terms: joint_distributions.tex
+	bbk_sheet -mode ts joint_distributions.tex
 
 spell:
 	aspell -c joint_distributions.tex

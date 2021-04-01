@@ -11,7 +11,7 @@ metric_balls.tex: sheet.tex
 
 metric_balls.pdf: ../../*.tex ../../trademark.pdf *.tex metric_balls.tex
 	pdflatex --file-line-error -interaction=nonstopmode metric_balls.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: metric_balls.pdf
 o:
 	make open
 
-defs: metric_balls.tex
-	defs metric_balls.tex
+terms: metric_balls.tex
+	bbk_sheet -mode ts metric_balls.tex
 
 spell:
 	aspell -c metric_balls.tex

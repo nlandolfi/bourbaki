@@ -11,7 +11,7 @@ convex_sets.tex: sheet.tex
 
 convex_sets.pdf: ../../*.tex ../../trademark.pdf *.tex convex_sets.tex
 	pdflatex --file-line-error -interaction=nonstopmode convex_sets.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: convex_sets.pdf
 o:
 	make open
 
-defs: convex_sets.tex
-	defs convex_sets.tex
+terms: convex_sets.tex
+	bbk_sheet -mode ts convex_sets.tex
 
 spell:
 	aspell -c convex_sets.tex

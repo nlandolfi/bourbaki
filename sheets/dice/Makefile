@@ -11,7 +11,7 @@ dice.tex: sheet.tex
 
 dice.pdf: ../../*.tex ../../trademark.pdf *.tex dice.tex
 	pdflatex --file-line-error -interaction=nonstopmode dice.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: dice.pdf
 o:
 	make open
 
-defs: dice.tex
-	defs dice.tex
+terms: dice.tex
+	bbk_sheet -mode ts dice.tex
 
 spell:
 	aspell -c dice.tex

@@ -11,7 +11,7 @@ egoprox_sequences.tex: sheet.tex
 
 egoprox_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex egoprox_sequences.tex
 	pdflatex --file-line-error -interaction=nonstopmode egoprox_sequences.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: egoprox_sequences.pdf
 o:
 	make open
 
-defs: egoprox_sequences.tex
-	defs egoprox_sequences.tex
+terms: egoprox_sequences.tex
+	bbk_sheet -mode ts egoprox_sequences.tex
 
 spell:
 	aspell -c egoprox_sequences.tex

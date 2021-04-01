@@ -11,7 +11,7 @@ symmetric_matrices.tex: sheet.tex
 
 symmetric_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex symmetric_matrices.tex
 	pdflatex --file-line-error -interaction=nonstopmode symmetric_matrices.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: symmetric_matrices.pdf
 o:
 	make open
 
-defs: symmetric_matrices.tex
-	defs symmetric_matrices.tex
+terms: symmetric_matrices.tex
+	bbk_sheet -mode ts symmetric_matrices.tex
 
 spell:
 	aspell -c symmetric_matrices.tex

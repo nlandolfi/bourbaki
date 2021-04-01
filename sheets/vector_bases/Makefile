@@ -11,7 +11,7 @@ vector_bases.tex: sheet.tex
 
 vector_bases.pdf: ../../*.tex ../../trademark.pdf *.tex vector_bases.tex
 	pdflatex --file-line-error -interaction=nonstopmode vector_bases.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: vector_bases.pdf
 o:
 	make open
 
-defs: vector_bases.tex
-	defs vector_bases.tex
+terms: vector_bases.tex
+	bbk_sheet -mode ts vector_bases.tex
 
 spell:
 	aspell -c vector_bases.tex

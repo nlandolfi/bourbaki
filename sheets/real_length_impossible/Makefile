@@ -11,7 +11,7 @@ real_length_impossible.tex: sheet.tex
 
 real_length_impossible.pdf: ../../*.tex ../../trademark.pdf *.tex real_length_impossible.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_length_impossible.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_length_impossible.pdf
 o:
 	make open
 
-defs: real_length_impossible.tex
-	defs real_length_impossible.tex
+terms: real_length_impossible.tex
+	bbk_sheet -mode ts real_length_impossible.tex
 
 spell:
 	aspell -c real_length_impossible.tex

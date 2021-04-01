@@ -11,7 +11,7 @@ loss_functions.tex: sheet.tex
 
 loss_functions.pdf: ../../*.tex ../../trademark.pdf *.tex loss_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode loss_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: loss_functions.pdf
 o:
 	make open
 
-defs: loss_functions.tex
-	defs loss_functions.tex
+terms: loss_functions.tex
+	bbk_sheet -mode ts loss_functions.tex
 
 spell:
 	aspell -c loss_functions.tex

@@ -11,7 +11,7 @@ datasets.tex: sheet.tex
 
 datasets.pdf: ../../*.tex ../../trademark.pdf *.tex datasets.tex
 	pdflatex --file-line-error -interaction=nonstopmode datasets.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: datasets.pdf
 o:
 	make open
 
-defs: datasets.tex
-	defs datasets.tex
+terms: datasets.tex
+	bbk_sheet -mode ts datasets.tex
 
 spell:
 	aspell -c datasets.tex

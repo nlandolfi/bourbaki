@@ -11,7 +11,7 @@ set_specification.tex: sheet.tex
 
 set_specification.pdf: ../../*.tex ../../trademark.pdf *.tex set_specification.tex
 	pdflatex --file-line-error -interaction=nonstopmode set_specification.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: set_specification.pdf
 o:
 	make open
 
-defs: set_specification.tex
-	defs set_specification.tex
+terms: set_specification.tex
+	bbk_sheet -mode ts set_specification.tex
 
 spell:
 	aspell -c set_specification.tex

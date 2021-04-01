@@ -11,7 +11,7 @@ partitions.tex: sheet.tex
 
 partitions.pdf: ../../*.tex ../../trademark.pdf *.tex partitions.tex
 	pdflatex --file-line-error -interaction=nonstopmode partitions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: partitions.pdf
 o:
 	make open
 
-defs: partitions.tex
-	defs partitions.tex
+terms: partitions.tex
+	bbk_sheet -mode ts partitions.tex
 
 spell:
 	aspell -c partitions.tex

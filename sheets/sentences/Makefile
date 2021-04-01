@@ -11,7 +11,7 @@ sentences.tex: sheet.tex
 
 sentences.pdf: ../../*.tex ../../trademark.pdf *.tex sentences.tex
 	pdflatex --file-line-error -interaction=nonstopmode sentences.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: sentences.pdf
 o:
 	make open
 
-defs: sentences.tex
-	defs sentences.tex
+terms: sentences.tex
+	bbk_sheet -mode ts sentences.tex
 
 spell:
 	aspell -c sentences.tex

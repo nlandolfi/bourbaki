@@ -11,7 +11,7 @@ iterated_rectangular_integrals.tex: sheet.tex
 
 iterated_rectangular_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex iterated_rectangular_integrals.tex
 	pdflatex --file-line-error -interaction=nonstopmode iterated_rectangular_integrals.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: iterated_rectangular_integrals.pdf
 o:
 	make open
 
-defs: iterated_rectangular_integrals.tex
-	defs iterated_rectangular_integrals.tex
+terms: iterated_rectangular_integrals.tex
+	bbk_sheet -mode ts iterated_rectangular_integrals.tex
 
 spell:
 	aspell -c iterated_rectangular_integrals.tex

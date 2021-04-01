@@ -11,7 +11,7 @@ data_matrix.tex: sheet.tex
 
 data_matrix.pdf: ../../*.tex ../../trademark.pdf *.tex data_matrix.tex
 	pdflatex --file-line-error -interaction=nonstopmode data_matrix.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: data_matrix.pdf
 o:
 	make open
 
-defs: data_matrix.tex
-	defs data_matrix.tex
+terms: data_matrix.tex
+	bbk_sheet -mode ts data_matrix.tex
 
 spell:
 	aspell -c data_matrix.tex

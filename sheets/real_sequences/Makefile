@@ -11,7 +11,7 @@ real_sequences.tex: sheet.tex
 
 real_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex real_sequences.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_sequences.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_sequences.pdf
 o:
 	make open
 
-defs: real_sequences.tex
-	defs real_sequences.tex
+terms: real_sequences.tex
+	bbk_sheet -mode ts real_sequences.tex
 
 spell:
 	aspell -c real_sequences.tex

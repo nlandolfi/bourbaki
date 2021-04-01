@@ -11,7 +11,7 @@ independent_identical_sums.tex: sheet.tex
 
 independent_identical_sums.pdf: ../../*.tex ../../trademark.pdf *.tex independent_identical_sums.tex
 	pdflatex --file-line-error -interaction=nonstopmode independent_identical_sums.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: independent_identical_sums.pdf
 o:
 	make open
 
-defs: independent_identical_sums.tex
-	defs independent_identical_sums.tex
+terms: independent_identical_sums.tex
+	bbk_sheet -mode ts independent_identical_sums.tex
 
 spell:
 	aspell -c independent_identical_sums.tex

@@ -11,7 +11,7 @@ probability_densities.tex: sheet.tex
 
 probability_densities.pdf: ../../*.tex ../../trademark.pdf *.tex probability_densities.tex
 	pdflatex --file-line-error -interaction=nonstopmode probability_densities.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: probability_densities.pdf
 o:
 	make open
 
-defs: probability_densities.tex
-	defs probability_densities.tex
+terms: probability_densities.tex
+	bbk_sheet -mode ts probability_densities.tex
 
 spell:
 	aspell -c probability_densities.tex

@@ -11,7 +11,7 @@ probability.tex: sheet.tex
 
 probability.pdf: ../../*.tex ../../trademark.pdf *.tex probability.tex
 	pdflatex --file-line-error -interaction=nonstopmode probability.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: probability.pdf
 o:
 	make open
 
-defs: probability.tex
-	defs probability.tex
+terms: probability.tex
+	bbk_sheet -mode ts probability.tex
 
 spell:
 	aspell -c probability.tex

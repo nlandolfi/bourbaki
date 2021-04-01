@@ -11,7 +11,7 @@ extended_real_numbers.tex: sheet.tex
 
 extended_real_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex extended_real_numbers.tex
 	pdflatex --file-line-error -interaction=nonstopmode extended_real_numbers.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: extended_real_numbers.pdf
 o:
 	make open
 
-defs: extended_real_numbers.tex
-	defs extended_real_numbers.tex
+terms: extended_real_numbers.tex
+	bbk_sheet -mode ts extended_real_numbers.tex
 
 spell:
 	aspell -c extended_real_numbers.tex

@@ -11,7 +11,7 @@ signed_set_decomposition_existence.tex: sheet.tex
 
 signed_set_decomposition_existence.pdf: ../../*.tex ../../trademark.pdf *.tex signed_set_decomposition_existence.tex
 	pdflatex --file-line-error -interaction=nonstopmode signed_set_decomposition_existence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: signed_set_decomposition_existence.pdf
 o:
 	make open
 
-defs: signed_set_decomposition_existence.tex
-	defs signed_set_decomposition_existence.tex
+terms: signed_set_decomposition_existence.tex
+	bbk_sheet -mode ts signed_set_decomposition_existence.tex
 
 spell:
 	aspell -c signed_set_decomposition_existence.tex

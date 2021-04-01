@@ -11,7 +11,7 @@ interval_partitions.tex: sheet.tex
 
 interval_partitions.pdf: ../../*.tex ../../trademark.pdf *.tex interval_partitions.tex
 	pdflatex --file-line-error -interaction=nonstopmode interval_partitions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: interval_partitions.pdf
 o:
 	make open
 
-defs: interval_partitions.tex
-	defs interval_partitions.tex
+terms: interval_partitions.tex
+	bbk_sheet -mode ts interval_partitions.tex
 
 spell:
 	aspell -c interval_partitions.tex

@@ -11,7 +11,7 @@ coins.tex: sheet.tex
 
 coins.pdf: ../../*.tex ../../trademark.pdf *.tex coins.tex
 	pdflatex --file-line-error -interaction=nonstopmode coins.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: coins.pdf
 o:
 	make open
 
-defs: coins.tex
-	defs coins.tex
+terms: coins.tex
+	bbk_sheet -mode ts coins.tex
 
 spell:
 	aspell -c coins.tex

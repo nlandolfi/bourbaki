@@ -11,7 +11,7 @@ continuity.tex: sheet.tex
 
 continuity.pdf: ../../*.tex ../../trademark.pdf *.tex continuity.tex
 	pdflatex --file-line-error -interaction=nonstopmode continuity.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: continuity.pdf
 o:
 	make open
 
-defs: continuity.tex
-	defs continuity.tex
+terms: continuity.tex
+	bbk_sheet -mode ts continuity.tex
 
 spell:
 	aspell -c continuity.tex

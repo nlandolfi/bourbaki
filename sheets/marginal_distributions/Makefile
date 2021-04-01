@@ -11,7 +11,7 @@ marginal_distributions.tex: sheet.tex
 
 marginal_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex marginal_distributions.tex
 	pdflatex --file-line-error -interaction=nonstopmode marginal_distributions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: marginal_distributions.pdf
 o:
 	make open
 
-defs: marginal_distributions.tex
-	defs marginal_distributions.tex
+terms: marginal_distributions.tex
+	bbk_sheet -mode ts marginal_distributions.tex
 
 spell:
 	aspell -c marginal_distributions.tex

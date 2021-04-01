@@ -11,7 +11,7 @@ real_continuity.tex: sheet.tex
 
 real_continuity.pdf: ../../*.tex ../../trademark.pdf *.tex real_continuity.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_continuity.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_continuity.pdf
 o:
 	make open
 
-defs: real_continuity.tex
-	defs real_continuity.tex
+terms: real_continuity.tex
+	bbk_sheet -mode ts real_continuity.tex
 
 spell:
 	aspell -c real_continuity.tex

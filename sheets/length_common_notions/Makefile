@@ -11,7 +11,7 @@ length_common_notions.tex: sheet.tex
 
 length_common_notions.pdf: ../../*.tex ../../trademark.pdf *.tex length_common_notions.tex
 	pdflatex --file-line-error -interaction=nonstopmode length_common_notions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: length_common_notions.pdf
 o:
 	make open
 
-defs: length_common_notions.tex
-	defs length_common_notions.tex
+terms: length_common_notions.tex
+	bbk_sheet -mode ts length_common_notions.tex
 
 spell:
 	aspell -c length_common_notions.tex

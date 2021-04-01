@@ -11,7 +11,7 @@ expectation.tex: sheet.tex
 
 expectation.pdf: ../../*.tex ../../trademark.pdf *.tex expectation.tex
 	pdflatex --file-line-error -interaction=nonstopmode expectation.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: expectation.pdf
 o:
 	make open
 
-defs: expectation.tex
-	defs expectation.tex
+terms: expectation.tex
+	bbk_sheet -mode ts expectation.tex
 
 spell:
 	aspell -c expectation.tex

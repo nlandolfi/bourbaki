@@ -11,7 +11,7 @@ real_optimization.tex: sheet.tex
 
 real_optimization.pdf: ../../*.tex ../../trademark.pdf *.tex real_optimization.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_optimization.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_optimization.pdf
 o:
 	make open
 
-defs: real_optimization.tex
-	defs real_optimization.tex
+terms: real_optimization.tex
+	bbk_sheet -mode ts real_optimization.tex
 
 spell:
 	aspell -c real_optimization.tex

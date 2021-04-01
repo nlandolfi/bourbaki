@@ -11,7 +11,7 @@ triangle_equality.tex: sheet.tex
 
 triangle_equality.pdf: ../../*.tex ../../trademark.pdf *.tex triangle_equality.tex
 	pdflatex --file-line-error -interaction=nonstopmode triangle_equality.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: triangle_equality.pdf
 o:
 	make open
 
-defs: triangle_equality.tex
-	defs triangle_equality.tex
+terms: triangle_equality.tex
+	bbk_sheet -mode ts triangle_equality.tex
 
 spell:
 	aspell -c triangle_equality.tex

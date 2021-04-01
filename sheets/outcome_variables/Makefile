@@ -11,7 +11,7 @@ outcome_variables.tex: sheet.tex
 
 outcome_variables.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_variables.tex
 	pdflatex --file-line-error -interaction=nonstopmode outcome_variables.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: outcome_variables.pdf
 o:
 	make open
 
-defs: outcome_variables.tex
-	defs outcome_variables.tex
+terms: outcome_variables.tex
+	bbk_sheet -mode ts outcome_variables.tex
 
 spell:
 	aspell -c outcome_variables.tex

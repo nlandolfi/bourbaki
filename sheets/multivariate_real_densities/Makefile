@@ -11,7 +11,7 @@ multivariate_real_densities.tex: sheet.tex
 
 multivariate_real_densities.pdf: ../../*.tex ../../trademark.pdf *.tex multivariate_real_densities.tex
 	pdflatex --file-line-error -interaction=nonstopmode multivariate_real_densities.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: multivariate_real_densities.pdf
 o:
 	make open
 
-defs: multivariate_real_densities.tex
-	defs multivariate_real_densities.tex
+terms: multivariate_real_densities.tex
+	bbk_sheet -mode ts multivariate_real_densities.tex
 
 spell:
 	aspell -c multivariate_real_densities.tex

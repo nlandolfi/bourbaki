@@ -11,7 +11,7 @@ zero.tex: sheet.tex
 
 zero.pdf: ../../*.tex ../../trademark.pdf *.tex zero.tex
 	pdflatex --file-line-error -interaction=nonstopmode zero.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: zero.pdf
 o:
 	make open
 
-defs: zero.tex
-	defs zero.tex
+terms: zero.tex
+	bbk_sheet -mode ts zero.tex
 
 spell:
 	aspell -c zero.tex

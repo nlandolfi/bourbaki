@@ -11,7 +11,7 @@ rooted_trees.tex: sheet.tex
 
 rooted_trees.pdf: ../../*.tex ../../trademark.pdf *.tex rooted_trees.tex
 	pdflatex --file-line-error -interaction=nonstopmode rooted_trees.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: rooted_trees.pdf
 o:
 	make open
 
-defs: rooted_trees.tex
-	defs rooted_trees.tex
+terms: rooted_trees.tex
+	bbk_sheet -mode ts rooted_trees.tex
 
 spell:
 	aspell -c rooted_trees.tex

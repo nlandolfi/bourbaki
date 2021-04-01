@@ -11,7 +11,7 @@ random_variables_joint_law.tex: sheet.tex
 
 random_variables_joint_law.pdf: ../../*.tex ../../trademark.pdf *.tex random_variables_joint_law.tex
 	pdflatex --file-line-error -interaction=nonstopmode random_variables_joint_law.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: random_variables_joint_law.pdf
 o:
 	make open
 
-defs: random_variables_joint_law.tex
-	defs random_variables_joint_law.tex
+terms: random_variables_joint_law.tex
+	bbk_sheet -mode ts random_variables_joint_law.tex
 
 spell:
 	aspell -c random_variables_joint_law.tex

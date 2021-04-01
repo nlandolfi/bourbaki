@@ -11,7 +11,7 @@ expectation_maximization.tex: sheet.tex
 
 expectation_maximization.pdf: ../../*.tex ../../trademark.pdf *.tex expectation_maximization.tex
 	pdflatex --file-line-error -interaction=nonstopmode expectation_maximization.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: expectation_maximization.pdf
 o:
 	make open
 
-defs: expectation_maximization.tex
-	defs expectation_maximization.tex
+terms: expectation_maximization.tex
+	bbk_sheet -mode ts expectation_maximization.tex
 
 spell:
 	aspell -c expectation_maximization.tex

@@ -11,7 +11,7 @@ section_measures.tex: sheet.tex
 
 section_measures.pdf: ../../*.tex ../../trademark.pdf *.tex section_measures.tex
 	pdflatex --file-line-error -interaction=nonstopmode section_measures.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: section_measures.pdf
 o:
 	make open
 
-defs: section_measures.tex
-	defs section_measures.tex
+terms: section_measures.tex
+	bbk_sheet -mode ts section_measures.tex
 
 spell:
 	aspell -c section_measures.tex

@@ -11,7 +11,7 @@ probability_density_function.tex: sheet.tex
 
 probability_density_function.pdf: ../../*.tex ../../trademark.pdf *.tex probability_density_function.tex
 	pdflatex --file-line-error -interaction=nonstopmode probability_density_function.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: probability_density_function.pdf
 o:
 	make open
 
-defs: probability_density_function.tex
-	defs probability_density_function.tex
+terms: probability_density_function.tex
+	bbk_sheet -mode ts probability_density_function.tex
 
 spell:
 	aspell -c probability_density_function.tex

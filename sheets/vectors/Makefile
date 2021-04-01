@@ -11,7 +11,7 @@ vectors.tex: sheet.tex
 
 vectors.pdf: ../../*.tex ../../trademark.pdf *.tex vectors.tex
 	pdflatex --file-line-error -interaction=nonstopmode vectors.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: vectors.pdf
 o:
 	make open
 
-defs: vectors.tex
-	defs vectors.tex
+terms: vectors.tex
+	bbk_sheet -mode ts vectors.tex
 
 spell:
 	aspell -c vectors.tex

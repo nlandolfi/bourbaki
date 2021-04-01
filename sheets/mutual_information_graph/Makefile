@@ -11,7 +11,7 @@ mutual_information_graph.tex: sheet.tex
 
 mutual_information_graph.pdf: ../../*.tex ../../trademark.pdf *.tex mutual_information_graph.tex
 	pdflatex --file-line-error -interaction=nonstopmode mutual_information_graph.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: mutual_information_graph.pdf
 o:
 	make open
 
-defs: mutual_information_graph.tex
-	defs mutual_information_graph.tex
+terms: mutual_information_graph.tex
+	bbk_sheet -mode ts mutual_information_graph.tex
 
 spell:
 	aspell -c mutual_information_graph.tex

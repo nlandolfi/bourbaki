@@ -11,7 +11,7 @@ families.tex: sheet.tex
 
 families.pdf: ../../*.tex ../../trademark.pdf *.tex families.tex
 	pdflatex --file-line-error -interaction=nonstopmode families.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: families.pdf
 o:
 	make open
 
-defs: families.tex
-	defs families.tex
+terms: families.tex
+	bbk_sheet -mode ts families.tex
 
 spell:
 	aspell -c families.tex

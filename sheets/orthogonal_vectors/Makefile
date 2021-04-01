@@ -11,7 +11,7 @@ orthogonal_vectors.tex: sheet.tex
 
 orthogonal_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex orthogonal_vectors.tex
 	pdflatex --file-line-error -interaction=nonstopmode orthogonal_vectors.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: orthogonal_vectors.pdf
 o:
 	make open
 
-defs: orthogonal_vectors.tex
-	defs orthogonal_vectors.tex
+terms: orthogonal_vectors.tex
+	bbk_sheet -mode ts orthogonal_vectors.tex
 
 spell:
 	aspell -c orthogonal_vectors.tex

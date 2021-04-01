@@ -11,7 +11,7 @@ correlation.tex: sheet.tex
 
 correlation.pdf: ../../*.tex ../../trademark.pdf *.tex correlation.tex
 	pdflatex --file-line-error -interaction=nonstopmode correlation.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: correlation.pdf
 o:
 	make open
 
-defs: correlation.tex
-	defs correlation.tex
+terms: correlation.tex
+	bbk_sheet -mode ts correlation.tex
 
 spell:
 	aspell -c correlation.tex

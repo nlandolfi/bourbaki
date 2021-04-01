@@ -11,7 +11,7 @@ absolute_value.tex: sheet.tex
 
 absolute_value.pdf: ../../*.tex ../../trademark.pdf *.tex absolute_value.tex
 	pdflatex --file-line-error -interaction=nonstopmode absolute_value.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: absolute_value.pdf
 o:
 	make open
 
-defs: absolute_value.tex
-	defs absolute_value.tex
+terms: absolute_value.tex
+	bbk_sheet -mode ts absolute_value.tex
 
 spell:
 	aspell -c absolute_value.tex

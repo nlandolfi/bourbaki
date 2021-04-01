@@ -11,7 +11,7 @@ differentiability.tex: sheet.tex
 
 differentiability.pdf: ../../*.tex ../../trademark.pdf *.tex differentiability.tex
 	pdflatex --file-line-error -interaction=nonstopmode differentiability.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: differentiability.pdf
 o:
 	make open
 
-defs: differentiability.tex
-	defs differentiability.tex
+terms: differentiability.tex
+	bbk_sheet -mode ts differentiability.tex
 
 spell:
 	aspell -c differentiability.tex

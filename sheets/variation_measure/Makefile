@@ -11,7 +11,7 @@ variation_measure.tex: sheet.tex
 
 variation_measure.pdf: ../../*.tex ../../trademark.pdf *.tex variation_measure.tex
 	pdflatex --file-line-error -interaction=nonstopmode variation_measure.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: variation_measure.pdf
 o:
 	make open
 
-defs: variation_measure.tex
-	defs variation_measure.tex
+terms: variation_measure.tex
+	bbk_sheet -mode ts variation_measure.tex
 
 spell:
 	aspell -c variation_measure.tex

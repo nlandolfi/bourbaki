@@ -11,7 +11,7 @@ cross_entropy.tex: sheet.tex
 
 cross_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex cross_entropy.tex
 	pdflatex --file-line-error -interaction=nonstopmode cross_entropy.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: cross_entropy.pdf
 o:
 	make open
 
-defs: cross_entropy.tex
-	defs cross_entropy.tex
+terms: cross_entropy.tex
+	bbk_sheet -mode ts cross_entropy.tex
 
 spell:
 	aspell -c cross_entropy.tex

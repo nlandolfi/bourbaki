@@ -11,7 +11,7 @@ nearest_neighbor_predictors.tex: sheet.tex
 
 nearest_neighbor_predictors.pdf: ../../*.tex ../../trademark.pdf *.tex nearest_neighbor_predictors.tex
 	pdflatex --file-line-error -interaction=nonstopmode nearest_neighbor_predictors.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: nearest_neighbor_predictors.pdf
 o:
 	make open
 
-defs: nearest_neighbor_predictors.tex
-	defs nearest_neighbor_predictors.tex
+terms: nearest_neighbor_predictors.tex
+	bbk_sheet -mode ts nearest_neighbor_predictors.tex
 
 spell:
 	aspell -c nearest_neighbor_predictors.tex

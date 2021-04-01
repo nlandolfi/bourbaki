@@ -11,7 +11,7 @@ inverse_elements.tex: sheet.tex
 
 inverse_elements.pdf: ../../*.tex ../../trademark.pdf *.tex inverse_elements.tex
 	pdflatex --file-line-error -interaction=nonstopmode inverse_elements.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: inverse_elements.pdf
 o:
 	make open
 
-defs: inverse_elements.tex
-	defs inverse_elements.tex
+terms: inverse_elements.tex
+	bbk_sheet -mode ts inverse_elements.tex
 
 spell:
 	aspell -c inverse_elements.tex

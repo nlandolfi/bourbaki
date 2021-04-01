@@ -11,7 +11,7 @@ covariance.tex: sheet.tex
 
 covariance.pdf: ../../*.tex ../../trademark.pdf *.tex covariance.tex
 	pdflatex --file-line-error -interaction=nonstopmode covariance.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: covariance.pdf
 o:
 	make open
 
-defs: covariance.tex
-	defs covariance.tex
+terms: covariance.tex
+	bbk_sheet -mode ts covariance.tex
 
 spell:
 	aspell -c covariance.tex

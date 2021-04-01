@@ -11,7 +11,7 @@ measure_derivatives.tex: sheet.tex
 
 measure_derivatives.pdf: ../../*.tex ../../trademark.pdf *.tex measure_derivatives.tex
 	pdflatex --file-line-error -interaction=nonstopmode measure_derivatives.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: measure_derivatives.pdf
 o:
 	make open
 
-defs: measure_derivatives.tex
-	defs measure_derivatives.tex
+terms: measure_derivatives.tex
+	bbk_sheet -mode ts measure_derivatives.tex
 
 spell:
 	aspell -c measure_derivatives.tex

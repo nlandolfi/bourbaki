@@ -11,7 +11,7 @@ surjective_functions.tex: sheet.tex
 
 surjective_functions.pdf: ../../*.tex ../../trademark.pdf *.tex surjective_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode surjective_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: surjective_functions.pdf
 o:
 	make open
 
-defs: surjective_functions.tex
-	defs surjective_functions.tex
+terms: surjective_functions.tex
+	bbk_sheet -mode ts surjective_functions.tex
 
 spell:
 	aspell -c surjective_functions.tex

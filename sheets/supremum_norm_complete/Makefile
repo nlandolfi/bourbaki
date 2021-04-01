@@ -11,7 +11,7 @@ supremum_norm_complete.tex: sheet.tex
 
 supremum_norm_complete.pdf: ../../*.tex ../../trademark.pdf *.tex supremum_norm_complete.tex
 	pdflatex --file-line-error -interaction=nonstopmode supremum_norm_complete.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: supremum_norm_complete.pdf
 o:
 	make open
 
-defs: supremum_norm_complete.tex
-	defs supremum_norm_complete.tex
+terms: supremum_norm_complete.tex
+	bbk_sheet -mode ts supremum_norm_complete.tex
 
 spell:
 	aspell -c supremum_norm_complete.tex

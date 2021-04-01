@@ -11,7 +11,7 @@ function_inverses.tex: sheet.tex
 
 function_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex function_inverses.tex
 	pdflatex --file-line-error -interaction=nonstopmode function_inverses.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: function_inverses.pdf
 o:
 	make open
 
-defs: function_inverses.tex
-	defs function_inverses.tex
+terms: function_inverses.tex
+	bbk_sheet -mode ts function_inverses.tex
 
 spell:
 	aspell -c function_inverses.tex

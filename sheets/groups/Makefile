@@ -11,7 +11,7 @@ groups.tex: sheet.tex
 
 groups.pdf: ../../*.tex ../../trademark.pdf *.tex groups.tex
 	pdflatex --file-line-error -interaction=nonstopmode groups.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: groups.pdf
 o:
 	make open
 
-defs: groups.tex
-	defs groups.tex
+terms: groups.tex
+	bbk_sheet -mode ts groups.tex
 
 spell:
 	aspell -c groups.tex

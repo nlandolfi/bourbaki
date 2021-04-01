@@ -11,7 +11,7 @@ quadratic_forms.tex: sheet.tex
 
 quadratic_forms.pdf: ../../*.tex ../../trademark.pdf *.tex quadratic_forms.tex
 	pdflatex --file-line-error -interaction=nonstopmode quadratic_forms.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: quadratic_forms.pdf
 o:
 	make open
 
-defs: quadratic_forms.tex
-	defs quadratic_forms.tex
+terms: quadratic_forms.tex
+	bbk_sheet -mode ts quadratic_forms.tex
 
 spell:
 	aspell -c quadratic_forms.tex

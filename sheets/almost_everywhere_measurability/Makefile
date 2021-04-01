@@ -11,7 +11,7 @@ almost_everywhere_measurability.tex: sheet.tex
 
 almost_everywhere_measurability.pdf: ../../*.tex ../../trademark.pdf *.tex almost_everywhere_measurability.tex
 	pdflatex --file-line-error -interaction=nonstopmode almost_everywhere_measurability.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: almost_everywhere_measurability.pdf
 o:
 	make open
 
-defs: almost_everywhere_measurability.tex
-	defs almost_everywhere_measurability.tex
+terms: almost_everywhere_measurability.tex
+	bbk_sheet -mode ts almost_everywhere_measurability.tex
 
 spell:
 	aspell -c almost_everywhere_measurability.tex

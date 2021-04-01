@@ -11,7 +11,7 @@ rings.tex: sheet.tex
 
 rings.pdf: ../../*.tex ../../trademark.pdf *.tex rings.tex
 	pdflatex --file-line-error -interaction=nonstopmode rings.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: rings.pdf
 o:
 	make open
 
-defs: rings.tex
-	defs rings.tex
+terms: rings.tex
+	bbk_sheet -mode ts rings.tex
 
 spell:
 	aspell -c rings.tex

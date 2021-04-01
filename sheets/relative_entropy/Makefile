@@ -11,7 +11,7 @@ relative_entropy.tex: sheet.tex
 
 relative_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex relative_entropy.tex
 	pdflatex --file-line-error -interaction=nonstopmode relative_entropy.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: relative_entropy.pdf
 o:
 	make open
 
-defs: relative_entropy.tex
-	defs relative_entropy.tex
+terms: relative_entropy.tex
+	bbk_sheet -mode ts relative_entropy.tex
 
 spell:
 	aspell -c relative_entropy.tex

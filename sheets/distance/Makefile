@@ -11,7 +11,7 @@ distance.tex: sheet.tex
 
 distance.pdf: ../../*.tex ../../trademark.pdf *.tex distance.tex
 	pdflatex --file-line-error -interaction=nonstopmode distance.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: distance.pdf
 o:
 	make open
 
-defs: distance.tex
-	defs distance.tex
+terms: distance.tex
+	bbk_sheet -mode ts distance.tex
 
 spell:
 	aspell -c distance.tex

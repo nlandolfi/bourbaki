@@ -11,7 +11,7 @@ natural_order.tex: sheet.tex
 
 natural_order.pdf: ../../*.tex ../../trademark.pdf *.tex natural_order.tex
 	pdflatex --file-line-error -interaction=nonstopmode natural_order.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: natural_order.pdf
 o:
 	make open
 
-defs: natural_order.tex
-	defs natural_order.tex
+terms: natural_order.tex
+	bbk_sheet -mode ts natural_order.tex
 
 spell:
 	aspell -c natural_order.tex

@@ -11,7 +11,7 @@ density_maximum_likelihood.tex: sheet.tex
 
 density_maximum_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex density_maximum_likelihood.tex
 	pdflatex --file-line-error -interaction=nonstopmode density_maximum_likelihood.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: density_maximum_likelihood.pdf
 o:
 	make open
 
-defs: density_maximum_likelihood.tex
-	defs density_maximum_likelihood.tex
+terms: density_maximum_likelihood.tex
+	bbk_sheet -mode ts density_maximum_likelihood.tex
 
 spell:
 	aspell -c density_maximum_likelihood.tex

@@ -11,7 +11,7 @@ probability_outcomes.tex: sheet.tex
 
 probability_outcomes.pdf: ../../*.tex ../../trademark.pdf *.tex probability_outcomes.tex
 	pdflatex --file-line-error -interaction=nonstopmode probability_outcomes.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: probability_outcomes.pdf
 o:
 	make open
 
-defs: probability_outcomes.tex
-	defs probability_outcomes.tex
+terms: probability_outcomes.tex
+	bbk_sheet -mode ts probability_outcomes.tex
 
 spell:
 	aspell -c probability_outcomes.tex

@@ -11,7 +11,7 @@ real_functions.tex: sheet.tex
 
 real_functions.pdf: ../../*.tex ../../trademark.pdf *.tex real_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_functions.pdf
 o:
 	make open
 
-defs: real_functions.tex
-	defs real_functions.tex
+terms: real_functions.tex
+	bbk_sheet -mode ts real_functions.tex
 
 spell:
 	aspell -c real_functions.tex

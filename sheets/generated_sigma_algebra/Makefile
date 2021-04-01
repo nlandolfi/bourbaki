@@ -11,7 +11,7 @@ generated_sigma_algebra.tex: sheet.tex
 
 generated_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex generated_sigma_algebra.tex
 	pdflatex --file-line-error -interaction=nonstopmode generated_sigma_algebra.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: generated_sigma_algebra.pdf
 o:
 	make open
 
-defs: generated_sigma_algebra.tex
-	defs generated_sigma_algebra.tex
+terms: generated_sigma_algebra.tex
+	bbk_sheet -mode ts generated_sigma_algebra.tex
 
 spell:
 	aspell -c generated_sigma_algebra.tex

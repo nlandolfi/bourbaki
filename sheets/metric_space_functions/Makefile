@@ -11,7 +11,7 @@ metric_space_functions.tex: sheet.tex
 
 metric_space_functions.pdf: ../../*.tex ../../trademark.pdf *.tex metric_space_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode metric_space_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: metric_space_functions.pdf
 o:
 	make open
 
-defs: metric_space_functions.tex
-	defs metric_space_functions.tex
+terms: metric_space_functions.tex
+	bbk_sheet -mode ts metric_space_functions.tex
 
 spell:
 	aspell -c metric_space_functions.tex

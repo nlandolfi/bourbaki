@@ -11,7 +11,7 @@ subset_systems.tex: sheet.tex
 
 subset_systems.pdf: ../../*.tex ../../trademark.pdf *.tex subset_systems.tex
 	pdflatex --file-line-error -interaction=nonstopmode subset_systems.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: subset_systems.pdf
 o:
 	make open
 
-defs: subset_systems.tex
-	defs subset_systems.tex
+terms: subset_systems.tex
+	bbk_sheet -mode ts subset_systems.tex
 
 spell:
 	aspell -c subset_systems.tex

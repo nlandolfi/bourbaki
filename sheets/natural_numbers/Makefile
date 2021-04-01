@@ -11,7 +11,7 @@ natural_numbers.tex: sheet.tex
 
 natural_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex natural_numbers.tex
 	pdflatex --file-line-error -interaction=nonstopmode natural_numbers.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: natural_numbers.pdf
 o:
 	make open
 
-defs: natural_numbers.tex
-	defs natural_numbers.tex
+terms: natural_numbers.tex
+	bbk_sheet -mode ts natural_numbers.tex
 
 spell:
 	aspell -c natural_numbers.tex

@@ -11,7 +11,7 @@ natural_families.tex: sheet.tex
 
 natural_families.pdf: ../../*.tex ../../trademark.pdf *.tex natural_families.tex
 	pdflatex --file-line-error -interaction=nonstopmode natural_families.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: natural_families.pdf
 o:
 	make open
 
-defs: natural_families.tex
-	defs natural_families.tex
+terms: natural_families.tex
+	bbk_sheet -mode ts natural_families.tex
 
 spell:
 	aspell -c natural_families.tex

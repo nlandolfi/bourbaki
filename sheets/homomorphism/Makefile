@@ -11,7 +11,7 @@ homomorphism.tex: sheet.tex
 
 homomorphism.pdf: ../../*.tex ../../trademark.pdf *.tex homomorphism.tex
 	pdflatex --file-line-error -interaction=nonstopmode homomorphism.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: homomorphism.pdf
 o:
 	make open
 
-defs: homomorphism.tex
-	defs homomorphism.tex
+terms: homomorphism.tex
+	bbk_sheet -mode ts homomorphism.tex
 
 spell:
 	aspell -c homomorphism.tex

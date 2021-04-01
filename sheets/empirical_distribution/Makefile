@@ -11,7 +11,7 @@ empirical_distribution.tex: sheet.tex
 
 empirical_distribution.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_distribution.tex
 	pdflatex --file-line-error -interaction=nonstopmode empirical_distribution.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: empirical_distribution.pdf
 o:
 	make open
 
-defs: empirical_distribution.tex
-	defs empirical_distribution.tex
+terms: empirical_distribution.tex
+	bbk_sheet -mode ts empirical_distribution.tex
 
 spell:
 	aspell -c empirical_distribution.tex

@@ -11,7 +11,7 @@ transpose.tex: sheet.tex
 
 transpose.pdf: ../../*.tex ../../trademark.pdf *.tex transpose.tex
 	pdflatex --file-line-error -interaction=nonstopmode transpose.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: transpose.pdf
 o:
 	make open
 
-defs: transpose.tex
-	defs transpose.tex
+terms: transpose.tex
+	bbk_sheet -mode ts transpose.tex
 
 spell:
 	aspell -c transpose.tex

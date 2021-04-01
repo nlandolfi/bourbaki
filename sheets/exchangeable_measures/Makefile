@@ -11,7 +11,7 @@ exchangeable_measures.tex: sheet.tex
 
 exchangeable_measures.pdf: ../../*.tex ../../trademark.pdf *.tex exchangeable_measures.tex
 	pdflatex --file-line-error -interaction=nonstopmode exchangeable_measures.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: exchangeable_measures.pdf
 o:
 	make open
 
-defs: exchangeable_measures.tex
-	defs exchangeable_measures.tex
+terms: exchangeable_measures.tex
+	bbk_sheet -mode ts exchangeable_measures.tex
 
 spell:
 	aspell -c exchangeable_measures.tex

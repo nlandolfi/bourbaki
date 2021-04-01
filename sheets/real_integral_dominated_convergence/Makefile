@@ -11,7 +11,7 @@ real_integral_dominated_convergence.tex: sheet.tex
 
 real_integral_dominated_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_dominated_convergence.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_integral_dominated_convergence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_integral_dominated_convergence.pdf
 o:
 	make open
 
-defs: real_integral_dominated_convergence.tex
-	defs real_integral_dominated_convergence.tex
+terms: real_integral_dominated_convergence.tex
+	bbk_sheet -mode ts real_integral_dominated_convergence.tex
 
 spell:
 	aspell -c real_integral_dominated_convergence.tex

@@ -11,7 +11,7 @@ nets.tex: sheet.tex
 
 nets.pdf: ../../*.tex ../../trademark.pdf *.tex nets.tex
 	pdflatex --file-line-error -interaction=nonstopmode nets.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: nets.pdf
 o:
 	make open
 
-defs: nets.tex
-	defs nets.tex
+terms: nets.tex
+	bbk_sheet -mode ts nets.tex
 
 spell:
 	aspell -c nets.tex

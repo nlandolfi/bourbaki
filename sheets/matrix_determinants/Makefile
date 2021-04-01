@@ -11,7 +11,7 @@ matrix_determinants.tex: sheet.tex
 
 matrix_determinants.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_determinants.tex
 	pdflatex --file-line-error -interaction=nonstopmode matrix_determinants.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: matrix_determinants.pdf
 o:
 	make open
 
-defs: matrix_determinants.tex
-	defs matrix_determinants.tex
+terms: matrix_determinants.tex
+	bbk_sheet -mode ts matrix_determinants.tex
 
 spell:
 	aspell -c matrix_determinants.tex

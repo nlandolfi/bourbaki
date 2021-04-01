@@ -11,7 +11,7 @@ differential_mutual_information.tex: sheet.tex
 
 differential_mutual_information.pdf: ../../*.tex ../../trademark.pdf *.tex differential_mutual_information.tex
 	pdflatex --file-line-error -interaction=nonstopmode differential_mutual_information.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: differential_mutual_information.pdf
 o:
 	make open
 
-defs: differential_mutual_information.tex
-	defs differential_mutual_information.tex
+terms: differential_mutual_information.tex
+	bbk_sheet -mode ts differential_mutual_information.tex
 
 spell:
 	aspell -c differential_mutual_information.tex

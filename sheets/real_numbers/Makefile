@@ -11,7 +11,7 @@ real_numbers.tex: sheet.tex
 
 real_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex real_numbers.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_numbers.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_numbers.pdf
 o:
 	make open
 
-defs: real_numbers.tex
-	defs real_numbers.tex
+terms: real_numbers.tex
+	bbk_sheet -mode ts real_numbers.tex
 
 spell:
 	aspell -c real_numbers.tex

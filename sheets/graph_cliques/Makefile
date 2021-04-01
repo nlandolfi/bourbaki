@@ -11,7 +11,7 @@ graph_cliques.tex: sheet.tex
 
 graph_cliques.pdf: ../../*.tex ../../trademark.pdf *.tex graph_cliques.tex
 	pdflatex --file-line-error -interaction=nonstopmode graph_cliques.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: graph_cliques.pdf
 o:
 	make open
 
-defs: graph_cliques.tex
-	defs graph_cliques.tex
+terms: graph_cliques.tex
+	bbk_sheet -mode ts graph_cliques.tex
 
 spell:
 	aspell -c graph_cliques.tex

@@ -11,7 +11,7 @@ identity_functions.tex: sheet.tex
 
 identity_functions.pdf: ../../*.tex ../../trademark.pdf *.tex identity_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode identity_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: identity_functions.pdf
 o:
 	make open
 
-defs: identity_functions.tex
-	defs identity_functions.tex
+terms: identity_functions.tex
+	bbk_sheet -mode ts identity_functions.tex
 
 spell:
 	aspell -c identity_functions.tex

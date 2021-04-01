@@ -11,7 +11,7 @@ space.tex: sheet.tex
 
 space.pdf: ../../*.tex ../../trademark.pdf *.tex space.tex
 	pdflatex --file-line-error -interaction=nonstopmode space.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: space.pdf
 o:
 	make open
 
-defs: space.tex
-	defs space.tex
+terms: space.tex
+	bbk_sheet -mode ts space.tex
 
 spell:
 	aspell -c space.tex

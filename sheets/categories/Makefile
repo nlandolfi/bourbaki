@@ -11,7 +11,7 @@ categories.tex: sheet.tex
 
 categories.pdf: ../../*.tex ../../trademark.pdf *.tex categories.tex
 	pdflatex --file-line-error -interaction=nonstopmode categories.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: categories.pdf
 o:
 	make open
 
-defs: categories.tex
-	defs categories.tex
+terms: categories.tex
+	bbk_sheet -mode ts categories.tex
 
 spell:
 	aspell -c categories.tex

@@ -11,7 +11,7 @@ introduction.tex: sheet.tex
 
 introduction.pdf: ../../*.tex ../../trademark.pdf *.tex introduction.tex
 	pdflatex --file-line-error -interaction=nonstopmode introduction.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: introduction.pdf
 o:
 	make open
 
-defs: introduction.tex
-	defs introduction.tex
+terms: introduction.tex
+	bbk_sheet -mode ts introduction.tex
 
 spell:
 	aspell -c introduction.tex

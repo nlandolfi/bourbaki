@@ -13,7 +13,7 @@ make:
 
 {{ .Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Name }}.tex
 	pdflatex --file-line-error -interaction=nonstopmode {{ .Name }}.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -30,8 +30,8 @@ open: {{ .Name }}.pdf
 o:
 	make open
 
-defs: {{ .Name }}.tex
-	defs {{ .Name }}.tex
+terms: {{ .Name }}.tex
+	bbk_sheet -mode ts {{ .Name }}.tex
 
 spell:
 	aspell -c {{ .Name }}.tex

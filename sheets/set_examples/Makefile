@@ -11,7 +11,7 @@ set_examples.tex: sheet.tex
 
 set_examples.pdf: ../../*.tex ../../trademark.pdf *.tex set_examples.tex
 	pdflatex --file-line-error -interaction=nonstopmode set_examples.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: set_examples.pdf
 o:
 	make open
 
-defs: set_examples.tex
-	defs set_examples.tex
+terms: set_examples.tex
+	bbk_sheet -mode ts set_examples.tex
 
 spell:
 	aspell -c set_examples.tex

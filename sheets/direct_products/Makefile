@@ -11,7 +11,7 @@ direct_products.tex: sheet.tex
 
 direct_products.pdf: ../../*.tex ../../trademark.pdf *.tex direct_products.tex
 	pdflatex --file-line-error -interaction=nonstopmode direct_products.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: direct_products.pdf
 o:
 	make open
 
-defs: direct_products.tex
-	defs direct_products.tex
+terms: direct_products.tex
+	bbk_sheet -mode ts direct_products.tex
 
 spell:
 	aspell -c direct_products.tex

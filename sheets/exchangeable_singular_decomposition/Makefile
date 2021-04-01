@@ -11,7 +11,7 @@ exchangeable_singular_decomposition.tex: sheet.tex
 
 exchangeable_singular_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex exchangeable_singular_decomposition.tex
 	pdflatex --file-line-error -interaction=nonstopmode exchangeable_singular_decomposition.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: exchangeable_singular_decomposition.pdf
 o:
 	make open
 
-defs: exchangeable_singular_decomposition.tex
-	defs exchangeable_singular_decomposition.tex
+terms: exchangeable_singular_decomposition.tex
+	bbk_sheet -mode ts exchangeable_singular_decomposition.tex
 
 spell:
 	aspell -c exchangeable_singular_decomposition.tex
