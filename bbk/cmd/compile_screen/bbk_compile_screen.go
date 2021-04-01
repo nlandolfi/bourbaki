@@ -89,6 +89,9 @@ const IndexTemplate = `<!DOCTYPE html>
 			<div class="content">
 				<img src="../trademark.pdf" id="trademark">
 				<h1>HyperText Index</h1>
+				<form style="margin: 0px auto" action="/search" method="GET" autofocus>
+				<input style="border:none; border-bottom: 1px solid gray; margin: -5px auto10px auto;" placeholder="Search" name="query">
+				</form>
 				<a href="./sheets/introduction.html" style="margin:0px auto">View the project introduction.</a>
 				<ul>
 				{{ range $k, $v := . }}<li> <a href="./sheets/{{ $v.Name }}.html">{{ title .Name }}</a> </li>{{ end }}
@@ -110,7 +113,7 @@ const SheetTemplate = `<!DOCTYPE html>
 		Needs:
 		<ul>
 			{{ range $k, $v := .Needs }}
-				<li> <a href="./{{ $v }}.html"> {{ title $v }} </a> </li>
+				<li> <a tabindex="0" href="./{{ $v }}.html"> {{ title $v }} </a> </li>
 			{{ end }}
 		</ul>
 		{{ else }}
@@ -120,22 +123,22 @@ const SheetTemplate = `<!DOCTYPE html>
 		Needed by:
 		<ul>
 			{{ range $k, $v := .NeededBy }}
-				<li> <a href="./{{ $v }}.html"> {{ title $v }} </a> </li>
+				<li> <a tabindex="0" href="./{{ $v }}.html"> {{ title $v }} </a> </li>
 			{{ end }}
 		</ul>
 		{{ else }}
 		{{ end }}
-		<a href="../index.html">Back to index</a>
+		<a tabindex="0" href="../index.html">Back to index</a>
 		<br/>
 		<br/>
-		<a href="./{{ .Name }}.pdf"> See sheet on own page </a>
+		<a tabindex="0" href="./{{ .Name }}.pdf"> See sheet on own page </a>
 		</div>
 
 		<iframe id="sheet" src="./{{ .Name }}.pdf">
 		</iframe>
 
 		<div class="info">
-		<a href="./{{ .Name }}_graph.pdf"> See graph on own page </a>
+		<a tabindex="0" href="./{{ .Name }}_graph.pdf"> See graph on own page </a>
 		</div>
 		<iframe id="graph" src="./{{ .Name }}_graph.pdf">
 		</iframe>
