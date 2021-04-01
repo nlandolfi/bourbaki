@@ -38,6 +38,8 @@ var shortWords = map[string]bool{
 	"the": true,
 	"a":   true,
 	"an":  true,
+	"vs.": true,
+	"vs":  true,
 }
 
 func Title(s string) string {
