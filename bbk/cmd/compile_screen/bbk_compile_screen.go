@@ -89,9 +89,10 @@ const IndexTemplate = `<!DOCTYPE html>
 			<div class="content">
 				<img src="../trademark.pdf" id="trademark">
 				<h1>HyperText Index</h1>
-				<form style="margin: 0px auto" action="/search" method="GET" autofocus>
-				<input style="border:none; border-bottom: 1px solid gray; margin: -5px auto10px auto;" placeholder="Search" name="query">
+				<form class="search" action="/search" method="GET" autofocus>
+				<input class="search" placeholder="search bourbaki..." name="query">
 				</form>
+				<br>
 				<a href="./sheets/introduction.html" style="margin:0px auto">View the project introduction.</a>
 				<ul>
 				{{ range $k, $v := . }}<li> <a href="./sheets/{{ $v.Name }}.html">{{ title .Name }}</a> </li>{{ end }}
@@ -128,7 +129,10 @@ const SheetTemplate = `<!DOCTYPE html>
 		</ul>
 		{{ else }}
 		{{ end }}
+		<form class="search" action="/search" method="GET">
+		<input class="search"placeholder="Search" name="query">
 		<a tabindex="0" href="../index.html">Back to index</a>
+		</form>
 		<br/>
 		<br/>
 		<a tabindex="0" href="./{{ .Name }}.pdf"> See sheet on own page </a>
