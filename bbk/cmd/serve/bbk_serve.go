@@ -76,22 +76,20 @@ const SearchTemplateHTML = `<!DOCTYPE html>
 			<div class="content">
 				<img src="../trademark.pdf" id="trademark">
 				<h1>Search</h1>
-				<div style="display: flex; flex-direction:column">
-				<div>
-					<form method="GET">
-					<input style="border:none;border-bottom: 1px solid gray;font-size: 1em; padding: 3px; width: 90%; margin: 3px auto;" value="{{ .Query }}" name="query" autofocus/>
-					</form>
+				<div class="search-results">
 					<div>
-					{{ len .Results }} results in {{ .SearchDuration | printf "%s" }};
-					<a href="./index.html">Back to index</a>
+						<form method="GET">
+							<input class="search" value="{{ .Query }}" name="query" autofocus/>
+						</form>
+						{{ len .Results }} results in {{ .SearchDuration | printf "%s" }};
 					</div>
-				</div>
 					{{ range $r := .Results }}
-					<div tabindex="0" style="cursor:pointer; border: 1px solid gray; padding 5px; border-radius: 3px; padding: 12px; margin:3px" onclick="location.href='./sheets/{{ $r.Name}}.html'">
+					<div tabindex="0" class="search-result" onclick="location.href='./sheets/{{ $r.Name}}.html'" onkeypress="location.href='./sheets/{{ $r.Name }}.html'">
 					<b> {{ title $r.Name }} </b> <br>
 					Rank: {{ .Rank | printf "%.2f" }}; Reasons: {{ reasons . }}
 					</div>
 					{{end}}
+					<a tabindex="0" href="./index.html">Back to index</a>
 				</div>
 		</div>
 	</div>
