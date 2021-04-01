@@ -11,7 +11,7 @@ metric_continuity.tex: sheet.tex
 
 metric_continuity.pdf: ../../*.tex ../../trademark.pdf *.tex metric_continuity.tex
 	pdflatex --file-line-error -interaction=nonstopmode metric_continuity.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: metric_continuity.pdf
 o:
 	make open
 
-defs: metric_continuity.tex
-	defs metric_continuity.tex
+terms: metric_continuity.tex
+	bbk_sheet -mode ts metric_continuity.tex
 
 spell:
 	aspell -c metric_continuity.tex

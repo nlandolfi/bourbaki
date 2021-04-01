@@ -11,7 +11,7 @@ optimization.tex: sheet.tex
 
 optimization.pdf: ../../*.tex ../../trademark.pdf *.tex optimization.tex
 	pdflatex --file-line-error -interaction=nonstopmode optimization.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: optimization.pdf
 o:
 	make open
 
-defs: optimization.tex
-	defs optimization.tex
+terms: optimization.tex
+	bbk_sheet -mode ts optimization.tex
 
 spell:
 	aspell -c optimization.tex

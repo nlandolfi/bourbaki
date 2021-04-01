@@ -11,7 +11,7 @@ outcome_vectors.tex: sheet.tex
 
 outcome_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_vectors.tex
 	pdflatex --file-line-error -interaction=nonstopmode outcome_vectors.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: outcome_vectors.pdf
 o:
 	make open
 
-defs: outcome_vectors.tex
-	defs outcome_vectors.tex
+terms: outcome_vectors.tex
+	bbk_sheet -mode ts outcome_vectors.tex
 
 spell:
 	aspell -c outcome_vectors.tex

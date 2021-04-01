@@ -11,7 +11,7 @@ measurable_function_operations.tex: sheet.tex
 
 measurable_function_operations.pdf: ../../*.tex ../../trademark.pdf *.tex measurable_function_operations.tex
 	pdflatex --file-line-error -interaction=nonstopmode measurable_function_operations.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: measurable_function_operations.pdf
 o:
 	make open
 
-defs: measurable_function_operations.tex
-	defs measurable_function_operations.tex
+terms: measurable_function_operations.tex
+	bbk_sheet -mode ts measurable_function_operations.tex
 
 spell:
 	aspell -c measurable_function_operations.tex

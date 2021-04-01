@@ -11,7 +11,7 @@ product_under_independence.tex: sheet.tex
 
 product_under_independence.pdf: ../../*.tex ../../trademark.pdf *.tex product_under_independence.tex
 	pdflatex --file-line-error -interaction=nonstopmode product_under_independence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: product_under_independence.pdf
 o:
 	make open
 
-defs: product_under_independence.tex
-	defs product_under_independence.tex
+terms: product_under_independence.tex
+	bbk_sheet -mode ts product_under_independence.tex
 
 spell:
 	aspell -c product_under_independence.tex

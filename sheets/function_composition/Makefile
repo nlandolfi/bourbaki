@@ -11,7 +11,7 @@ function_composition.tex: sheet.tex
 
 function_composition.pdf: ../../*.tex ../../trademark.pdf *.tex function_composition.tex
 	pdflatex --file-line-error -interaction=nonstopmode function_composition.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: function_composition.pdf
 o:
 	make open
 
-defs: function_composition.tex
-	defs function_composition.tex
+terms: function_composition.tex
+	bbk_sheet -mode ts function_composition.tex
 
 spell:
 	aspell -c function_composition.tex

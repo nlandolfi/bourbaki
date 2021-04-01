@@ -11,7 +11,7 @@ topological_spaces.tex: sheet.tex
 
 topological_spaces.pdf: ../../*.tex ../../trademark.pdf *.tex topological_spaces.tex
 	pdflatex --file-line-error -interaction=nonstopmode topological_spaces.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: topological_spaces.pdf
 o:
 	make open
 
-defs: topological_spaces.tex
-	defs topological_spaces.tex
+terms: topological_spaces.tex
+	bbk_sheet -mode ts topological_spaces.tex
 
 spell:
 	aspell -c topological_spaces.tex

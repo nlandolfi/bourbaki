@@ -11,7 +11,7 @@ convex_functions.tex: sheet.tex
 
 convex_functions.pdf: ../../*.tex ../../trademark.pdf *.tex convex_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode convex_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: convex_functions.pdf
 o:
 	make open
 
-defs: convex_functions.tex
-	defs convex_functions.tex
+terms: convex_functions.tex
+	bbk_sheet -mode ts convex_functions.tex
 
 spell:
 	aspell -c convex_functions.tex

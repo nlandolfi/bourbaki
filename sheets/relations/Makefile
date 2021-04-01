@@ -11,7 +11,7 @@ relations.tex: sheet.tex
 
 relations.pdf: ../../*.tex ../../trademark.pdf *.tex relations.tex
 	pdflatex --file-line-error -interaction=nonstopmode relations.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: relations.pdf
 o:
 	make open
 
-defs: relations.tex
-	defs relations.tex
+terms: relations.tex
+	bbk_sheet -mode ts relations.tex
 
 spell:
 	aspell -c relations.tex

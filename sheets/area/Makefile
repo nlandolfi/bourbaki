@@ -11,7 +11,7 @@ area.tex: sheet.tex
 
 area.pdf: ../../*.tex ../../trademark.pdf *.tex area.tex
 	pdflatex --file-line-error -interaction=nonstopmode area.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: area.pdf
 o:
 	make open
 
-defs: area.tex
-	defs area.tex
+terms: area.tex
+	bbk_sheet -mode ts area.tex
 
 spell:
 	aspell -c area.tex

@@ -11,7 +11,7 @@ independent_identically_distributed.tex: sheet.tex
 
 independent_identically_distributed.pdf: ../../*.tex ../../trademark.pdf *.tex independent_identically_distributed.tex
 	pdflatex --file-line-error -interaction=nonstopmode independent_identically_distributed.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: independent_identically_distributed.pdf
 o:
 	make open
 
-defs: independent_identically_distributed.tex
-	defs independent_identically_distributed.tex
+terms: independent_identically_distributed.tex
+	bbk_sheet -mode ts independent_identically_distributed.tex
 
 spell:
 	aspell -c independent_identically_distributed.tex

@@ -11,7 +11,7 @@ common_sense.tex: sheet.tex
 
 common_sense.pdf: ../../*.tex ../../trademark.pdf *.tex common_sense.tex
 	pdflatex --file-line-error -interaction=nonstopmode common_sense.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: common_sense.pdf
 o:
 	make open
 
-defs: common_sense.tex
-	defs common_sense.tex
+terms: common_sense.tex
+	bbk_sheet -mode ts common_sense.tex
 
 spell:
 	aspell -c common_sense.tex

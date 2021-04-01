@@ -11,7 +11,7 @@ operations.tex: sheet.tex
 
 operations.pdf: ../../*.tex ../../trademark.pdf *.tex operations.tex
 	pdflatex --file-line-error -interaction=nonstopmode operations.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: operations.pdf
 o:
 	make open
 
-defs: operations.tex
-	defs operations.tex
+terms: operations.tex
+	bbk_sheet -mode ts operations.tex
 
 spell:
 	aspell -c operations.tex

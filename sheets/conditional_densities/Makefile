@@ -11,7 +11,7 @@ conditional_densities.tex: sheet.tex
 
 conditional_densities.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_densities.tex
 	pdflatex --file-line-error -interaction=nonstopmode conditional_densities.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: conditional_densities.pdf
 o:
 	make open
 
-defs: conditional_densities.tex
-	defs conditional_densities.tex
+terms: conditional_densities.tex
+	bbk_sheet -mode ts conditional_densities.tex
 
 spell:
 	aspell -c conditional_densities.tex

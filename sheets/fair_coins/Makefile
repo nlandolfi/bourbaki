@@ -11,7 +11,7 @@ fair_coins.tex: sheet.tex
 
 fair_coins.pdf: ../../*.tex ../../trademark.pdf *.tex fair_coins.tex
 	pdflatex --file-line-error -interaction=nonstopmode fair_coins.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: fair_coins.pdf
 o:
 	make open
 
-defs: fair_coins.tex
-	defs fair_coins.tex
+terms: fair_coins.tex
+	bbk_sheet -mode ts fair_coins.tex
 
 spell:
 	aspell -c fair_coins.tex

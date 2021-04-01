@@ -11,7 +11,7 @@ simple_functions.tex: sheet.tex
 
 simple_functions.pdf: ../../*.tex ../../trademark.pdf *.tex simple_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode simple_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: simple_functions.pdf
 o:
 	make open
 
-defs: simple_functions.tex
-	defs simple_functions.tex
+terms: simple_functions.tex
+	bbk_sheet -mode ts simple_functions.tex
 
 spell:
 	aspell -c simple_functions.tex

@@ -11,7 +11,7 @@ equations.tex: sheet.tex
 
 equations.pdf: ../../*.tex ../../trademark.pdf *.tex equations.tex
 	pdflatex --file-line-error -interaction=nonstopmode equations.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: equations.pdf
 o:
 	make open
 
-defs: equations.tex
-	defs equations.tex
+terms: equations.tex
+	bbk_sheet -mode ts equations.tex
 
 spell:
 	aspell -c equations.tex

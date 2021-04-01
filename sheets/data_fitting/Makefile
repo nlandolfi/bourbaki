@@ -11,7 +11,7 @@ data_fitting.tex: sheet.tex
 
 data_fitting.pdf: ../../*.tex ../../trademark.pdf *.tex data_fitting.tex
 	pdflatex --file-line-error -interaction=nonstopmode data_fitting.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: data_fitting.pdf
 o:
 	make open
 
-defs: data_fitting.tex
-	defs data_fitting.tex
+terms: data_fitting.tex
+	bbk_sheet -mode ts data_fitting.tex
 
 spell:
 	aspell -c data_fitting.tex

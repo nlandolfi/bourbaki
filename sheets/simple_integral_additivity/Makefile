@@ -11,7 +11,7 @@ simple_integral_additivity.tex: sheet.tex
 
 simple_integral_additivity.pdf: ../../*.tex ../../trademark.pdf *.tex simple_integral_additivity.tex
 	pdflatex --file-line-error -interaction=nonstopmode simple_integral_additivity.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: simple_integral_additivity.pdf
 o:
 	make open
 
-defs: simple_integral_additivity.tex
-	defs simple_integral_additivity.tex
+terms: simple_integral_additivity.tex
+	bbk_sheet -mode ts simple_integral_additivity.tex
 
 spell:
 	aspell -c simple_integral_additivity.tex

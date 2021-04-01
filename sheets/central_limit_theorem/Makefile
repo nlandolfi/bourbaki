@@ -11,7 +11,7 @@ central_limit_theorem.tex: sheet.tex
 
 central_limit_theorem.pdf: ../../*.tex ../../trademark.pdf *.tex central_limit_theorem.tex
 	pdflatex --file-line-error -interaction=nonstopmode central_limit_theorem.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: central_limit_theorem.pdf
 o:
 	make open
 
-defs: central_limit_theorem.tex
-	defs central_limit_theorem.tex
+terms: central_limit_theorem.tex
+	bbk_sheet -mode ts central_limit_theorem.tex
 
 spell:
 	aspell -c central_limit_theorem.tex

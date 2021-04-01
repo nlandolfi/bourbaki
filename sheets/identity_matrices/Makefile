@@ -11,7 +11,7 @@ identity_matrices.tex: sheet.tex
 
 identity_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex identity_matrices.tex
 	pdflatex --file-line-error -interaction=nonstopmode identity_matrices.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: identity_matrices.pdf
 o:
 	make open
 
-defs: identity_matrices.tex
-	defs identity_matrices.tex
+terms: identity_matrices.tex
+	bbk_sheet -mode ts identity_matrices.tex
 
 spell:
 	aspell -c identity_matrices.tex

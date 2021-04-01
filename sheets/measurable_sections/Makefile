@@ -11,7 +11,7 @@ measurable_sections.tex: sheet.tex
 
 measurable_sections.pdf: ../../*.tex ../../trademark.pdf *.tex measurable_sections.tex
 	pdflatex --file-line-error -interaction=nonstopmode measurable_sections.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: measurable_sections.pdf
 o:
 	make open
 
-defs: measurable_sections.tex
-	defs measurable_sections.tex
+terms: measurable_sections.tex
+	bbk_sheet -mode ts measurable_sections.tex
 
 spell:
 	aspell -c measurable_sections.tex

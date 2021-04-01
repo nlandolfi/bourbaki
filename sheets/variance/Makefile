@@ -11,7 +11,7 @@ variance.tex: sheet.tex
 
 variance.pdf: ../../*.tex ../../trademark.pdf *.tex variance.tex
 	pdflatex --file-line-error -interaction=nonstopmode variance.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: variance.pdf
 o:
 	make open
 
-defs: variance.tex
-	defs variance.tex
+terms: variance.tex
+	bbk_sheet -mode ts variance.tex
 
 spell:
 	aspell -c variance.tex

@@ -11,7 +11,7 @@ ordered_pairs.tex: sheet.tex
 
 ordered_pairs.pdf: ../../*.tex ../../trademark.pdf *.tex ordered_pairs.tex
 	pdflatex --file-line-error -interaction=nonstopmode ordered_pairs.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: ordered_pairs.pdf
 o:
 	make open
 
-defs: ordered_pairs.tex
-	defs ordered_pairs.tex
+terms: ordered_pairs.tex
+	bbk_sheet -mode ts ordered_pairs.tex
 
 spell:
 	aspell -c ordered_pairs.tex

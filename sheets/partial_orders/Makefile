@@ -11,7 +11,7 @@ partial_orders.tex: sheet.tex
 
 partial_orders.pdf: ../../*.tex ../../trademark.pdf *.tex partial_orders.tex
 	pdflatex --file-line-error -interaction=nonstopmode partial_orders.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: partial_orders.pdf
 o:
 	make open
 
-defs: partial_orders.tex
-	defs partial_orders.tex
+terms: partial_orders.tex
+	bbk_sheet -mode ts partial_orders.tex
 
 spell:
 	aspell -c partial_orders.tex

@@ -11,7 +11,7 @@ marginal_densities.tex: sheet.tex
 
 marginal_densities.pdf: ../../*.tex ../../trademark.pdf *.tex marginal_densities.tex
 	pdflatex --file-line-error -interaction=nonstopmode marginal_densities.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: marginal_densities.pdf
 o:
 	make open
 
-defs: marginal_densities.tex
-	defs marginal_densities.tex
+terms: marginal_densities.tex
+	bbk_sheet -mode ts marginal_densities.tex
 
 spell:
 	aspell -c marginal_densities.tex

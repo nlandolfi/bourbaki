@@ -11,7 +11,7 @@ inner_product_norms.tex: sheet.tex
 
 inner_product_norms.pdf: ../../*.tex ../../trademark.pdf *.tex inner_product_norms.tex
 	pdflatex --file-line-error -interaction=nonstopmode inner_product_norms.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: inner_product_norms.pdf
 o:
 	make open
 
-defs: inner_product_norms.tex
-	defs inner_product_norms.tex
+terms: inner_product_norms.tex
+	bbk_sheet -mode ts inner_product_norms.tex
 
 spell:
 	aspell -c inner_product_norms.tex

@@ -11,7 +11,7 @@ distribution_selection.tex: sheet.tex
 
 distribution_selection.pdf: ../../*.tex ../../trademark.pdf *.tex distribution_selection.tex
 	pdflatex --file-line-error -interaction=nonstopmode distribution_selection.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: distribution_selection.pdf
 o:
 	make open
 
-defs: distribution_selection.tex
-	defs distribution_selection.tex
+terms: distribution_selection.tex
+	bbk_sheet -mode ts distribution_selection.tex
 
 spell:
 	aspell -c distribution_selection.tex

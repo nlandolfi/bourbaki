@@ -11,7 +11,7 @@ cardinality.tex: sheet.tex
 
 cardinality.pdf: ../../*.tex ../../trademark.pdf *.tex cardinality.tex
 	pdflatex --file-line-error -interaction=nonstopmode cardinality.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: cardinality.pdf
 o:
 	make open
 
-defs: cardinality.tex
-	defs cardinality.tex
+terms: cardinality.tex
+	bbk_sheet -mode ts cardinality.tex
 
 spell:
 	aspell -c cardinality.tex

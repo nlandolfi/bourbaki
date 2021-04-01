@@ -11,7 +11,7 @@ identity.tex: sheet.tex
 
 identity.pdf: ../../*.tex ../../trademark.pdf *.tex identity.tex
 	pdflatex --file-line-error -interaction=nonstopmode identity.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: identity.pdf
 o:
 	make open
 
-defs: identity.tex
-	defs identity.tex
+terms: identity.tex
+	bbk_sheet -mode ts identity.tex
 
 spell:
 	aspell -c identity.tex

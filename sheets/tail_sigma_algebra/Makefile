@@ -11,7 +11,7 @@ tail_sigma_algebra.tex: sheet.tex
 
 tail_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex tail_sigma_algebra.tex
 	pdflatex --file-line-error -interaction=nonstopmode tail_sigma_algebra.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: tail_sigma_algebra.pdf
 o:
 	make open
 
-defs: tail_sigma_algebra.tex
-	defs tail_sigma_algebra.tex
+terms: tail_sigma_algebra.tex
+	bbk_sheet -mode ts tail_sigma_algebra.tex
 
 spell:
 	aspell -c tail_sigma_algebra.tex

@@ -11,7 +11,7 @@ functional_analysis.tex: sheet.tex
 
 functional_analysis.pdf: ../../*.tex ../../trademark.pdf *.tex functional_analysis.tex
 	pdflatex --file-line-error -interaction=nonstopmode functional_analysis.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: functional_analysis.pdf
 o:
 	make open
 
-defs: functional_analysis.tex
-	defs functional_analysis.tex
+terms: functional_analysis.tex
+	bbk_sheet -mode ts functional_analysis.tex
 
 spell:
 	aspell -c functional_analysis.tex

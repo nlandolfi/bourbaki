@@ -11,7 +11,7 @@ complex_integrals.tex: sheet.tex
 
 complex_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex complex_integrals.tex
 	pdflatex --file-line-error -interaction=nonstopmode complex_integrals.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: complex_integrals.pdf
 o:
 	make open
 
-defs: complex_integrals.tex
-	defs complex_integrals.tex
+terms: complex_integrals.tex
+	bbk_sheet -mode ts complex_integrals.tex
 
 spell:
 	aspell -c complex_integrals.tex

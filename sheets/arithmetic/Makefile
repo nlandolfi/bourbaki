@@ -11,7 +11,7 @@ arithmetic.tex: sheet.tex
 
 arithmetic.pdf: ../../*.tex ../../trademark.pdf *.tex arithmetic.tex
 	pdflatex --file-line-error -interaction=nonstopmode arithmetic.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: arithmetic.pdf
 o:
 	make open
 
-defs: arithmetic.tex
-	defs arithmetic.tex
+terms: arithmetic.tex
+	bbk_sheet -mode ts arithmetic.tex
 
 spell:
 	aspell -c arithmetic.tex

@@ -11,7 +11,7 @@ subsets.tex: sheet.tex
 
 subsets.pdf: ../../*.tex ../../trademark.pdf *.tex subsets.tex
 	pdflatex --file-line-error -interaction=nonstopmode subsets.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: subsets.pdf
 o:
 	make open
 
-defs: subsets.tex
-	defs subsets.tex
+terms: subsets.tex
+	bbk_sheet -mode ts subsets.tex
 
 spell:
 	aspell -c subsets.tex

@@ -11,7 +11,7 @@ zero_one_law.tex: sheet.tex
 
 zero_one_law.pdf: ../../*.tex ../../trademark.pdf *.tex zero_one_law.tex
 	pdflatex --file-line-error -interaction=nonstopmode zero_one_law.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: zero_one_law.pdf
 o:
 	make open
 
-defs: zero_one_law.tex
-	defs zero_one_law.tex
+terms: zero_one_law.tex
+	bbk_sheet -mode ts zero_one_law.tex
 
 spell:
 	aspell -c zero_one_law.tex

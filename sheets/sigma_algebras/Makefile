@@ -11,7 +11,7 @@ sigma_algebras.tex: sheet.tex
 
 sigma_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex sigma_algebras.tex
 	pdflatex --file-line-error -interaction=nonstopmode sigma_algebras.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: sigma_algebras.pdf
 o:
 	make open
 
-defs: sigma_algebras.tex
-	defs sigma_algebras.tex
+terms: sigma_algebras.tex
+	bbk_sheet -mode ts sigma_algebras.tex
 
 spell:
 	aspell -c sigma_algebras.tex

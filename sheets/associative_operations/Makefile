@@ -11,7 +11,7 @@ associative_operations.tex: sheet.tex
 
 associative_operations.pdf: ../../*.tex ../../trademark.pdf *.tex associative_operations.tex
 	pdflatex --file-line-error -interaction=nonstopmode associative_operations.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: associative_operations.pdf
 o:
 	make open
 
-defs: associative_operations.tex
-	defs associative_operations.tex
+terms: associative_operations.tex
+	bbk_sheet -mode ts associative_operations.tex
 
 spell:
 	aspell -c associative_operations.tex

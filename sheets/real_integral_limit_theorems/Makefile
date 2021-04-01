@@ -11,7 +11,7 @@ real_integral_limit_theorems.tex: sheet.tex
 
 real_integral_limit_theorems.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_limit_theorems.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_integral_limit_theorems.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_integral_limit_theorems.pdf
 o:
 	make open
 
-defs: real_integral_limit_theorems.tex
-	defs real_integral_limit_theorems.tex
+terms: real_integral_limit_theorems.tex
+	bbk_sheet -mode ts real_integral_limit_theorems.tex
 
 spell:
 	aspell -c real_integral_limit_theorems.tex

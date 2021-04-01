@@ -11,7 +11,7 @@ objects.tex: sheet.tex
 
 objects.pdf: ../../*.tex ../../trademark.pdf *.tex objects.tex
 	pdflatex --file-line-error -interaction=nonstopmode objects.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: objects.pdf
 o:
 	make open
 
-defs: objects.tex
-	defs objects.tex
+terms: objects.tex
+	bbk_sheet -mode ts objects.tex
 
 spell:
 	aspell -c objects.tex

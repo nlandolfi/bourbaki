@@ -11,7 +11,7 @@ partial_derivatives.tex: sheet.tex
 
 partial_derivatives.pdf: ../../*.tex ../../trademark.pdf *.tex partial_derivatives.tex
 	pdflatex --file-line-error -interaction=nonstopmode partial_derivatives.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: partial_derivatives.pdf
 o:
 	make open
 
-defs: partial_derivatives.tex
-	defs partial_derivatives.tex
+terms: partial_derivatives.tex
+	bbk_sheet -mode ts partial_derivatives.tex
 
 spell:
 	aspell -c partial_derivatives.tex

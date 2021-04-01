@@ -11,7 +11,7 @@ moment_generating_function.tex: sheet.tex
 
 moment_generating_function.pdf: ../../*.tex ../../trademark.pdf *.tex moment_generating_function.tex
 	pdflatex --file-line-error -interaction=nonstopmode moment_generating_function.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: moment_generating_function.pdf
 o:
 	make open
 
-defs: moment_generating_function.tex
-	defs moment_generating_function.tex
+terms: moment_generating_function.tex
+	bbk_sheet -mode ts moment_generating_function.tex
 
 spell:
 	aspell -c moment_generating_function.tex

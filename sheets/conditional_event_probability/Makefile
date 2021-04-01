@@ -11,7 +11,7 @@ conditional_event_probability.tex: sheet.tex
 
 conditional_event_probability.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_event_probability.tex
 	pdflatex --file-line-error -interaction=nonstopmode conditional_event_probability.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: conditional_event_probability.pdf
 o:
 	make open
 
-defs: conditional_event_probability.tex
-	defs conditional_event_probability.tex
+terms: conditional_event_probability.tex
+	bbk_sheet -mode ts conditional_event_probability.tex
 
 spell:
 	aspell -c conditional_event_probability.tex

@@ -11,7 +11,7 @@ maximum_likelihood.tex: sheet.tex
 
 maximum_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex maximum_likelihood.tex
 	pdflatex --file-line-error -interaction=nonstopmode maximum_likelihood.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: maximum_likelihood.pdf
 o:
 	make open
 
-defs: maximum_likelihood.tex
-	defs maximum_likelihood.tex
+terms: maximum_likelihood.tex
+	bbk_sheet -mode ts maximum_likelihood.tex
 
 spell:
 	aspell -c maximum_likelihood.tex

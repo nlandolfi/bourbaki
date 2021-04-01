@@ -11,7 +11,7 @@ norms.tex: sheet.tex
 
 norms.pdf: ../../*.tex ../../trademark.pdf *.tex norms.tex
 	pdflatex --file-line-error -interaction=nonstopmode norms.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: norms.pdf
 o:
 	make open
 
-defs: norms.tex
-	defs norms.tex
+terms: norms.tex
+	bbk_sheet -mode ts norms.tex
 
 spell:
 	aspell -c norms.tex

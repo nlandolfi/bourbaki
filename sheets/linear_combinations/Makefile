@@ -11,7 +11,7 @@ linear_combinations.tex: sheet.tex
 
 linear_combinations.pdf: ../../*.tex ../../trademark.pdf *.tex linear_combinations.tex
 	pdflatex --file-line-error -interaction=nonstopmode linear_combinations.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: linear_combinations.pdf
 o:
 	make open
 
-defs: linear_combinations.tex
-	defs linear_combinations.tex
+terms: linear_combinations.tex
+	bbk_sheet -mode ts linear_combinations.tex
 
 spell:
 	aspell -c linear_combinations.tex

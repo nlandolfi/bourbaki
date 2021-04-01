@@ -11,7 +11,7 @@ complete_inner_product_decomposition.tex: sheet.tex
 
 complete_inner_product_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex complete_inner_product_decomposition.tex
 	pdflatex --file-line-error -interaction=nonstopmode complete_inner_product_decomposition.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: complete_inner_product_decomposition.pdf
 o:
 	make open
 
-defs: complete_inner_product_decomposition.tex
-	defs complete_inner_product_decomposition.tex
+terms: complete_inner_product_decomposition.tex
+	bbk_sheet -mode ts complete_inner_product_decomposition.tex
 
 spell:
 	aspell -c complete_inner_product_decomposition.tex

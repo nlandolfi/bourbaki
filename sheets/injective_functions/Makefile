@@ -11,7 +11,7 @@ injective_functions.tex: sheet.tex
 
 injective_functions.pdf: ../../*.tex ../../trademark.pdf *.tex injective_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode injective_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: injective_functions.pdf
 o:
 	make open
 
-defs: injective_functions.tex
-	defs injective_functions.tex
+terms: injective_functions.tex
+	bbk_sheet -mode ts injective_functions.tex
 
 spell:
 	aspell -c injective_functions.tex

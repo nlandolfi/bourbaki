@@ -11,7 +11,7 @@ real_limiting_bounds.tex: sheet.tex
 
 real_limiting_bounds.pdf: ../../*.tex ../../trademark.pdf *.tex real_limiting_bounds.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_limiting_bounds.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_limiting_bounds.pdf
 o:
 	make open
 
-defs: real_limiting_bounds.tex
-	defs real_limiting_bounds.tex
+terms: real_limiting_bounds.tex
+	bbk_sheet -mode ts real_limiting_bounds.tex
 
 spell:
 	aspell -c real_limiting_bounds.tex

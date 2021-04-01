@@ -11,7 +11,7 @@ logarithm.tex: sheet.tex
 
 logarithm.pdf: ../../*.tex ../../trademark.pdf *.tex logarithm.tex
 	pdflatex --file-line-error -interaction=nonstopmode logarithm.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: logarithm.pdf
 o:
 	make open
 
-defs: logarithm.tex
-	defs logarithm.tex
+terms: logarithm.tex
+	bbk_sheet -mode ts logarithm.tex
 
 spell:
 	aspell -c logarithm.tex

@@ -11,7 +11,7 @@ finite_measures.tex: sheet.tex
 
 finite_measures.pdf: ../../*.tex ../../trademark.pdf *.tex finite_measures.tex
 	pdflatex --file-line-error -interaction=nonstopmode finite_measures.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: finite_measures.pdf
 o:
 	make open
 
-defs: finite_measures.tex
-	defs finite_measures.tex
+terms: finite_measures.tex
+	bbk_sheet -mode ts finite_measures.tex
 
 spell:
 	aspell -c finite_measures.tex

@@ -11,7 +11,7 @@ random_variables.tex: sheet.tex
 
 random_variables.pdf: ../../*.tex ../../trademark.pdf *.tex random_variables.tex
 	pdflatex --file-line-error -interaction=nonstopmode random_variables.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: random_variables.pdf
 o:
 	make open
 
-defs: random_variables.tex
-	defs random_variables.tex
+terms: random_variables.tex
+	bbk_sheet -mode ts random_variables.tex
 
 spell:
 	aspell -c random_variables.tex

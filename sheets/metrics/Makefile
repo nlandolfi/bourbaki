@@ -11,7 +11,7 @@ metrics.tex: sheet.tex
 
 metrics.pdf: ../../*.tex ../../trademark.pdf *.tex metrics.tex
 	pdflatex --file-line-error -interaction=nonstopmode metrics.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: metrics.pdf
 o:
 	make open
 
-defs: metrics.tex
-	defs metrics.tex
+terms: metrics.tex
+	bbk_sheet -mode ts metrics.tex
 
 spell:
 	aspell -c metrics.tex

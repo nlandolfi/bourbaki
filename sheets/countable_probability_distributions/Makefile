@@ -11,7 +11,7 @@ countable_probability_distributions.tex: sheet.tex
 
 countable_probability_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex countable_probability_distributions.tex
 	pdflatex --file-line-error -interaction=nonstopmode countable_probability_distributions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: countable_probability_distributions.pdf
 o:
 	make open
 
-defs: countable_probability_distributions.tex
-	defs countable_probability_distributions.tex
+terms: countable_probability_distributions.tex
+	bbk_sheet -mode ts countable_probability_distributions.tex
 
 spell:
 	aspell -c countable_probability_distributions.tex

@@ -11,7 +11,7 @@ bounded_functions.tex: sheet.tex
 
 bounded_functions.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode bounded_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: bounded_functions.pdf
 o:
 	make open
 
-defs: bounded_functions.tex
-	defs bounded_functions.tex
+terms: bounded_functions.tex
+	bbk_sheet -mode ts bounded_functions.tex
 
 spell:
 	aspell -c bounded_functions.tex

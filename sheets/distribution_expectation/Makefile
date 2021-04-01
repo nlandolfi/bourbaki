@@ -11,7 +11,7 @@ distribution_expectation.tex: sheet.tex
 
 distribution_expectation.pdf: ../../*.tex ../../trademark.pdf *.tex distribution_expectation.tex
 	pdflatex --file-line-error -interaction=nonstopmode distribution_expectation.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: distribution_expectation.pdf
 o:
 	make open
 
-defs: distribution_expectation.tex
-	defs distribution_expectation.tex
+terms: distribution_expectation.tex
+	bbk_sheet -mode ts distribution_expectation.tex
 
 spell:
 	aspell -c distribution_expectation.tex

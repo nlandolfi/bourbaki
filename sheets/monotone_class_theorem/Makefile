@@ -11,7 +11,7 @@ monotone_class_theorem.tex: sheet.tex
 
 monotone_class_theorem.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_class_theorem.tex
 	pdflatex --file-line-error -interaction=nonstopmode monotone_class_theorem.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: monotone_class_theorem.pdf
 o:
 	make open
 
-defs: monotone_class_theorem.tex
-	defs monotone_class_theorem.tex
+terms: monotone_class_theorem.tex
+	bbk_sheet -mode ts monotone_class_theorem.tex
 
 spell:
 	aspell -c monotone_class_theorem.tex

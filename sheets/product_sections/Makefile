@@ -11,7 +11,7 @@ product_sections.tex: sheet.tex
 
 product_sections.pdf: ../../*.tex ../../trademark.pdf *.tex product_sections.tex
 	pdflatex --file-line-error -interaction=nonstopmode product_sections.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: product_sections.pdf
 o:
 	make open
 
-defs: product_sections.tex
-	defs product_sections.tex
+terms: product_sections.tex
+	bbk_sheet -mode ts product_sections.tex
 
 spell:
 	aspell -c product_sections.tex

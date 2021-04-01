@@ -11,7 +11,7 @@ tree-structured_distributions.tex: sheet.tex
 
 tree-structured_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex tree-structured_distributions.tex
 	pdflatex --file-line-error -interaction=nonstopmode tree-structured_distributions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: tree-structured_distributions.pdf
 o:
 	make open
 
-defs: tree-structured_distributions.tex
-	defs tree-structured_distributions.tex
+terms: tree-structured_distributions.tex
+	bbk_sheet -mode ts tree-structured_distributions.tex
 
 spell:
 	aspell -c tree-structured_distributions.tex

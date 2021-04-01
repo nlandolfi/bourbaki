@@ -11,7 +11,7 @@ tail_measure_upper_bound.tex: sheet.tex
 
 tail_measure_upper_bound.pdf: ../../*.tex ../../trademark.pdf *.tex tail_measure_upper_bound.tex
 	pdflatex --file-line-error -interaction=nonstopmode tail_measure_upper_bound.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: tail_measure_upper_bound.pdf
 o:
 	make open
 
-defs: tail_measure_upper_bound.tex
-	defs tail_measure_upper_bound.tex
+terms: tail_measure_upper_bound.tex
+	bbk_sheet -mode ts tail_measure_upper_bound.tex
 
 spell:
 	aspell -c tail_measure_upper_bound.tex

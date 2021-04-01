@@ -11,7 +11,7 @@ complex_measures.tex: sheet.tex
 
 complex_measures.pdf: ../../*.tex ../../trademark.pdf *.tex complex_measures.tex
 	pdflatex --file-line-error -interaction=nonstopmode complex_measures.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: complex_measures.pdf
 o:
 	make open
 
-defs: complex_measures.tex
-	defs complex_measures.tex
+terms: complex_measures.tex
+	bbk_sheet -mode ts complex_measures.tex
 
 spell:
 	aspell -c complex_measures.tex

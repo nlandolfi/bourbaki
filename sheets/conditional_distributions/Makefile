@@ -11,7 +11,7 @@ conditional_distributions.tex: sheet.tex
 
 conditional_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_distributions.tex
 	pdflatex --file-line-error -interaction=nonstopmode conditional_distributions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: conditional_distributions.pdf
 o:
 	make open
 
-defs: conditional_distributions.tex
-	defs conditional_distributions.tex
+terms: conditional_distributions.tex
+	bbk_sheet -mode ts conditional_distributions.tex
 
 spell:
 	aspell -c conditional_distributions.tex

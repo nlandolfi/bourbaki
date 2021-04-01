@@ -11,7 +11,7 @@ measure_space.tex: sheet.tex
 
 measure_space.pdf: ../../*.tex ../../trademark.pdf *.tex measure_space.tex
 	pdflatex --file-line-error -interaction=nonstopmode measure_space.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: measure_space.pdf
 o:
 	make open
 
-defs: measure_space.tex
-	defs measure_space.tex
+terms: measure_space.tex
+	bbk_sheet -mode ts measure_space.tex
 
 spell:
 	aspell -c measure_space.tex

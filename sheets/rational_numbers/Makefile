@@ -11,7 +11,7 @@ rational_numbers.tex: sheet.tex
 
 rational_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex rational_numbers.tex
 	pdflatex --file-line-error -interaction=nonstopmode rational_numbers.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: rational_numbers.pdf
 o:
 	make open
 
-defs: rational_numbers.tex
-	defs rational_numbers.tex
+terms: rational_numbers.tex
+	bbk_sheet -mode ts rational_numbers.tex
 
 spell:
 	aspell -c rational_numbers.tex

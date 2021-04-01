@@ -11,7 +11,7 @@ real_uniform_continuity.tex: sheet.tex
 
 real_uniform_continuity.pdf: ../../*.tex ../../trademark.pdf *.tex real_uniform_continuity.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_uniform_continuity.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_uniform_continuity.pdf
 o:
 	make open
 
-defs: real_uniform_continuity.tex
-	defs real_uniform_continuity.tex
+terms: real_uniform_continuity.tex
+	bbk_sheet -mode ts real_uniform_continuity.tex
 
 spell:
 	aspell -c real_uniform_continuity.tex

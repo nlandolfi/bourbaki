@@ -11,7 +11,7 @@ norm_examples.tex: sheet.tex
 
 norm_examples.pdf: ../../*.tex ../../trademark.pdf *.tex norm_examples.tex
 	pdflatex --file-line-error -interaction=nonstopmode norm_examples.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: norm_examples.pdf
 o:
 	make open
 
-defs: norm_examples.tex
-	defs norm_examples.tex
+terms: norm_examples.tex
+	bbk_sheet -mode ts norm_examples.tex
 
 spell:
 	aspell -c norm_examples.tex

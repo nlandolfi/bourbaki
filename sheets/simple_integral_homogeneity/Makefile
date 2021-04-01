@@ -11,7 +11,7 @@ simple_integral_homogeneity.tex: sheet.tex
 
 simple_integral_homogeneity.pdf: ../../*.tex ../../trademark.pdf *.tex simple_integral_homogeneity.tex
 	pdflatex --file-line-error -interaction=nonstopmode simple_integral_homogeneity.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: simple_integral_homogeneity.pdf
 o:
 	make open
 
-defs: simple_integral_homogeneity.tex
-	defs simple_integral_homogeneity.tex
+terms: simple_integral_homogeneity.tex
+	bbk_sheet -mode ts simple_integral_homogeneity.tex
 
 spell:
 	aspell -c simple_integral_homogeneity.tex

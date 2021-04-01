@@ -11,7 +11,7 @@ n-dimensional_space.tex: sheet.tex
 
 n-dimensional_space.pdf: ../../*.tex ../../trademark.pdf *.tex n-dimensional_space.tex
 	pdflatex --file-line-error -interaction=nonstopmode n-dimensional_space.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: n-dimensional_space.pdf
 o:
 	make open
 
-defs: n-dimensional_space.tex
-	defs n-dimensional_space.tex
+terms: n-dimensional_space.tex
+	bbk_sheet -mode ts n-dimensional_space.tex
 
 spell:
 	aspell -c n-dimensional_space.tex

@@ -11,7 +11,7 @@ metric_completion.tex: sheet.tex
 
 metric_completion.pdf: ../../*.tex ../../trademark.pdf *.tex metric_completion.tex
 	pdflatex --file-line-error -interaction=nonstopmode metric_completion.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: metric_completion.pdf
 o:
 	make open
 
-defs: metric_completion.tex
-	defs metric_completion.tex
+terms: metric_completion.tex
+	bbk_sheet -mode ts metric_completion.tex
 
 spell:
 	aspell -c metric_completion.tex

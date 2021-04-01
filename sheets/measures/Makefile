@@ -11,7 +11,7 @@ measures.tex: sheet.tex
 
 measures.pdf: ../../*.tex ../../trademark.pdf *.tex measures.tex
 	pdflatex --file-line-error -interaction=nonstopmode measures.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: measures.pdf
 o:
 	make open
 
-defs: measures.tex
-	defs measures.tex
+terms: measures.tex
+	bbk_sheet -mode ts measures.tex
 
 spell:
 	aspell -c measures.tex

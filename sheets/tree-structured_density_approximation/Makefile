@@ -11,7 +11,7 @@ tree-structured_density_approximation.tex: sheet.tex
 
 tree-structured_density_approximation.pdf: ../../*.tex ../../trademark.pdf *.tex tree-structured_density_approximation.tex
 	pdflatex --file-line-error -interaction=nonstopmode tree-structured_density_approximation.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: tree-structured_density_approximation.pdf
 o:
 	make open
 
-defs: tree-structured_density_approximation.tex
-	defs tree-structured_density_approximation.tex
+terms: tree-structured_density_approximation.tex
+	bbk_sheet -mode ts tree-structured_density_approximation.tex
 
 spell:
 	aspell -c tree-structured_density_approximation.tex

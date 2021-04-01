@@ -11,7 +11,7 @@ equivalence_relations.tex: sheet.tex
 
 equivalence_relations.pdf: ../../*.tex ../../trademark.pdf *.tex equivalence_relations.tex
 	pdflatex --file-line-error -interaction=nonstopmode equivalence_relations.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: equivalence_relations.pdf
 o:
 	make open
 
-defs: equivalence_relations.tex
-	defs equivalence_relations.tex
+terms: equivalence_relations.tex
+	bbk_sheet -mode ts equivalence_relations.tex
 
 spell:
 	aspell -c equivalence_relations.tex

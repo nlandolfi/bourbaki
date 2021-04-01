@@ -11,7 +11,7 @@ bounded_linear_norm.tex: sheet.tex
 
 bounded_linear_norm.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_linear_norm.tex
 	pdflatex --file-line-error -interaction=nonstopmode bounded_linear_norm.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: bounded_linear_norm.pdf
 o:
 	make open
 
-defs: bounded_linear_norm.tex
-	defs bounded_linear_norm.tex
+terms: bounded_linear_norm.tex
+	bbk_sheet -mode ts bounded_linear_norm.tex
 
 spell:
 	aspell -c bounded_linear_norm.tex

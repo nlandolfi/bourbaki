@@ -11,7 +11,7 @@ metric_dense.tex: sheet.tex
 
 metric_dense.pdf: ../../*.tex ../../trademark.pdf *.tex metric_dense.tex
 	pdflatex --file-line-error -interaction=nonstopmode metric_dense.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: metric_dense.pdf
 o:
 	make open
 
-defs: metric_dense.tex
-	defs metric_dense.tex
+terms: metric_dense.tex
+	bbk_sheet -mode ts metric_dense.tex
 
 spell:
 	aspell -c metric_dense.tex

@@ -11,7 +11,7 @@ real_probability_densities.tex: sheet.tex
 
 real_probability_densities.pdf: ../../*.tex ../../trademark.pdf *.tex real_probability_densities.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_probability_densities.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_probability_densities.pdf
 o:
 	make open
 
-defs: real_probability_densities.tex
-	defs real_probability_densities.tex
+terms: real_probability_densities.tex
+	bbk_sheet -mode ts real_probability_densities.tex
 
 spell:
 	aspell -c real_probability_densities.tex

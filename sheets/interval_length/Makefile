@@ -11,7 +11,7 @@ interval_length.tex: sheet.tex
 
 interval_length.pdf: ../../*.tex ../../trademark.pdf *.tex interval_length.tex
 	pdflatex --file-line-error -interaction=nonstopmode interval_length.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: interval_length.pdf
 o:
 	make open
 
-defs: interval_length.tex
-	defs interval_length.tex
+terms: interval_length.tex
+	bbk_sheet -mode ts interval_length.tex
 
 spell:
 	aspell -c interval_length.tex

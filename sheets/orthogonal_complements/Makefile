@@ -11,7 +11,7 @@ orthogonal_complements.tex: sheet.tex
 
 orthogonal_complements.pdf: ../../*.tex ../../trademark.pdf *.tex orthogonal_complements.tex
 	pdflatex --file-line-error -interaction=nonstopmode orthogonal_complements.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: orthogonal_complements.pdf
 o:
 	make open
 
-defs: orthogonal_complements.tex
-	defs orthogonal_complements.tex
+terms: orthogonal_complements.tex
+	bbk_sheet -mode ts orthogonal_complements.tex
 
 spell:
 	aspell -c orthogonal_complements.tex

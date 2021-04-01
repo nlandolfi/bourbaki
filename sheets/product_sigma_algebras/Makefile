@@ -11,7 +11,7 @@ product_sigma_algebras.tex: sheet.tex
 
 product_sigma_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex product_sigma_algebras.tex
 	pdflatex --file-line-error -interaction=nonstopmode product_sigma_algebras.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: product_sigma_algebras.pdf
 o:
 	make open
 
-defs: product_sigma_algebras.tex
-	defs product_sigma_algebras.tex
+terms: product_sigma_algebras.tex
+	bbk_sheet -mode ts product_sigma_algebras.tex
 
 spell:
 	aspell -c product_sigma_algebras.tex

@@ -11,7 +11,7 @@ normal_densities.tex: sheet.tex
 
 normal_densities.pdf: ../../*.tex ../../trademark.pdf *.tex normal_densities.tex
 	pdflatex --file-line-error -interaction=nonstopmode normal_densities.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: normal_densities.pdf
 o:
 	make open
 
-defs: normal_densities.tex
-	defs normal_densities.tex
+terms: normal_densities.tex
+	bbk_sheet -mode ts normal_densities.tex
 
 spell:
 	aspell -c normal_densities.tex

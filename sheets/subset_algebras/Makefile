@@ -11,7 +11,7 @@ subset_algebras.tex: sheet.tex
 
 subset_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex subset_algebras.tex
 	pdflatex --file-line-error -interaction=nonstopmode subset_algebras.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: subset_algebras.pdf
 o:
 	make open
 
-defs: subset_algebras.tex
-	defs subset_algebras.tex
+terms: subset_algebras.tex
+	bbk_sheet -mode ts subset_algebras.tex
 
 spell:
 	aspell -c subset_algebras.tex

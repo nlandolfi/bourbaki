@@ -11,7 +11,7 @@ sequences.tex: sheet.tex
 
 sequences.pdf: ../../*.tex ../../trademark.pdf *.tex sequences.tex
 	pdflatex --file-line-error -interaction=nonstopmode sequences.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: sequences.pdf
 o:
 	make open
 
-defs: sequences.tex
-	defs sequences.tex
+terms: sequences.tex
+	bbk_sheet -mode ts sequences.tex
 
 spell:
 	aspell -c sequences.tex

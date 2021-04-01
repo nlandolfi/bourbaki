@@ -11,7 +11,7 @@ characteristic_functions.tex: sheet.tex
 
 characteristic_functions.pdf: ../../*.tex ../../trademark.pdf *.tex characteristic_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode characteristic_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: characteristic_functions.pdf
 o:
 	make open
 
-defs: characteristic_functions.tex
-	defs characteristic_functions.tex
+terms: characteristic_functions.tex
+	bbk_sheet -mode ts characteristic_functions.tex
 
 spell:
 	aspell -c characteristic_functions.tex

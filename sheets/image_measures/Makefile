@@ -11,7 +11,7 @@ image_measures.tex: sheet.tex
 
 image_measures.pdf: ../../*.tex ../../trademark.pdf *.tex image_measures.tex
 	pdflatex --file-line-error -interaction=nonstopmode image_measures.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: image_measures.pdf
 o:
 	make open
 
-defs: image_measures.tex
-	defs image_measures.tex
+terms: image_measures.tex
+	bbk_sheet -mode ts image_measures.tex
 
 spell:
 	aspell -c image_measures.tex

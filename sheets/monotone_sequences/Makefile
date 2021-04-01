@@ -11,7 +11,7 @@ monotone_sequences.tex: sheet.tex
 
 monotone_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_sequences.tex
 	pdflatex --file-line-error -interaction=nonstopmode monotone_sequences.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: monotone_sequences.pdf
 o:
 	make open
 
-defs: monotone_sequences.tex
-	defs monotone_sequences.tex
+terms: monotone_sequences.tex
+	bbk_sheet -mode ts monotone_sequences.tex
 
 spell:
 	aspell -c monotone_sequences.tex

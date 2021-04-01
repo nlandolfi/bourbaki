@@ -11,7 +11,7 @@ density_selection.tex: sheet.tex
 
 density_selection.pdf: ../../*.tex ../../trademark.pdf *.tex density_selection.tex
 	pdflatex --file-line-error -interaction=nonstopmode density_selection.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: density_selection.pdf
 o:
 	make open
 
-defs: density_selection.tex
-	defs density_selection.tex
+terms: density_selection.tex
+	bbk_sheet -mode ts density_selection.tex
 
 spell:
 	aspell -c density_selection.tex

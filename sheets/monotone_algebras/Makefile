@@ -11,7 +11,7 @@ monotone_algebras.tex: sheet.tex
 
 monotone_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_algebras.tex
 	pdflatex --file-line-error -interaction=nonstopmode monotone_algebras.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: monotone_algebras.pdf
 o:
 	make open
 
-defs: monotone_algebras.tex
-	defs monotone_algebras.tex
+terms: monotone_algebras.tex
+	bbk_sheet -mode ts monotone_algebras.tex
 
 spell:
 	aspell -c monotone_algebras.tex

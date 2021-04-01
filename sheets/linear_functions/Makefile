@@ -11,7 +11,7 @@ linear_functions.tex: sheet.tex
 
 linear_functions.pdf: ../../*.tex ../../trademark.pdf *.tex linear_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode linear_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: linear_functions.pdf
 o:
 	make open
 
-defs: linear_functions.tex
-	defs linear_functions.tex
+terms: linear_functions.tex
+	bbk_sheet -mode ts linear_functions.tex
 
 spell:
 	aspell -c linear_functions.tex

@@ -11,7 +11,7 @@ metric_convergence.tex: sheet.tex
 
 metric_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex metric_convergence.tex
 	pdflatex --file-line-error -interaction=nonstopmode metric_convergence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: metric_convergence.pdf
 o:
 	make open
 
-defs: metric_convergence.tex
-	defs metric_convergence.tex
+terms: metric_convergence.tex
+	bbk_sheet -mode ts metric_convergence.tex
 
 spell:
 	aspell -c metric_convergence.tex

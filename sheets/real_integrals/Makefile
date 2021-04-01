@@ -11,7 +11,7 @@ real_integrals.tex: sheet.tex
 
 real_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex real_integrals.tex
 	pdflatex --file-line-error -interaction=nonstopmode real_integrals.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: real_integrals.pdf
 o:
 	make open
 
-defs: real_integrals.tex
-	defs real_integrals.tex
+terms: real_integrals.tex
+	bbk_sheet -mode ts real_integrals.tex
 
 spell:
 	aspell -c real_integrals.tex

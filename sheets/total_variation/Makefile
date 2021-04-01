@@ -11,7 +11,7 @@ total_variation.tex: sheet.tex
 
 total_variation.pdf: ../../*.tex ../../trademark.pdf *.tex total_variation.tex
 	pdflatex --file-line-error -interaction=nonstopmode total_variation.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: total_variation.pdf
 o:
 	make open
 
-defs: total_variation.tex
-	defs total_variation.tex
+terms: total_variation.tex
+	bbk_sheet -mode ts total_variation.tex
 
 spell:
 	aspell -c total_variation.tex

@@ -11,7 +11,7 @@ convergence_in_probability.tex: sheet.tex
 
 convergence_in_probability.pdf: ../../*.tex ../../trademark.pdf *.tex convergence_in_probability.tex
 	pdflatex --file-line-error -interaction=nonstopmode convergence_in_probability.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: convergence_in_probability.pdf
 o:
 	make open
 
-defs: convergence_in_probability.tex
-	defs convergence_in_probability.tex
+terms: convergence_in_probability.tex
+	bbk_sheet -mode ts convergence_in_probability.tex
 
 spell:
 	aspell -c convergence_in_probability.tex

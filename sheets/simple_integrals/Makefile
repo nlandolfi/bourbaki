@@ -11,7 +11,7 @@ simple_integrals.tex: sheet.tex
 
 simple_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex simple_integrals.tex
 	pdflatex --file-line-error -interaction=nonstopmode simple_integrals.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: simple_integrals.pdf
 o:
 	make open
 
-defs: simple_integrals.tex
-	defs simple_integrals.tex
+terms: simple_integrals.tex
+	bbk_sheet -mode ts simple_integrals.tex
 
 spell:
 	aspell -c simple_integrals.tex

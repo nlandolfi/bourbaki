@@ -11,7 +11,7 @@ natural_summation.tex: sheet.tex
 
 natural_summation.pdf: ../../*.tex ../../trademark.pdf *.tex natural_summation.tex
 	pdflatex --file-line-error -interaction=nonstopmode natural_summation.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: natural_summation.pdf
 o:
 	make open
 
-defs: natural_summation.tex
-	defs natural_summation.tex
+terms: natural_summation.tex
+	bbk_sheet -mode ts natural_summation.tex
 
 spell:
 	aspell -c natural_summation.tex

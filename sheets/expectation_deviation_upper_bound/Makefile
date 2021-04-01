@@ -11,7 +11,7 @@ expectation_deviation_upper_bound.tex: sheet.tex
 
 expectation_deviation_upper_bound.pdf: ../../*.tex ../../trademark.pdf *.tex expectation_deviation_upper_bound.tex
 	pdflatex --file-line-error -interaction=nonstopmode expectation_deviation_upper_bound.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: expectation_deviation_upper_bound.pdf
 o:
 	make open
 
-defs: expectation_deviation_upper_bound.tex
-	defs expectation_deviation_upper_bound.tex
+terms: expectation_deviation_upper_bound.tex
+	bbk_sheet -mode ts expectation_deviation_upper_bound.tex
 
 spell:
 	aspell -c expectation_deviation_upper_bound.tex

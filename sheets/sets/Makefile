@@ -11,7 +11,7 @@ sets.tex: sheet.tex
 
 sets.pdf: ../../*.tex ../../trademark.pdf *.tex sets.tex
 	pdflatex --file-line-error -interaction=nonstopmode sets.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: sets.pdf
 o:
 	make open
 
-defs: sets.tex
-	defs sets.tex
+terms: sets.tex
+	bbk_sheet -mode ts sets.tex
 
 spell:
 	aspell -c sets.tex

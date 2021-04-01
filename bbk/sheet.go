@@ -22,14 +22,13 @@ type ParseResult struct {
 	Needs       []string
 	Macros      []string
 	Lines       []string
+	Body        string
 	NeedsParsed []*ParseResult
+	Terms       []string
 
 	// only set if returned
 	//from ParseAll
 	NeededBy []string
-
-	// set in Parse
-	Title string
 }
 
 func Parse(f io.Reader) *ParseResult {
@@ -43,7 +42,6 @@ func Parse(f io.Reader) *ParseResult {
 				log.Fatalf("%s: multiple name directives", p.Name)
 			}
 			p.Name = strings.TrimPrefix(t, namePrefix)
-			p.Title = Title(p.Name)
 			continue
 		}
 		if strings.HasPrefix(t, needPrefix) {
@@ -59,6 +57,8 @@ func Parse(f io.Reader) *ParseResult {
 	if err := scanner.Err(); err != nil {
 		fmt.Fprintln(os.Stderr, "reading standard input:", err)
 	}
+	p.Body = strings.Join(p.Lines, " ")
+	p.Terms = Terms(p.Body)
 	return p
 }
 
@@ -105,4 +105,18 @@ func ParseAll(sheetsdir string) (map[string]*ParseResult, error) {
 		sort.Strings(p.NeededBy)
 	}
 	return results, nil
+}
+
+func Terms(s string) []string {
+	ts := make([]string, 0)
+	for {
+		i := strings.Index(s, "\\ct{")
+		if i == -1 {
+			break
+		}
+		s = s[i+4:]
+		j := strings.Index(s, "}")
+		ts = append(ts, s[:j])
+	}
+	return ts
 }

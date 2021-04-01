@@ -11,7 +11,7 @@ standard_deviation.tex: sheet.tex
 
 standard_deviation.pdf: ../../*.tex ../../trademark.pdf *.tex standard_deviation.tex
 	pdflatex --file-line-error -interaction=nonstopmode standard_deviation.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: standard_deviation.pdf
 o:
 	make open
 
-defs: standard_deviation.tex
-	defs standard_deviation.tex
+terms: standard_deviation.tex
+	bbk_sheet -mode ts standard_deviation.tex
 
 spell:
 	aspell -c standard_deviation.tex

@@ -11,7 +11,7 @@ set_equality.tex: sheet.tex
 
 set_equality.pdf: ../../*.tex ../../trademark.pdf *.tex set_equality.tex
 	pdflatex --file-line-error -interaction=nonstopmode set_equality.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: set_equality.pdf
 o:
 	make open
 
-defs: set_equality.tex
-	defs set_equality.tex
+terms: set_equality.tex
+	bbk_sheet -mode ts set_equality.tex
 
 spell:
 	aspell -c set_equality.tex

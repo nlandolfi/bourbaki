@@ -8,7 +8,7 @@ o: index.html
 	open index.html
 
 local:
-	go run server.go -static-dir ./static
+	bbk_serve -static-dir ./static
 image:
 	gcloud builds submit --tag gcr.io/elos2-261103/bbk-www
 deploy:

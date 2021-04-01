@@ -11,7 +11,7 @@ positive_definite_matrices.tex: sheet.tex
 
 positive_definite_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex positive_definite_matrices.tex
 	pdflatex --file-line-error -interaction=nonstopmode positive_definite_matrices.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: positive_definite_matrices.pdf
 o:
 	make open
 
-defs: positive_definite_matrices.tex
-	defs positive_definite_matrices.tex
+terms: positive_definite_matrices.tex
+	bbk_sheet -mode ts positive_definite_matrices.tex
 
 spell:
 	aspell -c positive_definite_matrices.tex

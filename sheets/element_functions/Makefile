@@ -11,7 +11,7 @@ element_functions.tex: sheet.tex
 
 element_functions.pdf: ../../*.tex ../../trademark.pdf *.tex element_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode element_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: element_functions.pdf
 o:
 	make open
 
-defs: element_functions.tex
-	defs element_functions.tex
+terms: element_functions.tex
+	bbk_sheet -mode ts element_functions.tex
 
 spell:
 	aspell -c element_functions.tex

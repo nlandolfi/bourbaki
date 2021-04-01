@@ -11,7 +11,7 @@ function_graphs.tex: sheet.tex
 
 function_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex function_graphs.tex
 	pdflatex --file-line-error -interaction=nonstopmode function_graphs.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: function_graphs.pdf
 o:
 	make open
 
-defs: function_graphs.tex
-	defs function_graphs.tex
+terms: function_graphs.tex
+	bbk_sheet -mode ts function_graphs.tex
 
 spell:
 	aspell -c function_graphs.tex

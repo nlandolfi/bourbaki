@@ -11,7 +11,7 @@ integrable_function_space.tex: sheet.tex
 
 integrable_function_space.pdf: ../../*.tex ../../trademark.pdf *.tex integrable_function_space.tex
 	pdflatex --file-line-error -interaction=nonstopmode integrable_function_space.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: integrable_function_space.pdf
 o:
 	make open
 
-defs: integrable_function_space.tex
-	defs integrable_function_space.tex
+terms: integrable_function_space.tex
+	bbk_sheet -mode ts integrable_function_space.tex
 
 spell:
 	aspell -c integrable_function_space.tex

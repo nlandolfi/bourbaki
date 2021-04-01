@@ -11,7 +11,7 @@ cumulative_distribution_functions.tex: sheet.tex
 
 cumulative_distribution_functions.pdf: ../../*.tex ../../trademark.pdf *.tex cumulative_distribution_functions.tex
 	pdflatex --file-line-error -interaction=nonstopmode cumulative_distribution_functions.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: cumulative_distribution_functions.pdf
 o:
 	make open
 
-defs: cumulative_distribution_functions.tex
-	defs cumulative_distribution_functions.tex
+terms: cumulative_distribution_functions.tex
+	bbk_sheet -mode ts cumulative_distribution_functions.tex
 
 spell:
 	aspell -c cumulative_distribution_functions.tex

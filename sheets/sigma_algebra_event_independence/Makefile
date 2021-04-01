@@ -11,7 +11,7 @@ sigma_algebra_event_independence.tex: sheet.tex
 
 sigma_algebra_event_independence.pdf: ../../*.tex ../../trademark.pdf *.tex sigma_algebra_event_independence.tex
 	pdflatex --file-line-error -interaction=nonstopmode sigma_algebra_event_independence.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: sigma_algebra_event_independence.pdf
 o:
 	make open
 
-defs: sigma_algebra_event_independence.tex
-	defs sigma_algebra_event_independence.tex
+terms: sigma_algebra_event_independence.tex
+	bbk_sheet -mode ts sigma_algebra_event_independence.tex
 
 spell:
 	aspell -c sigma_algebra_event_independence.tex

@@ -11,7 +11,7 @@ generated_monotone_class.tex: sheet.tex
 
 generated_monotone_class.pdf: ../../*.tex ../../trademark.pdf *.tex generated_monotone_class.tex
 	pdflatex --file-line-error -interaction=nonstopmode generated_monotone_class.tex
-	make defs
+	make terms
 
 graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
@@ -28,8 +28,8 @@ open: generated_monotone_class.pdf
 o:
 	make open
 
-defs: generated_monotone_class.tex
-	defs generated_monotone_class.tex
+terms: generated_monotone_class.tex
+	bbk_sheet -mode ts generated_monotone_class.tex
 
 spell:
 	aspell -c generated_monotone_class.tex
