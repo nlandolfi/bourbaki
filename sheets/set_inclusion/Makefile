@@ -3,14 +3,14 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make subsets.pdf
+	make set_inclusion.pdf
 	make graph.pdf
 
-subsets.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > subsets.tex
+set_inclusion.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > set_inclusion.tex
 
-subsets.pdf: ../../*.tex ../../trademark.pdf *.tex subsets.tex
-	pdflatex --file-line-error -interaction=nonstopmode subsets.tex
+set_inclusion.pdf: ../../*.tex ../../trademark.pdf *.tex set_inclusion.tex
+	pdflatex --file-line-error -interaction=nonstopmode set_inclusion.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -22,17 +22,17 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: subsets.pdf
-	open subsets.pdf
+open: set_inclusion.pdf
+	open set_inclusion.pdf
 
 o:
 	make open
 
-terms: subsets.tex
-	bbk_sheet -mode ts subsets.tex
+terms: set_inclusion.tex
+	bbk_sheet -mode ts set_inclusion.tex
 
 spell:
-	aspell -c subsets.tex
+	aspell -c set_inclusion.tex
 
 s:
 	make spell
@@ -46,6 +46,6 @@ clean:
 	make reset
 
 remake:
-	rm -f subsets.*
+	rm -f set_inclusion.*
 	make reset
 	bbk_sheet -mode mk > Makefile

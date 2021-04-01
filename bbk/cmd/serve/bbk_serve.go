@@ -79,12 +79,12 @@ const SearchTemplateHTML = `<!DOCTYPE html>
 				<div class="search-results">
 					<div>
 						<form method="GET">
-							<input class="search" value="{{ .Query }}" name="query" autofocus/>
+							<input class="search" name="query" {{ if .Query }} value="{{ .Query }}"{{end}} autofocus/>
 						</form>
 						{{ len .Results }} results in {{ .SearchDuration | printf "%s" }};
 					</div>
-					{{ range $r := .Results }}
-					<div tabindex="0" class="search-result" onclick="location.href='./sheets/{{ $r.Name}}.html'" onkeypress="location.href='./sheets/{{ $r.Name }}.html'">
+					{{ range $i, $r := .Results }}
+					<div tabindex="0" class="search-result" onclick="location.href='./sheets/{{ $r.Name}}.html'" onkeypress="location.href='./sheets/{{ $r.Name }}.html'" autofocus>
 					<b> {{ title $r.Name }} </b> <br>
 					Rank: {{ .Rank | printf "%.2f" }}; Reasons: {{ reasons . }}
 					</div>

@@ -82,14 +82,14 @@ func (s *Searcher) Search(q string) []*SearchResult {
 	for term, prs := range s.terms {
 		if q == term {
 			for _, pr := range prs {
-				addresult(rs, pr, "term exact match", 0.99)
+				addresult(rs, pr, "term exact match", 1)
 			}
 			continue
 		}
 		if strings.Contains(term, q) {
 			for _, pr := range prs {
 				addresult(rs, pr, "term contains query",
-					float64(len(q))/float64(len(term))-0.01,
+					float64(len(q))/float64(len(term)),
 				)
 			}
 		}
@@ -97,7 +97,7 @@ func (s *Searcher) Search(q string) []*SearchResult {
 	for _, pr := range s.sheets {
 		if strings.Contains(pr.Body, q) {
 			addresult(rs, pr, "body contains query",
-				float64(len(q))/float64(len(pr.Body))-0.05,
+				float64(len(q))/float64(len(pr.Body)),
 			)
 		}
 	}
