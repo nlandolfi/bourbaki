@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 	"sort"
 	"text/template"
 
@@ -31,6 +32,13 @@ func main() {
 	sort.Strings(names)
 
 	log.Printf("%d sheets", len(results))
+
+	sheetTemplate := template.Must(
+		template.New("sheet.tmpl").Funcs(
+			template.FuncMap{
+				"title": bbk.Title,
+			},
+		).ParseFiles(path.Join("./static", "sheet.tmpl")))
 
 	for _, name := range names {
 		p := results[name]
@@ -60,6 +68,13 @@ func main() {
 		}
 	}
 
+	indexTemplate := template.Must(
+		template.New("index.tmpl").Funcs(
+			template.FuncMap{
+				"title": bbk.Title,
+			},
+		).ParseFiles(path.Join("./static", "index.tmpl")))
+
 	f, err := os.Create("./static/index.html")
 	if err != nil {
 		log.Fatalf("os.Create index.html: %v", err)
@@ -78,80 +93,3 @@ func main() {
 	}
 	f.Close()
 }
-
-const IndexTemplate = `<!DOCTYPE html>
-  <head>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./fonts.css">
-	</head>
-  <body>
-		<div class="page">
-			<div class="content">
-				<img src="../trademark.pdf" id="trademark">
-				<h1>HyperText Index</h1>
-				<form class="search" action="/search" method="GET" autofocus>
-				<input class="search" placeholder="search bourbaki..." name="query">
-				</form>
-				<br>
-				<a href="./sheets/introduction.html" style="margin:0px auto">View the project introduction.</a>
-				<ul>
-				{{ range $k, $v := . }}<li> <a href="./sheets/{{ $v.Name }}.html">{{ title .Name }}</a> </li>{{ end }}
-				</ul>
-		</div>
-	</div>
-	</body>
-</html>
-`
-
-const SheetTemplate = `<!DOCTYPE html>
-  <head>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../fonts.css">
-  </head>
-  <body>
-		<div class="info">
-		{{ if .Needs }}
-		Needs:
-		<ul>
-			{{ range $k, $v := .Needs }}
-				<li> <a tabindex="0" href="./{{ $v }}.html"> {{ title $v }} </a> </li>
-			{{ end }}
-		</ul>
-		{{ else }}
-		No needs.
-		{{ end }}
-		{{ if .NeededBy }}
-		Needed by:
-		<ul>
-			{{ range $k, $v := .NeededBy }}
-				<li> <a tabindex="0" href="./{{ $v }}.html"> {{ title $v }} </a> </li>
-			{{ end }}
-		</ul>
-		{{ else }}
-		{{ end }}
-		<form class="search" action="/search" method="GET">
-		<input class="search"placeholder="Search" name="query">
-		<a tabindex="0" href="../index.html">Back to index</a>
-		</form>
-		<br/>
-		<br/>
-		<a tabindex="0" href="./{{ .Name }}.pdf"> See sheet on own page </a>
-		</div>
-
-		<iframe id="sheet" src="./{{ .Name }}.pdf">
-		</iframe>
-
-		<div class="info">
-		<a tabindex="0" href="./{{ .Name }}_graph.pdf"> See graph on own page </a>
-		</div>
-		<iframe id="graph" src="./{{ .Name }}_graph.pdf">
-		</iframe>
-  </body>
-</html>`
-
-var sheetTemplate = template.Must(template.New("").Funcs(template.FuncMap{
-	"title": bbk.Title,
-}).Parse(SheetTemplate))
-var indexTemplate = template.Must(template.New("").Funcs(template.FuncMap{
-	"title": bbk.Title,
-}).Parse(IndexTemplate))
