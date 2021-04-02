@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	sheetsDir = flag.String("sheets-dir", "../../sheets", "the sheets directory")
+	sheetsDir = flag.String("sheets-dir", "../sheets", "the sheets directory")
 )
 
 func main() {
@@ -52,7 +52,7 @@ func main() {
 		out.Close()
 
 		_, err = bbk.CopyFile(
-			fmt.Sprintf("../../sheets/%s/%s.pdf", name, name),
+			path.Join(*sheetsDir, fmt.Sprintf("%s/%s.pdf", name, name)),
 			fmt.Sprintf("./static/sheets/%s.pdf", name),
 		)
 		if err != nil {
@@ -60,7 +60,7 @@ func main() {
 		}
 
 		_, err = bbk.CopyFile(
-			fmt.Sprintf("../../sheets/%s/graph.pdf", name),
+			path.Join(*sheetsDir, fmt.Sprintf("%s/graph.pdf", name)),
 			fmt.Sprintf("./static/sheets/%s_graph.pdf", name),
 		)
 		if err != nil {
