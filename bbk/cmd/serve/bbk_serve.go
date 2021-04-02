@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/gob"
+	"encoding/json"
 	"flag"
 	"html/template"
 	"log"
@@ -32,6 +33,7 @@ func main() {
 
 	m := http.NewServeMux()
 	m.HandleFunc("/search", s.search)
+	m.HandleFunc("/search_json", s.search_json)
 	m.Handle("/", http.FileServer(http.Dir(*staticDir)))
 	log.Fatal(http.ListenAndServe(":8080", m))
 }
@@ -40,17 +42,8 @@ type searcher struct {
 	*bbk.Searcher
 }
 
-func (s *searcher) search(w http.ResponseWriter, r *http.Request) {
+func (s *searcher) data(r *http.Request) *SearchData {
 	start := time.Now()
-
-	searchTemplate := template.Must(
-		template.New("search.tmpl").Funcs(
-			template.FuncMap{
-				"title":   bbk.Title,
-				"reasons": reasons,
-			},
-		).ParseFiles(path.Join(*staticDir, "search.tmpl")))
-
 	var sd SearchData
 	sd.Query = r.FormValue("query")
 	sd.RewrittenQuery = bbk.RewriteQuery(sd.Query)
@@ -59,8 +52,29 @@ func (s *searcher) search(w http.ResponseWriter, r *http.Request) {
 		sd.Searched = true
 	}
 	sd.SearchDuration = time.Now().Sub(start)
+	return &sd
+}
 
-	if err := searchTemplate.Execute(w, &sd); err != nil {
+func (s *searcher) search(w http.ResponseWriter, r *http.Request) {
+	sd := s.data(r)
+	searchTemplate := template.Must(
+		template.New("search.tmpl").Funcs(
+			template.FuncMap{
+				"title":   bbk.Title,
+				"reasons": reasons,
+			},
+		).ParseFiles(path.Join(*staticDir, "search.tmpl")))
+	if err := searchTemplate.Execute(w, sd); err != nil {
+		http.Error(w, "internal", 500)
+		log.Fatal(err)
+	}
+
+}
+
+func (s *searcher) search_json(w http.ResponseWriter, r *http.Request) {
+	sd := s.data(r)
+
+	if err := json.NewEncoder(w).Encode(sd); err != nil {
 		http.Error(w, "internal", 500)
 		log.Fatal(err)
 	}
