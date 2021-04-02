@@ -23,8 +23,14 @@
       <button disabled class="need label"> Needed by: </button>
       {{ range $k, $v := .NeededBy }}
       <button class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'"> {{ title $v }}
-      </button>
 {{ end }}
+      <button disabled class="need label"> Links: </button>
+      <button class="need" tabindex="0" onclick="location.href='./{{ .Name }}.pdf'">
+        Sheet PDF
+      </button>
+      <button class="need" tabindex="0" onclick="location.href='./{{ .Name }}_graph.pdf'">
+        Graph PDF
+      </button>
     </div>
 
     <iframe id="sheet" src="./{{ .Name }}.pdf">
