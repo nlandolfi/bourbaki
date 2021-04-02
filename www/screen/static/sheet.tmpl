@@ -7,7 +7,7 @@
     <div class="header no-border-top no-border-bottom">
     <div class="left">
     <img src="../trademark.pdf" id="header-trademark" onclick="location.href='../index.html'" style="cursor:pointer">
-    <h1> Commutative Operations </h1>
+    <h1> {{ title .Name }} </h1>
     </div>
       <div class="center">
       </div>
@@ -16,21 +16,24 @@
     </div>
     <div class="subheader">
       <button disabled class="need label"> Needs: </button>
-      
-      <button class="need" tabindex="0" onclick="location.href='./operations.html'"> Operations
+      {{ range $k, $v := .Needs }}
+      <button class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'"> {{ title $v }}
       </button>
-
+{{ end }}
       <button disabled class="need label"> Needed by: </button>
-      
+      {{ range $k, $v := .NeededBy }}
+      <button class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'"> {{ title $v }}
+      </button>
+{{ end }}
     </div>
 
-    <iframe id="sheet" src="./commutative_operations.pdf">
+    <iframe id="sheet" src="./{{ .Name }}.pdf">
     </iframe>
 
     <div class="header">
-    <a tabindex="0" href="./commutative_operations_graph.pdf"> See graph on own page </a>
+    <a tabindex="0" href="./{{ .Name }}_graph.pdf"> See graph on own page </a>
     </div>
-    <iframe id="graph" src="./commutative_operations_graph.pdf">
+    <iframe id="graph" src="./{{ .Name }}_graph.pdf">
     </iframe>
   </body>
 </html>`

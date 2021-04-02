@@ -42,6 +42,15 @@ type searcher struct {
 
 func (s *searcher) search(w http.ResponseWriter, r *http.Request) {
 	start := time.Now()
+
+	searchTemplate := template.Must(
+		template.New("search.tmpl").Funcs(
+			template.FuncMap{
+				"title":   bbk.Title,
+				"reasons": reasons,
+			},
+		).ParseFiles(path.Join(*staticDir, "search.tmpl")))
+
 	var sd SearchData
 	sd.Query = r.FormValue("query")
 	sd.RewrittenQuery = bbk.RewriteQuery(sd.Query)
@@ -65,44 +74,6 @@ type SearchData struct {
 	Searched       bool
 	SearchDuration time.Duration
 }
-
-const SearchTemplateHTML = `<!DOCTYPE html>
-  <head>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./fonts.css">
-	</head>
-  <body>
-		<div class="page">
-			<div class="content">
-				<img src="../trademark.pdf" id="trademark">
-				<h1>Search</h1>
-				<div class="search-results">
-					<div>
-						<form method="GET">
-							<input class="search" name="query" {{ if .Query }} value="{{ .Query }}"{{end}} autofocus/>
-						</form>
-						{{ len .Results }} results in {{ .SearchDuration | printf "%s" }};
-					</div>
-					{{ range $i, $r := .Results }}
-					<div tabindex="0" class="search-result" onclick="location.href='./sheets/{{ $r.Name}}.html'" onkeypress="location.href='./sheets/{{ $r.Name }}.html'" autofocus>
-					<b> {{ title $r.Name }} </b> <br>
-					Rank: {{ .Rank | printf "%.2f" }}; Reasons: {{ reasons . }}
-					</div>
-					{{end}}
-					<a tabindex="0" href="./index.html">Back to index</a>
-				</div>
-		</div>
-	</div>
-	</body>
-	<script>
-	</script>
-</html>
-`
-
-var searchTemplate = template.Must(template.New("").Funcs(template.FuncMap{
-	"title":   bbk.Title,
-	"reasons": reasons,
-}).Parse(SearchTemplateHTML))
 
 func reasons(sr *bbk.SearchResult) string {
 	return strings.Join(sr.Reasons, ", ")
