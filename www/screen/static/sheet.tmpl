@@ -15,15 +15,24 @@
       </div>
     </div>
     <div class="subheader">
-      <button disabled class="need label"> Needs: </button>
-      {{ range $k, $v := .Needs }}
-      <button class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'"> {{ title $v }}
-      </button>
-{{ end }}
-      <button disabled class="need label"> Needed by: </button>
-      {{ range $k, $v := .NeededBy }}
-      <button class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'"> {{ title $v }}
-{{ end }}
+      {{ if .Needs }}
+        <button disabled class="need label"> Needs: </button>
+        {{ range $k, $v := .Needs }}
+            <button class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'">
+              {{ title $v }}
+            </button>
+        {{ end }}
+      {{ else }}
+        <button disabled class="need label"> No needs. </button>
+      {{ end }}
+      {{ if .NeededBy }}
+        <button disabled class="need label"> Needed by: </button>
+        {{ range $k, $v := .NeededBy }}
+          <button class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'">
+            {{ title $v }}
+          </button>
+        {{ end }}
+      {{ end }}
       <button disabled class="need label"> Links: </button>
       <button class="need" tabindex="0" onclick="location.href='./{{ .Name }}.pdf'">
         Sheet PDF
@@ -36,10 +45,8 @@
     <iframe id="sheet" src="./{{ .Name }}.pdf">
     </iframe>
 
-    <div class="header">
-    <a tabindex="0" href="./{{ .Name }}_graph.pdf"> See graph on own page </a>
-    </div>
     <iframe id="graph" src="./{{ .Name }}_graph.pdf">
     </iframe>
+
   </body>
 </html>`
