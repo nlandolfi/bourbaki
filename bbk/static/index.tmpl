@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="utf-8"/>
   <head>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./fonts.css">
@@ -11,22 +12,52 @@
     </div>
       <div class="center">
               <form method="GET" action="/search">
-                <input class="search" name="query" placeholder="search bourbaki..." autofocus/>
+                <input id="search-bar" class="listing search" name="query" placeholder="search bourbaki..." autofocus/>
               </form>
 
       </div>
       <div class="right">
       </div>
     </div>
-    <div class="page">
-      <div class="content">
+        <div id="main-card" class="card">
+          <div class="listing ss">
+            <span></span>
+              <img src="../trademark.pdf" id="trademark">
+            <span></span>
+          </div>
+          <div class="listing ss">
+            <span></span>
+            <span>Index</span>
+            <span></span>
+          </div>
+          <form method="GET" action="/search">
+            <input id="search-bar" class="listing" name="query" placeholder="search..."/>
+          </form>
+        <!--
         <img src="../trademark.pdf" id="trademark">
         <h1>HyperText Index</h1>
-        <a href="./sheets/introduction.html" style="margin:0px auto">View the project introduction.</a>
-        <ul>
-        {{ range $k, $v := . }}<li> <a href="./sheets/{{ $v.Name }}.html">{{ title .Name }}</a> </li>{{ end }}
-        </ul>
+        -->
+            <div class="listing" onclick="location.href='./sheets/introduction.pdf'">
+            <span>
+              Introduction to Bourbaki
+            </span>
+            <span>›</span>
+          </div>
+            <div class="listing">
+            <span>
+              Index
+            </span>
+            <span>›</span>
+          </div>
+          {{ range $k, $v := . }}
+            <div class="listing" onclick="location.href='./sheets/{{ $v.Name }}.html'" tabindex="0" onkeypress="location.href='./sheets/{{ $v.Name }}.html'">
+            <span>
+              {{ title $v.Name }}
+            </span>
+            <span>›</span>
+          </div>
+          {{ end }}
+        </div>
     </div>
-  </div>
   </body>
 </html>
