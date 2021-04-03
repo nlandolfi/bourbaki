@@ -5,55 +5,52 @@
     <link rel="stylesheet" href="../fonts.css">
   </head>
   <body>
-    <div class="header no-border-top no-border-bottom">
-    <div class="left">
-    <img src="../trademark.pdf" id="header-trademark" onclick="location.href='../index.html'" style="cursor:pointer">
-    <h1> {{ title .Name }} </h1>
-    </div>
-      <div class="center">
-      </div>
-      <div class="right">
-      </div>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.pdf" onclick="location.href='./index.html'">
+        <span id="header-title" onclick="location.href='./{{ .Name }}.pdf'"> {{ title .Name }} </span>
+      </span>
     </div>
     <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./{{ .Name }}.pdf'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./{{ .Name }}_graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
       {{ if .Needs }}
-        <button disabled class="need label"> Needs: </button>
+        <div disabled class="need label"> Needs: </div>
         {{ range $k, $v := .Needs }}
-            <button class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'">
-              {{ title $v }}
-            </button>
+            <div class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'">
+              <span>
+                {{ title $v }}
+              </span>
+              <span class="caret">›</span>
+            </div>
         {{ end }}
       {{ else }}
-        <button disabled class="need label"> No needs. </button>
+        <div disabled class="need label"> No needs. </div>
       {{ end }}
       {{ if .NeededBy }}
-        <button disabled class="need label"> Needed by: </button>
+        <div disabled class="need label"> Needed by: </div>
         {{ range $k, $v := .NeededBy }}
           <div class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'">
             <span>
             {{ title $v }}
             </span>
-            <span>›</span>
+            <span class="caret">›</span>
           </div>
         {{ end }}
       {{ end }}
-      <button disabled class="need label"> Links: </button>
-      <button class="need" tabindex="0" onclick="location.href='./{{ .Name }}.pdf'">
-        Sheet PDF
-      </button>
-      <button class="need" tabindex="0" onclick="location.href='./{{ .Name }}_graph.pdf'">
-        Graph PDF
-      </button>
-      <!--
-      <button disabled class="need label"> Search: </button>
-      <form action="/search" method="GET"><input name="query" class="need" /></form>
-      -->
     </div>
 
-    <iframe id="sheet" src="./{{ .Name }}.pdf">
+    <iframe id="sheet-pdf" src="./{{ .Name }}.pdf">
     </iframe>
 
-    <iframe id="graph" src="./{{ .Name }}_graph.pdf">
+    <iframe id="graph-pdf" src="./{{ .Name }}_graph.pdf">
     </iframe>
 
   </body>
