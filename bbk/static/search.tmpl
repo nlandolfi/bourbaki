@@ -5,34 +5,37 @@
   </head>
   <body>
     <div class="header">
-    <div class="left">
-    <img src="../trademark.pdf" id="header-trademark" onclick="location.href='./index.html'" style="cursor:pointer">
-    <h1> Search </h1>
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.pdf" onclick="location.href='./index.html'">
+        <span id="header-title"> Search </span>
+      </span>
     </div>
-      <div class="center">
-              <form method="GET">
-                <input class="search" name="query" {{ if .Query }} value="{{ .Query }}"{{end}} autofocus/>
-              </form>
-
+    <div id="main-card" class="card">
+      <form method="GET" id="search-form">
+        <input id="search-input"class="listing" name="query" {{ if .Query }} value="{{ .Query }}"{{end}}/>
+      </form>
+      <div class="listing">
+            <span class="result-detail">
+        {{ len .Results }} results in {{ .SearchDuration | printf "%s" }}
+        </span>
       </div>
-      <div class="right">
-      </div>
-    </div>
-    <div class="page">
-      <div class="content">
-        <img src="../trademark.pdf" id="trademark">
-        <h1>Search Results</h1>
-          <div style="margin: 0px auto">
-            {{ len .Results }} results in {{ .SearchDuration | printf "%s" }};
+      {{ range $i, $r := .Results }}
+        <div tabindex="0" class="listing search-result" onclick="location.href='./sheets/{{ $r.Name}}.html'" onkeypress="location.href='./sheets/{{ $r.Name }}.html'">
+          <div style="display:flex;flex-direction:column">
+            <span>
+              <b> {{ title $r.Name }} </b>
+            </span>
+            <span class="result-detail">
+              Rank: {{ .Rank | printf "%.2f" }}
+            </span>
+            <span class="result-detail">
+              Reasons: {{ reasons . }}
+            </span>
           </div>
-          {{ range $i, $r := .Results }}
-          <button tabindex="0" class="search-result" onclick="location.href='./sheets/{{ $r.Name}}.html'" onkeypress="location.href='./sheets/{{ $r.Name }}.html'">
-          <b> {{ title $r.Name }} </b> <br>
-          Rank: {{ .Rank | printf "%.2f" }}; Reasons: {{ reasons . }}
-          </button>
-          {{end}}
+          <span style="align-self: center;">›</span>
+        </div>
+      {{end}}
     </div>
-  </div>
   </body>
   <script>
   </script>
