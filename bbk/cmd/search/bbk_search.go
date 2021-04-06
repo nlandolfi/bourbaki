@@ -56,7 +56,7 @@ func main() {
 		fmt.Printf("> ")
 	}
 
-	if scanner.Err() != nil {
+	if err := scanner.Err() != nil {
 		log.Fatal(err)
 	}
 }
