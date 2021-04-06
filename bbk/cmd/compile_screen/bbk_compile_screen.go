@@ -61,7 +61,7 @@ func main() {
 
 		_, err = bbk.CopyFile(
 			path.Join(*sheetsDir, fmt.Sprintf("%s/graph.pdf", name)),
-			fmt.Sprintf("./static/sheets/%s_graph.pdf", name),
+			fmt.Sprintf("./static/sheets/%s-graph.pdf", name),
 		)
 		if err != nil {
 			log.Fatalf("error transferring %s/graph.pdf: %v", name, err)

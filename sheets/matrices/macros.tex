@@ -1,0 +1,23 @@
+% matrices: needs amsmath and mathtools
+
+% \newcommand{\bmat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\def\bmat#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
+
+\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+\setcounter{MaxMatrixCols}{20}
+
+% allow ddots at any angle
+% \dddots{1}{1} produces dots at 45 degrees
+% \dddots{2}{1} produces dots at 30 degrees
+% and so on
+\def\dddots#1#2{%
+  \mbox{%
+    \unitlength 0.083333in%r
+    \begin{picture}(#1,#2)(0.25,0)
+      \unitlength 0.0416666in%
+      \multiput(0,2)(#1,-#2){3}{.}
+    \end{picture}%
+    }%
+  }
