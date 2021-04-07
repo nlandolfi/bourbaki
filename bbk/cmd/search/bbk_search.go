@@ -25,7 +25,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	s := bbk.NewSearcher(results)
+	rs := make(map[string]*bbk.ParseResult, len(results))
+	for _, p := range results {
+		rs[p.Name] = p
+	}
+
+	s := bbk.NewSearcher(rs)
 
 	var c Config
 	c.MaxResults = 3

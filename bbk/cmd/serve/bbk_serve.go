@@ -25,9 +25,13 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var results map[string]*bbk.ParseResult
-	if err := gob.NewDecoder(f).Decode(&results); err != nil {
+	var rs []*bbk.ParseResult
+	if err := gob.NewDecoder(f).Decode(&rs); err != nil {
 		log.Fatal(err)
+	}
+	var results = make(map[string]*bbk.ParseResult, len(rs))
+	for _, r := range rs {
+		results[r.Name] = r
 	}
 	s := &searcher{bbk.NewSearcher(results)}
 

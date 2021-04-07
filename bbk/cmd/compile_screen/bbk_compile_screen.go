@@ -7,7 +7,7 @@ import (
 	"log"
 	"os"
 	"path"
-	"sort"
+	"path/filepath"
 	"text/template"
 
 	"bbk"
@@ -15,6 +15,7 @@ import (
 
 var (
 	sheetsDir = flag.String("sheets-dir", "../sheets", "the sheets directory")
+	staticDir = flag.String("static-dir", "./static", "directory of static files")
 )
 
 func main() {
@@ -25,24 +26,22 @@ func main() {
 		log.Fatal(err)
 	}
 
-	names := make([]string, 0, len(results))
-	for n := range results {
-		names = append(names, n)
+	if len(results) == 0 {
+		log.Printf("warning: no sheets found")
 	}
-	sort.Strings(names)
 
-	log.Printf("%d sheets", len(results))
+	// log.Printf("%d sheets", len(results))
 
 	sheetTemplate := template.Must(
 		template.New("sheet.tmpl").Funcs(
 			template.FuncMap{
 				"title": bbk.Title,
 			},
-		).ParseFiles(path.Join("./static", "sheet.tmpl")))
+		).ParseFiles(path.Join(*staticDir, "sheet.tmpl")))
 
-	for _, name := range names {
-		p := results[name]
-		out, err := os.Create(fmt.Sprintf("./static/sheets/%s.html", name))
+	for _, p := range results {
+		name := p.Name
+		out, err := os.Create(filepath.Join(*staticDir, "sheets", fmt.Sprintf("%s.html", name)))
 		if err != nil {
 			log.Fatalf("os.Create: %v", err)
 		}
@@ -52,16 +51,16 @@ func main() {
 		out.Close()
 
 		_, err = bbk.CopyFile(
-			path.Join(*sheetsDir, fmt.Sprintf("%s/%s.pdf", name, name)),
-			fmt.Sprintf("./static/sheets/%s.pdf", name),
+			filepath.Join(*sheetsDir, name, fmt.Sprintf("%s.pdf", name)),
+			filepath.Join(*staticDir, "sheets", fmt.Sprintf("%s.pdf", name)),
 		)
 		if err != nil {
 			log.Fatalf("error transferring %s/sheet.pdf: %v", name, err)
 		}
 
 		_, err = bbk.CopyFile(
-			path.Join(*sheetsDir, fmt.Sprintf("%s/graph.pdf", name)),
-			fmt.Sprintf("./static/sheets/%s-graph.pdf", name),
+			filepath.Join(*sheetsDir, name, "graph.pdf"),
+			filepath.Join(*staticDir, "sheets", fmt.Sprintf("%s-graph.pdf", name)),
 		)
 		if err != nil {
 			log.Fatalf("error transferring %s/graph.pdf: %v", name, err)
@@ -73,9 +72,9 @@ func main() {
 			template.FuncMap{
 				"title": bbk.Title,
 			},
-		).ParseFiles(path.Join("./static", "index.tmpl")))
+		).ParseFiles(filepath.Join(*staticDir, "index.tmpl")))
 
-	f, err := os.Create("./static/index.html")
+	f, err := os.Create(filepath.Join(*staticDir, "index.html"))
 	if err != nil {
 		log.Fatalf("os.Create index.html: %v", err)
 	}
@@ -84,7 +83,7 @@ func main() {
 	}
 	f.Close()
 
-	f, err = os.Create("./static/results.gob")
+	f, err = os.Create(filepath.Join(*staticDir, "results.gob"))
 	if err != nil {
 		log.Fatalf("os.Create results.gob: %v", err)
 	}

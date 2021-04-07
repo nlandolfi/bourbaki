@@ -14,7 +14,7 @@
     </div>
     <div id="main-card" class="card">
       <form method="GET" id="search-form" action="/search">
-        <input id="search-input"class="listing" name="query" {{ if .Query }} value="{{ .Query }}"{{end}} placeholder="search..."/>
+        <input id="search-input"class="listing" name="query" placeholder="search..."/>
       </form>
             <div class="listing" onclick="location.href='./sheets/introduction.pdf'">
             <span>
@@ -22,10 +22,10 @@
             </span>
             <span>›</span>
           </div>
-          {{ range $k, $v := . }}
-            <div class="listing" onclick="location.href='./sheets/{{ $v.Name }}.html'" tabindex="0" onkeypress="location.href='./sheets/{{ $v.Name }}.html'">
+          {{ range $p := . }}
+            <div class="listing" onclick="location.href='./sheets/{{ $p.Name }}.html'" tabindex="0" onkeypress="location.href='./sheets/{{ $p.Name }}.html'">
             <span>
-              {{ title $v.Name }}
+              {{ title $p.Name }}
             </span>
             <span>›</span>
           </div>

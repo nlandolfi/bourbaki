@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"path/filepath"
 	"sort"
 	"strings"
 )
@@ -30,6 +31,12 @@ type ParseResult struct {
 	//from ParseAll
 	NeededBy []string
 }
+
+type ByName []*ParseResult
+
+func (s ByName) Len() int           { return len(s) }
+func (s ByName) Less(i, j int) bool { return s[i].Name > s[j].Name }
+func (s ByName) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 
 func Parse(f io.Reader) *ParseResult {
 	scanner := bufio.NewScanner(f)
@@ -62,43 +69,47 @@ func Parse(f io.Reader) *ParseResult {
 	return p
 }
 
-func ParseAll(sheetsdir string) (map[string]*ParseResult, error) {
+func ParseAll(sheetsdir string) ([]*ParseResult, error) {
 	files, err := ioutil.ReadDir(sheetsdir)
 	if err != nil {
 		return nil, err
 	}
-	results := map[string]*ParseResult{}
+	results := make([]*ParseResult, 0, len(files))
+	m := make(map[string]*ParseResult)
 	for _, f := range files {
 		if !f.IsDir() {
 			continue
 		}
 
-		sheetfile, err := os.Open(fmt.Sprintf("%s/%s/sheet.tex", sheetsdir, f.Name()))
+		sheetfile, err := os.Open(filepath.Join(sheetsdir, f.Name(), "sheet.tex"))
 		if os.IsNotExist(err) {
-			log.Printf("%q is a sheets directory, but is missing sheets.tex", f.Name())
+			log.Printf("bbk.ParseAll: directory %q lacks sheets.tex", f.Name())
 			continue
 		} else if err != nil {
-			log.Fatalf("opening sheet.tex: %v", err)
+			log.Fatalf("bbk.ParseAll: opening sheet.tex %v", err)
 		}
 
 		p := Parse(sheetfile)
 		if p.Name == "" {
 			log.Fatalf("no name for file %v", f)
 		}
-		results[p.Name] = p
+		results = append(results, p)
+		m[p.Name] = p
 		sheetfile.Close()
 	}
 
 	for _, p := range results {
 		for _, n := range p.Needs {
-			o, ok := results[n]
+			o, ok := m[n]
 			if !ok {
-				log.Fatalf("%s refers to %s, which is missing", p.Name, n)
+				log.Fatalf("bbk.ParseAll: %q references missing %q", p.Name, n)
 			}
 
 			o.NeededBy = append(o.NeededBy, p.Name)
 		}
 	}
+
+	sort.Sort(ByName(results))
 
 	for _, p := range results {
 		sort.Strings(p.Needs)
