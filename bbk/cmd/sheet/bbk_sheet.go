@@ -21,9 +21,14 @@ var (
 func main() {
 	flag.Parse()
 
-	rs, err := bbk.ParseAll(*sheetsDir)
+	results, err := bbk.ParseAll(*sheetsDir)
 	if err != nil {
-		log.Fatalf("bbk.ParseAll: %v", err)
+		log.Fatal(err)
+	}
+
+	rs := make(map[string]*bbk.ParseResult, len(results))
+	for _, p := range results {
+		rs[p.Name] = p
 	}
 
 	// just want to get the name

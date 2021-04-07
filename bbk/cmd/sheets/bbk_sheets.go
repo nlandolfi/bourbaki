@@ -21,13 +21,19 @@ var (
 func main() {
 	flag.Parse()
 
-	results, err := bbk.ParseAll(*sheetsDir)
+	rs, err := bbk.ParseAll(*sheetsDir)
 
 	if err != nil {
 		log.Fatalf("bbk.ParseAll: %v", err)
 	}
+	results := make(map[string]*bbk.ParseResult, len(rs))
+	for _, p := range rs {
+		results[p.Name] = p
+	}
 
-	log.Printf("%d sheets", len(results))
+	if len(results) == 0 {
+		log.Printf("warning: no sheets parsed")
+	}
 
 	names := make([]string, 0, len(results))
 	for n := range results {
