@@ -42,6 +42,26 @@
       
     </div>
 
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We bound the probability that a random variance deviates from its mean using its variance.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $f$ be a square-integrable real-valued random variable on the probability space $(X, \SA, \mu)$. Then for $t > 0$, \[ \mu\parens*{\abs{f - \Expect(f)} \geq t} \leq \frac{\var f}{t^2}. \] \begin{proof} The set $\abs{f - \Expect(f)} \geq t$ is $\Set*{x \in X}{ \abs{f(x) - \Expect(f)} \geq t}$. This set is $\Set*{x \in X}{({f(x) - \Expect(f)})^2 \geq t^2}$. By using the non-negative inequality \[ \mu(\Set*{x \in X}{({f(x) - \Expect(f)})^2 \geq t^2}) \leq \frac{\Expect(f - \Expect(f))}{t^2}. \] We recognize the numerator of the right hand side as the variance. \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> The above is also called <i>Chebychev's Inequality</i></p></div>
+    </div>
+
     <iframe id="sheet-pdf" src="./expectation_deviation_upper_bound.pdf">
     </iframe>
 

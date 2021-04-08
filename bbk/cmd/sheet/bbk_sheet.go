@@ -37,7 +37,13 @@ func main() {
 		log.Fatal(err)
 	}
 	defer f.Close()
-	partialp := bbk.Parse(f)
+	// just want to get the name
+	g, err := os.Open("macros.tex")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer g.Close()
+	partialp := bbk.Parse(f, g)
 	p, ok := rs[partialp.Name]
 	if !ok {
 		log.Fatalf("name %q not found among sheets", partialp.Name)
@@ -68,21 +74,8 @@ func main() {
 func writeFile(all map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 	fmt.Fprintln(os.Stdout, "\\input{../../sheet.tex}")
 	fmt.Fprintln(os.Stdout, "\\sbasic")
-	needs := make([]string, len(p.Needs))
-	seen := map[string]bool{}
-	copy(needs, p.Needs)
-	for len(needs) > 0 {
-		n := needs[0]
-		needs = needs[1:]
-		log.Print(n)
-		if seen[n] {
-			continue
-		}
-		seen[n] = true
+	for _, n := range p.AllNeeds {
 		fmt.Fprintf(os.Stdout, "\\input{../%s/macros.tex}\n", n)
-		for _, nn := range all[n].Needs {
-			needs = append(needs, nn)
-		}
 	}
 	fmt.Fprintln(os.Stdout, "\\input{./macros.tex}")
 	fmt.Fprintln(os.Stdout, "\\sstart")

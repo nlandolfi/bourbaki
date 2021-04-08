@@ -63,6 +63,26 @@
       
     </div>
 
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing" id="problem"><h1 class="sheet">2. Problem</h1></div><div class="sheet-listing"><p class="sheet"> Tree-structured density approximation is an optimization problem in which we select a tree-structured density minimizing differential entropy relative to a given density over.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $g: \R^n \to \R$ be a density. Let $d$ denote the differential relative entropy. We want to \[ \minimizationn{ \text{ density } f \text{ and tree } T \text{ on } \set{1, \dots, n} }{ d(g, f) }{ f \text{ factors according to } T. } \]</p></div><div class="sheet-listing" id="solution"><h1 class="sheet">3. Solution</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $g: \R^n \to \R$ be a density. Let $T$ be a tree on $\set{1, \dots, n}$. Let $p_j$ be the parent of vertex $j$ for the $T$ rooted at vertex $i$, $j = 1,\dots,n$ and $j \neq i$. Then the density $f: \R^d \to \R$ defined by \[ f = g_i \prod_{j \neq i} g_{j \mid p_j} \] achieves minimum differential entropy relative to $g$ among all densities which factor according to $T$. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $g: \R^n \to \R$ be a density. A tree $T$ is a solution to the problem above if and only if it is a maximum spanning tree of the differential mutual information graph of $g$. \end{prop}</p></div>
+    </div>
+
     <iframe id="sheet-pdf" src="./tree-structured_density_approximation.pdf">
     </iframe>
 

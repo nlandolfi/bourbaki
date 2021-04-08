@@ -49,6 +49,26 @@
       
     </div>
 
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What of the generalization to a multivariate normal.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $(x^1, \dots, x^n)$ be a dataset in $\R^d$. Let $f$ be a multivariate normal density with mean \[ \frac{1}{n} \sum_{k = 1}^{d} x^k \] and covariance \[ \frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right) \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^\tp . \] Then $f$ is a maximum likelihood multivariate normal density. \begin{proof} We express the log likelihood \[ \sum_{k = 1}^{n} -\frac{1}{2}(x - \mu)^\tp \Sigma^{-1} (x-\mu) - \frac{1}{2}\log (2\pi)^d - \frac{1}{2} \log \det \Sigma \] Let $P = \Sigma^{-1}$. The $\log\det \Sigma$ is $\log\det P^{-1}$ is $\log \left(\det P\right)^{-1}$ is $- \log\det P$. Use matrix calculus to get \[ \frac{\partial \ell}{\partial P} = \sum_{k = 1}^{n} (x^k - \mu)(x^k - \mu)^\tp - P^{-1}. \] \end{proof} \end{prop} We call these two objects the <i>maximum likelihood mean</i> and <i>maximum likelihood covariance</i> of the dataset.</p></div>
+    </div>
+
     <iframe id="sheet-pdf" src="./multivariate_normal_maximum_likelihood.pdf">
     </iframe>
 
