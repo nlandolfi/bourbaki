@@ -10,7 +10,8 @@ product_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > product_measures.tex
 
 product_measures.pdf: ../../*.tex ../../trademark.pdf *.tex product_measures.tex
-	pdflatex --file-line-error -interaction=nonstopmode product_measures.tex
+	# pdflatex --file-line-error -interaction=nonstopmode product_measures.tex
+	../../latexrun product_measures.tex
 	make terms
 
 graph.csv: sheet.tex

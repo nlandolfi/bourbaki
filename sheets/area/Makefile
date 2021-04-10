@@ -10,7 +10,8 @@ area.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > area.tex
 
 area.pdf: ../../*.tex ../../trademark.pdf *.tex area.tex
-	pdflatex --file-line-error -interaction=nonstopmode area.tex
+	# pdflatex --file-line-error -interaction=nonstopmode area.tex
+	../../latexrun area.tex
 	make terms
 
 graph.csv: sheet.tex

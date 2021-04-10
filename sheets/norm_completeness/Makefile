@@ -10,7 +10,8 @@ norm_completeness.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > norm_completeness.tex
 
 norm_completeness.pdf: ../../*.tex ../../trademark.pdf *.tex norm_completeness.tex
-	pdflatex --file-line-error -interaction=nonstopmode norm_completeness.tex
+	# pdflatex --file-line-error -interaction=nonstopmode norm_completeness.tex
+	../../latexrun norm_completeness.tex
 	make terms
 
 graph.csv: sheet.tex

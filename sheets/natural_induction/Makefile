@@ -10,7 +10,8 @@ natural_induction.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_induction.tex
 
 natural_induction.pdf: ../../*.tex ../../trademark.pdf *.tex natural_induction.tex
-	pdflatex --file-line-error -interaction=nonstopmode natural_induction.tex
+	# pdflatex --file-line-error -interaction=nonstopmode natural_induction.tex
+	../../latexrun natural_induction.tex
 	make terms
 
 graph.csv: sheet.tex

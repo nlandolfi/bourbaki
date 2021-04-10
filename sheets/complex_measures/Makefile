@@ -10,7 +10,8 @@ complex_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complex_measures.tex
 
 complex_measures.pdf: ../../*.tex ../../trademark.pdf *.tex complex_measures.tex
-	pdflatex --file-line-error -interaction=nonstopmode complex_measures.tex
+	# pdflatex --file-line-error -interaction=nonstopmode complex_measures.tex
+	../../latexrun complex_measures.tex
 	make terms
 
 graph.csv: sheet.tex

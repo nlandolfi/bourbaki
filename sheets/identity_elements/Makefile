@@ -10,7 +10,8 @@ identity_elements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > identity_elements.tex
 
 identity_elements.pdf: ../../*.tex ../../trademark.pdf *.tex identity_elements.tex
-	pdflatex --file-line-error -interaction=nonstopmode identity_elements.tex
+	# pdflatex --file-line-error -interaction=nonstopmode identity_elements.tex
+	../../latexrun identity_elements.tex
 	make terms
 
 graph.csv: sheet.tex

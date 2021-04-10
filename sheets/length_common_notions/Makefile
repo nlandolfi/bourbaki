@@ -10,7 +10,8 @@ length_common_notions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > length_common_notions.tex
 
 length_common_notions.pdf: ../../*.tex ../../trademark.pdf *.tex length_common_notions.tex
-	pdflatex --file-line-error -interaction=nonstopmode length_common_notions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode length_common_notions.tex
+	../../latexrun length_common_notions.tex
 	make terms
 
 graph.csv: sheet.tex

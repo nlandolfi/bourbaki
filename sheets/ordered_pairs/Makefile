@@ -10,7 +10,8 @@ ordered_pairs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > ordered_pairs.tex
 
 ordered_pairs.pdf: ../../*.tex ../../trademark.pdf *.tex ordered_pairs.tex
-	pdflatex --file-line-error -interaction=nonstopmode ordered_pairs.tex
+	# pdflatex --file-line-error -interaction=nonstopmode ordered_pairs.tex
+	../../latexrun ordered_pairs.tex
 	make terms
 
 graph.csv: sheet.tex

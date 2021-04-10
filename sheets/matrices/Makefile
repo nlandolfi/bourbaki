@@ -10,7 +10,8 @@ matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrices.tex
 
 matrices.pdf: ../../*.tex ../../trademark.pdf *.tex matrices.tex
-	pdflatex --file-line-error -interaction=nonstopmode matrices.tex
+	# pdflatex --file-line-error -interaction=nonstopmode matrices.tex
+	../../latexrun matrices.tex
 	make terms
 
 graph.csv: sheet.tex

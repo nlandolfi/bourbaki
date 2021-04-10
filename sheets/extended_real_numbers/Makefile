@@ -10,7 +10,8 @@ extended_real_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > extended_real_numbers.tex
 
 extended_real_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex extended_real_numbers.tex
-	pdflatex --file-line-error -interaction=nonstopmode extended_real_numbers.tex
+	# pdflatex --file-line-error -interaction=nonstopmode extended_real_numbers.tex
+	../../latexrun extended_real_numbers.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ distribution_selection.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distribution_selection.tex
 
 distribution_selection.pdf: ../../*.tex ../../trademark.pdf *.tex distribution_selection.tex
-	pdflatex --file-line-error -interaction=nonstopmode distribution_selection.tex
+	# pdflatex --file-line-error -interaction=nonstopmode distribution_selection.tex
+	../../latexrun distribution_selection.tex
 	make terms
 
 graph.csv: sheet.tex

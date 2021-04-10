@@ -10,7 +10,8 @@ signed_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > signed_measures.tex
 
 signed_measures.pdf: ../../*.tex ../../trademark.pdf *.tex signed_measures.tex
-	pdflatex --file-line-error -interaction=nonstopmode signed_measures.tex
+	# pdflatex --file-line-error -interaction=nonstopmode signed_measures.tex
+	../../latexrun signed_measures.tex
 	make terms
 
 graph.csv: sheet.tex

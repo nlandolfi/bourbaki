@@ -10,7 +10,8 @@ linear_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > linear_functions.tex
 
 linear_functions.pdf: ../../*.tex ../../trademark.pdf *.tex linear_functions.tex
-	pdflatex --file-line-error -interaction=nonstopmode linear_functions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode linear_functions.tex
+	../../latexrun linear_functions.tex
 	make terms
 
 graph.csv: sheet.tex

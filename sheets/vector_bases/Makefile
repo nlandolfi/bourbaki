@@ -10,7 +10,8 @@ vector_bases.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vector_bases.tex
 
 vector_bases.pdf: ../../*.tex ../../trademark.pdf *.tex vector_bases.tex
-	pdflatex --file-line-error -interaction=nonstopmode vector_bases.tex
+	# pdflatex --file-line-error -interaction=nonstopmode vector_bases.tex
+	../../latexrun vector_bases.tex
 	make terms
 
 graph.csv: sheet.tex

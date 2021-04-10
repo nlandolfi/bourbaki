@@ -10,7 +10,8 @@ cross_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cross_entropy.tex
 
 cross_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex cross_entropy.tex
-	pdflatex --file-line-error -interaction=nonstopmode cross_entropy.tex
+	# pdflatex --file-line-error -interaction=nonstopmode cross_entropy.tex
+	../../latexrun cross_entropy.tex
 	make terms
 
 graph.csv: sheet.tex

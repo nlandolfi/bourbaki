@@ -10,7 +10,8 @@ normal_differential_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_differential_entropy.tex
 
 normal_differential_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex normal_differential_entropy.tex
-	pdflatex --file-line-error -interaction=nonstopmode normal_differential_entropy.tex
+	# pdflatex --file-line-error -interaction=nonstopmode normal_differential_entropy.tex
+	../../latexrun normal_differential_entropy.tex
 	make terms
 
 graph.csv: sheet.tex

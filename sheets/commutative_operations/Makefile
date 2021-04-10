@@ -10,7 +10,8 @@ commutative_operations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > commutative_operations.tex
 
 commutative_operations.pdf: ../../*.tex ../../trademark.pdf *.tex commutative_operations.tex
-	pdflatex --file-line-error -interaction=nonstopmode commutative_operations.tex
+	# pdflatex --file-line-error -interaction=nonstopmode commutative_operations.tex
+	../../latexrun commutative_operations.tex
 	make terms
 
 graph.csv: sheet.tex

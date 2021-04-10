@@ -10,7 +10,8 @@ tail_sigma_algebra.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tail_sigma_algebra.tex
 
 tail_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex tail_sigma_algebra.tex
-	pdflatex --file-line-error -interaction=nonstopmode tail_sigma_algebra.tex
+	# pdflatex --file-line-error -interaction=nonstopmode tail_sigma_algebra.tex
+	../../latexrun tail_sigma_algebra.tex
 	make terms
 
 graph.csv: sheet.tex

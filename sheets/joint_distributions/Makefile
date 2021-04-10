@@ -10,7 +10,8 @@ joint_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > joint_distributions.tex
 
 joint_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex joint_distributions.tex
-	pdflatex --file-line-error -interaction=nonstopmode joint_distributions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode joint_distributions.tex
+	../../latexrun joint_distributions.tex
 	make terms
 
 graph.csv: sheet.tex

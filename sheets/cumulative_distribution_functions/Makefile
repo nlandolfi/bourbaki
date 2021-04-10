@@ -10,7 +10,8 @@ cumulative_distribution_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cumulative_distribution_functions.tex
 
 cumulative_distribution_functions.pdf: ../../*.tex ../../trademark.pdf *.tex cumulative_distribution_functions.tex
-	pdflatex --file-line-error -interaction=nonstopmode cumulative_distribution_functions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode cumulative_distribution_functions.tex
+	../../latexrun cumulative_distribution_functions.tex
 	make terms
 
 graph.csv: sheet.tex

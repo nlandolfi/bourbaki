@@ -10,7 +10,8 @@ random_variable_moments.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_variable_moments.tex
 
 random_variable_moments.pdf: ../../*.tex ../../trademark.pdf *.tex random_variable_moments.tex
-	pdflatex --file-line-error -interaction=nonstopmode random_variable_moments.tex
+	# pdflatex --file-line-error -interaction=nonstopmode random_variable_moments.tex
+	../../latexrun random_variable_moments.tex
 	make terms
 
 graph.csv: sheet.tex

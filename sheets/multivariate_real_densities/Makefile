@@ -10,7 +10,8 @@ multivariate_real_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > multivariate_real_densities.tex
 
 multivariate_real_densities.pdf: ../../*.tex ../../trademark.pdf *.tex multivariate_real_densities.tex
-	pdflatex --file-line-error -interaction=nonstopmode multivariate_real_densities.tex
+	# pdflatex --file-line-error -interaction=nonstopmode multivariate_real_densities.tex
+	../../latexrun multivariate_real_densities.tex
 	make terms
 
 graph.csv: sheet.tex

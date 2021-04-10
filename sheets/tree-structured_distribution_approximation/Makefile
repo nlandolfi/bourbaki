@@ -10,7 +10,8 @@ tree-structured_distribution_approximation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree-structured_distribution_approximation.tex
 
 tree-structured_distribution_approximation.pdf: ../../*.tex ../../trademark.pdf *.tex tree-structured_distribution_approximation.tex
-	pdflatex --file-line-error -interaction=nonstopmode tree-structured_distribution_approximation.tex
+	# pdflatex --file-line-error -interaction=nonstopmode tree-structured_distribution_approximation.tex
+	../../latexrun tree-structured_distribution_approximation.tex
 	make terms
 
 graph.csv: sheet.tex

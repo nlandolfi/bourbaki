@@ -10,7 +10,8 @@ density_selection.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > density_selection.tex
 
 density_selection.pdf: ../../*.tex ../../trademark.pdf *.tex density_selection.tex
-	pdflatex --file-line-error -interaction=nonstopmode density_selection.tex
+	# pdflatex --file-line-error -interaction=nonstopmode density_selection.tex
+	../../latexrun density_selection.tex
 	make terms
 
 graph.csv: sheet.tex

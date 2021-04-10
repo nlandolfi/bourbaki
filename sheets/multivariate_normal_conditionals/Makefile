@@ -10,7 +10,8 @@ multivariate_normal_conditionals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > multivariate_normal_conditionals.tex
 
 multivariate_normal_conditionals.pdf: ../../*.tex ../../trademark.pdf *.tex multivariate_normal_conditionals.tex
-	pdflatex --file-line-error -interaction=nonstopmode multivariate_normal_conditionals.tex
+	# pdflatex --file-line-error -interaction=nonstopmode multivariate_normal_conditionals.tex
+	../../latexrun multivariate_normal_conditionals.tex
 	make terms
 
 graph.csv: sheet.tex

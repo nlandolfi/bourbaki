@@ -10,7 +10,8 @@ intervals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > intervals.tex
 
 intervals.pdf: ../../*.tex ../../trademark.pdf *.tex intervals.tex
-	pdflatex --file-line-error -interaction=nonstopmode intervals.tex
+	# pdflatex --file-line-error -interaction=nonstopmode intervals.tex
+	../../latexrun intervals.tex
 	make terms
 
 graph.csv: sheet.tex

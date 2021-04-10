@@ -10,7 +10,8 @@ sequences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sequences.tex
 
 sequences.pdf: ../../*.tex ../../trademark.pdf *.tex sequences.tex
-	pdflatex --file-line-error -interaction=nonstopmode sequences.tex
+	# pdflatex --file-line-error -interaction=nonstopmode sequences.tex
+	../../latexrun sequences.tex
 	make terms
 
 graph.csv: sheet.tex

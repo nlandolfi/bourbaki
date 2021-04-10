@@ -10,7 +10,8 @@ event_probabilities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > event_probabilities.tex
 
 event_probabilities.pdf: ../../*.tex ../../trademark.pdf *.tex event_probabilities.tex
-	pdflatex --file-line-error -interaction=nonstopmode event_probabilities.tex
+	# pdflatex --file-line-error -interaction=nonstopmode event_probabilities.tex
+	../../latexrun event_probabilities.tex
 	make terms
 
 graph.csv: sheet.tex

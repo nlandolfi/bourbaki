@@ -10,7 +10,8 @@ moment_generating_function.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > moment_generating_function.tex
 
 moment_generating_function.pdf: ../../*.tex ../../trademark.pdf *.tex moment_generating_function.tex
-	pdflatex --file-line-error -interaction=nonstopmode moment_generating_function.tex
+	# pdflatex --file-line-error -interaction=nonstopmode moment_generating_function.tex
+	../../latexrun moment_generating_function.tex
 	make terms
 
 graph.csv: sheet.tex

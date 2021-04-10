@@ -10,7 +10,8 @@ countable_probability_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > countable_probability_distributions.tex
 
 countable_probability_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex countable_probability_distributions.tex
-	pdflatex --file-line-error -interaction=nonstopmode countable_probability_distributions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode countable_probability_distributions.tex
+	../../latexrun countable_probability_distributions.tex
 	make terms
 
 graph.csv: sheet.tex

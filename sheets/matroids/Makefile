@@ -10,7 +10,8 @@ matroids.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matroids.tex
 
 matroids.pdf: ../../*.tex ../../trademark.pdf *.tex matroids.tex
-	pdflatex --file-line-error -interaction=nonstopmode matroids.tex
+	# pdflatex --file-line-error -interaction=nonstopmode matroids.tex
+	../../latexrun matroids.tex
 	make terms
 
 graph.csv: sheet.tex

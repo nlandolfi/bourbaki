@@ -10,7 +10,8 @@ monotone_class_theorem.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_class_theorem.tex
 
 monotone_class_theorem.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_class_theorem.tex
-	pdflatex --file-line-error -interaction=nonstopmode monotone_class_theorem.tex
+	# pdflatex --file-line-error -interaction=nonstopmode monotone_class_theorem.tex
+	../../latexrun monotone_class_theorem.tex
 	make terms
 
 graph.csv: sheet.tex

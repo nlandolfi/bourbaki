@@ -10,7 +10,8 @@ sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sets.tex
 
 sets.pdf: ../../*.tex ../../trademark.pdf *.tex sets.tex
-	pdflatex --file-line-error -interaction=nonstopmode sets.tex
+	# pdflatex --file-line-error -interaction=nonstopmode sets.tex
+	../../latexrun sets.tex
 	make terms
 
 graph.csv: sheet.tex

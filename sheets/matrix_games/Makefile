@@ -10,7 +10,8 @@ matrix_games.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_games.tex
 
 matrix_games.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_games.tex
-	pdflatex --file-line-error -interaction=nonstopmode matrix_games.tex
+	# pdflatex --file-line-error -interaction=nonstopmode matrix_games.tex
+	../../latexrun matrix_games.tex
 	make terms
 
 graph.csv: sheet.tex

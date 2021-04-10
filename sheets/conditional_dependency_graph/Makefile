@@ -10,7 +10,8 @@ conditional_dependency_graph.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_dependency_graph.tex
 
 conditional_dependency_graph.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_dependency_graph.tex
-	pdflatex --file-line-error -interaction=nonstopmode conditional_dependency_graph.tex
+	# pdflatex --file-line-error -interaction=nonstopmode conditional_dependency_graph.tex
+	../../latexrun conditional_dependency_graph.tex
 	make terms
 
 graph.csv: sheet.tex

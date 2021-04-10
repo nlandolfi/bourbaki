@@ -10,7 +10,8 @@ orthogonal_complements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > orthogonal_complements.tex
 
 orthogonal_complements.pdf: ../../*.tex ../../trademark.pdf *.tex orthogonal_complements.tex
-	pdflatex --file-line-error -interaction=nonstopmode orthogonal_complements.tex
+	# pdflatex --file-line-error -interaction=nonstopmode orthogonal_complements.tex
+	../../latexrun orthogonal_complements.tex
 	make terms
 
 graph.csv: sheet.tex

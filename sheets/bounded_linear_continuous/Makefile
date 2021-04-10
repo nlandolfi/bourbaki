@@ -10,7 +10,8 @@ bounded_linear_continuous.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > bounded_linear_continuous.tex
 
 bounded_linear_continuous.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_linear_continuous.tex
-	pdflatex --file-line-error -interaction=nonstopmode bounded_linear_continuous.tex
+	# pdflatex --file-line-error -interaction=nonstopmode bounded_linear_continuous.tex
+	../../latexrun bounded_linear_continuous.tex
 	make terms
 
 graph.csv: sheet.tex

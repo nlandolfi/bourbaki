@@ -10,7 +10,8 @@ natural_order.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_order.tex
 
 natural_order.pdf: ../../*.tex ../../trademark.pdf *.tex natural_order.tex
-	pdflatex --file-line-error -interaction=nonstopmode natural_order.tex
+	# pdflatex --file-line-error -interaction=nonstopmode natural_order.tex
+	../../latexrun natural_order.tex
 	make terms
 
 graph.csv: sheet.tex

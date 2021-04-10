@@ -10,7 +10,8 @@ bounded_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > bounded_functions.tex
 
 bounded_functions.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_functions.tex
-	pdflatex --file-line-error -interaction=nonstopmode bounded_functions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode bounded_functions.tex
+	../../latexrun bounded_functions.tex
 	make terms
 
 graph.csv: sheet.tex

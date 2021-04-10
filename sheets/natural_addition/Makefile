@@ -10,7 +10,8 @@ natural_addition.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_addition.tex
 
 natural_addition.pdf: ../../*.tex ../../trademark.pdf *.tex natural_addition.tex
-	pdflatex --file-line-error -interaction=nonstopmode natural_addition.tex
+	# pdflatex --file-line-error -interaction=nonstopmode natural_addition.tex
+	../../latexrun natural_addition.tex
 	make terms
 
 graph.csv: sheet.tex

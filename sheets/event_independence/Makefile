@@ -10,7 +10,8 @@ event_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > event_independence.tex
 
 event_independence.pdf: ../../*.tex ../../trademark.pdf *.tex event_independence.tex
-	pdflatex --file-line-error -interaction=nonstopmode event_independence.tex
+	# pdflatex --file-line-error -interaction=nonstopmode event_independence.tex
+	../../latexrun event_independence.tex
 	make terms
 
 graph.csv: sheet.tex

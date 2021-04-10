@@ -10,7 +10,8 @@ outcome_variables.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > outcome_variables.tex
 
 outcome_variables.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_variables.tex
-	pdflatex --file-line-error -interaction=nonstopmode outcome_variables.tex
+	# pdflatex --file-line-error -interaction=nonstopmode outcome_variables.tex
+	../../latexrun outcome_variables.tex
 	make terms
 
 graph.csv: sheet.tex

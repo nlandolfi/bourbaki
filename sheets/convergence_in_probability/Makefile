@@ -10,7 +10,8 @@ convergence_in_probability.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convergence_in_probability.tex
 
 convergence_in_probability.pdf: ../../*.tex ../../trademark.pdf *.tex convergence_in_probability.tex
-	pdflatex --file-line-error -interaction=nonstopmode convergence_in_probability.tex
+	# pdflatex --file-line-error -interaction=nonstopmode convergence_in_probability.tex
+	../../latexrun convergence_in_probability.tex
 	make terms
 
 graph.csv: sheet.tex

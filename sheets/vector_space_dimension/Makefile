@@ -10,7 +10,8 @@ vector_space_dimension.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vector_space_dimension.tex
 
 vector_space_dimension.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_dimension.tex
-	pdflatex --file-line-error -interaction=nonstopmode vector_space_dimension.tex
+	# pdflatex --file-line-error -interaction=nonstopmode vector_space_dimension.tex
+	../../latexrun vector_space_dimension.tex
 	make terms
 
 graph.csv: sheet.tex

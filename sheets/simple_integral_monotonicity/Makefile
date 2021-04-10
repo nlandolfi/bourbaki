@@ -10,7 +10,8 @@ simple_integral_monotonicity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integral_monotonicity.tex
 
 simple_integral_monotonicity.pdf: ../../*.tex ../../trademark.pdf *.tex simple_integral_monotonicity.tex
-	pdflatex --file-line-error -interaction=nonstopmode simple_integral_monotonicity.tex
+	# pdflatex --file-line-error -interaction=nonstopmode simple_integral_monotonicity.tex
+	../../latexrun simple_integral_monotonicity.tex
 	make terms
 
 graph.csv: sheet.tex

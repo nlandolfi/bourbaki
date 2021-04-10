@@ -10,7 +10,8 @@ coins.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > coins.tex
 
 coins.pdf: ../../*.tex ../../trademark.pdf *.tex coins.tex
-	pdflatex --file-line-error -interaction=nonstopmode coins.tex
+	# pdflatex --file-line-error -interaction=nonstopmode coins.tex
+	../../latexrun coins.tex
 	make terms
 
 graph.csv: sheet.tex

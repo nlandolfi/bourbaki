@@ -10,7 +10,8 @@ equivalence_relations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > equivalence_relations.tex
 
 equivalence_relations.pdf: ../../*.tex ../../trademark.pdf *.tex equivalence_relations.tex
-	pdflatex --file-line-error -interaction=nonstopmode equivalence_relations.tex
+	# pdflatex --file-line-error -interaction=nonstopmode equivalence_relations.tex
+	../../latexrun equivalence_relations.tex
 	make terms
 
 graph.csv: sheet.tex

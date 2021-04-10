@@ -10,7 +10,8 @@ metric_convergence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_convergence.tex
 
 metric_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex metric_convergence.tex
-	pdflatex --file-line-error -interaction=nonstopmode metric_convergence.tex
+	# pdflatex --file-line-error -interaction=nonstopmode metric_convergence.tex
+	../../latexrun metric_convergence.tex
 	make terms
 
 graph.csv: sheet.tex

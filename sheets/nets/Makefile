@@ -10,7 +10,8 @@ nets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > nets.tex
 
 nets.pdf: ../../*.tex ../../trademark.pdf *.tex nets.tex
-	pdflatex --file-line-error -interaction=nonstopmode nets.tex
+	# pdflatex --file-line-error -interaction=nonstopmode nets.tex
+	../../latexrun nets.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ inductors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inductors.tex
 
 inductors.pdf: ../../*.tex ../../trademark.pdf *.tex inductors.tex
-	pdflatex --file-line-error -interaction=nonstopmode inductors.tex
+	# pdflatex --file-line-error -interaction=nonstopmode inductors.tex
+	../../latexrun inductors.tex
 	make terms
 
 graph.csv: sheet.tex

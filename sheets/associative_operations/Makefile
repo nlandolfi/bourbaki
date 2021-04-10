@@ -10,7 +10,8 @@ associative_operations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > associative_operations.tex
 
 associative_operations.pdf: ../../*.tex ../../trademark.pdf *.tex associative_operations.tex
-	pdflatex --file-line-error -interaction=nonstopmode associative_operations.tex
+	# pdflatex --file-line-error -interaction=nonstopmode associative_operations.tex
+	../../latexrun associative_operations.tex
 	make terms
 
 graph.csv: sheet.tex

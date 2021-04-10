@@ -10,7 +10,8 @@ monotone_sequences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_sequences.tex
 
 monotone_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_sequences.tex
-	pdflatex --file-line-error -interaction=nonstopmode monotone_sequences.tex
+	# pdflatex --file-line-error -interaction=nonstopmode monotone_sequences.tex
+	../../latexrun monotone_sequences.tex
 	make terms
 
 graph.csv: sheet.tex

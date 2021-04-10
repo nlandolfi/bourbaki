@@ -10,7 +10,8 @@ variation_measure.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > variation_measure.tex
 
 variation_measure.pdf: ../../*.tex ../../trademark.pdf *.tex variation_measure.tex
-	pdflatex --file-line-error -interaction=nonstopmode variation_measure.tex
+	# pdflatex --file-line-error -interaction=nonstopmode variation_measure.tex
+	../../latexrun variation_measure.tex
 	make terms
 
 graph.csv: sheet.tex

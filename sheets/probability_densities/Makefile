@@ -10,7 +10,8 @@ probability_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probability_densities.tex
 
 probability_densities.pdf: ../../*.tex ../../trademark.pdf *.tex probability_densities.tex
-	pdflatex --file-line-error -interaction=nonstopmode probability_densities.tex
+	# pdflatex --file-line-error -interaction=nonstopmode probability_densities.tex
+	../../latexrun probability_densities.tex
 	make terms
 
 graph.csv: sheet.tex

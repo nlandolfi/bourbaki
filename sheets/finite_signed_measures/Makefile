@@ -10,7 +10,8 @@ finite_signed_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > finite_signed_measures.tex
 
 finite_signed_measures.pdf: ../../*.tex ../../trademark.pdf *.tex finite_signed_measures.tex
-	pdflatex --file-line-error -interaction=nonstopmode finite_signed_measures.tex
+	# pdflatex --file-line-error -interaction=nonstopmode finite_signed_measures.tex
+	../../latexrun finite_signed_measures.tex
 	make terms
 
 graph.csv: sheet.tex

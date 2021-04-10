@@ -10,7 +10,8 @@ linear_combinations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > linear_combinations.tex
 
 linear_combinations.pdf: ../../*.tex ../../trademark.pdf *.tex linear_combinations.tex
-	pdflatex --file-line-error -interaction=nonstopmode linear_combinations.tex
+	# pdflatex --file-line-error -interaction=nonstopmode linear_combinations.tex
+	../../latexrun linear_combinations.tex
 	make terms
 
 graph.csv: sheet.tex

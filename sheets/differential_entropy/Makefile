@@ -10,7 +10,8 @@ differential_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differential_entropy.tex
 
 differential_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex differential_entropy.tex
-	pdflatex --file-line-error -interaction=nonstopmode differential_entropy.tex
+	# pdflatex --file-line-error -interaction=nonstopmode differential_entropy.tex
+	../../latexrun differential_entropy.tex
 	make terms
 
 graph.csv: sheet.tex

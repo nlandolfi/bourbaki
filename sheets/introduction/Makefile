@@ -10,7 +10,8 @@ introduction.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > introduction.tex
 
 introduction.pdf: ../../*.tex ../../trademark.pdf *.tex introduction.tex
-	pdflatex --file-line-error -interaction=nonstopmode introduction.tex
+	# pdflatex --file-line-error -interaction=nonstopmode introduction.tex
+	../../latexrun introduction.tex
 	make terms
 
 graph.csv: sheet.tex

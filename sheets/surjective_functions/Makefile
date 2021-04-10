@@ -10,7 +10,8 @@ surjective_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > surjective_functions.tex
 
 surjective_functions.pdf: ../../*.tex ../../trademark.pdf *.tex surjective_functions.tex
-	pdflatex --file-line-error -interaction=nonstopmode surjective_functions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode surjective_functions.tex
+	../../latexrun surjective_functions.tex
 	make terms
 
 graph.csv: sheet.tex

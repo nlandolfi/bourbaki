@@ -10,7 +10,8 @@ quadratic_forms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > quadratic_forms.tex
 
 quadratic_forms.pdf: ../../*.tex ../../trademark.pdf *.tex quadratic_forms.tex
-	pdflatex --file-line-error -interaction=nonstopmode quadratic_forms.tex
+	# pdflatex --file-line-error -interaction=nonstopmode quadratic_forms.tex
+	../../latexrun quadratic_forms.tex
 	make terms
 
 graph.csv: sheet.tex

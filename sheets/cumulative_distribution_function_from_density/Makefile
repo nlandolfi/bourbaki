@@ -10,7 +10,8 @@ cumulative_distribution_function_from_density.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cumulative_distribution_function_from_density.tex
 
 cumulative_distribution_function_from_density.pdf: ../../*.tex ../../trademark.pdf *.tex cumulative_distribution_function_from_density.tex
-	pdflatex --file-line-error -interaction=nonstopmode cumulative_distribution_function_from_density.tex
+	# pdflatex --file-line-error -interaction=nonstopmode cumulative_distribution_function_from_density.tex
+	../../latexrun cumulative_distribution_function_from_density.tex
 	make terms
 
 graph.csv: sheet.tex

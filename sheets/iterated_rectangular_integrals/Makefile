@@ -10,7 +10,8 @@ iterated_rectangular_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > iterated_rectangular_integrals.tex
 
 iterated_rectangular_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex iterated_rectangular_integrals.tex
-	pdflatex --file-line-error -interaction=nonstopmode iterated_rectangular_integrals.tex
+	# pdflatex --file-line-error -interaction=nonstopmode iterated_rectangular_integrals.tex
+	../../latexrun iterated_rectangular_integrals.tex
 	make terms
 
 graph.csv: sheet.tex

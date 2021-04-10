@@ -10,7 +10,8 @@ conditional_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_distributions.tex
 
 conditional_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_distributions.tex
-	pdflatex --file-line-error -interaction=nonstopmode conditional_distributions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode conditional_distributions.tex
+	../../latexrun conditional_distributions.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ fields.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > fields.tex
 
 fields.pdf: ../../*.tex ../../trademark.pdf *.tex fields.tex
-	pdflatex --file-line-error -interaction=nonstopmode fields.tex
+	# pdflatex --file-line-error -interaction=nonstopmode fields.tex
+	../../latexrun fields.tex
 	make terms
 
 graph.csv: sheet.tex

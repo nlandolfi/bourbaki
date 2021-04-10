@@ -10,7 +10,8 @@ real_integral_dominated_convergence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_integral_dominated_convergence.tex
 
 real_integral_dominated_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_dominated_convergence.tex
-	pdflatex --file-line-error -interaction=nonstopmode real_integral_dominated_convergence.tex
+	# pdflatex --file-line-error -interaction=nonstopmode real_integral_dominated_convergence.tex
+	../../latexrun real_integral_dominated_convergence.tex
 	make terms
 
 graph.csv: sheet.tex

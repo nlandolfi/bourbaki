@@ -10,7 +10,8 @@ vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vectors.tex
 
 vectors.pdf: ../../*.tex ../../trademark.pdf *.tex vectors.tex
-	pdflatex --file-line-error -interaction=nonstopmode vectors.tex
+	# pdflatex --file-line-error -interaction=nonstopmode vectors.tex
+	../../latexrun vectors.tex
 	make terms
 
 graph.csv: sheet.tex
