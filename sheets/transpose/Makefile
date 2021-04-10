@@ -10,7 +10,8 @@ transpose.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > transpose.tex
 
 transpose.pdf: ../../*.tex ../../trademark.pdf *.tex transpose.tex
-	pdflatex --file-line-error -interaction=nonstopmode transpose.tex
+	# pdflatex --file-line-error -interaction=nonstopmode transpose.tex
+	../../latexrun transpose.tex
 	make terms
 
 graph.csv: sheet.tex

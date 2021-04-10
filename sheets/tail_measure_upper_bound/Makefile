@@ -10,7 +10,8 @@ tail_measure_upper_bound.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tail_measure_upper_bound.tex
 
 tail_measure_upper_bound.pdf: ../../*.tex ../../trademark.pdf *.tex tail_measure_upper_bound.tex
-	pdflatex --file-line-error -interaction=nonstopmode tail_measure_upper_bound.tex
+	# pdflatex --file-line-error -interaction=nonstopmode tail_measure_upper_bound.tex
+	../../latexrun tail_measure_upper_bound.tex
 	make terms
 
 graph.csv: sheet.tex

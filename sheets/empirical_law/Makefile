@@ -10,7 +10,8 @@ empirical_law.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > empirical_law.tex
 
 empirical_law.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_law.tex
-	pdflatex --file-line-error -interaction=nonstopmode empirical_law.tex
+	# pdflatex --file-line-error -interaction=nonstopmode empirical_law.tex
+	../../latexrun empirical_law.tex
 	make terms
 
 graph.csv: sheet.tex

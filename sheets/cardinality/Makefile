@@ -10,7 +10,8 @@ cardinality.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cardinality.tex
 
 cardinality.pdf: ../../*.tex ../../trademark.pdf *.tex cardinality.tex
-	pdflatex --file-line-error -interaction=nonstopmode cardinality.tex
+	# pdflatex --file-line-error -interaction=nonstopmode cardinality.tex
+	../../latexrun cardinality.tex
 	make terms
 
 graph.csv: sheet.tex

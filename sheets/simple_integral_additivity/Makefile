@@ -10,7 +10,8 @@ simple_integral_additivity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integral_additivity.tex
 
 simple_integral_additivity.pdf: ../../*.tex ../../trademark.pdf *.tex simple_integral_additivity.tex
-	pdflatex --file-line-error -interaction=nonstopmode simple_integral_additivity.tex
+	# pdflatex --file-line-error -interaction=nonstopmode simple_integral_additivity.tex
+	../../latexrun simple_integral_additivity.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ central_limit_theorem.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > central_limit_theorem.tex
 
 central_limit_theorem.pdf: ../../*.tex ../../trademark.pdf *.tex central_limit_theorem.tex
-	pdflatex --file-line-error -interaction=nonstopmode central_limit_theorem.tex
+	# pdflatex --file-line-error -interaction=nonstopmode central_limit_theorem.tex
+	../../latexrun central_limit_theorem.tex
 	make terms
 
 graph.csv: sheet.tex

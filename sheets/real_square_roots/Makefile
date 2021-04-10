@@ -10,7 +10,8 @@ real_square_roots.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_square_roots.tex
 
 real_square_roots.pdf: ../../*.tex ../../trademark.pdf *.tex real_square_roots.tex
-	pdflatex --file-line-error -interaction=nonstopmode real_square_roots.tex
+	# pdflatex --file-line-error -interaction=nonstopmode real_square_roots.tex
+	../../latexrun real_square_roots.tex
 	make terms
 
 graph.csv: sheet.tex

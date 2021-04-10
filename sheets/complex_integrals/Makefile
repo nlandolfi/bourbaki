@@ -10,7 +10,8 @@ complex_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complex_integrals.tex
 
 complex_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex complex_integrals.tex
-	pdflatex --file-line-error -interaction=nonstopmode complex_integrals.tex
+	# pdflatex --file-line-error -interaction=nonstopmode complex_integrals.tex
+	../../latexrun complex_integrals.tex
 	make terms
 
 graph.csv: sheet.tex

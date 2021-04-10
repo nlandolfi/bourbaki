@@ -10,7 +10,8 @@ independent_identical_sums.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > independent_identical_sums.tex
 
 independent_identical_sums.pdf: ../../*.tex ../../trademark.pdf *.tex independent_identical_sums.tex
-	pdflatex --file-line-error -interaction=nonstopmode independent_identical_sums.tex
+	# pdflatex --file-line-error -interaction=nonstopmode independent_identical_sums.tex
+	../../latexrun independent_identical_sums.tex
 	make terms
 
 graph.csv: sheet.tex

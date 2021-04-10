@@ -10,7 +10,8 @@ sigma_algebra_event_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sigma_algebra_event_independence.tex
 
 sigma_algebra_event_independence.pdf: ../../*.tex ../../trademark.pdf *.tex sigma_algebra_event_independence.tex
-	pdflatex --file-line-error -interaction=nonstopmode sigma_algebra_event_independence.tex
+	# pdflatex --file-line-error -interaction=nonstopmode sigma_algebra_event_independence.tex
+	../../latexrun sigma_algebra_event_independence.tex
 	make terms
 
 graph.csv: sheet.tex

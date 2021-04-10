@@ -10,7 +10,8 @@ variance.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > variance.tex
 
 variance.pdf: ../../*.tex ../../trademark.pdf *.tex variance.tex
-	pdflatex --file-line-error -interaction=nonstopmode variance.tex
+	# pdflatex --file-line-error -interaction=nonstopmode variance.tex
+	../../latexrun variance.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ supremum_norm.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > supremum_norm.tex
 
 supremum_norm.pdf: ../../*.tex ../../trademark.pdf *.tex supremum_norm.tex
-	pdflatex --file-line-error -interaction=nonstopmode supremum_norm.tex
+	# pdflatex --file-line-error -interaction=nonstopmode supremum_norm.tex
+	../../latexrun supremum_norm.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ partial_derivatives.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > partial_derivatives.tex
 
 partial_derivatives.pdf: ../../*.tex ../../trademark.pdf *.tex partial_derivatives.tex
-	pdflatex --file-line-error -interaction=nonstopmode partial_derivatives.tex
+	# pdflatex --file-line-error -interaction=nonstopmode partial_derivatives.tex
+	../../latexrun partial_derivatives.tex
 	make terms
 
 graph.csv: sheet.tex

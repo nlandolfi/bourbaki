@@ -10,7 +10,8 @@ characteristic_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > characteristic_functions.tex
 
 characteristic_functions.pdf: ../../*.tex ../../trademark.pdf *.tex characteristic_functions.tex
-	pdflatex --file-line-error -interaction=nonstopmode characteristic_functions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode characteristic_functions.tex
+	../../latexrun characteristic_functions.tex
 	make terms
 
 graph.csv: sheet.tex

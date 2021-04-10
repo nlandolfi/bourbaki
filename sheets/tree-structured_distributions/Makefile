@@ -10,7 +10,8 @@ tree-structured_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree-structured_distributions.tex
 
 tree-structured_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex tree-structured_distributions.tex
-	pdflatex --file-line-error -interaction=nonstopmode tree-structured_distributions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode tree-structured_distributions.tex
+	../../latexrun tree-structured_distributions.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ normal_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_densities.tex
 
 normal_densities.pdf: ../../*.tex ../../trademark.pdf *.tex normal_densities.tex
-	pdflatex --file-line-error -interaction=nonstopmode normal_densities.tex
+	# pdflatex --file-line-error -interaction=nonstopmode normal_densities.tex
+	../../latexrun normal_densities.tex
 	make terms
 
 graph.csv: sheet.tex

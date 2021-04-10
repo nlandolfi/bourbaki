@@ -10,7 +10,8 @@ correlation_and_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > correlation_and_independence.tex
 
 correlation_and_independence.pdf: ../../*.tex ../../trademark.pdf *.tex correlation_and_independence.tex
-	pdflatex --file-line-error -interaction=nonstopmode correlation_and_independence.tex
+	# pdflatex --file-line-error -interaction=nonstopmode correlation_and_independence.tex
+	../../latexrun correlation_and_independence.tex
 	make terms
 
 graph.csv: sheet.tex

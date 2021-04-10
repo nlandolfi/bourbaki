@@ -10,7 +10,8 @@ loss_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > loss_functions.tex
 
 loss_functions.pdf: ../../*.tex ../../trademark.pdf *.tex loss_functions.tex
-	pdflatex --file-line-error -interaction=nonstopmode loss_functions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode loss_functions.tex
+	../../latexrun loss_functions.tex
 	make terms
 
 graph.csv: sheet.tex

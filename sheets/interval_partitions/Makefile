@@ -10,7 +10,8 @@ interval_partitions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > interval_partitions.tex
 
 interval_partitions.pdf: ../../*.tex ../../trademark.pdf *.tex interval_partitions.tex
-	pdflatex --file-line-error -interaction=nonstopmode interval_partitions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode interval_partitions.tex
+	../../latexrun interval_partitions.tex
 	make terms
 
 graph.csv: sheet.tex

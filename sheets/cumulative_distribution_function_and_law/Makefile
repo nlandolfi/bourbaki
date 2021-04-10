@@ -10,7 +10,8 @@ cumulative_distribution_function_and_law.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cumulative_distribution_function_and_law.tex
 
 cumulative_distribution_function_and_law.pdf: ../../*.tex ../../trademark.pdf *.tex cumulative_distribution_function_and_law.tex
-	pdflatex --file-line-error -interaction=nonstopmode cumulative_distribution_function_and_law.tex
+	# pdflatex --file-line-error -interaction=nonstopmode cumulative_distribution_function_and_law.tex
+	../../latexrun cumulative_distribution_function_and_law.tex
 	make terms
 
 graph.csv: sheet.tex

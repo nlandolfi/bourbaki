@@ -10,7 +10,8 @@ sentences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sentences.tex
 
 sentences.pdf: ../../*.tex ../../trademark.pdf *.tex sentences.tex
-	pdflatex --file-line-error -interaction=nonstopmode sentences.tex
+	# pdflatex --file-line-error -interaction=nonstopmode sentences.tex
+	../../latexrun sentences.tex
 	make terms
 
 graph.csv: sheet.tex

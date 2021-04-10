@@ -10,7 +10,8 @@ integer_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > integer_numbers.tex
 
 integer_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex integer_numbers.tex
-	pdflatex --file-line-error -interaction=nonstopmode integer_numbers.tex
+	# pdflatex --file-line-error -interaction=nonstopmode integer_numbers.tex
+	../../latexrun integer_numbers.tex
 	make terms
 
 graph.csv: sheet.tex

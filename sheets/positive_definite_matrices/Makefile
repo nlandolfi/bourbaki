@@ -10,7 +10,8 @@ positive_definite_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > positive_definite_matrices.tex
 
 positive_definite_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex positive_definite_matrices.tex
-	pdflatex --file-line-error -interaction=nonstopmode positive_definite_matrices.tex
+	# pdflatex --file-line-error -interaction=nonstopmode positive_definite_matrices.tex
+	../../latexrun positive_definite_matrices.tex
 	make terms
 
 graph.csv: sheet.tex

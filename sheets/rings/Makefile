@@ -10,7 +10,8 @@ rings.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rings.tex
 
 rings.pdf: ../../*.tex ../../trademark.pdf *.tex rings.tex
-	pdflatex --file-line-error -interaction=nonstopmode rings.tex
+	# pdflatex --file-line-error -interaction=nonstopmode rings.tex
+	../../latexrun rings.tex
 	make terms
 
 graph.csv: sheet.tex

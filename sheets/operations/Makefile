@@ -10,7 +10,8 @@ operations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > operations.tex
 
 operations.pdf: ../../*.tex ../../trademark.pdf *.tex operations.tex
-	pdflatex --file-line-error -interaction=nonstopmode operations.tex
+	# pdflatex --file-line-error -interaction=nonstopmode operations.tex
+	../../latexrun operations.tex
 	make terms
 
 graph.csv: sheet.tex

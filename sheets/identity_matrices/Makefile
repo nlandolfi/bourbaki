@@ -10,7 +10,8 @@ identity_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > identity_matrices.tex
 
 identity_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex identity_matrices.tex
-	pdflatex --file-line-error -interaction=nonstopmode identity_matrices.tex
+	# pdflatex --file-line-error -interaction=nonstopmode identity_matrices.tex
+	../../latexrun identity_matrices.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ summation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > summation.tex
 
 summation.pdf: ../../*.tex ../../trademark.pdf *.tex summation.tex
-	pdflatex --file-line-error -interaction=nonstopmode summation.tex
+	# pdflatex --file-line-error -interaction=nonstopmode summation.tex
+	../../latexrun summation.tex
 	make terms
 
 graph.csv: sheet.tex

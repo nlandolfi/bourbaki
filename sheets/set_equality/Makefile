@@ -10,7 +10,8 @@ set_equality.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_equality.tex
 
 set_equality.pdf: ../../*.tex ../../trademark.pdf *.tex set_equality.tex
-	pdflatex --file-line-error -interaction=nonstopmode set_equality.tex
+	# pdflatex --file-line-error -interaction=nonstopmode set_equality.tex
+	../../latexrun set_equality.tex
 	make terms
 
 graph.csv: sheet.tex

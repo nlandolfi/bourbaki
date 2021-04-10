@@ -10,7 +10,8 @@ inner_product_norms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inner_product_norms.tex
 
 inner_product_norms.pdf: ../../*.tex ../../trademark.pdf *.tex inner_product_norms.tex
-	pdflatex --file-line-error -interaction=nonstopmode inner_product_norms.tex
+	# pdflatex --file-line-error -interaction=nonstopmode inner_product_norms.tex
+	../../latexrun inner_product_norms.tex
 	make terms
 
 graph.csv: sheet.tex

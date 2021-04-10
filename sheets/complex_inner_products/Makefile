@@ -10,7 +10,8 @@ complex_inner_products.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complex_inner_products.tex
 
 complex_inner_products.pdf: ../../*.tex ../../trademark.pdf *.tex complex_inner_products.tex
-	pdflatex --file-line-error -interaction=nonstopmode complex_inner_products.tex
+	# pdflatex --file-line-error -interaction=nonstopmode complex_inner_products.tex
+	../../latexrun complex_inner_products.tex
 	make terms
 
 graph.csv: sheet.tex

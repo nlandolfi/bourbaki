@@ -10,7 +10,8 @@ trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > trees.tex
 
 trees.pdf: ../../*.tex ../../trademark.pdf *.tex trees.tex
-	pdflatex --file-line-error -interaction=nonstopmode trees.tex
+	# pdflatex --file-line-error -interaction=nonstopmode trees.tex
+	../../latexrun trees.tex
 	make terms
 
 graph.csv: sheet.tex

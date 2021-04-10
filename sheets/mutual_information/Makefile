@@ -10,7 +10,8 @@ mutual_information.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > mutual_information.tex
 
 mutual_information.pdf: ../../*.tex ../../trademark.pdf *.tex mutual_information.tex
-	pdflatex --file-line-error -interaction=nonstopmode mutual_information.tex
+	# pdflatex --file-line-error -interaction=nonstopmode mutual_information.tex
+	../../latexrun mutual_information.tex
 	make terms
 
 graph.csv: sheet.tex

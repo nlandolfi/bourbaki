@@ -10,7 +10,8 @@ metric_completeness.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_completeness.tex
 
 metric_completeness.pdf: ../../*.tex ../../trademark.pdf *.tex metric_completeness.tex
-	pdflatex --file-line-error -interaction=nonstopmode metric_completeness.tex
+	# pdflatex --file-line-error -interaction=nonstopmode metric_completeness.tex
+	../../latexrun metric_completeness.tex
 	make terms
 
 graph.csv: sheet.tex

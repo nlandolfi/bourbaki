@@ -10,7 +10,8 @@ almost_everywhere_measurability.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > almost_everywhere_measurability.tex
 
 almost_everywhere_measurability.pdf: ../../*.tex ../../trademark.pdf *.tex almost_everywhere_measurability.tex
-	pdflatex --file-line-error -interaction=nonstopmode almost_everywhere_measurability.tex
+	# pdflatex --file-line-error -interaction=nonstopmode almost_everywhere_measurability.tex
+	../../latexrun almost_everywhere_measurability.tex
 	make terms
 
 graph.csv: sheet.tex

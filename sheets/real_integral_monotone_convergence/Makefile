@@ -10,7 +10,8 @@ real_integral_monotone_convergence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_integral_monotone_convergence.tex
 
 real_integral_monotone_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_monotone_convergence.tex
-	pdflatex --file-line-error -interaction=nonstopmode real_integral_monotone_convergence.tex
+	# pdflatex --file-line-error -interaction=nonstopmode real_integral_monotone_convergence.tex
+	../../latexrun real_integral_monotone_convergence.tex
 	make terms
 
 graph.csv: sheet.tex

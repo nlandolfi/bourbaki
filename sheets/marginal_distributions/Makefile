@@ -10,7 +10,8 @@ marginal_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > marginal_distributions.tex
 
 marginal_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex marginal_distributions.tex
-	pdflatex --file-line-error -interaction=nonstopmode marginal_distributions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode marginal_distributions.tex
+	../../latexrun marginal_distributions.tex
 	make terms
 
 graph.csv: sheet.tex

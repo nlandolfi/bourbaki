@@ -10,7 +10,8 @@ integrable_function_space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > integrable_function_space.tex
 
 integrable_function_space.pdf: ../../*.tex ../../trademark.pdf *.tex integrable_function_space.tex
-	pdflatex --file-line-error -interaction=nonstopmode integrable_function_space.tex
+	# pdflatex --file-line-error -interaction=nonstopmode integrable_function_space.tex
+	../../latexrun integrable_function_space.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -12,7 +12,8 @@ make:
 	bbk_sheet -mode c -in sheet.tex > {{ .Name }}.tex
 
 {{ .Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Name }}.tex
-	pdflatex --file-line-error -interaction=nonstopmode {{ .Name }}.tex
+	# pdflatex --file-line-error -interaction=nonstopmode {{ .Name }}.tex
+	../../latexrun {{ .Name }}.tex
 	make terms
 
 graph.csv: sheet.tex

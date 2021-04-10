@@ -10,7 +10,8 @@ random_variables_joint_law.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_variables_joint_law.tex
 
 random_variables_joint_law.pdf: ../../*.tex ../../trademark.pdf *.tex random_variables_joint_law.tex
-	pdflatex --file-line-error -interaction=nonstopmode random_variables_joint_law.tex
+	# pdflatex --file-line-error -interaction=nonstopmode random_variables_joint_law.tex
+	../../latexrun random_variables_joint_law.tex
 	make terms
 
 graph.csv: sheet.tex

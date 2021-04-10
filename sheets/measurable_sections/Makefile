@@ -10,7 +10,8 @@ measurable_sections.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > measurable_sections.tex
 
 measurable_sections.pdf: ../../*.tex ../../trademark.pdf *.tex measurable_sections.tex
-	pdflatex --file-line-error -interaction=nonstopmode measurable_sections.tex
+	# pdflatex --file-line-error -interaction=nonstopmode measurable_sections.tex
+	../../latexrun measurable_sections.tex
 	make terms
 
 graph.csv: sheet.tex

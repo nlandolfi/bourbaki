@@ -10,7 +10,8 @@ space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > space.tex
 
 space.pdf: ../../*.tex ../../trademark.pdf *.tex space.tex
-	pdflatex --file-line-error -interaction=nonstopmode space.tex
+	# pdflatex --file-line-error -interaction=nonstopmode space.tex
+	../../latexrun space.tex
 	make terms
 
 graph.csv: sheet.tex

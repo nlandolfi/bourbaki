@@ -10,7 +10,8 @@ simple_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integrals.tex
 
 simple_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex simple_integrals.tex
-	pdflatex --file-line-error -interaction=nonstopmode simple_integrals.tex
+	# pdflatex --file-line-error -interaction=nonstopmode simple_integrals.tex
+	../../latexrun simple_integrals.tex
 	make terms
 
 graph.csv: sheet.tex

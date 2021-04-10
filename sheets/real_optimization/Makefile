@@ -10,7 +10,8 @@ real_optimization.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_optimization.tex
 
 real_optimization.pdf: ../../*.tex ../../trademark.pdf *.tex real_optimization.tex
-	pdflatex --file-line-error -interaction=nonstopmode real_optimization.tex
+	# pdflatex --file-line-error -interaction=nonstopmode real_optimization.tex
+	../../latexrun real_optimization.tex
 	make terms
 
 graph.csv: sheet.tex

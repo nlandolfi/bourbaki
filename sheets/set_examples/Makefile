@@ -10,7 +10,8 @@ set_examples.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_examples.tex
 
 set_examples.pdf: ../../*.tex ../../trademark.pdf *.tex set_examples.tex
-	pdflatex --file-line-error -interaction=nonstopmode set_examples.tex
+	# pdflatex --file-line-error -interaction=nonstopmode set_examples.tex
+	../../latexrun set_examples.tex
 	make terms
 
 graph.csv: sheet.tex

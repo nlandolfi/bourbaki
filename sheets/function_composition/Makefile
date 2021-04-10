@@ -10,7 +10,8 @@ function_composition.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_composition.tex
 
 function_composition.pdf: ../../*.tex ../../trademark.pdf *.tex function_composition.tex
-	pdflatex --file-line-error -interaction=nonstopmode function_composition.tex
+	# pdflatex --file-line-error -interaction=nonstopmode function_composition.tex
+	../../latexrun function_composition.tex
 	make terms
 
 graph.csv: sheet.tex

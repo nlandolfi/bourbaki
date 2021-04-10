@@ -10,7 +10,8 @@ maximum_likelihood.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > maximum_likelihood.tex
 
 maximum_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex maximum_likelihood.tex
-	pdflatex --file-line-error -interaction=nonstopmode maximum_likelihood.tex
+	# pdflatex --file-line-error -interaction=nonstopmode maximum_likelihood.tex
+	../../latexrun maximum_likelihood.tex
 	make terms
 
 graph.csv: sheet.tex

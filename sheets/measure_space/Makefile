@@ -10,7 +10,8 @@ measure_space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > measure_space.tex
 
 measure_space.pdf: ../../*.tex ../../trademark.pdf *.tex measure_space.tex
-	pdflatex --file-line-error -interaction=nonstopmode measure_space.tex
+	# pdflatex --file-line-error -interaction=nonstopmode measure_space.tex
+	../../latexrun measure_space.tex
 	make terms
 
 graph.csv: sheet.tex

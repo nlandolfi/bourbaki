@@ -10,7 +10,8 @@ multivariate_normal_maximum_likelihood.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > multivariate_normal_maximum_likelihood.tex
 
 multivariate_normal_maximum_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex multivariate_normal_maximum_likelihood.tex
-	pdflatex --file-line-error -interaction=nonstopmode multivariate_normal_maximum_likelihood.tex
+	# pdflatex --file-line-error -interaction=nonstopmode multivariate_normal_maximum_likelihood.tex
+	../../latexrun multivariate_normal_maximum_likelihood.tex
 	make terms
 
 graph.csv: sheet.tex

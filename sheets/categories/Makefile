@@ -10,7 +10,8 @@ categories.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > categories.tex
 
 categories.pdf: ../../*.tex ../../trademark.pdf *.tex categories.tex
-	pdflatex --file-line-error -interaction=nonstopmode categories.tex
+	# pdflatex --file-line-error -interaction=nonstopmode categories.tex
+	../../latexrun categories.tex
 	make terms
 
 graph.csv: sheet.tex

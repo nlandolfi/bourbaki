@@ -10,7 +10,8 @@ natural_multiplication.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_multiplication.tex
 
 natural_multiplication.pdf: ../../*.tex ../../trademark.pdf *.tex natural_multiplication.tex
-	pdflatex --file-line-error -interaction=nonstopmode natural_multiplication.tex
+	# pdflatex --file-line-error -interaction=nonstopmode natural_multiplication.tex
+	../../latexrun natural_multiplication.tex
 	make terms
 
 graph.csv: sheet.tex

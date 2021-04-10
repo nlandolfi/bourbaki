@@ -10,7 +10,8 @@ family_set_operations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > family_set_operations.tex
 
 family_set_operations.pdf: ../../*.tex ../../trademark.pdf *.tex family_set_operations.tex
-	pdflatex --file-line-error -interaction=nonstopmode family_set_operations.tex
+	# pdflatex --file-line-error -interaction=nonstopmode family_set_operations.tex
+	../../latexrun family_set_operations.tex
 	make terms
 
 graph.csv: sheet.tex

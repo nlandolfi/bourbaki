@@ -10,7 +10,8 @@ topological_spaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > topological_spaces.tex
 
 topological_spaces.pdf: ../../*.tex ../../trademark.pdf *.tex topological_spaces.tex
-	pdflatex --file-line-error -interaction=nonstopmode topological_spaces.tex
+	# pdflatex --file-line-error -interaction=nonstopmode topological_spaces.tex
+	../../latexrun topological_spaces.tex
 	make terms
 
 graph.csv: sheet.tex

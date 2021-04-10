@@ -10,7 +10,8 @@ norm_examples.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > norm_examples.tex
 
 norm_examples.pdf: ../../*.tex ../../trademark.pdf *.tex norm_examples.tex
-	pdflatex --file-line-error -interaction=nonstopmode norm_examples.tex
+	# pdflatex --file-line-error -interaction=nonstopmode norm_examples.tex
+	../../latexrun norm_examples.tex
 	make terms
 
 graph.csv: sheet.tex

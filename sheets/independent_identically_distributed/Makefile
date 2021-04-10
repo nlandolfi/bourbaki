@@ -10,7 +10,8 @@ independent_identically_distributed.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > independent_identically_distributed.tex
 
 independent_identically_distributed.pdf: ../../*.tex ../../trademark.pdf *.tex independent_identically_distributed.tex
-	pdflatex --file-line-error -interaction=nonstopmode independent_identically_distributed.tex
+	# pdflatex --file-line-error -interaction=nonstopmode independent_identically_distributed.tex
+	../../latexrun independent_identically_distributed.tex
 	make terms
 
 graph.csv: sheet.tex

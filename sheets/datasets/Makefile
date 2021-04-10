@@ -10,7 +10,8 @@ datasets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > datasets.tex
 
 datasets.pdf: ../../*.tex ../../trademark.pdf *.tex datasets.tex
-	pdflatex --file-line-error -interaction=nonstopmode datasets.tex
+	# pdflatex --file-line-error -interaction=nonstopmode datasets.tex
+	../../latexrun datasets.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ borel_sigma_algebra.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > borel_sigma_algebra.tex
 
 borel_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex borel_sigma_algebra.tex
-	pdflatex --file-line-error -interaction=nonstopmode borel_sigma_algebra.tex
+	# pdflatex --file-line-error -interaction=nonstopmode borel_sigma_algebra.tex
+	../../latexrun borel_sigma_algebra.tex
 	make terms
 
 graph.csv: sheet.tex

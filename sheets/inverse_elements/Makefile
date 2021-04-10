@@ -10,7 +10,8 @@ inverse_elements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inverse_elements.tex
 
 inverse_elements.pdf: ../../*.tex ../../trademark.pdf *.tex inverse_elements.tex
-	pdflatex --file-line-error -interaction=nonstopmode inverse_elements.tex
+	# pdflatex --file-line-error -interaction=nonstopmode inverse_elements.tex
+	../../latexrun inverse_elements.tex
 	make terms
 
 graph.csv: sheet.tex

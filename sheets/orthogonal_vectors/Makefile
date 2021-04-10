@@ -10,7 +10,8 @@ orthogonal_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > orthogonal_vectors.tex
 
 orthogonal_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex orthogonal_vectors.tex
-	pdflatex --file-line-error -interaction=nonstopmode orthogonal_vectors.tex
+	# pdflatex --file-line-error -interaction=nonstopmode orthogonal_vectors.tex
+	../../latexrun orthogonal_vectors.tex
 	make terms
 
 graph.csv: sheet.tex

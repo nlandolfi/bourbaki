@@ -10,7 +10,8 @@ convergence_in_measure.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convergence_in_measure.tex
 
 convergence_in_measure.pdf: ../../*.tex ../../trademark.pdf *.tex convergence_in_measure.tex
-	pdflatex --file-line-error -interaction=nonstopmode convergence_in_measure.tex
+	# pdflatex --file-line-error -interaction=nonstopmode convergence_in_measure.tex
+	../../latexrun convergence_in_measure.tex
 	make terms
 
 graph.csv: sheet.tex

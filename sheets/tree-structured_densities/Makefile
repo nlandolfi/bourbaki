@@ -10,7 +10,8 @@ tree-structured_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree-structured_densities.tex
 
 tree-structured_densities.pdf: ../../*.tex ../../trademark.pdf *.tex tree-structured_densities.tex
-	pdflatex --file-line-error -interaction=nonstopmode tree-structured_densities.tex
+	# pdflatex --file-line-error -interaction=nonstopmode tree-structured_densities.tex
+	../../latexrun tree-structured_densities.tex
 	make terms
 
 graph.csv: sheet.tex

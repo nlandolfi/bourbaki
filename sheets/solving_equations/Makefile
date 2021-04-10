@@ -10,7 +10,8 @@ solving_equations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > solving_equations.tex
 
 solving_equations.pdf: ../../*.tex ../../trademark.pdf *.tex solving_equations.tex
-	pdflatex --file-line-error -interaction=nonstopmode solving_equations.tex
+	# pdflatex --file-line-error -interaction=nonstopmode solving_equations.tex
+	../../latexrun solving_equations.tex
 	make terms
 
 graph.csv: sheet.tex

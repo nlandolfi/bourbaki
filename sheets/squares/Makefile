@@ -10,7 +10,8 @@ squares.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > squares.tex
 
 squares.pdf: ../../*.tex ../../trademark.pdf *.tex squares.tex
-	pdflatex --file-line-error -interaction=nonstopmode squares.tex
+	# pdflatex --file-line-error -interaction=nonstopmode squares.tex
+	../../latexrun squares.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ symmetric_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > symmetric_matrices.tex
 
 symmetric_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex symmetric_matrices.tex
-	pdflatex --file-line-error -interaction=nonstopmode symmetric_matrices.tex
+	# pdflatex --file-line-error -interaction=nonstopmode symmetric_matrices.tex
+	../../latexrun symmetric_matrices.tex
 	make terms
 
 graph.csv: sheet.tex

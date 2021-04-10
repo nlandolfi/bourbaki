@@ -10,7 +10,8 @@ function_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_graphs.tex
 
 function_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex function_graphs.tex
-	pdflatex --file-line-error -interaction=nonstopmode function_graphs.tex
+	# pdflatex --file-line-error -interaction=nonstopmode function_graphs.tex
+	../../latexrun function_graphs.tex
 	make terms
 
 graph.csv: sheet.tex

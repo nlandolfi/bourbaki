@@ -10,7 +10,8 @@ linear_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > linear_independence.tex
 
 linear_independence.pdf: ../../*.tex ../../trademark.pdf *.tex linear_independence.tex
-	pdflatex --file-line-error -interaction=nonstopmode linear_independence.tex
+	# pdflatex --file-line-error -interaction=nonstopmode linear_independence.tex
+	../../latexrun linear_independence.tex
 	make terms
 
 graph.csv: sheet.tex

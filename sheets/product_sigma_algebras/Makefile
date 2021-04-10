@@ -10,7 +10,8 @@ product_sigma_algebras.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > product_sigma_algebras.tex
 
 product_sigma_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex product_sigma_algebras.tex
-	pdflatex --file-line-error -interaction=nonstopmode product_sigma_algebras.tex
+	# pdflatex --file-line-error -interaction=nonstopmode product_sigma_algebras.tex
+	../../latexrun product_sigma_algebras.tex
 	make terms
 
 graph.csv: sheet.tex

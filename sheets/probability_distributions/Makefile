@@ -10,7 +10,8 @@ probability_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probability_distributions.tex
 
 probability_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex probability_distributions.tex
-	pdflatex --file-line-error -interaction=nonstopmode probability_distributions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode probability_distributions.tex
+	../../latexrun probability_distributions.tex
 	make terms
 
 graph.csv: sheet.tex

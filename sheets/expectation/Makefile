@@ -10,7 +10,8 @@ expectation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > expectation.tex
 
 expectation.pdf: ../../*.tex ../../trademark.pdf *.tex expectation.tex
-	pdflatex --file-line-error -interaction=nonstopmode expectation.tex
+	# pdflatex --file-line-error -interaction=nonstopmode expectation.tex
+	../../latexrun expectation.tex
 	make terms
 
 graph.csv: sheet.tex

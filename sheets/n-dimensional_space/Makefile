@@ -10,7 +10,8 @@ n-dimensional_space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > n-dimensional_space.tex
 
 n-dimensional_space.pdf: ../../*.tex ../../trademark.pdf *.tex n-dimensional_space.tex
-	pdflatex --file-line-error -interaction=nonstopmode n-dimensional_space.tex
+	# pdflatex --file-line-error -interaction=nonstopmode n-dimensional_space.tex
+	../../latexrun n-dimensional_space.tex
 	make terms
 
 graph.csv: sheet.tex

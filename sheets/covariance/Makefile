@@ -10,7 +10,8 @@ covariance.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > covariance.tex
 
 covariance.pdf: ../../*.tex ../../trademark.pdf *.tex covariance.tex
-	pdflatex --file-line-error -interaction=nonstopmode covariance.tex
+	# pdflatex --file-line-error -interaction=nonstopmode covariance.tex
+	../../latexrun covariance.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ relation_properties.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > relation_properties.tex
 
 relation_properties.pdf: ../../*.tex ../../trademark.pdf *.tex relation_properties.tex
-	pdflatex --file-line-error -interaction=nonstopmode relation_properties.tex
+	# pdflatex --file-line-error -interaction=nonstopmode relation_properties.tex
+	../../latexrun relation_properties.tex
 	make terms
 
 graph.csv: sheet.tex

@@ -10,7 +10,8 @@ data_matrix.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > data_matrix.tex
 
 data_matrix.pdf: ../../*.tex ../../trademark.pdf *.tex data_matrix.tex
-	pdflatex --file-line-error -interaction=nonstopmode data_matrix.tex
+	# pdflatex --file-line-error -interaction=nonstopmode data_matrix.tex
+	../../latexrun data_matrix.tex
 	make terms
 
 graph.csv: sheet.tex

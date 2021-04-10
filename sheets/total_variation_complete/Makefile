@@ -10,7 +10,8 @@ total_variation_complete.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > total_variation_complete.tex
 
 total_variation_complete.pdf: ../../*.tex ../../trademark.pdf *.tex total_variation_complete.tex
-	pdflatex --file-line-error -interaction=nonstopmode total_variation_complete.tex
+	# pdflatex --file-line-error -interaction=nonstopmode total_variation_complete.tex
+	../../latexrun total_variation_complete.tex
 	make terms
 
 graph.csv: sheet.tex

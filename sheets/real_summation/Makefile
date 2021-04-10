@@ -10,7 +10,8 @@ real_summation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_summation.tex
 
 real_summation.pdf: ../../*.tex ../../trademark.pdf *.tex real_summation.tex
-	pdflatex --file-line-error -interaction=nonstopmode real_summation.tex
+	# pdflatex --file-line-error -interaction=nonstopmode real_summation.tex
+	../../latexrun real_summation.tex
 	make terms
 
 graph.csv: sheet.tex

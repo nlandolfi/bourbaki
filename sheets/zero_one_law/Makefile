@@ -10,7 +10,8 @@ zero_one_law.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > zero_one_law.tex
 
 zero_one_law.pdf: ../../*.tex ../../trademark.pdf *.tex zero_one_law.tex
-	pdflatex --file-line-error -interaction=nonstopmode zero_one_law.tex
+	# pdflatex --file-line-error -interaction=nonstopmode zero_one_law.tex
+	../../latexrun zero_one_law.tex
 	make terms
 
 graph.csv: sheet.tex

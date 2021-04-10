@@ -10,7 +10,8 @@ real_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_matrices.tex
 
 real_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex real_matrices.tex
-	pdflatex --file-line-error -interaction=nonstopmode real_matrices.tex
+	# pdflatex --file-line-error -interaction=nonstopmode real_matrices.tex
+	../../latexrun real_matrices.tex
 	make terms
 
 graph.csv: sheet.tex

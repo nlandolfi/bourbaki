@@ -10,7 +10,8 @@ norm_metrics.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > norm_metrics.tex
 
 norm_metrics.pdf: ../../*.tex ../../trademark.pdf *.tex norm_metrics.tex
-	pdflatex --file-line-error -interaction=nonstopmode norm_metrics.tex
+	# pdflatex --file-line-error -interaction=nonstopmode norm_metrics.tex
+	../../latexrun norm_metrics.tex
 	make terms
 
 graph.csv: sheet.tex
