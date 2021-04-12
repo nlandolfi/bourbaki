@@ -166,6 +166,7 @@ func ParseAll(sheetsdir string) ([]*ParseResult, error) {
 }
 
 func Terms(s string) []string {
+	original := s
 	ts := make([]string, 0)
 	for {
 		i := strings.Index(s, "\\ct{")
@@ -173,6 +174,16 @@ func Terms(s string) []string {
 			break
 		}
 		s = s[i+4:]
+		j := strings.Index(s, "}")
+		ts = append(ts, s[:j])
+	}
+	s = original
+	for {
+		i := strings.Index(s, "\\t{")
+		if i == -1 {
+			break
+		}
+		s = s[i+3:]
 		j := strings.Index(s, "}")
 		ts = append(ts, s[:j])
 	}
