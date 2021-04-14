@@ -54,6 +54,12 @@ func allNeeds(p *ParseResult, all map[string]*ParseResult) []string {
 			needs = append(needs, nn)
 		}
 	}
+
+	// reverse in place
+	// works?
+	for i, j := 0, len(an)-1; i < j; i, j = i+1, j-1 {
+		an[i], an[j] = an[j], an[i]
+	}
 	return an
 }
 
