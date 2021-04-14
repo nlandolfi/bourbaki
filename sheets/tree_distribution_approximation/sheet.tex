@@ -2,16 +2,15 @@
 %!need:distribution_approximation
 %!need:tree_distributions
 %!need:relative_entropy
-%!need:mutual_information_graph
 
 \ssection{Why}
 
 We approximate with tree distributions.
-These distributions require tabulating fewer numbers in order to express the probability of an outcome, which may save us tabulating many more numbers.
+These distributions require tabulating fewer numbers in order to express the probability of an outcome.
 
 \ssection{Problem}
 
-We approximate a distribution by a tree distribution using the relative entropy as a criterion.
+We approximate a given distribution by a tree distribution approximant, using the entropy of the approximant relative to the given distribution as the criterion of approximation.
 
 \ssubsection{Notation}
 
@@ -20,9 +19,7 @@ Let $q: A \to [0, 1]$ a distribution.
 Let $d$ denote the relative
 entropy.
 
-We want to find a distribution $p$
-on $A$ and tree $T$ on
-$\set{1, \dots, n}$ to
+We want to find a distribution $p$ on $A$ and tree $T$ on $\set{1, \dots, n}$ to
 \[
   \begin{aligned}
     \text{minimize}   &\quad d(q, p) \\
@@ -30,38 +27,3 @@ $\set{1, \dots, n}$ to
   \end{aligned}
 \]
 
-\ssection{Solution}
-
-\begin{prop}
-  Let $q$ be a distribution on $A$. Let $T$ be
-  a tree on $\set{1, \dots, d}$. Let $p_j$ be
-  the parent of vertex $j$ for the $T$ rooted
-  at vertex $i$, $j = 1,\dots,n$ and $j \neq i$.
-  Then the distribution $p$ on $A$ defined by
-  \[
-    p = q_i \prod_{j \neq i} q_{j \mid p_j}
-  \]
-  achieves minimum entropy relative to $q$ among
-  all distributions which factor according to $T$.
-\end{prop}
-
-\begin{prop}
-  Let $q$ be a distribution on $A$. Let $T$ be
-  a tree on $\set{1, \dots, d}$. Let $p_j$ be
-  the parent of vertex $j$ for the $T$ rooted
-  at vertex $i$, $j = 1,\dots,n$ and $j \neq i$.
-  Then the distribution $p$ on $A$ defined by
-  \[
-    p = q_i \prod_{j \neq i} q_{j \mid p_j}
-  \]
-  achieves minimum entropy relative to $q$ among
-  all distributions which factor according to $T$.
-\end{prop}
-
-\begin{prop}
-  Let $q$ be a distribution on $A$.
-  A tree
-  $T$ is a solution to the problem above
-  if and only if it is a minimum spanning
-  tree of the mutual information graph of $q$.
-\end{prop}
