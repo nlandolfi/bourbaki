@@ -1,0 +1,121 @@
+\input{../../sheet.tex}
+\sbasic
+\input{../tree_density_approximation/macros.tex}
+\input{../tree_normals/macros.tex}
+\input{../differential_mutual_information_graph/macros.tex}
+\input{../differential_relative_entropy/macros.tex}
+\input{../optimization/macros.tex}
+\input{../tree_densities/macros.tex}
+\input{../tree_distribution_approximation/macros.tex}
+\input{../multivariate_normals/macros.tex}
+\input{../differential_mutual_information/macros.tex}
+\input{../weighted_graphs/macros.tex}
+\input{../differential_cross_entropy/macros.tex}
+\input{../relative_entropy/macros.tex}
+\input{../total_orders/macros.tex}
+\input{../rooted_tree_densities/macros.tex}
+\input{../distribution_approximation/macros.tex}
+\input{../tree_distributions/macros.tex}
+\input{../matrix_determinants/macros.tex}
+\input{../multivariate_real_densities/macros.tex}
+\input{../normal_densities/macros.tex}
+\input{../positive_definite_matrices/macros.tex}
+\input{../transpose/macros.tex}
+\input{../marginal_densities/macros.tex}
+\input{../mutual_information/macros.tex}
+\input{../graphs/macros.tex}
+\input{../real_numbers/macros.tex}
+\input{../differential_entropy/macros.tex}
+\input{../cross_entropy/macros.tex}
+\input{../entropy/macros.tex}
+\input{../partial_orders/macros.tex}
+\input{../set_specification/macros.tex}
+\input{../conditional_densities/macros.tex}
+\input{../rooted_tree_distributions/macros.tex}
+\input{../approximation/macros.tex}
+\input{../probability_distributions/macros.tex}
+\input{../n-dimensional_space/macros.tex}
+\input{../real_matrices/macros.tex}
+\input{../probability_densities/macros.tex}
+\input{../quadratic_forms/macros.tex}
+\input{../symmetric_matrices/macros.tex}
+\input{../vectors/macros.tex}
+\input{../relations/macros.tex}
+\input{../rational_numbers/macros.tex}
+\input{../logarithm/macros.tex}
+\input{../relation_properties/macros.tex}
+\input{../sentences/macros.tex}
+\input{../set_inclusion/macros.tex}
+\input{../conditional_distributions/macros.tex}
+\input{../rooted_trees/macros.tex}
+\input{../similarity_functions/macros.tex}
+\input{../intervals/macros.tex}
+\input{../probability_outcomes/macros.tex}
+\input{../real_summation/macros.tex}
+\input{../space/macros.tex}
+\input{../matrices/macros.tex}
+\input{../identity_matrices/macros.tex}
+\input{../fields/macros.tex}
+\input{../ordered_pairs/macros.tex}
+\input{../integer_numbers/macros.tex}
+\input{../sets/macros.tex}
+\input{../set_equality/macros.tex}
+\input{../conditional_event_probability/macros.tex}
+\input{../marginal_distributions/macros.tex}
+\input{../trees/macros.tex}
+\input{../metrics/macros.tex}
+\input{../cardinality/macros.tex}
+\input{../probability/macros.tex}
+\input{../natural_summation/macros.tex}
+\input{../groups/macros.tex}
+\input{../solving_equations/macros.tex}
+\input{../objects/macros.tex}
+\input{../identity/macros.tex}
+\input{../event_probabilities/macros.tex}
+\input{../direct_products/macros.tex}
+\input{../set_operations/macros.tex}
+\input{../distance/macros.tex}
+\input{../length_common_notions/macros.tex}
+\input{../injective_functions/macros.tex}
+\input{../natural_numbers/macros.tex}
+\input{../common_sense/macros.tex}
+\input{../arithmetic/macros.tex}
+\input{../family_operations/macros.tex}
+\input{../algebras/macros.tex}
+\input{../equations/macros.tex}
+\input{../probability_events/macros.tex}
+\input{../natural_families/macros.tex}
+\input{../natural_order/macros.tex}
+\input{../functions/macros.tex}
+\input{../operations/macros.tex}
+\input{../families/macros.tex}
+\input{./macros.tex}
+\sstart
+\stitle{Tree Normal Approximation}
+
+\ssection{Why}
+TODO change name?
+should be something about approximating a normal.
+
+What is the best tree density approximant to a normal density?
+What is the
+
+\ssection{Result}
+
+\begin{prop}
+
+% TODO: remove language of Chow-Liu tree.
+% TODO: define precision matrix
+
+Let $g$ be a normal density with mean $\mu \in \R^d$ and covariance $\Sigma \in \mathbf{S}^d_{++}$.
+Let $T$ be a Chow-Liu tree of $g$.
+Let $f$ be a gaussian density with mean $\mu$ and precision matrix $P$ where
+  \begin{itemize}
+    \item $P_{11} = \Sigma_{11}^{-1} + \sum_{\pa{j} = 1}
+\Sigma_{j1}^2\Sigma_{11}^{-2}\Sigma_{j\mid 1}^{-1}$
+      \item for $i = 2, \dots, d$, $P_{ii} = \Sigma_{i\mid\pa{i}}^{-1} + \sum_{\pa{j} = i} \Sigma_{ji}^2\Sigma_{ii}^{-2}\Sigma_{j\mid i}^{-1}$
+      \item $i, j = 1, \dots d$ and $i = \pa{j}$, $P_{ij} = P_{ji} = -\Sigma_{ji}\Sigma_{jj}^{-1}\Sigma_{j \mid i}^{-1}$
+  \end{itemize}
+  Then $f$ is Chow-Liu density of $g$.
+\end{prop}
+\strats
