@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make best_tree_distribution_approximators.pdf
+	make optimal_tree_distribution_approximators.pdf
 	make graph.pdf
 
-best_tree_distribution_approximators.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > best_tree_distribution_approximators.tex
+optimal_tree_distribution_approximators.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > optimal_tree_distribution_approximators.tex
 
-best_tree_distribution_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex best_tree_distribution_approximators.tex
-	# pdflatex --file-line-error -interaction=nonstopmode best_tree_distribution_approximators.tex
-	../../latexrun best_tree_distribution_approximators.tex
+optimal_tree_distribution_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex optimal_tree_distribution_approximators.tex
+	# pdflatex --file-line-error -interaction=nonstopmode optimal_tree_distribution_approximators.tex
+	../../latexrun optimal_tree_distribution_approximators.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,17 +23,17 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: best_tree_distribution_approximators.pdf
-	open best_tree_distribution_approximators.pdf
+open: optimal_tree_distribution_approximators.pdf
+	open optimal_tree_distribution_approximators.pdf
 
 o:
 	make open
 
-terms: best_tree_distribution_approximators.tex
-	bbk_sheet -mode ts best_tree_distribution_approximators.tex
+terms: optimal_tree_distribution_approximators.tex
+	bbk_sheet -mode ts optimal_tree_distribution_approximators.tex
 
 spell:
-	aspell -c best_tree_distribution_approximators.tex
+	aspell -c optimal_tree_distribution_approximators.tex
 
 s:
 	make spell
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f best_tree_distribution_approximators.*
+	rm -f optimal_tree_distribution_approximators.*
 	make reset
 	bbk_sheet -mode mk > Makefile
