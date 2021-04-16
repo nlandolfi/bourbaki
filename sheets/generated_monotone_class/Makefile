@@ -47,4 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f 
+	rm -f generated_monotone_class.*
+	make reset
+	bbk_sheet -mode mk > Makefile

@@ -1,50 +1,50 @@
 \input{../../sheet.tex}
 \sbasic
 \input{../sentences/macros.tex}
-\input{../objects/macros.tex}
 \input{../sets/macros.tex}
-\input{../set_equality/macros.tex}
 \input{../set_specification/macros.tex}
-\input{../identity/macros.tex}
+\input{../objects/macros.tex}
 \input{../ordered_pairs/macros.tex}
-\input{../set_inclusion/macros.tex}
+\input{../set_equality/macros.tex}
 \input{../families/macros.tex}
-\input{../functions/macros.tex}
-\input{../equations/macros.tex}
+\input{../identity/macros.tex}
 \input{../relations/macros.tex}
 \input{../natural_order/macros.tex}
 \input{../natural_families/macros.tex}
-\input{../probability_events/macros.tex}
-\input{../operations/macros.tex}
+\input{../set_inclusion/macros.tex}
 \input{../family_operations/macros.tex}
-\input{../arithmetic/macros.tex}
 \input{../common_sense/macros.tex}
 \input{../natural_numbers/macros.tex}
 \input{../injective_functions/macros.tex}
-\input{../solving_equations/macros.tex}
-\input{../set_operations/macros.tex}
+\input{../equations/macros.tex}
+\input{../arithmetic/macros.tex}
+\input{../functions/macros.tex}
 \input{../graphs/macros.tex}
 \input{../direct_products/macros.tex}
-\input{../event_probabilities/macros.tex}
-\input{../algebras/macros.tex}
+\input{../set_operations/macros.tex}
+\input{../probability_events/macros.tex}
 \input{../natural_summation/macros.tex}
 \input{../probability/macros.tex}
 \input{../cardinality/macros.tex}
-\input{../integer_numbers/macros.tex}
+\input{../solving_equations/macros.tex}
+\input{../operations/macros.tex}
 \input{../trees/macros.tex}
 \input{../marginal_distributions/macros.tex}
-\input{../conditional_event_probability/macros.tex}
-\input{../groups/macros.tex}
+\input{../event_probabilities/macros.tex}
 \input{../real_summation/macros.tex}
 \input{../probability_outcomes/macros.tex}
 \input{../intervals/macros.tex}
+\input{../integer_numbers/macros.tex}
+\input{../algebras/macros.tex}
 \input{../rational_numbers/macros.tex}
 \input{../rooted_trees/macros.tex}
 \input{../conditional_distributions/macros.tex}
 \input{../marginal_densities/macros.tex}
-\input{../fields/macros.tex}
+\input{../conditional_event_probability/macros.tex}
 \input{../identity_matrices/macros.tex}
 \input{../probability_distributions/macros.tex}
+\input{../element_functions/macros.tex}
+\input{../groups/macros.tex}
 \input{../matrices/macros.tex}
 \input{../space/macros.tex}
 \input{../real_numbers/macros.tex}
@@ -54,6 +54,9 @@
 \input{../symmetric_matrices/macros.tex}
 \input{../quadratic_forms/macros.tex}
 \input{../probability_densities/macros.tex}
+\input{../matrix_multiplication/macros.tex}
+\input{../inverse_elements/macros.tex}
+\input{../fields/macros.tex}
 \input{../real_matrices/macros.tex}
 \input{../n-dimensional_space/macros.tex}
 \input{../rooted_tree_densities/macros.tex}
@@ -61,6 +64,7 @@
 \input{../positive_definite_matrices/macros.tex}
 \input{../normal_densities/macros.tex}
 \input{../multivariate_real_densities/macros.tex}
+\input{../matrix_inverse/macros.tex}
 \input{../matrix_determinants/macros.tex}
 \input{../tree_densities/macros.tex}
 \input{../multivariate_normals/macros.tex}
@@ -71,12 +75,13 @@
 \ssection{Why}
 
 We name multivariate normal densities which factor according to a tree.
+These densities require tabulating fewer numbers.
 
 \ssection{Definition}
 
 A \t{tree multivariate normal} or \t{tree normal} density is a multivariate normal density which factors according to a tree.
 
-% TODO: remove big O notation?
-For a regular multivariate normal density on $\R^n$, we need to store $O(n^2)$ numbers (the covariance matrix).
-For a tree normal on $\R^n$ we only need to store $O(n)$ real numbers.
+\ssubsection{Fewer numbers}
+
+A multivariate normal on $\R^n$ requires tabulating $n$ numbers for the mean and $n(n+1)/2$ numbers for the covariance matrix. If it factors according to a tree, we need only $n$ numbers to specify the covariance (one for the one-variable marginal, and $n-1$ for the covariance of the two-variable conditionals).
 \strats
