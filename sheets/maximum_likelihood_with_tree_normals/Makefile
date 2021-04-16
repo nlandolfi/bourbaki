@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make tree_normal_maximum_likelihood.pdf
+	make maximum_likelihood_with_tree_normals.pdf
 	make graph.pdf
 
-tree_normal_maximum_likelihood.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > tree_normal_maximum_likelihood.tex
+maximum_likelihood_with_tree_normals.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > maximum_likelihood_with_tree_normals.tex
 
-tree_normal_maximum_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex tree_normal_maximum_likelihood.tex
-	# pdflatex --file-line-error -interaction=nonstopmode tree_normal_maximum_likelihood.tex
-	../../latexrun tree_normal_maximum_likelihood.tex
+maximum_likelihood_with_tree_normals.pdf: ../../*.tex ../../trademark.pdf *.tex maximum_likelihood_with_tree_normals.tex
+	# pdflatex --file-line-error -interaction=nonstopmode maximum_likelihood_with_tree_normals.tex
+	../../latexrun maximum_likelihood_with_tree_normals.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,17 +23,17 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: tree_normal_maximum_likelihood.pdf
-	open tree_normal_maximum_likelihood.pdf
+open: maximum_likelihood_with_tree_normals.pdf
+	open maximum_likelihood_with_tree_normals.pdf
 
 o:
 	make open
 
-terms: tree_normal_maximum_likelihood.tex
-	bbk_sheet -mode ts tree_normal_maximum_likelihood.tex
+terms: maximum_likelihood_with_tree_normals.tex
+	bbk_sheet -mode ts maximum_likelihood_with_tree_normals.tex
 
 spell:
-	aspell -c tree_normal_maximum_likelihood.tex
+	aspell -c maximum_likelihood_with_tree_normals.tex
 
 s:
 	make spell
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f tree_normal_maximum_likelihood.*
+	rm -f maximum_likelihood_with_tree_normals.*
 	make reset
 	bbk_sheet -mode mk > Makefile
