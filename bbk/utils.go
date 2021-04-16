@@ -34,12 +34,13 @@ func CopyFile(src, dst string) (int64, error) {
 }
 
 var shortWords = map[string]bool{
-	"of":  true,
-	"the": true,
-	"a":   true,
-	"an":  true,
-	"vs.": true,
-	"vs":  true,
+	"of":   true,
+	"the":  true,
+	"a":    true,
+	"an":   true,
+	"vs.":  true,
+	"vs":   true,
+	"with": true,
 }
 
 func Title(s string) string {
