@@ -15,7 +15,7 @@ We want to select a density from among normal densities, which require specifyin
 Following the principle of maximum likelihood, we want to solve
 \[
   \maximizationn{\mu,\sigma \in \R}{
-    \prod_{k = 1}^{n}  \gaussiandensity{x^k}{\mu}{\sigma}
+    \prod_{k = 1}^{n}  \normaldensity{x^k}{\mu}{\sigma}
   }{
     \sigma > 0 \\
   }
@@ -27,18 +27,18 @@ We call a solution to the above problem a \t{maximum likelihood normal density} 
 \begin{prop}
 
 Let $(x^1, \dots, x^n)$ be a dataset in $\R$.
-Let $f$ be a gaussian density with mean
+Let $f$ be a normal density with mean
 $$\frac{1}{n} \sum_{k = 1}^{n} x^k$$
 and covariance
 $$\frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^2.$$
-Then $f$ is a maximum likelihood gaussian density.
+Then $f$ is a maximum likelihood normal density.
 \begin{proof}
-  Every gaussian density has two parameters: the mean
+  Every normal density has two parameters: the mean
   and the covariance.
-  If the likelihood of one gaussian is less than or equal
+  If the likelihood of one normal is less than or equal
   to the likelihood of another, then so is are their
   log likelihoods.
-  Let $f$ be a gaussian density with parameter $\mu$ and $\sigma^2$.
+  Let $f$ be a normal density with parameter $\mu$ and $\sigma^2$.
   We express the log likelihood of
   $f$ by
   \[

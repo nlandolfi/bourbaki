@@ -1,47 +1,65 @@
 \input{../../sheet.tex}
 \sbasic
-\input{../identity/macros.tex}
-\input{../objects/macros.tex}
-\input{../equations/macros.tex}
+\input{../subset_systems/macros.tex}
+\input{../set_operations/macros.tex}
+\input{../subset_algebras/macros.tex}
 \input{../set_equality/macros.tex}
 \input{../sets/macros.tex}
 \input{../ordered_pairs/macros.tex}
+\input{../objects/macros.tex}
+\input{../partitions/macros.tex}
+\input{../characteristic_functions/macros.tex}
+\input{../measures/macros.tex}
 \input{../algebras/macros.tex}
-\input{../operations/macros.tex}
 \input{../functions/macros.tex}
-\input{../equation_solutions/macros.tex}
 \input{../set_inclusion/macros.tex}
 \input{../sentences/macros.tex}
 \input{../relations/macros.tex}
 \input{../families/macros.tex}
+\input{../identity/macros.tex}
+\input{../operations/macros.tex}
+\input{../simple_functions/macros.tex}
+\input{../measurable_functions/macros.tex}
 \input{../family_operations/macros.tex}
-\input{../arithmetic/macros.tex}
 \input{../common_sense/macros.tex}
 \input{../natural_numbers/macros.tex}
 \input{../injective_functions/macros.tex}
-\input{../integer_numbers/macros.tex}
 \input{../set_specification/macros.tex}
 \input{../relation_properties/macros.tex}
 \input{../natural_order/macros.tex}
 \input{../natural_families/macros.tex}
+\input{../integer_numbers/macros.tex}
+\input{../squares/macros.tex}
+\input{../natural_multiplication/macros.tex}
+\input{../equations/macros.tex}
+\input{../arithmetic/macros.tex}
+\input{../simple_integrals/macros.tex}
 \input{../natural_summation/macros.tex}
 \input{../probability/macros.tex}
 \input{../cardinality/macros.tex}
-\input{../rational_numbers/macros.tex}
 \input{../partial_orders/macros.tex}
 \input{../direct_products/macros.tex}
+\input{../rational_numbers/macros.tex}
+\input{../square_numbers/macros.tex}
+\input{../equation_solutions/macros.tex}
+\input{../nonnegative_integrals/macros.tex}
 \input{../real_summation/macros.tex}
 \input{../probability_outcomes/macros.tex}
 \input{../intervals/macros.tex}
 \input{../space/macros.tex}
-\input{../real_numbers/macros.tex}
 \input{../total_orders/macros.tex}
 \input{../datasets/macros.tex}
+\input{../real_numbers/macros.tex}
+\input{../natural_square_roots/macros.tex}
+\input{../real_integrals/macros.tex}
 \input{../probability_distributions/macros.tex}
+\input{../real_functions/macros.tex}
 \input{../n-dimensional_space/macros.tex}
 \input{../optimizers/macros.tex}
 \input{../distribution_selection/macros.tex}
+\input{../real_square_roots/macros.tex}
 \input{../probability_densities/macros.tex}
+\input{../exponential/macros.tex}
 \input{../multivariate_real_densities/macros.tex}
 \input{../maximum_likelihood/macros.tex}
 \input{../density_selection/macros.tex}
@@ -64,7 +82,7 @@ We want to select a density from among normal densities, which require specifyin
 Following the principle of maximum likelihood, we want to solve
 \[
   \maximizationn{\mu,\sigma \in \R}{
-    \prod_{k = 1}^{n}  \gaussiandensity{x^k}{\mu}{\sigma}
+    \prod_{k = 1}^{n}  \normaldensity{x^k}{\mu}{\sigma}
   }{
     \sigma > 0 \\
   }
@@ -76,18 +94,18 @@ We call a solution to the above problem a \t{maximum likelihood normal density} 
 \begin{prop}
 
 Let $(x^1, \dots, x^n)$ be a dataset in $\R$.
-Let $f$ be a gaussian density with mean
+Let $f$ be a normal density with mean
 $$\frac{1}{n} \sum_{k = 1}^{n} x^k$$
 and covariance
 $$\frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^2.$$
-Then $f$ is a maximum likelihood gaussian density.
+Then $f$ is a maximum likelihood normal density.
 \begin{proof}
-  Every gaussian density has two parameters: the mean
+  Every normal density has two parameters: the mean
   and the covariance.
-  If the likelihood of one gaussian is less than or equal
+  If the likelihood of one normal is less than or equal
   to the likelihood of another, then so is are their
   log likelihoods.
-  Let $f$ be a gaussian density with parameter $\mu$ and $\sigma^2$.
+  Let $f$ be a normal density with parameter $\mu$ and $\sigma^2$.
   We express the log likelihood of
   $f$ by
   \[
