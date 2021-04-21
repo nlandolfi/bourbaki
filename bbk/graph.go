@@ -68,8 +68,9 @@ func ParseGraph(f io.Reader) (map[string]*Entry, error) {
 }
 
 func NodeName(s string) string {
-	pieces := strings.Split(s, "_")
-	return strings.Title(strings.Join(pieces, " "))
+	return Title(s)
+	//pieces := strings.Split(s, "_")
+	//return strings.Title(strings.Join(pieces, " "))
 }
 
 func DirName(s string) string {
