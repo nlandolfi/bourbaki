@@ -35,7 +35,7 @@ terms: {{ .Name }}.tex
 	bbk_sheet -mode ts {{ .Name }}.tex
 
 spell:
-	aspell -c {{ .Name }}.tex
+	aspell -c sheet.tex
 
 s:
 	make spell
