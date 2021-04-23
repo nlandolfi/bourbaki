@@ -33,7 +33,7 @@ terms: set_inclusion.tex
 	bbk_sheet -mode ts set_inclusion.tex
 
 spell:
-	aspell -c set_inclusion.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

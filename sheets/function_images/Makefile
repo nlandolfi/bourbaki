@@ -33,7 +33,7 @@ terms: function_images.tex
 	bbk_sheet -mode ts function_images.tex
 
 spell:
-	aspell -c function_images.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

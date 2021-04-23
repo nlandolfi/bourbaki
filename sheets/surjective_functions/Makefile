@@ -33,7 +33,7 @@ terms: surjective_functions.tex
 	bbk_sheet -mode ts surjective_functions.tex
 
 spell:
-	aspell -c surjective_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

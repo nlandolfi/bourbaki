@@ -33,7 +33,7 @@ terms: complete_inner_product_decomposition.tex
 	bbk_sheet -mode ts complete_inner_product_decomposition.tex
 
 spell:
-	aspell -c complete_inner_product_decomposition.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

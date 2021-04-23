@@ -33,7 +33,7 @@ terms: distance_asymmetry.tex
 	bbk_sheet -mode ts distance_asymmetry.tex
 
 spell:
-	aspell -c distance_asymmetry.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

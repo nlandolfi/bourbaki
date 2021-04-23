@@ -33,7 +33,7 @@ terms: borel_sigma_algebra.tex
 	bbk_sheet -mode ts borel_sigma_algebra.tex
 
 spell:
-	aspell -c borel_sigma_algebra.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

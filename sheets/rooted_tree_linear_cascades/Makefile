@@ -33,7 +33,7 @@ terms: rooted_tree_linear_cascades.tex
 	bbk_sheet -mode ts rooted_tree_linear_cascades.tex
 
 spell:
-	aspell -c rooted_tree_linear_cascades.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

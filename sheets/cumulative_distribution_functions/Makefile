@@ -33,7 +33,7 @@ terms: cumulative_distribution_functions.tex
 	bbk_sheet -mode ts cumulative_distribution_functions.tex
 
 spell:
-	aspell -c cumulative_distribution_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

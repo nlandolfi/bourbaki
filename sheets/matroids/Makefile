@@ -33,7 +33,7 @@ terms: matroids.tex
 	bbk_sheet -mode ts matroids.tex
 
 spell:
-	aspell -c matroids.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

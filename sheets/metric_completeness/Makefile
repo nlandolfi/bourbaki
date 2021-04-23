@@ -33,7 +33,7 @@ terms: metric_completeness.tex
 	bbk_sheet -mode ts metric_completeness.tex
 
 spell:
-	aspell -c metric_completeness.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

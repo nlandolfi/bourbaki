@@ -33,7 +33,7 @@ terms: positive_definite_matrices.tex
 	bbk_sheet -mode ts positive_definite_matrices.tex
 
 spell:
-	aspell -c positive_definite_matrices.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

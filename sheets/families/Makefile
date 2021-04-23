@@ -33,7 +33,7 @@ terms: families.tex
 	bbk_sheet -mode ts families.tex
 
 spell:
-	aspell -c families.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: ordered_pairs.tex
 	bbk_sheet -mode ts ordered_pairs.tex
 
 spell:
-	aspell -c ordered_pairs.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

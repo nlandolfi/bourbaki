@@ -33,7 +33,7 @@ terms: probability.tex
 	bbk_sheet -mode ts probability.tex
 
 spell:
-	aspell -c probability.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

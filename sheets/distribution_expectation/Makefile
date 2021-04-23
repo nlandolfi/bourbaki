@@ -33,7 +33,7 @@ terms: distribution_expectation.tex
 	bbk_sheet -mode ts distribution_expectation.tex
 
 spell:
-	aspell -c distribution_expectation.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

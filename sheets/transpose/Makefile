@@ -33,7 +33,7 @@ terms: transpose.tex
 	bbk_sheet -mode ts transpose.tex
 
 spell:
-	aspell -c transpose.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

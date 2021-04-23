@@ -33,7 +33,7 @@ terms: conditional_event_probability.tex
 	bbk_sheet -mode ts conditional_event_probability.tex
 
 spell:
-	aspell -c conditional_event_probability.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

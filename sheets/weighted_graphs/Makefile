@@ -33,7 +33,7 @@ terms: weighted_graphs.tex
 	bbk_sheet -mode ts weighted_graphs.tex
 
 spell:
-	aspell -c weighted_graphs.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

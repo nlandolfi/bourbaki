@@ -33,7 +33,7 @@ terms: nonnegative_integrals.tex
 	bbk_sheet -mode ts nonnegative_integrals.tex
 
 spell:
-	aspell -c nonnegative_integrals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: equation_solutions.tex
 	bbk_sheet -mode ts equation_solutions.tex
 
 spell:
-	aspell -c equation_solutions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

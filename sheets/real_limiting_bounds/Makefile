@@ -33,7 +33,7 @@ terms: real_limiting_bounds.tex
 	bbk_sheet -mode ts real_limiting_bounds.tex
 
 spell:
-	aspell -c real_limiting_bounds.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: quadratic_forms.tex
 	bbk_sheet -mode ts quadratic_forms.tex
 
 spell:
-	aspell -c quadratic_forms.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

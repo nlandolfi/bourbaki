@@ -33,7 +33,7 @@ terms: trees.tex
 	bbk_sheet -mode ts trees.tex
 
 spell:
-	aspell -c trees.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

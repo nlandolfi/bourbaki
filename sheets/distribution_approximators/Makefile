@@ -33,7 +33,7 @@ terms: distribution_approximators.tex
 	bbk_sheet -mode ts distribution_approximators.tex
 
 spell:
-	aspell -c distribution_approximators.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

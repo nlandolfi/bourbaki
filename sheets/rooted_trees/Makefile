@@ -33,7 +33,7 @@ terms: rooted_trees.tex
 	bbk_sheet -mode ts rooted_trees.tex
 
 spell:
-	aspell -c rooted_trees.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

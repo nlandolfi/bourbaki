@@ -33,7 +33,7 @@ terms: metric_space_functions.tex
 	bbk_sheet -mode ts metric_space_functions.tex
 
 spell:
-	aspell -c metric_space_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

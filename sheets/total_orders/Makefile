@@ -33,7 +33,7 @@ terms: total_orders.tex
 	bbk_sheet -mode ts total_orders.tex
 
 spell:
-	aspell -c total_orders.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: maximum_likelihood_with_tree_normals.tex
 	bbk_sheet -mode ts maximum_likelihood_with_tree_normals.tex
 
 spell:
-	aspell -c maximum_likelihood_with_tree_normals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

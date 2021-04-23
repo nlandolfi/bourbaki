@@ -33,7 +33,7 @@ terms: normal_differential_entropy.tex
 	bbk_sheet -mode ts normal_differential_entropy.tex
 
 spell:
-	aspell -c normal_differential_entropy.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

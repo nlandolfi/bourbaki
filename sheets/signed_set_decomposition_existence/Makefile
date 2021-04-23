@@ -33,7 +33,7 @@ terms: signed_set_decomposition_existence.tex
 	bbk_sheet -mode ts signed_set_decomposition_existence.tex
 
 spell:
-	aspell -c signed_set_decomposition_existence.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

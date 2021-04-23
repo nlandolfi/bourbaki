@@ -33,7 +33,7 @@ terms: injective_functions.tex
 	bbk_sheet -mode ts injective_functions.tex
 
 spell:
-	aspell -c injective_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: conditional_densities.tex
 	bbk_sheet -mode ts conditional_densities.tex
 
 spell:
-	aspell -c conditional_densities.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

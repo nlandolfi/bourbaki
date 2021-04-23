@@ -33,7 +33,7 @@ terms: real_vectors.tex
 	bbk_sheet -mode ts real_vectors.tex
 
 spell:
-	aspell -c real_vectors.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

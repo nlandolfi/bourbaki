@@ -33,7 +33,7 @@ terms: random_variable_moments.tex
 	bbk_sheet -mode ts random_variable_moments.tex
 
 spell:
-	aspell -c random_variable_moments.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

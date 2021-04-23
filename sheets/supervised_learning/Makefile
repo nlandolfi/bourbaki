@@ -33,7 +33,7 @@ terms: supervised_learning.tex
 	bbk_sheet -mode ts supervised_learning.tex
 
 spell:
-	aspell -c supervised_learning.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

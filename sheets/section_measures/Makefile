@@ -33,7 +33,7 @@ terms: section_measures.tex
 	bbk_sheet -mode ts section_measures.tex
 
 spell:
-	aspell -c section_measures.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

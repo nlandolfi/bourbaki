@@ -33,7 +33,7 @@ terms: probability_measures.tex
 	bbk_sheet -mode ts probability_measures.tex
 
 spell:
-	aspell -c probability_measures.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

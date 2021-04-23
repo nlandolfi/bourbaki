@@ -33,7 +33,7 @@ terms: random_variable_independence.tex
 	bbk_sheet -mode ts random_variable_independence.tex
 
 spell:
-	aspell -c random_variable_independence.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

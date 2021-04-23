@@ -33,7 +33,7 @@ terms: length_common_notions.tex
 	bbk_sheet -mode ts length_common_notions.tex
 
 spell:
-	aspell -c length_common_notions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

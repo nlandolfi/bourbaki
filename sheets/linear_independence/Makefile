@@ -33,7 +33,7 @@ terms: linear_independence.tex
 	bbk_sheet -mode ts linear_independence.tex
 
 spell:
-	aspell -c linear_independence.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

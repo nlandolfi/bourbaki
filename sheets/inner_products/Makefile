@@ -33,7 +33,7 @@ terms: inner_products.tex
 	bbk_sheet -mode ts inner_products.tex
 
 spell:
-	aspell -c inner_products.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

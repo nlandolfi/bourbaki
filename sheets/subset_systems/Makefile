@@ -33,7 +33,7 @@ terms: subset_systems.tex
 	bbk_sheet -mode ts subset_systems.tex
 
 spell:
-	aspell -c subset_systems.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

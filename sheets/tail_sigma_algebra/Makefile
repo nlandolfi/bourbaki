@@ -33,7 +33,7 @@ terms: tail_sigma_algebra.tex
 	bbk_sheet -mode ts tail_sigma_algebra.tex
 
 spell:
-	aspell -c tail_sigma_algebra.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

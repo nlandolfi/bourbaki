@@ -33,7 +33,7 @@ terms: symmetric_matrices.tex
 	bbk_sheet -mode ts symmetric_matrices.tex
 
 spell:
-	aspell -c symmetric_matrices.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

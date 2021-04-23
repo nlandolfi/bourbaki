@@ -33,7 +33,7 @@ terms: rational_numbers.tex
 	bbk_sheet -mode ts rational_numbers.tex
 
 spell:
-	aspell -c rational_numbers.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: random_variables_joint_law.tex
 	bbk_sheet -mode ts random_variables_joint_law.tex
 
 spell:
-	aspell -c random_variables_joint_law.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

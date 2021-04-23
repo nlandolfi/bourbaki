@@ -33,7 +33,7 @@ terms: singular_measures.tex
 	bbk_sheet -mode ts singular_measures.tex
 
 spell:
-	aspell -c singular_measures.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

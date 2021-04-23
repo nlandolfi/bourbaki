@@ -33,7 +33,7 @@ terms: functional_analysis.tex
 	bbk_sheet -mode ts functional_analysis.tex
 
 spell:
-	aspell -c functional_analysis.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

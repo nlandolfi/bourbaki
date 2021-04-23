@@ -33,7 +33,7 @@ terms: partial_orders.tex
 	bbk_sheet -mode ts partial_orders.tex
 
 spell:
-	aspell -c partial_orders.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

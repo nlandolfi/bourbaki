@@ -33,7 +33,7 @@ terms: product_sigma_algebras.tex
 	bbk_sheet -mode ts product_sigma_algebras.tex
 
 spell:
-	aspell -c product_sigma_algebras.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

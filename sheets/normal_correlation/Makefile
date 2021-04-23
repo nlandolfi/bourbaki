@@ -33,7 +33,7 @@ terms: normal_correlation.tex
 	bbk_sheet -mode ts normal_correlation.tex
 
 spell:
-	aspell -c normal_correlation.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

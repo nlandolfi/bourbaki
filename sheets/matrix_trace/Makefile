@@ -33,7 +33,7 @@ terms: matrix_trace.tex
 	bbk_sheet -mode ts matrix_trace.tex
 
 spell:
-	aspell -c matrix_trace.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

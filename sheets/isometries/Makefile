@@ -33,7 +33,7 @@ terms: isometries.tex
 	bbk_sheet -mode ts isometries.tex
 
 spell:
-	aspell -c isometries.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

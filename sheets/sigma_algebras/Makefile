@@ -33,7 +33,7 @@ terms: sigma_algebras.tex
 	bbk_sheet -mode ts sigma_algebras.tex
 
 spell:
-	aspell -c sigma_algebras.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

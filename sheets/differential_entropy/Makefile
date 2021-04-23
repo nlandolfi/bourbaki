@@ -33,7 +33,7 @@ terms: differential_entropy.tex
 	bbk_sheet -mode ts differential_entropy.tex
 
 spell:
-	aspell -c differential_entropy.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

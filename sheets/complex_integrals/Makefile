@@ -33,7 +33,7 @@ terms: complex_integrals.tex
 	bbk_sheet -mode ts complex_integrals.tex
 
 spell:
-	aspell -c complex_integrals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

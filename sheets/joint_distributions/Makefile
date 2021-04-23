@@ -33,7 +33,7 @@ terms: joint_distributions.tex
 	bbk_sheet -mode ts joint_distributions.tex
 
 spell:
-	aspell -c joint_distributions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

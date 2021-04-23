@@ -33,7 +33,7 @@ terms: topological_spaces.tex
 	bbk_sheet -mode ts topological_spaces.tex
 
 spell:
-	aspell -c topological_spaces.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

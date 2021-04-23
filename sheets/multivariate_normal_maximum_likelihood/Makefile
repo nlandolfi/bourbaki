@@ -33,7 +33,7 @@ terms: multivariate_normal_maximum_likelihood.tex
 	bbk_sheet -mode ts multivariate_normal_maximum_likelihood.tex
 
 spell:
-	aspell -c multivariate_normal_maximum_likelihood.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

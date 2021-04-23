@@ -33,7 +33,7 @@ terms: almost_everywhere_measurability.tex
 	bbk_sheet -mode ts almost_everywhere_measurability.tex
 
 spell:
-	aspell -c almost_everywhere_measurability.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: tree_normals.tex
 	bbk_sheet -mode ts tree_normals.tex
 
 spell:
-	aspell -c tree_normals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

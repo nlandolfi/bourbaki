@@ -33,7 +33,7 @@ terms: real_limits.tex
 	bbk_sheet -mode ts real_limits.tex
 
 spell:
-	aspell -c real_limits.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

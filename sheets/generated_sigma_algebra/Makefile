@@ -33,7 +33,7 @@ terms: generated_sigma_algebra.tex
 	bbk_sheet -mode ts generated_sigma_algebra.tex
 
 spell:
-	aspell -c generated_sigma_algebra.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

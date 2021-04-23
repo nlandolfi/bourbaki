@@ -33,7 +33,7 @@ terms: matrix_eigenvectors.tex
 	bbk_sheet -mode ts matrix_eigenvectors.tex
 
 spell:
-	aspell -c matrix_eigenvectors.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

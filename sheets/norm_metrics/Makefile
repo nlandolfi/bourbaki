@@ -33,7 +33,7 @@ terms: norm_metrics.tex
 	bbk_sheet -mode ts norm_metrics.tex
 
 spell:
-	aspell -c norm_metrics.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

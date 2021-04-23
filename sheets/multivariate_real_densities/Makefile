@@ -33,7 +33,7 @@ terms: multivariate_real_densities.tex
 	bbk_sheet -mode ts multivariate_real_densities.tex
 
 spell:
-	aspell -c multivariate_real_densities.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

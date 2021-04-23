@@ -33,7 +33,7 @@ terms: complex_numbers.tex
 	bbk_sheet -mode ts complex_numbers.tex
 
 spell:
-	aspell -c complex_numbers.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

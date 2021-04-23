@@ -33,7 +33,7 @@ terms: mutual_information.tex
 	bbk_sheet -mode ts mutual_information.tex
 
 spell:
-	aspell -c mutual_information.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

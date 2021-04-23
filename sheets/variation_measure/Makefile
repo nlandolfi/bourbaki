@@ -33,7 +33,7 @@ terms: variation_measure.tex
 	bbk_sheet -mode ts variation_measure.tex
 
 spell:
-	aspell -c variation_measure.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

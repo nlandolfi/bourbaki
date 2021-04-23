@@ -33,7 +33,7 @@ terms: functionals.tex
 	bbk_sheet -mode ts functionals.tex
 
 spell:
-	aspell -c functionals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

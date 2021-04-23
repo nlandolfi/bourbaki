@@ -33,7 +33,7 @@ terms: exchangeable_singular_decomposition.tex
 	bbk_sheet -mode ts exchangeable_singular_decomposition.tex
 
 spell:
-	aspell -c exchangeable_singular_decomposition.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: real_matrices.tex
 	bbk_sheet -mode ts real_matrices.tex
 
 spell:
-	aspell -c real_matrices.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

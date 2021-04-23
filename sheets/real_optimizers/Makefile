@@ -33,7 +33,7 @@ terms: real_optimizers.tex
 	bbk_sheet -mode ts real_optimizers.tex
 
 spell:
-	aspell -c real_optimizers.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

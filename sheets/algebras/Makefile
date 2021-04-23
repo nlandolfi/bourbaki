@@ -33,7 +33,7 @@ terms: algebras.tex
 	bbk_sheet -mode ts algebras.tex
 
 spell:
-	aspell -c algebras.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

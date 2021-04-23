@@ -33,7 +33,7 @@ terms: conditional_dependency_graph.tex
 	bbk_sheet -mode ts conditional_dependency_graph.tex
 
 spell:
-	aspell -c conditional_dependency_graph.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

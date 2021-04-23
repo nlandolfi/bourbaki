@@ -33,7 +33,7 @@ terms: real_summation.tex
 	bbk_sheet -mode ts real_summation.tex
 
 spell:
-	aspell -c real_summation.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

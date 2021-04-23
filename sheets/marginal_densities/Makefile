@@ -33,7 +33,7 @@ terms: marginal_densities.tex
 	bbk_sheet -mode ts marginal_densities.tex
 
 spell:
-	aspell -c marginal_densities.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

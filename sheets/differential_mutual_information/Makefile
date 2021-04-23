@@ -33,7 +33,7 @@ terms: differential_mutual_information.tex
 	bbk_sheet -mode ts differential_mutual_information.tex
 
 spell:
-	aspell -c differential_mutual_information.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

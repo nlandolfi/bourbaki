@@ -33,7 +33,7 @@ terms: entropy.tex
 	bbk_sheet -mode ts entropy.tex
 
 spell:
-	aspell -c entropy.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

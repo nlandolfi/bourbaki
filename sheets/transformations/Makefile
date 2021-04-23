@@ -33,7 +33,7 @@ terms: transformations.tex
 	bbk_sheet -mode ts transformations.tex
 
 spell:
-	aspell -c transformations.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

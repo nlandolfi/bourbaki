@@ -33,7 +33,7 @@ terms: total_variation.tex
 	bbk_sheet -mode ts total_variation.tex
 
 spell:
-	aspell -c total_variation.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

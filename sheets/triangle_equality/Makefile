@@ -33,7 +33,7 @@ terms: triangle_equality.tex
 	bbk_sheet -mode ts triangle_equality.tex
 
 spell:
-	aspell -c triangle_equality.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

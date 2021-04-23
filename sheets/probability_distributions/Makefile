@@ -33,7 +33,7 @@ terms: probability_distributions.tex
 	bbk_sheet -mode ts probability_distributions.tex
 
 spell:
-	aspell -c probability_distributions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

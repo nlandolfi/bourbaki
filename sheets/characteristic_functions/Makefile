@@ -33,7 +33,7 @@ terms: characteristic_functions.tex
 	bbk_sheet -mode ts characteristic_functions.tex
 
 spell:
-	aspell -c characteristic_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: pointwise_vs_measure_limits.tex
 	bbk_sheet -mode ts pointwise_vs_measure_limits.tex
 
 spell:
-	aspell -c pointwise_vs_measure_limits.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: zero.tex
 	bbk_sheet -mode ts zero.tex
 
 spell:
-	aspell -c zero.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

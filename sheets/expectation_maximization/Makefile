@@ -33,7 +33,7 @@ terms: expectation_maximization.tex
 	bbk_sheet -mode ts expectation_maximization.tex
 
 spell:
-	aspell -c expectation_maximization.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

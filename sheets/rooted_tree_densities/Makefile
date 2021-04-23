@@ -33,7 +33,7 @@ terms: rooted_tree_densities.tex
 	bbk_sheet -mode ts rooted_tree_densities.tex
 
 spell:
-	aspell -c rooted_tree_densities.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

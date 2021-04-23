@@ -33,7 +33,7 @@ terms: coins.tex
 	bbk_sheet -mode ts coins.tex
 
 spell:
-	aspell -c coins.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

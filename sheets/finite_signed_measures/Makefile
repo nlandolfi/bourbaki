@@ -33,7 +33,7 @@ terms: finite_signed_measures.tex
 	bbk_sheet -mode ts finite_signed_measures.tex
 
 spell:
-	aspell -c finite_signed_measures.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

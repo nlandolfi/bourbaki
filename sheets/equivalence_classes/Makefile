@@ -33,7 +33,7 @@ terms: equivalence_classes.tex
 	bbk_sheet -mode ts equivalence_classes.tex
 
 spell:
-	aspell -c equivalence_classes.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

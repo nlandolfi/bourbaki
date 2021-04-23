@@ -33,7 +33,7 @@ terms: operators.tex
 	bbk_sheet -mode ts operators.tex
 
 spell:
-	aspell -c operators.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

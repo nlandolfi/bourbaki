@@ -33,7 +33,7 @@ terms: random_vectors.tex
 	bbk_sheet -mode ts random_vectors.tex
 
 spell:
-	aspell -c random_vectors.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

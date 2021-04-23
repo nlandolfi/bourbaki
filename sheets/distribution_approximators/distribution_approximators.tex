@@ -1,44 +1,51 @@
 \input{../../sheet.tex}
 \sbasic
-\input{../objects/macros.tex}
-\input{../identity/macros.tex}
-\input{../set_equality/macros.tex}
-\input{../sets/macros.tex}
+\input{../unordered_pairs/macros.tex}
 \input{../ordered_pairs/macros.tex}
 \input{../equations/macros.tex}
-\input{../set_inclusion/macros.tex}
-\input{../sentences/macros.tex}
 \input{../relations/macros.tex}
-\input{../equation_solutions/macros.tex}
-\input{../set_specification/macros.tex}
-\input{../relation_properties/macros.tex}
-\input{../families/macros.tex}
 \input{../algebras/macros.tex}
 \input{../operations/macros.tex}
+\input{../power_set/macros.tex}
 \input{../functions/macros.tex}
-\input{../length_common_notions/macros.tex}
-\input{../integer_numbers/macros.tex}
-\input{../partial_orders/macros.tex}
+\input{../equation_solutions/macros.tex}
+\input{../relation_properties/macros.tex}
+\input{../identity/macros.tex}
+\input{../objects/macros.tex}
 \input{../family_operations/macros.tex}
 \input{../arithmetic/macros.tex}
 \input{../common_sense/macros.tex}
-\input{../natural_numbers/macros.tex}
 \input{../injective_functions/macros.tex}
-\input{../distance/macros.tex}
-\input{../rational_numbers/macros.tex}
-\input{../total_orders/macros.tex}
+\input{../natural_numbers/macros.tex}
+\input{../families/macros.tex}
+\input{../length_common_notions/macros.tex}
+\input{../integer_numbers/macros.tex}
+\input{../partial_orders/macros.tex}
+\input{../set_equality/macros.tex}
+\input{../sets/macros.tex}
 \input{../natural_summation/macros.tex}
 \input{../probability/macros.tex}
 \input{../cardinality/macros.tex}
-\input{../metrics/macros.tex}
-\input{../real_numbers/macros.tex}
-\input{../optimizers/macros.tex}
+\input{../natural_order/macros.tex}
+\input{../natural_families/macros.tex}
+\input{../distance/macros.tex}
+\input{../rational_numbers/macros.tex}
+\input{../total_orders/macros.tex}
+\input{../set_inclusion/macros.tex}
+\input{../sentences/macros.tex}
 \input{../real_summation/macros.tex}
 \input{../probability_outcomes/macros.tex}
 \input{../intervals/macros.tex}
+\input{../direct_products/macros.tex}
+\input{../metrics/macros.tex}
+\input{../real_numbers/macros.tex}
+\input{../optimizers/macros.tex}
+\input{../set_specification/macros.tex}
+\input{../probability_distributions/macros.tex}
+\input{../datasets/macros.tex}
 \input{../similarity_functions/macros.tex}
 \input{../real_optimizers/macros.tex}
-\input{../probability_distributions/macros.tex}
+\input{../empirical_distribution/macros.tex}
 \input{../approximators/macros.tex}
 \input{./macros.tex}
 \sstart
@@ -46,13 +53,33 @@
 
 \ssection{Why}
 
-We have a distribution which for some reason is unsuitable, and which we want to replace with one more suitable.
-For example, the distribution may require enumerating the probability of each outcome to express.
-Or it may be unreasonable as a result of our common sense.
-In both cases we want to find a different distribution (from the set of those which is easier to express or from the set of those which is more reasonable based on our common sense) that is in some way close to the original.
+We have a distribution to approximate.
+It is, for some reason, unsuitable to our needs and we want to replace it with one more suitable.
 
 \ssection{Definition}
 
 A \t{distribution approximator} is an approximator of a probability distribution.
-The criterion is any similarity function on distributions.
+It is also a distribution.
+The criterion of approximation is any similarity function on distributions over the same space..
+
+\ssection{Notation}
+
+Let $A$ be a non-empty set and $q: A \to \R$ be a distribution.
+Let $p: A \to \R$ be a distribution.
+Then $p: A \to \R$ is a distribution approximator of $q$.
+
+\ssection{Reasons for approximation}
+
+
+\textbf{Infeasible to represent.}
+If there are many outcomes, many numbers are required to specify the distribution.
+If $p: A^n \to \R$ where $|A| = k$, then there are $k^n$ outcomes; take, for example, $k = 2$ and $n = 100$.
+So we might want to find a distribution which requires fewer numbers to express.
+In other words, we want a different distribution, selected from the set of those which is easier to express, which is close to the original.
+
+\textbf{Unreasonable from common sense.}
+The distribution may be unreasonable as a result of our common sense.
+For example, it may give zero probability to an outcome which we know to be possible, and would like to model with non-zero probability.
+This may happen when working with an empirical distribution: a particular outcome does not appear in the dataset, however, our common sense suggests is possible.
+In this case, we want to find a different distribution, selected from the set of those which is more reasonable based on common sense, which is close to the original.
 \strats

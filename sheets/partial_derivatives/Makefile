@@ -33,7 +33,7 @@ terms: partial_derivatives.tex
 	bbk_sheet -mode ts partial_derivatives.tex
 
 spell:
-	aspell -c partial_derivatives.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

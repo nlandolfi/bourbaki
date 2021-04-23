@@ -33,7 +33,7 @@ terms: monotone_class_theorem.tex
 	bbk_sheet -mode ts monotone_class_theorem.tex
 
 spell:
-	aspell -c monotone_class_theorem.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

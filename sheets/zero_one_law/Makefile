@@ -33,7 +33,7 @@ terms: zero_one_law.tex
 	bbk_sheet -mode ts zero_one_law.tex
 
 spell:
-	aspell -c zero_one_law.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

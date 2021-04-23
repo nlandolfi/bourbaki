@@ -33,7 +33,7 @@ terms: simple_integral_homogeneity.tex
 	bbk_sheet -mode ts simple_integral_homogeneity.tex
 
 spell:
-	aspell -c simple_integral_homogeneity.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

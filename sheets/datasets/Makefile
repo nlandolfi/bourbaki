@@ -33,7 +33,7 @@ terms: datasets.tex
 	bbk_sheet -mode ts datasets.tex
 
 spell:
-	aspell -c datasets.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

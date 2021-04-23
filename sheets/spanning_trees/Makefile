@@ -33,7 +33,7 @@ terms: spanning_trees.tex
 	bbk_sheet -mode ts spanning_trees.tex
 
 spell:
-	aspell -c spanning_trees.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

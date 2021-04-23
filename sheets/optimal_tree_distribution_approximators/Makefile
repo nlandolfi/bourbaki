@@ -33,7 +33,7 @@ terms: optimal_tree_distribution_approximators.tex
 	bbk_sheet -mode ts optimal_tree_distribution_approximators.tex
 
 spell:
-	aspell -c optimal_tree_distribution_approximators.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

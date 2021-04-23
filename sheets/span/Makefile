@@ -33,7 +33,7 @@ terms: span.tex
 	bbk_sheet -mode ts span.tex
 
 spell:
-	aspell -c span.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

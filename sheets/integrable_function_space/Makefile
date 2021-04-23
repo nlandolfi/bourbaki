@@ -33,7 +33,7 @@ terms: integrable_function_space.tex
 	bbk_sheet -mode ts integrable_function_space.tex
 
 spell:
-	aspell -c integrable_function_space.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

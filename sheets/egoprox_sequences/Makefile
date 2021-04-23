@@ -33,7 +33,7 @@ terms: egoprox_sequences.tex
 	bbk_sheet -mode ts egoprox_sequences.tex
 
 spell:
-	aspell -c egoprox_sequences.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

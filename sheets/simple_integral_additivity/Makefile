@@ -33,7 +33,7 @@ terms: simple_integral_additivity.tex
 	bbk_sheet -mode ts simple_integral_additivity.tex
 
 spell:
-	aspell -c simple_integral_additivity.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

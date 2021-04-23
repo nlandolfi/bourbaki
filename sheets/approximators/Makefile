@@ -33,7 +33,7 @@ terms: approximators.tex
 	bbk_sheet -mode ts approximators.tex
 
 spell:
-	aspell -c approximators.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

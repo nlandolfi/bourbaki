@@ -33,7 +33,7 @@ terms: tree_approximators_of_a_normal.tex
 	bbk_sheet -mode ts tree_approximators_of_a_normal.tex
 
 spell:
-	aspell -c tree_approximators_of_a_normal.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

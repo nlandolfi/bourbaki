@@ -33,7 +33,7 @@ terms: n-dimensional_space.tex
 	bbk_sheet -mode ts n-dimensional_space.tex
 
 spell:
-	aspell -c n-dimensional_space.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

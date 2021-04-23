@@ -33,7 +33,7 @@ terms: categories.tex
 	bbk_sheet -mode ts categories.tex
 
 spell:
-	aspell -c categories.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

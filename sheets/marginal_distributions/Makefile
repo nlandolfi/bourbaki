@@ -33,7 +33,7 @@ terms: marginal_distributions.tex
 	bbk_sheet -mode ts marginal_distributions.tex
 
 spell:
-	aspell -c marginal_distributions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell
