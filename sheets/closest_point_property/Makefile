@@ -33,7 +33,7 @@ terms: closest_point_property.tex
 	bbk_sheet -mode ts closest_point_property.tex
 
 spell:
-	aspell -c closest_point_property.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

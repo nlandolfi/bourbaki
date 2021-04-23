@@ -33,7 +33,7 @@ terms: length.tex
 	bbk_sheet -mode ts length.tex
 
 spell:
-	aspell -c length.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

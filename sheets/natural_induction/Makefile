@@ -33,7 +33,7 @@ terms: natural_induction.tex
 	bbk_sheet -mode ts natural_induction.tex
 
 spell:
-	aspell -c natural_induction.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

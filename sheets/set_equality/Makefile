@@ -33,7 +33,7 @@ terms: set_equality.tex
 	bbk_sheet -mode ts set_equality.tex
 
 spell:
-	aspell -c set_equality.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: relation_properties.tex
 	bbk_sheet -mode ts relation_properties.tex
 
 spell:
-	aspell -c relation_properties.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

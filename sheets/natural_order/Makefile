@@ -33,7 +33,7 @@ terms: natural_order.tex
 	bbk_sheet -mode ts natural_order.tex
 
 spell:
-	aspell -c natural_order.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

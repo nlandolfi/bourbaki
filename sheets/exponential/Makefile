@@ -33,7 +33,7 @@ terms: exponential.tex
 	bbk_sheet -mode ts exponential.tex
 
 spell:
-	aspell -c exponential.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

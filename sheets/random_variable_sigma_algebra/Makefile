@@ -33,7 +33,7 @@ terms: random_variable_sigma_algebra.tex
 	bbk_sheet -mode ts random_variable_sigma_algebra.tex
 
 spell:
-	aspell -c random_variable_sigma_algebra.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

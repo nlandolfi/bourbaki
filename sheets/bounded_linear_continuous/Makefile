@@ -33,7 +33,7 @@ terms: bounded_linear_continuous.tex
 	bbk_sheet -mode ts bounded_linear_continuous.tex
 
 spell:
-	aspell -c bounded_linear_continuous.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

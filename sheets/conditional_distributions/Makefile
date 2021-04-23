@@ -33,7 +33,7 @@ terms: conditional_distributions.tex
 	bbk_sheet -mode ts conditional_distributions.tex
 
 spell:
-	aspell -c conditional_distributions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

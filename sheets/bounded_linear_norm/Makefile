@@ -33,7 +33,7 @@ terms: bounded_linear_norm.tex
 	bbk_sheet -mode ts bounded_linear_norm.tex
 
 spell:
-	aspell -c bounded_linear_norm.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

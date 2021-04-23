@@ -33,7 +33,7 @@ terms: metric_dense.tex
 	bbk_sheet -mode ts metric_dense.tex
 
 spell:
-	aspell -c metric_dense.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

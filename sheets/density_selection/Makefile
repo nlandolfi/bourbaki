@@ -33,7 +33,7 @@ terms: density_selection.tex
 	bbk_sheet -mode ts density_selection.tex
 
 spell:
-	aspell -c density_selection.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

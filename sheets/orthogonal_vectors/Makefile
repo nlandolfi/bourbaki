@@ -33,7 +33,7 @@ terms: orthogonal_vectors.tex
 	bbk_sheet -mode ts orthogonal_vectors.tex
 
 spell:
-	aspell -c orthogonal_vectors.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

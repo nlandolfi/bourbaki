@@ -33,7 +33,7 @@ terms: metric_continuity.tex
 	bbk_sheet -mode ts metric_continuity.tex
 
 spell:
-	aspell -c metric_continuity.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

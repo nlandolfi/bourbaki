@@ -33,7 +33,7 @@ terms: similarity_functions.tex
 	bbk_sheet -mode ts similarity_functions.tex
 
 spell:
-	aspell -c similarity_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

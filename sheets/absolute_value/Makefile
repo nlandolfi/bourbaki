@@ -33,7 +33,7 @@ terms: absolute_value.tex
 	bbk_sheet -mode ts absolute_value.tex
 
 spell:
-	aspell -c absolute_value.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

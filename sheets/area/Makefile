@@ -33,7 +33,7 @@ terms: area.tex
 	bbk_sheet -mode ts area.tex
 
 spell:
-	aspell -c area.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

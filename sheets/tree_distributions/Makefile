@@ -33,7 +33,7 @@ terms: tree_distributions.tex
 	bbk_sheet -mode ts tree_distributions.tex
 
 spell:
-	aspell -c tree_distributions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

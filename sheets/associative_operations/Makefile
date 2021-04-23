@@ -33,7 +33,7 @@ terms: associative_operations.tex
 	bbk_sheet -mode ts associative_operations.tex
 
 spell:
-	aspell -c associative_operations.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

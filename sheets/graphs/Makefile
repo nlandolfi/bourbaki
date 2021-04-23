@@ -33,7 +33,7 @@ terms: graphs.tex
 	bbk_sheet -mode ts graphs.tex
 
 spell:
-	aspell -c graphs.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

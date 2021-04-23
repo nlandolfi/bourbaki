@@ -33,7 +33,7 @@ terms: relative_entropy.tex
 	bbk_sheet -mode ts relative_entropy.tex
 
 spell:
-	aspell -c relative_entropy.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

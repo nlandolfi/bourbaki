@@ -33,7 +33,7 @@ terms: standard_deviation.tex
 	bbk_sheet -mode ts standard_deviation.tex
 
 spell:
-	aspell -c standard_deviation.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

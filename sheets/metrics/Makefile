@@ -33,7 +33,7 @@ terms: metrics.tex
 	bbk_sheet -mode ts metrics.tex
 
 spell:
-	aspell -c metrics.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

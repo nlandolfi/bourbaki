@@ -33,7 +33,7 @@ terms: complex_measures.tex
 	bbk_sheet -mode ts complex_measures.tex
 
 spell:
-	aspell -c complex_measures.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

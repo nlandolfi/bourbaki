@@ -33,7 +33,7 @@ terms: simple_integral_monotonicity.tex
 	bbk_sheet -mode ts simple_integral_monotonicity.tex
 
 spell:
-	aspell -c simple_integral_monotonicity.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

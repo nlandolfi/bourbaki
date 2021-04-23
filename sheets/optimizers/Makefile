@@ -33,7 +33,7 @@ terms: optimizers.tex
 	bbk_sheet -mode ts optimizers.tex
 
 spell:
-	aspell -c optimizers.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

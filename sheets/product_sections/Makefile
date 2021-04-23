@@ -33,7 +33,7 @@ terms: product_sections.tex
 	bbk_sheet -mode ts product_sections.tex
 
 spell:
-	aspell -c product_sections.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

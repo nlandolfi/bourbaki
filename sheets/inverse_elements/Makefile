@@ -33,7 +33,7 @@ terms: inverse_elements.tex
 	bbk_sheet -mode ts inverse_elements.tex
 
 spell:
-	aspell -c inverse_elements.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: real_series.tex
 	bbk_sheet -mode ts real_series.tex
 
 spell:
-	aspell -c real_series.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: monotone_sequences.tex
 	bbk_sheet -mode ts monotone_sequences.tex
 
 spell:
-	aspell -c monotone_sequences.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

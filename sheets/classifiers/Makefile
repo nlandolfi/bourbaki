@@ -33,7 +33,7 @@ terms: classifiers.tex
 	bbk_sheet -mode ts classifiers.tex
 
 spell:
-	aspell -c classifiers.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

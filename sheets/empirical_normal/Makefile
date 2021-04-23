@@ -33,7 +33,7 @@ terms: empirical_normal.tex
 	bbk_sheet -mode ts empirical_normal.tex
 
 spell:
-	aspell -c empirical_normal.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: matrix_eigenvalues.tex
 	bbk_sheet -mode ts matrix_eigenvalues.tex
 
 spell:
-	aspell -c matrix_eigenvalues.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

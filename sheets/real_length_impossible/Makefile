@@ -33,7 +33,7 @@ terms: real_length_impossible.tex
 	bbk_sheet -mode ts real_length_impossible.tex
 
 spell:
-	aspell -c real_length_impossible.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

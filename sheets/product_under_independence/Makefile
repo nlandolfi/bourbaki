@@ -33,7 +33,7 @@ terms: product_under_independence.tex
 	bbk_sheet -mode ts product_under_independence.tex
 
 spell:
-	aspell -c product_under_independence.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

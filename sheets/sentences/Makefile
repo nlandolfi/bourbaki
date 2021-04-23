@@ -33,7 +33,7 @@ terms: sentences.tex
 	bbk_sheet -mode ts sentences.tex
 
 spell:
-	aspell -c sentences.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

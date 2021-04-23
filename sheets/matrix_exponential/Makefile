@@ -33,7 +33,7 @@ terms: matrix_exponential.tex
 	bbk_sheet -mode ts matrix_exponential.tex
 
 spell:
-	aspell -c matrix_exponential.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

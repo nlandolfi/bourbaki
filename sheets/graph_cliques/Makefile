@@ -33,7 +33,7 @@ terms: graph_cliques.tex
 	bbk_sheet -mode ts graph_cliques.tex
 
 spell:
-	aspell -c graph_cliques.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: multivariate_normals.tex
 	bbk_sheet -mode ts multivariate_normals.tex
 
 spell:
-	aspell -c multivariate_normals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

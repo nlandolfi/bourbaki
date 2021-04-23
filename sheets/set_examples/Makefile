@@ -33,7 +33,7 @@ terms: set_examples.tex
 	bbk_sheet -mode ts set_examples.tex
 
 spell:
-	aspell -c set_examples.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

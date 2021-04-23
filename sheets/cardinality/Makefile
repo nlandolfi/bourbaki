@@ -33,7 +33,7 @@ terms: cardinality.tex
 	bbk_sheet -mode ts cardinality.tex
 
 spell:
-	aspell -c cardinality.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

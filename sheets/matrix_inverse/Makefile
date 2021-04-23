@@ -33,7 +33,7 @@ terms: matrix_inverse.tex
 	bbk_sheet -mode ts matrix_inverse.tex
 
 spell:
-	aspell -c matrix_inverse.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

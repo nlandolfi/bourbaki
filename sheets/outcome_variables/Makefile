@@ -33,7 +33,7 @@ terms: outcome_variables.tex
 	bbk_sheet -mode ts outcome_variables.tex
 
 spell:
-	aspell -c outcome_variables.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

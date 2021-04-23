@@ -33,7 +33,7 @@ terms: monotone_algebras.tex
 	bbk_sheet -mode ts monotone_algebras.tex
 
 spell:
-	aspell -c monotone_algebras.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

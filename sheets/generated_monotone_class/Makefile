@@ -33,7 +33,7 @@ terms: generated_monotone_class.tex
 	bbk_sheet -mode ts generated_monotone_class.tex
 
 spell:
-	aspell -c generated_monotone_class.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: orthogonal_complements.tex
 	bbk_sheet -mode ts orthogonal_complements.tex
 
 spell:
-	aspell -c orthogonal_complements.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

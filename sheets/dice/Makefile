@@ -33,7 +33,7 @@ terms: dice.tex
 	bbk_sheet -mode ts dice.tex
 
 spell:
-	aspell -c dice.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

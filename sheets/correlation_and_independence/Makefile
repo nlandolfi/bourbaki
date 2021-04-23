@@ -33,7 +33,7 @@ terms: correlation_and_independence.tex
 	bbk_sheet -mode ts correlation_and_independence.tex
 
 spell:
-	aspell -c correlation_and_independence.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

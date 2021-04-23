@@ -33,7 +33,7 @@ terms: probability_density_function.tex
 	bbk_sheet -mode ts probability_density_function.tex
 
 spell:
-	aspell -c probability_density_function.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

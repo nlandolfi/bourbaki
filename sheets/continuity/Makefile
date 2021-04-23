@@ -33,7 +33,7 @@ terms: continuity.tex
 	bbk_sheet -mode ts continuity.tex
 
 spell:
-	aspell -c continuity.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

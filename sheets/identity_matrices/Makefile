@@ -33,7 +33,7 @@ terms: identity_matrices.tex
 	bbk_sheet -mode ts identity_matrices.tex
 
 spell:
-	aspell -c identity_matrices.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

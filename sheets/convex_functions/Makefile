@@ -33,7 +33,7 @@ terms: convex_functions.tex
 	bbk_sheet -mode ts convex_functions.tex
 
 spell:
-	aspell -c convex_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

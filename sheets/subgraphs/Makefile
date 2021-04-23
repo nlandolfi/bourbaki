@@ -33,7 +33,7 @@ terms: subgraphs.tex
 	bbk_sheet -mode ts subgraphs.tex
 
 spell:
-	aspell -c subgraphs.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

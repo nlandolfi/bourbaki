@@ -33,7 +33,7 @@ terms: fair_coins.tex
 	bbk_sheet -mode ts fair_coins.tex
 
 spell:
-	aspell -c fair_coins.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

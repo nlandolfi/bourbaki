@@ -33,7 +33,7 @@ terms: event_probabilities.tex
 	bbk_sheet -mode ts event_probabilities.tex
 
 spell:
-	aspell -c event_probabilities.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

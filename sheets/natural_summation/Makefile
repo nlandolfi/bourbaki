@@ -33,7 +33,7 @@ terms: natural_summation.tex
 	bbk_sheet -mode ts natural_summation.tex
 
 spell:
-	aspell -c natural_summation.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: common_sense.tex
 	bbk_sheet -mode ts common_sense.tex
 
 spell:
-	aspell -c common_sense.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: image_measures.tex
 	bbk_sheet -mode ts image_measures.tex
 
 spell:
-	aspell -c image_measures.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

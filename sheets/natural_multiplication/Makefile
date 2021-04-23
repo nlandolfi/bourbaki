@@ -33,7 +33,7 @@ terms: natural_multiplication.tex
 	bbk_sheet -mode ts natural_multiplication.tex
 
 spell:
-	aspell -c natural_multiplication.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

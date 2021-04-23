@@ -33,7 +33,7 @@ terms: matrix_determinant_of_inverse.tex
 	bbk_sheet -mode ts matrix_determinant_of_inverse.tex
 
 spell:
-	aspell -c matrix_determinant_of_inverse.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: natural_numbers.tex
 	bbk_sheet -mode ts natural_numbers.tex
 
 spell:
-	aspell -c natural_numbers.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

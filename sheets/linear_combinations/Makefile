@@ -33,7 +33,7 @@ terms: linear_combinations.tex
 	bbk_sheet -mode ts linear_combinations.tex
 
 spell:
-	aspell -c linear_combinations.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

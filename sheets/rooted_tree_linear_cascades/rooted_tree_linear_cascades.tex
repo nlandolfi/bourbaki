@@ -1,43 +1,82 @@
 \input{../../sheet.tex}
 \sbasic
+\input{../real_functions/macros.tex}
+\input{../partitions/macros.tex}
+\input{../characteristic_functions/macros.tex}
+\input{../length_common_notions/macros.tex}
 \input{../objects/macros.tex}
+\input{../families/macros.tex}
+\input{../equations/macros.tex}
+\input{../simple_functions/macros.tex}
+\input{../distance/macros.tex}
+\input{../unordered_pairs/macros.tex}
 \input{../sets/macros.tex}
 \input{../identity/macros.tex}
-\input{../equations/macros.tex}
+\input{../family_operations/macros.tex}
 \input{../arithmetic/macros.tex}
+\input{../common_sense/macros.tex}
+\input{../equation_solutions/macros.tex}
+\input{../simple_integrals/macros.tex}
 \input{../sentences/macros.tex}
+\input{../metrics/macros.tex}
+\input{../groups/macros.tex}
+\input{../ordered_pairs/macros.tex}
+\input{../set_equality/macros.tex}
+\input{../functions/macros.tex}
+\input{../set_complements/macros.tex}
+\input{../operations/macros.tex}
+\input{../natural_summation/macros.tex}
+\input{../probability/macros.tex}
+\input{../integer_numbers/macros.tex}
+\input{../nonnegative_integrals/macros.tex}
+\input{../set_specification/macros.tex}
+\input{../relations/macros.tex}
+\input{../topological_spaces/macros.tex}
+\input{../fields/macros.tex}
+\input{../subset_systems/macros.tex}
+\input{../set_inclusion/macros.tex}
 \input{../natural_numbers/macros.tex}
 \input{../injective_functions/macros.tex}
-\input{../functions/macros.tex}
-\input{../set_equality/macros.tex}
-\input{../equation_solutions/macros.tex}
-\input{../subset_systems/macros.tex}
-\input{../set_specification/macros.tex}
-\input{../cardinality/macros.tex}
-\input{../operations/macros.tex}
-\input{../set_inclusion/macros.tex}
-\input{../ordered_pairs/macros.tex}
-\input{../integer_numbers/macros.tex}
-\input{../groups/macros.tex}
-\input{../subset_algebras/macros.tex}
+\input{../set_symmetric_differences/macros.tex}
+\input{../set_intersections/macros.tex}
 \input{../algebras/macros.tex}
-\input{../relations/macros.tex}
+\input{../real_summation/macros.tex}
+\input{../probability_outcomes/macros.tex}
+\input{../intervals/macros.tex}
 \input{../rational_numbers/macros.tex}
-\input{../fields/macros.tex}
-\input{../measure_space/macros.tex}
-\input{../set_operations/macros.tex}
+\input{../real_integrals/macros.tex}
+\input{../expectation/macros.tex}
+\input{../set_unions/macros.tex}
 \input{../graphs/macros.tex}
+\input{../topological_sigma_algebra/macros.tex}
+\input{../measurable_functions/macros.tex}
 \input{../space/macros.tex}
-\input{../real_numbers/macros.tex}
 \input{../vectors/macros.tex}
-\input{../probability_measures/macros.tex}
+\input{../subset_algebras/macros.tex}
+\input{../power_set/macros.tex}
+\input{../cardinality/macros.tex}
+\input{../set_operations/macros.tex}
+\input{../probability_events/macros.tex}
+\input{../probability_distributions/macros.tex}
+\input{../real_numbers/macros.tex}
+\input{../probability_densities/macros.tex}
+\input{../variance/macros.tex}
 \input{../trees/macros.tex}
+\input{../random_variables/macros.tex}
 \input{../n-dimensional_space/macros.tex}
 \input{../matrices/macros.tex}
-\input{../random_variables/macros.tex}
+\input{../measures/macros.tex}
+\input{../event_probabilities/macros.tex}
+\input{../matrix_multiplication/macros.tex}
+\input{../real_matrices/macros.tex}
+\input{../multivariate_real_densities/macros.tex}
+\input{../covariance/macros.tex}
+\input{../sparse_matrices/macros.tex}
 \input{../rooted_trees/macros.tex}
 \input{../random_vectors/macros.tex}
-\input{../expectation/macros.tex}
+\input{../probability_measures/macros.tex}
+\input{../identity_matrix/macros.tex}
+\input{../covariance_matrix/macros.tex}
 \input{./macros.tex}
 \sstart
 \stitle{Rooted Tree Linear Cascades}
@@ -48,18 +87,30 @@ TODO
 
 \section{Definition}
 
-A \t{rooted tree linear cascade} is an ordered pair: the first object is a rooted weighted tree; the second is a random vector whose covariance is the identity matrix.
-We call the random vector the noise.
-Given a rooted tree linear cascade, we define a random vector whose component at the root is the is defined to be the cascade's random
-We def
-A rooted tre
-To a rooted tree linear cascade corresponds a random vector
-A rooted tree linear cascade induces
+A \t{$d$-dimensional rooted tree linear cascade} is a sequence of four objects: a tree on $\set{1, \dots, d}$, a vertex of the tree, a family of real numbers indexed by the edges of the tree, and a $d$-dimensional random vector whose covariance matrix is the identity matrix.
+The cascade is called \say{$d$-dimensional} because we associate it with a random vector (defined as a function of that in the form of its definition) whose codomain is  $\R^d$.
+
+The tree together with the vertex form a rooted tree.
+The graph associated with the rooted tree and the family of real numbers together form a weighted graph.
+
+The idea is to use the weights and the tree structure to recursively define a random vector in terms of elements of the given random vector.
+Let $C = (T, i, w, e)$ be a $d$-dimensional rooted tree linear cascade.
+So $T$ is a tree on $\set{1, \dots, d}$, $i \in \set{1, \dots, d}$ and $w: T \to \R$, and $e: \Omega \to \R^d$ for some probability space $(A, \CA, \PM)$.
+The random vector associated with $C$ is the random variable $x: \Omega \to \R^d$ defined by
+$$
+  x_i = e_i \text{ and } x_j = w_{\set{\pa{j}, j}}x_{\pa{j}} + e_{j} \text{ for } j \neq i.
+$$
+In other words,
+$$
+  e = Ax
+$$
+where $A$ is lower triangle and extremely sparse.
 
 \ssubsection{Notation}
 
-Let $(A, \CA, \P)$ be a probability space.
-Let $e: A \to \R^d$ be a random vector, let $T$ be a tree on $\set{1, \dots, d}$ with $a_{ij} = a_{ji}$ the weight on edge $\set{i, j}$.
+Let $(A, \CA, \PM)$ be a probability space.
+Let $e: A \to \R^d$ be a random vector, let $T$ be a tree on $\set{1, \dots, d}$ with $a_{ij} = a_{ji}$ the weight on edge $\set{i, j} \in T$.
+We
 
 
 \strats

@@ -33,7 +33,7 @@ terms: countable_probability_distributions.tex
 	bbk_sheet -mode ts countable_probability_distributions.tex
 
 spell:
-	aspell -c countable_probability_distributions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

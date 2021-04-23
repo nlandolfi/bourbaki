@@ -33,7 +33,7 @@ terms: arithmetic.tex
 	bbk_sheet -mode ts arithmetic.tex
 
 spell:
-	aspell -c arithmetic.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

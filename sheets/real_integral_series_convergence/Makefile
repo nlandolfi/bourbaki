@@ -33,7 +33,7 @@ terms: real_integral_series_convergence.tex
 	bbk_sheet -mode ts real_integral_series_convergence.tex
 
 spell:
-	aspell -c real_integral_series_convergence.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

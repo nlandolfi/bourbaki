@@ -33,7 +33,7 @@ terms: maximum_likelihood.tex
 	bbk_sheet -mode ts maximum_likelihood.tex
 
 spell:
-	aspell -c maximum_likelihood.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

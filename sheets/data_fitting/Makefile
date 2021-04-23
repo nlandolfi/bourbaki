@@ -33,7 +33,7 @@ terms: data_fitting.tex
 	bbk_sheet -mode ts data_fitting.tex
 
 spell:
-	aspell -c data_fitting.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

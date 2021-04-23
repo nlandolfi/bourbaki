@@ -33,7 +33,7 @@ terms: space.tex
 	bbk_sheet -mode ts space.tex
 
 spell:
-	aspell -c space.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

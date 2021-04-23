@@ -1,90 +1,78 @@
 \input{../../sheet.tex}
 \sbasic
-\input{../subset_systems/macros.tex}
-\input{../real_functions/macros.tex}
-\input{../subset_algebras/macros.tex}
-\input{../partitions/macros.tex}
-\input{../characteristic_functions/macros.tex}
-\input{../measures/macros.tex}
-\input{../simple_functions/macros.tex}
-\input{../measurable_functions/macros.tex}
-\input{../objects/macros.tex}
-\input{../simple_integrals/macros.tex}
-\input{../natural_order/macros.tex}
-\input{../natural_families/macros.tex}
-\input{../probability_events/macros.tex}
-\input{../families/macros.tex}
+\input{../set_complements/macros.tex}
+\input{../set_symmetric_differences/macros.tex}
+\input{../set_intersections/macros.tex}
+\input{../algebras/macros.tex}
+\input{../power_set/macros.tex}
 \input{../functions/macros.tex}
-\input{../equations/macros.tex}
-\input{../sets/macros.tex}
+\input{../operations/macros.tex}
+\input{../set_operations/macros.tex}
+\input{../probability_events/macros.tex}
 \input{../identity/macros.tex}
-\input{../nonnegative_integrals/macros.tex}
-\input{../direct_products/macros.tex}
+\input{../objects/macros.tex}
+\input{../family_operations/macros.tex}
+\input{../common_sense/macros.tex}
+\input{../injective_functions/macros.tex}
+\input{../natural_numbers/macros.tex}
+\input{../families/macros.tex}
+\input{../equations/macros.tex}
+\input{../arithmetic/macros.tex}
 \input{../event_probabilities/macros.tex}
 \input{../length_common_notions/macros.tex}
-\input{../family_operations/macros.tex}
-\input{../arithmetic/macros.tex}
-\input{../common_sense/macros.tex}
-\input{../natural_numbers/macros.tex}
-\input{../injective_functions/macros.tex}
-\input{../operations/macros.tex}
-\input{../sentences/macros.tex}
-\input{../equation_solutions/macros.tex}
 \input{../set_equality/macros.tex}
-\input{../real_integrals/macros.tex}
-\input{../space/macros.tex}
-\input{../marginal_distributions/macros.tex}
-\input{../conditional_event_probability/macros.tex}
-\input{../distance/macros.tex}
+\input{../sets/macros.tex}
 \input{../natural_summation/macros.tex}
 \input{../probability/macros.tex}
 \input{../cardinality/macros.tex}
-\input{../algebras/macros.tex}
-\input{../set_specification/macros.tex}
+\input{../natural_order/macros.tex}
+\input{../natural_families/macros.tex}
+\input{../equation_solutions/macros.tex}
+\input{../unordered_pairs/macros.tex}
+\input{../marginal_distributions/macros.tex}
+\input{../conditional_event_probability/macros.tex}
+\input{../distance/macros.tex}
+\input{../set_inclusion/macros.tex}
+\input{../sentences/macros.tex}
+\input{../real_summation/macros.tex}
+\input{../probability_outcomes/macros.tex}
+\input{../intervals/macros.tex}
+\input{../direct_products/macros.tex}
 \input{../relation_properties/macros.tex}
 \input{../integer_numbers/macros.tex}
-\input{../set_inclusion/macros.tex}
 \input{../ordered_pairs/macros.tex}
-\input{../probability_densities/macros.tex}
-\input{../n-dimensional_space/macros.tex}
-\input{../differential_entropy/macros.tex}
 \input{../rooted_trees/macros.tex}
 \input{../conditional_distributions/macros.tex}
 \input{../metrics/macros.tex}
 \input{../logarithm/macros.tex}
-\input{../real_summation/macros.tex}
-\input{../probability_outcomes/macros.tex}
-\input{../intervals/macros.tex}
+\input{../set_specification/macros.tex}
+\input{../probability_distributions/macros.tex}
+\input{../datasets/macros.tex}
 \input{../real_optimizers/macros.tex}
-\input{../set_operations/macros.tex}
+\input{../set_unions/macros.tex}
 \input{../partial_orders/macros.tex}
 \input{../rational_numbers/macros.tex}
 \input{../relations/macros.tex}
-\input{../multivariate_real_densities/macros.tex}
-\input{../differential_cross_entropy/macros.tex}
 \input{../rooted_tree_distributions/macros.tex}
 \input{../similarity_functions/macros.tex}
 \input{../entropy/macros.tex}
 \input{../cross_entropy/macros.tex}
-\input{../probability_distributions/macros.tex}
+\input{../empirical_distribution/macros.tex}
 \input{../approximators/macros.tex}
 \input{../trees/macros.tex}
 \input{../total_orders/macros.tex}
 \input{../real_numbers/macros.tex}
 \input{../graphs/macros.tex}
-\input{../mutual_information/macros.tex}
-\input{../marginal_densities/macros.tex}
-\input{../differential_relative_entropy/macros.tex}
 \input{../tree_distributions/macros.tex}
 \input{../relative_entropy/macros.tex}
 \input{../distribution_approximators/macros.tex}
 \input{../spanning_trees/macros.tex}
 \input{../optimizers/macros.tex}
 \input{../weighted_graphs/macros.tex}
-\input{../differential_mutual_information/macros.tex}
+\input{../mutual_information/macros.tex}
 \input{../tree_distribution_approximators/macros.tex}
 \input{../optimal_spanning_trees/macros.tex}
-\input{../differential_mutual_information_graph/macros.tex}
+\input{../mutual_information_graph/macros.tex}
 \input{./macros.tex}
 \sstart
 \stitle{Optimal Tree Distribution Approximators}
@@ -110,29 +98,34 @@ A tree $T$ on $\set{1, \dots, n}$ is an optimal approximator tree if and only if
 
 \begin{proof}
 
-First, denote the optimal approximator of $q$ for tree $T$ by $p^*_T$. Recall
+First, denote the optimal tree distribution approximator of $q$ for tree $T$ by $p^*_T$.
+Express
 $$
   p^*_T = q_1 \prod_{i \neq 1} q_{i \mid \pa{i}}
 $$
 
-Second, recall $d(q, p) = H(q, p) - H(q)$.
-Since $H(q)$ does not depend on $p$, $p$ is a minimizer of $d(q, p)$ if and only if it is a minimizer of $H(q, p)$.
+Second, express $d(q, p) = H(q, p) - H(q)$.
+Since $H(q)$ does not depend on $T$, $p^*_T$ is a minimizer (w.r.t. $T$) of $d(q, p^*_T)$ if and only if it is a minimizer of $H(q, p^*_T)$.
 
 Third, express the cross entropy of $p^*_T$ relative to $q$ as
 $$
 \begin{aligned}
   H(q, p^*_T) &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\log q_{i \mid pa{i}}(a_i, a_{\pa{i}}) \\
-              &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\parens{\log q_{i,\pa{i}}(a_i, a_{\pa{i}}) - \log q_{\pa{i}}(a_{\pa{i}})} \\
-              &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\parens{\log q_{i,\pa{i}}(a_i, a_{\pa{i}}) - \log q_{\pa{i}}(a_{\pa{i}}) - \log q_i(a_i)  + \log q_{i}(a_i)} \\
+              &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\parens*{\log q_{i,\pa{i}}(a_i, a_{\pa{i}}) - \log q_{\pa{i}}(a_{\pa{i}})} \\
+              &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\parens*{\log q_{i,\pa{i}}(a_i, a_{\pa{i}}) - \log q_{\pa{i}}(a_{\pa{i}}) - \log q_i(a_i)  + \log q_{i}(a_i)} \\
               &= \sum_{i = 1}^{n} H(q_i) - \sum_{i \neq 1} I(q_i, q_{\pa{i}}) \\
               &= \sum_{i = 1}^{n} H(q_i) - \sum_{\set{i,j} \in T} I(q_i, q_{j}) \\
 \end{aligned}
 $$
-where $\pa{i}$ denotes the parent of vertex $i$ in $T$ ($i = 2, \dots, n$).
-$H(q_i)$ does not depend on the choice of tree.
-Choosing a tree to minimize the second term in the final expression above is equivalent to choosing a maximal spanning tree from the weighted graph with mutual information edge weights; namely, the mutual information graph of $q$.
+where $\pa{i}$ denotes the parent of vertex $i$ in $T$ rooted at vertex 1 ($i = 2, \dots, n$).
+For $i = 1, \dots, n$, $H(q_i)$ does not depend on the choice of tree.
+Therefore selecting a tree to minimize the second term in the final expression above is equivalent to choosing a maximal spanning tree from the weighted graph with mutual information edge weights; namely, the mutual information graph of $q$.
 
 \end{proof}
 
+\label{prop:optimaltreeapproximators}
 \end{prop}
+
+Proposition~\ref{prop:optimaltreeapproximators} says that to we should first select a maximum spanning tree of the mutual information graph of the distribution we are approximating.
+Then, we should pick the best approximator to $q$ which factors according to that three.
 \strats

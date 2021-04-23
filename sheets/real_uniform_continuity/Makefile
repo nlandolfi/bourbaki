@@ -33,7 +33,7 @@ terms: real_uniform_continuity.tex
 	bbk_sheet -mode ts real_uniform_continuity.tex
 
 spell:
-	aspell -c real_uniform_continuity.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

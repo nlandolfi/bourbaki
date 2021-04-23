@@ -33,7 +33,7 @@ terms: measure_vector_space.tex
 	bbk_sheet -mode ts measure_vector_space.tex
 
 spell:
-	aspell -c measure_vector_space.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: fields.tex
 	bbk_sheet -mode ts fields.tex
 
 spell:
-	aspell -c fields.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

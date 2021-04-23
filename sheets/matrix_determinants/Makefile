@@ -33,7 +33,7 @@ terms: matrix_determinants.tex
 	bbk_sheet -mode ts matrix_determinants.tex
 
 spell:
-	aspell -c matrix_determinants.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

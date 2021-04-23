@@ -33,7 +33,7 @@ terms: partitions.tex
 	bbk_sheet -mode ts partitions.tex
 
 spell:
-	aspell -c partitions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

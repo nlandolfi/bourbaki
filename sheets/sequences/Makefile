@@ -33,7 +33,7 @@ terms: sequences.tex
 	bbk_sheet -mode ts sequences.tex
 
 spell:
-	aspell -c sequences.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

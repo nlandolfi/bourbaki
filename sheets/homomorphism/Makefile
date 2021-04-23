@@ -33,7 +33,7 @@ terms: homomorphism.tex
 	bbk_sheet -mode ts homomorphism.tex
 
 spell:
-	aspell -c homomorphism.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

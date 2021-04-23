@@ -33,7 +33,7 @@ terms: subset_algebras.tex
 	bbk_sheet -mode ts subset_algebras.tex
 
 spell:
-	aspell -c subset_algebras.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: moment_generating_function.tex
 	bbk_sheet -mode ts moment_generating_function.tex
 
 spell:
-	aspell -c moment_generating_function.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

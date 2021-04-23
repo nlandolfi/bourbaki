@@ -33,7 +33,7 @@ terms: real_integral_limit_theorems.tex
 	bbk_sheet -mode ts real_integral_limit_theorems.tex
 
 spell:
-	aspell -c real_integral_limit_theorems.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

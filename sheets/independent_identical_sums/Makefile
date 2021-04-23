@@ -33,7 +33,7 @@ terms: independent_identical_sums.tex
 	bbk_sheet -mode ts independent_identical_sums.tex
 
 spell:
-	aspell -c independent_identical_sums.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: tree_distribution_approximators.tex
 	bbk_sheet -mode ts tree_distribution_approximators.tex
 
 spell:
-	aspell -c tree_distribution_approximators.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

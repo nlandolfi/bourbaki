@@ -33,7 +33,7 @@ terms: expectation.tex
 	bbk_sheet -mode ts expectation.tex
 
 spell:
-	aspell -c expectation.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

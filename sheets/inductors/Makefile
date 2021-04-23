@@ -33,7 +33,7 @@ terms: inductors.tex
 	bbk_sheet -mode ts inductors.tex
 
 spell:
-	aspell -c inductors.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

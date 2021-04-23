@@ -33,7 +33,7 @@ terms: matrices.tex
 	bbk_sheet -mode ts matrices.tex
 
 spell:
-	aspell -c matrices.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: normal_densities.tex
 	bbk_sheet -mode ts normal_densities.tex
 
 spell:
-	aspell -c normal_densities.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

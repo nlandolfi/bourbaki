@@ -33,7 +33,7 @@ terms: supremum_norm_complete.tex
 	bbk_sheet -mode ts supremum_norm_complete.tex
 
 spell:
-	aspell -c supremum_norm_complete.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

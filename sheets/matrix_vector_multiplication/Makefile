@@ -33,7 +33,7 @@ terms: matrix_vector_multiplication.tex
 	bbk_sheet -mode ts matrix_vector_multiplication.tex
 
 spell:
-	aspell -c matrix_vector_multiplication.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

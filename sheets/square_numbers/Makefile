@@ -33,7 +33,7 @@ terms: square_numbers.tex
 	bbk_sheet -mode ts square_numbers.tex
 
 spell:
-	aspell -c square_numbers.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: natural_addition.tex
 	bbk_sheet -mode ts natural_addition.tex
 
 spell:
-	aspell -c natural_addition.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

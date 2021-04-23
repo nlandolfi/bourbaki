@@ -33,7 +33,7 @@ terms: measurable_sections.tex
 	bbk_sheet -mode ts measurable_sections.tex
 
 spell:
-	aspell -c measurable_sections.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

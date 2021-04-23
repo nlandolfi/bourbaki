@@ -33,7 +33,7 @@ terms: event_independence.tex
 	bbk_sheet -mode ts event_independence.tex
 
 spell:
-	aspell -c event_independence.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

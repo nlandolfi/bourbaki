@@ -33,7 +33,7 @@ terms: linear_transformations.tex
 	bbk_sheet -mode ts linear_transformations.tex
 
 spell:
-	aspell -c linear_transformations.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

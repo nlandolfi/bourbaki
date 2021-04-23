@@ -33,7 +33,7 @@ terms: vector_bases.tex
 	bbk_sheet -mode ts vector_bases.tex
 
 spell:
-	aspell -c vector_bases.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

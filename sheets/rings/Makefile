@@ -33,7 +33,7 @@ terms: rings.tex
 	bbk_sheet -mode ts rings.tex
 
 spell:
-	aspell -c rings.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

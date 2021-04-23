@@ -33,7 +33,7 @@ terms: empirical_distribution.tex
 	bbk_sheet -mode ts empirical_distribution.tex
 
 spell:
-	aspell -c empirical_distribution.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

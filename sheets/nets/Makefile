@@ -33,7 +33,7 @@ terms: nets.tex
 	bbk_sheet -mode ts nets.tex
 
 spell:
-	aspell -c nets.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

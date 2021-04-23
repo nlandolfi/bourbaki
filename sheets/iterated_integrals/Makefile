@@ -33,7 +33,7 @@ terms: iterated_integrals.tex
 	bbk_sheet -mode ts iterated_integrals.tex
 
 spell:
-	aspell -c iterated_integrals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

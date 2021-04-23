@@ -33,7 +33,7 @@ terms: identity_elements.tex
 	bbk_sheet -mode ts identity_elements.tex
 
 spell:
-	aspell -c identity_elements.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

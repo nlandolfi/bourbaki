@@ -33,7 +33,7 @@ terms: metric_convergence.tex
 	bbk_sheet -mode ts metric_convergence.tex
 
 spell:
-	aspell -c metric_convergence.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

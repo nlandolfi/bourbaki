@@ -33,7 +33,7 @@ terms: interval_partitions.tex
 	bbk_sheet -mode ts interval_partitions.tex
 
 spell:
-	aspell -c interval_partitions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

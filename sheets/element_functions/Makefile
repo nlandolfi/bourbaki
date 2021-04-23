@@ -33,7 +33,7 @@ terms: element_functions.tex
 	bbk_sheet -mode ts element_functions.tex
 
 spell:
-	aspell -c element_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

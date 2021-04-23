@@ -33,7 +33,7 @@ terms: measures.tex
 	bbk_sheet -mode ts measures.tex
 
 spell:
-	aspell -c measures.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

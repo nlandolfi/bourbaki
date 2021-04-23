@@ -33,7 +33,7 @@ terms: uniform_densities.tex
 	bbk_sheet -mode ts uniform_densities.tex
 
 spell:
-	aspell -c uniform_densities.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: direct_products.tex
 	bbk_sheet -mode ts direct_products.tex
 
 spell:
-	aspell -c direct_products.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

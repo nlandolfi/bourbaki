@@ -33,7 +33,7 @@ terms: vector_space_dimension.tex
 	bbk_sheet -mode ts vector_space_dimension.tex
 
 spell:
-	aspell -c vector_space_dimension.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

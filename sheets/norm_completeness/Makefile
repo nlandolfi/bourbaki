@@ -33,7 +33,7 @@ terms: norm_completeness.tex
 	bbk_sheet -mode ts norm_completeness.tex
 
 spell:
-	aspell -c norm_completeness.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

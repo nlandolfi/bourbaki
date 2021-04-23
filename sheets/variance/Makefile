@@ -33,7 +33,7 @@ terms: variance.tex
 	bbk_sheet -mode ts variance.tex
 
 spell:
-	aspell -c variance.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: metric_balls.tex
 	bbk_sheet -mode ts metric_balls.tex
 
 spell:
-	aspell -c metric_balls.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

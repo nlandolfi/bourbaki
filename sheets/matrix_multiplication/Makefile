@@ -33,7 +33,7 @@ terms: matrix_multiplication.tex
 	bbk_sheet -mode ts matrix_multiplication.tex
 
 spell:
-	aspell -c matrix_multiplication.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: central_limit_theorem.tex
 	bbk_sheet -mode ts central_limit_theorem.tex
 
 spell:
-	aspell -c central_limit_theorem.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

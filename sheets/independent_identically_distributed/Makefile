@@ -33,7 +33,7 @@ terms: independent_identically_distributed.tex
 	bbk_sheet -mode ts independent_identically_distributed.tex
 
 spell:
-	aspell -c independent_identically_distributed.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

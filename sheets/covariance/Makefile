@@ -33,7 +33,7 @@ terms: covariance.tex
 	bbk_sheet -mode ts covariance.tex
 
 spell:
-	aspell -c covariance.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

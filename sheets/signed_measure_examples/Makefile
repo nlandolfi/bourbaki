@@ -33,7 +33,7 @@ terms: signed_measure_examples.tex
 	bbk_sheet -mode ts signed_measure_examples.tex
 
 spell:
-	aspell -c signed_measure_examples.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

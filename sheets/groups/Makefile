@@ -33,7 +33,7 @@ terms: groups.tex
 	bbk_sheet -mode ts groups.tex
 
 spell:
-	aspell -c groups.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: real_function_graphs.tex
 	bbk_sheet -mode ts real_function_graphs.tex
 
 spell:
-	aspell -c real_function_graphs.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

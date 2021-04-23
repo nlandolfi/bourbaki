@@ -33,7 +33,7 @@ terms: distribution_selection.tex
 	bbk_sheet -mode ts distribution_selection.tex
 
 spell:
-	aspell -c distribution_selection.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

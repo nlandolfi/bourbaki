@@ -33,7 +33,7 @@ terms: intervals.tex
 	bbk_sheet -mode ts intervals.tex
 
 spell:
-	aspell -c intervals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

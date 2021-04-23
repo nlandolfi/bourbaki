@@ -33,7 +33,7 @@ terms: integer_numbers.tex
 	bbk_sheet -mode ts integer_numbers.tex
 
 spell:
-	aspell -c integer_numbers.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

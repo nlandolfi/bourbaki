@@ -33,7 +33,7 @@ terms: real_integrals.tex
 	bbk_sheet -mode ts real_integrals.tex
 
 spell:
-	aspell -c real_integrals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: almost_everywhere.tex
 	bbk_sheet -mode ts almost_everywhere.tex
 
 spell:
-	aspell -c almost_everywhere.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

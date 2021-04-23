@@ -33,7 +33,7 @@ terms: distance.tex
 	bbk_sheet -mode ts distance.tex
 
 spell:
-	aspell -c distance.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

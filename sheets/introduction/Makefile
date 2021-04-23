@@ -33,7 +33,7 @@ terms: introduction.tex
 	bbk_sheet -mode ts introduction.tex
 
 spell:
-	aspell -c introduction.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

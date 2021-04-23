@@ -33,7 +33,7 @@ terms: cumulative_distribution_function_from_density.tex
 	bbk_sheet -mode ts cumulative_distribution_function_from_density.tex
 
 spell:
-	aspell -c cumulative_distribution_function_from_density.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: total_probability.tex
 	bbk_sheet -mode ts total_probability.tex
 
 spell:
-	aspell -c total_probability.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: natural_families.tex
 	bbk_sheet -mode ts natural_families.tex
 
 spell:
-	aspell -c natural_families.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

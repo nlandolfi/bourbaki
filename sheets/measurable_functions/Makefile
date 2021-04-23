@@ -33,7 +33,7 @@ terms: measurable_functions.tex
 	bbk_sheet -mode ts measurable_functions.tex
 
 spell:
-	aspell -c measurable_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

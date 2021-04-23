@@ -33,7 +33,7 @@ terms: function_inverses.tex
 	bbk_sheet -mode ts function_inverses.tex
 
 spell:
-	aspell -c function_inverses.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

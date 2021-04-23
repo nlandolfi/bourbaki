@@ -33,7 +33,7 @@ terms: loss_functions.tex
 	bbk_sheet -mode ts loss_functions.tex
 
 spell:
-	aspell -c loss_functions.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

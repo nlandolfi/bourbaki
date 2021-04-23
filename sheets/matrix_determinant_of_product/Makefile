@@ -33,7 +33,7 @@ terms: matrix_determinant_of_product.tex
 	bbk_sheet -mode ts matrix_determinant_of_product.tex
 
 spell:
-	aspell -c matrix_determinant_of_product.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

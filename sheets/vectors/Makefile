@@ -33,7 +33,7 @@ terms: vectors.tex
 	bbk_sheet -mode ts vectors.tex
 
 spell:
-	aspell -c vectors.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

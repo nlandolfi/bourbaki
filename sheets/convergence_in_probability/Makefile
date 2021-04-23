@@ -33,7 +33,7 @@ terms: convergence_in_probability.tex
 	bbk_sheet -mode ts convergence_in_probability.tex
 
 spell:
-	aspell -c convergence_in_probability.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

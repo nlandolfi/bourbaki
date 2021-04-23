@@ -33,7 +33,7 @@ terms: outcome_vectors.tex
 	bbk_sheet -mode ts outcome_vectors.tex
 
 spell:
-	aspell -c outcome_vectors.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

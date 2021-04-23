@@ -33,7 +33,7 @@ terms: normal_conditionals.tex
 	bbk_sheet -mode ts normal_conditionals.tex
 
 spell:
-	aspell -c normal_conditionals.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

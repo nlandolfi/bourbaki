@@ -33,7 +33,7 @@ terms: commutative_operations.tex
 	bbk_sheet -mode ts commutative_operations.tex
 
 spell:
-	aspell -c commutative_operations.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

@@ -33,7 +33,7 @@ terms: nearest_neighbor_predictors.tex
 	bbk_sheet -mode ts nearest_neighbor_predictors.tex
 
 spell:
-	aspell -c nearest_neighbor_predictors.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

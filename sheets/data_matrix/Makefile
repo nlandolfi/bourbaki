@@ -33,7 +33,7 @@ terms: data_matrix.tex
 	bbk_sheet -mode ts data_matrix.tex
 
 spell:
-	aspell -c data_matrix.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

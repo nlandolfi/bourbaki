@@ -33,7 +33,7 @@ terms: logarithm.tex
 	bbk_sheet -mode ts logarithm.tex
 
 spell:
-	aspell -c logarithm.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

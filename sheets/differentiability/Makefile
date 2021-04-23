@@ -33,7 +33,7 @@ terms: differentiability.tex
 	bbk_sheet -mode ts differentiability.tex
 
 spell:
-	aspell -c differentiability.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

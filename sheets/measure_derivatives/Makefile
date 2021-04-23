@@ -33,7 +33,7 @@ terms: measure_derivatives.tex
 	bbk_sheet -mode ts measure_derivatives.tex
 
 spell:
-	aspell -c measure_derivatives.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

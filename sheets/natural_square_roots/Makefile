@@ -33,7 +33,7 @@ terms: natural_square_roots.tex
 	bbk_sheet -mode ts natural_square_roots.tex
 
 spell:
-	aspell -c natural_square_roots.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

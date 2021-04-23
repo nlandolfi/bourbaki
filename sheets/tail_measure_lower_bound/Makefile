@@ -33,7 +33,7 @@ terms: tail_measure_lower_bound.tex
 	bbk_sheet -mode ts tail_measure_lower_bound.tex
 
 spell:
-	aspell -c tail_measure_lower_bound.tex
+	aspell -c sheet.tex
 
 s:
 	make spell

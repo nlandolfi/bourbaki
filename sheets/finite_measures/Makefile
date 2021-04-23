@@ -33,7 +33,7 @@ terms: finite_measures.tex
 	bbk_sheet -mode ts finite_measures.tex
 
 spell:
-	aspell -c finite_measures.tex
+	aspell -c sheet.tex
 
 s:
 	make spell
