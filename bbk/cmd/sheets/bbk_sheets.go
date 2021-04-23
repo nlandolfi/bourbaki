@@ -16,6 +16,7 @@ import (
 
 var (
 	sheetsDir = flag.String("sheets", ".", "the sheets directory")
+	startAt   = flag.String("start-at", "", "sheet to start compiling at (alphabetical)")
 )
 
 func main() {
@@ -102,6 +103,10 @@ func main() {
 	for i := 0; i < 32; i++ {
 		go func(in <-chan string) {
 			for name := range ch {
+				if *startAt > name {
+					wg.Done()
+					continue
+				}
 				c := exec.Command("make", "remake")
 				c.Dir = name
 				bs, err := c.CombinedOutput()
