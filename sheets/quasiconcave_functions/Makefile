@@ -1,0 +1,52 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make quasiconcave_functions.pdf
+	make graph.pdf
+
+quasiconcave_functions.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > quasiconcave_functions.tex
+
+quasiconcave_functions.pdf: ../../*.tex ../../trademark.pdf *.tex quasiconcave_functions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode quasiconcave_functions.tex
+	../../latexrun quasiconcave_functions.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: quasiconcave_functions.pdf
+	open quasiconcave_functions.pdf
+
+o:
+	make open
+
+terms: quasiconcave_functions.tex
+	bbk_sheet -mode ts quasiconcave_functions.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f quasiconcave_functions.*
+	make reset
+	bbk_sheet -mode mk > Makefile

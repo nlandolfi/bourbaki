@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make relation_properties.pdf
+	make undirected_graphs.pdf
 	make graph.pdf
 
-relation_properties.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > relation_properties.tex
+undirected_graphs.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > undirected_graphs.tex
 
-relation_properties.pdf: ../../*.tex ../../trademark.pdf *.tex relation_properties.tex
-	# pdflatex --file-line-error -interaction=nonstopmode relation_properties.tex
-	../../latexrun relation_properties.tex
+undirected_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex undirected_graphs.tex
+	# pdflatex --file-line-error -interaction=nonstopmode undirected_graphs.tex
+	../../latexrun undirected_graphs.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: relation_properties.pdf
-	open relation_properties.pdf
+open: undirected_graphs.pdf
+	open undirected_graphs.pdf
 
 o:
 	make open
 
-terms: relation_properties.tex
-	bbk_sheet -mode ts relation_properties.tex
+terms: undirected_graphs.tex
+	bbk_sheet -mode ts undirected_graphs.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f relation_properties.*
+	rm -f undirected_graphs.*
 	make reset
 	bbk_sheet -mode mk > Makefile
