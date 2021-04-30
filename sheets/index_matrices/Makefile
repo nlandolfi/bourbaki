@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make transpose.pdf
+	make index_matrices.pdf
 	make graph.pdf
 
-transpose.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > transpose.tex
+index_matrices.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > index_matrices.tex
 
-transpose.pdf: ../../*.tex ../../trademark.pdf *.tex transpose.tex
-	# pdflatex --file-line-error -interaction=nonstopmode transpose.tex
-	../../latexrun transpose.tex
+index_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex index_matrices.tex
+	# pdflatex --file-line-error -interaction=nonstopmode index_matrices.tex
+	../../latexrun index_matrices.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: transpose.pdf
-	open transpose.pdf
+open: index_matrices.pdf
+	open index_matrices.pdf
 
 o:
 	make open
 
-terms: transpose.tex
-	bbk_sheet -mode ts transpose.tex
+terms: index_matrices.tex
+	bbk_sheet -mode ts index_matrices.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f transpose.*
+	rm -f index_matrices.*
 	make reset
 	bbk_sheet -mode mk > Makefile
