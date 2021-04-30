@@ -8,53 +8,90 @@
 \input{../sentences/macros.tex}
 \input{../set_specification/macros.tex}
 \input{../set_unions/macros.tex}
-\input{../successors/macros.tex}
+\input{../set_intersections/macros.tex}
+\input{../empty_set/macros.tex}
 \input{./macros.tex}
 \sstart
 \stitle{Natural Numbers}
 
 \ssection{Why}
 
-We want to count, forever.
+We want to define the natural numbers.
+TODO: better why
+%We want to count, forever.
 
 \ssection{Definition}
 
+The \t{successor} of a set is the union of the set with the singleton whose element is the set.
+This definition holds for any set, but is of interest only for the sets which will be defined in this sheet.
 
-We define the set of \ct{natural numbers}{naturalnumbers}
-implicitly.
-There is an element of the set which we call
-\ct{one}{naturalone}.
-For each element of the set,
-there is a unique corresponding element, called the
-\ct{successor}{naturalsuccessor} of the former, which is
-also in the set.
-We call the elements \ct{numbers}{numbers} and call
-the set itself the \ct{naturals}{naturals}.
+These sets are the following (and their successors):
+\t{One} is the successor of the empty set.
+\t{Two} is the successor of one.
+\t{Three} is the successor of two.
+\t{Four} is the successor of three.
+And so on; using the English language in the usual manner.
 
-The
-\ct{successor function}{naturalsuccessorfunction}
-is the correspondence between elements
-of the natural numbers and their successors.
-Its domain and codomain is the set of natural numbers.
-It is a one-to-one correspondence.
-It is not onto, however, since the element one
-has no successor.
+Can this be carried on and on?
+We will say yes.
+We will say that there exists a set which contains one and contains the successor of each of its elements.
+So, this set contains one.
+Since it contains one, it contains two.
+Since it contains two, it contains three.
+And so on.
+We call this assertion the \t{axiom of infinity}.
 
-To recap, we begin with a distinguished element,
-called \rt{one}{naturalone}, in the set.
-There is a second element, the successor
-of one, in the set.
-We call the \rt{successor}{naturalsuccessor} of
-\rt{one}{naturalone} \ct{two}{naturaltwo}.
-We call the \rt{successor}{naturalsuccessor} of
-\rt{two}{naturaltwo} \ct{three}{naturalthree}.
-And so on using the English language in the usual manner.
-We are saying, in the language of sets, that the essence
-of counting is starting with one and adding one repeatedly.
+A set is a \t{successor set} if it contains one and if it contains the successor of each of its elements.
+In these words, the axiom of infinity asserts the existence of a successor set.
+We want this set to be unique.
+So we have a successor set.
+By the axiom of specification, the intersection of all the successor sets included in this first successor set exists.
+Moreover, this intersection is a successor set.
+Even more, this intersection is unique.
+For this, take a second successor set.
+Its intersection with the first successor set is contained in the first successor set.
+Thus, this intersection of two sets is one of the successor sets contained in the first set, and so, is contained in the intersection of all such sets.
+So then, that first intersection is contained in second intersection of two sets, which is, of course, contained in the second successor set.
+In other words, we start with a successor set.
+Use it to construct a succesor set contained in it, in such a way that every other successor set also contains this successor set so constructed.
+The axiom of extension guarantees that this intersection, which is a successor set contained in every other successor set, is unique.
+
+A \t{natural number} or \t{number} or \t{natural} is an element of this minimal successor set.
+The \t{set of natural numbers} or \t{natural numbers} or \t{naturals} or \t{numbers} is the minimal successor set.
+% We are saying, in the language of sets, that the essence
+% of counting is starting with one and adding one repeatedly.
+
+% \begin{prop}
+% The intersection of every nonempty family of successor sets is a successor set.
+% \end{prop}
+%
+% So the intersection of all the successor sets is a successor set.
+% Since the intersection of any two sets is contained in the two sets, the intersection of the family of successor sets is contained in every other succesor set.
+%
+%
+% The
+% successor function
+% is the correspondence between elements
+% of the natural numbers and their successors.
+% Its domain and codomain is the set of natural numbers.
+% It is a one-to-one correspondence.
+% It is not onto, however, since the element one
+% has no successor.
 
 \ssubsection{Notation}
 
-We denote the set of natural numbers by $N$, a mnemonic for natural.
-We often denote elements of $N$ by $n$, a mnemonic for number, or $m$, a letter close to $n$.
-We denote the element called one by $1$.
+Let $x$ be a set.
+We denote the successor of $x$ by $\ssuc{x}$.
+We defined it by
+$$
+  \ssuc{x} := x \union \set{x}
+$$
+
+We denote one by $1$.
+We denote two by $2$.
+We denote three by $3$.
+We denote four by $4$.
+
+We denote the set of natural numbers by $\N$, a mnemonic for natural.
+We often denote elements of $\N$ by $n$, a mnemonic for number, or $m$, a letter close to $n$.
 \strats

@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make graph_paths.pdf
+	make directed_graphs.pdf
 	make graph.pdf
 
-graph_paths.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > graph_paths.tex
+directed_graphs.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > directed_graphs.tex
 
-graph_paths.pdf: ../../*.tex ../../trademark.pdf *.tex graph_paths.tex
-	# pdflatex --file-line-error -interaction=nonstopmode graph_paths.tex
-	../../latexrun graph_paths.tex
+directed_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex directed_graphs.tex
+	# pdflatex --file-line-error -interaction=nonstopmode directed_graphs.tex
+	../../latexrun directed_graphs.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: graph_paths.pdf
-	open graph_paths.pdf
+open: directed_graphs.pdf
+	open directed_graphs.pdf
 
 o:
 	make open
 
-terms: graph_paths.tex
-	bbk_sheet -mode ts graph_paths.tex
+terms: directed_graphs.tex
+	bbk_sheet -mode ts directed_graphs.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f graph_paths.*
+	rm -f directed_graphs.*
 	make reset
 	bbk_sheet -mode mk > Makefile
