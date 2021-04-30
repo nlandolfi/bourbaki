@@ -10,25 +10,30 @@ We formalize this property in the language of graphs.
 
 \ssection{Definition}
 
-A \t{tree} is a set of two-element sets with the following property: if we take the union over all the sets and define a relation on this union such that two elements are related if they appear as a two element set, then the ordered pair of the union and this relation is a graph that is connected and acyclic.
+A \t{tree} is a connected and acyclic undirected graph.
+% Since the tree is connected, the union of its family of edges is the vertex set, and so each tree is fully specified by its edge set.
+% For this reason, when speaking of trees we often reference only the edge set.
+% But a tree is an undirected graph, and so is an ordered pair.
+A \t{forest} is an undirected graph if it does not contain any cycles.
 
-Thus every tree corresponds to an undirected, connected and acyclic graph.
-We avoid defining a tree to be that, though, because we want to keep around only the most important object: the set of two-element sets.
-From that object we can get the vertex set and edge set of the graph.
-We need the concepts from graphs to talk about which sets of two-element sets are trees, but we want the notation from trees to be amenable to their nature.
-The notation we use will bear us out.
+% Thus every tree corresponds to an undirected, connected and acyclic graph.
+% We avoid defining a tree to be that, though, because we want to keep around only the most important object: the set of two-element sets.
+% From that object we can get the vertex set and edge set of the graph.
+% We need the concepts from graphs to talk about which sets of two-element sets are trees, but we want the notation from trees to be amenable to their nature.
+% The notation we use will bear us out.
+
 
 \ssubsection{Notation}
 
 % TODO: sheet on connected graphs? move this reasoning there?
-Let $T$ be a tree, a mnemonic for \say{tree.}
-Let $V$ be the vertex set associated with $T$.
-In other words, $$V = \union_{e \in T} e$$.
-Let $E$ be so that $(u, v) \in E$ if and only if $\set{u, v} \in T$ for every $u, v \in V$.
-By construction, the graph $(V, E)$ is undirected.
-$T$ a tree means $(V, E)$ is connected and acyclic.
-
-A major motivator for our definition of trees is so that we can write $\set{u, v} \in T$. TODO
+Let $T = (V, E)$ be a tree, a mnemonic for \say{tree.}
+% Let $V$ be the vertex set associated with $T$.
+% In other words, $$V = \union_{e \in T} e$$.
+% Let $E$ be so that $(u, v) \in E$ if and only if $\set{u, v} \in T$ for every $u, v \in V$.
+% By construction, the graph $(V, E)$ is undirected.
+% $T$ a tree means $(V, E)$ is connected and acyclic.
+%
+% A major motivator for our definition of trees is so that we can write $\set{u, v} \in T$. TODO
 
 % Since the graph $(V, E)$ is undirected, it must be the case that $(u, v) \in E$ if and only if $(v, u) \in E$ for $u, v \in V$.
 % Using this and that $(V, E)$ is connected, we conclude that for each $v \in V$ there exists $e \in E$ such that $v$ is the first coordinate of $e$.
@@ -44,14 +49,11 @@ A major motivator for our definition of trees is so that we can write $\set{u, v
 
 \begin{prop}
 
-There is only one path between any two vertices in a tree.
+A unique path exists between any two vertices of a tree.
 
 \begin{proof}
-
-Suppose to the contrary that there were two paths from vertex $u$ to vertex $v$.
-Then by combining these paths we obtain a cycle.
-But the tree has no cycles.
-So there must not be two paths between any two vertices.
+The path exists because a tree is connected.
+The path is unique, since were it not, we could create a cycle by combining these paths.
 \end{proof}
 
 \end{prop}

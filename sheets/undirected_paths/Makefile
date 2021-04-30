@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make successors.pdf
+	make undirected_paths.pdf
 	make graph.pdf
 
-successors.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > successors.tex
+undirected_paths.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > undirected_paths.tex
 
-successors.pdf: ../../*.tex ../../trademark.pdf *.tex successors.tex
-	# pdflatex --file-line-error -interaction=nonstopmode successors.tex
-	../../latexrun successors.tex
+undirected_paths.pdf: ../../*.tex ../../trademark.pdf *.tex undirected_paths.tex
+	# pdflatex --file-line-error -interaction=nonstopmode undirected_paths.tex
+	../../latexrun undirected_paths.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: successors.pdf
-	open successors.pdf
+open: undirected_paths.pdf
+	open undirected_paths.pdf
 
 o:
 	make open
 
-terms: successors.tex
-	bbk_sheet -mode ts successors.tex
+terms: undirected_paths.tex
+	bbk_sheet -mode ts undirected_paths.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f successors.*
+	rm -f undirected_paths.*
 	make reset
 	bbk_sheet -mode mk > Makefile
