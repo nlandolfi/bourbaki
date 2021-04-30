@@ -1,0 +1,89 @@
+\input{../../sheet.tex}
+\sbasic
+\input{../objects/macros.tex}
+\input{../set_equality/macros.tex}
+\input{../sets/macros.tex}
+\input{../identity/macros.tex}
+\input{../operations/macros.tex}
+\input{../set_inclusion/macros.tex}
+\input{../sentences/macros.tex}
+\input{../unordered_pairs/macros.tex}
+\input{../equations/macros.tex}
+\input{../arithmetic/macros.tex}
+\input{../algebras/macros.tex}
+\input{../set_specification/macros.tex}
+\input{../functions/macros.tex}
+\input{../ordered_pairs/macros.tex}
+\input{../equation_solutions/macros.tex}
+\input{../groups/macros.tex}
+\input{../set_unions/macros.tex}
+\input{../set_intersections/macros.tex}
+\input{../empty_set/macros.tex}
+\input{../surjective_functions/macros.tex}
+\input{../injective_functions/macros.tex}
+\input{../function_composites/macros.tex}
+\input{../relations/macros.tex}
+\input{../integer_numbers/macros.tex}
+\input{../fields/macros.tex}
+\input{../natural_numbers/macros.tex}
+\input{../function_inverses/macros.tex}
+\input{../equivalence_relations/macros.tex}
+\input{../rational_numbers/macros.tex}
+\input{../vectors/macros.tex}
+\input{../equivalent_sets/macros.tex}
+\input{../real_numbers/macros.tex}
+\input{../matrices/macros.tex}
+\input{../finite_sets/macros.tex}
+\input{../real_matrices/macros.tex}
+\input{../undirected_graphs/macros.tex}
+\input{../symmetric_matrices/macros.tex}
+\input{./macros.tex}
+\sstart
+\stitle{Symmetric Sparsity Patterns}
+
+\ssection{Why}
+
+TODO
+
+\ssection{Definition}
+
+A \t{sparsity pattern} of order $n$ is a set of pairs of natural numbers from one to $n$.
+
+A symmetric matrix is said to \t{have a sparsity pattern} if its $ij$th entry is zero whenever $\set{i, j}$ is not in the sparsity pattern. The diagonal entries and off-diagonal entries for pairs appearing in the sparsity pattern may or may not be zero.
+
+The graph whose vertices are one through $n$ and whose edge set is the sparsity patter is called the \t{sparsity graph}
+
+A sparsity pattern is not a property of a matrix because it is not unique (unless all off-diagonal entries are non-zero). If a matrix has a particular sparsity pattern it has every sparsity pattern which is a superset of it.
+In other words, every matrix has the sparsity pattern which is the set of all pairs of integers.
+
+\ssubsection{Notation}
+
+Let $E \subset \Set*{\set{i, j}}{i, j \in \set{1, 2, \dots, n}}$.
+A symmetric matrix $A \in \SymMat{n}$ is said to have sparsity pattern $E$ if $A_{ij} = A_{ji} = 0$ wheneer $i \neq j$ and $\set{i, j} \not\in E$.
+The graph $G = (V, E)$ where $V = \set{1, 2, \dots, n}$ is the sparsity graph associated with $E$.
+
+We will denote the symmetric matrices of order $n$ with sparsity pattern $E$ by $\SymMat{n}_{E}$.
+
+\ssection{Example}
+
+\fig{
+  \img{0.5}{graphics_included/sparsity_graph}
+}{
+  Sparsity graph for the matrix ().
+}{fig:sparsity_graph}
+
+Figure \ref{fig:sparsity_graph} shows a sparsity graph for the matrix
+$$
+  A := \bmat{
+    A_{11} & A_{21} & A_{31} &      0 & A_{51} \\
+    A_{21} & A_{22} &      0 & A_{42} &      0 \\
+    A_{31} &      0 & A_{33} &      0 & A_{54} \\
+         0 & A_{42} &      0 & A_{44} & A_{45} \\
+    A_{51} &      0 & A_{53} & A_{54} & A_{55} \\
+  }.
+$$
+
+
+
+
+\strats
