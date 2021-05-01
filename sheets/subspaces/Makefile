@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make qR_factorizations.pdf
+	make subspaces.pdf
 	make graph.pdf
 
-qR_factorizations.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > qR_factorizations.tex
+subspaces.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > subspaces.tex
 
-qR_factorizations.pdf: ../../*.tex ../../trademark.pdf *.tex qR_factorizations.tex
-	# pdflatex --file-line-error -interaction=nonstopmode qR_factorizations.tex
-	../../latexrun qR_factorizations.tex
+subspaces.pdf: ../../*.tex ../../trademark.pdf *.tex subspaces.tex
+	# pdflatex --file-line-error -interaction=nonstopmode subspaces.tex
+	../../latexrun subspaces.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: qR_factorizations.pdf
-	open qR_factorizations.pdf
+open: subspaces.pdf
+	open subspaces.pdf
 
 o:
 	make open
 
-terms: qR_factorizations.tex
-	bbk_sheet -mode ts qR_factorizations.tex
+terms: subspaces.tex
+	bbk_sheet -mode ts subspaces.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f qR_factorizations.*
+	rm -f subspaces.*
 	make reset
 	bbk_sheet -mode mk > Makefile
