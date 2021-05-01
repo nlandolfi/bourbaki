@@ -47,15 +47,24 @@
 
 \section{Why}
 
-The \t{LDU factorization} of a positive definite matrix is a decomposition of a symmetric permutation of the matrix as a product of a unit lower triangular, a positive diagonal, and a unit upper triangular matrix.
+An \t{LDU factorization} of a $n \times n$ positive definite matrix permuted by $\upto{n}$ is an ordered pair whose first coordinate is a unit lower triangular matrix and whose second coordinate is a positive diagonal matrix, with the property that the given matrix permuted according to the permutation is equal to the product of the unit lower triangular matrix, the diagonal matrix, and the transpose of the unit lower triangular matrix.
 
 \ssection{Notation}
 
-A LDL decomposition of $A \in \SymPDMat{n}$ is to write
+Let $(L, D)$ be an LDU factorization of $A \in \SymPDMat{n}$ permuted by the permutation $\sigma: \upto{n} \to \upto{n}$. Then
 $$
   \IdxMat{\sigma}A\IdxMat{\sigma}^{\tp}
   =
-  LDL^{\tp}
+  LDL^{\tp}.
 $$
-where $L$ is unit lower triangular, $D$ is positive diagonal, and $\sigma$ is a permutation of $\upto{n}$.
+Alternatively,
+$$
+  A = \IdxMat{\sigma}^\tp L D L^{\tp} \IdxMat{\sigma}.
+$$
+
+\ssection{Existence}
+
+\begin{prop}
+  For every positive definite matrix $A \in \SymPDMat{n}$ and permutation $\sigma: \upto{n} \to \upto{n}$ there exists a unique LDU factorization of $A$ permuted by $\sigma$.
+\end{prop}
 \strats
