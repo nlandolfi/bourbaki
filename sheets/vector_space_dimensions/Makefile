@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make linear_independence.pdf
+	make vector_space_dimensions.pdf
 	make graph.pdf
 
-linear_independence.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > linear_independence.tex
+vector_space_dimensions.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > vector_space_dimensions.tex
 
-linear_independence.pdf: ../../*.tex ../../trademark.pdf *.tex linear_independence.tex
-	# pdflatex --file-line-error -interaction=nonstopmode linear_independence.tex
-	../../latexrun linear_independence.tex
+vector_space_dimensions.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_dimensions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode vector_space_dimensions.tex
+	../../latexrun vector_space_dimensions.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: linear_independence.pdf
-	open linear_independence.pdf
+open: vector_space_dimensions.pdf
+	open vector_space_dimensions.pdf
 
 o:
 	make open
 
-terms: linear_independence.tex
-	bbk_sheet -mode ts linear_independence.tex
+terms: vector_space_dimensions.tex
+	bbk_sheet -mode ts vector_space_dimensions.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f linear_independence.*
+	rm -f vector_space_dimensions.*
 	make reset
 	bbk_sheet -mode mk > Makefile

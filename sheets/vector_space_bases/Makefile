@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make vector_space_dimension.pdf
+	make vector_space_bases.pdf
 	make graph.pdf
 
-vector_space_dimension.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > vector_space_dimension.tex
+vector_space_bases.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > vector_space_bases.tex
 
-vector_space_dimension.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_dimension.tex
-	# pdflatex --file-line-error -interaction=nonstopmode vector_space_dimension.tex
-	../../latexrun vector_space_dimension.tex
+vector_space_bases.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_bases.tex
+	# pdflatex --file-line-error -interaction=nonstopmode vector_space_bases.tex
+	../../latexrun vector_space_bases.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: vector_space_dimension.pdf
-	open vector_space_dimension.pdf
+open: vector_space_bases.pdf
+	open vector_space_bases.pdf
 
 o:
 	make open
 
-terms: vector_space_dimension.tex
-	bbk_sheet -mode ts vector_space_dimension.tex
+terms: vector_space_bases.tex
+	bbk_sheet -mode ts vector_space_bases.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f vector_space_dimension.*
+	rm -f vector_space_bases.*
 	make reset
 	bbk_sheet -mode mk > Makefile
