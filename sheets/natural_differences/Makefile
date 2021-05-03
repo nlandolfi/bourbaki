@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make natural_multiplication.pdf
+	make natural_differences.pdf
 	make graph.pdf
 
-natural_multiplication.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > natural_multiplication.tex
+natural_differences.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > natural_differences.tex
 
-natural_multiplication.pdf: ../../*.tex ../../trademark.pdf *.tex natural_multiplication.tex
-	# pdflatex --file-line-error -interaction=nonstopmode natural_multiplication.tex
-	../../latexrun natural_multiplication.tex
+natural_differences.pdf: ../../*.tex ../../trademark.pdf *.tex natural_differences.tex
+	# pdflatex --file-line-error -interaction=nonstopmode natural_differences.tex
+	../../latexrun natural_differences.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: natural_multiplication.pdf
-	open natural_multiplication.pdf
+open: natural_differences.pdf
+	open natural_differences.pdf
 
 o:
 	make open
 
-terms: natural_multiplication.tex
-	bbk_sheet -mode ts natural_multiplication.tex
+terms: natural_differences.tex
+	bbk_sheet -mode ts natural_differences.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f natural_multiplication.*
+	rm -f natural_differences.*
 	make reset
 	bbk_sheet -mode mk > Makefile

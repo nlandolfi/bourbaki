@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make natural_difference.pdf
+	make natural_products.pdf
 	make graph.pdf
 
-natural_difference.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > natural_difference.tex
+natural_products.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > natural_products.tex
 
-natural_difference.pdf: ../../*.tex ../../trademark.pdf *.tex natural_difference.tex
-	# pdflatex --file-line-error -interaction=nonstopmode natural_difference.tex
-	../../latexrun natural_difference.tex
+natural_products.pdf: ../../*.tex ../../trademark.pdf *.tex natural_products.tex
+	# pdflatex --file-line-error -interaction=nonstopmode natural_products.tex
+	../../latexrun natural_products.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: natural_difference.pdf
-	open natural_difference.pdf
+open: natural_products.pdf
+	open natural_products.pdf
 
 o:
 	make open
 
-terms: natural_difference.tex
-	bbk_sheet -mode ts natural_difference.tex
+terms: natural_products.tex
+	bbk_sheet -mode ts natural_products.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f natural_difference.*
+	rm -f natural_products.*
 	make reset
 	bbk_sheet -mode mk > Makefile

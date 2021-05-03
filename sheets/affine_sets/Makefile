@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make natural_addition.pdf
+	make affine_sets.pdf
 	make graph.pdf
 
-natural_addition.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > natural_addition.tex
+affine_sets.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > affine_sets.tex
 
-natural_addition.pdf: ../../*.tex ../../trademark.pdf *.tex natural_addition.tex
-	# pdflatex --file-line-error -interaction=nonstopmode natural_addition.tex
-	../../latexrun natural_addition.tex
+affine_sets.pdf: ../../*.tex ../../trademark.pdf *.tex affine_sets.tex
+	# pdflatex --file-line-error -interaction=nonstopmode affine_sets.tex
+	../../latexrun affine_sets.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: natural_addition.pdf
-	open natural_addition.pdf
+open: affine_sets.pdf
+	open affine_sets.pdf
 
 o:
 	make open
 
-terms: natural_addition.tex
-	bbk_sheet -mode ts natural_addition.tex
+terms: affine_sets.tex
+	bbk_sheet -mode ts affine_sets.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f natural_addition.*
+	rm -f affine_sets.*
 	make reset
 	bbk_sheet -mode mk > Makefile
