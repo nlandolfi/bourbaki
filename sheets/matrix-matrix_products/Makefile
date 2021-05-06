@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make orthogonal_vectors.pdf
+	make matrix-matrix_products.pdf
 	make graph.pdf
 
-orthogonal_vectors.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > orthogonal_vectors.tex
+matrix-matrix_products.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > matrix-matrix_products.tex
 
-orthogonal_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex orthogonal_vectors.tex
-	# pdflatex --file-line-error -interaction=nonstopmode orthogonal_vectors.tex
-	../../latexrun orthogonal_vectors.tex
+matrix-matrix_products.pdf: ../../*.tex ../../trademark.pdf *.tex matrix-matrix_products.tex
+	# pdflatex --file-line-error -interaction=nonstopmode matrix-matrix_products.tex
+	../../latexrun matrix-matrix_products.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: orthogonal_vectors.pdf
-	open orthogonal_vectors.pdf
+open: matrix-matrix_products.pdf
+	open matrix-matrix_products.pdf
 
 o:
 	make open
 
-terms: orthogonal_vectors.tex
-	bbk_sheet -mode ts orthogonal_vectors.tex
+terms: matrix-matrix_products.tex
+	bbk_sheet -mode ts matrix-matrix_products.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f orthogonal_vectors.*
+	rm -f matrix-matrix_products.*
 	make reset
 	bbk_sheet -mode mk > Makefile

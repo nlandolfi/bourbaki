@@ -41,6 +41,7 @@ var shortWords = map[string]bool{
 	"vs.":  true,
 	"vs":   true,
 	"with": true,
+	"and":  true,
 }
 
 func Title(s string) string {
