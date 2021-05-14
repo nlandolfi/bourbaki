@@ -5,6 +5,7 @@
 %!need:matrix_trace
 %!need:matrix_transpose
 %!need:covariance
+%!need:matrix_inverses
 
 We want to find $A$ and $b$ to minimize
 $$
@@ -49,8 +50,19 @@ $$
   $$
   \begin{aligned}
     \Expect(xx^\tp)A^\tp + \Expect(x)(\Expect(y) - A \Expect(x))^\tp - \Expect(xy^\tp) = 0.\\
-    \Expect(xx^\tp)A^\tp + \Expect(x)\Expect(y)^\tp - \Expect(x)\Expect(x)^\tp A^\tp - \cov(x, y) = 0. \\
-    (\cov(x) - \Expect(x)\Expect(x)^\tp)A^\tp = \cov(x, y) - \Expect(x)\Expect(y)^\tp.
+    \Expect(xx^\tp)A^\tp + \Expect(x)\Expect(y)^\tp - \Expect(x)\Expect(x)^\tp A^\tp - \Expect(xy^\tp) = 0. \\
+    (\Expect(xx^\tp) - \Expect(x)\Expect(x)^\tp)A^\tp = \Expect(xy^\tp) - \Expect(x)\Expect(y)^\tp. \\
+    \cov(x, x)A^\tp = \cov(x, y).
   \end{aligned}
+  $$
+  So $A^\tp = \inv{\cov(x,x)}\cov(x, y)$ means $A = \cov(y, x)\inv{\cov(x, x)}$ is a solution.
+  Then $b = \Expect(y) - \cov(y, x)\inv{\cov(x,x)}\Expect(x)$.
+  So to summarize, the estimator $\phi(x) = Ax + b$ is
+  $$
+    \cov(y, x)\invp{\cov{x, x}} x + \Expect(y) - \cov(y, x)\inv{\cov(x,x)}\Expect(x)
+  $$
+  or
+  $$
+    \Expect(y) + \cov(y, x)\invp{\cov{x, x}}(x - \Expect(x))
   $$
 \end{proof}
