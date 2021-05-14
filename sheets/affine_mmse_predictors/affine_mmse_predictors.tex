@@ -1,0 +1,124 @@
+\input{../../sheet.tex}
+\sbasic
+\input{../families/macros.tex}
+\input{../objects/macros.tex}
+\input{../sentences/macros.tex}
+\input{../family_operations/macros.tex}
+\input{../common_sense/macros.tex}
+\input{../unordered_pairs/macros.tex}
+\input{../sets/macros.tex}
+\input{../identity/macros.tex}
+\input{../length_common_notions/macros.tex}
+\input{../relations/macros.tex}
+\input{../set_complements/macros.tex}
+\input{../set_specification/macros.tex}
+\input{../natural_summation/macros.tex}
+\input{../probability/macros.tex}
+\input{../ordered_pairs/macros.tex}
+\input{../set_equality/macros.tex}
+\input{../equations/macros.tex}
+\input{../operations/macros.tex}
+\input{../distance/macros.tex}
+\input{../empty_set/macros.tex}
+\input{../functions/macros.tex}
+\input{../set_unions/macros.tex}
+\input{../set_symmetric_differences/macros.tex}
+\input{../set_intersections/macros.tex}
+\input{../real_summation/macros.tex}
+\input{../probability_outcomes/macros.tex}
+\input{../intervals/macros.tex}
+\input{../subset_systems/macros.tex}
+\input{../set_inclusion/macros.tex}
+\input{../equation_solutions/macros.tex}
+\input{../natural_sums/macros.tex}
+\input{../algebras/macros.tex}
+\input{../metrics/macros.tex}
+\input{../natural_numbers/macros.tex}
+\input{../injective_functions/macros.tex}
+\input{../set_operations/macros.tex}
+\input{../probability_events/macros.tex}
+\input{../probability_distributions/macros.tex}
+\input{../subset_algebras/macros.tex}
+\input{../power_set/macros.tex}
+\input{../zero/macros.tex}
+\input{../natural_differences/macros.tex}
+\input{../length/macros.tex}
+\input{../space/macros.tex}
+\input{../groups/macros.tex}
+\input{../topological_spaces/macros.tex}
+\input{../cardinality/macros.tex}
+\input{../event_probabilities/macros.tex}
+\input{../measures/macros.tex}
+\input{../integer_numbers/macros.tex}
+\input{../absolute_value/macros.tex}
+\input{../n-dimensional_space/macros.tex}
+\input{../fields/macros.tex}
+\input{../matrices/macros.tex}
+\input{../topological_sigma_algebra/macros.tex}
+\input{../probability_measures/macros.tex}
+\input{../measurable_functions/macros.tex}
+\input{../rational_numbers/macros.tex}
+\input{../functionals/macros.tex}
+\input{../vectors/macros.tex}
+\input{../real_matrices/macros.tex}
+\input{../random_variables/macros.tex}
+\input{../variance/macros.tex}
+\input{../real_numbers/macros.tex}
+\input{../norms/macros.tex}
+\input{../matrix_transpose/macros.tex}
+\input{../matrix_trace/macros.tex}
+\input{../expectation/macros.tex}
+\input{../covariance/macros.tex}
+\input{./macros.tex}
+\sstart
+\stitle{Affine Mmse Predictors}
+
+We want to find $A$ and $b$ to minimize
+$$
+  \Expect{\norm{Ax + b - y}^2}.
+$$
+\begin{proof}
+We can express $\Expect(\norm{Ax + b - y}^2)$ as $\Expect((Ax + b - y)^\tp(Ax + b - y))$
+$$
+  \mat{
+    & + & \tr(A \Expect(xx^\tp) A^\tp) & + & \Expect(x)^\tp A^\tp b & - & \tr(A^\tp \Expect(yx^\tp)) \\
+    & + & b^\tp A \Expect(x)   & + & b^\tp b                & - & b^\tp\Expect(y) \\
+    & - & \tr(A \Expect(xy^\tp) ) & - & \Expect(y)^\tp b & + & \Expect(yy^\tp)
+  }
+$$
+The gradients with respect to $b$ are
+$$
+  \mat{
+    & + & 0 & + & A \Expect(x) & - & 0 \\
+    & + & A \Expect(x) & + & 2 b  & - & \Expect(y) \\
+    & - & 0 & - & \Expect(y) & + & 0
+  }
+$$
+so $2A\Expect(x) + 2b - 2\Expect(y)$.
+The gradients with respect to $A$ are
+$$
+  \mat{
+    & + & \Expect(xx^\tp)A^\tp + \Expect(xx^\tp)^\tp A^\tp  & + & \Expect(x)b^\tp & - & \Expect(yx^\tp)^\tp \\
+    & + & \Expect(x)b^\tp  & + & 0                & - & 0 \\
+    & - & \Expect(xy^\tp) & - & 0 & + & 0
+  }
+$$
+  so $2\Expect(xx^\tp)A^\tp + 2\Expect(x)b^\tp - 2\Expect(xy^\tp)$.
+  We want $A$ and $b$ solutions to
+  $$
+  \begin{aligned}
+    A\Expect(x) + b - \Expect(y) &= 0 \\
+    \Expect(xx^\tp)A^\tp + \Expect(x)b^\tp - \Expect(xy^\tp) &= 0
+  \end{aligned}
+  $$
+  so first get $b = \Expect(y) - A\Expect(x)$.
+  Then express
+  $$
+  \begin{aligned}
+    \Expect(xx^\tp)A^\tp + \Expect(x)(\Expect(y) - A \Expect(x))^\tp - \Expect(xy^\tp) = 0.\\
+    \Expect(xx^\tp)A^\tp + \Expect(x)\Expect(y)^\tp - \Expect(x)\Expect(x)^\tp A^\tp - \cov(x, y) = 0. \\
+    (\cov(x) - \Expect(x)\Expect(x)^\tp)A^\tp = \cov(x, y) - \Expect(x)\Expect(y)^\tp.
+  \end{aligned}
+  $$
+\end{proof}
+\strats
