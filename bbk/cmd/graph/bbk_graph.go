@@ -22,7 +22,7 @@ func main() {
 
 	f, err := os.Open(*inputFileFlag)
 	if err != nil {
-		log.Fatal("os.Open: %v", err)
+		log.Fatalf("os.Open: %v", err)
 	}
 	defer f.Close()
 
