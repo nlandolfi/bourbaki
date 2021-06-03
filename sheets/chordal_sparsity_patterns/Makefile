@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make chordal_sparsity_patterns.pdf
 	make graph.pdf
+	make chordal_sparsity_patterns.pdf
 
 chordal_sparsity_patterns.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > chordal_sparsity_patterns.tex

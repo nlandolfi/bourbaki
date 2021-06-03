@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make real_series.pdf
 	make graph.pdf
+	make real_series.pdf
 
 real_series.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_series.tex

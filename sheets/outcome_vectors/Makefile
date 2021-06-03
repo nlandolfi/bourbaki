@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make outcome_vectors.pdf
 	make graph.pdf
+	make outcome_vectors.pdf
 
 outcome_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > outcome_vectors.tex

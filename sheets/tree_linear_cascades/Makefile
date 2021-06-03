@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matrix_vector_products.pdf
 	make graph.pdf
+	make tree_linear_cascades.pdf
 
-matrix_vector_products.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > matrix_vector_products.tex
+tree_linear_cascades.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > tree_linear_cascades.tex
 
-matrix_vector_products.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_vector_products.tex
-	# pdflatex --file-line-error -interaction=nonstopmode matrix_vector_products.tex
-	../../latexrun matrix_vector_products.tex
+tree_linear_cascades.pdf: ../../*.tex ../../trademark.pdf *.tex tree_linear_cascades.tex
+	# pdflatex --file-line-error -interaction=nonstopmode tree_linear_cascades.tex
+	../../latexrun tree_linear_cascades.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: matrix_vector_products.pdf
-	open matrix_vector_products.pdf
+open: tree_linear_cascades.pdf
+	open tree_linear_cascades.pdf
 
 o:
 	make open
 
-terms: matrix_vector_products.tex
-	bbk_sheet -mode ts matrix_vector_products.tex
+terms: tree_linear_cascades.tex
+	bbk_sheet -mode ts tree_linear_cascades.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f matrix_vector_products.*
+	rm -f tree_linear_cascades.*
 	make reset
 	bbk_sheet -mode mk > Makefile

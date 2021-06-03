@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make optimal_spanning_trees.pdf
 	make graph.pdf
+	make optimal_spanning_trees.pdf
 
 optimal_spanning_trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > optimal_spanning_trees.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make normal_conditionals.pdf
 	make graph.pdf
+	make normal_conditionals.pdf
 
 normal_conditionals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_conditionals.tex

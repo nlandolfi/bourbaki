@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make squares.pdf
 	make graph.pdf
+	make squares.pdf
 
 squares.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > squares.tex

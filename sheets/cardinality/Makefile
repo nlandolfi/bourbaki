@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make cardinality.pdf
 	make graph.pdf
+	make cardinality.pdf
 
 cardinality.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cardinality.tex

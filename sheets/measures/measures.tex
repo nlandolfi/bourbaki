@@ -3,25 +3,27 @@
 \input{../equations/macros.tex}
 \input{../families/macros.tex}
 \input{../equation_solutions/macros.tex}
+\input{../objects/macros.tex}
+\input{../identity/macros.tex}
 \input{../natural_order/macros.tex}
 \input{../natural_families/macros.tex}
 \input{../zero/macros.tex}
-\input{../objects/macros.tex}
+\input{../sets/macros.tex}
+\input{../set_equality/macros.tex}
 \input{../function_composites/macros.tex}
 \input{../direct_products/macros.tex}
 \input{../integer_numbers/macros.tex}
 \input{../sentences/macros.tex}
+\input{../set_inclusion/macros.tex}
 \input{../unordered_pairs/macros.tex}
-\input{../sets/macros.tex}
-\input{../identity/macros.tex}
 \input{../set_complements/macros.tex}
 \input{../operations/macros.tex}
 \input{../sequences/macros.tex}
 \input{../rational_numbers/macros.tex}
 \input{../set_specification/macros.tex}
 \input{../relations/macros.tex}
+\input{../power_set/macros.tex}
 \input{../ordered_pairs/macros.tex}
-\input{../set_equality/macros.tex}
 \input{../set_symmetric_differences/macros.tex}
 \input{../algebras/macros.tex}
 \input{../real_sequences/macros.tex}
@@ -31,258 +33,17 @@
 \input{../empty_set/macros.tex}
 \input{../functions/macros.tex}
 \input{../subset_systems/macros.tex}
-\input{../set_inclusion/macros.tex}
 \input{../set_operations/macros.tex}
 \input{../real_limits/macros.tex}
 \input{../intervals/macros.tex}
 \input{../natural_numbers/macros.tex}
 \input{../injective_functions/macros.tex}
 \input{../subset_algebras/macros.tex}
-\input{../power_set/macros.tex}
 \input{../extended_real_numbers/macros.tex}
 \input{../cardinality/macros.tex}
 \input{./macros.tex}
 \sstart
 \stitle{Measures}
-
-\ssection{Why}
-
-We want to generalize the notion of length, area, volume beyond the Lebesgue measure on the product spaces of real numbers.
-
-\ssection{Definition}
-
-An extended-real-valued non-negative
-function on an algebra is
-\t{finitely additive}
-if the result of the function applied to
-the union of a disjoint finite family of
-distinguished sets is the sum of the
-results of the function applied to each
-of the sets individually.
-
-An extended-real-valued non-negative
-function on a sigma algebra is
-\t{countably additive}
-if the result of the function applied to
-the union of a disjoint countable family of
-distinguished sets is the limit of the partial
-sums of the results of the function applied
-to each of the sets individually.
-
-A
-\t{finitely additive measure}
-is an extended-real-valued non-negative
-finitely additive function which associates the empty
-set with the real number $0$.
-A
-\ct{countably additive measure}{finitelyadditivemeasure}
-is an extended-real-valued non-negative
-countably additive function which associates the empty
-set with the real number $0$.
-We call countably additive measures
-\ct{measures}{measures}, for short.
-
-Every countably additive measure is finitely additive.
-On the other hand, there exist finitely additive measures
-which are not countable additive.
-
-In the context of measure,
-we call a countably unitable subset algebra
-a \t{measurable space}.
-We call the distinguished sets
-\ct{measurable}{measurable}
-sets.
-A
-\ct{measure space}{measurespace}
-is triple.
-As a pair, the first two
-objects are a measurable space.
-The third object is a measure defined
-on the sigma algebra of the measurable space.
-
-\ssection{Notation}
-
-Let $A$ a set.
-Let $\mathcal{A}$ a sigma algebra on $A$.
-The pair $(A, \mathcal{A})$ is a measurable space.
-
-Let $\mu: \mathcal{A} \to [0, \infty]$ a measure;
-thus:
-(a) $\mu(\emptyset) = 0$ and
-(b) for disjoint $\set{A_n} \subset \mathcal{A}$,
-$\mu(\cup_{n = 1}^{\infty} A_n)
-  = \sum_{n = 1}^{\infty} \mu(A_n)$
-The triple $(A, \mathcal{A}, \mu)$ is a
-measure space.
-
-We use $\mu$ since it
-is a mnemonic for \say{measure}.
-We often also us
-$\nu$ to denote measures,
-since it is after
-$\mu$ in the Greek alphabet,
-and $\lambda$, since
-it is before
-$\mu$ in the Greek alphabet.
-
-\ssection{Examples}
-
-\begin{expl}
-Let $(A, \mathcal{A})$ a measurable space.
-Let $\mu: \mathcal{A} \to [0, +\infty]$ such that
-$\mu(A)$ is $\card{A}$ if $A$ is finite
-and $\mu(A)$ is $+\infty$ otherwise.
-Then $\mu$ is a measure.
-We call $\mu$ the
-\ct{counting measure}{countingmeasure}.
-\end{expl}
-
-\begin{expl}
-Let $(A, \mathcal{A})$ measurable.
-Fix $a \in A$.
-Let $\mu: \mathcal{A} \to [0, +\infty]$ such
-that $\mu(A)$ is $1$ if $a \in A$ and
-$\mu(A)$ is $0$ otherwise.
-Then $\mu$ is a measure.
-We call $\mu$ the
-\ct{point mass}{pointmassmeasure}
-concentrated at $a$.
-\end{expl}
-
-\begin{expl}
-Let $R$ denote the real numbers.
-The Lebesgue measure on the measurable
-space $(R, \mathcal{B}(R))$ is a measure.
-\end{expl}
-
-\begin{expl}
-Let $N$ be the natural numbers.
-Let $\mathcal{A}$ the finite
-co-finite algebra on $N$.
-Let $\mu: \mathcal{A} \to [0, +\infty]$
-be such that $\mu(A)$ is 1 if
-$A$ is infinite or 0 otherwise.
-Then $\mu$ is a finitely additive measure.
-However it is impossible to extend
-$\mu$ to be a countably additive measure.
-Observe that if $A_n = \set{n}$ the
-$\mu(\union_{n} A_n) = 1$ but
-$\sum_{n} \mu(A_n) = 0$.
-\end{expl}
-
-\begin{expl}
-Let $(A, \mathcal{A})$ a measurable
-space.
-Let $\mu: \mathcal{A} \to [0, +\infty]$
-be $0$ if $A = \emptyset$ and
-$\mu(A)$ is $+\infty$ otherwise.
-Then $\mu$ is a measure.
-\end{expl}
-
-\begin{expl}
-Let $A$ be set with at least
-two elements ($\card{A} \geq 2$).
-Let $\mathcal{A} = \powerset{A}$.
-Let $\mu: \mathcal{A} \to [0, +\infty]$
-such that $\mu(A)$ is $0$ if $A = \emptyset$
-and $\mu(A) = 1$ otherwise.
-Then $\mu$ is not a measure,
-nor is $\mu$ finitely additive.
-\begin{proof}
-Let $B, C \in \mathcal{A}$,
-$B \intersect C = \emptyset$
-then using finite additivity
-we obtain a contradiction
-$
-1 = \mu(B \union C) = \mu(B) + \mu(C) = 2
-$.
-\end{proof}
-\end{expl}
-
-\ssection{Why}
-
-We want to generalize the notions
-of length, area, and volume.
-
-\ssection{Definition}
-
-A
-\ct{measurable space}{measurablespace}
-is a sigma algebra.
-We call the
-\rt{distinguished subsets}{distinguishedsubsets}
-the \ct{measurable sets}{measurablesets}.
-
-A
-\ct{measure}{measure}
-on a measurable space
-is a function from the sigma algebra
-to the positive extended reals.
-A
-\ct{measure space}{measurespace}
-is a measurable space and a measure.
-
-\ssubsection{Notation}
-
-\ssubsection{Properties}
-
-\begin{prop}
-  Let $(A, \mathcal{A})$ be a measurable space and
-  $m: \mathcal{A} \to [0, \infty]$ be a measure.
-
-  If $B \subset C \subset A$, then $m(B) \leq m(C)$.
-  We call this property the of measures
-  \ct{monotonicity of measure}{}.
-\end{prop}
-
-\begin{prop}
-  For a measure space $(A, \mathcal{A}, m)$.
-
-  If $B \subset C \subset A$, then $m(B) \leq m(C)$.
-
-  We call this property the
-  \ct{monotonicity of measure}{}.
-\end{prop}
-
-\begin{prop}
-  For a measure space $(A, \mathcal{A}, m)$.
-
-  If $\set{A_n} \subset \mathcal{A}$ a countable family,
-  then $m(\union A_n) \leq \sum_{i} m(A_i)$.
-
-  We this property the
-  \ct{sub-additivty of measure}{}.
-\end{prop}
-
-\begin{prop}
-  For a measure space $(A, \mathcal{A}, m)$.
-
-  If $\set{A_n} \subset \mathcal{A}$ a countable family,
-  then $m(\union A_n) \leq \sum_{i} m(A_i)$.
-
-  We this property the
-  \ct{sub-additivty of measure}{}.
-\end{prop}
-
-\begin{prop}
-  For a measure space $(A, \mathcal{A}, m)$.
-
-  $$
-    m(\union_{n = 1}^{\infty} A_i) = \lim_{n \to \infty} m(A_i)
-  $$
-\end{prop}
-
-\begin{prop}
-  For a measure space $(A, \mathcal{A}, m)$.
-
-  $$
-    m(\intersection_{n = 1}^{\infty} A_i) = \lim_{n \to \infty} m(A_i)
-  $$
-\end{prop}
-
-\ssubsection{Examples}
-
-\begin{expl}
-  \ct{counting measure}{}
-\end{expl}
+\input{sheet}
+\includegraphics{graph}
 \strats

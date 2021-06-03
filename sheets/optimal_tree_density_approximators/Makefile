@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make optimal_tree_density_approximators.pdf
 	make graph.pdf
+	make optimal_tree_density_approximators.pdf
 
 optimal_tree_density_approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > optimal_tree_density_approximators.tex

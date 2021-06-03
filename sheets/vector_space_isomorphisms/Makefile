@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make vector_space_isomorphisms.pdf
 	make graph.pdf
+	make vector_space_isomorphisms.pdf
 
 vector_space_isomorphisms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vector_space_isomorphisms.tex

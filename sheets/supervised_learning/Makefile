@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make supervised_learning.pdf
 	make graph.pdf
+	make supervised_learning.pdf
 
 supervised_learning.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > supervised_learning.tex

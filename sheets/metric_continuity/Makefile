@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make metric_continuity.pdf
 	make graph.pdf
+	make metric_continuity.pdf
 
 metric_continuity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_continuity.tex

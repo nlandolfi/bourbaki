@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make finite_measures.pdf
 	make graph.pdf
+	make finite_measures.pdf
 
 finite_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > finite_measures.tex

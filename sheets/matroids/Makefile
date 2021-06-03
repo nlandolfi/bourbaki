@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matroids.pdf
 	make graph.pdf
+	make matroids.pdf
 
 matroids.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matroids.tex

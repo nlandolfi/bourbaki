@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make norm_completeness.pdf
 	make graph.pdf
+	make norm_completeness.pdf
 
 norm_completeness.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > norm_completeness.tex

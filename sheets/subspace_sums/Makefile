@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make subspace_sums.pdf
 	make graph.pdf
+	make subspace_sums.pdf
 
 subspace_sums.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subspace_sums.tex

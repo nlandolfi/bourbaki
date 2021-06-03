@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matrices.pdf
 	make graph.pdf
+	make matrices.pdf
 
 matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrices.tex

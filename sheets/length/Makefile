@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make length.pdf
 	make graph.pdf
+	make length.pdf
 
 length.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > length.tex

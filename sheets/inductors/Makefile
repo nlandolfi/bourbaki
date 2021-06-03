@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make inductors.pdf
 	make graph.pdf
+	make inductors.pdf
 
 inductors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inductors.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make affine_sets_and_subspaces.pdf
 	make graph.pdf
+	make affine_sets_and_subspaces.pdf
 
 affine_sets_and_subspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_sets_and_subspaces.tex

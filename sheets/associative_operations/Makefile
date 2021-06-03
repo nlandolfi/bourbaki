@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make associative_operations.pdf
 	make graph.pdf
+	make associative_operations.pdf
 
 associative_operations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > associative_operations.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make joint_distributions.pdf
 	make graph.pdf
+	make joint_distributions.pdf
 
 joint_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > joint_distributions.tex

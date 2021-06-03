@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make nearest_neighbor_predictors.pdf
 	make graph.pdf
+	make nearest_neighbor_predictors.pdf
 
 nearest_neighbor_predictors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > nearest_neighbor_predictors.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make affine_hulls.pdf
 	make graph.pdf
+	make affine_hulls.pdf
 
 affine_hulls.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_hulls.tex

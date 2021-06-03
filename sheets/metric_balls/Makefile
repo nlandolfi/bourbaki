@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make metric_balls.pdf
 	make graph.pdf
+	make metric_balls.pdf
 
 metric_balls.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_balls.tex

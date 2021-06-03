@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make dice.pdf
 	make graph.pdf
+	make dice.pdf
 
 dice.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > dice.tex

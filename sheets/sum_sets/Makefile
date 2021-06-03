@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make sum_sets.pdf
 	make graph.pdf
+	make sum_sets.pdf
 
 sum_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sum_sets.tex

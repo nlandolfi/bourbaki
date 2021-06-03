@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make injective_functions.pdf
 	make graph.pdf
+	make injective_functions.pdf
 
 injective_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > injective_functions.tex

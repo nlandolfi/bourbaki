@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make approximators.pdf
 	make graph.pdf
+	make approximators.pdf
 
 approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > approximators.tex

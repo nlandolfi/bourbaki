@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make n-dimensional_space.pdf
 	make graph.pdf
+	make n-dimensional_space.pdf
 
 n-dimensional_space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > n-dimensional_space.tex

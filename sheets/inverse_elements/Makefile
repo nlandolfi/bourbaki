@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make inverse_elements.pdf
 	make graph.pdf
+	make inverse_elements.pdf
 
 inverse_elements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inverse_elements.tex

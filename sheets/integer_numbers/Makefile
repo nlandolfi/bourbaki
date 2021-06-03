@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make integer_numbers.pdf
 	make graph.pdf
+	make integer_numbers.pdf
 
 integer_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > integer_numbers.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make multivariate_normals.pdf
 	make graph.pdf
+	make multivariate_normals.pdf
 
 multivariate_normals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > multivariate_normals.tex

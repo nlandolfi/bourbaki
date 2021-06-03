@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make cumulative_distribution_function_from_density.pdf
 	make graph.pdf
+	make cumulative_distribution_function_from_density.pdf
 
 cumulative_distribution_function_from_density.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cumulative_distribution_function_from_density.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make orthonormal_vectors.pdf
 	make graph.pdf
+	make orthonormal_vectors.pdf
 
 orthonormal_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > orthonormal_vectors.tex

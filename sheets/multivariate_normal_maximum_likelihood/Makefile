@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make multivariate_normal_maximum_likelihood.pdf
 	make graph.pdf
+	make multivariate_normal_maximum_likelihood.pdf
 
 multivariate_normal_maximum_likelihood.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > multivariate_normal_maximum_likelihood.tex

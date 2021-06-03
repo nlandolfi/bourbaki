@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make metric_convergence.pdf
 	make graph.pdf
+	make metric_convergence.pdf
 
 metric_convergence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_convergence.tex

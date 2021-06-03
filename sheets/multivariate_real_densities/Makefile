@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make multivariate_real_densities.pdf
 	make graph.pdf
+	make multivariate_real_densities.pdf
 
 multivariate_real_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > multivariate_real_densities.tex

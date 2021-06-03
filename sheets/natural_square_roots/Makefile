@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make natural_square_roots.pdf
 	make graph.pdf
+	make natural_square_roots.pdf
 
 natural_square_roots.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_square_roots.tex

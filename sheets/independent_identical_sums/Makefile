@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make independent_identical_sums.pdf
 	make graph.pdf
+	make independent_identical_sums.pdf
 
 independent_identical_sums.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > independent_identical_sums.tex

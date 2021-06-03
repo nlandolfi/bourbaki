@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make natural_order.pdf
 	make graph.pdf
+	make natural_order.pdf
 
 natural_order.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_order.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make measure_vector_space.pdf
 	make graph.pdf
+	make measure_vector_space.pdf
 
 measure_vector_space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > measure_vector_space.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make operators.pdf
 	make graph.pdf
+	make operators.pdf
 
 operators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > operators.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make interval_graphs.pdf
 	make graph.pdf
+	make interval_graphs.pdf
 
 interval_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > interval_graphs.tex

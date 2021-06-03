@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make independent_identically_distributed.pdf
 	make graph.pdf
+	make independent_identically_distributed.pdf
 
 independent_identically_distributed.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > independent_identically_distributed.tex

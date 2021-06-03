@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make density_maximum_likelihood.pdf
 	make graph.pdf
+	make density_maximum_likelihood.pdf
 
 density_maximum_likelihood.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > density_maximum_likelihood.tex

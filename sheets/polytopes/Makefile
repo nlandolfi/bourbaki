@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make polytopes.pdf
 	make graph.pdf
+	make polytopes.pdf
 
 polytopes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > polytopes.tex

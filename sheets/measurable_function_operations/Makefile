@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make measurable_function_operations.pdf
 	make graph.pdf
+	make measurable_function_operations.pdf
 
 measurable_function_operations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > measurable_function_operations.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make tail_measure_lower_bound.pdf
 	make graph.pdf
+	make tail_measure_lower_bound.pdf
 
 tail_measure_lower_bound.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tail_measure_lower_bound.tex

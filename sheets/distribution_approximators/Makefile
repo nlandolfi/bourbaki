@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make distribution_approximators.pdf
 	make graph.pdf
+	make distribution_approximators.pdf
 
 distribution_approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distribution_approximators.tex

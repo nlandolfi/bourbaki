@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make tree_approximators_of_a_normal.pdf
 	make graph.pdf
+	make tree_approximators_of_a_normal.pdf
 
 tree_approximators_of_a_normal.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_approximators_of_a_normal.tex

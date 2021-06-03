@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make quasiconcave_functions.pdf
 	make graph.pdf
+	make quasiconcave_functions.pdf
 
 quasiconcave_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > quasiconcave_functions.tex

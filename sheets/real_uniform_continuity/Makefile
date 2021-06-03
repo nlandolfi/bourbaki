@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make real_uniform_continuity.pdf
 	make graph.pdf
+	make real_uniform_continuity.pdf
 
 real_uniform_continuity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_uniform_continuity.tex

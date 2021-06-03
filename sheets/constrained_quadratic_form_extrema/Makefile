@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make constrained_quadratic_form_extrema.pdf
 	make graph.pdf
+	make constrained_quadratic_form_extrema.pdf
 
 constrained_quadratic_form_extrema.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > constrained_quadratic_form_extrema.tex

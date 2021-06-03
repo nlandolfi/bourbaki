@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make entropy.pdf
 	make graph.pdf
+	make entropy.pdf
 
 entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > entropy.tex

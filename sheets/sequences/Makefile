@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make sequences.pdf
 	make graph.pdf
+	make sequences.pdf
 
 sequences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sequences.tex

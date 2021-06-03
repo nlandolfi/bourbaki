@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make natural_numbers.pdf
 	make graph.pdf
+	make natural_numbers.pdf
 
 natural_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_numbers.tex

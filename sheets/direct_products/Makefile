@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make direct_products.pdf
 	make graph.pdf
+	make direct_products.pdf
 
 direct_products.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > direct_products.tex

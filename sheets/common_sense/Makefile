@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make common_sense.pdf
 	make graph.pdf
+	make common_sense.pdf
 
 common_sense.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > common_sense.tex

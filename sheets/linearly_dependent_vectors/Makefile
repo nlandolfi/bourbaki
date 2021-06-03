@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make linearly_dependent_vectors.pdf
 	make graph.pdf
+	make linearly_dependent_vectors.pdf
 
 linearly_dependent_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > linearly_dependent_vectors.tex

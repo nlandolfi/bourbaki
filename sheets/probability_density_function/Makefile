@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make probability_density_function.pdf
 	make graph.pdf
+	make probability_density_function.pdf
 
 probability_density_function.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probability_density_function.tex

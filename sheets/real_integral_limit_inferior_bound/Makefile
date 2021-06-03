@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make real_integral_limit_inferior_bound.pdf
 	make graph.pdf
+	make real_integral_limit_inferior_bound.pdf
 
 real_integral_limit_inferior_bound.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_integral_limit_inferior_bound.tex

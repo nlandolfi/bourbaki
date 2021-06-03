@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make subspaces.pdf
 	make graph.pdf
+	make subspaces.pdf
 
 subspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subspaces.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make expectation_maximization.pdf
 	make graph.pdf
+	make expectation_maximization.pdf
 
 expectation_maximization.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > expectation_maximization.tex

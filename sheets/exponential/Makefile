@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make exponential.pdf
 	make graph.pdf
+	make exponential.pdf
 
 exponential.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > exponential.tex

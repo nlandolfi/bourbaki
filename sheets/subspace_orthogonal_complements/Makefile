@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make subspace_orthogonal_complements.pdf
 	make graph.pdf
+	make subspace_orthogonal_complements.pdf
 
 subspace_orthogonal_complements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subspace_orthogonal_complements.tex

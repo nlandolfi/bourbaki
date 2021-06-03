@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make supremum_norm_complete.pdf
 	make graph.pdf
+	make supremum_norm_complete.pdf
 
 supremum_norm_complete.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > supremum_norm_complete.tex

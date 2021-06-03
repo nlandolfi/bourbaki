@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matrix_determinant_of_product.pdf
 	make graph.pdf
+	make matrix_determinant_of_product.pdf
 
 matrix_determinant_of_product.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_determinant_of_product.tex

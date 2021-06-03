@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make real_integral_monotone_convergence.pdf
 	make graph.pdf
+	make real_integral_monotone_convergence.pdf
 
 real_integral_monotone_convergence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_integral_monotone_convergence.tex

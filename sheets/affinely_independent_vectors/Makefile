@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make affinely_independent_vectors.pdf
 	make graph.pdf
+	make affinely_independent_vectors.pdf
 
 affinely_independent_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affinely_independent_vectors.tex

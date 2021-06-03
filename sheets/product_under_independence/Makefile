@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make product_under_independence.pdf
 	make graph.pdf
+	make product_under_independence.pdf
 
 product_under_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > product_under_independence.tex

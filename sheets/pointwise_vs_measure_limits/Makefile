@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make pointwise_vs_measure_limits.pdf
 	make graph.pdf
+	make pointwise_vs_measure_limits.pdf
 
 pointwise_vs_measure_limits.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > pointwise_vs_measure_limits.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matrix-vector_products.pdf
 	make graph.pdf
+	make matrix-vector_products.pdf
 
 matrix-vector_products.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix-vector_products.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make nets.pdf
 	make graph.pdf
+	make nets.pdf
 
 nets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > nets.tex

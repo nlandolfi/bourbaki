@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make real_limits.pdf
 	make graph.pdf
+	make real_limits.pdf
 
 real_limits.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_limits.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make density_selection.pdf
 	make graph.pdf
+	make density_selection.pdf
 
 density_selection.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > density_selection.tex

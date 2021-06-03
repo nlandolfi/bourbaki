@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make topological_sigma_algebra.pdf
 	make graph.pdf
+	make topological_sigma_algebra.pdf
 
 topological_sigma_algebra.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > topological_sigma_algebra.tex

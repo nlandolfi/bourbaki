@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make surjective_functions.pdf
 	make graph.pdf
+	make surjective_functions.pdf
 
 surjective_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > surjective_functions.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make triangle_equality.pdf
 	make graph.pdf
+	make triangle_equality.pdf
 
 triangle_equality.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > triangle_equality.tex

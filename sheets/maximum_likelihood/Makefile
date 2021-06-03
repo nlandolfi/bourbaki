@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make maximum_likelihood.pdf
 	make graph.pdf
+	make maximum_likelihood.pdf
 
 maximum_likelihood.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > maximum_likelihood.tex

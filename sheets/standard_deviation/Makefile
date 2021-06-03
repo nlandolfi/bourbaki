@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make standard_deviation.pdf
 	make graph.pdf
+	make standard_deviation.pdf
 
 standard_deviation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > standard_deviation.tex

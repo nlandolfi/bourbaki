@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make distance_asymmetry.pdf
 	make graph.pdf
+	make distance_asymmetry.pdf
 
 distance_asymmetry.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distance_asymmetry.tex

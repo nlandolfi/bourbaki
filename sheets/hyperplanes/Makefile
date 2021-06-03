@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make hyperplanes.pdf
 	make graph.pdf
+	make hyperplanes.pdf
 
 hyperplanes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > hyperplanes.tex

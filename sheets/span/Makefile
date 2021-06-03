@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make span.pdf
 	make graph.pdf
+	make span.pdf
 
 span.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > span.tex

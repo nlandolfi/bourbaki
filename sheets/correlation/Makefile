@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make correlation.pdf
 	make graph.pdf
+	make correlation.pdf
 
 correlation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > correlation.tex

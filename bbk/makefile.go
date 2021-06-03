@@ -5,8 +5,8 @@ const MakefileTemplate = `# generated automatically by bbk_sheet
 .PHONY: make o spell s clean remake
 
 make:
-	make {{ .Name }}.pdf
 	make graph.pdf
+	make {{ .Name }}.pdf
 
 {{ .Name }}.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > {{ .Name }}.tex

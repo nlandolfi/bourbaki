@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make logarithm.pdf
 	make graph.pdf
+	make logarithm.pdf
 
 logarithm.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > logarithm.tex

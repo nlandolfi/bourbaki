@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make natural_differences.pdf
 	make graph.pdf
+	make natural_differences.pdf
 
 natural_differences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_differences.tex

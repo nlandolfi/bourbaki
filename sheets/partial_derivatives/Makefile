@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make partial_derivatives.pdf
 	make graph.pdf
+	make partial_derivatives.pdf
 
 partial_derivatives.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > partial_derivatives.tex

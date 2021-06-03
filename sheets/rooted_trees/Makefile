@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make rooted_trees.pdf
 	make graph.pdf
+	make rooted_trees.pdf
 
 rooted_trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rooted_trees.tex

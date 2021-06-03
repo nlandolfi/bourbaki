@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make bounded_linear_functions.pdf
 	make graph.pdf
+	make bounded_linear_functions.pdf
 
 bounded_linear_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > bounded_linear_functions.tex

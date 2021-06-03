@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make differential_mutual_information.pdf
 	make graph.pdf
+	make differential_mutual_information.pdf
 
 differential_mutual_information.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differential_mutual_information.tex

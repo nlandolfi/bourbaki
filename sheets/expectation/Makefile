@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make expectation.pdf
 	make graph.pdf
+	make expectation.pdf
 
 expectation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > expectation.tex

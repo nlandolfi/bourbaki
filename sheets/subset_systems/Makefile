@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make subset_systems.pdf
 	make graph.pdf
+	make subset_systems.pdf
 
 subset_systems.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subset_systems.tex

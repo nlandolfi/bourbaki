@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make linear_transformations.pdf
 	make graph.pdf
+	make linear_transformations.pdf
 
 linear_transformations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > linear_transformations.tex

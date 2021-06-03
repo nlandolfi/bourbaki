@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make rooted_tree_distributions.pdf
 	make graph.pdf
+	make rooted_tree_distributions.pdf
 
 rooted_tree_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rooted_tree_distributions.tex

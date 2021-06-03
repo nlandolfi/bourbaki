@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make diagonal_matrices.pdf
 	make graph.pdf
+	make diagonal_matrices.pdf
 
 diagonal_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > diagonal_matrices.tex

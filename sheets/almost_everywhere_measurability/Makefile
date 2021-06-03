@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make almost_everywhere_measurability.pdf
 	make graph.pdf
+	make almost_everywhere_measurability.pdf
 
 almost_everywhere_measurability.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > almost_everywhere_measurability.tex

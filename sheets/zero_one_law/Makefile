@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make zero_one_law.pdf
 	make graph.pdf
+	make zero_one_law.pdf
 
 zero_one_law.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > zero_one_law.tex

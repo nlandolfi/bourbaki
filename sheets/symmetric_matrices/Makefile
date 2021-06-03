@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make symmetric_matrices.pdf
 	make graph.pdf
+	make symmetric_matrices.pdf
 
 symmetric_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > symmetric_matrices.tex

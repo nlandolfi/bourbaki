@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make projector_matrices.pdf
 	make graph.pdf
+	make projector_matrices.pdf
 
 projector_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > projector_matrices.tex

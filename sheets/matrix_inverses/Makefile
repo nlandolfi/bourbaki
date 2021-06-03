@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matrix_inverse.pdf
 	make graph.pdf
+	make matrix_inverses.pdf
 
-matrix_inverse.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > matrix_inverse.tex
+matrix_inverses.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > matrix_inverses.tex
 
-matrix_inverse.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_inverse.tex
-	# pdflatex --file-line-error -interaction=nonstopmode matrix_inverse.tex
-	../../latexrun matrix_inverse.tex
+matrix_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_inverses.tex
+	# pdflatex --file-line-error -interaction=nonstopmode matrix_inverses.tex
+	../../latexrun matrix_inverses.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: matrix_inverse.pdf
-	open matrix_inverse.pdf
+open: matrix_inverses.pdf
+	open matrix_inverses.pdf
 
 o:
 	make open
 
-terms: matrix_inverse.tex
-	bbk_sheet -mode ts matrix_inverse.tex
+terms: matrix_inverses.tex
+	bbk_sheet -mode ts matrix_inverses.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f matrix_inverse.*
+	rm -f matrix_inverses.*
 	make reset
 	bbk_sheet -mode mk > Makefile

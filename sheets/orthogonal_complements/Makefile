@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make orthogonal_complements.pdf
 	make graph.pdf
+	make orthogonal_complements.pdf
 
 orthogonal_complements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > orthogonal_complements.tex

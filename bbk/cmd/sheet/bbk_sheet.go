@@ -81,9 +81,13 @@ func writeFile(all map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 	fmt.Fprintln(os.Stdout, "\\sstart")
 	fmt.Fprintf(os.Stdout, "\\stitle{%s}\n", bbk.Title(p.Name))
 	//fmt.Fprintf(os.Stdout, "{\\small Needs: %s}\n", strings.Join(p.Needs, ", "))
-	for _, l := range p.Lines {
-		fmt.Fprintln(os.Stdout, l)
-	}
+	/*
+		for _, l := range p.Lines {
+			fmt.Fprintln(os.Stdout, l)
+		}
+	*/
+	fmt.Fprintln(os.Stdout, "\\input{sheet}")
+	fmt.Fprintln(os.Stdout, "\\includegraphics{graph}")
 	fmt.Fprintln(os.Stdout, "\\strats")
 }
 

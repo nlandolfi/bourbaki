@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make set_symmetric_differences.pdf
 	make graph.pdf
+	make set_symmetric_differences.pdf
 
 set_symmetric_differences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_symmetric_differences.tex

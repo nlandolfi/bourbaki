@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make natural_summation.pdf
 	make graph.pdf
+	make natural_summation.pdf
 
 natural_summation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_summation.tex

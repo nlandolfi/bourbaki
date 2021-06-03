@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make exchangeable_measures.pdf
 	make graph.pdf
+	make exchangeable_measures.pdf
 
 exchangeable_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > exchangeable_measures.tex

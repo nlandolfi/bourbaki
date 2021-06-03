@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make unordered_pairs.pdf
 	make graph.pdf
+	make unordered_pairs.pdf
 
 unordered_pairs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > unordered_pairs.tex

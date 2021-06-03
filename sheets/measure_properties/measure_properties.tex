@@ -1,200 +1,50 @@
 \input{../../sheet.tex}
 \sbasic
+\input{../equations/macros.tex}
+\input{../families/macros.tex}
+\input{../equation_solutions/macros.tex}
 \input{../objects/macros.tex}
+\input{../identity/macros.tex}
+\input{../natural_order/macros.tex}
+\input{../natural_families/macros.tex}
+\input{../zero/macros.tex}
+\input{../sets/macros.tex}
+\input{../set_equality/macros.tex}
+\input{../function_composites/macros.tex}
+\input{../direct_products/macros.tex}
+\input{../integer_numbers/macros.tex}
 \input{../sentences/macros.tex}
+\input{../set_inclusion/macros.tex}
 \input{../unordered_pairs/macros.tex}
 \input{../set_complements/macros.tex}
 \input{../operations/macros.tex}
-\input{../sets/macros.tex}
-\input{../identity/macros.tex}
+\input{../sequences/macros.tex}
+\input{../rational_numbers/macros.tex}
 \input{../set_specification/macros.tex}
 \input{../relations/macros.tex}
+\input{../power_set/macros.tex}
 \input{../ordered_pairs/macros.tex}
 \input{../set_symmetric_differences/macros.tex}
 \input{../algebras/macros.tex}
-\input{../set_equality/macros.tex}
+\input{../real_sequences/macros.tex}
+\input{../real_numbers/macros.tex}
 \input{../set_unions/macros.tex}
 \input{../set_intersections/macros.tex}
 \input{../empty_set/macros.tex}
 \input{../functions/macros.tex}
 \input{../subset_systems/macros.tex}
 \input{../set_operations/macros.tex}
-\input{../set_inclusion/macros.tex}
+\input{../real_limits/macros.tex}
+\input{../intervals/macros.tex}
 \input{../natural_numbers/macros.tex}
 \input{../injective_functions/macros.tex}
 \input{../subset_algebras/macros.tex}
-\input{../power_set/macros.tex}
+\input{../extended_real_numbers/macros.tex}
 \input{../cardinality/macros.tex}
 \input{../measures/macros.tex}
 \input{./macros.tex}
 \sstart
 \stitle{Measure Properties}
-
-\ssection{Why}
-
-We expect measure to have the
-common sense properties we stated
-when trying to define a notion of
-length for the real line.
-
-\ssection{Monotonicity}
-
-An extended-real-valued function on an
-alebra is
-\ct{monotone}{}
-if, given a first distinguished set contained in
-a distinguished second set, the result of the
-first is no greater than the result of the second.
-
-\begin{prop}
-  All measures are monotone.
-  \begin{proof}
-    Let $(A, \mathcal{A}, \mu)$ be
-    a measure space.
-    Let $A, B \in \mathcal{A}$
-    and $A \subset B$.
-    Then $B = A \union (B - A)$,
-    a disjoint union.
-    So
-    \[
-      \mu(B) = \mu(A \union (B - A))= \mu(A) + \mu(B - A),
-    \]
-    by the additivity of $\mu$.
-    Since $\mu(B - A) \geq 0$,
-    we conclude $\mu(A) \leq \mu(B)$.
-  \end{proof}
-\end{prop}
-
-\begin{prop}
-  $A \subset B$ and $B$ finite
-  means $\mu(B - A) = \mu(B) - \mu(A)$.
-  \boxed{TODO}
-\end{prop}
-
-\ssection{Subadditivity}
-
-
-Monotonicity along with additivity of
-measures give us one other convenient
-property: subadditivity.
-
-An extended-real-valued function on an algebra is
-\ct{subadditive}{}
-if, given a sequence of distinguished sets, the
-result of union of the sequence is no greater than
-the limit of the partial sums of the results on
-each element of the sequence.
-
-\begin{prop}
-  All measures are subadditive.
-  \begin{proof}
-    Let $(A, \mathcal{A}, \mu)$ be a measure space.
-
-    Let $\set{A_n} \subset \mathcal{A}$.
-    Define $\set{B_n} \subset \mathcal{A}$
-    with $B_n := A_n - \union_{i = 1}^{n-1} A_i$.
-    Then
-    $\union_n A_n = \union_n B_n$,
-    $\set{B_n}$ is a disjoint sequence, and
-    $B_n \subset A_n$ for each $n$.
-    So
-    \[
-      \mu(\union_{n} A_n) = \mu(\union_{n} B_n) = \sum_{i = 1}^{\infty} \mu(B_n) \leq \sum_{i = 1}^{\infty} \mu(A_n),
-    \]
-    by additivity and then montonicity of measure.
-  \end{proof}
-
-\end{prop}
-
-\ssection{Limits}
-Measures also behave well under limits.
-
-An extended-real-valued function on an algebra
-\ct{resolves under increasing limits}{}
-if the result of the union of an increasing sequence
-of distinguished sets coincides with the
-limit of the sequence of results on the individual
-sets.
-An extended-real-valued function on an algebra
-\ct{resolves under decreasing limits}{}
-if the result of the intersection of a decreasing sequence
-of distinguished sets coincides with the
-limit of the sequence of results on the individual
-sets.
-
-
-\begin{prop}
-  Measures resolve under increasing limits.
-  \begin{proof}
-    Let $(A, \mathcal{A}, \mu)$ be
-    a measure space.
-    Let $\set{A_n}$
-    be an increasing sequence in $\mathcal{A}$.
-    Then we want to show:
-    $\mu(\union_{n} A_n) = \lim_{n \to \infty} \mu(A_n)$.
-
-    Define $\set{B_n}$ such that
-    $B_n := A_n - \union_{i = 1}^{n-1} A_i$.
-    Then
-    $\set{B_n}$ is disjoint,
-    $A_n = \union_{i = 1}^{n} B_i$ for
-    each $n$,
-    $\union_n A_n = \union_n B_n$, and
-    $\mu(\union_{i = 1}^{n} B_i)
-    = \sum_{i = 1}^{n} \mu(B_i)$,
-    by additivity.
-    So
-    \[
-      \begin{aligned}
-        \mu(\union_n A_n)
-        &= \mu(\union_n B_n) \\
-        &= \lim_{n \to \infty} \sum_{i = 1}^{n} \mu(B_i) \\
-        &= \lim_{n \to \infty} \mu(\union_{i = 1}^{n} B_i) \\
-        &= \lim_{n \to \infty} \mu(A_n).
-      \end{aligned}
-    \]
-  \end{proof}
-\end{prop}
-
-\begin{prop}
-  Measures resolve under decreasing
-  limits if there is a finite set in
-  the decreasing sequence.
-  \begin{proof}
-    Let $(A, \mathcal{A}, \mu)$ be
-    a measure space.
-    Let $\set{A_n}$
-    be a decreasing sequence in $\mathcal{A}$
-    with one element finite.
-    Then we want to show:
-    $\mu(\intersection_n A_n) = \lim_{n \to \infty} \mu(A_n)$.
-
-    On one hand,
-    let $n_0$ be the index of the first
-    finite element of the sequence.
-    Then for all $n \geq n_0$,
-    the sequence is finite because
-    of the monotonicity of measure.
-    Denote this decreasing finite subsequence
-    of sets by $\set{B_n}$.
-    Then $\intersect_{n} A_n = \intersect_n B_n$
-    and $\lim_n A_n = \lim_n B_n$.
-
-    On the other hand,
-    the sequence $\set{B_1 - B_n}$ is an
-    increasing sequence in $\mathcal{A}$.
-    Also $\intersect_n B_n = B_1 - \union_n (B_1 - B_n)$.
-    So
-    \[
-    \begin{aligned}
-      \mu(\intersect_n B_n)
-      &= \mu(B_1 - \union_n (B_1 - B_n)) \\
-      &= \mu(B_1) - \mu(\union_n (B_1 - B_n)) \\
-      &= \mu(B_1) - \lim_{n} \mu(B_1 - B_n) \\
-      &= \mu(B_1) - \left(\lim_{n} \mu(B_1) - \mu(B_n)\right) \\
-      &= \lim_{n} B_n.
-    \end{aligned}
-    \]
-  \end{proof}
-\end{prop}
+\input{sheet}
+\includegraphics{graph}
 \strats

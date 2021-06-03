@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make lDU_factorizations.pdf
 	make graph.pdf
+	make lDU_factorizations.pdf
 
 lDU_factorizations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > lDU_factorizations.tex

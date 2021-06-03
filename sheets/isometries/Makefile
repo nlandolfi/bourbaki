@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make isometries.pdf
 	make graph.pdf
+	make isometries.pdf
 
 isometries.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > isometries.tex

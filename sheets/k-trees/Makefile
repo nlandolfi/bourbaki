@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make k-trees.pdf
 	make graph.pdf
+	make k-trees.pdf
 
 k-trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > k-trees.tex

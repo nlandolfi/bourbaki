@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make integrable_function_space.pdf
 	make graph.pdf
+	make integrable_function_space.pdf
 
 integrable_function_space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > integrable_function_space.tex

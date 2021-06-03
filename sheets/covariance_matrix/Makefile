@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make covariance_matrix.pdf
 	make graph.pdf
+	make covariance_matrix.pdf
 
 covariance_matrix.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > covariance_matrix.tex

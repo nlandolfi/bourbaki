@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make conditional_dependency_graph.pdf
 	make graph.pdf
+	make conditional_dependency_graph.pdf
 
 conditional_dependency_graph.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_dependency_graph.tex

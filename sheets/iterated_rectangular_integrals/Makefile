@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make iterated_rectangular_integrals.pdf
 	make graph.pdf
+	make iterated_rectangular_integrals.pdf
 
 iterated_rectangular_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > iterated_rectangular_integrals.tex

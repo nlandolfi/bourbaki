@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make simple_integrals.pdf
 	make graph.pdf
+	make simple_integrals.pdf
 
 simple_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integrals.tex

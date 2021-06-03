@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make rational_numbers.pdf
 	make graph.pdf
+	make rational_numbers.pdf
 
 rational_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rational_numbers.tex
