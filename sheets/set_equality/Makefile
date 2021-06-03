@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make set_equality.pdf
 	make graph.pdf
+	make set_equality.pdf
 
 set_equality.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_equality.tex

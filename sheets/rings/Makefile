@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make rings.pdf
 	make graph.pdf
+	make rings.pdf
 
 rings.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rings.tex

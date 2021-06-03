@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make subgraphs.pdf
 	make graph.pdf
+	make subgraphs.pdf
 
 subgraphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subgraphs.tex

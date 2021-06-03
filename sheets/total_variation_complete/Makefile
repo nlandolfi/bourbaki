@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make total_variation_complete.pdf
 	make graph.pdf
+	make total_variation_complete.pdf
 
 total_variation_complete.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > total_variation_complete.tex

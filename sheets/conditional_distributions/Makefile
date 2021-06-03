@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make conditional_distributions.pdf
 	make graph.pdf
+	make conditional_distributions.pdf
 
 conditional_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_distributions.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make natural_induction.pdf
 	make graph.pdf
+	make natural_induction.pdf
 
 natural_induction.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_induction.tex

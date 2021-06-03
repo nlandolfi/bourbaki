@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make quadratic_forms.pdf
 	make graph.pdf
+	make quadratic_forms.pdf
 
 quadratic_forms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > quadratic_forms.tex

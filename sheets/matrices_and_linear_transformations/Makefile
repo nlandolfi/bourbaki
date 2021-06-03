@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matrices_and_linear_transformations.pdf
 	make graph.pdf
+	make matrices_and_linear_transformations.pdf
 
 matrices_and_linear_transformations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrices_and_linear_transformations.tex

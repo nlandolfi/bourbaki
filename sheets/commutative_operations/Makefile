@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make commutative_operations.pdf
 	make graph.pdf
+	make commutative_operations.pdf
 
 commutative_operations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > commutative_operations.tex

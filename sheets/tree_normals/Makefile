@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make tree_normals.pdf
 	make graph.pdf
+	make tree_normals.pdf
 
 tree_normals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_normals.tex

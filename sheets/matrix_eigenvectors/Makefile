@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matrix_eigenvectors.pdf
 	make graph.pdf
+	make matrix_eigenvectors.pdf
 
 matrix_eigenvectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_eigenvectors.tex

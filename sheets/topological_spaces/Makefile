@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make topological_spaces.pdf
 	make graph.pdf
+	make topological_spaces.pdf
 
 topological_spaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > topological_spaces.tex

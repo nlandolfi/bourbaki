@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make normal_differential_entropy.pdf
 	make graph.pdf
+	make normal_differential_entropy.pdf
 
 normal_differential_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_differential_entropy.tex

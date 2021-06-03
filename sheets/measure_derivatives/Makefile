@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make measure_derivatives.pdf
 	make graph.pdf
+	make measure_derivatives.pdf
 
 measure_derivatives.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > measure_derivatives.tex

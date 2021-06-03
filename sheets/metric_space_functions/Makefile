@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make metric_space_functions.pdf
 	make graph.pdf
+	make metric_space_functions.pdf
 
 metric_space_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_space_functions.tex

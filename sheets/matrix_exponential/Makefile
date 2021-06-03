@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matrix_exponential.pdf
 	make graph.pdf
+	make matrix_exponential.pdf
 
 matrix_exponential.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_exponential.tex

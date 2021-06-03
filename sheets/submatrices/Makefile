@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make submatrices.pdf
 	make graph.pdf
+	make submatrices.pdf
 
 submatrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > submatrices.tex

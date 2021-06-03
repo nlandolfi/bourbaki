@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make power_set.pdf
 	make graph.pdf
+	make power_set.pdf
 
 power_set.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > power_set.tex

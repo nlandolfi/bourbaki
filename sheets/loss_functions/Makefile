@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make loss_functions.pdf
 	make graph.pdf
+	make loss_functions.pdf
 
 loss_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > loss_functions.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make simple_integral_homogeneity.pdf
 	make graph.pdf
+	make simple_integral_homogeneity.pdf
 
 simple_integral_homogeneity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integral_homogeneity.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make real_convergence.pdf
 	make graph.pdf
+	make real_convergence.pdf
 
 real_convergence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_convergence.tex

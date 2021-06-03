@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make affine_transformations.pdf
 	make graph.pdf
+	make affine_transformations.pdf
 
 affine_transformations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_transformations.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make optimizers.pdf
 	make graph.pdf
+	make optimizers.pdf
 
 optimizers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > optimizers.tex

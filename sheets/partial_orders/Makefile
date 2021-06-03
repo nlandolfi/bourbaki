@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make partial_orders.pdf
 	make graph.pdf
+	make partial_orders.pdf
 
 partial_orders.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > partial_orders.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make classifiers.pdf
 	make graph.pdf
+	make classifiers.pdf
 
 classifiers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > classifiers.tex

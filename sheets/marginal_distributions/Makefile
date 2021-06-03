@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make marginal_distributions.pdf
 	make graph.pdf
+	make marginal_distributions.pdf
 
 marginal_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > marginal_distributions.tex

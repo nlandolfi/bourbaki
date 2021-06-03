@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make directed_graphs.pdf
 	make graph.pdf
+	make directed_graphs.pdf
 
 directed_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > directed_graphs.tex

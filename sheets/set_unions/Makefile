@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make set_unions.pdf
 	make graph.pdf
+	make set_unions.pdf
 
 set_unions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_unions.tex

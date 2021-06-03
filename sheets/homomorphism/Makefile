@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make homomorphism.pdf
 	make graph.pdf
+	make homomorphism.pdf
 
 homomorphism.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > homomorphism.tex

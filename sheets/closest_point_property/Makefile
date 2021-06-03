@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make closest_point_property.pdf
 	make graph.pdf
+	make closest_point_property.pdf
 
 closest_point_property.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > closest_point_property.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make numberings.pdf
 	make graph.pdf
+	make numberings.pdf
 
 numberings.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > numberings.tex

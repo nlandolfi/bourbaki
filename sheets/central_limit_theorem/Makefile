@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make central_limit_theorem.pdf
 	make graph.pdf
+	make central_limit_theorem.pdf
 
 central_limit_theorem.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > central_limit_theorem.tex

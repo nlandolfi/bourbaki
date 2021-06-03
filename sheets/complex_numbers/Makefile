@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make complex_numbers.pdf
 	make graph.pdf
+	make complex_numbers.pdf
 
 complex_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complex_numbers.tex

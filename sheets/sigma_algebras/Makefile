@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make sigma_algebras.pdf
 	make graph.pdf
+	make sigma_algebras.pdf
 
 sigma_algebras.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sigma_algebras.tex

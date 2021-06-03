@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make complex_inner_products.pdf
 	make graph.pdf
+	make complex_inner_products.pdf
 
 complex_inner_products.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complex_inner_products.tex

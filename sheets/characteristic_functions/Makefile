@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make characteristic_functions.pdf
 	make graph.pdf
+	make characteristic_functions.pdf
 
 characteristic_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > characteristic_functions.tex

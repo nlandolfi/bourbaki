@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make countable_probability_distributions.pdf
 	make graph.pdf
+	make countable_probability_distributions.pdf
 
 countable_probability_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > countable_probability_distributions.tex

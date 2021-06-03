@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make sparse_lDU_factorization.pdf
 	make graph.pdf
+	make sparse_lDU_factorization.pdf
 
 sparse_lDU_factorization.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sparse_lDU_factorization.tex

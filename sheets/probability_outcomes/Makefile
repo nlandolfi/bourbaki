@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make probability_outcomes.pdf
 	make graph.pdf
+	make probability_outcomes.pdf
 
 probability_outcomes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probability_outcomes.tex

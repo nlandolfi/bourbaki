@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make spanning_trees.pdf
 	make graph.pdf
+	make spanning_trees.pdf
 
 spanning_trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > spanning_trees.tex

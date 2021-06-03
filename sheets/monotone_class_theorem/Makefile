@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make monotone_class_theorem.pdf
 	make graph.pdf
+	make monotone_class_theorem.pdf
 
 monotone_class_theorem.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_class_theorem.tex

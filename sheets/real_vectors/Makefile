@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make real_vectors.pdf
 	make graph.pdf
+	make real_vectors.pdf
 
 real_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_vectors.tex

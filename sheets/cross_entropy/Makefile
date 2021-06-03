@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make cross_entropy.pdf
 	make graph.pdf
+	make cross_entropy.pdf
 
 cross_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cross_entropy.tex

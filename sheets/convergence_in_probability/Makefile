@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make convergence_in_probability.pdf
 	make graph.pdf
+	make convergence_in_probability.pdf
 
 convergence_in_probability.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convergence_in_probability.tex

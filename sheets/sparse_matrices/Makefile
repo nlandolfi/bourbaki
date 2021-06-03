@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make sparse_matrices.pdf
 	make graph.pdf
+	make sparse_matrices.pdf
 
 sparse_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sparse_matrices.tex

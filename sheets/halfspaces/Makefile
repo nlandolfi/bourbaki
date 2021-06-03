@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make halfspaces.pdf
 	make graph.pdf
+	make halfspaces.pdf
 
 halfspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > halfspaces.tex

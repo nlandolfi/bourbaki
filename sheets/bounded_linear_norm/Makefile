@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make bounded_linear_norm.pdf
 	make graph.pdf
+	make bounded_linear_norm.pdf
 
 bounded_linear_norm.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > bounded_linear_norm.tex

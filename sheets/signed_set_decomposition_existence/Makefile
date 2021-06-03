@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make signed_set_decomposition_existence.pdf
 	make graph.pdf
+	make signed_set_decomposition_existence.pdf
 
 signed_set_decomposition_existence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > signed_set_decomposition_existence.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make barycentric_coordinates.pdf
 	make graph.pdf
+	make barycentric_coordinates.pdf
 
 barycentric_coordinates.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > barycentric_coordinates.tex

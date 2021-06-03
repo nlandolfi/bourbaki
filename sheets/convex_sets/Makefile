@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make convex_sets.pdf
 	make graph.pdf
+	make convex_sets.pdf
 
 convex_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_sets.tex

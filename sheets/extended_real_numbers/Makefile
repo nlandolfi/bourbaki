@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make extended_real_numbers.pdf
 	make graph.pdf
+	make extended_real_numbers.pdf
 
 extended_real_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > extended_real_numbers.tex

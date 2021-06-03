@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make threshold_graphs.pdf
 	make graph.pdf
+	make threshold_graphs.pdf
 
 threshold_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > threshold_graphs.tex

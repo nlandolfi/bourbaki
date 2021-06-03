@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make distribution_selection.pdf
 	make graph.pdf
+	make distribution_selection.pdf
 
 distribution_selection.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distribution_selection.tex

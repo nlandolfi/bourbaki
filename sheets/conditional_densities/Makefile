@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make conditional_densities.pdf
 	make graph.pdf
+	make conditional_densities.pdf
 
 conditional_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_densities.tex

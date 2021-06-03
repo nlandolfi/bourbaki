@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make data_fitting.pdf
 	make graph.pdf
+	make data_fitting.pdf
 
 data_fitting.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > data_fitting.tex

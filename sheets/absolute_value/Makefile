@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make absolute_value.pdf
 	make graph.pdf
+	make absolute_value.pdf
 
 absolute_value.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > absolute_value.tex

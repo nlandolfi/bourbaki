@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make cumulative_distribution_functions.pdf
 	make graph.pdf
+	make cumulative_distribution_functions.pdf
 
 cumulative_distribution_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cumulative_distribution_functions.tex

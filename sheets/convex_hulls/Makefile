@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make convex_hulls.pdf
 	make graph.pdf
+	make convex_hulls.pdf
 
 convex_hulls.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_hulls.tex

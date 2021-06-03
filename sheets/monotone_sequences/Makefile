@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make monotone_sequences.pdf
 	make graph.pdf
+	make monotone_sequences.pdf
 
 monotone_sequences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_sequences.tex

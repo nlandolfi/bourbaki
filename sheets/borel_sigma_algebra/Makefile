@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make borel_sigma_algebra.pdf
 	make graph.pdf
+	make borel_sigma_algebra.pdf
 
 borel_sigma_algebra.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > borel_sigma_algebra.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make differentiability.pdf
 	make graph.pdf
+	make differentiability.pdf
 
 differentiability.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differentiability.tex

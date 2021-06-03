@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make set_intersections.pdf
 	make graph.pdf
+	make set_intersections.pdf
 
 set_intersections.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_intersections.tex

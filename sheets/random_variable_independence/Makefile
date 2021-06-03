@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make random_variable_independence.pdf
 	make graph.pdf
+	make random_variable_independence.pdf
 
 random_variable_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_variable_independence.tex

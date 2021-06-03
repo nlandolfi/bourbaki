@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make length_common_notions.pdf
 	make graph.pdf
+	make length_common_notions.pdf
 
 length_common_notions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > length_common_notions.tex

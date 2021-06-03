@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make graph_complements.pdf
 	make graph.pdf
+	make graph_complements.pdf
 
 graph_complements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > graph_complements.tex

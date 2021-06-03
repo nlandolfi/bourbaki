@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make uniform_densities.pdf
 	make graph.pdf
+	make uniform_densities.pdf
 
 uniform_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > uniform_densities.tex

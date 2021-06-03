@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make zero.pdf
 	make graph.pdf
+	make zero.pdf
 
 zero.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > zero.tex

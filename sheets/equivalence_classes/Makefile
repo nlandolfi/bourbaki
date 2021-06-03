@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make equivalence_classes.pdf
 	make graph.pdf
+	make equivalence_classes.pdf
 
 equivalence_classes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > equivalence_classes.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make vertex_separators.pdf
 	make graph.pdf
+	make vertex_separators.pdf
 
 vertex_separators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vertex_separators.tex

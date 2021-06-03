@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make triangular_matrices.pdf
 	make graph.pdf
+	make triangular_matrices.pdf
 
 triangular_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > triangular_matrices.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make nonnegative_integrals.pdf
 	make graph.pdf
+	make nonnegative_integrals.pdf
 
 nonnegative_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > nonnegative_integrals.tex

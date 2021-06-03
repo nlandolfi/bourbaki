@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make differential_relative_entropy.pdf
 	make graph.pdf
+	make differential_relative_entropy.pdf
 
 differential_relative_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differential_relative_entropy.tex

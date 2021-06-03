@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make convex_sets_and_halfspaces.pdf
 	make graph.pdf
+	make convex_sets_and_halfspaces.pdf
 
 convex_sets_and_halfspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_sets_and_halfspaces.tex

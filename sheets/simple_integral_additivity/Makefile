@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make simple_integral_additivity.pdf
 	make graph.pdf
+	make simple_integral_additivity.pdf
 
 simple_integral_additivity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integral_additivity.tex

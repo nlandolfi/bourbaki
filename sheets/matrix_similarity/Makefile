@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make matrix_similarity.pdf
 	make graph.pdf
+	make matrix_similarity.pdf
 
 matrix_similarity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_similarity.tex

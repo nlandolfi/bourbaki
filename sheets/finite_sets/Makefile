@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make finite_sets.pdf
 	make graph.pdf
+	make finite_sets.pdf
 
 finite_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > finite_sets.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make permutation_matrices.pdf
 	make graph.pdf
+	make permutation_matrices.pdf
 
 permutation_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > permutation_matrices.tex

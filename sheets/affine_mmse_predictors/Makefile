@@ -3,15 +3,15 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make affine_mmse_predictors.pdf
 	make graph.pdf
+	make affine_mMSE_predictors.pdf
 
-affine_mmse_predictors.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > affine_mmse_predictors.tex
+affine_mMSE_predictors.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > affine_mMSE_predictors.tex
 
-affine_mmse_predictors.pdf: ../../*.tex ../../trademark.pdf *.tex affine_mmse_predictors.tex
-	# pdflatex --file-line-error -interaction=nonstopmode affine_mmse_predictors.tex
-	../../latexrun affine_mmse_predictors.tex
+affine_mMSE_predictors.pdf: ../../*.tex ../../trademark.pdf *.tex affine_mMSE_predictors.tex
+	# pdflatex --file-line-error -interaction=nonstopmode affine_mMSE_predictors.tex
+	../../latexrun affine_mMSE_predictors.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: affine_mmse_predictors.pdf
-	open affine_mmse_predictors.pdf
+open: affine_mMSE_predictors.pdf
+	open affine_mMSE_predictors.pdf
 
 o:
 	make open
 
-terms: affine_mmse_predictors.tex
-	bbk_sheet -mode ts affine_mmse_predictors.tex
+terms: affine_mMSE_predictors.tex
+	bbk_sheet -mode ts affine_mMSE_predictors.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f affine_mmse_predictors.*
+	rm -f affine_mMSE_predictors.*
 	make reset
 	bbk_sheet -mode mk > Makefile

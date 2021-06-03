@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make algebras.pdf
 	make graph.pdf
+	make algebras.pdf
 
 algebras.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > algebras.tex

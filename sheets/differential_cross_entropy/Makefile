@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make differential_cross_entropy.pdf
 	make graph.pdf
+	make differential_cross_entropy.pdf
 
 differential_cross_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differential_cross_entropy.tex

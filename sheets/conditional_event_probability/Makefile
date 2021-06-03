@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make conditional_event_probability.pdf
 	make graph.pdf
+	make conditional_event_probability.pdf
 
 conditional_event_probability.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_event_probability.tex

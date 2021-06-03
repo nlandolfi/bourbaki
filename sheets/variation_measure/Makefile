@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make variation_measure.pdf
 	make graph.pdf
+	make variation_measure.pdf
 
 variation_measure.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > variation_measure.tex

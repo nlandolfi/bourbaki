@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make affine_set_dimensions.pdf
 	make graph.pdf
+	make affine_set_dimensions.pdf
 
 affine_set_dimensions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_set_dimensions.tex

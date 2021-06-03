@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make equivalent_sets.pdf
 	make graph.pdf
+	make equivalent_sets.pdf
 
 equivalent_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > equivalent_sets.tex

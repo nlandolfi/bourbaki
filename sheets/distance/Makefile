@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make distance.pdf
 	make graph.pdf
+	make distance.pdf
 
 distance.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distance.tex

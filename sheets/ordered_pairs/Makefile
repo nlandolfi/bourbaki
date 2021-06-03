@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make ordered_pairs.pdf
 	make graph.pdf
+	make ordered_pairs.pdf
 
 ordered_pairs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > ordered_pairs.tex

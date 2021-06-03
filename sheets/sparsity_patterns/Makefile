@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make sparsity_patterns.pdf
 	make graph.pdf
+	make sparsity_patterns.pdf
 
 sparsity_patterns.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sparsity_patterns.tex

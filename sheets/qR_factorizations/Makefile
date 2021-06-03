@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make qR_factorizations.pdf
 	make graph.pdf
+	make qR_factorizations.pdf
 
 qR_factorizations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > qR_factorizations.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make chordal_graphs.pdf
 	make graph.pdf
+	make chordal_graphs.pdf
 
 chordal_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > chordal_graphs.tex

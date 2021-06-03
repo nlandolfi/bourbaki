@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make similarity_functions.pdf
 	make graph.pdf
+	make similarity_functions.pdf
 
 similarity_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > similarity_functions.tex

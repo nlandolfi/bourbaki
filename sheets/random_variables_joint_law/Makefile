@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make random_variables_joint_law.pdf
 	make graph.pdf
+	make random_variables_joint_law.pdf
 
 random_variables_joint_law.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_variables_joint_law.tex

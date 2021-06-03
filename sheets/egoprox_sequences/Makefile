@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make egoprox_sequences.pdf
 	make graph.pdf
+	make egoprox_sequences.pdf
 
 egoprox_sequences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > egoprox_sequences.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make random_vectors.pdf
 	make graph.pdf
+	make random_vectors.pdf
 
 random_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_vectors.tex

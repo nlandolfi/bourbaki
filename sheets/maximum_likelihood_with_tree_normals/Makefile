@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make maximum_likelihood_with_tree_normals.pdf
 	make graph.pdf
+	make maximum_likelihood_with_tree_normals.pdf
 
 maximum_likelihood_with_tree_normals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > maximum_likelihood_with_tree_normals.tex

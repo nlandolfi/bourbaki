@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make sigma_algebra_independence.pdf
 	make graph.pdf
+	make sigma_algebra_independence.pdf
 
 sigma_algebra_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sigma_algebra_independence.tex

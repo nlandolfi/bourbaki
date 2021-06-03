@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make moment_generating_function.pdf
 	make graph.pdf
+	make moment_generating_function.pdf
 
 moment_generating_function.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > moment_generating_function.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make scalar_multiple_sets.pdf
 	make graph.pdf
+	make scalar_multiple_sets.pdf
 
 scalar_multiple_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > scalar_multiple_sets.tex

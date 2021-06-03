@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make partitions.pdf
 	make graph.pdf
+	make partitions.pdf
 
 partitions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > partitions.tex

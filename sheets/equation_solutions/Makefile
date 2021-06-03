@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make equation_solutions.pdf
 	make graph.pdf
+	make equation_solutions.pdf
 
 equation_solutions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > equation_solutions.tex

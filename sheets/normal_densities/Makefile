@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make normal_densities.pdf
 	make graph.pdf
+	make normal_densities.pdf
 
 normal_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_densities.tex

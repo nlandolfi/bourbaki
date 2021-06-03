@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make random_variable_sigma_algebra.pdf
 	make graph.pdf
+	make random_variable_sigma_algebra.pdf
 
 random_variable_sigma_algebra.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_variable_sigma_algebra.tex

@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make metric_dense.pdf
 	make graph.pdf
+	make metric_dense.pdf
 
 metric_dense.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_dense.tex

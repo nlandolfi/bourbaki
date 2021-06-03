@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make positive_definite_matrices.pdf
 	make graph.pdf
+	make positive_definite_matrices.pdf
 
 positive_definite_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > positive_definite_matrices.tex

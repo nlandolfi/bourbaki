@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make exchangeable_singular_decomposition.pdf
 	make graph.pdf
+	make exchangeable_singular_decomposition.pdf
 
 exchangeable_singular_decomposition.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > exchangeable_singular_decomposition.tex

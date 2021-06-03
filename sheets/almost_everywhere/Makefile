@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make almost_everywhere.pdf
 	make graph.pdf
+	make almost_everywhere.pdf
 
 almost_everywhere.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > almost_everywhere.tex

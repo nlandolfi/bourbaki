@@ -3,8 +3,8 @@
 .PHONY: make o spell s clean remake
 
 make:
-	make translate_sets.pdf
 	make graph.pdf
+	make translate_sets.pdf
 
 translate_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > translate_sets.tex
