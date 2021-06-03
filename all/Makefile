@@ -6,7 +6,6 @@ all.toc: all.tex ../sheets/*/*.tex
 
 all.pdf: inputs.tex all.toc all.tex ../*.tex ../trademark.pdf ../sheets/*/*.tex
 	pdflatex all.tex
-	make defs
 
 make:
 	make all.pdf
@@ -20,5 +19,3 @@ o:
 graph:
 	cd .. && make open
 
-defs: all.tex
-	defs all.tex
