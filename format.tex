@@ -14,11 +14,18 @@
 
 \titleformat*{\section}{\bfseries\sffamily}
 \titleformat*{\subsection}{\small\bfseries\sffamily}
-\titleformat*{\subsubsection}{\large\bfseries}
+\titleformat*{\subsubsection}{\footnotesize\bfseries\sffamily}
 \titleformat*{\paragraph}{\large\bfseries}
 \titleformat*{\subparagraph}{\large\bfseries}
 \titlespacing*{\section}{0pt}{0.3cm}{0.1cm}
 \titlespacing*{\subsection}{0pt}{0.3cm}{0.1cm}
+\titlespacing*{\subsubsection}{0pt}{0.3cm}{0.1cm}
+
+
+%\renewcommand*\contentsname{\begin{center} \sf C\hspace{0.04cm}O\hspace{0.04cm}N\hspace{0.04cm}T\hspace{0.04cm}E\hspace{0.04cm}N\hspace{0.04cm}T\hspace{0.04cm}S\vspace{-0.5cm}\end{center}}
+\renewcommand*\contentsname{\vspace*{-2cm}\begin{center} {\sf \textsmallcaps{Contents}\end{center}}}
+%\titleformat*{\section}{\footnotesize\center\sc}
+
 
 %\renewcommand{\title}[1]{
 %\begin{center}
@@ -45,13 +52,44 @@
 \end{center}
 }
 
+\newcommand{\blankpage}{
+\newpage
+\textit{ }
+\newpage
+}
+
+
+%https://tex.stackexchange.com/questions/510978/combining-small-caps-and-sans-serif
+\usepackage[utf8]{inputenc}
+\usepackage{xparse,relsize}
+
+\ExplSyntaxOn
+
+\NewDocumentCommand{\textsmallcaps}{ m }{% Define new command with one mandatory argument
+    \textapperance_smallcaps:n { #1 }% Call
+}%
+
+\tl_new:N \l__textapperance_textsmallcaps_input_tl% Initialize string variable
+\cs_new_protected:Npn \textapperance_smallcaps:n #1
+{% Create hidden command with one argument
+    \tl_set:Nx \l__textapperance_textsmallcaps_input_tl { #1 } % Fully expand contents and store them in the variable
+    \regex_replace_all:nnN
+    { ([^A-Z]+) }
+    { \c{textsmaller}[2]\cB\{\c{uppercase}\cB\{\0\cE\}\cE\} }
+    \l__textapperance_textsmallcaps_input_tl % Replace everything thats NOT a capital letter by \textsmaller[2]{\uppercase{<match>}}
+    \tl_use:N \l__textapperance_textsmallcaps_input_tl   % Return
+}
+
+\ExplSyntaxOff
 
 \newcommand*{\vcenteredhbox}[1]{\begin{tabular}{@{}c@{}}#1\end{tabular}}
+
 \renewcommand{\title}[1]{
+\vspace*{-1.5cm}
 \begin{center}
 \hspace*{-1cm}
-\vcenteredhbox{\vspace*{-0.1cm} \includegraphics[height=0.5cm]{../../trademark}\hspace*{0.1cm}}
-\vcenteredhbox{\large \textsf{#1}}
+%\vcenteredhbox{\vspace*{-0.1cm} \includegraphics[height=0.5cm]{../../trademark}\hspace*{0.1cm}}
+\vcenteredhbox{\sf \textsmallcaps{#1}}
 \end{center}
 }
 
