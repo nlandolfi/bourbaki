@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./optimal_tree_density_approximators.pdf'" onkeypress="location.href='./optimal_tree_density_approximators.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./optimal_tree_density_approximators.pdf#page=2'" onkeypress="location.href='./optimal_tree_density_approximators.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -65,15 +66,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Which is the optimal tree to use for tree density approximation?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We want to choose the tree whose corresponding approximator for the given density achieves minimum relative entropy with the given density among all tree density approximators. We call such a density an \t{optimal tree approximator} of the given density. We call a tree according to which an optimal tree approximator factors and optimal approximator tree.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">3. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $g: \R^n \to [0, 1]$ be a density. A tree $T$ on $\set{1, \dots, n}$ is an optimal approximator tree if and only if it is a maximal spanning tree of the differential mutual information graph of $q$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} First, denote the optimal approximator of $g$ for tree $T$ by $f^*_T$. Recall $$ f^*_T = f_1 \prod_{i \neq 1} f_{i \mid \pa{i}} $$</p></div><div class="sheet-listing"><p class="sheet"> Second, recall $d(g, f) = H(g, f) - H(g)$. Since $H(g)$ does not depend on $f$, $f$ is a minimizer of $d(g, f)$ if and only if it is a minimizer of $H(g, f)$.</p></div><div class="sheet-listing"><p class="sheet"> Third, express the cross entropy of $f^*_T$ relative to $g$ as $$ \begin{aligned} H(q, p^*_T) &= h(q_1) - \sum_{j \neq i} \parens*{ \int_{\R^d} g(x) \log g_{i \mid pa{i}}(x_i, x_{\pa{i}}) dx } \\ &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\parens{\log q_{i,\pa{i}}(a_i, a_{\pa{i}}) - \log q_{\pa{i}}(a_{\pa{i}})} \\ &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\parens{\log q_{i,\pa{i}}(a_i, a_{\pa{i}}) - \log q_{\pa{i}}(a_{\pa{i}}) - \log q_i(a_i)  + \log q_{i}(a_i)} \\ &= \sum_{i = 1}^{n} H(q_i) - \sum_{i \neq 1} I(q_i, q_{\pa{i}}) \\ &= \sum_{i = 1}^{n} H(q_i) - \sum_{\set{i,j} \in T} I(q_i, q_{j}) \\ \end{aligned} $$ where $\pa{i}$ denotes the parent of vertex $i$ in $T$ ($i = 2, \dots, n$). $H(g_i)$ does not depend on the choice of tree. Choosing a tree to minimize the second term in the final expression above is equivalent to choosing a maximal spanning tree from the weighted graph with differential mutual information edge weights; namely, the mutual information graph of $g$.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './optimal_tree_density_approximators.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./optimal_tree_density_approximators.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./optimal_tree_density_approximators.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./optimal_tree_density_approximators-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./optimal_tree_density_approximators-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

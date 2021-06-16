@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./nets.pdf'" onkeypress="location.href='./nets.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./nets.pdf#page=2'" onkeypress="location.href='./nets.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -62,15 +63,165 @@
       <div class="sheet-listing"><p class="sheet"> \stitle{Nets}</p></div><div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We generalize the notion of sequence to index sets beyond the naturals.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A sequence is a function on the natural numbers; this set has two important properties: (a) we can order the natural numbers and (b) we can always go "further out."</p></div><div class="sheet-listing"><p class="sheet"> To elaborate on property (b): if handed two natural numbers $m$ and $n$, we can always find another, for example $\max\set{m,n}+1$, larger than $m$ and $n$. We might think of larger as "further out" from the first natural number: 1.</p></div><div class="sheet-listing"><p class="sheet"> Combining these to observations, we define a directed set: \begin{defn} A <i>directed set</i> is a set $D$ with a partial order $\preceq$ satisfying one additional property: for all $a, b \in D$, there exists $c \in D$ such that $a \preceq c$ and $b \preceq c$. \end{defn}</p></div><div class="sheet-listing"><p class="sheet"> \begin{defn} A <i>net</i> is a function on a directed set. \end{defn}</p></div><div class="sheet-listing"><p class="sheet"> A sequence, then, is a net. The directed set is the set of natural numbers and the partial order is $m \preceq n$ if $m \leq n$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Directed sets involve a set and a partial order. We commonly assume the partial order, and just denote the set. We use the letter $D$ as a mnemonic for directed.</p></div><div class="sheet-listing"><p class="sheet"> For nets, we use function notation and generalize sequence notation. We denote the net $x: D \to A$ by $\net{a_{\alpha}}$, emulating notation for sequences. The use of $\alpha$ rather than $n$ reminds us that $D$ need not be the set of natural numbers.</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './nets.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./nets.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./nets.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./nets-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./nets-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

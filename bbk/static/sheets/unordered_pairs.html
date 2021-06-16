@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./unordered_pairs.pdf'" onkeypress="location.href='./unordered_pairs.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./unordered_pairs.pdf#page=2'" onkeypress="location.href='./unordered_pairs.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -72,15 +73,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Are there enough sets to ensure that every set is an element of some set? What of one set and another set --- is there a set that they both belong to?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We will say that there is. For one set and another set, there exists a set that they both belong to. We refer to this as the \t{axiom of pairing}.</p></div><div class="sheet-listing"><p class="sheet"> If there exists a set that contains both the sets we began with, then there exists a set which contains them and nothing else. First, use the axiom of pairing to obtain a set containing both sets, and then use the axiom of specification with a sentence that is true only if the element considered is one of the sets we began with. As a result of the axiom of extension, there can be only one set with this property. We call this set a \t{pair} or an \t{unordered pair}.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $a$ and $b$ be objects. We denote the set which contains $a$ and $b$ as elements and nothing else by $\set{a, b}$.</p></div><div class="sheet-listing"><p class="sheet"> The pair of $a$ with itself is the set $\set{a, a}$ which we will denote by $\set{a}$.</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './unordered_pairs.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./unordered_pairs.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./unordered_pairs.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./unordered_pairs-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./unordered_pairs-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

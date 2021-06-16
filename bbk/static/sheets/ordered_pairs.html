@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./ordered_pairs.pdf'" onkeypress="location.href='./ordered_pairs.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./ordered_pairs.pdf#page=2'" onkeypress="location.href='./ordered_pairs.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -86,15 +87,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We speak of an ordered pair of objects: one selected from a first set and one selected from a second set.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ be nonempty \rt{sets}{set}. Let $a \in A$ and $b \in B$. The <i>ordered pair</i> of $a$ and $b$ is the set $\set{\set{a}, \set{a, b}}$. The \t{first coordinate} of $\set{\set{a}, \set{a, b}}$ is $a$ and the \t{second coordinate} is $b$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{product} of $A$ and $B$ is the set of all ordered pairs. This set is also called the \t{cartesian product}. If $A \neq B$, the ordering causes the product of $A$ and $B$ to differ from the product of $B$ with $A$. If $A = B$, however, the symmetry holds.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the ordered pair $\set{\set{a},\set{a,b}}$ by $(a, b)$. We denote the product of $A$ with $B$ by $A \cross B$, read aloud as "A cross B." In this notation, if $A \neq B$, then $A \cross B \neq B \cross A$.</p></div><div class="sheet-listing" id="taste"><h1 class="sheet">3. Taste</h1></div><div class="sheet-listing"><p class="sheet"> Notice that $a \not\in (a, b)$ and similarly $b \not\in (a, b)$. These facts led us to use the terms first and second "coordinate" above rather than element. Neither $a$ nor $b$ is an element of the ordered pair $\op{a, b}$. On the other hand, it is true that $\set{a} \in \op{a, b}$ and $\set{a, b} \in \op{a, b}$. These facts are odd. Should they bother us?</p></div><div class="sheet-listing"><p class="sheet"> We chose to define ordered pairs in terms of sets so that we could reuse notions about a particular type of object (sets) that we had already developed. We chose what we may call conceptual simplicty (reusing notions from sets) over defining a new type of object (the ordered pair) with its own primitive properties. Taking the former path, rather than the latter is a matter of taste, really, and not a logical consequence of the nature of things.</p></div><div class="sheet-listing"><p class="sheet"> The argument for our taste is as follows. We already know about sets, so let's use them, and let's forget cases like $\set{a, b} \in \op{a, b}$ (called by some authors "pathologies"). It does not bother us that our construction admits many true (but irrelevant) statements. Such is the case in life. Plus, suppose we did choose to make the object $\op{a, b}$ primitive. Sure, we would avoid oddities like $\set{a} \in \op{a, b}$. And we might even get statements like $a \in \op{a, b}$ to be true. But to do so we would have to define the meaning of $\in$ for the case in which the right hand object is an "ordered pair". Our current route avoids introducing any new concepts, and simply names a construction in our current concepts.</p></div><div class="sheet-listing" id="equality"><h1 class="sheet">4. Equality</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} $(a, b) = (c, d)$ if and only if $a = b$ and $c = d$. \begin{proof} TODO \end{proof} \end{prop}</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './ordered_pairs.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./ordered_pairs.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./ordered_pairs.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./ordered_pairs-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./ordered_pairs-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

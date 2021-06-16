@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./set_equality.pdf'" onkeypress="location.href='./set_equality.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./set_equality.pdf#page=2'" onkeypress="location.href='./set_equality.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -72,15 +73,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> When are two sets the same?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Given sets $A$ and $B$, if $A = B$ then every element of $A$ is an element of $B$ and every element of $B$ is an element of $A$.</p></div><div class="sheet-listing"><p class="sheet"> What of the converse? Suppose every element of $A$ is an element of $B$ and every element of $B$ is an element of $A$. Is $A = B$ true? We define it to be so.</p></div><div class="sheet-listing"><p class="sheet"> Two sets are \t{equal} if and only if every element of one is an element of the other. In other words, two sets are the same if they have the same elements. This statement is sometimes called the \t{axiom of extension}. Roughly speaking, if we refer to the elements of a set as its \t{extension}, then we have declared that if we know the extension then we know the set. A set is determined by its extension.</p></div><div class="sheet-listing"><p class="sheet"> This definition gives us a way to argue that $A = B$ from the properties of the elements of $A$ and $B$. It may not be obvious that the sets are the same. We first argue that each element of $A$ is an element of $B$ and then argue that each element of $B$ is an element of $A$. With these two implications, we use the axiom of extension to conclude that the sets are the same.</p></div><div class="sheet-listing"><p class="sheet"> An immediate consequence of the axiom of extension is that there is a unique set that is empty. Suppose $A$ and $B$ are both empty. Then $A = B$. Suppose toward contradiction that there exists an element $a \in A$ with $a \not\in B$ or $b \in B$ with $b \not\in B$. But then $A$ or $B$ would be nonempty. Thus there is a set which is empty and any other empty set is this set. In other words, this set is unique. We call it the \t{empty set}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> As with any objects, we denote that $A$ and $B$ are equal by $A = B$. We denote that they are not equal by $A \neq B$. We denote the unique empty set by $\emptyset$.</p></div><div class="sheet-listing"><p class="sheet"> The axiom of extension is \[ A = B \Leftrightarrow (a \in A \implies a \in B) \land (b \in B \implies b \in A). \]</p></div><div class="sheet-listing" id="a_contrast"><h1 class="sheet">3. A Contrast</h1></div><div class="sheet-listing"><p class="sheet"> We can compare the axiom of extension for sets and their elements with an analogous statement for human beings and their ancestors.</p></div><div class="sheet-listing"><p class="sheet"> On the one hand, if two human beings are equal then they have the same ancestors. The ancestors being the person's parents, grandparents, greatgrandparents, and so on. This direction, same human implies same ancestors, is the analogue of the "only if" part of the axiom of extension. It is true. On the other hand, if two human beings have the same set of ancestors, they need not be the same human. This direction, same ancestors implies same human, is the analogue of the "if" part of the axiom of extension. It is false. For example, siblings have the same ancestors but are different people.</p></div><div class="sheet-listing"><p class="sheet"> We conclude that the axiom of extension is more than a statement about equality. It is also a statement about our notion of belonging, of what it means to be an element of a set, and what a set is.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './set_equality.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./set_equality.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./set_equality.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./set_equality-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./set_equality-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

@@ -1,21 +1,28 @@
 \input{../../sheet.tex}
 \sbasic
+\input{../natural_order/macros.tex}
+\input{../natural_families/macros.tex}
+\input{../sets/macros.tex}
 \input{../families/macros.tex}
+\input{../function_composites/macros.tex}
+\input{../direct_products/macros.tex}
 \input{../objects/macros.tex}
 \input{../sentences/macros.tex}
+\input{../set_equality/macros.tex}
 \input{../family_operations/macros.tex}
 \input{../common_sense/macros.tex}
 \input{../unordered_pairs/macros.tex}
-\input{../sets/macros.tex}
+\input{../sequences/macros.tex}
 \input{../identity/macros.tex}
 \input{../length_common_notions/macros.tex}
 \input{../relations/macros.tex}
 \input{../set_complements/macros.tex}
 \input{../set_specification/macros.tex}
+\input{../set_inclusion/macros.tex}
 \input{../natural_summation/macros.tex}
 \input{../probability/macros.tex}
 \input{../ordered_pairs/macros.tex}
-\input{../set_equality/macros.tex}
+\input{../real_sequences/macros.tex}
 \input{../equations/macros.tex}
 \input{../distance/macros.tex}
 \input{../empty_set/macros.tex}
@@ -23,11 +30,12 @@
 \input{../set_unions/macros.tex}
 \input{../set_symmetric_differences/macros.tex}
 \input{../set_intersections/macros.tex}
+\input{../power_set/macros.tex}
 \input{../real_summation/macros.tex}
 \input{../probability_outcomes/macros.tex}
-\input{../intervals/macros.tex}
 \input{../subset_systems/macros.tex}
-\input{../set_inclusion/macros.tex}
+\input{../real_limits/macros.tex}
+\input{../intervals/macros.tex}
 \input{../equation_solutions/macros.tex}
 \input{../natural_sums/macros.tex}
 \input{../operations/macros.tex}
@@ -38,7 +46,7 @@
 \input{../probability_events/macros.tex}
 \input{../probability_distributions/macros.tex}
 \input{../subset_algebras/macros.tex}
-\input{../power_set/macros.tex}
+\input{../extended_real_numbers/macros.tex}
 \input{../zero/macros.tex}
 \input{../natural_differences/macros.tex}
 \input{../length/macros.tex}
@@ -75,65 +83,8 @@
 \input{../covariance/macros.tex}
 \input{./macros.tex}
 \sstart
+\bpage\clearpage
 \stitle{Affine MMSE Predictors}
-
-We want to find $A$ and $b$ to minimize
-$$
-  \Expect{\norm{Ax + b - y}^2}.
-$$
-\begin{proof}
-We can express $\Expect(\norm{Ax + b - y}^2)$ as $\Expect((Ax + b - y)^\tp(Ax + b - y))$
-$$
-  \mat{
-    & + & \tr(A \Expect(xx^\tp) A^\tp) & + & \Expect(x)^\tp A^\tp b & - & \tr(A^\tp \Expect(yx^\tp)) \\
-    & + & b^\tp A \Expect(x)   & + & b^\tp b                & - & b^\tp\Expect(y) \\
-    & - & \tr(A \Expect(xy^\tp) ) & - & \Expect(y)^\tp b & + & \Expect(yy^\tp)
-  }
-$$
-The gradients with respect to $b$ are
-$$
-  \mat{
-    & + & 0 & + & A \Expect(x) & - & 0 \\
-    & + & A \Expect(x) & + & 2 b  & - & \Expect(y) \\
-    & - & 0 & - & \Expect(y) & + & 0
-  }
-$$
-so $2A\Expect(x) + 2b - 2\Expect(y)$.
-The gradients with respect to $A$ are
-$$
-  \mat{
-    & + & \Expect(xx^\tp)A^\tp + \Expect(xx^\tp)^\tp A^\tp  & + & \Expect(x)b^\tp & - & \Expect(yx^\tp)^\tp \\
-    & + & \Expect(x)b^\tp  & + & 0                & - & 0 \\
-    & - & \Expect(xy^\tp) & - & 0 & + & 0
-  }
-$$
-  so $2\Expect(xx^\tp)A^\tp + 2\Expect(x)b^\tp - 2\Expect(xy^\tp)$.
-  We want $A$ and $b$ solutions to
-  $$
-  \begin{aligned}
-    A\Expect(x) + b - \Expect(y) &= 0 \\
-    \Expect(xx^\tp)A^\tp + \Expect(x)b^\tp - \Expect(xy^\tp) &= 0
-  \end{aligned}
-  $$
-  so first get $b = \Expect(y) - A\Expect(x)$.
-  Then express
-  $$
-  \begin{aligned}
-    \Expect(xx^\tp)A^\tp + \Expect(x)(\Expect(y) - A \Expect(x))^\tp - \Expect(xy^\tp) = 0.\\
-    \Expect(xx^\tp)A^\tp + \Expect(x)\Expect(y)^\tp - \Expect(x)\Expect(x)^\tp A^\tp - \Expect(xy^\tp) = 0. \\
-    (\Expect(xx^\tp) - \Expect(x)\Expect(x)^\tp)A^\tp = \Expect(xy^\tp) - \Expect(x)\Expect(y)^\tp. \\
-    \cov(x, x)A^\tp = \cov(x, y).
-  \end{aligned}
-  $$
-  So $A^\tp = \inv{\cov(x,x)}\cov(x, y)$ means $A = \cov(y, x)\inv{\cov(x, x)}$ is a solution.
-  Then $b = \Expect(y) - \cov(y, x)\inv{\cov(x,x)}\Expect(x)$.
-  So to summarize, the estimator $\phi(x) = Ax + b$ is
-  $$
-    \cov(y, x)\invp{\cov{x, x}} x + \Expect(y) - \cov(y, x)\inv{\cov(x,x)}\Expect(x)
-  $$
-  or
-  $$
-    \Expect(y) + \cov(y, x)\invp{\cov{x, x}}(x - \Expect(x))
-  $$
-\end{proof}
+\input{sheet}
+\clearpage\gpage
 \strats

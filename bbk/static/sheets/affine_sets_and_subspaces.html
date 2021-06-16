@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./affine_sets_and_subspaces.pdf'" onkeypress="location.href='./affine_sets_and_subspaces.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./affine_sets_and_subspaces.pdf#page=2'" onkeypress="location.href='./affine_sets_and_subspaces.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -79,15 +80,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How do affine sets relate to subspaces?</p></div><div class="sheet-listing" id="main_results"><h1 class="sheet">2. Main Results</h1></div><div class="sheet-listing"><p class="sheet"> First, we will see that the subspaces of $\R^n$ are the affine sets which contain the origin.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> A set is a subspace if and only if it is an affine set which contains the zero vector.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> ($\rightarrow$) Every subspace of contains the zero vector. Moreover, it is closed under addition and scalar multiplication, so it must be an affine set, since the points of which the line consists between two points is expressed as a sum and scalar multiplication.</p></div><div class="sheet-listing"><p class="sheet"> ($\leftarrow$) Let $M$ be an affine set containing the zero vector. First, notice that $M$ is closed under scalar multiplication: if $x \in M$ and $a \in \R$, the vector $$ ax = (1 - a)0 + ax $$ is in the line through $0$ and $x$. Second, notice that $M$ is closed under vector addition: if $x, y \in M$, the vector $$ \frac{1}{2}(x + y) = \frac{1}{2}x + \parens*{1 - \frac{1}{2}}y $$ is in the line $M$. Since $\frac{1}{2}(x + y)$ is in $M$, and $M$ is closed under scalar multiplication, $$ x + y = 2\parens*{\frac{1}{2}\parens*{x + y}} $$ is also in $M$.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> Next we will see how all other affine sets can be obtained by those which contain the origin.</p></div><div class="sheet-listing"><h2 class="sheet" id="translates">2.1 Translates</h2></div><div class="sheet-listing"><p class="sheet"> Any translate of an affine set is affine.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Each nonempty affine set $M$ is parallel to a unique subspace $L$. ...TODO...</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './affine_sets_and_subspaces.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./affine_sets_and_subspaces.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./affine_sets_and_subspaces.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./affine_sets_and_subspaces-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./affine_sets_and_subspaces-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

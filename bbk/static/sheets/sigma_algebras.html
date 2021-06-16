@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./sigma_algebras.pdf'" onkeypress="location.href='./sigma_algebras.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./sigma_algebras.pdf#page=2'" onkeypress="location.href='./sigma_algebras.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -93,15 +94,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> For general measure theory, we need an algebra of sets closed under countable unions; we define such an object (TODO).</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A <i>countably summable subset algebra</i> is a subset space for which (1) the base set is distinguished (2) the complement of a distinguished set is distinguished (3) the union of a sequence of distinguished sets is distinguished.</p></div><div class="sheet-listing"><p class="sheet"> The name is justified, as each countably summable subset algebra is a \rt{subset algebra}{subsetalgebra}, because the union of $A_1, \dots, A_n$ coincides with the union of $A_1, \dots, A_n, A_n, A_n \dots$.</p></div><div class="sheet-listing"><p class="sheet"> We say that the set of distinguished sets a <i>sigma algebra</i> on the base set; we justify this langauge, as for an algebra, by the closure properties under standard set operations.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> The notation follows that of a subset space. Let $(A, \mathcal{A})$ be a countably summable subset algebra. We also say "let $\mathcal{A"$ be an sigma algebra on $A$.} Moreover, since the largest element of the sigma algebra is the base set, we can say without ambiguity: "let $\mathcal{A}$ be a sigma algebra."</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $2^{A}$ is a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $\set{A, \emptyset}$ is a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be an infinite set. Let $\mathcal{A}$ the collection of finite subsets of $A$. $\mathcal{A}$ is not a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be an infinite set. Let $\mathcal{A}$ be the collection subsets of $A$ such that the set or its complement is finite. $\mathcal{A}$ is not a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The intersection of a family of sigma algebras is a sigma algebra. \label{sigma_algebra:sigmaintersection} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any infinite set $A$, let $\mathcal{A}$ be the set $$ \Set*{ B \subset A }{ \card{B} \leq \aleph_0 \lor \card{C_{A}(B)} \leq \aleph_0 }. $$ $\mathcal{A}$ is an algebra; the <i>countable/co-countable algebra</i>. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \boxed{TOOD: clean up examples}</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './sigma_algebras.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./sigma_algebras.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./sigma_algebras.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./sigma_algebras-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./sigma_algebras-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

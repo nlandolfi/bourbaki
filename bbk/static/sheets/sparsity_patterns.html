@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./sparsity_patterns.pdf'" onkeypress="location.href='./sparsity_patterns.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./sparsity_patterns.pdf#page=2'" onkeypress="location.href='./sparsity_patterns.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -72,15 +73,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> TODO</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{sparsity pattern} of order $n$ is a set of pairs of natural numbers from one to $n$.</p></div><div class="sheet-listing"><p class="sheet"> A symmetric matrix is said to \t{have a sparsity pattern} if its $ij$th entry is zero whenever $\set{i, j}$ is not in the sparsity pattern. The diagonal entries and off-diagonal entries for pairs appearing in the sparsity pattern may or may not be zero.</p></div><div class="sheet-listing"><p class="sheet"> The graph whose vertices are one through $n$ and whose edge set is the sparsity patter is called the \t{sparsity graph}</p></div><div class="sheet-listing"><p class="sheet"> A sparsity pattern is not a property of a matrix because it is not unique (unless all off-diagonal entries are non-zero). If a matrix has a particular sparsity pattern it has every sparsity pattern which is a superset of it. In other words, every matrix has the sparsity pattern which is the set of all pairs of integers.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $E \subset \Set*{\set{i, j}}{i, j \in \set{1, 2, \dots, n}}$. A symmetric matrix $A \in \SymMat{n}$ is said to have sparsity pattern $E$ if $A_{ij} = A_{ji} = 0$ wheneer $i \neq j$ and $\set{i, j} \not\in E$. The graph $G = (V, E)$ where $V = \set{1, 2, \dots, n}$ is the sparsity graph associated with $E$.</p></div><div class="sheet-listing"><p class="sheet"> We will denote the symmetric matrices of order $n$ with sparsity pattern $E$ by $\SymMat{n}_{E}$.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">3. Example</h1></div><div class="sheet-listing"><p class="sheet"> \fig{ \img{0.5}{graphics_included/sparsity_graph} }{ Sparsity graph for the matrix (). }{fig:sparsity_graph}</p></div><div class="sheet-listing"><p class="sheet"> Figure \ref{fig:sparsity_graph} shows a sparsity graph for the matrix $$ A := \bmat{ A_{11} & A_{21} & A_{31} &      0 & A_{51} \\ A_{21} & A_{22} &      0 & A_{42} &      0 \\ A_{31} &      0 & A_{33} &      0 & A_{54} \\ 0 & A_{42} &      0 & A_{44} & A_{45} \\ A_{51} &      0 & A_{53} & A_{54} & A_{55} \\ }. $$</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './sparsity_patterns.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./sparsity_patterns.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./sparsity_patterns.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./sparsity_patterns-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./sparsity_patterns-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

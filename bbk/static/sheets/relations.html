@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./relations.pdf'" onkeypress="location.href='./relations.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./relations.pdf#page=2'" onkeypress="location.href='./relations.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -79,15 +80,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How can we relate the elements of two sets?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{relation} between two nonempty sets is a subset of their cross product. A relation on a single set is a subset of the cross product of it with itself.</p></div><div class="sheet-listing"><p class="sheet"> The \t{domain} of a relation is the set of all elements which appear as the first coordinate of some ordered pair of the relation. The \t{range} of a relation is the set of all elements which appear as the second coordinate of some ordered pair of the relation.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ be two nonempty sets. A relation on $A$ and $B$ is a subset of $A \cross B$. Let $C$ be a nonempty set. A relation on a $C$ is a subset of $C \cross C$.</p></div><div class="sheet-listing"><p class="sheet"> Let $a \in A$ and $b \in B$. The ordered pair $(a, b)$ may or may not be in a relation on $A$ and $B$. Also notice that if $A \neq B$, then $(b, a)$ is not a member of the product $A \cross B$, and therefore not in any relation on $A$ and $B$. If $A = B$, however, it may be that $(b, a)$ is in the relation.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.2 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ be nonempty sets with $a \in A$ and $b \in B$. Since relations are sets, we can use upper case Latin letters. Let $R$ be a relation on $A$ and $B$. We denote that $(a, b) \in R$ by $a R b$, read aloud as "a in relation $R$ to b."</p></div><div class="sheet-listing"><p class="sheet"> When $A = B$, we tend to use other symbols instead of letters. For example, $\sim$, $=$, $<$, $\leq$, $\prec$, and $\preceq$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> Often relations are defined over a single set, and there are a few useful properties to distinguish.</p></div><div class="sheet-listing"><p class="sheet"> A relation is \t{reflexive} if every element is related to itself. A relation is \t{symmetric} if two objects are related regardless of their order. A relation is \t{antisymmetric}{antisymmetric} if two different objects are related only in one order, and never both. A relation is \t{transitive} if a first element is related to a second element and the second element is related to the third element, then the first and third element are related.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">3.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $R$ be a relation on a non-empty set $A$. $R$ is reflexive if $$(a, a) \in R$$ for all $a \in A$. $R$ is transitive if $$(a, b) \in R \land (b, c) \in R \implies (a, c) \in R$$ for all $a, b, c \in A$. $R$ is symmetric if $$(a, b) \in R \implies (b, a) \in R$$ for all $a, b \in A$. $R$ is anti-symmetric if $$(a, b) \in R \implies (b, a) \not\in R$$ for all $a, b \in A$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './relations.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./relations.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./relations.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./relations-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./relations-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

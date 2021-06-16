@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./set_inclusion.pdf'" onkeypress="location.href='./set_inclusion.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./set_inclusion.pdf#page=2'" onkeypress="location.href='./set_inclusion.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -72,15 +73,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want language for all of the elements of a first set being the elements of a second set.</p></div><div class="sheet-listing" id="definisions"><h1 class="sheet">2. Definisions</h1></div><div class="sheet-listing"><p class="sheet"> Given two sets $A$ and $B$, if every element of $A$ is an element of $B$ then we call that $A$ is a \t{subset} of the $B$. We say that $A$ is \t{included} in $B$. We say that $B$ is a \t{superset} of $A$ or that $B$ \t{includes} $A$. A set $A$ includes and is included in itself.</p></div><div class="sheet-listing"><p class="sheet"> If $A = B$, then $A$ includes $B$ and $B$ includes $A$. The axiom of extension asserts the converse also holds. If $A$ includes $B$ and $B$ includes $A$, then $A = B$. In other words, if $A$ is a subset of $B$ and $B$ a subset of $A$, then $A = B$.</p></div><div class="sheet-listing"><p class="sheet"> The empty set is a subset of every other set. Suppose toward contradiction that $A$ were a set which did not include the empty set. Then there would exist an element in the empty set which is not in $A$. But then the empty set would not be empty. We call the empty set and $A$ \t{improper subsets} of $A$. All other subsets we call \t{proper subsets}. In other words, $B$ is an improper subset of $A$ if and only if $A$ includes $B$, $B \neq A$ and $B \neq \emptyset$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Given two sets $A$ and $B$, we denote that $A$ is included in $B$ by $A \subset B$. We read the notation $A \subset B$ aloud as "A is included in B} or \say{A subset B". Or we write $B \supset A$, and read it aloud "B includes A} or \say{B superset $A$".</p></div><div class="sheet-listing"><p class="sheet"> In this notation, we express the axiom of extension \[ A = B \Leftrightarrow (A \supset B) \land (A \subset B). \] The notation $A \subset B$ is a concise symbolism for the sentence \say{every element of $A$ is an element of $B$.} Or for the alternative notation $a \in A \implies a \in B$.</p></div><div class="sheet-listing"><h2 class="sheet" id="properties">2.2 Properties</h2></div><div class="sheet-listing"><p class="sheet"> Given a set $A$, $A \subset A$. Like equality, we say that inclusion is \t{reflexive}. Given sets $A$ and $B$, if $A \subset B$ and $B \subset C$ then $A \subset C$. Like equality, we say that inclusion is \t{transitive}. If $A \subset B$ and $B \subset A$, then $A = B$ (by the axiom of extension). Unlike equality, which is symmetric, we say that inclusion is \t{antisymmetric}.</p></div><div class="sheet-listing"><h2 class="sheet" id="comparison_with_belonging">2.3 Comparison with belonging</h2></div><div class="sheet-listing"><p class="sheet"> Given a set $A$ inclusion is reflexive. $A \subset A$ is always true. Is $A \in A$ ever true? Also, inclusion is transitive. Whereas belonging is not.</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './set_inclusion.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./set_inclusion.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./set_inclusion.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./set_inclusion-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./set_inclusion-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`

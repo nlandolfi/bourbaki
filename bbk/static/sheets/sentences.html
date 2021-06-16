@@ -3,6 +3,7 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
@@ -13,7 +14,7 @@
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./sentences.pdf'" onkeypress="location.href='./sentences.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./sentences.pdf#page=2'" onkeypress="location.href='./sentences.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -65,15 +66,165 @@
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to say things about objects and sets of objects.</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> An \t{assertion} is a sequence of symbols which is assumed to be true.</p></div><div class="sheet-listing"><p class="sheet"> Let $a$ be an object. Let $A$ be a set. A \t{membership assertion} is $a \in A$. Notice that $\in$ is not symmetric. $a \in A$ does not assert the same meaning as $A \in a$.</p></div><div class="sheet-listing"><p class="sheet"> Let $b$ be an object. An \t{identity assertion} is $a = b$. Notice that $a = b$ asserts the same as $b = a$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{primitive sentence} is a belonging assertion or an equality assertion. The symbolism used includes three pieces: the names of the two objects and the symbols $\in$ or $=$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{logical form} is one of several structures:</p></div><div class="sheet-listing"><p class="sheet"> \begin{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> \item</p></div><div class="sheet-listing"><p class="sheet"> and</p></div><div class="sheet-listing"><p class="sheet"> \item</p></div><div class="sheet-listing"><p class="sheet"> or (in the sense of "--- or --- or both")</p></div><div class="sheet-listing"><p class="sheet"> \item</p></div><div class="sheet-listing"><p class="sheet"> not</p></div><div class="sheet-listing"><p class="sheet"> \item</p></div><div class="sheet-listing"><p class="sheet"> implies (in the sense of "if ---, then ---"</p></div><div class="sheet-listing"><p class="sheet"> \item</p></div><div class="sheet-listing"><p class="sheet"> if and only if</p></div><div class="sheet-listing"><p class="sheet"> \item</p></div><div class="sheet-listing"><p class="sheet"> for some</p></div><div class="sheet-listing"><p class="sheet"> \item</p></div><div class="sheet-listing"><p class="sheet"> for all \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> This list is redundant.</p></div><div class="sheet-listing"><p class="sheet"> A \t{sentence} primitive sentence or a logical form with a primitive sentence or a logical form with sentences.</p></div>
     </div>
 
-    <div style="display: flex; flex-direction: row;">
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './sentences.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page2" style="border: 1px solid black; direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
     <iframe id="sheet-pdf" src="./sentences.pdf#page=2">
     </iframe>
     <iframe id="sheet-pdf" src="./sentences.pdf#page=3">
     </iframe>
+    -->
+    <!-- PAGES -->
+
     </div>
 
-    <iframe id="graph-pdf" src="./sentences-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./sentences-graph.pdf">
     </iframe>
+    -->
 
   </body>
 </html>`
