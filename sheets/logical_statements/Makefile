@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make identities.pdf
+	make logical_statements.pdf
 
-identities.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > identities.tex
+logical_statements.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > logical_statements.tex
 
-identities.pdf: ../../*.tex ../../trademark.pdf *.tex identities.tex
-	# pdflatex --file-line-error -interaction=nonstopmode identities.tex
-	../../latexrun identities.tex
+logical_statements.pdf: ../../*.tex ../../trademark.pdf *.tex logical_statements.tex
+	# pdflatex --file-line-error -interaction=nonstopmode logical_statements.tex
+	../../latexrun logical_statements.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: identities.pdf
-	open identities.pdf
+open: logical_statements.pdf
+	open logical_statements.pdf
 
 o:
 	make open
 
-terms: identities.tex
-	bbk_sheet -mode ts identities.tex
+terms: logical_statements.tex
+	bbk_sheet -mode ts logical_statements.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f identities.*
+	rm -f logical_statements.*
 	make reset
 	bbk_sheet -mode mk > Makefile
