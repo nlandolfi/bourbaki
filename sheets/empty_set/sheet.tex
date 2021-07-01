@@ -1,11 +1,32 @@
 %!name:empty_set
-%!need:set_specification
+% %!need:set_specification
+%!need:set_equality
 
 \ssection{Why}
 
 If there is a set, there is an empty set.
 Are there many such sets?
 How do they (or it) relate to other sets?
+
+\s{Empty Set}
+
+An immediate consequence of the axiom of extension is that there is a unique set that is empty.
+
+\begin{account}
+  \namee{$A$}{$B$}
+  \have{empty_set:aempty}{$\neg(\exists a \in A)$}
+  \have{empty_set:bempty}{$\neg(\exists b \in B)$}
+  \thus{empty_set:ainb}{$(\forall x)(x \in A \implies b \in A)$}{\ref{empty_set:aempty}}
+  \thus{empty_set:bina}{$(\forall x)(x \in B \implies b \in B)$}{\ref{empty_set:bempty}}
+  \thus{empty_set:conclusion}{$A = B$}{\ref{empty_set:ainb},\ref{empty_set:bina}}
+\end{account}
+% The English follows:
+% Denote two sets which are both empty by $A$ and by $B$.
+% Suppose toward contradiction that there exists an element $a \in A$ with $a \not\in B$ or $b \in B$ with $b \not\in B$.
+% But then $A$ or $B$ would be nonempty.
+% Thus there is a set which is empty and any other empty set is this set.
+% In other words, this set is unique.
+% We call it the \t{empty set}.
 
 \ssection{Definition}
 

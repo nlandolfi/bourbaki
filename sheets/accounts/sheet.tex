@@ -8,16 +8,16 @@ We want to succinctly and clearly make several statements about objects and sets
 
 \s{Definition}
 
-An account is a list of naming, identity and belonging statements
-
-We use the words \say{let \_ denote an \_} to introduce a name as aplaceholder for a thing, and we use the symbols $\_=\_$ and $\_\in\_$ to denote statements of identity and belonging.
+An \t{account} is a list of naming, logical, and quantified statements.
+% , identity and belonging statements
+We use the words \say{let \_ denote an \_} to introduce a name as a placeholder for a thing, and we use the symbols $\_=\_$ and $\_\in\_$ to denote statements of identity and belonging.
 In other words, we have three sentence kinds to record.
 
 \begin{enumerate}
 
   \item
   \textbf{Names.}
-  We want to declare that we are using a particular name as a placeholder.
+  State we are using a name.
 %   When we start with a blank slate, once we have declared a name we do not use the same name twice.
 %   So we will want to keep track of which names are in use.
 
@@ -34,9 +34,11 @@ In other words, we have three sentence kinds to record.
 
 \end{enumerate}
 
-Our main purpose is to keep a list of the statements we have made.
-And we want to group declaration of names as placeholders with the statements that use the placeholders.
-In the English language we might use paragraphs or sections to do so.
+Our main purpose is to keep a list names and logical statements about them and then deductions.
+% of the statements we have made.
+We want to group our usage of names.
+% And we want to group declaration of names as placeholders with the statements that use the placeholders.
+In the English language we use paragraphs or sections to do so.
 In these sheets, we will use \t{accounts}, which will be a list of statements, each of which is labeled by an Arabic numeral (see \sheetref{letters}{Letters}).
 
 Experience suggests that we start with an example.
@@ -44,87 +46,121 @@ Suppose we want to summarize the following english language description of some 
 
 \begin{quote}
 Denote an object by $a$.
-Denote the same object by $a'$
-In other words, $a$ equals $a'$.
-Denote a set by $A$.
-The object denoted by $a$ is an element of the set denoted by $A$.
+Also, denote the same object by $b$
+% Also, In other words, $a$ equals $a'$ or $a = a'$.
+Also, denote a set by $A$.
+Also, the object denoted by $a$ is an element of the set denoted by $A$.
+Also denote an object by $c$.
+Also $c$ is the same object as $b$.
 \end{quote}
 
-\begin{account}[Example]
+In our usual manner of speaking, we drop the word \say{also}.
+In these sheets, we translate each of the sentences into our symbols.
+For names we use, we write \texttt{name} in that font followed by the name.
+For logical statements we \say{have}, we write \texttt{have} followed by the logical statement.
+So we write:
+
+\begin{account}[First Example]
 \name{$a$}
-\name{$a'$}
-\have{}{$a = a'$}
+\name{$b$}
+\have{accounts:firstexample:equality}{$a = b$}
 \name{$A$}
-\have{}{$a \in A'$}
+\have{accounts:firstexample:inclusion}{$a \in A'$}
+\name{$c$}
+\have{accounts:firstexample:secondequality}{$c = b$}
+\thus{accounts:firstexample:thirdequality}{$a = c$}{\ref{accounts:firstexample:equality},\ref{accounts:firstexample:secondequality}}
 \end{account}
 
-We have three primary
+% We will abbreviate like so, and bring all names to the beginning.
 
-In the English language we have nouns and verbs.
-The nouns reference objects and the verbs reflect the relations of these objects to each other.
-In these sheets the nouns are names (introduced in \sheetref{}{Objects}) and we speak only in the present tense.
+% \begin{account}[Example]
+% \nameee{$a$}{$a'$}{$A$}
+% \have{}{$a = a'$}
+% \have{}{$a \in A'$}
+% \end{account}
 
-\ssection{Why}
+% \newcommand{\satisfies}{\triangleleft}
+% \newcommand{\Set}{\mathsf{Set}}
+% \newcommand{\Obj}{\mathsf{Obj}}
+% \newcommand{\Group}{\mathsf{group}}
+% \begin{account}[Example]
+% \nameee{$a$}{$a'$}{$A$}
+%   \have{}{a \dashv \texttt{Groups/Axioms}}
+% \name{$a:\Obj$}
+% \name{$a':\Obj$}
+% \have{}{$a \satisfies \Set}
+% \have{}{$a = a'$}
+% \name{$A:\Set$}
+% \have{}{$a \in A'$}
+% \end{account}
 
-We want to succinctly and unambiguously record statements about objects and sets of objects, keeping track of which names we are using.
-
-\ssection{Definition}
-
-We want to say the necessary and not the superfluous.
-It is common in the history of mathematics to describe the development in English.
-There are minor pitfalls to this.
-
-%TODO: Ed. 2
-We will not describe these here, but rather will give one example.
-The first is that people of say \say{let $A$ be such and such}.
-What they mean is \say{denote such and such by $A$} with a tacit assumption that you know that such and such means.
+% We have three primary
+%
+% In the English language we have nouns and verbs.
+% The nouns reference objects and the verbs reflect the relations of these objects to each other.
+% In these sheets the nouns are names (introduced in \sheetref{}{Objects}) and we speak only in the present tense.
+%
+% \ssection{Why}
+%
+% We want to succinctly and unambiguously record statements about objects and sets of objects, keeping track of which names we are using.
+%
+% \ssection{Definition}
+%
+% We want to say the necessary and not the superfluous.
+% It is common in the history of mathematics to describe the development in English.
+% There are minor pitfalls to this.
+%
+% %TODO: Ed. 2
+% We will not describe these here, but rather will give one example.
+% The first is that people of say \say{let $A$ be such and such}.
+% What they mean is \say{denote such and such by $A$} with a tacit assumption that you know that such and such means.
 % Such and such may be some tangible object in the real world, or it may be some idea.
-The practice is similar to using a pronoun.
-If I say \say{Ben walks to the store} and then \say{He bought some brocolli,} we understand that \say{He} refers to Ben.
-If I say \say{John walks to the store} and then \say{He bought some tofu,} we undersatnd that \say{He} refers to John.
-
-The importance of using pronouns is relevant when we do not have proper names like Ben or John.
-For example, suppose I say \say{The tall brown-haired thin man walks to the store} it saves quite a bit of sound to say \say{He} in the next thought, or even, \say{the man}.
+% The practice is similar to using a pronoun.
+% If I say \say{Ben walks to the store} and then \say{He bought some brocolli,} we understand that \say{He} refers to Ben.
+% If I say \say{John walks to the store} and then \say{He bought some tofu,} we undersatnd that \say{He} refers to John.
+%
+% The importance of using pronouns is relevant when we do not have proper names like Ben or John.
+% For example, suppose I say \say{The tall brown-haired thin man walks to the store} it saves quite a bit of sound to say \say{He} in the next thought, or even, \say{the man}.
 % In these sheets we have used the pronouns it in many places, and will continue to do so.
-These sheets include many other examples of using pronouns
-
-Instead of \say{Let $A$ be such and such}, we will just write $\texttt{name} \; A$.
-The idea is that we are introducing a name, $A$, that is some symbols to denote some object.
-The use of a different font and the symbol \texttt{name} before $A$ is an abbreviation of the following: \say{Look at this symbol here $A$. This symbol is a reference for some object. It will always reference that object.}
+% These sheets include many other examples of using pronouns
+%
+% Instead of \say{Let $A$ be such and such}, we will just write $\texttt{name} \; A$.
+% The idea is that we are introducing a name, $A$, that is some symbols to denote some object.
+% The use of a different font and the symbol \texttt{name} before $A$ is an abbreviation of the following: \say{Look at this symbol here $A$. This symbol is a reference for some object. It will always reference that object.}
 % We will procede to say things about these objects.
+%
+% For the statement that the object denoted by $A$ \textit{is} or \textit{is the same} or \textit{is the very same object} as the object denoted by $B$, we will use $=$.
+% So $=$we will write $A = B$.
+%
+% If all we want to say is that two objects
+%
+% We also need some way of identifying that two names
+%
+%
+% \begin{account}
+%   \name{$x$}
+%   \name{$y$}
+%   \have{a}{$x = y$}
+% \end{account}
+%
+% \begin{account}
+%   \name{$x$}
+%   \name{$y$}
+%   \name{$z$}
+%   \have{a}{$x \subset y$}
+%   \have{b}{$y \subset z$}
+%   \thus{c}{$(\forall a)(a \in x \implies a \in y)$}{\ref{a}}
+%   \thus{d}{$(\forall a)(a \in y \implies a \in z)$}{\ref{b}}
+%   \thus{asdf}{$x \subset z$}{\ref{c},\ref{d}}
+% \end{account}
+%
+% \begin{account}
+%   \nameee{$x$}{$y$}{$z$}
+%   \have{a}{$x \subset y$}
+%   \have{b}{$y \subset z$}
+%   \thus{c}{$(\forall a)(a \in x \implies a \in y)$}{\ref{a}}
+%   \thus{d}{$(\forall a)(a \in y \implies a \in z)$}{\ref{b}}
+%   \thus{asdf}{$x \subset z$}{\ref{c},\ref{d}}
+% \end{account}
 
-For the statement that the object denoted by $A$ \textit{is} or \textit{is the same} or \textit{is the very same object} as the object denoted by $B$, we will use $=$.
-So $=$we will write $A = B$.
-
-If all we want to say is that two objects
-
-We also need some way of identifying that two names
-
-
-\begin{account}
-  \name{$x$}
-  \name{$y$}
-  \have{a}{$x = y$}
-\end{account}
-
-\begin{account}
-  \name{$x$}
-  \name{$y$}
-  \name{$z$}
-  \have{a}{$x \subset y$}
-  \have{b}{$y \subset z$}
-  \thus{c}{$(\forall a)(a \in x \implies a \in y)$}{\ref{a}}
-  \thus{d}{$(\forall a)(a \in y \implies a \in z)$}{\ref{b}}
-  \thus{asdf}{$x \subset z$}{\ref{c},\ref{d}}
-\end{account}
-
-\begin{account}
-  \nameee{$x$}{$y$}{$z$}
-  \have{a}{$x \subset y$}
-  \have{b}{$y \subset z$}
-  \thus{c}{$(\forall a)(a \in x \implies a \in y)$}{\ref{a}}
-  \thus{d}{$(\forall a)(a \in y \implies a \in z)$}{\ref{b}}
-  \thus{asdf}{$x \subset z$}{\ref{c},\ref{d}}
-\end{account}
-
-\blankpage
+% \blankpage
