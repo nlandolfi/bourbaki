@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./statements.pdf#page=2'"> Statements </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./statements.pdf#page=2'" onkeypress="location.href='./statements.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./statements-graph.pdf'" onkeypress="location.href='./statements-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./objects.html'" onkeypress="location.href='./objects.html'">
+              <span>
+                Objects
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./logical_statements.html'" onkeypress="location.href='./logical_statements.html'">
+            <span>
+            Logical Statements
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want symbols to represent identity and belonging.</p></div><div class="sheet-listing"><p class="sheet"> \s{Definition}</p></div><div class="sheet-listing"><p class="sheet"> In the English language, \t{nouns} are words that name people, places and things. In these sheets, \t{names} (see \sheetref{names}{Names}) serve the role of nouns. In the English language, \t{verbs} are words which talk about actions or relations. In these sheets, we use the verbs "is} and \say{belongs" for the objects discussed. And we exclusively use the present tense. A \t{statement} is several symbols.</p></div><div class="sheet-listing"><p class="sheet"> Experience shows that we can avoid the English language and use symbols for verbs. By doing this, we introduce odd new shapes and forms to which we can give specific meanings. As we use italics for names to remind us that the symbol is denoting a possibly intangible arbitrary object, we use new symbols for verbs to remind us that we are using particular verbs, in a particular sense, with a particular tense.</p></div><div class="sheet-listing"><h2 class="sheet" id="identity">0.1 Identity</h2></div><div class="sheet-listing"><p class="sheet"> As an example, consider the symbol $=$. Let $a$ denote an object and $b$ denote an object. Let us suppose that these two objects are the same object in the set of the sheet \sheetref{identities}{Identity}. We agree that $=$ means "is" in this sense. Then we write $a = b$. It's an odd series of symbols, but a series of symbols nonetheless. And if we read it aloud, we would read $a$ as "the object denoted by a}, then $=$ as \say{is}, then $b$ as \say{the object denoted by b". Altogether then, "the object denoted by $a$ is the object denoted by $b$." We might box these three symbols \fbox{$a \sim b$} to make clear that they are meant to be read together, but experience shows that (as with English sentences and words) we do not need boxes.</p></div><div class="sheet-listing"><p class="sheet"> The symbol $=$ is (appropriately) a symmetric symbol. If we flip it left and right, it is the same symbol. This reflects the symmetry of the English sentences represented. $A = B$ means the same as $B = A$.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Belonging}</p></div><div class="sheet-listing"><p class="sheet"> As a second example, consider the symbol $\in$. Let $a$ denote an object and let $A$ denote a set. Let us suppose that the object denoted by $a$ belongs to the set denoted by $A$. We agree that $\in$ means "belongs to} in the sense of \say{is an element of} or \say{is a member of} as given in \sheetref{sets}{Sets". Then we write $a \in A$. We read these symbols as "the object denoted by $a$ belongs to the set denoted by $A$}.\footnote{The symbol $\in$ is a stylized lower case Greek letter $\epsilon$, which is a mnemonic for the ancient Greek word $\grave{\epsilon} \sigma \tau \acute{\iota}$ which means, roughly, \say{belongs". Since in English, $\epsilon$ is read aloud "ehp-sih-lawn,} $\in$ is also a mnemonic for \say{element of}."</p></div><div class="sheet-listing"><p class="sheet"> The symbol $\in$ is not symmetric. If we flip it left and right it looks different. And as we discussed in \sheetref{sets}{Sets}, $a \in A$ does not the mean the same as $A \in a$.</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './statements.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="direction: ltr;"></canvas>
+    <canvas id="page2" style="direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./statements.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./statements.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./statements-graph.pdf">
+    </iframe>
+    -->
+
+  </body>
+</html>`
