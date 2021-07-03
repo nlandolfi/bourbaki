@@ -8,3 +8,4 @@ make:
 	go install serve/bbk_serve.go
 	go install sheet/bbk_sheet.go
 	go install sheets/bbk_sheets.go
+	go install all/bbk_all.go
