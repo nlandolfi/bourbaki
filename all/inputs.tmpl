@@ -1,6 +1,8 @@
 {{ range . }}
 \newpage
 \label{{ "{" }}{{.Name}}{{ "}" }}
+\refstepcounter{sheets}
+\label{{ "{" }}sheets:{{.Name}}{{ "}" }}
 \hypertarget{{ "{" }}{{ .Name }}{{ "}" }}{}
 \stitle{{ "{" }}{{ title .Name }}{{ "}" }}{{ "{" }}{{.Name}}{{ "}" }}
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/macros.tex{{ "}" }}
@@ -8,14 +10,14 @@
 \clearpage
 
 \sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
-(\ref{{ "{" }}{{.Name}}{{ "}" }})
+(\ref{{ "{" }}sheets:{{.Name}}{{ "}" }})
 immediately needs:
 
 {{ if .Needs }}
 \begin{tabular}{l}
 {{ range .Needs }}
 \sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }}
-(\ref{{ "{" }}{{.}}{{ "}" }})
+(\ref{{ "{" }}sheets:{{.}}{{ "}" }})
 \\
 {{ end }}
 \end{tabular}
@@ -24,14 +26,14 @@ Nothing.
 {{end}}
 
 \sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
-(\ref{{ "{" }}{{ .Name }}{{ "}" }})
+(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
 is immediately needed by:
 
 {{ if .NeededBy }}
 \begin{tabular}{l}
 {{ range .NeededBy }}
 \sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }}
-(\ref{{ "{" }}{{.}}{{ "}" }})
+(\ref{{ "{" }}sheets:{{.}}{{ "}" }})
 \\
 {{ end }}
 \end{tabular}
