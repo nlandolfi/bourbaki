@@ -88,7 +88,7 @@ func writeFile(all map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 		}
 	*/
 	fmt.Fprintln(os.Stdout, "\\input{sheet}")
-	fmt.Fprintln(os.Stdout, "\\clearpage\\gpage")
+	fmt.Fprintln(os.Stdout, "\\clearpage\\gpage{graph}")
 	fmt.Fprintln(os.Stdout, "\\strats")
 }
 
