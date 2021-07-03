@@ -5,10 +5,33 @@
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/macros.tex{{ "}" }}
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/sheet.tex{{ "}" }}
 \clearpage
-Needs: {{ range .Needs }} {{ title . }} {{ end }}
+This sheet immediately needs:
 
-Needed By:
-\begin{tabular}{c}{{ range .NeededBy }} {{ title . }} \\ {{ end }}
+{{ if .Needs }}
+{{ "{" }} \sf
+\begin{tabular}{l}
+{{ range .Needs }}
+\sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }} \\
+{{ end }}
 \end{tabular}
+{{ "}"}}
+{{else}}
+Nothing.
+{{end}}
+
+This sheet is immediately needed by:
+
+{{ "{" }} \sf
+{{ if .NeededBy }}
+\begin{tabular}{l}
+{{ range .NeededBy }}
+\sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }} \\
+{{ end }}
+\end{tabular}
+{{ "}"}}
+{{else}}
+Nothing.
+{{end}}
+
 \clearpage\gpage{{ "{" }}../sheets/{{ .Name }}/graph.pdf{{ "}" }}
 {{ end }}
