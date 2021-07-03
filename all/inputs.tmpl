@@ -1,18 +1,22 @@
 {{ range . }}
 \newpage
 \label{{ "{" }}{{.Name}}{{ "}" }}
+\hypertarget{{ "{" }}{{ .Name }}{{ "}" }}{}
 \stitle{{ "{" }}{{ title .Name }}{{ "}" }}{{ "{" }}{{.Name}}{{ "}" }}
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/macros.tex{{ "}" }}
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/sheet.tex{{ "}" }}
 \clearpage
 
 \sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
+(\ref{{ "{" }}{{.Name}}{{ "}" }})
 immediately needs:
 
 {{ if .Needs }}
 \begin{tabular}{l}
 {{ range .Needs }}
-\sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }} \\
+\sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }}
+(\ref{{ "{" }}{{.}}{{ "}" }})
+\\
 {{ end }}
 \end{tabular}
 {{else}}
@@ -20,12 +24,15 @@ Nothing.
 {{end}}
 
 \sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
+(\ref{{ "{" }}{{ .Name }}{{ "}" }})
 is immediately needed by:
 
 {{ if .NeededBy }}
 \begin{tabular}{l}
 {{ range .NeededBy }}
-\sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }} \\
+\sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }}
+(\ref{{ "{" }}{{.}}{{ "}" }})
+\\
 {{ end }}
 \end{tabular}
 {{else}}
