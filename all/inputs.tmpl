@@ -9,11 +9,11 @@
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/sheet.tex{{ "}" }}
 \clearpage
 
+{{ if .Needs }}
 \sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
 (\ref{{ "{" }}sheets:{{.Name}}{{ "}" }})
 immediately needs:
 
-{{ if .Needs }}
 \begin{tabular}{l}
 {{ range .Needs }}
 \sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }}
@@ -22,16 +22,18 @@ immediately needs:
 {{ end }}
 \end{tabular}
 {{else}}
-Nothing.
+\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
+does not immediately need any sheet.
 {{end}}
 
-\vspace{{ "{" }}1cm{{ "}"}}
+\vspace{{ "{" }}0.5cm{{ "}"}}
 
+{{ if .NeededBy }}
 \sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
 (\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
 is immediately needed by:
 
-{{ if .NeededBy }}
 \begin{tabular}{l}
 {{ range .NeededBy }}
 \sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }}
@@ -40,7 +42,28 @@ is immediately needed by:
 {{ end }}
 \end{tabular}
 {{else}}
-Nothing.
+\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
+is not immediately need by any sheet.
+{{end}}
+
+\vspace{{ "{" }}0.5cm{{ "}"}}
+
+{{ if .Terms }}
+\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
+gives the following terms.
+
+\begin{tabular}{l}
+{{ range .Terms }}
+\textit{{ "{" }}{{ . }}{{ "}" }}
+\\
+{{ end }}
+\end{tabular}
+{{else}}
+\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
+gives no terms.
 {{end}}
 
 \clearpage\gpage{{ "{" }}../sheets/{{ .Name }}/graph.pdf{{ "}" }}
