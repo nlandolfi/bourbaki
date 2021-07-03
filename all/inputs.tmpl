@@ -5,30 +5,29 @@
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/macros.tex{{ "}" }}
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/sheet.tex{{ "}" }}
 \clearpage
-This sheet immediately needs:
+
+\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
+immediately needs:
 
 {{ if .Needs }}
-{{ "{" }} \sf
 \begin{tabular}{l}
 {{ range .Needs }}
 \sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }} \\
 {{ end }}
 \end{tabular}
-{{ "}"}}
 {{else}}
 Nothing.
 {{end}}
 
-This sheet is immediately needed by:
+\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
+is immediately needed by:
 
-{{ "{" }} \sf
 {{ if .NeededBy }}
 \begin{tabular}{l}
 {{ range .NeededBy }}
 \sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }} \\
 {{ end }}
 \end{tabular}
-{{ "}"}}
 {{else}}
 Nothing.
 {{end}}
