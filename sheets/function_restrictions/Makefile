@@ -1,0 +1,52 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make function_restrictions.pdf
+
+function_restrictions.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > function_restrictions.tex
+
+function_restrictions.pdf: ../../*.tex ../../trademark.pdf *.tex function_restrictions.tex
+	# pdflatex --file-line-error -interaction=nonstopmode function_restrictions.tex
+	../../latexrun function_restrictions.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: function_restrictions.pdf
+	open function_restrictions.pdf
+
+o:
+	make open
+
+terms: function_restrictions.tex
+	bbk_sheet -mode ts function_restrictions.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f function_restrictions.*
+	make reset
+	bbk_sheet -mode mk > Makefile
