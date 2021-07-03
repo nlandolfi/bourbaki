@@ -1,6 +1,10 @@
 {{ range . }}
 \newpage
-\stitle{{ "{" }}{{.Title}}{{ "}" }}{{ "{" }}{{.Name}}{{ "}" }}
+\label{{ "{" }}{{.Name}}{{ "}" }}
+\stitle{{ "{" }}{{ title .Name }}{{ "}" }}{{ "{" }}{{.Name}}{{ "}" }}
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/macros.tex{{ "}" }}
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/sheet.tex{{ "}" }}
+\clearpage
+NEEDS
+\clearpage\gpage{{ "{" }}../sheets/{{ .Name }}/graph.pdf{{ "}" }}
 {{ end }}
