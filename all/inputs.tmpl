@@ -5,6 +5,10 @@
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/macros.tex{{ "}" }}
 \input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/sheet.tex{{ "}" }}
 \clearpage
-NEEDS
+Needs: {{ range .Needs }} {{ title . }} {{ end }}
+
+Needed By:
+\begin{tabular}{c}{{ range .NeededBy }} {{ title . }} \\ {{ end }}
+\end{tabular}
 \clearpage\gpage{{ "{" }}../sheets/{{ .Name }}/graph.pdf{{ "}" }}
 {{ end }}
