@@ -3,6 +3,8 @@
 % wierd because statements needs sets
 % %!need:sets
 %!need:standardized_accounts
+%!need:set_inclusion
+
 
 \ssection{Why}
 
@@ -23,52 +25,31 @@ Given sets $A$ and $B$, if $A = B$ then every element of $A$ is an element of $B
 
 What of the converse?
 Suppose every element of $A$ is an element of $B$ and every element of $B$ is an element of $A$.
-Is $A = B$ true?
+Then $A = B$?
 We define it to be so.
-Two sets are \t{equal} if and only if every element of one is an element of the other.
-In other words, two sets are the same if they have the same elements.
-This statement is sometimes called the \t{axiom of extension}.
+\begin{principle}[Determined by Members]
+	Sets are the same if every member of one is a member of the other and vice versa.
+\end{principle}
+In other words, two sets are identical if and only if every element of one is an element of the other.
+%The elements of the set are sometimes called the \t{extension}.
+This principle is sometimes called the \t{principle of extension}.
+%Two sets are \t{equal} if and only if every element of one is an element of the other.
+%This statement is sometimes called the \t{axiom of extension}.
 Roughly speaking, if we refer to the elements of a set as its \t{extension}, then we have declared that if we know the extension then we know the set.
 A set is determined by its extension.
 
-This definition gives us a way to argue that $A = B$ from the properties of the elements of $A$ and $B$.
-It may not be obvious that the sets are the same.
-We first argue that each element of $A$ is an element of $B$ and then argue that each element of $B$ is an element of $A$.
-With these two implications, we use the axiom of extension to conclude that the sets are the same.
+\ss{Deductive principle}
 
+This definition allows us to deduce $A = B$ if we first deduce that each element of $A$ is an element of $B$ and then then that each element of $B$ is an element of $A$.
+With these two implications, we use the principle of extension to conclude that the sets are the same.
+In our notation, with the quantifiers for all sets denoted here by $A$ and $B$, 
+\[
+	(\forall x)(((A \subset B) \land (B \subset A)) \iff (A = B))
+\]
 
-The logical statement is: $(((\forall x)(x \in A \implies x \in B) \land (\forall x)(x \in B \implies x \in A))) \implies (A = B)$
-% We declare the affirmative.  Thus we can assert equality of sets.
-Here is an example of applying that:
+\ssection{Belonging and sets compared with ancestry and humans}
 
-\begin{account}[Extension]
-\namee{$A$}{$B$}
-\have{set_equality:extension:first}{$(\forall x)((x \in A) \implies (x \in B))$}
-\have{set_equality:extension:second}{$(\forall x)((x \in B) \implies (x \in A))$}
-\thus{set_equality:extension:conclusion}{$A = B$}{\ref{set_equality:extension:first},\ref{set_equality:extension:second}}
-\end{account}
-
-
-% \ssubsection{Notation}
-%
-% As with any objects, we denote that $A$ and $B$ are equal
-% by $A = B$.
-% We denote that they are not equal by $A \neq B$.
-% We denote the unique empty set by $\emptyset$.
-%
-%
-% The axiom of extension is
-% \[
-%   A = B \Leftrightarrow (a \in A \implies a \in B) \land (b \in B \implies b \in A).
-% \]
-%
-
-\ssection{A Contrast}
-
-We can compare the axiom of extension
-for sets and their elements with an
-analogous statement
-for human beings and their ancestors.
+Compare the principle of extension for identifying sets from their elements with an analogous principle for identifying people from their ancestors.
 
 On the one hand, if two human beings are equal then they have the same ancestors.
 The ancestors being the person's parents, grandparents, greatgrandparents, and so on.
