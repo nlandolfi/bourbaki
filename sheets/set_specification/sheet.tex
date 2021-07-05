@@ -1,6 +1,5 @@
 %!name:set_specification
 %!need:set_inclusion
-% %!need:sentences
 
 \ssection{Why}
 
@@ -10,41 +9,71 @@ So, can we always construct subsets?
 \ssection{Definition}
 
 We will say that we can.
+More specifically, if we have a set and some statement which may be true or false for the elements of that set, a set exists containing all and only the elements for which the statement is true.
+
+Roughly speaking, the principle is like this.
+We have the set which contains some objects.
+Suppose we believe the set of all playing cards in the usual deck exists.
+We are taking as a principle that the set of all fives exists, so does the set of all fours, as does the set of all hearts, and the set of all face cards.
+Roughly, the corresponding statements are \say{the card is a five}, \say{the card is a four}, \say{the card is a heart}, and \say{the card is a face card}.
+%Of course, the sets in question will not always be so simple.
+%If 
+
+\begin{principle}[Specification]
+	For any statement and any set, there is a subset whose elements satisfy the statement.
+\end{principle}
+
+We call this the \t{principle of specification}. 
+We call the second set (obtained from the first) the set obtained by \t{specifying} elements according to the sentence.
+The principle of extension (see \sheetref{set_equality}{Set Equality}) says that this set (here denoted $A'$) is unique.
+All  basic principles about sets (other than the principle of extension, see \sheetref{set_equality}{Set Equality}) assert that we can construct new sets out of old ones in reasonable ways.
+
 % The basic principles of set theory other than the axiom of extension allow us to construct new sets out of existing ones.
 % The fir
 % The basis principles of set theory--- the axiom of extension, allow us to
 Let $A$ denote a set.
 Let $s$ denote a statement in which the symbol $x$ and $A$ appear unbound.
-
 We assert that there is a set, denote it by $A'$ for which belonging is equivalent to the statement denoted by $s$.
-It is a consequence of the axiom of extension that this set is unique.
+In other words, regardless of the identity of $A$ and $s$, there exists $A'$ so that
+\[
+	(\forall x)((x \in A') \iff ((x \in A) \land s(x))).
+\]
 % We assert that to every set and every sentence predicated of elements of the set there exists a second set (a subset of the first) whose elements satisfy the sentence.
 % It is an consequence of the axiom of extension that this set is unique.
-This assertion is sometimes called the \t{axiom of specification} is this assertion.
-We call the second set (obtained from the first) the set obtained by \t{specifying} elements according to the sentence.
 
-All the basic principles of set theory other than the axiom of extension assert that we can construct new sets out of old ones in reasonable ways.
 
-For example:
-\begin{account}[Example Specification]
-\name{$A$,$y$}
-\thus{set_specification:asdf:asdf}{$(\exists A')((x \in A') \iff (x \ne y)))$}{Axiom:Specification}
+
+%For example:
+%\begin{account}[Example Specification]
+%\name{$A$,$y$}
+%\thus{set_specification:asdf:asdf}{$(\exists A')((x \in A') \iff (x \ne y)))$}{Axiom:Specification}
+%\end{account}
+
+\ssection{No universe}
+
+Consider the following account
+\begin{account}
+	\namee{$A$}{$A'$}
+	\have{asdf}{$(\forall x)(x \in A' \iff ((x \in A) \land x \not\in x)$}
+	\thus{fdas}{$A' \notin A$}{TODO}
 \end{account}
+
+%Consider the statement $x \not\in x$.
+%Let $A$ denote a set.
+%And define $A'$ by specifying the elements denoted by $x$ which satisfy $x \not\in x$.
+%Then $A' \not\in A$.
+%Since $x \in A'$ is equivalent to $x \not\in x$
+%If $A' \in A$, then $A' \not\in A$.
 
 \ssubsection{Notation}
 
-Let $A$ be a set.
-Let $S(a)$ be a sentence.
-We use the notation
+Denote by $A$ a set, and by $s(x)$ a statement with the unbound variable $x$.
+We denote the set of those elements of $A$ which satisfy $s$ by 
 \[
-  \Set*{a \in A}{\;S(a)\;}
+  \Set*{a \in A}{\;s(a)\;}.
 \]
-to denote the subset of $A$
-specified by $S$.
-We read the symbol $\mid$ aloud as
-\say{such that.}
-We read the whole notation aloud as
-\say{a in A such that...}
+We read the symbol $\mid$ aloud as \say{such that.}
+We read the whole notation aloud as \say{a in A such that...}
 
 We call the notation
 \ct{set-builder notation}{setbuildernotation}.
@@ -54,20 +83,22 @@ This notation is really indispensable for
 sets which have many members, too many
 to reasonably write down.
 
-\ssection{Example}
 
-For example, let $a, b, c, d$
-be distinct objects.
-Let $A = \set{a, b, c, d}$.
-Then
-$\Set*{x \in A}{x \neq a}$
-is the set $\set{b, c, d}$
-
-Now let $B$ be an arbitrary
-set.
-The set $\Set*{b \in B}{b \neq b}$
-specifies the empty set.
-Since the statement $b \neq b$ is
-false for all objects $b$.
+%TODO(next edition) bring back example? split out universe?
+%\ssection{Example}
+%
+%For example, let $a, b, c, d$
+%be distinct objects.
+%Let $A = \set{a, b, c, d}$.
+%Then
+%$\Set*{x \in A}{x \neq a}$
+%is the set $\set{b, c, d}$
+%
+%Now let $B$ be an arbitrary
+%set.
+%The set $\Set*{b \in B}{b \neq b}$
+%specifies the empty set.
+%Since the statement $b \neq b$ is
+%false for all objects $b$.
 
 %!TODO: russel's paradox? p 6 of halmos

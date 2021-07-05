@@ -1,14 +1,14 @@
 \newcounter{accounts}
 \newcounter{accountlineno}[accounts]
-\newenvironment{account}[1][]{\refstepcounter{accounts}\par\medskip
-   \textbf{Account~\theaccounts. #1} \rmfamily \\
-
+\newenvironment{account}[1][]{
+\refstepcounter{accounts}
+\noindent\textbf{Account~\theaccounts. #1} \rmfamily \\
    \vspace*{-0.4cm}
    \begin{tabular}{r|rlcc}
-   }{
-   \end{tabular}
-     \medskip}
-
+}{
+  \end{tabular}
+  \medskip
+}
 \newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\}
 \newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\}
 
