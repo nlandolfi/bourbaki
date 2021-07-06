@@ -1,9 +1,28 @@
+\newcounter{caccounts}
+\newcounter{caccountlineno}[caccounts]
+\newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1}
+\newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2}
+\newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3}
+
+\newenvironment{caccount}{
+  \refstepcounter{caccounts}
+}{
+}
+\newenvironment{blankaccount}[1][]{
+   \hspace{-1.6cm}
+   \begin{tabular}{r|rlcc}
+}{
+  \end{tabular}
+  \medskip
+}
 \newcounter{accounts}
 \newcounter{accountlineno}[accounts]
 \newenvironment{account}[1][]{
 \refstepcounter{accounts}
 \noindent\textbf{Account~\theaccounts. #1} \rmfamily \\
-   \vspace*{-0.4cm}
+
+    \vspace*{-0.4cm}
+   \hspace{-1.6cm}
    \begin{tabular}{r|rlcc}
 }{
   \end{tabular}

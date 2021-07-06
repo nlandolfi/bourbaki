@@ -1,5 +1,6 @@
 %!name:empty_set
-%!need:set_equality
+%!need:set_specification
+%!refs:paul_halmos/naive_set_theory/section_03
 
 \ssection{Why}
 
@@ -8,11 +9,12 @@ Can a set have no elements?
 \s{Definition}
 
 Sure.
-Take a set.
-At least one exists by the principle of existence (see \sheetref{sets}{Sets}).
-Now, take the universally false statement $x \neq x$ and apply the principle of specification (see \sheetref{set_specification}{Set Specification}) to that set.
-The set we get has no elements, since no object satisfies $x \neq x$.
-The principle of extension says that the set obtained is unique (contradiction).\footnote{This account will be expanded in the next edition.}
+A set exists by the principle of existence (see \sheetref{sets}{Sets}); denote it by $A$.
+Specify elements (see \sheetref{set_specification}{Set Specification}) of any set that exists using the universally false statement $x \neq x$.
+We denote that set by $\Set{x \in A}{x \neq x}$.
+It has no elements.
+In other words, $(\forall x)(x \not \in A)$.
+The principle of extension (see \sheetref{set_equality}{Set Equality}) says that the set obtained is unique (contradiction).\footnote{This account will be expanded in the next edition.}
 We call this set with no elements \t{the empty set.}
 
 
@@ -40,9 +42,20 @@ We call this set with no elements \t{the empty set.}
 %
 %As a result of the axiom of extension, this set with no elements is unique.
 
-\ssection{Notation}
+\ss{Notation}
 
 We denote the empty set by $\emptyset$.
 In other words, in all future accounts (see \sheetref{accounts}{Accounts}), there are two implicit lines. First, \say{\texttt{name} $\emptyset$} and second \say{\texttt{have} $(\forall x)(x \not\in \emptyset)$}.
 
-\blankpage
+\s{Properties}
+
+It is immediate from our definition of the empty set and of the definition of inclusion (see \sheetref{set_inclusion}{Set Inclusion}) that the empty set is included in every set (including itself).
+
+\begin{proposition}
+	$(\forall A)(\emptyset \subset A)$
+\end{proposition}
+\begin{proof}
+	Suppose toward contradiction that $\varnothing \not\subset A$.
+	Then there exists $y \in \varnothing$ such that $y \not \in A$.
+	But this is impossible, since $(\forall x)(x \not \in \varnothing)$.
+\end{proof}
