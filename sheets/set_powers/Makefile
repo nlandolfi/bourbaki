@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make power_set.pdf
+	make set_powers.pdf
 
-power_set.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > power_set.tex
+set_powers.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > set_powers.tex
 
-power_set.pdf: ../../*.tex ../../trademark.pdf *.tex power_set.tex
-	# pdflatex --file-line-error -interaction=nonstopmode power_set.tex
-	../../latexrun power_set.tex
+set_powers.pdf: ../../*.tex ../../trademark.pdf *.tex set_powers.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode set_powers.tex
+	../../latexrun set_powers.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: power_set.pdf
-	open power_set.pdf
+open: set_powers.pdf
+	open set_powers.pdf
 
 o:
 	make open
 
-terms: power_set.tex
-	bbk_sheet -mode ts power_set.tex
+terms: set_powers.tex
+	bbk_sheet -mode ts set_powers.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f power_set.*
+	rm -f set_powers.*
 	make reset
 	bbk_sheet -mode mk > Makefile
