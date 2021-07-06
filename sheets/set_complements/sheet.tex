@@ -1,25 +1,51 @@
 %!name:set_complements
-%!need:set_specification
+%!need:set_differences
+%!need:empty_set
+%!refs:paul_halmos/naive_set_theory/section_05
 
 \ssection{Why}
 
-We want to consider the elements of one set which are not contained in another set.
-Does such a set exist?
+It is often the case in considering set differences that all sets considered are subsets of one set.
 
 \ssection{Definition}
 
-Yes: use the axiom of specification on the first set with the condition that the element not be in the second set.
-The axiom of extension guarantees uniqueness.
-And so we call this set the \t{relative complement} of the latter set in the first set.
-We also call it the \t{difference} between the former and the latter.
+Let $A$ and $B$ denote sets.
+In many cases, we take the difference between a set and one contained in it.
+In other words, we assume that $B \subset A$.
+In this case, we often take complements relative to the same set $A$.
+So we do not refer to it, and instead refer to the relative complement of $B$ in $A$ as the \t{complement} of $B$.
 
-\ssubsection{Notation}
+\ss{Notation}
 
-Let $A$ and $B$ be sets.
-We denote the difference of $A$ with $B$ by $A - B$.
-We express $A - B$ as
-\[
-  \Set*{a \in A}{x \not\in B}.
-\]
+Let $A$ denote a set, and let $B$ denote a set for which $B \subset A$.
+We denote the relative complement of $B$ in $A$ by $\relcomplement{B}{A}$.
+When we need not mention the set $A$, and instead speak of the complement of $B$ without qualification, we denote this complement by $\complement{B}$.
 
-\blankpage
+\s{Complement of a complement}
+
+One nice property of a complement when $B \subset A$ is:
+\begin{proposition}
+  $(B \subset A) \iff (\relcomplement{\relcomplement{B}{A}}{A} = B)$
+\end{proposition}
+
+\s{Basic Facts}
+
+Let $E$ denote a set and let $A$ and $B$ denote sets satisfying $A,B \subset E$.
+Then take all complements with respect to $E$.
+Here are some immediate consequences of the definition of complements.\footnote{Proofs will appear in future editions.}
+
+\begin{proposition}
+  $\complement{\complement{A}} = A$
+\end{proposition}
+
+\begin{proposition}
+  $\complement{\emptyset} = E$
+\end{proposition}
+
+\begin{proposition}
+  $\complement{E} = \varnothing$
+\end{proposition}
+
+\begin{proposition}
+  $A \subset B \iff \complement{B} \subset \complement{A}$
+\end{proposition}

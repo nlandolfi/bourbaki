@@ -11,7 +11,7 @@ make:
 {{ .Name }}.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > {{ .Name }}.tex
 
-{{ .Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Name }}.tex
+{{ .Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Name }}.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode {{ .Name }}.tex
 	../../latexrun {{ .Name }}.tex
 	make terms

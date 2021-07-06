@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make set_complements.pdf
+	make set_exercises.pdf
 
-set_complements.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > set_complements.tex
+set_exercises.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > set_exercises.tex
 
-set_complements.pdf: ../../*.tex ../../trademark.pdf *.tex set_complements.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode set_complements.tex
-	../../latexrun set_complements.tex
+set_exercises.pdf: ../../*.tex ../../trademark.pdf *.tex set_exercises.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode set_exercises.tex
+	../../latexrun set_exercises.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: set_complements.pdf
-	open set_complements.pdf
+open: set_exercises.pdf
+	open set_exercises.pdf
 
 o:
 	make open
 
-terms: set_complements.tex
-	bbk_sheet -mode ts set_complements.tex
+terms: set_exercises.tex
+	bbk_sheet -mode ts set_exercises.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f set_complements.*
+	rm -f set_exercises.*
 	make reset
 	bbk_sheet -mode mk > Makefile
