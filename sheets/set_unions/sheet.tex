@@ -1,5 +1,8 @@
 %!name:set_unions
 %!need:set_specification
+% TODO(next edition): drop empty set
+%!need:empty_set
+%!refs:paul_halmos/naive_set_theory/section_04
 
 \ssection{Why}
 
@@ -39,11 +42,18 @@ It is reasonable for the union of the empty set to be empty and for the union of
 \begin{proof}
 	\begin{caccount}
 		\chave{}{$(\forall x)(x \in (\union \emptyset)) \iff (\exists y)(y \in \emptyset \land x \in y)$};
-		\cthus{myref}{$\neg(\exists y)(y \in \emptyset) \implies (\forall x)(x \not\in (\union \emptyset))$}{contrapositive};
-		\cthus{}{$\union\emptyset = \emptyset$}{\eqref{myref}}.
+		\cthus{set_unions:myref}{$\neg(\exists y)(y \in \emptyset) \implies (\forall x)(x \not\in (\union \emptyset))$}{contrapositive};
+		\cthus{}{$\union\emptyset = \emptyset$}{\lref{set_unions:myref} and Def}.
 	\end{caccount}
 \end{proof}
 
 \begin{prop}
 	$\union \set{A} = A$
 \end{prop}
+\begin{proof}
+	\begin{caccount}
+		\chave{}{$(\forall x)(x \in (\union \set{A})) \iff (\exists y)(y \in \set{A} \land x \in y)$};
+		\cthus{set_unions:}{$\neg(\exists y)(y \in \emptyset) \implies (\forall x)(x \not\in (\union \emptyset))$}{contrapositive};
+		\cthus{}{$\union\emptyset = \emptyset$}{\lref{myref}}.
+	\end{caccount}
+\end{proof}
