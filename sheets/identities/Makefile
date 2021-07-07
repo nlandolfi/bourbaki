@@ -9,7 +9,7 @@ make:
 identities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > identities.tex
 
-identities.pdf: ../../*.tex ../../trademark.pdf *.tex identities.tex
+identities.pdf: ../../*.tex ../../trademark.pdf *.tex identities.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode identities.tex
 	../../latexrun identities.tex
 	make terms

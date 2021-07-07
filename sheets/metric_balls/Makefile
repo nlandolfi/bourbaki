@@ -9,7 +9,7 @@ make:
 metric_balls.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_balls.tex
 
-metric_balls.pdf: ../../*.tex ../../trademark.pdf *.tex metric_balls.tex
+metric_balls.pdf: ../../*.tex ../../trademark.pdf *.tex metric_balls.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode metric_balls.tex
 	../../latexrun metric_balls.tex
 	make terms

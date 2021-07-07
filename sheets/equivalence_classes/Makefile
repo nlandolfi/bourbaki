@@ -9,7 +9,7 @@ make:
 equivalence_classes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > equivalence_classes.tex
 
-equivalence_classes.pdf: ../../*.tex ../../trademark.pdf *.tex equivalence_classes.tex
+equivalence_classes.pdf: ../../*.tex ../../trademark.pdf *.tex equivalence_classes.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode equivalence_classes.tex
 	../../latexrun equivalence_classes.tex
 	make terms

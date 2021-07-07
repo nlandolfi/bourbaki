@@ -9,7 +9,7 @@ make:
 lDU_factorizations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > lDU_factorizations.tex
 
-lDU_factorizations.pdf: ../../*.tex ../../trademark.pdf *.tex lDU_factorizations.tex
+lDU_factorizations.pdf: ../../*.tex ../../trademark.pdf *.tex lDU_factorizations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode lDU_factorizations.tex
 	../../latexrun lDU_factorizations.tex
 	make terms

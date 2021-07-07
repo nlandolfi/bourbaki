@@ -9,7 +9,7 @@ make:
 transformations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > transformations.tex
 
-transformations.pdf: ../../*.tex ../../trademark.pdf *.tex transformations.tex
+transformations.pdf: ../../*.tex ../../trademark.pdf *.tex transformations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode transformations.tex
 	../../latexrun transformations.tex
 	make terms

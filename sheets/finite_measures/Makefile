@@ -9,7 +9,7 @@ make:
 finite_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > finite_measures.tex
 
-finite_measures.pdf: ../../*.tex ../../trademark.pdf *.tex finite_measures.tex
+finite_measures.pdf: ../../*.tex ../../trademark.pdf *.tex finite_measures.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode finite_measures.tex
 	../../latexrun finite_measures.tex
 	make terms

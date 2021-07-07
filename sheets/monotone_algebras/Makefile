@@ -9,7 +9,7 @@ make:
 monotone_algebras.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_algebras.tex
 
-monotone_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_algebras.tex
+monotone_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_algebras.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode monotone_algebras.tex
 	../../latexrun monotone_algebras.tex
 	make terms

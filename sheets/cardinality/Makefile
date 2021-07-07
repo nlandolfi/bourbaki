@@ -9,7 +9,7 @@ make:
 cardinality.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cardinality.tex
 
-cardinality.pdf: ../../*.tex ../../trademark.pdf *.tex cardinality.tex
+cardinality.pdf: ../../*.tex ../../trademark.pdf *.tex cardinality.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode cardinality.tex
 	../../latexrun cardinality.tex
 	make terms

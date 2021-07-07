@@ -9,7 +9,7 @@ make:
 egoprox_sequences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > egoprox_sequences.tex
 
-egoprox_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex egoprox_sequences.tex
+egoprox_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex egoprox_sequences.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode egoprox_sequences.tex
 	../../latexrun egoprox_sequences.tex
 	make terms

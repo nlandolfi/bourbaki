@@ -9,7 +9,7 @@ make:
 barycentric_coordinates.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > barycentric_coordinates.tex
 
-barycentric_coordinates.pdf: ../../*.tex ../../trademark.pdf *.tex barycentric_coordinates.tex
+barycentric_coordinates.pdf: ../../*.tex ../../trademark.pdf *.tex barycentric_coordinates.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode barycentric_coordinates.tex
 	../../latexrun barycentric_coordinates.tex
 	make terms

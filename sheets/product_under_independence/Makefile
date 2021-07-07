@@ -9,7 +9,7 @@ make:
 product_under_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > product_under_independence.tex
 
-product_under_independence.pdf: ../../*.tex ../../trademark.pdf *.tex product_under_independence.tex
+product_under_independence.pdf: ../../*.tex ../../trademark.pdf *.tex product_under_independence.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode product_under_independence.tex
 	../../latexrun product_under_independence.tex
 	make terms

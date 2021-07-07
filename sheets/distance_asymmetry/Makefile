@@ -9,7 +9,7 @@ make:
 distance_asymmetry.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distance_asymmetry.tex
 
-distance_asymmetry.pdf: ../../*.tex ../../trademark.pdf *.tex distance_asymmetry.tex
+distance_asymmetry.pdf: ../../*.tex ../../trademark.pdf *.tex distance_asymmetry.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode distance_asymmetry.tex
 	../../latexrun distance_asymmetry.tex
 	make terms

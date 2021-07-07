@@ -9,7 +9,7 @@ make:
 sparse_lDU_factorization.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sparse_lDU_factorization.tex
 
-sparse_lDU_factorization.pdf: ../../*.tex ../../trademark.pdf *.tex sparse_lDU_factorization.tex
+sparse_lDU_factorization.pdf: ../../*.tex ../../trademark.pdf *.tex sparse_lDU_factorization.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode sparse_lDU_factorization.tex
 	../../latexrun sparse_lDU_factorization.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 matrix_determinant_of_product.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_determinant_of_product.tex
 
-matrix_determinant_of_product.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_determinant_of_product.tex
+matrix_determinant_of_product.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_determinant_of_product.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_determinant_of_product.tex
 	../../latexrun matrix_determinant_of_product.tex
 	make terms

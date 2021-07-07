@@ -9,7 +9,7 @@ make:
 convex_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_sets.tex
 
-convex_sets.pdf: ../../*.tex ../../trademark.pdf *.tex convex_sets.tex
+convex_sets.pdf: ../../*.tex ../../trademark.pdf *.tex convex_sets.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode convex_sets.tex
 	../../latexrun convex_sets.tex
 	make terms

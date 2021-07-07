@@ -9,7 +9,7 @@ make:
 real_continuity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_continuity.tex
 
-real_continuity.pdf: ../../*.tex ../../trademark.pdf *.tex real_continuity.tex
+real_continuity.pdf: ../../*.tex ../../trademark.pdf *.tex real_continuity.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_continuity.tex
 	../../latexrun real_continuity.tex
 	make terms

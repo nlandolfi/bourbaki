@@ -9,7 +9,7 @@ make:
 differential_cross_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differential_cross_entropy.tex
 
-differential_cross_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex differential_cross_entropy.tex
+differential_cross_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex differential_cross_entropy.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode differential_cross_entropy.tex
 	../../latexrun differential_cross_entropy.tex
 	make terms

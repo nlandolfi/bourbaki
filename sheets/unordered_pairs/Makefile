@@ -9,7 +9,7 @@ make:
 unordered_pairs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > unordered_pairs.tex
 
-unordered_pairs.pdf: ../../*.tex ../../trademark.pdf *.tex unordered_pairs.tex
+unordered_pairs.pdf: ../../*.tex ../../trademark.pdf *.tex unordered_pairs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode unordered_pairs.tex
 	../../latexrun unordered_pairs.tex
 	make terms

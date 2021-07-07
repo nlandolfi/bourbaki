@@ -9,7 +9,7 @@ make:
 entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > entropy.tex
 
-entropy.pdf: ../../*.tex ../../trademark.pdf *.tex entropy.tex
+entropy.pdf: ../../*.tex ../../trademark.pdf *.tex entropy.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode entropy.tex
 	../../latexrun entropy.tex
 	make terms

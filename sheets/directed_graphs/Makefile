@@ -9,7 +9,7 @@ make:
 directed_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > directed_graphs.tex
 
-directed_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex directed_graphs.tex
+directed_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex directed_graphs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode directed_graphs.tex
 	../../latexrun directed_graphs.tex
 	make terms

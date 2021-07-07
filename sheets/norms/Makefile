@@ -9,7 +9,7 @@ make:
 norms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > norms.tex
 
-norms.pdf: ../../*.tex ../../trademark.pdf *.tex norms.tex
+norms.pdf: ../../*.tex ../../trademark.pdf *.tex norms.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode norms.tex
 	../../latexrun norms.tex
 	make terms

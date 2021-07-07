@@ -9,7 +9,7 @@ make:
 graph_complements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > graph_complements.tex
 
-graph_complements.pdf: ../../*.tex ../../trademark.pdf *.tex graph_complements.tex
+graph_complements.pdf: ../../*.tex ../../trademark.pdf *.tex graph_complements.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode graph_complements.tex
 	../../latexrun graph_complements.tex
 	make terms

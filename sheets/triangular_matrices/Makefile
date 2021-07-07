@@ -9,7 +9,7 @@ make:
 triangular_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > triangular_matrices.tex
 
-triangular_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex triangular_matrices.tex
+triangular_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex triangular_matrices.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode triangular_matrices.tex
 	../../latexrun triangular_matrices.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 exponential.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > exponential.tex
 
-exponential.pdf: ../../*.tex ../../trademark.pdf *.tex exponential.tex
+exponential.pdf: ../../*.tex ../../trademark.pdf *.tex exponential.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode exponential.tex
 	../../latexrun exponential.tex
 	make terms

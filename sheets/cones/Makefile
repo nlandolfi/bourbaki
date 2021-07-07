@@ -9,7 +9,7 @@ make:
 cones.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cones.tex
 
-cones.pdf: ../../*.tex ../../trademark.pdf *.tex cones.tex
+cones.pdf: ../../*.tex ../../trademark.pdf *.tex cones.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode cones.tex
 	../../latexrun cones.tex
 	make terms

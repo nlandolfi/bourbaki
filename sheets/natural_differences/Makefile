@@ -9,7 +9,7 @@ make:
 natural_differences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_differences.tex
 
-natural_differences.pdf: ../../*.tex ../../trademark.pdf *.tex natural_differences.tex
+natural_differences.pdf: ../../*.tex ../../trademark.pdf *.tex natural_differences.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode natural_differences.tex
 	../../latexrun natural_differences.tex
 	make terms

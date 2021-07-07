@@ -9,7 +9,7 @@ make:
 classifiers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > classifiers.tex
 
-classifiers.pdf: ../../*.tex ../../trademark.pdf *.tex classifiers.tex
+classifiers.pdf: ../../*.tex ../../trademark.pdf *.tex classifiers.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode classifiers.tex
 	../../latexrun classifiers.tex
 	make terms

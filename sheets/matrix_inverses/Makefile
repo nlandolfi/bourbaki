@@ -9,7 +9,7 @@ make:
 matrix_inverses.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_inverses.tex
 
-matrix_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_inverses.tex
+matrix_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_inverses.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_inverses.tex
 	../../latexrun matrix_inverses.tex
 	make terms

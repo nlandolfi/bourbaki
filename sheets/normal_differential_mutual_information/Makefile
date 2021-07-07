@@ -9,7 +9,7 @@ make:
 normal_differential_mutual_information.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_differential_mutual_information.tex
 
-normal_differential_mutual_information.pdf: ../../*.tex ../../trademark.pdf *.tex normal_differential_mutual_information.tex
+normal_differential_mutual_information.pdf: ../../*.tex ../../trademark.pdf *.tex normal_differential_mutual_information.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode normal_differential_mutual_information.tex
 	../../latexrun normal_differential_mutual_information.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 matrix_determinants.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_determinants.tex
 
-matrix_determinants.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_determinants.tex
+matrix_determinants.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_determinants.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_determinants.tex
 	../../latexrun matrix_determinants.tex
 	make terms

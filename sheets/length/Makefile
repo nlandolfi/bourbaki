@@ -9,7 +9,7 @@ make:
 length.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > length.tex
 
-length.pdf: ../../*.tex ../../trademark.pdf *.tex length.tex
+length.pdf: ../../*.tex ../../trademark.pdf *.tex length.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode length.tex
 	../../latexrun length.tex
 	make terms

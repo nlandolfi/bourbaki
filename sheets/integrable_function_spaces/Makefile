@@ -9,7 +9,7 @@ make:
 integrable_function_spaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > integrable_function_spaces.tex
 
-integrable_function_spaces.pdf: ../../*.tex ../../trademark.pdf *.tex integrable_function_spaces.tex
+integrable_function_spaces.pdf: ../../*.tex ../../trademark.pdf *.tex integrable_function_spaces.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode integrable_function_spaces.tex
 	../../latexrun integrable_function_spaces.tex
 	make terms

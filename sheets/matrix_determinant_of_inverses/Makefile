@@ -9,7 +9,7 @@ make:
 matrix_determinant_of_inverses.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_determinant_of_inverses.tex
 
-matrix_determinant_of_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_determinant_of_inverses.tex
+matrix_determinant_of_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_determinant_of_inverses.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_determinant_of_inverses.tex
 	../../latexrun matrix_determinant_of_inverses.tex
 	make terms

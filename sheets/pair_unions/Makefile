@@ -9,7 +9,7 @@ make:
 pair_unions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > pair_unions.tex
 
-pair_unions.pdf: ../../*.tex ../../trademark.pdf *.tex pair_unions.tex
+pair_unions.pdf: ../../*.tex ../../trademark.pdf *.tex pair_unions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode pair_unions.tex
 	../../latexrun pair_unions.tex
 	make terms

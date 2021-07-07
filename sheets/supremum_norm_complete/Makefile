@@ -9,7 +9,7 @@ make:
 supremum_norm_complete.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > supremum_norm_complete.tex
 
-supremum_norm_complete.pdf: ../../*.tex ../../trademark.pdf *.tex supremum_norm_complete.tex
+supremum_norm_complete.pdf: ../../*.tex ../../trademark.pdf *.tex supremum_norm_complete.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode supremum_norm_complete.tex
 	../../latexrun supremum_norm_complete.tex
 	make terms

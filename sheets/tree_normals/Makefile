@@ -9,7 +9,7 @@ make:
 tree_normals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_normals.tex
 
-tree_normals.pdf: ../../*.tex ../../trademark.pdf *.tex tree_normals.tex
+tree_normals.pdf: ../../*.tex ../../trademark.pdf *.tex tree_normals.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode tree_normals.tex
 	../../latexrun tree_normals.tex
 	make terms

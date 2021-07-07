@@ -9,7 +9,7 @@ make:
 functionals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > functionals.tex
 
-functionals.pdf: ../../*.tex ../../trademark.pdf *.tex functionals.tex
+functionals.pdf: ../../*.tex ../../trademark.pdf *.tex functionals.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode functionals.tex
 	../../latexrun functionals.tex
 	make terms

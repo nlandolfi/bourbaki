@@ -9,7 +9,7 @@ make:
 permutation_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > permutation_matrices.tex
 
-permutation_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex permutation_matrices.tex
+permutation_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex permutation_matrices.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode permutation_matrices.tex
 	../../latexrun permutation_matrices.tex
 	make terms

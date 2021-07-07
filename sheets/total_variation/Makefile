@@ -9,7 +9,7 @@ make:
 total_variation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > total_variation.tex
 
-total_variation.pdf: ../../*.tex ../../trademark.pdf *.tex total_variation.tex
+total_variation.pdf: ../../*.tex ../../trademark.pdf *.tex total_variation.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode total_variation.tex
 	../../latexrun total_variation.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 equation_solutions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > equation_solutions.tex
 
-equation_solutions.pdf: ../../*.tex ../../trademark.pdf *.tex equation_solutions.tex
+equation_solutions.pdf: ../../*.tex ../../trademark.pdf *.tex equation_solutions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode equation_solutions.tex
 	../../latexrun equation_solutions.tex
 	make terms

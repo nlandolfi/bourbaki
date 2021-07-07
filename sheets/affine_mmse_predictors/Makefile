@@ -9,7 +9,7 @@ make:
 affine_mMSE_predictors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_mMSE_predictors.tex
 
-affine_mMSE_predictors.pdf: ../../*.tex ../../trademark.pdf *.tex affine_mMSE_predictors.tex
+affine_mMSE_predictors.pdf: ../../*.tex ../../trademark.pdf *.tex affine_mMSE_predictors.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode affine_mMSE_predictors.tex
 	../../latexrun affine_mMSE_predictors.tex
 	make terms

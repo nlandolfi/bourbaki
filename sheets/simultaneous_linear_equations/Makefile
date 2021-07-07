@@ -9,7 +9,7 @@ make:
 simultaneous_linear_equations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simultaneous_linear_equations.tex
 
-simultaneous_linear_equations.pdf: ../../*.tex ../../trademark.pdf *.tex simultaneous_linear_equations.tex
+simultaneous_linear_equations.pdf: ../../*.tex ../../trademark.pdf *.tex simultaneous_linear_equations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode simultaneous_linear_equations.tex
 	../../latexrun simultaneous_linear_equations.tex
 	make terms

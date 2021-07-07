@@ -9,7 +9,7 @@ make:
 supremum.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > supremum.tex
 
-supremum.pdf: ../../*.tex ../../trademark.pdf *.tex supremum.tex
+supremum.pdf: ../../*.tex ../../trademark.pdf *.tex supremum.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode supremum.tex
 	../../latexrun supremum.tex
 	make terms

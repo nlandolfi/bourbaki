@@ -9,7 +9,7 @@ make:
 conditional_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_densities.tex
 
-conditional_densities.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_densities.tex
+conditional_densities.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_densities.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode conditional_densities.tex
 	../../latexrun conditional_densities.tex
 	make terms

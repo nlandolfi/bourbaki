@@ -9,7 +9,7 @@ make:
 tree_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_densities.tex
 
-tree_densities.pdf: ../../*.tex ../../trademark.pdf *.tex tree_densities.tex
+tree_densities.pdf: ../../*.tex ../../trademark.pdf *.tex tree_densities.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode tree_densities.tex
 	../../latexrun tree_densities.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 signed_measure_examples.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > signed_measure_examples.tex
 
-signed_measure_examples.pdf: ../../*.tex ../../trademark.pdf *.tex signed_measure_examples.tex
+signed_measure_examples.pdf: ../../*.tex ../../trademark.pdf *.tex signed_measure_examples.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode signed_measure_examples.tex
 	../../latexrun signed_measure_examples.tex
 	make terms

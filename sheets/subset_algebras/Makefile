@@ -9,7 +9,7 @@ make:
 subset_algebras.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subset_algebras.tex
 
-subset_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex subset_algebras.tex
+subset_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex subset_algebras.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode subset_algebras.tex
 	../../latexrun subset_algebras.tex
 	make terms

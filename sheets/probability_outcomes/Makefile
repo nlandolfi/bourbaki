@@ -9,7 +9,7 @@ make:
 probability_outcomes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probability_outcomes.tex
 
-probability_outcomes.pdf: ../../*.tex ../../trademark.pdf *.tex probability_outcomes.tex
+probability_outcomes.pdf: ../../*.tex ../../trademark.pdf *.tex probability_outcomes.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode probability_outcomes.tex
 	../../latexrun probability_outcomes.tex
 	make terms

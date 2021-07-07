@@ -9,7 +9,7 @@ make:
 sum_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sum_sets.tex
 
-sum_sets.pdf: ../../*.tex ../../trademark.pdf *.tex sum_sets.tex
+sum_sets.pdf: ../../*.tex ../../trademark.pdf *.tex sum_sets.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode sum_sets.tex
 	../../latexrun sum_sets.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 functional_analysis.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > functional_analysis.tex
 
-functional_analysis.pdf: ../../*.tex ../../trademark.pdf *.tex functional_analysis.tex
+functional_analysis.pdf: ../../*.tex ../../trademark.pdf *.tex functional_analysis.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode functional_analysis.tex
 	../../latexrun functional_analysis.tex
 	make terms

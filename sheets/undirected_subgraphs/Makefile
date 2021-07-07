@@ -9,7 +9,7 @@ make:
 undirected_subgraphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > undirected_subgraphs.tex
 
-undirected_subgraphs.pdf: ../../*.tex ../../trademark.pdf *.tex undirected_subgraphs.tex
+undirected_subgraphs.pdf: ../../*.tex ../../trademark.pdf *.tex undirected_subgraphs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode undirected_subgraphs.tex
 	../../latexrun undirected_subgraphs.tex
 	make terms

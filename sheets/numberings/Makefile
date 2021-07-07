@@ -9,7 +9,7 @@ make:
 numberings.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > numberings.tex
 
-numberings.pdf: ../../*.tex ../../trademark.pdf *.tex numberings.tex
+numberings.pdf: ../../*.tex ../../trademark.pdf *.tex numberings.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode numberings.tex
 	../../latexrun numberings.tex
 	make terms

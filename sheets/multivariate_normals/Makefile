@@ -9,7 +9,7 @@ make:
 multivariate_normals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > multivariate_normals.tex
 
-multivariate_normals.pdf: ../../*.tex ../../trademark.pdf *.tex multivariate_normals.tex
+multivariate_normals.pdf: ../../*.tex ../../trademark.pdf *.tex multivariate_normals.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode multivariate_normals.tex
 	../../latexrun multivariate_normals.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 linearly_dependent_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > linearly_dependent_vectors.tex
 
-linearly_dependent_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex linearly_dependent_vectors.tex
+linearly_dependent_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex linearly_dependent_vectors.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode linearly_dependent_vectors.tex
 	../../latexrun linearly_dependent_vectors.tex
 	make terms

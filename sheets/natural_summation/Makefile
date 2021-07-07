@@ -9,7 +9,7 @@ make:
 natural_summation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_summation.tex
 
-natural_summation.pdf: ../../*.tex ../../trademark.pdf *.tex natural_summation.tex
+natural_summation.pdf: ../../*.tex ../../trademark.pdf *.tex natural_summation.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode natural_summation.tex
 	../../latexrun natural_summation.tex
 	make terms

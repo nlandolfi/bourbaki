@@ -9,7 +9,7 @@ make:
 logic.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > logic.tex
 
-logic.pdf: ../../*.tex ../../trademark.pdf *.tex logic.tex
+logic.pdf: ../../*.tex ../../trademark.pdf *.tex logic.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode logic.tex
 	../../latexrun logic.tex
 	make terms

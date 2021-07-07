@@ -9,7 +9,7 @@ make:
 iterated_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > iterated_integrals.tex
 
-iterated_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex iterated_integrals.tex
+iterated_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex iterated_integrals.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode iterated_integrals.tex
 	../../latexrun iterated_integrals.tex
 	make terms

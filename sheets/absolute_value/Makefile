@@ -9,7 +9,7 @@ make:
 absolute_value.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > absolute_value.tex
 
-absolute_value.pdf: ../../*.tex ../../trademark.pdf *.tex absolute_value.tex
+absolute_value.pdf: ../../*.tex ../../trademark.pdf *.tex absolute_value.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode absolute_value.tex
 	../../latexrun absolute_value.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 optimal_spanning_trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > optimal_spanning_trees.tex
 
-optimal_spanning_trees.pdf: ../../*.tex ../../trademark.pdf *.tex optimal_spanning_trees.tex
+optimal_spanning_trees.pdf: ../../*.tex ../../trademark.pdf *.tex optimal_spanning_trees.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode optimal_spanning_trees.tex
 	../../latexrun optimal_spanning_trees.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 squares.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > squares.tex
 
-squares.pdf: ../../*.tex ../../trademark.pdf *.tex squares.tex
+squares.pdf: ../../*.tex ../../trademark.pdf *.tex squares.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode squares.tex
 	../../latexrun squares.tex
 	make terms

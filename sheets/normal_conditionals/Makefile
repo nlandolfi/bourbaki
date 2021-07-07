@@ -9,7 +9,7 @@ make:
 normal_conditionals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_conditionals.tex
 
-normal_conditionals.pdf: ../../*.tex ../../trademark.pdf *.tex normal_conditionals.tex
+normal_conditionals.pdf: ../../*.tex ../../trademark.pdf *.tex normal_conditionals.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode normal_conditionals.tex
 	../../latexrun normal_conditionals.tex
 	make terms

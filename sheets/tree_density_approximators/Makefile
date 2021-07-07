@@ -9,7 +9,7 @@ make:
 tree_density_approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_density_approximators.tex
 
-tree_density_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex tree_density_approximators.tex
+tree_density_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex tree_density_approximators.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode tree_density_approximators.tex
 	../../latexrun tree_density_approximators.tex
 	make terms

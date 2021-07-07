@@ -9,7 +9,7 @@ make:
 orthonormal_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > orthonormal_vectors.tex
 
-orthonormal_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex orthonormal_vectors.tex
+orthonormal_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex orthonormal_vectors.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode orthonormal_vectors.tex
 	../../latexrun orthonormal_vectors.tex
 	make terms

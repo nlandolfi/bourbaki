@@ -9,7 +9,7 @@ make:
 measure_derivatives.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > measure_derivatives.tex
 
-measure_derivatives.pdf: ../../*.tex ../../trademark.pdf *.tex measure_derivatives.tex
+measure_derivatives.pdf: ../../*.tex ../../trademark.pdf *.tex measure_derivatives.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode measure_derivatives.tex
 	../../latexrun measure_derivatives.tex
 	make terms

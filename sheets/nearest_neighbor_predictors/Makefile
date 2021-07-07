@@ -9,7 +9,7 @@ make:
 nearest_neighbor_predictors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > nearest_neighbor_predictors.tex
 
-nearest_neighbor_predictors.pdf: ../../*.tex ../../trademark.pdf *.tex nearest_neighbor_predictors.tex
+nearest_neighbor_predictors.pdf: ../../*.tex ../../trademark.pdf *.tex nearest_neighbor_predictors.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode nearest_neighbor_predictors.tex
 	../../latexrun nearest_neighbor_predictors.tex
 	make terms

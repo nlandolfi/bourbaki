@@ -9,7 +9,7 @@ make:
 similarity_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > similarity_functions.tex
 
-similarity_functions.pdf: ../../*.tex ../../trademark.pdf *.tex similarity_functions.tex
+similarity_functions.pdf: ../../*.tex ../../trademark.pdf *.tex similarity_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode similarity_functions.tex
 	../../latexrun similarity_functions.tex
 	make terms

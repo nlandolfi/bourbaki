@@ -9,7 +9,7 @@ make:
 equivalent_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > equivalent_sets.tex
 
-equivalent_sets.pdf: ../../*.tex ../../trademark.pdf *.tex equivalent_sets.tex
+equivalent_sets.pdf: ../../*.tex ../../trademark.pdf *.tex equivalent_sets.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode equivalent_sets.tex
 	../../latexrun equivalent_sets.tex
 	make terms

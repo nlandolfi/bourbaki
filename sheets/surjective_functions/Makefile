@@ -9,7 +9,7 @@ make:
 surjective_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > surjective_functions.tex
 
-surjective_functions.pdf: ../../*.tex ../../trademark.pdf *.tex surjective_functions.tex
+surjective_functions.pdf: ../../*.tex ../../trademark.pdf *.tex surjective_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode surjective_functions.tex
 	../../latexrun surjective_functions.tex
 	make terms

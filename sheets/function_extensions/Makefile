@@ -9,7 +9,7 @@ make:
 function_extensions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_extensions.tex
 
-function_extensions.pdf: ../../*.tex ../../trademark.pdf *.tex function_extensions.tex
+function_extensions.pdf: ../../*.tex ../../trademark.pdf *.tex function_extensions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode function_extensions.tex
 	../../latexrun function_extensions.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 matrix_exponential.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_exponential.tex
 
-matrix_exponential.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_exponential.tex
+matrix_exponential.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_exponential.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_exponential.tex
 	../../latexrun matrix_exponential.tex
 	make terms

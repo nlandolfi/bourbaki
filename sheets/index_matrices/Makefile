@@ -9,7 +9,7 @@ make:
 index_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > index_matrices.tex
 
-index_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex index_matrices.tex
+index_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex index_matrices.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode index_matrices.tex
 	../../latexrun index_matrices.tex
 	make terms

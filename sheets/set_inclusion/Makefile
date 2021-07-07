@@ -9,7 +9,7 @@ make:
 set_inclusion.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_inclusion.tex
 
-set_inclusion.pdf: ../../*.tex ../../trademark.pdf *.tex set_inclusion.tex
+set_inclusion.pdf: ../../*.tex ../../trademark.pdf *.tex set_inclusion.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode set_inclusion.tex
 	../../latexrun set_inclusion.tex
 	make terms

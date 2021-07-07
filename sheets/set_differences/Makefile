@@ -9,7 +9,7 @@ make:
 set_differences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_differences.tex
 
-set_differences.pdf: ../../*.tex ../../trademark.pdf *.tex set_differences.tex
+set_differences.pdf: ../../*.tex ../../trademark.pdf *.tex set_differences.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode set_differences.tex
 	../../latexrun set_differences.tex
 	make terms

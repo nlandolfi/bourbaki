@@ -9,7 +9,7 @@ make:
 convex_sets_and_halfspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_sets_and_halfspaces.tex
 
-convex_sets_and_halfspaces.pdf: ../../*.tex ../../trademark.pdf *.tex convex_sets_and_halfspaces.tex
+convex_sets_and_halfspaces.pdf: ../../*.tex ../../trademark.pdf *.tex convex_sets_and_halfspaces.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode convex_sets_and_halfspaces.tex
 	../../latexrun convex_sets_and_halfspaces.tex
 	make terms

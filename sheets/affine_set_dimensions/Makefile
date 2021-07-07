@@ -9,7 +9,7 @@ make:
 affine_set_dimensions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_set_dimensions.tex
 
-affine_set_dimensions.pdf: ../../*.tex ../../trademark.pdf *.tex affine_set_dimensions.tex
+affine_set_dimensions.pdf: ../../*.tex ../../trademark.pdf *.tex affine_set_dimensions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode affine_set_dimensions.tex
 	../../latexrun affine_set_dimensions.tex
 	make terms

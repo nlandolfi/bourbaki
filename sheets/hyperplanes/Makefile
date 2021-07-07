@@ -9,7 +9,7 @@ make:
 hyperplanes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > hyperplanes.tex
 
-hyperplanes.pdf: ../../*.tex ../../trademark.pdf *.tex hyperplanes.tex
+hyperplanes.pdf: ../../*.tex ../../trademark.pdf *.tex hyperplanes.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode hyperplanes.tex
 	../../latexrun hyperplanes.tex
 	make terms

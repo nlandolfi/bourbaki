@@ -9,7 +9,7 @@ make:
 expectation_maximization.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > expectation_maximization.tex
 
-expectation_maximization.pdf: ../../*.tex ../../trademark.pdf *.tex expectation_maximization.tex
+expectation_maximization.pdf: ../../*.tex ../../trademark.pdf *.tex expectation_maximization.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode expectation_maximization.tex
 	../../latexrun expectation_maximization.tex
 	make terms

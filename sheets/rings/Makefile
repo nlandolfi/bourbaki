@@ -9,7 +9,7 @@ make:
 rings.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rings.tex
 
-rings.pdf: ../../*.tex ../../trademark.pdf *.tex rings.tex
+rings.pdf: ../../*.tex ../../trademark.pdf *.tex rings.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode rings.tex
 	../../latexrun rings.tex
 	make terms

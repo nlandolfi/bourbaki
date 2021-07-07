@@ -9,7 +9,7 @@ make:
 differential_relative_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differential_relative_entropy.tex
 
-differential_relative_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex differential_relative_entropy.tex
+differential_relative_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex differential_relative_entropy.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode differential_relative_entropy.tex
 	../../latexrun differential_relative_entropy.tex
 	make terms

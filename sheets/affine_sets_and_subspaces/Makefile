@@ -9,7 +9,7 @@ make:
 affine_sets_and_subspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_sets_and_subspaces.tex
 
-affine_sets_and_subspaces.pdf: ../../*.tex ../../trademark.pdf *.tex affine_sets_and_subspaces.tex
+affine_sets_and_subspaces.pdf: ../../*.tex ../../trademark.pdf *.tex affine_sets_and_subspaces.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode affine_sets_and_subspaces.tex
 	../../latexrun affine_sets_and_subspaces.tex
 	make terms

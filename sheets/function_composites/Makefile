@@ -9,7 +9,7 @@ make:
 function_composites.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_composites.tex
 
-function_composites.pdf: ../../*.tex ../../trademark.pdf *.tex function_composites.tex
+function_composites.pdf: ../../*.tex ../../trademark.pdf *.tex function_composites.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode function_composites.tex
 	../../latexrun function_composites.tex
 	make terms

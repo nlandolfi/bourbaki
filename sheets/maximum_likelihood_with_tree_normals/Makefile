@@ -9,7 +9,7 @@ make:
 maximum_likelihood_with_tree_normals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > maximum_likelihood_with_tree_normals.tex
 
-maximum_likelihood_with_tree_normals.pdf: ../../*.tex ../../trademark.pdf *.tex maximum_likelihood_with_tree_normals.tex
+maximum_likelihood_with_tree_normals.pdf: ../../*.tex ../../trademark.pdf *.tex maximum_likelihood_with_tree_normals.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode maximum_likelihood_with_tree_normals.tex
 	../../latexrun maximum_likelihood_with_tree_normals.tex
 	make terms

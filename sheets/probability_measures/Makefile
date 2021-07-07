@@ -9,7 +9,7 @@ make:
 probability_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probability_measures.tex
 
-probability_measures.pdf: ../../*.tex ../../trademark.pdf *.tex probability_measures.tex
+probability_measures.pdf: ../../*.tex ../../trademark.pdf *.tex probability_measures.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode probability_measures.tex
 	../../latexrun probability_measures.tex
 	make terms

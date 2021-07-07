@@ -9,7 +9,7 @@ make:
 logical_statements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > logical_statements.tex
 
-logical_statements.pdf: ../../*.tex ../../trademark.pdf *.tex logical_statements.tex
+logical_statements.pdf: ../../*.tex ../../trademark.pdf *.tex logical_statements.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode logical_statements.tex
 	../../latexrun logical_statements.tex
 	make terms

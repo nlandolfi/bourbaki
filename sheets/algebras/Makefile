@@ -9,7 +9,7 @@ make:
 algebras.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > algebras.tex
 
-algebras.pdf: ../../*.tex ../../trademark.pdf *.tex algebras.tex
+algebras.pdf: ../../*.tex ../../trademark.pdf *.tex algebras.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode algebras.tex
 	../../latexrun algebras.tex
 	make terms

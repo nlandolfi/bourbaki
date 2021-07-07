@@ -9,7 +9,7 @@ make:
 common_sense.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > common_sense.tex
 
-common_sense.pdf: ../../*.tex ../../trademark.pdf *.tex common_sense.tex
+common_sense.pdf: ../../*.tex ../../trademark.pdf *.tex common_sense.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode common_sense.tex
 	../../latexrun common_sense.tex
 	make terms

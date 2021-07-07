@@ -9,7 +9,7 @@ make:
 complex_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complex_numbers.tex
 
-complex_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex complex_numbers.tex
+complex_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex complex_numbers.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode complex_numbers.tex
 	../../latexrun complex_numbers.tex
 	make terms

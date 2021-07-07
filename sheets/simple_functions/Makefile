@@ -9,7 +9,7 @@ make:
 simple_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_functions.tex
 
-simple_functions.pdf: ../../*.tex ../../trademark.pdf *.tex simple_functions.tex
+simple_functions.pdf: ../../*.tex ../../trademark.pdf *.tex simple_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode simple_functions.tex
 	../../latexrun simple_functions.tex
 	make terms

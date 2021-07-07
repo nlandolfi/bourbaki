@@ -9,7 +9,7 @@ make:
 metric_dense.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_dense.tex
 
-metric_dense.pdf: ../../*.tex ../../trademark.pdf *.tex metric_dense.tex
+metric_dense.pdf: ../../*.tex ../../trademark.pdf *.tex metric_dense.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode metric_dense.tex
 	../../latexrun metric_dense.tex
 	make terms

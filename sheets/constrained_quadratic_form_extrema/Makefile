@@ -9,7 +9,7 @@ make:
 constrained_quadratic_form_extrema.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > constrained_quadratic_form_extrema.tex
 
-constrained_quadratic_form_extrema.pdf: ../../*.tex ../../trademark.pdf *.tex constrained_quadratic_form_extrema.tex
+constrained_quadratic_form_extrema.pdf: ../../*.tex ../../trademark.pdf *.tex constrained_quadratic_form_extrema.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode constrained_quadratic_form_extrema.tex
 	../../latexrun constrained_quadratic_form_extrema.tex
 	make terms

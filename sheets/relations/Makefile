@@ -9,7 +9,7 @@ make:
 relations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > relations.tex
 
-relations.pdf: ../../*.tex ../../trademark.pdf *.tex relations.tex
+relations.pdf: ../../*.tex ../../trademark.pdf *.tex relations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode relations.tex
 	../../latexrun relations.tex
 	make terms

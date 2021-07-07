@@ -9,7 +9,7 @@ make:
 closest_point_property.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > closest_point_property.tex
 
-closest_point_property.pdf: ../../*.tex ../../trademark.pdf *.tex closest_point_property.tex
+closest_point_property.pdf: ../../*.tex ../../trademark.pdf *.tex closest_point_property.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode closest_point_property.tex
 	../../latexrun closest_point_property.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 pointwise_vs_measure_limits.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > pointwise_vs_measure_limits.tex
 
-pointwise_vs_measure_limits.pdf: ../../*.tex ../../trademark.pdf *.tex pointwise_vs_measure_limits.tex
+pointwise_vs_measure_limits.pdf: ../../*.tex ../../trademark.pdf *.tex pointwise_vs_measure_limits.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode pointwise_vs_measure_limits.tex
 	../../latexrun pointwise_vs_measure_limits.tex
 	make terms

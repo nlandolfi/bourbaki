@@ -9,7 +9,7 @@ make:
 subspace_sums.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subspace_sums.tex
 
-subspace_sums.pdf: ../../*.tex ../../trademark.pdf *.tex subspace_sums.tex
+subspace_sums.pdf: ../../*.tex ../../trademark.pdf *.tex subspace_sums.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode subspace_sums.tex
 	../../latexrun subspace_sums.tex
 	make terms

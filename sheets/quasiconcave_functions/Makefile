@@ -9,7 +9,7 @@ make:
 quasiconcave_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > quasiconcave_functions.tex
 
-quasiconcave_functions.pdf: ../../*.tex ../../trademark.pdf *.tex quasiconcave_functions.tex
+quasiconcave_functions.pdf: ../../*.tex ../../trademark.pdf *.tex quasiconcave_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode quasiconcave_functions.tex
 	../../latexrun quasiconcave_functions.tex
 	make terms

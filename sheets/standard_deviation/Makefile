@@ -9,7 +9,7 @@ make:
 standard_deviation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > standard_deviation.tex
 
-standard_deviation.pdf: ../../*.tex ../../trademark.pdf *.tex standard_deviation.tex
+standard_deviation.pdf: ../../*.tex ../../trademark.pdf *.tex standard_deviation.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode standard_deviation.tex
 	../../latexrun standard_deviation.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 set_intersections.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_intersections.tex
 
-set_intersections.pdf: ../../*.tex ../../trademark.pdf *.tex set_intersections.tex
+set_intersections.pdf: ../../*.tex ../../trademark.pdf *.tex set_intersections.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode set_intersections.tex
 	../../latexrun set_intersections.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 real_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_integrals.tex
 
-real_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex real_integrals.tex
+real_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex real_integrals.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_integrals.tex
 	../../latexrun real_integrals.tex
 	make terms

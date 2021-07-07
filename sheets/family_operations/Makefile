@@ -9,7 +9,7 @@ make:
 family_operations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > family_operations.tex
 
-family_operations.pdf: ../../*.tex ../../trademark.pdf *.tex family_operations.tex
+family_operations.pdf: ../../*.tex ../../trademark.pdf *.tex family_operations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode family_operations.tex
 	../../latexrun family_operations.tex
 	make terms

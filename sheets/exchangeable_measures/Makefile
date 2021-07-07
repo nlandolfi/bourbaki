@@ -9,7 +9,7 @@ make:
 exchangeable_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > exchangeable_measures.tex
 
-exchangeable_measures.pdf: ../../*.tex ../../trademark.pdf *.tex exchangeable_measures.tex
+exchangeable_measures.pdf: ../../*.tex ../../trademark.pdf *.tex exchangeable_measures.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode exchangeable_measures.tex
 	../../latexrun exchangeable_measures.tex
 	make terms

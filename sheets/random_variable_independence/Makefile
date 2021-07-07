@@ -9,7 +9,7 @@ make:
 random_variable_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_variable_independence.tex
 
-random_variable_independence.pdf: ../../*.tex ../../trademark.pdf *.tex random_variable_independence.tex
+random_variable_independence.pdf: ../../*.tex ../../trademark.pdf *.tex random_variable_independence.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode random_variable_independence.tex
 	../../latexrun random_variable_independence.tex
 	make terms

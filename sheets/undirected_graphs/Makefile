@@ -9,7 +9,7 @@ make:
 undirected_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > undirected_graphs.tex
 
-undirected_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex undirected_graphs.tex
+undirected_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex undirected_graphs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode undirected_graphs.tex
 	../../latexrun undirected_graphs.tex
 	make terms

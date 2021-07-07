@@ -9,7 +9,7 @@ make:
 datasets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > datasets.tex
 
-datasets.pdf: ../../*.tex ../../trademark.pdf *.tex datasets.tex
+datasets.pdf: ../../*.tex ../../trademark.pdf *.tex datasets.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode datasets.tex
 	../../latexrun datasets.tex
 	make terms

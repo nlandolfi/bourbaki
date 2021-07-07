@@ -9,7 +9,7 @@ make:
 polytopes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > polytopes.tex
 
-polytopes.pdf: ../../*.tex ../../trademark.pdf *.tex polytopes.tex
+polytopes.pdf: ../../*.tex ../../trademark.pdf *.tex polytopes.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode polytopes.tex
 	../../latexrun polytopes.tex
 	make terms

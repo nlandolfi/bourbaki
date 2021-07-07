@@ -9,7 +9,7 @@ make:
 measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > measures.tex
 
-measures.pdf: ../../*.tex ../../trademark.pdf *.tex measures.tex
+measures.pdf: ../../*.tex ../../trademark.pdf *.tex measures.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode measures.tex
 	../../latexrun measures.tex
 	make terms

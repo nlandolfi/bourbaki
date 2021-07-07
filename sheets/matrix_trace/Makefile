@@ -9,7 +9,7 @@ make:
 matrix_trace.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_trace.tex
 
-matrix_trace.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_trace.tex
+matrix_trace.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_trace.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_trace.tex
 	../../latexrun matrix_trace.tex
 	make terms

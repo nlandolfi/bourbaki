@@ -9,7 +9,7 @@ make:
 rooted_tree_linear_cascades.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rooted_tree_linear_cascades.tex
 
-rooted_tree_linear_cascades.pdf: ../../*.tex ../../trademark.pdf *.tex rooted_tree_linear_cascades.tex
+rooted_tree_linear_cascades.pdf: ../../*.tex ../../trademark.pdf *.tex rooted_tree_linear_cascades.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode rooted_tree_linear_cascades.tex
 	../../latexrun rooted_tree_linear_cascades.tex
 	make terms

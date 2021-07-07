@@ -9,7 +9,7 @@ make:
 matrix_similarity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_similarity.tex
 
-matrix_similarity.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_similarity.tex
+matrix_similarity.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_similarity.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_similarity.tex
 	../../latexrun matrix_similarity.tex
 	make terms

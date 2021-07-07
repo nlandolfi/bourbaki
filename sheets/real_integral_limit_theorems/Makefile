@@ -9,7 +9,7 @@ make:
 real_integral_limit_theorems.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_integral_limit_theorems.tex
 
-real_integral_limit_theorems.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_limit_theorems.tex
+real_integral_limit_theorems.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_limit_theorems.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_integral_limit_theorems.tex
 	../../latexrun real_integral_limit_theorems.tex
 	make terms

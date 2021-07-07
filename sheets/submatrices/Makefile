@@ -9,7 +9,7 @@ make:
 submatrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > submatrices.tex
 
-submatrices.pdf: ../../*.tex ../../trademark.pdf *.tex submatrices.tex
+submatrices.pdf: ../../*.tex ../../trademark.pdf *.tex submatrices.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode submatrices.tex
 	../../latexrun submatrices.tex
 	make terms

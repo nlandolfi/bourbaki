@@ -9,7 +9,7 @@ make:
 names.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > names.tex
 
-names.pdf: ../../*.tex ../../trademark.pdf *.tex names.tex
+names.pdf: ../../*.tex ../../trademark.pdf *.tex names.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode names.tex
 	../../latexrun names.tex
 	make terms

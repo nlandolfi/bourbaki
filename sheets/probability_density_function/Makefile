@@ -9,7 +9,7 @@ make:
 probability_density_function.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probability_density_function.tex
 
-probability_density_function.pdf: ../../*.tex ../../trademark.pdf *.tex probability_density_function.tex
+probability_density_function.pdf: ../../*.tex ../../trademark.pdf *.tex probability_density_function.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode probability_density_function.tex
 	../../latexrun probability_density_function.tex
 	make terms

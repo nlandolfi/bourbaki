@@ -9,7 +9,7 @@ make:
 convex_hulls.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_hulls.tex
 
-convex_hulls.pdf: ../../*.tex ../../trademark.pdf *.tex convex_hulls.tex
+convex_hulls.pdf: ../../*.tex ../../trademark.pdf *.tex convex_hulls.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode convex_hulls.tex
 	../../latexrun convex_hulls.tex
 	make terms

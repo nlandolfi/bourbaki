@@ -9,7 +9,7 @@ make:
 bounded_linear_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > bounded_linear_functions.tex
 
-bounded_linear_functions.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_linear_functions.tex
+bounded_linear_functions.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_linear_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode bounded_linear_functions.tex
 	../../latexrun bounded_linear_functions.tex
 	make terms

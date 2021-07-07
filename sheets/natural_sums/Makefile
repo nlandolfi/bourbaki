@@ -9,7 +9,7 @@ make:
 natural_sums.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_sums.tex
 
-natural_sums.pdf: ../../*.tex ../../trademark.pdf *.tex natural_sums.tex
+natural_sums.pdf: ../../*.tex ../../trademark.pdf *.tex natural_sums.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode natural_sums.tex
 	../../latexrun natural_sums.tex
 	make terms

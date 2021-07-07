@@ -9,7 +9,7 @@ make:
 undirected_paths.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > undirected_paths.tex
 
-undirected_paths.pdf: ../../*.tex ../../trademark.pdf *.tex undirected_paths.tex
+undirected_paths.pdf: ../../*.tex ../../trademark.pdf *.tex undirected_paths.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode undirected_paths.tex
 	../../latexrun undirected_paths.tex
 	make terms

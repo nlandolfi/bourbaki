@@ -9,7 +9,7 @@ make:
 matrix_transpose.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_transpose.tex
 
-matrix_transpose.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_transpose.tex
+matrix_transpose.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_transpose.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_transpose.tex
 	../../latexrun matrix_transpose.tex
 	make terms

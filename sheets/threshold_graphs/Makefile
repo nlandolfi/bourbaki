@@ -9,7 +9,7 @@ make:
 threshold_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > threshold_graphs.tex
 
-threshold_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex threshold_graphs.tex
+threshold_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex threshold_graphs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode threshold_graphs.tex
 	../../latexrun threshold_graphs.tex
 	make terms

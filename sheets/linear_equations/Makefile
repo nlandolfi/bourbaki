@@ -9,7 +9,7 @@ make:
 linear_equations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > linear_equations.tex
 
-linear_equations.pdf: ../../*.tex ../../trademark.pdf *.tex linear_equations.tex
+linear_equations.pdf: ../../*.tex ../../trademark.pdf *.tex linear_equations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode linear_equations.tex
 	../../latexrun linear_equations.tex
 	make terms

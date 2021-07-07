@@ -9,7 +9,7 @@ make:
 partitions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > partitions.tex
 
-partitions.pdf: ../../*.tex ../../trademark.pdf *.tex partitions.tex
+partitions.pdf: ../../*.tex ../../trademark.pdf *.tex partitions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode partitions.tex
 	../../latexrun partitions.tex
 	make terms

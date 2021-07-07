@@ -9,7 +9,7 @@ make:
 diagonal_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > diagonal_matrices.tex
 
-diagonal_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex diagonal_matrices.tex
+diagonal_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex diagonal_matrices.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode diagonal_matrices.tex
 	../../latexrun diagonal_matrices.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 real_integral_series_convergence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_integral_series_convergence.tex
 
-real_integral_series_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_series_convergence.tex
+real_integral_series_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_series_convergence.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_integral_series_convergence.tex
 	../../latexrun real_integral_series_convergence.tex
 	make terms
