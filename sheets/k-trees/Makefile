@@ -9,7 +9,7 @@ make:
 k-trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > k-trees.tex
 
-k-trees.pdf: ../../*.tex ../../trademark.pdf *.tex k-trees.tex
+k-trees.pdf: ../../*.tex ../../trademark.pdf *.tex k-trees.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode k-trees.tex
 	../../latexrun k-trees.tex
 	make terms

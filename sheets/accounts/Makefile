@@ -9,7 +9,7 @@ make:
 accounts.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > accounts.tex
 
-accounts.pdf: ../../*.tex ../../trademark.pdf *.tex accounts.tex
+accounts.pdf: ../../*.tex ../../trademark.pdf *.tex accounts.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode accounts.tex
 	../../latexrun accounts.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 empirical_normal.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > empirical_normal.tex
 
-empirical_normal.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_normal.tex
+empirical_normal.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_normal.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode empirical_normal.tex
 	../../latexrun empirical_normal.tex
 	make terms

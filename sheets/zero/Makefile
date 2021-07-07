@@ -9,7 +9,7 @@ make:
 zero.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > zero.tex
 
-zero.pdf: ../../*.tex ../../trademark.pdf *.tex zero.tex
+zero.pdf: ../../*.tex ../../trademark.pdf *.tex zero.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode zero.tex
 	../../latexrun zero.tex
 	make terms

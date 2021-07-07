@@ -9,7 +9,7 @@ make:
 outcome_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > outcome_vectors.tex
 
-outcome_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_vectors.tex
+outcome_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_vectors.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode outcome_vectors.tex
 	../../latexrun outcome_vectors.tex
 	make terms

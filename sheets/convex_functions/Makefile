@@ -9,7 +9,7 @@ make:
 convex_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_functions.tex
 
-convex_functions.pdf: ../../*.tex ../../trademark.pdf *.tex convex_functions.tex
+convex_functions.pdf: ../../*.tex ../../trademark.pdf *.tex convex_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode convex_functions.tex
 	../../latexrun convex_functions.tex
 	make terms

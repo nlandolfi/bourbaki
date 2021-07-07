@@ -9,7 +9,7 @@ make:
 sparse_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sparse_matrices.tex
 
-sparse_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex sparse_matrices.tex
+sparse_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex sparse_matrices.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode sparse_matrices.tex
 	../../latexrun sparse_matrices.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 vector_space_isomorphisms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vector_space_isomorphisms.tex
 
-vector_space_isomorphisms.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_isomorphisms.tex
+vector_space_isomorphisms.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_isomorphisms.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode vector_space_isomorphisms.tex
 	../../latexrun vector_space_isomorphisms.tex
 	make terms

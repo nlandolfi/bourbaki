@@ -9,7 +9,7 @@ make:
 quantified_statements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > quantified_statements.tex
 
-quantified_statements.pdf: ../../*.tex ../../trademark.pdf *.tex quantified_statements.tex
+quantified_statements.pdf: ../../*.tex ../../trademark.pdf *.tex quantified_statements.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode quantified_statements.tex
 	../../latexrun quantified_statements.tex
 	make terms

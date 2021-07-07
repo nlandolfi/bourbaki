@@ -9,7 +9,7 @@ make:
 weighted_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > weighted_graphs.tex
 
-weighted_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex weighted_graphs.tex
+weighted_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex weighted_graphs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode weighted_graphs.tex
 	../../latexrun weighted_graphs.tex
 	make terms

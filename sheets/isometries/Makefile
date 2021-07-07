@@ -9,7 +9,7 @@ make:
 isometries.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > isometries.tex
 
-isometries.pdf: ../../*.tex ../../trademark.pdf *.tex isometries.tex
+isometries.pdf: ../../*.tex ../../trademark.pdf *.tex isometries.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode isometries.tex
 	../../latexrun isometries.tex
 	make terms

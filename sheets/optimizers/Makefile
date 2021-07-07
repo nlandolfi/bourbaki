@@ -9,7 +9,7 @@ make:
 optimizers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > optimizers.tex
 
-optimizers.pdf: ../../*.tex ../../trademark.pdf *.tex optimizers.tex
+optimizers.pdf: ../../*.tex ../../trademark.pdf *.tex optimizers.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode optimizers.tex
 	../../latexrun optimizers.tex
 	make terms

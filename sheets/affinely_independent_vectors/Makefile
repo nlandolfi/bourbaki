@@ -9,7 +9,7 @@ make:
 affinely_independent_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affinely_independent_vectors.tex
 
-affinely_independent_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex affinely_independent_vectors.tex
+affinely_independent_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex affinely_independent_vectors.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode affinely_independent_vectors.tex
 	../../latexrun affinely_independent_vectors.tex
 	make terms

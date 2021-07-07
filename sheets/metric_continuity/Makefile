@@ -9,7 +9,7 @@ make:
 metric_continuity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_continuity.tex
 
-metric_continuity.pdf: ../../*.tex ../../trademark.pdf *.tex metric_continuity.tex
+metric_continuity.pdf: ../../*.tex ../../trademark.pdf *.tex metric_continuity.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode metric_continuity.tex
 	../../latexrun metric_continuity.tex
 	make terms

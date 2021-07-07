@@ -9,7 +9,7 @@ make:
 spanning_trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > spanning_trees.tex
 
-spanning_trees.pdf: ../../*.tex ../../trademark.pdf *.tex spanning_trees.tex
+spanning_trees.pdf: ../../*.tex ../../trademark.pdf *.tex spanning_trees.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode spanning_trees.tex
 	../../latexrun spanning_trees.tex
 	make terms

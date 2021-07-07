@@ -9,7 +9,7 @@ make:
 translate_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > translate_sets.tex
 
-translate_sets.pdf: ../../*.tex ../../trademark.pdf *.tex translate_sets.tex
+translate_sets.pdf: ../../*.tex ../../trademark.pdf *.tex translate_sets.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode translate_sets.tex
 	../../latexrun translate_sets.tex
 	make terms

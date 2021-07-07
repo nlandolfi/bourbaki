@@ -9,7 +9,7 @@ make:
 subspace_dimensions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subspace_dimensions.tex
 
-subspace_dimensions.pdf: ../../*.tex ../../trademark.pdf *.tex subspace_dimensions.tex
+subspace_dimensions.pdf: ../../*.tex ../../trademark.pdf *.tex subspace_dimensions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode subspace_dimensions.tex
 	../../latexrun subspace_dimensions.tex
 	make terms

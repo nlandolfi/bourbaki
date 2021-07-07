@@ -9,7 +9,7 @@ make:
 generated_monotone_class.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > generated_monotone_class.tex
 
-generated_monotone_class.pdf: ../../*.tex ../../trademark.pdf *.tex generated_monotone_class.tex
+generated_monotone_class.pdf: ../../*.tex ../../trademark.pdf *.tex generated_monotone_class.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode generated_monotone_class.tex
 	../../latexrun generated_monotone_class.tex
 	make terms

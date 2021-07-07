@@ -9,7 +9,7 @@ make:
 interval_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > interval_graphs.tex
 
-interval_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex interval_graphs.tex
+interval_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex interval_graphs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode interval_graphs.tex
 	../../latexrun interval_graphs.tex
 	make terms

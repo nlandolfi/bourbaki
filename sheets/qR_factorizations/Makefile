@@ -9,7 +9,7 @@ make:
 qR_factorizations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > qR_factorizations.tex
 
-qR_factorizations.pdf: ../../*.tex ../../trademark.pdf *.tex qR_factorizations.tex
+qR_factorizations.pdf: ../../*.tex ../../trademark.pdf *.tex qR_factorizations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode qR_factorizations.tex
 	../../latexrun qR_factorizations.tex
 	make terms

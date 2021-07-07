@@ -9,7 +9,7 @@ make:
 real_length_impossible.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_length_impossible.tex
 
-real_length_impossible.pdf: ../../*.tex ../../trademark.pdf *.tex real_length_impossible.tex
+real_length_impossible.pdf: ../../*.tex ../../trademark.pdf *.tex real_length_impossible.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_length_impossible.tex
 	../../latexrun real_length_impossible.tex
 	make terms

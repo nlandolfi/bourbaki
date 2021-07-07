@@ -9,7 +9,7 @@ make:
 vertex_separators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vertex_separators.tex
 
-vertex_separators.pdf: ../../*.tex ../../trademark.pdf *.tex vertex_separators.tex
+vertex_separators.pdf: ../../*.tex ../../trademark.pdf *.tex vertex_separators.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode vertex_separators.tex
 	../../latexrun vertex_separators.tex
 	make terms

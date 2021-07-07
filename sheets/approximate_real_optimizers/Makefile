@@ -9,7 +9,7 @@ make:
 approximate_real_optimizers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > approximate_real_optimizers.tex
 
-approximate_real_optimizers.pdf: ../../*.tex ../../trademark.pdf *.tex approximate_real_optimizers.tex
+approximate_real_optimizers.pdf: ../../*.tex ../../trademark.pdf *.tex approximate_real_optimizers.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode approximate_real_optimizers.tex
 	../../latexrun approximate_real_optimizers.tex
 	make terms

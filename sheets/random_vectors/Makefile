@@ -9,7 +9,7 @@ make:
 random_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_vectors.tex
 
-random_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex random_vectors.tex
+random_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex random_vectors.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode random_vectors.tex
 	../../latexrun random_vectors.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 optimal_tree_density_approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > optimal_tree_density_approximators.tex
 
-optimal_tree_density_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex optimal_tree_density_approximators.tex
+optimal_tree_density_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex optimal_tree_density_approximators.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode optimal_tree_density_approximators.tex
 	../../latexrun optimal_tree_density_approximators.tex
 	make terms

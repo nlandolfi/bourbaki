@@ -9,7 +9,7 @@ make:
 affine_transformations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_transformations.tex
 
-affine_transformations.pdf: ../../*.tex ../../trademark.pdf *.tex affine_transformations.tex
+affine_transformations.pdf: ../../*.tex ../../trademark.pdf *.tex affine_transformations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode affine_transformations.tex
 	../../latexrun affine_transformations.tex
 	make terms

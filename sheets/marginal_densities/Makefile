@@ -9,7 +9,7 @@ make:
 marginal_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > marginal_densities.tex
 
-marginal_densities.pdf: ../../*.tex ../../trademark.pdf *.tex marginal_densities.tex
+marginal_densities.pdf: ../../*.tex ../../trademark.pdf *.tex marginal_densities.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode marginal_densities.tex
 	../../latexrun marginal_densities.tex
 	make terms

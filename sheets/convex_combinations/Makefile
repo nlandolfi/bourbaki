@@ -9,7 +9,7 @@ make:
 convex_combinations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_combinations.tex
 
-convex_combinations.pdf: ../../*.tex ../../trademark.pdf *.tex convex_combinations.tex
+convex_combinations.pdf: ../../*.tex ../../trademark.pdf *.tex convex_combinations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode convex_combinations.tex
 	../../latexrun convex_combinations.tex
 	make terms

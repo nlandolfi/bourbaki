@@ -9,7 +9,7 @@ make:
 tree_linear_cascades.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_linear_cascades.tex
 
-tree_linear_cascades.pdf: ../../*.tex ../../trademark.pdf *.tex tree_linear_cascades.tex
+tree_linear_cascades.pdf: ../../*.tex ../../trademark.pdf *.tex tree_linear_cascades.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode tree_linear_cascades.tex
 	../../latexrun tree_linear_cascades.tex
 	make terms

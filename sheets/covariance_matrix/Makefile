@@ -9,7 +9,7 @@ make:
 covariance_matrix.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > covariance_matrix.tex
 
-covariance_matrix.pdf: ../../*.tex ../../trademark.pdf *.tex covariance_matrix.tex
+covariance_matrix.pdf: ../../*.tex ../../trademark.pdf *.tex covariance_matrix.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode covariance_matrix.tex
 	../../latexrun covariance_matrix.tex
 	make terms

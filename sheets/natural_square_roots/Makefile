@@ -9,7 +9,7 @@ make:
 natural_square_roots.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_square_roots.tex
 
-natural_square_roots.pdf: ../../*.tex ../../trademark.pdf *.tex natural_square_roots.tex
+natural_square_roots.pdf: ../../*.tex ../../trademark.pdf *.tex natural_square_roots.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode natural_square_roots.tex
 	../../latexrun natural_square_roots.tex
 	make terms

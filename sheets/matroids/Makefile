@@ -9,7 +9,7 @@ make:
 matroids.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matroids.tex
 
-matroids.pdf: ../../*.tex ../../trademark.pdf *.tex matroids.tex
+matroids.pdf: ../../*.tex ../../trademark.pdf *.tex matroids.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matroids.tex
 	../../latexrun matroids.tex
 	make terms

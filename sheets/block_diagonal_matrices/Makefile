@@ -9,7 +9,7 @@ make:
 block_diagonal_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > block_diagonal_matrices.tex
 
-block_diagonal_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex block_diagonal_matrices.tex
+block_diagonal_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex block_diagonal_matrices.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode block_diagonal_matrices.tex
 	../../latexrun block_diagonal_matrices.tex
 	make terms

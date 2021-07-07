@@ -9,7 +9,7 @@ make:
 empty_set.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > empty_set.tex
 
-empty_set.pdf: ../../*.tex ../../trademark.pdf *.tex empty_set.tex
+empty_set.pdf: ../../*.tex ../../trademark.pdf *.tex empty_set.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode empty_set.tex
 	../../latexrun empty_set.tex
 	make terms

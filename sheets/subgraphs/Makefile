@@ -9,7 +9,7 @@ make:
 subgraphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subgraphs.tex
 
-subgraphs.pdf: ../../*.tex ../../trademark.pdf *.tex subgraphs.tex
+subgraphs.pdf: ../../*.tex ../../trademark.pdf *.tex subgraphs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode subgraphs.tex
 	../../latexrun subgraphs.tex
 	make terms

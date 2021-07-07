@@ -9,7 +9,7 @@ make:
 operators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > operators.tex
 
-operators.pdf: ../../*.tex ../../trademark.pdf *.tex operators.tex
+operators.pdf: ../../*.tex ../../trademark.pdf *.tex operators.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode operators.tex
 	../../latexrun operators.tex
 	make terms

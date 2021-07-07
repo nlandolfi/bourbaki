@@ -9,7 +9,7 @@ make:
 split_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > split_graphs.tex
 
-split_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex split_graphs.tex
+split_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex split_graphs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode split_graphs.tex
 	../../latexrun split_graphs.tex
 	make terms

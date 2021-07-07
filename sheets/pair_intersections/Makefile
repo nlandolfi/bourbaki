@@ -9,7 +9,7 @@ make:
 pair_intersections.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > pair_intersections.tex
 
-pair_intersections.pdf: ../../*.tex ../../trademark.pdf *.tex pair_intersections.tex
+pair_intersections.pdf: ../../*.tex ../../trademark.pdf *.tex pair_intersections.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode pair_intersections.tex
 	../../latexrun pair_intersections.tex
 	make terms

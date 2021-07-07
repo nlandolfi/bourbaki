@@ -9,7 +9,7 @@ make:
 natural_products.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_products.tex
 
-natural_products.pdf: ../../*.tex ../../trademark.pdf *.tex natural_products.tex
+natural_products.pdf: ../../*.tex ../../trademark.pdf *.tex natural_products.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode natural_products.tex
 	../../latexrun natural_products.tex
 	make terms

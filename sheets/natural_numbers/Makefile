@@ -9,7 +9,7 @@ make:
 natural_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_numbers.tex
 
-natural_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex natural_numbers.tex
+natural_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex natural_numbers.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode natural_numbers.tex
 	../../latexrun natural_numbers.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 set_unions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_unions.tex
 
-set_unions.pdf: ../../*.tex ../../trademark.pdf *.tex set_unions.tex
+set_unions.pdf: ../../*.tex ../../trademark.pdf *.tex set_unions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode set_unions.tex
 	../../latexrun set_unions.tex
 	make terms

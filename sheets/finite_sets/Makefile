@@ -9,7 +9,7 @@ make:
 finite_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > finite_sets.tex
 
-finite_sets.pdf: ../../*.tex ../../trademark.pdf *.tex finite_sets.tex
+finite_sets.pdf: ../../*.tex ../../trademark.pdf *.tex finite_sets.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode finite_sets.tex
 	../../latexrun finite_sets.tex
 	make terms

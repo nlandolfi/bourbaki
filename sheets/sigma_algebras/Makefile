@@ -9,7 +9,7 @@ make:
 sigma_algebras.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sigma_algebras.tex
 
-sigma_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex sigma_algebras.tex
+sigma_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex sigma_algebras.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode sigma_algebras.tex
 	../../latexrun sigma_algebras.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 statements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > statements.tex
 
-statements.pdf: ../../*.tex ../../trademark.pdf *.tex statements.tex
+statements.pdf: ../../*.tex ../../trademark.pdf *.tex statements.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode statements.tex
 	../../latexrun statements.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 differentiability.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differentiability.tex
 
-differentiability.pdf: ../../*.tex ../../trademark.pdf *.tex differentiability.tex
+differentiability.pdf: ../../*.tex ../../trademark.pdf *.tex differentiability.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode differentiability.tex
 	../../latexrun differentiability.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 fair_coins.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > fair_coins.tex
 
-fair_coins.pdf: ../../*.tex ../../trademark.pdf *.tex fair_coins.tex
+fair_coins.pdf: ../../*.tex ../../trademark.pdf *.tex fair_coins.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode fair_coins.tex
 	../../latexrun fair_coins.tex
 	make terms

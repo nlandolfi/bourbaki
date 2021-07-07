@@ -9,7 +9,7 @@ make:
 matrix-matrix_products.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix-matrix_products.tex
 
-matrix-matrix_products.pdf: ../../*.tex ../../trademark.pdf *.tex matrix-matrix_products.tex
+matrix-matrix_products.pdf: ../../*.tex ../../trademark.pdf *.tex matrix-matrix_products.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix-matrix_products.tex
 	../../latexrun matrix-matrix_products.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 chordal_sparsity_patterns.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > chordal_sparsity_patterns.tex
 
-chordal_sparsity_patterns.pdf: ../../*.tex ../../trademark.pdf *.tex chordal_sparsity_patterns.tex
+chordal_sparsity_patterns.pdf: ../../*.tex ../../trademark.pdf *.tex chordal_sparsity_patterns.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode chordal_sparsity_patterns.tex
 	../../latexrun chordal_sparsity_patterns.tex
 	make terms

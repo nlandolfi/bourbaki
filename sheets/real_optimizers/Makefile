@@ -9,7 +9,7 @@ make:
 real_optimizers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_optimizers.tex
 
-real_optimizers.pdf: ../../*.tex ../../trademark.pdf *.tex real_optimizers.tex
+real_optimizers.pdf: ../../*.tex ../../trademark.pdf *.tex real_optimizers.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_optimizers.tex
 	../../latexrun real_optimizers.tex
 	make terms

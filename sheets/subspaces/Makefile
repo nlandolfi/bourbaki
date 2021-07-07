@@ -9,7 +9,7 @@ make:
 subspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subspaces.tex
 
-subspaces.pdf: ../../*.tex ../../trademark.pdf *.tex subspaces.tex
+subspaces.pdf: ../../*.tex ../../trademark.pdf *.tex subspaces.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode subspaces.tex
 	../../latexrun subspaces.tex
 	make terms

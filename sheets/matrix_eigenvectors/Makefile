@@ -9,7 +9,7 @@ make:
 matrix_eigenvectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_eigenvectors.tex
 
-matrix_eigenvectors.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_eigenvectors.tex
+matrix_eigenvectors.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_eigenvectors.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_eigenvectors.tex
 	../../latexrun matrix_eigenvectors.tex
 	make terms

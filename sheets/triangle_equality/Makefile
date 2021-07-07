@@ -9,7 +9,7 @@ make:
 triangle_equality.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > triangle_equality.tex
 
-triangle_equality.pdf: ../../*.tex ../../trademark.pdf *.tex triangle_equality.tex
+triangle_equality.pdf: ../../*.tex ../../trademark.pdf *.tex triangle_equality.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode triangle_equality.tex
 	../../latexrun triangle_equality.tex
 	make terms

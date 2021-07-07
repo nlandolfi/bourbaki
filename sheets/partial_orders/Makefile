@@ -9,7 +9,7 @@ make:
 partial_orders.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > partial_orders.tex
 
-partial_orders.pdf: ../../*.tex ../../trademark.pdf *.tex partial_orders.tex
+partial_orders.pdf: ../../*.tex ../../trademark.pdf *.tex partial_orders.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode partial_orders.tex
 	../../latexrun partial_orders.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 function_inverses.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_inverses.tex
 
-function_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex function_inverses.tex
+function_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex function_inverses.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode function_inverses.tex
 	../../latexrun function_inverses.tex
 	make terms

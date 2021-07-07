@@ -9,7 +9,7 @@ make:
 nonnegative_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > nonnegative_integrals.tex
 
-nonnegative_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex nonnegative_integrals.tex
+nonnegative_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex nonnegative_integrals.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode nonnegative_integrals.tex
 	../../latexrun nonnegative_integrals.tex
 	make terms

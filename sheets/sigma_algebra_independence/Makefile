@@ -9,7 +9,7 @@ make:
 sigma_algebra_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sigma_algebra_independence.tex
 
-sigma_algebra_independence.pdf: ../../*.tex ../../trademark.pdf *.tex sigma_algebra_independence.tex
+sigma_algebra_independence.pdf: ../../*.tex ../../trademark.pdf *.tex sigma_algebra_independence.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode sigma_algebra_independence.tex
 	../../latexrun sigma_algebra_independence.tex
 	make terms

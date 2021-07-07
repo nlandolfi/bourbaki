@@ -9,7 +9,7 @@ make:
 normal_maximum_likelihood.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_maximum_likelihood.tex
 
-normal_maximum_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex normal_maximum_likelihood.tex
+normal_maximum_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex normal_maximum_likelihood.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode normal_maximum_likelihood.tex
 	../../latexrun normal_maximum_likelihood.tex
 	make terms

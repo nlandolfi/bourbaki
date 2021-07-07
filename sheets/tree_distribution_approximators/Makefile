@@ -9,7 +9,7 @@ make:
 tree_distribution_approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_distribution_approximators.tex
 
-tree_distribution_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex tree_distribution_approximators.tex
+tree_distribution_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex tree_distribution_approximators.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode tree_distribution_approximators.tex
 	../../latexrun tree_distribution_approximators.tex
 	make terms

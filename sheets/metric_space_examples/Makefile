@@ -9,7 +9,7 @@ make:
 metric_space_examples.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_space_examples.tex
 
-metric_space_examples.pdf: ../../*.tex ../../trademark.pdf *.tex metric_space_examples.tex
+metric_space_examples.pdf: ../../*.tex ../../trademark.pdf *.tex metric_space_examples.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode metric_space_examples.tex
 	../../latexrun metric_space_examples.tex
 	make terms

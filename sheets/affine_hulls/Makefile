@@ -9,7 +9,7 @@ make:
 affine_hulls.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_hulls.tex
 
-affine_hulls.pdf: ../../*.tex ../../trademark.pdf *.tex affine_hulls.tex
+affine_hulls.pdf: ../../*.tex ../../trademark.pdf *.tex affine_hulls.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode affine_hulls.tex
 	../../latexrun affine_hulls.tex
 	make terms

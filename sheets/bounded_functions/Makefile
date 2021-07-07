@@ -9,7 +9,7 @@ make:
 bounded_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > bounded_functions.tex
 
-bounded_functions.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_functions.tex
+bounded_functions.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode bounded_functions.tex
 	../../latexrun bounded_functions.tex
 	make terms

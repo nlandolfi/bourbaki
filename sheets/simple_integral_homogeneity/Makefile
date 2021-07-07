@@ -9,7 +9,7 @@ make:
 simple_integral_homogeneity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integral_homogeneity.tex
 
-simple_integral_homogeneity.pdf: ../../*.tex ../../trademark.pdf *.tex simple_integral_homogeneity.tex
+simple_integral_homogeneity.pdf: ../../*.tex ../../trademark.pdf *.tex simple_integral_homogeneity.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode simple_integral_homogeneity.tex
 	../../latexrun simple_integral_homogeneity.tex
 	make terms

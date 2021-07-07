@@ -9,7 +9,7 @@ make:
 projector_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > projector_matrices.tex
 
-projector_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex projector_matrices.tex
+projector_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex projector_matrices.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode projector_matrices.tex
 	../../latexrun projector_matrices.tex
 	make terms

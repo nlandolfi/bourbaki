@@ -9,7 +9,7 @@ make:
 standardized_accounts.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > standardized_accounts.tex
 
-standardized_accounts.pdf: ../../*.tex ../../trademark.pdf *.tex standardized_accounts.tex
+standardized_accounts.pdf: ../../*.tex ../../trademark.pdf *.tex standardized_accounts.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode standardized_accounts.tex
 	../../latexrun standardized_accounts.tex
 	make terms

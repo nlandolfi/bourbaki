@@ -9,7 +9,7 @@ make:
 affine_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_sets.tex
 
-affine_sets.pdf: ../../*.tex ../../trademark.pdf *.tex affine_sets.tex
+affine_sets.pdf: ../../*.tex ../../trademark.pdf *.tex affine_sets.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode affine_sets.tex
 	../../latexrun affine_sets.tex
 	make terms

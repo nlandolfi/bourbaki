@@ -9,7 +9,7 @@ make:
 dice.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > dice.tex
 
-dice.pdf: ../../*.tex ../../trademark.pdf *.tex dice.tex
+dice.pdf: ../../*.tex ../../trademark.pdf *.tex dice.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode dice.tex
 	../../latexrun dice.tex
 	make terms

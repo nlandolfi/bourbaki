@@ -9,7 +9,7 @@ make:
 empirical_measure.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > empirical_measure.tex
 
-empirical_measure.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_measure.tex
+empirical_measure.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_measure.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode empirical_measure.tex
 	../../latexrun empirical_measure.tex
 	make terms

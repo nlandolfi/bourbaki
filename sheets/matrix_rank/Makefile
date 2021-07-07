@@ -9,7 +9,7 @@ make:
 matrix_rank.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_rank.tex
 
-matrix_rank.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_rank.tex
+matrix_rank.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_rank.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_rank.tex
 	../../latexrun matrix_rank.tex
 	make terms

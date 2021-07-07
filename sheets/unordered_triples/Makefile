@@ -9,7 +9,7 @@ make:
 unordered_triples.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > unordered_triples.tex
 
-unordered_triples.pdf: ../../*.tex ../../trademark.pdf *.tex unordered_triples.tex
+unordered_triples.pdf: ../../*.tex ../../trademark.pdf *.tex unordered_triples.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode unordered_triples.tex
 	../../latexrun unordered_triples.tex
 	make terms

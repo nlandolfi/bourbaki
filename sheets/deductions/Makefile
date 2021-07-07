@@ -9,7 +9,7 @@ make:
 deductions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > deductions.tex
 
-deductions.pdf: ../../*.tex ../../trademark.pdf *.tex deductions.tex
+deductions.pdf: ../../*.tex ../../trademark.pdf *.tex deductions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode deductions.tex
 	../../latexrun deductions.tex
 	make terms

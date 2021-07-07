@@ -9,7 +9,7 @@ make:
 random_variable_laws.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_variable_laws.tex
 
-random_variable_laws.pdf: ../../*.tex ../../trademark.pdf *.tex random_variable_laws.tex
+random_variable_laws.pdf: ../../*.tex ../../trademark.pdf *.tex random_variable_laws.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode random_variable_laws.tex
 	../../latexrun random_variable_laws.tex
 	make terms

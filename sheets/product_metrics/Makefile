@@ -9,7 +9,7 @@ make:
 product_metrics.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > product_metrics.tex
 
-product_metrics.pdf: ../../*.tex ../../trademark.pdf *.tex product_metrics.tex
+product_metrics.pdf: ../../*.tex ../../trademark.pdf *.tex product_metrics.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode product_metrics.tex
 	../../latexrun product_metrics.tex
 	make terms

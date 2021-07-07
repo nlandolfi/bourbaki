@@ -9,7 +9,7 @@ make:
 logarithm.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > logarithm.tex
 
-logarithm.pdf: ../../*.tex ../../trademark.pdf *.tex logarithm.tex
+logarithm.pdf: ../../*.tex ../../trademark.pdf *.tex logarithm.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode logarithm.tex
 	../../latexrun logarithm.tex
 	make terms

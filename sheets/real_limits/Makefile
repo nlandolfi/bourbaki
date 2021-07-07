@@ -9,7 +9,7 @@ make:
 real_limits.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_limits.tex
 
-real_limits.pdf: ../../*.tex ../../trademark.pdf *.tex real_limits.tex
+real_limits.pdf: ../../*.tex ../../trademark.pdf *.tex real_limits.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_limits.tex
 	../../latexrun real_limits.tex
 	make terms

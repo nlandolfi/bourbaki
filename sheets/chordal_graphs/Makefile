@@ -9,7 +9,7 @@ make:
 chordal_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > chordal_graphs.tex
 
-chordal_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex chordal_graphs.tex
+chordal_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex chordal_graphs.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode chordal_graphs.tex
 	../../latexrun chordal_graphs.tex
 	make terms

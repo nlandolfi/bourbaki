@@ -9,7 +9,7 @@ make:
 halfspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > halfspaces.tex
 
-halfspaces.pdf: ../../*.tex ../../trademark.pdf *.tex halfspaces.tex
+halfspaces.pdf: ../../*.tex ../../trademark.pdf *.tex halfspaces.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode halfspaces.tex
 	../../latexrun halfspaces.tex
 	make terms

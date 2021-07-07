@@ -9,7 +9,7 @@ make:
 measurable_function_operations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > measurable_function_operations.tex
 
-measurable_function_operations.pdf: ../../*.tex ../../trademark.pdf *.tex measurable_function_operations.tex
+measurable_function_operations.pdf: ../../*.tex ../../trademark.pdf *.tex measurable_function_operations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode measurable_function_operations.tex
 	../../latexrun measurable_function_operations.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 set_symmetric_differences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_symmetric_differences.tex
 
-set_symmetric_differences.pdf: ../../*.tex ../../trademark.pdf *.tex set_symmetric_differences.tex
+set_symmetric_differences.pdf: ../../*.tex ../../trademark.pdf *.tex set_symmetric_differences.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode set_symmetric_differences.tex
 	../../latexrun set_symmetric_differences.tex
 	make terms

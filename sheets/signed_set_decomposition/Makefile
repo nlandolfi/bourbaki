@@ -9,7 +9,7 @@ make:
 signed_set_decomposition.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > signed_set_decomposition.tex
 
-signed_set_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex signed_set_decomposition.tex
+signed_set_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex signed_set_decomposition.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode signed_set_decomposition.tex
 	../../latexrun signed_set_decomposition.tex
 	make terms

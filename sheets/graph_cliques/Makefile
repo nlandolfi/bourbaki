@@ -9,7 +9,7 @@ make:
 graph_cliques.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > graph_cliques.tex
 
-graph_cliques.pdf: ../../*.tex ../../trademark.pdf *.tex graph_cliques.tex
+graph_cliques.pdf: ../../*.tex ../../trademark.pdf *.tex graph_cliques.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode graph_cliques.tex
 	../../latexrun graph_cliques.tex
 	make terms

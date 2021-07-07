@@ -9,7 +9,7 @@ make:
 data_fitting.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > data_fitting.tex
 
-data_fitting.pdf: ../../*.tex ../../trademark.pdf *.tex data_fitting.tex
+data_fitting.pdf: ../../*.tex ../../trademark.pdf *.tex data_fitting.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode data_fitting.tex
 	../../latexrun data_fitting.tex
 	make terms

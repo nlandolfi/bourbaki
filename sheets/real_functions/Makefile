@@ -9,7 +9,7 @@ make:
 real_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_functions.tex
 
-real_functions.pdf: ../../*.tex ../../trademark.pdf *.tex real_functions.tex
+real_functions.pdf: ../../*.tex ../../trademark.pdf *.tex real_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_functions.tex
 	../../latexrun real_functions.tex
 	make terms

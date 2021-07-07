@@ -9,7 +9,7 @@ make:
 subset_systems.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subset_systems.tex
 
-subset_systems.pdf: ../../*.tex ../../trademark.pdf *.tex subset_systems.tex
+subset_systems.pdf: ../../*.tex ../../trademark.pdf *.tex subset_systems.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode subset_systems.tex
 	../../latexrun subset_systems.tex
 	make terms

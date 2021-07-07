@@ -9,7 +9,7 @@ make:
 affine_sets_and_hyperplanes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_sets_and_hyperplanes.tex
 
-affine_sets_and_hyperplanes.pdf: ../../*.tex ../../trademark.pdf *.tex affine_sets_and_hyperplanes.tex
+affine_sets_and_hyperplanes.pdf: ../../*.tex ../../trademark.pdf *.tex affine_sets_and_hyperplanes.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode affine_sets_and_hyperplanes.tex
 	../../latexrun affine_sets_and_hyperplanes.tex
 	make terms

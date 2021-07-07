@@ -9,7 +9,7 @@ make:
 total_probability.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > total_probability.tex
 
-total_probability.pdf: ../../*.tex ../../trademark.pdf *.tex total_probability.tex
+total_probability.pdf: ../../*.tex ../../trademark.pdf *.tex total_probability.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode total_probability.tex
 	../../latexrun total_probability.tex
 	make terms

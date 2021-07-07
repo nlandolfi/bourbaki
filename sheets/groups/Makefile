@@ -9,7 +9,7 @@ make:
 groups.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > groups.tex
 
-groups.pdf: ../../*.tex ../../trademark.pdf *.tex groups.tex
+groups.pdf: ../../*.tex ../../trademark.pdf *.tex groups.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode groups.tex
 	../../latexrun groups.tex
 	make terms

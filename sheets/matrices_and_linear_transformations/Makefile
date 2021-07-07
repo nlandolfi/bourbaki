@@ -9,7 +9,7 @@ make:
 matrices_and_linear_transformations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrices_and_linear_transformations.tex
 
-matrices_and_linear_transformations.pdf: ../../*.tex ../../trademark.pdf *.tex matrices_and_linear_transformations.tex
+matrices_and_linear_transformations.pdf: ../../*.tex ../../trademark.pdf *.tex matrices_and_linear_transformations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrices_and_linear_transformations.tex
 	../../latexrun matrices_and_linear_transformations.tex
 	make terms

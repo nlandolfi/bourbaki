@@ -9,7 +9,7 @@ make:
 normal_correlation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_correlation.tex
 
-normal_correlation.pdf: ../../*.tex ../../trademark.pdf *.tex normal_correlation.tex
+normal_correlation.pdf: ../../*.tex ../../trademark.pdf *.tex normal_correlation.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode normal_correlation.tex
 	../../latexrun normal_correlation.tex
 	make terms

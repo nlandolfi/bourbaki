@@ -9,7 +9,7 @@ make:
 real_probability_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_probability_densities.tex
 
-real_probability_densities.pdf: ../../*.tex ../../trademark.pdf *.tex real_probability_densities.tex
+real_probability_densities.pdf: ../../*.tex ../../trademark.pdf *.tex real_probability_densities.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_probability_densities.tex
 	../../latexrun real_probability_densities.tex
 	make terms

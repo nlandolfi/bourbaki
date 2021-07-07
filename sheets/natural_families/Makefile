@@ -9,7 +9,7 @@ make:
 natural_families.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_families.tex
 
-natural_families.pdf: ../../*.tex ../../trademark.pdf *.tex natural_families.tex
+natural_families.pdf: ../../*.tex ../../trademark.pdf *.tex natural_families.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode natural_families.tex
 	../../latexrun natural_families.tex
 	make terms

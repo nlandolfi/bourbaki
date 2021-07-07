@@ -9,7 +9,7 @@ make:
 distance.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distance.tex
 
-distance.pdf: ../../*.tex ../../trademark.pdf *.tex distance.tex
+distance.pdf: ../../*.tex ../../trademark.pdf *.tex distance.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode distance.tex
 	../../latexrun distance.tex
 	make terms

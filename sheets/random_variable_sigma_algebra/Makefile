@@ -9,7 +9,7 @@ make:
 random_variable_sigma_algebra.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_variable_sigma_algebra.tex
 
-random_variable_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex random_variable_sigma_algebra.tex
+random_variable_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex random_variable_sigma_algebra.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode random_variable_sigma_algebra.tex
 	../../latexrun random_variable_sigma_algebra.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 empirical_distribution.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > empirical_distribution.tex
 
-empirical_distribution.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_distribution.tex
+empirical_distribution.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_distribution.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode empirical_distribution.tex
 	../../latexrun empirical_distribution.tex
 	make terms

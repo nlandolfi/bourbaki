@@ -9,7 +9,7 @@ make:
 relative_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > relative_entropy.tex
 
-relative_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex relative_entropy.tex
+relative_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex relative_entropy.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode relative_entropy.tex
 	../../latexrun relative_entropy.tex
 	make terms

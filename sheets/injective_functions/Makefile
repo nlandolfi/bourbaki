@@ -9,7 +9,7 @@ make:
 injective_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > injective_functions.tex
 
-injective_functions.pdf: ../../*.tex ../../trademark.pdf *.tex injective_functions.tex
+injective_functions.pdf: ../../*.tex ../../trademark.pdf *.tex injective_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode injective_functions.tex
 	../../latexrun injective_functions.tex
 	make terms

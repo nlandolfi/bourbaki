@@ -9,7 +9,7 @@ make:
 rational_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rational_numbers.tex
 
-rational_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex rational_numbers.tex
+rational_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex rational_numbers.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode rational_numbers.tex
 	../../latexrun rational_numbers.tex
 	make terms

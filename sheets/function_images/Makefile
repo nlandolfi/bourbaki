@@ -9,7 +9,7 @@ make:
 function_images.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_images.tex
 
-function_images.pdf: ../../*.tex ../../trademark.pdf *.tex function_images.tex
+function_images.pdf: ../../*.tex ../../trademark.pdf *.tex function_images.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode function_images.tex
 	../../latexrun function_images.tex
 	make terms

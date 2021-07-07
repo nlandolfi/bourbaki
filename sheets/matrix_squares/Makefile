@@ -9,7 +9,7 @@ make:
 matrix_squares.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_squares.tex
 
-matrix_squares.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_squares.tex
+matrix_squares.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_squares.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode matrix_squares.tex
 	../../latexrun matrix_squares.tex
 	make terms

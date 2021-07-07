@@ -9,7 +9,7 @@ make:
 supervised_learning.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > supervised_learning.tex
 
-supervised_learning.pdf: ../../*.tex ../../trademark.pdf *.tex supervised_learning.tex
+supervised_learning.pdf: ../../*.tex ../../trademark.pdf *.tex supervised_learning.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode supervised_learning.tex
 	../../latexrun supervised_learning.tex
 	make terms

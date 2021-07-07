@@ -9,7 +9,7 @@ make:
 correlation_matrix.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > correlation_matrix.tex
 
-correlation_matrix.pdf: ../../*.tex ../../trademark.pdf *.tex correlation_matrix.tex
+correlation_matrix.pdf: ../../*.tex ../../trademark.pdf *.tex correlation_matrix.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode correlation_matrix.tex
 	../../latexrun correlation_matrix.tex
 	make terms

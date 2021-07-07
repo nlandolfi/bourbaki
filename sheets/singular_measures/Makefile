@@ -9,7 +9,7 @@ make:
 singular_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > singular_measures.tex
 
-singular_measures.pdf: ../../*.tex ../../trademark.pdf *.tex singular_measures.tex
+singular_measures.pdf: ../../*.tex ../../trademark.pdf *.tex singular_measures.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode singular_measures.tex
 	../../latexrun singular_measures.tex
 	make terms

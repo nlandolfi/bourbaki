@@ -9,7 +9,7 @@ make:
 orthonormal_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > orthonormal_matrices.tex
 
-orthonormal_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex orthonormal_matrices.tex
+orthonormal_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex orthonormal_matrices.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode orthonormal_matrices.tex
 	../../latexrun orthonormal_matrices.tex
 	make terms

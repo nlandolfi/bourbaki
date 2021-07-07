@@ -9,7 +9,7 @@ make:
 complete_inner_product_decomposition.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complete_inner_product_decomposition.tex
 
-complete_inner_product_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex complete_inner_product_decomposition.tex
+complete_inner_product_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex complete_inner_product_decomposition.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode complete_inner_product_decomposition.tex
 	../../latexrun complete_inner_product_decomposition.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 vector_space_bases.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vector_space_bases.tex
 
-vector_space_bases.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_bases.tex
+vector_space_bases.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_bases.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode vector_space_bases.tex
 	../../latexrun vector_space_bases.tex
 	make terms

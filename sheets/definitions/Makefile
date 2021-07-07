@@ -9,7 +9,7 @@ make:
 definitions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > definitions.tex
 
-definitions.pdf: ../../*.tex ../../trademark.pdf *.tex definitions.tex
+definitions.pdf: ../../*.tex ../../trademark.pdf *.tex definitions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode definitions.tex
 	../../latexrun definitions.tex
 	make terms

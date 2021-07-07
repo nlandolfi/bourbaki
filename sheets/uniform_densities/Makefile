@@ -9,7 +9,7 @@ make:
 uniform_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > uniform_densities.tex
 
-uniform_densities.pdf: ../../*.tex ../../trademark.pdf *.tex uniform_densities.tex
+uniform_densities.pdf: ../../*.tex ../../trademark.pdf *.tex uniform_densities.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode uniform_densities.tex
 	../../latexrun uniform_densities.tex
 	make terms

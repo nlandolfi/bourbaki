@@ -9,7 +9,7 @@ make:
 real_series.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_series.tex
 
-real_series.pdf: ../../*.tex ../../trademark.pdf *.tex real_series.tex
+real_series.pdf: ../../*.tex ../../trademark.pdf *.tex real_series.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_series.tex
 	../../latexrun real_series.tex
 	make terms

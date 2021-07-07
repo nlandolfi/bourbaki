@@ -9,7 +9,7 @@ make:
 distribution_expectation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distribution_expectation.tex
 
-distribution_expectation.pdf: ../../*.tex ../../trademark.pdf *.tex distribution_expectation.tex
+distribution_expectation.pdf: ../../*.tex ../../trademark.pdf *.tex distribution_expectation.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode distribution_expectation.tex
 	../../latexrun distribution_expectation.tex
 	make terms

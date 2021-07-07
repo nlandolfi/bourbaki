@@ -9,7 +9,7 @@ make:
 tree_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_distributions.tex
 
-tree_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex tree_distributions.tex
+tree_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex tree_distributions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode tree_distributions.tex
 	../../latexrun tree_distributions.tex
 	make terms

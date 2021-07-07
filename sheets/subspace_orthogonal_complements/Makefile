@@ -9,7 +9,7 @@ make:
 subspace_orthogonal_complements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subspace_orthogonal_complements.tex
 
-subspace_orthogonal_complements.pdf: ../../*.tex ../../trademark.pdf *.tex subspace_orthogonal_complements.tex
+subspace_orthogonal_complements.pdf: ../../*.tex ../../trademark.pdf *.tex subspace_orthogonal_complements.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode subspace_orthogonal_complements.tex
 	../../latexrun subspace_orthogonal_complements.tex
 	make terms

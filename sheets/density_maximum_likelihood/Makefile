@@ -9,7 +9,7 @@ make:
 density_maximum_likelihood.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > density_maximum_likelihood.tex
 
-density_maximum_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex density_maximum_likelihood.tex
+density_maximum_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex density_maximum_likelihood.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode density_maximum_likelihood.tex
 	../../latexrun density_maximum_likelihood.tex
 	make terms

@@ -9,7 +9,7 @@ make:
 permutations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > permutations.tex
 
-permutations.pdf: ../../*.tex ../../trademark.pdf *.tex permutations.tex
+permutations.pdf: ../../*.tex ../../trademark.pdf *.tex permutations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode permutations.tex
 	../../latexrun permutations.tex
 	make terms

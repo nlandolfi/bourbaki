@@ -9,7 +9,7 @@ make:
 real_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_vectors.tex
 
-real_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex real_vectors.tex
+real_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex real_vectors.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_vectors.tex
 	../../latexrun real_vectors.tex
 	make terms

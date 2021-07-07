@@ -9,7 +9,7 @@ make:
 sparsity_patterns.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sparsity_patterns.tex
 
-sparsity_patterns.pdf: ../../*.tex ../../trademark.pdf *.tex sparsity_patterns.tex
+sparsity_patterns.pdf: ../../*.tex ../../trademark.pdf *.tex sparsity_patterns.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode sparsity_patterns.tex
 	../../latexrun sparsity_patterns.tex
 	make terms

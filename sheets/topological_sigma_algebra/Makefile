@@ -9,7 +9,7 @@ make:
 topological_sigma_algebra.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > topological_sigma_algebra.tex
 
-topological_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex topological_sigma_algebra.tex
+topological_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex topological_sigma_algebra.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode topological_sigma_algebra.tex
 	../../latexrun topological_sigma_algebra.tex
 	make terms

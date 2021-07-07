@@ -9,7 +9,7 @@ make:
 exchangeable_singular_decomposition.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > exchangeable_singular_decomposition.tex
 
-exchangeable_singular_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex exchangeable_singular_decomposition.tex
+exchangeable_singular_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex exchangeable_singular_decomposition.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode exchangeable_singular_decomposition.tex
 	../../latexrun exchangeable_singular_decomposition.tex
 	make terms

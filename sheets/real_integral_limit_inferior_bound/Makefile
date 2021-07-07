@@ -9,7 +9,7 @@ make:
 real_integral_limit_inferior_bound.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_integral_limit_inferior_bound.tex
 
-real_integral_limit_inferior_bound.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_limit_inferior_bound.tex
+real_integral_limit_inferior_bound.pdf: ../../*.tex ../../trademark.pdf *.tex real_integral_limit_inferior_bound.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode real_integral_limit_inferior_bound.tex
 	../../latexrun real_integral_limit_inferior_bound.tex
 	make terms

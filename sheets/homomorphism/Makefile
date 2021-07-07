@@ -9,7 +9,7 @@ make:
 homomorphism.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > homomorphism.tex
 
-homomorphism.pdf: ../../*.tex ../../trademark.pdf *.tex homomorphism.tex
+homomorphism.pdf: ../../*.tex ../../trademark.pdf *.tex homomorphism.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode homomorphism.tex
 	../../latexrun homomorphism.tex
 	make terms

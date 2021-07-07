@@ -9,7 +9,7 @@ make:
 convex_set_dimensions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_set_dimensions.tex
 
-convex_set_dimensions.pdf: ../../*.tex ../../trademark.pdf *.tex convex_set_dimensions.tex
+convex_set_dimensions.pdf: ../../*.tex ../../trademark.pdf *.tex convex_set_dimensions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode convex_set_dimensions.tex
 	../../latexrun convex_set_dimensions.tex
 	make terms

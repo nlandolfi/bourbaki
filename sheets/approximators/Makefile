@@ -9,7 +9,7 @@ make:
 approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > approximators.tex
 
-approximators.pdf: ../../*.tex ../../trademark.pdf *.tex approximators.tex
+approximators.pdf: ../../*.tex ../../trademark.pdf *.tex approximators.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode approximators.tex
 	../../latexrun approximators.tex
 	make terms

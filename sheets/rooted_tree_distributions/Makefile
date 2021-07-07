@@ -9,7 +9,7 @@ make:
 rooted_tree_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rooted_tree_distributions.tex
 
-rooted_tree_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex rooted_tree_distributions.tex
+rooted_tree_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex rooted_tree_distributions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode rooted_tree_distributions.tex
 	../../latexrun rooted_tree_distributions.tex
 	make terms

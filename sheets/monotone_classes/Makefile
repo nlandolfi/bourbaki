@@ -9,7 +9,7 @@ make:
 monotone_classes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_classes.tex
 
-monotone_classes.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_classes.tex
+monotone_classes.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_classes.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode monotone_classes.tex
 	../../latexrun monotone_classes.tex
 	make terms

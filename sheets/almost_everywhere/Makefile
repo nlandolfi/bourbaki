@@ -9,7 +9,7 @@ make:
 almost_everywhere.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > almost_everywhere.tex
 
-almost_everywhere.pdf: ../../*.tex ../../trademark.pdf *.tex almost_everywhere.tex
+almost_everywhere.pdf: ../../*.tex ../../trademark.pdf *.tex almost_everywhere.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode almost_everywhere.tex
 	../../latexrun almost_everywhere.tex
 	make terms

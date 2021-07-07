@@ -9,7 +9,7 @@ make:
 conditional_event_probability.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_event_probability.tex
 
-conditional_event_probability.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_event_probability.tex
+conditional_event_probability.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_event_probability.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode conditional_event_probability.tex
 	../../latexrun conditional_event_probability.tex
 	make terms

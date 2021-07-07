@@ -9,7 +9,7 @@ make:
 rooted_tree_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rooted_tree_densities.tex
 
-rooted_tree_densities.pdf: ../../*.tex ../../trademark.pdf *.tex rooted_tree_densities.tex
+rooted_tree_densities.pdf: ../../*.tex ../../trademark.pdf *.tex rooted_tree_densities.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode rooted_tree_densities.tex
 	../../latexrun rooted_tree_densities.tex
 	make terms

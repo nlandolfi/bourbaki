@@ -9,7 +9,7 @@ make:
 distribution_approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distribution_approximators.tex
 
-distribution_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex distribution_approximators.tex
+distribution_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex distribution_approximators.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode distribution_approximators.tex
 	../../latexrun distribution_approximators.tex
 	make terms

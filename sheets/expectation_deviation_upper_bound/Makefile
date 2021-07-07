@@ -9,7 +9,7 @@ make:
 expectation_deviation_upper_bound.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > expectation_deviation_upper_bound.tex
 
-expectation_deviation_upper_bound.pdf: ../../*.tex ../../trademark.pdf *.tex expectation_deviation_upper_bound.tex
+expectation_deviation_upper_bound.pdf: ../../*.tex ../../trademark.pdf *.tex expectation_deviation_upper_bound.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode expectation_deviation_upper_bound.tex
 	../../latexrun expectation_deviation_upper_bound.tex
 	make terms

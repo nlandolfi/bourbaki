@@ -9,7 +9,7 @@ make:
 scalar_multiple_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > scalar_multiple_sets.tex
 
-scalar_multiple_sets.pdf: ../../*.tex ../../trademark.pdf *.tex scalar_multiple_sets.tex
+scalar_multiple_sets.pdf: ../../*.tex ../../trademark.pdf *.tex scalar_multiple_sets.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode scalar_multiple_sets.tex
 	../../latexrun scalar_multiple_sets.tex
 	make terms

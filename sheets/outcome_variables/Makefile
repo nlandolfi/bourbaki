@@ -9,7 +9,7 @@ make:
 outcome_variables.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > outcome_variables.tex
 
-outcome_variables.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_variables.tex
+outcome_variables.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_variables.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode outcome_variables.tex
 	../../latexrun outcome_variables.tex
 	make terms

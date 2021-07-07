@@ -9,7 +9,7 @@ make:
 function_restrictions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_restrictions.tex
 
-function_restrictions.pdf: ../../*.tex ../../trademark.pdf *.tex function_restrictions.tex
+function_restrictions.pdf: ../../*.tex ../../trademark.pdf *.tex function_restrictions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode function_restrictions.tex
 	../../latexrun function_restrictions.tex
 	make terms
