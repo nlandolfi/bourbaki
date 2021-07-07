@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./set_powers.pdf#page=2'"> Set Powers </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./set_powers.pdf#page=2'" onkeypress="location.href='./set_powers.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./set_powers-graph.pdf'" onkeypress="location.href='./set_powers-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./unordered_triples.html'" onkeypress="location.href='./unordered_triples.html'">
+              <span>
+                Unordered Triples
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./cartesian_products.html'" onkeypress="location.href='./cartesian_products.html'">
+            <span>
+            Cartesian Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./families.html'" onkeypress="location.href='./families.html'">
+            <span>
+            Families
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./powers_and_intersections.html'" onkeypress="location.href='./powers_and_intersections.html'">
+            <span>
+            Powers and Intersections
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./powers_and_unions.html'" onkeypress="location.href='./powers_and_unions.html'">
+            <span>
+            Powers and Unions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./probability_events.html'" onkeypress="location.href='./probability_events.html'">
+            <span>
+            Probability Events
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./real_length_impossible.html'" onkeypress="location.href='./real_length_impossible.html'">
+            <span>
+            Real Length Impossible
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./subset_systems.html'" onkeypress="location.href='./subset_systems.html'">
+            <span>
+            Subset Systems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to consider all the subsets of a given set.</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Powers] For every set, there exists a set of its subsets. \end{principle}</p></div><div class="sheet-listing"><p class="sheet"> We call the existence of this set the \t{principles of powers} and we call the set the \t{power set}.\footnote{This terminology is standard, but unfortunate. Future editions may change these terms.} As usual, the principle of extension gives uniqueness (see \sheetref{set_equality}{Set Equality}). The power set of a set includes the set itself and the empty set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">0.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ denote a set. We denote the power set of $A$ by $\powerset{A}$, read aloud as "powerset of A." $A \in \powerset{A}$ and $\emptyset \in \powerset{A}$. However, $A \subset \powerset{A}$ is false.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">0.2 Examples</h2></div><div class="sheet-listing"><p class="sheet"> Let $a, b, c$ denote distinct objects. Let $A = \set{a, b ,c}$ and $B = \set{a, b}$. Then $B \subset A$. In other notation, $B \in \powerset{A}$. We can walk through examples of power sets.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Empty Set}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\powerset{\emptyset} = \set{\emptyset}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \ss{Singletons}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\powerset{\set{a}} = \set{\emptyset, \set{a}}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \ss{Pairs}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\powerset{\set{a, b}} = \set{\emptyset, \set{a}, \set{b}, \set{a, b}}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \ss{Triples}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\powerset{\set{a, b, c}} = \{ \emptyset, \set{a}, \set{b}, \set{c}, \set{a, b}, \set{b, c}, \set{a, c}, \set{a, b, c} \}$ \end{proposition}</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">1. Properties</h1></div><div class="sheet-listing"><p class="sheet"> We can guess the following easy properties.\footnote{Future editions will expand this account.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\emptyset \in \powerset{A}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \in \powerset{A}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> We call $A$ and $\emptyset$ the \t{improper} subsets of $A$. All other subset we call $\t{proper}$.</p></div><div class="sheet-listing"><p class="sheet"> \s{Basic Fact}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $E \subset F \implies \powerset{E} \subset \powerset{F}$ \end{proposition}</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './set_powers.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            //context.imageSmoothingEnabled = false;
+            //context.webkitImageSmoothingEnabled = false;
+            //context.mozImageSmoothingEnabled = false;
+            //context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
+              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="direction: ltr;"></canvas>
+    <canvas id="page2" style="direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./set_powers.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./set_powers.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./set_powers-graph.pdf">
+    </iframe>
+    -->
+
+  </body>
+</html>`

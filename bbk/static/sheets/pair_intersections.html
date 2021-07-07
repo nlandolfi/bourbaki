@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./pair_intersections.pdf#page=2'"> Pair Intersections </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./pair_intersections.pdf#page=2'" onkeypress="location.href='./pair_intersections.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./pair_intersections-graph.pdf'" onkeypress="location.href='./pair_intersections-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./set_specification.html'" onkeypress="location.href='./set_specification.html'">
+              <span>
+                Set Specification
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./set_decompositions.html'" onkeypress="location.href='./set_decompositions.html'">
+            <span>
+            Set Decompositions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./set_dualities.html'" onkeypress="location.href='./set_dualities.html'">
+            <span>
+            Set Dualities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./set_intersections.html'" onkeypress="location.href='./set_intersections.html'">
+            <span>
+            Set Intersections
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Does a set exist containing the elements shared between two sets? How might we construct such a set?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. Consider the set $\Set{x \in A}{x \in B}$. This set exists by the principle of specification (see \sheetref{set_specification}{Set Specification}). Moreover $(y \in \Set{x \in A}{x \in B}) \iff (y \in A \land y \in B)$. In other words, $\Set{x \in A}{x \in B}$ contains all the elements of $A$ that are also elements of $B$.</p></div><div class="sheet-listing"><p class="sheet"> We can also consider $\Set{x \in B}{x \in A}$, in which we have swapped the positions of $A$ and $B$. Similarly, the set exists by the principle of specification (see \sheetref{set_specification}{Set Specification}) and again $y \in \Set{x \in B}{x \in A} \iff (y \in B \land y \in B)$. Of course, $y \in A \land y \in B$ means the same as\footnote{Future editions will name and cite this rule.} $y \in B \land y \in A$ and so by the principle of extension (see \sheetref{set_equality}{Set Equality}) \[ \Set{x \in A}{x \in B} = \Set{x \in B}{x \in A}. \] We call this set the \t{pair intersection} of the set denoted by $A$ with the set denoted by $B$.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the intersection fo the set denoted by $A$ with the set denoted by $B$ by $A \intersect B$. We read this notation aloud as "A intersect B".</p></div><div class="sheet-listing"><p class="sheet"> \ss{Basic Properties}</p></div><div class="sheet-listing"><p class="sheet"> All the following results are immediate.\footnote{Proofs of these results will appear in the next edition.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \intersect \emptyset = \emptyset$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Commutativity] $A \cap B = B \cap A$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associativity] $(A \cap B) \cap C = A \cap (B \cap C)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \cap A = A$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(A \subset B) \iff (A \cap B = A)$. \end{proposition}</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './pair_intersections.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            //context.imageSmoothingEnabled = false;
+            //context.webkitImageSmoothingEnabled = false;
+            //context.mozImageSmoothingEnabled = false;
+            //context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
+              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="direction: ltr;"></canvas>
+    <canvas id="page2" style="direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./pair_intersections.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./pair_intersections.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./pair_intersections-graph.pdf">
+    </iframe>
+    -->
+
+  </body>
+</html>`

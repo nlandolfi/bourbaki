@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./ordering_sets.pdf#page=2'"> Ordering Sets </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./ordering_sets.pdf#page=2'" onkeypress="location.href='./ordering_sets.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./ordering_sets-graph.pdf'" onkeypress="location.href='./ordering_sets-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./unordered_triples.html'" onkeypress="location.href='./unordered_triples.html'">
+              <span>
+                Unordered Triples
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to arrange the elements of a set in an order using only the concept of sets.</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> What does this mean?  Well, we often arrange objects in orders. For example, the letters of this page are arranged into words. Take two such words: \sayy{note} and \sayy{tone}. If letters are objects, what are words?</p></div><div class="sheet-listing"><p class="sheet"> A first guess is that words are the are groups objects, and sets are basically groups, and so a word is a set of letters. So, the word \sayy{note} is the set $\set{\text{\sayy{n}}, \text{\sayy{o}}, \text{\sayy{t}}, \text{\sayy{e}}}$, and then word \sayy{tone} is the set $\set{\text{\sayy{t}}, \text{\sayy{o}}, \text{\sayy{n}}, \text{\sayy{e}}}$. The rub, of course, is that these are the same set.</p></div><div class="sheet-listing"><p class="sheet"> The trick is that a word is not just the set of letters, it is that set in some order. Since "tone} and \say{note" have the same letters, they have the same set of letters. The question is whether there is a way of saying what a word is in terms of letters by using sets in such a way that the set corresponding to "tone} is distinguishable from the set corresponding to \say{note".</p></div><div class="sheet-listing"><p class="sheet"> The way we read English offers a hint. When reading \sayy{tone} we scan from left to right seeing "t}, then \say{to}, then \say{ton} then \say{tone". Suppose that for each spot in the ordering of the letters, we can consider those leters that appear at or before the spot. In other words, we can consider the sets $\set{\text{\sayy{t}}}$, $\set{\text{\sayy{t}}, \text{\sayy{o}}}$, $\set{\text{\sayy{t}}, \text{\sayy{o}}, \text{\sayy{n}}}$, $\set{\text{\sayy{t}}, \text{\sayy{o}}, \text{\sayy{n}}, \text{\sayy{e}}}$. Let us say that "tone" corresponds to the set of these sets, denoted by $\CC$, \[ \CC = \set{\set{\text{\sayy{n}}, o, t}, \set{n, o, t, e}, \set{t}, \set{o, t}}. \]</p></div><div class="sheet-listing"><p class="sheet"> Given $\CC$, can we recover "tone"? Sure. First, look for the set that is contained in all others. The singleton $\set{t}$ fits the bill. So the first letter is \sayy{t}. Next look set distinct from $"t"$ which is contained in all the rest. The pair $\set{o, t}$ fits the bill. Since we already have \sayy{t}, the next letter is \sayy{o}. We do the same twice more, getting \sayy{n} and \sayy{e}, in that order.</p></div><div class="sheet-listing"><p class="sheet"> There is a certain peculiarity in all these considerations. It is that every time we write down a set, we write the names (see \sheetref{names}{Names}) of the elements in some order. Indeed, whenever we speak of objects, we must say their names in some order. But of course, no matter how we denote the set, the concept of set has no concept of ordering.</p></div><div class="sheet-listing"><p class="sheet"> \s{Generally}</p></div><div class="sheet-listing"><p class="sheet"> Let $a$, $b$, $c$ and $d$ denote objects, no two of which are the same (i.e., $a \neq b$, $b \neq c$, etc.). Suppose we want to consider the elements of the quadruple $\set{a, b, c, d}$ in the order $c$, $b$, $d$, $a$. We include in the set all objects that that occur at or before that position. For the order $c$, $b$, $d$, $a$ of the objects in the set $\set{a, b, c, d}$ we use $\set{c}$, $\set{c, b}$, $\set{c, b, d}$ and $\set{c, b, d, a}$. Then we can recover the ordering from \[ \CC = \set{\set{a, b, c, d}, \set{b, c}, \set{b, c, d}, \set{c}}. \]</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './ordering_sets.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            //context.imageSmoothingEnabled = false;
+            //context.webkitImageSmoothingEnabled = false;
+            //context.mozImageSmoothingEnabled = false;
+            //context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
+              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="direction: ltr;"></canvas>
+    <canvas id="page2" style="direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./ordering_sets.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./ordering_sets.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./ordering_sets-graph.pdf">
+    </iframe>
+    -->
+
+  </body>
+</html>`
