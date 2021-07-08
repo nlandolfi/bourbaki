@@ -1,0 +1,52 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make converse_relations.pdf
+
+converse_relations.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > converse_relations.tex
+
+converse_relations.pdf: ../../*.tex ../../trademark.pdf *.tex converse_relations.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode converse_relations.tex
+	../../latexrun converse_relations.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: converse_relations.pdf
+	open converse_relations.pdf
+
+o:
+	make open
+
+terms: converse_relations.tex
+	bbk_sheet -mode ts converse_relations.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f converse_relations.*
+	make reset
+	bbk_sheet -mode mk > Makefile
