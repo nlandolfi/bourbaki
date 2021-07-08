@@ -1,32 +1,22 @@
 %!name:function_images
 %!need:functions
+% for basics:
+%!refs:paul_halmos/naive_set_theory/section_08
+% for inverse images:
+%!refs:paul_halmos/naive_set_theory/section_09
 
 \ssection{Why}
 
-We consider the set of results
-of a set of domain elements.
+We consider the set of results of a set of domain elements.
 
 \ssection{Definition}
 
-The \ct{image}{} of a set
-of domain elements under
-a function is the set of
-their results.
-Though the set of domain elements
-may include several distinct elements,
-the image may still be a singleton,
-since the function may map
-all of elements to the same result.
+The \t{image} of a set of domain elements under a function is the set of their results.
+Though the set of domain elements may include several distinct elements, the image may still be a singleton, since the function may map all of elements to the same result.
 
-The \ct{range}{} of a function
-is the image of its domain.
-The range includes all possible
-results of the function.
-If the range does not include
-some element of the codomain,
-then the function maps no
-domain elements to that codomain
-element.
+Using this language, the range (see \sheetref{functions}{Functions}) of a function is the image of its domain.
+The range includes all possible results of the function.
+If the range does not include some element of the codomain, then the function maps no domain elements to that codomain element.
 
 \ssubsection{Notation}
 
@@ -37,4 +27,23 @@ Read aloud, the two are indistinguishable, so we must be careful to specify whet
 Following this notation for function images, we denote the range of $f$ by $f(A)$.
 In this notation, we can record that $f$ maps $X$ onto $Y$ by $f(X) = Y$.
 
-\blankpage
+\ssubsection{Notational ambiguity}
+
+The notation $f(A)$ is can be ambiguous in the case that $A$ is both an element and a set of elements of the domain of $f$.
+For example, consider $f: \set{\set{a}, \set{b}, \set{a, b}} \to X$.
+Then $f(\set{a, b})$ is ambiguous.
+We will avoid this ambiguity by making clear which we mean in particular cases.
+
+
+\ssection{Inverse Images}
+
+Similarly to how we can define $f: \powerset{X} \to \powerset{Y}$ for $A \subset X$
+\[
+  f(A) = \Set{y \in Y}{(\exists x)(x \in a \land y = f(x))},
+\]
+we can define $f^{-1}: \powerset{Y} \to \powerset{X}$ for $B \subset X$
+\[
+  f^{-1}(B) = \set{x \in X}{(\exists y)(y \in B \land y = f(x))}.
+\]
+In other words, $f^{-1}(B)$ is the set of all elements of the domain which give the elements in $B$ of the range.
+We call $f^{-1}(B)$ the \t{inverse image} of $B$.
