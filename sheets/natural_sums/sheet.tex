@@ -1,28 +1,70 @@
 %!name:natural_sums
-%!need:natural_numbers
+%!need:recursion_theorem
 
 \ssection{Why}
 
 We want to combine two groups.\footnote{Future editions will change this section.}
 
-\ssection{Definition}
+\ssection{Defining Result}
 
-Let $m$ and $n$ be two natural numbers.\footnote{Future editions will explicitly use the recursion theorem.}
-If we apply the successor function to $m$ $n$
-times we obtain a number.
-If we apply the successor function to $n$ $m$
-times we obtain a number.
-Indeed, we obtain the same number in both cases.
-We call this number the \t{sum}
-of $m$ and $n$.
-We say we \t{add} $m$ to $n$,
-or vice versa.
-We call this correspondence, between
-$(m, n)$ and the sum, \t{addition}.
+\begin{proposition}
+	For each natural number $m$, there exists a function $s_m: \omega \to \omega$ which satisfies
+	\[
+		s_m(0) = m \quad \text{ and } \quad s_m(\ssuc{n}) = \ssuc{(s_m(n))}
+	\]
+	for every natural number $n$.
+\end{proposition}
+\begin{proof}
+	The proof uses the recursion theorem (see \sheetref{recursion_theorem}{Recursion Theorem}).\footnote{Future editions will give the entire account.}
+\end{proof}
+Let $m$ and $n$ be natural numbers.
+The value $s_m(n)$ is the \t{sum} of $m$ with $n$.
+
+% Let $m$ and $n$ be two natural numbers.\footnote{Future editions will explicitly use the recursion theorem.}
+% If we apply the successor function to $m$ $n$
+% times we obtain a number.
+% If we apply the successor function to $n$ $m$
+% times we obtain a number.
+% Indeed, we obtain the same number in both cases.
+% We call this number the \tasdf{sum}
+% of $m$ and $n$.
+% We say we \tasdf{add} $m$ to $n$,
+% or vice versa.
+% We call this correspondence, between
+% $(m, n)$ and the sum, \tasdf{addition}.
 
 \ssubsection{Notation}
 
-We denote the sum of two numbers by $m + n$.
+We denote the sum $s_m(n)$ by $m + n$.
+% two numbers by $m + n$.
 % We denote the function addition by $+$
 % and so denote the sum of the naturals
 % $m$ and $n$ by $m + n$.
+
+
+\ssection{Properties}
+
+The properties of sums are direct applications of the principle of mathematical induction (see \sheetref{natural_induction}{Natural Induction}).\footnote{Future editions will include the accounts.}
+
+\begin{proposition}[Associative]
+	Let $k$, $m$, and $n$ be natural numbers. Then
+	\[
+		(k + m) + n = k + (m + n).
+	\]
+\end{proposition}
+
+\begin{proposition}[Commutative]
+	Let $m$ and $n$ be natural numbers. Then
+	\[
+		m + n = n + m.
+	\]
+\end{proposition}
+
+\ssection{Relation to Addition}
+
+\begin{proposition}[Distributive]
+	Let $k$, $m$, and $n$ be natural numbers. Then
+	\[
+		k \cdot (m + n) = (k \cdot m) + (k \cdot n).
+	\]
+\end{proposition}
