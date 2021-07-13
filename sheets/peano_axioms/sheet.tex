@@ -1,5 +1,5 @@
 %!name:peano_axioms
-%!need:natural_numbers
+%!need:natural_induction
 
 \ssection{Why}
 
@@ -7,14 +7,32 @@ Historically considered a fountainhead for all of mathematics.
 
 \ssection{Discussion}
 
-Our discussion of sets has suceeded in making Peano's axioms provable propositions.
+So far we know that $\omega$ is the unique smallest successor set.
+In other words, we know that $0 \in \omega$, $n \in \omega \implies \ssuc{n} \in \omega$ and that if these two properties hold of some $S \subset \omega$, then $S = \omega$.
+We can add two important statements to this list.
+First, that 0 has no successor.
+I.e., $n^+ \neq 0$ for all $n \in \omega$.
+Second, that if two numbers have the same successor, then they are the same number
+I.e., $\ssuc{n} = \ssuc{m} \implies n = m$
+
+These five properties were historically considered the fountainhead of all of mathematics.
+One by the name of Peano used them to show the elementary properties of arithmetic.
+They are:
 
 \begin{enumerate}
   \item $0 \in \omega$.
-  \item $n \in \omega \implies n^+ \in \omega$.
-  \item Suppose $S \subset \omega$, $0 \in S$, and $(n \in S \implies n^+ \in S$.
-  Then $S = \omega$.
+  \item $n \in \omega \implies n^+ \in \omega$ for all $n \in \omega$.
+  \item If $S$ is a successor set contained in $\omega$, then $S = \omega$.
+  \item $\ssuc{n} \neq 0$ for all $n \in \omega$
+  \item $\ssuc{n} = \ssuc{m} \implies n = m$ for all $n, m \in \omega$.
 \end{enumerate}
+
+These are collectively known as the \t{Peano axioms}.
+Recall that the third statement in this list is the \t{principle of mathematical induction}.
+
+\ssection{Statements}
+
+Here are the statements.\footnote{Accounts of all of these will appear in future editions.}
 
 \begin{proposition}[Peano's First Axiom]
   $0 \in \omega$.
@@ -29,12 +47,21 @@ Our discussion of sets has suceeded in making Peano's axioms provable propositio
   Then $S = \omega$.
 \end{proposition}
 
-
-Peano's third axiom is called the \t{principle of mathematical induction}.
-
 \begin{proposition}[Peano's Fourth Axiom]
   $n^+ \neq 0$ for all $n \in \omega$.
 \end{proposition}
+
+The last one uses the following two useful facts.
+
+\begin{proposition}
+  $x \in n \implies n \not\subset x$.
+\end{proposition}
+\begin{proposition}
+  $(x \in y \land y \in n) \implies x \in n$
+\end{proposition}
+This latter proposition is sometimes described by saying that $n$ is a \t{transitive set}.
+This notion of transitivity is not the same as that described in \sheetref{relations}{Relations}.
+Using these one can show:
 
 \begin{proposition}[Peano's Fifth Axiom]
   Suppose $n, m \in \omega$ with $n^+ = m^+$.
