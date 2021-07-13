@@ -3,17 +3,18 @@
   <head>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
     <div class="header">
       <span class="listing no-border" id="header-trademark-and-title">
         <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
-        <span id="header-title" onclick="location.href='./arithmetic.pdf'"> Arithmetic </span>
+        <span id="header-title" onclick="location.href='./arithmetic.pdf#page=2'"> Arithmetic </span>
       </span>
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./arithmetic.pdf'" onkeypress="location.href='./arithmetic.pdf'">
+      <div class="need" tabindex="0" onclick="location.href='./arithmetic.pdf#page=2'" onkeypress="location.href='./arithmetic.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
@@ -24,9 +25,9 @@
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./natural_numbers.html'" onkeypress="location.href='./natural_numbers.html'">
+            <div class="need" tabindex="0" onclick="location.href='./natural_exponents.html'" onkeypress="location.href='./natural_exponents.html'">
               <span>
-                Natural Numbers
+                Natural Exponents
               </span>
               <span class="caret">›</span>
             </div>
@@ -39,6 +40,37 @@
             </div>
         
       
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./integer_arithmetic.html'" onkeypress="location.href='./integer_arithmetic.html'">
+            <span>
+            Integer Arithmetic
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./natural_additive_identity.html'" onkeypress="location.href='./natural_additive_identity.html'">
+            <span>
+            Natural Additive Identity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./natural_integer_isomorphism.html'" onkeypress="location.href='./natural_integer_isomorphism.html'">
+            <span>
+            Natural Integer Isomorphism
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./natural_multiplicative_identity.html'" onkeypress="location.href='./natural_multiplicative_identity.html'">
+            <span>
+            Natural Multiplicative Identity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
       
     </div>
 
@@ -59,14 +91,168 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Counting one by one is slow so we define an algebra on the naturals.</p></div><div class="sheet-listing"><p class="sheet"> TODO cleanup, and maybe remove. I moved most of this sheet to natural addition and natural multiplication</p></div><div class="sheet-listing" id="sums_and_addition"><h1 class="sheet">2. Sums and Addition</h1></div><div class="sheet-listing" id="products_and_multiplication"><h1 class="sheet">3. Products and Multiplication</h1></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name the operations which produce natural sums, products and powers.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider the set of natural numbers. The we can define three functions corresponding to sums, products and powers which are operations (see \sheetref{operations}{Operations}) on this set.</p></div><div class="sheet-listing"><p class="sheet"> We call \t{addition} the function $+: \omega \times \omega \to \omega$, which maps two natural numbers $m$ and $n$ to their sum $m + n$. We call \t{multiplication} the function $\cdot: \omega \times \omega \to \omega$, which maps two natural numbers $m$ and $n$ to their sum $m \cdot n$. We call \t{exponentiation} the function $(m, n) \mapsto m^n$.</p></div><div class="sheet-listing"><p class="sheet"> In other words, we can think of sums, produces, and powers as obtainable by applying a function to pairs of natural numbers. This function gives another natural numbers We call these three operations the operations of \t{arithmetic}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
-    <iframe id="sheet-pdf" src="./arithmetic.pdf">
-    </iframe>
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './arithmetic.pdf';
 
-    <iframe id="graph-pdf" src="./arithmetic-graph.pdf">
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            //context.imageSmoothingEnabled = false;
+            //context.webkitImageSmoothingEnabled = false;
+            //context.mozImageSmoothingEnabled = false;
+            //context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
+              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="direction: ltr;"></canvas>
+    <canvas id="page2" style="direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./arithmetic.pdf#page=2">
     </iframe>
+    <iframe id="sheet-pdf" src="./arithmetic.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./arithmetic-graph.pdf">
+    </iframe>
+    -->
 
   </body>
 </html>`
