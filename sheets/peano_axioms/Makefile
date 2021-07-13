@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make zero.pdf
+	make peano_axioms.pdf
 
-zero.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > zero.tex
+peano_axioms.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > peano_axioms.tex
 
-zero.pdf: ../../*.tex ../../trademark.pdf *.tex zero.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode zero.tex
-	../../latexrun zero.tex
+peano_axioms.pdf: ../../*.tex ../../trademark.pdf *.tex peano_axioms.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode peano_axioms.tex
+	../../latexrun peano_axioms.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: zero.pdf
-	open zero.pdf
+open: peano_axioms.pdf
+	open peano_axioms.pdf
 
 o:
 	make open
 
-terms: zero.tex
-	bbk_sheet -mode ts zero.tex
+terms: peano_axioms.tex
+	bbk_sheet -mode ts peano_axioms.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f zero.*
+	rm -f peano_axioms.*
 	make reset
 	bbk_sheet -mode mk > Makefile
