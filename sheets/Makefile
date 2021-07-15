@@ -1,4 +1,5 @@
 .PHONY: make
 
-make:
-	bbk_sheets
+# accidentally run too many times
+# make:
+# 	bbk_sheets
