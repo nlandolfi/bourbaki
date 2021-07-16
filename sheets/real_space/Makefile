@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make natural_differences.pdf
+	make real_space.pdf
 
-natural_differences.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > natural_differences.tex
+real_space.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > real_space.tex
 
-natural_differences.pdf: ../../*.tex ../../trademark.pdf *.tex natural_differences.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode natural_differences.tex
-	../../latexrun natural_differences.tex
+real_space.pdf: ../../*.tex ../../trademark.pdf *.tex real_space.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode real_space.tex
+	../../latexrun real_space.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: natural_differences.pdf
-	open natural_differences.pdf
+open: real_space.pdf
+	open real_space.pdf
 
 o:
 	make open
 
-terms: natural_differences.tex
-	bbk_sheet -mode ts natural_differences.tex
+terms: real_space.tex
+	bbk_sheet -mode ts real_space.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f natural_differences.*
+	rm -f real_space.*
 	make reset
 	bbk_sheet -mode mk > Makefile

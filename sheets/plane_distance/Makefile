@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make space.pdf
+	make plane_distance.pdf
 
-space.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > space.tex
+plane_distance.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > plane_distance.tex
 
-space.pdf: ../../*.tex ../../trademark.pdf *.tex space.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode space.tex
-	../../latexrun space.tex
+plane_distance.pdf: ../../*.tex ../../trademark.pdf *.tex plane_distance.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode plane_distance.tex
+	../../latexrun plane_distance.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: space.pdf
-	open space.pdf
+open: plane_distance.pdf
+	open plane_distance.pdf
 
 o:
 	make open
 
-terms: space.tex
-	bbk_sheet -mode ts space.tex
+terms: plane_distance.tex
+	bbk_sheet -mode ts plane_distance.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f space.*
+	rm -f plane_distance.*
 	make reset
 	bbk_sheet -mode mk > Makefile
