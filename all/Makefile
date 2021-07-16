@@ -17,3 +17,6 @@ o: all.pdf
 graph:
 	cd .. && make open
 
+spell:
+	aspell -c all.tex
+	aspell -c ../sheets/introduction/sheet.tex
