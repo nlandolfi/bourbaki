@@ -25,16 +25,9 @@
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./measures.html'" onkeypress="location.href='./measures.html'">
+            <div class="need" tabindex="0" onclick="location.href='./real_integral_monotone_convergence.html'" onkeypress="location.href='./real_integral_monotone_convergence.html'">
               <span>
-                Measures
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./real_integrals.html'" onkeypress="location.href='./real_integrals.html'">
-              <span>
-                Real Integrals
+                Real Integral Monotone Convergence
               </span>
               <span class="caret">›</span>
             </div>
@@ -70,7 +63,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to compute integrals with respect to arbitrary measures. If we find a special measure with which we can compute integrals, would there be some way to translate integrals against another measure into integrals against this special measure?</p></div><div class="sheet-listing"><p class="sheet"> It would suffice to produce a special function whose integral against the base measure would over any measurable set gave the measure of the set under the alternate measure. In this case, the monotone convergence theorem would say that the integral of any function under the alternate measure was the integral of the function against the special function under the base measure.</p></div><div class="sheet-listing"><p class="sheet"> No small miracle is that the condition for this exchange is extremely simple. In this sheet, we will define the condition. In a later sheet we will construct the special function.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider two measures. Suppose there exists a measurable set for which the first was positive but the second was zero. Then we have no hope of exchanging these measures, because the integral of any function over this set against the second measure is zero.</p></div><div class="sheet-listing"><p class="sheet"> So let us rule out this case. Suppose that whenever the first was positive on a set, the second was positive on that set. The contrapositive is that whenever the second is zero on a set, the first is zero on the same. This condition is sufficient for exchangeability.</p></div><div class="sheet-listing"><p class="sheet"> A first measure is <i>exchangeable</i> with respect to a second measure if the first measure of any measurable set is zero whenever the second measure of that set is zero. As we said earlier, this condition means that the first measure is never nonzero on a set for which the second measure is zero. In this case, we also say that the first measure is <i>absolutely continuous</i> with respect to the second measure.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \SA)$ be a measurable space. Let $\mu$ and $\nu$ be two measures on $\SA$. Then $\nu$ is exchangeable with $\mu$ if for all measurable $A \in \SA$ \[ \mu(A) = 0 \implies \nu(A) = 0. \] Equivalently, \[ \nu(A) > 0 \implies \mu(A) = 0 \] for all $A \in \SA$.</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to compute integrals with respect to arbitrary measures. If we find a special measure with which we can compute integrals, would there be some way to translate integrals against another measure into integrals against this special measure?</p></div><div class="sheet-listing"><p class="sheet"> It would suffice to produce a special function whose integral against the base measure would over any measurable set gave the measure of the set under the alternate measure. In this case, the monotone convergence theorem would say that the integral of any function under the alternate measure was the integral of the function against the special function under the base measure.</p></div><div class="sheet-listing"><p class="sheet"> No small miracle is that the condition for this exchange is extremely simple. In this sheet, we will define the condition. In a later sheet we will construct the special function.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider two measures. Suppose there exists a measurable set for which the first was positive but the second was zero. Then we have no hope of exchanging these measures, because the integral of any function over this set against the second measure is zero.</p></div><div class="sheet-listing"><p class="sheet"> So let us rule out this case. Suppose that whenever the first was positive on a set, the second was positive on that set. The contrapositive is that whenever the second is zero on a set, the first is zero on the same. This condition is sufficient for exchangeability.</p></div><div class="sheet-listing"><p class="sheet"> A first measure is \t{exchangeable} with respect to a second measure if the first measure of any measurable set is zero whenever the second measure of that set is zero.\footnote{The language "exchangeable} is not at all standard. We have coined it for the reasons outlined in the why of this sheet." As we said earlier, this condition means that the first measure is never nonzero on a set for which the second measure is zero. It is common to say that the first measure is \t{absolutely continuous} with respect to the second measure.\footnote{This needs more justification, perhaps, as this naming seems to be an artifact of a notion of absolutely continuous functions.}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \SA)$ be a measurable space. Let $\mu$ and $\nu$ be two measures on $\SA$. Then $\nu$ is exchangeable with respect to $\mu$ if for all measurable $A \in \SA$, $\mu(A) = 0 \implies \nu(A) = 0$. Equivalently, $\nu(A) > 0 \implies \mu(A) > 0$ for all $A \in \SA$. Notice that in this second statement, instead of the relation of equality ($=$) we are using the relation of inequality ($<$).</p></div><div class="sheet-listing"><p class="sheet"> There is often used notation for a measure $\mu$ being exchangeable (absolutely continuous) with respect to a second measure $\nu$. It is $\mu \ll \nu$. The notation is a reminder of the fact that $\nu(A) = 0 \implies \mu(A) = 0$ for all $A \in \CA$.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -172,7 +165,7 @@
 
           // Fetch the third page
           pdf.getPage(4).then(function(page) {
-            var scale = 1.5;
+            var scale = 1.4;
             var viewport = page.getViewport({ scale: scale, });
 
             //
@@ -192,14 +185,13 @@
               var canvasWidth = canvas.width;
               var canvasHeight = canvas.height;
 
-              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
-              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
               canvas.style.width = canvasWidth + "px";
               canvas.style.height = canvasHeight + "px";
 
               context.scale(window.devicePixelRatio, window.devicePixelRatio);
             }
-            //end see
 
             //
             // Render PDF page into canvas context

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./negligible_sets.pdf#page=2'"> Negligible Sets </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./negligible_sets.pdf#page=2'" onkeypress="location.href='./negligible_sets.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./negligible_sets-graph.pdf'" onkeypress="location.href='./negligible_sets-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./measures.html'" onkeypress="location.href='./measures.html'">
+              <span>
+                Measures
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_limits.html'" onkeypress="location.href='./real_limits.html'">
+              <span>
+                Real Limits
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./sequences.html'" onkeypress="location.href='./sequences.html'">
+              <span>
+                Sequences
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./almost_everywhere_measurability.html'" onkeypress="location.href='./almost_everywhere_measurability.html'">
+            <span>
+            Almost Everywhere Measurability
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./iterated_integrals.html'" onkeypress="location.href='./iterated_integrals.html'">
+            <span>
+            Iterated Integrals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If a property does not hold for all elements of the base set, it may be that it holds for all but a set of measure zero. using this idea, we can treat properties which fail on a set of measure zero as though they occur everywhere, especially in discussions of convergence and integration.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A subset of the base set of a measure space is \t{negligible} if there exists a measurable set with measure zero containing the subset. The qualification "if there exists a measurable set..." allows us to speak of nonmeasurable negligible sets. In other words, negligible sets need not be measurable.</p></div><div class="sheet-listing"><p class="sheet"> A property holds \t{almost everywhere} with respect to a measure on a measure space if the set of elements of the base set on which the property does not hold is negligible.</p></div><div class="sheet-listing"><p class="sheet"> Naturally, if the property holds everywhere then it holds almost everywhere, too, though we always use the stronger statement that it holds everywhere. With this in mind, we call the almost everywhere sense "weaker" than the everywhere sense.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A}, \mu)$ be a measure space. A set $N \subset X$ is negligible if there exists $A \in \mathcal{A}$ with $N \subset A$ and $\mu(N) = 0$.</p></div><div class="sheet-listing"><p class="sheet"> We abbreviate almost everywhere as "a.e.,} read \say{almost everywhere". We say that a property "holds a.e." If the measure $\mu$ is not clear from context, we say that the property holds almost everywhere $[\mu]$ or $\mu$-a.e., read "mu almost everywhere."</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A}, \mu)$ be a measure space.</p></div><div class="sheet-listing"><h2 class="sheet" id="function_comparisons">3.1 Function Comparisons</h2></div><div class="sheet-listing"><p class="sheet"> Let $f, g: X \to \R$, not necessarily measurable. Then $f = g$ almost everywhere if the set of points at which the functions disagree is $\mu$-negligible. Similarly, $f \geq g$ almost everywhere if the set of points where $f$ is less than $g$ is $\mu$-negligible.</p></div><div class="sheet-listing"><p class="sheet"> Now suppose $f$ and $g$ are $\mathcal{A}$-measurable, then the sets \[ \Set*{x \in X}{f(x) \neq g(x)} \text{ and } \Set*{x \in X}{f(x) < g(x)} \] are measurable. In general, these sets need not be measurable. This is one example justification for our including nonmeasurable sets in the definition, as mentioned above.</p></div><div class="sheet-listing"><h2 class="sheet" id="function_limits">3.2 Function Limits</h2></div><div class="sheet-listing"><p class="sheet"> Let $\seqt{f}: X \to R$ for each natural number $n$ and let $f: X \to R$ be a function. The sequence $\seq{f}$ \t{converges to $f$ almost everywhere} if \[ \Set*{x \in X}{\lim_{n} \seqt{f}(x) \text{ does not exist, or } f(x) \neq \lim_{n} \seqt{f}(x)} \] is $\mu$-negligible. In this case, we write "$f = \lim_n \seqt{f}$ a.e."</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './negligible_sets.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            //context.imageSmoothingEnabled = false;
+            //context.webkitImageSmoothingEnabled = false;
+            //context.mozImageSmoothingEnabled = false;
+            //context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="direction: ltr;"></canvas>
+    <canvas id="page2" style="direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./negligible_sets.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./negligible_sets.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./negligible_sets-graph.pdf">
+    </iframe>
+    -->
+
+  </body>
+</html>`

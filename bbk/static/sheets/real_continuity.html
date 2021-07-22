@@ -39,13 +39,6 @@
               <span class="caret">›</span>
             </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./sequences.html'" onkeypress="location.href='./sequences.html'">
-              <span>
-                Sequences
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
       
       
         <div disabled class="need label"> Needed by: </div>
@@ -84,7 +77,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We try to precisely characterize the idea that a function is continuous, or uninterrupted.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider a function from the real numbers to the real numbers.</p></div><div class="sheet-listing"><p class="sheet"> The function is <i>continuous at a point</i> in its domain if for every positive real number, there is a positive real number such that every pointin the domain which is the second positive number close to the first element has result which is the first positive number close to the second.</p></div><div class="sheet-listing"><p class="sheet"> A function is <i>continuous</i> if it is continuous at every point of its domain.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $R$ denote the set of real numbers. Let $f: R \to R$. Then $f$ is continuous at $x \in R$ if \[ (\forall \epsilon > 0)(\exists \delta > 0)(\abs{x - y} < \delta \implies \abs{f(x) - f(y)} < \epsilon) \] for all $y \in R$.</p></div><div class="sheet-listing"><p class="sheet"> Then $f$ is continuous. \[ (\forall x \in R)(\forall \epsilon > 0)(\exists \delta > 0)(\abs{x - y} < \delta \implies \abs{f(x) - f(y)} < \epsilon) \] for all $y \in R$.</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We try to precisely characterize the idea that a function is continuous, or uninterrupted.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider a function from the real numbers to the real numbers.</p></div><div class="sheet-listing"><p class="sheet"> The function is <i>continuous at a point</i> in its domain if for every positive real number, there is a positive real number such that every pointin the domain which is the second positive number close to the first element has result which is the first positive number close to the second.</p></div><div class="sheet-listing"><p class="sheet"> A function is <i>continuous</i> if it is continuous at every point of its domain.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $R$ denote the set of real numbers. Let $f: R \to R$. Then $f$ is continuous at $x \in R$ if \[ (\forall \epsilon > 0)(\exists \delta > 0)(\abs{x - y} < \delta \implies \abs{f(x) - f(y)} < \epsilon) \] for all $y \in R$.</p></div><div class="sheet-listing"><p class="sheet"> Then $f$ is continuous. \[ (\forall x \in R)(\forall \epsilon > 0)(\exists \delta > 0)(\abs{x - y} < \delta \implies \abs{f(x) - f(y)} < \epsilon) \] for all $y \in R$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -186,7 +179,7 @@
 
           // Fetch the third page
           pdf.getPage(4).then(function(page) {
-            var scale = 1.5;
+            var scale = 1.4;
             var viewport = page.getViewport({ scale: scale, });
 
             //
@@ -206,14 +199,13 @@
               var canvasWidth = canvas.width;
               var canvasHeight = canvas.height;
 
-              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
-              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
               canvas.style.width = canvasWidth + "px";
               canvas.style.height = canvasHeight + "px";
 
               context.scale(window.devicePixelRatio, window.devicePixelRatio);
             }
-            //end see
 
             //
             // Render PDF page into canvas context

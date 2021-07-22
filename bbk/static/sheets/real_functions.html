@@ -36,13 +36,6 @@
       
         <div disabled class="need label"> Needed by: </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./continuity.html'" onkeypress="location.href='./continuity.html'">
-            <span>
-            Continuity
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
           <div class="need" tabindex="0" onclick="location.href='./convex_functions.html'" onkeypress="location.href='./convex_functions.html'">
             <span>
             Convex Functions
@@ -98,7 +91,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name functions whose domain is the real numbers.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A <i>real function</i> is a real-valued function The domain is often an interval of real numbers, but may be any non-empty set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> $f: \R \to \R$. $f$ is a real function. To speak of functions defined on intervals, let $a, b \in \R$. $g: [a, b] \to \R$. is a real function defined on a closed interval. $h: (a, b) \to \R$ is a real function defined on an open interval.</p></div><div class="sheet-listing"><p class="sheet"> We regularly declare the interval and the function in one pass: Let $f: [a, b] \to \R$, read aloud as \say{$f$ from closed $a$ $b$ to $\R$.} Or, let $f: (a, b) \to \R$ read aloud as "$f$ from open $a$ $b$ to $\R$".</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $c \in \R$. Let $f: \R \to \R$ be such that $f(x) = c$ for every $x \in \R$. $f$ is a real function. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} \item Let $f: \R to \R$ with $f(x) = 2x^2 + 1$ for all $x \in R$. $f$ is a real function. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $f: \R \to \R$ with \[ f(x) = \begin{cases} 1 & \text{ if } x \in \Q \\ 0 & \text{ otherwise. } \end{cases} \] $f$ is a real function. \end{expl}</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name functions whose domain is the real numbers.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{real function} is a real-valued function. The domain is often an interval of real numbers, but may be any non-empty set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set. Let $f: A \to R$. $f$ is a real function. If $A = \R$, then $f \in \R \to \R$. To speak of functions defined on intervals, let $a, b \in \R$. Let $g: [a, b] \to \R$. Then $g$ is a real function defined on a closed interval. Let $h: (a, b) \to \R$. Then $h$ is a real function defined on an open interval.</p></div><div class="sheet-listing"><p class="sheet"> We regularly declare the interval and the function at once. For example, "let $f: [a, b] \to \R$} is understood to mean \say{let $a$ and $b$ be real numbers with $a < b$, let $[a, b]$ be the closed interval with them as endpoints, and let $f$ bea  real-valued function whose domain is this interval". We read teh notation $f: [a, b] \to \R$ aloud as "$f$ from closed $a$ $b$ to $\R$." We use $f: (a, b) \to \R$ similarly (read aloud "$f$ from open $a$ $b$ to $\R$").</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $c \in \R$. Let $f: \R \to \R$ be such that $f(x) = c$ for every $x \in \R$. $f$ is a real function. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} \item Let $f: \R \to \R$ with $f(x) = 2x^2 + 1$ for all $x \in R$. $f$ is a real function. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $f: \R \to \R$ with \[ f(x) = \begin{cases} 1 & \text{ if } x \in \Q \\ 0 & \text{ otherwise. } \end{cases} \] $f$ is a real function. \end{expl}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -200,7 +193,7 @@
 
           // Fetch the third page
           pdf.getPage(4).then(function(page) {
-            var scale = 1.5;
+            var scale = 1.4;
             var viewport = page.getViewport({ scale: scale, });
 
             //
@@ -220,14 +213,13 @@
               var canvasWidth = canvas.width;
               var canvasHeight = canvas.height;
 
-              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
-              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
               canvas.style.width = canvasWidth + "px";
               canvas.style.height = canvasHeight + "px";
 
               context.scale(window.devicePixelRatio, window.devicePixelRatio);
             }
-            //end see
 
             //
             // Render PDF page into canvas context

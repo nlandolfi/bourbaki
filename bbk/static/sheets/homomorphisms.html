@@ -67,7 +67,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name a function which preserves algebraic structure.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{group homomorphism} between two groups is a function $(A, +)$ and $(B, \tilde{+})$ is a bijection $f: A \to B$ such that $f(1_A) = f(1_B)$ for  $1_A \in A$ and $1_B \in B$ and $f(a + a') = f(a) \tilde{+} f(a')$ for all $a, a' \in A$. Similarlly we define \t{ring homomorphism} and \t{field homomorphisms}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name a function which preserves algebraic structure.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{group homomorphism} between two groups $(A, +)$ and $(B, \tilde{+})$ is a bijection $f: A \to B$ such that $f(1_A) = 1_B$ for  $1_A \in A$ and $1_B \in B$ and $f(a + a') = f(a) \tilde{+} f(a')$ for all $a, a' \in A$. We define a \t{ring homomorphism} and \t{field homomorphism} similarly.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -169,7 +169,7 @@
 
           // Fetch the third page
           pdf.getPage(4).then(function(page) {
-            var scale = 1.5;
+            var scale = 1.4;
             var viewport = page.getViewport({ scale: scale, });
 
             //
@@ -189,14 +189,13 @@
               var canvasWidth = canvas.width;
               var canvasHeight = canvas.height;
 
-              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
-              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
               canvas.style.width = canvasWidth + "px";
               canvas.style.height = canvasHeight + "px";
 
               context.scale(window.devicePixelRatio, window.devicePixelRatio);
             }
-            //end see
 
             //
             // Render PDF page into canvas context

@@ -53,7 +53,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Sometimes we want finite measures. TODO: which times?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A measurable set is <i>finite</i> if its measure is a real number. The measure space itself is <i>finite</i> if the base set is finite.</p></div><div class="sheet-listing"><p class="sheet"> A measurable set is <i>sigma-finite</i> if there exists a sequence of finite measurable sets whose union is the set. The measure space itself is <i>sigma-finite</i> if the base set is sigma finite.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote that a measure space is finite by saying "Let $(A, \mathcal{A", \mu)$ and $\mu(A) < +\infty$.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $(A, \mathcal{A})$ be a measurable space.</p></div><div class="sheet-listing"><p class="sheet"> The counting measure on $(A, \mathcal{A})$ is finite if and only if the base set is finite. It is sigma finite if and only if the base set is a union of a sequence of finite sets.</p></div><div class="sheet-listing"><p class="sheet"> If $\mathcal{A} = 2^A$, then the counting measure is sigma finite if and only if $A$ is countable. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} A point mass measure is finite. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $R$ be the set of real numbers. The Lebesgue measure on $(R, \mathcal{B}(R))$ is sigma finite. \end{expl}</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want finite measures.\footnote{This why is likely to be expanded on in future editions. It may be that we need to reference probability theory. It may suffice to note that the Lebesgue measure on $[0, 1]$ is finite, and so such measures exist.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A measurable set is \t{measure-finite} (or when clear that we do not mean finite in the sense of \sheetref{finite_sets}{Finite sets}), a set is \t{finite}) if its measure is a real number (as opposed to the only alternative, $+\infty$). The measure space itself is \t{measure-finite} if the base set is finite.</p></div><div class="sheet-listing"><p class="sheet"> A measurable set is \t{sigma-finite} if there exists a sequence of finite measurable sets whose union is the set.\footnote{The justification of this seems distinct from the previous paragraph, and therefore may need its own sheet. The reason for these seems to me to be that the Lebesgue measure is sigma-finite.} The measure space itself is \t{sigma-finite} if the base set is sigma finite.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, \CA, \mu)$ be a measure space. It is finite if $\mu(A) < +\infty$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $(A, \mathcal{A})$ be a measurable space.</p></div><div class="sheet-listing"><p class="sheet"> The counting measure on $(A, \mathcal{A})$ is finite if and only if the base set is finite. It is sigma finite if and only if the base set is a union of a sequence of finite sets.</p></div><div class="sheet-listing"><p class="sheet"> If $\mathcal{A} = 2^A$, then the counting measure is sigma finite if and only if $A$ is countable. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} A point mass measure is finite. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $R$ be the set of real numbers. The Lebesgue measure on $(R, \mathcal{B}(R))$ is sigma finite. \end{expl}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -155,7 +155,7 @@
 
           // Fetch the third page
           pdf.getPage(4).then(function(page) {
-            var scale = 1.5;
+            var scale = 1.4;
             var viewport = page.getViewport({ scale: scale, });
 
             //
@@ -175,14 +175,13 @@
               var canvasWidth = canvas.width;
               var canvasHeight = canvas.height;
 
-              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
-              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
               canvas.style.width = canvasWidth + "px";
               canvas.style.height = canvasHeight + "px";
 
               context.scale(window.devicePixelRatio, window.devicePixelRatio);
             }
-            //end see
 
             //
             // Render PDF page into canvas context

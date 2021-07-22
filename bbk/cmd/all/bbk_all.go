@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 	"text/template"
 
 	"bbk"
@@ -44,6 +45,9 @@ func main() {
 		template.New("inputs.tmpl").Funcs(
 			template.FuncMap{
 				"title": bbk.Title,
+				"join": func(ss []string) string {
+					return strings.Join(ss, ", ")
+				},
 			},
 		).ParseFiles("inputs.tmpl"))
 
