@@ -167,7 +167,7 @@
 
           // Fetch the third page
           pdf.getPage(4).then(function(page) {
-            var scale = 1.5;
+            var scale = 1.4;
             var viewport = page.getViewport({ scale: scale, });
 
             //
@@ -187,14 +187,13 @@
               var canvasWidth = canvas.width;
               var canvasHeight = canvas.height;
 
-              canvas.width = 2 * canvasWidth * window.devicePixelRatio;
-              canvas.height = 2 * canvasHeight * window.devicePixelRatio;
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
               canvas.style.width = canvasWidth + "px";
               canvas.style.height = canvasHeight + "px";
 
               context.scale(window.devicePixelRatio, window.devicePixelRatio);
             }
-            //end see
 
             //
             // Render PDF page into canvas context
