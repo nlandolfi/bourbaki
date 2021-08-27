@@ -95,7 +95,7 @@ func (s *Searcher) Search(q string) []*SearchResult {
 		}
 	}
 	for _, pr := range s.sheets {
-		if strings.Contains(pr.Body, q) {
+		if strings.Contains(strings.ToLower(pr.Body), q) {
 			addresult(rs, pr, "body contains query",
 				float64(len(q))/float64(len(pr.Body)),
 			)
