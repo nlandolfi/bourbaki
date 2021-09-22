@@ -2,7 +2,7 @@ inputs.tex: sheets.csv inputs.tmpl ../sheets/*/*.tex # inputs.go
 # 	go run inputs.go > inputs.tex
 	bbk_all -sheets ../sheets/ > inputs.tex
 
-all.pdf: *.tex ../*.tex ../trademark.pdf ../sheets/*/*.tex
+all.pdf: inputs.tex *.tex ../*.tex ../trademark.pdf ../sheets/*/*.tex
 # doesn't work?!
 	#../latexrun all.tex
 	pdflatex all.tex

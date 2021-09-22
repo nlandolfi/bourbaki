@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make linear_functions.pdf
+	make list_classifiers.pdf
 
-linear_functions.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > linear_functions.tex
+list_classifiers.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > list_classifiers.tex
 
-linear_functions.pdf: ../../*.tex ../../trademark.pdf *.tex linear_functions.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode linear_functions.tex
-	../../latexrun linear_functions.tex
+list_classifiers.pdf: ../../*.tex ../../trademark.pdf *.tex list_classifiers.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode list_classifiers.tex
+	../../latexrun list_classifiers.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: linear_functions.pdf
-	open linear_functions.pdf
+open: list_classifiers.pdf
+	open list_classifiers.pdf
 
 o:
 	make open
 
-terms: linear_functions.tex
-	bbk_sheet -mode ts linear_functions.tex
+terms: list_classifiers.tex
+	bbk_sheet -mode ts list_classifiers.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f linear_functions.*
+	rm -f list_classifiers.*
 	make reset
 	bbk_sheet -mode mk > Makefile

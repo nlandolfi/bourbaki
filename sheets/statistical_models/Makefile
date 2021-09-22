@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make number_of_elements.pdf
+	make statistical_models.pdf
 
-number_of_elements.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > number_of_elements.tex
+statistical_models.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > statistical_models.tex
 
-number_of_elements.pdf: ../../*.tex ../../trademark.pdf *.tex number_of_elements.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode number_of_elements.tex
-	../../latexrun number_of_elements.tex
+statistical_models.pdf: ../../*.tex ../../trademark.pdf *.tex statistical_models.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode statistical_models.tex
+	../../latexrun statistical_models.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: number_of_elements.pdf
-	open number_of_elements.pdf
+open: statistical_models.pdf
+	open statistical_models.pdf
 
 o:
 	make open
 
-terms: number_of_elements.tex
-	bbk_sheet -mode ts number_of_elements.tex
+terms: statistical_models.tex
+	bbk_sheet -mode ts statistical_models.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f number_of_elements.*
+	rm -f statistical_models.*
 	make reset
 	bbk_sheet -mode mk > Makefile
