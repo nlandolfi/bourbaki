@@ -11,23 +11,17 @@ We compare predictors by judging predictions.
 
 A \t{loss} function is a nonnegative real-valued function on pairs which is zero only on repeated pairs.
 It need not be symmetric.
-We interpret the first argument of the
-loss function as our prediction
-and the second as the recorded value.
+The first argument of the loss function is the predicted postcept and the second is the recorded (observed, true, recorded) postcept.
 
-The \t{loss of a predictor on a pair} is the
-result of the loss function on the pair.
+The \t{loss of a predictor on a pair} is the result of the loss function on the pair.
 Similarly, the \t{loss of a predictor on  a sequence} of pairs is the sum of the losses on the pairs.
 The \t{average loss of a predictor on a sequence} is the loss divided by the length of the sequence.
 The average loss is also known as the \t{empirical risk} of the predictor on the dataset.
 
 \ssubsection{Notation}
 
-Let $(a, b) \in A \times B$
-where $A$ and $B$ are non-empty sets.
-Let $\loss: B \cross B \to \R$.
-Let $f: A \to B$.
-The loss of $f$ on $(a, b)$ is
+Let $(a, b) \in A \times B$; $A, B \neq \emptyset$.
+For a lost function $\loss: B \cross B \to \R$ and predictor $f: A \to B$, the loss of $f$ on $(a, b)$ is
 \[
   \loss(f(a),b).
 \]
@@ -41,4 +35,3 @@ The average loss of $f$ on $s$ is
 \[
   \frac{1}{n} \sum_{k = 1}^{n} \loss(f(a^k), b^k).
 \]
-
