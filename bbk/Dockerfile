@@ -16,7 +16,8 @@ RUN go mod download
 COPY . ./
 
 # Build the binary.
-RUN go build -o server -mod readonly -v ./cmd/serve/bbk_serve.go
+##RUN go build -o server -mod readonly -v ./cmd/serve/bbk_serve.go
+COPY ./cmd/serve/bbk_serve server
 
 # Use the official Debian slim image for a lean production container.
 # https://hub.docker.com/_/debian

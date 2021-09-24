@@ -11,27 +11,36 @@ We compare predictors by judging predictions.
 
 A \t{loss} function is a nonnegative real-valued function on pairs which is zero only on repeated pairs.
 It need not be symmetric.
+
+We use loss functions to judge a prediction in comparison to the recorded postcept.
 The first argument of the loss function is the predicted postcept and the second is the recorded (observed, true, recorded) postcept.
 
 The \t{loss of a predictor on a pair} is the result of the loss function on the pair.
-Similarly, the \t{loss of a predictor on  a sequence} of pairs is the sum of the losses on the pairs.
-The \t{average loss of a predictor on a sequence} is the loss divided by the length of the sequence.
+Similarly, the \t{loss of a predictor on a dataset} of record pairs is the sum of the losses on the pairs of the dataset.
+Likewise, the \t{average loss} of a predictor is the loss of the predictor on the dataset divided by the size of the dataset.
 The average loss is also known as the \t{empirical risk} of the predictor on the dataset.
 
 \ssubsection{Notation}
 
 Let $(a, b) \in A \times B$; $A, B \neq \emptyset$.
-For a lost function $\loss: B \cross B \to \R$ and predictor $f: A \to B$, the loss of $f$ on $(a, b)$ is
-\[
-  \loss(f(a),b).
-\]
+For a lost function $\loss: B \cross B \to \R$ and predictor $f: A \to B$, the loss of $f$ on $(a, b)$ is $\loss(f(a),b)$.
 Let $s = ((a^1, b^1), \dots, (a^n, b^n))$
 be a record sequence.
-The loss of $f$ on $s$ is
-\[
-  \sum_{k = 1}^{n} \loss(f(a^k), b^k).
-\]
-The average loss of $f$ on $s$ is
-\[
-  \frac{1}{n} \sum_{k = 1}^{n} \loss(f(a^k), b^k).
-\]
+The loss of $f$ on $s$ is $\sum_{k = 1}^{n} \loss(f(a^k), b^k)$.
+The average loss of $f$ on $s$ is $(\nicefrac{1}{n})\sum_{k = 1}^{n} \loss(f(a^k), b^k)$.
+
+\ssection{Training and test loss}
+
+Recall that $s$ is a dataset of records pairs in $A \times B$.
+We call a predictor $f: A \to B$ an \t{interpolator} of the dataset $s$ if, for each pair $(a^i, b^i)$ in the dataset, $f(a^i) = b^i$.
+An interpolator achieves zero loss on the dataset it interpolates.
+
+The rub is that an interpolator may have nonzero loss a record pair which is not contained in the dataset used to construct it.
+For this reason, it is common to consider two datasets.
+First, the one used to construct the predictor (the \t{training dataset}) and second, one used to evaluate the predictor (the \t{test dataset}, \t{validation dataset} or \t{evaluation dataset}).
+
+We judge a predictor by its average loss on the test dataset.
+We call this the \t{test loss}, in contrast with the \t{train loss} obtained on the dataset used to construct the predictor.
+A predictor whose average test loss is much larger than its average train lost is said to be \t{overfit} to the train dataset.\footnote{Many authorities will refer to this as the \say{problem} or \say{danger} of overfitting.}
+
+Roughly speaking, we judge an inductor by some aggregation metric of the loss of predictors it produces on datasets.
