@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./digital_images.pdf#page=2'"> Digital Images </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./digital_images.pdf#page=2'" onkeypress="location.href='./digital_images.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./digital_images-graph.pdf'" onkeypress="location.href='./digital_images-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./arrays.html'" onkeypress="location.href='./arrays.html'">
+              <span>
+                Arrays
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./bit_strings.html'" onkeypress="location.href='./bit_strings.html'">
+              <span>
+                Bit Strings
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./handwritten_digit_classifiers.html'" onkeypress="location.href='./handwritten_digit_classifiers.html'">
+            <span>
+            Handwritten Digit Classifiers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to represent images.</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> A \t{binary image} is a two-dimensional array in $\set{0, 1}$. The first term of the shape is the \t{height} and the second term is the \t{width} of the image. A \t{grayscale image} is a two-dimensional array in $\set{0, \dots, n}$, in which $n$ represents full saturation and all integers less than $n$ represent increasing saturation.</p></div><div class="sheet-listing"><p class="sheet"> An \t{RGB digital color} is a length three sequence of bit strings. The terms of the color are known as the channels. So, for example, the first term of the sequence is the \t{first channel}, the second term is the \t{second channel}, and the third term is the \t{third channel}.</p></div><div class="sheet-listing"><p class="sheet"> An \t{RGB digital image} is a two-dimensional array in the set of RGB digital colors. The \t{image channels} are the two-dimensional array whose values are those of the corresponding channel in the original image. So, for example, the \t{first channel image} is the grayscale image whose values are the first channel of the original digital image.</p></div><div class="sheet-listing"><p class="sheet"> We refer to any of these (binary images, grayscale images, RGB digital images) as \t{digital images}, or often, as \t{images}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './digital_images.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page1');
+            var context = canvas.getContext('2d');
+
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            //context.imageSmoothingEnabled = false;
+            //context.webkitImageSmoothingEnabled = false;
+            //context.mozImageSmoothingEnabled = false;
+            //context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page2');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            //end see
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            var scale = 1.4;
+            var viewport = page.getViewport({ scale: scale, });
+
+            //
+            // Prepare canvas using PDF page dimensions
+            //
+            var canvas = document.getElementById('page3');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+            context.imageSmoothingEnabled = false;
+            context.webkitImageSmoothingEnabled = false;
+            context.mozImageSmoothingEnabled = false;
+            context.oImageSmoothingEnabled = false;
+
+            if (window.devicePixelRatio > 1) {
+              var canvasWidth = canvas.width;
+              var canvasHeight = canvas.height;
+
+              canvas.width = canvasWidth * window.devicePixelRatio;
+              canvas.height = canvasHeight * window.devicePixelRatio;
+              canvas.style.width = canvasWidth + "px";
+              canvas.style.height = canvasHeight + "px";
+
+              context.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+
+            //
+            // Render PDF page into canvas context
+            //
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport,
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+
+
+    <canvas id="page1" style="direction: ltr;"></canvas>
+    <canvas id="page2" style="direction: ltr;"></canvas>
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./digital_images.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./digital_images.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./digital_images-graph.pdf">
+    </iframe>
+    -->
+
+  </body>
+</html>`
