@@ -1,0 +1,30 @@
+%!name:least_squares_linear_predictors
+%!need:matrix_transpose
+%!need:matrix_inverses
+%!need:loss_functions
+%!need:norms
+
+\ssection{Why}
+
+What is the best linear predictor if we choose according to a squared loss function.
+
+\ssection{Definition}
+
+Suppose we have a paired dataset of records with inputs in $\R^d$ and outputs in $\R$.
+A \t{least squares linear predictor} or \t{linear least squares predictor} is a linear transformation $f: \R^d \to \R$ which minimizes
+\[
+  \frac{1}{n} \sum_{i = 1}^{n} (f(x^i) - y^i)^2.
+\]
+over a dataset of pairs $(x^1, y^1), \dots, (x^n, y^n)$, and we want to select the predictor $f$ to minimize
+The space of linear functions is in one-to-one correspondence with vectors in $\R^d$.
+So we want to find $\theta \in \R^d$ to  minimize
+\[
+  \frac{1}{n} \norm{X\theta - y}^2.
+\]
+
+\begin{proposition}
+There exists a unique linear least squares predictor and its parameters are given by $\invp{\transpose{X}X}\transpose{X}y$.
+\end{proposition}
+
+
+\blankpage

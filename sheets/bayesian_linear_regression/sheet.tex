@@ -1,0 +1,91 @@
+%!name:bayesian_linear_regression
+%!need:multivariate_normals
+%!need:matrix_transpose
+%!need:probability_measures
+%!need:linear_predictors
+%!need:expectation
+%!need:data_matrix
+%!need:normal_conditionals
+%!need:matrix_inverses
+
+\ssection{Why}
+
+We have precepts in $\R^d$ and want to predict postcepts in $\R$.
+We put a probability measure on a set of linear statistical models.\footnote{The name of this sheet will change in future editions. And future editions will include accounts.}
+
+\ssection{Setup}
+
+We work over a probability space $(\Omega, \CA, \PM)$.
+We have $n$ precepts in $\R^d$.
+So let $x^1, \dots, x^n \in \R^d$ with data matrix $X \in \R^{n \times d}$.
+
+Let $\theta: \Omega \to \R^d$ and $e: \Omega \to \R^n$ be random vectors with normal density (mean zero and covariances $\Sigma_{\theta}$ and $\Sigma_{e}$ respectively).
+For each $\omega \in \Omega$, define the map $f: \Omega \to (\R^d \to \R)$ by $f(\omega)(x) = \theta(\omega)^\top x^i + e_i(\omega)$.
+
+Define $y: \Omega \to \R^n$ by
+%$y^i(\omega) = f(\omega)(x^i) = \theta(\omega)^\top x^i$, $\forall i = 1, \dots, n$.
+$y(\omega) = X\theta(\omega) + e$.
+Let $g: \R^{d} \times \R^{n} \to \R$ be the density of $(\theta, y)$.
+Let $g_{\theta \mid y}: \R^d \times \R^n \to \R$ be the conditional density of $\theta$ given $y$.
+
+\begin{proposition}
+  $(\theta, y)$ has covariance
+  $\pmat{
+    \Sigma_\theta & \Sigma_{\theta}\transpose{X} \\
+      X \Sigma_{\theta} & X\Sigma_{\theta}\transpose{X} + \Sigma_{e}
+  }$
+\end{proposition}
+
+\begin{proposition}
+  There exists $c \in \R$, so that for all $\alpha \in \R^d$ and $\gamma \in \R^n$, $\log g(\alpha,\gamma)$ is
+  \[
+    -\frac{1}{2}(\transpose{\alpha}\Sigma\alpha + \transpose{\alpha}\Sigma\transpose{X}\gamma + \transpose{\gamma}X\Sigma\alpha + \transpose{\gamma}X\Sigma \transpose{X}\gamma) + c.
+  \]
+\end{proposition}
+\begin{proposition}
+  A solution to maximize $g(\alpha, \gamma)$ with respect to $\alpha$ is $\alpha = -\inv{\Sigma}\Sigma\transpose{X}\gamma$.
+\end{proposition}
+\begin{proposition}
+  $g_{\theta \mid y}(\alpha, \gamma)$ is normal with mean
+  \[
+    \tilde{\mu}(\gamma) = \Sigma \transpose{X}\inversep{X\Sigma\transpose{X}}\gamma
+  \] and covariance \[\tilde{\Sigma} = \Sigma - \Sigma\transpose{X}\inversep{X\Sigma\transpose{X}}X\Sigma.\]% (\sheetref{normal_conditionals}{Normal Conditionals}).
+\end{proposition}
+\begin{proposition}
+  A solution to maximize $g_{\theta | y}(\alpha, \gamma)$ w.r.t. $\alpha$ is
+  \[
+    \tilde{\Sigma}\inv{\tilde{\Sigma}}\tilde{\mu}(\gamma).
+  \]
+\end{proposition}
+
+
+But, of course, $y$ also has a density.
+Denote the density of $y$ by $g: \R^n \to \R$.
+In other words, $g \geq 0$ and $\int g = 1$.
+
+\begin{proposition}
+  \[
+    \log g(\gamma) = -\nicefrac{1}{2}(\transpose{\gamma}\inv{\left(X\Sigma\transpose{X}\right)}\gamma) - \frac{d}{2}\log 2\pi - \frac{1}{2}\log\det\left(X\Sigma\transpose{X}\right)
+  \]
+\end{proposition}
+
+
+\ssection{Test}
+
+
+This expression makes clear that $y$ is has a normal density with mean $X\E(x)$ and covariance $X\E(x)X^{\top}$.
+
+Let $w: \Omega \to \R^d$ be a random vector with mean $0$ and covariance $\eta I$.
+Let $x^1, \dots, x^n \in \R^d$
+Define $y^i: \Omega \to \R$ by $y_i(\omega) = w(\omega)^\top x^i$ for $i = 1, \dots, d$.
+
+\ssection{Noise setup}
+
+Let $e: \Omega \to \R^n$ be a normal random vector with mean $0$ and covariance $\sigma I$.
+Define $\tilde{y}:\Omega\to\R^n$ by $\tilde{y} = y(\omega) + e(\omega)$.
+
+\begin{proposition}
+  $\tilde{y}$ is a normal random vector with mean zero and covariance $X \Sigma \transpose{X} + \sigma I$.
+\end{proposition}
+
+\blankpage
