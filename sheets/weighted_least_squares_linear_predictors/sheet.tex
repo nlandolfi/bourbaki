@@ -1,0 +1,33 @@
+%!name:weighted_least_squares_linear_predictors
+%!need:least_squares_linear_predictors
+%!need:inner_products
+
+\ssection{Why}
+
+What is the best linear predictor if we choose according to a weighted squared loss function.
+
+\ssection{Definition}
+
+Suppose we have a paired dataset of $n$ records with inputs in $\R^d$ and outputs in $\R$.
+A \t{weighted least squares linear predictor} for nonnegative weights $w \in \R^n$, $w \geq 0$, is a linear transformation $f: \R^d \to \R$ (the field is $\R$) which minimizes
+\[
+  \frac{1}{n} \sum_{i = 1}^{n} w_i(y_i - \transpose{x}a^i)^2.
+\]
+Some authors refer to this process of selecting a linear predictor as the \t{weighted least-squares problem}.
+
+Define $W \in \R^{n \times n}$ so that $W_{ii} = w_i$ and $W_{ij} = 0$ when $i \neq j$.
+So, in particular, $W$ is a diagonal matrix.
+We are minimizing
+\[
+  \norm{W(Ax - y)}
+\]
+
+\ssection{Solution}
+
+\begin{proposition}
+There exists a unique weighted least squares linear predictor and its parameters are given by $\inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy$.
+\end{proposition}
+
+
+
+\blankpage

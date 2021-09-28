@@ -1,0 +1,45 @@
+%!name:probabilistic_linear_model
+%!need:multivariate_normals
+%!need:matrix_transpose
+%!need:probability_measures
+%!need:linear_predictors
+%!need:expectation
+%!need:data_matrix
+%!need:normal_conditionals
+%!need:matrix_inverses
+%!need:covariance
+
+\ssection{Why}
+We want to estimate the weights of a linear function.\footnote{Future editions will include this.}
+
+\ssection{Definition}
+
+The \t{probabilistic linear model}; \t{linear model}; \t{linear regression}
+
+Let $(\Omega, \CA, \PM)$ be a probability space.
+We have $n$ precepts in $\R^d$.
+So let $a^1, \dots, a^n \in \R^d$ with data matrix $A \in \R^{n \times d}$.
+We are modeling a relation between $\R^d$ and $\R$.
+
+Let $x: \Omega \to \R^d$ and $e: \Omega \to \R^n$ be independent random vectors with zero mean and covariances given by $\Sigma_{x}$ and $\Sigma_{e}$, respectively.
+For each $\omega \in \Omega$, define the map $f: \Omega \to (\R^d \to \R)$ by $f(\omega)(a) = \sum_{j}a^i_jx_j(\omega) + e_i(\omega)$.
+
+We call $x$ the \t{signal}.
+We call $e$ the \t{noise}.
+This class of models assumes the signal and noise are independent.
+
+Define $y: \Omega \to \R^n$ by $y(\omega) = Ax(\omega) + e(\omega)$.
+So,
+\[
+  y = Ax + e.
+\]
+
+\begin{proposition}
+  $\E(y) = A\E(x) + \E(w)$\footnote{By linearity. Full account in future editions.}
+\end{proposition}
+
+\begin{proposition}
+  $\cov((x, y)) = A\cov(x)\transpose{A} + \cov{e}$\footnote{Full account in future editions.}
+\end{proposition}
+
+\blankpage
