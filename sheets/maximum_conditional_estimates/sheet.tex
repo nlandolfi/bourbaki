@@ -1,16 +1,25 @@
 %!name:maximum_conditional_estimates
 %!need:random_vectors
+%!need:estimators
+%!need:conditional_densities
+
+\ssection{Why}
+
+We want to estimate a random vector $x: \Omega \to \R^d$ from a random vector $y: \Omega \to \R^n$.
 
 \ssection{Definition}
 
-Suppose $x$
-A \t{maximum conditional estimate} for $x: \Omega \to \R^n$ given $y: \Omega \to \R^d$
-
+Denote by $g: \R^d \times \R^n \to \R$ the joint density for $(x, y)$.\footnote{Future editions will comment on the existence of such a density.}
+Denote the conditional density for $x$ given $y$ by $g_{x \mid y} \R^d \times \R^n \to \R$
+A \t{maximum conditional estimate} for $x: \Omega \to \R^n$ given that $y$ has taken the value $\gamma \in \R^n$ is a maximizer $\xi \in \R^d$ of $g_{x \mid y}(\xi, \gamma)$.
 It is also called the \t{maximum a posteriori estimate} or \t{MAP estimate}.
 
+\ssection{Also maximizes joint}
+
+Notice that since $g(\xi, \gamma) = g_y(\gamma) g_{x \mid y}(\xi, \gamma)$, the MAP estimate also maximizes the joint pdf.
 
 \begin{proposition}
-The MAP estimate also maximizes the joint pdf.
+  The MAP estimate maximizes the joint pdf.\footnote{Future editions will include an account.}
 \end{proposition}
 
 

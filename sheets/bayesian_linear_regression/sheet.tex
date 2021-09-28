@@ -17,14 +17,18 @@ We put a probability measure on a set of linear statistical models.\footnote{The
 
 We work over a probability space $(\Omega, \CA, \PM)$.
 We have $n$ precepts in $\R^d$.
-So let $x^1, \dots, x^n \in \R^d$ with data matrix $X \in \R^{n \times d}$.
+So let $a^1, \dots, a^n \in \R^d$ with data matrix $A \in \R^{n \times d}$.
 
-Let $\theta: \Omega \to \R^d$ and $e: \Omega \to \R^n$ be random vectors with normal density (mean zero and covariances $\Sigma_{\theta}$ and $\Sigma_{e}$ respectively).
-For each $\omega \in \Omega$, define the map $f: \Omega \to (\R^d \to \R)$ by $f(\omega)(x) = \theta(\omega)^\top x^i + e_i(\omega)$.
+Let $x: \Omega \to \R^d$ and $e: \Omega \to \R^n$ be random vectors with normal density (mean zero and covariances $\Sigma_{x}$ and $\Sigma_{e}$ respectively).
+For each $\omega \in \Omega$, define the map $f: \Omega \to (\R^d \to \R)$ by $f(\omega)(a) = \sum_{j}a^i_jx_j(\omega) + e_i(\omega)$.
 
 Define $y: \Omega \to \R^n$ by
 %$y^i(\omega) = f(\omega)(x^i) = \theta(\omega)^\top x^i$, $\forall i = 1, \dots, n$.
-$y(\omega) = X\theta(\omega) + e$.
+$y(\omega) = Ax(\omega) + e(\omega)$.
+In other notation,
+\[
+  y = Ax + e.
+\]
 Let $g: \R^{d} \times \R^{n} \to \R$ be the density of $(\theta, y)$.
 Let $g_{\theta \mid y}: \R^d \times \R^n \to \R$ be the conditional density of $\theta$ given $y$.
 

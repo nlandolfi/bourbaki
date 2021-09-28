@@ -1,0 +1,38 @@
+%!name:norm_weighted_least_squares_linear_predictors
+%!need:weighted_least_squares_linear_predictors
+
+\ssection{Why}
+
+What is the best linear predictor if we choose according to a particular norm.
+
+\ssection{Definition}
+
+Suppose we have a paired dataset of $n$ records with inputs in $\R^d$ and outputs in $\R$.
+A \t{norm weighted least squares linear predictor} for a norm $g: \R^n \to \R$ is a linear transformation $f: \R^d \to \R$ (the field is $\R$) which minimizes
+\[
+  g(y - Ax).
+\]
+
+\ssection{Weight matrix}
+
+Let $\normm{\cdot}_{W}$ be the weighted norm for some postivie semidefinite weight matrix $W$.
+We want to find $x$ to minimize
+\[
+  \norm{y - AX}_{W}.
+\]
+This problem is referred to by many authors as \t{weighted least squares} or the \t{weighted least squares problem}.
+
+
+\ssection{Diagonal weight matrix}
+
+A special case of norm weighted least squares with a weighted norm is the usual weighted least squares problem (see \sheetref{Weighted Least Squares Linear Predictors}).
+Consider weighted least squares with weights $w \in \R^n$, $w \geq 0$.
+Define $W \in \R^{n \times n}$ so that $W_{ii} = w_i$ and $W_{ij} = 0$ when $i \neq j$.
+So, in particular, $W$ is a diagonal matrix and
+\[
+  \normm{y - Ax}_{W} = \sum_{i = 1}^{n} w_i(y_i  - \transpose{x}a_i)^2.
+\]
+
+\begin{proposition}
+There exists a unique weighted least squares linear predictor and its parameters are given by $\inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy$.
+\end{proposition}
