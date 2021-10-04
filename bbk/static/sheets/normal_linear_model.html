@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./normal_linear_model.pdf#page=2'"> Normal Linear Model </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./normal_linear_model.pdf#page=2'" onkeypress="location.href='./normal_linear_model.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./normal_linear_model-graph.pdf'" onkeypress="location.href='./normal_linear_model-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./normal_conditionals.html'" onkeypress="location.href='./normal_conditionals.html'">
+              <span>
+                Normal Conditionals
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./probabilistic_linear_model.html'" onkeypress="location.href='./probabilistic_linear_model.html'">
+              <span>
+                Probabilistic Linear Model
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We consider the probabilistic linear model in which all random variables involved are normal.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{normal linear model} is a linear model in which the signal and noise have normal (Gaussian) densities. For this reason, the model is often called the \t{Gaussian linear model} or the \t{linear model with Gaussian noise}.</p></div><div class="sheet-listing"><p class="sheet"> Let $(\Omega, \CA, \PM)$ be a probability space. Let $x: \Omega \to \R^d$ and $e: \Omega \to \R^d$ be independent normal random vectors with zero mean and covariances $\Sigma_{x}$ and $\Sigma_e$. Let $y = Ax + e$. We have $n$ precepts in $\R^d$. So let $a^1, \dots, a^n \in \R^d$ with data matrix $A \in \R^{n \times d}$.</p></div><div class="sheet-listing" id="maximum_conditional_estimate_of_$x$"><h1 class="sheet">3. Maximum conditional estimate of $x$</h1></div><div class="sheet-listing"><p class="sheet"> Since $x$ and $e$ are gaussian, $y$ is gaussian. So the random vector $(x, y)$ has normal density with mean zero and covariance \[ \pmat{ \Sigma_x & \Sigma_{x}\transpose{A} \\ A \Sigma_{x} & A\Sigma_{x}\transpose{A} + \Sigma_{e} }. \]</p></div><div class="sheet-listing"><p class="sheet"> This is also called \t{bayesian linear regression} or the \t{bayesian analysis of the linear model}. The word bayesian is in reference to treating the quantity of interest---$x$---as a random variable.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The maximum conditional estimate of $x: \Omega \to \R^d$ given observed value $\gamma \in \R^n$ of $y: \Omega \to \R^n$ is the conditional mean $\Sigma_{xy}\inv{\Sigma_{yy}}\gamma$. \end{proposition} Recall that the maximum conditional estimate also maximizes the joint density.</p></div><div class="sheet-listing"><h2 class="sheet" id="uncorrelated_noise">3.1 Uncorrelated noise</h2></div><div class="sheet-listing"><p class="sheet"> Suppose that $\Sigma_e = \sigma^2I$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} A solution to maximize $g(\alpha, \gamma)$ with respect to $\alpha$ is $\alpha = -\inv{\Sigma}\Sigma\transpose{X}\gamma$. \end{proposition} \begin{proposition} $g_{\theta \mid y}(\alpha, \gamma)$ is normal with mean \[ \tilde{\mu}(\gamma) = \Sigma \transpose{X}\inversep{X\Sigma\transpose{X}}\gamma \] and covariance \[\tilde{\Sigma} = \Sigma - \Sigma\transpose{X}\inversep{X\Sigma\transpose{X}}X\Sigma.\]% (\sheetref{normal_conditionals}{Normal Conditionals}). \end{proposition} \begin{proposition} A solution to maximize $g_{\theta | y}(\alpha, \gamma)$ w.r.t. $\alpha$ is \[ \tilde{\Sigma}\inv{\tilde{\Sigma}}\tilde{\mu}(\gamma). \] \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> But, of course, $y$ also has a density. Denote the density of $y$ by $g: \R^n \to \R$. In other words, $g \geq 0$ and $\int g = 1$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} \[ \log g(\gamma) = -\nicefrac{1}{2}(\transpose{\gamma}\inv{\left(X\Sigma\transpose{X}\right)}\gamma) - \frac{d}{2}\log 2\pi - \frac{1}{2}\log\det\left(X\Sigma\transpose{X}\right) \] \end{proposition}</p></div><div class="sheet-listing" id="test"><h1 class="sheet">4. Test</h1></div><div class="sheet-listing"><p class="sheet"> This expression makes clear that $y$ is has a normal density with mean $X\E(x)$ and covariance $X\E(x)X^{\top}$.</p></div><div class="sheet-listing"><p class="sheet"> Let $w: \Omega \to \R^d$ be a random vector with mean $0$ and covariance $\eta I$. Let $x^1, \dots, x^n \in \R^d$ Define $y^i: \Omega \to \R$ by $y_i(\omega) = w(\omega)^\top x^i$ for $i = 1, \dots, d$.</p></div><div class="sheet-listing" id="noise_setup"><h1 class="sheet">5. Noise setup</h1></div><div class="sheet-listing"><p class="sheet"> Let $e: \Omega \to \R^n$ be a normal random vector with mean $0$ and covariance $\sigma I$. Define $\tilde{y}:\Omega\to\R^n$ by $\tilde{y} = y(\omega) + e(\omega)$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\tilde{y}$ is a normal random vector with mean zero and covariance $X \Sigma \transpose{X} + \sigma I$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './normal_linear_model.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+    <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./normal_linear_model.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./normal_linear_model.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./normal_linear_model-graph.pdf">
+    </iframe>
+    -->
+
+  </body>
+</html>`

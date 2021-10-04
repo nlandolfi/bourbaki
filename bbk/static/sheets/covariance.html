@@ -36,9 +36,9 @@
       
         <div disabled class="need label"> Needed by: </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./affine_mMSE_predictors.html'" onkeypress="location.href='./affine_mMSE_predictors.html'">
+          <div class="need" tabindex="0" onclick="location.href='./affine_mMSE_estimators.html'" onkeypress="location.href='./affine_mMSE_estimators.html'">
             <span>
-            Affine MMSE Predictors
+            Affine MMSE Estimators
             </span>
             <span class="caret">›</span>
           </div>
@@ -46,6 +46,13 @@
           <div class="need" tabindex="0" onclick="location.href='./covariance_matrix.html'" onkeypress="location.href='./covariance_matrix.html'">
             <span>
             Covariance Matrix
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./probabilistic_linear_model.html'" onkeypress="location.href='./probabilistic_linear_model.html'">
+            <span>
+            Probabilistic Linear Model
             </span>
             <span class="caret">›</span>
           </div>
@@ -77,7 +84,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> TODO</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The <i>covariance</i> between two random variables which are each integrable and whose product is integrable is the expectation of their product less the product of their expectation.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $f$ and $g$ be two integrable random variables with $fg$ integrable. Denote the covariance of $f$ with $g$ by $\cov(f, g)$. We defined it: \[ \cov(f, g) = \Expect(fg) - \Expect(f)\Expect(g). \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection{Properties}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Covariance is symmetric and billinear. \begin{proof} TODO \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The covariance of a random variable with itself is its variance. \begin{proof} Let $f$ be a square-integrable real-valued random variable, then \[ \cov(f, f) = \Expect(ff) - \Expect(f)\Expect(f) = \Expect(f^2) - (\Expect(f))^2 = \var(f). \] \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The variance of a sum of integrable real-valued random variables whose pairwise products are integrable is the double sum of the pairwise covariances. \begin{proof} Let $f_1, \dots, f_n$ be integrable random variables with $f_if_j$ integrable for all $i,j = 1, \dots, n$. Using the billinearity, \[ \begin{aligned} \var\parens*{\sum_{i = 1}^{n} f_i} &= \cov\parens*{\sum_{i = 1}^{n} f_i, \sum_{i = 1}^{n}f_i} \\ &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} \cov(f_i, f_j) \end{aligned} \] \end{proof} \end{prop}</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \footnote{Future editions will include this.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{covariance} between two random variables which are each integrable and whose product is integrable is the expectation of their product less the product of their expectation.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $f$ and $g$ be two integrable random variables with $fg$ integrable. Denote the covariance of $f$ with $g$ by $\cov(f, g)$. We defined it: \[ \cov(f, g) = \Expect(fg) - \Expect(f)\Expect(g). \]</p></div><div class="sheet-listing"><h2 class="sheet" id="properties">2.2 Properties</h2></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Covariance is symmetric and billinear.\footnote{Future editions will include an account.} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The covariance of a random variable with itself is its variance. \begin{proof} Let $f$ be a square-integrable real-valued random variable, then \[ \cov(f, f) = \Expect(ff) - \Expect(f)\Expect(f) = \Expect(f^2) - (\Expect(f))^2 = \var(f). \] \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The variance of a sum of integrable real-valued random variables whose pairwise products are integrable is the double sum of the pairwise covariances. \begin{proof} Let $f_1, \dots, f_n$ be integrable random variables with $f_if_j$ integrable for all $i,j = 1, \dots, n$. Using the billinearity, \[ \begin{aligned} \var\parens*{\sum_{i = 1}^{n} f_i} &= \cov\parens*{\sum_{i = 1}^{n} f_i, \sum_{i = 1}^{n}f_i} \\ &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} \cov(f_i, f_j) \end{aligned} \] \end{proof} \end{prop}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -91,7 +98,7 @@
           '../pdfjs/build/pdf.worker.js';
 
         function render(page, wrapper, canvas) {
-          var scale = 5;
+          var scale = 7;
           var viewport = page.getViewport({scale: scale});
           var context = canvas.getContext('2d');
 
