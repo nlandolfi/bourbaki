@@ -1,0 +1,24 @@
+%!name:feature_maps
+%!need:least_squares_linear_regressors
+
+\ssection{Why}
+
+Linear predictors are simple and we know how to select the parameters.
+The main downside is that there may not be a linear relationship between inputs and outputs.
+
+\ssection{Definition}
+
+A \t{feature map} for postcepts $A$ is a mapping $\phi: A \to \R^d$.
+In this setting, we call $a \in A$ the \t{raw input record} and we call $\phi(a)$ an \t{embedding}, \t{feature embedding} or \t{feature vector}.
+We call the components of a feature vector the \t{features}.
+
+A feature map is \t{faithful} if, whenever records $a_i$ and $a_j$ are in some sense \say{similar} in the set $A$, the embeddings $\phi(a_i)$ and $\phi(a_j)$ are close in the vector space $\R^d$.
+
+Since it is common for raw input records $a \in A$ to consist of many fields, it is regular to have several feature maps $\phi_i$ which operate component-wise on the fields of $a$.
+These are sometimes called \t{basis functions}.\footnote{Future editions will clarify, and perhaps remove.}
+We concatenate these field feature maps and commonly add a constant feature $1$.
+Since $\R^d$ is a vector space, it is common to refer to it in this case as the \t{feature space}.
+
+Given a dataset $a = (a^1, \dots, a^n)$ in $A$ and a feature map $\phi: A \to \R^d$, the \t{embedded dataset} of $a$ with respect to $\phi$ is the dataset $(\phi(a^1), \dots, \phi(a^n)$ in $\R^d$.
+
+\blankpage

@@ -1,91 +1,61 @@
 %!name:normal_linear_model
 %!need:probabilistic_linear_model
 %!need:normal_conditionals
+%!need:maximum_conditional_estimates
 
 \ssection{Why}
 
-We consider the probabilistic linear model in which all random variables involved are normal.
+We consider the probabilistic linear model in which all random variables are normal.
 
 \ssection{Definition}
 
-The \t{normal linear model} is a linear model in which the signal and noise have normal (Gaussian) densities.
-For this reason, the model is often called the \t{Gaussian linear model} or the \t{linear model with Gaussian noise}.
+A \t{normal linear model} is a probabilistic linear model in which the parameter and noise vectors have normal (Gaussian) densities.
+The model is also called the \t{Gaussian linear model} or the \t{linear model with Gaussian noise}.
 
-Let $(\Omega, \CA, \PM)$ be a probability space.
-Let $x: \Omega \to \R^d$ and $e: \Omega \to \R^d$ be independent normal random vectors with zero mean and covariances $\Sigma_{x}$ and $\Sigma_e$.
-Let $y = Ax + e$.
-%$y^i(\omega) = f(\omega)(x^i) = \theta(\omega)^\top x^i$, $\forall i = 1, \dots, n$.
-We have $n$ precepts in $\R^d$.
-So let $a^1, \dots, a^n \in \R^d$ with data matrix $A \in \R^{n \times d}$.
+Let $(x: \Omega \to \R^d, A \in \R^{n \times d}, e: \Omega \to \R^n)$ be a probabilistic linear model over the probability space $(\Omega, \CA, \PM)$ in which $x$ and $e$ have normal densities.
+Recall that a probabilistic linear model has observation vector $y: \Omega \to \R^n$ defined by
+\[
+  y = Ax + e.
+\]
 
-\ssection{Maximum conditional estimate of $x$}
+\ssection{Conditional density of $x$ on $y$}
 
-Since $x$ and $e$ are gaussian, $y$ is gaussian.
-So the random vector $(x, y)$ has normal density with mean zero and covariance
+Since $x$ and $e$ are normal and independent, $y$ is normal.\footnote{Future editions will include an account.}
+Moreover, the random vector $(x, y)$ is normal with covariance
 \[
   \pmat{
     \Sigma_x & \Sigma_{x}\transpose{A} \\
       A \Sigma_{x} & A\Sigma_{x}\transpose{A} + \Sigma_{e}
   }.
 \]
-
-This is also called \t{bayesian linear regression} or the \t{bayesian analysis of the linear model}.
-The word bayesian is in reference to treating the quantity of interest---$x$---as a random variable.
-
-\begin{proposition}
-  The maximum conditional estimate of $x: \Omega \to \R^d$ given observed value $\gamma \in \R^n$ of $y: \Omega \to \R^n$ is the conditional mean $\Sigma_{xy}\inv{\Sigma_{yy}}\gamma$.
-\end{proposition}
-Recall that the maximum conditional estimate also maximizes the joint density.
-
-\ssubsection{Uncorrelated noise}
-
-Suppose that $\Sigma_e = \sigma^2I$.
-
-
-\begin{proposition}
-  A solution to maximize $g(\alpha, \gamma)$ with respect to $\alpha$ is $\alpha = -\inv{\Sigma}\Sigma\transpose{X}\gamma$.
-\end{proposition}
-\begin{proposition}
-  $g_{\theta \mid y}(\alpha, \gamma)$ is normal with mean
+So the conditional density (see \sheetref{normal_conditionals}{Normal Conditionals}) of $g_{x \mid y}(\cdot, \gamma)$ is normal with mean
   \[
-    \tilde{\mu}(\gamma) = \Sigma \transpose{X}\inversep{X\Sigma\transpose{X}}\gamma
-  \] and covariance \[\tilde{\Sigma} = \Sigma - \Sigma\transpose{X}\inversep{X\Sigma\transpose{X}}X\Sigma.\]% (\sheetref{normal_conditionals}{Normal Conditionals}).
-\end{proposition}
-\begin{proposition}
-  A solution to maximize $g_{\theta | y}(\alpha, \gamma)$ w.r.t. $\alpha$ is
-  \[
-    \tilde{\Sigma}\inv{\tilde{\Sigma}}\tilde{\mu}(\gamma).
+    \Sigma_{x}\transpose{A}\invp{A\Sigma_{x}\transpose{A} + \Sigma_e}\gamma
   \]
-\end{proposition}
-
-
-But, of course, $y$ also has a density.
-Denote the density of $y$ by $g: \R^n \to \R$.
-In other words, $g \geq 0$ and $\int g = 1$.
-
-\begin{proposition}
+  and covariance
   \[
-    \log g(\gamma) = -\nicefrac{1}{2}(\transpose{\gamma}\inv{\left(X\Sigma\transpose{X}\right)}\gamma) - \frac{d}{2}\log 2\pi - \frac{1}{2}\log\det\left(X\Sigma\transpose{X}\right)
+    \Sigma_{x} - \Sigma_{x}\transpose{A}\invp{A\Sigma_{x}\transpose{A} + \Sigma_e}A\Sigma_{x}.
   \]
-\end{proposition}
+This density is sometimes called the posterior for the parameters given the observations.
+So the parameter posterior of the normal linear model is normal.
 
+We can write the conditional mean as
+\[
+    \invp{\inv{\Sigma_{x}} + \transpose{A}\inv{\Sigma_{e}}A}\transpose{A}\inv{\Sigma_{e}}
+\]
+and the conditional covariance as
+  \[
+     \invp{\inv{\Sigma_x} + \transpose{A}\inv{\Sigma_{e}}A}.\footnote{A proof will appear in future editions. Use the matrix inversion lemma or facts about inverses.}
+  \]
+Very frequently we use these forms when $d < n$.
+In other words, in the case that we have fewer unknowns than measurements.
+In that case $\Sigma_{x}$ is smaller than $A\Sigma_{x}\transpose{A}$.
 
-\ssection{Test}
-
-
-This expression makes clear that $y$ is has a normal density with mean $X\E(x)$ and covariance $X\E(x)X^{\top}$.
-
-Let $w: \Omega \to \R^d$ be a random vector with mean $0$ and covariance $\eta I$.
-Let $x^1, \dots, x^n \in \R^d$
-Define $y^i: \Omega \to \R$ by $y_i(\omega) = w(\omega)^\top x^i$ for $i = 1, \dots, d$.
-
-\ssection{Noise setup}
-
-Let $e: \Omega \to \R^n$ be a normal random vector with mean $0$ and covariance $\sigma I$.
-Define $\tilde{y}:\Omega\to\R^n$ by $\tilde{y} = y(\omega) + e(\omega)$.
+\ssubsection{Maximum conditional estimate of $x$}
 
 \begin{proposition}
-  $\tilde{y}$ is a normal random vector with mean zero and covariance $X \Sigma \transpose{X} + \sigma I$.
+  The maximum conditional estimate of $x: \Omega \to \R^d$ given observed value $\gamma \in \R^n$ of $y: \Omega \to \R^n$ is the conditional mean
+\[
+  \Sigma_{x}\transpose{A}\invp{A\Sigma_{x}\transpose{A} + \Sigma_{e}}\gamma.
+\]
 \end{proposition}
-
-\blankpage
