@@ -8,32 +8,33 @@
 %!need:normal_conditionals
 %!need:matrix_inverses
 %!need:covariance
+%!need:estimators
 
 \ssection{Why}
-We want to estimate the weights of a linear function.\footnote{Future editions will include this.}
+
+We want an estimator for the parameters of a linear function, given observations of the function with additive noise.
 
 \ssection{Definition}
 
-The \t{probabilistic linear model}; \t{linear model}; \t{linear regression}
-
 Let $(\Omega, \CA, \PM)$ be a probability space.
-We have $n$ precepts in $\R^d$.
-So let $a^1, \dots, a^n \in \R^d$ with data matrix $A \in \R^{n \times d}$.
-We are modeling a relation between $\R^d$ and $\R$.
+Let $x: \Omega \to \R^d$.
+Define $g: \Omega \to (\R^d \to \R)$ by $g(\omega)(a) = \transpose{a}x(\omega)$, for $a \in \R^d$.
+In other words, for each outcome $\omega \in \Omega$, $g_\omega: \R^d \to \R$ is a linear function with parameters $x(\omega)$.
+$g_\omega$ is the function of interest.
 
-Let $x: \Omega \to \R^d$ and $e: \Omega \to \R^n$ be independent random vectors with zero mean and covariances given by $\Sigma_{x}$ and $\Sigma_{e}$, respectively.
-For each $\omega \in \Omega$, define the map $f: \Omega \to (\R^d \to \R)$ by $f(\omega)(a) = \sum_{j}a^i_jx_j(\omega) + e_i(\omega)$.
 
-We call $x$ the \t{signal}.
-We call $e$ the \t{noise}.
-This class of models assumes the signal and noise are independent.
-
-Define $y: \Omega \to \R^n$ by $y(\omega) = Ax(\omega) + e(\omega)$.
-So,
+Let $a^1, \dots, a^n \in \R^d$ a dataset with data matrix $A \in \R^{n \times d}$.
+Let $e: \Omega \to \R^n$ independent of $x$, and define $y: \Omega \to \R^n$ by
 \[
   y = Ax + e.
 \]
-This is also called \t{bayesian linear regression} or the \t{bayesian analysis of the linear model}, in reference to the distribution on $x$.
+In other words, $y_i = \transpose{x}a^i + e_i$.
+
+We call $(x, A, e)$ a \t{probabilistic linear model}.
+Other terms include \t{linear model}, \t{linear regression model}, \t{bayesian linear regression}, and \t{bayesian analysis of the linear model}.\footnote{The word bayesian is in reference to treating the object of interest---$x$---as a random variable.}
+We call $x$ the parameters, $A$ a \t{design}, $e$ the \t{error} or \t{noise} vector, and $y$ the \t{observation} vector.
+
+One may want an estimator for the parameters $x$ in terms of $y$ or one may be modeling the function $g$ and want to predict $g(a)$ for $a \in A$ not in the dataset.
 
 \ssection{Mean and variance}
 
@@ -44,5 +45,3 @@ This is also called \t{bayesian linear regression} or the \t{bayesian analysis o
 \begin{proposition}
   $\cov((x, y)) = A\cov(x)\transpose{A} + \cov{e}$\footnote{Full account in future editions.}
 \end{proposition}
-
-\blankpage

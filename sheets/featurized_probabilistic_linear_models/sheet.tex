@@ -1,0 +1,41 @@
+%!name:featurized_probabilistic_linear_models
+%!need:normal_linear_model_regressors
+%!need:feature_maps
+
+\ssection{Why}
+
+It is natural to embed a dataset.
+
+\ssection{Definition}
+
+Let $(x: \Omega \to \R^d, A \in \R^{n \times d}, e: \Omega \to \R^n)$ be a probabilistic linear model over the probability space $(\Omega, \CA, \PM)$.
+Let $\phi: \R^d \to \R^{d'}$ be a feature map.
+Then $(x, A, e, \phi)$ is an \t{featurized probabilistic linear model} (also \t{embedded probabilistic linear model}).
+We are modeling the function $h: \Omega \to (\R^d \to \R)$ as linear in the features
+\[
+  h_{\omega}(a) = \transpose{\phi(a)}x(\omega).
+\]
+
+
+\ssubsection{Correspondence to linear model}
+
+Denote the data matrix of the embedded feature vectors by $\phi(A)$.
+Then, of course, the embedded linear model $(x, A, e, \phi)$ corresponds to the linear model $(x, \phi(A), e)$.
+
+\ssection{Normal case}
+
+In the normal (Gaussian) case, the parameter posterior $g_{x \mid y}(\cdot, \gamma)$ is a normal density with mean
+\[
+  \Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}} \gamma
+\]
+and covariance
+\[
+  \invp{\inv{\Sigma_{x}} + \transpose{\phi(A)}\inv{\Sigma_{e}}\phi(A)}.
+\]
+
+The predictive density for a point $a \in \R^d$ is normal with mean
+\[
+  \parens{\transpose{\phi(a)}\Sigma_{x}\transpose{\phi(A)} + \Sigma_{fe}}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}}\gamma.
+\]
+
+% \blankpage

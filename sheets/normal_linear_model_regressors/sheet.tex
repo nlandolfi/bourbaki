@@ -1,0 +1,62 @@
+%!name:normal_linear_model_regressors
+%!need:normal_linear_model
+%!need:regressors
+%!need:interpolators
+
+\ssection{Why}
+
+We use a normal linear model to predict the function at inputs not included in the design.
+
+\ssection{Definition}
+
+Let $(x: \Omega \to \R^d, A \in \R^{n \times d}, e: \Omega \to \R^n)$ be a normal linear model over the probability space $(\Omega, \CA, \PM)$.
+A \t{predictive linear model} is a linear model with two additional objects.
+The first is a matrix $B \in \R^{m \times d}$ and the second is a random vector $f: \Omega \to \R^m$ which is jointly normal with $e$.
+So a predictive linear model is a sequence $(x, A, e, C, f)$.
+
+As usual we define a random vector $y: \Omega \to \R^n$, but now also define a random vector $z: \Omega \to \R^m$ by
+\[
+\begin{aligned}
+  y &= Ax + e \\
+  z &= Cx + f.
+\end{aligned}
+\]
+The \t{predictive density} of the predictive normal linear model is the conditional density of $z$ given $y$.
+Observe that
+\[
+  \pmat{x \\ y \\ z} = \pmat{I & 0 & 0 \\ A & I & 0 \\ C & 0 & I} \pmat{x \\ e \\ f}.
+\]
+and the vector $(x, e, f)$ is normal with covariance
+\[
+  \pmat{\Sigma_x & 0 & 0 \\
+        0 & \Sigma_e & \Sigma_{ef} \\
+        0 & \Sigma_{fe} & \Sigma_{f}
+  }
+  \]
+So $(x, y, z)$ is normal with covariance
+\[
+  \pmat{
+    \Sigma_x & \Sigma_{x}\transpose{A} & \Sigma_{x}\transpose{C} \\
+    A\Sigma_{x} & A\Sigma_{x}\transpose{A} + \Sigma_{e} & A\Sigma_{x}\transpose{C} + \Sigma_{ef} \\
+    C\Sigma_{x} & C\Sigma_{x}\transpose{A} + \Sigma_{fe} & C\Sigma_{x}\transpose{C} + \Sigma_{f}
+  }
+\]
+
+A \t{normal linear model predictor} or \t{normal linear model regressor} is the predictor which assigns to a new point $a \in \R^d$ the mean of the predictive density.
+In other words, the predictor $g: \R^d \to \R$ defined by
+\[
+  g(a) = (\transpose{a}\Sigma_{x}\transpose{A} + \Sigma_{fe})\invp{A\Sigma_{x}\transpose{A} + \Sigma_e}\gamma.
+\]
+In the above we have substituted $\transpose{a}$ for $C$.
+In the case of normal random vectors this corresponds with the MAP esetimate and the MMSE estimate.\footnote{Future editions will have discussed this and include a reference to the sheet.}
+The predictive density for this point is normal with that mean, and has variance
+\[
+ % \Sigma_{zz} - \Sigma_{zy}\Sigma_{yy}^{-1}\Sigma_{yz} =
+  (\transpose{a}\Sigma_{x}a + \Sigma_f) - \parens{\transpose{a}\Sigma_{x}\transpose{A} + \Sigma_{fe}}\invp{A\Sigma_{x}\transpose{A} + \Sigma_e}\parens{A\Sigma_{x}a + \Sigma_{ef}}.
+\]
+
+Use of a predictive normal linear model is often referred to as \t{Gaussian process regression}.
+The upside is that a gaussian process predicor interpolates the data, is smooth, and the so-called variance increases with the distance from the data.
+This is also called \t{Bayesian linear regression}.
+
+% \blankpage
