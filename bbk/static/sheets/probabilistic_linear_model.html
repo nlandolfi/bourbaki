@@ -39,6 +39,13 @@
               <span class="caret">›</span>
             </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./estimators.html'" onkeypress="location.href='./estimators.html'">
+              <span>
+                Estimators
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
             <div class="need" tabindex="0" onclick="location.href='./expectation.html'" onkeypress="location.href='./expectation.html'">
               <span>
                 Expectation
@@ -119,7 +126,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to estimate the weights of a linear function.\footnote{Future editions will include this.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{probabilistic linear model}; \t{linear model}; \t{linear regression}</p></div><div class="sheet-listing"><p class="sheet"> Let $(\Omega, \CA, \PM)$ be a probability space. We have $n$ precepts in $\R^d$. So let $a^1, \dots, a^n \in \R^d$ with data matrix $A \in \R^{n \times d}$. We are modeling a relation between $\R^d$ and $\R$.</p></div><div class="sheet-listing"><p class="sheet"> Let $x: \Omega \to \R^d$ and $e: \Omega \to \R^n$ be independent random vectors with zero mean and covariances given by $\Sigma_{x}$ and $\Sigma_{e}$, respectively. For each $\omega \in \Omega$, define the map $f: \Omega \to (\R^d \to \R)$ by $f(\omega)(a) = \sum_{j}a^i_jx_j(\omega) + e_i(\omega)$.</p></div><div class="sheet-listing"><p class="sheet"> We call $x$ the \t{signal}. We call $e$ the \t{noise}. This class of models assumes the signal and noise are independent.</p></div><div class="sheet-listing"><p class="sheet"> Define $y: \Omega \to \R^n$ by $y(\omega) = Ax(\omega) + e(\omega)$. So, \[ y = Ax + e. \] This is also called \t{bayesian linear regression} or the \t{bayesian analysis of the linear model}, in reference to the distribution on $x$.</p></div><div class="sheet-listing" id="mean_and_variance"><h1 class="sheet">3. Mean and variance</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\E(y) = A\E(x) + \E(w)$\footnote{By linearity. Full account in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\cov((x, y)) = A\cov(x)\transpose{A} + \cov{e}$\footnote{Full account in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want an estimator for the parameters of a linear function, given observations of the function with additive noise.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(\Omega, \CA, \PM)$ be a probability space. Let $x: \Omega \to \R^d$. Define $g: \Omega \to (\R^d \to \R)$ by $g(\omega)(a) = \transpose{a}x(\omega)$, for $a \in \R^d$. In other words, for each outcome $\omega \in \Omega$, $g_\omega: \R^d \to \R$ is a linear function with parameters $x(\omega)$. $g_\omega$ is the function of interest.</p></div><div class="sheet-listing"><p class="sheet"> Let $a^1, \dots, a^n \in \R^d$ a dataset with data matrix $A \in \R^{n \times d}$. Let $e: \Omega \to \R^n$ independent of $x$, and define $y: \Omega \to \R^n$ by \[ y = Ax + e. \] In other words, $y_i = \transpose{x}a^i + e_i$.</p></div><div class="sheet-listing"><p class="sheet"> We call $(x, A, e)$ a \t{probabilistic linear model}. Other terms include \t{linear model}, \t{linear regression model}, \t{bayesian linear regression}, and \t{bayesian analysis of the linear model}.\footnote{The word bayesian is in reference to treating the object of interest---$x$---as a random variable.} We call $x$ the parameters, $A$ a \t{design}, $e$ the \t{error} or \t{noise} vector, and $y$ the \t{observation} vector.</p></div><div class="sheet-listing"><p class="sheet"> One may want an estimator for the parameters $x$ in terms of $y$ or one may be modeling the function $g$ and want to predict $g(a)$ for $a \in A$ not in the dataset.</p></div><div class="sheet-listing" id="mean_and_variance"><h1 class="sheet">3. Mean and variance</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\E(y) = A\E(x) + \E(w)$\footnote{By linearity. Full account in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\cov((x, y)) = A\cov(x)\transpose{A} + \cov{e}$\footnote{Full account in future editions.} \end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -218,5 +225,8 @@
     </iframe>
     -->
 
+    <span id="footer">
+      Copyright 2021 The Bourbaki Authors. Version 0dfcb6cca.
+    </span>
   </body>
-</html>`
+</html>

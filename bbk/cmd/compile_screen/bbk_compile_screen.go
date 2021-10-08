@@ -1,11 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"encoding/gob"
 	"flag"
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"path"
 	"path/filepath"
 	"text/template"
@@ -30,6 +32,14 @@ func main() {
 		log.Printf("warning: no sheets found")
 	}
 
+	cmd := exec.Command("git", "rev-parse", "HEAD")
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	if err := cmd.Run(); err != nil {
+		log.Fatal(err)
+	}
+	gitCommit := out.String()
+
 	// log.Printf("%d sheets", len(results))
 
 	sheetTemplate := template.Must(
@@ -39,13 +49,18 @@ func main() {
 			},
 		).ParseFiles(path.Join(*staticDir, "sheet.tmpl")))
 
+	type SheetData struct {
+		*bbk.ParseResult
+		Version string
+	}
+
 	for _, p := range results {
 		name := p.Name
 		out, err := os.Create(filepath.Join(*staticDir, "sheets", fmt.Sprintf("%s.html", name)))
 		if err != nil {
 			log.Fatalf("os.Create: %v", err)
 		}
-		if err := sheetTemplate.Execute(out, p); err != nil {
+		if err := sheetTemplate.Execute(out, &SheetData{p, gitCommit[:9]}); err != nil {
 			log.Fatal(err)
 		}
 		out.Close()
@@ -67,6 +82,11 @@ func main() {
 		}
 	}
 
+	type IndexData struct {
+		Results []*bbk.ParseResult
+		Version string
+	}
+
 	indexTemplate := template.Must(
 		template.New("index.tmpl").Funcs(
 			template.FuncMap{
@@ -78,7 +98,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("os.Create index.html: %v", err)
 	}
-	if err := indexTemplate.Execute(f, results); err != nil {
+	if err := indexTemplate.Execute(f, &IndexData{results, gitCommit[:9]}); err != nil {
 		log.Fatalf("executing index template: %v", err)
 	}
 	f.Close()
@@ -87,7 +107,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("os.Create results.gob: %v", err)
 	}
-	if err := gob.NewEncoder(f).Encode(results); err != nil {
+	if err := gob.NewEncoder(f).Encode(&bbk.SearchData{results, gitCommit[:9]}); err != nil {
 		log.Fatalf("gob encoding results: %v", err)
 	}
 	f.Close()
