@@ -6,6 +6,11 @@ import (
 	"strings"
 )
 
+type SearchData struct {
+	Results []*ParseResult
+	Version string
+}
+
 type SearchResult struct {
 	*ParseResult
 	Reasons []string

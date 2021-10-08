@@ -47,15 +47,15 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	var rs []*bbk.ParseResult
-	if err := gob.NewDecoder(f).Decode(&rs); err != nil {
+	var sd bbk.SearchData
+	if err := gob.NewDecoder(f).Decode(&sd); err != nil {
 		log.Fatal(err)
 	}
-	var results = make(map[string]*bbk.ParseResult, len(rs))
-	for _, r := range rs {
+	var results = make(map[string]*bbk.ParseResult, len(sd.Results))
+	for _, r := range sd.Results {
 		results[r.Name] = r
 	}
-	s := &searcher{bbk.NewSearcher(results), as}
+	s := &searcher{sd.Version, bbk.NewSearcher(results), as}
 
 	m := http.NewServeMux()
 	m.HandleFunc("/search", s.search)
@@ -79,6 +79,7 @@ func main() {
 }
 
 type searcher struct {
+	Version string
 	*bbk.Searcher
 	AuditLog *audit.Service
 }
@@ -86,6 +87,7 @@ type searcher struct {
 func (s *searcher) data(r *http.Request) *SearchData {
 	start := time.Now()
 	var sd SearchData
+	sd.Version = s.Version
 	sd.RemoteAddr = r.RemoteAddr
 	sd.Query = r.FormValue("query")
 	sd.RewrittenQuery = bbk.RewriteQuery(sd.Query)
@@ -136,6 +138,7 @@ func (s *searcher) search_json(w http.ResponseWriter, r *http.Request) {
 }
 
 type SearchData struct {
+	Version        string
 	RemoteAddr     string
 	Query          string
 	RewrittenQuery string
