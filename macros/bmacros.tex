@@ -3,13 +3,15 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage[shortlabels]{enumitem}
+\usepackage{nicefrac}
 
 
 % use definition to declare a new term
 % e.g., \definition{element}{label}
-\newcommand{\definition}[2]{\hypertarget{#2}{\textbf{#1}}}
-\newcommand{\ct}[2]{\hypertarget{#2}{\textbf{#1}}}
+% \newcommand{\definition}[2]{\hypertarget{#2}{\textbf{#1}}}
+\newcommand{\ct}[2]{\hypertarget{#2}{\textit{#1}}}
 \newcommand{\rt}[2]{\hyperlink{#2}{#1}}
+\renewcommand{\t}[1]{\emph{#1}}
 
 \newcommand{\reference}[1]{\input{../#1/macros.tex}}
 
@@ -18,25 +20,115 @@
 \newcommand{\term}[2]{#2}
 
 % use say to do proper quoting
-\newcommand{\say}[1]{``#1"}
+\newcommand{\say}[1]{``#1''}
+\newcommand{\sayy}[1]{`#1'}
 
+% \newtheorem{construction}{Construction}
 \newtheorem{thm}{Theorem}
-\newtheorem{prop}[thm]{Proposition}
+\newtheorem{axiom}{Axiom}
+% \newtheorem{definition}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{exercise}{Exercise}
+\newtheorem{proposition}{Proposition}
+\newtheorem{prop}[thm]{{\sf \textsmallcaps{Proposition}}}
 \newtheorem{expl}[thm]{Example}
 \newtheorem{defn}[thm]{Definition}
+\newtheorem{corr}[thm]{Corollary}
+\newtheorem{remark}[thm]{Remark}
+\newcommand{\comment}[1]{
+ \iffalse
+ #1
+ \fi
+}
+
+\newcommand{\img}[2]{
+  \includegraphics[width=#1\textwidth]{#2}
+}
+
+\newcommand{\fig}[3]{
+  \begin{figure}
+    \centering
+    #1
+    \caption{#2}
+    \label{#3}
+  \end{figure}
+}
 
 \DeclareMathAlphabet{\mathbfsf}{\encodingdefault}{\sfdefault}{bx}{n}
 \def\mathword#1{\mathop{\mathbfsf {#1}}}
 
 % use \parens*{stuff} for (stuff) with autosizing delimeters
 \DeclarePairedDelimiter{\parens}{(}{)}
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% use \abs{x} for |x|
-% use \abs* for autosizing delimiters
-\DeclarePairedDelimiter{\abs}{|}{|}
+% \newcommand{\proposition}[3]{
+%
+% \begin{tabular}{p{0.19\textwidth}p{0.75\textwidth}}
+%   {\sf \footnotesize \textsmallcaps{Proposition} #1.} & #2
+%
+%   \vspace*{0.2cm}
+%   \textit{Proof:} #3
+%   \qed
+% \end{tabular}
+%
+% }
+%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\implies}{\longrightarrow}
+\renewcommand{\iff}{\longleftrightarrow}
+% absolute_value macros
+\ifdefined\abs
+\else
+ \newcommand{\abs}[1]{\left|#1\right|}
+\fi
+\newcounter{caccounts}
+\newcounter{caccountlineno}[caccounts]
+\newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1}
+\newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2}
+\newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3}
+\newcommand{\lref}[1]{\texttt{(\ref{#1})}}
+
+\newenvironment{caccount}{
+  \refstepcounter{caccounts}
+}{
+}
+\newenvironment{blankaccount}[1][]{
+   \hspace{-1.6cm}
+   \begin{tabular}{r|rlcc}
+}{
+  \end{tabular}
+  \medskip
+}
+\newcounter{accounts}
+\newcounter{accountlineno}[accounts]
+\newenvironment{account}[1][]{
+\refstepcounter{accounts}
+\noindent\textbf{Account~\theaccounts. #1} \rmfamily \\
+
+    \vspace*{-0.4cm}
+   \hspace{-1.6cm}
+   \begin{tabular}{r|rlcc}
+}{
+  \end{tabular}
+  \medskip
+}
+\newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\}
+\newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\}
+
+\newcommand{\thus}[3]{
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\
+}
+
+\newcommand{\idet}[3]{
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\
+}
+
+\newcommand{\same}[3]{
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\
+}
+\newcommand{\ie}[3]{
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\
+}
+\newcommand{\aff}{\mathword{aff}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -69,6 +161,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\C}{\mathbf{C}}
 \newcommand{\re}{\mathword{Re}}
 \newcommand{\im}{\mathword{Im}}
 
@@ -82,6 +178,7 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\conv}{\mathword{conv}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,6 +213,18 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Expect}{\mathbf{E}}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\eqc}[1]{[#1]}
+\newcommand{\PE}{\mathbf{P}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -125,6 +234,7 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\Expect}{\mathword{E{}}}
+\newcommand{\E}{\Expect}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,11 +244,10 @@
 
 \newcommand{\nneri}{[0,\infty]}
 \newcommand{\eri}{[-\infty,\infty]}
+\newcommand{\Rbar}{\bar{\R}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\F}{\mathbfsf{F}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,11 +259,7 @@
 \newcommand{\comp}{\circ}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \newcommand{\idfn}[1]{\text{id}_{#1}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -165,6 +270,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\ch}{\text{ch}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -187,6 +300,8 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ow}{\text{otherwise.}}
+\newcommand{\IdxMat}[1]{P_{#1}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % use \innerproduct{x} for ||x||
@@ -195,6 +310,7 @@
 \newcommand{\ip}[2]{\innerproduct{#1}{#2}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Z}{\mathbfsf{Z}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\intgrbl}{\SI}
@@ -209,6 +325,67 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+\def\oright#1{\right#1\mskip-10mu\circ}
+\def\oleft#1{\circ\mskip-10mu\left#1}
+\newcommand{\I}{\mathbfsf{I}}
+\newcommand{\oi}[1]{(#1)}
+\newcommand{\ci}[1]{[#1]}
+\newcommand{\oci}[1]{(#1]}
+\newcommand{\coi}[1]{[#1)}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\inv}[1]{{#1}^{-1}}
+\newcommand{\inverse}[1]{\inv{#1}}
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
+\newcommand{\inversep}[1]{\invp{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\logp}[1]{\log\left(#1\right)}
+\newcommand{\loss}{\ell}
+\newcommand{\Mat}[3]{#1^{#2 \cross #3}}
+
+% matrices: needs amsmath and mathtools
+
+% \newcommand{\bmat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\def\bmat#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
+
+\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+\setcounter{MaxMatrixCols}{20}
+
+% allow ddots at any angle
+% \dddots{1}{1} produces dots at 45 degrees
+% \dddots{2}{1} produces dots at 30 degrees
+% and so on
+\def\dddots#1#2{%
+  \mbox{%
+    \unitlength 0.083333in%r
+    \begin{picture}(#1,#2)(0.25,0)
+      \unitlength 0.0416666in%
+      \multiput(0,2)(#1,-#2){3}{.}
+    \end{picture}%
+    }%
+  }
+
+\renewcommand{\det}{\mathword{det}}
+\newcommand{\detp}[1]{\det\left(#1\right)}
+\newcommand{\sgn}{\mathword{sgn}}
+\newcommand{\tr}{\mathword{tr}}
+\newcommand{\trp}[1]{\tr\left(#1\right)}
+\newcommand{\tp}{\top}
+\newcommand{\transpose}[1]{{#1}^{\tp}}
+\newcommand{\transposep}[1]{\left({#1}\right)^{\tp}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -260,6 +437,15 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\mgaussiandensity}[3]{
+  \frac{1}{\sqrt{(2\pi)^{d} \det #3}}
+  \exp\left(-\frac{1}{2} (#1 - #2)^\tp #3^{-1} (#1 - #2)\right)
+}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\N}{\mathbfsf{N}}
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -267,6 +453,13 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\normaldensity}[3]{
+  \frac{1}{\sqrt{2\pi}#3}\exp\left(-\frac{1}{2}\left(\frac{#1-#2}{#3}\right)^2\right)
+}
+
+\newcommand{\normal}[2]{
+  \mathcal{N}(#1, #2)
+}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % use \norm{x} for |x|
@@ -278,25 +471,76 @@
 \DeclarePairedDelimiter{\normm}{\lVert}{\rVert}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% objects macros%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\minimization}[2]{
+\begin{aligned}
+\textbf{find} & \quad #1 \\
+\textbf{to minimize} & \quad #2 \\
+\end{aligned}
+}
+
+\newcommand{\minimizationn}[3]{
+\begin{aligned}
+\textbf{find} & \quad #1 \\
+\textbf{minimizing} & \quad #2 \\
+\textbf{subject to} & \quad #3
+\end{aligned}
+}
+
+\newcommand{\maximization}[2]{
+\begin{aligned}
+\textbf{find} & \quad #1 \\
+\textbf{to maximize} & \quad #2 \\
+\end{aligned}
+}
+
+\newcommand{\maximizationn}[3]{
+\begin{aligned}
+\textbf{find} & \quad #1 \\
+\textbf{to maximize} & \quad #2 \\
+\textbf{subject to} & \quad #3
+\end{aligned}
+}
+
+\newcommand{\minimizers}{\mathword{minimizers}}
+
+\newcommand{\argmin}{\mathword{argmin}}
+\newcommand{\argmax}{\mathword{argmax}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\cross}{\times}
 
+\newcommand{\op}[1]{\left(#1\right)}
 \newcommand{\tuple}[1]{\left(#1\right)}
+\newcommand{\tu}[1]{\left(#1\right)}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\adj}{\mathword{adj}}
+\newcommand{\adjp}{\adj^{+}}
+\newcommand{\adjh}{\adj^{+}}
+\newcommand{\adjn}{\adj^{-}}
+\newcommand{\adjl}{\adj^{-}}
+\newcommand{\intersect}{\cap}
+\newcommand{\intersection}{\cap}
+\newcommand{\pd}[2]{\frac{\partial_#1}{\partial #2}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\SymPDMat}[1]{\SymMat{#1}_{++}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\pmeas}{p}
+\newcommand{\PM}{\mathbf{P}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -331,7 +575,10 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Q}{\mathbfsf{Q}}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -358,37 +605,65 @@
 \newcommand{\goesto}{\longrightarrow}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\RMat}[2]{\R^{#1 \cross #2}}
+\newcommand{\R}{\mathbfsf{R}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\RVec}[1]{\Vec{\R}{#1}}
+\newcommand{\dom}{\text{dom}\;}
+\newcommand{\ran}{\text{ran}\;}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\pa}[1]{\mathword{pa}_{#1}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TODO: why renew
-\newcommand{\seq}[1]{\set{#1_n}_{n}}
+\newcommand{\seq}[1]{(#1_n)_{n}}
 \newcommand{\seqt}[1]{#1_n}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+\renewcommand{\complement}[1]{C({#1})}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bintersection}{\bigcap}
+% use \num{A} for |A|
+\newcommand{\num}[1]{\left|#1\right|}
+% use \powerset{A} for power set of A
+\newcommand{\powerset}[1]{{#1}^*}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% use \Set{a}{b} for {a | b}
+% use \Set* for autosizing delimiters
+\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\symdiff}{+}
 \newcommand{\union}{\,\cup\,}
 \newcommand{\bunion}{\bigcup}
-\newcommand{\intersect}{\cap}
-\newcommand{\intersection}{\cap}
-\newcommand{\bintersection}{\bigcap}
-\newcommand{\symdiff}{\Delta}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % use \set{stuff} for { stuff }
 % use \set* for autosizing delimiters
 \DeclarePairedDelimiter{\set}{\{}{\}}
 
-% use \Set{a}{b} for {a | b}
-% use \Set* for autosizing delimiters
-\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
+% usual epsilon is too close to \in
+\renewcommand{\epsilon}{\varepsilon}
+
+% usual emptyset is too close to 0
+\renewcommand{\emptyset}{\varnothing}
 
 \newcommand{\SA}{\mathcal{A}}
 \newcommand{\SB}{\mathcal{B}}
@@ -416,6 +691,36 @@
 \newcommand{\SX}{\mathcal{X}}
 \newcommand{\SY}{\mathcal{Y}}
 \newcommand{\SZ}{\mathcal{Z}}
+
+\newcommand{\CA}{\mathcal{A}}
+\newcommand{\CB}{\mathcal{B}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\CD}{\mathcal{D}}
+\newcommand{\CE}{\mathcal{E}}
+\newcommand{\CF}{\mathcal{F}}
+\newcommand{\CG}{\mathcal{G}}
+\newcommand{\CH}{\mathcal{H}}
+\newcommand{\CI}{\mathcal{I}}
+\newcommand{\CJ}{\mathcal{J}}
+\newcommand{\CK}{\mathcal{K}}
+\newcommand{\CL}{\mathcal{L}}
+\newcommand{\CM}{\mathcal{M}}
+\newcommand{\CN}{\mathcal{N}}
+\newcommand{\CO}{\mathcal{O}}
+\newcommand{\CP}{\mathcal{P}}
+\newcommand{\CQ}{\mathcal{Q}}
+\newcommand{\CR}{\mathcal{R}}
+\newcommand{\CS}{\mathcal{S}}
+\newcommand{\CT}{\mathcal{T}}
+\newcommand{\CU}{\mathcal{U}}
+\newcommand{\CV}{\mathcal{V}}
+\newcommand{\CW}{\mathcal{W}}
+\newcommand{\CX}{\mathcal{X}}
+\newcommand{\CY}{\mathcal{Y}}
+\newcommand{\CZ}{\mathcal{Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -458,28 +763,24 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\span}{\mathword{span}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\std}{\mathword{std{}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
+\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
+\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
+\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% use \powerset{A} for power set of A
-\newcommand{\powerset}[1]{2^{#1}}
-
-\renewcommand{\emptyset}{\varnothing}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% mnemonic for (s)et(suc)cesor
+\newcommand{\ssuc}[1]{{#1}^{+}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\supnorm}[1]{\norm{#1}_{\sup}}
@@ -488,6 +789,7 @@
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\SymMat}[1]{\mathbf{S}^{#1}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -524,12 +826,7 @@
 \newcommand{\vmeas}[1]{\abs{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\Vec}[2]{{#1}^{#2}}
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

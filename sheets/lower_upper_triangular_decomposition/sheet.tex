@@ -3,6 +3,7 @@
 %!need:triangular_matrices
 %!need:permutation_matrices
 %!need:matrix_squares
+%!need:diagonal_matrices
 
 \ssection{Why}
 
@@ -10,14 +11,14 @@ We want to find matrix square roots.\footnote{Future editions will expand.}
 
 \ssection{Definition}
 
-Let $A \in \R^{n \times n}$ be real symmetric.
-An \t{lower upper triangular decomposition}
-$A$ is a pair of matrices $(L, \transpose{L})$ with $L \in \R^{n \times n}$ lower triangular, satisfying
+Let $A \in \R^{n \times n}$ be symmetric.
+A \t{lower upper triangular decomposition}
+$A$ is a pair of matrices $(L, \transpose{L})$ where $L \in \R^{n \times n}$ is lower triangular, has nonnegative real diagonal entries, and satisfies
 \[
   A = L\transpose{L}.
 \]
-Other terminology includes \t{lower triangular factorization}, \t{LU decomposition}, \t{LU factorization}, and (most universally) \t{Cholesky decomposition} or \t{Cholesky factorization}.
-Define $R = \transpose{L}$, then we also have
+Other terminology includes \t{lower upper triangular factorization}, \t{LU decomposition}, \t{LU factorization}.
+Define $R = \transpose{L}$, then
 \[
   A = \transpose{R}R.
 \]
@@ -30,10 +31,12 @@ Define $R = \transpose{L}$, then we also have
     A = L\transpose{L}.
   \]
 \end{proposition}
-In other words, the Cholesky decomposition exists and is unique when the matrix $A$ is positive definite.
+So, in the case that $A$ is positive definite, a lower upper triangular decomposition exists and is unique.
+Therefore we refer to it as \t{the upper lower triangular decomposition} of $A$.
+It is also known (universally) as the \t{Cholesky decomposition} or \t{Cholesky factorization} of $A$.
 
 \begin{proposition}
-  If $A$ is positive semisemidefinite, there exists a permutation matrix $P$ for which there is a unique  $L$ so that
+  If $A$ is positive semidefinite, there exists a permutation matrix $P$ for which there is a unique $L$ so that
   \[
     \transpose{P}AP = L\transpose{L}.
   \]
@@ -43,38 +46,36 @@ This second proposition says that there is a unique Cholesky decomposition for a
 
 \ssection{Unitriangular form}
 
-A \t{lower diagonal upper decomposition} (or \t{lower diagonal upper factorization}) of a matrix $A$ a sequence $(L, D, \transpose{L})$ where $L \in \R^{n \times n}$ is unit lower triangular, $D \in \R^{n \times n}$  is diagonal and
+A \t{lower diagonal upper decomposition} (or \t{lower diagonal upper factorization}) of a matrix $A$ a sequence $(L, D, \transpose{L})$ where $L \in \R^{n \times n}$ is unit lower triangular, $D \in \R^{n \times n}$ is diagonal with real nonnegative entries and
 \[
   A = LD\transpose{L}.
 \]
 Other terminology includes \t{LDL decomposition}, \t{LDL factorization}, \t{LDU factorization}, \t{LDU decomposition}.
 
-If $(L \in \R^{n \times n}, D \in \R^{n \times n}, \transpose{L})$ is a LDU decomposition of $A \in \R^{n \times n}$, then $(L\sqrt{D}A = LD\transpose{L}$ then $(\tilde{L}\Msqrt{D}, \Msqrt{D}\transpose{L})$ is a LU decomposition.
+If $(L \in \R^{n \times n}, D \in \R^{n \times n}, \transpose{L})$ is a LDU decomposition of $A \in \R^{n \times n}$, then $(L\Msqrt{D}A = LD\transpose{L}$ then $(\tilde{L}\Msqrt{D}, \Msqrt{D}\transpose{L})$ is a LU decomposition.
 Conversely, if $(B, \transpose{B})$ is a LU decomposition and $S$ is the diagonal matrix satisfying $S_{ii} = B_{ii}$ for $i = 1, \dots, n$, then $(B\inv{S}, S^2, \inv{S}\transpose{B})$ is a LDU decomposition of $A$.
 
 %!need:positive_definite_matrices
 %!need:index_matrices
 
-\section{Why}
+% A \t{LDU factorization} of a $n \times n$ positive definite matrix permuted by $\upto{n}$ is an ordered pair whose first coordinate is a unit lower triangular matrix and whose second coordinate is a positive diagonal matrix, with the property that the given matrix permuted according to the permutation is equal to the product of the unit lower triangular matrix, the diagonal matrix, and the transpose of the unit lower triangular matrix.
 
-An \t{LDU factorization} of a $n \times n$ positive definite matrix permuted by $\upto{n}$ is an ordered pair whose first coordinate is a unit lower triangular matrix and whose second coordinate is a positive diagonal matrix, with the property that the given matrix permuted according to the permutation is equal to the product of the unit lower triangular matrix, the diagonal matrix, and the transpose of the unit lower triangular matrix.
-
-\ssection{Notation}
-
-Let $(L, D)$ be an LDU factorization of $A \in \SymPDMat{n}$ permuted by the permutation $\sigma: \upto{n} \to \upto{n}$. Then
-$$
-  \IdxMat{\sigma}A\IdxMat{\sigma}^{\tp}
-  =
-  LDL^{\tp}.
-$$
-Alternatively,
-$$
-  A = \IdxMat{\sigma}^\tp L D L^{\tp} \IdxMat{\sigma}.
-$$
-
-\ssection{Existence}
-
-\begin{prop}
-  For every positive definite matrix $A \in \SymPDMat{n}$ and permutation $\sigma: \upto{n} \to \upto{n}$ there exists a unique LDU factorization of $A$ permuted by $\sigma$.
-\end{prop}
+% \ssection{Notation}
+%
+% Let $(L, D)$ be an LDU factorization of $A \in \SymPDMat{n}$ permuted by the permutation $\sigma: \upto{n} \to \upto{n}$. Then
+% $$
+%   \IdxMat{\sigma}A\IdxMat{\sigma}^{\tp}
+%   =
+%   LDL^{\tp}.
+% $$
+% Alternatively,
+% $$
+%   A = \IdxMat{\sigma}^\tp L D L^{\tp} \IdxMat{\sigma}.
+% $$
+%
+% \ssection{Existence}
+%
+% \begin{prop}
+%   For every positive definite matrix $A \in \SymPDMat{n}$ and permutation $\sigma: \upto{n} \to \upto{n}$ there exists a unique LDU factorization of $A$ permuted by $\sigma$.
+% \end{prop}
 
