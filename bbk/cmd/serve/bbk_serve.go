@@ -69,6 +69,7 @@ func main() {
 		data := map[string]string{
 			"remote-addr": r.RemoteAddr,
 			"url":         r.URL.String(),
+			"version":     sd.Version,
 		}
 		for k, vs := range r.Header {
 			data[k] = strings.Join(vs, ",,")
@@ -105,6 +106,7 @@ func (s *searcher) log(action string, sd *SearchData, r *http.Request) {
 		"query":           sd.Query,
 		"rewritten-query": sd.RewrittenQuery,
 		"duration":        fmt.Sprintf("%d", sd.SearchDuration),
+		"version":         sd.Version,
 	}
 	for k, vs := range r.Header {
 		data[k] = strings.Join(vs, ",,")
