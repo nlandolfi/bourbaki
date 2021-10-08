@@ -4,21 +4,39 @@
 
 \ssection{Why}
 
-We want to have random functions with simple marginal distributions.
+We want to discuss real-valued random functions whose family of random variables have simple densities.\footnote{Future editions will expand.}
 
 \ssection{Definition}
 
-A \t{normal random function} (or \t{normal process} or \t{gaussian process})\footnote{The choice of \say{normal} is a result of the Bourbaki project's convention to eschew historical names. Though here, as in \sheetref{multivariate_normals}{Multivariate Normals} the language of the project is nonstandard.} is a real-valued random function whose family of random variables has the property that the image of any finite set of indices is a normal random vector.
+A \t{normal random function} is a real-valued random function whose family of real-valued random variables has the property that any subfamily is jointly normal.
 
+For this reason, we call the family of random variables corresponding to the random function a \t{normal process} or \t{Gaussian process}.\footnote{As usual, The choice of \say{normal} is a result of the Bourbaki project's convention to eschew historical names. Though here, as in \sheetref{multivariate_normals}{Multivariate Normals} the language of the project is nonstandard.}
 
 \ssubsection{Notation}
 
 Let $(\Omega, \CA, \PM)$ be a probability space and $A$ a set.
 Let $x: \Omega \to (A \to \R)$ be a random function with family $y: A \to (\Omega \to \R)$.
 
-Then $x$ is a normal random function if there exists $m: I \to \R$ and positive definite $k: I \times I \to \R$ with the property that if $J \subset I$, $\abs{J} = d$, then $x_J \sim \mathcal{N}(m(J), k(J \times J))$.
-In other words, $x_J: \Omega \to \R^d$ is a Gaussian random vector.
-We call $m$ the \t{mean function} and $k$ the \t{covariance function}.\footnote{Future editions will change this description.}
+The random function $x$ is a normal if, for all $a^1, \dots, a^m \in A$, $(y(a^1), \dots, y(a^m))$ is jointly normal.
+
+\ssection{Mean and covariance function}
+
+\begin{proposition}
+  Let $x: \Omega \to (A \to \R)$ be a normal random function with family $X: A \to (\Omega \to \R)$.
+  There exists unique functions $m: A \to \R$ and $k: A \times A \to \R$ so that the mean of the random variable $X_a$ is $m(a)$ for all $A$ and the covariance of the random variables $X_a$ and $X_{a'}$ is $k(a, a')$ for all $a, a' \in A$.\footnote{Future editions may include an account.}
+\end{proposition}
+For this reason, we call $m$ the \t{mean function} and $k$ the \t{covariance function} of the random function.
+
+Conversely, suppose that we have function $m: A \to \R$ and $k: A \times A \to \R$.
+Then if $k$ satisfies the property that for all $a^1, \dots, a^m$, the $m \times m$ matrix
+\[
+  \pmat{
+    k(a^1, a^1) & \cdot k(a^1, a^m) \\
+    \vdots & \ddots & \vdots \\
+    k(a^m, a^1) & \cdots k(a^m, a^m) \\
+  }
+\]
+is positive semidefinite, then we can construct a Gaussian process from $m$ and $k$ as its mean and covariance function.
 
 \ssubsection{Random function interpretation}
 
@@ -27,6 +45,6 @@ One samples functions by drawing an outcome $\omega \in \Omega$, and then defini
 
 \ssubsection{Multivariate normal special case}
 
-If the index set is finite, and can be ordered, then the normal random function is a multivariate normal random vector.
+If the index set is finite, and can be ordered, then the normal random function is in one-to-one correspondence with the multivariate normal random vectors.
 
 %\blankpage
