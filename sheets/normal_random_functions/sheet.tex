@@ -10,7 +10,8 @@ We want to discuss real-valued random functions whose family of random variables
 
 A \t{normal random function} is a real-valued random function whose family of real-valued random variables has the property that any subfamily is jointly normal.
 
-For this reason, we call the family of random variables corresponding to the random function a \t{normal process} or \t{Gaussian process}.\footnote{As usual, The choice of \say{normal} is a result of the Bourbaki project's convention to eschew historical names. Though here, as in \sheetref{multivariate_normals}{Multivariate Normals} the language of the project is nonstandard.}
+For this reason, we call the family of random variables (or stochastic process) corresponding to the random function a \t{gaussian process} or \t{normal process}.
+% \footnote{As usual, The choice of \say{normal} is a result of the Bourbaki project's convention to eschew historical names. Though here, as in \sheetref{multivariate_normals}{Multivariate Normals} the language of the project is nonstandard.}
 
 \ssubsection{Notation}
 
@@ -27,24 +28,32 @@ The random function $x$ is a normal if, for all $a^1, \dots, a^m \in A$, $(y(a^1
 \end{proposition}
 For this reason, we call $m$ the \t{mean function} and $k$ the \t{covariance function} of the random function.
 
-Conversely, suppose that we have function $m: A \to \R$ and $k: A \times A \to \R$.
+Conversely, let $m: A \to \R$ and $k: A \times A \to \R$.
 Then if $k$ satisfies the property that for all $a^1, \dots, a^m$, the $m \times m$ matrix
 \[
   \pmat{
-    k(a^1, a^1) & \cdot k(a^1, a^m) \\
+    k(a^1, a^1) & \cdots & k(a^1, a^m) \\
     \vdots & \ddots & \vdots \\
-    k(a^m, a^1) & \cdots k(a^m, a^m) \\
+    k(a^m, a^1) & \cdots & k(a^m, a^m) \\
   }
 \]
-is positive semidefinite, then we can construct a Gaussian process from $m$ and $k$ as its mean and covariance function.
+is positive semidefinite, then we can construct a Gaussian process with mean function $m$ and covariance function $k$.\footnote{Some authors belabor this point because of the natural inclination to want to specify an \textit{inverse} covariance function, which need not satisfy the consistency property.  The consistency property ensures that any marginal of a subfamilys density is the density of that further subfamily. Future editions may expand.}
+For this reason, we call $k$ with such a property \t{positive semidefinite} or a \t{covariance function}.
+Notice, of course, that $k$ is symmetric.
 
-\ssubsection{Random function interpretation}
+\ssubsection{Example}
 
-Many authorities discuss a normal random function as \say{putting a prior} on a \say{space} (see, for example, \sheetref{real_function_space}{Real Function Space}) of functions.
-One samples functions by drawing an outcome $\omega \in \Omega$, and then defining the sample $f: I \to \R$ by $f(i) = x(i)(\omega)$.
+Let $A = \set{1, \dots, n}$ and let $K \in \R^{n \times n}$ be symmetric positive semidefinite.
+Define $m: A \to \R$ to be $m \equiv 0$ (the constant zero function) and $k(i, j) = K_{ij}$.
+Then the normal random function $x: \Omega \to (A \to \R)$ with mean $m$ and covariance $k$ is in one to one correspondence with the gaussian random vectors with mean zero.
 
-\ssubsection{Multivariate normal special case}
+% \ssubsection{Random function interpretation}
+%
+% Many authorities discuss a normal random function as \say{putting a prior} on a \say{space} (see, for example, \sheetref{real_function_space}{Real Function Space}) of functions.
+% One samples functions by drawing an outcome $\omega \in \Omega$, and then defining the sample $f: I \to \R$ by $f(i) = x(i)(\omega)$.
 
-If the index set is finite, and can be ordered, then the normal random function is in one-to-one correspondence with the multivariate normal random vectors.
-
+% \ssubsection{Multivariate normal special case}
+%
+% If the index set is finite, and can be ordered, then the normal random function is in one-to-one correspondence with the multivariate normal random vectors.
+%
 %\blankpage
