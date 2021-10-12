@@ -861,13 +861,13 @@ class LaTeX(Task):
         pages of output.
         """
         jobname = outname = None
-        for m in re.finditer(r'^Transcript written on "?(.*)\.l\n?o\n?g"?\.$', stdout,
+        for m in re.finditer(r'^Transcript written on "?(.*)\.l\n?o\n?g\n?"?\.$', stdout,
                              re.MULTILINE | re.DOTALL):
             jobname = m.group(1).replace('\n', '')
         if jobname is None:
             print(stdout, file=sys.stderr)
             raise TaskError('failed to extract job name from latex log')
-        for m in re.finditer(r'^Output written on "?(.*\.[^ ."]+)"? \(\n?[0-9]+ p\n?a\n?g\n?e',
+        for m in re.finditer(r'^Output written on "?(.*\.[^ ."]+)"?\n? \n?\(\n?[0-9]+\n? \n?p\n?a\n?g\n?e',
                              stdout, re.MULTILINE | re.DOTALL):
             outname = m.group(1).replace('\n', '')
         if outname is None and not \
