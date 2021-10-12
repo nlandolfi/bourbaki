@@ -81,6 +81,16 @@
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
       <script id="script">
         // If absolute URL from the remote server is provided, configure the CORS
         // header on that server.
@@ -89,6 +99,8 @@
         // The workerSrc property shall be specified.
         pdfjsLib.GlobalWorkerOptions.workerSrc =
           '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
 
         function render(page, wrapper, canvas) {
           var scale = 7;
@@ -109,6 +121,8 @@
           context.mozImageSmoothingEnabled = false;
           context.oImageSmoothingEnabled = false;
 
+          /*
+
           if (window.devicePixelRatio > 1) {
             var canvasWidth = canvas.width;
             var canvasHeight = canvas.height;
@@ -121,6 +135,7 @@
             context.scale(window.devicePixelRatio, window.devicePixelRatio);
           }
           //end see
+          */
 
           var renderContext = {
             canvasContext: context,
@@ -150,17 +165,6 @@
         });
       </script>
 
-
-    <div id="wrapper1">
-      <canvas id="page1" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper2">
-    <canvas id="page2" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper3">
-    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
-    </div>
-
     <!-- PAGES -->
     <!--
     <iframe id="sheet-pdf" src="./unordered_pairs.pdf#page=2">
@@ -177,7 +181,7 @@
     -->
 
     <span id="footer">
-      Copyright 2021 The Bourbaki Authors. Version f116a4547.
+      Copyright 2021 The Bourbaki Authors. Version 81c1662a8.
     </span>
   </body>
 </html>

@@ -98,10 +98,20 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Lots of things are (approximately) linear.\footnote{Future editions will expand on this why. In particular, the intuition of proportionality.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A transformation is \t{linear} if the result of a linear combination of the two vectors is the linear combination of the results of the vectors (using the same coefficients). The transformation is linear with respect to the field of the two vector spaces.</p></div><div class="sheet-listing"><p class="sheet"> We use the term transformation (\sheetref{transformations}{Transformations}) to emphasize that the function is defined on a vector space. Of course, $\R$ is a vector space and so $f: \R \to \R$ may be linear. It is also common, though, to speak of \t{linear functions}.</p></div><div class="sheet-listing"><p class="sheet"> Often authors will use the word \t{operator} for linear functions. It seems, generalyl, that this term is commonly reserved for the case in which the vector space discussed is a function space (or, at least, infinite dimensional).</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(V_1, F)$ and $(V_2, F)$ be two vector spaces over the same field. Let $f: V_1 \to V_2$. $f$ is linear means \[ f(au + bv) = af(u) + bf(v) \] for all $a, b \in F$ and $u, v \in V_1$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Lots of things are (approximately) linear.\footnote{Future editions will expand on this why. In particular, the intuition of proportionality.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A transformation is \t{linear} if the result of a linear combination of the two vectors is the linear combination of the results of the vectors (using the same coefficients). The transformation is linear \t{with respect to} the field of the two vector spaces.</p></div><div class="sheet-listing"><p class="sheet"> We use the term transformation (\sheetref{transformations}{Transformations}) for emphasis and reminder that the function is defined on a vector space. Of course, $\R$ is a vector space and so a function $f: \R \to \R$ may be linear. It is, therefore, common to speak of \t{linear functions}.</p></div><div class="sheet-listing"><p class="sheet"> Often authors will use the word \t{operator} for linear functions. It seems, generally, that this term is commonly reserved for the case in which the vector space discussed is a function space (or, at least, infinite dimensional).</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(V_1, F)$ and $(V_2, F)$ be two vector spaces over the same field. Let $f: V_1 \to V_2$. $f$ is linear means \[ f(au + bv) = af(u) + bf(v) \] for all $a, b \in F$ and $u, v \in V_1$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
       <script id="script">
         // If absolute URL from the remote server is provided, configure the CORS
         // header on that server.
@@ -110,6 +120,8 @@
         // The workerSrc property shall be specified.
         pdfjsLib.GlobalWorkerOptions.workerSrc =
           '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
 
         function render(page, wrapper, canvas) {
           var scale = 7;
@@ -130,6 +142,8 @@
           context.mozImageSmoothingEnabled = false;
           context.oImageSmoothingEnabled = false;
 
+          /*
+
           if (window.devicePixelRatio > 1) {
             var canvasWidth = canvas.width;
             var canvasHeight = canvas.height;
@@ -142,6 +156,7 @@
             context.scale(window.devicePixelRatio, window.devicePixelRatio);
           }
           //end see
+          */
 
           var renderContext = {
             canvasContext: context,
@@ -171,17 +186,6 @@
         });
       </script>
 
-
-    <div id="wrapper1">
-      <canvas id="page1" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper2">
-    <canvas id="page2" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper3">
-    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
-    </div>
-
     <!-- PAGES -->
     <!--
     <iframe id="sheet-pdf" src="./linear_transformations.pdf#page=2">
@@ -198,7 +202,7 @@
     -->
 
     <span id="footer">
-      Copyright 2021 The Bourbaki Authors. Version f116a4547.
+      Copyright 2021 The Bourbaki Authors. Version 81c1662a8.
     </span>
   </body>
 </html>

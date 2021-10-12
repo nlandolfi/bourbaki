@@ -60,10 +60,20 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is natural to embed a dataset.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(x: \Omega \to \R^d, A \in \R^{n \times d}, e: \Omega \to \R^n)$ be a probabilistic linear model over the probability space $(\Omega, \CA, \PM)$. Let $\phi: \R^d \to \R^{d'}$ be a feature map.</p></div><div class="sheet-listing"><p class="sheet"> We call the sequence $(x, A, e, \phi)$ a \t{featurized probabilistic linear model} (also \t{embedded probabilistic linear model}). We interpret the model as a random field $h: \Omega \to (\R^d \to \R)$ which is a linear function of the features \[ h_{\omega}(a) = \transpose{\phi(a)}x(\omega). \]</p></div><div class="sheet-listing"><p class="sheet"> Denote the data matrix of the embedded feature vectors by $\phi(A)$. In other words, $\phi(A) \in \R^{n \times d'}$ is a matrix whose rows are feature vectors. Then $(x, A, e, \phi)$ corresponds to the probabilistic linear model $(x, \phi(A), e)$.</p></div><div class="sheet-listing" id="normal_case"><h1 class="sheet">3. Normal case</h1></div><div class="sheet-listing"><p class="sheet"> In the normal (Gaussian) case, the parameter posterior $g_{x \mid y}(\cdot, \gamma)$ is a normal density with mean \[ \Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}} \gamma \] and covariance \[ \invp{\inv{\Sigma_{x}} + \transpose{\phi(A)}\inv{\Sigma_{e}}\phi(A)}. \]</p></div><div class="sheet-listing"><p class="sheet"> The predictive density for $a \in \R^d$ is normal with mean \[ \transpose{\phi(a)}\Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}}\gamma. \] and covariance \[ \transpose{\phi_a}\Sigma_{x}\phi_a - \transpose{\phi_a}\Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_e}\phi(A)\Sigma_{x}\phi_a. \]</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is natural to embed a dataset.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(x: \Omega \to \R^d, A \in \R^{n \times d}, e: \Omega \to \R^n)$ be a probabilistic linear model over the probability space $(\Omega, \CA, \PM)$. Let $\phi: \R^d \to \R^{d'}$ be a feature map.</p></div><div class="sheet-listing"><p class="sheet"> We call the sequence $(x, A, e, \phi)$ a \t{featurized probabilistic linear model} (also \t{embedded probabilistic linear model}). We interpret the model as a random field $h: \Omega \to (\R^d \to \R)$ which is a linear function of the features \[ h_{\omega}(a) = \transpose{\phi(a)}x(\omega). \]</p></div><div class="sheet-listing"><p class="sheet"> Denote the data matrix of the embedded feature vectors by $\phi(A)$. In other words, $\phi(A) \in \R^{n \times d'}$ is a matrix whose rows are feature vectors. Then $(x, A, e, \phi)$ corresponds to the probabilistic linear model $(x, \phi(A), e)$.</p></div><div class="sheet-listing" id="normal_case"><h1 class="sheet">3. Normal case</h1></div><div class="sheet-listing"><p class="sheet"> In the normal (Gaussian) case, the parameter posterior $g_{x \mid y}(\cdot, \gamma)$ is a normal density with mean \[ \Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}} \gamma \] and covariance \[ \invp{\inv{\Sigma_{x}} + \transpose{\phi(A)}\inv{\Sigma_{e}}\phi(A)}. \]</p></div><div class="sheet-listing"><p class="sheet"> The predictive density for $a \in \R^d$ is normal with mean \[ \transpose{\phi(a)}\Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}}\gamma. \] and covariance \[ \transpose{\phi_a}\Sigma_{x}\phi_a - \transpose{\phi_a}\Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_e}\phi(A)\Sigma_{x}\phi_a. \]</p></div><div class="sheet-listing"><p class="sheet"> So the \t{featurized linear regressor} is the predictor $h: \R^d \to \R$ defined by \[ h(a) = \transpose{\phi(a)}\Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}}\gamma. \]</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
       <script id="script">
         // If absolute URL from the remote server is provided, configure the CORS
         // header on that server.
@@ -72,6 +82,8 @@
         // The workerSrc property shall be specified.
         pdfjsLib.GlobalWorkerOptions.workerSrc =
           '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
 
         function render(page, wrapper, canvas) {
           var scale = 7;
@@ -92,6 +104,8 @@
           context.mozImageSmoothingEnabled = false;
           context.oImageSmoothingEnabled = false;
 
+          /*
+
           if (window.devicePixelRatio > 1) {
             var canvasWidth = canvas.width;
             var canvasHeight = canvas.height;
@@ -104,6 +118,7 @@
             context.scale(window.devicePixelRatio, window.devicePixelRatio);
           }
           //end see
+          */
 
           var renderContext = {
             canvasContext: context,
@@ -133,17 +148,6 @@
         });
       </script>
 
-
-    <div id="wrapper1">
-      <canvas id="page1" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper2">
-    <canvas id="page2" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper3">
-    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
-    </div>
-
     <!-- PAGES -->
     <!--
     <iframe id="sheet-pdf" src="./featurized_probabilistic_linear_models.pdf#page=2">
@@ -160,7 +164,7 @@
     -->
 
     <span id="footer">
-      Copyright 2021 The Bourbaki Authors. Version f116a4547.
+      Copyright 2021 The Bourbaki Authors. Version 81c1662a8.
     </span>
   </body>
 </html>
