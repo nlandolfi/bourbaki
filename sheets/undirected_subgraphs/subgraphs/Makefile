@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make sequences.pdf
+	make subgraphs.pdf
 
-sequences.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > sequences.tex
+subgraphs.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > subgraphs.tex
 
-sequences.pdf: ../../*.tex ../../trademark.pdf *.tex sequences.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode sequences.tex
-	../../latexrun sequences.tex
+subgraphs.pdf: ../../*.tex ../../trademark.pdf *.tex subgraphs.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode subgraphs.tex
+	../../latexrun subgraphs.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: sequences.pdf
-	open sequences.pdf
+open: subgraphs.pdf
+	open subgraphs.pdf
 
 o:
 	make open
 
-terms: sequences.tex
-	bbk_sheet -mode ts sequences.tex
+terms: subgraphs.tex
+	bbk_sheet -mode ts subgraphs.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f sequences.*
+	rm -f subgraphs.*
 	make reset
 	bbk_sheet -mode mk > Makefile
