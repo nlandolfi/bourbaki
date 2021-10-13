@@ -1,25 +1,40 @@
 %!name:ordered_undirected_graphs
 %!need:undirected_graphs
 %!need:sequences
+%!refs:vandenberghe2014chordal
 
-\ssection{Why}
+\ssection{Why}\footnote{Future editions will include. This sheet is needed, for example, in discussing perfect elimination orderings.}
 
-TODO
-Need for perfect elimination orderings.
+\ssection{Definition}
 
-\ssection{definition}
-
-An \t{ordering} of an undirected graph is a numbering of its vertices.
-An \t{ordered undirected graph} is a triple: the first two objects as an ordered pair are an undirected graph and the third object is a numbering of this graphs vertices.
+An \t{ordering} of an undirected graph is an ordering (see \sheetref{sequences}{Sequences}) of its vertices.
+An \t{ordered undirected graph} is an ordered pair $((V, E), \sigma: \upto{\num{V}} \to V)$ where $(V, E)$ is an undirected graph (see \sheetref{undirected_graphs}{Undirected Graphs}) and $\sigma$ is an ordering of the vertex set $V$.
 
 \ssection{Notation}
 
-Let $G = (V, E)$ be an undirected graph with $n = \num{V}$.
-Let $\sigma: \set{1, 2, \dots, n} \to V$ be a numbering of $V$.
-We denote the ordered graph consisting of $G$ and $\sigma$ as $G_{\sigma} = (V, E, \sigma)$.
+Let $((V, E), \sigma)$ be an ordered undirected graph.
+We commonly associate it with $(V, E, \sigma)$ and call this ordered triple an undirected graph as well.
+But, throughout these sheets, an ordered undirected graph is an ordered pair.
 
-\ssection{Array Visualization}
+We denote that $\inv{\sigma}(v) < \inv{\sigma}(w)$ by $v \prec_{\sigma} w$ and $v \preceq_{\sigma} w$ by $\inv{\sigma}(v) \leq \inv{\sigma}(w)$.
+We occasionally omit the subscripts in $\prec_{\sigma}$ and $\preceq_{\sigma}$ when clear from context.
 
-We visualize ordered graphs as triangular arrays by
 
-\blankpage
+\ssection{Visualization}
+
+We visualize an ordered undirected graph by labeling its nodes with the indices of each vertex.
+Let $(V, E)$ be an undirected graph with $V = \set{a,b,c,d,e}$ and
+\[
+  E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d}, \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}.
+\]
+Let $\sigma: \set{1, \dots, 5} \to V$ be an ordering with
+\[
+  \sigma(1) = a \quad  \sigma(2) = c \quad \sigma(3) = d \quad \sigma(4) = b \quad \sigma(e) = 5.
+\]
+We visualize the ordered graph in the figure.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.3\textwidth]{graphics_included/ordered_undirected_graph}
+  \caption{Ordered undirected graph.}
+\end{figure}

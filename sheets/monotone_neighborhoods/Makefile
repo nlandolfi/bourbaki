@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make graphs.pdf
+	make monotone_neighborhoods.pdf
 
-graphs.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > graphs.tex
+monotone_neighborhoods.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > monotone_neighborhoods.tex
 
-graphs.pdf: ../../*.tex ../../trademark.pdf *.tex graphs.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode graphs.tex
-	../../latexrun graphs.tex
+monotone_neighborhoods.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_neighborhoods.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode monotone_neighborhoods.tex
+	../../latexrun monotone_neighborhoods.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: graphs.pdf
-	open graphs.pdf
+open: monotone_neighborhoods.pdf
+	open monotone_neighborhoods.pdf
 
 o:
 	make open
 
-terms: graphs.tex
-	bbk_sheet -mode ts graphs.tex
+terms: monotone_neighborhoods.tex
+	bbk_sheet -mode ts monotone_neighborhoods.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f graphs.*
+	rm -f monotone_neighborhoods.*
 	make reset
 	bbk_sheet -mode mk > Makefile
