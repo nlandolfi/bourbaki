@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make graph_complements.pdf
+	make directed_paths.pdf
 
-graph_complements.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > graph_complements.tex
+directed_paths.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > directed_paths.tex
 
-graph_complements.pdf: ../../*.tex ../../trademark.pdf *.tex graph_complements.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode graph_complements.tex
-	../../latexrun graph_complements.tex
+directed_paths.pdf: ../../*.tex ../../trademark.pdf *.tex directed_paths.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode directed_paths.tex
+	../../latexrun directed_paths.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: graph_complements.pdf
-	open graph_complements.pdf
+open: directed_paths.pdf
+	open directed_paths.pdf
 
 o:
 	make open
 
-terms: graph_complements.tex
-	bbk_sheet -mode ts graph_complements.tex
+terms: directed_paths.tex
+	bbk_sheet -mode ts directed_paths.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f graph_complements.*
+	rm -f directed_paths.*
 	make reset
 	bbk_sheet -mode mk > Makefile
