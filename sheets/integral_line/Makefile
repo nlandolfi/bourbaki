@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make subgraphs.pdf
+	make integral_line.pdf
 
-subgraphs.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > subgraphs.tex
+integral_line.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > integral_line.tex
 
-subgraphs.pdf: ../../*.tex ../../trademark.pdf *.tex subgraphs.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode subgraphs.tex
-	../../latexrun subgraphs.tex
+integral_line.pdf: ../../*.tex ../../trademark.pdf *.tex integral_line.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode integral_line.tex
+	../../latexrun integral_line.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: subgraphs.pdf
-	open subgraphs.pdf
+open: integral_line.pdf
+	open integral_line.pdf
 
 o:
 	make open
 
-terms: subgraphs.tex
-	bbk_sheet -mode ts subgraphs.tex
+terms: integral_line.tex
+	bbk_sheet -mode ts integral_line.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f subgraphs.*
+	rm -f integral_line.*
 	make reset
 	bbk_sheet -mode mk > Makefile
