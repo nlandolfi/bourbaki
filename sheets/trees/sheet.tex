@@ -1,28 +1,19 @@
 %!name:trees
 %!need:undirected_paths
+%!refs:vandenberghe2014chordal
 
 \ssection{Why}\footnote{Future editions will include.}
 
 \ssection{Definition}
 
-A \t{forest} is an undirected graph if it does not contain any cycles.
-
-A \t{tree} is a connected and acyclic undirected graph.
-Since the tree is connected, by taking the family union of its edges we obtain the vertex set.
-For this reason, we often only reference the edge set when speaking of trees.
-But, in these sheets, a tree is always an ordered pair.
-
-% Thus every tree corresponds to an undirected, connected and acyclic graph.
-% We avoid defining a tree to be that, though, because we want to keep around only the most important object: the set of two-element sets.
-% From that object we can get the vertex set and edge set of the graph.
-% We need the concepts from graphs to talk about which sets of two-element sets are trees, but we want the notation from trees to be amenable to their nature.
-% The notation we use will bear us out.
+An undirected graph is a \t{tree} if it is connected and acyclic.
+An undirected graph is a \t{forest} if it is acyclic.
+Each connected component of a forest is a tree, motivating the definition.
 
 
-\ssubsection{Notation}
 
 % TODO: sheet on connected graphs? move this reasoning there?
-Let $T = (V, E)$ be a tree, a mnemonic for \say{tree.}
+%Let $T = (V, E)$ be a tree, a mnemonic for \say{tree.}
 % Let $V$ be the vertex set associated with $T$.
 % In other words, $$V = \union_{e \in T} e$$.
 % Let $E$ be so that $(u, v) \in E$ if and only if $\set{u, v} \in T$ for every $u, v \in V$.
@@ -44,14 +35,17 @@ Let $T = (V, E)$ be a tree, a mnemonic for \say{tree.}
 \ssection{Properties}
 
 \begin{proposition}
-
-A unique path exists between any two vertices of a tree.
-
+There is a unique path between any two vertices of a tree.
 \begin{proof}
-  The path exists because a tree is connected.
-  The path is unique, since were it not, we could create a cycle by combining these paths.
+  Such a path exists because the tree is connected.
+  Such a path is unique because the existence of two separate paths would create a cycle.
 \end{proof}
-
 \end{proposition}
+
+\ssubsection{Distance}
+
+The \t{distance} between two vertices $v$ and $w$ in a tree is the length of the unique path connnecting $v$ and $w$.
+Recall that the length of a path is the number of edges, or one fewer than the number of vertices.
+If $v$ and $w$ are adjacent in the tree, then there distance is 1.
 
 \blankpage
