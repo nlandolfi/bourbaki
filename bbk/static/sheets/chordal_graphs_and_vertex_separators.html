@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./chordal_graphs_and_vertex_separators.pdf#page=2'"> Chordal Graphs and Vertex Separators </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./chordal_graphs_and_vertex_separators.pdf#page=2'" onkeypress="location.href='./chordal_graphs_and_vertex_separators.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./chordal_graphs_and_vertex_separators-graph.pdf'" onkeypress="location.href='./chordal_graphs_and_vertex_separators-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./vertex_separators.html'" onkeypress="location.href='./vertex_separators.html'">
+              <span>
+                Vertex Separators
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We characterize chordal graphs using vertex separators, and vice versa.\footnote{Future editions will expand and may include graphics.}</p></div><div class="sheet-listing" id="main_result"><h1 class="sheet">2. Main Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Chordal Graphs and Vertex Separators]</p></div><div class="sheet-listing"><p class="sheet"> An undirected graph is chordal if and only if all minimal vertex separators are complete.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Let $G = (V, E)$ be an undirected graph.</p></div><div class="sheet-listing"><p class="sheet"> First, suppose that all minimal vertex separators of $G$ are complete. Let $c$ be a cycle of length greater than 3. Let $v, w$ be nonconsecutive vertices in $c$. If $v$ and $w$ are adjacent in $G$, then $\set{v, w} \in E$ is a chord. If $v$ and $w$ are nonadjacent, then  $vw$-separator exists.</p></div><div class="sheet-listing"><p class="sheet"> The key insight is that there exists two non-consecutive vertices in the cycle that are also included in any $vw$-separator $T$. Split the cycle into the path from $v$ to $w$, call it $p_1$ and the path from $w$ to $v$, call it $p_2$. $T$ must include an interior point of $p_1$, call it $u_1$, otherwise $v$ and $w$ are connected. Similarly, $T$ must include an interior point of $p_2$, call it $u_2$. $u_1$ and $u_2$ are not consecutive in $c$, since they are distinct from $x$ and $y$.</p></div><div class="sheet-listing"><p class="sheet"> Let $S$ be a minimal $vw$-separator. Let $s, t \in S$ be two non-consecutive vertices in the cycle different from $v$ and $w$ By assumption $S$ is complete, so $s$ and $t$ are adjacent in $G$.</p></div><div class="sheet-listing"><p class="sheet"> Second, let $G = (V, E)$ be a chordal graph. Let $S$ be a minimal $vw$-separator. Let $C_v$ and $C_w$ be the connected components containing $v$ and $w$ of the subgraph induced by $V \setminus S$.</p></div><div class="sheet-listing"><p class="sheet"> If $\num{S} = 1$, then $S$ is complete. Otherwise, let $x, y \in S$ by distinct. We want to show $\set{x, y} \in E$. The key insight is that $x$ is adjacent to vertices in $C_v$ and $C_w$. If there were no such vertex, $S \setminus \set{x}$ would be a $vw$-separator and $S$ would not be minimal. Similarly with $y$. Also, $\num{C_v}, \num{C_w} \geq 1$.</p></div><div class="sheet-listing"><p class="sheet"> With these observations, there exists a path from $x$ to $y$ through $C_v$. Let $p_v = (x, v_1, \dots, v_k, y)$ be a path of shortest length with at least one interior vertex (so $k \geq 1$) from $x$ to $y$ using interior vertices in $v_1, \dots, v_k \in C_v$. Let $p_w = (y, w_1, \dots, w_l, x)$ be a path of shortest length with at least one interior vertex (so $l \geq 1$) from $y$ to $x$ using interior vertices $w_1, \dots, w_k \in C_w$. Use $p_v$ and $p_w$ to define the cycle $c = (x, v_1, \dots, v_k, y, w_1, \dots, w_l, x)$ which has length at least four. $G$ is chordal, so $c$ has a chord.</p></div><div class="sheet-listing"><p class="sheet"> We argue that the chord of $c$ is $\set{x, y}$. Since $C_w$ and $C_V$ are different connected components (whose vertices are not included in $S$), there are no edges $\set{v_i, w_j}$ for $i = 1, \dots, k$ and $j = 1, \dots, l$. Since $p_v$ and $p_w$ are paths of shortest length, they have no chords. In particular, there is no edge $\set{v_i, v_j}$ for $\abs{i - j} > 1$ or $\set{v_i, x}$ for $i = 1, \dots, l$. Similarly, there is no edge $\set{w_i, w_j}$ for $\abs{i - j} > 1$ or $\set{w_i, y}$ for $i = 1, \dots, l$. The only remaining pair is $\set{x, y}$, and so it must be the chord. \end{proof} \end{proposition}</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './chordal_graphs_and_vertex_separators.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./chordal_graphs_and_vertex_separators.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./chordal_graphs_and_vertex_separators.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./chordal_graphs_and_vertex_separators-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2021 The Bourbaki Authors. Version 4be1330a7.
+    </span>
+  </body>
+</html>

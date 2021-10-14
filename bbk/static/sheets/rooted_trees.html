@@ -50,6 +50,13 @@
             <span class="caret">›</span>
           </div>
         
+          <div class="need" tabindex="0" onclick="location.href='./rooted_tree_orderings.html'" onkeypress="location.href='./rooted_tree_orderings.html'">
+            <span>
+            Rooted Tree Orderings
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
       
     </div>
 
@@ -70,7 +77,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about orienting the edges of a tree away from a given vertex.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{rooted tree} is an ordered pair consisting of a tree and a distinguished vertex, which we call the \t{root}. The \t{parent} of a given non-root vertex is the first vertex on the path from the given vertex to the root. Conversely, that given vertex is the \t{child} of its parent. Since there is only one path to the root, each non-root vertex has only one parent. We define the parent of the root to be the root itself.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $T = (V, E)$ be a tree. We denote the tree $T$ rooted at vertex $v$ by $(T, v)$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $(T, v)$ be a rooted tree. In the directed graph corresponding to this rooted tree every vertex has one parent. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> We denote the parent of vertex $v$ by $\pa{v}$.</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk rooting a tree at a given vertex.\footnote{Future editions will expand this intuition.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{rooted tree} is an ordered pair $((V, T), r)$ where $(V, T)$ is a tree and $r \in V$ is a distinguished vertex which we call the \t{root}. We visualize rooted trees with the root at the top (see Figure~\ref{figure:rooted_trees:rooted_tree}).</p></div><div class="sheet-listing"><h2 class="sheet" id="parents_and_children">2.1 Parents and Children</h2></div><div class="sheet-listing"><p class="sheet"> Suppose $w$ is the first vertex on the path from the root to a non-root vertex $v$. Since there is only one such path, $w$ is unique and we call it \t{the parent} of $v$. Conversely, we call $v$ \t{a child} of $w$. We denote the set of children of $v$ by $\ch(v)$. A vertex may have no children or it may have many children. If it has no children we call it a \t{leaf}.</p></div><div class="sheet-listing"><p class="sheet"> We define the \t{parent function} $\pa: V \to V$ with the convention that the \t{parent of the root} is the root. The \t{parent of degree $k$} where $k > 0$ is $\pa^k(x)$ where $\pa^k$ is the composite of $\pa$ with itself $k$ times. So, in particular, $\pa^{k+1}(v) = \pa(\pa^k(v))$. We define the \t{parent of degree $0$} of $v$ to be $v$, and denote it by $\pa^0(v) = v$. For the tree visualized in Figure~\ref{figure:rooted_trees:rooted_tree}, $\pa(i) = g$, $\pa^2(i) = d$, $\pa^3(i) = a$.</p></div><div class="sheet-listing"><p class="sheet"> If $w = \pa^k(v)$ for some $k \geq 0$, then $w$ is a \t{ancestor} of $v$ and $v$ is a \t{descendent} of $w$. We use the term \t{proper ancestor} and \t{proper descendent} if $k > 0$ (i.e., $w \neq v$).</p></div><div class="sheet-listing"><p class="sheet"> The \t{depth} or \t{level} of a vertex $v$ is its distance (see \sheetref{trees}{Trees}) to the root. We denote the level of a vertex $v$ by $\lev(v)$. The level of the root is $0$. If $\lev(v) = k > 0$, then $\pa^{k}(v)$ is the root. The level function $\lev$ satisfies $\lev(v) = \lev(\pa(v)) + 1$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \includegraphics[width=0.5\textwidth]{\figpath{rooted_trees}{rooted_tree}} \caption{A rooted tree with root $a$.} \label{figure:rooted_trees:rooted_tree} \end{figure}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -174,7 +181,7 @@
     -->
 
     <span id="footer">
-      Copyright 2021 The Bourbaki Authors. Version 81c1662a8.
+      Copyright 2021 The Bourbaki Authors. Version 4be1330a7.
     </span>
   </body>
 </html>

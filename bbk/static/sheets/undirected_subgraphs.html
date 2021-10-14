@@ -25,14 +25,24 @@
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./undirected_graphs.html'" onkeypress="location.href='./undirected_graphs.html'">
+            <div class="need" tabindex="0" onclick="location.href='./undirected_paths.html'" onkeypress="location.href='./undirected_paths.html'">
               <span>
-                Undirected Graphs
+                Undirected Paths
               </span>
               <span class="caret">›</span>
             </div>
         
       
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./chordal_graphs.html'" onkeypress="location.href='./chordal_graphs.html'">
+            <span>
+            Chordal Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
       
     </div>
 
@@ -53,7 +63,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We often start with an undirected graph and want to talk about the graphs we obtain by only keeping the edges incident to particular vertices.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{subgraph} of a graph corresponding to a subset of vertices is the undirected graph with those vertices and all edges between those vertices.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $G = (V, E)$ be an undirected graph. Let $W \subset V$. The subgraph corresponding to $W$ is the undirected graph $(W, F)$ where $$F = \Set*{\set{v, w} \in E}{v, w \in W}.$$ TODO: maybe delete; this abuses $G$, which is no longer an ordered pair, but becomes a function on subsets of $V$ with a complicated codomain. We denote the subgraph of $G$ corresponding to $W$ by $G(W) = (W, E(W))$.</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We look at a particular subset of vertices and the edges involved between them.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{subgraph} of an undirected graph $(V, E)$ \t{induced by} a subset of vertices $W \subset V$ is the undirected graph with vertices $W$ and all edges between vertices in $W$.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $G = (V, E)$ be an undirected graph. Let $W \subset V$. \[ F = \Set*{\set{v, w} \in E}{v, w \in W}. \] The subgraph induced by $W$ is the undirected graph $(W, F)$.</p></div><div class="sheet-listing"><p class="sheet"> Some authors denote the subgraph induced by $W$ by $G(W)$ or $(W, E(W))$. We avoid this notation, as it abuses $G$, which is no longer an ordered pair, but (in our standard function notation) now indicates a function on subsets of $V$ with a complicated codomain. Other authors occasionally refer to the "subgraph $W$}, instead of \say{the subgraph $G(W)$". Again, we avoid this practice.</p></div><div class="sheet-listing"><h2 class="sheet" id="connected_components">3.1 Connected Components</h2></div><div class="sheet-listing"><p class="sheet"> A set of vertices $W$ in $G$ is \t{connected} if there is a path between any two vertices $v, w \in W$. A set of vertices $W$ in $G$ is \t{maximimally connected} if there is no other vertex $v \not \in W$ connected to a vertex in $W$. A \t{connected component} of $G$ is the subgraph induced by a maximally connected set of vertices.</p></div><div class="sheet-listing"><p class="sheet"> Since the vertex set of a graph can always be partitioned into sets maximally connected vertices, and a connected components is connect, we think of the connected components of $G$ as the connected "pieces" of $G$.</p></div><div class="sheet-listing"><h2 class="sheet" id="cliques">3.2 Cliques</h2></div><div class="sheet-listing"><p class="sheet"> A set of vertices is \t{complete} if the subgraph induced is complete. A set of vertices $W$ is \t{maximally complete} if the subgraph induced is complete and there is no vertex $v \not\in W$ which is connected to every vertex in $W$. In other words, there is no other vertex which we can add to $W$ so that the induced subgraph is still complete.</p></div><div class="sheet-listing"><p class="sheet"> We call a \t{maximally complete} set of vertes a \t{clique}. Some authors define a clique in the way we have defined a complete set of vertices, without reference to the maximality.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -157,7 +167,7 @@
     -->
 
     <span id="footer">
-      Copyright 2021 The Bourbaki Authors. Version 81c1662a8.
+      Copyright 2021 The Bourbaki Authors. Version 4be1330a7.
     </span>
   </body>
 </html>
