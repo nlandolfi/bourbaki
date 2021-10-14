@@ -4,49 +4,40 @@
 
 \ssection{Why}
 
-We want to talk about orienting the edges of a tree away from a given vertex.
+We want to talk rooting a tree at a given vertex.\footnote{Future editions will expand this intuition.}
 
 \ssection{Definition}
 
 A \t{rooted tree} is an ordered pair $((V, T), r)$ where $(V, T)$ is a tree and $r \in V$ is a distinguished vertex which we call the \t{root}.
-
-Rooted trees are often displayed with the root at the top, as in Figure~\ref{figure:rooted_trees:rooted_tree}.
+We visualize rooted trees with the root at the top (see Figure~\ref{figure:rooted_trees:rooted_tree}).
 
 \ssubsection{Parents and Children}
 
 Suppose $w$ is the first vertex on the path from the root to a non-root vertex $v$.
 Since there is only one such path, $w$ is unique and we call it \t{the parent} of $v$.
 Conversely, we call $v$ \t{a child} of $w$.
-We denote the set of children by $\ch(v)$.
+We denote the set of children of $v$ by $\ch(v)$.
 A vertex may have no children or it may have many children.
 If it has no children we call it a \t{leaf}.
 
 We define the \t{parent function} $\pa: V \to V$ with the convention that the \t{parent of the root} is the root.
-The \t{parent of degree $k$} where $k$ is positive is $\pa^k(x)$ where $\pa^k$ is the composite of $\pa$ with itself $k$ times.
+The \t{parent of degree $k$} where $k > 0$ is $\pa^k(x)$ where $\pa^k$ is the composite of $\pa$ with itself $k$ times.
 So, in particular, $\pa^{k+1}(v) = \pa(\pa^k(v))$.
-We define the parent of degree $0$ of $v$ to be $v$, and denote it by $\pa^0(v) = v$.
+We define the \t{parent of degree $0$} of $v$ to be $v$, and denote it by $\pa^0(v) = v$.
 For the tree visualized in Figure~\ref{figure:rooted_trees:rooted_tree}, $\pa(i) = g$, $\pa^2(i) = d$, $\pa^3(i) = a$.
 
 If $w = \pa^k(v)$ for some $k \geq 0$, then $w$ is a \t{ancestor} of $v$ and $v$ is a \t{descendent} of $w$.
-An ancestor $w$ of $v$ is a \t{proper ancestor} and a descendent $v$ of $w$ is a \t{proper descendent} if $w \neq v$.
+We use the term \t{proper ancestor} and \t{proper descendent} if $k > 0$ (i.e., $w \neq v$).
 
-The \t{depth} or \t{level} of a vertex $v$ in a rooted tree is the its distance (see \sheetref{trees}{Trees}) to the root.
+The \t{depth} or \t{level} of a vertex $v$ is its distance (see \sheetref{trees}{Trees}) to the root.
 We denote the level of a vertex $v$ by $\lev(v)$.
 The level of the root is $0$.
 If $\lev(v) = k > 0$, then $\pa^{k}(v)$ is the root.
 The level function $\lev$ satisfies $\lev(v) = \lev(\pa(v)) + 1$.
 
-% We associate with a rooted tree the directed graph constructed by orienting al edges away from the root.
-% For a particular rooted tree, which is to say a particular choice of root, we obtain a directed graph.
-% There are many choices of root, and so naturally we wonder if each choice of root corresponds to a different directed graph.
-% Since trees are connected, each choice of root does lead to a different graph.
-% If they were disconnected, some of the graphs may turn out to be the same.
-% So there is a one-to-one correspondence between rooted trees and their associated directed graphs, and so we could have defined a rooted tree as a directed graph with particular properties.
-%
-
 \begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{graphics_included/rooted_tree}
-  \caption{A rooted tree.}
+  \caption{A rooted tree with root $a$.}
   \label{figure:rooted_trees:rooted_tree}
 \end{figure}
