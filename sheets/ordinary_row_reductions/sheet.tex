@@ -1,0 +1,71 @@
+%!name:ordinary_row_reductions
+%!need:linear_system_row_reductions
+
+\ssection{Definition}
+
+In the case of several variables, we want to do several row reductions before back-substitution.\footnote{Future editions will expand.}
+
+\ssection{Definition}
+
+A linear system $S = (A \in \R^{m \times n}, b \in \R^{m})$ is \t{ordinarily reducible} (or \t{simply reducible}) if there exists a sequence $S_1, \dots, S_{n-1}$ of systems such that $S_1$ is the $11$-reduction of $S$ and $S_{i}$ is the $ii$-reduction of $S_{i-1}$ for $i = 1, \dots, n-1$.
+In this case, we call $S_{n-1}$ the \t{ordinary reduction} (or \t{simple reduction}) of $S$
+
+\begin{proposition}
+	The solution set of the ordinary reduction of an ordinarily reducible system is the same as that of the system.
+	\begin{proof}
+    Let $S$ be the first system and $S_1, \dots, S_{n-1}$ be a sequence of reductions.
+    Then all $S_i$ have same solution set and $S_1$ has the same solution set as $S$.
+	\end{proof}
+	\label{proposition:ordinary_row_reductions:main}
+\end{proposition}
+
+\ssection{Example}
+
+Suppose we want to find $x_1, x_2, x_3, x_4 \in \R$ to satisfy
+\[
+	\begin{aligned}
+	2x_1 &+ x_2  &+ x_3  &        &= 1,& \\
+	4x_1 &+ 3x_2 &+ 3x_3 &+ x_4   &= 2,& \\
+	8x_1 &+ 7x_2 &+ 9x_3 &+ 5x_4  &= 3,& \text{ and } \\
+	6x_1 &+ 7x_2 &+ 9x_3 &+ 8x_4  &= 4.&
+	\end{aligned}
+\]
+First we reduce by subtracting twice row 1 from row 2, four times row 1 from row 3, and three times row 1 from row 4.
+\[
+	S_1 = \parens{\barray{
+	2 & 1 & 1 & 0 \\
+	0 & 1 & 1 & 1 \\
+	0 & 3 & 5 & 5 \\
+	0 & 4 & 6 & 8 \\
+	}, \barray{
+		1 \\
+		0 \\
+		-1 \\
+		1 \\
+	}}.
+\]
+We then subtract three times row 2 from row 3 and four times row 2 from row 4 to obtain
+\[
+	S_2 = \parens{\barray{
+	2 & 1 & 1 & 0 \\
+	0 & 1 & 1 & 1 \\
+	0 & 0 & 2 & 2 \\
+	0 & 0 & 2 & 4 \\
+	}, \barray{
+		1 \\
+		0 \\
+		-1 \\
+		1 \\
+	}}.
+\]
+Finally, we subtract two times row 3 from row 4 to obtain $S_4$, which we can write as
+\[
+	\begin{aligned}
+	 2x_1 + x_2 + x_3         &= 1,& \\
+	        x_2 + x_3 + x_4  &= 0,& \\
+	               2x_3 + 2x_4  &= -1,& \text{ and } \\
+	                      2x_4  &= 3.&
+	\end{aligned}
+\]
+We can now back-substitute to find $x_4 = \nicefrac{3}{2}$, $x_3 = -2$, $x_2 = \nicefrac{1}{2}$ and $x_1 = \nicefrac{5}{4}$.
+Proposition~\ref{proposition:ordinary_row_reductions:main} says that this is the only solution of $S$, as well.

@@ -1,0 +1,68 @@
+%!name:linear_system_row_reductions
+%!need:linear_equation_solutions
+
+\ssection{Why}
+
+We want to generalize and simplify solving linear equations.
+
+\ssection{Definition}
+
+Let $S = (A \in \R^{m \times n}, b \in \R^{n})$ be a linear system.
+Let $i \in \upto{m}$ and $j \in \upto{n}$ with $A_{ij} \neq 0$.
+The \t{row reduction} of $S$ at row $i$ and column $j$ (or the \t{$ij$-row reduction} or \t{$ij$-reduction}) is the linear system $\tilde{S} = (\tilde{A}, \tilde{B})$ where
+\[
+  \tilde{A}_{st} = \begin{cases}
+    A_{st} & \text{ if } s = i \\
+    A_{st} - (A_{sj}/A_{ij})A_{it} & \text{ otherwise.}
+  \end{cases}
+\]
+%and $\tilde{b}_s = b_{s} - (A_{sj}/A_{ij}) b_s$ if $s \neq i$ and $\tilde{b}_i = b_i$.
+We say that $S$ is \t{row reducible} to $\tilde{S}$; or $S$ \t{reduces} to $\tilde{S}$.
+
+Let $a^k, \tilde{a}^k \in \R^{n}$ denote the $k$th row of $A$ and $\tilde{A}$, respectively.
+Then if $k \neq i$, $\tilde{a}^k = a^k - \alpha_k a^i$ where $\alpha_k = A_{kj}/A_{ij}$.
+In other words, a row $k$ of the matrix $\tilde{A}$ is obtained by subtracting a multiple of the $i$th row of matrix $A$ from row $k$ of matrix $A$.
+We are \say{reducing} the rows of $A$.
+
+\begin{proposition}
+  Let $(A \in \R^{m \times n}, b \in \R^{n})$ be a linear system which row reduces to $(C, d)$.
+  Then $x \in \R^{n}$ is a solution of $(A, b)$ if and only if it is a solution of $(C, d)$.\footnote{Future editions will include an account.}
+  \label{propostion:linear_system_reductions:solution_equivalence}
+\end{proposition}
+
+\ssection{Example}
+
+Suppose we want to find $x_1, x_2 \in \R$ to satisfy
+\[
+\begin{aligned}
+  3x_1 + 2x_2 &= 10, \text{ and} \\
+  6x_1 + 5x_2 &= 20. \\
+\end{aligned}
+\]
+We seek solutions to the linear system $(\tilde{A}, \tilde{b})$ where
+\[
+  \tilde{A} = \barray{
+    3 & 2 \\
+    6 & 5
+  } \text{ and } \tilde{b} = \barray{10 \\ 20}.
+\]
+The row reduction for $(\tilde{A}, \tilde{b})$ for row 1 and variable 1 is
+\[
+  \tilde{C} = \barray{
+    3 & 2 \\
+    0 & 1
+  } \text{ and } \tilde{d} = \barray{10 \\ 0}.
+\]
+A solution to the system $(\tilde{C}, \tilde{d})$ satisfies
+\[
+  \begin{aligned}
+    3x_1 + 2x_2 &= 10 \text{ and } \\
+    x_2 &= 0.
+  \end{aligned}
+\]
+We see that for $x \in \R^2$ to be a solution of $(\tilde{C}, \tilde{d})$, $x_2 = 0$.
+Using that and the first equation, we have that $x_1 = \nicefrac{10}{3}$.
+This process is called \t{back-substitution}.
+
+So $(\tilde{C}, \tilde{d})$ has solution set $\set{(\nicefrac{10}{3}, 0)}$.
+Proposition~\ref{propostion:linear_system_reductions:solution_equivalence} says that $(A, b)$ has the same solution set.
