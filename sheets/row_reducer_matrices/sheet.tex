@@ -1,0 +1,83 @@
+%!name:row_reducer_matrices
+%!need:matrices_and_linear_equations
+%!need:linear_system_row_reductions
+%!need:triangular_matrices
+
+\ssection{Why}
+
+Can we represent the function associating a linear system with its row reduction by matrix multiplication?
+
+\ssection{Main observation}
+
+\begin{proposition}
+  Let $(A \in \R^{n \times n}, b \in \R^{n})$ be a linear system with $A_{ij} \neq 0$.
+  Let $(C, d)$ be the $ij$-reduction of $(A, b)$.
+  $\exists L \in \R^{n \times n}$ with
+  \[
+    C = LA \text{ and } d = Lb.
+  \]
+  \begin{proof}
+    Define $L \in \R^{n \times n}$ by
+    \[
+      L_{st} = \begin{cases}
+        1 & \text{ if } s = t \\
+        -A_{sj}/A_{ij} & \text{ if } s \neq i \\
+        0 & \text{ otherwise }.
+      \end{cases}
+    \]
+  \end{proof}
+  \label{proposition:row_reducer_matrices:defining}
+\end{proposition}
+For this reason, we call $L$ in Proposition~\ref{proposition:row_reducer_matrices:defining} a \t{row reducer matrix} or \t{row reducing matrix} or \t{row reducer}.
+
+%A simple consequence is that there exists $(L_1, \dots, L_{n-1})$ in $\R^{n \times n}$ of lower triangular matrices so that the ordinary row reduction of $(A, b)$ is $(L_{n-1}\cdots L_2 L_1 A, L_{n-1}\cdots L_2 L_1b)$.
+
+\ssection{Example}
+
+For example, the $(1,1)$-reduction of
+\[
+	S = \parens{A = \barray{
+	2 & 1 & 1 & 0 \\
+	4 & 3 & 3 & 1 \\
+	6 & 7 & 9 & 5 \\
+	8 & 7 & 9 & 8 \\
+	}, b = \barray{
+		1 \\
+		2 \\
+		3 \\
+		4 \\
+	}}.
+\]
+is
+\[
+	S' = \parens{A' = \barray{
+	2 & 1 & 1 & 0 \\
+	0 & 1 & 1 & 1 \\
+	0 & 3 & 5 & 5 \\
+	0 & 4 & 6 & 8 \\
+	}, b' = \barray{
+		1 \\
+		0 \\
+		-1 \\
+		1\\
+	}}.
+\]
+The row reducer is $L \in R^{4 \times 4}$ defined by
+\[
+  L = \barray{
+    1 & 0 & 0 & 0 \\
+    -2 & 1 & 0 & 0 \\
+    -4 & 0 & 1 & 0 \\
+    -3 & 0 & 0 & 1
+  }.
+\]
+One can check that $A' = LA$ and $b' = Lb$.
+Notice that $L$ here is lower triangular.
+
+\ssection{Lower triangular}
+
+\begin{proposition}
+  For $i \geq j$, the row reducting matrix corresponding to an $ij$-reduction is lower unit triangular.\footnote{Future editions will include an account.}
+\end{proposition}
+
+\blankpage

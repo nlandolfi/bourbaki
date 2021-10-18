@@ -1,0 +1,56 @@
+%!name:ordinary_reducer_factorization
+%!need:ordinary_reducer_sequence
+%!refs:trefethen1997numerical
+
+\ssection{Why}
+
+Let $(A \in \R^{m \times m}, b \in \R^{m})$ be an ordinarily reducible linear system with orindary reducer sequence $(L_1, \dots, L_{m - 1})$.
+If $U = L_{m-1}\cdots L_{2}L_1 A$, then
+\[
+  A = \invp{L_{m-1}\cdots L_2 L_1}U
+\]
+is a factorization of $U$.
+
+\ssection{Inverting $L_{m-1}\cdots L_2 L_1$}
+
+Of course, assuming invertibility of the $L_i$,
+\[
+  \invp{L_{m-1}\cdots L_2 L_1} = \inv{L}_1\inv{L}_2\cdots\inv{L}_{m-1}.
+\]
+So we are interested in the inverse of $L_i$ for $i \leq m-1$.
+
+\begin{proposition}
+  $\inv{L}_i$ is $L_i$ with the subdiagonal entries negated.
+  \label{proposition:ordinary_reducer_factorization:inverses}
+\end{proposition}
+
+\begin{proposition}
+  $\inv{L}_{k}\inv{L}_{k+1}$ is the unit lower-triangular matrix with the entries of both $\inv{L}_k$ and $\inv{L}_{k+1}$ in their usual places.
+  \label{proposition:ordinary_reducer_factorization:products}
+\end{proposition}
+
+\ssection{Factorization perspective}
+
+Since the matrix $L_k$ has the form
+\[
+  L_k = \barray{
+    1 & & & &  & \\
+    & \ddots & & & & \\
+    & & 1 & & & \\
+    & & -\ell_{k+1,k} & 1 & &\\
+    & & \vdots & & \ddots & & \\
+    & & -\ell_{mk} & & & 1
+  }
+\]
+where $\ell_{ij}$ are the row multipliers (see \sheetref{ordinary_reducer_sequence}{Ordinary Reducer Sequence}), and immediate consequence Proposition~\ref{proposition:ordinary_reducer_factorization:inverses} and Proposition~\ref{proposition:ordinary_reducer_factorization:products} is that
+\[
+  L = \inv{L}_1\inv{L}_2\cdots\inv{L}_{m-1} = \barray{
+    1 & & & & \\
+    \ell_{21} & 1 &&& \\
+    \ell_{31} & \ell_{32} & 1 & & \\
+    \vdots & \vdots & \ddots &\ddots & \\
+    \ell_{m1} & \ell_{m2} & \cdots & \ell_{m,m-1} & 1 \\
+  }
+\]
+In other words, we have $A = LU$ where $L$ is unit lower triangular and $U$ is upper triangular.
+So we have factorized $A$ in terms of a lower and upper triangular matrix.
