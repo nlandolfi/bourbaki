@@ -1,71 +1,45 @@
 %!name:ordinary_row_reductions
 %!need:linear_system_row_reductions
 
-\ssection{Definition}
+\ssection{Why}
 
-In the case of several variables, we want to do several row reductions before back-substitution.\footnote{Future editions will expand.}
+When does the technique of row reductions prevail?
 
-\ssection{Definition}
+\ssection{Multivariable row reductions}
 
-A linear system $S = (A \in \R^{m \times n}, b \in \R^{m})$ is \t{ordinarily reducible} (or \t{simply reducible}) if there exists a sequence $S_1, \dots, S_{n-1}$ of systems such that $S_1$ is the $11$-reduction of $S$ and $S_{i}$ is the $ii$-reduction of $S_{i-1}$ for $i = 1, \dots, n-1$.
-In this case, we call $S_{n-1}$ the \t{ordinary reduction} (or \t{simple reduction}) of $S$
+Let $S = (A \in \R^{m \times m}, b \in \R^{m})$ be a linear system with $A_{kk} \neq 0$.
+The \t{$k$th row reduction} of $S$ is the linear system $(C, d)$ with $C_{st} = A_{st} - (A_{sk}/A_{kk})A_{kt}$ if $i < s \leq m$ and $C_{st} = A_{st}$ otherwise.
 
+The idea, as in the example in \sheetref{linear_system_row_reductions}{Linear System Row Reductions}, is to eliminate variable $k$ from equations $k+1, \dots, m$.
+We are taking the $k$th column of $A$ from
+\[
+  \barray{A_{1k} \\ \vdots \\ A_{kk} \\ A_{k+1,k} \\ \vdots \\ A_{mk}} \quad \text{to} \quad \barray{A_{1k} \\ \vdots \\ A_{kk} \\ 0 \\ \vdots \\ 0}.
+\]
+
+We interpret the $i$th row reduction as \t{subtracting equations} of the system or \t{reducing rows} of the array $A$.
+If $a^i, c^i \in \R^{n}$ denote the $i$th rows of $A$ and $C$, $c^i = a^i - (A_{ik}/A_{kk})a^k$ for $k < i \leq m$,
+In other words, we obtain the $i$th row of matrix $C$ by subtracting a multiple of the $k$th row of matrix $A$ from the $i$th row of matrix $A$, for $k < i \leq m$.
+The following is an immediate consequence of real arithmetic.
 \begin{proposition}
-	The solution set of the ordinary reduction of an ordinarily reducible system is the same as that of the system.
-	\begin{proof}
-    Let $S$ be the first system and $S_1, \dots, S_{n-1}$ be a sequence of reductions.
-    Then all $S_i$ have same solution set and $S_1$ has the same solution set as $S$.
-	\end{proof}
+  Let $(A \in \R^{m \times n}, b \in \R^{n})$ be a linear system which row reduces to $(C, d)$.
+  Then $x \in \R^{n}$ is a solution of $(A, b)$ if and only if it is a solution of $(C, d)$.  \label{proposition:ordinary_row_reductions:basic}
+\end{proposition}
+
+\ssection{Ordinary reductions}
+
+We call the system $S$ \t{ordinarily reducible} if there exists a sequence of systems $S_1, \dots, S_{m-1}$ so that $S_1$ is the $11$-reduction of $S$ and $S_{i}$ is the $ii$-reduction of $S_{i-1}$ for $i = 1, \dots, n-1$.
+In this case, we call $S_{n-1}$ the \t{final ordinary reduction} (or just \t{ordinary reduction}) of $S$.
+The following is an immediate consequence of Proposition~\ref{proposition:ordinary_row_reductions:basic}.
+\begin{proposition}
+	Let $S'$ be the (final) ordinary reduction of $S$. Then $S$ and $S'$ have equivalent solution sets.
 	\label{proposition:ordinary_row_reductions:main}
 \end{proposition}
 
-\ssection{Example}
-
-Suppose we want to find $x_1, x_2, x_3, x_4 \in \R$ to satisfy
+The idea is that a system is ordinarily reducible if we can take row reductions in sequence an end up with a system that is easy to back-substitute and solve.
+The difficulty is that this need not be the case.
+For example, consider the following obvious difficulty.
+The system $(A, b)$ in which
 \[
-	\begin{aligned}
-	2x_1 &+ x_2  &+ x_3  &        &= 1,& \\
-	4x_1 &+ 3x_2 &+ 3x_3 &+ x_4   &= 2,& \\
-	8x_1 &+ 7x_2 &+ 9x_3 &+ 5x_4  &= 3,& \text{ and } \\
-	6x_1 &+ 7x_2 &+ 9x_3 &+ 8x_4  &= 4.&
-	\end{aligned}
+	A = \barray{0 & 1\\1 & 2} \text{ and } \barray{1 \\ 2}
 \]
-First we reduce by subtracting twice row 1 from row 2, four times row 1 from row 3, and three times row 1 from row 4.
-\[
-	S_1 = \parens{\barray{
-	2 & 1 & 1 & 0 \\
-	0 & 1 & 1 & 1 \\
-	0 & 3 & 5 & 5 \\
-	0 & 4 & 6 & 8 \\
-	}, \barray{
-		1 \\
-		0 \\
-		-1 \\
-		1 \\
-	}}.
-\]
-We then subtract three times row 2 from row 3 and four times row 2 from row 4 to obtain
-\[
-	S_2 = \parens{\barray{
-	2 & 1 & 1 & 0 \\
-	0 & 1 & 1 & 1 \\
-	0 & 0 & 2 & 2 \\
-	0 & 0 & 2 & 4 \\
-	}, \barray{
-		1 \\
-		0 \\
-		-1 \\
-		1 \\
-	}}.
-\]
-Finally, we subtract two times row 3 from row 4 to obtain $S_4$, which we can write as
-\[
-	\begin{aligned}
-	 2x_1 + x_2 + x_3         &= 1,& \\
-	        x_2 + x_3 + x_4  &= 0,& \\
-	               2x_3 + 2x_4  &= -1,& \text{ and } \\
-	                      2x_4  &= 3.&
-	\end{aligned}
-\]
-We can now back-substitute to find $x_4 = \nicefrac{3}{2}$, $x_3 = -2$, $x_2 = \nicefrac{1}{2}$ and $x_1 = \nicefrac{5}{4}$.
-Proposition~\ref{proposition:ordinary_row_reductions:main} says that this is the only solution of $S$, as well.
+is not ordinarily reducible, but clearly solvable.
