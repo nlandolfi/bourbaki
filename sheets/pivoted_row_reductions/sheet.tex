@@ -1,0 +1,56 @@
+%!name:pivoted_row_reductions
+%!need:ordinary_row_reductions
+
+\ssection{Why}
+
+The system $(A, b)$ with
+\[
+  A = \barray{0 & 1\\ 1 & 2}
+\]
+More generally, what if we encounter a zero?\footnote{Future editions will expand}
+
+\ssection{Definition}
+
+Let $(C, d)$ be ordinarily reducible with sequence $C_1, \dots, C_{m-1}$.
+The difference between $C_k$ and $C_{k-1}$ for $i = 2, \dots, m-1$ is that we have subtracted multiples of row $k$ from row $k+1, \dots, m$ in order to eliminate variables from the equations correspondings to those rows of the system.
+
+To do so, we needed row $k$,  $k$, and in particular the $kk$th entry (the \t{pivot}) of $C_{k-1}$.
+\[
+  \barray{
+    \times & \cross & \cross & \cross & \cross \\
+      & C^{k-1}_{kk} & \times & \times & \times \\
+      & \times & \times & \times & \times \\
+      & \times & \times & \times & \times \\
+      & \times & \times & \times & \times \\
+  } \longrightarrow
+  \barray{
+    \times & \cross & \cross & \cross & \cross \\
+      & C^{k-1}_{kk} & \times & \times & \times \\
+      & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\
+      & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\
+      & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\
+  }
+\]
+Since $C$ was ordinarily reducible, $C^{k-1}_{ii} \neq 0$.
+Even so, there is no reason why we must use the $k$th row and column for elimination.
+We could also introduce zeros in column $k$ by reducing other rows $k, \dots, m$ by multiples of some row $i$ with $k < i \leq m$.
+For example, if $k = 2$ and $i = 4$,
+\[
+  \barray{
+    \times & \cross & \cross & \cross & \cross \\
+      & \times & \times & \times & \times \\
+      & \times & \times & \times & \times \\
+      & C^{k-1}_{ij} & \times & \times & \times \\
+      & \times & \times & \times & \times \\
+  } \longrightarrow
+  \barray{
+    \times & \cross & \cross & \cross & \cross \\
+      & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\
+      & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\
+      & C^{k-1}_{kk} & \times & \times & \times \\
+      & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\
+  }.
+\]
+
+\footnote{Future editions will complete.}
+
