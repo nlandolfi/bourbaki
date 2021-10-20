@@ -9,56 +9,63 @@ Can we represent the function associating a linear system with its row reduction
 
 \ssection{Main observation}
 
-The following proposition answers the question in the affirmative.
+The following proposition affirmatively answers the question.
 
 \begin{proposition}
-  Let $(A \in \R^{m \times m}, b \in \R^{m})$ be a linear system with $A_{ij} \neq 0$ and $ij$-reduction Let $(C, d)$.
+  Let $(A \in \R^{m \times m}, b \in \R^{m})$ be a linear system with $A_{kk} \neq 0$ and $(C, d)$ the $k$th reduction of $(A, b)$.
   Then there exists a matrix $L \in \R^{m \times m}$ so that $C = LA$ and  $d = Lb$.
   \begin{proof}
-    Define $L \in \R^{m \times m}$ by $L_{st} = 1$ if $s = t$, $-A_{sj}/A_{ij}$ if $k < s \leq m$
-    \[
-      L_{st} = \begin{cases}
-        1 & \text{ if } s = t \\
-        -A_{sj}/A_{ij} & \text{ if } s \neq i \\
-        0 & \text{ otherwise }.
-      \end{cases}
-    \]
+    Define $L \in \R^{m \times m}$ by $L_{st} = 1$ if $s = t$, $-A_{sj}/A_{ij}$ if $k < s \leq m$ and zero otherwise.
   \end{proof}
   \label{proposition:row_reducer_matrices:defining}
 \end{proposition}
-For this reason, we call $L$ in Proposition~\ref{proposition:row_reducer_matrices:defining} a \t{row reducer matrix} or \t{row reducing matrix} or \t{row reducer}.
 
-%A simple consequence is that there exists $(L_1, \dots, L_{n-1})$ in $\R^{n \times n}$ of lower triangular matrices so that the ordinary row reduction of $(A, b)$ is $(L_{n-1}\cdots L_2 L_1 A, L_{n-1}\cdots L_2 L_1b)$.
+For this reason, we call $L$ in Proposition~\ref{proposition:row_reducer_matrices:defining} a \t{row reducer matrix} or \t{row reducing matrix} or \t{row reducer}.
+The row reducer matrix for the $k$th reduction of $(A, b)$ has the form 
+\[
+  L_k = \barray{
+    1 & & & &  & \\
+    & \ddots & & & & \\
+    & & 1 & & & \\
+    & & \nicefrac{A_{ik}}{A_{kk}} & 1 & &\\
+    & & \vdots & & \ddots & & \\
+    & & \nicefrac{A_{mk}}{A_{kk}} & & & 1
+  }
+\]
+So the following is immediate
+\begin{prop}
+	Row reducing matrices are unit lower triangular.	
+\end{prop}
 
 \ssection{Example}
 
-For example, the $(1,1)$-reduction of
+For example, the $(1,1)$-reduction of $(A, b)$ in which
 \[
-	S = \parens{A = \barray{
+	A = \barray{
 	2 & 1 & 1 & 0 \\
 	4 & 3 & 3 & 1 \\
 	6 & 7 & 9 & 5 \\
 	8 & 7 & 9 & 8 \\
-	}, b = \barray{
+	} \text{ and } b = \barray{
 		1 \\
 		2 \\
 		3 \\
 		4 \\
-	}}.
+	}.
 \]
-is
+is the linear system 
 \[
-	S' = \parens{A' = \barray{
+	A' = \barray{
 	2 & 1 & 1 & 0 \\
 	0 & 1 & 1 & 1 \\
 	0 & 3 & 5 & 5 \\
 	0 & 4 & 6 & 8 \\
-	}, b' = \barray{
+	} \text{ and } b' = \barray{
 		1 \\
 		0 \\
 		-1 \\
 		1\\
-	}}.
+	}.
 \]
 The row reducer is $L \in R^{4 \times 4}$ defined by
 \[
@@ -69,13 +76,4 @@ The row reducer is $L \in R^{4 \times 4}$ defined by
     -3 & 0 & 0 & 1
   }.
 \]
-One can check that $A' = LA$ and $b' = Lb$.
-Notice that $L$ here is lower triangular.
-
-\ssection{Lower triangular}
-
-\begin{proposition}
-  For $i \geq j$, the row reducting matrix corresponding to an $ij$-reduction is lower unit triangular.\footnote{Future editions will include an account.}
-\end{proposition}
-
-\blankpage
+One can check that $A' = LA$ and $b' = Lb$, and clearly $L$ is unit lower triangular.
