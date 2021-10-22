@@ -1,0 +1,52 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make sequential_decisions.pdf
+
+sequential_decisions.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > sequential_decisions.tex
+
+sequential_decisions.pdf: ../../*.tex ../../trademark.pdf *.tex sequential_decisions.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode sequential_decisions.tex
+	../../latexrun sequential_decisions.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: sequential_decisions.pdf
+	open sequential_decisions.pdf
+
+o:
+	make open
+
+terms: sequential_decisions.tex
+	bbk_sheet -mode ts sequential_decisions.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f sequential_decisions.*
+	make reset
+	bbk_sheet -mode mk > Makefile
