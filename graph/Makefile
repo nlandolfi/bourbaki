@@ -5,7 +5,9 @@ graph.graphviz: graph.csv *.tmpl
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 force.csv: graph.csv *.tmpl
-	go run graph.go --tmpl force.tmpl > force.csv
+	bbk_graph --tmpl force.tmpl > force.csv
+force.json: graph.csv *.tmpl
+	bbk_graph --tmpl force.json.tmpl > force.json
 o: graph.pdf
 	open graph.pdf
 check:
