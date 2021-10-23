@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./common_growth_classes.pdf#page=2'"> Common Growth Classes </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./common_growth_classes.pdf#page=2'" onkeypress="location.href='./common_growth_classes.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./common_growth_classes-graph.pdf'" onkeypress="location.href='./common_growth_classes-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./exponential_function.html'" onkeypress="location.href='./exponential_function.html'">
+              <span>
+                Exponential Function
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./function_growth_classes.html'" onkeypress="location.href='./function_growth_classes.html'">
+              <span>
+                Function Growth Classes
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./logarithm.html'" onkeypress="location.href='./logarithm.html'">
+              <span>
+                Logarithm
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./polynomials.html'" onkeypress="location.href='./polynomials.html'">
+              <span>
+                Polynomials
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We are regularly referring to a few common growth classes.</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> Let $c \in \R$. Then we name the following growth classes \begin{center} \begin{tabular}{ll} \toprule growth class & name \\ \midrule $O(1)$ & \t{constant growth class} \\ $O(\log(x))$ & \t{logarithmic growth class} \\ $O((\log(x))^c)$ & \t{polylogarithmic growth class} \\ $O(x)$ & \t{linear growth class} \\ $O(x^2)$ & \t{quadratic growth class} \\ $O(x^c)$ & \t{polynomial growth class} \\ $O(c^x)$ & \t{exponential growth class} \\ \bottomrule \end{tabular} \end{center}</p></div><div class="sheet-listing"><p class="sheet"> We have written these in order: \[ O(1) \subset O(\log(x)) \subset O((\log(x))^c) \subset \cdots \subset O(x^c) \subset O(c^x). \]</p></div><div class="sheet-listing"><p class="sheet"> A function that grows faster (is in the upper growth class) of a power of $x$ is called \t{superpolynomial}. One that grows slower than $c^n$ for some $c \in \R$ is called \t{subexponential}. The class $O(\log(x^c))) = O(\log(x))$ since $\log(x^c) = c\log x$. Similarly, for all $c_1, c_2 > 0$, $O(\log_{c_1}(x)) = O(\log_{c_2}(x))$.</p></div><div class="sheet-listing"><p class="sheet"> This list is useful because of the following \begin{proposition} Let $f, g: \R \to \R$ and defined $h: \R \to \R$ by $h = f + g$. If $O(f) \subset O(g)$, then $h \in O(g)$. \end{proposition} In other words, if a function $h$ is the sum of $f$ and $g$ and $g$ is growing faster, then $g$ (the one growing faster) determines the order of $h$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './common_growth_classes.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./common_growth_classes.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./common_growth_classes.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./common_growth_classes-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2021 The Bourbaki Authors. Version 98f4e0b90.
+    </span>
+  </body>
+</html>
