@@ -1,0 +1,40 @@
+%!name:stochastic_dynamical_systems
+%!need:dynamical_systems
+%!need:random_variables
+%!need:dynamic_optimization_problems
+
+\ssection{Why}
+
+We want to model uncertain outcomes in dynamical systems.\footnote{Future editions will expand.}
+
+\ssection{Definition}
+
+Let $\CX_0, \CX_1, \dots, \CX_{T}$ and $\CU_0, \CU_1, \dots, \CU_{T-1}$ be sets.
+Let $(\Omega, \CA, \PM)$ be a probability space.
+Let $\CW_{0}, \dots, \CW_{T}$.
+Let $w_{t}: \Omega \to \CW_{t}$ for $t = 0, \dots, T$ be random variables.
+For $t = 0$, $\dots$, $T-1$, let $f_{t}: \CX_t \times \CU_t \times \CW_t \to \CX_{t+1}$.
+
+We call the sequence
+\[
+	((\CX_t)_{t = 0}^{T}), (\CU_t)_{t=0}^{T-1}, (w_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1})
+\]
+a \t{stochastic discrete-time dynamical system}.
+We call $w_t$ the \t{noise} variables.
+
+
+\section{Problem}
+
+Let $x_0: \Omega \to \CX_0$ be a random variable.
+Define $x_1, \dots, x_T$ by
+\[
+    x_{t+1} = f_t(x_t, u_t, w_t)
+\]
+for $t = 0, \dots, T-1$.
+Here we see that we are effectively modeling the state transition functions as nondeterministic.
+In other words, it is uncertain which state we will arrive in given our current state and action.
+In fact, the choice $u_t$ only determines the distribution of $x_{t+1}$.
+Here $x_0$ is (still) called the \t{initial state} and is a random variable, usually assumed independent of the $w_t$.
+
+
+\blankpage

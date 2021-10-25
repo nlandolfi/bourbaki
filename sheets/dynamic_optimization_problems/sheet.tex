@@ -1,0 +1,43 @@
+%!name:dynamic_optimization_problems
+%!need:dynamical_systems
+%!need:uncertain_outcomes
+
+\ssection{Why}
+
+\ssection{Definition}
+
+Let $\CD = ((\CX_t)_{t = 0}^{T}), (\CU_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1})$ be a dynamical system.
+Let $g_t: \CX_t \times \CU_t \to \R \union \set{\infty}$ for $t = 1$, $\dots$, $T-1$ and let $g_{T}: \CX_T \to \R \cup \set{\infty}$.
+Let $x_0 \in \CX_0$.
+
+We call the sequence $(x_0, \CD, (g_t)_{t = 1}^{T})$ a \t{deterministic dynamic optimization problem}.
+We call $x_0$ the \t{initial state}.
+We call $g_t$ the \t{stage cost function} for stage $t$ and call $g_T$ the \t{terminal cost function}.
+
+A deterministic dynamic optimization problem corresponds to an optimization problem with variables $u_0 \in \CU_0, \dots, u_{T-1} \in \CU_{T-1}$.
+Define $U = \CU_0 \times \CU_1 \times \CU_{T-1}$.
+Define $J: U \to \R \union \set{\infty}$ by
+\[
+    J(u) = \sum_{t = 0}^{T-1} g_t(x_t, u_t) + g_T(x_T)
+\]
+in which $x_{t+1} = f_t(x_t, u_t)$ for $t = 0, \dots, T-1$.
+The optimization problem is $(U, J)$.
+And so a dynamic optimization problem is just a (possibly big) optimization problem.
+
+\ssubsection{Notation}
+
+We often write this problem as
+\[
+  \begin{aligned}
+  \text{minimize}\quad & \sum_{t = 1}^{T-1} g_t(x_t, u_t) + g_T(x_T) \\
+  \text{subject to}\quad & x_{t+1} = f_t(x_t, u_t), \quad t = 0, \dots, T-1.
+  \end{aligned}
+\]
+
+\ssection{Other terminology and comments}
+
+Dynamic optimization problems are frequently called \t{deterministic optimal control} problems or \t{classical} or \t{open-loop control} problems.
+These problems are said to address the dynamic effect of actions across time.
+Although these models include no notion of \say{uncertainty} (or \say{uncertain outcomes}, see \sheetref{uncertain_outcomes}{Uncertain Outcomes}), they are frequently applied in situations with uncertain outcomes by ignoring the uncertainty in the application.
+
+\blankpage
