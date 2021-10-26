@@ -1,0 +1,36 @@
+%!name:probabilistic_data-generation_models
+%!need:inductors
+%!need:probability_measures
+%!refs:shai_shalev-schwartz2014machine
+
+\ssection{Why}
+
+We analyze the performance of inductors in a framework in which we assume the dataset comes as random samples some probability space.
+
+\ssection{Definition}
+
+Let $\CX$ be the domain set, or set of inputs and let $\CY$ be the label set, or set of outs.
+Let $\CD = (\CX, \CA, \PM)$ be a probability space.
+Let $f: \CX \to \CY$.
+
+Let a $(x_1, y_1), \dots, (x_n, y_n)$ of size $n$ generated is by sampling $x_i$ from $\CD$ and then labeling it with $y_i = f(x_i)$.\footnote{Future editions will be more precise by what we mean by sampling. In other words, future editions will likely treat of these \say{samples} as random variables.}
+For this reason we call $\CD$ the \t{data-generating distribution} or \t{underlying distribution} and we call $f$ the \t{correct labeling function}.
+
+\ssection{Measures of success}
+
+Let $A \in \CA$, then the \t{error of a classifier} (or of a prediction rule) $h: \CX \to \CY$ is
+\[
+  \PM(\set{x \in \CX}{h(X) \neq f(x)}.
+\]
+In other words, the probability (w.r.t. the underling distribution) that the classifier $h$ mislabels a point.
+Many authors associate an event $A \in \CA$ with a function $\pi: \CX \to \set{0, 1}$ so that $A = \Set*{x \in \CX}{\pi(x) = 1}$ and it is common to write $\PM[\pi(x)]$ for $\PM(A)$.
+
+The error is measured with respect to the distribution $\CD$ and correct labeling function $f$.
+Other names for the error of a classifier include the \t{generalization error}, the \t{risk} or the \t{true error} or \t{loss} of $h$.
+
+\ssection{Statistical learning theorem}
+
+Many authors refer to a data-generating distribution along with an input set, output set, correct labeling function, and set of predictors as the \t{statistical learning theory framework}.
+
+
+\blankpage
