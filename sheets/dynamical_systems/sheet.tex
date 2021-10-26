@@ -1,6 +1,7 @@
 %!name:dynamical_systems
 %!need:state_representations
 %!need:n-dimensional_space
+%!need:directed_graphs
 
 \ssection{Why}
 
@@ -12,7 +13,7 @@ Let $\CX_0, \CX_1, \dots, \CX_{T}$ and $\CU_0, \CU_1, \dots, \CU_{T-1}$ be sets.
 For $t = 0$, $\dots$, $T-1$, let $f_{t}: \CX_t \times \CU_t \to \CX_{t+1}$.
 We call the sequence
 \[
-	((\CX_t)_{t = 0}^{T}), (\CU_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1})
+	\parens*{(\CX_t)_{t = 0}^{T}), (\CU_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1}}
 \]
 a \t{deterministic discrete-time dynamical system}.
 We call the index $t$ the \t{epoch}, the \t{stage} or the \t{period}.
@@ -48,11 +49,14 @@ A simple variation is that $\CU_t$ depends on $x_t$.\footnote{Future editions wi
 
 \ssection{Examples}
 
-\ssubsection{Discrete dynamical system}
+\ssubsection{Finite dynamical system}
 
-Let $\CX = \set{1, \dots, n}$ and $\CU = \set{1, \dots, m}$.
+A dynamical system is finite if the state and action sets are finite.
+For example, $\CX = \set{1, \dots, n}$ and $\CU = \set{1, \dots, m}$.
 Then $f_t: \CX \times \CU \to \CU$ is called a \t{transition map}.
-We can think of the transition map as a \say{table}.
+
+Or else, let $(V, E)$ be a directed graph, then $\CX = V$, $\CU_{x_t} = \Set{(u, v) \in E}{u = x_t}$ and $f_t(x_t, u_t) = v$ when $u_t = (x_t, v)$ is a dynamical system.
+Roughly this system models \say{moving} on the graph.
 
 \ssubsection{Discrete-time linear dynamical system}
 
