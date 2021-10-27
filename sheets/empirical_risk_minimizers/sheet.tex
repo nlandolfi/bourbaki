@@ -4,17 +4,46 @@
 
 \ssection{Why}
 
-In the statistical learning framework, since the algorithm only has access to the training set, it is natural to select a hypothesis which does well.
+In the statistical learning framework, since the algorithm only has access to the training set, it is natural to select a hypothesis which performs well on the training set.
 
 \ssection{Definition}
 
-Let $S$ be a training dataset (see \sheetref{inductors}{Inductors}) in $\CX \times \CY$.
+Let $((\Omega, \CA, \CP), \set{x_i: \Omega \to \CX}_{i=1}^{n}, f: \CX \to \CY)$ be \t{probabilistic data-generation model} so that $S: \Omega \to (\CX \times \CY)^{n}$ is the training dataset.
+
 The \t{training error} of a classifier $h: \CX \to \CY$ is
 \[
   (\nicefrac{1}{m})\num{\Set*{i \in \upto{m}}{h(x_i) \neq y_i}}.
 \]
 Other terminology includes \t{empirical error} and \t{empirical risk}.
-For these reasons, the learning paradigm of selecting a predictor $h$ to minimizer the empirical risk is called \t{empirical risk minimization} or \t{ERM}. 
+For these reasons, the learning paradigm of selecting a predictor $h$ to minimizer the empirical risk is called \t{empirical risk minimization} or \t{ERM}.
 
+\ssection{Overfitting}
+
+Although selecting a classifier to minimize the empirical risk seems natural, it can be foolish.
+Let $A \subset \CX \subset \R^2$ and $\CY = \set{0, 1}$.
+Suppose that the true classifier $f: \CX \to \CY$ is $f(x) = 1$ if $x \in A$ and $f(x) = 0$ otherwise.
+Suppose that for the underlying distribution $(\CX, \CA, \PM)$ we have $A \in \CA$ and $\PM(A) = \nicefrac{1}{2}$.
+
+For the training set $S$ in $\CX \times \CY$, the hypothesis $h: \CX \to \CY$ defined by
+\[
+	h_S(x) = \begin{cases}
+ 	y_i & \text{ if } x_i = x \\
+ 	0 & \text{ otherwise. }
+ \end{cases}
+\]
+achieves zero empirical risk but has error (w.r.t. $\PM$) of $\nicefrac{1}{2}$.
+Such a classifier is said to be \t{overfit} or to exhibit \t{overfitting}.
+It is said to fit the training dataset \say{too well.}
+
+\ssubsection{Inductive Bias}
+
+In spite of the prior example, are there conditions under which ERM does not overfit?
+One such formulation is to ask whether there are situations in which good performance on empirical risk implies (or makes it highly likely to achieve) good performance on the underling distribution.
+
+One simple approach is to constrain the set of predictors considered.
+A \t{hypothesis class} is a subset of predictors $\CH \subset \CX \to \CY$.
+The \t{restricted empirical risk minimizer} for $\CH$ is a hypothesis $h \in \CH$ minimizing the empirical risk on the data set.
+Many authorities call the hypothesis class a \t{inductive bias} and speak of \say{biasing} the \say{learning algorithm}.
+Since one specifies the hypothesis class prior to the data it often said to \say{encode prior knowledge about the problem to be learned.}
 
 \blankpage
