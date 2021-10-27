@@ -1,0 +1,51 @@
+%!name:empirical_error_minimizers
+%!need:probabilistic_data-generation_models
+%!refs:shai_shalev-schwartz2014understanding
+
+\ssection{Why}
+
+With a probabilistic data-generation model, it is natural to select a hypothesis which performs well on the training set.
+
+\ssection{Definition}
+
+Let $((\Omega, \CA, \PM), \set{x_i: \Omega \to \CX}_{i=1}^{n}, f: \CX \to \CY)$ be probabilistic data-generation model with training set $S: \Omega \to (\CX \times \CY)^{n}$.
+
+
+For a dataset $D = ((\xi_1, \gamma_1), \dots, (\xi_n, \gamma_n)) \in (\CX \times \CY)^n$, the \t{empirical error} of a predictor $h: \CX \to \CY$ is
+\[
+  \nicefrac{1}{n}\num{\Set*{i \in \upto{n}}{h(\xi_i) \neq \gamma_i}},
+\]
+and so an \t{empirical error minimizer} for the dataset is a hypothesis $h: \CX \to \CY$ whose empirical error is minimal.
+
+An \t{empirical risk minimization inductor} or \t{empirical risk minimization algorithm} is $A: (\CX \times \CY)^n \to (\CX \to \CY)$ for which $A((\xi_1, \gamma_1), \dots, (\xi_n, \gamma_n))$ is an empirical risk minimizer.
+
+For the random variable training set $S$, the \t{training error} of a classifier $h: \CX \to \CY$ is a random variable $\text{err}_h: \Omega \to \R$ defined by
+\[
+  \text{err}_h(\omega) = (\nicefrac{1}{n})\num{\Set*{i \in \upto{m}}{h(x_i(\omega)) \neq y_i(\omega)}},
+\]
+and the \t{empirical error minimizer set} is the random variable $\text{EEM}: \Omega \to (\CX \to \CY)$ defined by $\text{EEM}(\omega)$ is
+\[
+  \Set*{h: \CX \to \CY}{\text{err}_h(\omega) \leq \text{err}_g(\omega) \text{ for all } g: \CX \to \CY}.
+\]
+
+Other terminology for the empirical error includes \t{empirical risk}.
+For these reasons, the learning paradigm of selecting a predictor $h$ to minimizer the empirical risk is called \t{empirical risk minimization} or \t{ERM}.
+
+\ssection{Overfitting}
+
+Although selecting a classifier to minimize the empirical risk seems natural, it can be foolish.
+Let $A \subset \CX \subset \R^2$ and $\CY = \set{0, 1}$.
+Suppose that the true classifier $f: \CX \to \CY$ is $f(x) = 1$ if $x \in A$ and $f(x) = 0$ otherwise.
+Suppose that for the underlying distribution $(\CX, \CA, \PM)$ we have $A \in \CA$ and $\PM(A) = \nicefrac{1}{2}$.
+
+For the training set $S$ in $\CX \times \CY$, the hypothesis $h: \CX \to \CY$ defined by
+\[
+	h_S(x) = \begin{cases}
+ 	y_i & \text{ if } x_i = x \\
+ 	0 & \text{ otherwise. }
+ \end{cases}
+\]
+achieves zero empirical risk but has error (w.r.t. $\PM$) of $\nicefrac{1}{2}$.
+Such a classifier is said to be \t{overfit} or to exhibit \t{overfitting}.
+It is said to fit the training dataset \say{too well.}
+
