@@ -1,0 +1,49 @@
+%!name:probably_approximately_correct_inductors
+%!need:empirical_error_minimizers
+%!need:set_powers
+%!refs:shai_shalev-schwartz2014understanding
+
+\ssection{Why}
+
+Are there conditions under which every empirical error minimizer does not overfit?
+Does good empirical error make good performance likely?
+
+We want to connect performance on the training dataset with performance on the underlying model distribution.
+
+\ssection{Representative datasets}
+
+Let $((\Omega, \CA, \PM), \set{x_i: \Omega \to \CX}_{i=1}^{n}, f: \CX \to \CY)$ be probabilistic data-generation model with training set $S: \Omega \to (\CX \times \CY)^{n}$.
+
+In some cases, the dataset seen by an inductor may not \say{reflect well} the underlying distribution.
+For this reason, we speak probabilistically about an inductor's performance.
+
+Let $0 < \delta < 1$.
+A set of datasets $\CS = \powerset{((\CX \times \CX)^n)}$ is \t{$1-\delta$-representative} if
+\[
+	\PM(\Set*{\omega \in \Omega}{S(w) \in \CS}) \geq 1 - \delta.
+\]
+Roughly speaking, if $\delta \ll 1$ then the set $\CS$ is \say{fairly likely.}
+
+We think of $\CS$ as the set of datasets for which our learning algorithm \say{suceeds,} those datasets which are reasonable.
+In other words, the probability of a reasonable training set is $1-\delta$.
+We call $\delta$ the \t{confidence parameter}.
+
+\ssection{Approximate hypotheses}
+
+We must also define \say{success}.
+There is a nonzero probability that we do not see a particular input in $\CX$ and so we can not hope for zero generalization error.
+For this reason, we speak approximately about the generalization error of hypothesises.
+
+Let $0 < \epsilon < 1$.
+A predictor $h: \CX \to \CY$ is \t{$\epsilon$-approximate} if
+\[
+	\mu(\Set*{x \in X}{h(x) \neq f(x)} < \epsilon.
+\]
+Roughly speaking, if $\epsilon \ll 1$, the the error of the hypothesis is \say{fairly small.}
+We call $\epsilon$ the \t{accuracy parameter}, since the accuracy of such a predictor is $1 - \epsilon$.
+
+\ssection{Definition}
+
+An inductor (or algorithm, or learner) is \t{probably approximately correct} with confidence $1-\delta$ and accuracy $1-\epsilon$ for the probabilistic model if the event that its induced predictor has accuracy at least $1-\epsilon$, has probability at least $1-\delta$.
+
+To show that an algorithm is probably approximately correct, we bound (from above) the probability that the learner will fail (have larger than $\epsilon$ error) on a dataset.

@@ -1,32 +1,22 @@
 %!name:empirical_error_minimizers
-%!need:probabilistic_data-generation_models
+%!need:supervised_probabilistic_data_models
 %!refs:shai_shalev-schwartz2014understanding
 
 \ssection{Why}
 
-With a probabilistic data-generation model, it is natural to select a hypothesis which performs well on the training set.
+A natural and simple approach is to select a predictor which performs best on the (correctly) labeled training dataset.
 
 \ssection{Definition}
 
-Let $((\Omega, \CA, \PM), \set{x_i: \Omega \to \CX}_{i=1}^{n}, f: \CX \to \CY)$ be probabilistic data-generation model with training set $S: \Omega \to (\CX \times \CY)^{n}$.
-
-
-For a dataset $D = ((\xi_1, \gamma_1), \dots, (\xi_n, \gamma_n)) \in (\CX \times \CY)^n$, the \t{empirical error} of a predictor $h: \CX \to \CY$ is
+Let $((X, \CX, \mu), f: X \to Y)$ be a probabilistic data-generation model.
+For a dataset $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the \t{empirical error} of a predictor $h: X \to Y$ is
 \[
   \nicefrac{1}{n}\num{\Set*{i \in \upto{n}}{h(\xi_i) \neq \gamma_i}},
 \]
-and so an \t{empirical error minimizer} for the dataset is a hypothesis $h: \CX \to \CY$ whose empirical error is minimal.
+and so an \t{empirical error minimizer} for the dataset is a hypothesis whose empirical error is minimal.
 
-An \t{empirical risk minimization inductor} or \t{empirical risk minimization algorithm} is $A: (\CX \times \CY)^n \to (\CX \to \CY)$ for which $A((\xi_1, \gamma_1), \dots, (\xi_n, \gamma_n))$ is an empirical risk minimizer.
-
-For the random variable training set $S$, the \t{training error} of a classifier $h: \CX \to \CY$ is a random variable $\text{err}_h: \Omega \to \R$ defined by
-\[
-  \text{err}_h(\omega) = (\nicefrac{1}{n})\num{\Set*{i \in \upto{m}}{h(x_i(\omega)) \neq y_i(\omega)}},
-\]
-and the \t{empirical error minimizer set} is the random variable $\text{EEM}: \Omega \to (\CX \to \CY)$ defined by $\text{EEM}(\omega)$ is
-\[
-  \Set*{h: \CX \to \CY}{\text{err}_h(\omega) \leq \text{err}_g(\omega) \text{ for all } g: \CX \to \CY}.
-\]
+Let $\CM_{X \to Y}$ denote the set of measurable functions from $X$ to $Y$.
+An \t{empirical risk minimization inductor} or \t{empirical risk minimization algorithm} is an inductor $A: (X \times Y)^n \to \CM_{X \to Y}$ for which $A(D)$ is an empirical risk minimizer of $D$, for all datasets $D \in (X \times Y)^n$,
 
 Other terminology for the empirical error includes \t{empirical risk}.
 For these reasons, the learning paradigm of selecting a predictor $h$ to minimizer the empirical risk is called \t{empirical risk minimization} or \t{ERM}.
@@ -34,18 +24,23 @@ For these reasons, the learning paradigm of selecting a predictor $h$ to minimiz
 \ssection{Overfitting}
 
 Although selecting a classifier to minimize the empirical risk seems natural, it can be foolish.
-Let $A \subset \CX \subset \R^2$ and $\CY = \set{0, 1}$.
+Let $A \subset X \subset \R^2$, and $Y = \set{0, 1}$.
 Suppose that the true classifier $f: \CX \to \CY$ is $f(x) = 1$ if $x \in A$ and $f(x) = 0$ otherwise.
-Suppose that for the underlying distribution $(\CX, \CA, \PM)$ we have $A \in \CA$ and $\PM(A) = \nicefrac{1}{2}$.
+Suppose that for the underlying distribution $(X, \CX, \mu)$ we have $A \in \CX$ and $\mu(A) = \nicefrac{1}{2}$.
 
-For the training set $S$ in $\CX \times \CY$, the hypothesis $h: \CX \to \CY$ defined by
+For any training set $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the hypothesis $h: X \to Y$ defined by
 \[
-	h_S(x) = \begin{cases}
+	h(x) = \begin{cases}
  	y_i & \text{ if } x_i = x \\
  	0 & \text{ otherwise. }
  \end{cases}
 \]
-achieves zero empirical risk but has error (w.r.t. $\PM$) of $\nicefrac{1}{2}$.
+achieves zero empirical risk but has error (w.r.t. $\mu$) of $\nicefrac{1}{2}$.
 Such a classifier is said to be \t{overfit} or to exhibit \t{overfitting}.
 It is said to fit the training dataset \say{too well.}
+
+\ssection{Inductive bias}
+
+One way to mitigate overfitting for empirical error minimization is to constrain the set of predictors considered to a particular hypothesis class.
+As mentioned in \sheetref{hypothesis_classes}{Hypothesis Classes}, we call the hypothesis class an \t{inductive bias}.
 

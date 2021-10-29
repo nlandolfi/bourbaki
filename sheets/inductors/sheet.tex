@@ -7,39 +7,46 @@ We want to talk about learning associations between objects in time or space.
 
 \ssection{Definition}
 
-Let $A$ and $B$ be sets.
-An \t{inductor} is a function mapping a dataset of paired records in $A \times B$ to a function from $A$ to $B$.
+Let $X$ and $Y$ be sets.
+An \t{inductor} is a function mapping a dataset of paired records in $X \times Y$ to a function from $X$ to $Y$.
+We commonly speak of a family of inductors indexed by $\N$, one for each natural number $n$ which is the size of the dataset.
 
-We call the elements of $A$ the \t{inputs} and the elements of $B$ the \t{outputs}.
+We call the elements of $X$ the \t{inputs} and the elements of $Y$ the \t{outputs}.
 A \t{predictor} is a function from the inputs to the outputs and the result of an input under a predictor is a \t{prediction}.
 Using this language, an inductor maps datasets to predictors.
-A predictor maps precepts to postcepts.
+A predictor maps inputs to outputs.
 
 \ssubsection{Notation}
 
-Let $D$ be a dataset of size $n$ in $A \cross B$.
-Let $g: A \to B$, a predictor, which makes prediction $g(a)$ on precept $a \in A$.
-Let $f: (A \cross B)^n \to (A \to B)$, an inductor.
-Then $f(D)$ is the predictor which the inductor associates with dataset $D$.
+Let $D$ be a dataset of size $n$ in $X \cross Y$.
+Let $g: X \to Y$, a predictor, which makes prediction $g(x)$ on precept $x \in X$.
+Let $G: (X \cross Y)^n \to (A \to B)$ be an inductor.
+Then $G(D)$ is the predictor which the inductor associates with dataset $D$.
 
 \ssubsection{Other terminology}
 
-Many authorities call the inputs the \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns} or \t{observations}.
-Similarly, some call the outputs the \t{dependent variables}, \t{postcepts}, \t{targets}, \t{outcomes} or \t{observational outcomes}.
+Other terms for the inputs include \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns}, \t{instances}, or \t{observations}.
+Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}.
 
-Some call a predictor an \t{input-output} mapping, a \t{point predictor},\footnote{Future editions may remove this. The intuition for the word point is from the real numbers, which is not a prerequisite sheet.}, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.
+Other terms for a predictor include \t{input-output} mapping, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.
 Some authors refer to a prediction as a \t{guess}.
 
-Other authors refer to the set of inputs $A$ as the \t{domain set} and elements of $A$ as \t{instances}.
-Likewise, some authors refer to the argument of an inductor as the \t{training data}, \t{training set},\footnote{The word \say{set} is rough, since we are speaking of a sequence.} or \t{training examples}.
+\ssubsection{(Supervised) learning algorithms}
 
-\ssubsection{Learning algorithms}
+Since we use a predictor to guess inputs which do not necessarily appear in the dataset, some authors call an inductor a \t{learner} or \t{learning algorithm}.
+In accordance with this usage, they refer to the argument of an inductor as the \t{training data} or \t{training dataset} or \t{training set}.
+The word \say{set}, however, may mislead since since we are speaking of a sequence.
 
-We use a predictor to make guesses on precepts which do not appear in the dataset that was used to construct the predictor.
-We refer to the task of proposing a predictor for a particular dataset a \t{learning problem}.
-
-It is common in this context to refer to an inductor as a \t{learning algorithm} and call the task or problem of constructing a predictor from a dataset  \t{supervised learning}.
+It is common to refer to the construction a predictor from a dataset a \t{learning problem}.
+In this case, the learning problem is said to be \t{supervised learning}.
 By supervision, we mean to indicate that we have the outputs corresponding to the inputs.
-
 In line with this usage, the outputs are often called \t{labels} and the labels are said \say{to provide supervision.}
-In this context, the dataset used to construct the predictor (i.e., the argument to the inductor) is called the \t{training dataset}.
+
+\ssection{Consistent and complete datasets}
+
+Let $D = ((x_i, y_i))_{i =1}^{n}$ and $f: X \to Y$.
+$D$ is \t{consistent with $f$} if $f(x_i) = y_i$ for all $i = 1, \dots, n$.
+$D$ is \t{consistent} if there exists a predictor with which it is consistent.
+If $D$ is consistent, then $x_i = x_j \implies y_i = y_j$.
+$D$ is \t{complete} if $\union_i\set{x_i} = X$.
+If a dataset is complete, then it includes every input.
