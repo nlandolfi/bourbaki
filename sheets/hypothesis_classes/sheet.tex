@@ -1,49 +1,48 @@
 %!name:hypothesis_classes
-%!need:empirical_error_minimizers
+%!need:supervised_probabilistic_data_models
 %!refs:shai_shalev-schwartz2014understanding
 
 \ssection{Why}
 
-One way to mitigate overfitting for empirical error minimization is to constrain the set of predictors considered.
-%Are there conditions under which ERM does not overfit?
-%One such formulation is to ask whether there are situations in which good performance on empirical risk implies (or makes it highly likely to achieve) good performance on the underling distribution.
-%One simple approach is to constrain the set of predictors considered.
+We consider the set of predictors from which we select.
 
 \ssection{Definition}
 
-Let $((\Omega, \CA, \PM), \set{x_i: \Omega \to \CX}_{i=1}^{n}, f: \CX \to \CY)$ be probabilistic data-generation model with training set $S: \Omega \to (\CX \times \CY)^{n}$.
-
-A \t{hypothesis class} is a subset of predictors $\CH \subset \CX \to \CY$.
-For a dataset $D = ((\xi_1, \gamma_1), \dots, (\xi_n, \gamma_n)) \in (\CX \times \CY)^n$, a \t{restricted empirical error minimizer} of $\CH$ is a hypothesis $h \in \CH$ with minimal (among elements of $\CH$) empirical error on $D$.
+Let $(X, \CX, \mu)$ and $f: X \to Y$ be probabilistic data-generation model.
+A \t{hypothesis class} $\CH \subset (X \to Y)$ is a subset of measurable functions.
+For a dataset $D \in (X \times Y)^n$, a \t{restricted empirical error minimizer} of $\CH$ is a hypothesis $h \in \CH$ with minimal (among elements of $\CH$) empirical error on $D$.
 
 \ssubsection{Inductive Bias}
 
 Many authorities call the hypothesis class a \t{inductive bias} and speak of \say{biasing} the \say{learning algorithm}.
 Since one specifies the hypothesis class prior to the data it often said to \say{encode prior knowledge about the problem to be learned.}
 
-\ssection{Properties}
+\ssection{Realizable classes}
 
-Let $\mu$ be the underlying distribution. 
+Some hypothesis classes are better than others.
+For example, a hypothesis class that includes the correct labeling function seems preferable to a class that does not.
+
+We formulate a weaker condition that captures the case when $f \in \CH$.
 A hypothesis class $\CH$ is \t{realizable} if there exists $h^{\star} \in \CH$ with
 \[
-	\mu(\Set{x \in \CX}{h^\star(x) \neq f(x)}) = 0.%\footnote{Future editions will comment on the measurability of this set. It is no object for finite $\CX$.} In fact, it is no object for any measurable $h$ and $f$.
+	\mu(\Set{x \in X}{h^\star(x) \neq f(x)}) = 0.%\footnote{Future editions will comment on the measurability of this set. It is no object for finite $\CX$.} In fact, it is no object for any measurable $h$ and $f$.
 \]
-This condition is natural because of its corollaries.
-First, there exists $h^\star$ whose probability of achieving zero empirical risk on $S$ is 1.
-Second, all empirical risk minimizers will achieve zero empirical risk on the dataset, with probability one.
+This condition is natural because if $f \in \CH$, then $\CH$ is realizable.
+Moreover, the condition has two natural corollaries
 
-To see the first corollary, define $e_i: \Omega \to \set{0, 1}$ by $e_i(\omega_i) = 1$ if $h^\star(x_i(\omega)) \neq f(x_i(\omega))$ and $e_i(\omega) = 0$ otherwise.
-In other words, $(\nicefrac{1}{n})\sum_{i} e_i$ is the empirical risk.
-The empirical risk is zero if and only if the sum is zero, and the set
+First, there exists $h^\star$ so that
 \[
-A = \Set*{(\omega_1, \dots, \omega_n) \in \Omega^n}{\sum_{i=1}^{n} e_i(\omega) = 0}
+	\mu^n(\Set*{x \in X^n}{\num{\Set*{i \in [n]}{h^\star(x_i) \neq f(x_i)}} \neq 0}) = 0.
 \]
-is $\prod_{i} \Set{\omega_i \in \Omega}{e_i(\omega_i) = 0}$ and so
-$\PM(A) = \prod_{i} \mathbfsf{Q}(\Set{\omega \in \Omega}{e_i(\omega) = 0})$
-where for each $i$, $\mathbfsf{Q}[e_i = 0] = 1 - \mathbfsf{Q}[e_i = 1] = 1 - 0 = 0$.
-In other words, for a realizable hypothesis class, there exists a hypothesis obtaining zero empirical risk with probability one.
+We interpret this as follows: \say{there exists a hypothesis whose probability of achieving nonzero empirical risk is zero.}
 
-In still other words, there exists a hypothesis for which the event that it achieves zero empirical risk has probability one.
-In this event, every empirical risk minimizer achieves zero empirical risk.
-So, the set of empirical risk minimizers all achieve zero empirical risk with probability one, if the hypothesis class is realizable.\footnote{Future editions may clarify this further.}
+Second, denote by $M_x$ the empirical risk minimizers of $x \in X^n$. Then,
+\[
+	\mu^n(\Set*{x \in X^n}{\forall h \in M_x, \forall i, h(x_i) = f(x_i)}) = 1.
+\]
+We interpret this as follows: \say{all empirical risk minimizers will achieve zero empirical risk on the dataset, with probability 1.}
+
+Roughly speaking, there exists a hypothesis for which the event that it achieves zero empirical risk has probability one.
+In this event, every hypothesis in the set of empirical risk minimizers must achieve zero empirical risk.
+This is a consequence of the hypothesis class being realizable.
 % see page 17 of shai_shalev-schwartz2014understanding for this.
