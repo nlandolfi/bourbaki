@@ -4,43 +4,36 @@
 
 \ssection{Why}
 
-A natural and simple approach is to select a predictor which performs best on the (correctly) labeled training dataset.
+A natural and (conceptually) simple inductor is to select a predictor which achieves zero error on the training dataset.
 
 \ssection{Definition}
 
-Let $((X, \CX, \mu), f: X \to Y)$ be a probabilistic data-generation model.
+Let $(X, \CX, \mu)$ and $f: X \to Y$ be a probabilistic supervised data model.
 For a dataset $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the \t{empirical error} of a predictor $h: X \to Y$ is
 \[
-  \nicefrac{1}{n}\num{\Set*{i \in \upto{n}}{h(\xi_i) \neq \gamma_i}},
+  (\nicefrac{1}{n})\num{\Set*{i \in \upto{n}}{h(x_i) \neq y_i}},
 \]
-and so an \t{empirical error minimizer} for the dataset is a hypothesis whose empirical error is minimal.
+An \t{empirical error minimizer} is a predictor whose empirical error is minimal.
+Since we assume that the dataset is consistent, the correct labeling function is always an empirical error minimizer, and achieves zero.
+If the dataset is incomplete, however, there may be other empirical error minimizers.
 
-Let $\CM_{X \to Y}$ denote the set of measurable functions from $X$ to $Y$.
-An \t{empirical risk minimization inductor} or \t{empirical risk minimization algorithm} is an inductor $A: (X \times Y)^n \to \CM_{X \to Y}$ for which $A(D)$ is an empirical risk minimizer of $D$, for all datasets $D \in (X \times Y)^n$,
+A family of inductors $(A^n)_n$ is an \t{empirical error minimizer} if, for each $n \in N$, and each dataset $D = ((x_i, y_i))_{i = 1}^{n}$, $A^n(D)$ is an empirical risk minimizer of $D$.
+
+\ssection{Overfitting and incutive bias}
+
+Since a dataset may be incomplete, an empirical risk minimizer may be a \say{poor} predictor.
+For example, let $A \subset X \subset \R^2$ and $Y = \set{0, 1}$.
+Define $f: X \to Y$ by $f(x) = 1$ if $x \in A$ and $f(x) = 0$ otherwise.
+Suppose $A \in \CX$ and $\mu(A) = \nicefrac{1}{2}$.
+
+For any training set $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the hypothesis $h: X \to Y$ defined by $h(x) = y_i$ if $x = x_i$ and $h(x) = 0$ otherwise achieves zero empirical error but has \say{actual} error $\nicefrac{1}{2}$.
+The predictor is said to be \t{overfit} or to exhibit \t{overfitting}.
+It is said to fit the training dataset \say{too well.}
+
+By adjusting the hypothesis class one may \say{guard against} overfitting. 
+In this context, the constrained hypothesis class is called an \t{inductive bias}.
+
+\ssubsection{Other terminology}
 
 Other terminology for the empirical error includes \t{empirical risk}.
 For these reasons, the learning paradigm of selecting a predictor $h$ to minimizer the empirical risk is called \t{empirical risk minimization} or \t{ERM}.
-
-\ssection{Overfitting}
-
-Although selecting a classifier to minimize the empirical risk seems natural, it can be foolish.
-Let $A \subset X \subset \R^2$, and $Y = \set{0, 1}$.
-Suppose that the true classifier $f: \CX \to \CY$ is $f(x) = 1$ if $x \in A$ and $f(x) = 0$ otherwise.
-Suppose that for the underlying distribution $(X, \CX, \mu)$ we have $A \in \CX$ and $\mu(A) = \nicefrac{1}{2}$.
-
-For any training set $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the hypothesis $h: X \to Y$ defined by
-\[
-	h(x) = \begin{cases}
- 	y_i & \text{ if } x_i = x \\
- 	0 & \text{ otherwise. }
- \end{cases}
-\]
-achieves zero empirical risk but has error (w.r.t. $\mu$) of $\nicefrac{1}{2}$.
-Such a classifier is said to be \t{overfit} or to exhibit \t{overfitting}.
-It is said to fit the training dataset \say{too well.}
-
-\ssection{Inductive bias}
-
-One way to mitigate overfitting for empirical error minimization is to constrain the set of predictors considered to a particular hypothesis class.
-As mentioned in \sheetref{hypothesis_classes}{Hypothesis Classes}, we call the hypothesis class an \t{inductive bias}.
-
