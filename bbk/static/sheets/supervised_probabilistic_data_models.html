@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./supervised_probabilistic_data_models.pdf#page=2'"> Supervised Probabilistic Data Models </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./supervised_probabilistic_data_models.pdf#page=2'" onkeypress="location.href='./supervised_probabilistic_data_models.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./supervised_probabilistic_data_models-graph.pdf'" onkeypress="location.href='./supervised_probabilistic_data_models-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./approximators.html'" onkeypress="location.href='./approximators.html'">
+              <span>
+                Approximators
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./independent_identically_distributed_random_variables.html'" onkeypress="location.href='./independent_identically_distributed_random_variables.html'">
+              <span>
+                Independent Identically Distributed Random Variables
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./inductors.html'" onkeypress="location.href='./inductors.html'">
+              <span>
+                Inductors
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./empirical_error_minimizers.html'" onkeypress="location.href='./empirical_error_minimizers.html'">
+            <span>
+            Empirical Error Minimizers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./hypothesis_classes.html'" onkeypress="location.href='./hypothesis_classes.html'">
+            <span>
+            Hypothesis Classes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./probably_approximately_correct_inductors.html'" onkeypress="location.href='./probably_approximately_correct_inductors.html'">
+            <span>
+            Probably Approximately Correct Inductors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to discuss an inductor's performance on consistent (but possibly incomplete) datasets.</p></div><div class="sheet-listing"><p class="sheet"> We take two steps. First, put a measure on the set of training sets and only consider high-measure subsets. Second, consider predictors performing well in some tolerance.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX, \mu)$ be a probability space and $(Y, \CY)$ a measurable space. Let $f: X \to Y$ measurable. We call the pair $((X, \CX, \mu), f)$ a \t{(supervised) probabilistic data model}.</p></div><div class="sheet-listing"><p class="sheet"> We interpret $\mu$ as the \t{data-generating distribution} or \t{underlying distribution} and $f$ as the \t{correct labeling function}. Many authors refer to a supervised probabilistic data model as the \t{statistical learning (theory) framework}.</p></div><div class="sheet-listing" id="probable_datasets"><h1 class="sheet">3. Probable datasets</h1></div><div class="sheet-listing"><p class="sheet"> We put a measure on the set of datasets by using the product measure $(X^n, \CX^n, \mu^n)$. We interpret this as a model for a training set of independent and identically distributed inputs.</p></div><div class="sheet-listing"><p class="sheet"> For $\delta \in (0, 1)$, $\CS \subset X^n$ is \t{$1-\delta$-representative} if $\mu^n(\CS) \geq 1 - \delta$. If $\CS$ is $1-\delta$-representative for small $\delta$, we think of $\CS$ as a set of "probable} or \say{reasonable" datasets. We call $\delta$ the \t{confidence parameter}.</p></div><div class="sheet-listing" id="predictor_error"><h1 class="sheet">4. Predictor error</h1></div><div class="sheet-listing"><p class="sheet"> The \t{error} of (measurable) $h: X \to Y$ (under $\mu$ and $f$) is \[ \underset{\mu, f}{\mathword{error}}(h) = \mu(\Set*{x \in \CX}{h(x) \neq f(x)}). \] We interpret this as the probability that the predictor mislabels a point. The \t{accuracy} of $h$ is $1 - \mathword{error}_{\mu, f}(h)$.</p></div><div class="sheet-listing"><p class="sheet"> Since $(f, g) \mapsto \mu[f(x) \neq g(x)]$ is a metric on $L^2(X, \CX, \mu, Y)$ we can talk about the error as the "distance" from the correct label classifier. Thus we will say that $\epsilon \in (0, 1)$, (measurable) $h: \CX \to \CY$ \t{$\epsilon$-approximates} the correct labeling function $f$ if $\mathword{error}(h) \leq \epsilon$. Roughly speaking, if $\epsilon \ll 1$, the the error of the hypothesis is "fairly small." We call $\epsilon$ the \t{accuracy parameter}, since the accuracy of such a predictor is $1 - \epsilon$.</p></div><div class="sheet-listing" id="other_terminology"><h1 class="sheet">5. Other terminology</h1></div><div class="sheet-listing"><p class="sheet"> A \t{hypothesis class} is a subset of the measurable functions from $X \to Y$. Other names for the error of a classifier include the \t{generalization error}, the \t{risk} or the \t{true error} or \t{loss}.</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './supervised_probabilistic_data_models.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./supervised_probabilistic_data_models.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./supervised_probabilistic_data_models.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./supervised_probabilistic_data_models-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2021 The Bourbaki Authors. Version 5d51f3fe6.
+    </span>
+  </body>
+</html>

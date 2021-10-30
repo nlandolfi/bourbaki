@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./pAC_learnable_hypotheses.pdf#page=2'"> PAC Learnable Hypotheses </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./pAC_learnable_hypotheses.pdf#page=2'" onkeypress="location.href='./pAC_learnable_hypotheses.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./pAC_learnable_hypotheses-graph.pdf'" onkeypress="location.href='./pAC_learnable_hypotheses-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./hypothesis_classes.html'" onkeypress="location.href='./hypothesis_classes.html'">
+              <span>
+                Hypothesis Classes
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./probably_approximately_correct_inductors.html'" onkeypress="location.href='./probably_approximately_correct_inductors.html'">
+              <span>
+                Probably Approximately Correct Inductors
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./eRM_learns_finite_realizable_classes.html'" onkeypress="location.href='./eRM_learns_finite_realizable_classes.html'">
+            <span>
+            ERM Learns Finite Realizable Classes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about an algorithm which can learn from a hypothesis class, regardless of the underlying distribution.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX)$ and $(Y, \CY)$ be measurable input and output spaces.</p></div><div class="sheet-listing"><p class="sheet"> A hypothesis class $\CH$ of measurable functions from $X$ to $Y$ is \t{probably approximately correct learnable} (or \t{PAC learnable}) if (a) there exists an inductor $\CA: (X \times Y)^n \to \CH$, so that (b) for every underlying measure $\mu$ and labeling function $f: X \to Y$ (c) for every $\epsilon, \delta \in (0, 1)$ (d) there exists $m_0 \in \N$ so that (e) for all $m \geq m_0$ \begin{equation} \mu^m\left[ \mu\left[ \CA((x_i, f(x_i))_{i = 1}^{n})(\xi) \neq f(\xi) \right] \leq \epsilon \right] \geq 1-\delta \label{equation:pAC_learnable_hypotheses:condition} \end{equation} where $x \in X^m$ and $\xi \in X$. In this case we say that the inductor (or learning algorithm) $\CA$ \t{PAC learns} $\CH$.</p></div><div class="sheet-listing"><p class="sheet"> We interpret this as follows: "no matter the underlying distribution and correct labeling function, if someone specifies an accuracy and confidence we can tell them the number of samples they need so that the inductor outputs a hypothesis which is probably approximately correct."</p></div><div class="sheet-listing"><p class="sheet"> Some authors require that the hypothesis class be realizable with respect to the underlying distribution and correct labeling function. This is natural, because if the hypothesis class includes the correct labeling function $f$, then it is realizable. In this case they refer to the above definition as the \t{agnostic PAC model}. We emphasize here that there this definition includes the notion of realizability. In other words. We emphasize again that this definition contains to "approximation parameters." The accuracy parameter $\epsilon$ corresponds to the "approximately correct} piece and the confidence parameters $\delta$ corresponds to the \say{probably" piece.</p></div><div class="sheet-listing"><h2 class="sheet" id="sample_complexity">2.1 Sample complexity</h2></div><div class="sheet-listing"><p class="sheet"> Note that the existence of an $m_0$ above for each $\epsilon$ and $\delta$ is equivalent to requiring that there exists  $m_0: (0, 1)^2 \to \N$ so that for all $m \geq m_0(\epsilon,\delta)$ the condition in Equation~\ref{equation:pAC_learnable_hypotheses:condition} holds. There may exist multiple such $m_0$, so we define $\tilde{m}: (0, 1)^2 \to \N$ so that $\tilde{m}(\epsilon,\delta)$ is the smallest integer so that Equation~\eqref{equation:pAC_learnable_hypotheses:condition} holds. We call $\tilde{m}$ the \t{sample complexity}. Clearly it is a function of $\epsilon$ and $\delta$. It also depends on the hypothesis class $\CH$ and the learning algorithm $\CA$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './pAC_learnable_hypotheses.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./pAC_learnable_hypotheses.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./pAC_learnable_hypotheses.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./pAC_learnable_hypotheses-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2021 The Bourbaki Authors. Version 5d51f3fe6.
+    </span>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./empirical_error_minimizers.pdf#page=2'"> Empirical Error Minimizers </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./empirical_error_minimizers.pdf#page=2'" onkeypress="location.href='./empirical_error_minimizers.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./empirical_error_minimizers-graph.pdf'" onkeypress="location.href='./empirical_error_minimizers-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./supervised_probabilistic_data_models.html'" onkeypress="location.href='./supervised_probabilistic_data_models.html'">
+              <span>
+                Supervised Probabilistic Data Models
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> A natural and (conceptually) simple inductor is to select a predictor which achieves zero error on the training dataset.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX, \mu)$ and $f: X \to Y$ be a probabilistic supervised data model. For a dataset $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the \t{empirical error} of a predictor $h: X \to Y$ is \[ (\nicefrac{1}{n})\num{\Set*{i \in \upto{n}}{h(x_i) \neq y_i}}, \] An \t{empirical error minimizer} is a predictor whose empirical error is minimal. Since we assume that the dataset is consistent, the correct labeling function is always an empirical error minimizer, and achieves zero. If the dataset is incomplete, however, there may be other empirical error minimizers.</p></div><div class="sheet-listing"><p class="sheet"> A family of inductors $(A^n)_n$ is an \t{empirical error minimizer} if, for each $n \in N$, and each dataset $D = ((x_i, y_i))_{i = 1}^{n}$, $A^n(D)$ is an empirical risk minimizer of $D$.</p></div><div class="sheet-listing" id="overfitting_and_incutive_bias"><h1 class="sheet">3. Overfitting and incutive bias</h1></div><div class="sheet-listing"><p class="sheet"> Since a dataset may be incomplete, an empirical risk minimizer may be a "poor" predictor. For example, let $A \subset X \subset \R^2$ and $Y = \set{0, 1}$. Define $f: X \to Y$ by $f(x) = 1$ if $x \in A$ and $f(x) = 0$ otherwise. Suppose $A \in \CX$ and $\mu(A) = \nicefrac{1}{2}$.</p></div><div class="sheet-listing"><p class="sheet"> For any training set $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the hypothesis $h: X \to Y$ defined by $h(x) = y_i$ if $x = x_i$ and $h(x) = 0$ otherwise achieves zero empirical error but has "actual} error $\nicefrac{1}{2"$. The predictor is said to be \t{overfit} or to exhibit \t{overfitting}. It is said to fit the training dataset "too well."</p></div><div class="sheet-listing"><p class="sheet"> By adjusting the hypothesis class one may "guard against" overfitting. In this context, the constrained hypothesis class is called an \t{inductive bias}.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">3.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Other terminology for the empirical error includes \t{empirical risk}. For these reasons, the learning paradigm of selecting a predictor $h$ to minimizer the empirical risk is called \t{empirical risk minimization} or \t{ERM}.</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './empirical_error_minimizers.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./empirical_error_minimizers.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./empirical_error_minimizers.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./empirical_error_minimizers-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2021 The Bourbaki Authors. Version 5d51f3fe6.
+    </span>
+  </body>
+</html>
