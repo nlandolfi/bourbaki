@@ -3,50 +3,44 @@
 
 \ssection{Why}
 
-We want to talk about learning associations between objects in time or space.
+We discuss learning (or inferring) relations from examples.
 
 \ssection{Definition}
 
 Let $X$ and $Y$ be sets.
-An \t{inductor} is a function mapping a dataset of paired records in $X \times Y$ to a function from $X$ to $Y$.
-We commonly speak of a family of inductors indexed by $\N$, one for each natural number $n$ which is the size of the dataset.
+An \t{inductor} (for a dataset of size $n$ in $X \times Y$) is a function mapping $(X \times Y)^n$ to a relation between $X$ and $Y$.
+We frequently use the term \t{inductor} to refer to a family of inductors, indexed by $n \in \N$.
 
-We call the elements of $X$ the \t{inputs} and the elements of $Y$ the \t{outputs}.
-A \t{predictor} is a function from the inputs to the outputs and the result of an input under a predictor is a \t{prediction}.
-Using this language, an inductor maps datasets to predictors.
+A inductor is \t{functional} if it produces functions.
+In this case, we call the elements of $X$ the \t{inputs} and the elements of $Y$ the \t{outputs}.
+We call a function from inputs to outputs a \t{predictor}    and call the result of an input under a predictor a \t{prediction}.
+Using this language, a functional inductor maps datasets to predictors.
 A predictor maps inputs to outputs.
 
 \ssubsection{Notation}
 
 Let $D$ be a dataset of size $n$ in $X \cross Y$.
 Let $g: X \to Y$, a predictor, which makes prediction $g(x)$ on precept $x \in X$.
-Let $G: (X \cross Y)^n \to (A \to B)$ be an inductor.
-Then $G(D)$ is the predictor which the inductor associates with dataset $D$.
+Let $G_n: (X \cross Y)^n \to (X \times Y)$ be an inductor.
+Then $G_n(D)$ is the predictor which the inductor associates with dataset $D$.
+And $\set{G_n: (X \times Y)^n \to \powerset{(X \times Y)}}_{n \in \N}$ is a family of inductors.
 
-\ssubsection{Other terminology}
+\ssection{Consistent and complete datasets}
+
+Let $D = ((x_i, y_i))_{i =1}^{n}$ be a dataset and $R \subset X \times Y$ a relation.
+$D$ is \t{consistent with $R$} if each $(x_i, y_i) \in R$.
+$D$ is \t{consistent} if there exists a relation with which it is consistent.
+A dataset is always consistent (take $R = X \times Y$).
+$D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \implies y_i = y_j$.
+$D$ is \t{complete} if $\union_i\set{x_i} = X$ and $\union_i\set{y_i} = Y$.
+If a dataset is complete, then it includes every element of the relation.
+
+\ssubsection{Other (functional inductor) terminology}
 
 Other terms for the inputs include \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns}, \t{instances}, or \t{observations}.
 Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}.
 
 Other terms for a predictor include \t{input-output} mapping, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.
-Some authors refer to a prediction as a \t{guess}.
-
-\ssubsection{(Supervised) learning algorithms}
-
-Since we use a predictor to guess inputs which do not necessarily appear in the dataset, some authors call an inductor a \t{learner} or \t{learning algorithm}.
-In accordance with this usage, they refer to the argument of an inductor as the \t{training data} or \t{training dataset} or \t{training set}.
-The word \say{set}, however, may mislead since since we are speaking of a sequence.
-
-It is common to refer to the construction a predictor from a dataset a \t{learning problem}.
-In this case, the learning problem is said to be \t{supervised learning}.
-By supervision, we mean to indicate that we have the outputs corresponding to the inputs.
-In line with this usage, the outputs are often called \t{labels} and the labels are said \say{to provide supervision.}
-
-\ssection{Consistent and complete datasets}
-
-Let $D = ((x_i, y_i))_{i =1}^{n}$ and $f: X \to Y$.
-$D$ is \t{consistent with $f$} if $f(x_i) = y_i$ for all $i = 1, \dots, n$.
-$D$ is \t{consistent} if there exists a predictor with which it is consistent.
-If $D$ is consistent, then $x_i = x_j \implies y_i = y_j$.
-$D$ is \t{complete} if $\union_i\set{x_i} = X$.
-If a dataset is complete, then it includes every input.
+Since a predictor can be used to \t{guess} the output of an input, some authors call an inductor (or family of inductors) a \t{learner} or \t{learning algorithm} or \t{supervised learning algorithm} and refer to the argument as the \t{training dataset}.
+Often the word \say{supervised} is included, as in \t{supervised learning}.
+The language intends to indicate that inputs are given along with outputs, and these outputs \say{provide supervision to the algorithm.}
