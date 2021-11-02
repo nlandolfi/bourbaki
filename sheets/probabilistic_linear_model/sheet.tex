@@ -1,18 +1,10 @@
 %!name:probabilistic_linear_model
-%!need:multivariate_normals
-%!need:matrix_transpose
-%!need:probability_measures
-%!need:linear_predictors
-%!need:expectation
-%!need:data_matrix
-%!need:normal_conditionals
-%!need:matrix_inverses
-%!need:covariance
 %!need:estimators
+%!need:probabilistic_errors_linear_model
 
 \ssection{Why}
 
-We want an estimator for the parameters of a linear function, given observations of the function with additive noise.
+If we treat the parameters of a linear function as a random variable, an inductor for the predictor is equivalent to an estimator for the parameters.\footnote{Future editions will offer further discussion.}
 
 \ssection{Definition}
 
@@ -21,7 +13,6 @@ Let $x: \Omega \to \R^d$.
 Define $g: \Omega \to (\R^d \to \R)$ by $g(\omega)(a) = \transpose{a}x(\omega)$, for $a \in \R^d$.
 In other words, for each outcome $\omega \in \Omega$, $g_\omega: \R^d \to \R$ is a linear function with parameters $x(\omega)$.
 $g_\omega$ is the function of interest.
-
 
 Let $a^1, \dots, a^n \in \R^d$ a dataset with data matrix $A \in \R^{n \times d}$.
 Let $e: \Omega \to \R^n$ independent of $x$, and define $y: \Omega \to \R^n$ by
@@ -36,6 +27,17 @@ We call $x$ the parameters, $A$ a \t{design}, $e$ the \t{error} or \t{noise} vec
 
 One may want an estimator for the parameters $x$ in terms of $y$ or one may be modeling the function $g$ and want to predict $g(a)$ for $a \in A$ not in the dataset.
 
+\ssection{Inconsistency}
+
+In this model, the dataset is assumed to be inconsistent as a result of the random errors.
+In these cases, the error vector $e$ may model a variety of sources of error ranging from inaccuracies in the measurements (or measurement devices) to systematic errors from the \say{inapproriateness} of the use of a linear predictor.\footnote{Future editions will clarify and may excise this sentence.}
+In this case the linear part is sometimes called the \t{deterministic effect} of the response on the input $a \in A$.
+
+\ssection{Moment assumptions}
+
+One route to be more specific about the underlying distribution of the random vector is give its mean and variance.
+It is common to give the mean of $\E(w)$
+
 \ssection{Mean and variance}
 
 \begin{proposition}
@@ -45,3 +47,5 @@ One may want an estimator for the parameters $x$ in terms of $y$ or one may be m
 \begin{proposition}
   $\cov((x, y)) = A\cov(x)\transpose{A} + \cov{e}$\footnote{Full account in future editions.}
 \end{proposition}
+
+A simple consequence is that, if $x$ and
