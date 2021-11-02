@@ -1,0 +1,52 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make scaled_sets.pdf
+
+scaled_sets.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > scaled_sets.tex
+
+scaled_sets.pdf: ../../*.tex ../../trademark.pdf *.tex scaled_sets.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode scaled_sets.tex
+	../../latexrun scaled_sets.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: scaled_sets.pdf
+	open scaled_sets.pdf
+
+o:
+	make open
+
+terms: scaled_sets.tex
+	bbk_sheet -mode ts scaled_sets.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f scaled_sets.*
+	make reset
+	bbk_sheet -mode mk > Makefile
