@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./reproducing_kernels.pdf#page=2'"> Reproducing Kernels </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./reproducing_kernels.pdf#page=2'" onkeypress="location.href='./reproducing_kernels.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./reproducing_kernels-graph.pdf'" onkeypress="location.href='./reproducing_kernels-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./complete_inner_product_spaces.html'" onkeypress="location.href='./complete_inner_product_spaces.html'">
+              <span>
+                Complete Inner Product Spaces
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./covariance.html'" onkeypress="location.href='./covariance.html'">
+              <span>
+                Covariance
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./inner_product_linear_functional_representations.html'" onkeypress="location.href='./inner_product_linear_functional_representations.html'">
+              <span>
+                Inner Product Linear Functional Representations
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./multivariate_normals.html'" onkeypress="location.href='./multivariate_normals.html'">
+              <span>
+                Multivariate Normals
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./probability_measures.html'" onkeypress="location.href='./probability_measures.html'">
+              <span>
+                Probability Measures
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a (nonempty) set and $k$ a field. Let $F \subset (X \to k)$ and let $\ip{\cdot, \cdot}: F \times F \to k$ be an inner product so that $(F, \ip{\cdot,\cdot})$ is a complete inner product space.</p></div><div class="sheet-listing"><p class="sheet"> A \t{reproducing kernel} of $(F, \ip{\cdot,\cdot})$ is a map $R: X \times X \to k$ satisfying (1) for every $y \in X$ the function $R(\cdot, y): X \to k$ is an element of $F$ and (2) for every $f \in F$, at every $y \in X$, $f(y) = \ip{f, R(\cdot, y)}$ (the \t{reproducing property}).</p></div><div class="sheet-listing"><p class="sheet"> $R$ is called a "reproducing" kernel because of the following implication of the reproducing property. Notice that $R(\cdot, y) \in F$. For this reason,</p></div><div class="sheet-listing"><h2 class="sheet" id="properties">2.1 Properties</h2></div><div class="sheet-listing"><p class="sheet"> If a reproducing kernel exists, it is unique. \blankpage</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be nonempty (index) set. For example, $X$ may be $\upto{N}$, $\Z$, $[0, 1]$, $\R^d$, $\Set{x \in \R^3}{\normm{x} \leq 1}$ (the unit sphere), or $\Set{x \in \R^3}{\alpha \leq \normm{x} \leq \beta}$ (the atmosphere, or volume between two concentric spheres).</p></div><div class="sheet-listing"><p class="sheet"> A symmetric, real-valued function $k: X \times X \to \R$ of two variables is said to be \t{positive semidefinite} if for any $n \in \N$, for any real $a_1, \dots, a_n \in \R$ and $x_1, \dots, x_n \in X$, we have \[ \sum_{i, j = 1}^{n} a_ia_j k(x_i, x_j) \geq 0, \] and \t{positive definite} if the above holds with "$>$}.\footnote{Some authors use the term \say{positive definite} for our term positive semidefinite and the term \say{\t{strictly positive definite}} for our term positive definite."</p></div><div class="sheet-listing"><p class="sheet"> Positive semidefinite kernels are useful for the following constructive reason: \begin{proposition} Let $X \neq \emptyset$ be a set. If $k: X \times X \to \R$ is positive semidefinite, then there exists a probability space $(\Omega, \CA, \PM)$ and a family of zero-mean normal real-valued random variables $\set{f_x: \Omega \to \R}_{x \in X}$ with covariance function $k$, that is, \[ \E f(a)f(b) = k(a, b), \quad \text{ for all } a, b \in X.\footnote{Future editions will prove this result.} \] \end{proposition} This result is known by the names \t{Kolmogorov extension theorem},  \t{Kolmogorov existence theorem},  \t{Kolmogorov consistency theorem} and  \t{Daniell-Kolmogorov theorem}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './reproducing_kernels.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./reproducing_kernels.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./reproducing_kernels.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./reproducing_kernels-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2021 The Bourbaki Authors. Version bc857db96.
+    </span>
+  </body>
+</html>
