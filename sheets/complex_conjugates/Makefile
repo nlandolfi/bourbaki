@@ -1,0 +1,52 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make complex_conjugates.pdf
+
+complex_conjugates.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > complex_conjugates.tex
+
+complex_conjugates.pdf: ../../*.tex ../../trademark.pdf *.tex complex_conjugates.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode complex_conjugates.tex
+	../../latexrun complex_conjugates.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: complex_conjugates.pdf
+	open complex_conjugates.pdf
+
+o:
+	make open
+
+terms: complex_conjugates.tex
+	bbk_sheet -mode ts complex_conjugates.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f complex_conjugates.*
+	make reset
+	bbk_sheet -mode mk > Makefile
