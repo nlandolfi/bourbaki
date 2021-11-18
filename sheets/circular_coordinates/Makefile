@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make polar_coordinates.pdf
+	make circular_coordinates.pdf
 
-polar_coordinates.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > polar_coordinates.tex
+circular_coordinates.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > circular_coordinates.tex
 
-polar_coordinates.pdf: ../../*.tex ../../trademark.pdf *.tex polar_coordinates.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode polar_coordinates.tex
-	../../latexrun polar_coordinates.tex
+circular_coordinates.pdf: ../../*.tex ../../trademark.pdf *.tex circular_coordinates.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode circular_coordinates.tex
+	../../latexrun circular_coordinates.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: polar_coordinates.pdf
-	open polar_coordinates.pdf
+open: circular_coordinates.pdf
+	open circular_coordinates.pdf
 
 o:
 	make open
 
-terms: polar_coordinates.tex
-	bbk_sheet -mode ts polar_coordinates.tex
+terms: circular_coordinates.tex
+	bbk_sheet -mode ts circular_coordinates.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f polar_coordinates.*
+	rm -f circular_coordinates.*
 	make reset
 	bbk_sheet -mode mk > Makefile

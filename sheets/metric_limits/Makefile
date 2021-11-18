@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make metric_convergence.pdf
+	make metric_limits.pdf
 
-metric_convergence.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > metric_convergence.tex
+metric_limits.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > metric_limits.tex
 
-metric_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex metric_convergence.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode metric_convergence.tex
-	../../latexrun metric_convergence.tex
+metric_limits.pdf: ../../*.tex ../../trademark.pdf *.tex metric_limits.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode metric_limits.tex
+	../../latexrun metric_limits.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: metric_convergence.pdf
-	open metric_convergence.pdf
+open: metric_limits.pdf
+	open metric_limits.pdf
 
 o:
 	make open
 
-terms: metric_convergence.tex
-	bbk_sheet -mode ts metric_convergence.tex
+terms: metric_limits.tex
+	bbk_sheet -mode ts metric_limits.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f metric_convergence.*
+	rm -f metric_limits.*
 	make reset
 	bbk_sheet -mode mk > Makefile

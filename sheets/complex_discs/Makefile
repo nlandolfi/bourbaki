@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make real_convergence.pdf
+	make complex_discs.pdf
 
-real_convergence.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > real_convergence.tex
+complex_discs.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > complex_discs.tex
 
-real_convergence.pdf: ../../*.tex ../../trademark.pdf *.tex real_convergence.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode real_convergence.tex
-	../../latexrun real_convergence.tex
+complex_discs.pdf: ../../*.tex ../../trademark.pdf *.tex complex_discs.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode complex_discs.tex
+	../../latexrun complex_discs.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: real_convergence.pdf
-	open real_convergence.pdf
+open: complex_discs.pdf
+	open complex_discs.pdf
 
 o:
 	make open
 
-terms: real_convergence.tex
-	bbk_sheet -mode ts real_convergence.tex
+terms: complex_discs.tex
+	bbk_sheet -mode ts complex_discs.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f real_convergence.*
+	rm -f complex_discs.*
 	make reset
 	bbk_sheet -mode mk > Makefile
