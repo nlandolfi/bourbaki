@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make diagonally_constant_matrices.pdf
+	make diagonal_constant_matrices.pdf
 
-diagonally_constant_matrices.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > diagonally_constant_matrices.tex
+diagonal_constant_matrices.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > diagonal_constant_matrices.tex
 
-diagonally_constant_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex diagonally_constant_matrices.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode diagonally_constant_matrices.tex
-	../../latexrun diagonally_constant_matrices.tex
+diagonal_constant_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex diagonal_constant_matrices.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode diagonal_constant_matrices.tex
+	../../latexrun diagonal_constant_matrices.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: diagonally_constant_matrices.pdf
-	open diagonally_constant_matrices.pdf
+open: diagonal_constant_matrices.pdf
+	open diagonal_constant_matrices.pdf
 
 o:
 	make open
 
-terms: diagonally_constant_matrices.tex
-	bbk_sheet -mode ts diagonally_constant_matrices.tex
+terms: diagonal_constant_matrices.tex
+	bbk_sheet -mode ts diagonal_constant_matrices.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f diagonally_constant_matrices.*
+	rm -f diagonal_constant_matrices.*
 	make reset
 	bbk_sheet -mode mk > Makefile
