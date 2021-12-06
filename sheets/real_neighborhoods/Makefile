@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make natural_exponents.pdf
+	make real_neighborhoods.pdf
 
-natural_exponents.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > natural_exponents.tex
+real_neighborhoods.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > real_neighborhoods.tex
 
-natural_exponents.pdf: ../../*.tex ../../trademark.pdf *.tex natural_exponents.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode natural_exponents.tex
-	../../latexrun natural_exponents.tex
+real_neighborhoods.pdf: ../../*.tex ../../trademark.pdf *.tex real_neighborhoods.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode real_neighborhoods.tex
+	../../latexrun real_neighborhoods.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: natural_exponents.pdf
-	open natural_exponents.pdf
+open: real_neighborhoods.pdf
+	open real_neighborhoods.pdf
 
 o:
 	make open
 
-terms: natural_exponents.tex
-	bbk_sheet -mode ts natural_exponents.tex
+terms: real_neighborhoods.tex
+	bbk_sheet -mode ts real_neighborhoods.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f natural_exponents.*
+	rm -f real_neighborhoods.*
 	make reset
 	bbk_sheet -mode mk > Makefile

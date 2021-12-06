@@ -3,6 +3,6 @@ compile:
 local:
 	bbk_serve -static-dir ./static -local-audit
 image:
-	gcloud builds submit --tag gcr.io/elos2-261103/bbk-www
+	gcloud builds submit --tag gcr.io/elos2-261103/bbk-www --project elos2-261103
 deploy:
-	gcloud run deploy --image gcr.io/elos2-261103/bbk-www --platform managed
+	gcloud run deploy --image gcr.io/elos2-261103/bbk-www --platform managed --project elos2-261103

@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make diffeomorphisms.pdf
+	make product_manifolds.pdf
 
-diffeomorphisms.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > diffeomorphisms.tex
+product_manifolds.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > product_manifolds.tex
 
-diffeomorphisms.pdf: ../../*.tex ../../trademark.pdf *.tex diffeomorphisms.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode diffeomorphisms.tex
-	../../latexrun diffeomorphisms.tex
+product_manifolds.pdf: ../../*.tex ../../trademark.pdf *.tex product_manifolds.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode product_manifolds.tex
+	../../latexrun product_manifolds.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: diffeomorphisms.pdf
-	open diffeomorphisms.pdf
+open: product_manifolds.pdf
+	open product_manifolds.pdf
 
 o:
 	make open
 
-terms: diffeomorphisms.tex
-	bbk_sheet -mode ts diffeomorphisms.tex
+terms: product_manifolds.tex
+	bbk_sheet -mode ts product_manifolds.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f diffeomorphisms.*
+	rm -f product_manifolds.*
 	make reset
 	bbk_sheet -mode mk > Makefile
