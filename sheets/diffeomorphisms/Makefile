@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make real_diffeomorphisms.pdf
+	make diffeomorphisms.pdf
 
-real_diffeomorphisms.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > real_diffeomorphisms.tex
+diffeomorphisms.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > diffeomorphisms.tex
 
-real_diffeomorphisms.pdf: ../../*.tex ../../trademark.pdf *.tex real_diffeomorphisms.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode real_diffeomorphisms.tex
-	../../latexrun real_diffeomorphisms.tex
+diffeomorphisms.pdf: ../../*.tex ../../trademark.pdf *.tex diffeomorphisms.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode diffeomorphisms.tex
+	../../latexrun diffeomorphisms.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: real_diffeomorphisms.pdf
-	open real_diffeomorphisms.pdf
+open: diffeomorphisms.pdf
+	open diffeomorphisms.pdf
 
 o:
 	make open
 
-terms: real_diffeomorphisms.tex
-	bbk_sheet -mode ts real_diffeomorphisms.tex
+terms: diffeomorphisms.tex
+	bbk_sheet -mode ts diffeomorphisms.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f real_diffeomorphisms.*
+	rm -f diffeomorphisms.*
 	make reset
 	bbk_sheet -mode mk > Makefile
