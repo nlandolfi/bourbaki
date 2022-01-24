@@ -14,8 +14,9 @@ import (
 	"time"
 
 	"bbk"
-	"spin/infra/audit"
-	"spin/infra/key"
+
+	"github.com/nlandolfi/spin/infra/audit"
+	"github.com/nlandolfi/spin/infra/key"
 )
 
 var (
