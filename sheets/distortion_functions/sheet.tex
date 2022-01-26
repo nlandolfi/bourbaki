@@ -1,0 +1,39 @@
+%!name:distortion_functions
+%!need:entropy
+%!need:differential_entropy
+%!need:quantizations
+%!need:random_variables
+%!need:expectation
+%!need:differential_relative_entropy
+
+
+\ssection{Why}
+
+We want to quantify the error of compressing a real-valued random variable.\footnote{Future editions may expand.}
+
+\ssection{Definition}
+
+Let $(\Omega, \CA, \PM)$ be a probability space, $x: \Omega \to \R$ a random variable, let $\CX$ a finite set and $q: \R \to \CX$ a quantization.
+
+
+The \t{compression} $\hat{x}: \Omega \to \CX$ of $x$ under $q$ is $q \composed x$.
+A \t{distortion function} for $x$ and $\hat{x}$ is a function
+\[
+  d: (\Omega \to \R) \cross (\Omega \to \CX) \to \R.
+\]
+Roughly speaking, a distortion function is meant to quantify the error in using this compression.
+
+\ssubsection{Examples}
+
+As a first example, consider the \t{mean-squared-error distortion} $d_{\text{mse}}$ defined by
+\[
+  d_{\text{mse}}(x, \hat{x}) = \E[(x - \hat{x})^2]
+\]
+As a second example, consider the \t{Kulback-Liebler distortion} $d_{\text{kld}}$ defined by
+\[
+    d_{\text{kld}}(x, \hat{x}) = \E[d_{\text{kl}}(\PM(y \in \cdot \mid x, \hat{x}) \mid \PM(y \in \cdot \mid \hat{x}))]
+\]
+where $y$ is some random variable that depends on $x$.\footnote{Future editions will clarify this sentence.}
+
+
+\blankpage
