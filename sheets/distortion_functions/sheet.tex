@@ -1,6 +1,4 @@
 %!name:distortion_functions
-%!need:entropy
-%!need:differential_entropy
 %!need:quantizations
 %!need:random_variables
 %!need:expectation
@@ -9,11 +7,12 @@
 
 \ssection{Why}
 
-We want to quantify the error of compressing a real-valued random variable.\footnote{Future editions may expand.}
+We want to quantify the error of compressing a real-valued random variable.
 
 \ssection{Definition}
 
-Let $(\Omega, \CA, \PM)$ be a probability space, $x: \Omega \to \R$ a random variable, let $\CX$ a finite set and $q: \R \to \CX$ a quantization.
+Let $\CX$ be a finite set and $q: \R \to \CX$ a quantization (see \sheetref{quantizations}{Quantizations}) of $\R$.
+Also, fix a probability space $(\Omega, \CA, \PM)$ and a random variable $x: \Omega \to \R$.
 
 
 The \t{compression} $\hat{x}: \Omega \to \CX$ of $x$ under $q$ is $q \composed x$.
@@ -25,11 +24,11 @@ Roughly speaking, a distortion function is meant to quantify the error in using 
 
 \ssubsection{Examples}
 
-As a first example, consider the \t{mean-squared-error distortion} $d_{\text{mse}}$ defined by
+The \t{expected mean-squared-error distortion} $d_{\text{mse}}$ between $x$ and $\hat{x}$ is
 \[
   d_{\text{mse}}(x, \hat{x}) = \E[(x - \hat{x})^2]
 \]
-As a second example, consider the \t{Kulback-Liebler distortion} $d_{\text{kld}}$ defined by
+The \t{Kulback-Liebler distortion} $d_{\text{kld}}$ defined by
 \[
     d_{\text{kld}}(x, \hat{x}) = \E[d_{\text{kl}}(\PM(y \in \cdot \mid x, \hat{x}) \mid \PM(y \in \cdot \mid \hat{x}))]
 \]

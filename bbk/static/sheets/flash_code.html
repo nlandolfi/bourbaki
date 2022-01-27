@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./flash_code.pdf#page=2'"> Flash Code </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./flash_code.pdf#page=2'" onkeypress="location.href='./flash_code.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./flash_code-graph.pdf'" onkeypress="location.href='./flash_code-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./alphabets.html'" onkeypress="location.href='./alphabets.html'">
+              <span>
+                Alphabets
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./dot-dash_code.html'" onkeypress="location.href='./dot-dash_code.html'">
+            <span>
+            Dot-Dash Code
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can flashlights speak?</p></div><div class="sheet-listing"><p class="sheet"> Speech can be made to correspond to words. And words are sequences of letters. So, roughly, can we communicate letters with a flashlight? The game is: no sounds.</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> Well, what can we do with a flashlight? Turn it on and off. So we can show blinks of light. Here's a thought: One blink means $a$. Two blinks means $b$. Three blinks means $c$. Four blinks means $d$. And so on.</p></div><div class="sheet-listing"><p class="sheet"> Here's the rub: how do we know when one letter stops, and another begins. Put another way, does 7 blinks mean $(g)$, or $(b, a, d)$, since 2 + 1 + 4 = 7, or $(c, d)$, since 3 + 4 = 7, or $(d, c)$ and so on. If we change the game, maybe we can change the color of the flashlight. Or give a half-flash. Is a half-flash a "quick" flash, or is it a flash in which we have covered up half of the end of the flashlight?</p></div><div class="sheet-listing"><p class="sheet"> The first question is a clue. The duration of the blink. How about the duration between blinks? A one second pause in between blinks for a letter. A three second pause for blinks in between letters. A five second pause for a space, to indicate a change of a word? Or an additional symbol, a "space", in our alphabet, communicated with 27 (!) blinks?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> \newcommand{\blink}{\star} \newcommand{\pause}{\square} Let $\blink$ represent a blink. The \t{flash code}\footnote{The etymology of code is from the Latin codex, in the legal tradition of a list of statutes. We may well use the term correspondence, or function, but code is standard.} for the alphabet $A$ (the latin lower case letters) is the function $f: A \to \strings(\set{\blink})$ defined by $f(a) = \blink$, $f(b) = \blink\blink$, $f(c) = \blink\blink\blink$, $f(c) = \blink\blink\blink\blink$ and so on. We call $f(a)$ the \t{code word} of $a \in A$. It is a sequence of blinks.</p></div><div class="sheet-listing"><p class="sheet"> The idea is that if we give someone the \t{code word} $f(a)$ for a letter of our alphabet $a \in A$, they will be able to tell us $a$. In the language of functions, we want $f$ to have an inverse. Clearly, $f$ is invertible.</p></div><div class="sheet-listing"><p class="sheet"> It is natural to extend the flash code for $A$ to strings of $A$. Let $\pause$ represent a long pause. Then we encode a sequence $x \in \strings(A)$ by applying $f$ to each element of $x$ in turn, and including a $\square$ in between. The \t{flash code} for the strings $\strings(A)$ is the function $g: \strings(A) \to \strings(\set{\blink, \pause})$ defined recursively, as $g(x) = f(x_1')$ for length one strings $x'$, $g(x'') = f(x_1'')\pause f(x_2)$ and for length $n$ strings $x$ by $f(x_1)\pause g(x_{2:n})$. For example, we encode the word (string) $(b,a,d)$ as \begin{equation} \blink \blink \pause \blink \pause \blink \blink \blink \blink \label{ref:blinks} \end{equation} Now suppose we are given a sequence as shown in \eqref{ref:blinks}. Well, so long as $f$ is invertible, we look can decode the codewords (the blinks, in this case) in between the squares and recover the word.</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="border: 1px solid black; direction: ltr;" onclick="location.href='./flash_code-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './flash_code.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./flash_code.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./flash_code.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./flash_code-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 4e3f7c9f4.
+    </span>
+  </body>
+</html>
