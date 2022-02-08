@@ -1,68 +1,28 @@
 %!name:dynamical_systems
-%!need:state_representations
-%!need:n-dimensional_space
-%!need:directed_graphs
+%!need:real_numbers
 
 \ssection{Why}
 
-We want to talk about making decisions over time.\footnote{Future editions will expand, and may develop dynamic systems via the genetic approach by appealing to their classical use in Newtonian physics for modeling celestial mechanics.}
+We want to model natural phenomena. \footnote{Future editions will modify, and may develop dynamic systems via the genetic approach by appealing to their classical use in Newtonian physics for modeling celestial mechanics.}
 
 \ssection{Definition}
 
-Let $\CX_0, \CX_1, \dots, \CX_{T}$ and $\CU_0, \CU_1, \dots, \CU_{T-1}$ be sets.
-For $t = 0$, $\dots$, $T-1$, let $f_{t}: \CX_t \times \CU_t \to \CX_{t+1}$.
-We call the sequence
-\[
-	\parens*{(\CX_t)_{t = 0}^{T}), (\CU_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1}}
-\]
-a \t{deterministic discrete-time dynamical system}.
-We call the index $t$ the \t{epoch}, the \t{stage} or the \t{period}.
+Let $X_0, X_1, \dots, X_T$ be a sequence of sets and let $f_t: X_t \to X_{t+1}$ for $t = 0, \dots, T-1$.
+We call $((X_0, \dots, X_T), (f_1, \dots, f_{T-1}$ a \t{deterministic discrete-time dynamical system}.
 
-Let $x_0 \in \CX_0$.
-Let $u_0 \in \CU_0, \dots, u_{T-1} \in \CU_{T-1}$. Define a state sequence $x_1 \in \CX_1, \dots, x_T \in \CX_T$ by
+We call the index $t$ the \t{epoch}, the \t{stage} or the \t{period}.
+We call $X_t$ the \t{state space} at period $t$.
+We call $f_t$ the \t{transition function} or \t{dynamics function}.
+
+Let $x_0 \in \CX_0$.  Define a state sequence $x_1 \in \CX_1, \dots, x_T \in \CX_T$ by
 \[
     x_{t+1} = f_t(x_t, u_t).
 \]
 In this case we call $x_0$ the \t{initial state}.
-We call the $x_t$ the \t{states}.
-We call the $u_t$ a sequence of \t{inputs} (or \t{actions}, \t{decisions}, \t{choices}, or \t{controls}).
-We call $f_t$ the \t{transition function} or \t{dynamics function}.
+We call the $x_t$ the \t{trajectory} associatd with initial state $x_0$.
 
 We call $T$ the \t{horizon}.
 In the case that we have an infinite sequence of state sets, input sets, and dynamics, then we refer to a \t{infinite-horizon} dynamical system.
 To use language in contrast with this case, we refer to the dynamical system when $T$ is finite as a \t{finite-horizon} dynamical system.
 
-\ssubsection{State}
-
-The current action $u_t$ affects future states $x_{s}$ for $s > t$, but not the current or past states.
-The current state $x_t$ depends on the initial state $x_0$ and the sequence of past actions $u_0, \dots, u_{t-1}$.
-So the state is a \say{link} between the past and the future.
-Given $x_t$ and $u_t, \dots, u_{s-1}$, for $s > t$, we can compute $x_s$.
-In other words, the prior actions $u_0, \dots, u_{t-1}$ are not relevant.
-
-This nonrelevancy of prior actions and prior states simplifies the sequential decision problem (see \sheetref{sequential_decisions}{Sequential Decisions}).
-
-
-\ssubsection{Variations}
-The dynamical system is called \t{time-invariant} if $\CX_{t}$, $\CU_t$ and $f_t$ do not depend on $t$.
-A simple variation is that $\CU_t$ depends on $x_t$.\footnote{Future editions will say more here.}
-
-\ssection{Examples}
-
-\ssubsection{Finite dynamical system}
-
-A dynamical system is finite if the state and action sets are finite.
-For example, $\CX = \set{1, \dots, n}$ and $\CU = \set{1, \dots, m}$.
-Then $f_t: \CX \times \CU \to \CU$ is called a \t{transition map}.
-
-Or else, let $(V, E)$ be a directed graph, then $\CX = V$, $\CU_{x_t} = \Set{(u, v) \in E}{u = x_t}$ and $f_t(x_t, u_t) = v$ when $u_t = (x_t, v)$ is a dynamical system.
-Roughly this system models \say{moving} on the graph.
-
-\ssubsection{Discrete-time linear dynamical system}
-
-Let $\CX = \R^n$ and $\CU = \R^m$.
-Define $f_t: \CX \times \CU \to \CX$ by
-\[
-    x_{t+1} = f_t(x_t, u_t) = A_t x_t + B_t u_t + c_t
-\]
-for $y = 1, \dots, T-1$.\footnote{This very special form of dynamics arises in many applications. Future editions will say more.}
+\blankpage
