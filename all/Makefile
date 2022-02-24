@@ -3,9 +3,9 @@ inputs.tex: sheets.csv inputs.tmpl ../sheets/*/*.tex # inputs.go
 
 all.pdf: inputs.tex *.tex ../*.tex ../trademark.pdf ../sheets/*/*.tex
 # doesn't work?!
-	#../latexrun all.tex
-	pdflatex all.tex
-	pdflatex all.tex
+	../latexrun all.tex
+# 	pdflatex all.tex
+# 	pdflatex all.tex
 
 open: all.pdf
 	open all.pdf
