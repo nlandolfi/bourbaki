@@ -1,0 +1,52 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make directed_graph_distributions.pdf
+
+directed_graph_distributions.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > directed_graph_distributions.tex
+
+directed_graph_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex directed_graph_distributions.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode directed_graph_distributions.tex
+	../../latexrun directed_graph_distributions.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: directed_graph_distributions.pdf
+	open directed_graph_distributions.pdf
+
+o:
+	make open
+
+terms: directed_graph_distributions.tex
+	bbk_sheet -mode ts directed_graph_distributions.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f directed_graph_distributions.*
+	make reset
+	bbk_sheet -mode mk > Makefile

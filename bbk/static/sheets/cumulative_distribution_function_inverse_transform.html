@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./cumulative_distribution_function_inverse_transform.pdf#page=2'"> Cumulative Distribution Function Inverse Transform </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./cumulative_distribution_function_inverse_transform.pdf#page=2'" onkeypress="location.href='./cumulative_distribution_function_inverse_transform.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./cumulative_distribution_function_inverse_transform-graph.pdf'" onkeypress="location.href='./cumulative_distribution_function_inverse_transform-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./cumulative_distribution_functions.html'" onkeypress="location.href='./cumulative_distribution_functions.html'">
+              <span>
+                Cumulative Distribution Functions
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./uniform_densities.html'" onkeypress="location.href='./uniform_densities.html'">
+              <span>
+                Uniform Densities
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./generative_probabilistic_models.html'" onkeypress="location.href='./generative_probabilistic_models.html'">
+            <span>
+            Generative Probabilistic Models
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> This result is called sometimes called the \t{probability inverse transform}.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(\Omega, \CF, \PM)$ be a probability space and let $X: \Omega \to \R$ be a random variable with cumulative distribution function $\rvcdf{X}: \R \to [0, 1]$. Suppose $\inv{\rvcdf{X}}: [0, 1] \to \R$ exists, then $Y = \inv{\rvcdf{X}} \composed X$ is a random variable with cumulative distribution function $\rvcdf{Y}: [0, 1] \to [0, 1]$ satisfying $\rvcdf{Y}(y) = y$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{remark} The conclusion is equivalent to the following: $Y$ has a density and that density is the the standard unform density (see \sheetref{uniform densities}{Uniform Densities}). \end{remark}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Express $\rvcdf{Y}(\gamma) = \PM[Y \leq \gamma] = \PM(\inv{Y}([0, \gamma]))$ Notice \[ \begin{aligned} Y^{-1}([0, \gamma]]) &= \Set{\omega \in \Omega}{Y(\omega) \leq \gamma} \\ &= \Set{\omega \in \Omega}{\rvcdf{X}(X(\omega)) \leq \gamma} \\ &= \Set{\omega \in \Omega}{X(\omega) \leq \rvcdf{X}^{-1}(\gamma)}. &= X^{-1}(\cdots).\footnote{Future editions will complete.} \end{aligned} \] \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \begin{remark} Using different notation the above can be expressed succinctly as \[ \begin{aligned} \rvcdf{Y}(\gamma) = \PM[Y \leq \gamma] &= \PM[\rvcdf{X} \composed X \leq \gamma]  \\ &=\PM[X \leq \inv{\rvcdf{X}}(\gamma)] = \rvcdf{X}(\inv{\rvcdf{X}}(\gamma)) = \gamma. \end{aligned} \] \end{remark}</p></div><div class="sheet-listing"><p class="sheet"> Future editions will discuss \t{inverse transform sampling}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./cumulative_distribution_function_inverse_transform-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './cumulative_distribution_function_inverse_transform.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./cumulative_distribution_function_inverse_transform.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./cumulative_distribution_function_inverse_transform.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./cumulative_distribution_function_inverse_transform-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version c38f38914.
+    </span>
+  </body>
+</html>

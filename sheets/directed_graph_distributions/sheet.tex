@@ -1,0 +1,34 @@
+%!name:directed_graph_distributions
+%!need:hidden_memory_chains
+%!need:directed_graphs
+%!need:rooted_tree_distributions
+
+\ssection{Why}
+
+We want to visualize the probabilistic relations between components of outcomes in probabilistic models over large (e.g., product) outcome sets.\footnote{Future editions will modify and expand. The title of the sheet may change, since another interpretation for the words \say{directed graph distribution} is a distribution on directed graphs.}
+
+\ssection{Definition}
+
+Let $A = \prod_{i} A_i$.
+For $x \in A$ and $S \subset \set{1, \dots, n}$, denote the subvector of $x$ indexed (in order) by $S$ by $x_S$.\footnote{Future editions will rework this treatment, perhaps combining it with the sheet \sheetref{index_matrices}{Index Matrices}, which will possibly be split up.}
+
+A distribution $p: A \to [0, 1]$ \t{factors according to a directed graph} on $\set{0, 1}$ with parent function $\pa: \set{1,\dots,n} \to \powerset{\set{1, \dots, n}}$ if
+\[
+  p(x) = \prod_{\pa_i = \emptyset} g_i(x_i) \prod_{\pa_i \neq \emptyset} g_{i}(x_i, x_{\pa_i}),
+\]
+where  $g_i$ is a distribution for all $i$ which $\pa_i = \emptyset$ and $g_{i}(\cdot, \xi)$ is a distribution for all $\xi \in \prod_{j \in \pa_i} A_j$, $i$ for which $\pa_i \neq \emptyset$.
+
+
+\begin{proposition}
+  $p$ so defined is a distribution, and the $g_i$ are the marginals and conditionals.\footnote{Future editions will be precise and give an account.}
+\end{proposition}
+
+\ssection{Examples}
+
+Consider a rooted tree distribution (see \sheetref{rooted_tree_distributions}{Rooted Tree Distributions}), or a memory chain (see \sheetref{memory_chains}{Memory Chains}), or a hidden memory chain (see \sheetref{hidden_memory_chains}{Hidden Memory Chains}).\footnote{Future editions will expand.}
+
+\ssection{Conditional Distribution Network}
+
+We can associate a $p: \prod_{i} A_i \to [0, 1]$ which factors according to a directed graph $(\set{1, \dots, n}, E)$ with an ordered pair which $((\set{1, \dots, n}, E), (g_i)_{i = 1}^{n})$ where $g_i$ are as above.
+We call this latter object, the graph and the conditionals, a \t{distribution network} (or \t{distribution graph}, \t{conditional distribution network}, \t{conditional distribution graph}, \t{bayesian network}\footnote{Indeed, this term is near universal in certain literatures. We avoid it in these sheets as a result of the Bourbaki project's policy on naming.}, \t{directed probabilistic graphical model}).
+% \blankpage

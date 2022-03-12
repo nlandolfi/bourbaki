@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./normal_maximum_likelihood_selectors.pdf#page=2'"> Normal Maximum Likelihood Selectors </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./normal_maximum_likelihood_selectors.pdf#page=2'" onkeypress="location.href='./normal_maximum_likelihood_selectors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./normal_maximum_likelihood_selectors-graph.pdf'" onkeypress="location.href='./normal_maximum_likelihood_selectors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./maximum_likelihood_density_selectors.html'" onkeypress="location.href='./maximum_likelihood_density_selectors.html'">
+              <span>
+                Maximum Likelihood Density Selectors
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./normal_densities.html'" onkeypress="location.href='./normal_densities.html'">
+              <span>
+                Normal Densities
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./multivariate_normal_maximum_likelihood_selectors.html'" onkeypress="location.href='./multivariate_normal_maximum_likelihood_selectors.html'">
+            <span>
+            Multivariate Normal Maximum Likelihood Selectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to select a normal density which summarizes well a dataset.</p></div><div class="sheet-listing" id="formulation"><h1 class="sheet">2. Formulation</h1></div><div class="sheet-listing"><p class="sheet"> Let $D = (x^1, \dots, x^n)$ be a dataset in $\R$. We want to select a density from among normal densities, which require specifying a mean and covariance.</p></div><div class="sheet-listing"><p class="sheet"> Following the principle of maximum likelihood, we want to solve \[ \maximizationn{\mu,\sigma \in \R}{ \prod_{k = 1}^{n}  \normaldensity{x^k}{\mu}{\sigma} }{ \sigma > 0 \\ } \] We call a solution to the above problem a \t{maximum likelihood normal density} with respect to the dataset.</p></div><div class="sheet-listing" id="solution"><h1 class="sheet">3. Solution</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $(x^1, \dots, x^n)$ be a dataset in $\R$. Let $f$ be a normal density with mean $$\frac{1}{n} \sum_{k = 1}^{n} x^k$$ and covariance $$\frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^2.$$ Then $f$ is a maximum likelihood normal density. \begin{proof} Every normal density has two parameters: the mean and the covariance. If the likelihood of one normal is less than or equal to the likelihood of another, then so is are their log likelihoods. Let $f$ be a normal density with parameter $\mu$ and $\sigma^2$. We express the log likelihood of $f$ by \[ \sum_{k = 1}^{n} \left( \frac{1}{2\sigma^2}(x^k - \mu)^2 - \frac{1}{2}\log2\pi\sigma^2\right) \] The partial derivative of the log likelihood with respect to the mean $(\partial_{\mu} \ell): \R^2 \to \R$ is \[ (\partial_\mu \ell)(\mu, \sigma^2) = - \sum_{k = 1}^{n} \frac{1}{\sigma^2}(x - \mu) \] and with respect to the covariance $(\partial_{\sigma^2} \ell): \R^2 \to \R$ is \[ (\partial_{\sigma^2} \ell)(\mu, \sigma^2) = \left(\frac{-1}{2(\sigma^2)^{2}}\sum_{k = 1}^{n}(x^k - \mu)^2\right)- \frac{1}{2\sigma^2} \] We are interested in finding $\mu_0 \in \R$ and $\sigma^2_0 > 0$, at which $\partial_\mu \ell(\mu_0, \sigma^2_0) = 0$ and $\partial_{\sigma^2} \ell(\mu_0, \sigma^2_0) = 0$. So we have two equations. First, notice that $\partial_\mu \ell$ is zero if an only if its first argument (the mean) is $\frac{1}{n} \sum_{k = 1}^{n} x^k$. Second, notice that for all $\mu, \sigma^2$, $\partial_{\sigma^2}\ell$ is zero if and only if \[ \sigma^2 = \sum_{k = 1}^{n} (x^k - \mu)^2. \] So the pair \[ \left(\frac{1}{n}\sum_{k = 1}^{k} x^k, \frac{1}{n} \sum_{k = 1}^{n} (x_k - \frac{1}{n} \sum_{k = 1}^{n}  x^k)^2\right) \] is a stationary point of $\ell$. \end{proof} \end{prop}</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./normal_maximum_likelihood_selectors-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './normal_maximum_likelihood_selectors.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./normal_maximum_likelihood_selectors.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./normal_maximum_likelihood_selectors.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./normal_maximum_likelihood_selectors-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version c38f38914.
+    </span>
+  </body>
+</html>
