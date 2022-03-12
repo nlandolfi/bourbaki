@@ -1,24 +1,40 @@
 %!name:neural_networks
-%!need:inductors
-%!need:real_numbers
+%!need:regressors
+% %!need:inductors
+%!need:real_matrices
+% %!need:real_numbers
+%!need:matrix-vector_products
+%!refs:/sanjay_lall/introduction_to_machine_learning/neural_networks
 
-\ssection{Why}\footnote{Future editions will include.}
+\ssection{Why}\footnote{Future editions will include. Future editions may change the name of this sheet to \t{computation networks}, or may add prerequisite sheet on computation graphs.}
 
 \ssection{Definition}
 
-A \t{neural network} is a sequence of functions from  with several properties.
-First, the codomain and domain of two subsequence functions in the sequence match.
-Second, each function is a composition of a function wit
-We associate a neural network with a predictor which is the composition of the functions in the sequence.
+A sequence of functions $(g_1, \dots, g_\ell)$ is \t{composable} if $g_i$ is composible with $g_{i-1}$ for $i = 2, \dots, \ell$.
+In this case we write $g_\ell \composed g_{\ell-1} \composed \cdots \composed g_2 \composed g_1$. For example, we write $g_3 \composed g_2 \composed g_1$ for $(g_1, g_2, g_3)$.
 
-\ssubsection{Notation}
+A \t{neural network} (or \t{feedforward neural network}) from $\R^n$ to $\R^m$ is a sequence of composable functions $(g_1, \dots, g_{\ell})$, $\dom g_1 = \R^n$, $\ran g_\ell \subset \R^m$, satisfying
+\[
+  g_i(\xi) = h_i(A_i \xi + b_i)
+\]
+for some conforming matrices $A_i$, vectors $b_i$ and functions $h_i$.
 
-Let $g^1: \R^d \to \R^k$, $g^2: \R^k \to \R^k$, $g^3: \R^k \to \R^m$.
-Then $(g^1, g^2, g^3)$ is a neural network.
-Notice that the codomain of $g^1$ ($\R^k$
+The $i$th \t{layer} of the neural network is the $i$th function $g_i$.
+The $i$th \t{activation} of the neural network is the function $h_i$.
+A \t{neural network} is called \t{deep} if its number of layers is larger than 3.
 
-\ssubsection{Activation functions}
+We call the composition of the layers of the neural network the \t{network predictor} (or just \t{predictor}).
+We also call it \t{the function} of the network.\footnote{Many authorities refer to a neural network as a function. Strictly speaking that is true for us, as well, since a sequence is a function. But the meaning of the common use is in reference to the \t{network predictor}.}
 
-An activation function $h: \R \to \R$ is nonlinear.
+
+% \ssubsection{Notation}
+%
+% Let $g^1: \R^d \to \R^k$, $g^2: \R^k \to \R^k$, $g^3: \R^k \to \R^m$.
+% Then $(g^1, g^2, g^3)$ is a neural network.
+% Notice that the codomain of $g^1$ ($\R^k$
+%
+% \ssubsection{Activation functions}
+%
+% An activation function $h: \R \to \R$ is nonlinear.
 
 \blankpage
