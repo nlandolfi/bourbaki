@@ -1,24 +1,29 @@
 %!name:parameterized_distributions
-%!need:probability_distributions
-%!need:probability_densities
-%!need:families
+%!need:distribution_families
 
 \ssection{Why}\footnote{Future editions will include.}
 
-\ssection{Definition}
+\ssection{Why}
 
-A \t{parametric distribution family} (\t{parametric density family}) on $X$  is a family of distributions (densities) $\set{p^{(\theta)}}_{\theta \in \Theta}$ on $X$.
-%for which $\Theta \subset \R^p$.
-We call the index set $\Theta$ (see \sheetref{families}{Families}) the \t{parameters}.
+A conditional distribution (density) $q: Y \times X \to \R$ is \t{functionally parametrizable} if there exists a function $f: X \to \Theta$ and distribution (density) family $\set{p^{(\theta)}: Y \to \R}_{\theta \in \Theta}$ satisfying $q(y, x) \equiv p^{(f(x))}(\gamma)$ for all $x \in X$ and $y \in Y$.
 
-Similarly, a \t{parametric conditional distribution family} (\t{parametric conditional density family}) on $Z$ from $X$ is a family $\set{q^{(\theta)}}_{\theta \in \Theta}$ whose terms $q^{(\theta)}: Z \times X \to \R$ are such that $q^{(\theta)}(\cdot, \xi): Z \to \R$ is a distribution (density) for every $\xi \in X$.
+In this case we call $f$ the \t{parameterizer} and we call $\set{p^{(\theta)}}_{\theta \in \Theta}$ the \t{parameterized family}.
+A \t{parameterized conditional distribution} is an ordered pair whose first coordinate is a function from $X$ to $\Theta$ and whose second coordinate is a family of distributions on $X$ with parameter set $\Theta$.
+For a particular choice of parameterizer and family, it induces a conditional distribution.
 
-A conditional distribution $q: Z \times X \to \R$ is \t{functionally parametrizable} if there exists a function $f: X \to \Theta$ and parameteric distribution family $\set{p^{(\theta)}}_{\theta \in \Theta}$ on $Z$ satisfying $q(\cdot, \xi) \equiv p^{(f(\xi))}$.
-In this case we call $f$ the \t{parametrization function} and we call $\set{p^{(\theta)}}_{\theta \in \Theta}$ the \t{parameterized family}.
-We call $(f, \set{p^{(\theta)}}_{\theta})$ a \t{functionally parameterized conditional distribution} on $Z$ from $X$.
-All conditional distributions $q: Z \times X \to \R$ are functionally parametrizable, since $\set{q(\cdot, \xi)}_{\xi \in X}$ with parameters $X$ and identity parameterization satisfies the conditions.
+Since all conditional distributions are functionally parametrizable (consider $\set{q(\cdot, \xi)}_{\xi \in X}$ with parameters $X$ and identity parameterizer), we are interested in parameterizers and parameterized families that are simple.
+Said differently, we are interested in approximating a conditional distribution by selecting an appropriate parameterizer and parameterized family.
 
+If $\set{f_{\phi}: X \to \Theta}_{\phi \in \Phi}$ is a family of functions and $\set{q^{(\theta)}}$ is a family of distributions, then $\set{p^{(\phi)}: X \times Z \to \R}_{\phi}$ defined by $p^{(\phi)}(\cdot, \zeta) \equiv q^{f_\phi(\zeta)}$ is a conditional distribution family called a \t{functionally parameterized conditional distribution family}.
+In other words, by selecting some parameters $\phi$, we induce a conditional distribution $p^{(\phi)}: X \times Z \to \R$
 
-\ssection{Examples}\footnote{Future editions will include.}
+We similarly define \t{parameterized conditional densities} and \t{functionally parameterized conditional density families}.
+
+\ssubsection{Basic example}
+
+Let $Z = \set{1, 2}$ and $X = \R$. Let $f: \set{1, 2} \to  \R \times \R_+$ be defined by $f(1) = (\mu_1, \sigma_1)$ and $f(2) = (\mu_2, \sigma_2)$.
+Let $\set{g^{(\theta)}}_{\theta}$ be the normal family.
+Then $(f, \set{g^{(\theta)}})$ is a \t{functionally parameterized conditional density}.\footnote{Future editions will modify.}
+
 
 \blankpage
