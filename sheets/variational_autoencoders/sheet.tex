@@ -1,75 +1,23 @@
 %!name:variational_autoencoders
 %!need:autoencoders
-%!need:probabilistic_models
+% %!need:probabilistic_models
 %!need:neural_distribution_families
-%!need:parameterized_distribution_graphs
+% get this from the above, may change in future
+% %!need:parameterized_distribution_graphs
 
 \ssection{Why}\footnote{Future editions will include. Future editions may also change the name of this sheet. It is also likely that there will be added prerequisite sheets on variational inference.}
 
 \ssection{Definition}
 
-A \t{deep conditional family} is family of probabilistic generating pairs which are parameterized by a neural network (see \sheetref{parameterized_distributions}{Parameterized Distributions} and \sheetref{neural_networks}{Neural Networks}).
-A \t{deep generative family} (or \t{deep latent variable model}, \t{DLVM}) is a neural network parameterized generative conditional family.
+A \t{variational autoencoder} (\t{VAE}) from \t{latent set} $Z$ to \t{observation set} $X$ is an ordered pair
+$((p_{z}^{(\theta)}, p^{(\theta)}_{x \mid z}),  q^{\phi}_{z \mid x})$
+whose first coordinate is a deep latent generation pair from $Z$ to $X$ (with parameters $\theta$) and whose second coordinate is deep conditional distribution from $X$ to $Z$ (with parameters $\phi$).
 
-A \t{variational autoencoder} (or \t{VAE}) on \t{observations} $X$ and \t{latents} $Z$ is an ordered pair
-$(\set{ (p_{z}^{(\theta)}, p^{(\theta)}_{x \mid z}) }_{\theta \in \Theta}, \set{ q_{z \mid x}^{(\phi)} }_{\phi \in \Phi})$
-whose first coordinate is a deep generative family from $Z$ to $X$ and whose second coordinate is deep conditional family from $X$ to $Z$.
+A VAE inherits its \t{joint function} from its deep latent generation pair. 
+$p_z^{(\theta)}$ is called the \t{latent distribution} (or \t{prior distribution}, \t{latent model}).
+$p_{x \mid z}^{(\theta)}$ is called the \t{decoder distribution}. 
+$q_{z \mid x}^{(\theta)}$ is called the \t{encoder distribution} (or \t{inference distribution}, \t{recognition distribution}).
 
-We call
-
-
-with \t{latent distribution} (density) $p_z: Z \to \R$ and \t{observation distribution} (density) $p_x: X \to \R$ is a ordered pair $()$ discrete (continuous) latent set $Z$ and discrete (continuous) observation set $X$ is a tuple
-
-\ssection{Parameterizing distributions}
-
-\ssection{Definition}
-
-
-
-
-where
-(a) $\nu$ is an autoencoder (which need not be regular, see \sheetref{autoencoders}{Autoencoders}),
-(b) $q_{z \mid x}: Z \times X \to \R$ is a conditional distribution (density) called the \t{recognition distribution} (\t{recognition density}),
-(c) $p_{z}: Z \to \R$ is a distribution (density) called the \t{latent prior model}, and
-(d) $p_{x \mid z}: X \times Z \to \R$ is a conditional distribution (density) called the \t{generating model}.
-
-In other words, for (a) $q_{z \mid x}(\cdot, \xi): Z \to \R$ is a distribution (density) for each $\xi \in X$ and for (d) $p_{x \mid z}(\cdot, \zeta): X \to \R$ is a distribution (density) on $X$ for each $\zeta \in Z$.
-
-If the model has discrete latent set and discrete observation set (or continuous latent set and continuous observation set), the \t{joint distribution} (\t{joint density}) $p_{zx}: Z \times X \to \R$ is defined by $p_{zx} = p_{z}p_{x \mid z}$.
-The \t{observation distribution}
-
-A \t{continuous-continuous variational autoencoder family} (\t{discrete-discrete}, \t{discrete-continuous}, \t{continuous-discrete}) is a tuple
-\[
-  (\nu, \set{(q^{(\theta)}, p_z^{(\theta)}, p_{x \mid z}^{(\theta))})}_{\theta \in \Theta}),
-\]
-where:
-\begin{itemize}
-
-  \item
-    $\nu$ is an autoencoder with encoder $f: \R^d \to \R^k$ and decoder $g: \R^\ell \to \R^m$.
-    The autoencoder need not be regular, see \sheetref{autoencoders}{Autoencoders}).
-%     We call it the \t{autoencoder}.
-
-  \item
-    $\Theta \subset \R^p$.
-%     We call it
-    The \t{parameter set} (or \t{parameter space}).
-
-  \item
-    $q^{(\theta)}: \R^h \to \R$ is a density (distribution, density, distribution), for each $\theta \in \Theta$.
-    We call $\set{q^{(\theta)}}_{\theta \in \Theta}$ the \t{recognition model family}.
-
-  \item
-    $p_{z}^{\theta}: \R^h \to \R$ is a density (distribution, distribution, density), for each $\theta \in \Theta$.
-    We call $\set{p_{z}^{(\theta)}}_{\theta}$ the \t{latent prior model family}.
-
-  \item
-    $p_{x \mid z}^{(\theta)}: \R^d \times \R^h \to \R$ is a conditional density (distribution, density, distribution).
-    In other words,  $p_{x \mid z}^{(\theta)}(\cdot, \zeta): \R^d \to \R$ is a density (distribution, density, distribution) for every $\zeta \in \R^d$.
-    We call $\set{p_{x \mid z}^{(\theta)}}_{\theta \in \Theta}$ the \t{observation model family}.
-\end{itemize}
-
-A \t{variational autoencoder} (or \t{VAE}) may refer to any of the above.
-The convention we have adopted is \say{latent type}-\say{observation type}.
+A \t{variational autoencoder family}, from $Z$ to $X$, is a family of autoencoders  $\set{ ((p_{z}^{(\theta)}, p^{(\theta)}_{x \mid z}) ,  q_{z \mid x}^{(\phi)}}_{(\theta, \phi) \in \Theta \times \Phi}$.
 
 \blankpage

@@ -1,0 +1,37 @@
+%!name:classifier_errors
+%!need:classifiers
+% %!need:set_numbers
+
+\ssection{Why}
+
+How should we compare two classifiers?
+
+\ssection{Definitions}
+
+Let $a^1, \dots, a^n$ in $A$ be a dataset of inputs and $b^1, \dots, b^n$ in $B$ be a dataset of labels.
+Let $G: A \to B$ be a classifier.
+
+For each $i = 1, \dots, n$, the classifier associates a prediction $G(a^i)$ with $a_i$
+The prediction $G(a^i)$ is \t{correct} if $G^(a^i) = b^i$ and \t{incorrect} (\t{wrong}, \t{error}) if $G(a^i) \neq b^i$.
+The \t{error rate} is the proportion of the dataset for which the classifier's prediction is an error.
+In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i) \neq b^i}}$.
+
+Given two classifiers, we may be interested in the one with a lower error rate.
+Or given that these two are the results of different inductors applied on a shared dataset, we can use a different separate dataset to \t{validate} these.
+
+\ssection{Boolean case}
+
+In the case that $B = \set{-1, 1}$, we call the class $-1$ \t{negative} and the class $+1$ positive.
+Similarly, we call an example $(a^i, b^i)$ a \t{negative example} if $b^i = -1$ and a \t{positive example} if $b^i = 1$.
+
+%For input $a^i$, label $b^i$, prediction $G(b^i)$, there are four values for $(b^i, G(b^i))$.
+We call the result of $G$ on $a^i$ a \t{true positive} if $b^i = 1$ and $G(a^i) = 1$, a \t{true negative} if $b^i = -1$ and $G(b^i) = -1$, a \t{false negative} (or \t{type II error}, read \say{type two error}) if $b^i = 1$ and $G(a^i) = -1$ and a \t{false positive} (or \t{type I error}, read \say{type one error}) if $b^i = -1$ and $G(a^i) = 1$.
+
+The \t{false positive rate} (\t{false negative rate}) of a classifier on a dataset is the proportion of dataset elements for which it predicts a \t{false positive} (\t{false negative}).
+
+The \t{true positive rate} (or \t{sensitivity}, \t{recall}) of the classifier $G$ on the dataset is the proportion of positive examples which $G$ labels positive.
+The \t{true negative rate} (or \t{specificity}) is the proportion of negative examples which $G$ labels negative.
+On the other hand, the \t{false alarm rate} is the proportion of negative examples which $G$ (incorrectly) labels positive.
+The \t{precision} of $G$ is the proportion of all examples which the classifier labels $positive$ whose label is positive.
+
+\blankpage
