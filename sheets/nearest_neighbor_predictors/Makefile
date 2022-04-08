@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make nearest_neighbor_predictors.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 nearest_neighbor_predictors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > nearest_neighbor_predictors.tex
 

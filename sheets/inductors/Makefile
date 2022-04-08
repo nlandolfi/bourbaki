@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make inductors.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 inductors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inductors.tex
 
