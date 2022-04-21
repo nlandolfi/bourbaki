@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make decision_processes.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 decision_processes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > decision_processes.tex
 

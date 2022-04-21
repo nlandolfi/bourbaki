@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make undirected_paths.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 undirected_paths.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > undirected_paths.tex
 
