@@ -4,14 +4,17 @@
 
 make:
 	make graph.pdf
-	make total_orders.pdf
+	make linear_functions.pdf
 
-total_orders.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > total_orders.tex
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
 
-total_orders.pdf: ../../*.tex ../../trademark.pdf *.tex total_orders.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode total_orders.tex
-	../../latexrun total_orders.tex
+linear_functions.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > linear_functions.tex
+
+linear_functions.pdf: ../../*.tex ../../trademark.pdf *.tex linear_functions.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode linear_functions.tex
+	../../latexrun linear_functions.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: total_orders.pdf
-	open total_orders.pdf
+open: linear_functions.pdf
+	open linear_functions.pdf
 
 o:
 	make open
 
-terms: total_orders.tex
-	bbk_sheet -mode ts total_orders.tex
+terms: linear_functions.tex
+	bbk_sheet -mode ts linear_functions.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f total_orders.*
+	rm -f linear_functions.*
 	make reset
 	bbk_sheet -mode mk > Makefile

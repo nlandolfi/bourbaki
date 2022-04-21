@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make probabilistic_classifiers.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 probabilistic_classifiers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probabilistic_classifiers.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make affine_sets_and_linear_equations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 affine_sets_and_linear_equations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_sets_and_linear_equations.tex
 

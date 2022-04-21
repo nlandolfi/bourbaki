@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make optimization_problems.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 optimization_problems.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > optimization_problems.tex
 

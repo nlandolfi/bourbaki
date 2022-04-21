@@ -34,7 +34,8 @@ type ParseResult struct {
 
 	// only set if returned
 	//from ParseAll
-	NeededBy []string
+	NeededBy   []string
+	HasLitFile bool
 }
 
 func allNeeds(p *ParseResult, all map[string]*ParseResult) []string {
@@ -146,6 +147,11 @@ func ParseAll(sheetsdir string) ([]*ParseResult, error) {
 		m[p.Name] = p
 		sheetfile.Close()
 		macrosfile.Close()
+
+		_, err = os.Open(filepath.Join(sheetsdir, f.Name(), "sheet.lit"))
+		if err == nil {
+			p.HasLitFile = true
+		}
 	}
 
 	for _, p := range results {

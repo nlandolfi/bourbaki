@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make resource_allocation_problems.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 resource_allocation_problems.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > resource_allocation_problems.tex
 
