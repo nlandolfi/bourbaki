@@ -7,7 +7,10 @@ const MakefileTemplate = `# generated automatically by bbk_sheet
 make:
 	make graph.pdf
 	make {{ .Name }}.pdf
-
+{{ if .HasLitFile }}
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+{{ end }}
 {{ .Name }}.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > {{ .Name }}.tex
 

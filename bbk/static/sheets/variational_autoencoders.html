@@ -32,16 +32,9 @@
               <span class="caret">›</span>
             </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./parameterized_distribution_graphs.html'" onkeypress="location.href='./parameterized_distribution_graphs.html'">
+            <div class="need" tabindex="0" onclick="location.href='./neural_distribution_families.html'" onkeypress="location.href='./neural_distribution_families.html'">
               <span>
-                Parameterized Distribution Graphs
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./probabilistic_models.html'" onkeypress="location.href='./probabilistic_models.html'">
-              <span>
-                Probabilistic Models
+                Neural Distribution Families
               </span>
               <span class="caret">›</span>
             </div>
@@ -67,7 +60,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include._future_editions_may_also_change_the_name_of_this_sheet._it_is_also_likely_that_there_will_be_added_prerequisite_sheets_on_variational_inference."><h1 class="sheet">1. Why}\footnote{Future editions will include. Future editions may also change the name of this sheet. It is also likely that there will be added prerequisite sheets on variational inference.</h1></div><div class="sheet-listing" id="parameterizing_distributions"><h1 class="sheet">2. Parameterizing distributions</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{variational autoencoder} is an ordered pair whose first coordinate with \t{latent distribution} (density) $p_z: Z \to \R$ and \t{observation distribution} (density) $p_x: X \to \R$ is a ordered pair $()$ discrete (continuous) latent set $Z$ and discrete (continuous) observation set $X$ is a tuple</p></div><div class="sheet-listing"><p class="sheet"> where (a) $\nu$ is an autoencoder (which need not be regular, see \sheetref{autoencoders}{Autoencoders}), (b) $q_{z \mid x}: Z \times X \to \R$ is a conditional distribution (density) called the \t{recognition distribution} (\t{recognition density}), (c) $p_{z}: Z \to \R$ is a distribution (density) called the \t{latent prior model}, and (d) $p_{x \mid z}: X \times Z \to \R$ is a conditional distribution (density) called the \t{generating model}.</p></div><div class="sheet-listing"><p class="sheet"> In other words, for (a) $q_{z \mid x}(\cdot, \xi): Z \to \R$ is a distribution (density) for each $\xi \in X$ and for (d) $p_{x \mid z}(\cdot, \zeta): X \to \R$ is a distribution (density) on $X$ for each $\zeta \in Z$.</p></div><div class="sheet-listing"><p class="sheet"> If the model has discrete latent set and discrete observation set (or continuous latent set and continuous observation set), the \t{joint distribution} (\t{joint density}) $p_{zx}: Z \times X \to \R$ is defined by $p_{zx} = p_{z}p_{x \mid z}$. The \t{observation distribution}</p></div><div class="sheet-listing"><p class="sheet"> A \t{continuous-continuous variational autoencoder family} (\t{discrete-discrete}, \t{discrete-continuous}, \t{continuous-discrete}) is a tuple \[ (\nu, \set{(q^{(\theta)}, p_z^{(\theta)}, p_{x \mid z}^{(\theta))})}_{\theta \in \Theta}), \] where: \begin{itemize}</p></div><div class="sheet-listing"><p class="sheet"> \item $\nu$ is an autoencoder with encoder $f: \R^d \to \R^k$ and decoder $g: \R^\ell \to \R^m$. The autoencoder need not be regular, see \sheetref{autoencoders}{Autoencoders}).</p></div><div class="sheet-listing"><p class="sheet"> \item $\Theta \subset \R^p$. The \t{parameter set} (or \t{parameter space}).</p></div><div class="sheet-listing"><p class="sheet"> \item $q^{(\theta)}: \R^h \to \R$ is a density (distribution, density, distribution), for each $\theta \in \Theta$. We call $\set{q^{(\theta)}}_{\theta \in \Theta}$ the \t{recognition model family}.</p></div><div class="sheet-listing"><p class="sheet"> \item $p_{z}^{\theta}: \R^h \to \R$ is a density (distribution, distribution, density), for each $\theta \in \Theta$. We call $\set{p_{z}^{(\theta)}}_{\theta}$ the \t{latent prior model family}.</p></div><div class="sheet-listing"><p class="sheet"> \item $p_{x \mid z}^{(\theta)}: \R^d \times \R^h \to \R$ is a conditional density (distribution, density, distribution). In other words,  $p_{x \mid z}^{(\theta)}(\cdot, \zeta): \R^d \to \R$ is a density (distribution, density, distribution) for every $\zeta \in \R^d$. We call $\set{p_{x \mid z}^{(\theta)}}_{\theta \in \Theta}$ the \t{observation model family}. \end{itemize}</p></div><div class="sheet-listing"><p class="sheet"> A \t{variational autoencoder} (or \t{VAE}) may refer to any of the above. The convention we have adopted is "latent type}-\say{observation type".</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why}\footnote{future_editions_will_include._future_editions_may_also_change_the_name_of_this_sheet._it_is_also_likely_that_there_will_be_added_prerequisite_sheets_on_variational_inference."><h1 class="sheet">1. Why}\footnote{Future editions will include. Future editions may also change the name of this sheet. It is also likely that there will be added prerequisite sheets on variational inference.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{variational autoencoder} (\t{VAE}) from \t{latent set} $Z$ to \t{observation set} $X$ is an ordered pair $((p_{z}^{(\theta)}, p^{(\theta)}_{x \mid z}),  q^{\phi}_{z \mid x})$ whose first coordinate is a deep latent generation pair from $Z$ to $X$ (with parameters $\theta$) and whose second coordinate is deep conditional distribution from $X$ to $Z$ (with parameters $\phi$).</p></div><div class="sheet-listing"><p class="sheet"> A VAE inherits its \t{joint function} from its deep latent generation pair. $p_z^{(\theta)}$ is called the \t{latent distribution} (or \t{prior distribution}, \t{latent model}). $p_{x \mid z}^{(\theta)}$ is called the \t{decoder distribution}. $q_{z \mid x}^{(\theta)}$ is called the \t{encoder distribution} (or \t{inference distribution}, \t{recognition distribution}).</p></div><div class="sheet-listing"><p class="sheet"> A \t{variational autoencoder family}, from $Z$ to $X$, is a family of autoencoders  $\set{ ((p_{z}^{(\theta)}, p^{(\theta)}_{x \mid z}) ,  q_{z \mid x}^{(\phi)}}_{(\theta, \phi) \in \Theta \times \Phi}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -171,7 +164,7 @@
     -->
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ee5d995a3.
+      Copyright 2022 The Bourbaki Authors. Version 0967680a5.
     </span>
   </body>
 </html>

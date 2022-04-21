@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./classifier_errors.pdf#page=2'"> Classifier Errors </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./classifier_errors.pdf#page=2'" onkeypress="location.href='./classifier_errors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./classifier_errors-graph.pdf'" onkeypress="location.href='./classifier_errors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./classifiers.html'" onkeypress="location.href='./classifiers.html'">
+              <span>
+                Classifiers
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./confusion_matrices.html'" onkeypress="location.href='./confusion_matrices.html'">
+            <span>
+            Confusion Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./optimal_classifiers.html'" onkeypress="location.href='./optimal_classifiers.html'">
+            <span>
+            Optimal Classifiers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How should we compare two classifiers?</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> Let $a^1, \dots, a^n$ in $A$ be a dataset of inputs and $b^1, \dots, b^n$ in $B$ be a dataset of labels. Let $G: A \to B$ be a classifier.</p></div><div class="sheet-listing"><p class="sheet"> For each $i = 1, \dots, n$, the classifier associates a prediction $G(a^i)$ with $a^i$. The prediction $G(a^i)$ is \t{correct} if $G(a^i) = b^i$ and \t{incorrect} (\t{wrong}, \t{error}) if $G(a^i) \neq b^i$. The \t{error rate} is the proportion of the dataset for which the classifier's prediction is an error. In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i) \neq b^i}}$.</p></div><div class="sheet-listing"><p class="sheet"> Given two classifiers, it is natural to prefer the one with the lower error rate. Given that these two are the results of different inductors applied to the same, we can use a separate dataset to \t{validate} these.</p></div><div class="sheet-listing" id="boolean_case"><h1 class="sheet">3. Boolean case</h1></div><div class="sheet-listing"><p class="sheet"> In the case that $B = \set{-1, 1}$, we call the class $-1$ \t{negative} and the class $+1$ positive. Similarly, we call an example $(a^i, b^i)$ a \t{negative example} if $b^i = -1$ and a \t{positive example} if $b^i = 1$.</p></div><div class="sheet-listing"><p class="sheet"> We call the result of $G$ on $a^i$ a \t{true positive} if $b^i = 1$ and $G(a^i) = 1$, a \t{true negative} if $b^i = -1$ and $G(b^i) = -1$, a \t{false negative} (or \t{type II error}, read "type two error}) if $b^i = 1$ and $G(a^i) = -1$ and a \t{false positive} (or \t{type I error}, read \say{type one error") if $b^i = -1$ and $G(a^i) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{false positive rate} (\t{false negative rate}) of a classifier on a dataset is the proportion of dataset elements for which it predicts a \t{false positive} (\t{false negative}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{true positive rate} (or \t{sensitivity}, \t{recall}) of $G$ on a dataset is the proportion of positive examples which $G$ labels positive. The \t{precision} (or \t{positive predictive value}) of $G$ is the proportion of all examples which the classifier labels $positive$ whose label is positive. The \t{true negative rate} (or \t{specificity}, \t{selectivity}) is the proportion of negative examples which $G$ labels negative. The \t{false alarm rate} is the proportion of negative examples which $G$ <i>incorrectly</i> labels positive.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./classifier_errors-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './classifier_errors.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./classifier_errors.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./classifier_errors.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./classifier_errors-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 0967680a5.
+    </span>
+  </body>
+</html>

@@ -25,9 +25,16 @@
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./vectors.html'" onkeypress="location.href='./vectors.html'">
+            <div class="need" tabindex="0" onclick="location.href='./n-dimensional_space.html'" onkeypress="location.href='./n-dimensional_space.html'">
               <span>
-                Vectors
+                N-Dimensional Space
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_summation.html'" onkeypress="location.href='./real_summation.html'">
+              <span>
+                Real Summation
               </span>
               <span class="caret">›</span>
             </div>
@@ -36,9 +43,9 @@
       
         <div disabled class="need label"> Needed by: </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./bounded_linear_functions.html'" onkeypress="location.href='./bounded_linear_functions.html'">
+          <div class="need" tabindex="0" onclick="location.href='./linear_equations.html'" onkeypress="location.href='./linear_equations.html'">
             <span>
-            Bounded Linear Functions
+            Linear Equations
             </span>
             <span class="caret">›</span>
           </div>
@@ -63,10 +70,20 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Lots of things are (approximately) linear.\footnote{Future editions will expand on this why. In particular, the intuition of proportionality.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A function between two vector spaces which share the same field is \t{linear} if the function applied to a linear combination of two vectors in the first space is the linear combination of the results of the function (in the second space), using the same coefficients for the combination.</p></div><div class="sheet-listing"><p class="sheet"> A linear function is always linear with respect to some field. The field is implicit, somewhat, in the definition but always present. Linear functions are sometimes called \t{operators}.</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A function $f: \R^n \to \R^m$ is \t{linear} if \begin{enumerate} \item $f(x + y) = f(x) + f(y)$ for all $x, y \in \R^n$ and \item $f(\alpha x) = \alpha f(x)$ for all $x \in \R^n$ and $\alpha \in \R$. \end{enumerate} There are simple consequences to these conditions. For example, $f(0) =0$. For reasons which may be clarified in future editions, these conditions are sometimes described as \t{superposition}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./linear_functions-graph.pdf'"></canvas>
+    </div>
       <script id="script">
         // If absolute URL from the remote server is provided, configure the CORS
         // header on that server.
@@ -76,139 +93,70 @@
         pdfjsLib.GlobalWorkerOptions.workerSrc =
           '../pdfjs/build/pdf.worker.js';
 
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
         // Asynchronous download PDF
         var loadingTask = pdfjsLib.getDocument(url);
         loadingTask.promise.then(function(pdf) {
 
           // Fetch the first page
           pdf.getPage(2).then(function(page) {
-            var scale = 1.4;
-            var viewport = page.getViewport({ scale: scale, });
-
-            //
-            // Prepare canvas using PDF page dimensions
-            //
-            var canvas = document.getElementById('page1');
-            var context = canvas.getContext('2d');
-
-
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-
-            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
-            //context.imageSmoothingEnabled = false;
-            //context.webkitImageSmoothingEnabled = false;
-            //context.mozImageSmoothingEnabled = false;
-            //context.oImageSmoothingEnabled = false;
-
-            if (window.devicePixelRatio > 1) {
-              var canvasWidth = canvas.width;
-              var canvasHeight = canvas.height;
-
-              canvas.width = canvasWidth * window.devicePixelRatio;
-              canvas.height = canvasHeight * window.devicePixelRatio;
-              canvas.style.width = canvasWidth + "px";
-              canvas.style.height = canvasHeight + "px";
-
-              context.scale(window.devicePixelRatio, window.devicePixelRatio);
-            }
-            //end see
-
-            // Render PDF page into canvas context
-            var renderContext = {
-              canvasContext: context,
-              viewport: viewport,
-            };
-            page.render(renderContext);
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
           });
 
           // Fetch the second page
           pdf.getPage(3).then(function(page) {
-            var scale = 1.4;
-            var viewport = page.getViewport({ scale: scale, });
-
-            //
-            // Prepare canvas using PDF page dimensions
-            //
-            var canvas = document.getElementById('page2');
-            var context = canvas.getContext('2d');
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
-            context.imageSmoothingEnabled = false;
-            context.webkitImageSmoothingEnabled = false;
-            context.mozImageSmoothingEnabled = false;
-            context.oImageSmoothingEnabled = false;
-
-            if (window.devicePixelRatio > 1) {
-              var canvasWidth = canvas.width;
-              var canvasHeight = canvas.height;
-
-              canvas.width = canvasWidth * window.devicePixelRatio;
-              canvas.height = canvasHeight * window.devicePixelRatio;
-              canvas.style.width = canvasWidth + "px";
-              canvas.style.height = canvasHeight + "px";
-
-              context.scale(window.devicePixelRatio, window.devicePixelRatio);
-            }
-            //end see
-
-            //
-            // Render PDF page into canvas context
-            //
-            var renderContext = {
-              canvasContext: context,
-              viewport: viewport,
-            };
-            page.render(renderContext);
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
           });
 
           // Fetch the third page
           pdf.getPage(4).then(function(page) {
-            var scale = 1.4;
-            var viewport = page.getViewport({ scale: scale, });
-
-            //
-            // Prepare canvas using PDF page dimensions
-            //
-            var canvas = document.getElementById('page3');
-            var context = canvas.getContext('2d');
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
-            context.imageSmoothingEnabled = false;
-            context.webkitImageSmoothingEnabled = false;
-            context.mozImageSmoothingEnabled = false;
-            context.oImageSmoothingEnabled = false;
-
-            if (window.devicePixelRatio > 1) {
-              var canvasWidth = canvas.width;
-              var canvasHeight = canvas.height;
-
-              canvas.width = canvasWidth * window.devicePixelRatio;
-              canvas.height = canvasHeight * window.devicePixelRatio;
-              canvas.style.width = canvasWidth + "px";
-              canvas.style.height = canvasHeight + "px";
-
-              context.scale(window.devicePixelRatio, window.devicePixelRatio);
-            }
-
-            //
-            // Render PDF page into canvas context
-            //
-            var renderContext = {
-              canvasContext: context,
-              viewport: viewport,
-            };
-            page.render(renderContext);
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
           });
         });
       </script>
-
-
-    <canvas id="page1" style="direction: ltr;"></canvas>
-    <canvas id="page2" style="direction: ltr;"></canvas>
-    <canvas id="page3" style="border: 1px solid black; direction: ltr;"></canvas>
 
     <!-- PAGES -->
     <!--
@@ -225,5 +173,8 @@
     </iframe>
     -->
 
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 0967680a5.
+    </span>
   </body>
-</html>`
+</html>

@@ -25,6 +25,13 @@
       
         <div disabled class="need label"> Needs: </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./factorials.html'" onkeypress="location.href='./factorials.html'">
+              <span>
+                Factorials
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
             <div class="need" tabindex="0" onclick="location.href='./inductors.html'" onkeypress="location.href='./inductors.html'">
               <span>
                 Inductors
@@ -36,6 +43,20 @@
       
         <div disabled class="need label"> Needed by: </div>
         
+          <div class="need" tabindex="0" onclick="location.href='./classifier_errors.html'" onkeypress="location.href='./classifier_errors.html'">
+            <span>
+            Classifier Errors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./classifier_examples.html'" onkeypress="location.href='./classifier_examples.html'">
+            <span>
+            Classifier Examples
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
           <div class="need" tabindex="0" onclick="location.href='./document_topic_classifiers.html'" onkeypress="location.href='./document_topic_classifiers.html'">
             <span>
             Document Topic Classifiers
@@ -46,6 +67,13 @@
           <div class="need" tabindex="0" onclick="location.href='./handwritten_digit_classifiers.html'" onkeypress="location.href='./handwritten_digit_classifiers.html'">
             <span>
             Handwritten Digit Classifiers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./list_classifiers.html'" onkeypress="location.href='./list_classifiers.html'">
+            <span>
+            List Classifiers
             </span>
             <span class="caret">›</span>
           </div>
@@ -77,7 +105,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name a predictor whose set of outputs is finite.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{classifer} is a predictor whose codomain is a finite set. In the case that we call the predictor a classifier, we call the outputs \t{classes} or \t{labels} or \t{label set}. We call the prediction of a classifier on an input the \t{classification} of the input.</p></div><div class="sheet-listing"><p class="sheet"> We call the classifier a \t{binary classifier} (or \t{two-way classifier} or \t{two-class}) if the set of labels has two elements. In the case that there are $k$ labels, we call the classifier a \t{$k$-way classifier}, \t{$k$-class classifier} or \t{multi-class classifier}. The second term is meant to indicate, not that the classifier assigns to each point several classes, but that the classification decision is made between several classes.</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set of inputs and let $B$ be a set of labels (outputs). Suppose $B = \set{0, 1}$, so that, in particular $B$ is finite. Then $f: A \to B$ is a binary classifier with labels $0$ and $1$. Suppose instead that $B = \set{\text{\textsc{Yes}}, \textsc{No}, \textsc{Maybe}}$ In this case, we would call $f: A \to B$ a three-way classifier.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">2.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Following our terminology, but speaking of processes, some authors refer to the application of inductors for these special cases as \t{binary classification} and \t{multi-class classification}. Or they speak of \t{classification} or a \t{classification problem}.</p></div><div class="sheet-listing"><p class="sheet"> Some authors refer to a classifier as a \t{discriminator} and reference \t{discrimination problems}. Some authors refer to a classifier as a \t{point classifier} since it makes one guess.\footnote{Future editions may remove this. This term is used in contrast with list predictors, mentioned in subsequent sheets.}</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name a predictor whose set of outputs is finite.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{classifer} is a predictor whose codomain is a finite set. In this case, we call the outputs \t{classes} (or \t{labels}, \t{categories}, \t{label set}). We call the prediction of a classifier on an input a \t{classification}.</p></div><div class="sheet-listing"><p class="sheet"> If the set of labels has two elements, then we call the classifier a \t{binary classifier} (or \t{two-way classifier}, \t{two-class classifier}, \t{boolean classifier}). In the case that there are $k$ labels, we call the classifier a \t{$k$-way classifier} (or \t{$k$-class classifier},\t{multi-class classifier}). The second term is meant to indicate, not that the classifier assigns to each point several classes, but that the classification decision is made <i>between</i> several classes.</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_example">2.1 Basic Example</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set of inputs and let $B$ be a set of labels. Define $B = \set{0, 1}$ (or $\set{-1,1 }$, $\set{\textsc{False}, \textsc{True}}$, $\set{\textsc{Negative}, \textsc{Positive}}$). Then $B$ is finite with two elements and $f: A \to B$ is a binary classifier with labels $0$ and $1$.</p></div><div class="sheet-listing"><p class="sheet"> If the case $B = \set{\text{\textsc{No}}, \textsc{Maybe}, \textsc{Yes}}$, we call $f: A \to B$ a three-way classifier. Other examples for $B$ include a list of languages, the set of English words in some dictionary, or the set of $m!$ possible orders of $m$ horses in a race. Often convenient to take $B = \set{1, \dots, k}$ for $k \in \mathbfsf{N}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">2.2 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Following our terminology, but speaking of processes, some authors refer to the application of inductors for these special cases as \t{binary classification} and \t{multi-class classification}. Or they speak of \t{classification} and a \t{classification problems}. Roughly speaking, a classifier \t{classifies} all inputs into categories.</p></div><div class="sheet-listing"><p class="sheet"> Alternatively, some authors (especially in the statistics literature) refer to a classifier as a \t{discriminator} and reference \t{discrimination problems}.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -181,7 +209,7 @@
     -->
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ee5d995a3.
+      Copyright 2022 The Bourbaki Authors. Version 0967680a5.
     </span>
   </body>
 </html>

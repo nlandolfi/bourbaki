@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make classifier_errors.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 classifier_errors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > classifier_errors.tex
 

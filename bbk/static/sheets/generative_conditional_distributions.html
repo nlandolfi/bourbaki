@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./generative_conditional_distributions.pdf#page=2'"> Generative Conditional Distributions </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./generative_conditional_distributions.pdf#page=2'" onkeypress="location.href='./generative_conditional_distributions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./generative_conditional_distributions-graph.pdf'" onkeypress="location.href='./generative_conditional_distributions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./autoencoders.html'" onkeypress="location.href='./autoencoders.html'">
+              <span>
+                Autoencoders
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./neural_networks.html'" onkeypress="location.href='./neural_networks.html'">
+              <span>
+                Neural Networks
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./parameterized_distribution_graphs.html'" onkeypress="location.href='./parameterized_distribution_graphs.html'">
+              <span>
+                Parameterized Distribution Graphs
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./probabilistic_models.html'" onkeypress="location.href='./probabilistic_models.html'">
+              <span>
+                Probabilistic Models
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why}\footnote{future_editions_will_include._future_editions_may_also_change_the_name_of_this_sheet._it_is_also_likely_that_there_will_be_added_prerequisite_sheets_on_variational_inference."><h1 class="sheet">1. Why}\footnote{Future editions will include. Future editions may also change the name of this sheet. It is also likely that there will be added prerequisite sheets on variational inference.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $Z$ and $X$ be sets, either of which may or may not be finite.</p></div><div class="sheet-listing"><p class="sheet"> A \t{generative conditional distribution} (or \t{latent variable model}) with discrete (if $X$ finite, continuous otherwise) \t{observations} $X$ and discrete (if $Z$ finite, continuous otherwise) \t{latents} $Z$ is an ordered pair $(\set{p_z}, \set{p_{x \mid z}})$ whose first coordinate is a distribution (density) family on $Z$ and whose second coordinate is a conditional distribution (density) family on $X$ from $Z$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{joint function} $p_{zx}: Z \times X \to \R$ is defined by $p_{zx}(\zeta, \xi) = p_{z}(\zeta)p_{x \mid z}(\xi, \zeta)$ for all $\xi \in X$ and $\zeta \in Z$. It is may be distribution (density) if (but not only if), for example both $p_{z}$ and $p_{x \mid z}$ are distributions (densities).</p></div><div class="sheet-listing"><p class="sheet"> A \t{generative family} is a family of latent distributions $\set{(\set{p^{(\theta)}_z}, \set{p^{(\theta)}_{x \mid z}})}_{\theta \in \Theta}$. In this case we denote the joint function $p_{zx}^{(\theta)}$ to indicate the dependence on the \t{parameters} $\theta$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{deep conditional family} is a neural network parameterized conditional distribution family. A \t{deep generative family} (or \t{deep latent variable model}, \t{DLVM}) is a neural network parameterized generative conditional family.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./generative_conditional_distributions-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './generative_conditional_distributions.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./generative_conditional_distributions.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./generative_conditional_distributions.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./generative_conditional_distributions-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 71c791e3e.
+    </span>
+  </body>
+</html>

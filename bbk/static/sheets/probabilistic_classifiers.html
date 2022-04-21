@@ -32,6 +32,13 @@
               <span class="caret">›</span>
             </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./list_classifiers.html'" onkeypress="location.href='./list_classifiers.html'">
+              <span>
+                List Classifiers
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
             <div class="need" tabindex="0" onclick="location.href='./probability_distributions.html'" onkeypress="location.href='./probability_distributions.html'">
               <span>
                 Probability Distributions
@@ -60,7 +67,7 @@
       });
     </script>
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We use the language of probability distributions to characterize predictions.\footnote{Future editions will improve this.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{probabilistic classifier} is a function from precepts to probability distributions on the set of classes. Throughout this sheet, let $A$ be a set of precepts and $B$ a set of postcepts.</p></div><div class="sheet-listing"><h2 class="sheet" id="point_classifier_as_probabilistic_classifier">2.1 Point classifier as probabilistic classifier</h2></div><div class="sheet-listing"><p class="sheet"> Let $f: A \to B$ be a point classifier. One can always obtain a probabilistic classifier from $f$ in the following way. Define the probabilistic classifier at a precept $a \in A$ to be the distribution that takes $1$ on the predicted value of the point classifier at $a$ and $0$ otherwise.</p></div><div class="sheet-listing"><h2 class="sheet" id="probabilistic_classifer_from_point_classifier">2.2 Probabilistic classifer from point classifier</h2></div><div class="sheet-listing"><p class="sheet"> Now let $g: A \to (B \to [0, 1])$ be a probabilistic classifier. One can always obtain a point classifier from $g$ in the following way. Assign to a precept $a$ the value of the distribution $g(a)$ with the most probability mass. If there are ties, order the (finite) set $B$ arbitrarily, and break ties accordingly. We call this the \t{maximum likelihood classifier} corresponding to the probabilisstic classifier $g$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Since our predictions are often uncertain, we can use the language of probability distributions to characterize them. \ifhmode\unskip\fi\footnote{ Future editions will improve this. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Denote the set of probability distributions on a set $X$ by $\Delta(X)$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{probabilistic classifier} $G: A \to \Delta(B)$ is a function from inputs $A$ to probability distributions over the classes $B$.</p></div><div class="sheet-listing"><p class="sheet"> Given an input $u$, the \t{prediction} of $G$ on $a$ is a probability distribution $\hat{p}_a = G(a)$ on $B$.</p></div><div class="sheet-listing"><h2 class="sheet" id="point_classifier_as_probabilistic_classifier">2.1 Point classifier as probabilistic classifier</h2></div><div class="sheet-listing"><p class="sheet"> Given a point classifier $f: A \to B$, we can define a probabilistic classifier $G: A \to \Delta(B)$ corresponding to $f$ by \[ \hat{p}_a(b) = \begin{cases} 1 & \text{ if } f(a) = b \\ 0 & \text{ otherwise.} \\ \end{cases} \] where $\hat{p}_a = G(a).$</p></div><div class="sheet-listing"><h2 class="sheet" id="probabilistic_classifier_from_point_classifier">2.2 Probabilistic classifier from point classifier</h2></div><div class="sheet-listing"><p class="sheet"> On the other hand, given probabilistic classifier $G: A \to \Delta(B)$, we can define a point classifier $f: A \to B$ by \[ f(a) = \underset{b \in B}{\text{argmax}} \; \hat{p}_a(v) \] We call $f$ the \t{maximum likelihood classifier} corresponding to $G$. If there are ties, we can order the (finite) set $B$ arbitrarily, and break ties accordingly.</p></div><div class="sheet-listing"><p class="sheet"> We can extend this idea, and define a list classifier by sorting the outputs by their probability, from largest to smallest.</p></div><div class="sheet-listing"><p class="sheet"> \section{Judging probabilistic classifiers}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -164,7 +171,7 @@
     -->
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ee5d995a3.
+      Copyright 2022 The Bourbaki Authors. Version 0967680a5.
     </span>
   </body>
 </html>
