@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make bit_strings.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 bit_strings.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > bit_strings.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make tail_sigma_algebra.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 tail_sigma_algebra.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tail_sigma_algebra.tex
 
