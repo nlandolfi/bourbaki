@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make codes.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 codes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > codes.tex
 

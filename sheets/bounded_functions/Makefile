@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make bounded_functions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 bounded_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > bounded_functions.tex
 
