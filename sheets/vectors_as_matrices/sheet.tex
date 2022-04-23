@@ -1,18 +1,52 @@
 %!name:vectors_as_matrices
 %!need:real_vectors
+%!need:real_norm
+%!need:real_inner_product
 %!need:real_matrices
 
 \ssection{Why}
-A vector can be viewed as a matrix of height 1 or a matrix of width one.
+Vectors can be identified with matrices of width 1.
 
 \ssection{Canonical Identification}
 We identify $\R^{n}$ with $\R^{n \times 1}$ in the obvious way.
-For this reason, we call $x \in \R^{n}$ (equivalently $x \in \R^{n \times 1}$) a \t{column vector}.
+For this reason, we call $x \in \R^{n \times 1}$ (meaning $x \in \R^{n}$) a \t{column vector}.
 
-We write the vector
+For the reasons that we identify $\R^n$ with $\R^{n \times 1}$, we write the vector $a = (a_1, a_2, a_3) \in \R^3$ as
+  \[
+\bmat{a_1 \\ a_2 \\ a_3}
+\text{ or }
+\pmat{ a_1 \\ a_2 \\ a_3}.
+  \]
 
 We could as easily also identify $\R^{n}$ with $\R^{1 \times n}$.
 We avoid this convention.
 However, by analogy with the language \say{column vector,} we refer to the \textit{matrix} $y \in \R^{1 \times n}$ as a \t{row vector}.
+
+\ssection{Matrix transpose}
+We frequently move from $\R^{n \times 1}$ and $\R^{1 \times n}$.
+If $a \in \R^{n \times 1}$, we denote $b \in \R^{1 \times n}$ defined by $b_i = a_i$ by $a^\tp$.
+
+More generally, given a matrix $A \in \R^{m \times n}$, we denote the matrix $B \in \R^{m \times n}$ defined by $B_{ij} = A_{ji}$ by $A^\tp$.
+Notice that the entries of $i$ and $j$ have swapped.
+We call the matrix $B$ the \t{transpose} of $A$, and so call $a^\tp$ the \t{transpose} fo the vector $a$.
+Clearly, $(A^\tp)^\tp = A$ and $(a^\tp)^\tp$.
+
+\ssubsection{Reals as vectors}
+There is a similar obvious identification between scalars $a \in \R$ and the 1-vectors $\R^{1}$ and so with the 1 by 1 matrices $\R^{1 \times 1}$.
+Given our definition of matrix multiplication, if identify $a \in \R$ with $A \in \R^{1 \times 1}$ where $A_{11} = a$, then $Ax = ax$.
+
+\ssection{Familiar concepts, new notation}
+These identifications and the notation of transposition give allow us to write several familiar concepts in a compact notation.
+We write the norm $\norm{x}$ as
+  \[
+\norm{x} = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2} = \sqrt{x^\tp x}.
+  \]
+We write the inner product as
+  \[
+\ip{x,y} =
+x_1y_1 + x_2y_2 + \cdots + x_ny_n
+= x^\tp y.
+  \]
+We express the symmetry of the inner product by $ x^\tp y = y^\tp x$.
 
 \blankpage
