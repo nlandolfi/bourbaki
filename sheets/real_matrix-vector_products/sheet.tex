@@ -1,0 +1,48 @@
+%!name:real_matrix-vector_products
+%thur vector_as_matrices %!need:real_matrices
+%!need:vectors_as_matrices
+%!need:real_linear_combinations
+%!refs:nla
+
+\ssection{Why}
+We explore matrix-vector multiplication.
+
+\ssection{Definition}
+Given a matrix $A \in \R^{m \times n}$ and a vector $x \in \R^{n}$, the \t{product} of $A$ \t{with} $x$ is the vector $y \in \R^{m}$ defined by
+  \[
+y_i = \sum_{j = 1}^{n} A_{ij} x_j, \quad i = 1, \dots, m.
+  \]
+
+\ssubsection{Notation}
+We denote the product of $A$ with $x$ by $Ax$.
+With which we concisely write the system linear equations $(A, b)$ as $b = Ax$.
+
+This notation suggests both algebraic and geometric interpretations of solving systems of linear equations.
+The algebraic interpretation is that we are interested in the invertibility of the function $x \mapsto Ax$.
+In other words, we are interested in the existence of an inverse element of $A$.
+The geometric interpretation is that $A$ transforms the vector $x$.
+
+Conversely, we can view $x$ as transforming (acting on) $A$.
+Let $a^j \in \R^m$ denote the $j$th column of $A$, then we can write the product
+  \[
+y = Ax = \sum_{j = 1}^{n} x_j a^j
+  \]
+In other words, $y$ is linear combination of the columns of $A$.
+
+\ssection{Properties}
+We call the function $f: \R^n \to \R^m$ defined by $f(x) = Ax$ the \t{matrix multiplication function} (or \t{matrix-vector product function}) associated with $A$.
+$f$ is satisfies the following two important properties:
+  \begin{enumerate}
+  \item $A(x + y) = Ax + Ay$
+  \item $A(\alpha x) = \alpha Ax$.
+  \end{enumerate}
+We call such a function $f$ \t{linear}.
+In other words, the matrix multiplication function is linear.
+Conversely, if $g: \R^n \to \R^m$ is linear, there exists a matrix inducing $g$.
+\begin{proposition}
+Let $f: \R^n \to \R^m$ be linear. Then there exists a unique $A \in \R^{m \times n}$ satisfying $f(x) = Ax$ for all $x \in \R^n$.
+\end{proposition}
+\begin{proof}
+Evaluate $f$ at the standard unit vectors $e_i$.
+The $i$th component of $e_i$ is 1 and all other components are 0.
+\end{proof}

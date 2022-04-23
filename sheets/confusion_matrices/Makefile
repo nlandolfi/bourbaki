@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make confusion_matrices.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 confusion_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > confusion_matrices.tex
 

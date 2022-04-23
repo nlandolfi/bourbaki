@@ -1,13 +1,32 @@
 %!name:real_matrices
 %!need:linear_equations
+%thru linear equations %!need:arrays
 % don’t need since made decision that to understand vector space you need n dimensional space and to understand that you need the real numbers
 %%!need:real_numbers
+%!need:real_vectors
 
 \ssection{Why}
 We compress the notation for linear equations.
 
 \ssection{Definition}
-A \t{real matrix} (\t{real-valued matrix}, \t{matrix of real numbers}, \t{matrix}) is a two-dimensional array of real numbers.
+A \t{real matrix} (\t{matrix}, \t{rectangular array}) is a two-dimensional array of real numbers.
+We denote a matrix elements in a grid between two rectangular braces, as in
+  \[
+A = \bmat{
+A_{11} & A_{12} & \cdots & A_{1n} \\
+A_{21} & A_{22} & \cdots & A_{2n} \\
+\vdots & & \ddots & \vdots \\
+A_{m1} & A_{m2} & \cdots & A_{mn} \\
+}.
+  \]
+
+We call $n$ and $m$ the \t{dimensions} of the matrix.
+We call $n$ the \t{height} and $m$ the \t{width}.
+If the height of the matrix is the same as the width of the matrix then we call the matrix \t{square}.
+If the height is larger than the width, we call the matrix \t{tall}.
+If the width is larger than the height, we call the matrix \t{wide}.
+
+\ssubsection{Linear equations}
 Recall that we are interested in solutions of the linear equations
   \[
 \begin{aligned}
@@ -17,17 +36,14 @@ y_2 &= A_{21}x_1 + A_{22}x_2 + \cdots + A_{2n}x_n, \\
 y_n &= A_{m1}x_1 + A_{m2}x_2 + \cdots + A_{mn}x_n. \\
 \end{aligned}
   \]
-We have suggestively used the notation $A_{ij}$ for the coefficients of the equations, so they are the entries of a matrix $A \in \R^{m \times n}$.
+We have suggestively used the notation $A_{ij}$ for the coefficients of the equations, so they are the entries of $A \in \R^{m \times n}$.
 
-We call $n$ and $m$ the \t{dimensions} of the matrix.
-We call $n$ the \t{height} and $m$ the \t{width}.
-If the height of the matrix is the same as the width of the matrix then we call the matrix \t{square}.
-If the height is larger than the width, we call the matrix \t{tall}.
-If the width is larger than the height, we call the matrix \t{wide}.
-
-\ssubsection{Matrix-vector products}
+\ssubsection{A primer on matrix-vector products}
 Using the notation $A \in \R^{m \times n}$ and $x \in \R^n$ we want a compressed way to write the above system of linear equations.
-Define the \t{real matrix-vector product} $z$ of $A$ with $x$ by $z_{i} = \sum_{j = 1}^{n} A_{ij}x_j$
+Define the \t{real matrix-vector product} $z \in \R^m$ of $A$ with $x$ by
+  \[
+z_{i} = \sum_{j = 1}^{n} A_{ij}x_j, \quad i = 1, \dots, m.
+  \]
 We denote the matrix vector product $z$ by $Ax$.
 
 \ssubsection{Notation}
@@ -35,28 +51,9 @@ We express the above system of linear equations as
   \[
 y = Ax,
   \]
-where {\small
-  \[
-y = \bmat{y_1 \\ y_2 \\ \vdots \\ y_m}, \;
-A = \bmat{
-A_{11} & A_{12} & \cdots & A_{1n} \\
-A_{21} & A_{22} & \cdots & A_{2n} \\
-\vdots & & \ddots & \vdots \\
-A_{m1} & A_{m2} & \cdots & A_{mn} \\
-}, \text{ and }
-x = \bmat{x_1 \\ x_2 \\ \vdots \\ x_m}.
-  \]
-}
+where $y = (y_1, \dots, y_n) \in \R^{n}$ and $x = (x_1, \dots, x_n) \in \R^n$.
 The compact notation $y = Ax$ is sometimes called the \t{matrix form} of the $m$ linear equations and $A$ the \t{coefficient matrix}.
 
-This notation suggests both algebraic and geometric interpretations of solving systems of linear equations.
-The algebraic interpretation is that we are interested in the invertibility of the function $x \mapsto Ax$.
-In other words, we are interested in the existence of an inverse element of $A$.
-The geometric interpretation is that $A$ transforms the vector $x$.
-
 \ssubsection{Note on terminology}
-The etymology of the word \say{matrix} is from the Latin \say{mater,} meaning mother, and has an old sense in the English language similar to the sense of the English word \say{womb.}
-The matrix is source of many determinants (discussed later).
-  \ifhmode\unskip\fi\footnote{
-Future editions may elide this discussion.
-  }
+The word \say{matrix} is from the Latin \say{mater,} meaning mother, and has an old sense in English similar \say{womb.}
+The matrix is source of many determinants (discussed elsewhere).
