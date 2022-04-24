@@ -4,14 +4,14 @@
 
 make:
 	make graph.pdf
-	make optimal_inductors.pdf
+	make probabilistic_learners.pdf
 
-optimal_inductors.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > optimal_inductors.tex
+probabilistic_learners.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > probabilistic_learners.tex
 
-optimal_inductors.pdf: ../../*.tex ../../trademark.pdf *.tex optimal_inductors.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode optimal_inductors.tex
-	../../latexrun optimal_inductors.tex
+probabilistic_learners.pdf: ../../*.tex ../../trademark.pdf *.tex probabilistic_learners.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode probabilistic_learners.tex
+	../../latexrun probabilistic_learners.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: optimal_inductors.pdf
-	open optimal_inductors.pdf
+open: probabilistic_learners.pdf
+	open probabilistic_learners.pdf
 
 o:
 	make open
 
-terms: optimal_inductors.tex
-	bbk_sheet -mode ts optimal_inductors.tex
+terms: probabilistic_learners.tex
+	bbk_sheet -mode ts probabilistic_learners.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f optimal_inductors.*
+	rm -f probabilistic_learners.*
 	make reset
 	bbk_sheet -mode mk > Makefile

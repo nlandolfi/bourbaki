@@ -1,0 +1,38 @@
+%!name:probabilistic_predictors
+%!need:predictors
+%!need:probability_measures
+
+\ssection{Why}
+
+Let $X = \set{a, b}$ and $Y = \set{0, 1}$.
+The dataset $((a, 0))$ is consistent, but it is not functionally complete.
+On the other hand, the dataset $((a,0), (b,0), (a,0), (a,0), (a,0), (a, 1))$
+is complete but it is not \textit{functionally} consistent.
+
+In general, if $y_i \neq y_j$ for some $i$ and $j$ where $x_i = x_j$, then the dataset is not functionally consistent.
+In the preceding example, both $(a, 0)$ and $(a, 1)$ appear.
+
+If we emphasize the \say{predictive} aspect of a functional inductor, we interpret the input as an object we \say{see before} the output.
+And so treat $y \in Y$ as an uncertain outcome which is the element associated to $x \in X$.
+
+In this case, we may use the language of probability to discuss this uncertain outcome.
+If, for example, $Y$ is finite, we can associate a distribution with each input $x \in X$.
+
+\ssection{Definition}
+
+Let $(X, \CX)$ and $(Y, \CY)$ be measurable spaces.
+
+A \t{probabilistic functional inductor} (for a dataset of size $n$ in $X \times Y$) is a function mapping a dataset in $(X \times Y)^n$ to a family of measures on $(Y, \CY)$, indexed by $X$.
+We call a function from inputs to output measures a \t{probabilistic predictor}.
+We call the distribution a \t{probabilistic prediction}.
+
+\ssubsection{Notation}
+
+Let $\CM(Y, \CY)$ be the set of measures on $Y$.
+Let $D$ be a dataset in $(X \times Y)^n$.
+Let $g: X \to \CM(Y, \CY)$  a probabilistic predictor.
+Let $G_n (X \times Y)^n \to (X \to \CM(Y, \CY))$ be a predictive probabilistic inductor.
+Then $G_n(D)$ is a family of measures $\set{g_x: \CY \to [0, 1]}_{x \in X}$.
+
+
+% \blankpage
