@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make data_matrix.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 data_matrix.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > data_matrix.tex
 
