@@ -1,0 +1,139 @@
+¶ ⦊
+  ‖ ❲%!name:tree_distribution_approximators❳ ⦉
+
+  ‖ ❲%!need:distribution_approximators❳ ⦉
+
+  ‖ ❲%!need:tree_distributions❳ ⦉
+
+  ‖ ❲%!need:relative_entropy❳ ⦉
+⦉
+
+¶ ⦊
+  ‖ \ssection{Why} ⦉
+⦉
+
+¶ ⦊
+  ‖ We want to approximate a given distribution with one which
+    factors according to a tree. ⦉
+⦉
+
+¶ ⦊
+  ‖ \ssection{Definition} ⦉
+⦉
+
+¶ ⦊
+  ‖ Given $q: A → [0, 1]$, we want to find a distribution $p$
+    on $A$ and tree $T$ on $\set{1, …, n}$ to
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ \text{minimize} ❲&❳ \quad d_{kl}(q, p) ᜶ ⦉
+
+      ‖ \text{subject to} ❲&❳ \quad p \text{ factors according to
+        } T. ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉
+    where $d_{kl}$ is the relative entropy as a criterion of
+    approximation. ⦉
+
+  ‖ We call such a distribution a ❬tree distribution
+    approximator❭ (or ❬tree approximator❭) and we call the tree
+    the ❬approximator tree❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ \ssection{Result} ⦉
+⦉
+
+¶ ⦊
+  ‖ \begin{prop} ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $A_1, …, A_n$ be finite non-empty sets. ⦉
+
+  ‖ Define $A = ∏_{i = 1}^{n} A_i$. ⦉
+
+  ‖ Let $q: A → [0, 1]$ a distribution and $T$ a tree on
+    $\set{1, …, n}$. ⦉
+
+  ‖ The distribution $p^*_T: A → [0, 1]$ defined by
+    ◇ ⦊
+      ‖ p^*_T = q_1 ∏_{i ≠ 1} q_{i \mid \pa{i}} ⦉
+    ⦉
+    minimizes the relative entropy with $q$ among all
+    distributions on $A$ which factor according to $T$. ⦉
+⦉
+
+¶ ⦊
+  ‖ \begin{proof} ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $p: A → [0, 1]$ be a distribution which factors
+    according to $T$. ⦉
+
+  ‖ First, express
+    ◇ ⦊
+      ‖ p = p_1 ∏_{i ≠ i} p_{i \mid \pa{i}} ⦉
+    ⦉
+    ‖ where $\pa{i}$ is the parent of vertex $i$ in $T$ rooted
+      at vertex 1 ($i = 2, …, n$). ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ Second, recall that the relative entropy of $q$ with $p$ is
+    $H(q, p) - H(q)$. ⦉
+
+  ‖ Since $H(q)$ does not depend on $p$, $p$ is a minimizer of
+    the relative of $q$ with $p$ if and only if $p$ is a
+    minimizer of $H(q, p)$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Third, express
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ H(q, p) ❲&❳= - ∑_{a ∈ A} q(a) \log p(a) ᜶ ⦉
+
+      ‖ ❲&❳= - ∑_{a ∈ A} q(a) \parens*{\log p_1(a_1) + ∑_{i ≠
+        1} \log p_{i \mid \pa{i}}\parens*{a_i, a_{\pa{i}}}} ᜶ ⦉
+
+      ‖ ❲&❳= H(q_1, p_1) + ∑_{i ≠ 1} ∑_{a_{\pa{i}} ∈ A_{\pa{i}}}
+        q_{\pa{i}}(a_{\pa{i}})H\parens*{q_{i\mid\pa{i}}(\cdot,
+        a_{\pa{i}}), p_{i\mid\pa{i}}(\cdot, a_{\pa{i}})} ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉
+    which separates across $p_1$ an $p_{i \mid \pa{i}}(\cdot,
+    a_{\pa{i}})$ for $i = 2, …, n$ and $a_{pa_{i}} ∈ A_{\pa{i}}$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Fourth, recall $H(\cdot, \cdot) ≥ 0$ and is zero on
+    repeated pairs. ⦉
+
+  ‖ By this, we mean, for example, $H(p_1, p_1) = 0$. ⦉
+
+  ‖ So $p_1 = q_1$ and $p_{i \mid \pa{i}} = q_{i \mid \pa{i}}$
+    are solutions. ⦉
+⦉
+
+¶ ⦊
+  ‖ \end{proof} ⦉
+⦉
+
+¶ ⦊
+  ‖ \label{prop:treeapproximators} ⦉
+
+  ‖ \end{prop} ⦉
+⦉
+
+¶ ⦊
+  ‖ Proposition~\ref{prop:treeapproximators} states the form of an
+    optimal approximator given a tree. ⦉
+
+  ‖ A natural next question is to select the tree. ⦉
+⦉

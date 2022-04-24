@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make probability_vectors.pdf
+	make data_models.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-probability_vectors.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > probability_vectors.tex
+data_models.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > data_models.tex
 
-probability_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex probability_vectors.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode probability_vectors.tex
-	../../latexrun probability_vectors.tex
+data_models.pdf: ../../*.tex ../../trademark.pdf *.tex data_models.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode data_models.tex
+	../../latexrun data_models.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: probability_vectors.pdf
-	open probability_vectors.pdf
+open: data_models.pdf
+	open data_models.pdf
 
 o:
 	make open
 
-terms: probability_vectors.tex
-	bbk_sheet -mode ts probability_vectors.tex
+terms: data_models.tex
+	bbk_sheet -mode ts data_models.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f probability_vectors.*
+	rm -f data_models.*
 	make reset
 	bbk_sheet -mode mk > Makefile

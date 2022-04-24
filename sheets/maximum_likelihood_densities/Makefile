@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make maximum_likelihood_densities.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 maximum_likelihood_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > maximum_likelihood_densities.tex
 
