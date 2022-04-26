@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make closest_point_property.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 closest_point_property.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > closest_point_property.tex
 
