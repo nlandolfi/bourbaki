@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make probability_measures.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 probability_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probability_measures.tex
 

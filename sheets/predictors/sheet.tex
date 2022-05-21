@@ -8,24 +8,18 @@ We discuss inferring (or learning) functions from examples.
 A \t{predictor} $f: \CU \to \CV$ is a function from $\CU$ to $\CV$.
 An \t{inducer} is a function from finite datasets in $\CU \times \CV$ to predictors from $\CU$ to $\CV$.
 A \t{learner} is a function family of inducers, indexed by $n$, each defined for datasets of size $n$.
-We call the elements of $\CU$ \t{inputs} and the elements of $\CV$ \t{outputs}.
+We call $\CU$ the \t{inputs}, $\CV$ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \CU$.
 
-\ssubsection{Predictors}
-An \t{function inducer} is an inducer from datasets functions, in which case we call the elements of $\CU$ \t{inputs} and the elements of $\CV$ \t{outputs}.
-We also refer to a function inputs to outputs as a \t{predictor} and call the result of an input under a predictor a \t{prediction}.
-Predictors map inputs to ouputs, and (functional) inducers map datasets to predictors.
-
-\ssection{Relation inducers}
-We need only consider the case of functional inducers, since we can associate a relation $R$ on $\CU \times \CV$ with a function function $f: \CU \times \CU \to \set{0, 1}$ defined by $f(u, v) = 1$ if $(u, v) \in R$.
-Henceforth, by \t{inducer} we mean a \textit{functional} inducer.
+\ssection{Predicting relations}
+A \t{relation inducer} is a function from finite datasets in $\CU \times \CV$ to \textit{relations} on $\CU \times \CV$.
+Since we can associate any relation $R$ between $\CU$ and $\CV$ with a function $f: \CU \times \CV \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.
 
 \ssubsection{Notation}
 
 Let $D$ be a dataset of size $n$ in $\CU \cross \CV$.
 Let $g: \CU \to \CV$, a predictor, which makes prediction $g(u)$ on input $u \in \CU$.
-Let $G_n: (\CU \cross \CV)^n \to (\CU \times \CV)$ be an inductor.
-Then $G_n(D)$ is the predictor which the inductor associates with dataset $D$.
-And $\set{G_n: (\CU \times \CV)^n \to \powerset{(\CU \times \CV)}}_{n \in \N}$ is a family of inductors.
+Let $G_n: (\CU \cross \CV)^n \to (\CU \times \CV)$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$.
+Then $\set{G_n: (\CU \times \CV)^n \to \powerset{(\CU \times \CV)}}_{n \in \N}$ is a learner.
 
 \ssection{Consistent and complete datasets}
 
@@ -43,5 +37,5 @@ Other terms for the inputs include \t{independent variables}, \t{explanatory var
 Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}.
 An input, output pair is sometimes called a \t{record pair}.
 
-Other terms for a functional inductor include \t{learning algorithm}, \t{learner}, \t{supervised learning algorithm}.
+Other terms for a learner include \t{learning algorithm}, or \t{supervised learning algorithm}.
 Other terms for a predictor include \t{input-output} mapping, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.

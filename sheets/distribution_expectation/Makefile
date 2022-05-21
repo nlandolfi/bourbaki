@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make distribution_expectation.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 distribution_expectation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distribution_expectation.tex
 

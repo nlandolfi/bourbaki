@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make uncertain_decisions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 uncertain_decisions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > uncertain_decisions.tex
 
