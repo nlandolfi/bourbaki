@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make conditional_dependency_graph.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 conditional_dependency_graph.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_dependency_graph.tex
 

@@ -4,6 +4,8 @@
   ‖ ❲%!need:probability_distributions❳ ⦉
 
   ‖ ❲%!need:set_operations❳ ⦉
+
+  ‖ ❲%!need:partitions❳ ⦉
 ⦉
 
 ¶ ⦊
@@ -11,8 +13,9 @@
 ⦉
 
 ¶ ⦊
-  ‖ If we have some outcomes and a distribution, we can
-    construct a function which assigns probabilities to events. ⦉
+  ‖ Since one and only one outcome occurs, given a distribution
+    on outcomes, we define the probability of a set of outcomes
+    as the sum of their probabilities. ⦉
 ⦉
 
 ¶ ⦊
@@ -20,65 +23,102 @@
 ⦉
 
 ¶ ⦊
-  ‖ The ❬probability of an event❭ is the sum of the
-    probabilities of the outcomes in the event. ⦉
-
-  ‖ The ❬event probability function❭ is the correspondence
-    assigning events to their probabilities. ⦉
+  ‖ Given a distribution $p: Ω → 𝗥$, the ❬probability of an
+    event❭ $A ⊂ Ω$ is $∑_{a ∈ A} p(a)$, the sum of
+    probabilities of its outcomes. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ \ssection{Notation} ⦉
-⦉
+  ‖ \ssubsection{Notation} ⦉
 
-¶ ⦊
-  ‖ Let $A$ be a set of outcomes and $p$ a distribution on
-    $A$. ⦉
-
-  ‖ Let $B ⊂ A$ be an event. ⦉
-
-  ‖ Let $\PE: 2^A → 𝗥$ be the event probability function, which
-    is defined by
+  ‖ Define define $𝗣: \powerset{Ω} → 𝗥$ by
     ◇ ⦊
       ‖ \textstyle ⦉
 
-      ‖ \PE(B) = ∑_{b ∈ B} p(b). ⦉
+      ‖ 𝗣(A) = ∑_{a ∈ A} p(a). ⦉
+    ⦉⦉
+
+  ‖ Call $𝗣$ the ❬event probability function❭ (or ❬probability
+    measure❭) of (or induced by) $p$. ⦉
+⦉
+
+¶ ⦊
+  ‖ \ssubsection{Example: die} ⦉
+
+  ‖ Define $p: \set{1, …, 6} → 𝗥$ by $p(ω) = \nicefrac{1}{6}$
+    for $ω = 1, …, 6$. ⦉
+
+  ‖ Define the event $E = \set{2, 4, 6}$. ⦉
+
+  ‖ Then
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ 𝗣(E) = ∑_{ω ∈ E} p(ω) = p(2) + p(4) + p(6) =
+        \nicefrac{1}{2}. ⦉
     ⦉⦉
 ⦉
 
 ¶ ⦊
-  ‖ The event probability function $\PE$ depends on the outcomes
-    $A$ and the distribution $p$. ⦉
+  ‖ \ssection{Basic properties} ⦉
 
-  ‖ We sometimes indicate this dependence by writing $\PE_{A, p}$. ⦉
+  ‖ Notice that for all $A ⊂ Ω$, (i) $𝗣(A) ≥ 0$. ⦉
+
+  ‖ In particular, (ii) $𝗣(Ω) = 1$ (and $𝗣(∅) = 0$). ⦉
+
+  ‖ For all $A, B ⊂ Ω$, $𝗣(A ∪ B) = 𝗣(A) + 𝗣(B) - 𝗣(A ∩
+    B)$. ⦉
+
+  ‖ In particular, if $A ∩ B = ∅$, (iii) $𝗣(A ∪ B) = 𝗣(A) +
+    𝗣(B)$. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ \ssection{Properties} ⦉
-⦉
+  ‖ Conversely, suppose $f: \powerset{Ω} → 𝗥$ satifies (i), (ii),
+    (iii). ⦉
 
-¶ ⦊
-  ‖ \begin{proposition} ⦉
+  ‖ These three conditions are sometimes called the ❬axioms of
+    probability❭ (for finite sets). ⦉
 
-  ‖ Let $\PE$ be the event probability function of the
-    distribution $p: A → [0, 1]$.
-    † ⦊
-      ‖ Future editions will include an account. ⦉
-    ⦉
-    𝍫 ⦊
-      ‣ $\PE(B) ≥ 0$ for all $B ⊂ A$ ⦉
-
-      ‣ $\PE(A) = 1$, and $\PE(∅) = 0$ ⦉
-
-      ‣ ‖$\PE(B ∪ C) = \PE(B) + \PE(C) - \PE(B ∩ C)$ for $B, C ⊂
-          A$. ⦉
-
-        ‖ In particular,
-          𝍫 ⦊
-            ‣ if $B ∩ C = ∅$, then $\PE(B ∪ C) = \PE(B) +
-              \PE(C)$. ⦉
-          ⦉⦉⦉
+  ‖ Define $p: Ω → 𝗥$ by
+    ◇ ⦊
+      ‖ p(ω) = f(\set{ω}). ⦉
     ⦉⦉
 
-  ‖ \end{proposition} ⦉
+  ‖ In case $f$ satisfies the axioms, $p$ is a probability
+    distribution (nonnegative and sums to one). ⦉
+
+  ‖ For this reason we call $f$ satisfying (i)-(iii) an ❬event
+    probability function❭ (or ❬probability measure❭). ⦉
+
+  ‖ In the case that we think of a probability event function
+    $𝗣$ as induced by a distribution $p$, we write $𝗣_p$. ⦉
+⦉
+
+¶ ⦊
+  ‖ We conclude that $p$ and $𝗣$ are two perspectives. ⦉
+
+  ‖ We can think of elementary events (outcomes) and define
+    their probabilities individually in a way that they sum to
+    one and are nonnegative. ⦉
+
+  ‖ Or we can think of the compound events, and define their
+    probabilities in a way consistent with (i)-(iii). ⦉
+⦉
+
+¶ ⦊
+  ‖ \ssection{Probability by cases} ⦉
+
+  ‖ Let $𝗣$ be a probability event function. ⦉
+
+  ‖ Suppose $A_1, …, A_n$ partition $Ω$. ⦉
+
+  ‖ Then for an $B ⊂ Ω$,
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ 𝗣(B) = ∑_{i = 1}^{n} 𝗣(A_i ∩ B). ⦉
+    ⦉⦉
+
+  ‖ Some authors call this the ❬law of total probability❭. ⦉
 ⦉

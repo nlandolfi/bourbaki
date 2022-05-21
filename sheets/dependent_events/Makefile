@@ -4,14 +4,17 @@
 
 make:
 	make graph.pdf
-	make total_probability.pdf
+	make dependent_events.pdf
 
-total_probability.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > total_probability.tex
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
 
-total_probability.pdf: ../../*.tex ../../trademark.pdf *.tex total_probability.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode total_probability.tex
-	../../latexrun total_probability.tex
+dependent_events.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > dependent_events.tex
+
+dependent_events.pdf: ../../*.tex ../../trademark.pdf *.tex dependent_events.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode dependent_events.tex
+	../../latexrun dependent_events.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: total_probability.pdf
-	open total_probability.pdf
+open: dependent_events.pdf
+	open dependent_events.pdf
 
 o:
 	make open
 
-terms: total_probability.tex
-	bbk_sheet -mode ts total_probability.tex
+terms: dependent_events.tex
+	bbk_sheet -mode ts dependent_events.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f total_probability.*
+	rm -f dependent_events.*
 	make reset
 	bbk_sheet -mode mk > Makefile
