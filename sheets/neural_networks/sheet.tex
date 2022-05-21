@@ -1,12 +1,13 @@
 %!name:neural_networks
 %!need:regressors
 % %!need:inductors
-%!need:real_matrices
-% %!need:real_numbers
-%!need:matrix-vector_products
+%!need:real_matrix-vector_products
 %!refs:/sanjay_lall/introduction_to_machine_learning/neural_networks
 
-\ssection{Why}\footnote{Future editions will include. Future editions may change the name of this sheet to \t{computation networks}, or may add prerequisite sheet on computation graphs.}
+\ssection{Why}
+  \ifhmode\unskip\fi\footnote{
+Future editions will include. Future editions may change the name of this sheet to \t{computation networks}, or may add prerequisite sheet on computation graphs.
+  }
 
 \ssection{Definition}
 
@@ -14,9 +15,9 @@ A sequence of functions $(g_1, \dots, g_\ell)$ is \t{composable} if $g_i$ is com
 In this case we write $g_\ell \composed g_{\ell-1} \composed \cdots \composed g_2 \composed g_1$. For example, we write $g_3 \composed g_2 \composed g_1$ for $(g_1, g_2, g_3)$.
 
 A \t{neural network} (or \t{feedforward neural network}) from $\R^n$ to $\R^m$ is a sequence of composable functions $(g_1, \dots, g_{\ell})$, $\dom g_1 = \R^n$, $\ran g_\ell \subset \R^m$, satisfying
-\[
-  g_i(\xi) = h_i(A_i \xi + b_i)
-\]
+  \[
+g_i(\xi) = h_i(A_i \xi + b_i)
+  \]
 for some conforming matrices $A_i$, vectors $b_i$ and functions $h_i$.
 
 The $i$th \t{layer} of the neural network is the $i$th function $g_i$.
@@ -24,7 +25,10 @@ The $i$th \t{activation} of the neural network is the function $h_i$.
 A \t{neural network} is called \t{deep} if its number of layers is larger than 3.
 
 We call the composition of the layers of the neural network the \t{network predictor} (or just \t{predictor}).
-We also call it \t{the function} of the network.\footnote{Many authorities refer to a neural network as a function. Strictly speaking that is true for us, as well, since a sequence is a function. But the meaning of the common use is in reference to the \t{network predictor}.}
+We also call it \t{the function} of the network.
+  \ifhmode\unskip\fi\footnote{
+Many authorities refer to a neural network as a function. Strictly speaking that is true for us, as well, since a sequence is a function. But the meaning of the common use is in reference to the \t{network predictor}.
+  }
 
 A \t{multi-layer perceptron} (\t{MLP}) is a neural network with 2 layers (1 \t{hidden layer}) and for which $A_i$ and $b_i$ have unrestricted nonzero entries.
 

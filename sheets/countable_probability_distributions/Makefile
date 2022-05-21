@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make countable_probability_distributions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 countable_probability_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > countable_probability_distributions.tex
 
