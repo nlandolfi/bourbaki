@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make operators.pdf
+	make joint_probability_matrices.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-operators.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > operators.tex
+joint_probability_matrices.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > joint_probability_matrices.tex
 
-operators.pdf: ../../*.tex ../../trademark.pdf *.tex operators.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode operators.tex
-	../../latexrun operators.tex
+joint_probability_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex joint_probability_matrices.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode joint_probability_matrices.tex
+	../../latexrun joint_probability_matrices.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: operators.pdf
-	open operators.pdf
+open: joint_probability_matrices.pdf
+	open joint_probability_matrices.pdf
 
 o:
 	make open
 
-terms: operators.tex
-	bbk_sheet -mode ts operators.tex
+terms: joint_probability_matrices.tex
+	bbk_sheet -mode ts joint_probability_matrices.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f operators.*
+	rm -f joint_probability_matrices.*
 	make reset
 	bbk_sheet -mode mk > Makefile

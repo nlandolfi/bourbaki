@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make operators.pdf
+	make real_matrix_rank.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-operators.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > operators.tex
+real_matrix_rank.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > real_matrix_rank.tex
 
-operators.pdf: ../../*.tex ../../trademark.pdf *.tex operators.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode operators.tex
-	../../latexrun operators.tex
+real_matrix_rank.pdf: ../../*.tex ../../trademark.pdf *.tex real_matrix_rank.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode real_matrix_rank.tex
+	../../latexrun real_matrix_rank.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: operators.pdf
-	open operators.pdf
+open: real_matrix_rank.pdf
+	open real_matrix_rank.pdf
 
 o:
 	make open
 
-terms: operators.tex
-	bbk_sheet -mode ts operators.tex
+terms: real_matrix_rank.tex
+	bbk_sheet -mode ts real_matrix_rank.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f operators.*
+	rm -f real_matrix_rank.*
 	make reset
 	bbk_sheet -mode mk > Makefile

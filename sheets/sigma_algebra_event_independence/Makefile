@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make sigma_algebra_event_independence.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 sigma_algebra_event_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sigma_algebra_event_independence.tex
 
