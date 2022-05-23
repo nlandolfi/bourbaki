@@ -1,0 +1,21 @@
+%!name:joint_probability_matrices
+%!need:real_matrix_rank
+%!need:dependent_events
+
+\ssection{Why}
+We can characterize the dependence of two events in terms of the rank of a particular matrix.
+
+\ssection{Definition}
+Given a probability measure $\mathbfsf{P} : \powerset{\Omega } \to \R $ on the finite set $\Omega $ and two events $A, B \subset \Omega $, the \t{joint probability matrix} of $A$ and $B$ is the matrix
+  \[
+M = \bmat{
+\mathbfsf{P} (A \cap B) & \mathbfsf{P} (A \cap \relcomplement{B}{\Omega }) \\
+\mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) & \mathbfsf{P} (\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) \\
+}.
+  \]
+Since $B$ and $\relcomplement{B}{\Omega }$ partition $\Omega $, use the the total law of probability to express is $\mathbfsf{P} (A) = \mathbfsf{P} (A \cap B) + \mathbfsf{P} (A \cap \relcomplement{B}{\Omega })$.
+Likewise, $\mathbfsf{P} (\relcomplement{A}{\Omega }) = \mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) + \mathbfsf{P} (\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega })$.
+For these reasons, the sum of the entries of the first row of $M$ is $\mathbfsf{P} (A)$ and the sum of the entries of the second row of $M$ is $\mathbfsf{P} (\relcomplement{A}{\Omega })$.
+The events $A$ and $B$ are independent if and only if $\rank(M) = 1$
+
+\blankpage

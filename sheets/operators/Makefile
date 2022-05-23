@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make operators.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 operators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > operators.tex
 
