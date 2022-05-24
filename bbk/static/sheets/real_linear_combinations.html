@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./real_linear_combinations.pdf#page=2'"> Real Linear Combinations </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./real_linear_combinations.pdf#page=2'" onkeypress="location.href='./real_linear_combinations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./real_linear_combinations-graph.pdf'" onkeypress="location.href='./real_linear_combinations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_vectors.html'" onkeypress="location.href='./real_vectors.html'">
+              <span>
+                Real Vectors
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./linear_combinations.html'" onkeypress="location.href='./linear_combinations.html'">
+            <span>
+            Linear Combinations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./real_matrix-vector_products.html'" onkeypress="location.href='./real_matrix-vector_products.html'">
+            <span>
+            Real Matrix-Vector Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to build vectors out of other vectors using scalar multiplication and vector addition.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{linear combination} \t{from} a $\R^n$ is an ordered pair: the first coordinate is a sequence of vectors and the second is a sequence in $\R$ (which we call the \t{scalars}). The \t{result} of a linear combination is the sum of the results of scaling each vector by the corresponding scalar in the sequence; itself a vector in the space.</p></div><div class="sheet-listing"><p class="sheet"> A \t{trivial linear combination} is one whose sequence of scalars is zero at each coordinate. The result of any trivial linear combination is the zero vector. A \t{nontrivial linear combination} is one which is not trivial. In other words, to be nontrivial, there must exist at least one index of the scalar sequence whose corresponding value is nonzero.</p></div><div class="sheet-listing"><p class="sheet"> We say that a given vector \t{can be written as a linear combination of} a sequence of vectors if there exists a sequence of scalars such that the result of the linear combination of that sequence of vectors and scalars is the given vector. In other words, a vector can be written as a linear combination of some other vectors if there exists scalars for those other vectors such that scaling them and adding the results gives the vector.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $v = (v_1, \dots, v_n)$ be a sequence of vectors in $\R^n$ and $a = (a_1, \dots, a_n)$ be a sequence of scalars in $\R$. Then $(v, a)$ is a linear combination and we can express its result by \[ a_1v_1 + a_2v_2 + \cdots + a_n v_n. \] If $(v,a)$ is trivial, then $a_i = 0$ for $i \in \upto{n}$ and the result of $(v, a)$ is $0$ (the zero vector). Otherwise, there exists $i \in \upto{n}$ such that $a_i \neq 0$; of course, the result of $(v, a)$ may still be $0$. A vector $u$ can be written as a linear combination of the vectors $v_1, v_2, \dots, v_n$ if there exists scalars $a_1, a_2, \dots, a_n$ so that \[ u = a_1v_1 + a_2v_2 + \cdots + a_nv_n. \] We often number (see \sheetref{lists}{Lists}) a finite set of vectors. In this case, we say "Let $\set{u_1, \dots, u_n}$ be a (finite) set of vectors."</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./real_linear_combinations-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './real_linear_combinations.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./real_linear_combinations.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./real_linear_combinations.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./real_linear_combinations-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 5096d3c71.
+    </span>
+  </body>
+</html>

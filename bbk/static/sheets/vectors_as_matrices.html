@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./vectors_as_matrices.pdf#page=2'"> Vectors as Matrices </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./vectors_as_matrices.pdf#page=2'" onkeypress="location.href='./vectors_as_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./vectors_as_matrices-graph.pdf'" onkeypress="location.href='./vectors_as_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_inner_product.html'" onkeypress="location.href='./real_inner_product.html'">
+              <span>
+                Real Inner Product
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+              <span>
+                Real Matrices
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_norm.html'" onkeypress="location.href='./real_norm.html'">
+              <span>
+                Real Norm
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_vectors.html'" onkeypress="location.href='./real_vectors.html'">
+              <span>
+                Real Vectors
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./data_matrix.html'" onkeypress="location.href='./data_matrix.html'">
+            <span>
+            Data Matrix
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./matrix-vector_products.html'" onkeypress="location.href='./matrix-vector_products.html'">
+            <span>
+            Matrix-Vector Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+            <span>
+            Matrix Transpose
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./real_matrix-vector_products.html'" onkeypress="location.href='./real_matrix-vector_products.html'">
+            <span>
+            Real Matrix-Vector Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Vectors can be identified with matrices of width 1.</p></div><div class="sheet-listing" id="canonical_identification"><h1 class="sheet">2. Canonical Identification</h1></div><div class="sheet-listing"><p class="sheet"> We identify $\R^{n}$ with $\R^{n \times 1}$ in the obvious way. For this reason, we call $x \in \R^{n \times 1}$ (meaning $x \in \R^{n}$) a \t{column vector}.</p></div><div class="sheet-listing"><p class="sheet"> For the reasons that we identify $\R^n$ with $\R^{n \times 1}$, we write the vector $a = (a_1, a_2, a_3) \in \R^3$ as \[ \bmat{a_1 \\ a_2 \\ a_3} \text{ or } \pmat{ a_1 \\ a_2 \\ a_3}. \]</p></div><div class="sheet-listing"><p class="sheet"> We could as easily also identify $\R^{n}$ with $\R^{1 \times n}$. We avoid this convention. However, by analogy with the language "column vector,} we refer to the <i>matrix} $y \in \R^{1 \times n"$ as a \t{row vector</i>.</p></div><div class="sheet-listing" id="matrix_transpose"><h1 class="sheet">3. Matrix transpose</h1></div><div class="sheet-listing"><p class="sheet"> We frequently move from $\R^{n \times 1}$ and $\R^{1 \times n}$. If $a \in \R^{n \times 1}$, we denote $b \in \R^{1 \times n}$ defined by $b_i = a_i$ by $a^\tp$.</p></div><div class="sheet-listing"><p class="sheet"> More generally, given a matrix $A \in \R^{m \times n}$, we denote the matrix $B \in \R^{m \times n}$ defined by $B_{ij} = A_{ji}$ by $A^\tp$. Notice that the entries of $i$ and $j$ have swapped. We call the matrix $B$ the \t{transpose} of $A$, and similarly call $a^\tp$ the \t{transpose} of the vector $a$. Clearly, $(A^\tp)^\tp = A$, which includes $(a^\tp)^\tp = a$.</p></div><div class="sheet-listing"><h2 class="sheet" id="reals_as_vectors">3.1 Reals as vectors</h2></div><div class="sheet-listing"><p class="sheet"> There is a similar, and similarly obvious, identification of scalars $a \in \R$ with the 1-vectors $\R^{1}$ (and so with the 1 by 1 matrices $\R^{1 \times 1}$). Given our definition of matrix-vector products, if we identify $a \in \R$ with $A \in \R^{1 \times 1}$ where $A_{11} = a$, then $Ax = ax$.</p></div><div class="sheet-listing" id="familiar_concepts,_new_notation"><h1 class="sheet">4. Familiar concepts, new notation</h1></div><div class="sheet-listing"><p class="sheet"> These identifications and the notation of transposition give allow us to write several familiar concepts in a compact notation. We write the norm $\norm{x}$ as \[ \norm{x} = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2} = \sqrt{x^\tp x}. \] We write the inner product as \[ \ip{x,y} = x_1y_1 + x_2y_2 + \cdots + x_ny_n = x^\tp y. \] We express the symmetry of the inner product by $ x^\tp y = y^\tp x$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./vectors_as_matrices-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './vectors_as_matrices.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./vectors_as_matrices.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./vectors_as_matrices.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./vectors_as_matrices-graph.pdf">
+    </iframe>
+    -->
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 5096d3c71.
+    </span>
+  </body>
+</html>

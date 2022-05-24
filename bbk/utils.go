@@ -38,6 +38,7 @@ var shortWords = map[string]bool{
 	"the":  true,
 	"a":    true,
 	"an":   true,
+	"as":   true,
 	"vs.":  true,
 	"vs":   true,
 	"with": true,
