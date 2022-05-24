@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make set_dualities.pdf
+	make generated_sigma_algebras.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-set_dualities.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > set_dualities.tex
+generated_sigma_algebras.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > generated_sigma_algebras.tex
 
-set_dualities.pdf: ../../*.tex ../../trademark.pdf *.tex set_dualities.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode set_dualities.tex
-	../../latexrun set_dualities.tex
+generated_sigma_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex generated_sigma_algebras.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode generated_sigma_algebras.tex
+	../../latexrun generated_sigma_algebras.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: set_dualities.pdf
-	open set_dualities.pdf
+open: generated_sigma_algebras.pdf
+	open generated_sigma_algebras.pdf
 
 o:
 	make open
 
-terms: set_dualities.tex
-	bbk_sheet -mode ts set_dualities.tex
+terms: generated_sigma_algebras.tex
+	bbk_sheet -mode ts generated_sigma_algebras.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f set_dualities.*
+	rm -f generated_sigma_algebras.*
 	make reset
 	bbk_sheet -mode mk > Makefile

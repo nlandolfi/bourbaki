@@ -1,0 +1,216 @@
+
+\documentclass[9pt]{extarticle}
+\input{macros.tex}
+\begin{document}
+
+	
+    \titleslide
+    { Basic mathematical genomics }{ Nick Landolfi and Dan O'Neill }{ Stanford University }{ N. C. Landolfi \& D. C. O'Neill }{ Revision: January 2022 }
+  \slidei{ DNA }{
+  \item deoxyribonucleic acid (DNA) is a molecule which we can
+    represent as a string
+  \item a \t{nucleotide} (or \t{base pair}) is one of adenine,
+    thymine, cytosine, and guanine
+    \begin{itemize}
+  \item we abbreviate the word \say{nucleotide} with \say{nt}
+  \item we represent each of the four nucleotides with letters
+        A, T, C, and G
+  \item ribonucleic acid (RNA) has the nucleotide uracil (U)
+        instead of thymine (T)
+    \end{itemize}
+  \item a \t{nucleotide string} is a sequence in the set
+    $\set{\NA, \NT, \NC, \NG}$; e.g,
+    $\NA\NT\NC\NG\NA\NT\NC\NA\NT\NC$
+    \begin{itemize}
+  \item in the \say{double helix} structure of DNA, $\NA$ binds
+        with $\NT$ and $\NC$ binds with $\NG$, forming
+        \say{cross-bars}
+  \item we call $\NA$ the \t{nucleotide complement} of $\NT$, and
+        vice versa; same for $\NC$ and $\NG$
+  \item as a result, we can represent the double helix DNA as
+        a single nucleotide string
+    \end{itemize}
+}
+  \slidei{ Proteins }{
+  \item a protein is a molecule which we can represent as a
+    string
+  \item an \t{amino acid} (also \t{residue}) is one of
+    \begin{center}
+        \begin{tabular}{rl|rl|rl|rl}
+        \toprule
+        name & symbol &
+        name & symbol &
+        name & symbol &
+        name & symbol \\
+        \midrule
+        alanine       & A &
+        arginine      & R &
+        asparagine    & N &
+        aspartate     & D \\
+        cysteine      & C &
+        glutamine     & Q &
+        glutamate     & E &
+        glycine       & G \\
+        histidine     & H &
+        isoleucine    & I &
+        leucine       & L &
+        lysine        & K \\
+        methionine    & M &
+        phenylalanine & F &
+        proline       & P &
+        serine        & S \\
+        threonine     & T &
+        tryptophan    & W &
+        tyrosine      & Y &
+        valine        & V \\
+        \bottomrule
+        \end{tabular}
+      \end{center}
+  \item an \t{amino acid string} is a sequence in $\{$A, R, N,
+    D, C, Q, E, G, H, I, L, K, M, F, P, S, T, W, Y,
+    V$\}$
+    \begin{itemize}
+  \item we denote this set by $\CA$, a mnemonic for \say{amino}
+  \item different amino acid strings correspond to different
+        proteins
+  \item as a result, we can represent a protein as a single
+        amino acid string
+    \end{itemize}
+}
+  \slidei{ Codons }{
+  \item nucleotides have semantic meaning in \t{non-overlapping}
+    sequences of three
+  \item a \t{nucleotide codon} (or \t{trinucleotide sequence}) is
+    a length 3 nucleotide string; e.g., $\NA\NT\NC$
+    \begin{itemize}
+  \item codons encode an element of $\CA$ (an amino acid) or a
+        \say{stop} (which we denote by $\CSTOP$)
+  \item we partition the set $\set{\NA, \NT, \NC, \NG}^3$ of
+        $4^3 = 64$ codons into 61 \t{amino codons} and 3 \t{stop
+        codons}
+    \end{itemize}
+  \item a nucleotide string is \t{codon-aligned} if its length is
+    a multiple of three
+    \begin{itemize}
+  \item a codon-aligned nucleotide string can be interpreted as a
+        sequence of codons
+  \item we know the \t{codon decoding function}
+        $f: \set{\NA,\NC,\NT,\NG}^3  \to \CA \cup \set{\CSTOP}$
+        \begin{itemize}
+      \item for example, $f(\text{GCT})= \text{A}$ where the r.h.s.
+                    is the symbol for the amino alanine
+        \end{itemize}
+  \item $f$ is not injective since two distinct codons may map
+        to the same amino (or to $\CSTOP$)
+        \begin{itemize}
+      \item we call two codons with the same image under $f$
+                    \t{synonyms}
+      \item for example, CAU and CAC are synonyms for histidine;
+                    i.e., $f(\text{CAU}) = f(\text{CAC}) = \text{H}$
+        \end{itemize}
+    \end{itemize}
+}
+  \slidei{ Codon Table }{
+  \item it is easier to tabulate $f^{-1}$ since its codomain is
+    smaller than its domain
+    \begin{center}
+        \begin{tabular}{cl|cl}
+        \toprule
+        symbol & codons; i.e., $f^{-1}(\text{symbol})$ &
+        symbol & codons \\
+        \midrule
+        A & GCT, GCC, GCA, GCG           &
+        I & ATT, ATC, ATA                \\
+        R & CGT, CGC, CGA, CGG, AGA, AGG &
+        L & CTT, CTC, CTA, CTG, TTA, TTG \\
+        N & AAT, AAC                     &
+        K & AAA, AAG                     \\
+        D & GAT, GAC                     &
+        M & ATG                          \\
+        C & TGT, TGC                     &
+        F & TTT, TTC                     \\
+        Q & CAA, CAG                     &
+        P & CCT, CCC, CCA, CCG           \\
+        E & GAA, GAG                     &
+        S & TCT, TCC, TCA, TCG, AGT, AGC \\
+        G & GGT, GGC, GGA, GGG           &
+        T & ACT, ACC, ACA, ACG           \\
+        H & CAT, CAC                     &
+        W & TGG                          \\
+        $\CSTOP$ & TAA, TGA, TAG         &
+        Y & TAT, TAC                     \\
+          &                              &
+        V & GTT, GTC, GTA, GTG           \\
+        %$\CSTOP$ & TAA, TGA, TAG & & \\ %$\CSTART$ & ATG & \\
+        \bottomrule
+        \end{tabular}
+      \end{center}
+    \begin{itemize}
+  \item the domain of $f$ is $\set{\NA, \NT, \NC, \NG}^3$ and the
+        codomain of $f$ is $\CA \cup \set{\CSTOP}$
+  \item $f^{-1}(x)$ is the set of domain elements of $f$ (in
+        this case, codons) which map to $x \in \CA \cup \set{\CSTOP}$
+    \end{itemize}
+}
+  \slidei{ Nucleotide senses }{
+  \item naturally, we can extend $f$ to codon-aligned nucleotide
+    strings by defining $s = \bar{f}(x)$ by
+    \[
+        s_i = f(
+          \underbrace{
+            x_{3(i-1)+1 } x_{3(i-1)+2} x_{3(i-1)+3}
+          }_{\text{codon } i \text{ of } x}
+        )
+      \]
+    \begin{itemize}
+  \item we call $s$ the sense of $x$; for example, the sense
+        of ATTCTTAAA is
+        \[
+            \bar{f}(
+                \underbrace{\underline{\text{ATT}}}_{\text{I}}
+                \underbrace{\underline{\text{CTT}}}_{\text{L}}
+                \underbrace{\underline{\text{AAA}}}_{\text{K}}
+            ) = \text{ILK}
+          \]
+    \end{itemize}
+  \item since $f$ is not one-to-one, neither is $\bar{f}$
+    \begin{itemize}
+  \item $x$ and $y$ are \t{sense-equivalent} if they have the
+        same sense; i.e., $\bar{f}(x) = \bar{f}(y)$
+  \item roughly speaking, $x$ and $y$ are sense-equivalent if
+        they \say{spell out the same thing}
+  \item e.g., CGTCGC and CGACGG are sense-equivalent because
+        $
+            \bar{f}(
+                \underbrace{\text{CGT}}_{\text{R}}
+                \underbrace{\text{CGC}}_{\text{R}}
+            ) = \bar{f}(
+                \underbrace{\text{CGA}}_{\text{R}}
+                \underbrace{\text{CGG}}_{\text{R}}
+            ) = \text{RR}$
+        \begin{itemize}
+      \item in this case, because CGT, CGC, CGA, CGG are
+                    synonyms for arginine (R)
+        \end{itemize}
+    \end{itemize}
+}
+  \slidei{ Nucleotide substitutions }{
+  \item a \t{(nucleotide) substitution} (or \t{point mutation}) to
+    a length $m$ nucleotide string is a pair $(j,b)$
+    \begin{itemize}
+  \item the \t{index} $j$ is in $\set{1, \dots, m}$ and the
+        \t{replacement} nucleotide $b$ is in
+        $\set{\NA, \NT, \NC, \NG}$
+  \item the \t{$(j,b)$-mutation} of $x$ is the nucleotide string
+        $y$ defined by $y_j = b$ and $y_i = x_i$ for all
+        $i \neq j$ ⁝
+        \item i.e., $y$ is the same as $x$ except at index $j$,
+              where it has nucleotide $b$
+        \item e.g., the (3,A)-mutation of $\text{CG\underline{T}}$
+              is $\text{CG\underline{A}}$ (we swapped T in position
+              3 with A)
+    \end{itemize}
+}
+  
+
+\end{document}

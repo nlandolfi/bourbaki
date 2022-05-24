@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make filtrations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 filtrations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > filtrations.tex
 

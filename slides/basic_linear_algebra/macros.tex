@@ -1,0 +1,430 @@
+%%% simple slides macros.tex
+%%% N. C. Landolfi; 15 December 2021
+%%% Adapted from zslides etc. of S. Lall.
+
+\usepackage[T1]{fontenc}
+\usepackage[paperwidth=16cm,paperheight=9cm,left=4mm,right=8mm,top=1mm,bottom=5mm]{geometry}
+\usepackage{amsbsy}
+\usepackage{amscd}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsmath}
+\usepackage{amsopn}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{ccfonts}
+\usepackage{enumitem}
+\usepackage{environ}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{latexsym}
+\usepackage{lipsum}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{overpic}
+\usepackage{subcaption}
+\usepackage{tabto}
+\usepackage{upgreek}
+\usepackage{xcolor}
+
+
+\renewcommand{\itdefault}{sl}
+\renewcommand{\rmdefault}{cmss}
+
+\parindent 0pt
+\parskip 5pt
+\normalsize
+\topskip 1.2\baselineskip
+
+% \definecolor{blue365}{hsb}{0.6666,1,0.6}
+% \definecolor{red365}{rgb}{0.6,0,0}
+\definecolor{blue365}{RGB}{0,21,138}
+\definecolor{red365}{RGB}{153,2,0}
+%\definecolor{blue365}{RGB}{0,154,220}
+%\definecolor{red365}{RGB}{154,202,60}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\numline{\raise 9mm\hbox to \textwidth{\textcolor{black}\hfill
+    \fontfamily{cmss}\fontshape{n}\fontsize{6pt}{10}\selectfont\thepage}}
+\makeatletter
+\def\ps@finalheadings{%
+  \let\@oddhead\@empty
+  \let\@evenhead\@oddhead
+  \def\@oddfoot{\numline}%
+  \let\@evenfoot\@oddfoot
+  \let\@mkboth\@gobbletwo
+  \let\sectionmark\@gobble
+  \let\subsectionmark\@gobble
+}
+\makeatother
+
+\pagestyle{finalheadings}
+\thispagestyle{finalheadings}
+
+% bullets
+\def\tribullet{{\small$\blacktriangleright$}}
+\def\bluebullet{\textcolor{blue365}{\tribullet}}
+
+% make second level lists smaller
+\setlist[itemize]{label=\bluebullet}
+\setlist[itemize, 2]{topsep=2pt,itemsep=2pt,before=\small}
+
+
+%% the syntax is {title}{authors}{affiliation}{author shortnames}
+\newcommand{\titleslide}[4]{
+  \clearpage
+  \hbox to \textwidth{\fontfamily{cmss}\fontshape{n}\fontsize{6pt}{10}\selectfont
+    \textcolor{gray}{#3 \hfill #4}}
+
+  \vspace*{1cm}
+
+  \begin{center}
+    \textcolor{blue365}{\LARGE \bf #1}
+  \end{center}
+  \vspace{1.5cm}
+
+  \begin{center}
+    #2 \\
+    #3
+  \end{center}
+  \vfill
+  \hbox to \textwidth{\fontfamily{cmss}\fontshape{n}\fontsize{6pt}{10}\selectfont \textcolor{gray}{Revision: fe52dfe  \hfill }}
+}
+
+\newcommand{\slide}[2]{
+  \clearpage
+  \textcolor{blue365}{\large \bf #1}
+  \vfill
+  #2
+  \vfill
+}
+\newcommand{\slidei}[2]{\slide{#1}{\begin{itemize}#2\end{itemize}}}
+
+\newcommand{\slidesection}[1]{
+  \addcontentsline{toc}{section}{\hspace{1cm} #1 \hspace{1cm}\vspace{1cm}}
+  \newpage
+  \null
+  \vfill
+  \begin{center} \textcolor{blue365}{\Huge #1} \end{center}
+  \vfill
+}
+
+%%% leftover magic from zslides
+\makeatletter
+% bumper slide
+\def\section#1{\newpage\null\vfill\centerline{\color{blue365}\Huge #1}%
+  \addtocontents{toc}{\hbox to \textwidth{\hskip 20pt{#1}\hfill}\vspace*{5mm}}%
+  \vfill}
+
+
+% table of contents
+\def\tableofcontents{\@starttoc{toc}}
+\def\contentsname{}
+\makeatother
+%%% leftover magic from zslides
+
+\DeclareMathAlphabet{\mathbfsf}{\encodingdefault}{\sfdefault}{bx}{n}
+
+\newcommand{\mathword}[1]{\mathop{\mathbfsf {#1}}}
+\def\mathword#1{\mathop{\textup{#1}}}
+\renewcommand{\emph}[1]{\textit{\textcolor{red365}{#1}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\codestyle}[1]{\texttt{#1}}
+\providecommand{\iestyle}[1]{{\fontfamily{cmr}\fontshape{it}\selectfont #1}}
+\newcommand{\ie}{\iestyle{i.e.}}
+\newcommand{\eg}{\iestyle{e.g.}}
+\newcommand{\cf}{\iestyle{cf.}}
+\newcommand{\etc}{\iestyle{etc.}}
+
+\newcommand{\ones}{\mathbf{1}}
+\newcommand{\zeros}{\mathbf{0}}
+
+\newcommand{\R}{\textbf{R}}
+\let\reals\R
+
+%\newcommand{\N}{\mathbb{N}}
+%\newcommand{\C}{\mathbb{C}}
+%\newcommand{\Z}{\mathbb{Z}}
+%\newcommand{\Symm}{\mathbb{S}}   % symmetric matrices
+
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\sample}{\mathop{\codestyle{sample}}}
+
+% words where the command form is capitalized
+\newcommand{\Span}{\mathword{span}}
+\newcommand{\Expect}{\mathword{E{}}}
+\newcommand{\Prob}{\mathword{Prob}}
+\newcommand{\prob}{\mathword{prob}}
+
+\newcommand{\loss}{\ell}
+\newcommand{\eloss}{\mathcal L}
+
+% words whose command form differs from the printed form
+\newcommand{\nullspace}{\mathword{null}}
+
+% words with standard lowercase command forms
+\newcommand{\zscore}{\mathword{zscore}}
+\newcommand{\median}{\mathword{median}}
+\newcommand{\trace}{\mathword{trace}}
+\newcommand{\rank}{\mathword{rank}}
+\newcommand{\diag}{\mathword{diag}}
+\newcommand{\var}{\mathword{var{}}}
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}}
+\newcommand{\argmin}{\mathop{\mathrm{argmin}}}
+\newcommand{\sign}{\mathword{sign}}
+\newcommand{\rms}{\mathword{rms}}
+\newcommand{\std}{\mathword{std}}
+\newcommand{\vol}{\mathword{vol}}
+\newcommand{\round}{\mathword{round}}
+\newcommand{\sphdist}{\mathword{sphdist}}
+\newcommand{\cone}{\mathword{cone}}
+\newcommand{\re}{\mathword{Re}}
+\newcommand{\im}{\mathword{Im}}
+\newcommand{\range}{\mathword{range}}
+\newcommand{\dist}{\mathword{dist}}
+\newcommand{\avg}{\mathword{avg}}
+
+\renewcommand{\dim}{\mathword{dim}}
+\renewcommand{\min}{\mathword{min}}
+\renewcommand{\max}{\mathword{max}}
+\renewcommand{\det}{\mathword{det}}
+\renewcommand{\vec}{\mathword{vec}}
+
+
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2\mathsurround0pt$}\mkern3mu{#1#2}}}
+
+\newcommand{\dyad}[1]{  #1 {#1}^\tp }
+\newcommand{\indicator}[1]{\operatorname{\mathbf{I}}\parens*{#1}}
+
+
+\newcommand{\MATLAB}{\codestyle{MATLAB}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% symbol for laplace transform
+\def\laplace{\mathscr{L}}
+\def\degrees{\ensuremath{{}^\circ}}
+
+\newcommand{\imaginaryunit}{\mathbf{i}}
+\newcommand{\convolution}{\mathbin{\ast}}
+\newcommand{\given}{\mid}
+\newcommand{\composition}{\mathbin{\circ}}
+\newcommand{\hadamard}{\mathbin{\circ}}
+
+% transpose
+\def\tp{\mathsf{T}}
+
+% probabilistic independence
+\DeclareMathOperator{\ind}{\perp\hskip-0.6em\perp}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% delimiters: needs amsmath and mathtools
+
+\let\bl\bigl
+\let\bbl\Bigl
+\let\bbbl\biggl
+\let\bbbbl\Biggl
+\let\br\bigr
+\let\bbr\Bigr
+\let\bbbr\biggr
+\let\bbbbr\Biggr
+
+\newcommand{\vertt}{\big\vert}
+\newcommand{\verttt}{\Big\vert}
+\newcommand{\vertttt}{\bigg\vert}
+\newcommand{\verttttt}{\Bigg\vert}
+
+
+% norm
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\newcommand{\normm}[1]{\bl\lVert{#1}\br\rVert}
+\newcommand{\normmm}[1]{\bbl\lVert{#1}\bbr\rVert}
+\newcommand{\normmmm}[1]{\bbbl\lVert{#1}\bbbr\rVert}
+\newcommand{\normmmmm}[1]{\bbbbl\lVert{#1}\bbbbr\rVert}
+
+% use \abs{x} for |x|
+% use \abs* for autosizing delimiters
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcommand{\abss}[1]{\bl\lvert{#1}\br\rvert}
+\newcommand{\absss}[1]{\bbl\lvert{#1}\bbr\rvert}
+\newcommand{\abssss}[1]{\bbbl\lvert{#1}\bbbr\rvert}
+\newcommand{\absssss}[1]{\bbbbl\lvert{#1}\bbbbr\rvert}
+
+
+% \cprob{a}{b} gives prob(a|b)
+% use \cprob* for autosizing delimiters
+\DeclarePairedDelimiterXPP{\cprob}[2]{\Prob}{(}{)}{}{#1 \, \delimsize\vert \, #2}
+
+% use \set{stuff} for { stuff }
+% use \set* for autosizing delimiters
+\DeclarePairedDelimiter{\set}{\{}{\}}
+
+% use \Set{a}{b} for {a | b}
+% use \Set* for autosizing delimiters
+\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
+
+% use \parens*{stuff} for (stuff) with autosizing delimeters
+\DeclarePairedDelimiter{\parens}{(}{)}
+
+% starred version is autosizing
+\DeclarePairedDelimiterX{\innerproduct}[2]{\langle}{\rangle}{#1,#2}
+\DeclarePairedDelimiter{\ceiling}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% extra items
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% matrices: needs amsmath and mathtools
+
+% \newcommand{\bmat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\def\bmat#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
+
+\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+\setcounter{MaxMatrixCols}{20}
+
+% allow ddots at any angle
+% \dddots{1}{1} produces dots at 45 degrees
+% \dddots{2}{1} produces dots at 30 degrees
+% and so on
+\def\dddots#1#2{%
+  \mbox{%
+    \unitlength 0.083333in%r
+    \begin{picture}(#1,#2)(0.25,0)
+      \unitlength 0.0416666in%
+      \multiput(0,2)(#1,-#2){3}{.}
+    \end{picture}%
+    }%
+  }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% references, needs cleverref
+
+\usepackage[nameinlink]{cleveref}
+
+%\Crefname{equation}{}{}
+%\Crefname{equation}{}{}
+%\crefname{figure}{figure}{figures}
+%\Crefname{figure}{Figure}{Figures}
+%\crefname{enumi}{}{}
+%\Crefname{enumi}{}{}
+%\creflabelformat{enumi}{#2#1#3)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% non math
+
+%\def\eqnbox#1{\centerline{\fboxsep 5mm\framebox{$\displaystyle #1$}}}
+%\let\boxed\undefined
+%\NewEnviron{boxed}{\par\bigskip\eqnbox{\BODY}}
+%
+%\long\def\coordput#1{%
+%  \AtBeginShipoutNext{\AtBeginShipoutUpperLeft{%
+%      \setlength{\unitlength}{0.00125\paperwidth}%
+%          #1}}}
+%
+%\long\def\coordputforeground#1{%
+%  \AtBeginShipoutNext{\AtBeginShipoutUpperLeftForeground{%
+%      \setlength{\unitlength}{0.00125\paperwidth}%
+%          #1}}}
+%% center a box vertically
+%\newbox\qqboxa
+%\def\vcent#1{\setbox\qqboxa\hbox{#1}\raise -0.5\ht\qqboxa\hbox{#1}}
+%
+%% center horizontally; useful in overpic
+%\def\clap#1{\hbox to 0pt{\hss #1 \hss}}
+%
+%% inverse of vfill
+%\def\vfillneg{\vskip 0pt plus -1fill}
+
+
+\usepackage{nicefrac}
+\renewcommand{\t}[1]{\emph{#1}}
+\newcommand{\pa}[1]{\text{pa}_{#1}}
+\newcommand{\rtree}[2]{\overrightarrow{#1}(#2)}
+
+
+\newcommand{\CS}{\mathcal{S}}
+\newcommand{\CU}{\mathcal{U}}
+\newcommand{\CV}{\mathcal{V}}
+\newcommand{\CX}{\mathcal{X}}
+\newcommand{\CA}{\mathcal{A}}
+\newcommand{\num}[1]{\abs{#1}}
+\newcommand{\say}[1]{``#1''}
+\newcommand{\PM}{\mathbfsf{P}}
+\def\bmat#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
+\newcommand{\E}{\mathbfsf{E}}
+\newcommand{\N}{\mathbfsf{N}}
+\newcommand{\cov}{\mathword{cov}}
+
+
+\newcommand{\unused}[1]{
+  }
+
+\newlength{\qqlen}
+\def\verttop#1{\setbox\qqboxa\hbox{#1}\raise -\ht\qqboxa\hbox{#1}}
+\long\def\coordput#1{%
+  \AtBeginShipoutNext{\AtBeginShipoutUpperLeft{%
+      \setlength{\unitlength}{0.00125\paperwidth}%
+          #1}}}
+\long\def\sideright#1{\coordput{\put(780,-70){\hskip -9mm{\llap{\raise -9mm\hbox{\verttop{#1}}}}}}}
+\long\def\topright#1{\coordput{\put(800,0){\hskip -9mm{\llap{\raise -9mm\hbox{\verttop{#1}}}}}}}
+
+% use \parens*{stuff} for (stuff) with autosizing delimeters
+% \DeclarePairedDelimiter{\parens}{(}{)}
+\newcommand{\transpose}[1]{{#1}^\tp}
+
+
+\newcommand{\todo}[1]{\textcolor{red}{ {#1} }}
+
+%% GP specific
+\newcommand{\best}{\text{best}}
+\newcommand{\mean}{\text{mean}}
+% \newcommand{\cov}{\mathword{cov}}
+% \newcommand{\var}{\mathword{var}}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+% \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\renewcommand{\mod}{\mathword{mod}}
+\newcommand{\Z}{\mathbfsf{Z}}
+
+\newcommand{\NA}{\text{A}}
+\newcommand{\NT}{\text{T}}
+\newcommand{\NC}{\text{C}}
+\renewcommand{\NG}{\text{G}}
+\newcommand{\NU}{\text{U}}
+\newcommand{\CN}{\mathcal{N}}
+\newcommand{\CG}{\mathcal{G}}
+\newcommand{\CSTART}{\triangleright}
+%\newcommand{\CSTOP}{\square}
+\newcommand{\CSTOP}{\diamond}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+
+% dark mode
+\pagecolor{black}
+\definecolor{blue365}{RGB}{66,196,208}
+\definecolor{red365}{RGB}{228,77,225}
+\color{yellow}
+
+% code
+\renewcommand{\c}[1]{\texttt{#1}}
+
