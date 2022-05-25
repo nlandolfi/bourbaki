@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make outcome_variables.pdf
+	make monoids.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-outcome_variables.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > outcome_variables.tex
+monoids.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > monoids.tex
 
-outcome_variables.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_variables.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode outcome_variables.tex
-	../../latexrun outcome_variables.tex
+monoids.pdf: ../../*.tex ../../trademark.pdf *.tex monoids.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode monoids.tex
+	../../latexrun monoids.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: outcome_variables.pdf
-	open outcome_variables.pdf
+open: monoids.pdf
+	open monoids.pdf
 
 o:
 	make open
 
-terms: outcome_variables.tex
-	bbk_sheet -mode ts outcome_variables.tex
+terms: monoids.tex
+	bbk_sheet -mode ts monoids.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f outcome_variables.*
+	rm -f monoids.*
 	make reset
 	bbk_sheet -mode mk > Makefile

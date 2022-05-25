@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make groups.pdf
+	make subrings.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-groups.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > groups.tex
+subrings.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > subrings.tex
 
-groups.pdf: ../../*.tex ../../trademark.pdf *.tex groups.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode groups.tex
-	../../latexrun groups.tex
+subrings.pdf: ../../*.tex ../../trademark.pdf *.tex subrings.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode subrings.tex
+	../../latexrun subrings.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: groups.pdf
-	open groups.pdf
+open: subrings.pdf
+	open subrings.pdf
 
 o:
 	make open
 
-terms: groups.tex
-	bbk_sheet -mode ts groups.tex
+terms: subrings.tex
+	bbk_sheet -mode ts subrings.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f groups.*
+	rm -f subrings.*
 	make reset
 	bbk_sheet -mode mk > Makefile

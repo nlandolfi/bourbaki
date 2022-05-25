@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make independent_sigma_algebras.pdf
+	make modules.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-independent_sigma_algebras.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > independent_sigma_algebras.tex
+modules.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > modules.tex
 
-independent_sigma_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex independent_sigma_algebras.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode independent_sigma_algebras.tex
-	../../latexrun independent_sigma_algebras.tex
+modules.pdf: ../../*.tex ../../trademark.pdf *.tex modules.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode modules.tex
+	../../latexrun modules.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: independent_sigma_algebras.pdf
-	open independent_sigma_algebras.pdf
+open: modules.pdf
+	open modules.pdf
 
 o:
 	make open
 
-terms: independent_sigma_algebras.tex
-	bbk_sheet -mode ts independent_sigma_algebras.tex
+terms: modules.tex
+	bbk_sheet -mode ts modules.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f independent_sigma_algebras.*
+	rm -f modules.*
 	make reset
 	bbk_sheet -mode mk > Makefile
