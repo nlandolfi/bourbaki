@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make fields.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 fields.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > fields.tex
 

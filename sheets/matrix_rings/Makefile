@@ -4,14 +4,17 @@
 
 make:
 	make graph.pdf
-	make set_operations.pdf
+	make matrix_rings.pdf
 
-set_operations.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > set_operations.tex
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
 
-set_operations.pdf: ../../*.tex ../../trademark.pdf *.tex set_operations.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode set_operations.tex
-	../../latexrun set_operations.tex
+matrix_rings.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > matrix_rings.tex
+
+matrix_rings.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_rings.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode matrix_rings.tex
+	../../latexrun matrix_rings.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -23,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: set_operations.pdf
-	open set_operations.pdf
+open: matrix_rings.pdf
+	open matrix_rings.pdf
 
 o:
 	make open
 
-terms: set_operations.tex
-	bbk_sheet -mode ts set_operations.tex
+terms: matrix_rings.tex
+	bbk_sheet -mode ts matrix_rings.tex
 
 spell:
 	aspell -c sheet.tex
@@ -47,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f set_operations.*
+	rm -f matrix_rings.*
 	make reset
 	bbk_sheet -mode mk > Makefile

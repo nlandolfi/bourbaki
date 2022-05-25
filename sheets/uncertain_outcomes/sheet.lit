@@ -3,7 +3,8 @@
 
   ‖ ❲%!need:natural_numbers❳ ⦉
 
-  ‖ ❲%!need:set_operations❳ ⦉
+  ‖ ❲%!need:pair_intersections❳ ⦉
+  ‖ ❲%!need:pair_unions❳ ⦉
 ⦉
 
 ¶ ⦊
@@ -17,8 +18,6 @@
 
   ‖ Such language is useful in discussing the future, degrees of
     belief, and arbitrary objects from large populations. ⦉
-
-  ‖ ❲% When talking about an unknown object, we first enumerate the set of possibilities.❳ ⦉
 ⦉
 
 ¶ ⦊
@@ -26,7 +25,7 @@
 ⦉
 
 ¶ ⦊
-  ‖ We have a set which includes all possible objects. ⦉
+  ‖ We have a set $Ω$ which includes all possible objects. ⦉
 
   ‖ We call it the set of ❬outcomes❭ (❬possibilities❭, ❬samples❭
     or ❬sample space❭, ❬elementary events❭). ⦉
@@ -36,26 +35,8 @@
 ⦉
 
 ¶ ⦊
-  ‖ We prefer the language of outcome because the unknown object
-    is often associated somehow with the future, and its identity
-    will be known in the future. ⦉
-
-  ‖ Still other authors refer to the outcomes as ❬elementary
-    events❭. ⦉
-⦉
-
-¶ ⦊
-  ‖ We often handle several outcomes at once. ⦉
-
   ‖ An ❬event❭ (❬compound event❭, ❬random event❭) is a subset of
     outcomes. ⦉
-
-  ‖ The set of events is the power set (see
-    \sheetref{set_powers}{Set Powers}) of the set of outcomes. ⦉
-⦉
-
-¶ ⦊
-  ‖ \ssubsection{Event unions, intersections, complements} ⦉
 
   ‖ For events $A, B ⊂ Ω$, we interpret $A ∪ B$ as the event
     that either $A$ ‹or› $B$ occurs. ⦉
@@ -64,7 +45,15 @@
     $A$ ‹and› $B$ occur. ⦉
 
   ‖ We interpret $Ω - A$, the ‹complement› of $A$ in $Ω$, as
-    the event that $A$ ‹does not› happen. ⦉
+    the event that $A$ ‹does not› occur. ⦉
+⦉
+
+¶ ⦊
+  ‖ An ❬outcome variable❭ (or ❬random variable❭) is a function
+    from $Ω$ to $V$, where $V$ is a set of ❬values❭. ⦉
+
+  ‖ If the set is named \_, we call the function a \_-valued
+    outcome variable on $Ω$. ⦉
 ⦉
 
 ¶ ⦊
@@ -98,39 +87,44 @@
 
   ‖ When we roll the die, one of the six sides is facing up. ⦉
 
-  ‖ We model this uncertain outcome with the set of outcomes
-    $\set{1, 2, 3, 4, 5, 6}$. ⦉
-
-  ‖ These elements correspond to the number of pips on the side
-    which lands facing up. ⦉
+  ‖ We model this uncertain outcome with $\set{1, 2, 3, 4, 5,
+    6}$, whose elements represent the number of pips facing up. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ Two events for this set of outcomes are $O = \set{1, 3,
-    5}$ and $E = \set{2, 4, 6}$ ⦉
+  ‖ Define $O = \set{1, 3, 5}$ and $E = \set{2, 4, 6}$. ⦉
 
   ‖ We interpret $O$ as the event that the number of pips is
     odd, and $E$ as the event that the number of pips is even. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ \ssection{Example: sum of two dice} ⦉
+  ‖ \ssection{Example: two dice} ⦉
 ⦉
 
 ¶ ⦊
-  ‖ We want to talk about the sum of the pips shown after
-    rolling two dice. ⦉
+  ‖ We want to talk about the sum of the pips shown facing up
+    after rolling two dice. ⦉
 
-  ‖ Each die has six sides. ⦉
+  ‖ We may take as our set of outcome $\set{1, …, 12}$, whose
+    elements correspond to the sum. ⦉
 
-  ‖ We model this uncertain outcome with the set of outcomes $Ω
-    = \set{1, 2, 3, 4, 5, 6, …, 12}$. ⦉
-
-  ‖ These elements correspond to the sum of the number of pips
-    on the side which lands facing up. ⦉
-⦉
-
-¶ ⦊
   ‖ We interpret $\Set{x ∈ Ω}{x ≥ 10}$ as the event that the
     sum of the two dice is greater than or equal to 10. ⦉
+⦉
+
+¶ ⦊
+  ‖ Alternatively, we may take the outcomes $\set{1, …, 6}^2$
+    and define an outcome variable $s: \set{1, …, 6}^2 → \set{1,
+    …, 12}$ by
+    ◇ ⦊
+      ‖ s((d_1, d_2)) = d_1 + d_2. ⦉
+    ⦉⦉
+
+  ‖ We interpret this natural-number-valued outcome variable $s$
+    as sum of the two dice. ⦉
+
+  ‖ The event that the sum of the two dice is greater than or
+    equal to to 10 corresponds to the set $\Set{(d_1, d_2) ∈
+    \set{1, …, 6}}{s((d_1, d_2)) ≥ 10}$. ⦉
 ⦉
