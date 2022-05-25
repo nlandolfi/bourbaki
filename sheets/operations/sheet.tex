@@ -1,41 +1,46 @@
 %!name:operations
+%!need:pair_intersections
 %!need:functions
+%!need:set_symmetric_differences
 %!refs:paul_halmos/naive_set_theory/section_04
+%!refs:paul_halmos/naive_set_theory/section_06
 %!refs:paul_halmos/naive_set_theory/section_08
 
 \ssection{Why}
 
-We want to \say{combine} elements of a set.
+We have seen several concepts that consist of associating with a pair of sets a third set.
+For example, set unions and set intersections
 
 \ssection{Definition}
 
-Let $A$ be a non-empty set.
-An \t{operation} on $A$ is a function from ordered pairs of elements of the set to the same set.
-Operations \t{combine} elements.
+An \t{operation} (or \t{binary operation}, \t{law of composition}) on a set $A$ is a function from $A \times A$ to $A$.
+
+Roughly speaking, operations \t{combine} (or \t{compose}) elements.
 We \t{operate} on ordered pairs.
 
-\ssubsection{Notation}
+\ssubsection{Example: set operations}
 
-Let $A$ be a set and $g: A \times A \to A$.
-We tend to forego the notation $g(a, b)$ and write $a\,g\,b$ instead.
-We call this \t{infix notation}.
+Let $X$ be a set.
+Define $g: \powerset{X} \times \powerset{X} \to \powerset{X}$ by $g(A, B) = A \cup B$.
+Then $g$, the function which associates with two sets their union (see \sheetref{pair_unions}{Pair Unions}) is an operation on $\powerset{X}$.
+Likewise, define $h : \powerset{X} \times \powerset{X} \to \powerset{X}$ by $h(A, B) = A \cap B$.
 
-Using lower case latin letters for elements and for operations confuses, so we tend to use special symbols for operations.
-For example, $+$, $-$, $\cdot$, $\circ$, and $\star$.
+\ssubsection{Naming their properties}
 
-Let $A$ be a non-empty set and $+: A \times A \to A$ be an operation on $A$.
-According to the above paragraph, we tend to write $a+b$ for the result of applying $+$ to $(a,b)$.
-
-\ssubsection{Example}
-
-A first example of an operation is if we consider the set $A$ as the power set of some set $X$.
-Then the pair union (see \sheetref{pair_unions}{Pair Unions}) is an operation.
-For if $E \in \powerset{X}$ and $F \in \powerset{X}$ then $E \union F \in \powerset{F}$ and so $\union$ can be viewed as an operation on $\powerset{X}$.
-
-\ssection{Properties}
-
-Recall that $\union$ has several nice properties.
-For one $A \union B = B \union A$ and $(A \union B) \union C = A \union (B \union C)$.
+$\cup$ has several nice properties.
+For one $A \cup B = B \cup A$ and $(A \cup B) \cup C = A \cup (B \cup C)$.
 
 An operation with the first property, that the ordered pair $(A, B)$ and $(B, A)$ have the same result is called \t{commutative}.
 An operation with the second property, that when given three objects the order in which we operate does not matter is called \t{associative}.
+$\cap$ shares these properties with $\cup$.
+
+We call the operation of \t{forming unions} the function $(A, B) \mapsto A \union B$.
+We call the operation of \t{forming intersections} the function $(A, B) \mapsto A \intersect B$.
+We call the operation of \t{forming symmetric differences} the function $(A, B) \mapsto A \symdiff B$.
+Since forming unions commutes and is associative and likewise with forming intersections, forming symmetric differences also commutes.
+
+\ssection{Algebras}
+
+Of course, any operation is defined on some set.
+For this reason, we define an \t{algebra} as an ordered pair whose first element is a non-empty set and whose second element is an operation on that set.
+The \t{ground set} of the algebra is the set on which the operation is defined.

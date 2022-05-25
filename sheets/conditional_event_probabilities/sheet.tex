@@ -3,10 +3,7 @@
 
 \ssection{Why}
 
-Given that we know that one event has occured, we want language for what the new probabilities should be.
-  \ifhmode\unskip\fi\footnote{
-Future editions will improve.
-  }
+How should we modify probabilities, given that we know some aspect of the outcomes (i.e., that some event has occurred).
 
 \ssection{Definition}
 Let $\mathbfsf{P} : \powerset{\Omega } \to \R $ be a finite probability measure.
@@ -19,10 +16,47 @@ In other words, we define
   \[
 \mathbfsf{P} (A \mid B) = \frac{\mathbfsf{P} (A \cap B)}{\mathbfsf{P} (B)},
   \]
-whenever $A, B \subset \Omega $ and $\mathbfsf{P} (B) \neq 0$.
+for all $A, B \subset \Omega $, whenever $\mathbfsf{P} (B) \neq 0$.
+
+For example, we can express the law of total probability (see \sheetref{event_probabilities}{Event Probabilities}) as
+  \[
+\textstyle
+\mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i)\mathbfsf{P} (B \mid A_i),
+  \]
+where $A_1, \dots, A_n$ partition $\Omega $ and $B \subset \Omega $ with $\mathbfsf{P} (B) > 0$.
+
+\ssection{Conditional probability measure}
+Suppose $B \subset \Omega $ and $\mathbfsf{P} (B) > 0$.
+Then (i) $\mathbfsf{P} (A \mid B) \geq 0$ for all $A \subset \Omega $, since $\mathbfsf{P} (A \cap B) \geq 0$.
+Moreover, (ii)
+  \[
+\mathbfsf{P} (\Omega  \mid B) = \mathbfsf{P} (\Omega  \cap B)/\mathbfsf{P} (B) = \mathbfsf{P} (B)/\mathbfsf{P} (B) = 1
+  \]
+Similarly, $\mathbfsf{P} (\varnothing \mid B) = \mathbfsf{P} (\varnothing \cap B)/\mathbfsf{P} (B) = 0/\mathbfsf{P} (B) = 0$.
+
+Finally, (iii) if $A \cap C = \varnothing$, then
+  \[
+\begin{aligned}
+\mathbfsf{P} (A \cap C \mid B)
+&=
+\mathbfsf{P} ((A \cap C) \cap B)/\mathbfsf{P} (B) \\
+&=
+\mathbfsf{P} ((A \cap B) \cap (C \cap B)/\mathbfsf{P} (B) \\
+&\overset{(a)}{=}
+(\mathbfsf{P} (A \cap B) + \mathbfsf{P} (C \cap B))/\mathbfsf{P} (B) \\
+&=
+\mathbfsf{P} (A \cap B)/\mathbfsf{P} (B) + P(C \cap B)/\mathbfsf{P} (B) \\
+&=
+\mathbfsf{P} (A \mid B) + P(C \mid B).
+\end{aligned}
+  \]
+where (a) follows since $A \cap B$ and $C \cap B$ are disjoint.
+
+Together, (i)-(iii) mean that $\mathbfsf{P} (\cdot \mid B)$ is itself a probability measure on $\Omega $.
+We therefore refer to $\mathbfsf{P} (\cdot \mid B)$ as a \t{conditional probability measure}.
 
 \ssubsection{Induced conditional distribution}
-Conditioning on an event $B$ induces a new distribution on the set of outcomes.
+Therefore, we expect there to also correspond a new distribution on the set of outcomes.
 For $\mathbfsf{P} _p$, define $q: \Omega  \to \R $ by
   \[
 q(\omega ) = \begin{cases}
@@ -32,11 +66,3 @@ q(\omega ) = \begin{cases}
   \]
 In this case $\mathbfsf{P} _q(A) = \mathbfsf{P} _p(A \mid B)$.
 We call $q$ the \t{conditional distribution} induced by \t{conditioning on} the event $B$.
-
-\ssection{Total probability}
-Using the notation $\mathbfsf{P} (\cdot \mid \cdot)$, we can express the law of total probability for $\mathbfsf{P} (B)$, $B \subset \Omega $, as
-  \[
-\textstyle
-\mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i)\mathbfsf{P} (B \mid A_i),
-  \]
-where $A_1, \dots, A_n$ partition $\Omega $.
