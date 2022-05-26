@@ -2,6 +2,7 @@ package bbk
 
 import (
 	"bufio"
+	"bytes"
 	"encoding/gob"
 	"fmt"
 	"io"
@@ -12,6 +13,8 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/nlandolfi/lit"
 )
 
 const (
@@ -34,8 +37,16 @@ type ParseResult struct {
 
 	// only set if returned
 	//from ParseAll
-	NeededBy   []string
+	NeededBy []string
+
 	HasLitFile bool
+	litNode    *lit.Node
+}
+
+func (p *ParseResult) LitHTML() string {
+	var b bytes.Buffer
+	lit.WriteHTML(&b, p.litNode, "", " ")
+	return b.String()
 }
 
 func allNeeds(p *ParseResult, all map[string]*ParseResult) []string {
@@ -148,9 +159,18 @@ func ParseAll(sheetsdir string) ([]*ParseResult, error) {
 		sheetfile.Close()
 		macrosfile.Close()
 
-		_, err = os.Open(filepath.Join(sheetsdir, f.Name(), "sheet.lit"))
+		lf, err := os.Open(filepath.Join(sheetsdir, f.Name(), "sheet.lit"))
 		if err == nil {
 			p.HasLitFile = true
+			bs, err := ioutil.ReadAll(lf)
+			if err != nil {
+				log.Fatal(err)
+			}
+			n, err := lit.ParseLit(string(bs))
+			if err != nil {
+				log.Fatal(err)
+			}
+			p.litNode = n
 		}
 	}
 
