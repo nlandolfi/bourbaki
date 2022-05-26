@@ -144,6 +144,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -160,8 +195,9 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name functions whose domain is the real numbers.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{real function} is a real-valued function. The domain is often an interval of real numbers, but may be any non-empty set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set. Let $f: A \to \R$. $f$ is a real function. If $A = \R$, then $f \in \R \to \R$. To speak of functions defined on intervals, let $a, b \in \R$. Let $g: [a, b] \to \R$. Then $g$ is a real function defined on a closed interval. Let $h: (a, b) \to \R$. Then $h$ is a real function defined on an open interval.</p></div><div class="sheet-listing"><p class="sheet"> We regularly declare the interval and the function at once. For example, "let $f: [a, b] \to \R$} is understood to mean \say{let $a$ and $b$ be real numbers with $a < b$, let $[a, b]$ be the closed interval with them as endpoints, and let $f$ bea  real-valued function whose domain is this interval". We read teh notation $f: [a, b] \to \R$ aloud as "$f$ from closed $a$ $b$ to $\R$." We use $f: (a, b) \to \R$ similarly (read aloud "$f$ from open $a$ $b$ to $\R$").</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $c \in \R$. Let $f: \R \to \R$ be such that $f(x) = c$ for every $x \in \R$. $f$ is a real function. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} \item Let $f: \R \to \R$ with $f(x) = 2x^2 + 1$ for all $x \in R$. $f$ is a real function. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $f: \R \to \R$ with \[ f(x) = \begin{cases} 1 & \text{ if } x \in \Q \\ 0 & \text{ otherwise. } \end{cases} \] $f$ is a real function. \end{expl}</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name functions whose codomain is the real numbers.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{real function} is a real-valued function. The domain is often an interval of real numbers, but may be any non-empty set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set. Let $f: A \to \R $. $f$ is a real function. If $A = \R $, then $f \in \R  \to \R $. To speak of functions defined on intervals, let $a, b \in \R $. Let $g: [a, b] \to \R $. Then $g$ is a real function defined on a closed interval. Let $h: (a, b) \to \R $. Then $h$ is a real function defined on an open interval.</p></div><div class="sheet-listing"><p class="sheet"> We regularly declare the interval and the function at once. For example, "let $f: [a, b] \to \R $} is understood to mean \say{let $a$ and $b$ be real numbers with $a < b$, let $[a, b]$ be the closed interval with them as endpoints, and let $f$ bea real-valued function whose domain is this interval". We read teh notation $f: [a, b] \to \R $ aloud as "$f$ from closed $a$ $b$ to $\R $." We use $f: (a, b) \to \R $ similarly (read aloud "$f$ from open $a$ $b$ to $\R $").</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $c \in \R $. Let $f: \R  \to \R $ be such that $f(x) = c$ for every $x \in \R $. $f$ is a real function. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $f: \R  \to \R $ with $f(x) = 2x^2 + 1$ for all $x \in R$. $f$ is a real function. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $f: \R  \to \R $ with \[ f(x) = \begin{cases} 1 \& \text{ if } x \in \Q  \\ 0 \& \text{ otherwise. } \end{cases} \] $f$ is a real function. \end{expl}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -264,8 +300,145 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:real_functions❳ </span>
+
+ <span class='run'>❲%!need:intervals❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We name functions whose codomain is the real
+  numbers. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>real function</span> is a
+  real-valued function. </span>
+
+ <span class='run'>The domain is often an interval of real
+  numbers, but may be any non-empty set. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A$ be a set. </span>
+
+ <span class='run'>Let $f: A → 𝗥$. </span>
+
+ <span class='run'>$f$ is a real function. </span>
+
+ <span class='run'>If $A = 𝗥$, then $f ∈ 𝗥 → 𝗥$. </span>
+
+ <span class='run'>To speak of functions defined on intervals, let
+  $a, b ∈ 𝗥$. </span>
+
+ <span class='run'>Let $g: [a, b] → 𝗥$. </span>
+
+ <span class='run'>Then $g$ is a real function defined on a
+  closed interval. </span>
+
+ <span class='run'>Let $h: (a, b) → 𝗥$. </span>
+
+ <span class='run'>Then $h$ is a real function defined on an
+  open interval. </span>
+</p>
+
+
+<p>
+ <span class='run'>We regularly declare the interval and the
+  function at once. </span>
+
+ <span class='run'>For example, </span>
+
+ <span class='run'>“let $f: [a, b] → 𝗥$” is understood to mean
+  “let $a$ and $b$ be real numbers with $a &lt;
+  b$, let $[a, b]$ be the closed interval with
+  them as endpoints, and let $f$ bea real-valued
+  function whose domain is this interval”. </span>
+
+ <span class='run'>We read teh notation $f: [a, b] → 𝗥$ aloud
+  as “$f$ from closed $a$ $b$ to $𝗥$.” </span>
+
+ <span class='run'>We use $f: (a, b) → 𝗥$ similarly (read aloud
+  “$f$ from open $a$ $b$ to $𝗥$”). </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Examples} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{expl} </span>
+
+ <span class='run'>Let $c ∈ 𝗥$. </span>
+
+ <span class='run'>Let $f: 𝗥 → 𝗥$ be such that $f(x) = c$ for
+  every $x ∈ 𝗥$. </span>
+
+ <span class='run'>$f$ is a real function. </span>
+
+ <span class='run'>\end{expl} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{expl} </span>
+
+ <span class='run'>Let $f: 𝗥 → 𝗥$ with $f(x) = 2x^2 + 1$ for
+  all $x ∈ R$. </span>
+
+ <span class='run'>$f$ is a real function. </span>
+
+ <span class='run'>\end{expl} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{expl} </span>
+
+ <span class='run'>Let $f: 𝗥 → 𝗥$ with
+  <p>\[
+   f(x) = \begin{cases} </span>
+
+   1 &amp; \text{ if } x ∈ 𝗤 <br /> </span>
+
+   0 &amp; \text{ otherwise. } </span>
+
+   \end{cases} </span>
+  \]</p></span>
+
+ <span class='run'>$f$ is a real function. </span>
+
+ <span class='run'>\end{expl} </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

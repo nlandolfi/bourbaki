@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to represent images.</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> A \t{binary image} is a two-dimensional array in $\set{0, 1}$. The first coordinate of the shape is the \t{height} and the coordinate term is the \t{width} of the image. A \t{grayscale image} is a two-dimensional array in $\set{0, \dots, n}$, in which $n$ represents full saturation and all integers less than $n$ represent increasing saturation.</p></div><div class="sheet-listing"><p class="sheet"> An \t{RGB digital color} is a length three sequence of bit strings. The terms of the color are known as the channels. So, for example, the first term of the sequence is the \t{first channel}, the second term is the \t{second channel}, and the third term is the \t{third channel}.</p></div><div class="sheet-listing"><p class="sheet"> An \t{RGB digital image} is a two-dimensional array in the set of RGB digital colors. The \t{image channels} are the two-dimensional array whose values are those of the corresponding channel in the original image. So, for example, the \t{first channel image} is the grayscale image whose values are the first channel of the original digital image.</p></div><div class="sheet-listing"><p class="sheet"> We refer to any of these (binary images, grayscale images, RGB digital images) as \t{digital images}, or often, as \t{images}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

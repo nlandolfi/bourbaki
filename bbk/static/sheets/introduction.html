@@ -28,6 +28,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -44,6 +79,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> The Bourbaki Project is a collection of documents describing mathematical concepts, terms, results and notation.</p></div><div class="sheet-listing" id="sheets"><h1 class="sheet">1. Sheets</h1></div><div class="sheet-listing"><p class="sheet"> We call these documents \t{sheets}. They are only ever two-pages long and sometimes shorter. They can be printed on a single sheet of paper, hence the name sheet. In a book, they occupy two facing pages. The decision to cap at two pages is arbitrary. But our experience suggests it is convenient.</p></div><div class="sheet-listing" id="prerequisites"><h1 class="sheet">2. Prerequisites</h1></div><div class="sheet-listing"><p class="sheet"> Each sheet is labeled with the names of those sheets which are its immediate prerequisites, with the names of those sheets for which it is an immediate prerequisite, and a diagram illustrating the dependencies between all its prerequisites.</p></div><div class="sheet-listing"><p class="sheet"> For example, the sheet \sheetref{relations}{Relations} needs the sheet \sheetref{ordered_pairs}{Ordered Pairs}. The reason, in this case, is that the concept of a relation is discussed using the concept of an ordered pair of objects. And since the phrase "ordered pair of objects} makes sense only if we know what is meant by object (discussed in the sheet \sheetref{objects}{Objects}), the sheet \sheetref{relations}{Relations} needs the sheet \sheetref{objects}{Objects" also. The reader unacquainted with ordered pairs and objects must read (at least) these two sheets before the sheet on relations. In this case (and in every case) the prerequisites are naturally ordered. \sheetref{objects}{Objects} ought to be read first, before \sheetref{ordered_pairs}{Ordered Pairs}, before \sheetref{relations}{Relations}. Such an ordering always exists because we ensure that if a sheet $X$ needs a sheet $Y$, then $Y$ can not need $X$ or any sheet that needs $X$. A sheet is an immediate prerequisite if it is not prerequisite to any other prerequisite.</p></div><div class="sheet-listing" id="preface"><h1 class="sheet">3. Preface</h1></div><div class="sheet-listing"><p class="sheet"> The project is like a map. The landmarks are sheets, or really concepts. Walking is reading. And you must walk along the trails specified by the prerequisites.</p></div><div class="sheet-listing"><h2 class="sheet" id="aims">3.1 Aims</h2></div><div class="sheet-listing"><p class="sheet"> Our primary aim is two-fold. First, to provide useful exposition to teach the concepts to an unacquainted reader (here the prerequisites help). And second, to serve as a reference for further work. It is a welcomed concomitant that we better understand and develop the mathematical concepts ourselves. There are two caveats. First, we give only one path to concepts. The point is that our way of structuring the concepts (and hence the prerequisites) is just one way, and there are many ways, since there are equivalent concepts, alternate proofs, and so on. The second caveat is a wink. These sheets are fiction. They contain only ideas. We have done our best to eliminate all false statements. The game for the practical cogitator is to fit these puzzle pieces to reality.</p></div><div class="sheet-listing"><h2 class="sheet" id="caveats">3.2 Caveats</h2></div>
     </div>
@@ -148,8 +184,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

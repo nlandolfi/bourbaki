@@ -74,6 +74,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -90,6 +125,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. This sheet is needed, for example, in discussing perfect elimination orderings. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> An \t{ordering} of an undirected graph is an ordering (see \sheetref{lists}{Lists}) of its vertices. An \t{ordered undirected graph} is an ordered pair $((V, E), \sigma: \upto{\num{V}} \to V)$ where $(V, E)$ is an undirected graph (see \sheetref{undirected_graphs}{Undirected Graphs}) and $\sigma$ is an ordering of the vertex set $V$.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $((V, E), \sigma)$ be an ordered undirected graph. We commonly associate it with $(V, E, \sigma)$ and call this ordered triple an undirected graph as well. But, throughout these sheets, an ordered undirected graph is an ordered pair.</p></div><div class="sheet-listing"><p class="sheet"> We denote that $\inv{\sigma}(v) < \inv{\sigma}(w)$ by $v \prec_{\sigma} w$ and $v \succeq_{\sigma} w$ by $\inv{\sigma}(v) \leq \inv{\sigma}(w)$. We occasionally omit the subscripts in $\prec_{\sigma}$ and $\succeq_{\sigma}$ when clear from context.</p></div><div class="sheet-listing" id="visualization"><h1 class="sheet">4. Visualization</h1></div><div class="sheet-listing"><p class="sheet"> We visualize an ordered undirected graph by labeling its nodes with the indices of each vertex. Let $(V, E)$ be an undirected graph with $V = \set{a,b,c,d,e}$ and \[ E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d}, \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}. \] Let $\sigma: \set{1, \dots, 5} \to V$ be an ordering with \[ \sigma(1) = a \quad \sigma(2) = c \quad \sigma(3) = d \quad \sigma(4) = b \quad \sigma(e) = 5. \] We visualize the ordered graph in the figure.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \includegraphics[width=0.3\textwidth]{graphics_included/ordered_undirected_graph} \caption{Ordered undirected graph.} \end{figure}</p></div>
     </div>
@@ -194,8 +230,117 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:ordered_undirected_graphs❳ </span>
+
+ <span class='run'>❲%!need:undirected_graphs❳ </span>
+
+ <span class='run'>❲%!need:lists❳ </span>
+
+ <span class='run'>❲%!refs:vandenberghe2014chordal❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why}[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>An <span class='term'>ordering</span> of an
+  undirected graph is an ordering (see
+  \sheetref{lists}{Lists}) of its vertices. </span>
+
+ <span class='run'>An <span class='term'>ordered undirected
+  graph</span> is an ordered pair $((V, E), σ:
+  \upto{\num{V}} → V)$ where $(V, E)$ is an
+  undirected graph (see
+  \sheetref{undirected_graphs}{Undirected Graphs}) and
+  $σ$ is an ordering of the vertex set $V$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $((V, E), σ)$ be an ordered undirected
+  graph. </span>
+
+ <span class='run'>We commonly associate it with $(V, E, σ)$ and
+  call this ordered triple an undirected graph as
+  well. </span>
+
+ <span class='run'>But, throughout these sheets, an ordered
+  undirected graph is an ordered pair. </span>
+</p>
+
+
+<p>
+ <span class='run'>We denote that $∈v{σ}(v) &lt; ∈v{σ}(w)$ by $v
+  ≺_{σ} w$ and $v \succeq_{σ} w$ by $\inv{σ}(v) ≤
+  \inv{σ}(w)$. </span>
+
+ <span class='run'>We occasionally omit the subscripts in $≺_{σ}$
+  and $\succeq_{σ}$ when clear from context. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Visualization} </span>
+</p>
+
+
+<p>
+ <span class='run'>We visualize an ordered undirected graph by
+  labeling its nodes with the indices of each
+  vertex. </span>
+
+ <span class='run'>Let $(V, E)$ be an undirected graph with $V =
+  \set{a,b,c,d,e}$ and
+  <p>\[
+   E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d},
+    \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}. </span>
+  \]</p></span>
+
+ <span class='run'>Let $σ: \set{1, …, 5} → V$ be an ordering
+  with
+  <p>\[
+   σ(1) = a \quad σ(2) = c \quad σ(3) = d \quad σ(4) = b
+    \quad σ(e) = 5. </span>
+  \]</p></span>
+
+ <span class='run'>We visualize the ordered graph in the figure. </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{figure} </span>
+
+ <span class='run'>\centering </span>
+
+ <span class='run'>\includegraphics[width=0.3\textwidth]{graphics_included∕ordered_undirected_graph} </span>
+
+ <span class='run'>\caption{Ordered undirected graph.} </span>
+
+ <span class='run'>\end{figure} </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

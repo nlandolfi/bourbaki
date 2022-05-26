@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We partition a real interval into interval pieces.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> An <i>interval partition</i> is a finite partition of a closed real interval.</p></div><div class="sheet-listing"><p class="sheet"> An interval partition is <i>regular</i> if all pieces except the largest are closed on the left and open on the right and the largest is closed.</p></div><div class="sheet-listing"><p class="sheet"> Any regular interval partition with $n-1$ elements can be represented by $n+1$ real numbers: the endpoints of each interval. We call these the <i>cut points</i> of the interval partition.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $R$ denote the set of real numbers. Let $[a, b]$ a closed interval in $R$ with endpoints $a, b \in R$.</p></div><div class="sheet-listing"><p class="sheet"> Consider a regular partition. of $[a,b]$ with $n-1$ pieces. We can identify its cut points: \[ a = a_1 < a_2 < \dots a_{n-1} < a_n = b. \] The pieces of the partition are: \[ [a_1, a_2), [a_2, a_3), \dots, [a_{n-2}, a_{n-1}) [a_{n-1}, a_n]. \]</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

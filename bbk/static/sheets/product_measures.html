@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to generalize the construction of cover area as generated as a product of two cover lengths, and more generally for arbitrary measure spaces.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{product measure} of the measures of two sigma finite measure spaces is the unique measure which assigns to every rectangle with measurable sides the product of the measures of the sides. We prove that such a measure exists, and is unique.</p></div><div class="sheet-listing"><h2 class="sheet" id="defining_result">2.1 Defining Result</h2></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $(X, \SA, \mu)$ and $(Y, \SB, \nu)$ be sigma-finite measurable spaces. There is a unique measure $\pi$ on $\SA \cross \SB$ such that \[ \pi(A \cross B) = \mu(A) \cross \nu(B) \] for all $A \in \SA$ and $B \in \SB$. Furthermore, for any $E \in \SA \cross \SB$. \[ \pi(E) = \int_{X} \nu(E_x) d\mu(x) = \int_{Y} \mu(E^y)d\nu(y).\footnote{Future editions will include a proof.} \] \end{prop}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.2 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \SA, \mu)$ and $(Y, \SB, \nu)$ be sigma-finite measurable spaces. We denote the product measure by $\mu \cross \nu$. For all $A \in \SA$ and $B \in \SB$, \[ (\mu \cross \nu)(A \cross B) = \mu(A) \cross \nu(B). \]</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

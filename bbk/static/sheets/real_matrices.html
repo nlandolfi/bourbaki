@@ -179,6 +179,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -195,6 +230,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We compress the notation for linear equations.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{real matrix} (\t{matrix}, \t{rectangular array}) is a two-dimensional array of real numbers. We denote the elements of a matrix in a grid between two rectangular braces, as in \[ A = \bmat{ A_{11} & A_{12} & \cdots & A_{1n} \\ A_{21} & A_{22} & \cdots & A_{2n} \\ \vdots & & \ddots & \vdots \\ A_{m1} & A_{m2} & \cdots & A_{mn} \\ }. \]</p></div><div class="sheet-listing"><p class="sheet"> We call $n$ and $m$ the \t{dimensions} of the matrix. We call $n$ the \t{height} and $m$ the \t{width}. If the height of the matrix is the same as the width of the matrix then we call the matrix \t{square}. If the height is larger than the width, we call the matrix \t{tall}. If the width is larger than the height, we call the matrix \t{wide}.</p></div><div class="sheet-listing"><h2 class="sheet" id="linear_equations">2.1 Linear equations</h2></div><div class="sheet-listing"><p class="sheet"> Recall that we are interested in solutions of the linear equations \[ \begin{aligned} y_1 &= A_{11}x_1 + A_{12}x_2 + \cdots + A_{1n}x_n, \\ y_2 &= A_{21}x_1 + A_{22}x_2 + \cdots + A_{2n}x_n, \\ &\vdots \\ y_n &= A_{m1}x_1 + A_{m2}x_2 + \cdots + A_{mn}x_n. \\ \end{aligned} \] We have suggestively used the notation $A_{ij}$ for the coefficients of the equations, so they are the entries of $A \in \R ^{m \times n}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="a_primer_on_matrix-vector_products">2.2 A primer on matrix-vector products</h2></div><div class="sheet-listing"><p class="sheet"> Using the notation $A \in \R ^{m \times n}$ and $x \in \R ^n$ we want a compressed way to write the above system of linear equations. Define the \t{real matrix-vector product} $z \in \R ^m$ of $A$ with $x$ by \[ z_{i} = \sum_{j = 1}^{n} A_{ij}x_j, \quad i = 1, \dots, m. \] We denote the matrix vector product $z$ by $Ax$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.3 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We express the above system of linear equations as \[ y = Ax, \] where $y = (y_1, \dots, y_n) \in \R ^{n}$ and $x = (x_1, \dots, x_n) \in \R ^n$. The compact notation $y = Ax$ is sometimes called the \t{matrix form} of the $m$ linear equations and $A$ the \t{coefficient matrix}.</p></div><div class="sheet-listing"><h2 class="sheet" id="note_on_terminology">2.4 Note on terminology</h2></div><div class="sheet-listing"><p class="sheet"> The word "matrix} is from the Latin \say{mater,} meaning mother, and has an old sense in English similar \say{womb." The matrix is source of many determinants (discussed elsewhere).</p></div>
     </div>
@@ -299,8 +335,153 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:real_matrices❳ </span>
+
+ <span class='run'>❲%!need:linear_equations❳ </span>
+
+ <span class='run'>❲%thru linear equations %!need:arrays❳ </span>
+
+ <span class='run'>❲% don’t need since made decision that to understand vector space you need n dimensional space and to understand that you need the real numbers❳ </span>
+
+ <span class='run'>❲%%!need:real_numbers❳ </span>
+
+ <span class='run'>❲%!need:real_vectors❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We compress the notation for linear equations. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+
+ <span class='run'>A <span class='term'>real matrix</span>
+  (<span class='term'>matrix</span>,
+  <span class='term'>rectangular array</span>) is a
+  two-dimensional array of real numbers. </span>
+
+ <span class='run'>We denote the elements of a matrix in a grid
+  between two rectangular braces, as in
+  <p>\[
+   A = \bmat{ </span>
+
+   A_{11} ❲&amp;❳ A_{12} ❲&amp;❳ ⋯ ❲&amp;❳ A_{1n} <br /> </span>
+
+   A_{21} ❲&amp;❳ A_{22} ❲&amp;❳ ⋯ ❲&amp;❳ A_{2n} <br /> </span>
+
+   \vdots ❲&amp;❳ ❲&amp;❳ \ddots ❲&amp;❳ \vdots <br /> </span>
+
+   A_{m1} ❲&amp;❳ A_{m2} ❲&amp;❳ ⋯ ❲&amp;❳ A_{mn} <br /> </span>
+
+   }. </span>
+  \]</p></span>
+</p>
+
+
+<p>
+ <span class='run'>We call $n$ and $m$ the
+  <span class='term'>dimensions</span> of the matrix. </span>
+
+ <span class='run'>We call $n$ the <span class='term'>height</span>
+  and $m$ the <span class='term'>width</span>. </span>
+
+ <span class='run'>If the height of the matrix is the same as
+  the width of the matrix then we call the
+  matrix <span class='term'>square</span>. </span>
+
+ <span class='run'>If the height is larger than the width, we
+  call the matrix <span class='term'>tall</span>. </span>
+
+ <span class='run'>If the width is larger than the height, we
+  call the matrix <span class='term'>wide</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Linear equations} </span>
+
+ <span class='run'>Recall that we are interested in solutions of
+  the linear equations
+  <p>\[
+   \begin{aligned} </span>
+
+   y_1 ❲&amp;❳= A_{11}x_1 + A_{12}x_2 + ⋯ + A_{1n}x_n, <br /> </span>
+
+   y_2 ❲&amp;❳= A_{21}x_1 + A_{22}x_2 + ⋯ + A_{2n}x_n, <br /> </span>
+
+   ❲&amp;❳⋮ <br /> </span>
+
+   y_n ❲&amp;❳= A_{m1}x_1 + A_{m2}x_2 + ⋯ + A_{mn}x_n. <br /> </span>
+
+   \end{aligned} </span>
+  \]</p></span>
+
+ <span class='run'>We have suggestively used the notation $A_{ij}$
+  for the coefficients of the equations, so they
+  are the entries of $A ∈ 𝗥^{m × n}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{A primer on matrix-vector products} </span>
+
+ <span class='run'>Using the notation $A ∈ 𝗥^{m × n}$ and $x ∈
+  𝗥^n$ we want a compressed way to write the
+  above system of linear equations. </span>
+
+ <span class='run'>Define the <span class='term'>real matrix-vector
+  product</span> $z ∈ 𝗥^m$ of $A$ with $x$ by
+  <p>\[
+   z_{i} = ∑_{j = 1}^{n} A_{ij}x_j, \quad i = 1, …, m. </span>
+  \]</p></span>
+
+ <span class='run'>We denote the matrix vector product $z$ by
+  $Ax$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+
+ <span class='run'>We express the above system of linear equations
+  as
+  <p>\[
+   y = Ax, </span>
+  \]</p>
+  where $y = (y_1, …, y_n) ∈ 𝗥^{n}$ and $x =
+  (x_1, …, x_n) ∈ 𝗥^n$. </span>
+
+ <span class='run'>The compact notation $y = Ax$ is sometimes
+  called the <span class='term'>matrix form</span> of
+  the $m$ linear equations and $A$ the
+  <span class='term'>coefficient matrix</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Note on terminology} </span>
+
+ <span class='run'>The word “matrix” is from the Latin “mater,”
+  meaning mother, and has an old sense in English
+  similar “womb.” </span>
+
+ <span class='run'>The matrix is source of many determinants
+  (discussed elsewhere). </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

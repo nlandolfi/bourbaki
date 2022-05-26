@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> A distribution/density selector picks a probabilistic model for a dataset by using the maximum likelihood principle. We want to generalize this idea. \ifhmode\unskip\fi\footnote{ Future editions probably include a genetic approach, which moves through clustering and mixtures of Gaussians to illustrate the point more fully. }</p></div><div class="sheet-listing"><p class="sheet"> \section{Definition}</p></div><div class="sheet-listing"><p class="sheet"> An \t{unsupervised data model} is a function $\ell: \R^d \to \R$ where $\ell(x)$ is the \t{suprise} of the vector $x$. \ifhmode\unskip\fi\footnote{ Future editions will expand. }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,53 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:data_models❳ </span>
+
+ <span class='run'>❲%!need:maximum_likelihood_densities❳ </span>
+
+ <span class='run'>❲%!need:maximum_likelihood_distributions❳ </span>
+
+ <span class='run'>❲%!refs:sanjay_lall∕introduction_to_machine_learning∕?❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>A distribution/density selector picks a
+  probabilistic model for a dataset by using the
+  maximum likelihood principle. </span>
+
+ <span class='run'>We want to generalize this idea.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\section{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>An <span class='term'>unsupervised data
+  model</span> is a function $ℓ: 𝗥^d → 𝗥$ where
+  $ℓ(x)$ is the <span class='term'>suprise</span> of
+  the vector $x$.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

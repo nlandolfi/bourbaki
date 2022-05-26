@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> As with introducing \sheetref{equivalent_sets}{Equivalent Sets}, we want to talk about the size of a set.\footnote{Will be expanded in future editions.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{finite} set is one that is equivalent to some natural number; an infinite set is one which is not finite. From this we can show that $\omega$ is infinite. This justifies the language "principle of infinity} with \sheetref{natural_numbers}{Natural Numbers". The principle of infinity asserts the existence of a particular infinite set; namely $\omega$.</p></div><div class="sheet-listing" id="motivation_for_set_number"><h1 class="sheet">3. Motivation for set number</h1></div><div class="sheet-listing"><p class="sheet"> It happens that if a set is equivalent to a natural number, it is equivalent to only one natural number.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} A set can be equivalent to at most one natural number.\footnote{Future edition will include proof, which uses comparability of numbers and the results of \sheetref{equivalent_sets}{Equivalent Sets}).} \end{proposition} A consequence is that a finite set is never equivalent to a proper subset of itself. So long as we are considering finite sets, a piece (subset) is always less than than the whole (original set). \begin{proposition} A finite set is never equivalent to a proper subset of itself. \end{proposition}</p></div><div class="sheet-listing" id="subsets_of_finite_sets"><h1 class="sheet">4. Subsets of finite sets</h1></div><div class="sheet-listing"><p class="sheet"> Every subset of a natural number is equivalent to a natural number.\footnote{This requires proof, and may become a proposition in future editions.} A consequence is:</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Every subset of a finite set is finite.\footnote{An account will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing" id="unions_of_finite_sets"><h1 class="sheet">5. Unions of finite sets</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} if $A$ and $B$ are finite, then $A \union B$ is finite. \end{proposition}</p></div><div class="sheet-listing" id="products_of_finite_sets"><h1 class="sheet">6. Products of finite sets</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If $A$ and $B$ are finite, then $A \times B$ is finite. \end{proposition}</p></div><div class="sheet-listing" id="powers_of_finite_sets"><h1 class="sheet">7. Powers of finite sets</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If $A$ is finite then $\powerset{A}$ is finite. \end{proposition}</p></div><div class="sheet-listing" id="functions_between_finite_sets"><h1 class="sheet">8. Functions between finite sets</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If $A$ and $B$ are finite, then $A^B$ is finite. \end{proposition}</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

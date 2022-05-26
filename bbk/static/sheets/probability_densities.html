@@ -102,6 +102,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -118,6 +153,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What if our set of outcomes is the real line, $\R $?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The principal difficulty is assigning nonzero numbers to infinitely many elements of a set. The solution is instead to assign probabilities to the <i>events</i> of outcomes, not to the individual outcomes (elementary events, real numbers), themselves.</p></div><div class="sheet-listing"><p class="sheet"> A \t{probability density} (or \t{probability density function} (\t{pdf})) is a function $f: \R  \to \R $ satisfying $f \geq 0$ and $\int f = 1$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -222,8 +258,63 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:probability_densities❳ </span>
+
+ <span class='run'>❲%!need:probability_distributions❳ </span>
+
+ <span class='run'>❲%!need:real_integrals❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>What if our set of outcomes is the real line,
+  $𝗥$? </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>The principal difficulty is assigning nonzero
+  numbers to infinitely many elements of a set. </span>
+
+ <span class='run'>The solution is instead to assign probabilities
+  to the <i>events</i> of outcomes, not to the
+  individual outcomes (elementary events, real
+  numbers), themselves. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>probability density</span> (or
+  <span class='term'>probability density
+  function</span> (<span class='term'>pdf</span>)) is
+  a function $f: 𝗥 → 𝗥$ satisfying $f ≥ 0$ and
+  $∫ f = 1$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We generalize the notion of linear dependence.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{matroid} is a finite subset algebra satisfying \begin{enumerate} \item Any subset of a distinguished set is distinguished. \item For two distinguished subsets of nonequal cardinality, there is an element of the base set in the complement of the smaller set in the bigger set whose singleton union with the smaller set is a distinguished set. \end{enumerate} We call the distinguished subsets \t{independent subsets} and we call the undistinguished subsets the \t{dependent subsets}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We follow the notation of subset algebras, but use $M$ for the base set, a mnemonic for matroid, and $\mathcal{I}$ for the distinguished sets, a menomic for independent.</p></div><div class="sheet-listing"><p class="sheet"> Let $(M, \mathcal{I})$ a matroid. We denote the properties by \begin{enumerate} \item $A \in \mathcal{I} \land B \subset A \implies B \in \mathcal{I}$. \item $A, B \in \mathcal{I} \land \card{A} < \card{B} \implies \exists x \in M: (A \union \set{x}) \in \mathcal{I}$ \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,106 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:matroids❳ </span>
+
+ <span class='run'>❲%!need:subset_algebras❳ </span>
+
+ <span class='run'>❲%!need:linearly_dependent_vectors❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We generalize the notion of linear dependence. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>matroid</span> is a finite
+  subset algebra satisfying
+  <ol>
+   <li>Any subset of a distinguished set is distinguished. </li>
+
+   <li>For two distinguished subsets of nonequal cardinality,
+    there is an element of the base set in the complement of
+    the smaller set in the bigger set whose singleton union
+    with the smaller set is a distinguished set. </li>  </ol>
+</span>
+
+ <span class='run'>We call the distinguished subsets
+  <span class='term'>independent subsets</span> and we
+  call the undistinguished subsets the
+  <span class='term'>dependent subsets</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>❲%The first property captures the intuition that if❳ </span>
+
+ <span class='run'>❲%a set of vectors was linearly independent, and we dropped❳ </span>
+
+ <span class='run'>❲%one of the vectors, the remaining subset would still be❳ </span>
+
+ <span class='run'>❲%independent.❳ </span>
+
+ <span class='run'>❲%The second property captures the intuition that if we had❳ </span>
+
+ <span class='run'>❲%a set of $m$ linearly independent vectors and $n &gt; m$ linearly❳ </span>
+
+ <span class='run'>❲%independent vectors, we can find a vector to add to the first❳ </span>
+
+ <span class='run'>❲%set and have it remain linearly independent.❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+
+ <span class='run'>We follow the notation of subset algebras, but
+  use $M$ for the base </span>
+
+ <span class='run'>set, a mnemonic for matroid, and $\mathcal{I}$
+  for the distinguished </span>
+
+ <span class='run'>sets, a menomic for independent. </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $(M, \mathcal{I})$ a matroid. </span>
+
+ <span class='run'>We denote the properties by </span>
+ <ol>
+  <li>$A ∈ \mathcal{I} \land B ⊂ A ⟹ B ∈ \mathcal{I}$. </li>
+
+  <li>$A, B ∈ \mathcal{I} \land \card{A} &lt; \card{B} ⟹ ∃ x ∈
+   M: (A \union \set{x}) ∈ \mathcal{I}$ </li> </ol>
+
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

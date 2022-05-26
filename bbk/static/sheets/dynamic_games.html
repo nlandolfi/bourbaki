@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Most games are iterative.\footnote{Future editions will expand.}</p></div><div class="sheet-listing"><h2 class="sheet" id="example:_tic-tac-toe">1.1 Example: tic-tac-toe</h2></div><div class="sheet-listing"><p class="sheet"> Consider the game "tic-tac-toe" in which there are two players. Denote the players by $X$ and $O$. The game starts with an empty $3 \times 3$ array, which the players proceed to "fill."</p></div><div class="sheet-listing"><p class="sheet"> Player $O$ starts and selects a cell in which to "mark her move." From then on, that cell is "occupied," Second, it is player $X$'s turn to pick a cell, any one that is not already occupied. The play proceeds until either all cells are occupied or one of the player has three cells in a row, horizontally, vertically, or diagonally.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

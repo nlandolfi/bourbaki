@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to extend our notion of entropy (see \sheetref{discrete_entropy}{Discrete Entropy}) to real-valued (continuous) random variables.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{differential entropy} of a probability density function is the integral of the density against the negative log of the density. This definition made to be similar to the case of discrete entropy. If a real-valued random variable has a density, then we call the differential entropy of its density the \t{differential entropy} of the random variable.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $f: \R^n \to \R$ be a probability density function. The differential entropy of $f$ is \[ - \int f \log f \] We denote the differential entropy of $f$ by $h(f)$.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">3. Example</h1></div><div class="sheet-listing"><p class="sheet"> Let $x: \Omega \to \R$ be uniform on $[0, \nicefrac{1}{2}]$. Then $h(x) = \log\nicefrac{1}{2} < 0$.</p></div><div class="sheet-listing" id="problems"><h1 class="sheet">4. Problems</h1></div><div class="sheet-listing"><p class="sheet"> We have $h(ax) = h(x) + \log\abs{a}$. In generaly $h(Ax) = h(x) + \log\abs{A}$.</p></div><div class="sheet-listing" id="differences_still_meaningful"><h1 class="sheet">5. Differences still meaningful</h1></div><div class="sheet-listing"><p class="sheet"> Even though the value of the differential entropy is not necessarily a good analogy to discrete entropy, differences still are. In particular, the following holds \[ I(X; Y) = H(Y) - H(Y \mid X) = H(X) = H(X \mid Y) \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

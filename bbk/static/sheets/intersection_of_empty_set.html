@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We only define set intersections for nonempty sets of sets. Why?</p></div><div class="sheet-listing"><p class="sheet"> \s{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> Which objects are specified by the sentence $(\forall x \in \emptyset)(x \in X)$? Well, since no objects fail to satisfy the statement,\footnote{Future editions will offer an account of this.} the sentence specifies all objects. So in other words, the condition we used to define set intersections (\sheetref{set_intersections}{Set Intersections}) specifies the "set of everything". In order to maintain other more desirable set principles like selection, we have said that such a set does not exist (see \sheetref{set_specification}{Set Specification}).</p></div><div class="sheet-listing"><p class="sheet"> If, however, all sets under consideration are subsets of one paticular set---denote it $E$---then we can define intersections as follows. Let $\CC$ be a possibly nonempty collection of sets \[ \bigcap \CC = \Set{X \in E}{(\forall X \in \CC)(x \in X)}. \] This definition agrees with that given in \sheetref{set_intersections}{Set Intersections}. In particular, it is the intersection of the set $\CC \union \set{E}$</p></div><div class="sheet-listing"><p class="sheet"> \s{Another definition}</p></div><div class="sheet-listing"><p class="sheet"> This begs the following question. Why not define intersections by selecting from the union. Let $\CA$ be a possibly nonempty set of sets. Then define: \[ \bigcap \CA = \Set{x \in \bigcup \CA}{(\forall A \in \CA)(x \in A)}. \] If $\CA$ is empty, so is $\bigcup \CA$ and then there are no elements in the set to select from so $\bigcap\CA$ is empty. This does not agree with the previous definitions for the empty set, but does for all other sets of sets.</p></div><div class="sheet-listing"><p class="sheet"> For these reasons, the intersection of the empty set is delicate.\footnote{Future editions will expand on the preference for the former definition.}</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

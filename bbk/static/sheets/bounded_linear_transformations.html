@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Many things in real life are bounded and linear. \ifhmode\unskip\fi\footnote{ Future editions will expand on this weak explanation. } More importantly, a bounded linear function between two norm spaces is continuous. We will show this later.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{bounded linear transformation} between two norm spaces is a linear function which is bounded. As with linear transformations, we sometimes call bounded linear transformations \t{bounded linear functions}. Bounded linear functions are sometimes called \t{bounded operators}, since linear functions are sometimes called operators.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -180,8 +216,63 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:bounded_linear_transformations❳ </span>
+
+ <span class='run'>❲%!need:bounded_functions❳ </span>
+
+ <span class='run'>❲%!need:linear_transformations❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>Many things in real life are bounded and
+  linear.[footnote skipped in this version]</span>
+
+ <span class='run'>More importantly, a bounded linear function
+  between two norm spaces is continuous. </span>
+
+ <span class='run'>We will show this later. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>bounded linear
+  transformation</span> between two norm spaces is
+  a linear function which is bounded. </span>
+
+ <span class='run'>As with linear transformations, we sometimes
+  call bounded linear transformations
+  <span class='term'>bounded linear functions</span>. </span>
+
+ <span class='run'>Bounded linear functions are sometimes called
+  <span class='term'>bounded operators</span>, since
+  linear functions are sometimes called operators. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

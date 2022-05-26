@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is believable that $\nicefrac{1}{2}, \nicefrac{1}{4}, \nicefrac{1}{8}, \dots$ has a convergent series. And likewise with $\nicefrac{1}{3}, \nicefrac{1}{9}, \nicefrac{1}{27}, \dots$. What of $a_k = x^k$ for $x \in \R$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $x \in \R$. The \t{geometric series} of $x$ is the series of the sequence $(a_k)$ defined by $a_k = x^k$.</p></div><div class="sheet-listing" id="characterization_of_convergence"><h1 class="sheet">3. Characterization of convergence</h1></div><div class="sheet-listing"><p class="sheet"> Does the geometric series of $x$ converge? In other words, does $(s_n)$ defined by $s_n = \sum_{k = 1}^{n} x^k$ have a limit.</p></div><div class="sheet-listing"><p class="sheet"> For $x = 1$ and $x = -1$, we have see (see  \sheetref{real_series}{Real Series}) that the series diverges. However for the cases $x = \nicefrac{1}{2}$ and $x=\nicefrac{1}{3}$ the geometric series converges.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If $\abs{x} < 1$, then the geometric series of $x$ converges and \[ \lim_{n \to \infty} \sum_{k = 1}^{n} x^k = \frac{x}{1-x} \] If $\abs{x} \geq 1$ then the geometric series of $x$ diverges. \begin{proof} Define $s_n = \sum_{k = 1}^{n} x^k$. Then \[ \begin{aligned} x \cdot s_n &= x\cdot\parens{x^1 + x^2 + \cdots + x^n}  \\ &= x^2 + x^3 + \cdots + x^{n+1} \\ &= s_n - x + x^{n+1}. \end{aligned} \] From which we deduce, $s_n(1-x) = x(1-x^n)$. If $x \neq 1$, then \[ s_n = \frac{1}{1-x}\parens{1 - x^n} \]</p></div><div class="sheet-listing"><p class="sheet"> If $\abs{x} < 1$, then using the algebra of limits (see \sheetref{real_limit_algebra}{Real Limit Algebra}) we deduce \[ \lim_{n \to \infty} \frac{1}{1-x} (1 - x^n) = \frac{1}{1 - x} (1 - 0) = \frac{1}{1 - x}, \] since $\lim_{k \to \infty} x^k = 0$ for $\abs{x} < 1$.</p></div><div class="sheet-listing"><p class="sheet"> If $x = 1$ or $x = -1$, then we have seen that $(s_n)$ diverges.\footnote{Future editions will include the trivial account about the case $\abs{x} > 1$.}</p></div><div class="sheet-listing"><p class="sheet"> \end{proof} \end{proposition}</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

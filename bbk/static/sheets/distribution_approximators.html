@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We have a distribution to approximate. It is, for some reason, unsuitable to our needs and we want to replace it with one more suitable.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{distribution approximator} is an approximator of a probability distribution. It is also a distribution. The criterion of approximation is any similarity function on distributions over the same space.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a non-empty set and $q: A \to \R$ be a distribution. Let $p: A \to \R$ be a distribution. Then $p: A \to \R$ is a distribution approximator of $q$.</p></div><div class="sheet-listing" id="reasons_for_approximation"><h1 class="sheet">4. Reasons for approximation</h1></div><div class="sheet-listing"><p class="sheet"> <b>Infeasible to represent.</b> If there are many outcomes, many numbers are required to specify the distribution. If $p: A^n \to \R$ where $|A| = k$, then there are $k^n$ outcomes; take, for example, $k = 2$ and $n = 100$. So we might want to find a distribution which requires fewer numbers to express. In other words, we want a different distribution, selected from the set of those which is easier to express, which is close to the original.</p></div><div class="sheet-listing"><p class="sheet"> <b>Unreasonable from common sense.</b> The distribution may be unreasonable as a result of our common sense. For example, it may give zero probability to an outcome which we know to be possible, and would like to model with non-zero probability. This may happen when working with an empirical distribution: a particular outcome does not appear in the dataset, however, our common sense suggests is possible. In this case, we want to find a different distribution, selected from the set of those which is more reasonable based on common sense, which is close to the original.</p></div>
     </div>
@@ -173,8 +209,118 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:distribution_approximators❳ </span>
+
+ <span class='run'>❲%!need:approximators❳ </span>
+
+ <span class='run'>❲%!need:empirical_distribution❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We have a distribution to approximate. </span>
+
+ <span class='run'>It is, for some reason, unsuitable to our
+  needs and we want to replace it with one more
+  suitable. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>distribution
+  approximator</span> is an approximator of a
+  probability distribution. </span>
+
+ <span class='run'>It is also a distribution. </span>
+
+ <span class='run'>The criterion of approximation is any similarity
+  function on distributions over the same space. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A$ be a non-empty set and $q: A → 𝗥$
+  be a distribution. </span>
+
+ <span class='run'>Let $p: A → 𝗥$ be a distribution. </span>
+
+ <span class='run'>Then $p: A → 𝗥$ is a distribution approximator
+  of $q$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Reasons for approximation} </span>
+</p>
+
+
+<p>
+ <span class='run'></span>
+
+ <span class='run'><b>Infeasible to represent.</b> </span>
+
+ <span class='run'>If there are many outcomes, many numbers are
+  required to specify the distribution. </span>
+
+ <span class='run'>If $p: A^n → 𝗥$ where $|A| = k$, then there
+  are $k^n$ outcomes; take, for example, $k = 2$
+  and $n = 100$. </span>
+
+ <span class='run'>So we might want to find a distribution which
+  requires fewer numbers to express. </span>
+
+ <span class='run'>In other words, we want a different
+  distribution, selected from the set of those
+  which is easier to express, which is close to
+  the original. </span>
+</p>
+
+
+<p>
+ <span class='run'><b>Unreasonable from common sense.</b> </span>
+
+ <span class='run'>The distribution may be unreasonable as a
+  result of our common sense. </span>
+
+ <span class='run'>For example, it may give zero probability to
+  an outcome which we know to be possible, and
+  would like to model with non-zero probability. </span>
+
+ <span class='run'>This may happen when working with an empirical
+  distribution: a particular outcome does not
+  appear in the dataset, however, our common sense
+  suggests is possible. </span>
+
+ <span class='run'>In this case, we want to find a different
+  distribution, selected from the set of those
+  which is more reasonable based on common sense,
+  which is close to the original. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

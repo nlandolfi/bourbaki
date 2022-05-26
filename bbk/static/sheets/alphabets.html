@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We return to our discussion of symbols and scripts, to make precise these concepts in the language of sets and lists.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> An \t{alphabet} is a finite set. For example, let $A$ be the set \[ \set{a, b, c, d, e, f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w, x, y,z}, \] where $a$ denotes the latin lower case letter "a}, $b$ denotes the latin lower case letter \say{b", and so on. In other words, $A$ is the set of lowercase latin letters. It is an alphabet. By analogy with this familiar case, we frequently refer to the elements of an alphabet as "letters} or \say{symbols."</p></div><div class="sheet-listing"><p class="sheet"> A \t{word} is a list of letters in an alphabet, and a \t{phrase} is a list of words. For example, $(c,a,t,s)$ is a word in $\CA$ (mean to correspond to the word "cats") and \[ ((c,a,t,s), (a,n,d), (d,o,g,s)) \] is a phrase in $\CA$ (meant to correspond to the phrase "cats and dogs").</p></div><div class="sheet-listing" id="strings"><h1 class="sheet">3. Strings</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ be an alphabet. In this case (in which $A$ is a finite set), we refer to the finite sequences of $A$ as \t{strings}. The string whose length is zero is the empty set.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">4. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the set of all finite sequences (strings) in $A$ by $\strings(A)$. We read $\strings(A)$ aloud as "the strings in $A$."</p></div>
     </div>
@@ -166,8 +202,99 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:alphabets❳ </span>
+
+ <span class='run'>❲%!need:lists❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We return to our discussion of symbols and
+  scripts, to make precise these concepts in the
+  language of sets and lists. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>An <span class='term'>alphabet</span> is a finite
+  set. </span>
+
+ <span class='run'>For example, let $A$ be the set
+  <p>\[
+   \set{a, b, c, d, e, f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w, x,
+    y,z}, </span>
+  \]</p>
+  where $a$ denotes the latin lower case letter
+  “a”, $b$ denotes the latin lower case letter
+  “b”, and so on. </span>
+
+ <span class='run'>In other words, $A$ is the set of lowercase
+  latin letters. </span>
+
+ <span class='run'>It is an alphabet. </span>
+
+ <span class='run'>By analogy with this familiar case, we
+  frequently refer to the elements of an alphabet
+  as “letters” or “symbols.” </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>word</span> is a list of
+  letters in an alphabet, and a
+  <span class='term'>phrase</span> is a list of
+  words. </span>
+
+ <span class='run'>For example, $(c,a,t,s)$ is a word in $\CA$
+  (mean to correspond to the word \say{cats}) and
+  <p>\[
+   ((c,a,t,s), (a,n,d), (d,o,g,s)) </span>
+  \]</p>
+  <span class='run'>is a phrase in $\CA$ (meant to correspond to
+   the phrase \say{cats and dogs}). </span></span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Strings} </span>
+
+ <span class='run'>Let $A$ be an alphabet. </span>
+
+ <span class='run'>In this case (in which $A$ is a finite set),
+  we refer to the finite sequences of $A$ as
+  <span class='term'>strings</span>. </span>
+
+ <span class='run'>The string whose length is zero is the empty
+  set. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Notation} </span>
+
+ <span class='run'>We denote the set of all finite sequences
+  (strings) in $A$ by $\strings(A)$. </span>
+
+ <span class='run'>We read $\strings(A)$ aloud as “the strings in
+  $A$.” </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

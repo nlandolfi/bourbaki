@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include,_the_historical_motivation_is_obviously_cartography."><h1 class="sheet">1. Why}\footnote{Future editions will include, the historical motivation is obviously cartography.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $S$ be the sphere in $\R^3$ and let $N = (0, 0, 1)$, the north pole. Then the \t{stereopgraphic projection} of $S - \set{N}$ is the function $\pi: S - \set{N} \to \R^2$ defined as follows. The point $\pi(p)$ is the $(x, y)$ values for the point where the line through $N$ and $p$ intersects the plane plane $P = \set{(x, y, z) \in \R^3}{z = 0}$ (the "xy-plane}).\footnote{Future editions will expand."</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The stereographic projection is a diffeomorphism. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

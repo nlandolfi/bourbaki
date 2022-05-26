@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Some additional practice with natural numbers.</p></div><div class="sheet-listing" id="exercises"><h1 class="sheet">2. Exercises</h1></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Show that if $n$ is a natural number, then $\ssuc{n} \neq n$. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Show that if $n \neq 0$, then there exists a natural number $m$ so that $n = \ssuc{m}$. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Prove that $\omega$ is infinite. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Let $E$ be a nonempty subset of a natural number. Show that ther exists $k \in E$ so that $k \in m$ whenever $m \in E$ and $m \neq k$. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

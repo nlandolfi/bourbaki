@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is natural to want to define a sequence by giving its first term and then giving its later terms as functions of its earlier ones. In other words, we want to define sequences inductively.\footnote{Future editions will expand on this. We are really headed toward natural addition, multiplication and exponentiation.}</p></div><div class="sheet-listing" id="main_result"><h1 class="sheet">2. Main Result</h1></div><div class="sheet-listing"><p class="sheet"> The following is often referred to as the \t{recursion theorem}.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Recursion Theorem\footnote{Future editions will likely change this name.}] Let $X$ be a set, let $a \in X$ and let $f: X \to X$. There exists a unique function $u$ so that $u(0) = a$ and $u(\ssuc{n}) = f(u(n))$.\footnote{The account is somewhat straightforward, given a good understanding of the results of \sheetref{peano_axioms}{Peano Axioms}. The full account will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> When one uses the recursion theorem to assert the existence of a function with the desired properties, it is called \t{definition by induction}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -166,8 +202,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

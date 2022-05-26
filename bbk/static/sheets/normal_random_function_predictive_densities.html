@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We use a normal random function model to make a regressor.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $F: \Omega \to (A \to \R)$ be a normal random function with mean function $m: A \to \R$ and covariance function $k: A \times A \to \R$ over the probability space $(\Omega, \CA, \PM)$. Let the family of random variables (or stochastic process) of $F$ be $f: A \to (\Omega \to \R)$.</p></div><div class="sheet-listing"><p class="sheet"> Let $e$ be a normal random vector with mean zero and covariance $\Sigma_{e}$. Let $a^1, \dots, a^n \in A$. We sometimes call the sequence $a^1, \dots, a^n$ the \t{design}. Define $y: \Omega \to \R^d$ by \[ y_i = f(a^i) + e_i \] We call $y$ the \t{observation vector} or \t{observation random vector}. We call $e$ the \t{error vector} or \t{noise vector}. In this context, $f(a^i)$ is sometimes called the \t{signal}.</p></div><div class="sheet-listing"><p class="sheet"> Let $b^1, \dots, b^m \in A$. Define $z: \Omega \to \R^d$ by $z_i = f(b^i)$ for $i = 1, \dots, n$. So $z_i$ is the random variable corresponding to the family at index $b^i \in A$. Then $(y, z)$ is normal. We call the conditional density of $z$ given $y$ the \t{predictive density} for $b$ given $a$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Define $m_{a} \in \R^{n}$ by $\tranpose{(m(a^1),\cdots,m(a^n))}$ and define $m_{b}$ by $\tranpose{(m(b^1), \cdots, m(b^m))}$.\footnote{Future editions will fix the re-use of the symbol $m$.} Define $\Sigma_a \in \R^{n \times n}$ by \[ \pmat{ k(a^1, a^1) & \cdots & k(a^1, a^n) \\ \vdots & \ddots & \vdots \\ k(a^n, a^1) & \cdots & k(a^n, a^n) \\ } \] and define $\Sigma_{ba} \in \R^{m \times n}$ by \[ \pmat{ k(b^1, a^1) & \cdots & k(b^1, a^n) \\ \vdots & \ddots & \vdots \\ k(b^m, a^1) & \cdots & k(b^m, a^n) \\ }. \] The predictive density $g_{z \mid y}(\cdot, \gamma): \R^m \to \R$ of $b \in A$ for design $a^1, \dots, a^n$ is normal with mean. \[ m_b  + K_{ba}\invp{K_{a} + \Sigma_{e}}\parens{\gamma - m_a} \] and covariance \[ \Sigma_{b} - \Sigma_{ba}\invp{\Sigma_{a} + \Sigma_{e}}\Sigma_{ab}. \] \end{proposition}</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

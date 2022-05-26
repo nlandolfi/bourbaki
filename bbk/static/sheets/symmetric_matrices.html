@@ -81,6 +81,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -97,6 +132,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><h2 class="sheet" id="why">0.1 Why</h2></div><div class="sheet-listing"><p class="sheet"> Matrices that have reflected values across their diagonals arise often.\footnote{Future editions will clarify.}</p></div><div class="sheet-listing"><h2 class="sheet" id="definition">0.2 Definition</h2></div><div class="sheet-listing"><p class="sheet"> A square matrix is \t{symmetric} (we call it a \t{symmetric matrix}) if its values do not depend on the order of the indices. In other words, a matrix is symmetric if the value above and below the diagonal are a mirror image.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">0.3 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $S$ be a nonempty set and $A \in \Mat{S}{n}{n}$. Then $A$ is symmetric if $A_{ij} = A_{ji}$. We denote the set of real-valued $n$ by $n$ symmetric matrices by $\SymMat{n}$. A symmetric matrix is the same as its tranpose. In other words, if $A$ is symmetric, $A = \transpose{A}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -201,8 +237,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

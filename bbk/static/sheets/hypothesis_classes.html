@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We consider the set of predictors from which we select.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX, \mu)$ and $f: X \to Y$ be probabilistic data-generation model. A \t{hypothesis class} $\CH \subset (X \to Y)$ is a subset of measurable functions. For a dataset $D \in (X \times Y)^n$, a \t{restricted empirical error minimizer} of $\CH$ is a hypothesis $h \in \CH$ with minimal (among elements of $\CH$) empirical error on $D$.</p></div><div class="sheet-listing"><h2 class="sheet" id="inductive_bias">2.1 Inductive Bias</h2></div><div class="sheet-listing"><p class="sheet"> Many authorities call the hypothesis class a \t{inductive bias} and speak of "biasing} the \say{learning algorithm". Since one specifies the hypothesis class prior to the data it often said to "encode prior knowledge about the problem to be learned."</p></div><div class="sheet-listing" id="realizable_classes"><h1 class="sheet">3. Realizable classes</h1></div><div class="sheet-listing"><p class="sheet"> Some hypothesis classes are better than others. For example, a hypothesis class that includes the correct labeling function seems preferable to a class that does not.</p></div><div class="sheet-listing"><p class="sheet"> We formulate a weaker condition that captures the case when $f \in \CH$. A hypothesis class $\CH$ is \t{realizable} if there exists $h^{\star} \in \CH$ with \[ \mu(\Set{x \in X}{h^\star(x) \neq f(x)}) = 0.%\footnote{Future editions will comment on the measurability of this set. It is no object for finite $\CX$.} In fact, it is no object for any measurable $h$ and $f$. \] This condition is natural because if $f \in \CH$, then $\CH$ is realizable. Moreover, the condition has two natural corollaries</p></div><div class="sheet-listing"><p class="sheet"> First, there exists $h^\star$ so that \[ \mu^n(\Set*{x \in X^n}{\num{\Set*{i \in [n]}{h^\star(x_i) \neq f(x_i)}} \neq 0}) = 0. \] We interpret this as follows: "there exists a hypothesis whose probability of achieving nonzero empirical risk is zero."</p></div><div class="sheet-listing"><p class="sheet"> Second, denote by $M_x$ the empirical risk minimizers of $x \in X^n$. Then, \[ \mu^n(\Set*{x \in X^n}{\forall h \in M_x, \forall i, h(x_i) = f(x_i)}) = 1. \] We interpret this as follows: "all empirical risk minimizers will achieve zero empirical risk on the dataset, with probability 1."</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, there exists a hypothesis for which the event that it achieves zero empirical risk has probability one. In this event, every hypothesis in the set of empirical risk minimizers must achieve zero empirical risk. This is a consequence of the hypothesis class being realizable.</p></div>
     </div>
@@ -166,8 +202,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

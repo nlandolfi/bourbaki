@@ -74,6 +74,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -90,6 +125,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider an open interval of real numbers and a function on the interval. Take a real number in the interval.  It corresponds to some element in the graph of the function. Next take a second real number in the interval. It too corresponds to some element in the graph of the function. We have two distinct elements of the interval corresponding to two elements of the graph.</p></div><div class="sheet-listing"><p class="sheet"> Next, consider the line in the plane which passes through these two elements of the graph of the function. Consider the slope of this line, in other words, the tangent of the angle between the line and a horizontal line passing through the original point. Consider the tangent of the angle which the line makes with the horizontal. The quantity is the quotient of the result on the second real number less the result on the first real number with the second real number less the first real number.</p></div><div class="sheet-listing"><p class="sheet"> For a selected first number, define a new function which maps a second distinct real number (in the interval) to this quantity, the slope of the line between them. Next, we consider if this second function has a limit as its argument approaches the first fixed number. If it does, we say that the original function is \t{differentiable at} the first number.  We call the limiting real number the \t{derivative at} the first real number of the original function.</p></div><div class="sheet-listing"><p class="sheet"> If the first function is differentiable at each number in the interval of its domain, we say that the function is \t{differentiable}.  We call the function which assigns to each real number in the interval the real number which is the derivative at the argument of the function the \t{derivative of} the original function.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $I$ be an open interval of $\R$. Let $f: I \to \R$ and $a \in I$. Define $A = I - \set{a}$, and define $g: A \to \R$ by $g(x) = (f(x) - f(a))/(x - a)$. We say that $f$ is differentiable at $a$ if $\lim_{x \to a} g(x)$ exists in $\R$. In other words, $f$ is differentiable if \[ \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} \] exists in $\R$.</p></div><div class="sheet-listing"><p class="sheet"> If $f$ is differentiable at $a$ for each $a \in I$, then $f$ is differentiable. In this case, the derivative of $f$ is the function $h: I \to \R$ defined by \[ h(x) = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}. \]</p></div>
     </div>
@@ -194,8 +230,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

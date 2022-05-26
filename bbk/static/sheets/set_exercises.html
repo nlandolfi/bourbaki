@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Here are some exercises on sets. \ifhmode\unskip\fi\footnote{ Future editions will give the hypotheses more clearly. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Let $A, B, C$ denote sets. Show $((A \cap B) \cup C = A \cap (B \cup C)) \iff (C \subset A)$ Observe that the condition does not involve $B$. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} \[ A - B = A \cap B'. \] \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} \[ A \subset B \text{ if and only if} A - B = \varnothing. \] \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} \[ A - (A - B) = A \cap B. \] \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} \[ A \cap (B - C) = (A \cap B) - (A \cap C). \] \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} \[ (A \cap B) \subset ((A \cap C) \cup (A \cap C')). \] \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} \[ ((A \cup C) \cap (B \cup C')) \subset (A \cup B). \] \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,112 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:set_exercises❳ </span>
+
+ <span class='run'>❲%!need:set_dualities❳ </span>
+
+ <span class='run'>❲%!need:partitions❳ </span>
+
+ <span class='run'>❲%!refs:paul_halmos∕naive_set_theory∕section_04❳ </span>
+
+ <span class='run'>❲%!refs:paul_halmos∕naive_set_theory∕section_05❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>Here are some exercises on sets.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{exercise} </span>
+
+ <span class='run'>Let $A, B, C$ denote sets. </span>
+
+ <span class='run'>Show $((A ∩ B) ∪ C = A ∩ (B ∪ C)) \iff (C
+  ⊂ A)$ </span>
+
+ <span class='run'>Observe that the condition does not involve $B$. </span>
+
+ <span class='run'>\end{exercise} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{exercise} </span>
+
+ <span class='run'>  <p>\[
+   A - B = A ∩ B’. </span>
+  \]</p></span>
+
+ <span class='run'>\end{exercise} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{exercise} </span>
+ <p>\[
+  A ⊂ B \text{ if and only if} A - B = ∅. </span>
+ \]</p>
+ <span class='run'>\end{exercise} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{exercise} </span>
+ <p>\[
+  A - (A - B) = A ∩ B. </span>
+ \]</p>
+ <span class='run'>\end{exercise} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{exercise} </span>
+ <p>\[
+  A ∩ (B - C) = (A ∩ B) - (A ∩ C). </span>
+ \]</p>
+ <span class='run'>\end{exercise} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{exercise} </span>
+
+ <span class='run'>  <p>\[
+   (A ∩ B) ⊂ ((A ∩ C) ∪ (A ∩ C’)). </span>
+  \]</p>
+  <span class='run'>\end{exercise} </span></span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{exercise} </span>
+ <p>\[
+  ((A ∪ C) ∩ (B ∪ C’)) ⊂ (A ∪ B). </span>
+ \]</p>
+ <span class='run'>\end{exercise} </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

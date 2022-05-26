@@ -109,6 +109,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -125,6 +160,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We model a real-valued output as corrupted by small random errors. Thus, we can talk about a dataset which is "close" to being consistent with a linear predictor.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(\Omega, \CA, \PM)$ be a probability space. Let $x \in \R^d$ and $e: \Omega \to \R^n$. For $A \in \R^{n \times d}$, define $y: \Omega \to \R^n$ by $y = Ax + e$. We call $(x, A, e)$ a \t{probabilistic errors linear model}. We call $y$ the \t{response vector}, $A$ the \t{model matrix} and $e$ the \t{error vector}.</p></div><div class="sheet-listing" id="moment_assumptions"><h1 class="sheet">3. Moment assumptions</h1></div><div class="sheet-listing"><p class="sheet"> The most basic distributional assumption for a probabilistic errors linear model pertain to the expectation and variance. Since $\E(y) = Ax + \E(e)$ and $\var(y) = \var(e)$, these assumptions can be given for $e$ or for $y$.</p></div><div class="sheet-listing"><p class="sheet"> If $\E(x) = 0$ and $\var(y) = \sigma^2I$ then we call $(x, A, e)$ a \t{classical linear model with moment assumptions}. Notice that the components of $e$ are assumed uncorrelated. We have $d + 1$ unknowns (the $d \times 1$ entires of $\theta$ and scalar parameter $\sigma^2$.</p></div><div class="sheet-listing"><p class="sheet"> In this case $\E(y_i) = \transpose{a^i}\theta$ and so $\theta$ is called the \t{mean parameter vector} and $\sigma^2$ is called the \t{model variance}. The model variance indicates the variability inherent in the observations. Neither the mean nor variance of the error depends on the regression vector $x$ nor on the parameter vector $\theta$.</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">4. Examples</h1></div><div class="sheet-listing"><p class="sheet"> Consider the \t{two-sample problem} in which we have two populations with (unknown) mean responses $\alpha_1, \alpha_2 \in \R$. We observe these responses with (perhaps unknown) common variance $\sigma^2$, and assume that errors are uncorrelated.</p></div><div class="sheet-listing"><p class="sheet"> We define $y^1 = \alpha_1\mathbf{1} + e^1$ and $y^2 = \alpha_2\mathbf{1} + e^2$ so that we can stack these and obtain \[ y = \bmat{y^1 \\ y^2} = \bmat{\alpha_1\mathbf{1} \\ \alpha_2\mathbf{1}} + \bmat{e^1 \\ e^2}. \] To cast this in our standard form we define \[ A = \transpose{ \bmat{\bmat{1\\0} & \cdots &\bmat{1\\0} & \bmat{0 \\ 1} & \cdots & \bmat{0 \\ 1} } }, \quad x = \bmat{\alpha_1 \\ \alpha_2}. \] with regression vectors $a_1 = (1, 0)$ and $x_2 = (0, 1)$ repeated $n_1$ and $n_2$ times, respectively. An input design for this model involves specifying a sequence of these two vectors, which (with the uncorrelated assumption) reduces to dictating how many responses should be collected from each population. The inputs here is really the set $\CX = \set{1, 2}$. The feature function is $\phi: \CX \to \R^2$ defined by $\phi(1) = (1, 0)$ and $\phi(2) = (0, 1)$. And so the regression range is $\set{(1, 0), (0, 1)}$.</p></div>
     </div>
@@ -229,8 +265,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

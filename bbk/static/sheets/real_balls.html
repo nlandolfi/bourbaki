@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \section{Why}\footnote{Future editions will include.}</p></div><div class="sheet-listing"><p class="sheet"> \section{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $x \in \R^d$. The \t{open ball} centered at $x$ (or around $x$) of radius $\delta > 0$ is the set \[ \Set*{x' \in \R^{d}}{d(x, y) < \delta} \] where $d: \R^d \times \R^d \to \R$ is the usual Euclidean distance.</p></div><div class="sheet-listing"><h2 class="sheet" id="definition">0.1 Definition</h2></div><div class="sheet-listing"><p class="sheet"> We sometimes denote the open ball by $B(x,\delta)$ or $B_{\delta}(x)$</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -74,6 +74,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -90,6 +125,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We discuss a decomposition using eigenvalues and eigenvectors.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="defining_result"><h1 class="sheet">2. Defining result</h1></div><div class="sheet-listing"><p class="sheet"> An \t{eigenvalue decomposition} of a matrix $A \in \R^{n \times n}$ is an ordered pair $(X, \Lambda)$ in which $X$ is invertible, $\Lambda$ is diagonal, and $A = X\Lambda X^{-1}$.</p></div><div class="sheet-listing"><p class="sheet"> In this case, $AX = X\Lambda$, in other words, \[ \bmat{ & & \\ & A & \\ & & } \bmat{x_1 & \cdots & x_m} = \bmat{x_1 & \cdots & x_m} \bmat{\lambda_1 & & \\ & \ddots & \\ & & \lambda_n}. \] in which $x_i$ is the $i$th column of $X$ and $\lambda_i$ is the $i$th diagonal element of $\Lambda$. We have $Ax_i = \lambda_ix_i$ for $i = 1, \dots, n$. In other words, the $i$th column of $X$ is an eigenvector of $A$ and the $j$th entry of $\Lambda$ is the corresponding eigenvalue.</p></div><div class="sheet-listing"><p class="sheet"> If $X$ is orthonormal, so that $X^{-1} = \tranpose{X}$, then we can interpret such a decomposition as a change of basis to \t{eigenvector coordinates}. If $Ax = b$, and $A = X\Lambda X^{-1}$ then $(X^{-1}b) = \Lambda(X^{-1}x)$. Here, $X^{-1}x$ expands $x$ is the basis of columns of $X$. So to compute $Ax$ , we first expand into the basis of columns of $X$, scale by $\Lambda$, and then interpret the result as the coefficients of a linear combination of the columns of $X$.</p></div><div class="sheet-listing"><p class="sheet"> In this case that $A = X\Lambda\transpose{X}$ for an eigenvalue decomposition $(X, \Lambda)$ of $A$, we can also write \[ A = X\Lambda\tranpose{X} = \sum_{i =  1}^{n} \Lambda_{ii}x_i\tranpose{x}_i. \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Every real symmetric matrix has an eigenvalue decomposition $(X, \Lambda)$ in which $X$ is orthonormal.\footnote{In future editions, this may be the motivating result for the definition of eigenvalues.} \end{proposition}</p></div>
     </div>
@@ -194,8 +230,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

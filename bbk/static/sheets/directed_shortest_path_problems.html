@@ -50,6 +50,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -66,6 +101,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include._for_now_this_is_an_example_of_a_discrete_optimization_problem."><h1 class="sheet">1. Why}\footnote{Future editions will include. For now this is an example of a discrete optimization problem.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we want to find the shortest path on a weighted graph from a given starting vertex to a given terminal vertex.</p></div><div class="sheet-listing"><p class="sheet"> Let $((V, E), w: E \to \R)$ be a weighted directed graph. Let $v$ be a source and $w$ be a sink. Let $\CX$ denote the set of (directed) paths from $v$ to $w$. Let $f: \CX \to \R$ be so that if $x \in X$ is a path from $v$ to $w$, then $f(x)$ is the weight of the path. In other words, $f(x)$ is the sum of weights on the edges. Then we call the problem $(\CX, f)$ a \t{directed shortest path problem}.</p></div><div class="sheet-listing" id="examples}\footnote{future_editions_will_include_the_numerous_examples."><h1 class="sheet">3. Examples}\footnote{Future editions will include the numerous examples.</h1></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -170,8 +206,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

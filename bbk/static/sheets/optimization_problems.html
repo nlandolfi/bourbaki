@@ -88,6 +88,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -104,6 +139,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We are frequently interested in finding minimizers of real functions. \ifhmode\unskip\fi\footnote{ Future editions will modify and expand. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> An \t{optimization problem} is a pair $(\CX, f: \CX \to \R)$ in which $\CX$ is a nonempty set called the \t{constraint set} and $f$ is called the \t{objective} (or \t{cost function}).</p></div><div class="sheet-listing"><p class="sheet"> If $\CX$ is finite we call the optimization problem \t{discrete}. If $\CX \subset \R^d$ we call the optimization problem \t{continuous}.</p></div><div class="sheet-listing"><p class="sheet"> We refer to all elements of the constraint set as \t{feasible}. We refer to an element $x \in \CX$ of the constraint set as \t{optimal} if $f(x) = \inf_{z \in \CX}f(z)$. We also refer to optimal elements as \t{solutions} of the optimization problem.</p></div><div class="sheet-listing"><p class="sheet"> It is common for $f$ and $\CX$ to depend on some other, known, given objects. In this case, these objects are often called \t{parameters} or \t{problem data}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We often write optimization problems as \[ \begin{aligned} \text{minimize}\quad & f(x) \\ \text{subject to}\quad & x \in \CX. \end{aligned} \] In this case we call $x$ the \t{decision variable}.</p></div><div class="sheet-listing"><h2 class="sheet" id="extended_reals">2.2 Extended reals</h2></div><div class="sheet-listing"><p class="sheet"> It is common to let $f: \CX \to \Rbar$, and allow there to exist $x \in \CX$ for which $f(x) = \infty$. This is a trick to embed further constraints in the objective.</p></div><div class="sheet-listing"><h2 class="sheet" id="maximization">2.3 Maximization</h2></div><div class="sheet-listing"><p class="sheet"> If we have some function $g: \CX \to \Rbar$ that we wish to maximize, we can always convert it to an optimization problem by defining $f: \CX \to \Rbar$ by $f(x) = -g(x)$. In this case $g$ is often called a \t{reward} (\t{utility}, \t{profit}).</p></div><div class="sheet-listing" id="solvers"><h1 class="sheet">3. Solvers</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CP = \set{(X_a, f_a: X_a \to \Rbar)}_{a \in A}$ be a family of optimization problems. A \t{solver} (or \t{solution method}, \t{solution algorithm}) for $\CP$ is a function $S: A \to \CS$ such that $S_a$ is a solution of the problem $(X_a, f_a)$.</p></div><div class="sheet-listing"><p class="sheet"> Loosely speaking, the difficulty of "solving} the optimization problem $(\CX, f)$ depends on the properties of $\CX$ and $f$ and the problem \say{size". For example, when $\CX \subset \R^d$ the difficulty is related to the "dimension" $d$ of $x \in \CX$.</p></div>
     </div>
@@ -208,8 +244,175 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:optimization_problems❳ </span>
+
+ <span class='run'>❲%!need:optimizers❳ </span>
+
+ <span class='run'>❲%!need:real_functions❳ </span>
+
+ <span class='run'>❲%!need:extended_real_numbers❳ </span>
+
+ <span class='run'>❲%!need:greatest_lower_bounds❳ </span>
+
+ <span class='run'>❲%!need:n-dimensional_space❳ </span>
+
+ <span class='run'>❲%%!need:family_unions_and_intersections❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We are frequently interested in finding
+  minimizers of real functions.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>An <span class='term'>optimization problem</span>
+  is a pair $(\CX, f: \CX → 𝗥)$ in which $\CX$
+  is a nonempty set called the
+  <span class='term'>constraint set</span> and $f$ is
+  called the <span class='term'>objective</span> (or
+  <span class='term'>cost function</span>). </span>
+</p>
+
+
+<p>
+ <span class='run'>If $\CX$ is finite we call the optimization
+  problem <span class='term'>discrete</span>. </span>
+
+ <span class='run'>If $\CX ⊂ 𝗥^d$ we call the optimization
+  problem <span class='term'>continuous</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>We refer to all elements of the constraint set
+  as <span class='term'>feasible</span>. </span>
+
+ <span class='run'>We refer to an element $x ∈ \CX$ of the
+  constraint set as <span class='term'>optimal</span>
+  if $f(x) = ∈f_{z ∈ \CX}f(z)$. </span>
+
+ <span class='run'>We also refer to optimal elements as
+  <span class='term'>solutions</span> of the
+  optimization problem. </span>
+</p>
+
+
+<p>
+ <span class='run'>It is common for $f$ and $\CX$ to depend on
+  some other, known, given objects. </span>
+
+ <span class='run'>In this case, these objects are often called
+  <span class='term'>parameters</span> or
+  <span class='term'>problem data</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>We often write optimization problems as
+  <p>\[
+   \begin{aligned} </span>
+
+   \text{minimize}\quad ❲&amp;❳ f(x) <br /> </span>
+
+   \text{subject to}\quad ❲&amp;❳ x ∈ \CX. </span>
+
+   \end{aligned} </span>
+  \]</p></span>
+
+ <span class='run'>In this case we call $x$ the
+  <span class='term'>decision variable</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Extended reals} </span>
+</p>
+
+
+<p>
+ <span class='run'>It is common to let $f: \CX → \Rbar$, and
+  allow there to exist $x ∈ \CX$ for which $f(x)
+  = ∞$. </span>
+
+ <span class='run'>This is a trick to embed further constraints
+  in the objective. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Maximization} </span>
+</p>
+
+
+<p>
+ <span class='run'>If we have some function $g: \CX → \Rbar$
+  that we wish to maximize, we can always convert
+  it to an optimization problem by defining $f:
+  \CX → \Rbar$ by $f(x) = -g(x)$. </span>
+
+ <span class='run'>In this case $g$ is often called a
+  <span class='term'>reward</span>
+  (<span class='term'>utility</span>,
+  <span class='term'>profit</span>). </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Solvers} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $\CP = \set{(X_a, f_a: X_a → \Rbar)}_{a ∈
+  A}$ be a family of optimization problems. </span>
+
+ <span class='run'>A <span class='term'>solver</span> (or
+  <span class='term'>solution method</span>,
+  <span class='term'>solution algorithm</span>) for
+  $\CP$ is a function $S: A → \CS$ such that
+  $S_a$ is a solution of the problem $(X_a, f_a)$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Loosely speaking, the difficulty of “solving}
+  the optimization problem $(\CX, f)$ depends on
+  the properties of $\CX$ and $f$ and the problem
+  \say{size}. </span>
+
+ <span class='run'>For example, when $\CX ⊂ 𝗥^d$ the difficulty
+  is related to the \say{dimension” $d$ of $x ∈
+  \CX$. </span>
+
+ <span class='run'></span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

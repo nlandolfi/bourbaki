@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about an inductor's error under a probabilistic supervised data model.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX, \mu)$ and $f: X \to Y$ be a probabilistic supervised data model. Let $\CH \subset (X \to Y)$ be a hypothesis class.</p></div><div class="sheet-listing"><p class="sheet"> Let $\epsilon,\delta \in (0, 1)$. An inductor $A: (X \times Y)^n \to \CH$ is \t{$(\epsilon,\delta)$-probably approximately correct} for $\mu$ and $f$ if \begin{equation} \mu^{n}\left[ \underset{\mu, f}{\mathword{error}}\left( A((x_i, f(x_i))_{i = 1}^{n}) \right) \leq \epsilon \right] \geq 1 - \delta. \end{equation}</p></div><div class="sheet-listing"><p class="sheet"> To show that an algorithm is probably approximately correct, we bound by $\delta$ the probability of the inductor producing a predictor which exceeds $\epsilon$ error.</p></div><div class="sheet-listing"><p class="sheet"> A hypothesis class $\CH$ is \t{probably approximately correct learnable} (or \t{PAC learnable}) if (a) for every underlying measure $\mu$, labeling function $f: X \to Y$,  error $1-\epsilon$ and confidence $1-\delta$, (b) there exists $m_0 \in \N$ and a sequence of inductors $(A^m: (X \times Y)^{m} \to \CH)_{m = m_0}^{\infty}$ so that (c) $A^m$ is $(\epsilon, \delta)$-probably approximately correct for all $m \geq m_0$ . If the inductors are subfamilies of a family of inductors $(A^n)_{n \in \N}$ then we say that this family of inductors \t{PAC learns} $\CH$.</p></div><div class="sheet-listing"><p class="sheet"> We interpret these conditions as follows. No matter the underlying distribution and labeling function, given an accuracy and confidence, we can specify the number of samples required to make the algorithm "succeed." By which we mean that ("with high probability}) the predictor's error will be \say{small."</p></div><div class="sheet-listing"><h2 class="sheet" id="sample_complexity">2.1 Sample complexity</h2></div><div class="sheet-listing"><p class="sheet"> If a family of inductors $\CA = (A_n)_n$ PAC learns $\CH$, then condition (b) above is equivalent to the existence function mapping $(\epsilon, \delta)$ to $\N$. Let $m_0^\star$ be the smallest integer such that condition (b) holds. We call the function $(\epsilon, \delta) \mapsto m_0^\star(\epsilon,\delta)$ the \t{sample complexity} of the family  $\CA$ on the hypothesis class $\CH$.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">2.2 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> For (what seem to be) historical reasons, some authors refer to the definition above as \t{agnostic PAC learning} since it drops a common condition (developed further in these sheets) relating the hypothesis class to the correct labeling function $f$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -166,8 +202,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

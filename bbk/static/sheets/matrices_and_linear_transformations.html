@@ -57,6 +57,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -73,6 +108,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> All linear transformations are equivalent to multiplication by a matrix.</p></div><div class="sheet-listing" id="main_result"><h1 class="sheet">2. Main Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $(V_1, \F), (V_2, \F)$ be two vector spaces and $f: V_1 \to V_2$ be a transformation between them.</p></div><div class="sheet-listing"><p class="sheet"> If $f$ is linear, then there exists bases for the spaces and a matrix $A$ in $\F$ for which matrix multiplication is equivalent to applying $f$.</p></div><div class="sheet-listing"><p class="sheet"> If $A$ is a matrix in $F$ $f$ is linear if and only if there exists a matrix in $\F$ whose coordinates in $V_1$ to coordinates in $V_2$.</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -177,8 +213,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

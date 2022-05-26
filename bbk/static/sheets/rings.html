@@ -88,6 +88,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -104,6 +139,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We generalize the algebraic structure of addition and multiplication over the integers. \ifhmode\unskip\fi\footnote{ Future editions will likely modify this sheet, and give a genetic treatment involving the solution of polynomial equations by Galois. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{ring} (or \t{ring with identity}) $(A, f, g)$ is a set $A$ and two operations on $A$ satisfying the following set of conditions.</p></div><div class="sheet-listing"><p class="sheet"> (A) (i) $f$ is associative. (ii) $f$ is <i>commutative</i>, (iii) $A$ has an identity for $f$ (i.e., is $e \in A$ with $f(a, e) = f(e, a) = a$ for all $a \in A$ (iv) $A$ has inverse elements for $f$ (i.e., for any $a \in A$, there is $\tilde{a} $ satisfying $f(a,\tilde{a}) = f(\tilde{a}, b) = e$)</p></div><div class="sheet-listing"><p class="sheet"> (B) (i) $g$ is associative; (ii) $A$ has an idenity element for $g$ (i.e., there is $\tilde{e} \in A$ satisfying $g(a, \tilde{e}) = g(\tilde{e},a) = a$)</p></div><div class="sheet-listing"><p class="sheet"> (C) (i) $g$ left distributes: $g(f(a, b), c) = f(g(a,c), g(b,c)$; (ii) $g$ right distributes: $g(c,f(a,b)) = f(g(c,a), g(c,b))$.</p></div><div class="sheet-listing"><p class="sheet"> Conditions (A) concern $f$, conditions (B) concern $g$, and conditions (C) relate the two. Define $\psi : \Z  \times \Z  \to \Z $ by $\psi (a, b) = a+b$ and $\pi : \Z  \times \Z  \to \Z $ by $\pi(a, b) = a\cdot b$. We have defined a ring so that $(\Z , \psi , \pi )$ is one. The element referred to in (A.2) is $0 \in \Z $, so we refer to this element in any ring as the \t{additive identity}. That referred to (A.3) is $1 \in \Z $, so we refer to this element in any ring as the \t{multipliciative identity}. We refer to the elements mentioned in (A.4) as \t{additive inverses}. We call to $f$ \t{ring addition} and $g$ \t{ring multiplication}. Although integer products are commutative, we have not required this aspect (future editions will elaborate).</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Our notation furthers this analogy with $\Z $. We denote the ring addition by $+$ and ring multiplication by $\cdot $. Moreover, we denote the ring's additive identity by $0$ and the ring's multiplicative identity by $1$. Finally, we denote the additive inverse of $a \in A$ by $-a$.</p></div><div class="sheet-listing"><p class="sheet"> These notational conventions make the condtions (A), (B), (C) familiar relations among integers. (A) (1) $a+(b + c) = (a+b)+c$; (2) $a+b = b+a$; (3) $a + 0 = 0 + a = a$; (4) $a + (-a) = 0$. (B) (1) $a(bc) = (ab)c$; (2) $1a = a1 = a$. (C) (1) $(a+b)c = ac + bc$; (2) $(c(a+b) = ca + cb$.</p></div><div class="sheet-listing"><h2 class="sheet" id="immediate_consequences">2.2 Immediate consequences</h2></div><div class="sheet-listing"><p class="sheet"> We need not require that $0x = 0$, because we can deduce it: \[ 0x + x = (0 + 1)x = 1x = x. \] Similarly, $(-a)b = -(ab)$ since \[ ab + (-a)b = (a + (-a))b = 0b = 0. \] Other familiar relations among the integers, e.g. $(-a)(-b) = ab$, may be deduced.</p></div>
     </div>
@@ -208,8 +244,167 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:rings❳ </span>
+
+ <span class='run'>❲%!need:integer_arithmetic❳ </span>
+
+ <span class='run'>❲%!refs:peter_cameron/introduction_to_algebra❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We generalize the algebraic structure of
+  addition and multiplication over the integers.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>ring</span> (or
+  <span class='term'>ring with identity</span>) $(A,
+  f, g)$ is a set $A$ and two operations on $A$
+  satisfying the following set of conditions. </span>
+</p>
+
+
+<p>
+ <span class='run'>(A) </span>
+
+ <span class='run'>(i) $f$ is associative. </span>
+
+ <span class='run'>(ii) $f$ is <i>commutative</i>, </span>
+
+ <span class='run'>(iii) $A$ has an identity for $f$ (i.e., is
+  $e ∈ A$ with $f(a, e) = f(e, a) = a$ for
+  all $a ∈ A$ </span>
+
+ <span class='run'>(iv) $A$ has inverse elements for $f$ (i.e.,
+  for any $a ∈ A$, there is $\tilde{a} $
+  satisfying $f(a,\tilde{a}) = f(\tilde{a}, b) = e$) </span>
+</p>
+
+
+<p>
+ <span class='run'>(B) </span>
+
+ <span class='run'>(i) $g$ is associative; </span>
+
+ <span class='run'>(ii) $A$ has an idenity element for $g$ (i.e.,
+  there is $\tilde{e} ∈ A$ satisfying $g(a,
+  \tilde{e}) = g(\tilde{e},a) = a$) </span>
+</p>
+
+
+<p>
+ <span class='run'>(C) </span>
+
+ <span class='run'>(i) $g$ left distributes: $g(f(a, b), c) =
+  f(g(a,c), g(b,c)$; </span>
+
+ <span class='run'>(ii) $g$ right distributes: $g(c,f(a,b)) =
+  f(g(c,a), g(c,b))$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Conditions (A) concern $f$, conditions (B)
+  concern $g$, and conditions (C) relate the two. </span>
+
+ <span class='run'>Define $ψ: 𝗭 × 𝗭 → 𝗭$ by $ψ(a, b) = a+b$
+  and $π: 𝗭 × 𝗭 → 𝗭$ by $\pi(a, b) = a·b$. </span>
+
+ <span class='run'>We have defined a ring so that $(𝗭, ψ, π)$
+  is one. </span>
+
+ <span class='run'>The element referred to in (A.2) is $0 ∈ 𝗭$,
+  so we refer to this element in any ring as
+  the <span class='term'>additive identity</span>. </span>
+
+ <span class='run'>That referred to (A.3) is $1 ∈ 𝗭$, so we
+  refer to this element in any ring as the
+  <span class='term'>multipliciative identity</span>. </span>
+
+ <span class='run'>We refer to the elements mentioned in (A.4) as
+  <span class='term'>additive inverses</span>. </span>
+
+ <span class='run'>We call to $f$ <span class='term'>ring
+  addition</span> and $g$ <span class='term'>ring
+  multiplication</span>. </span>
+
+ <span class='run'>Although integer products are commutative, we
+  have not required this aspect (future editions
+  will elaborate). </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+
+ <span class='run'>Our notation furthers this analogy with $𝗭$. </span>
+
+ <span class='run'>We denote the ring addition by $+$ and ring
+  multiplication by $·$. </span>
+
+ <span class='run'>Moreover, we denote the ring’s additive identity
+  by $0$ and the ring’s multiplicative identity by
+  $1$. </span>
+
+ <span class='run'>Finally, we denote the additive inverse of $a
+  ∈ A$ by $-a$. </span>
+</p>
+
+
+<p>
+ <span class='run'>These notational conventions make the condtions
+  (A), (B), (C) familiar relations among integers. </span>
+
+ <span class='run'>(A) (1) $a+(b + c) = (a+b)+c$; (2) $a+b =
+  b+a$; (3) $a + 0 = 0 + a = a$; (4) $a +
+  (-a) = 0$. </span>
+
+ <span class='run'>(B) (1) $a(bc) = (ab)c$; (2) $1a = a1 = a$. </span>
+
+ <span class='run'>(C) (1) $(a+b)c = ac + bc$; (2) $(c(a+b) =
+  ca + cb$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Immediate consequences} </span>
+
+ <span class='run'>We need not require that $0x = 0$, because we
+  can deduce it:
+  <p>\[
+   0x + x = (0 + 1)x = 1x = x. </span>
+  \]</p></span>
+
+ <span class='run'>Similarly, $(-a)b = -(ab)$ since
+  <p>\[
+   ab + (-a)b = (a + (-a))b = 0b = 0. </span>
+  \]</p></span>
+
+ <span class='run'>Other familiar relations among the integers,
+  e.g. $(-a)(-b) = ab$, may be deduced. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

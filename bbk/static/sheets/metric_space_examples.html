@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We give examples of metric spaces.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">2. Example</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $n$ be a natural number. Let $A$ be $\R^n$ and define $d: \R^n \times \R^n \to \R$ by \[ d(a, b) = \sqrt{(a_1 - b_1)^2 + \cdots + (x_n - y_n)^2}. \] $(A, d)$ is a metric space. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be the unit circle in $\R^2$. So $A = \Set{x \in R^2}{x_1^2 + b^2 = 1}$. Let $d_1: A \times A \to \R$ defined by \[ d(a, b) = \sqrt{(a_1 - b_1)^2 + (a_2 - b_2)^2}. \] Let $d_2: A \times A \to \R$ defined as the arc length between the two points. Both $(A, d_1)$ and $(A, d_2)$ are metric spaces. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A = C([0, 1], \R)$. Let $d_1: A \times A \to \R$ be such that \[ d_1(a, b) = \underset{x \in [0, 1]}{\max} \abs{a(x) - b(x)}. \] Let $\lambda$ be the outer cover measure. Let $d_2: A \times A \to R$ be such that \[ d_2(a, b) = \int_{[0, 1]} \abs{f - g} d\lambda. \] Both $(A, d_1)$ and $(A, d_2)$ metric spaces. \end{expl}</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

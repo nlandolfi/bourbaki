@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What are some simple functions? Here's one answer: those that only involve addition and multiplication.\footnote{Future editions will modify and expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{real polynomial} (or \t{polynomial}) of degree $d$ is a function $p: \R \to \R$ for which there exists a finite sequence $a = (a_0, a_1, \dots, a_d)$ so that \[ p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_nx^d. \] In particular, $q(x) = ax + b$ for $a, b \in \R$ is a polynomial of the first degree and $r(x) = ax^2 + bx + c$ for $a, b, c \in \R$ is a polynomial of the second degree.</p></div><div class="sheet-listing"><p class="sheet"> In a sense, these are "simple" functions. We require addition (and substraction) and multiplication; but no division.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $p: \R \to \R$ be a polynomial of degree $d$. Then $p$ is continuous. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $p: \R \to \R$ be a polynomial of degree $d$. Then $p$ has derivatives of all orders. Every derivative of $p$ is a polynomial. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can identify probability distributions with vectors.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $p: A \to \R$ be a probability distribution on a set finite $A$ of $n$ elements. Given a numbering $a: \set{1, \dots, n} \to A$ of $A$, we can associate $p$ with the vector $z \in \R^n$ defined by $z_i = p(a_i)$. We call this vector $z$ the \t{probability vector} associated with $p$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,51 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:distributions_as_vectors❳ </span>
+
+ <span class='run'>❲%!need:probability_distributions❳ </span>
+
+ <span class='run'>❲%!need:real_vectors❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We can identify probability distributions with
+  vectors. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+
+ <span class='run'>Let $p: A → 𝗥$ be a probability distribution
+  on a set finite $A$ of $n$ elements. </span>
+
+ <span class='run'>Given a numbering $a: \set{1, …, n} → A$ of
+  $A$, we can associate $p$ with the vector $z ∈
+  𝗥^n$ defined by $z_i = p(a_i)$. </span>
+
+ <span class='run'>We call this vector $z$ the
+  <span class='term'>probability vector</span>
+  associated with $p$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

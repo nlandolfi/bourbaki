@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can we order the cone of positive semidefinite matrices?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{positive semidefinite matrix order} (or \t{Loewner order}) is a partial ordering $\geq$ on $\SymMat{d}$ defined by \[ A \geq B \quad \iff \quad A - B \geq 0 \quad \iff \quad A - B \in \SymSDMat{d}. \] We define the partial order $>$ on symmetric matrices by \[ A > B \quad \iff \quad A - B > 0 \quad \iff \quad A - B \in \SymPDMat{d}. \]</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> Each of the following results from the geometric properties of the positive semidefinite cone: \[ \begin{aligned} \alpha A \geq 0 \quad & \text{ for all } \delta > 0, A \geq 0, \\ A + B \geq 0 \quad & \text{ for all } A, B \geq 0, \\ A \geq B \text{ and } B \geq A \implies A = B \quad & \text{ for all } A, B \in \SymMat{d}, \\ \lim_{n \to \infty} A_n = A \implies A \geq 0 \quad & \text{ for all sequences } (A_n)_n \text{ in } \SymSDMat{d}. \end{aligned} \]</p></div><div class="sheet-listing" id="partial_order"><h1 class="sheet">4. Partial Order</h1></div><div class="sheet-listing"><p class="sheet"> $A \geq B$ and $B \geq A$ giving $A = B$ means that $\geq$ is antisymmetric. Moreover, \[ \begin{aligned} A \geq A \quad & \text{ for all } A \in \SymMat{d}, \text{ and } \\ A \geq B \text{ and } B \geq C \implies A \geq C & \text { for all }  A, B, C \in \SymMat{d}. \end{aligned} \] In other words, $\geq$ is also reflexive and transitive. In other words, $\geq$ is a partial order (see \sheetref{partial_orders}{Partial Orders}).\footnote{Future editions will include more formal accounts.}</p></div><div class="sheet-listing"><p class="sheet"> For $d = 1$, $\geq$ reduces to the familiar total order of the real line(see \sheetref{real_order}{Real Order}). The converse perspective is to see the positive semidefinite order as an extension of the order on $\R$ to the space $\SymMat{d}$. Of course, the key difference is that two matrices may not be comparable. The order is <i>partial</i>.</p></div><div class="sheet-listing"><p class="sheet"> For example, the matrices $A, B \in \SymMat{2}$ defined by \[ A = \bmat{1 & 0 \\ 0 & 0}, \quad B = \bmat{0 & 0 \\ 0 & 1} \] are not comparable. Neither $A \geq B$ nor $B \geq A$ holds.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -116,6 +116,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -132,6 +167,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We discuss inferring (or learning) functions from examples.</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> A \t{predictor} $f: \CU \to \CV$ is a function from $\CU$ to $\CV$. An \t{inducer} is a function from finite datasets in $\CU \times \CV$ to predictors from $\CU$ to $\CV$. A \t{learner} is a function family of inducers, indexed by $n$, each defined for datasets of size $n$. We call $\CU$ the \t{inputs}, $\CV$ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \CU$.</p></div><div class="sheet-listing" id="predicting_relations"><h1 class="sheet">3. Predicting relations</h1></div><div class="sheet-listing"><p class="sheet"> A \t{relation inducer} is a function from finite datasets in $\CU \times \CV$ to <i>relations</i> on $\CU \times \CV$. Since we can associate any relation $R$ between $\CU$ and $\CV$ with a function $f: \CU \times \CV \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">3.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $D$ be a dataset of size $n$ in $\CU \cross \CV$. Let $g: \CU \to \CV$, a predictor, which makes prediction $g(u)$ on input $u \in \CU$. Let $G_n: (\CU \cross \CV)^n \to (\CU \times \CV)$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$. Then $\set{G_n: (\CU \times \CV)^n \to \powerset{(\CU \times \CV)}}_{n \in \N}$ is a learner.</p></div><div class="sheet-listing" id="consistent_and_complete_datasets"><h1 class="sheet">4. Consistent and complete datasets</h1></div><div class="sheet-listing"><p class="sheet"> Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R \subset X \times Y$ a relation. $D$ is \t{consistent with $R$} if each $(u_i, v_i) \in R$. $D$ is \t{consistent} if there exists a relation with which it is consistent. A dataset is always consistent (take $R = \CU \times \CV$). $D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \implies y_i = y_j$. $D$ is \t{functionally complete} if $\union_i\set{x_i} = X$. In this case, the dataset includes every element of the relation.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">4.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Other terms for the inputs include \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns}, \t{instances}, or \t{observations}. Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}. An input, output pair is sometimes called a \t{record pair}.</p></div><div class="sheet-listing"><p class="sheet"> Other terms for a learner include \t{learning algorithm}, or \t{supervised learning algorithm}. Other terms for a predictor include \t{input-output} mapping, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.</p></div>
     </div>
@@ -236,8 +272,163 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:predictors❳ </span>
+
+ <span class='run'>❲%!need:lists❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We discuss inferring (or learning) functions
+  from examples. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definitions} </span>
+
+ <span class='run'>A <span class='term'>predictor</span> $f: \CU →
+  \CV$ is a function from $\CU$ to $\CV$. </span>
+
+ <span class='run'>An <span class='term'>inducer</span> is a function
+  from finite datasets in $\CU × \CV$ to
+  predictors from $\CU$ to $\CV$. </span>
+
+ <span class='run'>A <span class='term'>learner</span> is a function
+  family of inducers, indexed by $n$, each defined
+  for datasets of size $n$. </span>
+
+ <span class='run'>We call $\CU$ the
+  <span class='term'>inputs</span>, $\CV$ the
+  <span class='term'>outputs</span>, and $f(u)$ the
+  <span class='term'>prediction</span> of $f$ on $u
+  ∈ \CU$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Predicting relations} </span>
+
+ <span class='run'>A <span class='term'>relation inducer</span> is a
+  function from finite datasets in $\CU × \CV$ to
+  <i>relations</i> on $\CU × \CV$. </span>
+
+ <span class='run'>Since we can associate any relation $R$ between
+  $\CU$ and $\CV$ with a function $f: \CU × \CV
+  → \set{0, 1}$, $f(u, v) = 1$ if and only if
+  $(u, v) ∈ R$, the predictor case can accomodate
+  learning general relations, beyond functions. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $D$ be a dataset of size $n$ in $\CU
+  \cross \CV$. </span>
+
+ <span class='run'>Let $g: \CU → \CV$, a predictor, which makes
+  prediction $g(u)$ on input $u ∈ \CU$. </span>
+
+ <span class='run'>Let $G_n: (\CU \cross \CV)^n → (\CU × \CV)$
+  be an inducer, so that $G_n(D)$ is the
+  predictor which the inductor associates with
+  dataset $D$. </span>
+
+ <span class='run'>Then $\set{G_n: (\CU × \CV)^n → \powerset{(\CU
+  × \CV)}}_{n ∈ \N}$ is a learner. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Consistent and complete datasets} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a
+  dataset and $R ⊂ X × Y$ a relation. </span>
+
+ <span class='run'>$D$ is <span class='term'>consistent with
+  $R$</span> if each $(u_i, v_i) ∈ R$. </span>
+
+ <span class='run'>$D$ is <span class='term'>consistent</span> if
+  there exists a relation with which it is
+  consistent. </span>
+
+ <span class='run'>A dataset is always consistent (take $R = \CU
+  × \CV$). </span>
+
+ <span class='run'>$D$ is <span class='term'>functionally
+  consistent</span> if it is consistent with a
+  function; in this case, $x_i = x_j ⇒ y_i =
+  y_j$. </span>
+
+ <span class='run'>$D$ is <span class='term'>functionally
+  complete</span> if $\union_i\set{x_i} = X$. </span>
+
+ <span class='run'>In this case, the dataset includes every
+  element of the relation. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Other terminology} </span>
+</p>
+
+
+<p>
+ <span class='run'>Other terms for the inputs include
+  <span class='term'>independent variables</span>,
+  <span class='term'>explanatory variables</span>,
+  <span class='term'>precepts</span>,
+  <span class='term'>covariates</span>,
+  <span class='term'>patterns</span>,
+  <span class='term'>instances</span>, or
+  <span class='term'>observations</span>. </span>
+
+ <span class='run'>Other terms for the outputs include
+  <span class='term'>dependent variables</span>,
+  <span class='term'>explained variables</span>,
+  <span class='term'>postcepts</span>,
+  <span class='term'>targets</span>,
+  <span class='term'>outcomes</span>,
+  <span class='term'>labels</span> or
+  <span class='term'>observational outcomes</span>. </span>
+
+ <span class='run'>An input, output pair is sometimes called a
+  <span class='term'>record pair</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>Other terms for a learner include
+  <span class='term'>learning algorithm</span>, or
+  <span class='term'>supervised learning
+  algorithm</span>. </span>
+
+ <span class='run'>Other terms for a predictor include
+  <span class='term'>input-output</span> mapping,
+  <span class='term'>prediction rule</span>,
+  <span class='term'>hypothesis</span>,
+  <span class='term'>concept</span>, or
+  <span class='term'>classifier</span>. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

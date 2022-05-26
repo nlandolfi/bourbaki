@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How do we get a joint probability distribution function from marginals? \ifhmode\unskip\fi\footnote{ Future editions will modify. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{product distribution} of a sequence $p_1, \dots, p_n: A_i \to [0, 1]$ of distributions is the function $p: \prod_{i} A_i \to [0, 1]$ defined by \[ p(x) = \prod_{i = 1}^{n} p_i(x_i). \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $p_i: A_i \to [0, 1]$ be probability distributions. Then the product distribution of $p_1, \dots, p_n$ is a probability distribution with marginals $p_1, \dots, p_n$. \ifhmode\unskip\fi\footnote{ Future editions will include. } \end{proposition}</p></div><div class="sheet-listing" id="example:_fair_coin_repeated_flips"><h1 class="sheet">3. Example: fair coin repeated flips</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we want to model a coin flipped $n$ times. Supposing the coin is fair (see \sheetref{probability_distribtuions}{Probability Distributions}) we might use our probability distribution $p: \set{0, 1} \to [0, 1]$ which assigned $p(0) = p(1) = \nicefrac{1}{2}$. Then the probability of obtaining a sequence of flips $x \in \set{0, 1}$ is \[ \textstyle p(x) = \prod_{x_i = 1} p_i(1) \prod_{x_i = 0} p_i(0). \] Notice that if we know $p_i(1) = \rho _i$, then we know $p(0) = (1-\rho _i)$ and so we can write the above as \[ \textstyle p(x) = \prod_{x_i = 1} \rho _i \prod_{x_i = 0} (1-\rho _i). \]</p></div>
     </div>
@@ -156,8 +192,95 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:product_distributions❳ </span>
+
+ <span class='run'>❲%!need:marginal_distributions❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>How do we get a joint probability distribution
+  function from marginals?[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>product distribution</span>
+  of a sequence $p_1, …, p_n: A_i → [0, 1]$ of
+  distributions is the function $p: ∏_{i} A_i →
+  [0, 1]$ defined by
+  <p>\[
+   p(x) = ∏_{i = 1}^{n} p_i(x_i). </span>
+  \]</p></span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>Let $p_i: A_i → [0, 1]$ be probability
+  distributions. </span>
+
+ <span class='run'>Then the product distribution of $p_1, …, p_n$
+  is a probability distribution with marginals
+  $p_1, …, p_n$.[footnote skipped in this version]</span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Example: fair coin repeated flips} </span>
+</p>
+
+
+<p>
+ <span class='run'>Suppose we want to model a coin flipped $n$
+  times. </span>
+
+ <span class='run'>Supposing the coin is fair (see
+  \sheetref{probability_distribtuions}{Probability
+  Distributions}) we might use our probability
+  distribution $p: \set{0, 1} → [0, 1]$ which
+  assigned $p(0) = p(1) = \nicefrac{1}{2}$. </span>
+
+ <span class='run'>Then the probability of obtaining a sequence of
+  flips $x ∈ \set{0, 1}$ is
+  <p>\[
+   \textstyle </span>
+
+   p(x) = ∏_{x_i = 1} p_i(1) ∏_{x_i = 0} p_i(0). </span>
+  \]</p></span>
+
+ <span class='run'>Notice that if we know $p_i(1) = ρ_i$, then
+  we know $p(0) = (1-ρ_i)$ and so we can write
+  the above as
+  <p>\[
+   \textstyle </span>
+
+   p(x) = ∏_{x_i = 1} ρ_i ∏_{x_i = 0} (1-ρ_i). </span>
+  \]</p></span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

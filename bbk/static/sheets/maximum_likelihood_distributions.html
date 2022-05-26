@@ -81,6 +81,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -97,6 +132,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to summarize a dataset with a distribution.</p></div><div class="sheet-listing" id="overview"><h1 class="sheet">2. Overview</h1></div><div class="sheet-listing"><p class="sheet"> The \t{likelihood} (or \t{distribution likelihood}) of a probability distribution $p: A \to \R $ on a dataset $a^1, \dots, a^n \in A$ is $\prod_{i = 1}^{n} p(a^i)$. A \t{maximum likelihood distribution} $p^\star: A \to \R $ is one which maximizes the likelihood over all distributions on $A$.</p></div><div class="sheet-listing"><p class="sheet"> We call the correspondence between datasets and distributions the \t{maximum likelihood algorithm}. We say that we are selecting the distribution according to the \t{maximum likelihood principle}. In general, we call any function from datasets to distributions a \t{distribution selector}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -201,8 +237,71 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:maximum_likelihood_distributions❳ </span>
+
+ <span class='run'>❲%!need:optimizers❳ </span>
+
+ <span class='run'>❲%!need:probability_distributions❳ </span>
+
+ <span class='run'>❲%!need:lists❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We want to summarize a dataset with a
+  distribution. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Overview} </span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>likelihood</span> (or
+  <span class='term'>distribution likelihood</span>) of
+  a probability distribution $p: A → 𝗥$ on a
+  dataset $a^1, …, a^n ∈ A$ is $∏_{i = 1}^{n}
+  p(a^i)$. </span>
+
+ <span class='run'>A <span class='term'>maximum likelihood
+  distribution</span> $p^★: A → 𝗥$ is one which
+  maximizes the likelihood over all distributions
+  on $A$. </span>
+</p>
+
+
+<p>
+ <span class='run'>We call the correspondence between datasets and
+  distributions the <span class='term'>maximum
+  likelihood algorithm</span>. </span>
+
+ <span class='run'>We say that we are selecting the distribution
+  according to the <span class='term'>maximum
+  likelihood principle</span>. </span>
+
+ <span class='run'>In general, we call any function from datasets
+  to distributions a <span class='term'>distribution
+  selector</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

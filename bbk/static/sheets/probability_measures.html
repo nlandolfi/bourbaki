@@ -123,6 +123,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -139,6 +174,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> A probability event function is a measure on the set of outcomes.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{probability measure} is a finite measure on a measurable space which assigns the value one to the base set. A finite measure can always be scaled to a probability measure, so these measures are standard examples of finite measures.</p></div><div class="sheet-listing"><p class="sheet"> A \t{probability space} is a measure space whose measure is a probability measure. The word "space} is natural, since the notion of a measure generalized the notion of volume in real space (see \sheetref{real_space}{Real Space} and \sheetref{n-dimensional_space}{N-Dimensional Space"). The \t{outcomes} of a probability space are the elements of the base set. The \t{set of outcomes} is the base set. The \t{events} are the elements of the sigma algebra. The measure in a probability space corresponds to the event probability function.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, \mathcal{A} )$ be a measurable space. \ifhmode\unskip\fi\footnote{ Often, other authors will denote the set of outcomes (here denoted by $A$) by $\Omega $, an apparent mnemonic for "outcomes". } We denote the sigma-algebra by $\mathcal{A} $, as usual. We denote a probability measure by $\mathbfsf{P} $, a mnemonic for "probability," and intended to remind of the event probabilty function. Thus, we often say "Let $(A, \mathcal{A} , \mathbfsf{P} )$ be a probability space."</p></div><div class="sheet-listing"><p class="sheet"> Many authors associate an event $A \in \mathcal{A} $ with a function $\pi : \mathcal{X}  \to \set{0, 1}$ so that $A = \Set*{x \in \mathcal{X} }{\pi (x) = 1}$. In this context, it is common to write $\mu [\pi (x)]$ for $\mu (A)$.</p></div>
     </div>
@@ -243,8 +279,104 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:probability_measures❳ </span>
+
+ <span class='run'>❲%!need:measures❳ </span>
+
+ <span class='run'>❲%!need:event_probabilities❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>A probability event function is a measure on
+  the set of outcomes. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>probability measure</span> is
+  a finite measure on a measurable space which
+  assigns the value one to the base set. </span>
+
+ <span class='run'>A finite measure can always be scaled to a
+  probability measure, so these measures are
+  standard examples of finite measures. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>probability space</span> is a
+  measure space whose measure is a probability
+  measure. </span>
+
+ <span class='run'>The word “space} is natural, since the notion
+  of a measure generalized the notion of volume
+  in real space (see \sheetref{real_space}{Real
+  Space} and
+  \sheetref{n-dimensional_space}{N-Dimensional Space}). </span>
+
+ <span class='run'>The <span class='term'>outcomes</span> of a
+  probability space are the elements of the base
+  set. </span>
+
+ <span class='run'>The <span class='term'>set of outcomes</span> is
+  the base set. </span>
+
+ <span class='run'>The <span class='term'>events</span> are the
+  elements of the sigma algebra. </span>
+
+ <span class='run'>The measure in a probability space corresponds
+  to the event probability function. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $(A, 𝒜)$ be a measurable space.[footnote skipped in this version]</span>
+
+ <span class='run'>We denote the sigma-algebra by $𝒜$, as usual. </span>
+
+ <span class='run'>We denote a probability measure by $𝗣$, a
+  mnemonic for “probability,” and intended to
+  remind of the event probabilty function. </span>
+
+ <span class='run'>Thus, we often say “Let $(A, 𝒜, 𝗣)$ be a
+  probability space.” </span>
+</p>
+
+
+<p>
+ <span class='run'>Many authors associate an event $A ∈ 𝒜$ with
+  a function $π: 𝒳 → \set{0, 1}$ so that $A =
+  \Set*{x ∈ 𝒳}{π(x) = 1}$. </span>
+
+ <span class='run'>In this context, it is common to write
+  $μ[π(x)]$ for $μ(A)$. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

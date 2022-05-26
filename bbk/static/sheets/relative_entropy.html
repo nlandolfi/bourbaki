@@ -74,6 +74,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -90,6 +125,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider two distributions on the same finite set. The \t{entropy} of the first distribution \t{relative} to the second distribution is the difference of the cross entropy of the first distribution relative to the second and the entropy of the second distribution. We call it the \t{relative entropy} of the first distribution with the second distribution. People also call the relative entropy the \t{Kullback-Leibler divergence} or \t{KL divergence}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a non-empty finite set. Let $p: A \to \R$ and $q: A \to \R$ be distributions. Let $H(q, p)$ denote the cross entropy of $p$ relative to $q$ and let $H(q)$ denote the entropy of $q$. The entropy of $p$ relative to $q$ is $$H(q, p) - H(q).$$ Herein, we denote the entropy of $p$ relative to $q$ by $d(q, p)$.</p></div><div class="sheet-listing" id="a_similarity_function"><h1 class="sheet">3. A similarity function</h1></div><div class="sheet-listing"><p class="sheet"> The relative entropy is a similarity function between distributions.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $q$ and $p$ be distributions on the same set. Then $d(q, p) \geq 0$ with equality if and only if $p = q$.</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> So, $d$ has a few of the properties of a metric. However, $d$ is not a metric; for example, it is not symmetric.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} There exist distributions $p: A \to \R$ and $q: A \to \R$ (with $A$ a non-empty finite set) such that $$d(q, p) \neq d(p, q).$$ \end{prop}</p></div><div class="sheet-listing"><h2 class="sheet" id="optimization_perspective">3.1 Optimization Perspective</h2></div><div class="sheet-listing"><p class="sheet"> If we want to find a distribution $p: A \to \R$ to \[ \text{minimize} \quad d(q, p), \] then $p = q$ is a solution.</p></div>
     </div>
@@ -194,8 +230,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

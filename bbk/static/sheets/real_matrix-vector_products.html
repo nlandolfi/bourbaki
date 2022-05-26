@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We explore matrix-vector multiplication.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Given a matrix $A \in \R^{m \times n}$ and a vector $x \in \R^{n}$, the \t{product} of $A$ \t{with} $x$ is the vector $y \in \R^{m}$ defined by \[ y_i = \sum_{j = 1}^{n} A_{ij} x_j, \quad i = 1, \dots, m. \]</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the product of $A$ with $x$ by $Ax$. With which we concisely write the system linear equations $(A, b)$ as $b = Ax$.</p></div><div class="sheet-listing"><p class="sheet"> This notation suggests both algebraic and geometric interpretations of solving systems of linear equations. The algebraic interpretation is that we are interested in the invertibility of the function $x \mapsto Ax$. In other words, we are interested in the existence of an inverse element of $A$. The geometric interpretation is that $A$ transforms the vector $x$.</p></div><div class="sheet-listing"><p class="sheet"> Conversely, we can view $x$ as transforming (acting on) $A$. Let $a^j \in \R^m$ denote the $j$th column of $A$, then \[ Ax = \sum_{j = 1}^{n} x_j a^j. \] In other words, $y$ is linear combination of the columns of $A$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> We call the function $f: \R^n \to \R^m$ defined by $f(x) = Ax$ the \t{matrix multiplication function} (or \t{matrix-vector product function}) associated with $A$. $f$ is satisfies the following two important properties: \begin{enumerate} \item $A(x + y) = Ax + Ay$ \item $A(\alpha x) = \alpha Ax$. \end{enumerate} We call such a function $f$ \t{linear}. In other words, the matrix multiplication function is linear. Conversely, if $g: \R^n \to \R^m$ is linear, there exists a matrix inducing $g$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $f: \R^n \to \R^m$ be linear. Then there exists a unique $A \in \R^{m \times n}$ satisfying $f(x) = Ax$ for all $x \in \R^n$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Evaluate $f$ at the standard unit vectors $e_i$. The $i$th component of $e_i$ is 1 and all other components are 0. \end{proof}</p></div>
     </div>
@@ -187,8 +223,140 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:real_matrix-vector_products❳ </span>
+
+ <span class='run'>❲%thur vector_as_matrices %!need:real_matrices❳ </span>
+
+ <span class='run'>❲%!need:vectors_as_matrices❳ </span>
+
+ <span class='run'>❲%!need:real_linear_combinations❳ </span>
+
+ <span class='run'>❲%!refs:nla❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We explore matrix-vector multiplication. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+
+ <span class='run'>Given a matrix $A ∈ 𝗥^{m × n}$ and a vector
+  $x ∈ 𝗥^{n}$, the <span class='term'>product</span>
+  of $A$ <span class='term'>with</span> $x$ is the
+  vector $y ∈ 𝗥^{m}$ defined by
+  <p>\[
+   y_i = ∑_{j = 1}^{n} A_{ij} x_j, \quad i = 1, …, m. </span>
+  \]</p></span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+
+ <span class='run'>We denote the product of $A$ with $x$ by $Ax$. </span>
+
+ <span class='run'>With which we concisely write the system linear
+  equations $(A, b)$ as $b = Ax$. </span>
+</p>
+
+
+<p>
+ <span class='run'>This notation suggests both algebraic and
+  geometric interpretations of solving systems of
+  linear equations. </span>
+
+ <span class='run'>The algebraic interpretation is that we are
+  interested in the invertibility of the function
+  $x \mapsto Ax$. </span>
+
+ <span class='run'>In other words, we are interested in the
+  existence of an inverse element of $A$. </span>
+
+ <span class='run'>The geometric interpretation is that $A$
+  transforms the vector $x$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Conversely, we can view $x$ as transforming
+  (acting on) $A$. </span>
+
+ <span class='run'>Let $a^j ∈ 𝗥^m$ denote the $j$th column of
+  $A$, then
+  <p>\[
+   Ax = ∑_{j = 1}^{n} x_j a^j. </span>
+  \]</p></span>
+
+ <span class='run'>In other words, $y$ is linear combination of
+  the columns of $A$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Properties} </span>
+
+ <span class='run'>We call the function $f: 𝗥^n → 𝗥^m$ defined
+  by $f(x) = Ax$ the <span class='term'>matrix
+  multiplication function</span> (or
+  <span class='term'>matrix-vector product
+  function</span>) associated with $A$. </span>
+
+ <span class='run'>$f$ is satisfies the following two important
+  properties:
+  <ol>
+   <li>$A(x + y) = Ax + Ay$ </li>
+
+   <li>$A(\alpha x) = \alpha Ax$. </li>  </ol>
+</span>
+
+ <span class='run'>We call such a function $f$
+  <span class='term'>linear</span>. </span>
+
+ <span class='run'>In other words, the matrix multiplication
+  function is linear. </span>
+
+ <span class='run'>Conversely, if $g: 𝗥^n → 𝗥^m$ is linear, there
+  exists a matrix inducing $g$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>Let $f: 𝗥^n → 𝗥^m$ be linear. </span>
+
+ <span class='run'>Then there exists a unique $A ∈ 𝗥^{m × n}$
+  satisfying $f(x) = Ax$ for all $x ∈ 𝗥^n$. </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proof} </span>
+
+ <span class='run'>Evaluate $f$ at the standard unit vectors $e_i$. </span>
+
+ <span class='run'>The $i$th component of $e_i$ is 1 and all
+  other components are 0. </span>
+
+ <span class='run'>\end{proof} </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

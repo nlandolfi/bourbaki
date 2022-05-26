@@ -144,6 +144,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -160,6 +195,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> To talk about uncertain outcomes, we assign credibility to each outcome according to our intuition of proportion. \ifhmode\unskip\fi\footnote{ Future editions may drop the dependence on real numbers, and use intuition of repeated trials to introduce <i>rational</i> probability distributions. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{probability distribution} (or \t{probability mass function} (\t{pmf}), or \t{proportion distribution}) is a real-valued function from a set of outcomes which is non-negative and normalized. A real-valued function on a finite set is \t{normalized} if the sum of its results is 1. We will refer to these as \t{distributions}. The \t{probability of an outcome} is the result of the outcome under the distribution.</p></div><div class="sheet-listing"><p class="sheet"> The probability of an outcome is meant to indicate the credibility of an outcome. The word probabiliy has its roots in the English word probable, which has the Middle English sense "worthy of belief". The probability of an outcome models how worthy of belief it is, relative to other outcomes. In the case of flipping a coin, or rolling a die, all outcomes are equally worthy of belief.</p></div><div class="sheet-listing"><p class="sheet"> When an outcome has a higher probability than a second outcome we say that the first is \t{more probable} than the second. Similarly we say that the first outcome is \t{less probable} than the second outcome if it has higher probability than the second.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set and let $p: A \to \R $ be a distribution. Then \[ \textstyle p(a) \geq 0 \text{ for all } a \in A \text{ and } \sum_{a \in A} p(a) = 1. \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For all $a \in A$, $p(a) \leq 1$. \begin{proof} Let $a \in A$. By definition, $p(a) \geq 0$.. Second, since $p$ is normalized, $p(a) \leq \sum_{b \in A} p(b) = 1$. \end{proof} \end{proposition}</p></div><div class="sheet-listing" id="example:_coin"><h1 class="sheet">3. Example: coin</h1></div><div class="sheet-listing"><p class="sheet"> When flipping a coin, both a heads and a tails are equally worthy of belief. Thus we say that the outcome $0$ (tails) has probability $\nicefrac{1}{2}$ and likewise for the outcome $1$ (heads) In this case we say that we are modeling a \t{fair coin}.</p></div><div class="sheet-listing" id="example:_die"><h1 class="sheet">4. Example: die</h1></div><div class="sheet-listing"><p class="sheet"> When rolling a die, all six sides are equally worthy of belief. Thus we say that the outcomes $1, 2, 3, 4, 5, 6$ each have probability $\nicefrac{1}{6}$. Prior to roll, each is equally credible. In this case we say that we are modeing a \t{fair die}.</p></div>
     </div>
@@ -264,8 +300,161 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:probability_distributions❳ </span>
+
+ <span class='run'>❲%!need:real_summation❳ </span>
+
+ <span class='run'>❲%!need:uncertain_outcomes❳ </span>
+
+ <span class='run'>❲%!need:intervals❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>To talk about uncertain outcomes, we assign
+  credibility to each outcome according to our
+  intuition of proportion.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>probability distribution</span>
+  (or <span class='term'>probability mass
+  function</span> (<span class='term'>pmf</span>), or
+  <span class='term'>proportion distribution</span>) is
+  a real-valued function from a set of outcomes
+  which is non-negative and normalized. </span>
+
+ <span class='run'>A real-valued function on a finite set is
+  <span class='term'>normalized</span> if the sum of
+  its results is 1. </span>
+
+ <span class='run'>We will refer to these as
+  <span class='term'>distributions</span>. </span>
+
+ <span class='run'>The <span class='term'>probability of an
+  outcome</span> is the result of the outcome
+  under the distribution. </span>
+</p>
+
+
+<p>
+ <span class='run'>The probability of an outcome is meant to
+  indicate the credibility of an outcome. </span>
+
+ <span class='run'>The word probabiliy has its roots in the
+  English word probable, which has the Middle
+  English sense “worthy of belief}. </span>
+
+ <span class='run'>The probability of an outcome models how worthy
+  of belief it is, relative to other outcomes. </span>
+
+ <span class='run'>In the case of flipping a coin, or rolling a
+  die, all outcomes are equally worthy of belief. </span>
+</p>
+
+
+<p>
+ <span class='run'>When an outcome has a higher probability than
+  a second outcome we say that the first is
+  <span class='term'>more probable</span> than the
+  second. </span>
+
+ <span class='run'>Similarly we say that the first outcome is
+  <span class='term'>less probable</span> than the
+  second outcome if it has higher probability than
+  the second. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A$ be a set and let $p: A → 𝗥$ be a
+  distribution. </span>
+
+ <span class='run'>Then
+  <p>\[
+   \textstyle </span>
+
+   p(a) ≥ 0 \text{ for all } a ∈ A \text{ and } ∑_{a ∈ A}
+    p(a) = 1. </span>
+  \]</p></span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>For all $a ∈ A$, $p(a) ≤ 1$. </span>
+
+ <span class='run'>\begin{proof} </span>
+
+ <span class='run'>Let $a ∈ A$. </span>
+
+ <span class='run'>By definition, $p(a) ≥ 0$.. </span>
+
+ <span class='run'>Second, since $p$ is normalized, $p(a) ≤ ∑_{b
+  ∈ A} p(b) = 1$. </span>
+
+ <span class='run'>\end{proof} </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Example: coin} </span>
+
+ <span class='run'>When flipping a coin, both a heads and a
+  tails are equally worthy of belief. </span>
+
+ <span class='run'>Thus we say that the outcome $0$ (tails) has
+  probability $\nicefrac{1}{2}$ and likewise for the
+  outcome $1$ (heads) </span>
+
+ <span class='run'>In this case we say that we are modeling a
+  <span class='term'>fair coin</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Example: die} </span>
+
+ <span class='run'>When rolling a die, all six sides are equally
+  worthy of belief. </span>
+
+ <span class='run'>Thus we say that the outcomes $1, 2, 3, 4,
+  5, 6$ each have probability $\nicefrac{1}{6}$. </span>
+
+ <span class='run'>Prior to roll, each is equally credible. </span>
+
+ <span class='run'>In this case we say that we are modeing a
+  <span class='term'>fair die</span>. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

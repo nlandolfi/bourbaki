@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What is a reasonable normal density to associate with some data?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $x^1, \dots, x^n$ be a dataset in $\R^d$. The \t{empirical mean} of the dataset is \[ \frac{1}{n} \sum_{k = 1}^{n} x^k. \] The \t{empirical covariance} of the dataset is \[ \frac{1}{n} \sum_{i = 1}^{n} (x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k) (x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k)^{\tp}. \] The \t{empirical normal} associated with the dataset is the normal density whose mean is the empirical mean and whose covariance is the empirical covariance.</p></div>
     </div>
@@ -163,8 +199,58 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:empirical_normal❳ </span>
+
+ <span class='run'>❲%!need:multivariate_normals❳ </span>
+
+ <span class='run'>❲%!need:maximum_likelihood_densities❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>What is a reasonable normal density to
+  associate with some data? </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $x^1, …, x^n$ be a dataset in $𝗥^d$. </span>
+
+ <span class='run'>The <span class='term'>empirical mean</span> of
+  the dataset is
+  <p>\[
+   \frac{1}{n} ∑_{k = 1}^{n} x^k. </span>
+  \]</p></span>
+
+ <span class='run'>The <span class='term'>empirical covariance</span>
+  of the dataset is
+  <p>\[
+   \frac{1}{n} ∑_{i = 1}^{n} (x^k - \frac{1}{n} ∑_{k = 1}^{n}
+    x^k) (x^k - \frac{1}{n} ∑_{k = 1}^{n} x^k)^{\tp}. </span>
+  \]</p></span>
+
+ <span class='run'>The <span class='term'>empirical normal</span>
+  associated with the dataset is the normal
+  density whose mean is the empirical mean and
+  whose covariance is the empirical covariance. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

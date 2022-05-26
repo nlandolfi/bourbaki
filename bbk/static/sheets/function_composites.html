@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to have language for applying two functions one after the other. We apply a first function then a second function.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider two functions. Suppose the range of the first is a subset of the domain of the second. In other words, every value of the first is in the domain (and so can be used as an argument) for the second. In this case we say that the second function is \t{composable} with the first.</p></div><div class="sheet-listing"><p class="sheet"> The \t{composite} (or \t{composition}) of the second function \t{with} the first function is the function which associates to an element in the first's domain the element in the second's codomain that the second function associates with the result of the first.</p></div><div class="sheet-listing"><p class="sheet"> In other words, we take an element in the first's domain. We apply the first function to it. We obtain an element in the first's codomain, which is also an element in the second's domain. We apply the second function to this result. We obtain an element in the second's codomain. The composition of the second function with the first is the function so constructed. Of course the order of composition is important.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A, B, C$ be non-empty sets. Let $f: A \to B$ and $g: B \to C$. We denote the composition of $g$ with $f$ by $g \comp f$ read aloud as "g composed with f." To make clear the domain and codomain, we denote the composition $g \comp f: A \to C$. $g \comp f$ is defined by \[ (g \comp f)(a) = g(f(a)). \] for all $a \in A$. Sometimes the notation $gf$ is used for $g \comp f$.</p></div><div class="sheet-listing"><p class="sheet"> \s{Basic Properties}</p></div><div class="sheet-listing"><p class="sheet"> Function composition is associative but not commutative.\footnote{Future editions will include a counterexample.} Indeed, even if $f \comp g$ is defined, $g \comp f$ may not be.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associative] Let $f: X \to Y$, $g: Y \to Z$ and $h: Z \to U$ Then $(f \comp g) \comp h = f \comp (g \comp h)$\footnote{The proof is straightforward. Future editions will include it.} \end{proposition}</p></div>
     </div>
@@ -187,8 +223,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

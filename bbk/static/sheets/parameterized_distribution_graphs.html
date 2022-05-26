@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $G$ be a directed graph on $\set{1,\dots, n}$. A \t{parametric distribution graph family} (or \t{parametric distribution network familiy}, \t{parameteric conditional distribution network family}) is a family of conditional distribution networks $\set{G, \set{g_i^{(\theta)}}_{i=1}^{n}}_{\theta \in \Theta}$. We call the index set $\Theta$ the \t{parameter set}. $G$ does not depend on the parameters.</p></div><div class="sheet-listing"><p class="sheet"> In the case that $\pa_i = \emptyset$ in $G$, $\set{g_i^{(\theta)}}_\theta$ is a parametric distribution family on $A_i$ and in the case that $\pa_i \neq \emptyset$, $\set{g_i^{(\theta)}}_{\theta}$ is a parametric conditional distribution family on $A_i$ from $\prod_{j \in \pa_{i}} A_j$ (for both these terms, see \sheetref{parameterized_distributions}{Parameterized Distributions}).</p></div><div class="sheet-listing"><p class="sheet"> A parametric distribution network family is \t{functionally parameterizable} if each of the conditionals is functionally parameterizable (again, see \sheetref{parameterized_distributions}{Parameterized Distributions}).</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

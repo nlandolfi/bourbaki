@@ -81,6 +81,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -97,6 +132,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> The identification of $\C$ with a plane leads $\C$ to naturally inherit $\R^2$'s notion of distance.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{absolute value} or \t{modulus} of $z = (x, y) \in \C$ is the distance of $z$ to the origin. If $z \in \C$, then the modulus of $z$ is \[ \sqrt{x^2 + y^2}. \]</p></div><div class="sheet-listing"><p class="sheet"> In other words, the modulus of $z$ is the distance (in $\R^2$ of $z = (x,y)$ from the origin $(0,0)$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the modulus of $z$ by $\Cmod{z}$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Triangle Inequality] For all $z, w \in \C$, \[ \Cabs{z + w} \leq \Cabs{z} + \Cabs{w}. \] \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> Also, for all $z \in \C$, we have $\Cabs{\Re(z)} \leq \Cabs{z}$ and $\Cabs{\Im(z)} \leq \Cabs{z}$, and for all $z, w \in \C$, \[ \Cabs{\Cabs{z} - \Cabs{w}} \leq \Cabs{z - w}.\footnote{This follows from the triangle inequality. Future editions will include an account.} \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -201,8 +237,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

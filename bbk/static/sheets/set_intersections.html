@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can consider intersections of more than two sets.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\mathcal{A} $ denote a set of sets. In other words, every element of $\mathcal{A} $ is a set. And suppose that $\mathcal{A} $ has at least one set (i.e., $\mathcal{A}  \neq \varnothing$). Let $C$ denote a set such that $C \in \mathcal{A} $. Then consider the set, \[ \Set{x \in C}{(\forall A)(A \in \mathcal{A}  \implies x \in A)}. \] This set exists by the principle of specification (see \sheetref{set_specification}{Set Specification}). Moreover, the set does not depend on which set we picked. So the dependence on $C$ does not matter. It is unique by the axiom of extension (see \sheetref{set_equality}{Set Equality}). This set is called the \t{intersection} of $\mathcal{A} $.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the intersection of $\mathcal{A} $ by $\bigcap \mathcal{A} $.</p></div><div class="sheet-listing" id="equivalence_with_pair_intersections"><h1 class="sheet">3. Equivalence with pair intersections</h1></div><div class="sheet-listing"><p class="sheet"> As desired, the the set denoted by $\mathcal{A} $ is a pair (see \sheetref{unordered_pairs}{Unordered Pairs}) of sets, the pair intersection (see \sheetref{pair_intersections}{Pair Intersections}) coincides with intersection as we have defined it in this sheet. \ifhmode\unskip\fi\footnote{ A full account of the proof will appear in future editions. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\bigcap \set{A, B} = A \cap B$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -187,8 +223,110 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:set_intersections❳ </span>
+
+ <span class='run'>❲%!need:pair_intersections❳ </span>
+
+ <span class='run'>❲%!refs:paul_halmos∕naive_set_theory∕section_04❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We can consider intersections of more than two
+  sets. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $𝒜$ denote a set of sets. </span>
+
+ <span class='run'>In other words, every element of $𝒜$ is a set. </span>
+
+ <span class='run'>And suppose that $𝒜$ has at least one set
+  (i.e., $𝒜 ≠ ∅$). </span>
+
+ <span class='run'>Let $C$ denote a set such that $C ∈ 𝒜$. </span>
+
+ <span class='run'>Then consider the set,
+  <p>\[
+   \Set{x ∈ C}{(∀ A)(A ∈ 𝒜 ⟹ x ∈ A)}. </span>
+  \]</p></span>
+
+ <span class='run'>This set exists by the principle of
+  specification (see \sheetref{set_specification}{Set
+  Specification}). </span>
+
+ <span class='run'>Moreover, the set does not depend on which set
+  we picked. </span>
+
+ <span class='run'>So the dependence on $C$ does not matter. </span>
+
+ <span class='run'>It is unique by the axiom of extension (see
+  \sheetref{set_equality}{Set Equality}). </span>
+
+ <span class='run'>This set is called the
+  <span class='term'>intersection</span> of $𝒜$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>We denote the intersection of $𝒜$ by $\bigcap
+  𝒜$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Equivalence with pair intersections} </span>
+</p>
+
+
+<p>
+ <span class='run'>As desired, the the set denoted by $𝒜$ is a
+  pair (see \sheetref{unordered_pairs}{Unordered
+  Pairs}) of sets, the pair intersection (see
+  \sheetref{pair_intersections}{Pair Intersections})
+  coincides with intersection as we have defined
+  it in this sheet.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>$\bigcap \set{A, B} = A ∩ B$ </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Consider two convergent sequences. What if we add them termwise? Or multiply?</p></div><div class="sheet-listing" id="main_results"><h1 class="sheet">2. Main results</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(x_n)_{n \in \N}$ and $(y_n)_{n \in \N}$ be two limits with $x_0$ and $y_0$ in $\R$. Then the sequence $(s_n)$ defined by $s_n = x_n + y_n$ converges to the limit $x_0+ y_0$ and the sequence $m_n = x_ny_n$ converges to the limit $x_0y_0$.\footnote{Future editions will include the account.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> In particular for $a \in \R$, the sequence $(c_n)$ defined by $c_n = ax_n$ converges to the limit $ax_0$. \blankpage</p></div>
     </div>
@@ -166,8 +202,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

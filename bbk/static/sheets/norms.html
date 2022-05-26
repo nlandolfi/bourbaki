@@ -158,6 +158,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -174,6 +209,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We to measure the size of vectors.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{norm} is a real-valued functional that is (a) non-negative, (b) definite, (c) absolutely homogeneous, (d) and satisifies a triangle inequality. The triangle inequality property requires that the norm applied to the sum of any two vectors is less than the sum of the norms on those vectors.</p></div><div class="sheet-listing"><p class="sheet"> A \t{normed space} (or \t{norm space}) is an ordered pair: a vector space whose field is the real or complex numbers and a norm on the space. We require the vector space to be over the field of real or complex numbers because of absolute homogeneity: the absolute value of a scalar must be defined.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, F)$ be a vector space where $F$ is the field of real numbers or the field of complex numbers. Let $R$ denote the set of real numbers. Let $f: X \to R$. The functional $f$ is a norm if \begin{enumerate} \item $f(v) \geq 0$ for all $x \in V$ \item $f(v) = 0$ if and only if $x = 0 \in X$. \item $f(\alpha x) = \abs{\alpha}f(x)$ for all $\alpha \in F$, $x \in X$ \item $f(x + y) \leq f(x) + f(y)$ for all $x, y \in X$. \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> In this case, for $x \in X$, we denote $f(x)$ by $\norm{x}$, read aloud "norm x". The notation follows the notation of absolute value as a norm. In some cases, we go further, and for a norm indexed by some parameter $\alpha$ or set $A$ we write $\normm{x}_\alpha$ or $\normm{x}_A$.</p></div>
     </div>
@@ -278,8 +314,106 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:norms❳ </span>
+
+ <span class='run'>❲%!need:real_norm❳ </span>
+
+ <span class='run'>❲%!need:functionals❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We to measure the size of vectors. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>norm</span> is a real-valued
+  functional that is </span>
+
+ <span class='run'>(a) non-negative, </span>
+
+ <span class='run'>(b) definite, </span>
+
+ <span class='run'>(c) absolutely homogeneous, </span>
+
+ <span class='run'>(d) and satisifies a triangle inequality. </span>
+
+ <span class='run'>The triangle inequality property requires that
+  the norm applied to the sum of any two vectors
+  is less than the sum of the norms on those
+  vectors. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>normed space</span> (or
+  <span class='term'>norm space</span>) is an ordered
+  pair: a vector space whose field is the real
+  or complex numbers and a norm on the space. </span>
+
+ <span class='run'>We require the vector space to be over the
+  field of real or complex numbers because of
+  absolute homogeneity: the absolute value of a
+  scalar must be defined. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $(X, F)$ be a vector space where $F$ is
+  the field of real numbers or the field of
+  complex numbers. </span>
+
+ <span class='run'>Let $R$ denote the set of real numbers. </span>
+
+ <span class='run'>Let $f: X → R$. </span>
+
+ <span class='run'>The functional $f$ is a norm if
+  <ol>
+   <li>$f(v) ≥ 0$ for all $x ∈ V$ </li>
+
+   <li>$f(v) = 0$ if and only if $x = 0 ∈ X$. </li>
+
+   <li>$f(α x) = \abs{α}f(x)$ for all $α ∈ F$, $x ∈ X$ </li>
+
+   <li>$f(x + y) ≤ f(x) + f(y)$ for all $x, y ∈ X$. </li>  </ol>
+</span>
+</p>
+
+
+<p>
+ <span class='run'>In this case, for $x ∈ X$, we denote $f(x)$
+  by $\norm{x}$, read aloud “norm x”. </span>
+
+ <span class='run'>The notation follows the notation of absolute
+  value as a norm. </span>
+
+ <span class='run'>In some cases, we go further, and for a norm
+  indexed by some parameter $α$ or set $A$ we
+  write $\normm{x}_α$ or $\normm{x}_A$. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

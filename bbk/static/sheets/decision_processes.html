@@ -50,6 +50,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -66,6 +101,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about making a sequence of decisions.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $S$ and $A$ be finite sets. Let $T: S \times A \to (S \to [0, 1])$ so that for each $s \in S$ and $a \in A$, $T_{sa}: S \to [0, 1]$ is a probability distribution over $S$. We call the ordered triple $(S, A, T)$ a \t{finite state-action process}.</p></div><div class="sheet-listing"><p class="sheet"> A \t{trajectory} in the \t{state set} $S$ and \t{action set} $A$ is a sequence in $S \times A$.</p></div><div class="sheet-listing"><p class="sheet"> Let $r: S \times A \times S \to \R$, $N \in \N$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{decision process} is a sequence $(S, A, T, r, \gamma, $, consists of two sets, a function set, an action</p></div><div class="sheet-listing" id="other_terminology"><h1 class="sheet">3. Other terminology</h1></div><div class="sheet-listing"><p class="sheet"> Decision processes are commonly called \t{markov decision processes}. \ifhmode\unskip\fi\footnote{ As usual, we avoid this terminology in connection with the projects guidelines against using particular names. }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -170,8 +206,82 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:decision_processes❳ </span>
+
+ <span class='run'>❲%!need:set_numbers❳ </span>
+
+ <span class='run'>❲%!need:lists❳ </span>
+
+ <span class='run'>❲%!need:probability_distributions❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We want to talk about making a sequence of
+  decisions. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $S$ and $A$ be finite sets. </span>
+
+ <span class='run'>Let $T: S × A → (S → [0, 1])$ so that for
+  each $s ∈ S$ and $a ∈ A$, $T_{sa}: S → [0,
+  1]$ is a probability distribution over $S$. </span>
+
+ <span class='run'>We call the ordered triple $(S, A, T)$ a
+  <span class='term'>finite state-action process</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>trajectory</span> in the
+  <span class='term'>state set</span> $S$ and
+  <span class='term'>action set</span> $A$ is a
+  sequence in $S × A$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $r: S × A × S → 𝗥$, $N ∈ 𝗡$. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>decision process</span> is a
+  sequence $(S, A, T, r, γ, $, consists of two
+  sets, a function set, an action </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Other terminology} </span>
+
+ <span class='run'>Decision processes are commonly called
+  <span class='term'>markov decision processes</span>.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

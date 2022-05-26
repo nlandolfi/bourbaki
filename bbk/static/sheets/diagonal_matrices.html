@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $m, n$ be natural numbers. Then $(i, i)$ is a \t{diagonal index}, if $i \in \upto{1, \dots, \min\set{m, n}}$. A \t{diagonal entry} of a $m \times n$ matrix is an entry corresponding to a diagonal index; we say that such entries are \t{on the diagonal}. An entry that is not on the diagonal is \t{off the diagonal}; we call these the \t{off diagonal entries}. The entries $(i, j)$ for $i > j$ are \t{below the diagonal} and $j < i$ are \t{above the diagonal}.</p></div><div class="sheet-listing"><p class="sheet"> A $m \times n$ \t{diagonal} matrix is one whose entries off the diagonal are zero. In other words, its only nonzero entries are on the diagonal. Though the diagonal entries need not be nonzero, they may be zero.</p></div><div class="sheet-listing"><p class="sheet"> If all the values of a diagonal matrix are positive or nonnegative we call it a \t{positive diagonal} or \t{nonnegative diagonal} matrix. We emphasize the following subtlety: A positive diagonal matrix is diagonal and has positive entries; it has positive diagonal entries, yes, but it may not have arbitrary off-diagonal entries. In other words, the modifier "diagonal} takes precedence over the modifiers \say{positive} and \say{nonnegative."</p></div><div class="sheet-listing"><p class="sheet"> A \t{scalar matrix} is a square diagonal matrix whose diagonal entries are identical.\footnote{Future editions will also define block diagonal matrices.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -166,8 +202,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

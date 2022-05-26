@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We discuss inductors that produce relations consistent with their given datasets.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(x_1, y_1), \dots, (x_n, y_n)$ be a dataset in $X \times Y$. Let $\CR$ be the set of all relations on $X \times Y$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{consistent inductor} $\set{G_n: (X \times Y)^n \to \CR}_{n}$ is one for which, for all $n \in \N$, for all $D_n \in (X \times Y)^n$, $D$ is consistent with $G_n(D_n)$. In other words, a consistent inductor always produces a relation with which the dataset is consistent.</p></div><div class="sheet-listing"><p class="sheet"> The interpretation follows. Fix a relation $R^\star$. And let every dataset "shown} to the algorithm $G_n$ be constructed by selecting elements from $R^{\star"$. In other words, every dataset is a sequence in $R^\star$. In this case, a dataset $D_n \in (X \times Y)^n$ is always consistent with $R^\star$ and so a consistent inductor will never "eliminate} $R^{\star"$. In other words, the inductor, in order to be consistent "must eliminate" every inconsistent relation.</p></div><div class="sheet-listing"><p class="sheet"> We may "hope} to give the algorithm a \say{large and diverse" datset, so that several of the elements of $R^\star$ are included. In this case, the algorithm can "eliminate" many smaller relations in $\CR$ which did not include records in the dataset.</p></div><div class="sheet-listing" id="functionally_consistent"><h1 class="sheet">3. Functionally consistent</h1></div><div class="sheet-listing"><p class="sheet"> The rub is that any dataset is consistent with the complete relation $X \times Y$. So we can often consider a set $\CH \subset \CR$ of relations. It is common to call this a \t{hypothesis class}, especially for the case in which it consists of functional relations.</p></div>
     </div>
@@ -166,8 +202,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

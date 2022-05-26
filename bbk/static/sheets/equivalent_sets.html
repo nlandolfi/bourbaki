@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about the size of a set.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Two sets are \t{equivalent} if there exists a bijection between them. Let $X$ be a set. Then set equivalence as a relation in $\powerset{X}$ is an equivalence relation (see \sheetref{equivalence_relations}{Equivalence Relations}).</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> If $A$ and $B$ are sets and they are equivalent, then we write $A \sim B$, read aloud as "$A$ is equivalent to $B$."</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_result">2.2 Basic Result</h2></div><div class="sheet-listing"><p class="sheet"> Every set is equivalent to itself, whether two sets are equivalent does not depend on the order in which we consider them, and if two sets are equivalent to the same set then they are equivalent to each other. These facts can be summarized by the following proposition.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $X$ a set. Then $\sim$ is an equivalence relation on $\powerset{X}$.\footnote{The proof is direct and will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing" id="for_natural_numbers"><h1 class="sheet">3. For natural numbers</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Every proper subset of a natural number is equivalent to some smaller natural number.\footnote{The proof, which uses induction, will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing" id="equivalence_to_subsets"><h1 class="sheet">4. Equivalence to subsets</h1></div><div class="sheet-listing"><p class="sheet"> It is unusual that a set can be equivalent to a proper subset of itself.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} A set may be equivalent to a proper subset of itself. \end{proposition} \begin{proof} The example is the set of natural numbers and the function $f(n) = n^+$. It is a bijection from $\omega$ onto $\N$.\footnote{The account will be expanded in future editions.} \end{proof} However, this never holds for natural numbers. \begin{proposition} If $n \in \omega$ then $n \not\sim x$ for any $x \subset n$ and $x \neq n$. \end{proposition}</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

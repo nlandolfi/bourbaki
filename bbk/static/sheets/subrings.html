@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,8 +87,9 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="definition"><h1 class="sheet">1. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(R, +, \cdot )$ be a ring. A ring $(S, +, \cdot )$ is \t{subring} of $(R, +, \cdot )$ if $S \subset R$.</p></div><div class="sheet-listing" id="verification"><h1 class="sheet">2. Verification</h1></div><div class="sheet-listing"><p class="sheet"> If $(R, +, \cdot )$ and $S \subset R$, then $+$ is associative and commutative on $S$ because it is on $R$, $\cdot $ is associative and $+$ and $\cdot $ distribute over each other for the same reason. So we have restricted the number of conditions to check, and arrive at our first statement of sufficient conditions on $S$ that ensure $(S, +, \cdot )$ is a ring.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="definition"><h1 class="sheet">1. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(R, +, \cdot )$ be a ring. A ring $(S, +, \cdot )$ is a \t{subring} of $(R, +, \cdot )$ if $S \subset R$.</p></div><div class="sheet-listing" id="verification"><h1 class="sheet">2. Verification</h1></div><div class="sheet-listing"><p class="sheet"> If $(R, +, \cdot )$ and $S \subset R$, then $+$ is associative and commutative on $S$ because it is on $R$. Likewise $\cdot $ is associative on $S$ and $+$ and $\cdot $ distribute over each on $S$ because they do on $R$. So we have restricted the number of conditions to check, and arrive at our first statement of sufficient conditions on $S$ that ensure $(S, +, \cdot )$ is a ring.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -156,8 +192,52 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:subrings❳ </span>
+
+ <span class='run'>❲%!need:rings❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+
+ <span class='run'>Let $(R, +, ·)$ be a ring. </span>
+
+ <span class='run'>A ring $(S, +, ·)$ is a
+  <span class='term'>subring</span> of $(R, +, ·)$
+  if $S ⊂ R$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Verification} </span>
+
+ <span class='run'>If $(R, +, ·)$ and $S ⊂ R$, then $+$ is
+  associative and commutative on $S$ because it is
+  on $R$. Likewise $·$ is associative on $S$ and
+  $+$ and $·$ distribute over each on $S$ because
+  they do on $R$. </span>
+
+ <span class='run'>So we have restricted the number of conditions
+  to check, and arrive at our first statement of
+  sufficient conditions on $S$ that ensure $(S, +,
+  ·)$ is a ring. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

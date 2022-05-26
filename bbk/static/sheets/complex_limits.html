@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Recall that $(C, \Cmod{\cdot})$ is a normed space, and so also a metric space. So, a sequence $(z_n)_{n \in \N}$ of complex numbers is egoprox and convergent as usual. Both of these are equivalent to the corresponding conditions on the sequences of real and imaginary parts.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(z_n)_{n \in \N} = (x_n, y_n)_{n \in \N}$ converges to $z_0 = (x_0, y_0) \in \C$ if and only if $x_n$ converges to $x_0$ and $y_n$ converges to $y_0$. \label{complex_limits:proposition:convergenceequivalence} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(z_n)_{n \in \N} = (x_n, y_n)_{n \in \N}$ is egoprox if and only if $x_n$ is egoprox and $y_n$ is egoprox. \label{complex_limits:proposition:egoproxequivalence} \end{proposition}</p></div><div class="sheet-listing" id="completeness"><h1 class="sheet">3. Completeness</h1></div><div class="sheet-listing"><p class="sheet"> As a result of Proposition~\ref{complex_limits:proposition:egoproxequivalence}, if $z_n$ is egoprox then there is a limit $x_0$ and $y_0$ for its real and imaginary pieces, and so as a result of Proposition~\ref{complex_limits:proposition:egoproxequivalence} $z_n$ convergeces. In other words, every cauchy sequence converges.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\C$ with the metric induced by $\Cmod{\cdot}$ is complete. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

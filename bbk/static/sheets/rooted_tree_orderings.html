@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to simplify common questions using orderings of a rooted tree.\footnote{This sheet is incomplete and will be updated in future editions.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{topological ordering} of a rooted tree is an ordering $\sigma$ for which $v \prec_{\sigma} \pa(v)$. If there are $n$ vertices, the root has index $n$ and every other vertex has an index less than its parent.</p></div><div class="sheet-listing"><p class="sheet"> A \t{postordering} is a topological ordering in which descendents of a vertex are given consecutive numbers. For the postordering $\sigma$, if $\inv{\sigma}(v) = j$ and $v$ has $k$ proper descendents then the proper descendents of $v$ have are numbered consecutively from $j - k$ through $j -1$. Figure~\ref{figure:rooted_tree_orderings:postordering} shows an example.</p></div><div class="sheet-listing"><p class="sheet"> One can generate a postordering by numbering vertices in decreasing sequence (starting at $n$) in the order they are visited.\footnote{Future editions will clarify.}</p></div><div class="sheet-listing"><p class="sheet"> Given an ordering, the \t{first descendent} of $v$ (which we denote $\fdesc(v)$) is the descendent with the lowest index. Given a postordering $\sigma$, one can check whether a vertex $w$ is a proper descendent of $v$, by $\fdesc(v) \preceq_{\sigma} w \prec_{\sigma} v$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \includegraphics[width=0.5\textwidth]{graphics_included/postordering} \caption{A postordering of a rooted tree.} \label{figure:rooted_tree_orderings:postordering} \end{figure}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

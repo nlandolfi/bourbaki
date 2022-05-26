@@ -81,6 +81,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -97,6 +132,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will complete and rework this sheet. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \R)$ be a vector space. A function $f: X \times X \to \R$ is an \t{inner product} on the vector space $(X, \R)$ if \begin{enumerate} \item $f(x,x) \geq 0$, $= 0 \iff x = 0$, \item $f(x+y,z) = f(x,z) + f(y, z)$, \item $f(x,y) = f(y,x)$, and \item $f(\alpha x,y) = \alpha f(x,y)$. \end{enumerate} An \t{inner product space} is an ordered pair: a real vector space and an inner product. \ifhmode\unskip\fi\footnote{ Future editions will discuss complex inner products. }</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.1 Examples</h2></div><div class="sheet-listing"><p class="sheet"> $\R^n$ with the usual inner product is an inner product space. Some authors call any finite-dimensional inner product space over the real numbers is a \t{Euclidean vector space}.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.2 Examples</h2></div><div class="sheet-listing"><p class="sheet"> If $f: X \times X \to \R$ is an inner product we regularly denote $f(x, x)$ by $\ip{x,x}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="orthogonality">2.3 Orthogonality</h2></div><div class="sheet-listing"><p class="sheet"> Two vectors in an inner product space are \t{orthogonal} if their inner product is zero. An \t{orthogonal family of vectors} in an inner product space is a family of vectors for which distinct family members are orthogonal.</p></div><div class="sheet-listing"><p class="sheet"> A vector is \t{normalized} if its inner product with itself is one.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -201,8 +237,108 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:inner_products❳ </span>
+
+ <span class='run'>❲%!need:vectors❳ </span>
+
+ <span class='run'>❲%!need:real_inner_product❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why}[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $(X, 𝗥)$ be a vector space. </span>
+
+ <span class='run'>A function $f: X × X → 𝗥$ is an
+  <span class='term'>inner product</span> on the
+  vector space $(X, 𝗥)$ if
+  <ol>
+   <li>$f(x,x) ≥ 0$, $= 0 \iff x = 0$, </li>
+
+   <li>$f(x+y,z) = f(x,z) + f(y, z)$, </li>
+
+   <li>$f(x,y) = f(y,x)$, and </li>
+
+   <li>$f(α x,y) = α f(x,y)$. </li>  </ol>
+</span>
+
+ <span class='run'>An <span class='term'>inner product space</span>
+  is an ordered pair: a real vector space and an
+  inner product.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Examples} </span>
+</p>
+
+
+<p>
+ <span class='run'>$𝗥^n$ with the usual inner product is an inner
+  product space. </span>
+
+ <span class='run'>Some authors call any finite-dimensional inner
+  product space over the real numbers is a
+  <span class='term'>Euclidean vector space</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Examples} </span>
+</p>
+
+
+<p>
+ <span class='run'>If $f: X × X → 𝗥$ is an inner product we
+  regularly denote $f(x, x)$ by $\ip{x,x}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Orthogonality} </span>
+</p>
+
+
+<p>
+ <span class='run'>Two vectors in an inner product space are
+  <span class='term'>orthogonal</span> if their inner
+  product is zero. </span>
+
+ <span class='run'>An <span class='term'>orthogonal family of
+  vectors</span> in an inner product space is a
+  family of vectors for which distinct family
+  members are orthogonal. </span>
+</p>
+
+
+<p>
+ <span class='run'>A vector is <span class='term'>normalized</span>
+  if its inner product with itself is one. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

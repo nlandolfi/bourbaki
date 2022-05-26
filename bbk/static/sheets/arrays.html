@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name lists of lists, and so on.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $s$ be a sequence of natural numbers: $s = (n_1, \dots, n_d)$. An \t{array} of \t{size} (or \t{shape}) $s$ is a function whose domain is the set \[ I = \Set{(m_1, \dots, m_d)}{ 1 \leq m_1 \leq n_1, \dots, 1 \leq m_d \leq n_d}. \] We call the set $I$ the set of \t{indices} of the array. We call the codomain of the function the set of \t{values} of the array. If $A$ is the set of values, we say that the array is \t{in} A. We call the length of $s$ (here denoted $d$) the \t{dimension} of the array.</p></div><div class="sheet-listing"><h2 class="sheet" id="case_$d_=_1$">2.1 Case $d = 1$</h2></div><div class="sheet-listing"><p class="sheet"> If the shape of the array has length one, then the array is no different from a sequence. In this case, the terminology for arrays coincides with that for sequences.</p></div><div class="sheet-listing"><h2 class="sheet" id="case_$d_=_2$">2.2 Case $d = 2$</h2></div><div class="sheet-listing"><p class="sheet"> If the shape of the array has length two, then the array can be thought of as a table with $n_1$ rows and $n_2$ columns. \ifhmode\unskip\fi\footnote{ Compare with \sheetref{matrices} {Matrices} } We say that the array is two-dimensional.</p></div><div class="sheet-listing" id="simplified_indices"><h1 class="sheet">3. Simplified indices</h1></div><div class="sheet-listing"><p class="sheet"> In the case that $a$ is a one-dimensional array, or sequence, we use the common terminology $a_i$ for the $i$th element of $a$ In the case that $a$ is a two dimensional array, we write $a_{ij}$ for $a_{(i,j)}$.</p></div>
     </div>
@@ -187,8 +223,106 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:arrays❳ </span>
+
+ <span class='run'>❲%!need:lists❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We name lists of lists, and so on. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $s$ be a sequence of natural numbers: $s
+  = (n_1, …, n_d)$. </span>
+
+ <span class='run'>An <span class='term'>array</span> of
+  <span class='term'>size</span> (or
+  <span class='term'>shape</span>) $s$ is a function
+  whose domain is the set
+  <p>\[
+   I = \Set{(m_1, …, m_d)}{ 1 ≤ m_1 ≤ n_1, …, 1 ≤ m_d ≤
+    n_d}. </span>
+  \]</p></span>
+
+ <span class='run'>We call the set $I$ the set of
+  <span class='term'>indices</span> of the array. </span>
+
+ <span class='run'>We call the codomain of the function the set
+  of <span class='term'>values</span> of the array. </span>
+
+ <span class='run'>If $A$ is the set of values, we say that the
+  array is <span class='term'>in</span> A. </span>
+
+ <span class='run'>We call the length of $s$ (here denoted $d$)
+  the <span class='term'>dimension</span> of the
+  array. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Case $d = 1$} </span>
+</p>
+
+
+<p>
+ <span class='run'>If the shape of the array has length one,
+  then the array is no different from a sequence. </span>
+
+ <span class='run'>In this case, the terminology for arrays
+  coincides with that for sequences. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Case $d = 2$} </span>
+</p>
+
+
+<p>
+ <span class='run'>If the shape of the array has length two,
+  then the array can be thought of as a table
+  with $n_1$ rows and $n_2$ columns.[footnote skipped in this version]</span>
+
+ <span class='run'>We say that the array is two-dimensional. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Simplified indices} </span>
+</p>
+
+
+<p>
+ <span class='run'>In the case that $a$ is a one-dimensional
+  array, or sequence, we use the common
+  terminology $a_i$ for the $i$th element of $a$ </span>
+
+ <span class='run'>In the case that $a$ is a two dimensional
+  array, we write $a_{ij}$ for $a_{(i,j)}$. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

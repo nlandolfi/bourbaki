@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include_this."><h1 class="sheet">1. Why}\footnote{Future editions will include this.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $W$ be a positive semidefinite $n$ by $n$ matrix. Then $g: \R^n \to \R$ defined by $g(x) = \sqrt{\transpose{x}Wx}$ is a norm on $\R^n$. \end{proposition}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $W \in \R^{n \times n}$, positive semidefinite. Then we denote the norm corresponding to $W$ by $\normm{\cdot}_{W}$. So then, the norm of a vector $x \in \R^n$ is $\normm{x}_{w}$. Notice that $\normm{x}_{W} = \normm{W^{1/2}x}_2$.</p></div><div class="sheet-listing"><h2 class="sheet" id="visualization}\footnote{future_editions_will_visualize_these_norms_as_function_on_$\r^2$,_via_contour_plots.">2.2 Visualization}\footnote{Future editions will visualize these norms as function on $\R^2$, via contour plots.</h2></div><div class="sheet-listing"><p class="sheet"> We can compare the Euclidean norm on $\R^2$ with the weighted norm given by \[ W = \pmat{ 2 & 1 \\ 1 & 4 \\ } \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

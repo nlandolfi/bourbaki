@@ -88,6 +88,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -104,6 +139,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can permuting the rows or columns of a matrix be represented by matrix multiplication?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\sigma: \upto{n} \to \upto{n}$ be a permutation of $n$. The \t{permutation matrix} of $\sigma$ is the matrix $P$ defined by $P_{ij} = 1$ if $\sigma(i) = j$ and 0 otherwise. This is sometimes called the \t{column representation} (in contrast to the row representation, in which $P_{ij} = 1$ if $\sigma(j) = i$.</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R^{n \times n}$. Then pre-multipying $A$ by $P$ permutes the rows of $A$. In other words $PA$ has the same rows as $A$ but permuted according to $\sigma$. Similarly, post-multiplying by $P$ permutes the columns of $A$. In other words, $AP$ has the same columns as $A$ but permuted according to $\sigma$. Clearly, we can also speak of permuting the components of a vector.</p></div><div class="sheet-listing" id="composition"><h1 class="sheet">3. Composition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\pi, \sigma \in S_n$ with corresponding permutation matrices $P_\sigma$ and $P_\pi$. Then $P_{\pi}P_{\sigma}A$ has the same rows as $A$ but permuted by $\pi\sigma$. Likewise, $AP_{\pi}P_{\sigma}$ has the same columns as $A$ but permuted by $\pi\sigma$. Clearly, the identity permutation on $\upto{n}$ is the identity $I \in \R^{n \times n}$.</p></div><div class="sheet-listing" id="inverses"><h1 class="sheet">4. Inverses</h1></div><div class="sheet-listing"><p class="sheet"> It is clear from the definition that $P_{\sigma}^{-1} = P_{\sigma^{-1}}$ and so if $P$ is a permutation matrix then $P^{-1}$ is $\transpose{P}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -208,8 +244,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

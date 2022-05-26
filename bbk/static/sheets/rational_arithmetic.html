@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What are addition and multiplication for rationals? What are the identity elements?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We call the operation of forming rationals sums \t{rational addition}. We call the operation of forming rational products \t{rational multiplication}.</p></div><div class="sheet-listing" id="results"><h1 class="sheet">3. Results</h1></div><div class="sheet-listing"><p class="sheet"> It is easy to see the following.\footnote{Nonetheless, the full accounts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The additive identity for $\Q$ is $\eqc{(0_{\Z}, 1_{\Z})}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The multiplicative identity for $\Z$ is $\eqc{(1_{\Z}, 1_{\Z})}$. \end{proposition}</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">4. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the additive identity of $\Q$ by $0_{\Q}$ and the multiplicative identity by $1_{\Q}$. We denote the set $\Set{q \in \Q}{q \geq 0_{Q}}$ by $\Q_{+}$.</p></div><div class="sheet-listing" id="distributive"><h1 class="sheet">5. Distributive</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For rationals $x, y, z \in \Z$, $x \cdot (y + z) = x\cdot y + x\cdot z$.\footnote{An account will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -187,8 +223,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

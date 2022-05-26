@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can a set have no elements?</p></div><div class="sheet-listing"><p class="sheet"> \s{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Sure. A set exists by the principle of existence (see \sheetref{sets}{Sets}); denote it by $A$. Specify elements (see \sheetref{set_specification}{Set Specification}) of any set that exists using the universally false statement $x \neq x$. We denote that set by $\Set{x \in A}{x \neq x}$. It has no elements. In other words, $(\forall x)(x \not \in A)$. The principle of extension (see \sheetref{set_equality}{Set Equality}) says that the set obtained is unique (contradiction).\footnote{This account will be expanded in the next edition.} We call the unique set with no elements \t{the empty set}.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the empty set by $\emptyset$. In other words, in all future accounts (see \sheetref{accounts}{Accounts}), there are two implicit lines. First, "\texttt{name} $\emptyset$} and second \say{\texttt{have} $(\forall x)(x \not\in \emptyset)$".</p></div><div class="sheet-listing"><p class="sheet"> \s{Properties}</p></div><div class="sheet-listing"><p class="sheet"> It is immediate from our definition of the empty set and of the definition of inclusion (see \sheetref{set_inclusion}{Set Inclusion}) that the empty set is included in every set (including itself).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\forall A)(\emptyset \subset A)$ \end{proposition} \begin{proof} Suppose toward contradiction that $\varnothing \not\subset A$. Then there exists $y \in \varnothing$ such that $y \not \in A$. But this is impossible, since $(\forall x)(x \not \in \varnothing)$. \end{proof}</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -57,6 +57,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -73,6 +108,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_rework_this_sheet."><h1 class="sheet">1. Why}\footnote{Future editions will rework this sheet.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $Z$ and $X$ be non-empty finite sets.  We want to model a distribution $p^\theta: Z \times X \to \R$. We parameterize a family of distributions by a parameter $\theta$. We have a dataset $(x^1, \dots, x^n)$. Given a parameter $\theta^0$, we want to solve \[ \maximization{\theta}{\sum_{k = 1}^{n} \Expect_{p^{\theta^0}_{z \mid x}(z, x^k)} \left[ \log p^{\theta}(z, x) \right] } \]</p></div><div class="sheet-listing"><h2 class="sheet" id="binary_gaussian_mixture_example}\footnote{future_editions_will_expand.">2.1 Binary Gaussian Mixture Example}\footnote{Future editions will expand.</h2></div><div class="sheet-listing"><p class="sheet"> \comment{</p></div><div class="sheet-listing"><p class="sheet"> \[ \maximization{\theta}{\sum_{k = 1}^{n} \log p^{\theta}_x(x^k)} \] For $k = 1,\dots,n$ we express \[ \log p_{x}^{\theta}(x^k) = \sum_{z \in Z} p^\theta(z, x^k) = \sum_{z \in Z} p_z^\theta(z)p^\theta_{x\mid z}(x^k, z) \] For $k = 1, \dots, n$ let $q^i: Z \to \R$ be a distribution on $Z$. Then, for $k = 1\dots,n$ we express \[ \log p_{x}^{\theta}(x^i) = \log \left( \Expect_{z \sim q}\left[ p_{x \mid z}^\theta (x^k, z) \frac{p^{\theta}_z(z)}{q^k(z)} \right] \right) \] We can lower bound this expression using Jensen's inequality \[ \log p_{x}^{\theta}(x^k) \geq \Expect_{z \sim q} \left[ \log \left(p_{x \mid z}^\theta (x^k, z) \frac{p^{\theta}_z(z)}{q^k(z)}\right) \right] \] Jensen's inequality is tight if $q^k(z) \propto p_{x \mid z}(x^k, z)p_z(z)$ (some argument about it being constant?) which means (?) \[ q^k(z) = p_{z \mid x}(z \mid x^k) \] So finally we have \[ \log p_{x}^\theta(x^k) \approx \Expect_{z \sim p_{z\mid x}(\cdot, x^k)} \left[ \log p^\theta(z, x^k) - \log p_{z \mid x}^{\theta^0}(z, \mid x_{k}) \right] \] So given $\theta^0$ we will solve \[ \maximization{\theta}{ \sum_{k = 1}^{n} \Expect_{z \sim p_{x \mid x^k}} \left[ \log p^\theta(z, x^k) - \log p_{z \mid x}^{\theta^0}(z, \mid x_{k}) \right] } \] }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -177,8 +213,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

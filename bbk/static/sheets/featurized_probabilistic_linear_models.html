@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is natural to embed a dataset.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(x: \Omega \to \R^d, A \in \R^{n \times d}, e: \Omega \to \R^n)$ be a probabilistic linear model over the probability space $(\Omega, \CA, \PM)$. Let $\phi: \R^d \to \R^{d'}$ be a feature map.</p></div><div class="sheet-listing"><p class="sheet"> We call the sequence $(x, A, e, \phi)$ a \t{featurized probabilistic linear model} (also \t{embedded probabilistic linear model}). We interpret the model as a random field $h: \Omega \to (\R^d \to \R)$ which is a linear function of the features \[ h_{\omega}(a) = \transpose{\phi(a)}x(\omega). \]</p></div><div class="sheet-listing"><p class="sheet"> Denote the data matrix of the embedded feature vectors by $\phi(A)$. In other words, $\phi(A) \in \R^{n \times d'}$ is a matrix whose rows are feature vectors. Then $(x, A, e, \phi)$ corresponds to the probabilistic linear model $(x, \phi(A), e)$.</p></div><div class="sheet-listing" id="normal_case"><h1 class="sheet">3. Normal case</h1></div><div class="sheet-listing"><p class="sheet"> In the normal (Gaussian) case, the parameter posterior $g_{x \mid y}(\cdot, \gamma)$ is a normal density with mean \[ \Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}} \gamma \] and covariance \[ \invp{\inv{\Sigma_{x}} + \transpose{\phi(A)}\inv{\Sigma_{e}}\phi(A)}. \]</p></div><div class="sheet-listing"><p class="sheet"> The predictive density for $a \in \R^d$ is normal with mean \[ \transpose{\phi(a)}\Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}}\gamma. \] and covariance \[ \transpose{\phi_a}\Sigma_{x}\phi_a - \transpose{\phi_a}\Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_e}\phi(A)\Sigma_{x}\phi_a. \]</p></div><div class="sheet-listing"><p class="sheet"> So the \t{featurized linear regressor} is the predictor $h: \R^d \to \R$ defined by \[ h(a) = \transpose{\phi(a)}\Sigma_{x}\transpose{\phi(A)}\invp{\phi(A)\Sigma_{x}\transpose{\phi(A)} + \Sigma_{e}}\gamma. \]</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We consider the probabilistic linear model in which all random variables are normal.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{normal linear model} is a probabilistic linear model in which the parameter and noise vectors have normal (Gaussian) densities. The model is also called the \t{Gaussian linear model} or the \t{linear model with Gaussian noise}.</p></div><div class="sheet-listing"><p class="sheet"> Let $(x: \Omega \to \R^d, A \in \R^{n \times d}, e: \Omega \to \R^n)$ be a probabilistic linear model over the probability space $(\Omega, \CA, \PM)$ in which $x$ and $e$ have normal densities. Recall that a probabilistic linear model has observation vector $y: \Omega \to \R^n$ defined by \[ y = Ax + e. \]</p></div><div class="sheet-listing" id="conditional_density_of_$x$_on_$y$"><h1 class="sheet">3. Conditional density of $x$ on $y$</h1></div><div class="sheet-listing"><p class="sheet"> Since $x$ and $e$ are normal and independent, $y$ is normal.\footnote{Future editions will include an account.} Moreover, the random vector $(x, y)$ is normal with covariance \[ \pmat{ \Sigma_x & \Sigma_{x}\transpose{A} \\ A \Sigma_{x} & A\Sigma_{x}\transpose{A} + \Sigma_{e} }. \] So the conditional density (see \sheetref{normal_conditionals}{Normal Conditionals}) of $g_{x \mid y}(\cdot, \gamma)$ is normal with mean \[ \Sigma_{x}\transpose{A}\invp{A\Sigma_{x}\transpose{A} + \Sigma_e}\gamma \] and covariance \[ \Sigma_{x} - \Sigma_{x}\transpose{A}\invp{A\Sigma_{x}\transpose{A} + \Sigma_e}A\Sigma_{x}. \] This density is sometimes called the posterior for the parameters given the observations. So the parameter posterior of the normal linear model is normal.</p></div><div class="sheet-listing"><p class="sheet"> We can write the conditional mean as \[ \invp{\inv{\Sigma_{x}} + \transpose{A}\inv{\Sigma_{e}}A}\transpose{A}\inv{\Sigma_{e}} \] and the conditional covariance as \[ \invp{\inv{\Sigma_x} + \transpose{A}\inv{\Sigma_{e}}A}.\footnote{A proof will appear in future editions. Use the matrix inversion lemma or facts about inverses.} \] Very frequently we use these forms when $d < n$. In other words, in the case that we have fewer unknowns than measurements. In that case $\Sigma_{x}$ is smaller than $A\Sigma_{x}\transpose{A}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="maximum_conditional_estimate_of_$x$">3.1 Maximum conditional estimate of $x$</h2></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The maximum conditional estimate of $x: \Omega \to \R^d$ given observed value $\gamma \in \R^n$ of $y: \Omega \to \R^n$ is the conditional mean \[ \Sigma_{x}\transpose{A}\invp{A\Sigma_{x}\transpose{A} + \Sigma_{e}}\gamma. \] \end{proposition}</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

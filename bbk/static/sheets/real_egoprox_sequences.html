@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> In the case that it is not possible to easily identify (or guess) the limit of a sequence, we are naturally interested in a simple condition on the sequence which is equivalent to convergence.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A sequence $(x_n)_{n \in \N}$ in $\R$ is said to be \t{egopox} (or \t{Cauchy} or a \t{Cauchy sequence}) if for every $\epsilon > 0$, there exists $N \in \N$ so that for all $m, n > N$, $\abs{x_m - x_n} < \epsilon$. We call this property of the sequence \t{(eventual) egoproximity}.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We sometimes denote this property as \[ \abs{x_n - x_m} \to 0 \quad \text{ as } \quad m, n \to \infty. \]</p></div><div class="sheet-listing" id="example"><h1 class="sheet">4. Example</h1></div><div class="sheet-listing"><p class="sheet"> For example, consider $\lim_{N \to \infty} \sum_{n = 1}^{N} 1/n^3$.</p></div><div class="sheet-listing" id="sufficiency_in_$\r$"><h1 class="sheet">5. Sufficiency in $\R$</h1></div><div class="sheet-listing"><p class="sheet"> Clearly a convergent sequence is egoprox.\footnote{Future editions may elaborate here.} What of the converse? Recall that we think of egoprox sequences as "bunching up." For the reals, if a sequence is bunching up, then our intuition is that it should be converging. In other words, an egoprox real sequence always converges. The egoprox condition is sufficient. Bunching up is sufficient.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If $(x_n)_{n \in \N}$ is egoprox, then there exists $x_0 \in \R$ so that $\lim_{n \to \infty} x_n = x_0$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> In other words, in $\R$ egoproximity is equivalent to convergence. The above is sometimes called the \t{Bolzano-Weierstrass theorem}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

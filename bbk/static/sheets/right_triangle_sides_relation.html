@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How does constraining a triangle to be a right angle constrain the lengths of its sides?</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $a$ and $b$ be the lengths of the sides of a right triangle and $c$ be the length of the hypotenuse. Then \[ a^2 + b^2 = c^2. \] \end{proposition} The result is called \t{Pythagorean theorem} and the equation is called the \t{Pythagorean equation}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -173,8 +209,56 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:right_triangle_sides_relation❳ </span>
+
+ <span class='run'>❲%!need:geometry❳ </span>
+
+ <span class='run'>❲%!need:real_squares❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>How does constraining a triangle to be a right
+  angle constrain the lengths of its sides? </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Result} </span>
+
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>Let $a$ and $b$ be the lengths of the sides
+  of a right triangle and $c$ be the length of
+  the hypotenuse. Then
+  <p>\[
+   a^2 + b^2 = c^2. </span>
+  \]</p></span>
+
+ <span class='run'>\end{proposition} </span>
+
+ <span class='run'>The result is called
+  <span class='term'>Pythagorean theorem</span> and
+  the equation is called the
+  <span class='term'>Pythagorean equation</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -81,6 +81,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -97,6 +132,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Suppose I have three stones in my hands. If I have two in my left hand, how many are in my right hand?</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> Denote by $a$ the number of stones in my left hand. Denote by $b$ the number of stones in my right hand. Then the number of stones in both hands is $a + b$. Both $a$ and $b$ are natural numbers. In other words, $a$ is $0$ or $1$ or $2$ or... Likewise for $b$.</p></div><div class="sheet-listing"><p class="sheet"> We express that I have two stones in my left hand by the equation $a = 2$. We express that I have have five stones in total by the equation that $a + b = 5$. Because we have identified the names $a$ and $b$ with tangible objects in my hands, these equations are statements about tangible objects in my hands. But the <i>numbers</i> involved are intangible objects. In any case, we have two equations in two unknowns.</p></div><div class="sheet-listing"><p class="sheet"> We express the question "how many stones do I have in my right hand?} by asking for a solution (see \sheetref{equations}{Equations") to the equation $a + b = 5$. We can start by trying natural numbers in order. Is $(a, b) = (0, 0)$ a solution? Well, $0 + 0 = 0$, and $0 \neq 5$, so it is not. Is $(a, b) = (1, 0)$ a solution? Well, $1 + 0 = 1$, and $1 \neq 5$, so it is not. Is $(a, b) = (0, 1)$ a solution? Well, $1 + 0 = 1$, and $1 \neq 5$, so it is not. Likewise for $(0, 2)$, $(1, 2)$ and so on. Some people call this the process of \t{guess and check}.</p></div><div class="sheet-listing"><p class="sheet"> Continuing this way we find that $(3, 2)$ and $(2, 3)$ is a solution. Indeed, $3 + 2 = 2 + 3 = 5$. We are, however, interested in solutions to both equations \[ \begin{aligned} a &= 3 \\ a + b &= 5 \end{aligned} \] Both $(3, 2)$ and $(2, 3)$ satisfy the second equation, but only $(3, 2)$ satisfies both. Are there other solutions?\footnote{Future editions will expand.}</p></div>
     </div>
@@ -201,8 +237,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

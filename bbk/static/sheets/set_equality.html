@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> When are two sets the same?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. If $A = B$ then every element of $A$ is an element of $B$ and every element of $B$ is an element of $A$. In other words, $(A = B) \implies ((A \subset B) \land (B \subset A))$.</p></div><div class="sheet-listing"><p class="sheet"> What of the converse? Suppose every element of $A$ is an element of $B$ and every element of $B$ is an element of $A$. Then $A = B$? We define it to be so. Sets are determined by their members.</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Extension] Sets are the same if every member of one is a member of the other and vice versa. \end{principle}</p></div><div class="sheet-listing"><p class="sheet"> In other words, two sets are identical if and only if every element of one is an element of the other. This principle is sometimes called the \t{principle of extension}. We refer to the elements of a set as its \t{extension}. Roughly speaking, we have declared that if we know the extension then we know the set. A set is determined by its extension.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Deductive principle}</p></div><div class="sheet-listing"><p class="sheet"> We can use this definition to deduce $A= B$ if we first deduce $A \subset B$ and $B \subset A$. With these two implications, we use the principle of extension to conclude that the sets are the same. In other words, $(A = B) \iff ((A \subset B) \land (B \subset A))$. We also describe this fact by saying that inclusion ($\subset)$ is \t{antisymmetric}.</p></div><div class="sheet-listing" id="belonging_and_sets_compared_with_ancestry_and_humans"><h1 class="sheet">3. Belonging and sets compared with ancestry and humans</h1></div><div class="sheet-listing"><p class="sheet"> Compare the principle of extension for identifying sets from their elements with an analogous principle for identifying people from their ancestors.</p></div><div class="sheet-listing"><p class="sheet"> We can consider a person's ancestors. Namely, the person's parents, grandparents, great grandparents and so on. It is clear that if we label the same human with two names $A$ and $B$, then $A$ and $B$ have the same ancestors. In other words, same human implies same ancestors. This is the analog of "if two sets are equal they have the same members".</p></div><div class="sheet-listing"><p class="sheet"> On the other hand, if we have two people denoted by $A$ and $B$, and we know that $A$ has the same ancestors as $B$, we can not conclude that $A$ and $B$ denote the same human. For example, siblings have the same ancestors but are different people. This direction, same ancestors implies same human, is the analogue of "if they have the same elements, two sets are the same". It is false for humans and ancestors, but we define it to be true for sets and members.</p></div><div class="sheet-listing"><p class="sheet"> The principle of extension is more than a statement about equality. It is also a statement about our notion of belonging, of what it means to be an element of a set, and what a set is.</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Given multiple orders, can we combine them?</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we have two orders $\prec_1$ and $\prec_2$ on $A$. Define $\prec$ by $a \prec b$ if and only if $a \prec_1 b$ and $b \prec_2 a$. Notice that $\prec$ is reflexive, transitive, and antisymmetric, and so it is a partial order. Call it the \t{combined order}.</p></div><div class="sheet-listing"><p class="sheet"> Here's the rub. Even if $\prec_1$ and $\prec_2$ are total, $\prec$ may not be total.\footnote{Future editions will include and expand.} Consider the basic case $A = \set{a, b}$ and $\prec_1 \; = \set{(a,a), (a, b), (b,b)}$ and $\prec_2 \; = \set{(a,a), (b,a), (b,b)}$ Then $\prec \; = \set{(a,a), (b,b)}$, a partial order, to be sure, but not really any order at all.</p></div><div class="sheet-listing"><p class="sheet"> There is not anything to be done about it, it is a fact. Total orders do not (necessarily) induce total combined orders.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

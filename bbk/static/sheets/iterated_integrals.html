@@ -57,6 +57,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -73,6 +108,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We integrate over a product space by integrating one coordinate at a time. TODO: WHY?</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $(X, \SA, \mu)$ and $(Y, \SB, \nu)$ be $\sigma$-finite measurable spaces. Let $f: X \cross Y \to \eri$ be $\SA \cross \SB$-measurable and $\mu\cross\nu$-integrable. Then \begin{enumerate} \item For $\mu$-almost every $x$ in $X$ the section $f_x$ is $\nu$-integrable and for $\nu$-almost every $y$ in $Y$ the section $f^y$ is $\mu$-integrable, \item the functions $I_f$ and $J_f$ defined by \[ I_f(x) = \begin{cases} \int_{Y} f_x d\nu &\text{ if } f_x \text{ is } \nu\text{-integrable}, \\ 0 & \text{ otherwise} \end{cases} \] and \[ J_f(y) = \begin{cases} \int_{X} f^y d\mu &\text{ if } f^y \text{ is } \mu\text{-integrable}, \\ 0 & \text{ otherwise} \end{cases} \] belong to $\SL(X, \SA, \mu, R)$ and $\SL(Y, \SB, \nu, R)$ respectively, and \item the relation \[ \int_{X \cross Y} f d(\mu \cross \nu) = \int_{X} I_f d\mu = \int_{Y} J_f d\nu \] holds. \end{enumerate} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> The above is called \t{Fubini's Theorem}. TODO: \t{Tonelli's theorem}.</p></div>
     </div>
@@ -177,8 +213,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

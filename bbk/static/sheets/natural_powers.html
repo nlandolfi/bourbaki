@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to repeatedly multiply.</p></div><div class="sheet-listing" id="defining_result"><h1 class="sheet">2. Defining Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For each natural number $m$, there exists a function $e_m: \omega \to \omega$ which satisfies \[ e_m(0) = 1 \quad \text{ and } \quad e_m(\ssuc{n}) = \ssuc{(e_m(n))} \cdot m \] for every natural number $n$. \end{proposition} \begin{proof} The proof uses the recursion theorem (see \sheetref{recursion_theorem}{Recursion Theorem}).\footnote{Future editions will give the entire account.} \end{proof} Let $m$ and $n$ be natural numbers. The value $p_m(n)$ is the \t{power} of $m$ with $n$. Or the \t{$n$th power of $m$}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the $n$th power of $m$ by $m^n$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> Here are some basic properties of powers.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $k$, $m$, and $n$ be natural numbers. Then \[ m^{n}m^{k} = m^{k + k}. \] \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $k$, $m$, and $n$ be natural numbers. Then \[ (m^{n})^k = m^{nk}. \] \end{proposition}</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

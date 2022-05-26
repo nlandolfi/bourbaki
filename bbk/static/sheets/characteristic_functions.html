@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,8 +111,9 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to indicate membership in a set by a function.\footnote{Future editions will elaborate, perhaps with forward-looking connections to \sheetref{rectangular_functions}{Rectangular Functions}.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{characteristic function} of a set $X$ is a function from $X$ to $2$ which is $1$ if the argument is in $A$ and 0 otherwise.</p></div><div class="sheet-listing"><p class="sheet"> The function which assigns to each subset $A$ of $X$ to characteristic function of $A$ is a one-to-one function from $\powerset{X}$ onto $2^{X}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a non-empty set and $B \subset A$. We denote the characteristic function of $B$ in $A$ by $\chi_{B}: A \to R$. The Greek letter $\chi$ is a mnemonic for "characteristic".</p></div><div class="sheet-listing"><p class="sheet"> The subscript indicates the set on which the function is one. In other words, for all $B \subset A$, $\chi_{B}^{-1}(\set{1}) = B$.\footnote{Another notation used, when referring to these as "indicator functions,} is $1_{B}: A \to \set{0, 1}$ or $\mathbf{1}_B$."</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to indicate membership in a set by a function. \ifhmode\unskip\fi\footnote{ Future editions will elaborate, perhaps with forward-looking connections to \sheetref{rectangular_functions}{Rectangular Functions}. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{characteristic function} of a set $X$ is a function from $X$ to $2$ which is $1$ if the argument is in $A$ and 0 otherwise.</p></div><div class="sheet-listing"><p class="sheet"> The function which assigns to each subset $A$ of $X$ to characteristic function of $A$ is a one-to-one function from $\powerset{X}$ onto $2^{X}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a non-empty set and $B \subset A$. We denote the characteristic function of $B$ in $A$ by $\chi _{B}: A \to R$. The Greek letter $\chi $ is a mnemonic for "characteristic".</p></div><div class="sheet-listing"><p class="sheet"> The subscript indicates the set on which the function is one. In other words, for all $B \subset A$, $\chi _{B}^{-1}(\set{1}) = B$. \ifhmode\unskip\fi\footnote{ Another notation used, when referring to these as "indicator functions,} is $1_{B}: A \to \set{0, 1}$ or $\mathbf{1"_B$. }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -180,8 +216,84 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:characteristic_functions❳ </span>
+
+ <span class='run'>❲%!need:natural_numbers❳ </span>
+
+ <span class='run'>❲%!need:set_powers❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We want to indicate membership in a set by a
+  function.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>characteristic
+  function</span> of a set $X$ is a function from
+  $X$ to $2$ which is $1$ if the argument is in
+  $A$ and 0 otherwise. </span>
+</p>
+
+
+<p>
+ <span class='run'>The function which assigns to each subset $A$
+  of $X$ to characteristic function of $A$ is a
+  one-to-one function from $\powerset{X}$ onto
+  $2^{X}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A$ be a non-empty set and $B ⊂ A$. </span>
+
+ <span class='run'>We denote the characteristic function of $B$ in
+  $A$ by $χ_{B}: A → R$. </span>
+
+ <span class='run'>The Greek letter $χ$ is a mnemonic for
+  “characteristic”. </span>
+</p>
+
+
+<p>
+ <span class='run'>The subscript indicates the set on which the
+  function is one. </span>
+
+ <span class='run'>In other words, for all $B ⊂ A$,
+  $χ_{B}^{-1}(\set{1}) = B$.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

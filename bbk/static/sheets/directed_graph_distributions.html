@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to visualize the probabilistic relations between components of outcomes in probabilistic models over large (e.g., product) outcome sets.\footnote{Future editions will modify and expand. The title of the sheet may change, since another interpretation for the words "directed graph distribution} is a distribution on directed graphs."</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A = \prod_{i} A_i$. For $x \in A$ and $S \subset \set{1, \dots, n}$, denote the subvector of $x$ indexed (in order) by $S$ by $x_S$.\footnote{Future editions will rework this treatment, perhaps combining it with the sheet \sheetref{index_matrices}{Index Matrices}, which will possibly be split up.}</p></div><div class="sheet-listing"><p class="sheet"> A distribution $p: A \to [0, 1]$ \t{factors according to a directed graph} on $\set{0, 1}$ with parent function $\pa: \set{1,\dots,n} \to \powerset{\set{1, \dots, n}}$ if \[ p(x) = \prod_{\pa_i = \emptyset} g_i(x_i) \prod_{\pa_i \neq \emptyset} g_{i}(x_i, x_{\pa_i}), \] where  $g_i$ is a distribution for all $i$ which $\pa_i = \emptyset$ and $g_{i}(\cdot, \xi)$ is a distribution for all $\xi \in \prod_{j \in \pa_i} A_j$, $i$ for which $\pa_i \neq \emptyset$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $p$ so defined is a distribution, and the $g_i$ are the marginals and conditionals.\footnote{Future editions will be precise and give an account.} \end{proposition}</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> Consider a rooted tree distribution (see \sheetref{rooted_tree_distributions}{Rooted Tree Distributions}), or a memory chain (see \sheetref{memory_chains}{Memory Chains}), or a hidden memory chain (see \sheetref{hidden_memory_chains}{Hidden Memory Chains}).\footnote{Future editions will expand.}</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

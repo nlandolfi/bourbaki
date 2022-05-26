@@ -74,6 +74,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -90,6 +125,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want sums to follow those of natural numbers. \ifhmode\unskip\fi\footnote{ Future editions will modify this. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider $\eqc{(a, b)}, \eqc{(b, c)} \in \Z $. We define \t{integer product} of $\eqc{(a, b)}$ with $\eqc{(b, c)}$ as $\eqc{(ac + bd, ad + bc)}$. \ifhmode\unskip\fi\footnote{ One needs to show that this is well-defined. The account will appear in future editions. }</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the product of $\eqc{(a, b)}$ and $\eqc{(c, d)}$ by $\eqc{(a, b)} \cdot  \eqc{(b, c)}$ So if $x, y \in \Z $ then the sum of $x$ and $y$ is $x\cdot y$. As with natural products, we often drop the $\cdot $ and write $xy$ for $x\cdot y$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -194,8 +230,66 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:integer_products❳ </span>
+
+ <span class='run'>❲%!need:integer_numbers❳ </span>
+
+ <span class='run'>❲%!need:natural_products❳ </span>
+
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We want sums to follow those of natural
+  numbers.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Consider $\eqc{(a, b)}, \eqc{(b, c)} ∈ 𝗭$. </span>
+
+ <span class='run'>We define <span class='term'>integer product</span>
+  of $\eqc{(a, b)}$ with $\eqc{(b, c)}$ as
+  $\eqc{(ac + bd, ad + bc)}$.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>We denote the product of $\eqc{(a, b)}$ and
+  $\eqc{(c, d)}$ by $\eqc{(a, b)} · \eqc{(b, c)}$ </span>
+
+ <span class='run'>So if $x, y ∈ 𝗭$ then the sum of $x$ and
+  $y$ is $x·y$. </span>
+
+ <span class='run'>As with natural products, we often drop the
+  $·$ and write $xy$ for $x·y$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

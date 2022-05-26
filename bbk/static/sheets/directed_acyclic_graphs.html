@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If a directed graph has no cycles, then it has a nice property.\footnote{Future editions will expand this vague introduction.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Directed and acyclic graphs (sometimes \t{DAGs}) have some useful properties. Clearly, every subgraph induced on a directed acyclic graph is a directed acyclic graph.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(V, E)$ be a directed acyclic graph. Then there exists a vertex $v \in V$ which is a source and a vertex $w \in V$ which is a sink. \begin{proof} There exists a directed path of maximum length. It must start at a source and end at a sink.\footnote{Future editions will expand.} \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{topological numbering}, \t{topological sort} or \t{topological ordering} of a directed graph $(V, E)$ is a numbering $\sigma: \set{1, \dots, \num{V}} \to V$ satisfying \[ (v, w) \in E \implies \inv{\sigma}(v) < \inv{\sigma}(w).\footnote{Future editions will further explain this concept.} \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} There exists a topological sort for every acyclic graph. \begin{proof} Let $(V, F)$ be a directed acyclic graph. There exists a source vertex, $v_1$. Set $\sigma(1) = v_1$. Take the subgraph induced by $V - \set{v_1}$. It is directed acyclic, and so has a source vertex, $v_2$. Set $\sigma(2) = v_2$. Continue in this way.\footnote{Future editions will clarify and expand.} \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -166,8 +202,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

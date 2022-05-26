@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Given $a, b, c$, find $x$ to solve $ax^2 + bx + c = 0$.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $a, b, c \in \R$. Then both \[ \frac{-b + \sqrt{b^2 - 4ac}}{2a} \text{ and } \frac{-b - \sqrt{b^2 - 4ac}}{2a} \] are solutions of \[ ax^2 + bx + c = 0. \] \end{proposition} We call $ax^2 + bx + c = 0$ a \t{quadratic equation}. \ifhmode\unskip\fi\footnote{ Future editions will prove via completing the square. }</p></div><div class="sheet-listing"><p class="sheet"> The solutions are often writen in short hand \[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}, \] which is called the \t{quadratic formula}. \blankpage</p></div>
     </div>
@@ -163,8 +199,62 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:quadratic_equation_solutions❳ </span>
+
+ <span class='run'>❲%!need:natural_equations❳ </span>
+
+ <span class='run'>❲%!need:real_square_roots❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>Given $a, b, c$, find $x$ to solve $ax^2 +
+  bx + c = 0$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Result} </span>
+
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>Let $a, b, c ∈ \R$. Then both
+  <p>\[
+   \frac{-b + \sqrt{b^2 - 4ac}}{2a} \text{ and } \frac{-b -
+    \sqrt{b^2 - 4ac}}{2a} </span>
+  \]</p>
+  are solutions of
+  <p>\[
+   ax^2 + bx + c = 0. </span>
+  \]</p></span>
+
+ <span class='run'>\end{proposition} </span>
+
+ <span class='run'>We call $ax^2 + bx + c = 0$ a
+  <span class='term'>quadratic equation</span>.[footnote skipped in this version]</span>
+</p>
+
+<span class='run'>The solutions are often writen in short hand
+ <p>\[
+  x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}, </span>
+ \]</p>
+ which is called the <span class='term'>quadratic
+ formula</span>. </span>
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to build vectors out of other vectors using scalar multiplication and vector addition.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{linear combination} \t{from} a $\R^n$ is an ordered pair: the first coordinate is a sequence of vectors and the second is a sequence in $\R$ (which we call the \t{scalars}). The \t{result} of a linear combination is the sum of the results of scaling each vector by the corresponding scalar in the sequence; itself a vector in the space.</p></div><div class="sheet-listing"><p class="sheet"> A \t{trivial linear combination} is one whose sequence of scalars is zero at each coordinate. The result of any trivial linear combination is the zero vector. A \t{nontrivial linear combination} is one which is not trivial. In other words, to be nontrivial, there must exist at least one index of the scalar sequence whose corresponding value is nonzero.</p></div><div class="sheet-listing"><p class="sheet"> We say that a given vector \t{can be written as a linear combination of} a sequence of vectors if there exists a sequence of scalars such that the result of the linear combination of that sequence of vectors and scalars is the given vector. In other words, a vector can be written as a linear combination of some other vectors if there exists scalars for those other vectors such that scaling them and adding the results gives the vector.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $v = (v_1, \dots, v_n)$ be a sequence of vectors in $\R^n$ and $a = (a_1, \dots, a_n)$ be a sequence of scalars in $\R$. Then $(v, a)$ is a linear combination and we can express its result by \[ a_1v_1 + a_2v_2 + \cdots + a_n v_n. \] If $(v,a)$ is trivial, then $a_i = 0$ for $i \in \upto{n}$ and the result of $(v, a)$ is $0$ (the zero vector). Otherwise, there exists $i \in \upto{n}$ such that $a_i \neq 0$; of course, the result of $(v, a)$ may still be $0$. A vector $u$ can be written as a linear combination of the vectors $v_1, v_2, \dots, v_n$ if there exists scalars $a_1, a_2, \dots, a_n$ so that \[ u = a_1v_1 + a_2v_2 + \cdots + a_nv_n. \] We often number (see \sheetref{lists}{Lists}) a finite set of vectors. In this case, we say "Let $\set{u_1, \dots, u_n}$ be a (finite) set of vectors."</p></div>
     </div>
@@ -173,8 +209,129 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:real_linear_combinations❳ </span>
+
+ <span class='run'>❲%!need:real_vectors❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We want to build vectors out of other vectors
+  using scalar multiplication and vector addition. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>linear combination</span>
+  <span class='term'>from</span> a $𝗥^n$ is an
+  ordered pair: the first coordinate is a sequence
+  of vectors and the second is a sequence in $𝗥$
+  (which we call the
+  <span class='term'>scalars</span>). </span>
+
+ <span class='run'>The <span class='term'>result</span> of a linear
+  combination is the sum of the results of
+  scaling each vector by the corresponding scalar
+  in the sequence; itself a vector in the space. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>trivial linear
+  combination</span> is one whose sequence of
+  scalars is zero at each coordinate. </span>
+
+ <span class='run'>The result of any trivial linear combination is
+  the zero vector. </span>
+
+ <span class='run'>A <span class='term'>nontrivial linear
+  combination</span> is one which is not trivial. </span>
+
+ <span class='run'>In other words, to be nontrivial, there must
+  exist at least one index of the scalar sequence
+  whose corresponding value is nonzero. </span>
+</p>
+
+
+<p>
+ <span class='run'>We say that a given vector
+  <span class='term'>can be written as a linear
+  combination of</span> a sequence of vectors if
+  there exists a sequence of scalars such that
+  the result of the linear combination of that
+  sequence of vectors and scalars is the given
+  vector. </span>
+
+ <span class='run'>In other words, a vector can be written as a
+  linear combination of some other vectors if
+  there exists scalars for those other vectors
+  such that scaling them and adding the results
+  gives the vector. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $v = (v_1, …, v_n)$ be a sequence of
+  vectors in $𝗥^n$ and </span>
+
+ <span class='run'>$a = (a_1, …, a_n)$ be a sequence of scalars
+  in $𝗥$. </span>
+
+ <span class='run'>Then $(v, a)$ is a linear combination and we
+  can express its result by
+  <p>\[
+   a_1v_1 + a_2v_2 + ⋯ + a_n v_n. </span>
+  \]</p></span>
+
+ <span class='run'>If $(v,a)$ is trivial, then $a_i = 0$ for $i
+  ∈ \upto{n}$ and the result of $(v, a)$ is $0$
+  (the zero vector). </span>
+
+ <span class='run'>Otherwise, there exists $i ∈ \upto{n}$ such
+  that $a_i ≠ 0$; of course, the result of $(v,
+  a)$ may still be $0$. </span>
+ <p>
+  <span class='run'>A vector $u$ can be written as a linear
+   combination of the vectors $v_1, v_2, …, v_n$
+   if there exists scalars $a_1, a_2, …, a_n$ so
+   that
+   <p>\[
+    u = a_1v_1 + a_2v_2 + ⋯ + a_nv_n. </span>
+   \]</p></span>
+
+  <span class='run'>We often number (see \sheetref{lists}{Lists}) a
+   finite set of vectors. </span>
+
+  <span class='run'>In this case, we say “Let $\set{u_1, …, u_n}$
+   be a (finite) set of vectors.” </span>
+ </p>
+
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

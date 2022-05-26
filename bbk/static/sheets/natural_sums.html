@@ -74,6 +74,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -90,6 +125,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to combine two groups.\footnote{Future editions will change this section.}</p></div><div class="sheet-listing" id="defining_result"><h1 class="sheet">2. Defining Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For each natural number $m$, there exists a function $s_m: \omega \to \omega$ which satisfies \[ s_m(0) = m \quad \text{ and } \quad s_m(\ssuc{n}) = \ssuc{(s_m(n))} \] for every natural number $n$. \end{proposition} \begin{proof} The proof uses the recursion theorem (see \sheetref{recursion_theorem}{Recursion Theorem}).\footnote{Future editions will give the entire account.} \end{proof} Let $m$ and $n$ be natural numbers. The value $s_m(n)$ is the \t{sum} of $m$ with $n$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the sum $s_m(n)$ by $m + n$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> The properties of sums are direct applications of the principle of mathematical induction (see \sheetref{natural_induction}{Natural Induction}).\footnote{Future editions will include the accounts.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associative] Let $k$, $m$, and $n$ be natural numbers. Then \[ (k + m) + n = k + (m + n). \] \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Commutative] Let $m$ and $n$ be natural numbers. Then \[ m + n = n + m. \] \end{proposition}</p></div><div class="sheet-listing" id="relation_to_addition"><h1 class="sheet">4. Relation to Addition</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Distributive] Let $k$, $m$, and $n$ be natural numbers. Then \[ k \cdot (m + n) = (k \cdot m) + (k \cdot n). \] \end{proposition}</p></div>
     </div>
@@ -194,8 +230,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

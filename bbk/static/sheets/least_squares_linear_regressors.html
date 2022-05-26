@@ -95,6 +95,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -111,6 +146,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What is the best linear regressor if we choose according to a squared loss function.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $X \in \R^{n \times d}$ and $y \in \R^d$. In other words, we have a paired dataset of records with inputs in $\R^d$ (the rows of $X$) and outputs in $\R$ (the elements of $y$).</p></div><div class="sheet-listing"><p class="sheet"> A \t{least squares linear predictor} or \t{linear least squares predictor} is a linear transformation $f: \R^d \to \R$ (the field is $\R$) which minimizes \[ \frac{1}{n} \sum_{i = 1}^{n} (f(x^i) - y_i)^2. \] over the dataset of pairs $(x^1, y_1), \dots, (x^n, y_n) \in \R^d \times \R$ where $\transposep{x^i}$ is the $i$th row of $X$ for $i = 1, \dots, n$.</p></div><div class="sheet-listing"><p class="sheet"> The set of linear functions from $\R^d$ to $\R$ is in one-to-one correspondence with $\R^d$. So we want to find $\theta \in \R^d$ to  minimize \[ \frac{1}{n} \normm{X\theta - y}^2. \]</p></div><div class="sheet-listing" id="solution"><h1 class="sheet">3. Solution</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} There exists a unique linear least squares predictor and its parameters are given by $\invp{\transpose{X}X}\transpose{X}y$.\footnote{Future editions will include an account.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -215,8 +251,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

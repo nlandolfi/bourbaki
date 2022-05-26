@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we flip a coin $n$ times. How should we define a probability distribution on $\set{0, 1}^n$. Suppose instead we flip $n$ different coins, each once. How now?</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> If we model the outcome that coin $i$ lands heads as $1$ and that it lands tails by $0$, then we are asking to treat of uncertain outcomes from the set $\set{0, 1}^n$ of length-2 sequences.</p></div><div class="sheet-listing"><p class="sheet"> Here $x \in \set{0, 1}^n$ could correspond to the outcome of flipping one coin $n$ times or the outcome of flipping $n$ different coins. This is a simple example of a frequent and obvious phenomenon in mathematics wherein the same mathematical model (here the outcome set) can be used to model different situations in the real world (c.f. numbers, etc.).</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider a distribution over a product of $n$ sets, where the product is indexed by the first $n$ natural numbers. We call the distribution a \t{joint distribution} with $n$ components.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -173,8 +209,88 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:joint_distributions❳ </span>
+
+ <span class='run'>❲%!need:probability_distributions❳ </span>
+
+ <span class='run'>❲%!need:lists❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>Suppose we flip a coin $n$ times. </span>
+
+ <span class='run'>How should we define a probability distribution
+  on $\set{0, 1}^n$. </span>
+
+ <span class='run'>Suppose instead we flip $n$ different coins,
+  each once. </span>
+
+ <span class='run'>How now? </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Discussion} </span>
+</p>
+
+
+<p>
+ <span class='run'>If we model the outcome that coin $i$ lands
+  heads as $1$ and that it lands tails by $0$,
+  then we are asking to treat of uncertain
+  outcomes from the set $\set{0, 1}^n$ of length-2
+  sequences. </span>
+</p>
+
+
+<p>
+ <span class='run'>Here $x ∈ \set{0, 1}^n$ could correspond to
+  the outcome of flipping one coin $n$ times or
+  the outcome of flipping $n$ different coins. </span>
+
+ <span class='run'>This is a simple example of a frequent and
+  obvious phenomenon in mathematics wherein the
+  same mathematical model (here the outcome set)
+  can be used to model different situations in
+  the real world (c.f. numbers, etc.). </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Consider a distribution over a product of $n$
+  sets, where the product is indexed by the first
+  $n$ natural numbers. </span>
+
+ <span class='run'>We call the distribution a
+  <span class='term'>joint distribution</span> with
+  $n$ components. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

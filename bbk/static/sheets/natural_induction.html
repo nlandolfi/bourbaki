@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to show something holds for every natural number.\footnote{Future editions will modify this superficial why.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The most important property of the set of natural numbers is that it is the unique smallest successor set. In other words, if $S$ is a successor set contained in $\omega$ (see \sheetref{natural_numbers}{Natural Numbers}), then $S = \omega$. This is useful for proving that a particular property holds for the set of natural numbers.</p></div><div class="sheet-listing"><p class="sheet"> To do so we follow standard routine. First, we define the set $S$ to be the set of natural numbers for which the property holds. This step uses the principle of selection (see \sheetref{set_selection}{Set Selection}) and ensures that $S \subset \omega$. Next we show that this set $S$ is indeed a successor set. The first part of this step is to show that $0 \in S$. The second part is to show that $n \in S \implies \ssuc{n} \in S$. These two together mean that $S$ is a successor set, and since $S \subset \omega$ by definition, that $S = \omega$. In other words, the set of natural numbers for which the property holds is the entire set of natural numbers. We call this the \t{principle of mathematical induction.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -166,8 +202,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

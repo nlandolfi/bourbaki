@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Consider bounding the measure where two functions differ. We would look at their absolute value, and the measure of where this is greater than zero. The absolute value of their difference is a non-negative measurable random variable.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> We bound the measure that a non-negative measurable real-valued function exceeds some value by its integral.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $(X, \SA, \mu)$ be a measure space. Let $g: X \to [0, \infty]$ be measurable. Then for all $t > 0$, \[ \mu(\Set*{x \in X}{g(x) \geq t}) \leq \frac{\int g d\mu}{t}. \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Let $A = \Set*{x \in X}{g(x) \geq t}$. Define $h: X \to R$ by \[ h(x) = \begin{cases} 1 & \text{ if } g(x) \geq t \\ 0 & \text{ otherwise. } \end{cases} \] First, $\mu(A) = \int h d\mu$. Second, $h \leq g$. So: \[ \begin{aligned} \mu(\Set*{x \in X}{g(x) \geq t}) &= \int h d\mu &\leq \int g/t d\mu &= \frac{\int g d\mu}{t}. \end{aligned} \] \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> This propopsition is universally referred to as \t{Markov's ineuqality}.\footnote{We eschew this terminology in accordance with the project's policy on naming.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -50,6 +50,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -66,6 +101,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can cast various common probabilistic regression models into the probabilistic errors linear model by mentioning the input space and feature maps. This unifies our analysis.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{line fit model} has input space $\R$ and output space $\R$. We use a regression function $\phi: \R \to \R^2$ defined by $\phi(t) = \transpose{(1, t)}$.</p></div><div class="sheet-listing"><p class="sheet"> We think of $t \in T \subset \R$ as a "dose level" ($T$ is an interval). Given dose levels $t_1, \dots, t_\ell$ and repetitions $n_1, \dots, n_\ell$ we obtain the design matrix. Here the regression function generates a line segment embedded in the plane $\R^2$. We call the parameters the \t{intercept parameter} and \t{slope parameter}.</p></div><div class="sheet-listing"><p class="sheet"> A \t{parabola fit model} has input space $\R$ and output space $\R$. We use a regression function $\phi: \R \to \R^3$ defined by $\phi(t) = \transpose{(1, t, t^2)}$. Here the regression space is a segment of a parabola embedded in space $\R^3$ (since $t \in T$ an interval).</p></div><div class="sheet-listing"><p class="sheet"> These two are instance of \t{polynomial fit models} of degree $d \geq 1$, in which the regression function becomes $\phi: \R \to \R^{d + 1}$ defined by $\phi(t) =  \transpose{(1, t, t^2, \dots, t^d)}$. In this case, the regression range $\phi(T)$ is a one-dimensional curve embedded in $\R^{d+1}$. In cases in which it is clear that the input space is a single real variable $t$, a linear model for a line fit (parabola fit, polynomial fit of degree $d$) is called a \t{first-degree model} (\t{second-degree model}, \t{$d$th degree model}).</p></div><div class="sheet-listing"><h2 class="sheet" id="$m$-way_models">2.1 $m$-way models</h2></div><div class="sheet-listing"><p class="sheet"> We can generalize to \t{$m$-way $d$th degree polynomial fit models} in which the input space is $X \subset \R^m$ and the regression function $\phi: \R^m \to \R^k$ ($k$ is $d+m$ choose $d$) is the vector of all monomials of degree $d$ in $m$ variables.</p></div><div class="sheet-listing"><p class="sheet"> For example, a two-way third-degree model has a regression function \[ \phi(t_1, t_2) = \transpose{\bmat{1 & t_1 & t_2 & t_1^2 & t_1t_2 & t_2^2 & t_1^3 & t_1^2t_2 & t_1t_2^2 & t_2^3}}. \] Or consider a three way second-degree model with regression function \[ \phi(t_1, t_2, t_3) = \transpose{\bmat{1 & t_1 & t_2 & t_3 & t_1^2 & t_1t_2 & t_1t_3 & t_2^2 & t_2t_3 & t_3^2}}. \] Both models will result in parameter vectors of size ten. We call these models \t{saturated} because they have every possible $d$th degree power or cross product of variables. In generally, a $m$-way $d$th degree model has $d+m$ choose $d$ mean parameters.</p></div><div class="sheet-listing"><p class="sheet"> In contrast to saturated models we can talk about \t{nonsaturated} models. For example, a nonsaturated two-way second-degree model has $\phi: \R^2 \to \R^4$ where $\phi(t_1, t_2) = \transpose{(1 , t_1 , t_2 , t_1^2)}$.</p></div>
     </div>
@@ -170,8 +206,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

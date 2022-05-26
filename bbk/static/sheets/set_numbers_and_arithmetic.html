@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How does the number of elements change with unions, and products.</p></div><div class="sheet-listing" id="results"><h1 class="sheet">2. Results</h1></div><div class="sheet-listing"><p class="sheet"> There are a few nice relations.\footnote{Proofs will appear in future editions.} Recall from \sheetref{finite_sets}{Finite Sets} that the union and product of finite sets is finite. Also, the power of a finite set is finite.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A$ and $B$ be finite sets with $A \cap B = \emptyset$. Then $\num{A \union B} = \num{A} + \num{B}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A$ and $B$ be a finite sets Then $\num{A \times B} = \num{A} \cdot \num{B}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A$ and $B$ be a finite sets Then $\num{A^B} = \num{A}^{\num{B}}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A$ be a finite set. Then $\num{\powerset{A}} = 2^{\num{A}}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

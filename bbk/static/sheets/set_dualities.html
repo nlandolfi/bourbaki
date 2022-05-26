@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How does taking complements relate to forming unions and intersections.</p></div><div class="sheet-listing" id="complements_of_unions_or_intersections"><h1 class="sheet">2. Complements of unions or intersections</h1></div><div class="sheet-listing"><p class="sheet"> Let $E$ denote a set. Let $A$ and $B$ denote sets and $A, B \subset E$. All complements are taken with respect to $E$. The following are known as \t{DeMorgan's Laws}. \ifhmode\unskip\fi\footnote{ Proofs will appear in a future edition. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{A \union B} = \complement{A} \intersect \complement{B}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{A \intersect B} = \complement{A} \union \complement{B}$ \end{proposition}</p></div><div class="sheet-listing" id="principle_of_duality"><h1 class="sheet">3. Principle of duality</h1></div><div class="sheet-listing"><p class="sheet"> As a result of DeMorgan's Laws \ifhmode\unskip\fi\footnote{ Future editions will change the name to remove the reference to DeMorgan in accordance with the project's policy on naming. } and basic facts about complements (see \sheetref{set_complements}{Set Complements}) theorems about sets often come in pairs. In other words, given an inclusion or identity relation involving complements, unions and intersections of some set (above $E$) if we replace all sets by their complemnets, swap unions and intersections, and flip all inclusions we obtain another, true, result. The correspondence is called the \t{principle of duality for sets}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -187,8 +223,105 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:set_dualities❳ </span>
+
+ <span class='run'>❲%!need:set_complements❳ </span>
+
+ <span class='run'>❲%!need:pair_unions❳ </span>
+
+ <span class='run'>❲%!need:pair_intersections❳ </span>
+
+ <span class='run'>❲%!refs:paul_halmos∕naive_set_theory∕section_05❳ </span>
+
+ <span class='run'>❲%!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕set_operations❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>How does taking complements relate to forming
+  unions and intersections. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Complements of unions or intersections} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $E$ denote a set. </span>
+
+ <span class='run'>Let $A$ and $B$ denote sets and $A, B ⊂ E$. </span>
+
+ <span class='run'>All complements are taken with respect to $E$. </span>
+
+ <span class='run'>The following are known as
+  <span class='term'>DeMorgan’s Laws</span>.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>$\complement{A \union B} = \complement{A} ∫ersect
+  \complement{B}$ </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>$\complement{A ∫ersect B} = \complement{A} \union
+  \complement{B}$ </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Principle of duality} </span>
+</p>
+
+
+<p>
+ <span class='run'>As a result of DeMorgan’s Laws[footnote skipped in this version]
+  and basic facts about complements (see
+  \sheetref{set_complements}{Set Complements}) theorems
+  about sets often come in pairs. </span>
+
+ <span class='run'>In other words, given an inclusion or identity
+  relation involving complements, unions and
+  intersections of some set (above $E$) if we
+  replace all sets by their complemnets, swap
+  unions and intersections, and flip all inclusions
+  we obtain another, true, result. </span>
+
+ <span class='run'>The correspondence is called the
+  <span class='term'>principle of duality for
+  sets</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. Future editions may change the name of this sheet to \t{computation networks}, or may add prerequisite sheet on computation graphs. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A sequence of functions $(g_1, \dots, g_\ell)$ is \t{composable} if $g_i$ is composible with $g_{i-1}$ for $i = 2, \dots, \ell$. In this case we write $g_\ell \composed g_{\ell-1} \composed \cdots \composed g_2 \composed g_1$. For example, we write $g_3 \composed g_2 \composed g_1$ for $(g_1, g_2, g_3)$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{neural network} (or \t{feedforward neural network}) from $\R^n$ to $\R^m$ is a sequence of composable functions $(g_1, \dots, g_{\ell})$, $\dom g_1 = \R^n$, $\ran g_\ell \subset \R^m$, satisfying \[ g_i(\xi) = h_i(A_i \xi + b_i) \] for some conforming matrices $A_i$, vectors $b_i$ and functions $h_i$.</p></div><div class="sheet-listing"><p class="sheet"> The $i$th \t{layer} of the neural network is the $i$th function $g_i$. The $i$th \t{activation} of the neural network is the function $h_i$. A \t{neural network} is called \t{deep} if its number of layers is larger than 3.</p></div><div class="sheet-listing"><p class="sheet"> We call the composition of the layers of the neural network the \t{network predictor} (or just \t{predictor}). We also call it \t{the function} of the network. \ifhmode\unskip\fi\footnote{ Many authorities refer to a neural network as a function. Strictly speaking that is true for us, as well, since a sequence is a function. But the meaning of the common use is in reference to the \t{network predictor}. }</p></div><div class="sheet-listing"><p class="sheet"> A \t{multi-layer perceptron} (\t{MLP}) is a neural network with 2 layers (1 \t{hidden layer}) and for which $A_i$ and $b_i$ have unrestricted nonzero entries.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -180,8 +216,123 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:neural_networks❳ </span>
+
+ <span class='run'>❲%!need:regressors❳ </span>
+
+ <span class='run'>❲% %!need:inductors❳ </span>
+
+ <span class='run'>❲%!need:real_matrix-vector_products❳ </span>
+
+ <span class='run'>❲%!refs:∕sanjay_lall∕introduction_to_machine_learning∕neural_networks❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why}[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A sequence of functions $(g_1, …, g_ℓ)$ is
+  <span class='term'>composable</span> if $g_i$ is
+  composible with $g_{i-1}$ for $i = 2, …, ℓ$. </span>
+
+ <span class='run'>In this case we write $g_ℓ \composed g_{ℓ-1}
+  \composed ⋯ \composed g_2 \composed g_1$. For
+  example, we write $g_3 \composed g_2 \composed
+  g_1$ for $(g_1, g_2, g_3)$. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>neural network</span> (or
+  <span class='term'>feedforward neural network</span>)
+  from $𝗥^n$ to $𝗥^m$ is a sequence of composable
+  functions $(g_1, …, g_{ℓ})$, $\dom g_1 = 𝗥^n$,
+  $\ran g_ℓ ⊂ 𝗥^m$, satisfying
+  <p>\[
+   g_i(ξ) = h_i(A_i ξ + b_i) </span>
+  \]</p>
+  for some conforming matrices $A_i$, vectors
+  $b_i$ and functions $h_i$. </span>
+</p>
+
+
+<p>
+ <span class='run'>The $i$th <span class='term'>layer</span> of the
+  neural network is the $i$th function $g_i$. </span>
+
+ <span class='run'>The $i$th <span class='term'>activation</span> of
+  the neural network is the function $h_i$. </span>
+
+ <span class='run'>A <span class='term'>neural network</span> is
+  called <span class='term'>deep</span> if its number
+  of layers is larger than 3. </span>
+</p>
+
+
+<p>
+ <span class='run'>We call the composition of the layers of the
+  neural network the <span class='term'>network
+  predictor</span> (or just
+  <span class='term'>predictor</span>). </span>
+
+ <span class='run'>We also call it <span class='term'>the
+  function</span> of the network.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>multi-layer perceptron</span>
+  (<span class='term'>MLP</span>) is a neural network
+  with 2 layers (1 <span class='term'>hidden
+  layer</span>) and for which $A_i$ and $b_i$ have
+  unrestricted nonzero entries. </span>
+</p>
+
+
+<p>
+ <span class='run'></span>
+
+ <span class='run'>❲% \ssubsection{Notation}❳ </span>
+
+ <span class='run'>❲%❳ </span>
+
+ <span class='run'>❲% Let $g^1: 𝗥^d → 𝗥^k$, $g^2: 𝗥^k → 𝗥^k$, $g^3: 𝗥^k → 𝗥^m$.❳ </span>
+
+ <span class='run'>❲% Then $(g^1, g^2, g^3)$ is a neural network.❳ </span>
+
+ <span class='run'>❲% Notice that the codomain of $g^1$ ($𝗥^k$❳ </span>
+
+ <span class='run'>❲%❳ </span>
+
+ <span class='run'>❲% \ssubsection{Activation functions}❳ </span>
+
+ <span class='run'>❲%❳ </span>
+
+ <span class='run'>❲% An activation function $h: 𝗥 → 𝗥$ is nonlinear.❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

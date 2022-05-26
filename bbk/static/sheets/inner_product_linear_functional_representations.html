@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can identify any linear functional $F: \R^n \to \R$ with a vector $y \in \R^n$ so that $F(x) = \ip{x,y}$. We generalize this result to complete inner product spaces.</p></div><div class="sheet-listing" id="motivating_result"><h1 class="sheet">2. Motivating result</h1></div><div class="sheet-listing"><p class="sheet"> The following is known as the \t{Riesz representation theorem} (or \t{Riesz-Fr\'echet representation theorem}, or \t{Riesz theorem},  or \t{Riesz-Fr\'echet theorem}).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $((V, k), \ip{\cdot,\cdot})$ be a complete inner product space and let $F: V \to k$ be a continuous linear functional on $V$. There exists a unique $y \in V$ so that \[ F(x) = \ip{x, y} \] for all $x \in V$. Moreover $\norm{y} = \dnorm{F}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> Clearly $\R^n$ is a complete inner product space, and so this this theorem says the expected. We can identify linear functionals on $\R^n$ with elements (vectors) in $\R^n$.\footnote{Future editions will expand further.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

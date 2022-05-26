@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We often want a subset system whose set of distinguished subsets is closed under the usual set operations.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{subset algebra} is a subset system for which (1) the base set is distinguished (2) the complement of a distinguished set is distinguished (3) the union of two distinguished sets is distinguished.</p></div><div class="sheet-listing"><p class="sheet"> We call the set of distinguished sets an \t{algebra} on the the base set. We justify this language by showing that the standard set operations applied to distinguished sets result in distinguished sets.</p></div><div class="sheet-listing"><p class="sheet"> If a set of subsets is closed under complements it contains the base set if and only if it contains the empty set. So we can replace condition (1) by insisting that the algebra contain the empty set. Similarly, if a non-empty set of subsets is closed under complements and unions then it contains the base set: the union of a distinguished set and its complement. Thus we can replace condition (1) by insisting that the algebra be non-empty.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> The notation follows that of a subset system. Let $(A, \mathcal{A})$ be a subset algebra. We also say "let $\mathcal{A"$ be an algebra on $A$.} Moreover, since the largest element of the algebra is the base set, we can say without ambiguity: "let $\mathcal{A}$ be an algebra."</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} For any subset algebra, $\emptyset$ is distinguished. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} For any subset algebra, for any distinguished sets, (a) the intersection is distinguished and (b) their symmetric difference is distinguished. So, if one contains the other, the complement of the smaller in the larger is distinguished. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} For any subset algebra, for any finite family of distinguished sets, (a) the finite family union and (b) the finite family intersection are both distinguished. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> So we could have defined an algebra by insisting it be closed under finite intersections.</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">4. Examples</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $(A, 2^{A})$ is a subset algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $(A, \set{A, \emptyset})$ is a subset algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any infinite set $A$, let $\mathcal{A}$ be the set $$ \Set*{ B \subset A }{ \card{B} < \aleph_0 \lor \card{C_{A}(B)} < \aleph_0 }. $$ $\mathcal{A}$ is an algebra; the \t{finite/co-finite algebra}. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any infinite set $A$, let $\mathcal{A}$ be the set $$ \Set*{ B \subset A }{ \card{B} \leq \aleph_0 \lor \card{C_{A}(B)} \leq \aleph_0 }. $$ $\mathcal{A}$ is an algebra; the \t{countable/co-countable algebra}. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any infinite set $A$, let $\mathcal{A}$ be the set $$ \Set*{ B \subset A }{ \card{B} \leq \aleph_0 }. $$ $\mathcal{A}$ is not an algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be an uncountable set. Let $\mathcal{A}$ be the collection of all countable subsets of $A$. $\mathcal{A}$ is not a sigma algebra. \end{expl}</p></div>
     </div>
@@ -187,8 +223,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

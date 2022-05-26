@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to summarize a dataset in $\R$ with a density.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{likelihood} (or \t{density likelihood}) of a density $f: \R \to \R$ on a datset $x^1, \dots, x^n \in \R$ is $\prod_{k = 1}^{n} f(x^k)$. A \t{maximum likelihood density} is a density which maximizes the likelihood among all densities.</p></div><div class="sheet-listing"><p class="sheet"> As with probability distributions, we say that we are selecting the distribution according to the \t{maximum likelihood principle}. In general, we call any function from datasets to densities a \t{density selector}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -187,8 +223,67 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:maximum_likelihood_densities❳ </span>
+
+ <span class='run'>❲%!need:maximum_likelihood_distributions❳ </span>
+
+ <span class='run'>❲%!need:probability_densities❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We want to summarize a dataset in $\R$ with a
+  density. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>likelihood</span> (or
+  <span class='term'>density likelihood</span>) of a
+  density $f: 𝗥 → \R$ on a datset $x^1, …, x^n
+  ∈ \R$ is $∏_{k = 1}^{n} f(x^k)$. </span>
+
+ <span class='run'>A <span class='term'>maximum likelihood
+  density</span> is a density which maximizes the
+  likelihood among all densities. </span>
+</p>
+
+
+<p>
+ <span class='run'>As with probability distributions, we say that
+  we are selecting the distribution according to
+  the <span class='term'>maximum likelihood
+  principle</span>. </span>
+
+ <span class='run'>In general, we call any function from datasets
+  to densities a <span class='term'>density
+  selector</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

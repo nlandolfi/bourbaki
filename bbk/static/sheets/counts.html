@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \s{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We want to know how many of an indistinguishable object we have. Let $a$ be that object. If I have one of $a$, say I have the set $\set{a}$. The weirdness is that two of $a$ is not the pair $\set{a,a}$, because that pair is the same $"a"$ and so the same as two. We can take notes from ordered pairs, though, and say that when I have two of $a$ I have $(a,a)$. What then of the gneeralization to tripels? I have $(a, a, a) = ((a, a), a)$ Which is $\set{\set{(a, a)}, \set{(a, a), a}}$ Which is $\set{\set{\set{\set{a}, \set{a}}}, \set{\set{\set{a}, \set{a}}, a}}$.</p></div><div class="sheet-listing"><p class="sheet"> \[ \begin{aligned} 1 = \set{a} \\ 2  = (a, a) = \set{\set{a}, \set{a}} \\ 3  = ((a, a), a) = (2, a) \end{aligned} \]</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

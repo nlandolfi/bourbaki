@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to select particular terms of sequence.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{subindex} is a monotonically increasing function from and to the natural numbers. Roughly, it selects some ordered infinite subset of natural numbers. A \t{subsequence} of a first sequence is any second sequence which is the composition of the first sequence with a subindex.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $i: \N \to \N$ such that $n < m \implies i(n) < i(m)$. Then $i$ is a subindex. Let $b = a \comp i$. Then $b$ is a subsequence of $a$. We denote it by $\set{b_{i(n)}}_n$ and the $n$th term by $b_{i(n)}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,73 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:subsequences❳ </span>
+
+ <span class='run'>❲%!need:sequences❳ </span>
+
+ <span class='run'>❲%!need:function_composites❳ </span>
+
+ <span class='run'>❲%!TODO: other needs, montonicity?❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We want to select particular terms of sequence. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+
+ <span class='run'>A <span class='term'>subindex</span> is a
+  monotonically increasing function from and to the
+  natural numbers. </span>
+
+ <span class='run'>Roughly, it selects some ordered infinite subset
+  of natural numbers. </span>
+
+ <span class='run'>A <span class='term'>subsequence</span> of a first
+  sequence is any second sequence which is the
+  composition of the first sequence with a
+  subindex. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $i: 𝗡 → 𝗡$ such that $n &lt; m ⇒ i(n)
+  &lt; i(m)$. </span>
+
+ <span class='run'>Then $i$ is a subindex. </span>
+
+ <span class='run'>Let $b = a \comp i$. </span>
+
+ <span class='run'>Then $b$ is a subsequence of $a$. </span>
+
+ <span class='run'>We denote it by $\set{b_{i(n)}}_n$ and the
+  $n$th term by $b_{i(n)}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

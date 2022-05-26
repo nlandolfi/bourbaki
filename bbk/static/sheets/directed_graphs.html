@@ -88,6 +88,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -104,6 +139,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to visualize (nonsymmetric) relations.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{directed graph} is a pair $(V, E)$ in which $V$ is a finite nonempty set and $E$ is a subset of $V \times V$. In other words, $E$ is a relation on $V$. We call the elements of the first set the \t{vertices} of the graph and the elements of the second set the \t{edges}.</p></div><div class="sheet-listing"><p class="sheet"> Let $(v, w) \in E$. We say that $(v, w)$ is an edge \t{from} $v$ \t{to} $w$, and that it is an \t{outgoing edge} of $v$ and an \t{incoming edge} of $w$. We call $v$ a \t{parent} of $w$ and we call $w$ a child of $v$. We say that the edge $(v, w)$ is \t{incident} to $v$ and $w$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{child set} of a vertex is the set of its child vertices and similarly for the \t{parent set}; we refer to these sets as the \t{children} and \t{parents} of the vertex, respectively. A vertex is a \t{source} vertex if it only has outgoing edges (i.e., is the child of no vertex its parent set is empty) and a vertex is a \t{sink} if it only has incoming edges (i.e., is the parent of no vertex).</p></div><div class="sheet-listing"><p class="sheet"> A directed graph is \t{complete} if every vertex is both a child and parent of every other vertex.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $\pa: V \to \powerset{V}$ and $\ch: V \to \powerset{V}$ be the functions associating to each vertex its set of parents and set of children, respectively. As usual, we denote the parents of vertex $v$ by $\pa_v$ and the children by $\ch_v$.</p></div><div class="sheet-listing" id="skeletons"><h1 class="sheet">3. Skeletons</h1></div><div class="sheet-listing"><p class="sheet"> The \t{skeleton} of the directed graph $(V, E)$ is the undirected graph $(V, F)$ where \[ F = \Set*{\set{v, w} \subset V}{(v, w) \in E \text{ or } (w, v) \in E}. \] In other words, the skeleton is an undirected graph whose vertex set is $V$ and whose edges are all (unordered) pairs which appear as an ordered pair in the directed graph. If the $(V, E)$ is a directed graph and $E$ is a symmetric relation, then we the skeleton of $(V, E)$ is a natural undirected graph to associate with $(V, E)$. An \t{orientation} of an undirected graph $G$ is a directed graph whose skeleton is $G$.</p></div><div class="sheet-listing" id="visualization"><h1 class="sheet">4. Visualization</h1></div>
     </div>
@@ -208,8 +244,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

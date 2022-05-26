@@ -137,6 +137,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -153,6 +188,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We have seen several concepts that consist of associating with a pair of sets a third set. For example, set unions and set intersections</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> An \t{operation} (or \t{binary operation}, \t{law of composition}) on a set $A$ is a function from $A \times A$ to $A$.</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, operations \t{combine} (or \t{compose}) elements. We \t{operate} on ordered pairs.</p></div><div class="sheet-listing"><h2 class="sheet" id="example:_set_operations">2.1 Example: set operations</h2></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a set. Define $g: \powerset{X} \times \powerset{X} \to \powerset{X}$ by $g(A, B) = A \cup B$. Then $g$, the function which associates with two sets their union (see \sheetref{pair_unions}{Pair Unions}) is an operation on $\powerset{X}$. Likewise, define $h : \powerset{X} \times \powerset{X} \to \powerset{X}$ by $h(A, B) = A \cap B$.</p></div><div class="sheet-listing"><h2 class="sheet" id="naming_their_properties">2.2 Naming their properties</h2></div><div class="sheet-listing"><p class="sheet"> $\cup$ has several nice properties. For one $A \cup B = B \cup A$ and $(A \cup B) \cup C = A \cup (B \cup C)$.</p></div><div class="sheet-listing"><p class="sheet"> An operation with the first property, that the ordered pair $(A, B)$ and $(B, A)$ have the same result is called \t{commutative}. An operation with the second property, that when given three objects the order in which we operate does not matter is called \t{associative}. $\cap$ shares these properties with $\cup$.</p></div><div class="sheet-listing"><p class="sheet"> We call the operation of \t{forming unions} the function $(A, B) \mapsto A \union B$. We call the operation of \t{forming intersections} the function $(A, B) \mapsto A \intersect B$. We call the operation of \t{forming symmetric differences} the function $(A, B) \mapsto A \symdiff B$. Since forming unions commutes and is associative and likewise with forming intersections, forming symmetric differences also commutes.</p></div><div class="sheet-listing" id="algebras"><h1 class="sheet">3. Algebras</h1></div><div class="sheet-listing"><p class="sheet"> Of course, any operation is defined on some set. For this reason, we define an \t{algebra} as an ordered pair whose first element is a non-empty set and whose second element is an operation on that set. The \t{ground set} of the algebra is the set on which the operation is defined.</p></div>
     </div>
@@ -257,8 +293,155 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:operations❳ </span>
+
+ <span class='run'>❲%!need:pair_intersections❳ </span>
+
+ <span class='run'>❲%!need:functions❳ </span>
+
+ <span class='run'>❲%!need:set_symmetric_differences❳ </span>
+
+ <span class='run'>❲%!refs:paul_halmos∕naive_set_theory∕section_04❳ </span>
+
+ <span class='run'>❲%!refs:paul_halmos/naive_set_theory/section_06❳ </span>
+
+ <span class='run'>❲%!refs:paul_halmos∕naive_set_theory∕section_08❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We have seen several concepts that consist of
+  associating with a pair of sets a third set. </span>
+
+ <span class='run'>For example, set unions and set intersections </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>An <span class='term'>operation</span> (or
+  <span class='term'>binary operation</span>,
+  <span class='term'>law of composition</span>) on a
+  set $A$ is a function from $A × A$ to $A$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Roughly speaking, operations
+  <span class='term'>combine</span> (or
+  <span class='term'>compose</span>) elements. </span>
+
+ <span class='run'>We <span class='term'>operate</span> on ordered
+  pairs. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Example: set operations} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $X$ be a set. </span>
+
+ <span class='run'>Define $g: \powerset{X} × \powerset{X} →
+  \powerset{X}$ by $g(A, B) = A ∪ B$. </span>
+
+ <span class='run'>Then $g$, the function which associates with
+  two sets their union (see
+  \sheetref{pair_unions}{Pair Unions}) is an
+  operation on $\powerset{X}$. </span>
+
+ <span class='run'>Likewise, define $h : \powerset{X} ×
+  \powerset{X} → \powerset{X}$ by $h(A, B) = A ∩
+  B$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Naming their properties} </span>
+</p>
+
+
+<p>
+ <span class='run'>$∪$ has several nice properties. </span>
+
+ <span class='run'>For one $A ∪ B = B ∪ A$ and $(A ∪ B) ∪ C
+  = A ∪ (B ∪ C)$. </span>
+</p>
+
+
+<p>
+ <span class='run'>An operation with the first property, that the
+  ordered pair $(A, B)$ and $(B, A)$ have the
+  same result is called
+  <span class='term'>commutative</span>. </span>
+
+ <span class='run'>An operation with the second property, that
+  when given three objects the order in which we
+  operate does not matter is called
+  <span class='term'>associative</span>. </span>
+
+ <span class='run'>$∩$ shares these properties with $∪$. </span>
+</p>
+
+
+<p>
+ <span class='run'>We call the operation of \t{forming unions} the
+  function $(A, B) \mapsto A \union B$. </span>
+
+ <span class='run'>We call the operation of \t{forming
+  intersections} the function $(A, B) \mapsto A
+  \intersect B$. </span>
+
+ <span class='run'>We call the operation of \t{forming symmetric
+  differences} the function $(A, B) \mapsto A
+  \symdiff B$. </span>
+
+ <span class='run'>Since forming unions commutes and is associative
+  and likewise with forming intersections, forming
+  symmetric differences also commutes. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Algebras} </span>
+</p>
+
+
+<p>
+ <span class='run'>Of course, any operation is defined on some
+  set. </span>
+
+ <span class='run'>For this reason, we define an
+  <span class='term'>algebra</span> as an ordered
+  pair whose first element is a non-empty set and
+  whose second element is an operation on that
+  set. </span>
+
+ <span class='run'>The <span class='term'>ground set</span> of the
+  algebra is the set on which the operation is
+  defined. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

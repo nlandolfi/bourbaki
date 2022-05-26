@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> How does the power set relate to a union?</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation Preliminaries}</p></div><div class="sheet-listing"><p class="sheet"> Let $E$ denote a set. Let $\CA$ denote a set of subsets of the set denoted by $E$. We define $\bigcup_{A \in \CA} A$ to mean $\cap \CA$.</p></div><div class="sheet-listing"><p class="sheet"> \s{Basic Properties}</p></div><div class="sheet-listing"><p class="sheet"> Here are some basic interactions between the powerset and unions.\footnote{Future editions will expand on these propositions and provide accounts of them.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\powerset{E} \cup \powerset{F} \subset \powerset{\parens{E \cup F}}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\bigcup_{X \in \CC} \powerset{X} \subset \powerset{\parens{\bigcup_{X \in \CC} X}}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $E = \bigcup \powerset{E}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\powerset{\parens{\bigcup E}} \supset E$. \end{proposition} Typically $E \neq \powerset{\parens{\bigcup E}}$, in which case $E$ is a proper subset.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

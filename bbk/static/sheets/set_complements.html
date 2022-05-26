@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is often the case in considering set differences that all sets considered are subsets of one set.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. In many cases, we take the difference between a set and one contained in it. In other words, we assume that $B \subset A$. In this case, we often take complements relative to the same set $A$. So we do not refer to it, and instead refer to the relative complement of $B$ in $A$ as the \t{complement} of $B$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ denote a set, and let $B$ denote a set for which $B \subset A$. We denote the relative complement of $B$ in $A$ by $\relcomplement{B}{A}$. When we need not mention the set $A$, and instead speak of the complement of $B$ without qualification, we denote this complement by $\complement{B}$.</p></div><div class="sheet-listing" id="complement_of_a_complement"><h1 class="sheet">3. Complement of a complement</h1></div><div class="sheet-listing"><p class="sheet"> One nice property of a complement when $B \subset A$ is: \begin{proposition} $(B \subset A) \iff (\relcomplement{\relcomplement{B}{A}}{A} = B)$ \end{proposition}</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_facts">3.1 Basic Facts</h2></div><div class="sheet-listing"><p class="sheet"> Let $E$ denote a set and let $A$ and $B$ denote sets satisfying $A,B \subset E$. Then take all complements with respect to $E$. Here are some immediate consequences of the definition. \ifhmode\unskip\fi\footnote{ Future editions will include accounts. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{\complement{A}} = A$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{\emptyset} = E$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{E} = \varnothing$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \subset B \iff \complement{B} \subset \complement{A}$ \end{proposition}</p></div>
     </div>
@@ -180,8 +216,149 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:set_complements❳ </span>
+
+ <span class='run'>❲%!need:set_differences❳ </span>
+
+ <span class='run'>❲%!need:empty_set❳ </span>
+
+ <span class='run'>❲%!refs:paul_halmos∕naive_set_theory∕section_05❳ </span>
+
+ <span class='run'>❲%!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕set_operations❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>It is often the case in considering set
+  differences that all sets considered are subsets
+  of one set. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A$ and $B$ denote sets. </span>
+
+ <span class='run'>In many cases, we take the difference between
+  a set and one contained in it. </span>
+
+ <span class='run'>In other words, we assume that $B ⊂ A$. </span>
+
+ <span class='run'>In this case, we often take complements
+  relative to the same set $A$. </span>
+
+ <span class='run'>So we do not refer to it, and instead refer
+  to the relative complement of $B$ in $A$ as
+  the <span class='term'>complement</span> of $B$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A$ denote a set, and let $B$ denote a
+  set for which $B ⊂ A$. </span>
+
+ <span class='run'>We denote the relative complement of $B$ in
+  $A$ by $\relcomplement{B}{A}$. </span>
+
+ <span class='run'>When we need not mention the set $A$, and
+  instead speak of the complement of $B$ without
+  qualification, we denote this complement by
+  $\complement{B}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Complement of a complement} </span>
+</p>
+
+
+<p>
+ <span class='run'>One nice property of a complement when $B ⊂
+  A$ is: </span>
+
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>$(B ⊂ A) \iff
+  (\relcomplement{\relcomplement{B}{A}}{A} = B)$ </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Basic Facts} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $E$ denote a set and let $A$ and $B$
+  denote sets satisfying $A,B ⊂ E$. </span>
+
+ <span class='run'>Then take all complements with respect to $E$. </span>
+
+ <span class='run'>Here are some immediate consequences of the
+  definition.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>$\complement{\complement{A}} = A$ </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>$\complement{\emptyset} = E$ </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>$\complement{E} = ∅$ </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>$A ⊂ B \iff \complement{B} ⊂ \complement{A}$ </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

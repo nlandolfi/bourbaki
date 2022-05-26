@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to define the length of a subset of real numbers.</p></div><div class="sheet-listing" id="notions"><h1 class="sheet">2. Notions</h1></div><div class="sheet-listing"><p class="sheet"> We take two common notions:</p></div><div class="sheet-listing"><p class="sheet"> \begin{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> \item The length of a whole is the sum of the lengths of its parts; the \t{additivity principle}.</p></div><div class="sheet-listing"><p class="sheet"> \item The length of a whole is the at least the length of any whole it contains the \t{containment principle}.</p></div><div class="sheet-listing"><p class="sheet"> \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> The task is to make precise the use of "whole,}, \say{parts," and "contains." We start with intervals.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> By whole we mean set. By part we mean an element of a partition; in other words, a subset. By contains we mean set inclusion.</p></div><div class="sheet-listing"><p class="sheet"> The length of an interval is the difference of its endpoints: the larger minus the smaller (see \sheetref{interval_length}{Interval Length}). Two intervals are \t{non-overlapping} if their intersection is a single point or empty. The \ct{length} of the union of two non-overlapping intervals is the sum of their lengths.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -166,8 +202,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

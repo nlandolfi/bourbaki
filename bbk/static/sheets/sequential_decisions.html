@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to discuss making several decisions over time.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A^{1}$ be a set of actions and $\CO^1 = \set{O^{1}_a}$ a family of outcome sets. Define $H^1 = \Set*{(a, o)}{a \in A^1, o \in O^{1}_a}$. Let $\CA^2 = \set{A^{2}_{h^1}}_{h^1 \in H^1}$ be a family of action sets. Define \[ \tilde{H}^{2} = \Set*{(a_1, o_1, a_2)}{(a_1, o_1) \in H^1, a_2 \in A^{2}_{a_1o_1}}. \] Let $\CO^2 = \set{O^{2}_{h}}_{h \in \tilde{H}^2}$ be a family of outcome sets. Define \[ H^2 = \Set{(a_1, o_1, a_2, o_2)}{h = (a_1, o_1, a_2) \in \tilde{H}^2, o_2 \in O_{h}}. \] Let $\preceq$ be a total order on $H^2$. Then we call the sequence $((A^1, \CA^2), (\CO^1, \CO^2), \preceq)$ a \t{two-stage decision problem}.</p></div><div class="sheet-listing"><p class="sheet"> In general, let $\CA^{i} = \set{A^i_{h}}_{h \in H^{i-1}}$ be a family of action sets, define $\tilde{H}^i$ by \[ \Set*{(a_1, \dots, o_{i-1}, a_i)}{h = (a_1, \dots, o_{i-1}) \in H^{i-1}, a_i \in A^i_{h}}. \] Let $\CO^{i+1} = \set{O^{i+1}_{h}}_{h \in \tilde{H}^{i}}$ be a family of outcome sets. Define $H^{i}$ by \[ \Set*{(a_1, \dots, a_i, o_i)}{h = (a_1, \dots, a_i) \in \tilde{H}^{i}, o_i \in O^i_{h}}. \] For $i = 3, \dots, n$. Let $\preceq$ be a total order on $H^{n}$. We call $H^i$ the \t{histories until time $i$}. In this case we identify $\CA^1 = A^1$ and call $((\CA^i)_{i = 1}^{n}, (\CO^i)_{i = 1}^{n}, \preceq)$ an \t{$n$-stage decision problem} (or \t{multi-stage decision problem} or \t{sequential decision problem}).\footnote{Future editions will clarify these definitions.}</p></div><div class="sheet-listing"><h2 class="sheet" id="simplifications">2.1 Simplifications</h2></div><div class="sheet-listing"><p class="sheet"> Discussing $n$-stage decision problems is complicated, as the notation indicates. How can we simplify thinking about them?</p></div><div class="sheet-listing"><p class="sheet"> One simplification occurs when the outcome sets at stage $i$ do not depend on the action taken, or on the history of actions. In this case, we may discuss outcome sets $O^i$ for $i = 1, \dots, n$.</p></div><div class="sheet-listing"><p class="sheet"> Another simplification occurs when the decisions to be made at each stage do not depend on the action taken or on the history of actions. In this case, we may discuss action sets $A^i$ for $i = 1, \dots, n$.</p></div><div class="sheet-listing"><p class="sheet"> An even greater simplification occurs when the outcome and actions sets do not depend on the stage $i$. In this case, we speak of <i>the} action set and \textit{the</i> outcome set.</p></div><div class="sheet-listing" id="state}\footnote{future_editions_will_move_this_to_\sheetref{state_representations}{state_representations}."><h1 class="sheet">3. State}\footnote{Future editions will move this to \sheetref{state_representations}{State Representations}.</h1></div><div class="sheet-listing"><p class="sheet"> Often we can summarize the history $H^i$ with a set $\CX_i$. In this case, we speak of the set of states $S_i$ for $i = 1, \dots, n$. In this case, we can associate the history $H^1$ with an element of $S^1$. We can associate the history $H^2$ with an element of $S^2$. And so on.</p></div><div class="sheet-listing"><p class="sheet"> Naturally, the current action affects the future states, but not the current or past states, since the state is a "summary} of the history, of the \say{past}.\footnote{Other language includes \say{sufficient statistic}, but we will avoid this for now. Future sheets may modify."</p></div><div class="sheet-listing"><p class="sheet"> In this way, the state is a "link} between the \say{past} and the \say{future."</p></div><div class="sheet-listing"><p class="sheet"> The idea is that the current action affects the future state, but not current or past states. The \t Often our decisions do not depend so much on</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

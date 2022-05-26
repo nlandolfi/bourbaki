@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{line through} two points in $n$-dimensional space is the set of points which can be expressed as the sum of the first point and a scaled multiple of the difference between the second point and the first. An \t{affine set} is a subset of $n$-dimensional space which contains the lines through each of its points.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.1 Examples</h2></div><div class="sheet-listing"><p class="sheet"> The empty set is trivially an affine set. The entire set of points in $n$-dimensional space is an affine set. Any singleton is an affine set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.2 Notation</h2></div><div class="sheet-listing"><p class="sheet"> The \t{line through} two points $x$ and $y$ in $\R^n$ is the set $$ \Set*{x + a(y - x)}{a \in \R \text{ and } x, y \in \R^n}. $$ Notice that the expression $x + a(y - x)$ is equivalent to $(1 - a)x + ay$.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">2.3 Other Terminology</h2></div><div class="sheet-listing"><p class="sheet"> Some authors call affine sets \t{affine varieties}, \t{linear varieties} or \t{flat}.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The intersection of a family of affine sets is affine. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -187,8 +223,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include._this_sheet_is_needed,_for_example,_in_discussing_perfect_elimination_orderings."><h1 class="sheet">1. Why}\footnote{Future editions will include. This sheet is needed, for example, in discussing perfect elimination orderings.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{higher adjacency set} or \t{higher neighborhood} of a vertex $v$ in an ordered undirected graph is all vertices in the neighborhood of $v$ whose index is greater the $v$. Similarly, the \t{lower adjacency set} or \t{lower neighborhood} of $v$ is all vertices in the neighborhood of $v$ whose index is less the $v$. We call these \t{monotone neighborhoods}.</p></div><div class="sheet-listing"><p class="sheet"> The \t{higher degree} of a vertex is the size of the higher adjacency set and the \t{lower degree} of a vertex is the size of its lower adjacency set.</p></div><div class="sheet-listing"><p class="sheet"> The \t{closed monotone neighborhoods} are the \t{closed higher adjacency set}, the higher adjacency set of $v$ union with the singleton $\set{v}$ and the \t{closed lower adjacency set}, the lower adjacency set of $v$ union with the singleton $\set{v}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the higher neighborhood of $v$ by $\adjh(v)$ and the lower neighborhood by $\adjl(v)$.</p></div><div class="sheet-listing" id="visualization"><h1 class="sheet">3. Visualization</h1></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \includegraphics[width=0.3\textwidth]{graphics_included/ordered_undirected_graph} \caption{Ordered undirected graph.} \end{figure}</p></div><div class="sheet-listing"><p class="sheet"> To help think about the monotone neighborhoods of the graph we visualize ordered graphs as triangular arrays with vertices along the diagonal and a bullet in row $i$ and column $j$ of the array if $i > j$ and the  vertices $\sigma(i)$ and $\sigma(j)$ are adjacent.</p></div><div class="sheet-listing"><p class="sheet"> An example is shown below for the ordered undirected graph in the figure (to understand this visualization, see \sheetref{ordered_undirected_graphs}{Ordered Undirected Graphs}) we use the \[ \barray{ a     &   & & & \\ \bullet & c & & & \\ & \bullet & d & & \\ \bullet & & \bullet & b & \\ \bullet & \bullet & \bullet & \bullet & e } \]</p></div><div class="sheet-listing"><p class="sheet"> In this array representation the higher and lower neighborhoods are easily identified. The indices of the elements of $\adjh(v)$ are the column indices of the entries in row $\inv{\sigma}(v)$ of the array. For example, $\inv{\sigma}(d) = 3$, and the only bullet entry in row three is $c$ so $\adjn(d) = \set{c}$. Likewise, $\adjn(c) = \set{a}$. And so on. Similalry, the indices of $\adjp(v)$ are the row indices of the entries in column $\inv{\sigma}(v)$. For example, $\inv{\sigma}(d)$ is $3$, and there are indices 4 and 5 corresponding to $b$ and $e$ so $\adjp(d) = \set{b, e}$. Likewise, $\adjp(c) = \set{d, e}$.</p></div><div class="sheet-listing"><p class="sheet"> For this reason, we use the notation $\col(v)$ and $\row(v)$ for the closed upper and lower neighborhoods. So $\col(v) = \adjp(v) \union \set{v}$ and $\row(v) = \adjn(v) \union \set{v}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

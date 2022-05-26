@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want finite measures.\footnote{This why is likely to be expanded on in future editions. It may be that we need to reference probability theory. It may suffice to note that the Lebesgue measure on $[0, 1]$ is finite, and so such measures exist.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A measurable set is \t{measure-finite} (or when clear that we do not mean finite in the sense of \sheetref{finite_sets}{Finite sets}), a set is \t{finite}) if its measure is a real number (as opposed to the only alternative, $+\infty$). The measure space itself is \t{measure-finite} if the base set is finite.</p></div><div class="sheet-listing"><p class="sheet"> A measurable set is \t{sigma-finite} if there exists a sequence of finite measurable sets whose union is the set.\footnote{The justification of this seems distinct from the previous paragraph, and therefore may need its own sheet. The reason for these seems to me to be that the Lebesgue measure is sigma-finite.} The measure space itself is \t{sigma-finite} if the base set is sigma finite.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, \CA, \mu)$ be a measure space. It is finite if $\mu(A) < +\infty$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $(A, \mathcal{A})$ be a measurable space.</p></div><div class="sheet-listing"><p class="sheet"> The counting measure on $(A, \mathcal{A})$ is finite if and only if the base set is finite. It is sigma finite if and only if the base set is a union of a sequence of finite sets.</p></div><div class="sheet-listing"><p class="sheet"> If $\mathcal{A} = 2^A$, then the counting measure is sigma finite if and only if $A$ is countable. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} A point mass measure is finite. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $R$ be the set of real numbers. The Lebesgue measure on $(R, \mathcal{B}(R))$ is sigma finite. \end{expl}</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

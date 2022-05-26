@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{limit} of an increasing sequence of sets is the family union of the sequence. The \t{limit} of a decreasing sequence of sets is the family intersection of the sequence.</p></div><div class="sheet-listing"><p class="sheet"> A \t{monotone limit} of an sequence of sets is the limit of a monotone sequence.</p></div><div class="sheet-listing"><p class="sheet"> A \t{monotone class} is a subset system in which monotone limits of monotone sequences of distinguished sets are distinguished. We call the distinguished sets a \t{monotone class}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ a non-empty set with partial order $\preceq$. Let $(A, \mathcal{A})$ be a subset space on $A$.</p></div><div class="sheet-listing"><p class="sheet"> Let $\seq{A}$ be an increasing or decreasing sequence in $\mathcal{A}$. We denote the limit of $\seq{A}$ by $\lim_{n} \seqt{A}$.</p></div><div class="sheet-listing"><p class="sheet"> If $\seq{A}$ is increasing, $\lim_n \seqt{A} = \union_{n} \seqt{A}$. If $\seq{A}$ is decreasing, $\lim_n \seqt{A} = \intersection_{n} \seqt{A}$.</p></div><div class="sheet-listing"><p class="sheet"> If $(A, \mathcal{A})$ is a monotone space, then for all monotone $\seq{A}$ in $\mathcal{A}$, $\lim_{n} \seqt{A} \in \mathcal{A}$. In this case, $\mathcal{A}$ is a montone class.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -180,8 +216,147 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:monotone_classes❳ </span>
+
+ <span class='run'>❲%!need:sequences❳ </span>
+
+ <span class='run'>❲%!need:subset_systems❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why}[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'></span>
+
+ <span class='run'>The </span>
+
+ <span class='run'><span class='term'>limit</span> </span>
+
+ <span class='run'>of an increasing sequence </span>
+
+ <span class='run'>of sets is the family </span>
+
+ <span class='run'>union of the sequence. </span>
+
+ <span class='run'>The </span>
+
+ <span class='run'><span class='term'>limit</span> </span>
+
+ <span class='run'>of a decreasing sequence </span>
+
+ <span class='run'>of sets is the family </span>
+
+ <span class='run'>intersection of the sequence. </span>
+</p>
+
+
+<p>
+ <span class='run'>A </span>
+
+ <span class='run'><span class='term'>monotone limit</span> </span>
+
+ <span class='run'>of an sequence of sets </span>
+
+ <span class='run'>is the limit of a </span>
+
+ <span class='run'>monotone sequence. </span>
+</p>
+
+
+<p>
+ <span class='run'>A </span>
+
+ <span class='run'><span class='term'>monotone class</span> </span>
+
+ <span class='run'>is a </span>
+
+ <span class='run'>subset system in which </span>
+
+ <span class='run'>monotone limits of </span>
+
+ <span class='run'>monotone sequences </span>
+
+ <span class='run'>of distinguished sets are distinguished. </span>
+
+ <span class='run'>We call the distinguished sets a </span>
+
+ <span class='run'><span class='term'>monotone class</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A$ a non-empty set with </span>
+
+ <span class='run'>partial order $≺eq$. </span>
+
+ <span class='run'>Let $(A, \mathcal{A})$ be a </span>
+
+ <span class='run'>subset space on $A$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $\seq{A}$ be an increasing </span>
+
+ <span class='run'>or decreasing sequence in $\mathcal{A}$. </span>
+
+ <span class='run'>We denote the limit of $\seq{A}$ </span>
+
+ <span class='run'>by $\lim_{n} \seqt{A}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>If $\seq{A}$ is increasing, </span>
+
+ <span class='run'>$\lim_n \seqt{A} = \union_{n} \seqt{A}$. </span>
+
+ <span class='run'>If $\seq{A}$ is decreasing, </span>
+
+ <span class='run'>$\lim_n \seqt{A} = ∈tersection_{n} \seqt{A}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>If $(A, \mathcal{A})$ is a monotone space, </span>
+
+ <span class='run'>then for all monotone </span>
+
+ <span class='run'>$\seq{A}$ in $\mathcal{A}$, </span>
+
+ <span class='run'>$\lim_{n} \seqt{A} ∈ \mathcal{A}$. </span>
+
+ <span class='run'>In this case, $\mathcal{A}$ is a montone class. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

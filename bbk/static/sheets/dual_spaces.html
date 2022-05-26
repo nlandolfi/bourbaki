@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Take a vector space, and consider the set of continuous linear functionals on that space. Given a suitable norm, this space is a complete normed space.</p></div><div class="sheet-listing" id="defining_result"><h1 class="sheet">2. Defining result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(V, \norm{\cdot})$ be a normed space. The set $\dual{V}$ of all continuous linear functionals on $V$ is a complete normed space with respect to pointwise algebraic operations and norm $\dnorm{\cdot}: V \to \R$ defined by \[ \dnorm{F} = \underset{x \in V, \;\norm{x} \leq 1}{\sup} \abs{F(x)}. \] \begin{proof} We argue (1) $\dual{V}$ is a vector space,  (2) $\dnorm{\cdot}$ is a norm, and (3) $(V, \dnorm{\cdot})$ is complete.\footnote{Future editions will include an account.} \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> We call $(\dual{V}, \dnorm{\cdot})$ the \t{dual space} (or \t{Banach dual of $V$}). Notice that $(\dual{V}, \dnorm{\cdot})$ is complete regardless of whether the original normed space $(V,\norm{\cdot})$ is complete.</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_dual_norm_property">2.1 Basic dual norm property</h2></div><div class="sheet-listing"><p class="sheet"> Notice that the dual norm satisfies a familiar property.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For any vector $x$ in a normed space $(V, \norm{\cdot})$ and any continuous linear functional $F$ on $E$, \[ \abs{F(x)} \leq \dnorm{F}\norm{x}. \] \begin{proof} If $x = 0$, then $\norm{x} = 0$ and $F(x) = 0$ ($F$ is linear). Otherwise, $x/\norm{x}$ is a unit vector and so \[ \dnorm{F} \geq \abs{F(x/\norm{x})} = \frac{\abs{F(x)}}{\norm{x}}. \] where the inequality is from the definition of $\dnorm{\cdot}$ (as a supremum) and the equality follows from the linearity of $F$. \end{proof} \end{proposition}</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

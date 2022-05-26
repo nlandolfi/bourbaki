@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $z_1, z_2 \in \C$ with $z_1 = (x_1, y_1)$ and $z_2 = (x_2, y_2)$. The \t{complex product} of $z_1$ and $z_2$ is the complex number $(x_1x_2 - y_1y_2, x_1y_2 + y_1x_2)$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the complex product of $z_1$ and $z_2$ by $z_1 \cdot z_2$ or $z_1z_2$. The notation is justified because the complex product of two purely real complex numbers corresponds to the purely real complex number whose real part is the real product of the real parts of the first two numbers.</p></div><div class="sheet-listing"><p class="sheet"> Recall that we denote $z_1 = x_1 + iy_1$ and $z_2 = x_2 + iy_2$. This notation is a mnemonic for the definition of a complex product if we treat $i^2 = -1$. \[ \begin{aligned} z_1z_2 &= (x_1 + iy_1)(x_2 + iy_2) \\ &= x_1x_2 + ix_1y_2 + iy_1x_2 + i^2 y_1y_2 \\ &= (x_1x_2 - y_1y_2) + i(x_1y_2 + y_1x_2). \end{aligned} \]</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Commutativity] For all $z_1, z_2 \in \C$, we have $z_1z_2 = z_2z_1$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associativity] For all $z_1, z_2, z_3 \in \C$, we have and $z_1(z_2z_3) = (z_1z_2)z_3$. \end{proposition}</p></div><div class="sheet-listing" id="complex_multiplication"><h1 class="sheet">4. Complex multiplication</h1></div><div class="sheet-listing"><p class="sheet"> We call the operation that associates a pair of complex numbers with their product \t{complex multiplication}. The operation is symmetric (commutative).</p></div><div class="sheet-listing" id="multiplicative_identity_and_inverse"><h1 class="sheet">5. Multiplicative identity and inverse</h1></div><div class="sheet-listing"><p class="sheet"> Notice that the complex number $(1, 0)$ is the multiplicative identity. It is unique,\footnote{Future editions will include an account} and so we call it the \t{complex multiplicative identity.}</p></div><div class="sheet-listing"><p class="sheet"> We call the operation $(z, w) \mapsto z/w$ \t{complex division} and we call $z/w$ the \t{(complex) quotient} of $z$ with $w$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

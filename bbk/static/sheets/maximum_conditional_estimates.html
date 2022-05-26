@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to estimate a random vector $x: \Omega \to \R^d$ from a random vector $y: \Omega \to \R^n$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Denote by $g: \R^d \times \R^n \to \R$ the joint density for $(x, y)$.\footnote{Future editions will comment on the existence of such a density.} Denote the conditional density for $x$ given $y$ by $g_{x \mid y}: \R^d \times \R^n \to \R$. In this setting, $g_{x \mid y}$ is called the \t{posterior density}, $g_{x}$ is called the \t{prior density}, and $g_{y \mid x}$ is called the \t{likelihood density} and $g_{y}$ is called the \t{marginal likelihood density}.</p></div><div class="sheet-listing"><p class="sheet"> As usual (and assuming $g_{y} > 0$), the posterior is related to the likelihood, prior and marginal likelihood by \[ g_{x \mid y} \equiv \frac{g_x g_{y \mid x}}{g_{y}}. \]</p></div><div class="sheet-listing"><p class="sheet"> A \t{maximum conditional estimate} for $x: \Omega \to \R^n$ given that $y$ has taken the value $\gamma \in \R^n$ is a maximizer $\xi \in \R^d$ of $g_{x \mid y}(\xi, \gamma)$. It is also called the \t{maximum a posteriori estimate} or \t{MAP estimate}. The maximum conditional estimate is natural, in part, because it also maximizes the joint density, since $g(\xi, \gamma) = g_y(\gamma) g_{x \mid y}(\xi, \gamma)$ for all $\xi \in \R^d$ and $\gamma \in \R^n$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

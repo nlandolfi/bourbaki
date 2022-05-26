@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to associate elements of $\Z$ with bitstrings for use on digital computers.\footnote{Future editions will discuss digital computers.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{digital integer} is a bit-string. The set of \t{$d$-bit integers} is the set of length-$d$ bit strings $\set{0, 1}^d$. For example, the set of 8-bit digital integers is the set $\set{0, 1}^8$.</p></div><div class="sheet-listing" id="correspondence_with_$\z$"><h1 class="sheet">3. Correspondence with $\Z$</h1></div><div class="sheet-listing"><p class="sheet"> The bit string $x \in \set{0, 1}^d$ corresponds to the integer $\sum_{i = 1}^{d} x_i 2^i$.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">4. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the set of 8-bit (16-bit, 32-bit, 64-bit) integers by \c{int64} (\c{int8}, \c{int16}, \c{int32}).</p></div><div class="sheet-listing"><p class="sheet"> It is easy to embed $x \in \c{int8}$ by considering $x' \in \c{int16}$ defined by \[ x' = (x_1, x_2, x_3, x_4, x_5, x_6, x_7, x_8, 0, 0, 0, 0, 0, 0, 0, 0) \] In other words, we associate an 8-bit integer with a 16-bit integer.</p></div><div class="sheet-listing"><p class="sheet"> Naturally, we associate the integers with bit strings.</p></div><div class="sheet-listing" id="signed_integers}\footnote{future_editions_will_include_an_account_of_signed_integers,_or_will_place_this_in_another_sheet."><h1 class="sheet">5. Signed integers}\footnote{Future editions will include an account of signed integers, or will place this in another sheet.</h1></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

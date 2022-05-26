@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(V, E)$ be an undirected graph. An (undirected) \t{path} between vertex $v \in V$ and vertex $w \neq v$ is a finite sequence of distinct vertices, whose first coordinate is $v$ and whose last coordinate is $w$, and whose consecutive coordinates are adjacent in the graph. We call the first and last coordinate the \t{endpoints} of the path. We say the path is \t{between} its endpoints.</p></div><div class="sheet-listing"><p class="sheet"> The \t{length} of a path is one less than the number of vertices: namely, the number of edges. Notice that this definition disagrees with the definition of the "length" of the sequence of vertices (namely, the number of vertices). The length of a path is always at least one: there exists a path of length one between any two adjacent vertices. If a path has length two or greater, we call a vertex which is not the first or last vertex an \t{interior vertex}.</p></div><div class="sheet-listing"><p class="sheet"> Two vertices are \t{connected} in a graph if there exists at least one path between them. A graph is \t{connected} if each pair of vertices is connected. Recall that two vertices are \t{adjancent} if they are connected by a path of length one. In contrast, two vertices are connected if they are connected by a path of any length. In other words, all adjacent vertices are connected.</p></div><div class="sheet-listing"><p class="sheet"> A \t{cycle} is a sequence whose first and last coordinate are identical, all other coordinates are distinct, and consecutive coordinates are adjacent. An undirected graph is \t{acyclic} if there are no cycles of its vertices.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">2.1 Other Terminology</h2></div><div class="sheet-listing"><p class="sheet"> Some authors allow paths to contain repeated vertices, and call a path with distinct vertices a \t{simple path}. Similarly, some authors allow a cycle to contain repeated vertices, and call a path with distinct vertices a \t{simple cycle} or \t{circuit}. Some authors use the term \t{loop} instead of \t{cycle}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.2 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $G = (V, E)$ be a graph. A path between $v$ and $w$ (with $v \neq w$) in $G$ is a sequence $(v_0, v_1, \dots, v_k)$ where $v_0 = v$ and $v_k = w$ and $\set{v_i, v_{i+1}} \in E$ for $i = 0, \dots, k-1$.</p></div>
     </div>
@@ -180,8 +216,139 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:undirected_paths❳ </span>
+
+ <span class='run'>❲%!need:undirected_graphs❳ </span>
+
+ <span class='run'>❲%!need:lists❳ </span>
+
+ <span class='run'>❲%!ref:vandenberghe∕chordal❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why}[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $(V, E)$ be an undirected graph. </span>
+
+ <span class='run'>An (undirected) <span class='term'>path</span>
+  between vertex $v ∈ V$ and vertex $w ≠ v$ is
+  a finite sequence of distinct vertices, whose
+  first coordinate is $v$ and whose last
+  coordinate is $w$, and whose consecutive
+  coordinates are adjacent in the graph. </span>
+
+ <span class='run'>We call the first and last coordinate the
+  <span class='term'>endpoints</span> of the path. </span>
+
+ <span class='run'>We say the path is
+  <span class='term'>between</span> its endpoints. </span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>length</span> of a path is
+  one less than the number of vertices: namely,
+  the number of edges. </span>
+
+ <span class='run'>Notice that this definition disagrees with the
+  definition of the “length} of the sequence of
+  vertices (namely, the number of vertices). </span>
+
+ <span class='run'>The length of a path is always at least one:
+  there exists a path of length one between any
+  two adjacent vertices. </span>
+
+ <span class='run'>If a path has length two or greater, we call
+  a vertex which is not the first or last vertex
+  an <span class='term'>interior vertex</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>Two vertices are
+  <span class='term'>connected</span> in a graph if
+  there exists at least one path between them. </span>
+
+ <span class='run'>A graph is <span class='term'>connected</span> if
+  each pair of vertices is connected. </span>
+
+ <span class='run'>Recall that two vertices are
+  <span class='term'>adjancent</span> if they are
+  connected by a path of length one. </span>
+
+ <span class='run'>In contrast, two vertices are connected if they
+  are connected by a path of any length. </span>
+
+ <span class='run'>In other words, all adjacent vertices are
+  connected. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>cycle</span> is a sequence
+  whose first and last coordinate are identical,
+  all other coordinates are distinct, and
+  consecutive coordinates are adjacent. </span>
+
+ <span class='run'>An undirected graph is
+  <span class='term'>acyclic</span> if there are no
+  cycles of its vertices. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Other Terminology} </span>
+</p>
+
+
+<p>
+ <span class='run'>Some authors allow paths to contain repeated
+  vertices, and call a path with distinct vertices
+  a <span class='term'>simple path</span>. </span>
+
+ <span class='run'>Similarly, some authors allow a cycle to
+  contain repeated vertices, and call a path with
+  distinct vertices a <span class='term'>simple
+  cycle</span> or <span class='term'>circuit</span>. </span>
+
+ <span class='run'>Some authors use the term
+  <span class='term'>loop</span> instead of
+  <span class='term'>cycle</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $G = (V, E)$ be a graph. </span>
+
+ <span class='run'>A path between $v$ and $w$ (with $v ≠ w$) in
+  $G$ is a sequence $(v_0, v_1, …, v_k)$ where
+  $v_0 = v$ and $v_k = w$ and $\set{v_i,
+  v_{i+1}” ∈ E$ for $i = 0, …, k-1$. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

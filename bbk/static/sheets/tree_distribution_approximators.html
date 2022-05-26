@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to approximate a given distribution with one which factors according to a tree.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Given $q: A \to [0, 1]$, we want to find a distribution $p$ on $A$ and tree $T$ on $\set{1, \dots, n}$ to \[ \begin{aligned} \text{minimize} & \quad d_{kl}(q, p) \\ \text{subject to} & \quad p \text{ factors according to } T. \end{aligned} \] where $d_{kl}$ is the relative entropy as a criterion of approximation. We call such a distribution a \t{tree distribution approximator} (or \t{tree approximator}) and we call the tree the \t{approximator tree}.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">3. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $A_1, \dots, A_n$ be finite non-empty sets. Define $A = \prod_{i = 1}^{n} A_i$. Let $q: A \to [0, 1]$ a distribution and $T$ a tree on $\set{1, \dots, n}$. The distribution $p^*_T: A \to [0, 1]$ defined by \[ p^*_T = q_1 \prod_{i \neq 1} q_{i \mid \pa{i}} \] minimizes the relative entropy with $q$ among all distributions on $A$ which factor according to $T$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> Let $p: A \to [0, 1]$ be a distribution which factors according to $T$. First, express \[ p = p_1 \prod_{i \neq i} p_{i \mid \pa{i}} \] where $\pa{i}$ is the parent of vertex $i$ in $T$ rooted at vertex 1 ($i = 2, \dots, n$).</p></div><div class="sheet-listing"><p class="sheet"> Second, recall that the relative entropy of $q$ with $p$ is $H(q, p) - H(q)$. Since $H(q)$ does not depend on $p$, $p$ is a minimizer of the relative of $q$ with $p$ if and only if $p$ is a minimizer of $H(q, p)$.</p></div><div class="sheet-listing"><p class="sheet"> Third, express \[ \begin{aligned} H(q, p) &= - \sum_{a \in A} q(a) \log p(a) \\ &= - \sum_{a \in A} q(a) \parens*{\log p_1(a_1) + \sum_{i \neq 1} \log p_{i \mid \pa{i}}\parens*{a_i, a_{\pa{i}}}} \\ &= H(q_1, p_1) + \sum_{i \neq 1} \sum_{a_{\pa{i}} \in A_{\pa{i}}} q_{\pa{i}}(a_{\pa{i}})H\parens*{q_{i\mid\pa{i}}(\cdot, a_{\pa{i}}), p_{i\mid\pa{i}}(\cdot, a_{\pa{i}})} \end{aligned} \] which separates across $p_1$ an $p_{i \mid \pa{i}}(\cdot, a_{\pa{i}})$ for $i = 2, \dots, n$ and $a_{pa_{i}} \in A_{\pa{i}}$.</p></div><div class="sheet-listing"><p class="sheet"> Fourth, recall $H(\cdot, \cdot) \geq 0$ and is zero on repeated pairs. By this, we mean, for example, $H(p_1, p_1) = 0$. So $p_1 = q_1$ and $p_{i \mid \pa{i}} = q_{i \mid \pa{i}}$ are solutions.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \label{prop:treeapproximators} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> Proposition~\ref{prop:treeapproximators} states the form of an optimal approximator given a tree. A natural next question is to select the tree.</p></div>
     </div>
@@ -187,8 +223,176 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:tree_distribution_approximators❳ </span>
+
+ <span class='run'>❲%!need:distribution_approximators❳ </span>
+
+ <span class='run'>❲%!need:tree_distributions❳ </span>
+
+ <span class='run'>❲%!need:relative_entropy❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We want to approximate a given distribution
+  with one which factors according to a tree. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Given $q: A → [0, 1]$, we want to find a
+  distribution $p$ on $A$ and tree $T$ on
+  $\set{1, …, n}$ to
+  <p>\[
+   \begin{aligned} </span>
+
+   \text{minimize} ❲&amp;❳ \quad d_{kl}(q, p) <br /> </span>
+
+   \text{subject to} ❲&amp;❳ \quad p \text{ factors according to
+    } T. </span>
+
+   \end{aligned} </span>
+  \]</p>
+  where $d_{kl}$ is the relative entropy as a
+  criterion of approximation. </span>
+
+ <span class='run'>We call such a distribution a
+  <span class='term'>tree distribution
+  approximator</span> (or <span class='term'>tree
+  approximator</span>) and we call the tree the
+  <span class='term'>approximator tree</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Result} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{prop} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A_1, …, A_n$ be finite non-empty sets. </span>
+
+ <span class='run'>Define $A = ∏_{i = 1}^{n} A_i$. </span>
+
+ <span class='run'>Let $q: A → [0, 1]$ a distribution and $T$ a
+  tree on $\set{1, …, n}$. </span>
+
+ <span class='run'>The distribution $p^*_T: A → [0, 1]$ defined
+  by
+  <p>\[
+   p^*_T = q_1 ∏_{i ≠ 1} q_{i \mid \pa{i}} </span>
+  \]</p>
+  minimizes the relative entropy with $q$ among
+  all distributions on $A$ which factor according
+  to $T$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proof} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $p: A → [0, 1]$ be a distribution which
+  factors according to $T$. </span>
+
+ <span class='run'>First, express
+  <p>\[
+   p = p_1 ∏_{i ≠ i} p_{i \mid \pa{i}} </span>
+  \]</p>
+  <span class='run'>where $\pa{i}$ is the parent of vertex $i$ in
+   $T$ rooted at vertex 1 ($i = 2, …, n$). </span></span>
+</p>
+
+
+<p>
+ <span class='run'>Second, recall that the relative entropy of $q$
+  with $p$ is $H(q, p) - H(q)$. </span>
+
+ <span class='run'>Since $H(q)$ does not depend on $p$, $p$ is a
+  minimizer of the relative of $q$ with $p$ if
+  and only if $p$ is a minimizer of $H(q, p)$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Third, express
+  <p>\[
+   \begin{aligned} </span>
+
+   H(q, p) ❲&amp;❳= - ∑_{a ∈ A} q(a) \log p(a) <br /> </span>
+
+   ❲&amp;❳= - ∑_{a ∈ A} q(a) \parens*{\log p_1(a_1) + ∑_{i ≠
+    1} \log p_{i \mid \pa{i}}\parens*{a_i, a_{\pa{i}}}} <br /> </span>
+
+   ❲&amp;❳= H(q_1, p_1) + ∑_{i ≠ 1} ∑_{a_{\pa{i}} ∈ A_{\pa{i}}}
+    q_{\pa{i}}(a_{\pa{i}})H\parens*{q_{i\mid\pa{i}}(\cdot, a_{\pa{i}}),
+    p_{i\mid\pa{i}}(\cdot, a_{\pa{i}})} </span>
+
+   \end{aligned} </span>
+  \]</p>
+  which separates across $p_1$ an $p_{i \mid
+  \pa{i}}(\cdot, a_{\pa{i}})$ for $i = 2, …, n$
+  and $a_{pa_{i}} ∈ A_{\pa{i}}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Fourth, recall $H(\cdot, \cdot) ≥ 0$ and is
+  zero on repeated pairs. </span>
+
+ <span class='run'>By this, we mean, for example, $H(p_1, p_1) =
+  0$. </span>
+
+ <span class='run'>So $p_1 = q_1$ and $p_{i \mid \pa{i}} = q_{i
+  \mid \pa{i}}$ are solutions. </span>
+</p>
+
+
+<p>
+ <span class='run'>\end{proof} </span>
+</p>
+
+
+<p>
+ <span class='run'>\label{prop:treeapproximators} </span>
+
+ <span class='run'>\end{prop} </span>
+</p>
+
+
+<p>
+ <span class='run'>Proposition~\ref{prop:treeapproximators} states the
+  form of an optimal approximator given a tree. </span>
+
+ <span class='run'>A natural next question is to select the tree. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

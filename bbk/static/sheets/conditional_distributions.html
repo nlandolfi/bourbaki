@@ -74,6 +74,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -90,6 +125,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to speak of the pairwise conditional distributions of a particular joint distribution. \ifhmode\unskip\fi\footnote{ Future editions will rework this sheet. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $p: \prod_{i = 1}^{n} A_i \to \R $ be a distribution on $A$.</p></div><div class="sheet-listing"><p class="sheet"> For $i \neq j \in \set{1, \dots, n}$, the \t{conditional distribution} of $i$ on $j$ is the function $p_{i \mid j}: A_i \times A_j \to \R $ defined so that that $p_{i \mid j}(\cdot, b)$ is the conditional distribution induced by conditioning on $\Set{a \in \prod_{i = 1}^{n} A_i }{a_j = b}$.</p></div><div class="sheet-listing"><p class="sheet"> For $i,j = 1, \dots, n$ and $i \neq j$, $p_i$ and $p_{i,j}$ satisify \[ p_{i \mid j}(b, c)p_{j}(c) = p_{ij}(b, c) \] for $b \in A_i$ and $c \in A_j$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -194,8 +230,64 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:conditional_distributions❳ </span>
+
+ <span class='run'>❲%!need:marginal_distributions❳ </span>
+
+ <span class='run'>❲%!need:conditional_event_probabilities❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We want to speak of the pairwise conditional
+  distributions of a particular joint distribution.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+
+ <span class='run'>Let $p: ∏_{i = 1}^{n} A_i → 𝗥$ be a
+  distribution on $A$. </span>
+</p>
+
+
+<p>
+ <span class='run'>For $i ≠ j ∈ \set{1, …, n}$, the
+  <span class='term'>conditional distribution</span> of
+  $i$ on $j$ is the function $p_{i | j}: A_i ×
+  A_j → 𝗥$ defined so that that $p_{i |
+  j}(\cdot, b)$ is the conditional distribution
+  induced by conditioning on $\Set{a ∈ ∏_{i =
+  1}^{n} A_i }{a_j = b}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>For $i,j = 1, …, n$ and $i ≠ j$, $p_i$ and
+  $p_{i,j}$ satisify
+  <p>\[
+   p_{i | j}(b, c)p_{j}(c) = p_{ij}(b, c) </span>
+  \]</p>
+  for $b ∈ A_i$ and $c ∈ A_j$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

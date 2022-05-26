@@ -57,6 +57,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -73,6 +108,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Every matrix $A \in \R^{m \times n}$ maps the unit ball in $\R^n$ to an ellipsoid in $\R^{m}$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{rotate scale rotate decomposition} (or \t{rotate scale rotate factorization}) of a matrix $A \in \R^{m \times n}$ is an ordered triple $(U, S, V)$ where $U$ and $V$ are orthgonal and $S$ is diagonal decreasing ($S_{11} \geq S_{22} \geq \dots \geq S_{pp}$, where $p = \min\set{m, n}$) satisfying \[ A = US\transpose{V}. \] Other (universal) terminology includes the \t{singular value decomposition} or \t{SVD} of $A$. We call diagonal elements of $S$ the \t{singular values} of $A$. We call the column vectors of $U$ the \t{left singular vectors} or \t{output singular vectors}. We call the column vectors of $V$ the \t{right singular vectors} or \t{input singular vectors}. We refer to them collectively as the \t{singular vectors}. \[ Av_i = \sigma_i u_i. \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -177,8 +213,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

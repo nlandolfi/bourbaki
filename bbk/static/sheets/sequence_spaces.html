@@ -67,6 +67,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -83,6 +118,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can view the set of sequences as vector spaces and give them norms.</p></div><div class="sheet-listing" id="bounded_sequences"><h1 class="sheet">2. Bounded Sequences</h1></div><div class="sheet-listing"><p class="sheet"> Let $\C^\N$ denote the set of complex-valued sequences. Define $\ell^{\infty} \subset \C^{\N}$ to be the set of all \t{bounded sequences}. That is, \[ \ell^{\infty} = \Set*{x \in \C^{\N}}{\exists M \in \R \text{ with } \abs{x_i} < M \text{ for all } i}. \] Then $\ell^\infty$ with componentwise addition and scalar multiplication is a vector space.</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Define $\norm{\cdot}_{\infty}: \ell^{\infty} \to \R$ by \[ \norm{x}_{\infty} = \sup_{n \in \N} \abs{x_n}. \] Then $\norm{\cdot}_{\infty}$ is a norm on $\ell^\infty$. \end{exercise}</p></div><div class="sheet-listing" id="absolutely_summable_sequences"><h1 class="sheet">3. Absolutely Summable Sequences</h1></div><div class="sheet-listing"><p class="sheet"> Let $\ell^1 \subset \C^\N$ denote the set of all \t{absolutely summable sequences}. In other words, for $x \in \C^{\N}$, $x \in \ell^1$ if \[ \sum_{n = 1}^{\infty} \abs{x_n} < \infty. \] Then $\ell^1$ is a vector space with componentwise addition and scalar multiplication.</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Define $\norm{\cdot}_{1}: \ell^{1} \to \R$ by \[ \norm{x}_{1} = \sum_{n = 1}^{\infty} \abs{x_n} \] Then $\norm{\cdot}_{1}$ is a norm on $\ell^1$. \end{exercise}</p></div>
     </div>
@@ -187,8 +223,104 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:sequence_spaces❳ </span>
+
+ <span class='run'>❲%!need:real_sequences❳ </span>
+
+ <span class='run'>❲%!need:norms❳ </span>
+
+ <span class='run'>❲%!need:complex_numbers❳ </span>
+
+ <span class='run'>❲%!need:real_series❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We can view the set of sequences as vector
+  spaces and give them norms. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Bounded Sequences} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $𝗖^𝗡$ denote the set of complex-valued
+  sequences. </span>
+
+ <span class='run'>Define $ℓ^{∈fty} ⊂ \C^{𝗡}$ to be the set of
+  all <span class='term'>bounded sequences</span>. </span>
+
+ <span class='run'>That is,
+  <p>\[
+   ℓ^{∞} = \Set*{x ∈ \C^{𝗡}}{∃ M ∈ 𝗥 \text{ with } \abs{x_i}
+    &lt; M \text{ for all } i}. </span>
+  \]</p></span>
+
+ <span class='run'>Then $ℓ^∞$ with componentwise addition and
+  scalar multiplication is a vector space. </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{exercise} </span>
+
+ <span class='run'>Define $\norm{\cdot}_{∞}: ℓ^{∞} → 𝗥$ by
+  <p>\[
+   \norm{x}_{∞} = \sup_{n ∈ 𝗡} \abs{x_n}. </span>
+  \]</p></span>
+
+ <span class='run'>Then $\norm{\cdot}_{∞}$ is a norm on $ℓ^∞$. </span>
+
+ <span class='run'>\end{exercise} </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Absolutely Summable Sequences} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $ℓ^1 ⊂ 𝗖^𝗡$ denote the set of all
+  <span class='term'>absolutely summable
+  sequences</span>. In other words, for $x ∈
+  𝗖^{𝗡}$, $x ∈ ℓ^1$ if
+  <p>\[
+   ∑_{n = 1}^{∞} \abs{x_n} &lt; ∞. </span>
+  \]</p></span>
+
+ <span class='run'>Then $ℓ^1$ is a vector space with componentwise
+  addition and scalar multiplication. </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{exercise} </span>
+
+ <span class='run'>Define $\norm{\cdot}_{1}: ℓ^{1} → 𝗥$ by
+  <p>\[
+   \norm{x}_{1} = ∑_{n = 1}^{∞} \abs{x_n} </span>
+  \]</p></span>
+
+ <span class='run'>Then $\norm{\cdot}_{1}$ is a norm on $ℓ^1$. </span>
+
+ <span class='run'>\end{exercise} </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

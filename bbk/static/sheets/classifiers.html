@@ -88,6 +88,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -104,6 +139,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name a predictor whose set of outputs is finite.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{classifer} is a predictor whose codomain is a finite set. In this case, we call the outputs \t{classes} (or \t{labels}, \t{categories}, \t{label set}). We call the prediction of a classifier on an input a \t{classification}.</p></div><div class="sheet-listing"><p class="sheet"> If the set of labels has two elements, then we call the classifier a \t{binary classifier} (or \t{two-way classifier}, \t{two-class classifier}, \t{boolean classifier}). In the case that there are $k$ labels, we call the classifier a \t{$k$-way classifier} (or \t{$k$-class classifier},\t{multi-class classifier}). The second term is meant to indicate, not that the classifier assigns to each point several classes, but that the classification decision is made <i>between</i> several classes.</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_example">2.1 Basic Example</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set of inputs and let $B$ be a set of labels. Define $B = \set{0, 1}$ (or $\set{-1,1 }$, $\set{\textsc{False}, \textsc{True}}$, $\set{\textsc{Negative}, \textsc{Positive}}$). Then $B$ is finite with two elements and $f: A \to B$ is a binary classifier with labels $0$ and $1$.</p></div><div class="sheet-listing"><p class="sheet"> If the case $B = \set{\text{\textsc{No}}, \textsc{Maybe}, \textsc{Yes}}$, we call $f: A \to B$ a three-way classifier. Other examples for $B$ include a list of languages, the set of English words in some dictionary, or the set of $m!$ possible orders of $m$ horses in a race. Often convenient to take $B = \set{1, \dots, k}$ for $k \in \N$.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">2.2 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Following our terminology, but speaking of processes, some authors refer to the application of inductors for these special cases as \t{binary classification} and \t{multi-class classification}. Or they speak of \t{classification} and a \t{classification problems}. Roughly speaking, a classifier \t{classifies} all inputs into categories.</p></div><div class="sheet-listing"><p class="sheet"> Alternatively, some authors (especially in the statistics literature) refer to a classifier as a \t{discriminator} and reference \t{discrimination problems}.</p></div>
     </div>
@@ -208,8 +244,136 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:classifiers❳ </span>
+
+ <span class='run'>❲%!need:predictors❳ </span>
+
+ <span class='run'>❲% needed for the horse example, can maybe remove eventually❳ </span>
+
+ <span class='run'>❲%!need:factorials ❳ </span>
+
+ <span class='run'>❲%!refs:sanjay_lall∕introduction_to_machine_learning∕classifiers❳
+  u </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We name a predictor whose set of outputs is
+  finite. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+
+ <span class='run'>A <span class='term'>classifer</span> is a
+  predictor whose codomain is a finite set. </span>
+
+ <span class='run'>In this case, we call the outputs
+  <span class='term'>classes</span> (or
+  <span class='term'>labels</span>,
+  <span class='term'>categories</span>,
+  <span class='term'>label set</span>). </span>
+
+ <span class='run'>We call the prediction of a classifier on an
+  input a <span class='term'>classification</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>If the set of labels has two elements, then
+  we call the classifier a <span class='term'>binary
+  classifier</span> (or <span class='term'>two-way
+  classifier</span>, <span class='term'>two-class
+  classifier</span>, <span class='term'>boolean
+  classifier</span>). </span>
+
+ <span class='run'>In the case that there are $k$ labels, we
+  call the classifier a <span class='term'>$k$-way
+  classifier</span> (or <span class='term'>$k$-class
+  classifier</span>,<span class='term'>multi-class
+  classifier</span>). </span>
+
+ <span class='run'>The second term is meant to indicate, not that
+  the classifier assigns to each point several
+  classes, but that the classification decision is
+  made <i>between</i> several classes. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Basic Example} </span>
+
+ <span class='run'>Let $A$ be a set of inputs and let $B$ be a
+  set of labels. </span>
+
+ <span class='run'>Define $B = \set{0, 1}$ (or $\set{-1,1 }$,
+  $\set{<span class='smallcaps'>False</span>,
+  <span class='smallcaps'>True</span>}$,
+  $\set{<span class='smallcaps'>Negative</span>,
+  <span class='smallcaps'>Positive</span>}$). </span>
+
+ <span class='run'>Then $B$ is finite with two elements and $f:
+  A → B$ is a binary classifier with labels $0$
+  and $1$. </span>
+</p>
+
+
+<p>
+ <span class='run'>If the case $B =
+  \set{\text{<span class='smallcaps'>No</span>},
+  <span class='smallcaps'>Maybe</span>,
+  <span class='smallcaps'>Yes</span>}$, we call $f: A
+  → B$ a three-way classifier. </span>
+
+ <span class='run'>Other examples for $B$ include a list of
+  languages, the set of English words in some
+  dictionary, or the set of $m!$ possible orders
+  of $m$ horses in a race. </span>
+
+ <span class='run'>Often convenient to take $B = \set{1, …, k}$
+  for $k ∈ 𝗡$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Other terminology} </span>
+
+ <span class='run'>Following our terminology, but speaking of
+  processes, some authors refer to the application
+  of inductors for these special cases as
+  <span class='term'>binary classification</span> and
+  <span class='term'>multi-class classification</span>. </span>
+
+ <span class='run'>Or they speak of
+  <span class='term'>classification</span> and a
+  <span class='term'>classification problems</span>. </span>
+
+ <span class='run'>Roughly speaking, a classifier
+  <span class='term'>classifies</span> all inputs into
+  categories. </span>
+</p>
+
+
+<p>
+ <span class='run'>Alternatively, some authors (especially in the
+  statistics literature) refer to a classifier as
+  a <span class='term'>discriminator</span> and
+  reference <span class='term'>discrimination
+  problems</span>. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

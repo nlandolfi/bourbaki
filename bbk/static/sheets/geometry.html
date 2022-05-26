@@ -81,6 +81,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -97,6 +132,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We need some basic geometric concepts.\footnote{This sheet will be expanded into several in future editions.}</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> A \t{point} is that which has no part.\footnote{This and all that follows is taken (nearly) verbatim from Heath's translation of Book I of Euclid's Elements. In future editions, there will be a reference to the Litterae manuscript of this text.} A \t{line} is a breadthless length. The \t{extremities of a line}\footnote{We have departed from Heath and made extremity here a term.} are points. A \t{straight line} is a line which lies evenly with the points on itself. A \t{surface} is that which has length and breadth only. The \t{extremities of a surface} are lines.</p></div><div class="sheet-listing"><p class="sheet"> A \t{plane surface} is a surface which lies evenly with the straight lines on itself. A \t{plane angle} is the inclination to one another of two lines in a plane which meet one another and do not lie in a straight line. And when teh lines containing the angle are straight, the angle is called \t{rectilineal}. When a straight line set up on a straight line makes the adjacent angles equal to one another, each of the equal angles is \t{right}, and the straight line standing on the other side is called a \t{perpendicular} to that on which it stands.</p></div><div class="sheet-listing"><p class="sheet"> A \t{boundary} is that which is an extremity of any thing. A \t{figure} is that which is contained by any boundary or boundaries. A \t{circle} is a plane figure contained by one line such that allthe straight lines falling upon it from one point among those lying withing the figure are equal to one another. The point is called the \t{center} of the circle. A \t{diameter} of the circle is any straight line drawn through the center and terminated in both directions by the circumference of the circle, and such a straight line also bisects the circle.\footnote{We end here. Of course, Euclid goes on to discuss semicircles, rectilineal figures, etc.}</p></div>
     </div>
@@ -201,8 +237,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

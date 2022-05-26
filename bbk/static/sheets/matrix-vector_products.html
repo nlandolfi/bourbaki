@@ -81,6 +81,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -97,6 +132,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{matrix-vector product} between an $m \times n$-matrix and an $n$-vector is the result of the linear combination of the columns of the matrix with the sequence of scalars in the vector. So the matrix-vector product is an $m$-vector.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $C$ be a nonempty set. Let $A \in \Mat{C}{m}{n}$ and let $x \in \Vec{C}{n}$. As usual, we denote the matrix-vector product of $A$ with $x$ by $Ax$, read "A x," and defined by \[ b_i = \sum_{j = 1}^{n} a_{ij}x_j \] for $i \in \upto{m}$. Let \[ A = \bmat{ & a_1^\tp & \\ & a_2^\tp & \\ & \vdots & \\ & a_{m}^\tp & } \] Or, if $a_i^\tp$ is the $i$th row of $A$, then \[ b_i = a_i^\tp x \] for $i \in \upto{m}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -201,8 +237,97 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:matrix-vector_products❳ </span>
+
+ <span class='run'>❲%!need:matrices❳ </span>
+
+ <span class='run'>❲%!need:real_matrix-vector_products❳ </span>
+
+ <span class='run'>❲%!need:vectors_as_matrices❳ </span>
+
+ <span class='run'>❲%!need:linear_combinations❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why}[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'></span>
+
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>matrix-vector product</span>
+  between an $m × n$-matrix and an $n$-vector is
+  the result of the linear combination of the
+  columns of the matrix with the sequence of
+  scalars in the vector. </span>
+
+ <span class='run'>So the matrix-vector product is an $m$-vector. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $C$ be a nonempty set. </span>
+
+ <span class='run'>Let $A ∈ \Mat{C}{m}{n}$ and let $x ∈
+  \Vec{C}{n}$. </span>
+
+ <span class='run'>As usual, we denote the matrix-vector product
+  of $A$ with $x$ by $Ax$, read “A x,” and
+  defined by
+  <p>\[
+   b_i = ∑_{j = 1}^{n} a_{ij}x_j </span>
+  \]</p>
+  for $i ∈ \upto{m}$. </span>
+
+ <span class='run'>Let
+  <p>\[
+   A = \bmat{ </span>
+
+   ❲&amp;❳ a_1^\tp ❲&amp;❳ <br /> </span>
+
+   ❲&amp;❳ a_2^\tp ❲&amp;❳ <br /> </span>
+
+   ❲&amp;❳ ⋮ ❲&amp;❳ <br /> </span>
+
+   ❲&amp;❳ a_{m}^\tp ❲&amp;❳ </span>
+
+   } </span>
+  \]</p></span>
+
+ <span class='run'>Or, if $a_i^\tp$ is the $i$th row of $A$,
+  then
+  <p>\[
+   b_i = a_i^\tp x </span>
+  \]</p>
+  for $i ∈ \upto{m}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

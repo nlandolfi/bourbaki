@@ -50,13 +50,6 @@
             <span class="caret">›</span>
           </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./partitioner.html'" onkeypress="location.href='./partitioner.html'">
-            <span>
-            Partitioner
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
           <div class="need" tabindex="0" onclick="location.href='./real_length_impossible.html'" onkeypress="location.href='./real_length_impossible.html'">
             <span>
             Real Length Impossible
@@ -81,6 +74,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -97,6 +125,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We divide a set into disjoint subsets whose union is the whole set. In this way we can handle each subset of the main set individually, and so handle the entire set piece by piece.</p></div><div class="sheet-listing" id="decomposing_a_set"><h1 class="sheet">2. Decomposing a set</h1></div><div class="sheet-listing"><p class="sheet"> Two sets $A$ and $B$ \t{divide} a set $X$ if $A \cup B = X$ and $A \cap B = \varnothing$. Although every element is in either $A$ or $B$, no element is in both. If $\mathcal{A} $ is a set of sets, and $A, B \in \mathcal{A} $, then $\mathcal{A} $ is \t{pairwise disjoint} if $A \cap B = \varnothing$ whenever $A \neq B$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{partition} (or \t{decomposition}) of a set $X$ is a set of pairwise disjoint nonempty subsets of $X$ whose union is $X$. We call the elements of a partition the \t{parts} (or \t{pieces}) of the partition.</p></div><div class="sheet-listing"><p class="sheet"> When speaking of a partition, we commonly call the set of sets \t{mutually exclusive} (or \t{non-overlapping}) (by which we mean that they are pairwise disjoint) and \t{collectively exhaustive} (by which we mean that their union is full set). \ifhmode\unskip\fi\footnote{ Future editions will include diagrams. }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -201,8 +230,83 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:partitions❳ </span>
+
+ <span class='run'>❲%!need:set_unions❳ </span>
+
+ <span class='run'>❲%!need:set_intersections❳ </span>
+
+ <span class='run'>❲%!refs:paul_halmos∕naive_set_theory∕section_07❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We divide a set into disjoint subsets whose
+  union is the whole set. </span>
+
+ <span class='run'>In this way we can handle each subset of the
+  main set individually, and so handle the entire
+  set piece by piece. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Decomposing a set} </span>
+
+ <span class='run'>Two sets $A$ and $B$
+  <span class='term'>divide</span> a set $X$ if $A
+  ∪ B = X$ and $A ∩ B = ∅$. </span>
+
+ <span class='run'>Although every element is in either $A$ or
+  $B$, no element is in both. </span>
+
+ <span class='run'>If $𝒜$ is a set of sets, and $A, B ∈ 𝒜$,
+  then $𝒜$ is <span class='term'>pairwise
+  disjoint</span> if $A ∩ B = ∅$ whenever $A ≠
+  B$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+
+ <span class='run'>A <span class='term'>partition</span> (or
+  <span class='term'>decomposition</span>) of a set
+  $X$ is a set of pairwise disjoint nonempty
+  subsets of $X$ whose union is $X$. </span>
+
+ <span class='run'>We call the elements of a partition the
+  <span class='term'>parts</span> (or
+  <span class='term'>pieces</span>) of the partition. </span>
+</p>
+
+
+<p>
+ <span class='run'>When speaking of a partition, we commonly call
+  the set of sets <span class='term'>mutually
+  exclusive</span> (or
+  <span class='term'>non-overlapping</span>) (by which
+  we mean that they are pairwise disjoint) and
+  <span class='term'>collectively exhaustive</span> (by
+  which we mean that their union is full set).[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

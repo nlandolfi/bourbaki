@@ -57,6 +57,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -73,6 +108,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to quantify the error of compressing a real-valued random variable.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CX$ be a finite set and $q: \R \to \CX$ a quantization (see \sheetref{quantizations}{Quantizations}) of $\R$. Also, fix a probability space $(\Omega, \CA, \PM)$ and a random variable $x: \Omega \to \R$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{compression} $\hat{x}: \Omega \to \CX$ of $x$ under $q$ is $q \composed x$. A \t{distortion function} for $x$ and $\hat{x}$ is a function \[ d: (\Omega \to \R) \cross (\Omega \to \CX) \to \R. \] Roughly speaking, a distortion function is meant to quantify the error in using this compression.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.1 Examples</h2></div><div class="sheet-listing"><p class="sheet"> The \t{expected mean-squared-error distortion} $d_{\text{mse}}$ between $x$ and $\hat{x}$ is \[ d_{\text{mse}}(x, \hat{x}) = \E[(x - \hat{x})^2] \] The \t{Kulback-Liebler distortion} $d_{\text{kld}}$ defined by \[ d_{\text{kld}}(x, \hat{x}) = \E[d_{\text{kl}}(\PM(y \in \cdot \mid x, \hat{x}) \mid \PM(y \in \cdot \mid \hat{x}))] \] where $y$ is some random variable that depends on $x$.\footnote{Future editions will clarify this sentence.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -177,8 +213,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

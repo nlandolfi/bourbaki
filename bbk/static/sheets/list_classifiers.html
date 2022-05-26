@@ -46,6 +46,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -62,6 +97,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> A classifier predict one value, for which reason it is sometimes called a \t{point classifer} or <i>point predictor</i>. A natural extension is to ask for an ordered list of classifications.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{list classifier} is a function from an input to a list of outputs. For example, if our classifier maps to lists of length three, we may interpret the elements of the list as the classifier's top, second and third ranked guesses.</p></div><div class="sheet-listing"><p class="sheet"> For an example application, consider a recommendation system. The input is a user query and the output is a list of ordered guesses.</p></div><div class="sheet-listing" id="nearest-neighbor_list_classifier"><h1 class="sheet">3. Nearest-neighbor list classifier</h1></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -166,8 +202,67 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:list_classifiers❳ </span>
+
+ <span class='run'>❲%!need:classifiers❳ </span>
+
+ <span class='run'>❲%!refs:sanjay_lall/introduction_to_machine_learning/probabilistic_classifiers❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>A classifier predict one value, for which
+  reason it is sometimes called a
+  <span class='term'>point classifer</i> or <i>point
+  predictor</i>. </span>
+
+ <span class='run'>A natural extension is to ask for an ordered
+  list of classifications. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+
+ <span class='run'>A <span class='term'>list classifier</i> is a
+  function from an input to a list of outputs. </span>
+
+ <span class='run'>For example, if our classifier maps to lists
+  of length three, we may interpret the elements
+  of the list as the classifier’s top, second and
+  third ranked guesses. </span>
+</p>
+
+
+<p>
+ <span class='run'>For an example application, consider a
+  recommendation system. </span>
+
+ <span class='run'>The input is a user query and the output is
+  a list of ordered guesses. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Nearest-neighbor list classifier} </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to multiply real numbers.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{real product} of two real numbers $R$ and $S$ is defined \begin{enumerate} \item if $R$ or $S$ is $\Set{q \in \Q}{q < 0_{\Q}}$, then the $\Set{q \in \Q}{q < 0_{\Q}}$ \item otherwise, \begin{enumerate} \item if $R$ or $S$ is $0_{\R}$, then $0_{\R}$. \item if $R,S \neq 0_{\R}$ and $0_{\$} \in R, S$, let $T$ be $\Set{t \in \Q}{r \in R, s \in S, r, s \geq 0_{\Q}, t = r\cdot s}$ then $T \union \Set{q \in \Q}{q \leq 0_{\Q}}$\footnote{We use $\geq$ in the usual way, it will be defined earlier in future editions.} \item If $R, S \neq 0_{\R}$, $0_{\R} \in R$ and $0_{\R} \not\in S$, then the additive inverse of the product of $-R$ with $S$. \item If $R, S \neq 0_{\R}$, $0_{\R} \not\in R$ and $0_{\R} \in S$, then the additive inverse of the product of $R$ with $-S$. \item If $R, S \neq 0_{\R}$, and $0_{\R} \not\in R,S$, then the product of $-R$ with $-S$. \end{enumerate} \end{enumerate}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the product of two real numbers $x$ and $y$ by $x \cdot y$.</p></div><div class="sheet-listing"><h2 class="sheet" id="properties">2.2 Properties</h2></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associative] $x + (y + z) = (x + y) + z$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Commutative] $x + y = y + x$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Identity] The set of all rationals less than $1_{\Q}$ is the multiplicative identity. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> We denote the the multiplicative identity by $1_{\R}$. When it is clear from context, we call $1_{\R}$ "one".</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

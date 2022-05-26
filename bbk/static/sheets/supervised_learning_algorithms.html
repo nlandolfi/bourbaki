@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We sometimes use special language for a function inductor, which alludes to its similarities with "learning."</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CU$ and $\CV$ be sets and let $\set{G_n: (\CU \times \CV)^n \to \powerset{X \times Y}}_{n \in \N}$ be a family of functional inductors.</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have a dataset $(u^1, v^1), \dots, (u^n, u^n) \in \CU \times \CV$, and we use our inductor (i.e., learning algorithm) to produce a predictor $f: \CU \to \CY$ defined by $f \equiv G_m(a^1, \dots, a^m)$. Thus, we have a sequence of predictors $f^1, \dots, f^n$. We can evaluate our learning algorithm on th A predictor can be used to "guess" inputs which do not necessarily appear in the dataset. For this reason, some authors call an inductor (or family of inductors) a \t{learner} or \t{learning algorithm}. In accordance with this usage, they refer to the argument of an inductor as the \t{training data} or \t{training dataset} or \t{training set}. As with our terminology dataset, the word "set," however, may mislead since since we are speaking of a sequence.</p></div><div class="sheet-listing"><p class="sheet"> It is common to refer to the construction a predictor from a dataset a \t{learning problem}. In this case, the learning problem is said to be \t{supervised learning}. By supervision, we mean to indicate that we have the outputs corresponding to the inputs. In line with this usage, the outputs are often called \t{labels} and the labels are said "\t{supervise}} or \say{to provide supervision." Since a predictor can be used to \t{guess} the output of an input, some authors call an inductor (or family of inductors) a \t{learner} or \t{learning algorithm} or \t{supervised learning algorithm} and refer to the argument as the \t{training dataset}. Often the word "supervised} is included, as in \t{supervised learning". This language intends to indicate that inputs are given along with outputs, and these outputs "provide supervision to the algorithm."</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -156,8 +192,115 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:supervised_learning_algorithms❳ </span>
+
+ <span class='run'>❲%!need:predictors❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>We sometimes use special language for a
+  function inductor, which alludes to its
+  similarities with “learning.” </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $\CU$ and $\CV$ be sets and let $\set{G_n:
+  (\CU × \CV)^n → \powerset{X × Y}}_{n ∈ 𝗡}$ be
+  a family of functional inductors. </span>
+</p>
+
+
+<p>
+ <span class='run'>Suppose we have a dataset $(u^1, v^1), …,
+  (u^n, u^n) ∈ \CU × \CV$, and we use our
+  inductor (i.e., learning algorithm) to produce a
+  predictor $f: \CU → \CY$ defined by $f \equiv
+  G_m(a^1, …, a^m)$. </span>
+
+ <span class='run'>Thus, we have a sequence of predictors $f^1,
+  …, f^n$. </span>
+
+ <span class='run'>We can evaluate our learning algorithm on th </span>
+
+ <span class='run'>A predictor can be used to “guess” inputs
+  which do not necessarily appear in the dataset. </span>
+
+ <span class='run'>For this reason, some authors call an inductor
+  (or family of inductors) a
+  <span class='term'>learner</span> or
+  <span class='term'>learning algorithm</span>. </span>
+
+ <span class='run'>In accordance with this usage, they refer to
+  the argument of an inductor as the
+  <span class='term'>training data</span> or
+  <span class='term'>training dataset</span> or
+  <span class='term'>training set</span>. </span>
+
+ <span class='run'>As with our terminology dataset, the word
+  “set,” however, may mislead since since we are
+  speaking of a sequence. </span>
+</p>
+
+
+<p>
+ <span class='run'>It is common to refer to the construction a
+  predictor from a dataset a
+  <span class='term'>learning problem</span>. </span>
+
+ <span class='run'>In this case, the learning problem is said to
+  be <span class='term'>supervised learning</span>. </span>
+
+ <span class='run'>By supervision, we mean to indicate that we
+  have the outputs corresponding to the inputs. </span>
+
+ <span class='run'>In line with this usage, the outputs are often
+  called <span class='term'>labels</span> and the
+  labels are said
+  “<span class='term'>supervise</span>” or “to provide
+  supervision.” </span>
+
+ <span class='run'>Since a predictor can be used to
+  <span class='term'>guess</span> the output of an
+  input, some authors call an inductor (or family
+  of inductors) a <span class='term'>learner</span>
+  or <span class='term'>learning algorithm</span> or
+  <span class='term'>supervised learning
+  algorithm</span> and refer to the argument as
+  the <span class='term'>training dataset</span>. </span>
+
+ <span class='run'>Often the word “supervised” is included, as in
+  <span class='term'>supervised learning</span>. </span>
+
+ <span class='run'>This language intends to indicate that inputs
+  are given along with outputs, and these outputs
+  “provide supervision to the algorithm.” </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+
+ <span class='run'></span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -60,6 +60,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -76,6 +111,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Linear predictors are simple and we know how to select the parameters. The main downside is that there may not be a linear relationship between inputs and outputs.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{feature map} (or \t{regression function}) for outputs $A$ is a mapping $\phi: A \to \R^d$. In this setting, we call $a \in A$ the \t{raw input record} and we call $\phi(a)$ an \t{embedding}, \t{feature embedding} or \t{feature vector}. We call the components of a feature vector the \t{features}. We call $\phi(A)$ the \t{regression range}.</p></div><div class="sheet-listing"><p class="sheet"> A feature map is \t{faithful} if, whenever records $a_i$ and $a_j$ are in some sense "similar" in the set $A$, the embeddings $\phi(a_i)$ and $\phi(a_j)$ are close in the vector space $\R^d$.</p></div><div class="sheet-listing"><p class="sheet"> Since it is common for raw input records $a \in A$ to consist of many fields, it is regular to have several feature maps $\phi_i$ which operate component-wise on the fields of $a$. These are sometimes called \t{basis functions}, by analogy with real function approximators (see \sheetref{real_function_approximators}{Real Function Apppoximators}). We concatenate these field feature maps and commonly add a constant feature $1$. Since $\R^d$ is a vector space, it is common to refer to it in this case as the \t{feature space}.</p></div><div class="sheet-listing"><p class="sheet"> Given a dataset $a = (a^1, \dots, a^n)$ in $A$ and a feature map $\phi: A \to \R^d$, the \t{embedded dataset} of $a$ with respect to $\phi$ is the dataset $(\phi(a^1), \dots, \phi(a^n)$ in $\R^d$.</p></div><div class="sheet-listing"><h2 class="sheet" id="featurized_consistency:_a_route_around_$x_\neq_\r^d$">2.1 Featurized consistency: a route around $X \neq \R^d$</h2></div><div class="sheet-listing"><p class="sheet"> Recall that a dataset is parametrically consistent with the family $\set{h_{\theta}: X \to Y}_{\theta}$ if there exists $\theta^\star$ so that the dataset is consistent with $\theta^{\star}$. We saw how to pick $\theta$ if we use a linear model with a squared loss (see \sheetref{least_squares_linear_regressors}{Least Squares Linear Regressors}).</p></div><div class="sheet-listing"><p class="sheet"> Let $\CG = \set{g_{\theta}: \R^d \to \R}_{\theta}$. A dataset is \t{featurized parametrically consistent} with respect to the family $\CG$ and the feature map $\phi: X \to \R^d$ if it is parametrically consistent with respect to $\CG \composed \phi = \Set*{g \composed \phi}{g \in \CG}$.</p></div><div class="sheet-listing"><p class="sheet"> The interpretation is that we have transformed the problem of selecting a predictor on an arbitrary space $X$ to the problem of selecting a predictor on the space $\R^d$. In so doing, we can continue to use simple predictors, such as those that are linear and minimize the squared error on the dataset.\footnote{Future editions are likely to modify this section.}</p></div><div class="sheet-listing"><p class="sheet"> In other words, we have "shifted emphasis} from the model function $h: X \to \R$ to the \t{regression function" from $\R^d \to \R$. If we know the features and the input $x$, then we know the \t{regression vector} $\phi(x)$. The \t{regression range} is the set $\Set*{\phi(x)}{x \in X}$. In this case linearity pertains to the parameters $\theta \in \R^d$ instead of the inputs (or experimental conditions) $x \in X$.</p></div>
     </div>
@@ -180,8 +216,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

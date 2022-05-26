@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is common to consider random functions whose domain is time, space, or $n$-dimensional space.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, d)$ be a metric space.  A \t{distance covariance function} $k: X \times X \to \R$ is a covariance function satisfying \[ k(x, y) > k(x, y) \iff d(x, y) < d(x, y). \] In other words, the covariance decreases as the distance between the arguments decreases.</p></div><div class="sheet-listing" id="example:_squared_exponential"><h1 class="sheet">3. Example: Squared Exponential</h1></div><div class="sheet-listing"><p class="sheet"> Let $k: X \times X \to \R$ be defined by \[ k(x, y) = \exp(-d(x, y)). \] Then $k$ is a distance covariance function. It is often called the \t{squared exponential covariance function}.</p></div><div class="sheet-listing"><p class="sheet"> Let $\alpha, \sigma \in \R$. Define $k': X \times X \to \R$ by \[ k'(x, y) = \alpha\exp(-d(x, y)/\sigma^2) \] then $k'$ is still a covariance function. In this context $\sigma$ is often referred to as the \t{characteristic length-scale} of the process. The scalar $\alpha$ is sometimes called a "prefactor} that \say{controls} the \say{overall variance."</p></div><div class="sheet-listing"><p class="sheet"> Suppose $(X, d) = (\R^n, \normm{\cdot})$. Then the squared exponential covariance function \[ \alpha\exp(-\normm{x - y}/(2\sigma^2)) \] is sometimes called the \t{radial basis function} or \t{gaussian covariance function}.\footnote{For reasons that will be included in future editions.} Also called an \t{exponentiated quadratic kernel}.</p></div>
     </div>
@@ -163,8 +199,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

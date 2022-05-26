@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Sometimes "distance" as used in the English language refers to an asymmetric  concept. This apparent paradox further illuminates the symmetry property.</p></div><div class="sheet-listing" id="apparent_paradox"><h1 class="sheet">2. Apparent Paradox</h1></div><div class="sheet-listing"><p class="sheet"> Distance in the plane is symmetric: the distance from one point to another does not depend on the order of the points so considered. We took this observation as a definiting property of our abstract notion of distance. The meaning, strength, and limitation of this property is clarified by considering an asymmetric case.</p></div><div class="sheet-listing"><p class="sheet"> Contrast walking up a hill with walking down it. The "distance" between these two points, the top of the hill and a point on its base, may not be symmetric with respect to the time taken or the effort involved. Experience suggests that it will take longer to walk up the hill than to walk down it. A superficial justification may include reference to the some notion of uphill walking requiring more effort.</p></div><div class="sheet-listing"><p class="sheet"> If we were going to model the top and base of the hill as points in space, however, the distance between them is the same: it is symmetric. It is even the same if we take into account that some specific path, a trail say, must be followed.</p></div><div class="sheet-listing"><p class="sheet"> If planning a backpacking trip, such symmetry appears foolish. The distance between two locations must not be considered symmetric. Going up the mountain takes longer than going down. It may justify, in the English phrase, "going around, rather than going over."</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

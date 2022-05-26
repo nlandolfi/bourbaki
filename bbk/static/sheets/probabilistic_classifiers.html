@@ -50,6 +50,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -66,6 +101,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Since our predictions are often uncertain, we can use the language of probability distributions to characterize them. \ifhmode\unskip\fi\footnote{ Future editions will improve this. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Denote the set of probability distributions on a set $X$ by $\Delta(X)$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{probabilistic classifier} $G: A \to \Delta(B)$ is a function from inputs $A$ to probability distributions over the classes $B$.</p></div><div class="sheet-listing"><p class="sheet"> Given an input $a$, the \t{prediction} of $G$ on $a$ is a probability distribution $\hat{p}_a = G(a)$ on $B$.</p></div><div class="sheet-listing"><h2 class="sheet" id="point_classifier_as_probabilistic_classifier">2.1 Point classifier as probabilistic classifier</h2></div><div class="sheet-listing"><p class="sheet"> Given a point classifier $f: A \to B$, we can define a probabilistic classifier $G: A \to \Delta(B)$ corresponding to $f$ by \[ \hat{p}_a(b) = \begin{cases} 1 & \text{ if } f(a) = b \\ 0 & \text{ otherwise.} \\ \end{cases} \] where $\hat{p}_a = G(a).$</p></div><div class="sheet-listing"><h2 class="sheet" id="probabilistic_classifier_from_point_classifier">2.2 Probabilistic classifier from point classifier</h2></div><div class="sheet-listing"><p class="sheet"> On the other hand, given probabilistic classifier $G: A \to \Delta(B)$, we can define a point classifier $f: A \to B$ by \[ f(a) = \underset{b \in B}{\text{argmax}} \; \hat{p}_a(v) \] We call $f$ the \t{maximum likelihood classifier} corresponding to $G$. If there are ties, we can order the (finite) set $B$ arbitrarily, and break ties accordingly.</p></div><div class="sheet-listing"><p class="sheet"> We can extend this idea, and define a list classifier by sorting the outputs by their probability, from largest to smallest.</p></div><div class="sheet-listing" id="judging_probabilistic_classifiers"><h1 class="sheet">3. Judging probabilistic classifiers</h1></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -170,8 +206,127 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:probabilistic_classifiers❳ </span>
+
+ <span class='run'>❲%!need:classifiers❳ </span>
+
+ <span class='run'>❲%!need:probability_distributions❳ </span>
+
+ <span class='run'>❲%!need:list_classifiers❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>Since our predictions are often uncertain, we
+  can use the language of probability distributions
+  to characterize them.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Denote the set of probability distributions on
+  a set $X$ by $\Delta(X)$. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>probabilistic classifier</span>
+  $G: A → \Delta(B)$ is a function from inputs
+  $A$ to probability distributions over the classes
+  $B$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Given an input $a$, the
+  <span class='term'>prediction</span> of $G$ on $a$
+  is a probability distribution $\hat{p}_a = G(a)$
+  on $B$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Point classifier as probabilistic
+  classifier} </span>
+</p>
+
+
+<p>
+ <span class='run'>Given a point classifier $f: A → B$, we can
+  define a probabilistic classifier $G: A →
+  \Delta(B)$ corresponding to $f$ by
+  <p>\[
+   \hat{p}_a(b) = </span>
+
+   \begin{cases} </span>
+
+   1 ❲&amp;❳ \text{ if } f(a) = b <br /> </span>
+
+   0 ❲&amp;❳ \text{ otherwise.} <br /> </span>
+
+   \end{cases} </span>
+  \]</p>
+  where $\hat{p}_a = G(a).$ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Probabilistic classifier from point
+  classifier} </span>
+</p>
+
+
+<p>
+ <span class='run'>On the other hand, given probabilistic
+  classifier $G: A → \Delta(B)$, we can define a
+  point classifier $f: A → B$ by
+  <p>\[
+   f(a) = \underset{b ∈ B}{\text{argmax}} \; \hat{p}_a(v) </span>
+  \]</p></span>
+
+ <span class='run'>We call $f$ the <span class='term'>maximum
+  likelihood classifier</span> corresponding to $G$. </span>
+
+ <span class='run'>If there are ties, we can order the (finite)
+  set $B$ arbitrarily, and break ties accordingly. </span>
+</p>
+
+
+<p>
+ <span class='run'>We can extend this idea, and define a list
+  classifier by sorting the outputs by their
+  probability, from largest to smallest. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Judging probabilistic classifiers} </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

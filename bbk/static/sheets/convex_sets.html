@@ -109,6 +109,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -125,6 +160,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{convex set} contains every closed line segement between any two points. Every affine set is convex.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $x$ and $y$ in $\R ^n$. We can express the closed line segment between $x$ and $y$ as \[ \Set*{x + a(y - x)}{0 \leq a \leq 1, x, y \in \R ^n}. \] Notice that $x + a(y - x) = (1-a)x + ay$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Every affine set is convex. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The intersection of a family of convex sets is convex. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The translate of a convex set is convex. The scalar multiple of a convex set si convex. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -229,8 +265,151 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:convex_sets❳ </span>
+
+ <span class='run'>❲%!need:operations❳ </span>
+
+ <span class='run'>❲%!need:intervals❳ </span>
+
+ <span class='run'>❲%!need:affine_sets❳ </span>
+
+ <span class='run'>❲%!need:line_segments❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why}[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>convex set</span> contains
+  every closed line segement between any two
+  points. </span>
+
+ <span class='run'>Every affine set is convex. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssubsection{Notation} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $x$ and $y$ in $𝗥^n$. We can express the
+  closed line segment between $x$ and $y$ as
+  <p>\[
+   \Set*{x + a(y - x)}{0 ≤ a ≤ 1, x, y ∈ 𝗥^n}. </span>
+  \]</p></span>
+
+ <span class='run'>Notice that $x + a(y - x) = (1-a)x + ay$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{prop} </span>
+
+ <span class='run'>Every affine set is convex. </span>
+
+ <span class='run'>\end{prop} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{prop} </span>
+
+ <span class='run'>The intersection of a family of convex sets is
+  convex. </span>
+
+ <span class='run'>\end{prop} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{prop} </span>
+
+ <span class='run'>The translate of a convex set is convex. </span>
+
+ <span class='run'>The scalar multiple of a convex set si convex. </span>
+
+ <span class='run'>\end{prop} </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+
+<p>
+ <span class='run'>❲% A \t{convex combination} of two distinct real numbers
+% is an element of the closed interval they
+% delimit.
+% A
+% \ct{convex set}{convexset}
+% of real numbers
+% contains each convex combination
+% of any two of its elements.
+%
+% The \ct{length}{}
+% of a convex
+% combination
+% is the real
+% number in $[0,1]$
+% which is
+% the ratio of
+% the combination
+% less the lower
+% endpoint
+% to the
+% upper endpoint
+% less the lower
+% endpoint.
+%
+% \ssubsection{Notation}
+%
+% Denote the real numbers
+% by $R$.
+% Let $A \subset R$ be convex.
+% Then
+% for all $a, b \in A$,
+% $[a, b] \subset A$.
+%
+% Suppose $A$ contains
+% at least two element.
+% Let $a, b \in A$
+% with $a &lt; b$.
+% If $c$ is the combination
+% of $a$ and $b$, then
+% the length of $c$
+% is $(c-a)/(b-a)$.
+%
+% If $A$ is convex,
+% then for each
+% $a, b \in A$,
+% and $\theta \in [0, 1]$,
+% \[
+%   \theta a + (1-\theta) b \in A.
+% \]
+%
+❳ </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

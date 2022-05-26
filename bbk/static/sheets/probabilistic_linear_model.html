@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If we treat the parameters of a linear function as a random variable, an inductor for the predictor is equivalent to an estimator for the parameters.\footnote{Future editions will offer further discussion.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(\Omega, \CA, \PM)$ be a probability space. Let $x: \Omega \to \R^d$. Define $g: \Omega \to (\R^d \to \R)$ by $g(\omega)(a) = \transpose{a}x(\omega)$, for $a \in \R^d$. In other words, for each outcome $\omega \in \Omega$, $g_\omega: \R^d \to \R$ is a linear function with parameters $x(\omega)$. $g_\omega$ is the function of interest.</p></div><div class="sheet-listing"><p class="sheet"> Let $a^1, \dots, a^n \in \R^d$ a dataset with data matrix $A \in \R^{n \times d}$. Let $e: \Omega \to \R^n$ independent of $x$, and define $y: \Omega \to \R^n$ by \[ y = Ax + e. \] In other words, $y_i = \transpose{x}a^i + e_i$.</p></div><div class="sheet-listing"><p class="sheet"> We call $(x, A, e)$ a \t{probabilistic linear model}. Other terms include \t{linear model}, \t{statistical linear model}, \t{linear regression model}, \t{bayesian linear regression}, and \t{bayesian analysis of the linear model}.\footnote{The word bayesian is in reference to treating the object of interest---$x$---as a random variable.} We call $x$ the parameters, $A$ a \t{design}, $e$ the \t{error} or \t{noise} vector, and $y$ the \t{observation} vector.</p></div><div class="sheet-listing"><p class="sheet"> One may want an estimator for the parameters $x$ in terms of $y$ or one may be modeling the function $g$ and want to predict $g(a)$ for $a \in A$ not in the dataset.</p></div><div class="sheet-listing" id="inconsistency"><h1 class="sheet">3. Inconsistency</h1></div><div class="sheet-listing"><p class="sheet"> In this model, the dataset is assumed to be inconsistent as a result of the random errors. In these cases, the error vector $e$ may model a variety of sources of error ranging from inaccuracies in the measurements (or measurement devices) to systematic errors from the "inapproriateness} of the use of a linear predictor.\footnote{Future editions will clarify and may excise this sentence." In this case the linear part is sometimes called the \t{deterministic effect} of the response on the input $a \in A$.</p></div><div class="sheet-listing" id="moment_assumptions"><h1 class="sheet">4. Moment assumptions</h1></div><div class="sheet-listing"><p class="sheet"> One route to be more specific about the underlying distribution of the random vector is give its mean and variance. It is common to give the mean of $\E(w)$</p></div><div class="sheet-listing" id="mean_and_variance"><h1 class="sheet">5. Mean and variance</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\E(y) = A\E(x) + \E(w)$\footnote{By linearity. Full account in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\cov((x, y)) = A\cov(x)\transpose{A} + \cov{e}$\footnote{Full account in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> A simple consequence is that, if $x$ and</p></div>
     </div>
@@ -173,8 +209,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

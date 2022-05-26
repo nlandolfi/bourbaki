@@ -36,6 +36,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -52,6 +87,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> A natural and (conceptually) simple inductor is to select a predictor which achieves zero error on the training dataset.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX, \mu)$ and $f: X \to Y$ be a probabilistic supervised data model. For a dataset $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the \t{empirical error} of a predictor $h: X \to Y$ is \[ (\nicefrac{1}{n})\num{\Set*{i \in \upto{n}}{h(x_i) \neq y_i}}, \] An \t{empirical error minimizer} is a predictor whose empirical error is minimal. Since we assume that the dataset is consistent, the correct labeling function is always an empirical error minimizer, and achieves zero. If the dataset is incomplete, however, there may be other empirical error minimizers.</p></div><div class="sheet-listing"><p class="sheet"> A family of inductors $(A^n)_n$ is an \t{empirical error minimizer} if, for each $n \in N$, and each dataset $D = ((x_i, y_i))_{i = 1}^{n}$, $A^n(D)$ is an empirical risk minimizer of $D$.</p></div><div class="sheet-listing" id="overfitting_and_incutive_bias"><h1 class="sheet">3. Overfitting and incutive bias</h1></div><div class="sheet-listing"><p class="sheet"> Since a dataset may be incomplete, an empirical risk minimizer may be a "poor" predictor. For example, let $A \subset X \subset \R^2$ and $Y = \set{0, 1}$. Define $f: X \to Y$ by $f(x) = 1$ if $x \in A$ and $f(x) = 0$ otherwise. Suppose $A \in \CX$ and $\mu(A) = \nicefrac{1}{2}$.</p></div><div class="sheet-listing"><p class="sheet"> For any training set $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the hypothesis $h: X \to Y$ defined by $h(x) = y_i$ if $x = x_i$ and $h(x) = 0$ otherwise achieves zero empirical error but has "actual} error $\nicefrac{1}{2"$. The predictor is said to be \t{overfit} or to exhibit \t{overfitting}. It is said to fit the training dataset "too well."</p></div><div class="sheet-listing"><p class="sheet"> By adjusting the hypothesis class one may "guard against" overfitting. In this context, the constrained hypothesis class is called an \t{inductive bias}.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">3.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Other terminology for the empirical error includes \t{empirical risk}. For these reasons, the learning paradigm of selecting a predictor $h$ to minimizer the empirical risk is called \t{empirical risk minimization} or \t{ERM}.</p></div>
     </div>
@@ -156,8 +192,11 @@
     </iframe>
     -->
 
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

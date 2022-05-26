@@ -53,6 +53,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -69,6 +104,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How should we compare two classifiers?</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> Let $a^1, \dots, a^n$ in $A$ be a dataset of inputs and $b^1, \dots, b^n$ in $B$ be a dataset of labels. Let $G: A \to B$ be a classifier.</p></div><div class="sheet-listing"><p class="sheet"> For each $i = 1, \dots, n$, the classifier associates a prediction $G(a^i)$ with $a^i$. The prediction $G(a^i)$ is \t{correct} if $G(a^i) = b^i$ and \t{incorrect} (\t{wrong}, \t{error}) if $G(a^i) \neq b^i$. The \t{error rate} is the proportion of the dataset for which the classifier's prediction is an error. In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i) \neq b^i}}$.</p></div><div class="sheet-listing"><p class="sheet"> Given two classifiers, it is natural to prefer the one with the lower error rate. Given that these two are the results of different inductors applied to the same, we can use a separate dataset to \t{validate} these.</p></div><div class="sheet-listing" id="boolean_case"><h1 class="sheet">3. Boolean case</h1></div><div class="sheet-listing"><p class="sheet"> In the case that $B = \set{-1, 1}$, we call the class $-1$ \t{negative} and the class $+1$ positive. Similarly, we call an example $(a^i, b^i)$ a \t{negative example} if $b^i = -1$ and a \t{positive example} if $b^i = 1$.</p></div><div class="sheet-listing"><p class="sheet"> We call the result of $G$ on $a^i$ a \t{true positive} if $b^i = 1$ and $G(a^i) = 1$, a \t{true negative} if $b^i = -1$ and $G(b^i) = -1$, a \t{false negative} (or \t{type II error}, read "type two error}) if $b^i = 1$ and $G(a^i) = -1$ and a \t{false positive} (or \t{type I error}, read \say{type one error") if $b^i = -1$ and $G(a^i) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{false positive rate} (\t{false negative rate}) of a classifier on a dataset is the proportion of dataset elements for which it predicts a \t{false positive} (\t{false negative}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{true positive rate} (or \t{sensitivity}, \t{recall}) of $G$ on a dataset is the proportion of positive examples which $G$ labels positive. The \t{precision} (or \t{positive predictive value}) of $G$ is the proportion of all examples which the classifier labels $positive$ whose label is positive. The \t{true negative rate} (or \t{specificity}, \t{selectivity}) is the proportion of negative examples which $G$ labels negative. The \t{false alarm rate} is the proportion of negative examples which $G$ <i>incorrectly</i> labels positive.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -173,8 +209,144 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:classifier_errors❳ </span>
+
+ <span class='run'>❲%!need:classifiers❳ </span>
+
+ <span class='run'>❲% %!need:set_numbers❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+
+ <span class='run'>How should we compare two classifiers? </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definitions} </span>
+
+ <span class='run'>Let $a^1, …, a^n$ in $A$ be a dataset of
+  inputs and $b^1, …, b^n$ in $B$ be a dataset
+  of labels. </span>
+
+ <span class='run'>Let $G: A → B$ be a classifier. </span>
+</p>
+
+
+<p>
+ <span class='run'>For each $i = 1, …, n$, the classifier
+  associates a prediction $G(a^i)$ with $a^i$. </span>
+
+ <span class='run'>The prediction $G(a^i)$ is
+  <span class='term'>correct</span> if $G(a^i) = b^i$
+  and <span class='term'>incorrect</span>
+  (<span class='term'>wrong</span>,
+  <span class='term'>error</span>) if $G(a^i) ≠ b^i$. </span>
+
+ <span class='run'>The <span class='term'>error rate</span> is the
+  proportion of the dataset for which the
+  classifier’s prediction is an error. </span>
+
+ <span class='run'>In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i)
+  ≠ b^i}}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Given two classifiers, it is natural to prefer
+  the one with the lower error rate. </span>
+
+ <span class='run'>Given that these two are the results of
+  different inductors applied to the same, we can
+  use a separate dataset to
+  <span class='term'>validate</span> these. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Boolean case} </span>
+</p>
+
+
+<p>
+ <span class='run'>In the case that $B = \set{-1, 1}$, we call
+  the class $-1$ <span class='term'>negative</span>
+  and the class $+1$ positive. </span>
+
+ <span class='run'>Similarly, we call an example $(a^i, b^i)$ a
+  <span class='term'>negative example</span> if $b^i
+  = -1$ and a <span class='term'>positive
+  example</span> if $b^i = 1$. </span>
+</p>
+
+
+<p>
+ <span class='run'>❲%For input $a^i$, label $b^i$, prediction $G(b^i)$, there are four values for $(b^i, G(b^i))$.❳ </span>
+
+ <span class='run'>We call the result of $G$ on $a^i$ a
+  <span class='term'>true positive</span> if $b^i =
+  1$ and $G(a^i) = 1$, a <span class='term'>true
+  negative</span> if $b^i = -1$ and $G(b^i) =
+  -1$, a <span class='term'>false negative</span> (or
+  <span class='term'>type II error</span>, read “type
+  two error}) if $b^i = 1$ and $G(a^i) = -1$
+  and a <span class='term'>false positive</span> (or
+  <span class='term'>type I error</span>, read
+  \say{type one error”) if $b^i = -1$ and $G(a^i)
+  = 1$. </span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>false positive rate</span>
+  (<span class='term'>false negative rate</span>) of
+  a classifier on a dataset is the proportion of
+  dataset elements for which it predicts a
+  <span class='term'>false positive</span>
+  (<span class='term'>false negative</span>). </span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>true positive rate</span>
+  (or <span class='term'>sensitivity</span>,
+  <span class='term'>recall</span>) of $G$ on a
+  dataset is the proportion of positive examples
+  which $G$ labels positive. </span>
+
+ <span class='run'>The <span class='term'>precision</span> (or
+  <span class='term'>positive predictive value</span>)
+  of $G$ is the proportion of all examples which
+  the classifier labels $positive$ whose label is
+  positive. </span>
+
+ <span class='run'>The <span class='term'>true negative rate</span>
+  (or <span class='term'>specificity</span>,
+  <span class='term'>selectivity</span>) is the
+  proportion of negative examples which $G$ labels
+  negative. </span>
+
+ <span class='run'>The <span class='term'>false alarm rate</span> is
+  the proportion of negative examples which $G$
+  <i>incorrectly</i> labels positive. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

@@ -74,6 +74,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -90,6 +125,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to discuss making a decision. \ifhmode\unskip\fi\footnote{ Future editions will expand. } To discuss decisions, we first must speak of the choices to be made.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We have a set which includes all possible choices. The set is called the \t{actions}, \t{acts}, \t{decisions}, \t{choices} or \t{designs}.</p></div><div class="sheet-listing"><p class="sheet"> For each decision, we have a set which includes all possible outcomes. Often the outcomes are uncertain, and associated with the future (see \sheetref{uncertain outcomes}{Uncertain Outcomes}).</p></div><div class="sheet-listing"><p class="sheet"> Since we select an action prior to observing the outcome, we want to talk about which actions and outcomes are preferable to others. We call an action-outcome pair a \t{history}. We refer to the set of action-outcome pairs the \t{histories}. A \t{preference} is an order on histories.</p></div><div class="sheet-listing"><p class="sheet"> A \t{simple decision problem} is a triple $(A, \set{O_a}_{a \in A}, \preceq)$ in which $A$ is a set of actions, $\set{O_a}$ is a family of sets of outcomes, and $\preceq$ is a preference on the histories $\Set*{(a, o)}{a \in A, o \in O_a}$.</p></div><div class="sheet-listing" id="example:_party"><h1 class="sheet">3. Example: party</h1></div><div class="sheet-listing"><p class="sheet"> Consider deciding whether to host a party indoors or outdoors. We are unsure of the weather. We have a set of two actions $A = \set{\textsc{In}, \textsc{Out}}$ and a set of two outcomes (the same for each action) $O_a = W = \set{\textsc{Rain}, \textsc{Shine}}$ for $a \in A$. Although many orders on $A \times W$ exist, one such order is \[ (\textsc{Out}, \textsc{Shine}) \prec (\textsc{In}, \textsc{Rain}) \prec (\textsc{In}, \textsc{Shine}) \prec (\textsc{Out}, \textsc{Rain}). \] In other words, having the party outside in the sun is preferred to having it inside when it is raining, but both of these are preferred to having it inside when the sun is shining, and all of these are preferred to having it outdoors in the rain.</p></div><div class="sheet-listing" id="best_actions"><h1 class="sheet">4. Best actions</h1></div><div class="sheet-listing"><p class="sheet"> Let $(A, \set{O_a}, \preceq)$ be a simple decision problem in which $O_a = S$ for each $a \in A$. Let $o \in S$. An action $a \in A$ is \t{best for outcome $o$} if $(a, o) \preceq (a', o)$ for all $a' \in A$. An action $a \in A$ is \t{best for all outcomes} (or \t{uniformly best}) if, for all $o \in O$, $(a, o) \preceq (a', o')$ for all $a' \in A, b' \in O$. \ifhmode\unskip\fi\footnote{ Future editions will clarify, and may remove this section. }</p></div><div class="sheet-listing"><p class="sheet"> In the party example, the best action for $\textsc{Rain}$ is $\textsc{In}$ and the best action for $\textsc{Shine}$ is \textsc{Out}. On the other hand, there is no uniformly best action. For the action $\textsc{Out}$, there is an outcome $\textsc{Rain}$, and action-outcome pair $(\textsc{In}, \textsc{Rain})$ so that $(\textsc{In}, \textsc{Rain}) \prec (\textsc{Out}, \textsc{Rain})$. In other words, $\textsc{Out}$ is not uniformly best, because there is an outcome, $\textsc{Rain}$ for which the action $\textsc{In}$ is preferred. Similarly for $\textsc{In}$.</p></div>
     </div>
@@ -194,8 +230,188 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:decisions❳ </span>
+
+ <span class='run'>❲%!need:set_numbers❳ </span>
+
+ <span class='run'>❲%!need:uncertain_outcomes❳ </span>
+
+ <span class='run'>❲%!need:orders❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>We want to discuss making a decision.[footnote skipped in this version]</span>
+
+ <span class='run'>To discuss decisions, we first must speak of
+  the choices to be made. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>We have a set which includes all possible
+  choices. </span>
+
+ <span class='run'>The set is called the
+  <span class='term'>actions</span>,
+  <span class='term'>acts</span>,
+  <span class='term'>decisions</span>,
+  <span class='term'>choices</span> or
+  <span class='term'>designs</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>For each decision, we have a set which
+  includes all possible outcomes. </span>
+
+ <span class='run'>Often the outcomes are uncertain, and associated
+  with the future (see \sheetref{uncertain
+  outcomes}{Uncertain Outcomes}). </span>
+</p>
+
+
+<p>
+ <span class='run'>Since we select an action prior to observing
+  the outcome, we want to talk about which
+  actions and outcomes are preferable to others. </span>
+
+ <span class='run'>We call an action-outcome pair a
+  <span class='term'>history</span>. </span>
+
+ <span class='run'>We refer to the set of action-outcome pairs
+  the <span class='term'>histories</span>. </span>
+
+ <span class='run'>A <span class='term'>preference</span> is an order
+  on histories. </span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>simple decision problem</span>
+  is a triple $(A, \set{O_a}_{a ∈ A}, ≼)$ in
+  which $A$ is a set of actions, $\set{O_a}$ is
+  a family of sets of outcomes, and $≼$ is a
+  preference on the histories $\Set*{(a, o)}{a ∈
+  A, o ∈ O_a}$. </span>
+</p>
+
+
+<p>
+ <span class='run'></span>
+
+ <span class='run'>\ssection{Example: party} </span>
+</p>
+
+
+<p>
+ <span class='run'>Consider deciding whether to host a party
+  indoors or outdoors. </span>
+
+ <span class='run'>We are unsure of the weather. </span>
+
+ <span class='run'>We have a set of two actions $A =
+  \set{<span class='smallcaps'>In</span>,
+  <span class='smallcaps'>Out</span>}$ and a set of
+  two outcomes (the same for each action) $O_a =
+  W = \set{<span class='smallcaps'>Rain</span>,
+  <span class='smallcaps'>Shine</span>}$ for $a ∈ A$. </span>
+
+ <span class='run'>Although many orders on $A × W$ exist, one
+  such order is
+  <p>\[
+   (<span class='smallcaps'>Out</span>,
+    <span class='smallcaps'>Shine</span>) ≺
+    (<span class='smallcaps'>In</span>,
+    <span class='smallcaps'>Rain</span>) ≺
+    (<span class='smallcaps'>In</span>,
+    <span class='smallcaps'>Shine</span>) ≺
+    (<span class='smallcaps'>Out</span>,
+    <span class='smallcaps'>Rain</span>). </span>
+  \]</p></span>
+
+ <span class='run'>In other words, having the party outside in
+  the sun is preferred to having it inside when
+  it is raining, but both of these are preferred
+  to having it inside when the sun is shining,
+  and all of these are preferred to having it
+  outdoors in the rain. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Best actions} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $(A, \set{O_a}, ≼)$ be a simple decision
+  problem in which $O_a = S$ for each $a ∈ A$. </span>
+
+ <span class='run'>Let $o ∈ S$. </span>
+
+ <span class='run'>An action $a ∈ A$ is <span class='term'>best
+  for outcome $o$</span> if $(a, o) ≼ (a’, o)$
+  for all $a’ ∈ A$. </span>
+
+ <span class='run'>An action $a ∈ A$ is <span class='term'>best
+  for all outcomes</span> (or
+  <span class='term'>uniformly best</span>) if, for
+  all $o ∈ O$, $(a, o) ≼ (a’, o’)$ for all $a’
+  ∈ A, b’ ∈ O$.[footnote skipped in this version]</span>
+</p>
+
+
+<p>
+ <span class='run'>In the party example, the best action for
+  $<span class='smallcaps'>Rain</span>$ is
+  $<span class='smallcaps'>In</span>$ and the best
+  action for $<span class='smallcaps'>Shine</span>$ is
+  <span class='smallcaps'>Out</span>. </span>
+
+ <span class='run'>On the other hand, there is no uniformly best
+  action. </span>
+
+ <span class='run'>For the action
+  $<span class='smallcaps'>Out</span>$, there is an
+  outcome $<span class='smallcaps'>Rain</span>$, and
+  action-outcome pair
+  $(<span class='smallcaps'>In</span>,
+  <span class='smallcaps'>Rain</span>)$ so that
+  $(<span class='smallcaps'>In</span>,
+  <span class='smallcaps'>Rain</span>) ≺
+  (<span class='smallcaps'>Out</span>,
+  <span class='smallcaps'>Rain</span>)$. </span>
+
+ <span class='run'>In other words,
+  $<span class='smallcaps'>Out</span>$ is not
+  uniformly best, because there is an outcome,
+  $<span class='smallcaps'>Rain</span>$ for which the
+  action $<span class='smallcaps'>In</span>$ is
+  preferred. </span>
+
+ <span class='run'>Similarly for $<span class='smallcaps'>In</span>$. </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>

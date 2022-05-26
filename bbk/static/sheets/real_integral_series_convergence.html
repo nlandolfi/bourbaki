@@ -43,6 +43,41 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -59,6 +94,7 @@
         );
       });
     </script>
+    -->
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Sums of non-negative functions are increasing, and workable with the monotone convergence theorem.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The integral of the limit of the partial sums of a sequence of measurable, nonnegative, extended-real-valued functions is the limit of the partial sums of the integrals. \begin{proof} Let $(X, \mathcal{A}, \mu)$ be a measure space, and let $\seqt{f}: \to \nneri$ a $\mathcal{A}$-measurable function for every natural number $n$. We want to show that: \[ \int \sum_{k = 1}^{\infty} f_k d\mu = \sum_{k = 1}^{\infty} \int f_k d\mu. \] We apply the monotone convergence theorem to the sequence $\set{\sum_{i = 1}^{n}f_i}_n$. This sequence is nondecreasing because $f_n \geq 0$ for all $n$. \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -163,8 +199,80 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <p>
+ <span class='run'>❲%!name:real_integral_series_convergence❳ </span>
+
+ <span class='run'>❲%!need:real_integrals❳ </span>
+
+ <span class='run'>❲%!need:extended_real_numbers❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>Sums of non-negative functions are increasing,
+  and workable with the monotone convergence
+  theorem. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Result} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>The integral of the limit of the partial sums
+  of a sequence of measurable, nonnegative,
+  extended-real-valued functions is the limit of
+  the partial sums of the integrals. </span>
+
+ <span class='run'>\begin{proof} </span>
+
+ <span class='run'>Let $(X, \mathcal{A}, μ)$ be a measure space,
+  and let $\seqt{f}: → \nneri$ a
+  $\mathcal{A}$-measurable function for every natural
+  number $n$. </span>
+
+ <span class='run'>We want to show that:
+  <p>\[
+   ∫ ∑_{k = 1}^{∞} f_k d\mu </span>
+
+   = </span>
+
+   ∑_{k = 1}^{∞} ∫ f_k d\mu. </span>
+  \]</p></span>
+
+ <span class='run'>We apply the monotone convergence theorem to
+  the sequence $\set{∑_{i = 1}^{n}f_i}_n$. </span>
+
+ <span class='run'>This sequence is nondecreasing because $f_n ≥
+  0$ for all $n$. </span>
+
+ <span class='run'>\end{proof} </span>
+
+ <span class='run'>\end{proposition} </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+</p>
+
+    </div>
+  
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a4c45d4d1.
+      Copyright 2022 The Bourbaki Authors. Version 3298e6ce4.
     </span>
   </body>
 </html>
