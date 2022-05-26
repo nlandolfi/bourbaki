@@ -147,6 +147,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to count the number of elements in a set.</p></div><div class="sheet-listing" id="defining_result"><h1 class="sheet">2. Defining Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} A set can be equivalent to at most one natural number.\footnote{A proof will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{number} of a finite set is the unique natural number equivalent to it. We also call this the \t{size} of the set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the number of a set by $\num{A}$.</p></div><div class="sheet-listing" id="restriction_to_a_finite_set"><h1 class="sheet">3. Restriction to a finite set</h1></div><div class="sheet-listing"><p class="sheet"> If we restrict $E \mapsto \num{E}$ to the domain $\powerset{X}$ of some set $X$ then $\num{\cdot}: \powerset{X} \to \omega$ is a function.\footnote{Future editions will clarify this point.}</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">4. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \subset B \implies \num{A} \leq \num{B}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -253,9 +255,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

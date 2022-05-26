@@ -102,6 +102,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Matrices with elements in a ring form a ring.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">2. Example</h1></div><div class="sheet-listing"><p class="sheet"> Let $(R, +, \cdot )$ be a ring. Define $C = A \bar{+} B$ by $C_{ij} = A_{ij} + B_{ij}$ and define $C = A \bar{\cdot } B$ by $C_{ij} = \sum_{k = 1}^{n} A_{ik}B_{kj}$, as with real matrices, for $A, B \in R^{n \times n}$. Then $(R^{n \times n}, \bar{+}, \bar{\cdot })$ is a ring. In other words, the set of $n \times n$ matrices with elements in $R$ is a ring, with the usual addition and multiplication of matrices.</p></div><div class="sheet-listing"><p class="sheet"> The additive identity of the ring is the matrix $0 \in R^{n \times n}$ for which $0_{ij} = 0 \in R$. The multiplicative identity the matrix $I$ for which $I_{ii} = 1 \in R$ for $i = 1, \dots , n$ and $I_{ij} = 0 \in R$ for $i \neq j = 1, \dots , n$. As seen with real-valued matrices, multiplication on $R^{n \times n}$ need not be commutative even if $R$ is.</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Show that $R^{n \times n}$ is not a division ring when $n > 1$. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -276,9 +278,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

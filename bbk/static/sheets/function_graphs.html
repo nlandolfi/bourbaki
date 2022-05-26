@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to visualize function composition.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">1. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $G$ be a graph (directed or undirected) on $\set{1, \dots, n}$ and let $A_1, \dots, A_n$ be a sequence of sets. We call the ordered pair $(G, A)$ a \t{typed graph}. We call $A_i$ the \t{$i$th domain}. For $S \subset \set{1, \dots, n}$, we denote the ordered product $\prod_{s \in S} A_s$ by $A_S$.</p></div><div class="sheet-listing"><p class="sheet"> If $G$ is directed, we call a source vertex $i$ \t{exogenous} and otherwise we call a vertex \t{endogenous}.</p></div><div class="sheet-listing"><p class="sheet"> Let $\bar{G} = (G, A)$ be a typed graph where $G$ is directed. Let $f_i: A_{\pa_{i}} \to A_i$ for $i = 1, \dots, n$ so that $f$ is a sequence of functions. We call the ordered pair $(\bar{G}, f)$ a \t{function graph}\footnote{This sheet is not to be confused with the graph of a function (see \sheetref{functions}{Functions}.} (or \t{function diagram}).</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -88,6 +88,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> The inverse of a function interacts nicely with family unions, family intersections and complements.</p></div><div class="sheet-listing" id="results"><h1 class="sheet">2. Results</h1></div><div class="sheet-listing"><p class="sheet"> Let $f: X \to Y$. Throughout this sheet, let $f^{-1}: \powerset{Y} \to \powerset{X}$. And take $\set{B_i}$ to be a family of subsets of $Y$.\footnote{The proofs of the following will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $f^{-1}(\cup_i B_i) = \cup_{i} f^{-1}(B_i)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $f^{-1}(\cup_i B_i) = \cap_{i} f^{-1}(B_i)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $f^{-1}(Y - B) = X - f^{-1}(B)$ \end{proposition}</p></div><div class="sheet-listing" id="properties_for_function_image"><h1 class="sheet">3. Properties for Function Image</h1></div><div class="sheet-listing"><p class="sheet"> Notice that $f(\cup_i A_i) = \cup_i f(A_i)$ but not for interesctions. Nor is there a similar correspondence for complements. There are some relations, which we list below.\footnote{Accounts of these facts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $f(A \cap B) = f(A) \cap f(B)$ if and only if $f$ is one-to-one. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For all $A \subset X$, $f(X - A) = Y - f(A)$ if and only if $f$ is one-to-one. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For all $A \subset X$, $Y - f(A) \subset f(X - A)$ if and only if $f$ is onto. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -194,9 +196,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

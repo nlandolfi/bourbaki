@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How should we compare two classifiers?</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> Let $a^1, \dots, a^n$ in $A$ be a dataset of inputs and $b^1, \dots, b^n$ in $B$ be a dataset of labels. Let $G: A \to B$ be a classifier.</p></div><div class="sheet-listing"><p class="sheet"> For each $i = 1, \dots, n$, the classifier associates a prediction $G(a^i)$ with $a^i$. The prediction $G(a^i)$ is \t{correct} if $G(a^i) = b^i$ and \t{incorrect} (\t{wrong}, \t{error}) if $G(a^i) \neq b^i$. The \t{error rate} is the proportion of the dataset for which the classifier's prediction is an error. In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i) \neq b^i}}$.</p></div><div class="sheet-listing"><p class="sheet"> Given two classifiers, it is natural to prefer the one with the lower error rate. Given that these two are the results of different inductors applied to the same, we can use a separate dataset to \t{validate} these.</p></div><div class="sheet-listing" id="boolean_case"><h1 class="sheet">3. Boolean case</h1></div><div class="sheet-listing"><p class="sheet"> In the case that $B = \set{-1, 1}$, we call the class $-1$ \t{negative} and the class $+1$ positive. Similarly, we call an example $(a^i, b^i)$ a \t{negative example} if $b^i = -1$ and a \t{positive example} if $b^i = 1$.</p></div><div class="sheet-listing"><p class="sheet"> We call the result of $G$ on $a^i$ a \t{true positive} if $b^i = 1$ and $G(a^i) = 1$, a \t{true negative} if $b^i = -1$ and $G(b^i) = -1$, a \t{false negative} (or \t{type II error}, read "type two error}) if $b^i = 1$ and $G(a^i) = -1$ and a \t{false positive} (or \t{type I error}, read \say{type one error") if $b^i = -1$ and $G(a^i) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{false positive rate} (\t{false negative rate}) of a classifier on a dataset is the proportion of dataset elements for which it predicts a \t{false positive} (\t{false negative}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{true positive rate} (or \t{sensitivity}, \t{recall}) of $G$ on a dataset is the proportion of positive examples which $G$ labels positive. The \t{precision} (or \t{positive predictive value}) of $G$ is the proportion of all examples which the classifier labels $positive$ whose label is positive. The \t{true negative rate} (or \t{specificity}, \t{selectivity}) is the proportion of negative examples which $G$ labels negative. The \t{false alarm rate} is the proportion of negative examples which $G$ <i>incorrectly</i> labels positive.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -344,9 +346,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

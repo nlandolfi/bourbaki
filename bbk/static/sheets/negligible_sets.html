@@ -119,6 +119,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Some reasonable statements do not hold <i>for all</i> elements of the base set of a measurable space. Even so, these statements often hold "broadly," in the sense that the measure of the set on which they fail is small (i.e., zero). With this idea, we can often treat statements which fail on a set of measure zero as though they occur everywhere. We take this route especially often in discussions of convergence and integration.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A subset of the base set of a measure space is \t{negligible} if there exists a measurable set with measure zero containing the subset. The qualification "if there exists a measurable set..." allows us to speak of nonmeasurable negligible sets. In other words, negligible sets need not be measurable.</p></div><div class="sheet-listing"><p class="sheet"> A property holds \t{almost everywhere} with respect to a measure on a measure space if the set of elements of the base set on which the property does not hold is negligible.</p></div><div class="sheet-listing"><p class="sheet"> Naturally, if the property holds everywhere then it holds almost everywhere, too, though we always use the stronger statement that it holds everywhere. With this in mind, we call the almost everywhere sense "weaker" than the everywhere sense.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A}, \mu)$ be a measure space. A set $N \subset X$ is negligible if there exists $A \in \mathcal{A}$ with $N \subset A$ and $\mu(N) = 0$.</p></div><div class="sheet-listing"><p class="sheet"> We abbreviate almost everywhere as "a.e.,} read \say{almost everywhere". We say that a property "holds a.e." If the measure $\mu$ is not clear from context, we say that the property holds almost everywhere $[\mu]$ or $\mu$-a.e., read "mu almost everywhere."</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A}, \mu)$ be a measure space.</p></div><div class="sheet-listing"><h2 class="sheet" id="function_comparisons">3.1 Function Comparisons</h2></div><div class="sheet-listing"><p class="sheet"> Let $f, g: X \to \R$, not necessarily measurable. Then $f = g$ almost everywhere if the set of points at which the functions disagree is $\mu$-negligible. Similarly, $f \geq g$ almost everywhere if the set of points where $f$ is less than $g$ is $\mu$-negligible.</p></div><div class="sheet-listing"><p class="sheet"> Now suppose $f$ and $g$ are $\mathcal{A}$-measurable, then the sets \[ \Set*{x \in X}{f(x) \neq g(x)} \text{ and } \Set*{x \in X}{f(x) < g(x)} \] are measurable. In general, these sets need not be measurable. This is one example justification for our including nonmeasurable sets in the definition, as mentioned above.</p></div><div class="sheet-listing"><h2 class="sheet" id="function_limits">3.2 Function Limits</h2></div><div class="sheet-listing"><p class="sheet"> Let $\seqt{f}: X \to R$ for each natural number $n$ and let $f: X \to R$ be a function. The sequence $\seq{f}$ \t{converges to $f$ almost everywhere} if \[ \Set*{x \in X}{\lim_{n} \seqt{f}(x) \text{ does not exist, or } f(x) \neq \lim_{n} \seqt{f}(x)} \] is $\mu$-negligible. In this case, we write "$f = \lim_n \seqt{f}$ a.e."</p></div>
     </div>
@@ -396,9 +398,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

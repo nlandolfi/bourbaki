@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If $x$ is related to $y$ and $y$ to $z$, then $x$ and $z$ are related.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $R$ be a relation from $X$ to $Y$ and $S$ a relation from $Y$ to $Z$. The \t{composite relation} from $X$ to $Z$ contains the pair $(x, z) \in (X \times Z)$ if and only if there exists a $y \in Y$ such that $(x, y) \in R$ and $(y,z) \in S$. This composite relation is sometimes called the \t{relative product}.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the composite relation of $R$ and $S$ by $R \circ S$ or $RS$.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">4. Example</h1></div><div class="sheet-listing"><p class="sheet"> Let $X$ be the set of people and let $R$ be the relation in $X$ "is a brother of} and $S$ be the relation in $X$ \say{is a father of". Then $RS$ is the relation "is an uncle of".</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">5. Properties</h1></div><div class="sheet-listing"><p class="sheet"> Composition of relation is associative but not commutative.\footnote{A fuler account will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

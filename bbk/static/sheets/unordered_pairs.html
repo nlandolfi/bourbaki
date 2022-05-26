@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can we always make a set out of two objects?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We say yes. \begin{principle}[Pairing] Given two objects, there exists a set containing them. \end{principle} We refer to this as the \t{principle of pairing}. Denote one object by $a$ and the other by $b$. This principle gives us the existence of a set that contains the objects. The principle of specification (see \sheetref{set_specification}{Set Specification}) gives use the subset for the statement "$x = a \lor x = b$". The principle of extension (see \sheetref{set_equality}{Set Equality}) says this set is unique. We call this set a \t{pair} or an \t{unordered pair}.</p></div><div class="sheet-listing"><p class="sheet"> If the object denoted by $a$ is the object denoted by $b$, then we call the pair the \t{singleton} of the object denoted by $a$. Every element of the singleton of the object denoted by $a$ is $a$.\</p></div><div class="sheet-listing"><p class="sheet"> In other words, the principle of pairing says that every object is an element of some set. That set may be the singleton, or it may be the pair with any other object. We can construct several sets using this principle: the singleton of the object denoted by $a$, the singleton of the singleton of the object denoted by $a$, the singleton of the singleton of the singleton of the object denoted by $a$, and so on.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the set which contains $a$ and $b$ as elements and nothing else by $\set{a, b}$. The pair of $a$ with itself is the set $\set{a, a}$ is the singleton of $a$. We denote it by $\set{x}$. The principle of pairing also says that $\set{\set{a}}$ exists and $\set{\set{\set{a}}}$ exists, as well as $\set{a, \set{a}}$.</p></div><div class="sheet-listing"><p class="sheet"> Note well that $a \neq \set{a}$. $a$ denotes the object $a$. $\set{a}$ denotes the set whose only element is $a$. In other words $(\forall x)(x \in \set{a} \iff x = a)$. The moral is that a sack with a potato is not the same thing as a potato.</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

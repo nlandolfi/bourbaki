@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to show something holds for every natural number.\footnote{Future editions will modify this superficial why.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The most important property of the set of natural numbers is that it is the unique smallest successor set. In other words, if $S$ is a successor set contained in $\omega$ (see \sheetref{natural_numbers}{Natural Numbers}), then $S = \omega$. This is useful for proving that a particular property holds for the set of natural numbers.</p></div><div class="sheet-listing"><p class="sheet"> To do so we follow standard routine. First, we define the set $S$ to be the set of natural numbers for which the property holds. This step uses the principle of selection (see \sheetref{set_selection}{Set Selection}) and ensures that $S \subset \omega$. Next we show that this set $S$ is indeed a successor set. The first part of this step is to show that $0 \in S$. The second part is to show that $n \in S \implies \ssuc{n} \in S$. These two together mean that $S$ is a successor set, and since $S \subset \omega$ by definition, that $S = \omega$. In other words, the set of natural numbers for which the property holds is the entire set of natural numbers. We call this the \t{principle of mathematical induction.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

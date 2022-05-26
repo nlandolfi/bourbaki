@@ -210,6 +210,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We to measure the size of vectors.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{norm} is a real-valued functional that is (a) non-negative, (b) definite, (c) absolutely homogeneous, (d) and satisifies a triangle inequality. The triangle inequality property requires that the norm applied to the sum of any two vectors is less than the sum of the norms on those vectors.</p></div><div class="sheet-listing"><p class="sheet"> A \t{normed space} (or \t{norm space}) is an ordered pair: a vector space whose field is the real or complex numbers and a norm on the space. We require the vector space to be over the field of real or complex numbers because of absolute homogeneity: the absolute value of a scalar must be defined.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, F)$ be a vector space where $F$ is the field of real numbers or the field of complex numbers. Let $R$ denote the set of real numbers. Let $f: X \to R$. The functional $f$ is a norm if \begin{enumerate} \item $f(v) \geq 0$ for all $x \in V$ \item $f(v) = 0$ if and only if $x = 0 \in X$. \item $f(\alpha x) = \abs{\alpha}f(x)$ for all $\alpha \in F$, $x \in X$ \item $f(x + y) \leq f(x) + f(y)$ for all $x, y \in X$. \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> In this case, for $x \in X$, we denote $f(x)$ by $\norm{x}$, read aloud "norm x". The notation follows the notation of absolute value as a norm. In some cases, we go further, and for a norm indexed by some parameter $\alpha$ or set $A$ we write $\normm{x}_\alpha$ or $\normm{x}_A$.</p></div>
     </div>
@@ -385,13 +387,13 @@ MathJax.Hub.Config({
 
  <span class='run'>The functional $f$ is a norm if
   <ol>
-   <li>$f(v) ≥ 0$ for all $x ∈ V$ </li>
+$f(v) ≥ 0$ for all $x ∈ V$ </li>
 
-   <li>$f(v) = 0$ if and only if $x = 0 ∈ X$. </li>
+$f(v) = 0$ if and only if $x = 0 ∈ X$. </li>
 
-   <li>$f(α x) = \abs{α}f(x)$ for all $α ∈ F$, $x ∈ X$ </li>
+$f(α x) = \abs{α}f(x)$ for all $α ∈ F$, $x ∈ X$ </li>
 
-   <li>$f(x + y) ≤ f(x) + f(y)$ for all $x, y ∈ X$. </li>  </ol>
+$f(x + y) ≤ f(x) + f(y)$ for all $x, y ∈ X$. </li>  </ol>
 </span>
 </p>
 
@@ -411,9 +413,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

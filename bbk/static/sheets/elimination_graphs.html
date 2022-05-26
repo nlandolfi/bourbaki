@@ -95,6 +95,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to model the progressive fill-in during Gauss elimination with graphs.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $G = ((V, E), \sigma)$ be an ordered undirected graph with $\num{V} = n$. Define $E_0 = E$. The \t{elimination edge sequence} of $G$ is a sequence $(E_1, \dots, E_{n-1})$ defined by \[ \begin{aligned} E_i & = E_{i-1} \union \\ &\Set{\set{v, w}}{v \succ \sigma(i), w \succ \sigma(i), \text{ and } \set{\sigma(i), w} \in E_{i-1}} \end{aligned} \] for $i = 1, \dots, n-1$. The difference between $E_{i-1}$ and $E$ can be described by saying that the higher neighborhood of the intermediate graph $((V, E_{i-1}), \sigma)$ is made complete by the addition of edges between all non-adjacent vertices.</p></div><div class="sheet-listing"><p class="sheet"> The \t{elimination graph} of $G$ is the graph $((V, E_{n-1}), \sigma)$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -201,9 +203,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

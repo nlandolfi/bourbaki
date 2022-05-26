@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We are regularly thinking of $\C $ as plane.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Since $\C  = \R ^2$, we can identify elements of $\C $ with points in the plane (as we did in \sheetref{real_plane}{Real Plane}). In this case, if $z = x + iy \in \C $ (i.e, $z = (x, y) \in \R ^2$), we can visualize this identification in the following figure.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure}[h] \centering \vspace{0.5cm} \includegraphics[width=0.9\textwidth]{\figpath{complex_plane}{complex_plane}} \caption{The complex plane} \label{complex_plane:figure:complex_plane} \end{figure}</p></div><div class="sheet-listing"><p class="sheet"> We can identify the origin with the complex number $(0,0) = 0 \in \C $. For this reason we call $0 \in \C $ the \t{complex origin}. Likewise, the imaginary number $(0, 1) = i \in \C $ corresponds to $(0,1)$ Clearly, the horizontal axis corresponds to the purely real numbers and the vertical axis corresponds to the purely imaginary numbers. For these reasons, we refer to these axes as the \t{real axis} and \t{imaginary axis}, respectively. We refer to Figure~\ref{complex_plane:figure:complex_plane} as the \t{complex plane} (or \t{Argand diagram}). \blankpage</p></div>
     </div>
@@ -318,9 +320,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

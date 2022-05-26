@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to make conclusions.</p></div><div class="sheet-listing"><p class="sheet"> \s{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> A \t{conclusion} is a statement that holds necessarily as a consequence of other statements. We have a list of quantified logical statements, and we call them \t{premisses}. We want to state which other statements hold necessarily if the premisses hold. A sequence of statements, each of which follows from the previous, ending with a \t{conclusion} is called a \t{proof} of the conclusion. The process is \t{deduction}. A \t{deduction} is a statement which follows necessarily from other premisses.</p></div><div class="sheet-listing"><p class="sheet"> A \t{proposition} is another term for a statement. An unproven statement (or premiss) is also called a \t{principle}. We will often set apart propositions and principles from the text. We bold them and label them with Arabic numerals (see \sheetref{letters}{Letters}) to enable us to reference them.</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">1. Examples</h1></div><div class="sheet-listing"><p class="sheet"> Since principles have no proofs, they will look like \begin{principle} (Here is where the statement would go). \end{principle}</p></div><div class="sheet-listing"><p class="sheet"> Since propositions have proofs, but are used like principles, they will appear stated first, and followed by their proof.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} (Here is where the statement would go). \begin{proof} (Here is the where the account would go). \end{proof} \end{proposition}</p></div><div class="sheet-listing" id="methods_of_proof"><h1 class="sheet">2. Methods of Proof</h1></div><div class="sheet-listing"><p class="sheet"> We outline a few of the methods of proof used in this text.</p></div><div class="sheet-listing"><h2 class="sheet" id="forward_reasoning">2.1 Forward Reasoning</h2></div><div class="sheet-listing"><p class="sheet"> If we have as premisses that a statement $P$ implies a statement $Q$, and we have $P$, then we have $Q$. It is common that this reasoning is done in chains. $P$ implies $Q$, and $Q$ implies $R$. So if we have $P$ then we have $Q$ and if we have $Q$ then we have $R$. So in other words, we can also deduce that $P$ implies $R$.</p></div><div class="sheet-listing"><h2 class="sheet" id="contradiction">2.2 Contradiction</h2></div><div class="sheet-listing"><p class="sheet"> A contradiction occurs when we can deduce a statement and its opposite from the same premisses. If we can deduce a contradiction when we append to a list of premisses a given premiss we can conclude that the given premiss is false.</p></div><div class="sheet-listing" id="terms"><h1 class="sheet">3. Terms</h1></div><div class="sheet-listing"><p class="sheet"> To make propositions and principles easy to state, we will often introduce new terms. Doing so is a process of \t{definition}. These definitions are abbreviations for more complicated to explain objects or properties of objects. They are made to give us language and to save space. When we are defining a term, we will put it in italics.</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

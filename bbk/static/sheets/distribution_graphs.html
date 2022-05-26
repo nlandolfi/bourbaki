@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How can we construct distributions which factor according to a directed graph.\footnote{Future editions might flip the order of this sheet with that of directed graph distributions since, in the genetic approach, in may be more natural to think of constructing such distributions before analyzing them. This is partially motivated by the acyclic constraint here, which restricts the graphs according to which a distribution can factor.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\bar{G} = (G, A)$ be a typed graph (see \sheetref{function_graphs}{Function Graphs}) with directed and acyclic $G$. For source vertices $i$, let $g_i: A_i \to [0, 1]$ be a distribution and otherwise let $g_{i}: A_{\pa_i} \to [0, 1]$ denote a conditional distribution so that $g$ is a sequence of functions.</p></div><div class="sheet-listing"><p class="sheet"> We call the ordered pair $(\bar{G}, g)$ a \t{distribution graph} (or \t{distribution network}, \t{conditional distribution network}, \t{conditional distribution graph}, \t{bayesian network}\footnote{Indeed, this term is near universal in certain literatures. We avoid it in these sheets as a result of the Bourbaki project's policy on naming.}, \t{directed probabilistic graphical model}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{distribution} of $(\bar{G}, g)$ is the function $p: \prod_{i} A_i \to [0, 1]$ defined by \[ p(a) \prod_{\pa_i = \emptyset} g_i(a_i) \prod_{\pa_i \neq \emptyset} g_{i \mid \pa_i} g_i(a_i, a_{\pa_i}). \] It is, of course, a distribution. And it factors according to the directed and acyclic graph $G$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

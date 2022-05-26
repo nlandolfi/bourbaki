@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name sequences in $\set{0, 1}$ to easily discuss codes in this set. \ifhmode\unskip\fi\footnote{ Why we want to name these requires more explanation, to be included in future editions. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{bit string} (\t{binary string}) is a finite sequence in the set $\set{0, 1}$.</p></div><div class="sheet-listing"><p class="sheet"> If a bit string has length one, we refer to it as a \t{bit}. Using this terminology, it is natural to call the sequence terms \t{bits}. Other terminology for bit strings includes \t{binary sring}, \t{bit sequence} and \t{digital datum}.</p></div><div class="sheet-listing"><p class="sheet"> If the bit string has length eight, we refer to it as a \t{byte}. Using this terminology, a \t{kilobyte} is a length $8 \cdot 2^{10}$ bit string. In other words, a kilobyte is $2^{10} = 1024$ bytes, or roughly one thousand bytes. Likewise a \t{megabyte} is a length $8 \cdot 2^{20}$ bit string. A megabyte is $2^{20} = 1048576$ bytes, or roughly one million bytes. Similarly a \t{gigabyte} is $2^{30}$ bytes and a \t{terabyte} is $2^{40}$ bytes. \ifhmode\unskip\fi\footnote{ Warning: some authors use these monikers with powers of ten. For example, a kilobyte is exactly one thousand bytes. etc. }</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We often denote the set $\set{0,1}$ by $\B$. Using this notation, we denote the length $n$ bit strings by $\B^n$.</p></div><div class="sheet-listing"><p class="sheet"> We occasionally use \false to denote the length-1 bit string $(0,)$ and \true to denote the length-1 bit string $(1,)$. In this context, \bool is another name for the set $\set{\true, \false}$ \ifhmode\unskip\fi\footnote{ Future editions might break this out into its own sheet. } .</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -321,9 +323,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

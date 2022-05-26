@@ -189,6 +189,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about several objects in order.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{list} in $A$ is a function $a: \set{1, \dots, n} \to A$. In other words, a list is a <i>family} whose index set is $\set{1, \dots, n</i>$ We call $n$ the \t{length} $n$ and we call $a_k$ is the \t{$k$th entry} of $A$.</p></div><div class="sheet-listing"><p class="sheet"> Many authors refer to a list as a \t{finite sequence}, \t{$n$-tuple}, \t{string}, or \t{dataset}, and refer to the length of the list as its \t{size}. We will sometimes say that the list is "\t{in} $A$", or "\t{of} elements of/from $A$}, and call an entry of $k$ a \t{term} or \t{record".</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Since the natural numbers are ordered, we regularly denote lists from left to right between parentheses. For example, we denote $a: \set{1, \dots, 4} \to A$ by $(a_1, a_2, a_3, a_4)$.</p></div><div class="sheet-listing"><h2 class="sheet" id="orderings_and_numberings">2.2 Orderings and numberings</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set with $\num{A} = n$. A sequence $a: \set{1, \dots, n} \to A$ is an \t{ordering} of $A$ if $a$ is invertible. In this case, we call the inverse a \t{numbering} of $A$. An ordering associates with each number a unique object and a numbering associates with each object a unique number (the object's \t{index}).</p></div><div class="sheet-listing"><h2 class="sheet" id="relation_to_direct_products">2.3 Relation to Direct Products</h2></div><div class="sheet-listing"><p class="sheet"> A \t{natural direct product} is a product of a list of sets. We denote the direct product of a list of sets $A_1, \dots, A_n$ by $\prod_{i = 1}^{n} A_i$. If each $A_i$ is the same set $A$, then we denote the product $\prod_{i = 1}^{n} A_i$ by $A^n$. The direct product $A^n$ is set of lists in $A$ .</p></div><div class="sheet-listing" id="natural_unions_and_intersections"><h1 class="sheet">3. Natural unions and intersections</h1></div><div class="sheet-listing"><p class="sheet"> We denote the family union of the list of sets $A_1, \dots, A_n$ by $\union_{i = 1}^{n} A_i$. Similarly, we denote the intersection by $\intersection_{i = 1}^{n} A_i$.</p></div><div class="sheet-listing" id="slices"><h1 class="sheet">4. Slices</h1></div><div class="sheet-listing"><p class="sheet"> An \t{index range} for a list $s$ of length $n$ is a pair $(i, j)$ for which $1 \leq i < j \leq n$. The \t{slice} corresponding to $(i,j)$ is the length $j-i$ list $s'$ defined by $s'_1 = s_{i}$, $s'_2 = s_{i+1}, \dots, s'_{j} = s_{i + j-1}$.</p></div><div class="sheet-listing"><p class="sheet"> We denote the $(i,j)$-slice of $s$ by $s_{i:j}$. If $i = 1$ we use $s_{:j}$ and if $j = n$ we use $s_{i:}$ as shorthands for the slices $s_{1:j}$ and $s_{i:n}$.</p></div>
     </div>
@@ -443,9 +445,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -196,6 +196,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want a set which corresponds to our notion of points on a line.\footnote{Future editions will modify and expand this justification.}</p></div><div class="sheet-listing" id="rational_cuts"><h1 class="sheet">2. Rational Cuts</h1></div><div class="sheet-listing"><p class="sheet"> We call a subset $R$ of $\Q$ a \t{rational cut} if (a) $R \neq \emptyset$, (b) $R \neq \Q$, (c) for all $q \in R$, $r \leq q \implies r \in R$, and (d) $R$ has no greatest element. Briefly, the intuition is that the point is the set of all rationals to less than (or, potentially, equal to) some particular rational number.\footnote{This brief intuition will be expanded upon in future sheets.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{set of real numbers} is the set of all rational cuts. This set exists by an application of the principle of selection (see \sheetref{set_selection}{Set Selection} to the power set (see \sheetref{set_powers}{Set Powers}) of $\Q$. We call an element of the set of real numbers a \t{real number} or a \t{real}. We call the set of real numbers the \t{set of reals} or \t{reals} for short.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">4. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We follow tradition and denote the set of real numbers by $\R$, likely a mnemonic for "real."</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">4.1 Other Terminology</h2></div><div class="sheet-listing"><p class="sheet"> Some authors call a real number a \t{quantity} or a \t{continuous quantity}. The real numbers, then, are said to be \t{continuous}. When contrasting (using this terminology) a finite set with the real numbers, one refers to the finite set as \t{discrete}.\footnote{Future editions may move this discussion later, to the discussion of the cardinality of the reals.}</p></div>
     </div>
@@ -302,9 +304,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

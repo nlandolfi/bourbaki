@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A function $f: \R^n \to \R$ is \t{linear} if \begin{enumerate} \item $f(x + y) = f(x) + f(y)$ for all $x, y \in \R^n$ and \item $f(\alpha x) = \alpha f(x)$ for all $x \in \R^n$ and $\alpha \in \R$. \end{enumerate} There are simple consequences to these conditions. For example, $f(0) = 0$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -231,9 +233,9 @@ MathJax.Hub.Config({
  <span class='run'>A function $f: 𝗥^n → 𝗥$ is
   <span class='term'>linear</span> if
   <ol>
-   <li>$f(x + y) = f(x) + f(y)$ for all $x, y ∈ 𝗥^n$ and </li>
+$f(x + y) = f(x) + f(y)$ for all $x, y ∈ 𝗥^n$ and </li>
 
-   <li>$f(α x) = α f(x)$ for all $x ∈ 𝗥^n$ and $α ∈ 𝗥$. </li>  </ol>
+$f(α x) = α f(x)$ for all $x ∈ 𝗥^n$ and $α ∈ 𝗥$. </li>  </ol>
 </span>
 
  <span class='run'>There are simple consequences to these
@@ -250,9 +252,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

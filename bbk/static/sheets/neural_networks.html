@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. Future editions may change the name of this sheet to \t{computation networks}, or may add prerequisite sheet on computation graphs. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A sequence of functions $(g_1, \dots, g_\ell)$ is \t{composable} if $g_i$ is composible with $g_{i-1}$ for $i = 2, \dots, \ell$. In this case we write $g_\ell \composed g_{\ell-1} \composed \cdots \composed g_2 \composed g_1$. For example, we write $g_3 \composed g_2 \composed g_1$ for $(g_1, g_2, g_3)$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{neural network} (or \t{feedforward neural network}) from $\R^n$ to $\R^m$ is a sequence of composable functions $(g_1, \dots, g_{\ell})$, $\dom g_1 = \R^n$, $\ran g_\ell \subset \R^m$, satisfying \[ g_i(\xi) = h_i(A_i \xi + b_i) \] for some conforming matrices $A_i$, vectors $b_i$ and functions $h_i$.</p></div><div class="sheet-listing"><p class="sheet"> The $i$th \t{layer} of the neural network is the $i$th function $g_i$. The $i$th \t{activation} of the neural network is the function $h_i$. A \t{neural network} is called \t{deep} if its number of layers is larger than 3.</p></div><div class="sheet-listing"><p class="sheet"> We call the composition of the layers of the neural network the \t{network predictor} (or just \t{predictor}). We also call it \t{the function} of the network. \ifhmode\unskip\fi\footnote{ Many authorities refer to a neural network as a function. Strictly speaking that is true for us, as well, since a sequence is a function. But the meaning of the common use is in reference to the \t{network predictor}. }</p></div><div class="sheet-listing"><p class="sheet"> A \t{multi-layer perceptron} (\t{MLP}) is a neural network with 2 layers (1 \t{hidden layer}) and for which $A_i$ and $b_i$ have unrestricted nonzero entries.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -330,9 +332,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

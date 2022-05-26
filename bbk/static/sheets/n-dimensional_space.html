@@ -203,6 +203,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If $\R$ corresponds to a line, and $\R^2$ to a plane, and $\R^3$ to space, does $\R^4$ correspond to anything? What of $\R^5$?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $n$ be a natural number. We call the set $\R^n$ \t{$n$-dimensional space} (or \t{Euclidean $n$-space}). We call elements of $\R^n$ \t{points}. We identify $\R^1$ with $\R$ in the obvious way.</p></div><div class="sheet-listing"><p class="sheet"> We call the point associated with $x = (x_1, x_2, \dots, x_n) \in \R^n$ with $x_i = 0$ for $1 \leqq i \leqq n$ the \t{origin}. When clear from context, we denote the origin by $0$. Similarly, we denote the point $x$ with $x_i = 1$ for all $i = 1, \dots, n$ by $1$.</p></div><div class="sheet-listing" id="visualization"><h1 class="sheet">3. Visualization</h1></div><div class="sheet-listing"><p class="sheet"> We can not visualize $n$-dimensional space. Thus, our intuition for it comes from real space (see \sheetref{real_space}{Real Space}).</p></div><div class="sheet-listing" id="distance"><h1 class="sheet">4. Distance</h1></div><div class="sheet-listing"><p class="sheet"> There is a natural notion of distance for $\R^n$, which is generalize the definitions of distance in $\R^2$ and $\R^3$. We define the \t{distance} (\t{Euclidean distance}) between $(x_1, x_2, \dots, x_n)$, $(y_1, y_2, \dots, y_n) \in \R^n$ as \[ \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \cdots + (x_n - y_n)^2} \] Does this have the properties that distance has in the plane and in space? We discussed these properties It does. Denote the function which associates to $x, y \in \R^n$ their distance $d: \R^n \times \R^n \to \R$. So $d(x, y)$ is the distance between the points corresponding to $x$ and $y$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $d$ is non-negative, symmetric, and the distance between two points is no larger than the sum of the distances with any third object. \ifhmode\unskip\fi\footnote{ Future editions will include an account. } \end{proposition}</p></div><div class="sheet-listing" id="order"><h1 class="sheet">5. Order</h1></div><div class="sheet-listing"><p class="sheet"> Let $x, y \in \R^n$. If $x_i < y_i$ for all $i = 1, \dots, n$ then we say $x$ is \t{less than} $y$. Likewise, if $x_i \leq y_i$ for all $i = 1, \dots, n$ then we say $x \leq y$. Likewise for $>$ and $\geq$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">5.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> If $x \in \R^n$ is less than $y \in \R^n$ then we write $x < y$. Similarly for $x \leq y$, $x > y$ and $x \geq y$.</p></div>
     </div>
@@ -461,9 +463,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

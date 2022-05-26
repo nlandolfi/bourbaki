@@ -189,6 +189,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include this. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{random variable} is a measurable map from a probability space to a measurable space.</p></div><div class="sheet-listing"><p class="sheet"> A \t{real-valued random variable} is a measurable map between the probability space and the set of real numbers with its topological sigma algebra.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \SA, \PM)$ be a probability space. Let $(Y, \SB)$ a measurable space. Then a random variable is a measurable function $f: X \to Y$.</p></div><div class="sheet-listing"><p class="sheet"> Some authors denote real-valued random variables by upper case Latin letters: for example, $X, Y, Z$. In this case, the base probability space is denoted by $\Omega$, a mnemonic for "outcomes." Let $(\Omega,\SA,\PM)$ be a probability space. Let $X: \Omega \to \R $ be measurable. Then $X$ is a real-valued random variable.</p></div><div class="sheet-listing"><p class="sheet"> Some authors use notation for the probability of particular, common sets. Although the authors often use regular parentheses, we will use "$[$} and \say{$]$" for precision. Let $A \in \SB(\R )$. Let $\PM[X \in A]$ denote $\PM(X^{-1}(A))$. These are equivalent to \[ \PM(\Set*{\omega  \in \Omega}{X(\omega ) \in A}). \] As we mentioned, some authors use $P(X \in A)$ for $P[X \in A]$, which is mostly harmless.</p></div><div class="sheet-listing"><p class="sheet"> Next, let $Y: \Omega \to \R $ a measurable function and let $B \in \SB(\R )$. Similar to the above, let $\PM[X \in A,Y \in B]$ denote $\PM(X^{-1}(A) \intersect Y^{-1}(B))$. These are equivalent to \[ \PM(\Set*{\omega  \in \Omega}{X(\omega ) \in A \text{ and } Y(\omega ) \in B}). \] Similarly for $n$ random variables $X_1, \dots, X_n: \Omega \to \R $, \[ \PM[X_1 \in A_1, \dots, X_n \in A_n] = \PM(\intersect_{i = 1}^{n} X_i^{-1}(A_i)). \]</p></div>
     </div>
@@ -412,9 +414,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What is the best linear regressor if we choose according to a weighted squared loss function.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we have a paired dataset of $n$ records with inputs in $\R^d$ and outputs in $\R$. A \t{weighted least squares linear predictor} for nonnegative weights $w \in \R^n$, $w \geq 0$, is a linear transformation $f: \R^d \to \R$ (the field is $\R$) which minimizes \[ \frac{1}{n} \sum_{i = 1}^{n} w_i(y_i - \transpose{x}a^i)^2. \] Some authors refer to this process of selecting a linear predictor as the \t{weighted least-squares problem}.</p></div><div class="sheet-listing"><p class="sheet"> Define $W \in \R^{n \times n}$ so that $W_{ii} = w_i$ and $W_{ij} = 0$ when $i \neq j$. So, in particular, $W$ is a diagonal matrix. We want to find $x$ to minimize \[ \normm{W(Ax - y)} \]</p></div><div class="sheet-listing" id="solution"><h1 class="sheet">3. Solution</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} There exists a unique weighted least squares linear predictor and its parameters are given by \[ \inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy. \] \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

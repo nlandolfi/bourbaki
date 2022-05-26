@@ -95,6 +95,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is common to consider random functions whose domain is time, space, or $n$-dimensional space.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, d)$ be a metric space.  A \t{distance covariance function} $k: X \times X \to \R$ is a covariance function satisfying \[ k(x, y) > k(x, y) \iff d(x, y) < d(x, y). \] In other words, the covariance decreases as the distance between the arguments decreases.</p></div><div class="sheet-listing" id="example:_squared_exponential"><h1 class="sheet">3. Example: Squared Exponential</h1></div><div class="sheet-listing"><p class="sheet"> Let $k: X \times X \to \R$ be defined by \[ k(x, y) = \exp(-d(x, y)). \] Then $k$ is a distance covariance function. It is often called the \t{squared exponential covariance function}.</p></div><div class="sheet-listing"><p class="sheet"> Let $\alpha, \sigma \in \R$. Define $k': X \times X \to \R$ by \[ k'(x, y) = \alpha\exp(-d(x, y)/\sigma^2) \] then $k'$ is still a covariance function. In this context $\sigma$ is often referred to as the \t{characteristic length-scale} of the process. The scalar $\alpha$ is sometimes called a "prefactor} that \say{controls} the \say{overall variance."</p></div><div class="sheet-listing"><p class="sheet"> Suppose $(X, d) = (\R^n, \normm{\cdot})$. Then the squared exponential covariance function \[ \alpha\exp(-\normm{x - y}/(2\sigma^2)) \] is sometimes called the \t{radial basis function} or \t{gaussian covariance function}.\footnote{For reasons that will be included in future editions.} Also called an \t{exponentiated quadratic kernel}.</p></div>
     </div>
@@ -201,9 +203,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

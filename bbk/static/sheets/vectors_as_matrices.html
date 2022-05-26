@@ -140,6 +140,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Vectors can be identified with matrices of width 1.</p></div><div class="sheet-listing" id="canonical_identification"><h1 class="sheet">2. Canonical Identification</h1></div><div class="sheet-listing"><p class="sheet"> We identify $\R^{n}$ with $\R^{n \times 1}$ in the obvious way. For this reason, we call $x \in \R^{n \times 1}$ (meaning $x \in \R^{n}$) a \t{column vector}.</p></div><div class="sheet-listing"><p class="sheet"> For the reasons that we identify $\R^n$ with $\R^{n \times 1}$, we write the vector $a = (a_1, a_2, a_3) \in \R^3$ as \[ \bmat{a_1 \\ a_2 \\ a_3} \text{ or } \pmat{ a_1 \\ a_2 \\ a_3}. \]</p></div><div class="sheet-listing"><p class="sheet"> We could as easily also identify $\R^{n}$ with $\R^{1 \times n}$. We avoid this convention. However, by analogy with the language "column vector,} we refer to the <i>matrix} $y \in \R^{1 \times n"$ as a \t{row vector</i>.</p></div><div class="sheet-listing" id="matrix_transpose"><h1 class="sheet">3. Matrix transpose</h1></div><div class="sheet-listing"><p class="sheet"> We frequently move from $\R^{n \times 1}$ and $\R^{1 \times n}$. If $a \in \R^{n \times 1}$, we denote $b \in \R^{1 \times n}$ defined by $b_i = a_i$ by $a^\tp$.</p></div><div class="sheet-listing"><p class="sheet"> More generally, given a matrix $A \in \R^{m \times n}$, we denote the matrix $B \in \R^{m \times n}$ defined by $B_{ij} = A_{ji}$ by $A^\tp$. Notice that the entries of $i$ and $j$ have swapped. We call the matrix $B$ the \t{transpose} of $A$, and similarly call $a^\tp$ the \t{transpose} of the vector $a$. Clearly, $(A^\tp)^\tp = A$, which includes $(a^\tp)^\tp = a$.</p></div><div class="sheet-listing"><h2 class="sheet" id="reals_as_vectors">3.1 Reals as vectors</h2></div><div class="sheet-listing"><p class="sheet"> There is a similar, and similarly obvious, identification of scalars $a \in \R$ with the 1-vectors $\R^{1}$ (and so with the 1 by 1 matrices $\R^{1 \times 1}$). Given our definition of matrix-vector products, if we identify $a \in \R$ with $A \in \R^{1 \times 1}$ where $A_{11} = a$, then $Ax = ax$.</p></div><div class="sheet-listing" id="familiar_concepts,_new_notation"><h1 class="sheet">4. Familiar concepts, new notation</h1></div><div class="sheet-listing"><p class="sheet"> These identifications and the notation of transposition give allow us to write several familiar concepts in a compact notation. We write the norm $\norm{x}$ as \[ \norm{x} = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2} = \sqrt{x^\tp x}. \] We write the inner product as \[ \ip{x,y} = x_1y_1 + x_2y_2 + \cdots + x_ny_n = x^\tp y. \] We express the symmetry of the inner product by $ x^\tp y = y^\tp x$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -384,9 +386,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

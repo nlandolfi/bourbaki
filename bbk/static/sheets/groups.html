@@ -112,8 +112,10 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We further drop conditions on the structure of the binary operations, and study only the algebraic structure of addition over the integers.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{group} is an \t{algebra} $(G, \circ)$ for which $\circ: G \times G \to G$ is associative, has an identity element in $G$, and has inverse elements. It is a \t{commutative group} (or \t{abelian group}) if $\circ$ is commutative.</p></div><div class="sheet-listing" id="additive_groups"><h1 class="sheet">3. Additive groups</h1></div><div class="sheet-listing"><p class="sheet"> Suppose that $(R, +, \cdot )$ is ring. Then $(R, +)$ is a commutative group. Conversely, suppose $(G, +)$ is a commutative group. Define multiplication on $S$ by $a\cdot b = 0$ for all $a, b \in R$. Then $(S, +, \cdot )$ is a ring, called the \t{zero ring} of $(G, +)$. For this reason, it is customary to write $+$ for the operations $\circ$ when handling commutative groups.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section{Why}</p></div><div class="sheet-listing"><p class="sheet"> We further drop conditions on the structure of the binary operations, and study only the algebraic structure of addition over the integers.</p></div><div class="sheet-listing"><p class="sheet"> \section{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{group} is an \t{algebra} $(G, \circ)$ for which $\circ: G \times G \to G$ is associative, has an identity element in $G$, and has inverse elements. It is a \t{commutative group} (or \t{abelian group}) if $\circ$ is commutative.</p></div><div class="sheet-listing"><p class="sheet"> \section{Additive groups}</p></div><div class="sheet-listing"><p class="sheet"> Suppose that $(R, +, \cdot )$ is ring. Then $(R, +)$ is a commutative group. Conversely, suppose $(G, +)$ is a commutative group. Define multiplication on $S$ by $a\cdot b = 0$ for all $a, b \in R$. Then $(S, +, \cdot )$ is a ring, called the \t{zero ring} of $(G, +)$. For this reason, it is customary to write $+$ for the operations $\circ$ when handling commutative groups.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -218,19 +220,14 @@ MathJax.Hub.Config({
 
   
     <div class="lit">
-    <p>
- <span class='run'>❲%!name:groups❳ </span>
+    <!--
+!name:groups
+!need:rings
+!refs:peter_cameron/introduction_to_algebra
+-->
 
- <span class='run'>❲%!need:rings❳ </span>
-
- <span class='run'>❲%!refs:peter_cameron/introduction_to_algebra❳ </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>
+Why </h1>
 
 <p>
  <span class='run'>We further drop conditions on the structure of
@@ -238,11 +235,8 @@ MathJax.Hub.Config({
   algebraic structure of addition over the integers. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
+<h1>
+Definition </h1>
 
 <p>
  <span class='run'>A <span class='term'>group</span> is an
@@ -256,10 +250,10 @@ MathJax.Hub.Config({
   group</span>) if $∘$ is commutative. </span>
 </p>
 
+<h1>
+Additive groups </h1>
 
 <p>
- <span class='run'>\ssection{Additive groups} </span>
-
  <span class='run'>Suppose that $(R, +, ·)$ is ring. </span>
 
  <span class='run'>Then $(R, +)$ is a commutative group. </span>
@@ -278,17 +272,60 @@ MathJax.Hub.Config({
   groups. </span>
 </p>
 
-
-<p>
- <span class='run'>\blankpage </span>
-</p>
-
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

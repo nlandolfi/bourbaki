@@ -88,6 +88,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Why define ordered pairs in terms of sets? Why not make them their own intangible object?</p></div><div class="sheet-listing" id="pathologies"><h1 class="sheet">2. Pathologies</h1></div><div class="sheet-listing"><p class="sheet"> Notice that $a \not\in (a, b)$ and similarly $b \not\in (a, b)$. These facts led us to use the terms first and second "coordinate} in \sheetref{ordered_pairs}{Ordered Pairs} rather than the term \say{element} (used in \sheetref{sets}{Sets"). Neither $a$ nor $b$ is an element of the ordered pair $\op{a, b}$. On the other hand, it is true that $\set{a} \in \op{a, b}$ and $\set{a, b} \in \op{a, b}$. These facts are odd. Should they bother us?</p></div><div class="sheet-listing"><p class="sheet"> We chose to define ordered pairs in terms of sets so that we could reuse notions about a particular type of object (sets) that we had already developed. We chose what we may call conceptual simplicty (reusing notions from sets) over defining a new type of object (the ordered pair) with its own primitive properties. Taking the former path, rather than the latter is a matter of taste, really, and not a logical consequence of the nature of things.</p></div><div class="sheet-listing"><p class="sheet"> The argument for our taste is as follows. We already know about sets, so let's use them, and let's forget cases like $\set{a, b} \in \op{a, b}$ (called by some authors "pathologies"). It does not bother us that our construction admits many true (but irrelevant) statements. Such is the case in life.</p></div><div class="sheet-listing"><p class="sheet"> Suppose we did choose to make the object $\op{a, b}$ primitive. Sure, we would avoid oddities like $\set{a} \in \op{a, b}$. And we might even get statements like $a \in \op{a, b}$ to be true. But to do so we would have to define the meaning of $\in$ for the case in which the right hand object is an "ordered pair". Our current route avoids introducing any new concepts, and simply names a construction in already developed concepts.</p></div>
     </div>
@@ -194,9 +196,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

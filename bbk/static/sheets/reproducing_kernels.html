@@ -116,6 +116,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a (nonempty) set and $k$ a field. Let $F \subset (X \to k)$ and let $\ip{\cdot, \cdot}: F \times F \to k$ be an inner product so that $(F, \ip{\cdot,\cdot})$ is a complete inner product space.</p></div><div class="sheet-listing"><p class="sheet"> A \t{reproducing kernel} of $(F, \ip{\cdot,\cdot})$ is a map $R: X \times X \to k$ satisfying (1) for every $y \in X$ the function $R(\cdot, y): X \to k$ is an element of $F$ and (2) for every $f \in F$, at every $y \in X$, $f(y) = \ip{f, R(\cdot, y)}$ (the \t{reproducing property}).</p></div><div class="sheet-listing"><p class="sheet"> $R$ is called a "reproducing" kernel because of the following implication of the reproducing property. Notice that $R(\cdot, y) \in F$. For this reason,</p></div><div class="sheet-listing"><h2 class="sheet" id="properties">2.1 Properties</h2></div><div class="sheet-listing"><p class="sheet"> If a reproducing kernel exists, it is unique. \blankpage</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be nonempty (index) set. For example, $X$ may be $\upto{N}$, $\Z$, $[0, 1]$, $\R^d$, $\Set{x \in \R^3}{\normm{x} \leq 1}$ (the unit sphere), or $\Set{x \in \R^3}{\alpha \leq \normm{x} \leq \beta}$ (the atmosphere, or volume between two concentric spheres).</p></div><div class="sheet-listing"><p class="sheet"> A symmetric, real-valued function $k: X \times X \to \R$ of two variables is said to be \t{positive semidefinite} if for any $n \in \N$, for any real $a_1, \dots, a_n \in \R$ and $x_1, \dots, x_n \in X$, we have \[ \sum_{i, j = 1}^{n} a_ia_j k(x_i, x_j) \geq 0, \] and \t{positive definite} if the above holds with "$>$}.\footnote{Some authors use the term \say{positive definite} for our term positive semidefinite and the term \say{\t{strictly positive definite}} for our term positive definite."</p></div><div class="sheet-listing"><p class="sheet"> Positive semidefinite kernels are useful for the following constructive reason: \begin{proposition} Let $X \neq \emptyset$ be a set. If $k: X \times X \to \R$ is positive semidefinite, then there exists a probability space $(\Omega, \CA, \PM)$ and a family of zero-mean normal real-valued random variables $\set{f_x: \Omega \to \R}_{x \in X}$ with covariance function $k$, that is, \[ \E f(a)f(b) = k(a, b), \quad \text{ for all } a, b \in X.\footnote{Future editions will prove this result.} \] \end{proposition} This result is known by the names \t{Kolmogorov extension theorem},  \t{Kolmogorov existence theorem},  \t{Kolmogorov consistency theorem} and  \t{Daniell-Kolmogorov theorem}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -222,9 +224,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

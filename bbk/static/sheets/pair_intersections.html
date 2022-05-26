@@ -133,6 +133,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Does a set exist containing the elements shared between two sets? How might we construct such a set?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. Consider the set $\Set{x \in A}{x \in B}$. This set exists by the principle of specification (see \sheetref{set_specification}{Set Specification}). Moreover $(y \in \Set{x \in A}{x \in B}) \iff (y \in A \land y \in B)$. In other words, $\Set{x \in A}{x \in B}$ contains all the elements of $A$ that are also elements of $B$.</p></div><div class="sheet-listing"><p class="sheet"> We can also consider $\Set{x \in B}{x \in A}$, in which we have swapped the positions of $A$ and $B$. Similarly, the set exists by the principle of specification (see \sheetref{set_specification}{Set Specification}) and again $y \in \Set{x \in B}{x \in A} \iff (y \in B \land y \in B)$. Of course, $y \in A \land y \in B$ means the same as\footnote{Future editions will name and cite this rule.} $y \in B \land y \in A$ and so by the principle of extension (see \sheetref{set_equality}{Set Equality}) \[ \Set{x \in A}{x \in B} = \Set{x \in B}{x \in A}. \] We call this set the \t{pair intersection} of the set denoted by $A$ with the set denoted by $B$.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the intersection fo the set denoted by $A$ with the set denoted by $B$ by $A \intersect B$. We read this notation aloud as "A intersect B".</p></div><div class="sheet-listing"><p class="sheet"> \ss{Basic Properties}</p></div><div class="sheet-listing"><p class="sheet"> All the following results are immediate.\footnote{Proofs of these results will appear in the next edition.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \intersect \emptyset = \emptyset$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Commutativity] $A \cap B = B \cap A$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associativity] $(A \cap B) \cap C = A \cap (B \cap C)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \cap A = A$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(A \subset B) \iff (A \cap B = A)$. \end{proposition}</p></div>
     </div>
@@ -239,9 +241,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

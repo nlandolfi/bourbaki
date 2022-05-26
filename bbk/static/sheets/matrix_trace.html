@@ -133,6 +133,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include,_in_the_genetic_tradition."><h1 class="sheet">1. Why}\footnote{Future editions will include, in the genetic tradition.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{trace} of a square real matrix is the sum of its diagonal entries.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the function which associates a matrix with its trace by $\tr: \RMat{n}{n} \to \R$. Let $A \in \RMat{n}{n}$. Then $$ \tr A = \sum_{i = 1}^{n} A_{ii}. $$</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> The trace is a linear function on the vector space of $n \times n$ real matrices.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> Let $A, B \in \RMat{n}{n}$ and $\alpha, \beta \in \R$. Define $C = \alpha A + \beta B$. Then $C_{ii} = \alpha A_{ii} + \beta B_{ii}$. So \[ \begin{aligned} \tr C = \sum_{i = 1}^{n} C_{ii} &= \sum_{i = 1}^{n} \alpha A_{ii} + \beta B_{ii} \\ &= \alpha \sum_{i = 1}^{n} A_{ii} + \beta \sum_{i = 1}^{n} B_{ii} \\ &= \alpha \tr A + \beta \tr B. \end{aligned} \]</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $A, B \in \RMat{n}{n}$. $$\trp{AB} = \trp{BA}$$\footnote{Future editions will include an account.}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> In other words, "matrices commute under the trace operator."</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \RMat{n}{n}$. Then $\tr A = \tr\tranpose{A}$.</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
     </div>
@@ -239,9 +241,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

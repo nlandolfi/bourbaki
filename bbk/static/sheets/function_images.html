@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We consider the set of results of a set of domain elements.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{image} of a set of domain elements under a function is the set of their results. Though the set of domain elements may include several distinct elements, the image may still be a singleton, since the function may map all of elements to the same result.</p></div><div class="sheet-listing"><p class="sheet"> Using this language, the range (see \sheetref{functions}{Functions}) of a function is the image of its domain. The range includes all possible results of the function. If the range does not include some element of the codomain, then the function maps no domain elements to that codomain element.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $f: A \to B$. We denote the image of $C \subset A$ by $f(C)$, read aloud as "f of C." This notation is overloaded: for every $c \in C$, $f(c) \in A$, whereas $f(C) \subset A$. Read aloud, the two are indistinguishable, so we must be careful to specify whether we mean an element $c$ or a set $C$. Following this notation for function images, we denote the range of $f$ by $f(A)$. In this notation, we can record that $f$ maps $X$ onto $Y$ by $f(X) = Y$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notational_ambiguity">2.2 Notational ambiguity</h2></div><div class="sheet-listing"><p class="sheet"> The notation $f(A)$ is can be ambiguous in the case that $A$ is both an element and a set of elements of the domain of $f$. For example, consider $f: \set{\set{a}, \set{b}, \set{a, b}} \to X$. Then $f(\set{a, b})$ is ambiguous. We will avoid this ambiguity by making clear which we mean in particular cases.</p></div><div class="sheet-listing" id="inverse_images"><h1 class="sheet">3. Inverse Images</h1></div><div class="sheet-listing"><p class="sheet"> Similarly to how we can define $f: \powerset{X} \to \powerset{Y}$ for $A \subset X$ \[ f(A) = \Set{y \in Y}{(\exists x)(x \in a \land y = f(x))}, \] we can define $f^{-1}: \powerset{Y} \to \powerset{X}$ for $B \subset X$ \[ f^{-1}(B) = \Set{x \in X}{(\exists y)(y \in B \land y = f(x))}. \] In other words, $f^{-1}(B)$ is the set of all elements of the domain which give the elements in $B$ of the range. We call $f^{-1}(B)$ the \t{inverse image} of $B$. Another name less commonly used is \t{counter image} or \t{counterimage}.</p></div><div class="sheet-listing" id="connections"><h1 class="sheet">4. Connections</h1></div><div class="sheet-listing"><p class="sheet"> Here are some connections.\footnote{The proofs are straightfoward, and will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $f: X \to Y$ and $B \subset Y$. $f(f^{-1}(B)) \subset B$. If $f$ is onto, then $f(f^{-1}(B)) \subset B$. \end{proposition} \begin{proposition} Let $f: X \to Y$ and $A \subset X$. $A \subset f^{-1}(f(A))$. If $f$ is one-to-one, then $A = f^{-1}(f(A))$. \end{proposition}</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

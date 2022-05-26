@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can we represent the function associating a linear system with its row reduction by matrix multiplication?</p></div><div class="sheet-listing" id="main_observation"><h1 class="sheet">2. Main observation</h1></div><div class="sheet-listing"><p class="sheet"> The following proposition affirmatively answers the question.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(A \in \R^{m \times m}, b \in \R^{m})$ be a linear system with $A_{kk} \neq 0$ and $(C, d)$ the $k$th reduction of $(A, b)$. Then there exists a matrix $L \in \R^{m \times m}$ so that $C = LA$ and  $d = Lb$. \begin{proof} Define $L \in \R^{m \times m}$ by $L_{st} = 1$ if $s = t$, $-A_{sj}/A_{ij}$ if $k < s \leq m$ and zero otherwise. \end{proof} \label{proposition:row_reducer_matrices:defining} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> For this reason, we call $L$ in Proposition~\ref{proposition:row_reducer_matrices:defining} a \t{row reducer matrix} or \t{row reducing matrix} or \t{row reducer}. The row reducer matrix for the $k$th reduction of $(A, b)$ has the form \[ L_k = \barray{ 1 & & & &  & \\ & \ddots & & & & \\ & & 1 & & & \\ & & \nicefrac{A_{ik}}{A_{kk}} & 1 & &\\ & & \vdots & & \ddots & & \\ & & \nicefrac{A_{mk}}{A_{kk}} & & & 1 } \] So the following is immediate \begin{prop} Row reducing matrices are unit lower triangular. \end{prop}</p></div><div class="sheet-listing" id="example"><h1 class="sheet">3. Example</h1></div><div class="sheet-listing"><p class="sheet"> For example, the $(1,1)$-reduction of $(A, b)$ in which \[ A = \barray{ 2 & 1 & 1 & 0 \\ 4 & 3 & 3 & 1 \\ 6 & 7 & 9 & 5 \\ 8 & 7 & 9 & 8 \\ } \text{ and } b = \barray{ 1 \\ 2 \\ 3 \\ 4 \\ }. \] is the linear system \[ A' = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 3 & 5 & 5 \\ 0 & 4 & 6 & 8 \\ } \text{ and } b' = \barray{ 1 \\ 0 \\ -1 \\ 1\\ }. \] The row reducer is $L \in R^{4 \times 4}$ defined by \[ L = \barray{ 1 & 0 & 0 & 0 \\ -2 & 1 & 0 & 0 \\ -4 & 0 & 1 & 0 \\ -3 & 0 & 0 & 1 }. \] One can check that $A' = LA$ and $b' = Lb$, and clearly $L$ is unit lower triangular.</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

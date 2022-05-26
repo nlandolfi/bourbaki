@@ -182,6 +182,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about a set with a prescribed quantitative degree of closeness (or distance) between its elements.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The correspondences which serve as a degree of closeness, or measure of distance, must satisfy our previously developed (see \sheetref{distance}{Distance}) notion of distance.</p></div><div class="sheet-listing"><p class="sheet"> A function on ordered pairs which does not depend on the order of the elements so considered is \t{symmetric}. A function into the real numbers which takes only nonnegative values is \t{nonnegative}. A repeated pair is an ordered pair of the same element twice. A function which satisfies a triangle inequality for any three elements is \t{triangularly transitive}.</p></div><div class="sheet-listing"><p class="sheet"> A \t{metric} (or \t{distance function}) is a function on ordered pairs of elements of a set which is symmetric, non-negative, zero only on repeated pairs, and triangularly transitive. A \t{metric space} is an ordered pair whose first coordinate is a nonempty set and whose second coordinate is a metric.</p></div><div class="sheet-listing"><p class="sheet"> In a metric space, we say that one pair of objects is \t{closer} together if the metric of the first pair is smaller than the metric value of the second pair.</p></div><div class="sheet-listing"><p class="sheet"> Notice that a set can be made into different metric spaces by using different metrics.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set. We commonly denote a metric by the letter $d$, as a mnemonic for "distance." Let $d: A \times A \to \R$. Then $d$ is a metric if: \begin{enumerate} \item it is non-negative, which we tend to denote by \[ d(a, b) \geq 0, \quad \forall a,b \in A. \] \item it is $0$ only on repeated pairs, which we tend to denote by \[ d(a, b) = 0 \iff a = b, \quad \forall a,b \in A. \] \item it is symmetric, which we tend to denote by: \[ d(a, b) = d(b, a), \quad \forall a,b \in A. \] \item it is triangularly transitive, which we tend to denote by \[ d(a, b) \leq d(a, c) + d(c, b), \quad \forall a,b,c \in A. \] \end{enumerate} As usual, we denote the metric space of $A$ with $d$ by $(A, d)$.</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> $\R$ with the absolute value distance is a metric space. As is $\R^2$ and $\R^3$ with the Euclidean distance. $\R^n$ with Euclidean metric is an example of a metric space for which the objects ($n$-dimensional tuples of real numbers) are impossible to visualize.</p></div>
     </div>
@@ -389,23 +391,22 @@ MathJax.Hub.Config({
 
  <span class='run'>Then $d$ is a metric if:
   <ol>
-   <li>it is non-negative, which we tend to denote by
+it is non-negative, which we tend to denote by
     <p>\[
      d(a, b) ≥ 0, \quad ∀ a,b ∈ A. </span>
     \]</p></li>
 
-   <li>it is $0$ only on repeated pairs, which we tend to
-    denote by
+it is $0$ only on repeated pairs, which we tend to denote by
     <p>\[
      d(a, b) = 0 \iff a = b, \quad ∀ a,b ∈ A. </span>
     \]</p></li>
 
-   <li>it is symmetric, which we tend to denote by:
+it is symmetric, which we tend to denote by:
     <p>\[
      d(a, b) = d(b, a), \quad ∀ a,b ∈ A. </span>
     \]</p></li>
 
-   <li>it is triangularly transitive, which we tend to denote by
+it is triangularly transitive, which we tend to denote by
     <p>\[
      d(a, b) ≤ d(a, c) + d(c, b), \quad ∀ a,b,c ∈ A. </span>
     \]</p></li>  </ol>
@@ -437,9 +438,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

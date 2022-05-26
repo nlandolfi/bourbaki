@@ -109,6 +109,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Every matrix $A \in \R^{m \times n}$ maps the unit ball in $\R^n$ to an ellipsoid in $\R^{m}$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{rotate scale rotate decomposition} (or \t{rotate scale rotate factorization}) of a matrix $A \in \R^{m \times n}$ is an ordered triple $(U, S, V)$ where $U$ and $V$ are orthgonal and $S$ is diagonal decreasing ($S_{11} \geq S_{22} \geq \dots \geq S_{pp}$, where $p = \min\set{m, n}$) satisfying \[ A = US\transpose{V}. \] Other (universal) terminology includes the \t{singular value decomposition} or \t{SVD} of $A$. We call diagonal elements of $S$ the \t{singular values} of $A$. We call the column vectors of $U$ the \t{left singular vectors} or \t{output singular vectors}. We call the column vectors of $V$ the \t{right singular vectors} or \t{input singular vectors}. We refer to them collectively as the \t{singular vectors}. \[ Av_i = \sigma_i u_i. \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -215,9 +217,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

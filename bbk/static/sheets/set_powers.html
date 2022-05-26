@@ -133,6 +133,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to consider all the subsets of a given set.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">1. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We do not yet have a principle stating that such a set exists, but our intuition suggests that it does.</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Powers] For every set, there exists a set of its subsets. \end{principle}</p></div><div class="sheet-listing"><p class="sheet"> We call the existence of this set the \t{principle of powers} and we call the set the \t{power set}.\footnote{This terminology is standard, but unfortunate. Future editions may change these terms.} As usual, the principle of extension gives uniqueness (see \sheetref{set_equality}{Set Equality}). The power set of a set includes the set itself and the empty set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">1.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ denote a set. We denote the power set of $A$ by $\powerset{A}$, read aloud as "powerset of A." $A \in \powerset{A}$ and $\emptyset \in \powerset{A}$. However, $A \subset \powerset{A}$ is false.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">1.2 Examples</h2></div><div class="sheet-listing"><p class="sheet"> Let $a, b, c$ denote distinct objects. Let $A = \set{a, b ,c}$ and $B = \set{a, b}$. Then $B \subset A$. In other notation, $B \in \powerset{A}$. Showing each of the following is straightforward. \begin{enumerate} \item The empty set:  $\powerset{\emptyset} = \set{\emptyset}$ \item Singletons: $\powerset{\set{a}} = \set{\emptyset, \set{a}}$ \item Pairs: $\powerset{\set{a, b}} = \set{\emptyset, \set{a}, \set{b}, \set{a, b}}$ \item Triples:   \[\powerset{\set{a, b, c}} = \{ \emptyset, \set{a}, \set{b}, \set{c}, \set{a, b}, \set{b, c}, \set{a, c}, \set{a, b, c} \}\] \end{enumerate}</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">2. Properties</h1></div><div class="sheet-listing"><p class="sheet"> We can guess the following easy properties.\footnote{Future editions will expand this account.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\emptyset \in \powerset{A}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \in \powerset{A}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> We call $A$ and $\emptyset$ the \t{improper} subsets of $A$. All other subset we call $\t{proper}$.</p></div><div class="sheet-listing"><p class="sheet"> \s{Basic Fact}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $E \subset F \implies \powerset{E} \subset \powerset{F}$ \end{proposition}</p></div>
     </div>
@@ -239,9 +241,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

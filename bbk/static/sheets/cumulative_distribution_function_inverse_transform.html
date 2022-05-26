@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> This result is called sometimes called the \t{probability inverse transform}.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(\Omega, \CF, \PM)$ be a probability space and let $X: \Omega \to \R$ be a random variable with cumulative distribution function $\rvcdf{X}: \R \to [0, 1]$. Suppose $\inv{\rvcdf{X}}: [0, 1] \to \R$ exists, then $Y = \inv{\rvcdf{X}} \composed X$ is a random variable with cumulative distribution function $\rvcdf{Y}: [0, 1] \to [0, 1]$ satisfying $\rvcdf{Y}(y) = y$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{remark} The conclusion is equivalent to the following: $Y$ has a density and that density is the the standard unform density (see \sheetref{uniform densities}{Uniform Densities}). \end{remark}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Express $\rvcdf{Y}(\gamma) = \PM[Y \leq \gamma] = \PM(\inv{Y}([0, \gamma]))$ Notice \[ \begin{aligned} Y^{-1}([0, \gamma]]) &= \Set{\omega \in \Omega}{Y(\omega) \leq \gamma} \\ &= \Set{\omega \in \Omega}{\rvcdf{X}(X(\omega)) \leq \gamma} \\ &= \Set{\omega \in \Omega}{X(\omega) \leq \rvcdf{X}^{-1}(\gamma)}. &= X^{-1}(\cdots).\footnote{Future editions will complete.} \end{aligned} \] \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \begin{remark} Using different notation the above can be expressed succinctly as \[ \begin{aligned} \rvcdf{Y}(\gamma) = \PM[Y \leq \gamma] &= \PM[\rvcdf{X} \composed X \leq \gamma]  \\ &=\PM[X \leq \inv{\rvcdf{X}}(\gamma)] = \rvcdf{X}(\inv{\rvcdf{X}}(\gamma)) = \gamma. \end{aligned} \] \end{remark}</p></div><div class="sheet-listing"><p class="sheet"> Future editions will discuss \t{inverse transform sampling}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

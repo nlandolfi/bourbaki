@@ -95,6 +95,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to split up a measure and the pieces should not---roughly speaking---overlap.\footnote{Future editions will improve upon this justification. It may be that the intuition from linear algebra need be more explicitly used. This would seem right, since dealing with signed measures and such is partly to make the space of measures a vector space.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A measure is \t{concentrated} on a set if the measure on the complement of the set is zero. A signed or complex measure is \t{concentrated} on a set if its variation is concentrated on the set.\footnote{Future editions may remove the dependence on variation of a measure. The benefit is observed in the next paragraph.}</p></div><div class="sheet-listing"><p class="sheet"> Two measures (or signed or complex measures) are \t{mutually singular} if there exists a set on which one is concentrated and on whose complement the other is concentrated. In other words, there exists a decomposition of the space into two sets such that one measure if concentrated on one piece and the other measure is concentrated on the other piece.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \SA)$ be a measurable space and let $\mu$ be a measure. Then $\mu$ is concentrated on a set $C \in \SA$ if $\mu(X - C) = 0$. If $\nu$ is a signed or complex measure, then $\nu$ is concentrated on $C \in \SA$ if $\abs{\nu}$ is concentrated on $C$; in which case $\abs{\nu}(X - C) = 0$.</p></div><div class="sheet-listing"><p class="sheet"> Let $\mu$ and $\nu$ be measures on $(X, \SA)$. Then $\mu$ and $\nu$ are mutually singular if there exists a set $A\in\SA$ so that $\mu$ is concentrated on $A$ and $\nu$ is concentrated on $X - A$. We denote that two measures are singular by $\mu \perp \nu$, read aloud as "mu perp nu".</p></div><div class="sheet-listing" id="exercises"><h1 class="sheet">3. Exercises</h1></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Let $\mu$ and $\nu$ be measures on a measurable space $(X, \CA)$ such that for any $\epsilon > 0$, there is a set $A \in \CA$ such that $\mu(A) < \epsilon$ and $\nu(\complement{A}) < \epsilon$. Show that $\mu \perp \nu$. \end{exercise}</p></div>
     </div>
@@ -201,9 +203,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

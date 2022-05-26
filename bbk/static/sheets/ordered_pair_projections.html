@@ -95,6 +95,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> The product of two sets is a (sub)set of ordered pairs. Is every set or ordered pairs a subset of a product of two sets?</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> The answer is easily seen to be yes. Let $R$ denote a set or ordered pairs. So for $x \in R$, $x = \set{\set{a}, \set{a, b}}$. First consider $\bigcup R$. Then $\set{a} \in \bigcup R$ and $\set{a, b} \in \bigcup R$. Next consder $\bigcup\bigcup R$. Then $a, b \in \bigcup\bigcup R$. So if we want to sets---denote them by $A$ and $B$---so that $R \subset A \times B$, we can take both $A$ and $B$ to be the set $\bigcup\bigcup R$.</p></div><div class="sheet-listing"><p class="sheet"> We often want to shrink the sets $A$ and $B$ to only include the relevant members. In other words, we specify the elements of $\bigcup\bigcup R$ which are actually a first coordinate or second coordinate for some ordered pair in the set $R$. In other words, we define $A' = \Set{a \in A}{(\exists b)((a, b) \in R)}$ and likewise $B' = \Set{b \in B}{(\exists a)((a, b) \in R)}$. We call $A'$ the \t{projection of $R$ onto the first coordinate} and $B'$ the \t{projection of $R$ onto the second coordinate.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -201,9 +203,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

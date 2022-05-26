@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We characterize chordal graphs.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(V, E)$ be an undirected graph. A set $S \subset V$ is a \t{vertex separator} for two vertices $v, w$ (or a \t{$vw$-separator}) if $v$ and $w$ are disconnected in the subgraph induced by $V \setminus S$. There always exists a vertex separator for two nonadjacent vertices.</p></div><div class="sheet-listing"><p class="sheet"> A vertex separator is a \t{minimal vertex separator} for two vertices if no proper subset of it is a vertex separator for those vertices. Another term for vertex separator is \t{cutset}. Similarly, one for minimal vertex separator is \t{relatively minimal cutset}.</p></div><div class="sheet-listing"><h2 class="sheet" id="example">2.1 Example</h2></div><div class="sheet-listing"><p class="sheet"> For example, for the graph in Figure~\ref{figure:vertex_separators:cutsets}, $\set{c,e}$ is a minimal $ag$-separator and $\set{b,c,e}$ is a minimal $ad$-separator. A minimal vertex separator may contain another minimal vertex separator if they are minimal for different pairs of vertices.\footnote{See Vandenberghe and Andersen, 2014.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \includegraphics[width=0.7\textwidth]{graphics_included/cutsets} \caption{A chordal graph and its five minimal cutsets.} \label{figure:vertex_separators:cutsets} \end{figure}</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

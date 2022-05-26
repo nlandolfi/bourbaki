@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What is the optimal tree approximator of a multivariate normal density?</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $g: \R^n \to \R$ be a normal density with mean $\mu \in \R^d$ and covariance $\Sigma \in \mathbf{S}^d_{++}$. The normal density $f^*_T: \R^d \to \R$ with mean $\mu$ and precision matrix $P$ defined by \begin{itemize} \item $P_{11} = \Sigma_{11}^{-1} + \sum_{\pa{j} = 1} \Sigma_{j1}^2\Sigma_{11}^{-2}\Sigma_{j\mid 1}^{-1}$ \item for $i = 2, \dots, d$, $P_{ii} = \Sigma_{i\mid\pa{i}}^{-1} + \sum_{\pa{j} = i} \Sigma_{ji}^2\Sigma_{ii}^{-2}\Sigma_{j\mid i}^{-1}$ \item $i, j = 1, \dots d$ and $i = \pa{j}$, $P_{ij} = P_{ji} = -\Sigma_{ji}\Sigma_{jj}^{-1}\Sigma_{j \mid i}^{-1}$ \end{itemize} where $\pa{i}$ is the parent of $i$ in an optimal approximator tree $T$ ($i = 2, \dots, n)$ is an optimal tree approximator of $g$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> Using Proposition 1 of Best Tree Density Approximators, express an optimal tree approximator of $g$ by $$ (1/c) \exp\left( -\frac{1}{2} \left( \Sigma_{11}^{-1}\bar{x}_1^2 + \sum_{i \neq 1} \left(\bar{x}_i - \Sigma_{i,\pa{i}}\Sigma_{\pa{i},\pa{i}}^{-1}\bar{x}_{\pa{i}}\right)^2\Sigma_{i\mid\pa{i}}^{-1} \right) \right) $$ where $\bar{x}_i = x_i - \mu_i$ and $c = \sqrt{(2\pi)^d\Sigma_{11} \prod_{i \neq 1} \Sigma_{i \mid \pa{i}}}$.</p></div><div class="sheet-listing"><p class="sheet"> Second, express the quadratic in the exponential as $$ \Sigma_{11}^{-1}\bar{x}_1^2 + \sum_{i \neq 1} \left[ \Sigma_{i\mid\pa{i}}^{-1} \bar{x}_i^2 - 2 \Sigma_{i,\pa{i}}\Sigma_{\pa{i},\pa{i}}^{-1}\Sigma_{i\mid\pa{i}}^{-1} \bar{x}_i\bar{x}_{\pa{i}} + \Sigma_{i,\pa{i}}^2\Sigma_{\pa{i},\pa{i}}^{-2}\Sigma_{i\mid\pa{i}}^{-1} \bar{x}_{\pa{i}}^2 \right] $$ With $P$ defined as earlier, we can express the above as $\bar{x}^{\tp} P \bar{x}$.</p></div><div class="sheet-listing"><p class="sheet"> Third, note that $c$ is $\sqrt{(2\pi)^d\det P^{-1}}$ since $f^*_T$ is a density and so integrates to one.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> Notice that $f^*_T$ is a tree normal density.</p></div><div class="sheet-listing" id="empirical_normal"><h1 class="sheet">3. Empirical Normal</h1></div><div class="sheet-listing"><p class="sheet"> In particular, notice that we can approximate the empirical normal density of a dataset with a density that factors according to a tree.</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

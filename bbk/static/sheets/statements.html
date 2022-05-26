@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want symbols to represent identity and belonging.</p></div><div class="sheet-listing"><p class="sheet"> \s{Definition}</p></div><div class="sheet-listing"><p class="sheet"> In the English language, nouns are words that name people, places and things. In these sheets, names (see \sheetref{names}{Names}) serve the role of nouns. In the English language, verbs are words which talk about actions or relations. In these sheets, we use the verbs "is} and \say{belongs" for the objects discussed. And we exclusively use the present tense.</p></div><div class="sheet-listing"><p class="sheet"> Experience shows that we can avoid the English language and use symbols for verbs. By doing this, we introduce odd new shapes and forms to which we can give specific meanings. As we use italics for names to remind us that the symbol is denoting a possibly intangible arbitrary object, we use new symbols for verbs to remind us that we are using particular verbs, in a particular sense, with a particular tense. A \t{statement} is a succession of symbols.</p></div><div class="sheet-listing"><h2 class="sheet" id="identity">0.1 Identity</h2></div><div class="sheet-listing"><p class="sheet"> As an example, consider the symbol $=$. Let $a$ denote an object and $b$ denote an object. Let us suppose that these two objects are the same object (see \sheetref{identities}{Identities}). We agree that $=$ means "is" in this sense. Then we write $a = b$. It's an odd series of symbols, but a series of symbols nonetheless. And if we read it aloud, we would read $a$ as "the object denoted by a}, then $=$ as \say{is}, then $b$ as \say{the object denoted by b". Altogether then, "the object denoted by $a$ is the object denoted by $b$." We might box these three symbols \fbox{$a = b$} to make clear that they are meant to be read together, but experience shows that (as with English sentences and words) we do not need boxes.</p></div><div class="sheet-listing"><p class="sheet"> The symbol $=$ is (appropriately) a symmetric symbol. If we flip it left and right, it is the same symbol. This reflects the symmetry of the English sentences represented (see \sheetref{identities}{Identities}). The symbols $a = b$ mean the same as the symbols $b = a$.</p></div><div class="sheet-listing"><h2 class="sheet" id="belonging">0.2 Belonging</h2></div><div class="sheet-listing"><p class="sheet"> As a second example, consider the symbol $\in$. Let $a$ denote an object and let $A$ denote a set. We agree that $\in$ means "belongs to} in the sense of \say{is an element of} or \say{is a member of} (see \sheetref{sets}{Sets"). Then we write $a \in A$. We read these symbols as "the object denoted by $a$ belongs to the set denoted by $A$}.\footnote{The symbol $\in$ is a stylized lower case Greek letter $\epsilon$, which is a mnemonic for the ancient Greek word $\grave{\epsilon} \sigma \tau \acute{\iota}$ which means, roughly, \say{belongs". Since in English, $\epsilon$ is read aloud "ehp-sih-lawn,} $\in$ is also a mnemonic for \say{element of}."</p></div><div class="sheet-listing"><p class="sheet"> The symbol $\in$ is not symmetric. If we flip it left and right it looks different. This reflects that $a \in A$ does not the mean the same as $A \in a$ (see \sheetref{sets}{Sets}). As with english words, the order of symbols is significant. The word "word} is not the same as the word \say{drow". Our symbolism for belonging reflects the concept's lack of symmetry.</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

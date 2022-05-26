@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include._those_editions_may_rename_this_sheet_and_also_provide_examples."><h1 class="sheet">1. Why}\footnote{Future editions will include. Those editions may rename this sheet and also provide examples.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CP = ((\CA^i)_{i = 1}^{n}, (\CO^i)_{i = 1}^{n}, \preceq)$ be an $n$-stage decision problem with constant actions sets $\CA^t_{h} = U_t$ for each history $h \in H^{t-1}$. In other words, the actions available at stage $t$ do not depend on the history, only on the stage $t$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{state representation} for $\CP$ is tuple \[ \parens{\set{\CX_t}_{t = 1}^{n+1}, \set{f_{t}: \CX_t \times \CU_t \to \CX_{t+1}}_{t = 1}^{n}} \] satisfying $x_{t+1} = f_t(u_t, x_t)$ for all $x_t \in \CX_t$, $x_{t+1} \in \CX_{t+1}$, $u_t \in \CU_t$, $t = 1, \dots, n$.\footnote{Future editions will continue this development, and add the other necessary conditions on state representations. To say more here is involved, and this sheet will likely me reworked to use the genetic method via applications in celestial mechanics.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

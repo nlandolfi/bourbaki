@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We generalize our notion of <i>size</i> to $n$-dimensional space.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{norm} (or \t{Euclidean norm}) of $x \in \R^n$ is \[ \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}. \]</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the norm of $x$ by $\norm{x}$. In other words, $\norm{\cdot}: \R^n \to \R$ is a function from vectors to real numbers. The notation follows the notation of absolute value, the <i>magnitude</i> of a real number, and the double verticals remind us that $x$ is a vector. A warning: some authors write $\abs{x}$ for the norm of $x$ when it is understood that $x \in \R^n$.</p></div><div class="sheet-listing"><p class="sheet"> We understand the norm of $x$ by comparison with the distance function $d: \R^n \times \R^n \to \R$. On one hand, the norm of $x$ is $d(x, 0)$. So $\norm{x}$ measures the length of the vector $x$ from the origin $0$. On the other hand, $d(x, y) = \norm{x - y}$. So $\norm{x - y}$ measures the distance between $x$ and $y$.</p></div><div class="sheet-listing"><h2 class="sheet" id="properties">2.2 Properties</h2></div><div class="sheet-listing"><p class="sheet"> The norm has several important properties \begin{enumerate} \item $\norm{\alpha x} = \abs{\alpha}\norm{x}$, called \t{(absolute) homogeneity}, \item $\norm{x + y} \leq \norm{x} + \norm{y}$, called the \t{triangle inequality}, \item $\norm{x} \geq 0$, called \t{non-negativity}, and \item $\norm{x} = 0 \iff x = 0$, called \t{definiteness}. \end{enumerate}</p></div><div class="sheet-listing"><h2 class="sheet" id="visualization">2.3 Visualization</h2></div><div class="sheet-listing"><p class="sheet"> \begin{center} \includegraphics[width=0.7\textwidth]{graphics/x-y} \end{center}</p></div>
     </div>
@@ -303,16 +305,15 @@ MathJax.Hub.Config({
 
  <span class='run'>The norm has several important properties
   <ol>
-   <li>$\norm{\alpha x} = \abs{\alpha}\norm{x}$, called
+$\norm{\alpha x} = \abs{\alpha}\norm{x}$, called
     <span class='term'>(absolute) homogeneity</span>, </li>
 
-   <li>$\norm{x + y} ≤ \norm{x} + \norm{y}$, called the
+$\norm{x + y} ≤ \norm{x} + \norm{y}$, called the
     <span class='term'>triangle inequality</span>, </li>
 
-   <li>$\norm{x} ≥ 0$, called
-    <span class='term'>non-negativity</span>, and </li>
+$\norm{x} ≥ 0$, called <span class='term'>non-negativity</span>, and </li>
 
-   <li>$\norm{x} = 0 \iff x = 0$, called
+$\norm{x} = 0 \iff x = 0$, called
     <span class='term'>definiteness</span>. </li>  </ol>
 </span>
 </p>
@@ -331,9 +332,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

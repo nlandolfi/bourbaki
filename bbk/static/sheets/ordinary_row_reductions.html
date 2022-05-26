@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> When does the technique of row reductions prevail?</p></div><div class="sheet-listing" id="multivariable_row_reductions"><h1 class="sheet">2. Multivariable row reductions</h1></div><div class="sheet-listing"><p class="sheet"> Let $S = (A \in \R^{m \times m}, b \in \R^{m})$ be a linear system with $A_{kk} \neq 0$. The \t{$k$th row reduction} of $S$ is the linear system $(C, d)$ with $C_{st} = A_{st} - (A_{sk}/A_{kk})A_{kt}$ if $i < s \leq m$ and $C_{st} = A_{st}$ otherwise.</p></div><div class="sheet-listing"><p class="sheet"> The idea, as in the example in \sheetref{linear_system_row_reductions}{Linear System Row Reductions}, is to eliminate variable $k$ from equations $k+1, \dots, m$. We are taking the $k$th column of $A$ from \[ \barray{A_{1k} \\ \vdots \\ A_{kk} \\ A_{k+1,k} \\ \vdots \\ A_{mk}} \quad \text{to} \quad \barray{A_{1k} \\ \vdots \\ A_{kk} \\ 0 \\ \vdots \\ 0}. \]</p></div><div class="sheet-listing"><p class="sheet"> We interpret the $i$th row reduction as \t{subtracting equations} of the system or \t{reducing rows} of the array $A$. If $a^i, c^i \in \R^{n}$ denote the $i$th rows of $A$ and $C$, $c^i = a^i - (A_{ik}/A_{kk})a^k$ for $k < i \leq m$, In other words, we obtain the $i$th row of matrix $C$ by subtracting a multiple of the $k$th row of matrix $A$ from the $i$th row of matrix $A$, for $k < i \leq m$. The following is an immediate consequence of real arithmetic. \begin{proposition} Let $(A \in \R^{m \times n}, b \in \R^{n})$ be a linear system which row reduces to $(C, d)$. Then $x \in \R^{n}$ is a solution of $(A, b)$ if and only if it is a solution of $(C, d)$.  \label{proposition:ordinary_row_reductions:basic} \end{proposition}</p></div><div class="sheet-listing" id="ordinary_reductions"><h1 class="sheet">3. Ordinary reductions</h1></div><div class="sheet-listing"><p class="sheet"> We call the system $S$ \t{ordinarily reducible} if there exists a sequence of systems $S_1, \dots, S_{m-1}$ so that $S_1$ is the $11$-reduction of $S$ and $S_{i}$ is the $ii$-reduction of $S_{i-1}$ for $i = 1, \dots, n-1$. In this case, we call $S_{n-1}$ the \t{final ordinary reduction} (or just \t{ordinary reduction}) of $S$. The following is an immediate consequence of Proposition~\ref{proposition:ordinary_row_reductions:basic}. \begin{proposition} Let $S'$ be the (final) ordinary reduction of $S$. Then $S$ and $S'$ have equivalent solution sets. \label{proposition:ordinary_row_reductions:main} \end{proposition} This process of constructing the ordinary reduction is called \t{Gauss elimination} or \t{Gaussian elimination}. We call the $kk$th entry of system $S_{k-1}$ the \t{pivot}. In an ordinarily reducible system, the pivots are nonzero.</p></div><div class="sheet-listing"><p class="sheet"> The idea is that a system is ordinarily reducible if we can take row reductions in sequence an end up with a system that is easy to back-substitute and solve. The difficulty is that this need not be the case. For example, consider the following obvious difficulty. The system $(A, b)$ in which \[ A = \barray{0 & 1\\1 & 2} \text{ and } \barray{1 \\ 2} \] is not ordinarily reducible, but clearly solvable.</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> $\set{a} \union \set{b} = \set{a, b}$</p></div><div class="sheet-listing"><p class="sheet"> \s{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $a$, $b$ and $c$ denote objects. From the associativity of pair unions (see \sheetref{pair_unions}{Pair Unions}), we have \[ (\set{a} \union \set{b}) \union \set{b} = \set{a} \union (\set{b} \union \set{c}). \] So we will drop the parentheses, and write $\set{a} \union \set{b} \union \set{c}$. We call such a set the \t{unordered triple} of $a$, $b$ and $c$. The unordered triple of $a$, $b$ and $c$ is the set containing these elements and no others.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Such sets are so commonplace that we denote the unordered triple of $a$, $b$ and $c$ by $\set{a, b, c}$.</p></div><div class="sheet-listing"><p class="sheet"> \s{Quadruples}</p></div><div class="sheet-listing"><p class="sheet"> Let $d$ denote an object. Again, the associativity of pair unions allows us to drop the parentheses from \[ (((\set{a} \union \set{b}) \union \set{c}) \union \set{d})). \] We can therefore write $\set{a} \union \set{b} \union \set{c} \union \set{d}$ without ambiguity. We call this set the \t{unordered quadruple}. As before, the unordered quadruple contains of $a$, $b$, $c$ and $d$ contains $a$, $b$, $c$, and $d$ and nothing besides these.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation} We denote the unordered quadruple of the objected denoted by $a$, $b$, $c$ and $d$, denote this set by $\set{a, b, c, d}$.</p></div><div class="sheet-listing"><p class="sheet"> \s{The case of several named objects}</p></div><div class="sheet-listing"><p class="sheet"> In a similar way we speak of \t{unordered pentuples}, \t{unordered sextuples}, \t{unordered septuples} and so on. If we have several objects named, we denote the set containing these objects be writing their names in between the left brace $\{$ and right brace$\}$, separating the names by commas. For example, if we $A$, $b$, $x$ and $Y$ and $z$ denote objects, then we denote the set containing these elements by \[ \set{A, b, x, Y, z}. \]</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> A simple example of an embedding.\footnote{Future editions will expand, or perhaps collapse this sheet.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Fix $d \in \N$. A \t{polynomial feature map} of degree $d$ is a function $\phi: \R \to \R^d$ with \[ \phi(x) = \transpose{\pmat{1 & x^2 & \cdots & x^d}}. \] For $x \in \R$, we call $\phi(x)$ the \t{polynomial embedding} of $x$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{polynomial regressor} is a least squares linear predictor using a polynomial feature embedding (of any degree, but to be precise one must specify the degree). The task of consructing a linear predictor is often referred to as \t{polynomial regression}.</p></div><div class="sheet-listing"><p class="sheet"> Given a dataset of paired records $(x^1, y^1), \dots, (x^2, y^2) \in \R^2$, one can construct a predictor $g: \R \to \R$ for $y$ by embedding the dataset $(\phi(x^1), \dots, \phi(x^n))$ and finding the least squares linear regressor $f: \R^d \to \R$ for $y$. One defines the predictor $g: \R \to \R$ by $g(\phi(x))$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

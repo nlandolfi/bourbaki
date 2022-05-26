@@ -119,6 +119,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want a density that is symmetric about some center value with some spread.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $f: \R \to \R$ be a density. If there exists $\mu \in \R$ and $\sigma \in \R$ with $\sigma > 0$ so that for each $x \in \R$ \[ f(x) = \normaldensity{x}{\mu}{\sigma} \] then $f$ is a \t{normal density}. A normal density is often called a \t{Gaussian density}.\footnote{We do not use this term in accordance with the Bourbaki project's policy on historical names.} We often drop the word density and use refer to these as \t{normals} or \t{Gaussians}, using these words as substantives.</p></div><div class="sheet-listing"><p class="sheet"> We call the special case when $\mu = 0$ and $\sigma = 1$ the \t{standard normal density} or \t{standard gaussian density}.</p></div><div class="sheet-listing" id="maximum"><h1 class="sheet">3. Maximum</h1></div><div class="sheet-listing"><p class="sheet"> The maximum of a normal density is $\mu$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -225,9 +227,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

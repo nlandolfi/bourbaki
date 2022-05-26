@@ -90,8 +90,10 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk and write about things.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We use the word \t{object} with its usual sense in the English language. Objects that we can touch we call \t{tangible}. Otherwise, we say that the object is \t{intangible}.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.1 Examples</h2></div><div class="sheet-listing"><p class="sheet"> We pick up a pebble for an example of a tangible object. The pebble is an object. We can hold and touch it. And because we can touch it, the pebble is tangible.</p></div><div class="sheet-listing"><p class="sheet"> We consider the color of the pebble as an example of an intangible object. The color is an object also, even though we can not hold it or touch it. Because we can not touch it, the color is intangible. These sheets discuss other intangible objects and little else besides.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to talk and write about things.</p></div><div class="sheet-listing"><p class="sheet"> \section{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We use the word \t{object} with its usual sense in the English language. Objects that we can touch we call \t{tangible}. Otherwise, we say that the object is \t{intangible}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection{Examples}</p></div><div class="sheet-listing"><p class="sheet"> We pick up a pebble for an example of a tangible object. The pebble is an object. We can hold and touch it. And because we can touch it, the pebble is tangible.</p></div><div class="sheet-listing"><p class="sheet"> We consider the color of the pebble as an example of an intangible object. The color is an object also, even though we can not hold it or touch it. Because we can not touch it, the color is intangible. These sheets discuss other intangible objects and little else besides.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -196,27 +198,20 @@ MathJax.Hub.Config({
 
   
     <div class="lit">
-    <p>
- <span class='run'>❲%!name:objects❳ </span>
+    <!--
+!name:objects
+!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕sets_and_subsets
+-->
 
- <span class='run'>❲%!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕sets_and_subsets❳ </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>
+Why </h1>
 
 <p>
  <span class='run'>We want to talk and write about things. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
+<h1>
+Definition </h1>
 
 <p>
  <span class='run'>We use the word <span class='term'>object</span>
@@ -229,11 +224,8 @@ MathJax.Hub.Config({
   <span class='term'>intangible</span>. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Examples} </span>
-</p>
-
+<h2>
+Examples </h2>
 
 <p>
  <span class='run'>We pick up a pebble for an example of a
@@ -262,17 +254,60 @@ MathJax.Hub.Config({
   and little else besides. </span>
 </p>
 
-
-<p>
- <span class='run'>\blankpage </span>
-</p>
-
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

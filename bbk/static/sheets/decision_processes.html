@@ -102,6 +102,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about making a sequence of decisions.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $S$ and $A$ be finite sets. Let $T: S \times A \to (S \to [0, 1])$ so that for each $s \in S$ and $a \in A$, $T_{sa}: S \to [0, 1]$ is a probability distribution over $S$. We call the ordered triple $(S, A, T)$ a \t{finite state-action process}.</p></div><div class="sheet-listing"><p class="sheet"> A \t{trajectory} in the \t{state set} $S$ and \t{action set} $A$ is a sequence in $S \times A$.</p></div><div class="sheet-listing"><p class="sheet"> Let $r: S \times A \times S \to \R$, $N \in \N$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{decision process} is a sequence $(S, A, T, r, \gamma, $, consists of two sets, a function set, an action</p></div><div class="sheet-listing" id="other_terminology"><h1 class="sheet">3. Other terminology</h1></div><div class="sheet-listing"><p class="sheet"> Decision processes are commonly called \t{markov decision processes}. \ifhmode\unskip\fi\footnote{ As usual, we avoid this terminology in connection with the projects guidelines against using particular names. }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -279,9 +281,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

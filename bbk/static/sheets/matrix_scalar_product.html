@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We have seen that the matrices are a vector space. Are they an inner product space?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{matrix scalar product} of $A \in \R^{n \times k}$ and $B \in \R^{n \times k}$ is the following product \[ \sum_{i = 1}^{n} \sum_{j = 1}^{k} a_{ij}b_{ij}. \] Using the matrix trace, we can denote this as $\tr \tranpose{A} B$. Some authors call this the \t{Euclidean matrix scalar product}, \t{matrix inner product} or \t{Frobenius inner product}.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The matrix scalar product is an inner product.\footnote{Future editions will provide an account.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> For example, symmetry of the product is a consequence of the fact that a square matrix and its tranpose have identical traces. Commutativity of the trace yields $\tr \tranpose{A} B = \tr B\tranpose{A}$, where the LHS is the scalar product of $\tranpose{B}$ and $\transpose{A}$. In other words, transposition "preserves" the matrix scalar product.</p></div><div class="sheet-listing"><p class="sheet"> With this inner product, $\R^{n \times k}$ is a Euclidean vector space (see \sheetref{inner_products}{Inner Products}) of dimension $nk$. For the case of $k = 1$, we recover a model\footnote{Future editions will define this term.} for the usual space $\R^n$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We commonly denote the matrix inner product by $\langle A, B \rangle$.</p></div><div class="sheet-listing" id="induced_norm"><h1 class="sheet">3. Induced norm</h1></div><div class="sheet-listing"><p class="sheet"> The matrix inner product induces a norm in the usual way. This norm is sometimes called the \t{Frobenius norm} and is often denoted for a matrix $A \in \R^{m \times n}$ by $\norm{A}_F$.</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

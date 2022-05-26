@@ -88,6 +88,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> We bound below the measure that a non-negative measurable real-valued function exceeds some value by its integral.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $(X, \SA, \mu)$ be a measure space. Let $g: X \to [0, \infty]$ be measurable and square-integrable. Then for all $t$ such that $\int t d\mu \in [0, \int g d\mu)$, \[ \mu(\Set*{x \in X}{g(x) > t}) \geq \frac{(\int (g - t) d\mu)^2}{\int g^2d\mu}. \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Let $t$ such that $\int t d\mu \in [0, \int g)$. We have selected $t$ so that $\int (g - t)d\mu \geq 0$. Define $h = (g - t)^+$ and $A = \Set*{x \in X}{h(x) > 0}$. Then \[ \begin{aligned} \int (g - t) d\mu \leq \int h d\mu = \int h \chi_{A} d\mu \leq \sqrt{\int h^2 d\mu \int \chi_{A}^2 \; d\mu} \end{aligned} \] \end{proof} Now $g^2 > h^2$, so $\int g^2 d\mu \geq \int h^2 d\mu$. Also $\chi_A^2 = \chi_A$ so $\int \chi_A^2 = \mu(A)$. $h(x) > 0$ if and only if $g(x) \geq t$ for all $x$. So $A = \Set*{x \in X}{g(x) \geq t}$. Combining we have: \[ \int (g - t)d\mu \leq \sqrt{\parens*{\int g^2 d\mu} \mu(A)}. \]</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $X$ be a random variable with $\Expect(X^2) \leq \infty$. Then for all $t \in [0, \Expect(X))$, we have \[ P\parens*{X > t} \geq \frac{ \parens*{\Expect(X) - t}^2 }{ \Expect{X^2} }. \] \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> The above is also called the <i>Paley-Zygmund Inequality</i>.</p></div>
     </div>
@@ -194,9 +196,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

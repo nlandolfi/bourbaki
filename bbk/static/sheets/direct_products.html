@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We generalize the product of two sets to a product of a family of sets. To do so we discuss sets of families.</p></div><div class="sheet-listing" id="discussion_for_pairs"><h1 class="sheet">2. Discussion for pairs</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ be sets. There is a natural correspondence between the product set $A \times B$ (see \sheetref{cartesian_products}{Cartesian Products}) and the set of families \[ Z = \Set*{z: \set{i, j} \to (A \union B)}{z_i \in A \text{ and } z_b \in B}. \] The family $z \in Z$ corresponds with the pair $(z_i, z_i)$. The pair $(a, b)$ corresponds to the family $z \in Z$ defined by $z(i) = a$ and $z(j) = b$. So, ordered pairs can be put in one-to-one correspondence with families. The generalization of Cartesian products to more than two sets generalizes the notion for families.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a set. Let $A: I \to X$ be a family of subsets of $X$. The \t{direct product} or \t{family Cartesian product} of $A$ is the set of all families $a: I \to X$ which satisfy $a_i \in A_i$ for every $i \in I$.</p></div><div class="sheet-listing"><p class="sheet"> A function on a product is called a \t{function of several variables} and, in particular, a function on the product $X \times Y$ is called a \t{function of two variables.}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">3.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the product of the family $\set{A_i}$ by \[ \product_{i \in I} A_i \] We read this notation as "product over i in I of A sub-i."</p></div><div class="sheet-listing"><p class="sheet"> \s{Projections}</p></div><div class="sheet-listing"><p class="sheet"> The word "projection" is used in two senses with families. Let $I$ be a set, and let $\set{A_i}$ be a family of sets. Define $A = \prod_{i \in I} A_i$.</p></div><div class="sheet-listing"><p class="sheet"> First, let $J \subset I$. There is a natural correspondence between the elements of $A$ and those of $\prod_{j \in J} A_j$. To each element $a \in A$, we restrict $a$ to $J$ and this is restriction is an element of $\prod_{j \in J} A_j$. The correspondence is called the \t{projection} of $A$ onto $\prod_{i \in J} A_i$. The projection in this sense is a set of families.</p></div><div class="sheet-listing"><p class="sheet"> Second, consider the value of a family $a \in A$ at $j$. We call $a_j$ the \t{projection of $a$ onto index $j$} or the \t{$j$-coordinate} of $a$. This word \t{coordinate} is meant to follow the language used in defining ordered pairs. The projection in this sense is an element of $A_j$.</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

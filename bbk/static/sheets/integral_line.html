@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We are constantly thinking of the integers as the endpoints of equal length segments of a line.</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> We commonly associate elements of the integers with the endpoints of equal-length segments of a real line. Take segment $S_0$ of $L$ with endpoints $p$ and $q$. Associate the point $p$ with $0$. Associate the point $q$ with $1$. Take a segment $S_1$ of equal length, non-overlapping with $S_0$, who shares the endpoint $q$. Associate the second endpoint of this segment $2$. Continue with the rest.\footnote{Future editions will expand.} We call the line so formed the \t{integral line} of unit $S_0$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure}[h] \centering \vspace{0.5cm} \includegraphics[width=0.9\textwidth]{\figpath{integral_segments}{real_line}} \caption{The integral segments.} \label{figures:integral_segments:real_line} \end{figure}</p></div><div class="sheet-listing" id="integral_distance"><h1 class="sheet">3. Integral Distance</h1></div><div class="sheet-listing"><p class="sheet"> Let $f: \Z \to \Z$ be defined by $f(a, b) = a - b$ if $a > b$ and $f(a, b) = b - a$ if $b > a$. Notice that $f$ is symmetric: $f(a,b) = f(b, a)$. The (geometric) interpretation of $f$ is the distance between the points associated with the two integers $a, b \in \Z$ in some integral line. We call $f$ the \t{integral distance}. Notice that $f(a, b) > 0$ for all $a, b \in \Z$.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">4. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the distance between $a, b \in \Z$ by $\intabs{a - b}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -102,6 +102,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Do the integer numbers correspond (in the sense of \sheetref{homomorphisms}{Homomorphisms}) to elements of the rationals.</p></div><div class="sheet-listing" id="main_result"><h1 class="sheet">2. Main Result</h1></div><div class="sheet-listing"><p class="sheet"> Indeed, roughly speaking the integers correspond to rationals whose denominator is 1. Define \[ \tilde{Q} := \Set{\eqc{(a, b)} \in \Q}{b = 1_{\Z}}. \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The rings $(\tilde{\Q}, +_{\Q} \mid \tilde{\Q}, \cdot_{\Q} \mid \tilde{\Q})$ and $(Z, +_{\Z}, \cdot_{\Z})$ are homomorphic.\footnote{Indeed, more is true and will be included in future editions. There is an <i>order perserving} ring homomorphism.</i> \end{proposition} \begin{proof} The function is $f: \Z \to \Q$ with $f(z) = \eqc{(z, 1)}$.\footnote{The full account will appear in future editions.} \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -208,9 +210,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

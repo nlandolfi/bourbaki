@@ -95,6 +95,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We use a loss function and a predictive density to construct a regressor on the domain of the random process.</p></div><div class="sheet-listing" id="setup"><h1 class="sheet">2. Setup</h1></div><div class="sheet-listing"><p class="sheet"> Let $\ell: \R \times \R \to \R$ be a loss function. We choose a predictor to minimize the expected loss under the predictive density.</p></div><div class="sheet-listing"><h2 class="sheet" id="squared_error_case">2.1 Squared Error Case</h2></div><div class="sheet-listing"><p class="sheet"> Consider $\ell(\alpha, \beta) = \parens{\alpha - \beta}^2$. The \t{minimum squared error normal random function predictor} or \t{minimum squared error gaussian process predictor} for dataset $(a^1, \gamma_1), \dots, (a^n, \gamma_n)$ in $A \times \R$ is the predictor which minimizes the squared error loss. Since the predictive density is normal, the minimizer is the conditional mean.</p></div><div class="sheet-listing"><h2 class="sheet" id="absolute_error_case">2.2 Absolute Error Case</h2></div><div class="sheet-listing"><p class="sheet"> Consider $\ell(\alpha, \beta) = \abs{\alpha - \beta}$. The \t{minimum absolute deviation normal random function predictor} or \t{minimum absolute deviation gaussian process predictor} for dataset $(a^1, \gamma_1), \dots, (a^n, \gamma_n)$ in $A \times \R$ is the predictor which minimizes the absolute deviation loss. For any density, the solution is the median. Since the predictive density is normal, and so symmetric, the median is the conditional mean. In other words, the minimum absolute deviation normal random function predictor coinicides with the minimium squared error normal random function predictor.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> For this reason, the \t{normal random function predictor} or \t{gaussian process predictor} for dataset $(a^1, \gamma_1), \dots, (a^n, \gamma_n)$ in $A \times \R$ is $h: A \to \R$ defined by \[ h(x) = m(x) + \pmat{k(x,a^1) \cdots k(x, a^n)}\invp{\Sigma_{a} + \Sigma_{e}}\parens{\gamma - m_{a}}. \] In other words, the regressor which assigns to each point its conditional mean.</p></div><div class="sheet-listing"><p class="sheet"> Notice that $h$ is an affine function of $\gamma$. If the mean function $m \equiv 0$ then $h$ is linear in $\gamma$. This is sometimes called a \t{linear estimator}.\footnote{We avoid the other terminology we have seen used---linear predictor---because the predictor $h$ is not linear in its input $x$.} Alternatively, notice (in the zero mean setting) that $h$ is a linear combination of $n$ kernel function $k(x, a^i)$ for $i = 1, \dots, n$. Specifically, $h$ is a linear combination of</p></div><div class="sheet-listing"><p class="sheet"> The process of using a normal random function predictor is often called \t{Gaussian process regression} or (especially in spatial statistics) \t{kriging}. The upside is that a gaussian process predicor interpolates the data, is smooth, and the so-called variance increases with the distance from the data.\footnote{This last piece is true for certain covariance kernels and will be clarified in future editions.}</p></div>
     </div>
@@ -201,9 +203,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

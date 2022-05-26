@@ -119,6 +119,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want a notion of reversing functions.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Reversing functions does not make sense if the function is not one-to-one. Let $f: X \to Y$. If $x_1$ goes to $y$ and $x_2$ goes to $y$ (i.e., $f(x_1) = f(x_2) = y$), then what should $y$ go to. One answer is that we should have a function which gives all the domain values which could lead to $y$. This is the inverse image (see \sheetref{function_images}{Function Images}) $f^{-1}(\set{y})$. Nor does reversing funcitons make sense if $f$ is not onto. If there does not exist $x \in X$ so that $y = f(x)$, then $f^{-1}(\set{y}) = \emptyset$.</p></div><div class="sheet-listing"><p class="sheet"> In the case, however, that the function is one-to-one and onto, then each element of the domain corresponds to one and only one element of the codomain and vice versa. In this case, for all $y \in Y$, $f^{-1}(\set{y})$ is a singleton $\set{x}$ where $f(x) = y$. In this case, we define a fucntion $g: Y \to X$ so that $g(y) = x$ if and only if $f(x) = y$.</p></div><div class="sheet-listing"><p class="sheet"> In general, if we have two functions, where the codomain of the first is the domain of the second, and the codomain of the second is the domain of the first, we call them \t{inverse functions} if the composition of the second with the first is the identity function on the first's domain and the composition of the first with the second is the identity function on the second's domain (see \sheetref{functions}{Functions} and \sheetref{function_composites}{Function Composites}).</p></div><div class="sheet-listing"><p class="sheet"> In this case we say that the second function is an \t{inverse} of the second, and vice versa. When an inverse exists, it is unique,\footnote{Future editions will prove this assertion and all unproven propositions herein.} so we refer to \t{the inverse} of a function. We call the first function \t{invertible}. Other names for an invertible function include \t{bijection}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ a non-empty set. We denote the identity function on $A$ by $\idfn{A}$, read aloud as "identity on $A$." $\idfn{A}$ maps $A$ onto $A$. Let $A, B$ be non-empty sets. Let $f: A \to B$ and $g: B \to A$ be functions. $f$ and $g$ are inverse functions if $g \comp f = \idfn{A}$ and $f \comp g = \idfn{B}$.</p></div><div class="sheet-listing" id="the_inverse"><h1 class="sheet">3. The Inverse</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Uniqueness] Let $f: A \to B$, $g: B \to A$, and $h: B \to A$. If $g$ and $h$ are both inverse functions of $f$, then $g = h$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Existence] If a function is one-to-one and onto, it has an inverse; and conversely.\footnote{A proof will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \ss{Composites and Inveres}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: X \to Y$ and $g: Y \to Z$. Then $g^{-1}$ maps $\powerset{Z}$ to $\powerset{Y}$ and $f^{-1}$ maps $\powerset{Y}$ to $\powerset{X}$. Then the following is immediate {\small \begin{proposition} $(gf)^{-1} = f^{-1}g^{-1}$ \end{proposition} }</p></div>
     </div>
@@ -225,9 +227,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -119,6 +119,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name lists of lists, and so on.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $s$ be a sequence of natural numbers: $s = (n_1, \dots, n_d)$. An \t{array} of \t{size} (or \t{shape}) $s$ is a function whose domain is the set \[ I = \Set{(m_1, \dots, m_d)}{ 1 \leq m_1 \leq n_1, \dots, 1 \leq m_d \leq n_d}. \] We call the set $I$ the set of \t{indices} of the array. We call the codomain of the function the set of \t{values} of the array. If $A$ is the set of values, we say that the array is \t{in} A. We call the length of $s$ (here denoted $d$) the \t{dimension} of the array.</p></div><div class="sheet-listing"><h2 class="sheet" id="case_$d_=_1$">2.1 Case $d = 1$</h2></div><div class="sheet-listing"><p class="sheet"> If the shape of the array has length one, then the array is no different from a sequence. In this case, the terminology for arrays coincides with that for sequences.</p></div><div class="sheet-listing"><h2 class="sheet" id="case_$d_=_2$">2.2 Case $d = 2$</h2></div><div class="sheet-listing"><p class="sheet"> If the shape of the array has length two, then the array can be thought of as a table with $n_1$ rows and $n_2$ columns. \ifhmode\unskip\fi\footnote{ Compare with \sheetref{matrices} {Matrices} } We say that the array is two-dimensional.</p></div><div class="sheet-listing" id="simplified_indices"><h1 class="sheet">3. Simplified indices</h1></div><div class="sheet-listing"><p class="sheet"> In the case that $a$ is a one-dimensional array, or sequence, we use the common terminology $a_i$ for the $i$th element of $a$ In the case that $a$ is a two dimensional array, we write $a_{ij}$ for $a_{(i,j)}$.</p></div>
     </div>
@@ -320,9 +322,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

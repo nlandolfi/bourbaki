@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{cumulative distribution function} of a real-valued random variable is the function mapping a real number to the measure of the set of outcomes for which the random variable takes value less than or equal to the number. Notation (below) helps.</p></div><div class="sheet-listing"><p class="sheet"> The range of the cumulative distribution function is the interval $[0, 1]$, since the measure of the base set is one and all measures are non-negative.</p></div><div class="sheet-listing"><p class="sheet"> We often abbreviate the words "cumulative distribution function} by \t{c.d.f.} or \t{cdf".</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \SA, \mu)$ be a probability space. Let $f: X \to \R$ be a measurable function (a real-valued random variable). We denote the cumulative distribution function of $f$ by $\rvcdf{f}: \R \to [0, 1]$. We defined it by \[ \rvcdf{f}(t) = \mu(\Set*{x \in X}{f(x) \leq t}). \]</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The cumulative distribution function of any real-valued random variable \begin{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> \item is non-decreasing,</p></div><div class="sheet-listing"><p class="sheet"> \item is right-continuous,</p></div><div class="sheet-listing"><p class="sheet"> \item tends to one as its argument tends toward infinity, and</p></div><div class="sheet-listing"><p class="sheet"> \item tends to zero as its argument tends towards negative infinity. \end{enumerate} \begin{proof}\footnote{Future editions will include the account.} \end{proof} \end{prop}</p></div>
     </div>
@@ -232,9 +234,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -102,6 +102,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we flip a coin until it lands heads. What is the probability that we see a head after one flip? Two flips? $n$ flips? We want to extend our notion of probability distribution to a set with infinite elements, but only countably many.</p></div><div class="sheet-listing" id="why"><h1 class="sheet">2. Why</h1></div><div class="sheet-listing"><p class="sheet"> Consider a set $A$. \ifhmode\unskip\fi\footnote{ Future editions will rework this sheet. } If $A$ has $n$ elements, then a probability distribution on $A$ is $p: A \to \R $ where $p(a) = 1/n$. There is a natural candidate.</p></div><div class="sheet-listing"><p class="sheet"> What if $A$ is the set of natural numbers $\N $. The principle difficulty is that not all sequences of real numbers $a: \N  \to \R $ are summable.</p></div><div class="sheet-listing"><p class="sheet"> A \t{(countable) probability distribution} on $\N $ is $p: \N \to \R $ where $p \geq 0$ and \[ \textstyle \sum_{n =1}^{\infty} p(n) = 1. \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -285,9 +287,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

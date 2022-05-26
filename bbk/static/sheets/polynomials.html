@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \footnote{Future editions will include, and most likely will build on quadratics and an appeal to the simplicity of the "natural} algebraic operations."</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(A, +, \cdot)$ be a ring.</p></div><div class="sheet-listing"><p class="sheet"> A \t{polynomial} in $A$ of \t{degree} $d$ is a function $p: A \to A$ for which there exists a finite sequence $c = (c_0, c_1, \dots, c_{d-1}, c_d) \in A^{d+1}$ satisfying \[ p(a) = c_0 + c_1a^1 + c_2a^2 + \dots + c_da^d, \] for all $a \in A$. We call the sequence $c$ the \t{polynomial coefficients}, and call the $c_i$ the \t{coefficients} of $p$. We call $d+1$ the \t{order} of the polynomial.</p></div><div class="sheet-listing"><p class="sheet"> Clearly, to every polynomial in $A$ of degree $d$ there corresponds a sequence in $A$ of length $d+1$, and vice versa. For this reason, we can identify polynomials by their coefficients.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.1 Examples</h2></div><div class="sheet-listing"><p class="sheet"> The function $f: A \to A$ is a polynomial of degree 0 and order 1 if there exists $c_0$ so that \[ f(a) = c_0 \] for all $a \in A$.</p></div><div class="sheet-listing"><p class="sheet"> The function $g: A \to A$ is a polynomial of degree 1 and order 2 if there exists $c_0$ and $c_1$ so that \[ g(a) = c_0 + c_1a \] The function $h: A \to A$ is a polynomial of degree 2 and order 3 if there exists $c_0$ and $c_1$ so that \[ h(a) = c_0 + c_1a + c_2a^2. \] In other words, a second degree polynomial is a quadratic.</p></div><div class="sheet-listing"><p class="sheet"> The function $p: A \to A$ is a \t{polynomial} of degree $d$ and order $d+1$ if there exists a $d+1$ length sequence $(c_0, c_1, \dots, c_d)$ in $A$ so that \[ p(a) = c_0 + c_1a + \cdots + c_da^d. \]</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

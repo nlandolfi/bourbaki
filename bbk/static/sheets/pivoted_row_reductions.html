@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to modify ordinary row reduction to handle the case in which a pivot is zero by selecting another suitable pivot.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">2. Example</h1></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R^{5 \times 5}$. If $A_{11} \neq 0$, we may subtract multiples of row $1$ from row $2, \dots, 5$ to eliminate variable $x_1$ from those equations. If $A$ reduces to $C \in \R^{5 \times 5}$ and $C_{22} \neq 0$, then step 2 moves from \[{\tiny \barray{ \times & \cross & \cross & \cross & \cross \\ & C_{22} & \times & \times & \times \\ & \times & \times & \times & \times \\ & \times & \times & \times & \times \\ & \times & \times & \times & \times \\ } \text{ to } \barray{ \times & \cross & \cross & \cross & \cross \\ & C_{22} & \times & \times & \times \\ & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\ & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\ & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\ }.} \]</p></div><div class="sheet-listing"><p class="sheet"> What if $C_{22} = 0$? In this case suppose we pick a different row. For example, if $C_{42} \neq 0$ we can move from \[\tiny{ \barray{ \times & \cross & \cross & \cross & \cross \\ & \times & \times & \times & \times \\ & \times & \times & \times & \times \\ & C_{42} & \times & \times & \times \\ & \times & \times & \times & \times \\ } \text{ to } \barray{ \times & \cross & \cross & \cross & \cross \\ & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\ & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\ & C_{42} & \times & \times & \times \\ & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} & \boldsymbol{\times} \\ }.} \] Alternatively, we could introduce zeros in column 3 rather than column 2. For example, if we pick the pivot $C_{43}$ we move from \[\tiny{ \barray{ \times & \cross & \cross & \cross & \cross \\ & \times & \times & \times & \times \\ & \times & \times & \times & \times \\ & \times & C_{43} & \times & \times \\ & \times & \times & \times & \times \\ } \text{\normalfont to } \barray{ \times & \cross & \cross & \cross & \cross \\ & \boldsymbol{\times} & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} \\ & \boldsymbol{\times} & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} \\ & \times & C_{43} & \times & \times \\ & \boldsymbol{\times} & {\bf 0} & \boldsymbol{\times} & \boldsymbol{\times} \\ }.} \] We can choose any nonzero entry in $C_{k:m,k:m}$ as the pivot.</p></div><div class="sheet-listing"><p class="sheet"> Suppose we pick pivot $C_{st} \neq 0$ for $k \leq s, t \leq m$. Define $\tilde{C}$ by swapping row $s$ of $C$ with row $k$ of $C$ and column $t$ of $C$ with column $k$ of $C$. Then $\tilde{C}_{kk} = C_{st} \neq 0$ and there exists an ordinary row reduction for $\tilde{C}$. We call this reduction of $(\tilde{C}, \tilde{d})$ a \t{pivoted row reduction} of $C$ or the \t{$st$-reduction} of C.</p></div><div class="sheet-listing"><p class="sheet"> If all remaining pivots are zero, then there is no viable pivot. In this case, at least one variable is free and we do not have a unique solution. For convenience, in this case, we still call the system an $st$-reduction of itself.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> At step $k$ of ordinary elimination, multiples of row $k$ are subtracted from rows $k+1, \dots, m$ to introduce zeros in entry $k$ of the rows. If we denote the matrix at the beginning of that step by $X$, then row $k$ of $X$, column $k$ of $X$ and especially the pivot $X_{kk}$ play a role. Ordinarily, we subtract from every entry in the submatrix $X_{k+1:m,k:m}$ the product of a number in row $k$ and a number in column $k$, divided by the pivot $X_{kk}$. Generally, however, we can choose as pivot any nonzero entry of $X_{k:m,k:m}$.</p></div><div class="sheet-listing"><p class="sheet"> An $m$-variable system $(A, b)$ is \t{pivot reducible} (or \t{reducible}) if there exists a sequence of systems $S_1, \dots, S_{m-1}$ so that $S_1$ is a reduction of $(A, b)$ and $S_{i}$ is a reduction of $S_{i-1}$ for $i = 1, \dots, m-1$. We call $S_{m-1}$ the \t{final reduction} (or \t{reduction}) of $(A, b)$. An immediate consequence of our definition is</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} All systems are reducible. \end{proposition}</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

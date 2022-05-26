@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is often the case in considering set differences that all sets considered are subsets of one set.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. In many cases, we take the difference between a set and one contained in it. In other words, we assume that $B \subset A$. In this case, we often take complements relative to the same set $A$. So we do not refer to it, and instead refer to the relative complement of $B$ in $A$ as the \t{complement} of $B$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ denote a set, and let $B$ denote a set for which $B \subset A$. We denote the relative complement of $B$ in $A$ by $\relcomplement{B}{A}$. When we need not mention the set $A$, and instead speak of the complement of $B$ without qualification, we denote this complement by $\complement{B}$.</p></div><div class="sheet-listing" id="complement_of_a_complement"><h1 class="sheet">3. Complement of a complement</h1></div><div class="sheet-listing"><p class="sheet"> One nice property of a complement when $B \subset A$ is: \begin{proposition} $(B \subset A) \iff (\relcomplement{\relcomplement{B}{A}}{A} = B)$ \end{proposition}</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_facts">3.1 Basic Facts</h2></div><div class="sheet-listing"><p class="sheet"> Let $E$ denote a set and let $A$ and $B$ denote sets satisfying $A,B \subset E$. Then take all complements with respect to $E$. Here are some immediate consequences of the definition. \ifhmode\unskip\fi\footnote{ Future editions will include accounts. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{\complement{A}} = A$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{\emptyset} = E$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{E} = \varnothing$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \subset B \iff \complement{B} \subset \complement{A}$ \end{proposition}</p></div>
     </div>
@@ -356,9 +358,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

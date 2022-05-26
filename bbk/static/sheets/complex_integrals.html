@@ -102,6 +102,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We extend integrability to complex functions.\footnote{Future editions will modify this motivation.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{measurable} complex-valued function on a measurable space is one whose real and imaginary parts are both measurable. An \t{integrable} complex-valued function on a measurable space is one whose real and imaginary parts are both integrable.</p></div><div class="sheet-listing"><p class="sheet"> The \t{integral} of a integrable complex-valued function on a measurable space is the complex number whose real part is the integral of the real part of the function and whose imaginary part is the integral imaginary part of the function.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \SA, \mu)$ be a measure space. Let $C$ denote the set of complex numbers. Let $f: X \to C$ be a function. $f$ is measurable if $\re(f)$ and $\im(f)$ are measurable. $f$ is integrable if $\re(f)$ and $\im(f)$ is integrable. If $f$ is integrable, we denote its integral by $\int f d\mu$. We have defined it by: \[ \int f d\mu = \int \re(f)d\mu + i\int \im(f) d\mu. \]</p></div><div class="sheet-listing" id="results"><h1 class="sheet">3. Results</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} A linear combination of two integrable complex-valued functions is an integrable complex-valued function. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The integral is a linear operator on the vector space of integrable complex-valued functions. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The absolute value of the integral of a complex-valued function is smaller than the integral of the absolute value of the function.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Let $(X, \SA, \mu)$ be a measure space. Let $f: X \to \C$ integrable. There exists $\alpha \in C$ with $\Cmod{\alpha} = 1$ such that \[ \Cmod{\int f d\mu} = \alpha \int f d\mu. \] Since the integral is homogenous, \[ \begin{aligned} \Cmod{\int f d\mu} &= \int \alpha f d\mu &= \int \re(\alpha f) d\mu + i \int \im(\alpha f)d\mu. \end{aligned} \] Since $\Cmod{\int f d\mu}$ is real, $\int \im(\alpha f) d\mu = 0$, so \[ \begin{aligned} \Cmod{\int f d\mu} &= \int \re(\alpha f) d\mu &\leq \int \abs{\alpha f} d\mu &= \int \Cmod{f} d\mu, \end{aligned} \] since $\re(z) \leq \Cmod{z}$ for all complex numbers $z$ and $\Cmod{\alpha} = 1$. \end{proof} \end{prop}</p></div>
     </div>
@@ -208,9 +210,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

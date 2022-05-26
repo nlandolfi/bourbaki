@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can view the set of real-valued $n \times k$ matrices as a vector space over $\R$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{matrix sum} of two matrices $A, B \in \R^{n \times k}$ is the matrix $C \in \R^{n \times k}$ defined by $C_{ij} = A_{ij} + B_{ij}$. In other words, the matrix $C$ is given by summing the entires of $A$ and $B$ "entry-wise". We denote the matrix sum by $A + B$.</p></div><div class="sheet-listing"><p class="sheet"> For $\alpha \in \R$, the \t{$\alpha$-scaled version} of $A \in \R^{n \times k}$ is the matrix $C \in \R^{n \times k}$ given by $C_{ij} = \alpha A_{ij}$. In other words, the matrix $C$ is given by scaling the entries of $A$ "entry-wise". We denote the $\alpha$-scaled version of $A$ by $\alpha A$. These two definitions are justified by the following.</p></div><div class="sheet-listing"><p class="sheet"> The \t{$n \times k$-matrix space} is the vector space over $\R^{n \times k}$ in which addition is given by the matrix sumer and scalar multiplication by entry-wise scaling.\footnote{Future editions will rework this sheet.}</p></div><div class="sheet-listing"><h2 class="sheet" id="subspace_of_symmetric_matrices">2.1 Subspace of symmetric matrices</h2></div><div class="sheet-listing"><p class="sheet"> The subset of symmetric $n$ by $n$ matrices is a subset of $\R^{n \times n}$. \blankpage</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

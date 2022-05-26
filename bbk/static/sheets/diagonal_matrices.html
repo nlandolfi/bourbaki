@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $m, n$ be natural numbers. Then $(i, i)$ is a \t{diagonal index}, if $i \in \upto{1, \dots, \min\set{m, n}}$. A \t{diagonal entry} of a $m \times n$ matrix is an entry corresponding to a diagonal index; we say that such entries are \t{on the diagonal}. An entry that is not on the diagonal is \t{off the diagonal}; we call these the \t{off diagonal entries}. The entries $(i, j)$ for $i > j$ are \t{below the diagonal} and $j < i$ are \t{above the diagonal}.</p></div><div class="sheet-listing"><p class="sheet"> A $m \times n$ \t{diagonal} matrix is one whose entries off the diagonal are zero. In other words, its only nonzero entries are on the diagonal. Though the diagonal entries need not be nonzero, they may be zero.</p></div><div class="sheet-listing"><p class="sheet"> If all the values of a diagonal matrix are positive or nonnegative we call it a \t{positive diagonal} or \t{nonnegative diagonal} matrix. We emphasize the following subtlety: A positive diagonal matrix is diagonal and has positive entries; it has positive diagonal entries, yes, but it may not have arbitrary off-diagonal entries. In other words, the modifier "diagonal} takes precedence over the modifiers \say{positive} and \say{nonnegative."</p></div><div class="sheet-listing"><p class="sheet"> A \t{scalar matrix} is a square diagonal matrix whose diagonal entries are identical.\footnote{Future editions will also define block diagonal matrices.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

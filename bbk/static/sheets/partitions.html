@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We divide a set into disjoint subsets whose union is the whole set. In this way we can handle each subset of the main set individually, and so handle the entire set piece by piece.</p></div><div class="sheet-listing" id="decomposing_a_set"><h1 class="sheet">2. Decomposing a set</h1></div><div class="sheet-listing"><p class="sheet"> Two sets $A$ and $B$ \t{divide} a set $X$ if $A \cup B = X$ and $A \cap B = \varnothing$. Although every element is in either $A$ or $B$, no element is in both. If $\mathcal{A} $ is a set of sets, and $A, B \in \mathcal{A} $, then $\mathcal{A} $ is \t{pairwise disjoint} if $A \cap B = \varnothing$ whenever $A \neq B$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{partition} (or \t{decomposition}) of a set $X$ is a set of pairwise disjoint nonempty subsets of $X$ whose union is $X$. We call the elements of a partition the \t{parts} (or \t{pieces}) of the partition.</p></div><div class="sheet-listing"><p class="sheet"> When speaking of a partition, we commonly call the set of sets \t{mutually exclusive} (or \t{non-overlapping}) (by which we mean that they are pairwise disjoint) and \t{collectively exhaustive} (by which we mean that their union is full set). \ifhmode\unskip\fi\footnote{ Future editions will include diagrams. }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -304,9 +306,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

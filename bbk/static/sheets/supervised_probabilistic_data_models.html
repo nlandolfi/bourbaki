@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to discuss an inductor's performance on consistent (but possibly incomplete) datasets.</p></div><div class="sheet-listing"><p class="sheet"> We take two steps. First, put a measure on the set of training sets and only consider high-measure subsets. Second, consider predictors performing well in some tolerance.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX, \mu)$ be a probability space and $(Y, \CY)$ a measurable space. Let $f: X \to Y$ measurable. We call the pair $((X, \CX, \mu), f)$ a \t{(supervised) probabilistic data model}.</p></div><div class="sheet-listing"><p class="sheet"> We interpret $\mu$ as the \t{data-generating distribution} or \t{underlying distribution} and $f$ as the \t{correct labeling function}. Many authors refer to a supervised probabilistic data model as the \t{statistical learning (theory) framework}.</p></div><div class="sheet-listing" id="probable_datasets"><h1 class="sheet">3. Probable datasets</h1></div><div class="sheet-listing"><p class="sheet"> We put a measure on the set of datasets by using the product measure $(X^n, \CX^n, \mu^n)$. We interpret this as a model for a training set of independent and identically distributed inputs.</p></div><div class="sheet-listing"><p class="sheet"> For $\delta \in (0, 1)$, $\CS \subset X^n$ is \t{$1-\delta$-representative} if $\mu^n(\CS) \geq 1 - \delta$. If $\CS$ is $1-\delta$-representative for small $\delta$, we think of $\CS$ as a set of "probable} or \say{reasonable" datasets. We call $\delta$ the \t{confidence parameter}.</p></div><div class="sheet-listing" id="predictor_error"><h1 class="sheet">4. Predictor error</h1></div><div class="sheet-listing"><p class="sheet"> The \t{error} of (measurable) $h: X \to Y$ (under $\mu$ and $f$) is \[ \underset{\mu, f}{\mathword{error}}(h) = \mu(\Set*{x \in \CX}{h(x) \neq f(x)}). \] We interpret this as the probability that the predictor mislabels a point. The \t{accuracy} of $h$ is $1 - \mathword{error}_{\mu, f}(h)$.</p></div><div class="sheet-listing"><p class="sheet"> Since $(f, g) \mapsto \mu[f(x) \neq g(x)]$ is a metric on $L^2(X, \CX, \mu, Y)$ we can talk about the error as the "distance" from the correct label classifier. Thus we will say that $\epsilon \in (0, 1)$, (measurable) $h: \CX \to \CY$ \t{$\epsilon$-approximates} the correct labeling function $f$ if $\mathword{error}(h) \leq \epsilon$. Roughly speaking, if $\epsilon \ll 1$, the the error of the hypothesis is "fairly small." We call $\epsilon$ the \t{accuracy parameter}, since the accuracy of such a predictor is $1 - \epsilon$.</p></div><div class="sheet-listing" id="other_terminology"><h1 class="sheet">5. Other terminology</h1></div><div class="sheet-listing"><p class="sheet"> A \t{hypothesis class} is a subset of the measurable functions from $X \to Y$. Other names for the error of a classifier include the \t{generalization error}, the \t{risk} or the \t{true error} or \t{loss}.</p></div>
     </div>
@@ -232,9 +234,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

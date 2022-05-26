@@ -140,6 +140,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name a predictor whose set of outputs is finite.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{classifer} is a predictor whose codomain is a finite set. In this case, we call the outputs \t{classes} (or \t{labels}, \t{categories}, \t{label set}). We call the prediction of a classifier on an input a \t{classification}.</p></div><div class="sheet-listing"><p class="sheet"> If the set of labels has two elements, then we call the classifier a \t{binary classifier} (or \t{two-way classifier}, \t{two-class classifier}, \t{boolean classifier}). In the case that there are $k$ labels, we call the classifier a \t{$k$-way classifier} (or \t{$k$-class classifier},\t{multi-class classifier}). The second term is meant to indicate, not that the classifier assigns to each point several classes, but that the classification decision is made <i>between</i> several classes.</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_example">2.1 Basic Example</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set of inputs and let $B$ be a set of labels. Define $B = \set{0, 1}$ (or $\set{-1,1 }$, $\set{\textsc{False}, \textsc{True}}$, $\set{\textsc{Negative}, \textsc{Positive}}$). Then $B$ is finite with two elements and $f: A \to B$ is a binary classifier with labels $0$ and $1$.</p></div><div class="sheet-listing"><p class="sheet"> If the case $B = \set{\text{\textsc{No}}, \textsc{Maybe}, \textsc{Yes}}$, we call $f: A \to B$ a three-way classifier. Other examples for $B$ include a list of languages, the set of English words in some dictionary, or the set of $m!$ possible orders of $m$ horses in a race. Often convenient to take $B = \set{1, \dots, k}$ for $k \in \N$.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">2.2 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Following our terminology, but speaking of processes, some authors refer to the application of inductors for these special cases as \t{binary classification} and \t{multi-class classification}. Or they speak of \t{classification} and a \t{classification problems}. Roughly speaking, a classifier \t{classifies} all inputs into categories.</p></div><div class="sheet-listing"><p class="sheet"> Alternatively, some authors (especially in the statistics literature) refer to a classifier as a \t{discriminator} and reference \t{discrimination problems}.</p></div>
     </div>
@@ -371,9 +373,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

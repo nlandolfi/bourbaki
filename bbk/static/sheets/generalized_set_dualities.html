@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> If all sets considered in a union or intersection are subsets of a fixed set, then the union and intersection of any set of sets is well defined. We can then derive generalized version of DeMorgan's laws.\footnote{In future editions, this sheet may not exist.}</p></div><div class="sheet-listing"><p class="sheet"> \s{New Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $E$ denote a set. Let $\CA$ denote a set of subsets of $E$. Then define \[ \bigcup_{A \in \CA} A := \bigcup \CA, \quad \bigcap_{A \in \CA} A := \bigcap \CA. \]</p></div><div class="sheet-listing"><p class="sheet"> In this case we have</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{\cup_{A \in \CA} A} = \cap_{A \in A} \complement{A}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{\cap_{A \in \CA} A} = \cup_{A \in A} \complement{A}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -175,6 +175,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> A probability event function is a measure on the set of outcomes.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{probability measure} is a finite measure on a measurable space which assigns the value one to the base set. A finite measure can always be scaled to a probability measure, so these measures are standard examples of finite measures.</p></div><div class="sheet-listing"><p class="sheet"> A \t{probability space} is a measure space whose measure is a probability measure. The word "space} is natural, since the notion of a measure generalized the notion of volume in real space (see \sheetref{real_space}{Real Space} and \sheetref{n-dimensional_space}{N-Dimensional Space"). The \t{outcomes} of a probability space are the elements of the base set. The \t{set of outcomes} is the base set. The \t{events} are the elements of the sigma algebra. The measure in a probability space corresponds to the event probability function.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, \mathcal{A} )$ be a measurable space. \ifhmode\unskip\fi\footnote{ Often, other authors will denote the set of outcomes (here denoted by $A$) by $\Omega $, an apparent mnemonic for "outcomes". } We denote the sigma-algebra by $\mathcal{A} $, as usual. We denote a probability measure by $\mathbfsf{P} $, a mnemonic for "probability," and intended to remind of the event probabilty function. Thus, we often say "Let $(A, \mathcal{A} , \mathbfsf{P} )$ be a probability space."</p></div><div class="sheet-listing"><p class="sheet"> Many authors associate an event $A \in \mathcal{A} $ with a function $\pi : \mathcal{X}  \to \set{0, 1}$ so that $A = \Set*{x \in \mathcal{X} }{\pi (x) = 1}$. In this context, it is common to write $\mu [\pi (x)]$ for $\mu (A)$.</p></div>
     </div>
@@ -374,9 +376,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

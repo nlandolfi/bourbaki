@@ -95,6 +95,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Closure under monotone limits is a weaker condition than that included in the definition of sigma algebras, but is sufficient if the set is also an algebra. \ifhmode\unskip\fi\footnote{ Future editions will expand. }</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> If a subset algebra is a monotone space, then it is a countably summable subset algebra.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} A subset algebra is a countably summable if either: \begin{enumerate} \item the limit of a nondecreasing sequence of distinguished sets is distinguished \item the limit of a nonincreasing sequence of distinguished sets is distinguished. \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop} \blankpage</p></div>
     </div>
@@ -237,11 +239,11 @@ MathJax.Hub.Config({
  <span class='run'>A subset algebra is a countably summable if
   either:
   <ol>
-   <li>the limit of a nondecreasing sequence of distinguished
-    sets is distinguished </li>
+the limit of a nondecreasing sequence of distinguished sets is
+    distinguished </li>
 
-   <li>the limit of a nonincreasing sequence of distinguished
-    sets is distinguished. </li>  </ol>
+the limit of a nonincreasing sequence of distinguished sets is
+    distinguished. </li>  </ol>
 </span>
 </p>
 
@@ -255,9 +257,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

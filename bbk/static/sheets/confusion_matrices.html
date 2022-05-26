@@ -95,6 +95,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can summarize the (label, prediction) pairs for a particular classifier on a particular dataset in a matrix.</p></div><div class="sheet-listing" id="boolean_case"><h1 class="sheet">2. Boolean case</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a nonempty set and $B = \set{-1, 1}$. For a dataset $(a^1, b^i), \dots, (a^n, b^n)$ in $A \times B$, and classifier $G: A \to B$, the \t{confusion matrix} $C$ is defined \[ C = \bmat{ \text{\# true negatives} & \text{\# false negatives} \\ \text{\# false positives} & \text{\# true positives} } = \bmat{ C_{\text{tn}} & C_{\text{fn}} \\ C_{\text{fp}} & C_{\text{tp}} }. \] Using this notation, $C_{\text{tn}} + C_{\text{fn}} + C_{\text{fp}} + C_{\text{tp}} = n$. $N_\text{n} := C_{\text{tn}} + C_{\text{fp}}$ is the number of negative examples. $N_\text{p} := C_{\text{fn}} + C_{\text{tp}}$ is the number of positive examples.</p></div><div class="sheet-listing"><p class="sheet"> The diagonal elements of the confusion matrix give the numbers of correct predictions. The off-diagonal entries give the numbers of incorrect predictions for the two types of errors (see \sheetref{classifier_errors}{Classifier Errors}).</p></div><div class="sheet-listing"><p class="sheet"> In this notation, the false positive rate is $C_\text{fp}/n$, the false negative rate is $C_{\text{fn}}/n$ and the error rate is the sum of these, $(C_{\text{fn}} + C_{\text{fp}})/n$.</p></div><div class="sheet-listing"><p class="sheet"> The true positive rate is $C_{\text{tp}} / (C_{\text{fn}} + C_{\text{tp}})$. The true negative rate is $C_{\text{tn}} / (C_{\text{tn}} + C_{\text{fp}})$. The false alarm rate is $C_{\text{fp}} / (C_{\text{tn}} + C_{\text{fp}})$. The precision is $C_{\text{tp}}/C_{\text{tp}} + C_{\text{fp}}$</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -307,9 +309,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

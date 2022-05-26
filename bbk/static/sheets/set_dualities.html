@@ -119,6 +119,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How does taking complements relate to forming unions and intersections.</p></div><div class="sheet-listing" id="complements_of_unions_or_intersections"><h1 class="sheet">2. Complements of unions or intersections</h1></div><div class="sheet-listing"><p class="sheet"> Let $E$ denote a set. Let $A$ and $B$ denote sets and $A, B \subset E$. All complements are taken with respect to $E$. The following are known as \t{DeMorgan's Laws}. \ifhmode\unskip\fi\footnote{ Proofs will appear in a future edition. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{A \union B} = \complement{A} \intersect \complement{B}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{A \intersect B} = \complement{A} \union \complement{B}$ \end{proposition}</p></div><div class="sheet-listing" id="principle_of_duality"><h1 class="sheet">3. Principle of duality</h1></div><div class="sheet-listing"><p class="sheet"> As a result of DeMorgan's Laws \ifhmode\unskip\fi\footnote{ Future editions will change the name to remove the reference to DeMorgan in accordance with the project's policy on naming. } and basic facts about complements (see \sheetref{set_complements}{Set Complements}) theorems about sets often come in pairs. In other words, given an inclusion or identity relation involving complements, unions and intersections of some set (above $E$) if we replace all sets by their complemnets, swap unions and intersections, and flip all inclusions we obtain another, true, result. The correspondence is called the \t{principle of duality for sets}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -319,9 +321,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

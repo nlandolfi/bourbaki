@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> An \t{index sequence} of \t{order} $n$ is a finite sequence of distinct elements of $\upto{n}$ whose length is less than or equal to $n$. We call the $i$th coordinate of an index sequence the \t{$i$-index} of the sequence. The \t{index matrix} associated with an index sequence is the $r \times n$ matrix whose $i,j$th entry is 1 if the index sequences's $i$th coordinate is $j$, and $0$ otherwise. If $r = n$ then the index matrix is a permutation matrix.</p></div><div class="sheet-listing"><p class="sheet"> Multiplying a vector by an index matrix produces a permuted subvector. The \t{subvector} of an $n$-vector {associated with} a length-$r$ index sequence is the product of the $r \times n$ index matrix with the $n$-dimensional vector. Its $i$th entry is the $i$-index entry of the vector.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">2.1 Other Terminology</h2></div><div class="sheet-listing"><p class="sheet"> Some authors use the term \t{index set} for index sequences; but since these are sequences (which are functions), they are not sets of indices, so we avoid this usage.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.2 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $r \leq n$ be natural numbers. Let $\alpha: \upto{r} \to \upto{n}$ be an index sequence. We denote the index matrix associated with $\alpha$ by $\IdxMat{\alpha}$. This matrix $\IdxMat{\alpha}$ is an element of $\Mat{\N}{r}{n}$ and is defined by $$ (\IdxMat{\alpha})_{ij} = \begin{cases} 1 & j = \alpha(i) \\ 0 & \ow \end{cases} $$</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a nonempty set and let $x \in \Vec{A}{n}$. then the subvector of $x$ associated with $\IdxMat{\alpha}$ (and so with $\alpha$) is $$ \IdxMat{\alpha}x = \pmat{x_{\alpha(1)}, \dots, x_{\alpha(r)}} $$ We denote the product $\IdxMat{\alpha}x$ by $x_{\alpha}$.</p></div><div class="sheet-listing"><p class="sheet"> We denote the product $\IdxMat{\alpha}X\transpose{\IdxMat{\alpha}}$ by $X_{\alpha\alpha}$.</p></div><div class="sheet-listing" id="multiplication"><h1 class="sheet">3. Multiplication</h1></div><div class="sheet-listing"><p class="sheet"> The product of the $n \times r$ transpose of an index  matrix with an $r$ vector is the $n$ vector with The</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

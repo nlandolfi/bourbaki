@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CD = ((\CX_t)_{t = 0}^{T}), (\CU_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1})$ be a dynamical system. Let $g_t: \CX_t \times \CU_t \to \R \union \set{\infty}$ for $t = 1$, $\dots$, $T-1$ and let $g_{T}: \CX_T \to \R \cup \set{\infty}$. Let $x_0 \in \CX_0$.</p></div><div class="sheet-listing"><p class="sheet"> We call the sequence $(x_0, \CD, (g_t)_{t = 1}^{T})$ a \t{deterministic dynamic optimization problem}. We call $x_0$ the \t{initial state}. We call $g_t$ the \t{stage cost function} for stage $t$ and call $g_T$ the \t{terminal cost function}.</p></div><div class="sheet-listing"><p class="sheet"> A deterministic dynamic optimization problem corresponds to an optimization problem with variables $u_0 \in \CU_0, \dots, u_{T-1} \in \CU_{T-1}$. Define $U = \CU_0 \times \CU_1 \times \CU_{T-1}$. Define $J: U \to \R \union \set{\infty}$ by \[ J(u) = \sum_{t = 0}^{T-1} g_t(x_t, u_t) + g_T(x_T) \] in which $x_{t+1} = f_t(x_t, u_t)$ for $t = 0, \dots, T-1$. The optimization problem is $(U, J)$. And so a dynamic optimization problem is just a (possibly big) optimization problem. We call $\sum_{t = 0}^{T-1} g_t(x_t, u_t)$ the \t{total stage cost} and we call $g_T(x_T)$ the \t{terminal stage cost}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We often write this problem as \[ \begin{aligned} \text{minimize}\quad & \sum_{t = 1}^{T-1} g_t(x_t, u_t) + g_T(x_T) \\ \text{subject to}\quad & x_{t+1} = f_t(x_t, u_t), \quad t = 0, \dots, T-1. \end{aligned} \]</p></div><div class="sheet-listing" id="other_terminology_and_comments"><h1 class="sheet">3. Other terminology and comments</h1></div><div class="sheet-listing"><p class="sheet"> Dynamic optimization problems are frequently called \t{deterministic optimal control} problems or \t{classical} or \t{open-loop control} problems. These problems are said to address the dynamic effect of actions across time. Although these models include no notion of "uncertainty} (or \say{uncertain outcomes}, see \sheetref{uncertain_outcomes}{Uncertain Outcomes"), they are frequently applied in situations with uncertain outcomes by ignoring the uncertainty in the application.</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

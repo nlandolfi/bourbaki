@@ -102,6 +102,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How do inverse and converse relations interact.</p></div><div class="sheet-listing" id="results"><h1 class="sheet">2. Results</h1></div><div class="sheet-listing"><p class="sheet"> Let $R$ be a relation between $X$ and $Y$ and let $S$ be a relation between $Y$ and $Z$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(RS)^{-1} = S^{-1}R^{-1}$ \end{proposition}</p></div><div class="sheet-listing" id="identity_relations"><h1 class="sheet">3. Identity Relations</h1></div><div class="sheet-listing"><p class="sheet"> Recall that $I$ is the identity relation on $X$ if $x\,I\,y$ if and only if $x = y$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $R$ be a relation on $X$. Let $I$ be the identity relation on $X$. Then $RI = IR = R$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> One would like $RR^{-1} \supset I$, $R^{-1}R \supset I$. The father of the son is the father and the son of the father is the son. But the empty relation violates these claims.</p></div><div class="sheet-listing" id="relation_properties"><h1 class="sheet">4. Relation Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $R$ is symmetric if and only if $R \subset R^{-1}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $R$ is reflextive if and only if $I \subset R$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $R$ is transitive if and only if $RR \subset R$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -208,9 +210,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

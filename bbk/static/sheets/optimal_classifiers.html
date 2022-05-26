@@ -102,6 +102,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> Given two classifiers $G_1$ and $G_2$ and a dataset, we can associate to each its false positve and false negative rate on the dataset. For a finite dataset, these are two rational numbers. It is natural to prefer $G_1$ to $G_2$ if the former has a smaller false positive rate. Conversely, it is natural to prefer $G_2$ to $G_1$ if the former has a smaller false negative rate. Unfortunately, one may need to trade-off these two desiderata (see \sheetref{cominined_orders}{Combined Orders}), since there is no total order. In other words, choosing betwen $G_1$ and $G_2$ is a multiobjective optimization problem.</p></div><div class="sheet-listing"><h2 class="sheet" id="scalarization">2.1 Scalarization</h2></div><div class="sheet-listing"><p class="sheet"> Let $\CG$ be a set of classifiers and let $f: \CG \to \R^2$ be defined so that $f_1(G)$ is the false negative rate of $G$ on some dataset and $f_2(G)$ is the false positive rate of $G$ on the same dataset. The \t{$\kappa$-scalarized error metric} (or \t{Neyman-Pearson metric} associated with $G \in \CG$ is $\kappa f_1(G) + f_2(G)$. In the case that $\kappa > 1$, false negatives are given higher cost than false positives, and vice versa whtn $\kappa < 1$. For $\kappa = 1$, the scalarized error metric is the same as the overall error rate.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -208,9 +210,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

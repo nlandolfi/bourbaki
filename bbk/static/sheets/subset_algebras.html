@@ -119,6 +119,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We often want a subset system whose set of distinguished subsets is closed under the usual set operations.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{subset algebra} is a subset system for which (1) the base set is distinguished (2) the complement of a distinguished set is distinguished (3) the union of two distinguished sets is distinguished.</p></div><div class="sheet-listing"><p class="sheet"> We call the set of distinguished sets an \t{algebra} on the the base set. We justify this language by showing that the standard set operations applied to distinguished sets result in distinguished sets.</p></div><div class="sheet-listing"><p class="sheet"> If a set of subsets is closed under complements it contains the base set if and only if it contains the empty set. So we can replace condition (1) by insisting that the algebra contain the empty set. Similarly, if a non-empty set of subsets is closed under complements and unions then it contains the base set: the union of a distinguished set and its complement. Thus we can replace condition (1) by insisting that the algebra be non-empty.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> The notation follows that of a subset system. Let $(A, \mathcal{A})$ be a subset algebra. We also say "let $\mathcal{A"$ be an algebra on $A$.} Moreover, since the largest element of the algebra is the base set, we can say without ambiguity: "let $\mathcal{A}$ be an algebra."</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} For any subset algebra, $\emptyset$ is distinguished. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} For any subset algebra, for any distinguished sets, (a) the intersection is distinguished and (b) their symmetric difference is distinguished. So, if one contains the other, the complement of the smaller in the larger is distinguished. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} For any subset algebra, for any finite family of distinguished sets, (a) the finite family union and (b) the finite family intersection are both distinguished. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> So we could have defined an algebra by insisting it be closed under finite intersections.</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">4. Examples</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $(A, 2^{A})$ is a subset algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $(A, \set{A, \emptyset})$ is a subset algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any infinite set $A$, let $\mathcal{A}$ be the set $$ \Set*{ B \subset A }{ \card{B} < \aleph_0 \lor \card{C_{A}(B)} < \aleph_0 }. $$ $\mathcal{A}$ is an algebra; the \t{finite/co-finite algebra}. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any infinite set $A$, let $\mathcal{A}$ be the set $$ \Set*{ B \subset A }{ \card{B} \leq \aleph_0 \lor \card{C_{A}(B)} \leq \aleph_0 }. $$ $\mathcal{A}$ is an algebra; the \t{countable/co-countable algebra}. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any infinite set $A$, let $\mathcal{A}$ be the set $$ \Set*{ B \subset A }{ \card{B} \leq \aleph_0 }. $$ $\mathcal{A}$ is not an algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be an uncountable set. Let $\mathcal{A}$ be the collection of all countable subsets of $A$. $\mathcal{A}$ is not a sigma algebra. \end{expl}</p></div>
     </div>
@@ -225,9 +227,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -112,6 +112,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about none, one, or several objects considered together, as an aggregate.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> When we think of several objects considered as an intangible whole, or group, we call the intangible object which is the group a \t{set}. We say that these objects \t{belong} to the set. They are the set's \t{members} or \t{elements}. They are \t{in} the set.</p></div><div class="sheet-listing"><p class="sheet"> A set may have other sets as its members. This is subtle but becomes familiar. We call a set which contains no objects \t{empty}. Otherwise we call a set \t{nonempty}.</p></div><div class="sheet-listing" id="denoting_a_set"><h1 class="sheet">3. Denoting a set</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ denote a set. Then $A$ is a name for an object. That object is a set. So $A$ is a name for an object which is a grouping of other objects.</p></div><div class="sheet-listing"><p class="sheet"> \s{Belonging}</p></div><div class="sheet-listing"><p class="sheet"> Let $a$ denote an object and $A$ denote a set. So we are using the names $a$ and $A$ as placeholders for some object and some set, we do not particularly know which. Suppose though, that whatever this object and set are, it is the case that the object belongs to the set. In other words, the object is a member or an element of the set. We say "The object denoted by $a$ belongs to the set denoted by $A$".</p></div><div class="sheet-listing"><h2 class="sheet" id="not_symmetric">3.1 Not symmetric</h2></div><div class="sheet-listing"><p class="sheet"> Notice that belonging is not symmetric. Saying "the object denoted by $a$ belongs to the set denoted by $A$} does not mean the same as \say{the set denoted by $A$ belongs to the object denoted by $a$" In fact, the latter sentence is nonsensical unless the object denoted by $a$ is also a set.</p></div><div class="sheet-listing"><h2 class="sheet" id="not_transitive">3.2 Not transitive</h2></div><div class="sheet-listing"><p class="sheet"> Let $a$ denote an object and let $A$ and $B$ both denote sets. If the object denoted by $a$ is "a part of} the set denoted by $A$, and the set denoted by $A$ is \say{a part of} the set denoted by $B$, then usual English usage would suggest that $a$ is \say{a part of" the set denoted by $B$. In other words, if a thing is a part of a second thing, and the second thing is part of a third thing, then the first thing is often said to be a part of the third thing.</p></div><div class="sheet-listing"><p class="sheet"> The relation of belonging does not follow this familiar usage. In contrast, if an object is an element of a set, that set may be an element of another set, but this does not mean that the the first object is also an element of that other set. The upshot is that sets are nested: we can have intangible groups of intangible groups, and have them be different than the intangible group of all the members of each group.</p></div>
     </div>
@@ -218,9 +220,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

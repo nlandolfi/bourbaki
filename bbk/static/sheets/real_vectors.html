@@ -175,6 +175,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If we interpret a list of two numbers as displacement in a plane, and a list of three numbers as displacement in a space, what of a list of $n$ numbers as displacement in $\R^n$?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{real vector} (\t{vector}, \t{$n$-dimensional vector}, \t{$n$-vector}) is a length-$n$ list of real numbers.</p></div><div class="sheet-listing" id="algebra"><h1 class="sheet">3. Algebra</h1></div><div class="sheet-listing"><p class="sheet"> For $x, y \in \R^n$, we define the \t{real vector sum} (or \t{sum}) of $x$ and $y$ as the vector $z \in \R^n$ where $z_i = x_i + y_i$ for $i = 1, \dots, n$. As usual, we denote the sum by $x+y$, so \[ x + y = (x_1 +y_1, \dots, x_n + y_n). \] For $\alpha \in \R$ and $x \in \R^n$, \t{real scalar-vector product} (or \t{scalar product}, \t{product}) $z \in \R^{n}$ is defined by $z_i = \alpha x_i$ for $i = 1, \dots, n$. As usual, we denote the product $\alpha x$, and write \[ \alpha x = (\alpha x_1, \dots, \alpha x_n). \]</p></div><div class="sheet-listing"><p class="sheet"> Our intuition for both of these <i>operations</i> comes from their special cases in $\R^2$ and $\R^3$. As usual, the \t{real-vector difference} (or \t{difference}) of $x$ and $y$ is the vector $z \in \R^{n}$ defined by $z_i = x_i - y_i$ for $i = 1, \dots, n$. As usual, we denote it by $x - y$, and note that $x - y = x + (-y)$.</p></div><div class="sheet-listing"><p class="sheet"> The algebra given here for vectors is natural in view of their generalization as $n$-dimensional <i>displacements</i>. However, we keep in mind that this algebra is over lists of numbers, and that these sums and products can be defined on these lists of numbers regardless of interpretation.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -380,9 +382,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

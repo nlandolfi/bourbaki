@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to order two objects.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $a$ and $b$ denote objects. The <i>ordered pair</i>$. The \t{first coordinate} of $\set{\set{a}, \set{a, b}}$ is the object denoted by $a$ and the \t{second coordinate} is the object denoted by $b$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the ordered pair $\set{\set{a},\set{a,b}}$ by $(a, b)$.</p></div><div class="sheet-listing" id="equality"><h1 class="sheet">3. Equality</h1></div><div class="sheet-listing"><p class="sheet"> Our intuition of two objects in order dictates that if we have the same objects in the same order then we have the same ordered pair. Conversely, if we have two identical ordered pairs, they must consist of the same objects in the same location. In other words, two ordered pairs should be equal if and only if they consist of the same objects in the same order. Our definition agrees with this intuition. Indeed,</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(((a, b) = (x, y)) \iff (a = x \land b = y))$\footnote{The proof of this proposition will be found in future editions.%the proof can be found in Halmos p23 right after the definition section 6 } \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -232,9 +234,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

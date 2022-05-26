@@ -133,6 +133,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We need some basic geometric concepts.\footnote{This sheet will be expanded into several in future editions.}</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> A \t{point} is that which has no part.\footnote{This and all that follows is taken (nearly) verbatim from Heath's translation of Book I of Euclid's Elements. In future editions, there will be a reference to the Litterae manuscript of this text.} A \t{line} is a breadthless length. The \t{extremities of a line}\footnote{We have departed from Heath and made extremity here a term.} are points. A \t{straight line} is a line which lies evenly with the points on itself. A \t{surface} is that which has length and breadth only. The \t{extremities of a surface} are lines.</p></div><div class="sheet-listing"><p class="sheet"> A \t{plane surface} is a surface which lies evenly with the straight lines on itself. A \t{plane angle} is the inclination to one another of two lines in a plane which meet one another and do not lie in a straight line. And when teh lines containing the angle are straight, the angle is called \t{rectilineal}. When a straight line set up on a straight line makes the adjacent angles equal to one another, each of the equal angles is \t{right}, and the straight line standing on the other side is called a \t{perpendicular} to that on which it stands.</p></div><div class="sheet-listing"><p class="sheet"> A \t{boundary} is that which is an extremity of any thing. A \t{figure} is that which is contained by any boundary or boundaries. A \t{circle} is a plane figure contained by one line such that allthe straight lines falling upon it from one point among those lying withing the figure are equal to one another. The point is called the \t{center} of the circle. A \t{diameter} of the circle is any straight line drawn through the center and terminated in both directions by the circumference of the circle, and such a straight line also bisects the circle.\footnote{We end here. Of course, Euclid goes on to discuss semicircles, rectilineal figures, etc.}</p></div>
     </div>
@@ -239,9 +241,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

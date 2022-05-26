@@ -119,6 +119,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> In ordinary reduction, we obtain a sequence of row reducers.</p></div><div class="sheet-listing" id="factorization_of_$a$_from_a_sequence_of_reducers"><h1 class="sheet">2. Factorization of $A$ from a sequence of reducers</h1></div><div class="sheet-listing"><p class="sheet"> Let $(A \in \R^{m \times m}, b \in \R^{m})$ be an ordinarily reducible linear system. The \t{ordinary reducer sequence} is a sequence of reducer matrices $L_{1}, \dots L_{m-1}$ with $A_1 = L_1A$ and $A_i = L_iA_{i-1}$ for $2 \leq i \leq m-1$. In other words, $U \in \R^{m \times m}$ defined by \begin{equation} U = L_{m-1} \cdots L_2 L_1 A \label{equation:ordinary_reducer_factorization:main} \end{equation} is the ordinary row reduction of $A$. $U$ is upper triangular.</p></div><div class="sheet-listing"><p class="sheet"> If $L_{m-1}\cdots L_2 L_1$ in Equation~\eqref{equation:ordinary_reducer_factorization:main} is invertible, then we have \[ A = \invp{L_{m-1}\cdots L_2 L_1}U, \] which is a factorization of $A$. Each $L_i$ is invertible, so \[ \invp{L_{m-1}\cdots L_2 L_1} = \inv{L}_1\inv{L}_2\cdots\inv{L}_{m-1}. \] So we are interested in the inverse of $L_i$ for $i \leq m-1$. Recall that if $x_1$ is the first column of $A$, and $x_2$ is the second column of $L_1A$ and $x_k$ is the $k$th column of $L_{k-1}\cdots L_{1}A$ for $k = 2, \dots, m-1$, then \[{\tiny L_k = \barray{ 1 & & & &  & \\ & \ddots & & & & \\ & & 1 & & & \\ & & -\ell_{k+1,k} & 1 & &\\ & & \vdots & & \ddots & & \\ & & -\ell_{mk} & & & 1 }} \] where $\ell_{jk} = \nicefrac{x_{jk}}{x_{kk}}$ for $k < j \leq m$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> The two important properties of the $L_i$ is that they have simple inverses and a simple product. Define \[\ell_k = (0,\cdots, 0,\ell_{k+1,k}, \cdots, \ell_{m,k})\] so that $L_k = L_k - \ell_k\transpose{e}_k$ where $(e_k)_i$ is 1 if $k = i$ and 0 otherwise.</p></div><div class="sheet-listing"><p class="sheet"> \noindent\noindent <b>Prop:} {\it $\inv{L}_i$ is $L_i$ with the subdiagonal entries negated.</b> <i>Proof.</i> From the sparsity pattern of $\ell_k$, we have $e_k^\tp \ell_k = 0$. So \[ (I - \ell_ke_k^\tp)(I + \ell_ke_k^\tp) = I - \ell_ke^\tp_k\ell_ke^\tp_k = I. \]</p></div><div class="sheet-listing"><p class="sheet"> \noindent\noindent <b>Prop:} {\it $\inv{L}_{k}\inv{L}_{k+1}$ is the unit lower-triangular matrix with the entries of both $\inv{L}_k$ and $\inv{L}_{k+1}$ in their usual places.</b> <i>Proof.} From the sparsity pattern of $\ell_{k+1}$ we have $e_k^\tp \ell_{k+1</i> = 0$ so that \[ \inv{L}_k \inv{L}_{k+1} = (I + \ell_ke^\tp_{k})(I + \ell_{k+1}e^\tp_{k+1}) = I + \ell_ke^*_k + \ell_{k+1}e^*_{k+1}. \] Combining these two results, we deduce that \[ \inv{L}_1\inv{L}_2\cdots\inv{L}_{m-1} = \barray{ 1 & & & & \\ \ell_{21} & 1 &&& \\ \ell_{31} & \ell_{32} & 1 & & \\ \vdots & \vdots & \ddots &\ddots & \\ \ell_{m1} & \ell_{m2} & \cdots & \ell_{m,m-1} & 1 \\ } \]</p></div><div class="sheet-listing"><p class="sheet"> If we define $L = L_{1}^{-1}\cdots L_{m-1}^{-1}$ we obtain $A = LU$. In other words, we have a factorization (the \t{ordinary reducer factorization}) of $A$ in terms of two matrices. The first, $L$ is unit lower triangular. The second, $U$, is upper triangular.</p></div>
     </div>
@@ -225,9 +227,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -116,6 +116,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Since we have a partial order on the set of positive semidefinite matrices, we can study which familiar functions are have order-preserving or order-reversing properties.</p></div><div class="sheet-listing" id="norms"><h1 class="sheet">2. Norms</h1></div><div class="sheet-listing"><p class="sheet"> It would be nice if the matrix norm induced by the matrix scalar produce (see \sheetref{matrix_scalar_product}{Matrix Scalar Product}) was an isotonic function. In other words, if $A, B \in \SymMat{d}$ satisfy $A \geq B$, does $\normm{A} \geq \normm{B}$?</p></div><div class="sheet-listing"><p class="sheet"> Since $\normm{A}^2 = \tr A^2$, we should study the trace first..</p></div><div class="sheet-listing"><h2 class="sheet" id="trace">2.1 Trace</h2></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $f: \SymMat{d} \to \R$ defined by $f(A) = \tr A$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> In other words, the function $f$ is the restriction of the trace function onto the set of symmetric matrices.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $B \in \SymMat{d}$ Let $f_B: \SymMat{d} \to \R$ defined by $f(A) = \tr AB$. \end{proposition}</p></div><div class="sheet-listing" id="inversion"><h1 class="sheet">3. Inversion</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A \in \SymPDMat{d}$. Then the map $f: \SymPDMat{d} \to \SymPDMat{d}$ satisfying $f(A) = \inverse{A}$ is an isotonic function mapping the (open) positive definite cone into itself.\footnote{Future editions will include a proof.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -222,9 +224,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

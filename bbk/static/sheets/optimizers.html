@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If we have a correspondence between the elements of some set and a chain, then we are often interested in the objects which correspond to minimal or maximal elements of the chain.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider a non-empty set and a chain, with a function associating to each element of a set an element of the chain. Recall that a chain is a set with a total order (see \sheetref{orders}{Orders}).</p></div><div class="sheet-listing"><p class="sheet"> A \t{minimizer} of the function is an element of its domain whose result under the function is a minimal element of the function's range. In other words, the result of the function on that element is less than the result of the function on any other element in its domain. Similarly, a \t{maximizer} of the function is an element of its domain whose result under the function is a maximal element of the function's range. An optimizer of a function is a minimizer or maximizer, depending on the context.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a non-empty set and $(C, \leq)$ a chain. Let $f: A \to C$. An element $a \in A$ is a minimizer of $f$ if $f(a) \leq f(b)$ for all $b \in A$. Similarly, an element $a \in A$ is a maximizer of $f$ if $f(a) \geq f(b)$ for all $b \in A$.</p></div><div class="sheet-listing"><p class="sheet"> We denote the set of minimizers by $f$ by $\argmin f$ and the set of maximizers of $f$ by $\argmax f$. In other notation, $$ \argmin f = \Set*{a \in A}{\forall b \in A, f(a) \leq f(b) } $$ and $$ \argmin f = \Set*{a \in A}{\forall b \in A, f(a) \geq f(b) }. $$</p></div>
     </div>
@@ -232,9 +234,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

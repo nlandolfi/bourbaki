@@ -95,6 +95,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can characterize the dependence of two events in terms of the rank of a particular matrix.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Given a probability measure $\mathbfsf{P} : \powerset{\Omega } \to \R $ on the finite set $\Omega $ and two events $A, B \subset \Omega $, the \t{joint probability matrix} of $A$ and $B$ is the matrix \[ M = \bmat{ \mathbfsf{P} (A \cap B) & \mathbfsf{P} (A \cap \relcomplement{B}{\Omega }) \\ \mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) & \mathbfsf{P} (\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) \\ }. \]</p></div><div class="sheet-listing"><h2 class="sheet" id="characterization_of_independence">2.1 Characterization of independence</h2></div><div class="sheet-listing"><p class="sheet"> If $A$ and $B$ are independent, then so are $A$ and $\relcomplement{B}{\Omega }$, $B$ and $\relcomplement{A}{\Omega }$, and $\relcomplement{A}{\Omega }$ and$\relcomplement{B}{\Omega }$. In other words, \[ M = \bmat{\mathbfsf{P} (A) \\ \mathbfsf{P} (\relcomplement{A}{\Omega }) }\bmat{\mathbfsf{P} (B) & \mathbfsf{P} (\relcomplement{B}{\Omega }}. \] In this case, we see that $\rank(M) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> Conversely, suppose $\rank(M) = 1$. Then, using the law of total probabiliy, each row is a multiple of \[ M1 = \bmat{\mathbfsf{P} (A) \\ \mathbfsf{P} (\relcomplement{A}{\Omega })} . \] In particular, we have $\mathbfsf{P} (A \cap B) = \alpha \mathbfsf{P} (A)$ and $\mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) = \alpha P(\relcomplement{A}{\Omega })$. So \[ \mathbfsf{P} (A \cap B) + \mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) = \alpha (\mathbfsf{P} (B) + \mathbfsf{P} (\relcomplement{A}{\Omega })), \] from which we deduce $\alpha  = \mathbfsf{P} (B)$ Likewise, the multiplier for the second column of $M$ is $\mathbfsf{P} (\relcomplement{B}{\Omega })$. In other words, $A$ and $B$ are independent. We conclude that $A$ and $B$ are independent if and only if $\rank(M) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -294,9 +296,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

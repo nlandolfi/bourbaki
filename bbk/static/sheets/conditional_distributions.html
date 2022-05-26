@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to speak of the pairwise conditional distributions of a particular joint distribution. \ifhmode\unskip\fi\footnote{ Future editions will rework this sheet. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $p: \prod_{i = 1}^{n} A_i \to \R $ be a distribution on $A$.</p></div><div class="sheet-listing"><p class="sheet"> For $i \neq j \in \set{1, \dots, n}$, the \t{conditional distribution} of $i$ on $j$ is the function $p_{i \mid j}: A_i \times A_j \to \R $ defined so that that $p_{i \mid j}(\cdot, b)$ is the conditional distribution induced by conditioning on $\Set{a \in \prod_{i = 1}^{n} A_i }{a_j = b}$.</p></div><div class="sheet-listing"><p class="sheet"> For $i,j = 1, \dots, n$ and $i \neq j$, $p_i$ and $p_{i,j}$ satisify \[ p_{i \mid j}(b, c)p_{j}(c) = p_{ij}(b, c) \] for $b \in A_i$ and $c \in A_j$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -285,9 +287,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

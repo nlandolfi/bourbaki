@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Are all signed measures the difference of two positive measures?</p></div><div class="sheet-listing"><p class="sheet"> Suppose we could partition the base set into two sets, one containing all the sets with positive measure and one containing all sets with negative measure. We could "restrict" the measure to the former and it would be positive, and we could "restrict" it to the latter and it would be negative.</p></div><div class="sheet-listing"><p class="sheet"> Any measurable set could be partitioned into a piece in the former and a piece in the latter, and so its signed measure could be written as a sum of measures of these pieces.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> By "positive" and "negative" we mean "non-negative" and "non-positive." Let $(X, \SA)$ be a measurable space. Let $\mu: \SA \to \eri$ be a signed measure.</p></div><div class="sheet-listing"><p class="sheet"> A <i>positive set</i> is a measurable set with the property that each of its subsets have non-negative measure under $\mu$. A <i>negative set</i> is a measurable set with the property that each of its subsets have non-positive measure under $\mu$.</p></div><div class="sheet-listing"><p class="sheet"> A <i>signed-set decomposition</i> of $X$ under $\mu$ is a partition of $X$ into a positive and a negative set. Some authors call it a <i>Hahn decomposition</i>.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Denote by $P$ a positive and by $N$ a negative set. When we say \say{let $(P, N)$ be a signed-set decomposition of $X$ under $\mu$}, we mean that $P$ is the positive set and $N$ is the negative set.</p></div><div class="sheet-listing" id="motivating_implication"><h1 class="sheet">3. Motivating Implication</h1></div><div class="sheet-listing"><p class="sheet"> Does such a decomposition always exist? Is it unique? We are motivated to find answers by the following observation.</p></div><div class="sheet-listing"><p class="sheet"> Suppose there was a signed-set decomposition of $(X, \SA)$ under $\mu$; denote it by $(P, N)$. Then $\mu(A \intersect P) \geq 0$ and $\mu(A \intersect N) \leq 0$ for all $A \in \SA$.</p></div><div class="sheet-listing"><p class="sheet"> Define $\mu_1 = \mu(A \intersect P)$ and $\mu_2 = -\mu(A \intersect P)$, then $\mu_1$ and $\mu_2$ are finite measures. Moreover, $\mu = \mu_1 - \mu_2$. Thus, if we had a signed-set decomposition we could write $\mu$ as the difference of two measures.</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

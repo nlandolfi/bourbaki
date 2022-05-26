@@ -154,6 +154,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name and denote subsets of the set of real numbers which correspond to segments of a line.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Take two real numbers, with the first less than the second.</p></div><div class="sheet-listing"><p class="sheet"> An \t{interval} is one of four sets: \begin{enumerate} \item the set of real numbers larger than the first number and smaller than the second; we call the interval \t{open}.</p></div><div class="sheet-listing"><p class="sheet"> \item the set of real numbers larger than or equal to the first number and smaller than or equal to the second number; we call the interval \t{closed}.</p></div><div class="sheet-listing"><p class="sheet"> \item the set of real numbers larger than the first number and smaller than or equal to the second; we call the interval \t{open on the left} and \t{closed on the right}</p></div><div class="sheet-listing"><p class="sheet"> \item the set of real numbers larger than or equal to the first number and smaller than the second; we call the interval \t{closed on the left} and \t{open on the right}. \end{enumerate} If an interval is neither open nor closed we call it \t{half-open} or \t{half-closed}</p></div><div class="sheet-listing"><p class="sheet"> We call the two numbers the \t{endpoints} of the interval. An open interval does not contain its endpoints. A closed interval contains its endpoints. A half-open/half-closed interval contains only one of its endpoints. We say that the endpoints \t{delimit} the interval.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $a, b$ be two real numbers which satisfy the relation $a < b$.</p></div><div class="sheet-listing"><p class="sheet"> We denote the open interval from $a$ to $b$ by $\oi{a, b}$. This notation, although standard, is the same as that for ordered pairs; no confusion arises with adequate context.\footnote{In future editions, we may use $\oleft(a, b\oright)$ or even $\oleft[\,a, b\,\oright]$.}</p></div><div class="sheet-listing"><p class="sheet"> We denote the closed interval from $a$ to $b$ by $\ci{a, b}$. We record the fact $\oi{a, b} \subset \ci{a, b}$ in our new notation.</p></div><div class="sheet-listing"><p class="sheet"> We denote the half-open interval from $a$ to $b$, closed on the right, by $\oci{a, b}$ and the half-open interval from $a$ to $b$, closed on the left, by $\coi{a, b}$.\footnote{Some authors use ]a, b], [a, b[ and ]a, b[.}</p></div><div class="sheet-listing"><p class="sheet"> The \t{unit interval} is the set $\ci{0_{\R}, 1_{\R}}$ and we sometimes denote it by $\I$.</p></div>
     </div>
@@ -260,9 +262,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

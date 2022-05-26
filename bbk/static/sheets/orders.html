@@ -168,6 +168,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can arrange the natural numbers from left to right. We want to speak of arranging the elements of any set from left to right, in some order. Can we so order subsets?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A relation $R$ in a set $A$ is \t{antisymmetric} if, for every $a$ and $b$ in $A$, $(a, b) \in R$ and $(b, a) \in R$ implies that $a = b$. A \t{partial order} is a reflexive, transitive, and antisymmetric relation.</p></div><div class="sheet-listing"><p class="sheet"> If I have three objects $a$, $b$, and $c$, and I arrange them in that "order} from left to right, I can always say whether one of the objects is \say{to the left of" another. In contrast, we use the word "partial"  above to indicate that two elements need not be comparable. For example, consider the equality relation on $\set{a, b, c}$. This is really "no order} at all and $A$ is \say{totally unordered", but it is (by our definition) a partial order.</p></div><div class="sheet-listing"><p class="sheet"> A partial order $T$ on $A$ is \t{total} (or \t{linear}, \t{simple}) if, for each $a$ and $b$ in $A$, $(a, b) \in T$ or $(a, b) \in T$. Although total orders are familiar (see \sheetref{natural_order}{Natural Order}), experience shows it to be expedient to generalize \t{order} to mean partial order.</p></div><div class="sheet-listing"><h2 class="sheet" id="example:_set_inclusion">2.1 Example: set inclusion</h2></div><div class="sheet-listing"><p class="sheet"> A natural motivation for and first example of a partial order is the relation of set inclusion on the set of subsets of some set.</p></div><div class="sheet-listing"><p class="sheet"> For example, if $A = \set{a, b}$, then $\powerset{A}$ consists of the four elements $\emptyset$, $\set{a}$, $\set{b}$ and $\set{a,b}$. Recall that $\subset$ is reflexive and transitive (see \sheetref{set_inclusion}{Set Inclusion}). However not all subsets are comparable. For example, neither $\set{a} \subset \set{b}$ nor $\set{b} \subset \set{a}$. So $\subset$ is not a total order on $A$. Exercise: Show that $\subset$ is total if and only if $A$ is empty or a singleton.</p></div><div class="sheet-listing"><h2 class="sheet" id="ordered_sets">2.2 Ordered sets</h2></div><div class="sheet-listing"><p class="sheet"> A \t{partially ordered set} is an ordered pair whose first coordinate is a set and whose second coordinate is a partial order in the first coordinate. Similarly with a \t{totally ordered set} (or \t{simply ordered set}, \t{linearly ordered set}), whose second coordinate is total. Preferring one word to three, we call such a set a \t{chain}.</p></div><div class="sheet-listing"><p class="sheet"> Given an order $R$ on $A$, we can recover $A$ as $\dom R$. So the ordered pair formalism is redundant, albeit standard. It is common, however, to speak primarily of the set we are ordering, prior to the order. By "let $X$ be a partially ordered set} we always mean \say{let $X$ be the domain of a partial order".</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.3 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set. We tend to denote a partial order on $A$ by $\preceq$. So then, we denote a partially ordered set by $(A, \preceq)$.</p></div><div class="sheet-listing"><p class="sheet"> As usual (see \sheetref{relations}{Relations}), we write $a \preceq b$ to mean $(a, b) \in A$. Alternatively, we write $b \succeq a$ to mean $a \preceq b$. In other words, $\succeq$ is the inverse relation (see \sheetref{converse_relations}{Converse Relations}) of $\preceq$. We call such order-involving statements (e.g., $a \preceq b$) \t{comparisons}.</p></div>
     </div>
@@ -274,9 +276,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

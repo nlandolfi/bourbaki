@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include._future_editions_may_also_change_the_name_of_this_sheet."><h1 class="sheet">1. Why}\footnote{Future editions will include. Future editions may also change the name of this sheet.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A neural network $\nu$ commutes with a neural network $\mu$ if their associated predictors commute as functions.</p></div><div class="sheet-listing"><p class="sheet"> An \t{autoencoder} (or \t{feedforward autoencoder}) is a pair of neural networks $((\phi_1, \dots, \phi_k), (\psi_1, \dots, \psi_\ell))$. If the networks commute and $\dom \phi_1 = \dom \psi_\ell$, we call the autoencoder \t{regular}. We call the predictor of the first network the \t{encoder} and the predictor the second network the \t{decoder}. We call the image of an input to the encoder an \t{embedding} (or \t{feature vector}, \t{representation}, \t{code}).</p></div><div class="sheet-listing" id="compressive_autoencoders"><h1 class="sheet">3. Compressive autoencoders</h1></div><div class="sheet-listing"><p class="sheet"> Let $(\phi, \psi)$ be regular and let $f: \R^d \to \R^k$ be the encoder and $g: \R^k \to \R^d$ be the decoder. If $k < d$, we call the autoencoder \t{compressive}. Otherwise, we call the autoencoder \t{noncompressive}. An autoencoder is \t{perfect} if $g \composed f$ is the identity function. Clearly, a compressive autoencoder can not be perfect.</p></div><div class="sheet-listing"><p class="sheet"> Let us relax our notion of perfect by introducing a similarity function $\ell: \R^d \times \R^d \to \R$ (see \sheetref{similarity_functions}{Similarity Functions}). An autoencoder is optimal with respect to $\ell$ if it minimizes $\int_{\R^d} \ell(g(f(z)), z) dz$. This integral may diverge. Even if it converges for some autoencoders, there may not be an optimal autoencoder, or a unique one.</p></div><div class="sheet-listing"><p class="sheet"> If we parameterize a family of autoencoders $\set{x_{\theta}}_{\theta \in \Theta}$ by a compact set $\Theta$, ... \footnote{Future editions will continue.}</p></div><div class="sheet-listing"><p class="sheet"> It is natural to be interested in compressive autoencoders.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

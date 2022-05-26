@@ -95,6 +95,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to model uncertain outcomes in dynamical systems.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CX_0, \CX_1, \dots, \CX_{T}$ and $\CU_0, \CU_1, \dots, \CU_{T-1}$ be sets. Let $(\Omega, \CA, \PM)$ be a probability space. Let $\CW_{0}, \dots, \CW_{T}$. Let $w_{t}: \Omega \to \CW_{t}$ for $t = 0, \dots, T$ be random variables. For $t = 0$, $\dots$, $T-1$, let $f_{t}: \CX_t \times \CU_t \times \CW_t \to \CX_{t+1}$.</p></div><div class="sheet-listing"><p class="sheet"> We call the sequence \[ \CD = ((\CX_t)_{t = 0}^{T}), (\CU_t)_{t=0}^{T-1}, (w_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1}) \] a \t{stochastic discrete-time dynamical system}. We call $w_t$ the \t{noise} variables.</p></div><div class="sheet-listing" id="problem"><h1 class="sheet">3. Problem</h1></div><div class="sheet-listing"><p class="sheet"> Let $x_0: \Omega \to \CX_0$ be a random variable. Define $x_1: \Omega \to \CX_1$, $\dots$, $x_T: \Omega \to \CX_t$ by \[ x_{t+1} = f_t(x_t, u_t, w_t) \] for $t = 0, \dots, T-1$. Roughly speaking, the state transition functions are nondeterministic. In other words, it is uncertain which state we will arrive in given our current state and action. The choice $u_t$ only determines the distribution of $x_{t+1}$. Here $x_0$ is (still) called the \t{initial state} and is a random variable, usually assumed independent of the $w_t$.</p></div><div class="sheet-listing"><p class="sheet"> Let $g_t: \CX_t \times \CU_t \times \CW_t \to \R \union \set{\infty}$ for $t =0, \dots, T-1$ and $g_{T}: \CX_T \times \CW_T \to \R \union \set{\infty}$. We call $(x_0, \CD, (g_t)_{t = 0}^{T})$ a \t{stochastic dynamic optimization problem}. As with dynamic optimization problems, we call $g_t$ the \t{stage cost function} and $g_T$ the \t{terminal cost function}. It is common for these to not depend on $w_T$ (in other words, to be deterministic). It is also common for these to take infinite values to encode constraints.</p></div><div class="sheet-listing"><p class="sheet"> As before, a stochastic dynamic optimization problem is just an optimization problem. Define $U = \CU_0 \times \CU_1 \times \cdots \times \CU_{T-1}$ and let $u \in U$. Define $C: \Omega \to \R$ by \[ C = \sum_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T). \] We call $C$ the \t{total cost} for actions $u$. It is a random variable.</p></div><div class="sheet-listing"><p class="sheet"> Define $J: U \to \R \union \set{\infty}$ by \[ J = \Expect \parens*{ \sum_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T) }. \] $J(u)$ is the \t{expected total cost} for inputs $u$.</p></div><div class="sheet-listing"><p class="sheet"> The optimization problem is $(U, J)$. In other words, the objective is the mean total stage cost plus the terminal cost.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">3.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Stochastic dynamic optimization problems are frequently called \t{stochastic control problems}.</p></div>
     </div>
@@ -201,9 +203,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

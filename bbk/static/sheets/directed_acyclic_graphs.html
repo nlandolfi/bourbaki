@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If a directed graph has no cycles, then it has a nice property.\footnote{Future editions will expand this vague introduction.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Directed and acyclic graphs (sometimes \t{DAGs}) have some useful properties. Clearly, every subgraph induced on a directed acyclic graph is a directed acyclic graph.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(V, E)$ be a directed acyclic graph. Then there exists a vertex $v \in V$ which is a source and a vertex $w \in V$ which is a sink. \begin{proof} There exists a directed path of maximum length. It must start at a source and end at a sink.\footnote{Future editions will expand.} \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{topological numbering}, \t{topological sort} or \t{topological ordering} of a directed graph $(V, E)$ is a numbering $\sigma: \set{1, \dots, \num{V}} \to V$ satisfying \[ (v, w) \in E \implies \inv{\sigma}(v) < \inv{\sigma}(w).\footnote{Future editions will further explain this concept.} \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} There exists a topological sort for every acyclic graph. \begin{proof} Let $(V, F)$ be a directed acyclic graph. There exists a source vertex, $v_1$. Set $\sigma(1) = v_1$. Take the subgraph induced by $V - \set{v_1}$. It is directed acyclic, and so has a source vertex, $v_2$. Set $\sigma(2) = v_2$. Continue in this way.\footnote{Future editions will clarify and expand.} \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

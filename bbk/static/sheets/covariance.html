@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \footnote{Future editions will include this.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{covariance} between two random variables which are each integrable and whose product is integrable is the expectation of their product less the product of their expectation.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $f$ and $g$ be two integrable random variables with $fg$ integrable. Denote the covariance of $f$ with $g$ by $\cov(f, g)$. We defined it: \[ \cov(f, g) = \Expect(fg) - \Expect(f)\Expect(g). \]</p></div><div class="sheet-listing"><h2 class="sheet" id="properties">2.2 Properties</h2></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Covariance is symmetric and billinear.\footnote{Future editions will include an account.} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The covariance of a random variable with itself is its variance. \begin{proof} Let $f$ be a square-integrable real-valued random variable, then \[ \cov(f, f) = \Expect(ff) - \Expect(f)\Expect(f) = \Expect(f^2) - (\Expect(f))^2 = \var(f). \] \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The variance of a sum of integrable real-valued random variables whose pairwise products are integrable is the double sum of the pairwise covariances. \begin{proof} Let $f_1, \dots, f_n$ be integrable random variables with $f_if_j$ integrable for all $i,j = 1, \dots, n$. Using the billinearity, \[ \begin{aligned} \var\parens*{\sum_{i = 1}^{n} f_i} &= \cov\parens*{\sum_{i = 1}^{n} f_i, \sum_{i = 1}^{n}f_i} \\ &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} \cov(f_i, f_j) \end{aligned} \] \end{proof} \end{prop}</p></div>
     </div>
@@ -232,9 +234,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

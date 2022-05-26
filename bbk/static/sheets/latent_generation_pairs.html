@@ -98,6 +98,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $Z$ and $X$ be sets, either of which may or may not be finite.</p></div><div class="sheet-listing"><p class="sheet"> A \t{latent generation pair} from \t{latents} $Z$ to \t{observations} $X$ is an ordered pair $(p_z, p_{x \mid z})$ whose first coordinate is a distribution (density) on $Z$ and whose second coordinate is a conditional distribution (density) on $X$ from $Z$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{joint function} $p_{zx}: Z \times X \to \R$ of the pair is defined by $p_{zx}(\zeta, \xi) = p_{z}(\zeta)p_{x \mid z}(\xi, \zeta)$ for all $\xi \in X$ and $\zeta \in Z$. It is a distribution (density) if (not only if)  both $p_{z}$ and $p_{x \mid z}$ are distributions (densities). Regardless, we define the \t{marginal function} $p_x: X \to \R$ by $p_x(\xi) = \int_Z p_{zx}(\xi, \cdot)$. It too may be a distribution, density, or neither. In cases we construct, it is often one a distribution or a density, but it need not be either.</p></div><div class="sheet-listing"><h2 class="sheet" id="interpretation_as_distribution_graph">2.1 Interpretation as distribution graph</h2></div><div class="sheet-listing"><p class="sheet"> The latent generation pairs from $Z$ to $X$ are isomorphic to the graph distributions whose typed graph $(\set{1, 2}, \set{(1,2)}), (Z, x)$.\footnote{Future editions will include a visualization.}</p></div><div class="sheet-listing" id="parametrizations"><h1 class="sheet">3. Parametrizations</h1></div><div class="sheet-listing"><p class="sheet"> By parameterizing either or both of the coordinates of the pair, we have \t{latent generation family}.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">3.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Other terminology for latent generation pair includes \t{latent variable model}. Some authorities refer to the marginal function as the \t{generative model}, still others use this term to refer to the pair.</p></div>
     </div>
@@ -204,9 +206,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

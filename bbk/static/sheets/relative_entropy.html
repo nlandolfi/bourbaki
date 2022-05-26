@@ -126,6 +126,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider two distributions on the same finite set. The \t{entropy} of the first distribution \t{relative} to the second distribution is the difference of the cross entropy of the first distribution relative to the second and the entropy of the second distribution. We call it the \t{relative entropy} of the first distribution with the second distribution. People also call the relative entropy the \t{Kullback-Leibler divergence} or \t{KL divergence}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a non-empty finite set. Let $p: A \to \R$ and $q: A \to \R$ be distributions. Let $H(q, p)$ denote the cross entropy of $p$ relative to $q$ and let $H(q)$ denote the entropy of $q$. The entropy of $p$ relative to $q$ is $$H(q, p) - H(q).$$ Herein, we denote the entropy of $p$ relative to $q$ by $d(q, p)$.</p></div><div class="sheet-listing" id="a_similarity_function"><h1 class="sheet">3. A similarity function</h1></div><div class="sheet-listing"><p class="sheet"> The relative entropy is a similarity function between distributions.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $q$ and $p$ be distributions on the same set. Then $d(q, p) \geq 0$ with equality if and only if $p = q$.</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> So, $d$ has a few of the properties of a metric. However, $d$ is not a metric; for example, it is not symmetric.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} There exist distributions $p: A \to \R$ and $q: A \to \R$ (with $A$ a non-empty finite set) such that $$d(q, p) \neq d(p, q).$$ \end{prop}</p></div><div class="sheet-listing"><h2 class="sheet" id="optimization_perspective">3.1 Optimization Perspective</h2></div><div class="sheet-listing"><p class="sheet"> If we want to find a distribution $p: A \to \R$ to \[ \text{minimize} \quad d(q, p), \] then $p = q$ is a solution.</p></div>
     </div>
@@ -232,9 +234,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

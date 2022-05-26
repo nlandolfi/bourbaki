@@ -88,6 +88,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We allow measures to take complex values.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A complex-valued function on a sigma algebra is \t{countably additive} if the result of the function applied to the union of a disjoint countable family of distinguished sets is the limit of the partial sums of the results of the function applied to each of the sets individually. The limit of the partial sums must exist irregardless of the summand order.</p></div><div class="sheet-listing"><p class="sheet"> A \t{complex measure} is an complex-valued function on a sigma algebra that is (1) zero on the empty set and (2) countably additive. We call the result of the function applied to a set in the sigma algebra the \t{complex measure} (or when no ambiguity arises, the \t{measure}) of the set.</p></div><div class="sheet-listing"><p class="sheet"> Since the codomain of a complex measures is the complex numbers, the sum corresponding to every countable union must be absolutely convergent (?) .\footnote{Future editions will define.}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote complex measures by $\mu$ a mnemonic for "measure." Let $C$ denote the set of complex numbers. Let $(X, \mathcal{A})$ be a measurable space and let $\mu: \mathcal{A} \to C$. Then $\mu$ is a complex measure if \begin{enumerate} \item $\mu(\emptyset) = 0$ and \item $\mu(\union_{i} A_i) = \lim_{n \to \infty} \sum_{k = 1}^{n} \mu(A_k)$ for all disjoint families $\seq{A}$. \end{enumerate}</p></div>
     </div>
@@ -194,9 +196,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

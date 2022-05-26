@@ -119,6 +119,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We count in order.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="defining_result"><h1 class="sheet">2. Defining Result</h1></div><div class="sheet-listing"><p class="sheet"> We say that two natural numbers $m$ and $n$ are \t{comparable} if $m \in n$ or $m = n$ or $n \in m$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Any two natural numbers are comparable.\footnote{Future editions will include an account.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> In fact, more is true.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For any two natural numbers, exactly one of $m \in n$, $m = n$ and $n \in m$ is true.\footnote{Use the fact that no natural number is a subset of itself. Future editions will expand this account. See \sheetref{peano_axioms}{Peano Axioms}).} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $m \in n \iff m \subset n$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> If $m \in n$, then we say that $m$ is \t{less than} $n$. We also say in this case that $m$ is \t{smaller than} $n$. If we know that $m = n$ or $m$ is less than $n$, we say that $m$ is \t{less than or equal to} $n$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> If $m$ is less than $n$ we write $m < n$, read aloud "$m$ less than $n$." If $m$ is less than or equal to $n$, we write $m \leqq n$, read alout "$m$ less than or equal to $n$."</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> Notice that $<$ and $\leqq$ are relations on $\omega$ (see \sheetref{relations}{Relations}).\footnote{Proofs of the following propositions will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Reflexivity] $\leqq$ is reflexive, but $<$ is not. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Symmetry] Both $\leqq$ and $<$ are not symmetric. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Transitivity] Both $\leqq$ and $<$ are transitive. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Antisymmetry] If $m \leqq n$ and $n \leqq n$, then $m = n$. \end{proposition}</p></div>
     </div>
@@ -225,9 +227,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

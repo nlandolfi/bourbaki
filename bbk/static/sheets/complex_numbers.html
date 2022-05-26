@@ -175,6 +175,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to find the roots of negative numbers.\footnote{Future editions will modify this, and will discuss the existence of solutions of algebraic equations.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{complex number} is an ordered pair of real numbers. The \t{real part} of a complex number is its first coordinate. The \t{imaginary part} of a complex number is its second coordinate.</p></div><div class="sheet-listing"><p class="sheet"> We can identify the imaginary numbers with no complex part (i.e., $\Set*{(a, b) \in \R^2}{b = 0}$ with $\R$ in the obvious way. For this reason, such a complex number is sometimes referred to as a \t{purely real number} Conversely, a complex number with zero imaginary part (i.e., an element of $\Set*{(a, b) \in \R^2}{a = 0}$) is said to be a \t{purely imaginary number}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> When treating $\R^2$ as the set of complex numbers, we denote it by $\C$. Let $z \in \C$ with $z = (a, b)$. The real part of $z$ is $a$ and its imaginary part is $b$. It is universal to denote $z$ by $a + ib$, and to call $i$ an (or the) \t{imaginary number}. Some authors use $j$, it is a matter of notation.</p></div><div class="sheet-listing"><p class="sheet"> We denote the real part of $z$ by $\re(z)$, read "real of z,} and the imaginary part by $\im(z)$, read \say{imaginary of z." So, in particular,  $\re(z) = a$ and $\im(z) = b$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -281,9 +283,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

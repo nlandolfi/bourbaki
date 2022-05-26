@@ -109,6 +109,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We are regularly referring to a few common growth classes.</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> Let $c \in \R$. Then we name the following growth classes \begin{center} \begin{tabular}{ll} \toprule growth class & name \\ \midrule $O(1)$ & \t{constant growth class} \\ $O(\log(x))$ & \t{logarithmic growth class} \\ $O((\log(x))^c)$ & \t{polylogarithmic growth class} \\ $O(x)$ & \t{linear growth class} \\ $O(x^2)$ & \t{quadratic growth class} \\ $O(x^c)$ & \t{polynomial growth class} \\ $O(c^x)$ & \t{exponential growth class} \\ \bottomrule \end{tabular} \end{center}</p></div><div class="sheet-listing"><p class="sheet"> We have written these in order: \[ O(1) \subset O(\log(x)) \subset O((\log(x))^c) \subset \cdots \subset O(x^c) \subset O(c^x). \]</p></div><div class="sheet-listing"><p class="sheet"> A function that grows faster (is in the upper growth class) of a power of $x$ is called \t{superpolynomial}. One that grows slower than $c^n$ for some $c \in \R$ is called \t{subexponential}. The class $O(\log(x^c))) = O(\log(x))$ since $\log(x^c) = c\log x$. Similarly, for all $c_1, c_2 > 0$, $O(\log_{c_1}(x)) = O(\log_{c_2}(x))$.</p></div><div class="sheet-listing"><p class="sheet"> This list is useful because of the following \begin{proposition} Let $f, g: \R \to \R$ and defined $h: \R \to \R$ by $h = f + g$. If $O(f) \subset O(g)$, then $h \in O(g)$. \end{proposition} In other words, if a function $h$ is the sum of $f$ and $g$ and $g$ is growing faster, then $g$ (the one growing faster) determines the order of $h$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
@@ -215,9 +217,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

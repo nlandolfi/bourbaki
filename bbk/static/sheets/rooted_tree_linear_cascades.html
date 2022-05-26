@@ -116,6 +116,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is natural to look for a class of structural equation models with favorable identifiability and properties.</p></div><div class="sheet-listing"><p class="sheet"> \section{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{$d$-dimensional rooted tree linear cascade} is a sequence of four objects: a tree on $\set{1, \dots, d}$, a vertex of the tree, a family of real numbers indexed by the edges of the tree, and a $d$-dimensional random vector whose covariance matrix is the identity matrix. The cascade is called "$d$-dimensional" because we associate it with a random vector (defined as a function of that in the form of its definition) whose codomain is  $\R^d$.</p></div><div class="sheet-listing"><p class="sheet"> The tree together with the vertex form a rooted tree. The graph associated with the rooted tree and the family of real numbers together form a weighted graph.</p></div><div class="sheet-listing"><p class="sheet"> The idea is to use the weights and the tree structure to recursively define a random vector in terms of elements of the given random vector. Let $C = (T, i, w, e)$ be a $d$-dimensional rooted tree linear cascade. So $T$ is a tree on $\set{1, \dots, d}$, $i \in \set{1, \dots, d}$ and $w: T \to \R$, and $e: \Omega \to \R^d$ for some probability space $(A, \CA, \PM)$. The random vector associated with $C$ is the random variable $x: \Omega \to \R^d$ defined by $$ x_i = e_i \text{ and } x_j = w_{\set{\pa{j}, j}}x_{\pa{j}} + e_{j} \text{ for } j \neq i. $$ In other words, $$ e = Ax $$ where $A$ is lower triangle and extremely sparse.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">1.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, \CA, \PM)$ be a probability space. Let $e: A \to \R^d$ be a random vector, let $T$ be a tree on $\set{1, \dots, d}$ with $a_{ij} = a_{ji}$ the weight on edge $\set{i, j} \in T$. We</p></div>
     </div>
@@ -222,9 +224,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -105,6 +105,8 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
       <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can a set have no elements?</p></div><div class="sheet-listing"><p class="sheet"> \s{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Sure. A set exists by the principle of existence (see \sheetref{sets}{Sets}); denote it by $A$. Specify elements (see \sheetref{set_specification}{Set Specification}) of any set that exists using the universally false statement $x \neq x$. We denote that set by $\Set{x \in A}{x \neq x}$. It has no elements. In other words, $(\forall x)(x \not \in A)$. The principle of extension (see \sheetref{set_equality}{Set Equality}) says that the set obtained is unique (contradiction).\footnote{This account will be expanded in the next edition.} We call the unique set with no elements \t{the empty set}.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the empty set by $\emptyset$. In other words, in all future accounts (see \sheetref{accounts}{Accounts}), there are two implicit lines. First, "\texttt{name} $\emptyset$} and second \say{\texttt{have} $(\forall x)(x \not\in \emptyset)$".</p></div><div class="sheet-listing"><p class="sheet"> \s{Properties}</p></div><div class="sheet-listing"><p class="sheet"> It is immediate from our definition of the empty set and of the definition of inclusion (see \sheetref{set_inclusion}{Set Inclusion}) that the empty set is included in every set (including itself).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\forall A)(\emptyset \subset A)$ \end{proposition} \begin{proof} Suppose toward contradiction that $\varnothing \not\subset A$. Then there exists $y \in \varnothing$ such that $y \not \in A$. But this is impossible, since $(\forall x)(x \not \in \varnothing)$. \end{proof}</p></div>
     </div>
@@ -211,9 +213,57 @@ MathJax.Hub.Config({
 
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>

@@ -112,8 +112,10 @@ MathJax.Hub.Config({
       });
     </script>
     -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Since one and only one outcome occurs, given a distribution on outcomes, we define the probability of a set of outcomes as the sum of their probabilities.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Given a distribution $p: \Omega  \to \R $, the \t{probability of an event} $A \subset \Omega $ is $\sum_{a \in A} p(a)$, the sum of probabilities of its outcomes.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Define define $\mathbfsf{P} : \powerset{\Omega } \to \R $ by \[ \textstyle \mathbfsf{P} (A) = \sum_{a \in A} p(a). \] We call $\mathbfsf{P} $ the \t{event probability function} (or \t{probability measure}) of (or induced by) $p$.</p></div><div class="sheet-listing"><h2 class="sheet" id="example:_die">2.2 Example: die</h2></div><div class="sheet-listing"><p class="sheet"> Define $p: \set{1, \dots, 6} \to \R $ by $p(\omega ) = \nicefrac{1}{6}$ for $\omega  = 1, \dots, 6$. Define the event $E = \set{2, 4, 6}$. Then \[ \textstyle \mathbfsf{P} (E) = \sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = \nicefrac{1}{2}. \]</p></div><div class="sheet-listing" id="probability_measures"><h1 class="sheet">3. Probability measures</h1></div><div class="sheet-listing"><p class="sheet"> Notice that for all $A \subset \Omega $, (i) $\mathbfsf{P} (A) \geq 0$. In particular, (ii) $\mathbfsf{P} (\Omega ) = 1$ (and $\mathbfsf{P} (\varnothing) = 0$). For all $A, B \subset \Omega $, $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap B)$. In particular, if $A \cap B = \varnothing$, (iii) $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B)$.</p></div><div class="sheet-listing"><p class="sheet"> Conversely, suppose $f: \powerset{\Omega } \to \R $ satifies (i), (ii), (iii). These three conditions are sometimes called the \t{axioms of probability} (for finite sets). Define $p: \Omega  \to \R $ by \[ p(\omega ) = f(\set{\omega }). \] In case $f$ satisfies the axioms, $p$ is a probability distribution (nonnegative and sums to one). For this reason we call $f$ satisfying (i)-(iii) an \t{event probability function} (or \t{probability measure}). In the case that we think of a probability event function $\mathbfsf{P} $ as induced by a distribution $p$, we write $\mathbfsf{P} _p$.</p></div><div class="sheet-listing"><p class="sheet"> We conclude that $p$ and $\mathbfsf{P} $ are two perspectives. We can think of elementary events (outcomes) and define their probabilities individually in a way that they sum to one and are nonnegative. Or we can think of the compound events, and define their probabilities in a way consistent with (i)-(iii).</p></div><div class="sheet-listing" id="probability_by_cases"><h1 class="sheet">4. Probability by cases</h1></div><div class="sheet-listing"><p class="sheet"> Let $\mathbfsf{P} $ be a probability event function. Suppose $A_1, \dots, A_n$ partition $\Omega $. Then for any $B \subset \Omega $, \[ \textstyle \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i \cap B). \] Some authors call this the \t{law of total probability}.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section{Why}</p></div><div class="sheet-listing"><p class="sheet"> Since one and only one outcome occurs, given a distribution on outcomes, we define the probability of a set of outcomes as the sum of their probabilities.</p></div><div class="sheet-listing"><p class="sheet"> \section{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Given a distribution $p: \Omega  \to \R $, the \t{probability of an event} $A \subset \Omega $ is $\sum_{a \in A} p(a)$, the sum of probabilities of its outcomes.</p></div><div class="sheet-listing"><p class="sheet"> \section{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Define define $\mathbfsf{P} : \powerset{\Omega } \to \R $ by \[ \textstyle \mathbfsf{P} (A) = \sum_{a \in A} p(a). \] We call $\mathbfsf{P} $ the \t{event probability function} (or \t{probability measure}) of (or induced by) $p$.</p></div><div class="sheet-listing"><p class="sheet"> \section{Example: die}</p></div><div class="sheet-listing"><p class="sheet"> Define $p: \set{1, \dots , 6} \to \R $ by $p(\omega ) = \nicefrac{1}{6}$ for $\omega  = 1, \dots , 6$. Define the event $E = \set{2, 4, 6}$. Then \[ \textstyle \mathbfsf{P} (E) = \sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = \nicefrac{1}{2}. \]</p></div><div class="sheet-listing"><p class="sheet"> \section{Probability measures}</p></div><div class="sheet-listing"><p class="sheet"> Notice that for all $A \subset \Omega $, (i) $\mathbfsf{P} (A) \geq 0$. In particular, (ii) $\mathbfsf{P} (\Omega ) = 1$ (and $\mathbfsf{P} (\varnothing) = 0$). For all $A, B \subset \Omega $, $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap B)$. In particular, if $A \cap B = \varnothing$, (iii) $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B)$.</p></div><div class="sheet-listing"><p class="sheet"> Conversely, suppose $f: \powerset{\Omega } \to \R $ satifies (i), (ii), (iii). These three conditions are sometimes called the \t{axioms of probability} (for finite sets). Define $p: \Omega  \to \R $ by \[ p(\omega ) = f(\set{\omega }). \] In case $f$ satisfies the axioms, $p$ is a probability distribution (nonnegative and sums to one). For this reason we call $f$ satisfying (i)-(iii) an \t{event probability function} (or \t{probability measure}). In the case that we think of a probability event function $\mathbfsf{P} $ as induced by a distribution $p$, we write $\mathbfsf{P} _p$.</p></div><div class="sheet-listing"><p class="sheet"> We conclude that $p$ and $\mathbfsf{P} $ are two perspectives. We can think of elementary events (outcomes) and define their probabilities individually in a way that they sum to one and are nonnegative. Or we can think of the compound events, and define their probabilities in a way consistent with (i)-(iii).</p></div><div class="sheet-listing"><p class="sheet"> \section{Probability by cases}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathbfsf{P} $ be a probability event function. Suppose $A_1, \dots , A_n$ partition $\Omega $. Then for any $B \subset \Omega $, \[ \textstyle \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i \cap B). \] Some authors call this the \t{law of total probability}.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -218,19 +220,13 @@ MathJax.Hub.Config({
 
   
     <div class="lit">
-    <p>
- <span class='run'>❲%!name:event_probabilities❳ </span>
+    <!--
+!name:event_probabilities
+!need:probability_distributions
+-->
 
- <span class='run'>❲%!need:probability_distributions❳ </span>
-
- <span class='run'>❲%%!need:partitions❳ </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>
+Why </h1>
 
 <p>
  <span class='run'>Since one and only one outcome occurs, given a
@@ -239,11 +235,8 @@ MathJax.Hub.Config({
   their probabilities. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
+<h1>
+Definition </h1>
 
 <p>
  <span class='run'>Given a distribution $p: Ω → 𝗥$, the
@@ -252,10 +245,10 @@ MathJax.Hub.Config({
   probabilities of its outcomes. </span>
 </p>
 
+<h1>
+Notation </h1>
 
 <p>
- <span class='run'>\ssubsection{Notation} </span>
-
  <span class='run'>Define define $𝗣: \powerset{Ω} → 𝗥$ by
   <p>\[
    \textstyle </span>
@@ -269,10 +262,10 @@ MathJax.Hub.Config({
   (or induced by) $p$. </span>
 </p>
 
+<h1>
+Example: die </h1>
 
 <p>
- <span class='run'>\ssubsection{Example: die} </span>
-
  <span class='run'>Define $p: \set{1, …, 6} → 𝗥$ by $p(ω) =
   \nicefrac{1}{6}$ for $ω = 1, …, 6$. </span>
 
@@ -287,10 +280,10 @@ MathJax.Hub.Config({
   \]</p></span>
 </p>
 
+<h1>
+Probability measures </h1>
 
 <p>
- <span class='run'>\ssection{Probability measures} </span>
-
  <span class='run'>Notice that for all $A ⊂ Ω$, (i) $𝗣(A) ≥ 0$. </span>
 
  <span class='run'>In particular, (ii) $𝗣(Ω) = 1$ (and $𝗣(∅) =
@@ -345,10 +338,10 @@ MathJax.Hub.Config({
   with (i)-(iii). </span>
 </p>
 
+<h1>
+Probability by cases </h1>
 
 <p>
- <span class='run'>\ssection{Probability by cases} </span>
-
  <span class='run'>Let $𝗣$ be a probability event function. </span>
 
  <span class='run'>Suppose $A_1, …, A_n$ partition $Ω$. </span>
@@ -367,9 +360,57 @@ MathJax.Hub.Config({
     </div>
   
 
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ced3441b2.
+      Copyright 2022 The Bourbaki Authors. Version 7ab3b88e2.
     </span>
   </body>
 </html>
