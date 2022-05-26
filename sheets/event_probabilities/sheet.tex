@@ -7,16 +7,12 @@ Since one and only one outcome occurs, given a distribution on outcomes, we defi
 
 \section*{Definition}
 
-Given a distribution $p: \Omega  \to \R $, the \t{probability of an event} $A \subset \Omega $ is $\sum_{a \in A} p(a)$, the sum of probabilities of its outcomes.
+Given a distribution $p: \Omega  \to \R $, the \t{probability of an event} $A \subset \Omega $ is $\sum_{a \in A} p(a)$, the sum of the probabilities of its outcomes.
 
-\section*{Notation}
-
-Define define $\mathbfsf{P} : \powerset{\Omega } \to \R $ by
-  \[
-\textstyle
-\mathbfsf{P} (A) = \sum_{a \in A} p(a).
-  \]
-We call $\mathbfsf{P} $ the \t{event probability function} (or \t{probability measure}) of (or induced by) $p$.
+Define $\mathbfsf{P} : \powerset{\Omega } \to \R $ by $\mathbfsf{P} (A) = \sum_{a \in A} p(a)$.
+We call $\mathbfsf{P} $ \t{the event probability function} (or \t{the probability measure}) induced by $p$.
+Clearly $\mathbfsf{P} $ depends on the set of outcomes $\Omega $ and the distribution $p: \Omega  \to \R $.
+We sometimes denote this dependence by $\mathbfsf{P} _{\Omega , p}$ or $\mathbfsf{P} _p$.
 
 \section*{Example: die}
 
@@ -28,26 +24,27 @@ Then
 \mathbfsf{P} (E) = \sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = \nicefrac{1}{2}.
   \]
 
-\section*{Probability measures}
+\section*{Properties of $\mathbfsf{P} $}
 
-Notice that for all $A \subset \Omega $, (i) $\mathbfsf{P} (A) \geq 0$.
-In particular, (ii) $\mathbfsf{P} (\Omega ) = 1$ (and $\mathbfsf{P} (\varnothing) = 0$).
-For all $A, B \subset \Omega $, $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap B)$.
-In particular, if $A \cap B = \varnothing$, (iii) $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B)$.
+As a result of the conditions on $p$, $\mathbfsf{P} $ satisfies
+  \begin{enumerate}
+  \item $\mathbfsf{P} (A) \geq 0$ for all $A \subset \Omega $;
+  \item $\mathbfsf{P} (\Omega ) = 1$ (and $\mathbfsf{P} (\varnothing) = 0$);
+  \item $\mathbfsf{P} (A) + \mathbfsf{P} (B)$ for all $A, B \subset \Omega $ and $A \cap B = \varnothing$.
+This statement follows from the more general identity
+          \[
+\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap B)
+          \]
+for $A, B \subset \Omega $, by using $P(\varnothing) = 0$ of (2) above.
+  \end{enumerate}
 
-Conversely, suppose $f: \powerset{\Omega } \to \R $ satifies (i), (ii), (iii).
-These three conditions are sometimes called the \t{axioms of probability} (for finite sets).
-Define $p: \Omega  \to \R $ by
-  \[
-p(\omega ) = f(\set{\omega }).
-  \]
-In case $f$ satisfies the axioms, $p$ is a probability distribution (nonnegative and sums to one).
-For this reason we call $f$ satisfying (i)-(iii) an \t{event probability function} (or \t{probability measure}).
-In the case that we think of a probability event function $\mathbfsf{P} $ as induced by a distribution $p$, we write $\mathbfsf{P} _p$.
+Do all such $\mathbfsf{P} $ satisfying (1)-(3) have a corresponding underlying probability distribution?
+In other words, suppose $f: \powerset{\Omega } \to \R $ satifies (1)-(3).
+These three conditions are sometimes called the \t{axioms of probability for finite sets}.
 
-We conclude that $p$ and $\mathbfsf{P} $ are two perspectives.
-We can think of elementary events (outcomes) and define their probabilities individually in a way that they sum to one and are nonnegative.
-Or we can think of the compound events, and define their probabilities in a way consistent with (i)-(iii).
+Define $q: \Omega  \to \R $ by $q(\omega ) = f(\set{\omega })$.
+If $f$ satisfies the axioms, then $q$ is a probability distribution.
+For this reason we call any function satisfying (i)-(iii) an \t{event probability function} (or a \t{probability measure}).
 
 \section*{Probability by cases}
 

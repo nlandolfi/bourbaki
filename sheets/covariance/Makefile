@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make covariance.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 covariance.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > covariance.tex
 

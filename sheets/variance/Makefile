@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make variance.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 variance.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > variance.tex
 
