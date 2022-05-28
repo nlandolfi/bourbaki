@@ -136,6 +136,8 @@ MathJax.Hub.Config({
               ['\\[', '\\]']
             ],
           macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -164,7 +166,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{convex set} contains every closed line segement between any two points. Every affine set is convex.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $x$ and $y$ in $\R ^n$. We can express the closed line segment between $x$ and $y$ as \[ \Set*{x + a(y - x)}{0 \leq a \leq 1, x, y \in \R ^n}. \] Notice that $x + a(y - x) = (1-a)x + ay$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Every affine set is convex. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The intersection of a family of convex sets is convex. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The translate of a convex set is convex. The scalar multiple of a convex set si convex. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{convex set} contains every closed line segement between any two points. Every affine set is convex.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $x$ and $y$ in $\R ^n$. We can express the closed line segment between $x$ and $y$ as \[ \Set*{x + a(y - x)}{0 \leq a \leq 1, x, y \in \R ^n}. \] Notice that $x + a(y - x) = (1-a)x + ay$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Every affine set is convex. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The intersection of a family of convex sets is convex. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The translate of a convex set is convex. The scalar multiple of a convex set si convex. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -269,28 +271,16 @@ MathJax.Hub.Config({
 
   
     <div class="lit">
-    <p>
- <span class='run'>❲%!name:convex_sets❳ </span>
+    <!--
+!name:convex_sets
+!need:operations
+!need:intervals
+!need:affine_sets
+!need:line_segments
+-->
 
- <span class='run'>❲%!need:operations❳ </span>
-
- <span class='run'>❲%!need:intervals❳ </span>
-
- <span class='run'>❲%!need:affine_sets❳ </span>
-
- <span class='run'>❲%!need:line_segments❳ </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}[footnote skipped in this version]</span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
+<h1>
+Definition </h1>
 
 <p>
  <span class='run'>A <span class='term'>convex set</span> contains
@@ -300,11 +290,8 @@ MathJax.Hub.Config({
  <span class='run'>Every affine set is convex. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Notation} </span>
-</p>
-
+<h2>
+Notation </h2>
 
 <p>
  <span class='run'>Let $x$ and $y$ in $𝗥^n$. We can express the
@@ -318,42 +305,36 @@ MathJax.Hub.Config({
 
 
 <p>
- <span class='run'>\begin{prop} </span>
+ <span class='run'>\begin{proposition} </span>
 
  <span class='run'>Every affine set is convex. </span>
 
- <span class='run'>\end{prop} </span>
+ <span class='run'>\end{proposition} </span>
 </p>
 
 
 <p>
- <span class='run'>\begin{prop} </span>
+ <span class='run'>\begin{proposition} </span>
 
  <span class='run'>The intersection of a family of convex sets is
   convex. </span>
 
- <span class='run'>\end{prop} </span>
+ <span class='run'>\end{proposition} </span>
 </p>
 
 
 <p>
- <span class='run'>\begin{prop} </span>
+ <span class='run'>\begin{proposition} </span>
 
  <span class='run'>The translate of a convex set is convex. </span>
 
  <span class='run'>The scalar multiple of a convex set si convex. </span>
 
- <span class='run'>\end{prop} </span>
+ <span class='run'>\end{proposition} </span>
 </p>
 
-
-<p>
- <span class='run'>\blankpage </span>
-</p>
-
-
-<p>
- <span class='run'>❲% A \t{convex combination} of two distinct real numbers
+<!--
+  ❲% A \t{convex combination} of two distinct real numbers
 % is an element of the closed interval they
 % delimit.
 % A
@@ -389,7 +370,7 @@ MathJax.Hub.Config({
 % Suppose $A$ contains
 % at least two element.
 % Let $a, b \in A$
-% with $a &lt; b$.
+% with $a < b$.
 % If $c$ is the combination
 % of $a$ and $b$, then
 % the length of $c$
@@ -403,8 +384,7 @@ MathJax.Hub.Config({
 %   \theta a + (1-\theta) b \in A.
 % \]
 %
-❳ </span>
-</p>
+-->
 
     </div>
   
@@ -459,7 +439,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version f19494e6d.
+      Copyright 2022 The Bourbaki Authors. Version d1cba987d.
     </span>
   </body>
 </html>

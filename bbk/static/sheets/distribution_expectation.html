@@ -25,9 +25,9 @@
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./probability_distributions.html'" onkeypress="location.href='./probability_distributions.html'">
+            <div class="need" tabindex="0" onclick="location.href='./induced_probability_distributions.html'" onkeypress="location.href='./induced_probability_distributions.html'">
               <span>
-                Probability Distributions
+                Induced Probability Distributions
               </span>
               <span class="caret">›</span>
             </div>
@@ -36,9 +36,30 @@
       
         <div disabled class="need label"> Needed by: </div>
         
+          <div class="need" tabindex="0" onclick="location.href='./distribution_covariance.html'" onkeypress="location.href='./distribution_covariance.html'">
+            <span>
+            Distribution Covariance
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./expectation.html'" onkeypress="location.href='./expectation.html'">
+            <span>
+            Expectation
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
           <div class="need" tabindex="0" onclick="location.href='./expectation_maximization.html'" onkeypress="location.href='./expectation_maximization.html'">
             <span>
             Expectation Maximization
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./probability_vectors.html'" onkeypress="location.href='./probability_vectors.html'">
+            <span>
+            Probability Vectors
             </span>
             <span class="caret">›</span>
           </div>
@@ -101,7 +122,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we are going to make a several measurements. We associate to each element of a finite set a number. If the measurements we make are divided into proportions according to a distribution, if we make all the measurements and then average the results what do we expect to get. \ifhmode\unskip\fi\footnote{ Future editions will modify. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider a distribution $p$ and a real-valued function $f$. The \t{distribution expectation} of $f$ \t{under} $p$ is the sum of the product of the results of $p$ and $f$ on the elements of the set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ a finite set. Let $p: A \to [0, 1]$ a distribution on a finite set $A$ and let $f: A \to \R $ a function on $A$. The expectation of $f$ under $p$ is \[ \sum_{a \in A} p(a) f(a). \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> If we model some measured value as a random variable with induced distribution $p: V \to \R $, then one interpretation of $p(v)$ for $v \in V$ is the <i>proportion} of times in a large number of trials that we \textit{expect</i> to measure the value $v$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Given a distribution $p: \Omega  \to \R $ and a <i>real-valued} outcome variable $x: \Omega  \to \R $, the \t{expectation} (or \t{mean}) of $x$ under $p$ is $\sum_{\omega \in \Omega </i> p(\omega )x(\omega )$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the expectation of $x$ under $p$ by $\E (x)$. When there is no chance of ambiguity, we write $\E (x)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> Let $x, y : \Omega  \to \R $ be two outcome variables and $p: \Omega  \to \R $ a distribution. Let $\alpha , \beta  \in \R $. Define $z = \alpha x + \beta y$ by $z(\omega ) = \alpha x(\omega ) + \beta y(\omega )$. Then $\E (z) = \alpha \E (x) + \beta \E (z)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example: expectation}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $\Omega  = \set{1, 2, 3, 4, 5}$ with $p(1) = 0.1$, $p(2) = 0.15$, $p(3) = 0.1$, $p(5) = 0.25$ and $p(5) = 0.4$. Define $x: \Omega  \to \R $ by \[ x(a) = \begin{cases} -1 & \text{ if } a = 1 \text{ or } a = 2, \\ 1 & \text{ if } a = 3 \text{ or } a = 4, \\ 2 & \text{ if } a = 5. \\ \end{cases} \] The expectation of $x$ under $p$ is \[ \E x = -1 -0.15 + 0.1 + 0.25 + 2(0.4) = 0.9. \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Two routes for computation}</p></div><div class="sheet-listing"><p class="sheet"> Denote by $p_x: V \to \R $ the induced distribution of $x: \Omega  \to V$ (where $V \subset \R $). Then $\E (x) = \sum_{v \in V} p_x(v)v$ since \[ \begin{aligned} \textstyle \sum_{\omega  \in \Omega } p(\omega )x(\omega ) &= \sum_{v \in V} \sum_{\omega  \in x^{-1}(v)} x(\omega )p(\omega ) \\ \textstyle &= \sum_{v \in V} v \sum_{\omega  \in x^{-1}(v)} p(\omega ) \\ \textstyle & = \sum_{v \in V} x(v) p_x(v). \end{aligned} \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Interpretations}</p></div><div class="sheet-listing"><p class="sheet"> We interpret the mean as the center of mass of the induced distribution.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -206,69 +227,116 @@ MathJax.Hub.Config({
 
   
     <div class="lit">
-    <p>
- <span class='run'>❲%!name:distribution_expectation❳ </span>
+    <!--
+!name:distribution_expectation
+!need:induced_probability_distributions
+%!refs:sanjay_lall/linear_control_systems_2/random_variables
+-->
 
- <span class='run'>❲%!need:probability_distributions❳ </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>
+Why </h1>
 
 <p>
- <span class='run'>Suppose we are going to make a several
-  measurements.
-  <span class='run'>We associate to each element of a finite set
-   a number. </span>
-
-  <span class='run'>If the measurements we make are divided into
-   proportions according to a distribution, if we
-   make all the measurements and then average the
-   results what do we expect to get.[footnote skipped in this version]</span></span>
+ <span class='run'>If we model some measured value as a random
+  variable with induced distribution $p: V → 𝗥$,
+  then one interpretation of $p(v)$ for $v ∈ V$
+  is the <i>proportion</i> of times in a large
+  number of trials that we <i>expect</i> to
+  measure the value $v$.[footnote skipped in this version]</span>
 </p>
 
+<h1>
+Definition </h1>
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>Given a distribution $p: Ω → 𝗥$ and a
+  <i>real-valued</i> outcome variable $x: Ω → 𝗥$,
+  the <span class='term'>expectation</span> (or
+  <span class='term'>mean</span>) of $x$ under $p$
+  is $∑_{ω ∈ Ω} p(ω)x(ω)$. </span>
 </p>
 
+<h2>
+Notation </h2>
 
 <p>
- <span class='run'>Consider a distribution $p$ and a real-valued
-  function $f$. </span>
+ <span class='run'>We denote the expectation of $x$ under $p$ by
+  $𝗘(x)$. </span>
 
- <span class='run'>The <span class='term'>distribution
-  expectation</span> of $f$
-  <span class='term'>under</span> $p$ is the sum of
-  the product of the results of $p$ and $f$ on
-  the elements of the set. </span>
+ <span class='run'>When there is no chance of ambiguity, we write
+  $𝗘(x)$. </span>
 </p>
 
+<h1>
+Properties </h1>
 
 <p>
- <span class='run'>\ssubsection{Notation} </span>
+ <span class='run'>Let $x, y : Ω → 𝗥$ be two outcome variables
+  and $p: Ω → 𝗥$ a distribution. </span>
+
+ <span class='run'>Let $α, β ∈ 𝗥$. </span>
+
+ <span class='run'>Define $z = αx + βy$ by $z(ω) = αx(ω) +
+  βy(ω)$. </span>
+
+ <span class='run'>Then $𝗘(z) = α𝗘(x) + β𝗘(z)$. </span>
 </p>
 
+<h1>
+Example: expectation </h1>
 
 <p>
- <span class='run'>Let $A$ a finite set. </span>
+ <span class='run'>Suppose $Ω = \set{1, 2, 3, 4, 5}$ with $p(1)
+  = 0.1$, $p(2) = 0.15$, $p(3) = 0.1$, $p(5) =
+  0.25$ and $p(5) = 0.4$. </span>
 
- <span class='run'>Let $p: A → [0, 1]$ a distribution on a
-  finite set $A$ and let $f: A → 𝗥$ a function
-  on $A$. </span>
-
- <span class='run'>The expectation of $f$ under $p$ is
+ <span class='run'>Define $x: Ω → 𝗥$ by
   <p>\[
-   ∑_{a ∈ A} p(a) f(a). </span>
+   x(a) = \begin{cases} </span>
+
+   -1 ❲&amp;❳ \text{ if } a = 1 \text{ or } a = 2, <br /> </span>
+
+   1 ❲&amp;❳ \text{ if } a = 3 \text{ or } a = 4, <br /> </span>
+
+   2 ❲&amp;❳ \text{ if } a = 5. <br /> </span>
+
+   \end{cases} </span>
+  \]</p></span>
+
+ <span class='run'>The expectation of $x$ under $p$ is
+  <p>\[
+   𝗘x = -1 -0.15 + 0.1 + 0.25 + 2(0.4) = 0.9. </span>
   \]</p></span>
 </p>
 
+<h2>
+Two routes for computation </h2>
 
 <p>
- <span class='run'>\blankpage </span>
+ <span class='run'>Denote by $p_x: V → 𝗥$ the induced
+  distribution of $x: Ω → V$ (where $V ⊂ 𝗥$). </span>
+
+ <span class='run'>Then $𝗘(x) = ∑_{v ∈ V} p_x(v)v$ since
+  <p>\[
+   \begin{aligned} </span>
+
+   \textstyle ∑_{ω ∈ Ω} p(ω)x(ω) ❲&amp;❳= ∑_{v ∈ V} ∑_{ω ∈
+    x^{-1}(v)} x(ω)p(ω) <br /> </span>
+
+   \textstyle ❲&amp;❳= ∑_{v ∈ V} v ∑_{ω ∈ x^{-1}(v)} p(ω) <br /> </span>
+
+   \textstyle ❲&amp;❳ = ∑_{v ∈ V} x(v) p_x(v). </span>
+
+   \end{aligned} </span>
+  \]</p></span>
+</p>
+
+<h1>
+Interpretations </h1>
+
+<p>
+ <span class='run'>We interpret the mean as the center of mass
+  of the induced distribution. </span>
 </p>
 
     </div>
@@ -324,7 +392,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version f19494e6d.
+      Copyright 2022 The Bourbaki Authors. Version 2ee4bca65.
     </span>
   </body>
 </html>

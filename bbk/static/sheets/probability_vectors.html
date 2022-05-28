@@ -25,9 +25,9 @@
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+            <div class="need" tabindex="0" onclick="location.href='./outcome_variable_expectation.html'" onkeypress="location.href='./outcome_variable_expectation.html'">
               <span>
-                Matrix Transpose
+                Outcome Variable Expectation
               </span>
               <span class="caret">›</span>
             </div>
@@ -35,6 +35,13 @@
             <div class="need" tabindex="0" onclick="location.href='./probability_distributions.html'" onkeypress="location.href='./probability_distributions.html'">
               <span>
                 Probability Distributions
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_inner_product.html'" onkeypress="location.href='./real_inner_product.html'">
+              <span>
+                Real Inner Product
               </span>
               <span class="caret">›</span>
             </div>
@@ -50,6 +57,43 @@
       
     </div>
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
       <link rel="stylesheet" href="../katex/katex.min.css">
       <script src="../katex/katex.min.js"></script>
       <script src="../katex/auto-render.min.js"></script>
@@ -66,8 +110,11 @@
         );
       });
     </script>
+    -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can represent a probability distribution on a set of size $n$ by a vector in $\R^n$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set with $\num{A} = n$ and let $p: A \to \R$ be a probability distribution on $A$. For $\sigma: A \to \N$ a numbering of $A$, define the vector $x_i = p(\sigma^{-1}{x})$. Then $x \geq 0$ (elementwise) and $\transpose{1} x = 1$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We can identify probability distributions with vectors.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $p: \Omega  \to \R $ be a probability distribution on a finite set $\Omega  = \set{\omega _1, \dots , \omega _n}$. We can associate $p$ with the vector $x \in \R ^n$ defined by $x_i = p(\omega _i)$ for $i = 1, \dots , n$. We call this vector $y$ the \t{probability vector} associated with $p$. The conditions on $p$ mean that (1) $\ip{1, y} = 1$ and (2) $y \geq 0$ (i.e., $y_i \geq 0$ for all $i = 1, \dots , n$.).</p></div><div class="sheet-listing"><p class="sheet"> Conversely, suppose $z \in \R $ satifies (1) and (2). Then $q: \Omega  \to \R $ defined by $q(\omega _i) = z_i$ for $i = 1, \dots , n$ is a probability distribution. For this reason, we call $z$ satisfying the conditions a \t{distribution vector}. Notice that implicit in this correspondence is a numbering $\omega : \set{1, \dots , n} \to \Omega $ of the set of outcomes $\Omega $.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Expectation}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $\rho  \in \R ^n$ is a distribution vector corresponding to $p: \Omega  \to \R $ its corresponding distribution. Let $x: \Omega  \to \R $ and (similar to $\rho $) define $\xi \in \R ^n$ by $\xi _i = x(\omega _i)$ for $i = 1, \dots , n$. Then $\E x = \ip{\rho , \xi }$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Example}</p></div><div class="sheet-listing"><p class="sheet"> For $\rho  = (-1, -1, 1, 1, 2)$ and $\xi  = (0.1, 0.15, 0.1, 0.25, 0.4)$ \[ \E x = \ip{\rho , \xi } -1 -0.15 + 0.1 + 0.25 + 2(0.4) = 0.9. \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -170,8 +217,142 @@
     </iframe>
     -->
 
+  
+    <div class="lit">
+    <!--
+!name:probability_vectors
+!need:probability_distributions
+!need:real_vectors
+!need:real_inner_product
+!need:outcome_variable_expectation
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We can identify probability distributions with
+  vectors. </span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Let $p: Ω → 𝗥$ be a probability distribution
+  on a finite set $Ω = \set{ω_1, …, ω_n}$. </span>
+
+ <span class='run'>We can associate $p$ with the vector $x ∈
+  𝗥^n$ defined by $x_i = p(ω_i)$ for $i = 1, …,
+  n$. </span>
+
+ <span class='run'>We call this vector $y$ the
+  <span class='term'>probability vector</span>
+  associated with $p$. </span>
+
+ <span class='run'>The conditions on $p$ mean that (1) $\ip{1, y}
+  = 1$ and (2) $y ≥ 0$ (i.e., $y_i ≥ 0$ for
+  all $i = 1, …, n$.). </span>
+</p>
+
+
+<p>
+ <span class='run'>Conversely, suppose $z ∈ 𝗥$ satifies (1) and
+  (2). </span>
+
+ <span class='run'>Then $q: Ω → 𝗥$ defined by $q(ω_i) = z_i$
+  for $i = 1, …, n$ is a probability
+  distribution. </span>
+
+ <span class='run'>For this reason, we call $z$ satisfying the
+  conditions a <span class='term'>distribution
+  vector</span>. </span>
+
+ <span class='run'>Notice that implicit in this correspondence is
+  a numbering $ω: \set{1, …, n} → Ω$ of the set
+  of outcomes $Ω$. </span>
+</p>
+
+<h1>
+Expectation </h1>
+
+<p>
+ <span class='run'>Suppose $ρ ∈ 𝗥^n$ is a distribution vector
+  corresponding to $p: Ω → 𝗥$ its corresponding
+  distribution. </span>
+
+ <span class='run'>Let $x: Ω → 𝗥$ and (similar to $ρ$) define
+  $ξ ∈ 𝗥^n$ by $ξ_i = x(ω_i)$ for $i = 1, …,
+  n$. </span>
+
+ <span class='run'>Then $𝗘x = \ip{ρ, ξ}$. </span>
+</p>
+
+<h2>
+Example </h2>
+
+<p>
+ <span class='run'>For $ρ = (-1, -1, 1, 1, 2)$ and $ξ = (0.1,
+  0.15, 0.1, 0.25, 0.4)$
+  <p>\[
+   𝗘x = \ip{ρ, ξ} -1 -0.15 + 0.1 + 0.25 + 2(0.4) = 0.9. </span>
+  \]</p></span>
+</p>
+
+    </div>
+  
+
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
+
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ccd4ba836.
+      Copyright 2022 The Bourbaki Authors. Version d1cba987d.
     </span>
   </body>
 </html>

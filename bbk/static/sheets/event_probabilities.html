@@ -43,9 +43,9 @@
             <span class="caret">›</span>
           </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./outcome_variable_probabilities.html'" onkeypress="location.href='./outcome_variable_probabilities.html'">
+          <div class="need" tabindex="0" onclick="location.href='./outcome_variable_events.html'" onkeypress="location.href='./outcome_variable_events.html'">
             <span>
-            Outcome Variable Probabilities
+            Outcome Variable Events
             </span>
             <span class="caret">›</span>
           </div>
@@ -87,6 +87,8 @@ MathJax.Hub.Config({
               ['\\[', '\\]']
             ],
           macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -115,7 +117,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Since one and only one outcome occurs, given a distribution on outcomes, we define the probability of a set of outcomes as the sum of their probabilities.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Given a distribution $p: \Omega  \to \R $, the \t{probability of an event} $A \subset \Omega $ is $\sum_{a \in A} p(a)$, the sum of probabilities of its outcomes.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Define define $\mathbfsf{P} : \powerset{\Omega } \to \R $ by \[ \textstyle \mathbfsf{P} (A) = \sum_{a \in A} p(a). \] We call $\mathbfsf{P} $ the \t{event probability function} (or \t{probability measure}) of (or induced by) $p$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example: die}</p></div><div class="sheet-listing"><p class="sheet"> Define $p: \set{1, \dots , 6} \to \R $ by $p(\omega ) = \nicefrac{1}{6}$ for $\omega  = 1, \dots , 6$. Define the event $E = \set{2, 4, 6}$. Then \[ \textstyle \mathbfsf{P} (E) = \sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = \nicefrac{1}{2}. \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Probability measures}</p></div><div class="sheet-listing"><p class="sheet"> Notice that for all $A \subset \Omega $, (i) $\mathbfsf{P} (A) \geq 0$. In particular, (ii) $\mathbfsf{P} (\Omega ) = 1$ (and $\mathbfsf{P} (\varnothing) = 0$). For all $A, B \subset \Omega $, $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap B)$. In particular, if $A \cap B = \varnothing$, (iii) $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B)$.</p></div><div class="sheet-listing"><p class="sheet"> Conversely, suppose $f: \powerset{\Omega } \to \R $ satifies (i), (ii), (iii). These three conditions are sometimes called the \t{axioms of probability} (for finite sets). Define $p: \Omega  \to \R $ by \[ p(\omega ) = f(\set{\omega }). \] In case $f$ satisfies the axioms, $p$ is a probability distribution (nonnegative and sums to one). For this reason we call $f$ satisfying (i)-(iii) an \t{event probability function} (or \t{probability measure}). In the case that we think of a probability event function $\mathbfsf{P} $ as induced by a distribution $p$, we write $\mathbfsf{P} _p$.</p></div><div class="sheet-listing"><p class="sheet"> We conclude that $p$ and $\mathbfsf{P} $ are two perspectives. We can think of elementary events (outcomes) and define their probabilities individually in a way that they sum to one and are nonnegative. Or we can think of the compound events, and define their probabilities in a way consistent with (i)-(iii).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Probability by cases}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathbfsf{P} $ be a probability event function. Suppose $A_1, \dots , A_n$ partition $\Omega $. Then for any $B \subset \Omega $, \[ \textstyle \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i \cap B). \] Some authors call this the \t{law of total probability}.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Since one and only one outcome occurs, given a distribution on outcomes, we define the probability of a set of outcomes as the sum of their probabilities.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Given a distribution $p: \Omega  \to \R $, the \t{probability of an event} $A \subset \Omega $ is $\sum_{a \in A} p(a)$, the sum of the probabilities of its outcomes.</p></div><div class="sheet-listing"><p class="sheet"> Define $\mathbfsf{P} : \powerset{\Omega } \to \R $ by $\mathbfsf{P} (A) = \sum_{a \in A} p(a)$. We call $\mathbfsf{P} $ \t{the event probability function} (or \t{the probability measure}) induced by $p$. Clearly $\mathbfsf{P} $ depends on the set of outcomes $\Omega $ and the distribution $p: \Omega  \to \R $. We sometimes denote this dependence by $\mathbfsf{P} _{\Omega , p}$ or $\mathbfsf{P} _p$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example: die}</p></div><div class="sheet-listing"><p class="sheet"> Define $p: \set{1, \dots , 6} \to \R $ by $p(\omega ) = \nicefrac{1}{6}$ for $\omega  = 1, \dots , 6$. Define the event $E = \set{2, 4, 6}$. Then \[ \textstyle \mathbfsf{P} (E) = \sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = \nicefrac{1}{2}. \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties of $\mathbfsf{P} $}</p></div><div class="sheet-listing"><p class="sheet"> As a result of the conditions on $p$, $\mathbfsf{P} $ satisfies \begin{enumerate} \item $\mathbfsf{P} (A) \geq 0$ for all $A \subset \Omega $; \item $\mathbfsf{P} (\Omega ) = 1$ (and $\mathbfsf{P} (\varnothing) = 0$); \item $\mathbfsf{P} (A) + \mathbfsf{P} (B)$ for all $A, B \subset \Omega $ and $A \cap B = \varnothing$. This statement follows from the more general identity \[ \mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap B) \] for $A, B \subset \Omega $, by using $P(\varnothing) = 0$ of (2) above. \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> Do all such $\mathbfsf{P} $ satisfying (1)-(3) have a corresponding underlying probability distribution? In other words, suppose $f: \powerset{\Omega } \to \R $ satifies (1)-(3). These three conditions are sometimes called the \t{axioms of probability for finite sets}.</p></div><div class="sheet-listing"><p class="sheet"> Define $q: \Omega  \to \R $ by $q(\omega ) = f(\set{\omega })$. If $f$ satisfies the axioms, then $q$ is a probability distribution. For this reason we call any function satisfying (i)-(iii) an \t{event probability function} (or a \t{probability measure}).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Probability by cases}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathbfsf{P} $ be a probability event function. Suppose $A_1, \dots , A_n$ partition $\Omega $. Then for any $B \subset \Omega $, \[ \textstyle \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i \cap B). \] Some authors call this the \t{law of total probability}.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -241,25 +243,25 @@ Definition </h1>
 <p>
  <span class='run'>Given a distribution $p: Ω → 𝗥$, the
   <span class='term'>probability of an event</span>
-  $A ⊂ Ω$ is $∑_{a ∈ A} p(a)$, the sum of
+  $A ⊂ Ω$ is $∑_{a ∈ A} p(a)$, the sum of the
   probabilities of its outcomes. </span>
 </p>
 
-<h1>
-Notation </h1>
 
 <p>
- <span class='run'>Define define $𝗣: \powerset{Ω} → 𝗥$ by
-  <p>\[
-   \textstyle </span>
+ <span class='run'>Define $𝗣: \powerset{Ω} → 𝗥$ by $𝗣(A) = ∑_{a
+  ∈ A} p(a)$. </span>
 
-   𝗣(A) = ∑_{a ∈ A} p(a). </span>
-  \]</p></span>
-
- <span class='run'>We call $𝗣$ the <span class='term'>event
+ <span class='run'>We call $𝗣$ <span class='term'>the event
   probability function</span> (or
-  <span class='term'>probability measure</span>) of
-  (or induced by) $p$. </span>
+  <span class='term'>the probability measure</span>)
+  induced by $p$. </span>
+
+ <span class='run'>Clearly $𝗣$ depends on the set of outcomes $Ω$
+  and the distribution $p: Ω → 𝗥$. </span>
+
+ <span class='run'>We sometimes denote this dependence by $𝗣_{Ω,
+  p}$ or $𝗣_p$. </span>
 </p>
 
 <h1>
@@ -281,61 +283,53 @@ Example: die </h1>
 </p>
 
 <h1>
-Probability measures </h1>
+Properties of $𝗣$ </h1>
 
 <p>
- <span class='run'>Notice that for all $A ⊂ Ω$, (i) $𝗣(A) ≥ 0$. </span>
+ <span class='run'>As a result of the conditions on $p$, $𝗣$
+  satisfies
+  <ol>
+   <li>$𝗣(A) ≥ 0$ for all $A ⊂ Ω$; </li>
 
- <span class='run'>In particular, (ii) $𝗣(Ω) = 1$ (and $𝗣(∅) =
-  0$). </span>
+   <li>$𝗣(Ω) = 1$ (and $𝗣(∅) = 0$); </li>
 
- <span class='run'>For all $A, B ⊂ Ω$, $𝗣(A ∪ B) = 𝗣(A) +
-  𝗣(B) - 𝗣(A ∩ B)$. </span>
+   <li><span class='run'>$𝗣(A) + 𝗣(B)$ for all $A, B ⊂ Ω$ and $A ∩ B
+     = ∅$. </span>
 
- <span class='run'>In particular, if $A ∩ B = ∅$, (iii) $𝗣(A ∪
-  B) = 𝗣(A) + 𝗣(B)$. </span>
+    <span class='run'>This statement follows from the more general
+     identity
+     <p>\[
+      𝗣(A ∪ B) = 𝗣(A) + 𝗣(B) - 𝗣(A ∩ B) </span>
+     \]</p>
+     for $A, B ⊂ Ω$, by using $P(∅) = 0$ of
+     (2) above. </span></li>  </ol>
+</span>
 </p>
 
 
 <p>
- <span class='run'>Conversely, suppose $f: \powerset{Ω} → 𝗥$
-  satifies (i), (ii), (iii). </span>
+ <span class='run'>Do all such $𝗣$ satisfying (1)-(3) have a
+  corresponding underlying probability distribution? </span>
+
+ <span class='run'>In other words, suppose $f: \powerset{Ω} → 𝗥$
+  satifies (1)-(3). </span>
 
  <span class='run'>These three conditions are sometimes called the
-  <span class='term'>axioms of probability</span> (for
-  finite sets). </span>
-
- <span class='run'>Define $p: Ω → 𝗥$ by
-  <p>\[
-   p(ω) = f(\set{ω}). </span>
-  \]</p></span>
-
- <span class='run'>In case $f$ satisfies the axioms, $p$ is a
-  probability distribution (nonnegative and sums to
-  one). </span>
-
- <span class='run'>For this reason we call $f$ satisfying
-  (i)-(iii) an <span class='term'>event probability
-  function</span> (or <span class='term'>probability
-  measure</span>). </span>
-
- <span class='run'>In the case that we think of a probability
-  event function $𝗣$ as induced by a distribution
-  $p$, we write $𝗣_p$. </span>
+  <span class='term'>axioms of probability for finite
+  sets</span>. </span>
 </p>
 
 
 <p>
- <span class='run'>We conclude that $p$ and $𝗣$ are two
-  perspectives. </span>
+ <span class='run'>Define $q: Ω → 𝗥$ by $q(ω) = f(\set{ω})$. </span>
 
- <span class='run'>We can think of elementary events (outcomes)
-  and define their probabilities individually in a
-  way that they sum to one and are nonnegative. </span>
+ <span class='run'>If $f$ satisfies the axioms, then $q$ is a
+  probability distribution. </span>
 
- <span class='run'>Or we can think of the compound events, and
-  define their probabilities in a way consistent
-  with (i)-(iii). </span>
+ <span class='run'>For this reason we call any function satisfying
+  (i)-(iii) an <span class='term'>event probability
+  function</span> (or a <span class='term'>probability
+  measure</span>). </span>
 </p>
 
 <h1>
@@ -410,7 +404,7 @@ Probability by cases </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version f19494e6d.
+      Copyright 2022 The Bourbaki Authors. Version d1cba987d.
     </span>
   </body>
 </html>

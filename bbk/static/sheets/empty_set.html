@@ -80,6 +80,8 @@ MathJax.Hub.Config({
               ['\\[', '\\]']
             ],
           macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -108,7 +110,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can a set have no elements?</p></div><div class="sheet-listing"><p class="sheet"> \s{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Sure. A set exists by the principle of existence (see \sheetref{sets}{Sets}); denote it by $A$. Specify elements (see \sheetref{set_specification}{Set Specification}) of any set that exists using the universally false statement $x \neq x$. We denote that set by $\Set{x \in A}{x \neq x}$. It has no elements. In other words, $(\forall x)(x \not \in A)$. The principle of extension (see \sheetref{set_equality}{Set Equality}) says that the set obtained is unique (contradiction).\footnote{This account will be expanded in the next edition.} We call the unique set with no elements \t{the empty set}.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the empty set by $\emptyset$. In other words, in all future accounts (see \sheetref{accounts}{Accounts}), there are two implicit lines. First, "\texttt{name} $\emptyset$} and second \say{\texttt{have} $(\forall x)(x \not\in \emptyset)$".</p></div><div class="sheet-listing"><p class="sheet"> \s{Properties}</p></div><div class="sheet-listing"><p class="sheet"> It is immediate from our definition of the empty set and of the definition of inclusion (see \sheetref{set_inclusion}{Set Inclusion}) that the empty set is included in every set (including itself).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\forall A)(\emptyset \subset A)$ \end{proposition} \begin{proof} Suppose toward contradiction that $\varnothing \not\subset A$. Then there exists $y \in \varnothing$ such that $y \not \in A$. But this is impossible, since $(\forall x)(x \not \in \varnothing)$. \end{proof}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Can a set have no elements?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Sure. A set exists by the principle of existence (see \sheetref{sets}{Sets}); denote it by $A$. Specify elements (see \sheetref{set_specification}{Set Specification}) of any set that exists using the universally false statement $x \neq x$. We denote that set by $\Set{x \in A}{x \neq x}$. It has no elements. In other words, $(\forall x)(x \not \in A)$. The principle of extension (see \sheetref{set_equality}{Set Equality}) says that the set obtained is unique (contradiction). \ifhmode\unskip\fi\footnote{ This account will be expanded in the next edition. } We call the unique set with no elements \t{the empty set}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the empty set by $\varnothing$. In other words, in all future accounts (see \sheetref{accounts}{Accounts}), there are two implicit lines. First, "\texttt{name} $\varnothing$} and second \say{\texttt{have} $(\forall x)(x \not\in \varnothing)$".</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> It is immediate from our definition of the empty set and of the definition of inclusion (see \sheetref{set_inclusion}{Set Inclusion}) that the empty set is included in every set (including itself).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\forall A)(\varnothing \subset A)$ \end{proposition} \begin{proof} Suppose toward contradiction that $\varnothing \not\subset A$. Then there exists $y \in \varnothing$ such that $y \not \in A$. But this is impossible, since $(\forall x)(x \not \in \varnothing)$. \end{proof}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -212,6 +214,148 @@ MathJax.Hub.Config({
     -->
 
   
+    <div class="lit">
+    <!--
+!name:empty_set
+!need:set_specification
+!refs:paul_halmos∕naive_set_theory∕section_03
+!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕sets_and_subsets
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>Can a set have no elements? </span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Sure. </span>
+
+ <span class='run'>A set exists by the principle of existence
+  (see \sheetref{sets}{Sets}); denote it by $A$. </span>
+
+ <span class='run'>Specify elements (see
+  \sheetref{set_specification}{Set Specification}) of
+  any set that exists using the universally false
+  statement $x ≠ x$. </span>
+
+ <span class='run'>We denote that set by $\Set{x ∈ A}{x ≠ x}$. </span>
+
+ <span class='run'>It has no elements. </span>
+
+ <span class='run'>In other words, $(∀ x)(x \not ∈ A)$. </span>
+
+ <span class='run'>The principle of extension (see
+  \sheetref{set_equality}{Set Equality}) says that
+  the set obtained is unique (contradiction).[footnote skipped in this version]</span>
+
+ <span class='run'>We call the unique set with no elements
+  <span class='term'>the empty set</span>. </span>
+</p>
+
+
+<!--
+<div data-littype='paragraph'>
+  <div data-littype='run'> </div>
+
+  <div data-littype='run'> ❲%\begin{account}❳ </div>
+
+  <div data-littype='run'> ❲%  \namee{$A$}{$B$}❳ </div>
+
+  <div data-littype='run'> ❲%  \have{empty_set:aempty}{$\neg((∃ a)(a ∈ A))$}❳ </div>
+
+  <div data-littype='run'> ❲%  \have{empty_set:bempty}{$\neg((∃ b)(b ∈ B))$}❳ </div>
+
+  <div data-littype='run'> ❲%  \thus{empty_set:ainb}{$(∀ x)(x ∈ A ⟹ b ∈ A)$}{\ref{empty_set:aempty}}❳ </div>
+
+  <div data-littype='run'> ❲%  \thus{empty_set:bina}{$(∀ x)(x ∈ B ⟹ b ∈ B)$}{\ref{empty_set:bempty}}❳ </div>
+
+  <div data-littype='run'> ❲%  \thus{empty_set:conclusion}{$A = B$}{\ref{empty_set:ainb},\ref{empty_set:bina}}❳ </div>
+
+  <div data-littype='run'> ❲%\end{account}❳ </div>
+
+  <div data-littype='run'> ❲% The English follows:❳ </div>
+
+  <div data-littype='run'> ❲% Denote two sets which are both empty by $A$ and by $B$.❳ </div>
+
+  <div data-littype='run'> ❲% Suppose toward contradiction that there exists an element $a ∈ A$ with $a ∉ B$ or $b ∈ B$ with $b ∉ B$.❳ </div>
+
+  <div data-littype='run'> ❲% But then $A$ or $B$ would be nonempty.❳ </div>
+
+  <div data-littype='run'> ❲% Thus there is a set which is empty and any other empty set is this set.❳ </div>
+
+  <div data-littype='run'> ❲% In other words, this set is unique.❳ </div>
+
+  <div data-littype='run'> ❲% We call it the ❬empty set❭.❳ </div>
+</div>
+
+<div data-littype='paragraph'>
+  <div data-littype='run'> ❲%\ssection{Definition}❳ </div>
+
+  <div data-littype='run'> ❲%❳ </div>
+
+  <div data-littype='run'> ❲%First, we assume there exists a set.❳ </div>
+
+  <div data-littype='run'> ❲%As a consequence, there exists a set which contains no elements at all.❳ </div>
+
+  <div data-littype='run'> ❲%We use the axiom of specification with a condition that is always false, and so selects no elements.❳ </div>
+
+  <div data-littype='run'> ❲%❳ </div>
+
+  <div data-littype='run'> ❲%As a result of the axiom of extension, this set with no elements is unique.❳ </div>
+</div>
+-->
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>We denote the empty set by $∅$. </span>
+
+ <span class='run'>In other words, in all future accounts (see
+  \sheetref{accounts}{Accounts}), there are two
+  implicit lines. First, “\texttt{name} $∅$” and
+  second “\texttt{have} $(∀ x)(x ∉ ∅)$”. </span>
+</p>
+
+<h1>
+Properties </h1>
+
+<p>
+ <span class='run'>It is immediate from our definition of the
+  empty set and of the definition of inclusion
+  (see \sheetref{set_inclusion}{Set Inclusion}) that
+  the empty set is included in every set
+  (including itself). </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{proposition} </span>
+
+ <span class='run'>$(∀ A)(∅ ⊂ A)$ </span>
+
+ <span class='run'>\end{proposition} </span>
+
+ <span class='run'>\begin{proof} </span>
+
+ <span class='run'>Suppose toward contradiction that $∅ \not⊂ A$. </span>
+
+ <span class='run'>Then there exists $y ∈ ∅$ such that $y \not
+  ∈ A$. </span>
+
+ <span class='run'>But this is impossible, since $(∀ x)(x \not ∈
+  ∅)$. </span>
+
+ <span class='run'>\end{proof} </span>
+</p>
+
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -263,7 +407,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version f19494e6d.
+      Copyright 2022 The Bourbaki Authors. Version d1cba987d.
     </span>
   </body>
 </html>

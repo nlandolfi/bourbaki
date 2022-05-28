@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./outcome_variable_events.pdf#page=2'"> Outcome Variable Events </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./outcome_variable_events.pdf#page=2'" onkeypress="location.href='./outcome_variable_events.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./outcome_variable_events-graph.pdf'" onkeypress="location.href='./outcome_variable_events-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./event_probabilities.html'" onkeypress="location.href='./event_probabilities.html'">
+              <span>
+                Event Probabilities
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+              <span>
+                Uncertain Outcomes
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./induced_probability_distributions.html'" onkeypress="location.href='./induced_probability_distributions.html'">
+            <span>
+            Induced Probability Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> For each value of a random variable's codomain, the set of outcomes corresponding to that value is the inverse image of the random variable. We can speak of the probability that a random variable takes a value then, by assigning it the probability of the set of outcomes corresponding to that value.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $p: \Omega  \to \R $ be a probability distribution with corresponding probability measure $\mathbfsf{P} : \powerset{\Omega } \to \R $. Suppose $x: \Omega  \to V$ is an outcome variable. The \t{probability $x = a$}, for $a \in \Omega $, is \[ \textstyle \mathbfsf{P} (\Set{\omega  \in \Omega }{x(\omega ) = a}). \] From the definition of $\mathbfsf{P} $, we express the above as \[ \textstyle \sum_{\omega  \in \Omega  \mid x(\omega ) = a} p(\omega ). \] We refer to the probability of the <i>event</i> that $x = a$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the probability that $x = a$ by $\mathbfsf{P} [x =a]$. Our square brackets deviate from the slightly slippery but universally standard notation $\mathbfsf{P} (x = a)$. We prefer the square brackets, since $x=a$ is not itself an argument to $\mathbfsf{P} $, but shorthand for $(\Set{\omega  \in \Omega }{x(\omega ) = a})$.</p></div><div class="sheet-listing"><p class="sheet"> There are many similar notations. For example, $\mathbfsf{P} [x \in C]$ means $\mathbfsf{P} (\Set{x \in \Omega }{x(\omega ) \in C})$. In particular, if $x: \Omega  \to \R $, $\mathbfsf{P} [x \geq a]$ means $\mathbfsf{P} (\Set{\omega  \in \Omega }{x(\omega ) \geq a})$. Since the <i>event} that $x = a$ is the inverse image of $\set{a}$ under $x$, we also use the notations $\mathbfsf{P} (x^{-1}(a))$ and $\mathbfsf{P} (x^{-1</i>(C))$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Example: sum of two dice}</p></div><div class="sheet-listing"><p class="sheet"> Define $\Omega  = \set{1, \dots , 6}^2$ and define $p: \Omega \to \R $ with $p(\omega ) = \nicefrac{1}{36}$ for each $\omega \in \Omega $. Define $x: \Omega  \to \N $ by $x(\omega _1, \omega _2) = \omega _1 + \omega _2$. Then $\mathbfsf{P} [x = 4] = p((2, 2)) + p(1, 3) + p(3, 1) = \nicefrac{1}{12}$.</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./outcome_variable_events-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './outcome_variable_events.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./outcome_variable_events.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./outcome_variable_events.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./outcome_variable_events-graph.pdf">
+    </iframe>
+    -->
+
+  
+    <div class="lit">
+    <!--
+!name:outcome_variable_events
+!need:uncertain_outcomes
+!need:event_probabilities
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>For each value of a random variable’s codomain,
+  the set of outcomes corresponding to that value
+  is the inverse image of the random variable. </span>
+
+ <span class='run'>We can speak of the probability that a random
+  variable takes a value then, by assigning it
+  the probability of the set of outcomes
+  corresponding to that value. </span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Let $p: Ω → 𝗥$ be a probability distribution
+  with corresponding probability measure $𝗣:
+  \powerset{Ω} → 𝗥$. </span>
+
+ <span class='run'>Suppose $x: Ω → V$ is an outcome variable. </span>
+
+ <span class='run'>The <span class='term'>probability $x = a$</span>,
+  for $a ∈ Ω$, is
+  <p>\[
+   \textstyle </span>
+
+   𝗣(\Set{ω ∈ Ω}{x(ω) = a}). </span>
+  \]</p></span>
+
+ <span class='run'>From the definition of $𝗣$, we express the
+  above as
+  <p>\[
+   \textstyle </span>
+
+   ∑_{ω ∈ Ω | x(ω) = a} p(ω). </span>
+  \]</p></span>
+
+ <span class='run'>We refer to the probability of the <i>event</i>
+  that $x = a$. </span>
+</p>
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>We denote the probability that $x = a$ by
+  $𝗣[x =a]$. </span>
+
+ <span class='run'>Our square brackets deviate from the slightly
+  slippery but universally standard notation $𝗣(x =
+  a)$. </span>
+
+ <span class='run'>We prefer the square brackets, since $x=a$ is
+  not itself an argument to $𝗣$, but shorthand
+  for $(\Set{ω ∈ Ω}{x(ω) = a})$. </span>
+</p>
+
+
+<p>
+ <span class='run'>There are many similar notations. </span>
+
+ <span class='run'>For example, $𝗣[x ∈ C]$ means $𝗣(\Set{x ∈
+  Ω}{x(ω) ∈ C})$. </span>
+
+ <span class='run'>In particular, if $x: Ω → 𝗥$, $𝗣[x ≥ a]$
+  means $𝗣(\Set{ω ∈ Ω}{x(ω) ≥ a})$. </span>
+
+ <span class='run'>Since the <i>event</i> that $x = a$ is the
+  inverse image of $\set{a}$ under $x$, we also
+  use the notations $𝗣(x^{-1}(a))$ and
+  $𝗣(x^{-1}(C))$. </span>
+</p>
+
+<h2>
+Example: sum of two dice </h2>
+
+<p>
+ <span class='run'>Define $Ω = \set{1, …, 6}^2$ and define $p: Ω
+  → 𝗥$ with $p(ω) = \nicefrac{1}{36}$ for each $ω
+  ∈ Ω$. </span>
+
+ <span class='run'>Define $x: Ω → 𝗡$ by $x(ω_1, ω_2) = ω_1 +
+  ω_2$. </span>
+
+ <span class='run'>Then $𝗣[x = 4] = p((2, 2)) + p(1, 3) + p(3,
+  1) = \nicefrac{1}{12}$. </span>
+</p>
+
+    </div>
+  
+
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version d1cba987d.
+    </span>
+  </body>
+</html>

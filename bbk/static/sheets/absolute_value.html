@@ -185,6 +185,8 @@ MathJax.Hub.Config({
               ['\\[', '\\]']
             ],
           macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -213,7 +215,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want a notion of distance between elements of the real line.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{absolute value} of a real number is the greater of itself and its additive inverse. In other words, if $x$ is positive, then the absolute value of $x$ is $x$. If $x$ is negative, then the absolute value of $x$ is $-x$ (which would be a positive real number).</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the absolute value of a real number $x \in \R $ by $\abs{x}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="distance">2.2 Distance</h2></div><div class="sheet-listing"><p class="sheet"> The absolute value can be interpreted as the distance between the point corresponding to the real number and the point corresponding to 0. We can generalize this idea. Consider $x, y \in \R $. If $x > y$, then $x - y > 0$ and so the distance between the corresponding points is $x - y$. If $x < y$ then $y - x > 0$, and so the distance is $y - x$.</p></div><div class="sheet-listing"><p class="sheet"> The observation is that $\abs{-x} = \abs{x}$. So \[ \abs{y - x} = \abs{-(x - y)} = \abs{x-y}. \] So if we just care about the distance between the points corresponding to $y$ and $x$, we can consider $\abs{x - y}$, without regard for their order. In other words, the function $(x, y) \indent \abs{x - y}$ is symmetric in $x$ and $y$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want a notion of distance between elements of the real line.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{absolute value} of a real number is the greater of itself and its additive inverse. In other words, if $x$ is positive, then the absolute value of $x$ is $x$. If $x$ is negative, then the absolute value of $x$ is $-x$ (which would be a positive real number).</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the absolute value of a real number $x \in \R $ by $\abs{x}$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Distance}</p></div><div class="sheet-listing"><p class="sheet"> The absolute value can be interpreted as the distance between the point corresponding to the real number and the point corresponding to 0. We can generalize this idea. Consider $x, y \in \R $. If $x > y$, then $x - y > 0$ and so the distance between the corresponding points is $x - y$. If $x < y$ then $y - x > 0$, and so the distance is $y - x$.</p></div><div class="sheet-listing"><p class="sheet"> The observation is that $\abs{-x} = \abs{x}$. So \[ \abs{y - x} = \abs{-(x - y)} = \abs{x-y}. \] So if we just care about the distance between the points corresponding to $y$ and $x$, we can consider $\abs{x - y}$, without regard for their order. In other words, the function $(x, y) \indent \abs{x - y}$ is symmetric in $x$ and $y$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -318,31 +320,24 @@ MathJax.Hub.Config({
 
   
     <div class="lit">
-    <p>
- <span class='run'>❲%!name:absolute_value❳ </span>
+    <!--
+!name:absolute_value
+!need:interval_length
+-->
 
- <span class='run'>❲%!need:interval_length❳ </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>
+Why </h1>
 
 <p>
  <span class='run'>We want a notion of distance between elements
   of the real line. </span>
 </p>
 
+<h1>
+Definition </h1>
 
 <p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
-
-<p>
- <span class='run'>❲% We define a function which maps the real numbers onto the nonnegative real numbers.❳ </span>
+ <!-- We define a function which maps the real numbers onto the nonnegative real numbers.-->
 
  <span class='run'>The <span class='term'>absolute value</span> of a
   real number is the greater of itself and its
@@ -356,24 +351,18 @@ MathJax.Hub.Config({
   number). </span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Notation} </span>
-</p>
-
+<h2>
+Notation </h2>
 
 <p>
  <span class='run'>We denote the absolute value of a real number
   $x ∈ 𝗥$ by $\abs{x}$. </span>
+ <!--Thus $\abs{·}: 𝗥 → 𝗥$ can be viewed as a real-valued function on the real numbers which is nonnegative.-->
 
- <span class='run'>❲% Thus $\abs{·}: 𝗥 → 𝗥$ can be viewed as a real-valued function on the real numbers which is nonnegative.❳ </span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Distance} </span>
-</p>
-
+<h2>
+Distance </h2>
 
 <p>
  <span class='run'>The absolute value can be interpreted as the
@@ -408,11 +397,6 @@ MathJax.Hub.Config({
 
  <span class='run'>In other words, the function $(x, y) ↦ \abs{x
   - y}$ is symmetric in $x$ and $y$. </span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage </span>
 </p>
 
     </div>
@@ -468,7 +452,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version f19494e6d.
+      Copyright 2022 The Bourbaki Authors. Version d1cba987d.
     </span>
   </body>
 </html>

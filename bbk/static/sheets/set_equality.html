@@ -34,6 +34,16 @@
         
       
       
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./set_specification.html'" onkeypress="location.href='./set_specification.html'">
+            <span>
+            Set Specification
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
     </div>
 
 <script type="text/x-mathjax-config">
@@ -63,6 +73,8 @@ MathJax.Hub.Config({
               ['\\[', '\\]']
             ],
           macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -195,6 +207,179 @@ MathJax.Hub.Config({
     -->
 
   
+    <div class="lit">
+    <!--
+!name:set_equality
+!need:set_inclusion
+!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕sets_and_subsets
+!refs:paul_halmos∕naive_set_theory
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>When are two sets the same? </span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Let $A$ and $B$ denote sets. </span>
+
+ <span class='run'>If $A = B$ then every element of $A$ is an
+  element of $B$ and every element of $B$ is an
+  element of $A$. </span>
+
+ <span class='run'>In other words, $(A = B) ⟹ ((A ⊂ B) \land
+  (B ⊂ A))$. </span>
+</p>
+
+
+<p>
+ <span class='run'>❲%\begin{account}[Joint Membership]❳ </span>
+
+ <span class='run'>❲%  \nameee{$A$}{$B$}{$x$}❳ </span>
+
+ <span class='run'>❲%  \have{set_equality:joint_membership:equality}{$A = B$}❳ </span>
+
+ <span class='run'>❲%  \have{set_equality:joint_membership:belonging}{$x ∈ B$}❳ </span>
+
+ <span class='run'>❲%  \thus{set_equality:joint_membership:conclusion}{$x ∈ A$}{\ref{set_equality:joint_membership:equality},\ref{set_equality:joint_membership:belonging}}❳ </span>
+
+ <span class='run'>❲%\end{account}❳ </span>
+</p>
+
+
+<p>
+ <span class='run'>What of the converse? </span>
+
+ <span class='run'>Suppose every element of $A$ is an element of
+  $B$ and every element of $B$ is an element of
+  $A$. </span>
+
+ <span class='run'>Then $A = B$? </span>
+
+ <span class='run'>We define it to be so. </span>
+
+ <span class='run'>Sets are determined by their members. </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{principle}[Extension] </span>
+
+ <span class='run'>Sets are the same if every member of one is
+  a member of the other and vice versa. </span>
+
+ <span class='run'>\end{principle} </span>
+</p>
+
+
+<p>
+ <span class='run'>In other words, two sets are identical if and
+  only if every element of one is an element of
+  the other. </span>
+
+ <span class='run'>This principle is sometimes called the
+  <span class='term'>principle of extension</span>. </span>
+
+ <span class='run'>We refer to the elements of a set as its
+  <span class='term'>extension</span>. </span>
+
+ <span class='run'>Roughly speaking, we have declared that if we
+  know the extension then we know the set. </span>
+
+ <span class='run'>A set is determined by its extension. </span>
+</p>
+
+<h2>
+Deductive principle </h2>
+
+<p>
+ <span class='run'>We can use this definition to deduce $A= B$
+  if we first deduce $A ⊂ B$ and $B ⊂ A$. </span>
+
+ <span class='run'>With these two implications, we use the
+  principle of extension to conclude that the sets
+  are the same. </span>
+
+ <span class='run'>In other words, $(A = B) \iff ((A ⊂ B) \land
+  (B ⊂ A))$. </span>
+
+ <span class='run'>We also describe this fact by saying that
+  inclusion ($⊂)$ is
+  <span class='term'>antisymmetric</span>. </span>
+</p>
+
+<h2>
+Belonging and sets compared with ancestry and humans </h2>
+
+<p>
+ <span class='run'>Compare the principle of extension for
+  identifying sets from their elements with an
+  analogous principle for identifying people from
+  their ancestors. </span>
+</p>
+
+
+<p>
+ <span class='run'>We can consider a person’s ancestors. </span>
+
+ <span class='run'>Namely, the person’s parents, grandparents, great
+  grandparents and so on. </span>
+
+ <span class='run'>It is clear that if we label the same human
+  with two names $A$ and $B$, then $A$ and $B$
+  have the same ancestors. </span>
+
+ <span class='run'>In other words, same human implies same
+  ancestors. </span>
+
+ <span class='run'>This is the analog of “if two sets are equal
+  they have the same members}. </span>
+</p>
+
+
+<p>
+ <span class='run'>On the other hand, if we have two people
+  denoted by $A$ and $B$, and we know that $A$
+  has the same ancestors as $B$, we can not
+  conclude that $A$ and $B$ denote the same human. </span>
+
+ <span class='run'>For example, siblings have the same ancestors
+  but are different people. </span>
+
+ <span class='run'>This direction, same ancestors implies same
+  human, is the analogue of \say{if they have the
+  same elements, two sets are the same”. </span>
+
+ <span class='run'>It is false for humans and ancestors, but we
+  define it to be true for sets and members. </span>
+</p>
+
+
+<p>
+ <span class='run'>The principle of extension is more than a
+  statement about equality. </span>
+
+ <span class='run'>It is also a statement about our notion of
+  belonging, of what it means to be an element
+  of a set, and what a set is. </span>
+</p>
+
+
+<p>
+ <span class='run'>❲%TODO(next edition) discuss uniqueness❳ </span>
+
+ <span class='run'>❲%The principle tells us that if we are talking about a set via some statement about its elements, we are talking about a unique set.❳ </span>
+
+ <span class='run'></span>
+</p>
+
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -246,7 +431,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version f19494e6d.
+      Copyright 2022 The Bourbaki Authors. Version d1cba987d.
     </span>
   </body>
 </html>

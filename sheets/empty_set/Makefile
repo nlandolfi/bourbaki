@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make empty_set.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 empty_set.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > empty_set.tex
 

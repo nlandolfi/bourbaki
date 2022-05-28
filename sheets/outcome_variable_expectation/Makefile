@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make distribution_expectation.pdf
+	make outcome_variable_expectation.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-distribution_expectation.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > distribution_expectation.tex
+outcome_variable_expectation.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > outcome_variable_expectation.tex
 
-distribution_expectation.pdf: ../../*.tex ../../trademark.pdf *.tex distribution_expectation.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode distribution_expectation.tex
-	../../latexrun distribution_expectation.tex
+outcome_variable_expectation.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_variable_expectation.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode outcome_variable_expectation.tex
+	../../latexrun outcome_variable_expectation.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: distribution_expectation.pdf
-	open distribution_expectation.pdf
+open: outcome_variable_expectation.pdf
+	open outcome_variable_expectation.pdf
 
 o:
 	make open
 
-terms: distribution_expectation.tex
-	bbk_sheet -mode ts distribution_expectation.tex
+terms: outcome_variable_expectation.tex
+	bbk_sheet -mode ts outcome_variable_expectation.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f distribution_expectation.*
+	rm -f outcome_variable_expectation.*
 	make reset
 	bbk_sheet -mode mk > Makefile

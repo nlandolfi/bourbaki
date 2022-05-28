@@ -101,6 +101,8 @@ MathJax.Hub.Config({
               ['\\[', '\\]']
             ],
           macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -129,7 +131,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \footnote{Future editions will include this.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{covariance} between two random variables which are each integrable and whose product is integrable is the expectation of their product less the product of their expectation.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $f$ and $g$ be two integrable random variables with $fg$ integrable. Denote the covariance of $f$ with $g$ by $\cov(f, g)$. We defined it: \[ \cov(f, g) = \Expect(fg) - \Expect(f)\Expect(g). \]</p></div><div class="sheet-listing"><h2 class="sheet" id="properties">2.2 Properties</h2></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Covariance is symmetric and billinear.\footnote{Future editions will include an account.} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The covariance of a random variable with itself is its variance. \begin{proof} Let $f$ be a square-integrable real-valued random variable, then \[ \cov(f, f) = \Expect(ff) - \Expect(f)\Expect(f) = \Expect(f^2) - (\Expect(f))^2 = \var(f). \] \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The variance of a sum of integrable real-valued random variables whose pairwise products are integrable is the double sum of the pairwise covariances. \begin{proof} Let $f_1, \dots, f_n$ be integrable random variables with $f_if_j$ integrable for all $i,j = 1, \dots, n$. Using the billinearity, \[ \begin{aligned} \var\parens*{\sum_{i = 1}^{n} f_i} &= \cov\parens*{\sum_{i = 1}^{n} f_i, \sum_{i = 1}^{n}f_i} \\ &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} \cov(f_i, f_j) \end{aligned} \] \end{proof} \end{prop}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{covariance} between two random variables which are each integrable and whose product is integrable is the expectation of their product less the product of their expectation.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $f$ and $g$ be two integrable random variables with $fg$ integrable. Denote the covariance of $f$ with $g$ by $\cov(f, g)$. We defined it: \[ \cov(f, g) = \E (fg) - \E (f)\E (g). \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Covariance is symmetric and billinear. \ifhmode\unskip\fi\footnote{ Future editions will include an account. } \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The covariance of a random variable with itself is its variance. \begin{proof} Let $f$ be a square-integrable real-valued random variable, then \[ \cov(f, f) = \E (ff) - \E (f)\E (f) = \E (f^2) - (\E (f))^2 = \var(f). \] \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The variance of a sum of integrable real-valued random variables whose pairwise products are integrable is the double sum of the pairwise covariances. \begin{proof} Let $f_1, \dots , f_n$ be integrable random variables with $f_if_j$ integrable for all $i,j = 1, \dots , n$. Using the billinearity, \[ \begin{aligned} \var\parens*{\sum_{i = 1}^{n} f_i} &= \cov\parens*{\sum_{i = 1}^{n} f_i, \sum_{i = 1}^{n}f_i} \\ &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} \cov(f_i, f_j) \end{aligned} \] \end{proof} \end{prop}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -233,6 +235,114 @@ MathJax.Hub.Config({
     -->
 
   
+    <div class="lit">
+    <!--
+!name:covariance
+!need:variance
+-->
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>The <span class='term'>covariance</span> between
+  two random variables which are each integrable
+  and whose product is integrable is the
+  expectation of their product less the product of
+  their expectation. </span>
+</p>
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>Let $f$ and $g$ be two integrable random
+  variables with $fg$ integrable. </span>
+
+ <span class='run'>Denote the covariance of $f$ with $g$ by
+  $\cov(f, g)$. </span>
+
+ <span class='run'>We defined it:
+  <p>\[
+   \cov(f, g) = 𝗘(fg) - 𝗘(f)𝗘(g). </span>
+  \]</p></span>
+</p>
+
+<h2>
+Properties </h2>
+
+<p>
+ <span class='run'>\begin{prop} </span>
+
+ <span class='run'>Covariance is symmetric and billinear.[footnote skipped in this version]</span>
+
+ <span class='run'>\end{prop} </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{prop} </span>
+
+ <span class='run'>The covariance of a random variable with itself
+  is its variance. </span>
+
+ <span class='run'>\begin{proof} </span>
+
+ <span class='run'>Let $f$ be a square-integrable real-valued
+  random variable, then
+  <p>\[
+   \cov(f, f) = 𝗘(ff) - 𝗘(f)𝗘(f) = 𝗘(f^2) - (𝗘(f))^2 = \var(f). </span>
+  \]</p>
+  <span class='run'>\end{proof} </span>
+
+  <span class='run'>\end{prop} </span></span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{prop} </span>
+
+ <span class='run'>The variance of a </span>
+
+ <span class='run'>sum of integrable </span>
+
+ <span class='run'>real-valued random variables </span>
+
+ <span class='run'>whose pairwise products </span>
+
+ <span class='run'>are integrable </span>
+
+ <span class='run'>is the double sum of </span>
+
+ <span class='run'>the pairwise covariances. </span>
+
+ <span class='run'>\begin{proof} </span>
+
+ <span class='run'>Let $f_1, …, f_n$ be integrable random
+  variables with $f_if_j$ integrable for all $i,j
+  = 1, …, n$. </span>
+
+ <span class='run'>Using the billinearity,
+  <p>\[
+   \begin{aligned} </span>
+
+   \var\parens*{∑_{i = 1}^{n} f_i} </span>
+
+   ❲&amp;❳= \cov\parens*{∑_{i = 1}^{n} f_i, ∑_{i = 1}^{n}f_i}
+    <br /> </span>
+
+   ❲&amp;❳= ∑_{i = 1}^{n} ∑_{j = 1}^{n} \cov(f_i, f_j) </span>
+
+   \end{aligned} </span>
+  \]</p></span>
+
+ <span class='run'>\end{proof} </span>
+
+ <span class='run'>\end{prop} </span>
+</p>
+
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -284,7 +394,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version f19494e6d.
+      Copyright 2022 The Bourbaki Authors. Version d1cba987d.
     </span>
   </body>
 </html>
