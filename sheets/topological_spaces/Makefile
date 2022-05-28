@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make topological_spaces.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 topological_spaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > topological_spaces.tex
 
