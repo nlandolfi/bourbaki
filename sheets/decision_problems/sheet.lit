@@ -1,0 +1,65 @@
+<!--
+!name:decision_problems
+!need:integer_numbers
+!refs:michael_garey/computers_and_intractability/chapter_02
+!need:undirected_graphs
+-->
+
+§ Definition ⦉
+¶ ⦊
+  ‖ A ❬decision problem❭ is a pair $(I, Y)$ of ❬instances❭ $I$
+    and ❬yes-instances❭ $Y ⊂ I$. ⦉
+⦉
+
+§ Examples ⦉
+
+§§ Subgraph isomorphism ⦉
+¶ ⦊
+  ‖ Let $𝒢(n)$ be the set of graphs with $n$ vertices. ⦉
+
+  ‖ For $m ≤ n$, define $I = 𝒢(n) × 𝒢(m)$. ⦉
+
+  ‖ A graph $G_1 = (V_1, E_1)$ is ❬subgraph-isomorphic❭ to a
+    graph $G_2 = (V_2, E_2)$ if there exists $V' ⊂ V_1$, $E' ⊂
+    E_1$ with $\num{V'} = \num{V_2}$, $\num{E'} = \num{E_2}$, and
+    bijection $f: V' → V_1$ so that
+    ◇ ⦊
+      ‖ \set{u, v} ∈ E_2 \iff \set{f(u), f(v)} ∈ E'. ⦉
+    ⦉⦉
+
+  ‖ Define
+    ◇ ⦊
+      ‖ Y = \Set{(G_1, G_2) ∈ I}{G_1 \text{ is
+        subgraph-isomorphic to } G_2} ⦉
+    ⦉⦉
+
+  ‖ We call $(Y, I)$ the ❬subgraph-isomorphism problem❭. ⦉
+⦉
+
+§§ Traveling Salesman ⦉
+¶ ⦊
+  ‖ Denote by $S^n ⊂ 𝗭^{n × n}$ the set of symmetric
+    integer-valued matrices. ⦉
+
+  ‖ Define $I = S^n × 𝗭$. ⦉
+
+  ‖ A ❬$n$-tour❭ is a numbering $π: \set{1, …, n} → \set{1, …,
+    n}$ and has ❬cost❭ $C(π)$ with respect to $D$ defined by
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ C(π) = D_{π(n), π(1)} + ∑_{j = 1}^{n-1} D_{π(i), π(i+1)} ⦉
+    ⦉⦉
+
+  ‖ A tour is $B$-bounded if its cost is no greater than $B$. ⦉
+
+  ‖ Define $Y = \Set{(D,B)}{\text{ there is a }B-\text{bounded
+    tour with respect to } D}$. ⦉
+⦉
+
+
+<!--
+<tex>
+  <div data-littype='run'> \blankpage </div>
+</tex>
+-->

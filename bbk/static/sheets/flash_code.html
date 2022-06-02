@@ -75,6 +75,9 @@ MathJax.Hub.Config({
           macros: {
                   powerset: ["2^{#1}", 1],
                   CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -103,7 +106,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can flashlights speak?</p></div><div class="sheet-listing"><p class="sheet"> Speech can be made to correspond to words. And words are sequences of letters. So, roughly, can we communicate letters with a flashlight? No sounds allowed.</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> Well, what can we do with a flashlight? Turn it on and off. So we can show blinks of light. Here's a thought: One blink means $a$. Two blinks means $b$. Three blinks means $c$. Four blinks means $d$. And so on.</p></div><div class="sheet-listing"><p class="sheet"> Here's the rub: how do we know when one letter stops, and another begins. Put another way, does 7 blinks mean $(g)$, or $(b, a, d)$, since 2 + 1 + 4 = 7, or $(c, d)$, since 3 + 4 = 7, or $(d, c)$ and so on. If we change the game, maybe we can change the color of the flashlight. Or give a half-flash. Is a half-flash a "quick" flash, or is it a flash in which we have covered up half of the end of the flashlight?</p></div><div class="sheet-listing"><p class="sheet"> The first question is a clue. The duration of the blink. How about the duration between blinks? A one second pause in between blinks for a letter. A three second pause for blinks in between letters. A five second pause for a space, to indicate a change of a word? Or an additional symbol, a "space", in our alphabet, communicated with 27 (!) blinks?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> \newcommand{\blink}{\star} \newcommand{\pause}{\square} Let $\blink$ represent a blink. The \t{flash code}\footnote{The etymology of code is from the Latin codex, in the legal tradition of a list of statutes. We may well use the term correspondence, or function, but code is standard.} for the alphabet $A$ (the latin lower case letters) is the function $f: A \to \strings(\set{\blink})$ defined by $f(a) = \blink$, $f(b) = \blink\blink$, $f(c) = \blink\blink\blink$, $f(c) = \blink\blink\blink\blink$ and so on. We call $f(a)$ the \t{code word} of $a \in A$. It is a sequence of blinks.</p></div><div class="sheet-listing"><p class="sheet"> The idea is that if we give someone the \t{code word} $f(a)$ for a letter of our alphabet $a \in A$, they will be able to tell us $a$. In the language of functions, we want $f$ to have an inverse. Clearly, $f$ is invertible.</p></div><div class="sheet-listing"><p class="sheet"> It is natural to extend the flash code for $A$ to strings of $A$. Let $\pause$ represent a long pause. Then we encode a sequence $x \in \strings(A)$ by applying $f$ to each element of $x$ in turn, and including a $\square$ in between. The \t{flash code} for the strings $\strings(A)$ is the function $g: \strings(A) \to \strings(\set{\blink, \pause})$ defined recursively, as $g(x) = f(x_1')$ for length one strings $x'$, $g(x'') = f(x_1'')\pause f(x_2)$ and for length $n$ strings $x$ by $f(x_1)\pause g(x_{2:n})$. For example, we encode the word (string) $(b,a,d)$ as \begin{equation} \blink \blink \pause \blink \pause \blink \blink \blink \blink \label{ref:blinks} \end{equation} Now suppose we are given a sequence as shown in \eqref{ref:blinks}. Well, so long as $f$ is invertible, we look can decode the codewords (the blinks, in this case) in between the squares and recover the word.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Can flashlights speak?</p></div><div class="sheet-listing"><p class="sheet"> Speech can be made to correspond to words. And words are sequences of letters. So, roughly, can we communicate letters with a flashlight? No sounds allowed.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> Well, what can we do with a flashlight? Turn it on and off. So we can blink light. Here's a thought: One blink means $a$. Two blinks means $b$. Three blinks means $c$. Four blinks means $d$. And so on.</p></div><div class="sheet-listing"><p class="sheet"> Here's the rub: how do we know when one letter stops, and another begins. Put another way, does 7 blinks mean $(g)$, or $(b, a, d)$, since 2 + 1 + 4 = 7, or $(c, d)$, since 3 + 4 = 7, or $(d, c)$ and so on. If we change the game, maybe we can change the color of the flashlight. Or give a half-flash. Is a half-flash a "quick" flash, or is it a flash in which we have covered up half of the end of the flashlight?</p></div><div class="sheet-listing"><p class="sheet"> The first question is a clue. The duration of the blink. How about the duration between blinks? A one second pause in between blinks of a particular a letter. A three second pause for blinks in between letters. A five second pause for a space, to indicate a change of a word? Or an additional symbol, a "space", in our alphabet, communicated with 27 (!) blinks?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> \newcommand{\blink}{\star} \newcommand{\pause}{\square} Denote a blink by $\blink$. The \t{flash code} \ifhmode\unskip\fi\footnote{ The etymology of code is from the Latin codex, in the legal tradition of a list of statutes. We may well use the term correspondence, or function, but code is standard. } for the alphabet $A$ (the latin lower case letters) is the function $f: A \to \str(\set{\blink})$ defined by $f(a) = \blink$, $f(b) = \blink\blink$, $f(c) = \blink\blink\blink$, $f(c) = \blink\blink\blink\blink$ and so on. We call $f(a)$ the \t{code word} of $a \in A$. It is a sequence of blinks.</p></div><div class="sheet-listing"><p class="sheet"> The idea is that if we give someone the \t{code word} $f(a)$ for a letter of our alphabet $a \in A$, they will be able to tell us $a$. In the language of functions, we want $f$ to have an inverse. Clearly, $f$ is invertible.</p></div><div class="sheet-listing"><p class="sheet"> It is natural to extend the flash code for $A$ to strings of $A$. Let $\pause$ represent a long pause. Then we encode a sequence $x \in \str(A)$ by applying $f$ to each element of $x$ in turn, and including a $\square$ in between. The \t{flash code} for the strings $\str(A)$ is the function $g: \str(A) \to \str(\set{\blink, \pause})$ defined recursively, as $g(x) = f(x_1)$ if $\num{x} = 1$ and $g(x) = f(x_1)\pause g(x_{2:n})$ when $\num{x} > 1$. For example, we encode the word (string) $(b,a,d)$ as \begin{equation} \label{ref:blinks}\blink \blink \pause \blink \pause \blink \blink \blink \blink\end{equation} Now suppose we are given a sequence as shown in \eqref{ref:blinks}. Well, so long as $f$ is invertible, we look can decode the codewords (the blinks, in this case) in between the squares and recover the word.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -207,6 +210,182 @@ MathJax.Hub.Config({
     -->
 
   
+    <div class="lit">
+    <!--
+!name:flash_code
+!need:alphabets
+!refs:charles_petzold∕code∕chapter_01
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>Can flashlights speak? </span>
+</p>
+
+
+<p>
+ <span class='run'>Speech can be made to correspond to words. </span>
+
+ <span class='run'>And words are sequences of letters. </span>
+
+ <span class='run'>So, roughly, can we communicate letters with a
+  flashlight? </span>
+
+ <span class='run'>No sounds allowed. </span>
+</p>
+
+<h1>
+Discussion </h1>
+
+<p>
+ <span class='run'>Well, what can we do with a flashlight? </span>
+
+ <span class='run'>Turn it on and off. </span>
+
+ <span class='run'>So we can blink light. </span>
+
+ <span class='run'>Here’s a thought: </span>
+
+ <span class='run'>One blink means $a$. </span>
+
+ <span class='run'>Two blinks means $b$. </span>
+
+ <span class='run'>Three blinks means $c$. </span>
+
+ <span class='run'>Four blinks means $d$. </span>
+
+ <span class='run'>And so on. </span>
+</p>
+
+
+<p>
+ <span class='run'>Here’s the rub: how do we know when one
+  letter stops, and another begins. </span>
+
+ <span class='run'>Put another way, does 7 blinks mean $(g)$, or
+  $(b, a, d)$, since 2 + 1 + 4 = 7, or $(c,
+  d)$, since 3 + 4 = 7, or $(d, c)$ and so on. </span>
+
+ <span class='run'>If we change the game, maybe we can change
+  the color of the flashlight. </span>
+
+ <span class='run'>Or give a half-flash. </span>
+
+ <span class='run'>Is a half-flash a “quick} flash, or is it a
+  flash in which we have covered up half of the
+  end of the flashlight? </span>
+</p>
+
+
+<p>
+ <span class='run'>The first question is a clue. </span>
+
+ <span class='run'>The duration of the blink. </span>
+
+ <span class='run'>How about the duration between blinks? </span>
+
+ <span class='run'>A one second pause in between blinks of a
+  particular a letter. </span>
+
+ <span class='run'>A three second pause for blinks in between
+  letters. </span>
+
+ <span class='run'>A five second pause for a space, to indicate
+  a change of a word? </span>
+
+ <span class='run'>Or an additional symbol, a \say{space}, in our
+  alphabet, communicated with 27 (!) blinks? </span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>\newcommand{\blink}{★} </span>
+
+ <span class='run'>\newcommand{\pause}{\square} </span>
+
+ <span class='run'>Denote a blink by $\blink$. </span>
+
+ <span class='run'>The <span class='term'>flash code</span><sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup>
+  for the alphabet $A$ (the latin lower case
+  letters) is the function $f: A →
+  \str(\set{\blink})$ defined by $f(a) = \blink$,
+  $f(b) = \blink\blink$, $f(c) =
+  \blink\blink\blink$, $f(c) =
+  \blink\blink\blink\blink$ and so on. </span>
+
+ <span class='run'>We call $f(a)$ the <span class='term'>code
+  word</span> of $a ∈ A$. </span>
+
+ <span class='run'>It is a sequence of blinks. </span>
+</p>
+
+
+<p>
+ <span class='run'>The idea is that if we give someone the
+  <span class='term'>code word</span> $f(a)$ for a
+  letter of our alphabet $a ∈ A$, they will be
+  able to tell us $a$. </span>
+
+ <span class='run'>In the language of functions, we want $f$ to
+  have an inverse. </span>
+
+ <span class='run'>Clearly, $f$ is invertible. </span>
+</p>
+
+
+<p>
+ <span class='run'>It is natural to extend the flash code for
+  $A$ to strings of $A$. </span>
+
+ <span class='run'>Let $\pause$ represent a long pause. </span>
+
+ <span class='run'>Then we encode a sequence $x ∈ \str(A)$ by
+  applying $f$ to each element of $x$ in turn,
+  and including a $\square$ in between. </span>
+
+ <span class='run'>The <span class='term'>flash code</span> for the
+  strings $\str(A)$ is the function $g: \str(A) →
+  \str(\set{\blink, \pause})$ defined recursively, as
+  $g(x) = f(x_1)$ if $\num{x} = 1$ and $g(x) =
+  f(x_1)\pause g(x_{2:n})$ when $\num{x} &gt; 1$. </span>
+
+ <span class='run'>For example, we encode the word (string)
+  $(b,a,d)$ as </span>
+ <div style='equation'> \begin{equation}  \blink 
+
+  \blink 
+
+  \pause 
+
+  \blink 
+
+  \pause 
+
+  \blink 
+
+  \blink 
+
+  \blink 
+
+  \blink   \label{ref:blinks} \end{equation} </div>
+ <span class='run'>Now suppose we are given a sequence as shown
+  in \eqref{ref:blinks}. </span>
+
+ <span class='run'>Well, so long as $f$ is invertible, we look
+  can decode the codewords (the blinks, in this
+  case) in between the squares and recover the
+  word. </span>
+</p>
+<ol class='footnotes'><li id='footnote-1'> <span class='run'>The etymology of code is from the Latin codex,
+  in the legal tradition of a list of statutes.
+  We may well use the term correspondence, or
+  function, but code is standard. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -258,7 +437,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 9697d91cd.
+      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
     </span>
   </body>
 </html>

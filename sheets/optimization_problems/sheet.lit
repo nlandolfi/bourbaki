@@ -1,23 +1,13 @@
-¶ ⦊
-  ‖ ❲%!name:optimization_problems❳ ⦉
+<!--
+!name:optimization_problems
+!need:optimizers
+!need:real_functions
+!need:extended_real_numbers
+!need:greatest_lower_bounds
+!need:n-dimensional_space
+-->
 
-  ‖ ❲%!need:optimizers❳ ⦉
-
-  ‖ ❲%!need:real_functions❳ ⦉
-
-  ‖ ❲%!need:extended_real_numbers❳ ⦉
-
-  ‖ ❲%!need:greatest_lower_bounds❳ ⦉
-
-  ‖ ❲%!need:n-dimensional_space❳ ⦉
-
-  ‖ ❲%%!need:family_unions_and_intersections❳ ⦉
-⦉
-
-¶ ⦊
-  ‖ \ssection{Why} ⦉
-⦉
-
+§ Why ⦉
 ¶ ⦊
   ‖ We are frequently interested in finding minimizers of real
     functions.
@@ -26,46 +16,39 @@
     ⦉⦉
 ⦉
 
+§ Definition ⦉
 ¶ ⦊
-  ‖ \ssection{Definition} ⦉
+  ‖ An ❬optimization problem❭ is a pair $(𝒳, f)$ in which $𝒳$
+    is a nonempty set called the ❬constraint set❭ and $f: 𝒳 →
+    𝗥$ is called the ❬objective❭ (or ❬cost function❭). ⦉
 ⦉
 
 ¶ ⦊
-  ‖ An ❬optimization problem❭ is a pair $(\CX, f: \CX → 𝗥)$ in
-    which $\CX$ is a nonempty set called the ❬constraint set❭
-    and $f$ is called the ❬objective❭ (or ❬cost function❭). ⦉
-⦉
+  ‖ If $𝒳$ is finite we call the optimization problem ❬discrete❭. ⦉
 
-¶ ⦊
-  ‖ If $\CX$ is finite we call the optimization problem
-    ❬discrete❭. ⦉
-
-  ‖ If $\CX ⊂ 𝗥^d$ we call the optimization problem ❬continuous❭. ⦉
+  ‖ If $𝒳 ⊂ 𝗥^d$ we call the optimization problem ❬continuous❭. ⦉
 ⦉
 
 ¶ ⦊
   ‖ We refer to all elements of the constraint set as
     ❬feasible❭. ⦉
 
-  ‖ We refer to an element $x ∈ \CX$ of the constraint set as
-    ❬optimal❭ if $f(x) = ∈f_{z ∈ \CX}f(z)$. ⦉
+  ‖ We refer to an element $x ∈ 𝒳$ of the constraint set as
+    ❬optimal❭ if $f(x) = \inf_{z ∈ 𝒳}f(z)$. ⦉
 
   ‖ We also refer to optimal elements as ❬solutions❭ of the
     optimization problem. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ It is common for $f$ and $\CX$ to depend on some other,
+  ‖ It is common for $f$ and $𝒳$ to depend on some other,
     known, given objects. ⦉
 
   ‖ In this case, these objects are often called ❬parameters❭ or
     ❬problem data❭. ⦉
 ⦉
 
-¶ ⦊
-  ‖ \ssubsection{Notation} ⦉
-⦉
-
+§§ Notation ⦉
 ¶ ⦊
   ‖ We often write optimization problems as
     ◇ ⦊
@@ -73,7 +56,7 @@
 
       ‖ \text{minimize}\quad ❲&❳ f(x) ᜶ ⦉
 
-      ‖ \text{subject to}\quad ❲&❳ x ∈ \CX. ⦉
+      ‖ \text{subject to}\quad ❲&❳ x ∈ 𝒳. ⦉
 
       ‖ \end{aligned} ⦉
     ⦉⦉
@@ -81,22 +64,19 @@
   ‖ In this case we call $x$ the ❬decision variable❭. ⦉
 ⦉
 
+§§ Extended reals ⦉
 ¶ ⦊
-  ‖ \ssubsection{Extended reals} ⦉
+  ‖ It is common to let $f: 𝒳 → \Rbar$, and allow there to
+    exist $x ∈ 𝒳$ for which $f(x) = ∞$. ⦉
+
+  ‖ This technique can be used to embed further constraints in
+    the objective. ⦉
+
+  ‖ For example, we interpret $f(x) = +∞$ to mean $x$ is
+    ‹infeasible›. ⦉
 ⦉
 
-¶ ⦊
-  ‖ It is common to let $f: \CX → \Rbar$, and allow there to
-    exist $x ∈ \CX$ for which $f(x) = ∞$. ⦉
-
-  ‖ This is a trick to embed further constraints in the
-    objective. ⦉
-⦉
-
-¶ ⦊
-  ‖ \ssubsection{Maximization} ⦉
-⦉
-
+§§ Maximization ⦉
 ¶ ⦊
   ‖ If we have some function $g: \CX → \Rbar$ that we wish to
     maximize, we can always convert it to an optimization problem
@@ -106,10 +86,7 @@
     ❬profit❭). ⦉
 ⦉
 
-¶ ⦊
-  ‖ \ssection{Solvers} ⦉
-⦉
-
+§ Solvers ⦉
 ¶ ⦊
   ‖ Let $\CP = \set{(X_a, f_a: X_a → \Rbar)}_{a ∈ A}$ be a
     family of optimization problems. ⦉
@@ -122,10 +99,8 @@
 ¶ ⦊
   ‖ Loosely speaking, the difficulty of “solving} the optimization
     problem $(\CX, f)$ depends on the properties of $\CX$ and
-    $f$ and the problem \say{size}. ⦉
+    $f$ and the problem “size”. ⦉
 
-  ‖ For example, when $\CX ⊂ 𝗥^d$ the difficulty is related to
-    the \say{dimension” $d$ of $x ∈ \CX$. ⦉
-
-  ‖ ⦉
+  ‖ For example, when $𝒳 ⊂ 𝗥^d$ the difficulty is related to
+    the “dimension” $d$ of $x ∈ 𝒳$. ⦉
 ⦉

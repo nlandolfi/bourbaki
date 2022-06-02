@@ -75,6 +75,9 @@ MathJax.Hub.Config({
           macros: {
                   powerset: ["2^{#1}", 1],
                   CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -103,7 +106,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to model natural phenomena.\footnote{Future editions will modify, and may develop dynamic systems via the genetic approach by appealing to their classical use in Newtonian physics for modeling celestial mechanics.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $X_0, X_1, \dots, X_T$ be a sequence of sets and let $f_t: X_t \to X_{t+1}$ for $t = 0, \dots, T-1$. We call $((X_0, \dots, X_T), (f_1, \dots, f_{T-1}$ a \t{deterministic discrete-time dynamical system}.</p></div><div class="sheet-listing"><p class="sheet"> We call the index $t$ the \t{epoch}, the \t{stage} or the \t{period}. We call $X_t$ the \t{state space} at period $t$. We call $f_t$ the \t{transition function} or \t{dynamics function}.</p></div><div class="sheet-listing"><p class="sheet"> Let $x_0 \in \CX_0$.  Define a state sequence $x_1 \in \CX_1, \dots, x_T \in \CX_T$ by \[ x_{t+1} = f_t(x_t, u_t). \] In this case we call $x_0$ the \t{initial state}. We call the $x_t$ the \t{trajectory} associatd with initial state $x_0$.</p></div><div class="sheet-listing"><p class="sheet"> We call $T$ the \t{horizon}. In the case that we have an infinite sequence of state sets, input sets, and dynamics, then we refer to a \t{infinite-horizon} dynamical system. To use language in contrast with this case, we refer to the dynamical system when $T$ is finite as a \t{finite-horizon} dynamical system.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to model natural phenomena. \ifhmode\unskip\fi\footnote{ Future editions will modify, and may develop dynamic systems via the genetic approach by appealing to their classical use in Newtonian physics for modeling celestial mechanics. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $X_0, X_1, \dots , X_T$ be a sequence of sets and let $f_t: X_t \to X_{t+1}$ for $t = 0, \dots , T-1$. We call $((X_0, \dots , X_T), (f_1, \dots , f_{T-1}$ a \t{deterministic discrete-time dynamical system}.</p></div><div class="sheet-listing"><p class="sheet"> We call the index $t$ the \t{epoch}, the \t{stage} or the \t{period}. We call $X_t$ the \t{state space} at period $t$. We call $f_t$ the \t{transition function} or \t{dynamics function}.</p></div><div class="sheet-listing"><p class="sheet"> Let $x_0 \in \mathcal{X} _0$. Define a state sequence $x_1 \in \mathcal{X} _1, \dots , x_T \in \mathcal{X} _T$ by \[ x_{t+1} = f_t(x_t, u_t). \] In this case we call $x_0$ the \t{initial state}. We call the $x_t$ the \t{trajectory} associatd with initial state $x_0$.</p></div><div class="sheet-listing"><p class="sheet"> We call $T$ the \t{horizon}. In the case that we have an infinite sequence of state sets, input sets, and dynamics, then we refer to a \t{infinite-horizon} dynamical system. To use language in contrast with this case, we refer to the dynamical system when $T$ is finite as a \t{finite-horizon} dynamical system.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -207,6 +210,83 @@ MathJax.Hub.Config({
     -->
 
   
+    <div class="lit">
+    <!--
+!name:dynamical_systems
+!need:real_numbers
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We want to model natural phenomena.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Let $X_0, X_1, …, X_T$ be a sequence of sets
+  and let $f_t: X_t → X_{t+1}$ for $t = 0, …,
+  T-1$. </span>
+
+ <span class='run'>We call $((X_0, …, X_T), (f_1, …, f_{T-1}$ a
+  <span class='term'>deterministic discrete-time
+  dynamical system</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>We call the index $t$ the
+  <span class='term'>epoch</span>, the
+  <span class='term'>stage</span> or the
+  <span class='term'>period</span>. </span>
+
+ <span class='run'>We call $X_t$ the <span class='term'>state
+  space</span> at period $t$. </span>
+
+ <span class='run'>We call $f_t$ the <span class='term'>transition
+  function</span> or <span class='term'>dynamics
+  function</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $x_0 ∈ 𝒳_0$. Define a state sequence $x_1
+  ∈ 𝒳_1, …, x_T ∈ 𝒳_T$ by
+  <p>\[
+   x_{t+1} = f_t(x_t, u_t). 
+  \]</p>
+  <span class='run'>In this case we call $x_0$ the
+   <span class='term'>initial state</span>. </span>
+
+  <span class='run'>We call the $x_t$ the
+   <span class='term'>trajectory</span> associatd with
+   initial state $x_0$. </span></span>
+</p>
+
+
+<p>
+ <span class='run'>We call $T$ the <span class='term'>horizon</span>. </span>
+
+ <span class='run'>In the case that we have an infinite sequence
+  of state sets, input sets, and dynamics, then
+  we refer to a
+  <span class='term'>infinite-horizon</span> dynamical
+  system. </span>
+
+ <span class='run'>To use language in contrast with this case, we
+  refer to the dynamical system when $T$ is
+  finite as a <span class='term'>finite-horizon</span>
+  dynamical system. </span>
+</p>
+<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify, and may develop
+  dynamic systems via the genetic approach by
+  appealing to their classical use in Newtonian
+  physics for modeling celestial mechanics. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -258,7 +338,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 9697d91cd.
+      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
     </span>
   </body>
 </html>

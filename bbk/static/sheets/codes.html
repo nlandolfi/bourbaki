@@ -82,6 +82,9 @@ MathJax.Hub.Config({
           macros: {
                   powerset: ["2^{#1}", 1],
                   CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -110,7 +113,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can we generalize the idea of flash codes. \ifhmode\unskip\fi\footnote{ The reliance of this sheet on \sheetref{flash_codes}{Flash Codes} and \sheetref{dot-dash_codes}{Dot-Dash Codes} is for this justification, and not for any of the terms presented. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a set and a $A$ be an alphabet set. We denote the set of all finite sequences (strings) in $A$ by $\strings(A)$. We read $\strings(A)$ aloud as "the strings in $A$." The length zero string is $\emptyset$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{code} for $X$ \t{in} $A$ is a function from $X$ to $\strings(A)$. In this context, we refer to the finite set $A$ as an \t{alphabet} and we call $c(x)$ the \t{codeword} of $x$. The \t{length} of $x \in X$, with respect to a code $c: X \to \strings(A)$, is the length of the sequence $c(x)$ (its codeword). We call a code \t{nonsingular} if it is injective.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.1 Examples</h2></div><div class="sheet-listing"><p class="sheet"> Define $c: \set{\alpha, \beta} \to \set{0, 1}$ by $c(\alpha) = (0,)$ and $c(\beta) = (1,)$. \ifhmode\unskip\fi\footnote{ Future editions will include additional examples. }</p></div><div class="sheet-listing" id="code_extensions"><h1 class="sheet">3. Code extensions</h1></div><div class="sheet-listing"><p class="sheet"> Let $s,t \in \strings(A)$ of length $m$ and $n$ respectively. The \t{concatenation} of $s$ with $t$ is the length $m+n$ string $u \in \strings(A)$ defined by $u_{1} = s_1, \dots, u_m = s_m$ and $u_{m+1} = t_1, \dots, u_{m+n} = t_n$. We denote the concatenation of $s$ and $t$ by $st$. Note, however, that $st \neq ts$, although $s(tr) = (st)r$.</p></div><div class="sheet-listing"><p class="sheet"> Given a code $c: X \to \strings(A)$, we can produce a code for $\strings(X)$ in a natural way. The \t{extension} of $c$ is the function $C: \strings(X) \to \strings(A)$ defined, for $\xi = (\xi_1, \dots, \xi_n) \in \strings(X)$, by \[ C(\xi) = c(\xi_1) \cdots c(\xi_n). \] We call an code \t{uniquely decodable} if its extension is injective. In other words, given the code $C(\xi)$ for a sequence $\xi \in \strings(X)$, we can recover $\xi$. We call $C(\xi)$ the \t{encoding} of $\xi$. We call $\xi$ the \t{decoding} of $C(\xi)$.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Can we generalize the idea of flash codes. \ifhmode\unskip\fi\footnote{ The reliance of this sheet on \sheetref{flash_codes}{Flash Codes} and \sheetref{dot-dash_codes}{Dot-Dash Codes} is for this justification, and not for any of the terms presented. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a set and $A$ be an alphabet set. We denote the set of all finite sequences (strings) in $A$ by $\str(A)$. We read $\str(A)$ aloud as "the strings in $A$." The length zero string is $\varnothing$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{code} for $X$ \t{in} $A$ is a function from $X$ to $\str(A)$. In this context, we refer to the finite set $A$ as an \t{alphabet} and we call $c(x)$ the \t{codeword} of $x$. The \t{length} of $x \in X$, with respect to a code $c: X \to \str(A)$, is the length of the sequence $c(x)$ (its codeword). We call a code \t{nonsingular} if it is injective.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> Define $c: \set{\alpha , \beta } \to \set{0, 1}$ by $c(\alpha ) = (0,)$ and $c(\beta ) = (1,)$. \ifhmode\unskip\fi\footnote{ Future editions will include additional examples. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Code extensions}</p></div><div class="sheet-listing"><p class="sheet"> Let $s,t \in \str(A)$ of length $m$ and $n$ respectively. The \t{concatenation} of $s$ with $t$ is the length $m+n$ string $u \in \str(A)$ defined by $u_{1} = s_1, \dots , u_m = s_m$ and $u_{m+1} = t_1, \dots , u_{m+n} = t_n$. We denote the concatenation of $s$ and $t$ by $st$. Note, however, that $st \neq ts$, although $s(tr) = (st)r$.</p></div><div class="sheet-listing"><p class="sheet"> Given a code $c: X \to \str(A)$, we can produce a code for $\str(X)$ in a natural way. The \t{extension} of $c$ is the function $C: \str(X) \to \str(A)$ defined, for $\xi  = (\xi _1, \dots , \xi _n) \in \str(X)$, by \[ C(\xi ) = c(\xi _1) \cdots c(\xi _n). \] We call an code \t{uniquely decodable} if its extension is injective. In other words, given the code $C(\xi )$ for a sequence $\xi \in \str(X)$, we can recover $\xi $. We call $C(\xi )$ the \t{encoding} of $\xi $. We call $\xi $ the \t{decoding} of $C(\xi )$.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -215,48 +218,39 @@ MathJax.Hub.Config({
 
   
     <div class="lit">
-    <p>
- <span class='run'>❲%!name:codes❳ </span>
+    <!--
+!name:codes
+!need:dot-dash_code
+!refs:david_huffman∕a_method_for_the_construction_of_minimum_redundancy_codes
+-->
 
- <span class='run'>❲%!need:dot-dash_code❳ </span>
-
- <span class='run'>❲%!refs:david_huffman∕a_method_for_the_construction_of_minimum_redundancy_codes❳ </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>
+Why </h1>
 
 <p>
  <span class='run'>Can we generalize the idea of flash codes.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
+<h1>
+Definition </h1>
 
 <p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
-
-<p>
- <span class='run'>Let $X$ be a set and a $A$ be an alphabet
-  set. </span>
+ <span class='run'>Let $X$ be a set and $A$ be an alphabet set. </span>
 
  <span class='run'>We denote the set of all finite sequences
-  (strings) in $A$ by $\strings(A)$. </span>
+  (strings) in $A$ by $\str(A)$. </span>
 
- <span class='run'>We read $\strings(A)$ aloud as “the strings in
-  $A$.} </span>
+ <span class='run'>We read $\str(A)$ aloud as “the strings in
+  $A$.” </span>
 
- <span class='run'>The length zero string is $\emptyset$. </span>
+ <span class='run'>The length zero string is $∅$. </span>
 </p>
 
 
 <p>
  <span class='run'>A <span class='term'>code</span> for $X$
   <span class='term'>in</span> $A$ is a function
-  from $X$ to $\strings(A)$. </span>
+  from $X$ to $\str(A)$. </span>
 
  <span class='run'>In this context, we refer to the finite set
   $A$ as an <span class='term'>alphabet</span> and
@@ -264,42 +258,35 @@ MathJax.Hub.Config({
   <span class='term'>codeword</span> of $x$. </span>
 
  <span class='run'>The <span class='term'>length</span> of $x ∈ X$,
-  with respect to a code $c: X → \strings(A)$,
-  is the length of the sequence $c(x)$ (its
-  codeword). </span>
+  with respect to a code $c: X → \str(A)$, is
+  the length of the sequence $c(x)$ (its codeword). </span>
 
  <span class='run'>We call a code
   <span class='term'>nonsingular</span> if it is
   injective. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Examples} </span>
-</p>
-
+<h2>
+Examples </h2>
 
 <p>
  <span class='run'>Define $c: \set{α, β} → \set{0, 1}$ by $c(α)
   = (0,)$ and $c(β) = (1,)$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Code extensions} </span>
-</p>
-
+<h1>
+Code extensions </h1>
 
 <p>
  <span class='run'></span>
 
- <span class='run'>Let $s,t ∈ \strings(A)$ of length $m$ and $n$
+ <span class='run'>Let $s,t ∈ \str(A)$ of length $m$ and $n$
   respectively. </span>
 
  <span class='run'>The <span class='term'>concatenation</span> of $s$
   with $t$ is the length $m+n$ string $u ∈
-  \strings(A)$ defined by $u_{1} = s_1, …, u_m =
-  s_m$ and $u_{m+1} = t_1, …, u_{m+n” = t_n$. </span>
+  \str(A)$ defined by $u_{1} = s_1, …, u_m =
+  s_m$ and $u_{m+1} = t_1, …, u_{m+n} = t_n$. </span>
 
  <span class='run'>We denote the concatenation of $s$ and $t$ by
   $st$. </span>
@@ -310,23 +297,21 @@ MathJax.Hub.Config({
 
 
 <p>
- <span class='run'>Given a code $c: X → \strings(A)$, we can
-  produce a code for $\strings(X)$ in a natural
-  way. </span>
+ <span class='run'>Given a code $c: X → \str(A)$, we can produce
+  a code for $\str(X)$ in a natural way. </span>
 
  <span class='run'>The <span class='term'>extension</span> of $c$ is
-  the function $C: \strings(X) → \strings(A)$
-  defined, for $ξ = (ξ_1, …, ξ_n) ∈ \strings(X)$,
-  by
+  the function $C: \str(X) → \str(A)$ defined, for
+  $ξ = (ξ_1, …, ξ_n) ∈ \str(X)$, by
   <p>\[
-   C(ξ) = c(ξ_1) ⋯ c(ξ_n). 
+   C(\xi ) = c(\xi _1) \cdots c(\xi _n). 
   \]</p></span>
 
  <span class='run'>We call an code <span class='term'>uniquely
   decodable</span> if its extension is injective. </span>
 
  <span class='run'>In other words, given the code $C(ξ)$ for a
-  sequence $ξ ∈ \strings(X)$, we can recover $ξ$. </span>
+  sequence $ξ ∈ \str(X)$, we can recover $ξ$. </span>
 
  <span class='run'>We call $C(ξ)$ the
   <span class='term'>encoding</span> of $ξ$. </span>
@@ -392,7 +377,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 9697d91cd.
+      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
     </span>
   </body>
 </html>

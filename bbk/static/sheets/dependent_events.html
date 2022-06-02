@@ -82,6 +82,9 @@ MathJax.Hub.Config({
           macros: {
                   powerset: ["2^{#1}", 1],
                   CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -216,9 +219,9 @@ MathJax.Hub.Config({
   
     <div class="lit">
     <p>
- <span class='run'>❲%!name:dependent_events❳ </span>
+ <span class='run'>%!name:dependent_events </span>
 
- <span class='run'>❲%!need:conditional_event_probabilities❳ </span>
+ <span class='run'>%!need:conditional_event_probabilities </span>
 </p>
 
 
@@ -241,7 +244,7 @@ MathJax.Hub.Config({
   <span class='term'>independent</span> under a
   probability measure $𝗣: \powerset{Ω} → 𝗥$ if
   <p>\[
-   𝗣(A ∩ B) = 𝗣(A)𝗣(B). 
+   \mathbfsf{P} (A \cap B) = \mathbfsf{P} (A)\mathbfsf{P} (B). 
   \]</p></span>
 
  <span class='run'>In other words, they are independent if the
@@ -317,7 +320,8 @@ MathJax.Hub.Config({
   and the events $A$ and $\relcomplement{A}{Ω}$
   partition $Ω$, we have
   <p>\[
-   𝗣(A | B) + 𝗣(\relcomplement{A}{Ω} | B) = 1. 
+   \mathbfsf{P} (A \mid B) + \mathbfsf{P} (\relcomplement{A}{\Omega }
+    \mid B) = 1. 
   \]</p></span>
 
  <span class='run'>From which we deduce $𝗣(\relcomplement{A}{Ω} |
@@ -335,13 +339,15 @@ MathJax.Hub.Config({
  <span class='run'>Since $(Ω - A) ∩ (Ω - B) = Ω - (A ∪ B)$,
   we have
   <p>\[
-   𝗣(A ∪ B) + P(\relcomplement{A}{Ω} ∩ \relcomplement{B}{Ω}) = 1. 
+   \mathbfsf{P} (A \cup B) + P(\relcomplement{A}{\Omega } \cap
+    \relcomplement{B}{\Omega }) = 1. 
   \]</p>
   Since $𝗣(A ∪ B) = 𝗣(A) + 𝗣(B) - 𝗣(A ∩ B)$,
   we obtain
   <p>\[
-   P(\relcomplement{A}{Ω} ∩ \relcomplement{B}{Ω}) = 1 - 𝗣(A) -
-    𝗣(B) - 𝗣(A)𝗣(B). 
+   P(\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) = 1
+    - \mathbfsf{P} (A) - \mathbfsf{P} (B) -
+    \mathbfsf{P} (A)\mathbfsf{P} (B). 
   \]</p></span>
 
  <span class='run'>We can express the right hand side as $(1 -
@@ -405,7 +411,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 9697d91cd.
+      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
     </span>
   </body>
 </html>

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make flash_code.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 flash_code.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > flash_code.tex
 

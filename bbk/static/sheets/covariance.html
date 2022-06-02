@@ -103,6 +103,9 @@ MathJax.Hub.Config({
           macros: {
                   powerset: ["2^{#1}", 1],
                   CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -264,7 +267,7 @@ Notation </h2>
 
  <span class='run'>We defined it:
   <p>\[
-   \cov(f, g) = 𝗘(fg) - 𝗘(f)𝗘(g). 
+   \cov(f, g) = \E (fg) - \E (f)\E (g). 
   \]</p></span>
 </p>
 
@@ -291,7 +294,8 @@ Properties </h2>
  <span class='run'>Let $f$ be a square-integrable real-valued
   random variable, then
   <p>\[
-   \cov(f, f) = 𝗘(ff) - 𝗘(f)𝗘(f) = 𝗘(f^2) - (𝗘(f))^2 = \var(f). 
+   \cov(f, f) = \E (ff) - \E (f)\E (f) = \E (f^2) - (\E (f))^2
+    = \var(f). 
   \]</p>
   <span class='run'>\end{proof} </span>
 
@@ -326,12 +330,11 @@ Properties </h2>
   <p>\[
    \begin{aligned} 
 
-   \var\parens*{∑_{i = 1}^{n} f_i} 
+   \var\parens*{\sum_{i = 1}^{n} f_i} 
 
-   ❲&amp;❳= \cov\parens*{∑_{i = 1}^{n} f_i, ∑_{i = 1}^{n}f_i}
-    <br /> 
+   &= \cov\parens*{\sum_{i = 1}^{n} f_i, \sum_{i = 1}^{n}f_i} \\ 
 
-   ❲&amp;❳= ∑_{i = 1}^{n} ∑_{j = 1}^{n} \cov(f_i, f_j) 
+   &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} \cov(f_i, f_j) 
 
    \end{aligned} 
   \]</p></span>
@@ -394,7 +397,7 @@ Properties </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 9697d91cd.
+      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
     </span>
   </body>
 </html>

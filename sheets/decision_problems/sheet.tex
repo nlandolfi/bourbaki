@@ -1,0 +1,41 @@
+%!name:decision_problems
+%!need:integer_numbers
+%!refs:michael_garey/computers_and_intractability/chapter_02
+%!need:undirected_graphs
+
+\section*{Definition}
+
+A \t{decision problem} is a pair $(I, Y)$ of \t{instances} $I$ and \t{yes-instances} $Y \subset I$.
+
+\section*{Examples}
+
+\subsection*{Subgraph isomorphism}
+
+Let $\mathcal{G} (n)$ be the set of graphs with $n$ vertices.
+For $m \leq n$, define $I = \mathcal{G} (n) \times \mathcal{G} (m)$.
+A graph $G_1 = (V_1, E_1)$ is \t{subgraph-isomorphic} to a graph $G_2 = (V_2, E_2)$ if there exists $V' \subset V_1$, $E' \subset E_1$ with $\num{V'} = \num{V_2}$, $\num{E'} = \num{E_2}$, and bijection $f: V' \to V_1$ so that
+  \[
+\set{u, v} \in E_2 \iff \set{f(u), f(v)} \in E'.
+  \]
+Define
+  \[
+Y = \Set{(G_1, G_2) \in I}{G_1 \text{ is subgraph-isomorphic to } G_2}
+  \]
+We call $(Y, I)$ the \t{subgraph-isomorphism problem}.
+
+\subsection*{Traveling Salesman}
+
+Denote by $S^n \subset \Z ^{n \times n}$ the set of symmetric integer-valued matrices.
+Define $I = S^n \times \Z $.
+A \t{$n$-tour} is a numbering $\pi : \set{1, \dots , n} \to \set{1, \dots , n}$ and has \t{cost} $C(\pi )$ with respect to $D$ defined by
+  \[
+\textstyle
+C(\pi ) = D_{\pi (n), \pi (1)} + \sum_{j = 1}^{n-1} D_{\pi (i), \pi (i+1)}
+  \]
+A tour is $B$-bounded if its cost is no greater than $B$.
+Define $Y = \Set{(D,B)}{\text{ there is a }B-\text{bounded tour with respect to } D}$.
+
+
+%<tex>
+%  <div data-littype='run'> \blankpage </div>
+%</tex>

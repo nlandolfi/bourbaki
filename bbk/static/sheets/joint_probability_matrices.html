@@ -72,6 +72,9 @@ MathJax.Hub.Config({
           macros: {
                   powerset: ["2^{#1}", 1],
                   CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -206,11 +209,11 @@ MathJax.Hub.Config({
   
     <div class="lit">
     <p>
- <span class='run'>❲%!name:joint_probability_matrices❳ </span>
+ <span class='run'>%!name:joint_probability_matrices </span>
 
- <span class='run'>❲%!need:real_matrix_rank❳ </span>
+ <span class='run'>%!need:real_matrix_rank </span>
 
- <span class='run'>❲%!need:dependent_events❳ </span>
+ <span class='run'>%!need:dependent_events </span>
 </p>
 
 
@@ -233,10 +236,12 @@ MathJax.Hub.Config({
   <p>\[
    M = \bmat{ 
 
-   𝗣(A ∩ B) ❲&amp;❳ 𝗣(A ∩ \relcomplement{B}{Ω}) <br /> 
+   \mathbfsf{P} (A \cap B) & \mathbfsf{P} (A \cap
+    \relcomplement{B}{\Omega }) \\ 
 
-   𝗣(\relcomplement{A}{Ω} ∩ B) ❲&amp;❳ 𝗣(\relcomplement{A}{Ω} ∩
-    \relcomplement{B}{Ω}) <br /> 
+   \mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) &
+    \mathbfsf{P} (\relcomplement{A}{\Omega } \cap
+    \relcomplement{B}{\Omega }) \\ 
 
    }. 
   \]</p></span>
@@ -253,8 +258,9 @@ MathJax.Hub.Config({
 
  <span class='run'>In other words,
   <p>\[
-   M = \bmat{𝗣(A) <br /> 𝗣(\relcomplement{A}{Ω}) }\bmat{𝗣(B)
-    ❲&amp;❳ 𝗣(\relcomplement{B}{Ω}}. 
+   M = \bmat{\mathbfsf{P} (A) \\
+    \mathbfsf{P} (\relcomplement{A}{\Omega }) }\bmat{\mathbfsf{P} (B) &
+    \mathbfsf{P} (\relcomplement{B}{\Omega }}. 
   \]</p></span>
 
  <span class='run'>In this case, we see that $\rank(M) = 1$. </span>
@@ -267,7 +273,8 @@ MathJax.Hub.Config({
  <span class='run'>Then, using the law of total probabiliy, each
   row is a multiple of
   <p>\[
-   M1 = \bmat{𝗣(A) <br /> 𝗣(\relcomplement{A}{Ω})} . 
+   M1 = \bmat{\mathbfsf{P} (A) \\
+    \mathbfsf{P} (\relcomplement{A}{\Omega })} . 
   \]</p></span>
 
  <span class='run'>In particular, we have $𝗣(A ∩ B) = α 𝗣(A)$
@@ -276,8 +283,9 @@ MathJax.Hub.Config({
 
  <span class='run'>So
   <p>\[
-   𝗣(A ∩ B) + 𝗣(\relcomplement{A}{Ω} ∩ B) = α(𝗣(B) +
-    𝗣(\relcomplement{A}{Ω})), 
+   \mathbfsf{P} (A \cap B) + \mathbfsf{P} (\relcomplement{A}{\Omega }
+    \cap B) = \alpha (\mathbfsf{P} (B) +
+    \mathbfsf{P} (\relcomplement{A}{\Omega })), 
   \]</p>
   from which we deduce $α = 𝗣(B)$ </span>
 
@@ -348,7 +356,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 9697d91cd.
+      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
     </span>
   </body>
 </html>

@@ -82,6 +82,9 @@ MathJax.Hub.Config({
           macros: {
                   powerset: ["2^{#1}", 1],
                   CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -216,9 +219,9 @@ MathJax.Hub.Config({
   
     <div class="lit">
     <p>
- <span class='run'>❲%!name:conditional_event_probabilities❳ </span>
+ <span class='run'>%!name:conditional_event_probabilities </span>
 
- <span class='run'>❲%!need:event_probabilities❳ </span>
+ <span class='run'>%!need:event_probabilities </span>
 </p>
 
 
@@ -259,7 +262,8 @@ MathJax.Hub.Config({
 
  <span class='run'>In other words, we define
   <p>\[
-   𝗣(A | B) = \frac{𝗣(A ∩ B)}{𝗣(B)}, 
+   \mathbfsf{P} (A \mid B) = \frac{\mathbfsf{P} (A \cap
+    B)}{\mathbfsf{P} (B)}, 
   \]</p></span>
 
  <span class='run'>for all $A, B ⊂ Ω$, whenever $𝗣(B) ≠ 0$. </span>
@@ -273,7 +277,8 @@ MathJax.Hub.Config({
   <p>\[
    \textstyle 
 
-   𝗣(B) = ∑_{i = 1}^{n} 𝗣(A_i)𝗣(B | A_i), 
+   \mathbfsf{P} (B) = \sum_{i = 1}^{n}
+    \mathbfsf{P} (A_i)\mathbfsf{P} (B \mid A_i), 
   \]</p>
   where $A_1, …, A_n$ partition $Ω$ and $B ⊂ Ω$
   with $𝗣(B) &gt; 0$. </span>
@@ -290,7 +295,8 @@ MathJax.Hub.Config({
 
  <span class='run'>Moreover, (ii)
   <p>\[
-   𝗣(Ω | B) = 𝗣(Ω ∩ B)/𝗣(B) = 𝗣(B)/𝗣(B) = 1 
+   \mathbfsf{P} (\Omega  \mid B) = \mathbfsf{P} (\Omega  \cap
+    B)/\mathbfsf{P} (B) = \mathbfsf{P} (B)/\mathbfsf{P} (B) = 1 
   \]</p></span>
 
  <span class='run'>Similarly, $𝗣(∅ | B) = 𝗣(∅ ∩ B)/𝗣(B) = 0/𝗣(B)
@@ -303,27 +309,29 @@ MathJax.Hub.Config({
   <p>\[
    \begin{aligned} 
 
-   𝗣(A ∩ C | B) 
+   \mathbfsf{P} (A \cap C \mid B) 
 
-   ❲&amp;❳= 
+   &= 
 
-   𝗣((A ∩ C) ∩ B)/𝗣(B) <br /> 
+   \mathbfsf{P} ((A \cap C) \cap B)/\mathbfsf{P} (B) \\ 
 
-   ❲&amp;❳= 
+   &= 
 
-   𝗣((A ∩ B) ∩ (C ∩ B)/𝗣(B) <br /> 
+   \mathbfsf{P} ((A \cap B) \cap (C \cap B)/\mathbfsf{P} (B) \\ 
 
-   ❲&amp;❳\overset{(a)}{=} 
+   &\overset{(a)}{=} 
 
-   (𝗣(A ∩ B) + 𝗣(C ∩ B))/𝗣(B) <br /> 
+   (\mathbfsf{P} (A \cap B) + \mathbfsf{P} (C \cap
+    B))/\mathbfsf{P} (B) \\ 
 
-   ❲&amp;❳= 
+   &= 
 
-   𝗣(A ∩ B)/𝗣(B) + P(C ∩ B)/𝗣(B) <br /> 
+   \mathbfsf{P} (A \cap B)/\mathbfsf{P} (B) + P(C \cap
+    B)/\mathbfsf{P} (B) \\ 
 
-   ❲&amp;❳= 
+   &= 
 
-   𝗣(A | B) + P(C | B). 
+   \mathbfsf{P} (A \mid B) + P(C \mid B). 
 
    \end{aligned} 
   \]</p>
@@ -350,11 +358,12 @@ MathJax.Hub.Config({
 
  <span class='run'>For $𝗣_p$, define $q: Ω → 𝗥$ by
   <p>\[
-   q(ω) = \begin{cases} 
+   q(\omega ) = \begin{cases} 
 
-   \frac{p(ω)}{𝗣(B)} ❲&amp;❳ \text{ if } ω ∈ B <br /> 
+   \frac{p(\omega )}{\mathbfsf{P} (B)} & \text{ if } \omega  \in B
+    \\ 
 
-   0 ❲&amp;❳ \text{ otherwise. } <br /> 
+   0 & \text{ otherwise. } \\ 
 
    \end{cases} 
   \]</p></span>
@@ -420,7 +429,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 9697d91cd.
+      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
     </span>
   </body>
 </html>

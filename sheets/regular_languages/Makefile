@@ -1,0 +1,55 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make regular_languages.pdf
+
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
+regular_languages.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > regular_languages.tex
+
+regular_languages.pdf: ../../*.tex ../../trademark.pdf *.tex regular_languages.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode regular_languages.tex
+	../../latexrun regular_languages.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: regular_languages.pdf
+	open regular_languages.pdf
+
+o:
+	make open
+
+terms: regular_languages.tex
+	bbk_sheet -mode ts regular_languages.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f regular_languages.*
+	make reset
+	bbk_sheet -mode mk > Makefile
