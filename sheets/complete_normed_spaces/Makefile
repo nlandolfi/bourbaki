@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make complete_normed_spaces.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 complete_normed_spaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complete_normed_spaces.tex
 

@@ -4,55 +4,54 @@
 %!need:extended_real_numbers
 %!need:greatest_lower_bounds
 %!need:n-dimensional_space
-%%!need:family_unions_and_intersections
 
-\ssection{Why}
+\section*{Why}
 
 We are frequently interested in finding minimizers of real functions.
   \ifhmode\unskip\fi\footnote{
 Future editions will modify and expand.
   }
 
-\ssection{Definition}
+\section*{Definition}
 
-An \t{optimization problem} is a pair $(\CX, f: \CX \to \R)$ in which $\CX$ is a nonempty set called the \t{constraint set} and $f$ is called the \t{objective} (or \t{cost function}).
+An \t{optimization problem} is a pair $(\mathcal{X} , f)$ in which $\mathcal{X} $ is a nonempty set called the \t{constraint set} and $f: \mathcal{X}  \to \R $ is called the \t{objective} (or \t{cost function}).
 
-If $\CX$ is finite we call the optimization problem \t{discrete}.
-If $\CX \subset \R^d$ we call the optimization problem \t{continuous}.
+If $\mathcal{X} $ is finite we call the optimization problem \t{discrete}.
+If $\mathcal{X}  \subset \R ^d$ we call the optimization problem \t{continuous}.
 
 We refer to all elements of the constraint set as \t{feasible}.
-We refer to an element $x \in \CX$ of the constraint set as \t{optimal} if $f(x) = \inf_{z \in \CX}f(z)$.
+We refer to an element $x \in \mathcal{X} $ of the constraint set as \t{optimal} if $f(x) = \inf_{z \in \mathcal{X} }f(z)$.
 We also refer to optimal elements as \t{solutions} of the optimization problem.
 
-It is common for $f$ and $\CX$ to depend on some other, known, given objects.
+It is common for $f$ and $\mathcal{X} $ to depend on some other, known, given objects.
 In this case, these objects are often called \t{parameters} or \t{problem data}.
 
-\ssubsection{Notation}
+\subsection*{Notation}
 
 We often write optimization problems as
   \[
 \begin{aligned}
 \text{minimize}\quad & f(x) \\
-\text{subject to}\quad & x \in \CX.
+\text{subject to}\quad & x \in \mathcal{X} .
 \end{aligned}
   \]
 In this case we call $x$ the \t{decision variable}.
 
-\ssubsection{Extended reals}
+\subsection*{Extended reals}
 
-It is common to let $f: \CX \to \Rbar$, and allow there to exist $x \in \CX$ for which $f(x) = \infty$.
-This is a trick to embed further constraints in the objective.
+It is common to let $f: \mathcal{X}  \to \Rbar$, and allow there to exist $x \in \mathcal{X} $ for which $f(x) = \infty$.
+This technique can be used to embed further constraints in the objective.
+For example, we interpret $f(x) = +\infty$ to mean $x$ is \textit{infeasible}.
 
-\ssubsection{Maximization}
+\subsection*{Maximization}
 
 If we have some function $g: \CX \to \Rbar$ that we wish to maximize, we can always convert it to an optimization problem by defining $f: \CX \to \Rbar$ by $f(x) = -g(x)$.
 In this case $g$ is often called a \t{reward} (\t{utility}, \t{profit}).
 
-\ssection{Solvers}
+\section*{Solvers}
 
 Let $\CP = \set{(X_a, f_a: X_a \to \Rbar)}_{a \in A}$ be a family of optimization problems.
 A \t{solver} (or \t{solution method}, \t{solution algorithm}) for $\CP$ is a function $S: A \to \CS$ such that $S_a$ is a solution of the problem $(X_a, f_a)$.
 
 Loosely speaking, the difficulty of \say{solving} the optimization problem $(\CX, f)$ depends on the properties of $\CX$ and $f$ and the problem \say{size}.
-For example, when $\CX \subset \R^d$ the difficulty is related to the \say{dimension} $d$ of $x \in \CX$.
-
+For example, when $\mathcal{X}  \subset \R ^d$ the difficulty is related to the \say{dimension} $d$ of $x \in \mathcal{X} $.

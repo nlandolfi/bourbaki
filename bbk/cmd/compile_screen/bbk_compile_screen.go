@@ -5,6 +5,7 @@ import (
 	"encoding/gob"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -79,6 +80,33 @@ func main() {
 		)
 		if err != nil {
 			log.Printf("error transferring %s/graph.pdf: %v", name, err)
+		}
+
+		// BUG: if two of the same named graphics, then an error
+		graphicsDir := filepath.Join(*sheetsDir, name, "graphics")
+		_, err = os.Stat(graphicsDir)
+		var hasGraphics bool
+		if os.IsNotExist(err) {
+		} else if err != nil {
+		} else {
+			hasGraphics = true
+		}
+		if hasGraphics {
+			toDir := filepath.Join(*staticDir, "sheets", "graphics")
+			os.Mkdir(toDir, 0700)
+			fs, err := ioutil.ReadDir(graphicsDir)
+			if err != nil {
+				log.Fatal(err)
+			}
+			for _, fi := range fs {
+				_, err = bbk.CopyFile(
+					filepath.Join(graphicsDir, fi.Name()),
+					filepath.Join(toDir, fi.Name()),
+				)
+				if err != nil {
+					log.Printf("error transferring %s/%s: %v", p, fi.Name(), err)
+				}
+			}
 		}
 	}
 
