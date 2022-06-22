@@ -1,0 +1,203 @@
+<!--
+!name:measure_derivatives
+!need:real_limits
+!need:measures
+-->
+
+§ Defining result ⦉
+¶ ⦊
+  ‖ \begin{proposition} ⦉
+
+  ‖ Let $(X, \SA)$ be a measurable space. ⦉
+
+  ‖ Let $μ$ and $ν$ be finite measures with $ν ≪ μ$. ⦉
+⦉
+
+¶ ⦊
+  ‖ There exists $g: X → [0, ∞)$ such that
+    ◇ ⦊
+      ‖ ν(A) = ∫_A g \, dμ ⦉
+    ⦉
+    for all $A ∈ \SA$. ⦉
+
+  ‖ The function $g$ is $μ$-almost everywhere unique. ⦉
+
+  ‖ \begin{proof} ⦉
+
+  ‖ Define
+    ◇ ⦊
+      ‖ \SF = \Set*{ ⦉
+
+      ‖ f: X → [0, ∞) ⦉
+
+      ‖ }{ ⦉
+
+      ‖ f \text{ measurable and } ⦉
+
+      ‖ ∈t_A f dμ ≤ ν(A) ⦉
+
+      ‖ }. ⦉
+    ⦉⦉
+
+  ‖ The function $f ≡ 0$ is in $ℱ$, since it is a measurable
+    simple function whose integral over every measureable set is
+    zero. ⦉
+⦉
+
+¶ ⦊
+  ‖ If $f_1$ and $f_2$ are in $\SF$, then $f_1 \vee f_2$ is
+    in $\SF$. ⦉
+
+  ‖ To check, let $A ∈ \SA$, and define the sets $A_1 =
+    \Set{x ∈ A}{f_1(x) > f_2(x)}$ and $A_2 = \Set{x ∈ A}{f_1(x)
+    ≤ f_2(x)}$. ⦉
+
+  ‖ $A_1$ and $A_2$ partition $A$, so ⦉
+
+  ‖     ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ ∫_A f_1 \vee f_2 ⦉
+
+      ‖ ❲&❳= ∫_{A_1} f_1 \vee f_2 + ∫_{A_2} f_1 \vee f_2 ᜶ ⦉
+
+      ‖ ❲&❳= ∫_{A_1} f_1 + ∫_{A_2} f_2 ᜶ ⦉
+
+      ‖ ❲&❳≤ ν(A_1) + ν(A_2) ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉
+
+    ‖ Since $A_1$ and $A_2$ partition $A$,
+      ◇ ⦊
+        ‖ ν(A_1) + ν(A_2) = ⦉
+
+        ‖ ν(A_1 ∪ A_2) = ⦉
+
+        ‖ ν(A). ⦉
+      ⦉⦉⦉
+⦉
+
+¶ ⦊
+  ‖ Select a sequence of ⦉
+
+  ‖ functions $\seq{f}$ in $\SF$ ⦉
+
+  ‖ so that ⦉
+  ◇ ⦊
+    ‖ \lim_{n} ∈t \seqt{f} = ⦉
+
+    ‖ \sup\Set*{∈t f}{f ∈ \SF}. ⦉
+  ⦉
+
+  ‖ Toward ensuring the sequence ⦉
+
+  ‖ is increasing, define ⦉
+
+  ‖ $g_1 = f_1$, $g_2 = g_1 \vee f_2$, ⦉
+
+  ‖ and $g_n = g_{n-1} \vee f_n$ ⦉
+
+  ‖ for $n ≥ 3$. ⦉
+
+  ‖ Using the observation in the previous ⦉
+
+  ‖ paragraph, $g_n ∈ \SF$ for each $n$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $g$ be the pointwise limit ⦉
+
+  ‖ of the $\seq{g}$. ⦉
+
+  ‖ The monotone convergence of integrals shows
+    ◇ ⦊
+      ‖ ∫_A g = \lim_n ∈t_A g_n. ⦉
+    ⦉
+    for each $A ∈ \SA$. ⦉
+
+  ‖ Since $∈t_A g_n ≤ ν(A)$, ⦉
+
+  ‖ so too is the limit and thus ⦉
+
+  ‖ so too is $∈t_A g$. ⦉
+
+  ‖ Thus, $g ∈ \SF$. ⦉
+
+  ‖ By construction, ⦉
+
+  ‖ for $A = X$, ⦉
+
+  ‖ $∈t g = \sup\Set*{∈t f}{f ∈ \SF}$. ⦉
+
+  ‖ We have constructed an element of $\SF$ ⦉
+
+  ‖ attaining the supremum. ⦉
+⦉
+
+¶ ⦊
+  ‖ We know that the integral of ⦉
+
+  ‖ $g$ on $A$ with respect to $μ$ ⦉
+
+  ‖ is bounded above by $ν(A)$. ⦉
+
+  ‖ We want the gap to be zero. ⦉
+
+  ‖ Regardless of the gap, the function $ν_0: \SA → [0, ∞)$
+    defined by
+    ◇ ⦊
+      ‖ ν_0(A) = ν(A) - ∈t(g, A, μ), ⦉
+    ⦉
+    for each $A ∈ \SA$ is a positive measure. ⦉
+
+  ‖ If $ν_0$ is identically zero, then there is no gap. ⦉
+⦉
+
+¶ ⦊
+  ‖ Suppose there is a gap: then there exists a measurable set
+    with strictly positive measure under $ν_0$. ⦉
+
+  ‖ Since the base set contains this set, and measures are
+    monotone, the base set must have stricty positive measure. ⦉
+
+  ‖ Since $μ$ is finite, there exists a natural number $n$ so
+    that
+    ◇ ⦊
+      ‖ ν_0(X) > \frac{1}{n}μ(X). ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ Define a new measure $ν_1 = ν_0 - \frac{1}{n}μ$. ⦉
+
+  ‖ Denote a signed-set decomposition of $ν_1$ ⦉
+
+  ‖ by $(P, N)$. ⦉
+
+  ‖ Then $ν_1(A ∩ P) ≥ 0$, or equivalently,
+    ◇ ⦊
+      ‖ ν_0(A ∩ P) - \frac{1}{n}μ(A ∩ P) ≥ 0, ⦉
+    ⦉
+    for all $A$, and so
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ ν(A) ❲&❳= ν_0(A) + ∫(g, A, μ) ᜶ ⦉
+
+      ‖ ❲&❳≥ ν_0(A ∩ P) + ∫ (g, A, μ). ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ \end{proof} ⦉
+
+  ‖ \end{proposition} ⦉
+⦉
+
+¶ ⦊
+  ‖ Many authorities refer to this result as the ❬Radon-Nikodym
+    theorem❭. ⦉
+⦉
+
+§§ Notation ⦉

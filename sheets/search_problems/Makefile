@@ -4,17 +4,14 @@
 
 make:
 	make graph.pdf
-	make real_limits.pdf
+	make search_problems.pdf
 
-sheet.tex: sheet.lit
-	lit -in sheet.lit -out sheet.tex
+search_problems.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > search_problems.tex
 
-real_limits.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > real_limits.tex
-
-real_limits.pdf: ../../*.tex ../../trademark.pdf *.tex real_limits.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode real_limits.tex
-	../../latexrun real_limits.tex
+search_problems.pdf: ../../*.tex ../../trademark.pdf *.tex search_problems.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode search_problems.tex
+	../../latexrun search_problems.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +23,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: real_limits.pdf
-	open real_limits.pdf
+open: search_problems.pdf
+	open search_problems.pdf
 
 o:
 	make open
 
-terms: real_limits.tex
-	bbk_sheet -mode ts real_limits.tex
+terms: search_problems.tex
+	bbk_sheet -mode ts search_problems.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +47,6 @@ clean:
 	make reset
 
 remake:
-	rm -f real_limits.*
+	rm -f search_problems.*
 	make reset
 	bbk_sheet -mode mk > Makefile

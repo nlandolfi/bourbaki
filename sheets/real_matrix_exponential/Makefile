@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make measure_derivatives.pdf
+	make real_matrix_exponential.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-measure_derivatives.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > measure_derivatives.tex
+real_matrix_exponential.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > real_matrix_exponential.tex
 
-measure_derivatives.pdf: ../../*.tex ../../trademark.pdf *.tex measure_derivatives.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode measure_derivatives.tex
-	../../latexrun measure_derivatives.tex
+real_matrix_exponential.pdf: ../../*.tex ../../trademark.pdf *.tex real_matrix_exponential.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode real_matrix_exponential.tex
+	../../latexrun real_matrix_exponential.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: measure_derivatives.pdf
-	open measure_derivatives.pdf
+open: real_matrix_exponential.pdf
+	open real_matrix_exponential.pdf
 
 o:
 	make open
 
-terms: measure_derivatives.tex
-	bbk_sheet -mode ts measure_derivatives.tex
+terms: real_matrix_exponential.tex
+	bbk_sheet -mode ts real_matrix_exponential.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f measure_derivatives.*
+	rm -f real_matrix_exponential.*
 	make reset
 	bbk_sheet -mode mk > Makefile
