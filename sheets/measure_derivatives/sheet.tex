@@ -2,150 +2,115 @@
 %!need:real_limits
 %!need:measures
 
-\ssection{Why}
+\section*{Defining result}
 
-TODO
+\begin{proposition}
+Let $(X, \SA)$ be a measurable space.
+Let $\mu $ and $\nu $ be finite measures with $\nu  \ll \mu $.
 
-\ssection{Definition}
-
-\ssubsection{Defining Result}
-
-\begin{prop}
-Let $(X, \SA)$
-be a measurable space.
-Let $\mu$ and $\nu$
-be finite measures
-with $\nu \ll \mu$.
-
-There exists
-$g: X \to [0, \infty)$
-such that
-\[
-  \nu(A) = \int_A g \, d\mu
-\]
+There exists $g: X \to [0, \infty)$ such that
+  \[
+\nu (A) = \int_A g \, d\mu
+  \]
 for all $A \in \SA$.
-The function $g$ is $\mu$-almost
-everywhere unique.
+The function $g$ is $\mu $-almost everywhere unique.
 \begin{proof}
-  Define
+Define
   \[
-    \SF = \Set*{
-      f: X \to [0, \infty)
-    }{
-      f \text{ measurable and }
-      \int_A f d\mu \leq \nu(A)
-    }.
+\SF = \Set*{
+f: X \to [0, \infty)
+}{
+f \text{ measurable and }
+\int_A f d\mu  \leq \nu (A)
+}.
   \]
-  The function $f \equiv 0$ is in $\mathcal{F}$,
-  since it is a measurable simple function
-  whose integral over every measureable set
-  is zero.
+The function $f \equiv 0$ is in $\mathcal{F} $, since it is a measurable simple function whose integral over every measureable set is zero.
 
-  If $f_1$ and $f_2$ are in $\SF$,
-  then $f_1 \vee f_2$ is in $\SF$.
-  To check, let $A \in \SA$,
-  and define the sets
-  $A_1 = \Set{x \in A}{f_1(x) > f_2(x)}$
-  and
-  $A_2 = \Set{x \in A}{f_1(x) \leq f_2(x)}$.
-  $A_1$ and $A_2$ partition $A$, so
+If $f_1$ and $f_2$ are in $\SF$, then $f_1 \vee f_2$ is in $\SF$.
+To check, let $A \in \SA$, and define the sets $A_1 = \Set{x \in A}{f_1(x) > f_2(x)}$ and $A_2 = \Set{x \in A}{f_1(x) \leq f_2(x)}$.
+$A_1$ and $A_2$ partition $A$, so
   \[
-    \begin{aligned}
-    \int_A f_1 \vee f_2
-      &=    \int_{A_1} f_1 \vee f_2 + \int_{A_2} f_1 \vee f_2 \\
-      &=    \int_{A_1} f_1  + \int_{A_2} f_2 \\
-      &\leq \nu(A_1) + \nu(A_2)
-    \end{aligned}
+\begin{aligned}
+\int_A f_1 \vee f_2
+&= \int_{A_1} f_1 \vee f_2 + \int_{A_2} f_1 \vee f_2 \\
+&= \int_{A_1} f_1 + \int_{A_2} f_2 \\
+&\leq \nu (A_1) + \nu (A_2)
+\end{aligned}
   \]
-  Since $A_1$ and $A_2$ partition
-  $A$,
+Since $A_1$ and $A_2$ partition $A$,
+    \[
+\nu (A_1) + \nu (A_2) =
+\nu (A_1 \cup A_2) =
+\nu (A).
+    \]
+
+Select a sequence of
+functions $\seq{f}$ in $\SF$
+so that
+\[
+\lim_{n} \int \seqt{f} =
+\sup\Set*{\int f}{f \in \SF}.
+\]
+Toward ensuring the sequence
+is increasing, define
+$g_1 = f_1$, $g_2 = g_1 \vee f_2$,
+and $g_n = g_{n-1} \vee f_n$
+for $n \geq 3$.
+Using the observation in the previous
+paragraph, $g_n \in \SF$ for each $n$.
+
+Let $g$ be the pointwise limit
+of the $\seq{g}$.
+The monotone convergence of integrals shows
   \[
-    \nu(A_1) + \nu(A_2) =
-    \nu(A_1 \union A_2) =
-    \nu(A).
+\int_A g = \lim_n \int_A g_n.
   \]
+for each $A \in \SA$.
+Since $\int_A g_n \leq \nu (A)$,
+so too is the limit and thus
+so too is $\int_A g$.
+Thus, $g \in \SF$.
+By construction,
+for $A = X$,
+$\int g = \sup\Set*{\int f}{f \in \SF}$.
+We have constructed an element of $\SF$
+attaining the supremum.
 
-  Select a sequence of
-  functions $\seq{f}$ in $\SF$
-  so that
-  $$
-    \lim_{n} \int \seqt{f} =
-    \sup\Set*{\int f}{f \in \SF}.
-  $$
-  Toward ensuring the sequence
-  is increasing, define
-  $g_1 = f_1$, $g_2 = g_1 \vee f_2$,
-  and $g_n = g_{n-1} \vee f_n$
-  for $n \geq 3$.
-  Using the observation in the previous
-  paragraph, $g_n \in \SF$ for each $n$.
-
-  Let $g$ be the pointwise limit
-  of the $\seq{g}$.
-  The monotone convergence
-  of integrals shows
+We know that the integral of
+$g$ on $A$ with respect to $\mu $
+is bounded above by $\nu (A)$.
+We want the gap to be zero.
+Regardless of the gap, the function $\nu _0: \SA \to [0, \infty)$ defined by
   \[
-    \int_A g = \lim_n \int_A g_n.
+\nu _0(A) = \nu (A) - \int(g, A, \mu ),
   \]
-  for each $A \in \SA$.
-  Since $\int_A g_n \leq \nu(A)$,
-  so too is the limit and thus
-  so too is $\int_A g$.
-  Thus, $g \in \SF$.
-  By construction,
-  for $A = X$,
-  $\int g = \sup\Set*{\int f}{f \in \SF}$.
-  We have constructed an element of $\SF$
-  attaining the supremum.
+for each $A \in \SA$ is a positive measure.
+If $\nu _0$ is identically zero, then there is no gap.
 
-  We know that the integral of
-  $g$ on $A$ with respect to $\mu$
-  is bounded above by $\nu(A)$.
-  We want the gap to be zero.
-  Regardless of the gap, the function
-  $\nu_0: \SA \to [0, \infty)$ defined
-  by
+Suppose there is a gap: then there exists a measurable set with strictly positive measure under $\nu _0$.
+Since the base set contains this set, and measures are monotone, the base set must have stricty positive measure.
+Since $\mu $ is finite, there exists a natural number $n$ so that
   \[
-    \nu_0(A) = \nu(A) - \int(g, A, \mu).
-  \]
-  for each $A \in \SA$ is a positive measure
-  If $\nu_0$ is identically zero,
-  then there is no gap.
-
-  Suppose there is a gap:
-  then there exists a measurable
-  set with strictly positive measure
-  under $\nu_0$.
-  Since the base set contains this
-  set, and measures are monotone,
-  the base set must have stricty
-  positive measure.
-  Since $\mu$ is finite, there exists
-  a natural number $n$ so that
-  \[
-    \nu_0(X) > \frac{1}{n}\mu(X).
+\nu _0(X) > \frac{1}{n}\mu (X).
   \]
 
-  Define a new measure $\nu_1 = \nu_0 - \frac{1}{n}\mu$.
-  Denote a signed-set decomposition of $\nu_1$
-  by $(P, N)$.
-  Then $\nu_1(A \intersect P) \geq 0$, or equivalently,
+Define a new measure $\nu _1 = \nu _0 - \frac{1}{n}\mu $.
+Denote a signed-set decomposition of $\nu _1$
+by $(P, N)$.
+Then $\nu _1(A \cap P) \geq 0$, or equivalently,
   \[
-    \nu_0(A \intersect P) - \frac{1}{n}\mu(A \intersect P) \geq 0,
+\nu _0(A \cap P) - \frac{1}{n}\mu (A \cap P) \geq 0,
   \]
-  for all $A$ so.
-  and so
+for all $A$, and so
   \[
-    \begin{aligned}
-      \nu(A) &=    \nu_0(A) + \int(g, A, \mu) \\
-             &\geq \nu_0(A \intersect P) + \int (g, A, \mu).
-    \end{aligned}
+\begin{aligned}
+\nu (A) &= \nu _0(A) + \int(g, A, \mu ) \\
+&\geq \nu _0(A \cap P) + \int (g, A, \mu ).
+\end{aligned}
   \]
 \end{proof}
-\end{prop}
+\end{proposition}
 
-Some call the above the
-\ct{Radon-Nikodym theorem
-}{radonnikodymtheorem}.
+Many authorities refer to this result as the \t{Radon-Nikodym theorem}.
 
-\ssubsection{Notation}
+\subsection*{Notation}
