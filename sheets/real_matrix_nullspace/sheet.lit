@@ -1,0 +1,140 @@
+<!--
+!name:real_matrix_nullspace
+!need:real_matrices
+!need:real_vector_angles
+!need:orthogonal_real_subspaces
+-->
+
+§ Definition ⦉
+¶ ⦊
+  ‖ The ❬nullspace❭ (or ❬kernel❭) of a matrix $A ∈ 𝗥^{m × n}$ is the set
+    ◇ ⦊
+      ‖ \Set{x ∈ 𝗥^n}{Ax = 0}. ⦉
+    ⦉⦉
+
+  ‖ It is the set of vectors mapped to zero by $A$. ⦉
+
+  ‖ Equivalently, it is the set of vectors orthogonal to the
+    rows of $A$. ⦉
+⦉
+
+§§ Notation ⦉
+¶ ⦊
+  ‖ We denote the nullspace of $A ∈ 𝗥^{m × n}$ by $\null(A) ⊂
+    𝗥^{n}$. ⦉
+
+  ‖ Some authors denote the nullspace of $A$ by $\mathcal{N}(A)$. ⦉
+⦉
+
+§§ A subspace ⦉
+¶ ⦊
+  ‖ The nullspace of a matrix is a subspace (this justifies the
+    terminology null‹space›!). ⦉
+
+  ‖ There are a few routes to see this. ⦉
+⦉
+
+¶ ⦊
+  ‖ The first is direct. ⦉
+
+  ‖ If $w, z ∈ \null(A)$, then $Aw = 0$ and $Az = 0$. ⦉
+
+  ‖ So then $A(w + z) = Aw + Az = 0$. ⦉
+
+  ‖ So $\null(A)$ is closed under vector addition. ⦉
+
+  ‖ Also $A(αw) = α(Aw) = 0$ for all $α ∈ 𝗥$. ⦉
+
+  ‖ [In particular $A0 = 0$, so $0 ∈ \null(A)$; i.e.,
+    $\null(A)$ contains the origin.] ⦉
+
+  ‖ So $\null(A)$ is closed under scalar multiplication. ⦉
+⦉
+
+¶ ⦊
+  ‖ The second is by thinking about orthogonal complements. ⦉
+
+  ‖ Second, we can view the $\null(A)$ as the set of vectors
+    orthgonal to all the rows of $A$. ⦉
+
+  ‖ In other words, $\null(A) = \set{\tilde{a}_1, …,
+    \tilde{a}_m}^⊥$. ⦉
+
+  ‖ The orthogonal complement of any set is a subspace (see
+    \sheetref{orthogonal_real_subspaces}{Orthogonal Real Subspaces}). ⦉
+⦉
+
+§ Ambiguity in solutions ⦉
+¶ ⦊
+  ‖ Suppose we have a solution to the system of linear equation
+    with data $(A, y)$. ⦉
+
+  ‖ In other words, we have a vector $x ∈ 𝗥^n$ so that $y =
+    Ax$. ⦉
+
+  ‖ If we have a vector $z ∈ \null(A)$, then $x + z$ is also
+    a solution to the system $(A, y)$, since
+    ◇ ⦊
+      ‖ A(x + z) = Ax + Az = Ax + 0 = y ⦉
+    ⦉⦉
+
+  ‖ Conversely, suppose there were another solution $\tilde{x} ∈
+    𝗥^{n}$ to the system $(A, y)$. ⦉
+
+  ‖ Then $y = Ax = A\tilde{x}$, so
+    ◇ ⦊
+      ‖ 0 = y - y = Ax - A\tilde{x} = A(x - \tilde{x}). ⦉
+    ⦉⦉
+
+  ‖ Consequently, $(x - \tilde{x}) ∈ \null(A)$, and so
+    $\tilde{x}$ is the solution $x$ plus some vector in the null
+    space of $A$. ⦉
+
+  ‖ Consequently we are interested in whether $A$ has vectors in
+    its nullspace. ⦉
+⦉
+
+§§ Zero nullspace ⦉
+¶ ⦊
+  ‖ The origin $0$ is always in the nullspace of $A$. ⦉
+
+  ‖ However, this vector does not mean that we can find
+    different solutions, since $x + 0 = x$ for all $x ∈ 𝗥^n$. ⦉
+
+  ‖ If, on the other hand, there is a nonzero vector $z ∈
+    \null(A)$, then $x + z ≠ x$, and $x+z$ is a solution for
+    $(A, y)$. ⦉
+
+  ‖ We think about $A$ as a function from $𝗥^n$ to $𝗥^m$. ⦉
+
+  ‖ In the case that there is a nonzero element in the
+    nullspace, $A$ maps different vectors to the same vector. ⦉
+
+  ‖ Here, $x$ and $x + z$ both map to $y$. ⦉
+
+  ‖ In this case, the function is ‹not invertible›, because it
+    is not one-to-one. ⦉
+
+  ‖ If, however, zero is the only element of the null space,
+    the function is one-to-one. ⦉
+
+  ‖ So call $A$ ❬one-to-one❭ if $\null(A) = 0$. ⦉
+⦉
+
+§§ Equivalent statements ⦉
+¶ ⦊
+  ‖ A matrix $A ∈ 𝗥^{m × n}$ is ❬one-to-one❭ if the linear
+    function $f: 𝗥^n → 𝗥^m$ defined by $f(x) = Ax$ is
+    one-to-one. ⦉
+
+  ‖ In this case, if there exists $x ∈ 𝗥^n$ so that $y =
+    Ax$, then there is only one such $x$. ⦉
+
+  ‖ Different elements in $𝗥^n$ map to different elements in
+    $𝗥^m$. ⦉
+⦉
+
+
+<tex>
+  ‖ \blankpage ⦉
+</tex>
