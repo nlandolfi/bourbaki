@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make permutation_matrices.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 permutation_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > permutation_matrices.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make search_problems.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 search_problems.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > search_problems.tex
 
