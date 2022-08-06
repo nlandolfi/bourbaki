@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make geometry.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 geometry.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > geometry.tex
 
