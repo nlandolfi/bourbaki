@@ -1,0 +1,144 @@
+<!--
+!name:eigenvalues_and_eigenvectors
+!need:real_matrices
+!need:real_vectors
+!need:norms
+!need:matrix_determinants
+!need:monic_polynomials
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We discuss vectors for which the action of a matrix is
+    scalar multiplication.
+    † ⦊
+      ‖ Future editions will expand. ⦉
+    ⦉⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $A ∈ 𝗥^{n × n}$ be a square matrix. ⦉
+
+  ‖ A nonzero vector $x ∈ 𝗥^{n}$ is an ❬eigenvector❭ of $A$,
+    and $λ ∈ 𝗥$ is its corresponding ❬eigenvalue❭, if $A x = λ
+    x$. ⦉
+
+  ‖ In other words, $x ≠ 0$ is an eigenvector if the action
+    of $A$ on $x$ is to mimic scalar multiplication. ⦉
+⦉
+
+¶ ⦊
+  ‖ Speaking of eigenvalues is sensible only when the matrix
+    involved is square. ⦉
+
+  ‖ In other words, when the domain and codomain are the same. ⦉
+
+  ‖ We often care about eigenvalue computations when a matrix is
+    compounded iteratively. ⦉
+⦉
+
+<!--
+¶ ⦊
+  ‖ ❲%\ssubsection{Notation}❳ ⦉
+
+  ‖ ❲%❳ ⦉
+
+  ‖ ❲%The spectrum of $A ∈ 𝗥^{n × n}$ is sometimes denoted $\Lambda(A)$.❳ ⦉
+⦉
+-->
+
+§ Eigenspaces ⦉
+¶ ⦊
+  ‖ If $x$ is an eigenvector with eigenvalue $λ$, then for any
+    $α ∈ 𝗥$, $α x$ is an eigenvector with eigenvalue $αλ$,
+    since $A (α x) = α (Ax) = (αλ) x$. ⦉
+
+  ‖ In other words, if $A$ has an eigenvector then the action
+    of $A$ on some subspace $S ⊂ 𝗥^n$ is to mimic scalar
+    multiplication. ⦉
+
+  ‖ In this case, we call the subspace $S$ an ❬eigenspace❭, and
+    any nonzero $x ∈ S$ an eigenvector. ⦉
+⦉
+
+¶ ⦊
+  ‖ An eigenspace is an ❬invariant subspace❭ of $A$. ⦉
+
+  ‖ In other words, if $E$ is an eigenspace corresponding to
+    eigenvalue $λ$ then $AE ⊂ E$. ⦉
+⦉
+
+¶ ⦊
+  ‖ The dimension of $E$ is the maximum number of linear
+    independent eigenvectors which have the same eigenvalue $λ$. ⦉
+
+  ‖ We call this number the ❬geometric multiplicity❭ of $λ$. ⦉
+⦉
+
+§ Characteristic polynomial ⦉
+¶ ⦊
+  ‖ If $x$ is an eigenvector for $A$ associated with $λ$ then
+    $Ax = λ x$ so $Ax - λ x = 0$ and $(A - λ I)x = 0$. ⦉
+
+  ‖ In other words, $x$ is an element of the nullspace of $A
+    - λ I$. Or equivalently, $λ I - A$. ⦉
+⦉
+
+¶ ⦊
+  ‖ The ❬characteristic polynomial❭ of $A ∈ 𝗥^{n × n}$ is the
+    polynomial $p: 𝗥 → 𝗥$ in defined by
+    ◇ ⦊
+      ‖ p(x) = \det (zI - A). ⦉
+    ⦉
+
+    ‖ $p$ is monic: the coefficient of the degree $n$ term is
+      1. ⦉
+
+    ‖ \begin{proposition} ⦉
+
+    ‖ $λ$ is an eigenvalue of $A$ if and only if $p(λ) = 0$. ⦉
+
+    ‖ \begin{proof} ⦉
+
+    ‖ Since $λ$ is an eigenvalue if and only if there is a
+      nonzero vector $x$ such that $λ x - Ax = 0$, if and
+      only if $λ I - A$ is singular, if and only if $\det(λ I
+      - A) = 0$. ⦉
+
+    ‖ \end{proof} ⦉
+
+    ‖ \label{proposition:eigenvalues_and_eigenvectors:characteristic_polynomial} ⦉
+
+    ‖ \end{proposition} ⦉
+
+    ‖ A simple consequence of
+      Proposition~\ref{proposition:eigenvalues_and_eigenvectors:characteristic_polynomial}
+      is that a (real) matrix may have complex eigenvalues. ⦉⦉
+⦉
+
+<!--
+formerly Matrix Eigenvectors sheet
+
+%!name:matrix_eigenvectors
+%!need:matrix-vector_products
+%!need:norms
+
+\ssection{Why}\footnote{Future editions will include an account.}
+
+\ssection{Definition}
+
+If the result of multiplying a vector by a real square matrix is the same as scaling the vector by a real number then we call the vector a \t{scaled vector}.
+If a vector is a scaled vector, then the result of scaling it with any real number is a scaled vector.
+% ($Ax = \alpha x \implies A \beta x = \beta Ax = \beta \alpha x$).
+
+The scaled version of a scaled vector is acted upon by the matrix in a similar manner as the original scaled vector.
+So we want to characterize this notion by picking one representative member from this set of vectors which are scalar multiples of each other, and a reasonable choice is the vector which has norm one.\footnote{Future editions will change this language.}
+
+An \t{eigenvector} is a scaled vector whose norm is one.
+An \t{eigenvalue} corresponding to an eigenvector is the real number by which the eigenvector is scaled by the matrix.
+So eigenvectors and eigenvalues come in pairs.
+
+\blankpage
+
+-->

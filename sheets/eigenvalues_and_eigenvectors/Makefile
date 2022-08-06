@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make eigenvalues_and_eigenvectors.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 eigenvalues_and_eigenvectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > eigenvalues_and_eigenvectors.tex
 
