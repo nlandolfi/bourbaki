@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make polynomial_fit_models.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 polynomial_fit_models.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > polynomial_fit_models.tex
 
