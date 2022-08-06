@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make polynomials.pdf
+	make real_matrix_polynomials.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-polynomials.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > polynomials.tex
+real_matrix_polynomials.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > real_matrix_polynomials.tex
 
-polynomials.pdf: ../../*.tex ../../trademark.pdf *.tex polynomials.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode polynomials.tex
-	../../latexrun polynomials.tex
+real_matrix_polynomials.pdf: ../../*.tex ../../trademark.pdf *.tex real_matrix_polynomials.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode real_matrix_polynomials.tex
+	../../latexrun real_matrix_polynomials.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: polynomials.pdf
-	open polynomials.pdf
+open: real_matrix_polynomials.pdf
+	open real_matrix_polynomials.pdf
 
 o:
 	make open
 
-terms: polynomials.tex
-	bbk_sheet -mode ts polynomials.tex
+terms: real_matrix_polynomials.tex
+	bbk_sheet -mode ts real_matrix_polynomials.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f polynomials.*
+	rm -f real_matrix_polynomials.*
 	make reset
 	bbk_sheet -mode mk > Makefile
