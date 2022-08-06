@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make square_numbers.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 square_numbers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > square_numbers.tex
 
