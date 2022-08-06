@@ -1,0 +1,111 @@
+<!--
+!name:polynomial_fit_models
+!need:polynomial_regressors
+!need:probabilistic_errors_linear_model
+!need:n-dimensional_line_segments
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We can cast various common probabilistic regression models
+    into the probabilistic errors linear model by mentioning the
+    input space and feature maps. ⦉
+
+  ‖ This unifies our analysis. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ ⦉
+
+  ‖ A ❬line fit model❭ has input space $𝗥$ and output space
+    $𝗥$. ⦉
+
+  ‖ We use a regression function $φ: 𝗥 → 𝗥^2$ defined by $φ(t)
+    = \transpose{(1, t)}$. ⦉
+⦉
+
+¶ ⦊
+  ‖ We think of $t ∈ T ⊂ 𝗥$ as a “dose level} ($T$ is an
+    interval). ⦉
+
+  ‖ Given dose levels $t_1, …, t_ℓ$ and repetitions $n_1, …,
+    n_ℓ$ we obtain the design matrix. ⦉
+
+  ‖ Here the regression function generates a line segment
+    embedded in the plane $𝗥^2$. ⦉
+
+  ‖ We call the parameters the ❬intercept parameter❭ and ❬slope
+    parameter❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ A ❬parabola fit model❭ has input space $𝗥$ and output space
+    $𝗥$. ⦉
+
+  ‖ We use a regression function $φ: 𝗥 → 𝗥^3$ defined by $φ(t)
+    = \transpose{(1, t, t^2)}$. ⦉
+
+  ‖ Here the regression space is a segment of a parabola
+    embedded in space $𝗥^3$ (since $t ∈ T$ an interval). ⦉
+⦉
+
+¶ ⦊
+  ‖ These two are instance of ❬polynomial fit models❭ of degree
+    $d ≥ 1$, in which the regression function becomes $φ: 𝗥 →
+    𝗥^{d + 1}$ defined by $φ(t) = \transpose{(1, t, t^2, …,
+    t^d)}$. ⦉
+
+  ‖ In this case, the regression range $φ(T)$ is a
+    one-dimensional curve embedded in $𝗥^{d+1}$. ⦉
+
+  ‖ In cases in which it is clear that the input space is a
+    single real variable $t$, a linear model for a line fit
+    (parabola fit, polynomial fit of degree $d$) is called a
+    ❬first-degree model❭ (❬second-degree model❭, ❬$d$th degree
+    model❭). ⦉
+⦉
+
+§§ $m$-way models ⦉
+¶ ⦊
+  ‖ We can generalize to ❬$m$-way $d$th degree polynomial fit
+    models❭ in which the input space is $X ⊂ 𝗥^m$ and the
+    regression function $φ: 𝗥^m → 𝗥^k$ ($k$ is $d+m$ choose $d$)
+    is the vector of all monomials of degree $d$ in $m$
+    variables. ⦉
+⦉
+
+¶ ⦊
+  ‖ For example, a two-way third-degree model has a regression
+    function
+    ◇ ⦊
+      ‖ φ(t_1, t_2) = \transpose{\bmat{1 ❲&❳ t_1 ❲&❳ t_2 ❲&❳
+        t_1^2 ❲&❳ t_1t_2 ❲&❳ t_2^2 ❲&❳ t_1^3 ❲&❳ t_1^2t_2 ❲&❳
+        t_1t_2^2 ❲&❳ t_2^3}}. ⦉
+    ⦉⦉
+
+  ‖ Or consider a three way second-degree model with regression
+    function
+    ◇ ⦊
+      ‖ φ(t_1, t_2, t_3) = \transpose{\bmat{1 ❲&❳ t_1 ❲&❳ t_2
+        ❲&❳ t_3 ❲&❳ t_1^2 ❲&❳ t_1t_2 ❲&❳ t_1t_3 ❲&❳ t_2^2 ❲&❳
+        t_2t_3 ❲&❳ t_3^2}}. ⦉
+    ⦉
+
+    ‖ Both models will result in parameter vectors of size ten. ⦉
+
+    ‖ We call these models ❬saturated❭ because they have every
+      possible $d$th degree power or cross product of variables. ⦉
+
+    ‖ In generally, a $m$-way $d$th degree model has $d+m$
+      choose $d$ mean parameters. ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ In contrast to saturated models we can talk about
+    ❬nonsaturated❭ models. ⦉
+
+  ‖ For example, a nonsaturated two-way second-degree model has
+    $φ: 𝗥^2 → 𝗥^4$ where $φ(t_1, t_2) = \transpose{(1 , t_1 ,
+    t_2 , t_1^2)”$. ⦉
+⦉
