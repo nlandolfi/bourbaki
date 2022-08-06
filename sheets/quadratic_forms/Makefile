@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make quadratic_forms.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 quadratic_forms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > quadratic_forms.tex
 
