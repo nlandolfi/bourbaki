@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make range_and_null_space.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 range_and_null_space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > range_and_null_space.tex
 

@@ -1,52 +1,68 @@
 %!name:affine_sets_and_subspaces
 %!need:affine_sets
 %!need:subspaces
-%!need:translate_sets
+%!need:real_translates
+%%!refs/rockafeller/section_01/p4
 
-\ssection{Why}
+\section*{Why}
 
-How do affine sets relate to subspaces?
+What are the affine sets in terms of subspaces?
 
-\ssection{Main Results}
+\section*{Affine sets which are subspaces}
 
-First, we will see that the subspaces of $\R^n$ are the affine sets which contain the origin.
+The subspaces of $\R ^n$ are the affine sets which contain the origin.
 
-\begin{prop}
-
-A set is a subspace if and only if it is an affine set which contains the zero vector.
-
+\begin{proposition}
+$M \subset \R ^n$ is a subspace if and only if $M$ is affine and $0 \in M$.
 \begin{proof}
 
-($\rightarrow$) Every subspace of contains the zero vector. Moreover, it is closed under addition and scalar multiplication, so it must be an affine set, since the points of which the line consists between two points is expressed as a sum and scalar multiplication.
+($\Rightarrow$)
+Suppose $M$ is a subspace.
+Then $0 \in M$.
+Also $\alpha x + \beta y \in M$ for all $\alpha , \beta  \in \R $ and $x, y \in \R ^n$
+In particular, $(1- \lambda )x + \lambda y \in M$ for all $\lambda  \in \R $, $x, y \in \R ^n$.
+In other words, $M$ contains the line through $x$ and $y$.
 
-($\leftarrow$) Let $M$ be an affine set containing the zero vector. First, notice that $M$ is closed under scalar multiplication: if $x \in M$ and $a \in \R$, the vector
-$$
-  ax = (1 - a)0 + ax
-$$
+($\Leftarrow$) Suppose $M$ is affine and $0 \in M$.
+$M$ is closed under scalar multiplication since
+  \[
+\alpha x = (1 - \alpha )0 + \alpha x
+  \]
 is in the line through $0$ and $x$.
-Second, notice that $M$ is closed under vector addition: if $x, y \in M$, the vector
-$$
-  \frac{1}{2}(x + y) = \frac{1}{2}x + \parens*{1 - \frac{1}{2}}y
-$$
-is in the line $M$.
-  Since $\frac{1}{2}(x + y)$ is in $M$, and $M$ is closed under scalar multiplication,
-$$
-  x + y = 2\parens*{\frac{1}{2}\parens*{x + y}}
-$$
-is also in $M$.
+$M$ is closed under vector addition since
+  \[
+(1/2)(x + y) = (1-1/2)x + (1/2)y
+  \]
+is in the line through $x$ and $y$.
+Thus, $x+y = 2(1/2)(x+y) \in M$.
+\end{proof}
+\end{proposition}
+
+\section*{Affine sets as translated subspaces}
+
+\begin{proposition}
+Suppose $M \neq \varnothing$ is affine.
+Then there exists a unique subspace $L$ and vector $a \in \R ^n$ for which $M = L + a$.
+Moreover,
+  \[
+L = M - M = \Set{x - y}{x,y \in M}.
+  \]
+\end{proposition}
+\begin{proof}
+First, uniqueness.
+Suppose $L_1$ and $L_2$ are subspaces parallel to $M$.
+We will show that $L_2 \supset L_1$ (and similarly, $L_1 \supset L_2$).
+
+Since $L_1$ and $L_2$ are both parallel to $M$, they are also parallel to each other.
+Consequently, there exists $a \in \R ^n$ with $L_2 = L_1 + a$.
+Since $0 \in L_2$ (it is a subspace, after all), $-a \in L_1$.
+Since $L_1$ is a subspace, $a \in L_1$.
+So $x + a \in L_1$ for every $a \in L_1$, and so $L_2 = L_1 + a \subset L_1$.
+A similar argument gives $L_1 \supset L_2$.
+
+If $y \in M$, then $M + (-y) = M - y$ is a translate of $M$ containing zero (since $y - y = 0$).
+In other words, the affine set $M - y$ is a subspace.
+This, then, is the unique subspace parallel to $M$.
+Since $y$ was arbitrary, the subspace parallel to $M$ is $L = \cup_{y \in M} M - y = \Set{x - y}{x,y \in M}$.
 
 \end{proof}
-
-\end{prop}
-
-Next we will see how all other affine sets can be obtained by those which contain the origin.
-
-\ssubsection{Translates}
-
-Any translate of an affine set is affine.
-
-\begin{prop}
-
-  Each nonempty affine set $M$ is parallel to a unique subspace $L$.\footnote{Future editions will complete and include an account.}
-
-\end{prop}

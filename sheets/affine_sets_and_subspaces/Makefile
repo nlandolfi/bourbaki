@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make affine_sets_and_subspaces.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 affine_sets_and_subspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > affine_sets_and_subspaces.tex
 
