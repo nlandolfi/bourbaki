@@ -1,10 +1,11 @@
 %!name:affine_sets
 %!need:n-dimensional_space
 %!need:n-dimensional_lines
+%!refs:rockafeller/section_1/affine_sets
 
 \section*{Definition}
 
-An \t{affine set} is a subset of $n$-dimensional space which contains the lines through each of its points.
+A subset of $\R ^n$ is \t{affine} (or an \t{affine variety}, \t{linear variety}, or \t{flat}) if it contains the lines through each of its points.
 
 \subsection*{Examples}
 
@@ -12,17 +13,45 @@ The empty set is trivially an affine set.
 The entire set of points in $n$-dimensional space is an affine set.
 Any singleton is an affine set.
 
+Our definition is meant to capture the intuitive idea of an infinite, uncurved set, like a line or a plane in space.
+
 \subsection*{Notation}
 
 As usual, let $L(x, y)$ denote the line between $x, y \in \R ^n$.
-The set $A$ is affine if $L(a, b) \subset A$ for all $a, b \in A$.
+The set $M \subset \R ^n$ is affine if $L(a, b) \subset M$ for all $a, b \in M$.
+For any $x, y \in M$ and $\lambda  \in \R $,
+  \[
+(1-\lambda )x + \lambda y \in M.
+  \]
 
-\subsection*{Other terminology}
+\section*{Translations}
 
-Some authors call affine sets \t{affine varieties}, \t{linear varieties} or \t{flat}.
-
+The set of affine sets is closed under translation.
 \begin{proposition}
-The intersection of a family of affine sets is affine.
+Let $M \subset \R ^n$ affine.
+Then $M + a$ is affine for any $a \in \R $.
+\begin{proof}
+Suppose $x, y \in M+a$. So there exists corresponding $\tilde{x}, \tilde{y} \in M$ with $x = \tilde{x} + a$ and $y = \tilde{y} + a$.
+For any $\lambda  \in \R $,
+  \[
+\begin{aligned}
+(1-\lambda )x + \lambda y & = (1-\lambda )(\tilde{x} + a) + \lambda (\tilde{y} + a) \\
+&= ((1-\lambda )\tilde{x} + \lambda \tilde{y}) + a.
+\end{aligned}
+  \]
+\end{proof}
+\end{proposition}
+
+An affine set $M$ is \t{parallel} to an affine set $L$ if there exists $a \in \R ^n$ so that $M = L + a$.
+The relation "$M$ is parallel to $L$" on the set of affine sets is an equivalence relation.
+This notion of parallelism is more restrictive than the natural one, in which we may speak of a line being parallel to a plane.
+We must speak of a line which is parallel to another line within the given plane.
+
+\section*{Properties}
+
+The set of affine sets is closed under intersection.
+\begin{proposition}
+If $\mathcal{M}$ is a family of affine sets, then $\cap \mathcal{M}$ is affine.
 \end{proposition}
 
 \blankpage
