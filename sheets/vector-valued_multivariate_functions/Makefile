@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make vector-valued_multivariate_functions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 vector-valued_multivariate_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vector-valued_multivariate_functions.tex
 

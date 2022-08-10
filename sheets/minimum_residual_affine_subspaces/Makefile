@@ -1,0 +1,55 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make minimum_residual_affine_subspaces.pdf
+
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
+minimum_residual_affine_subspaces.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > minimum_residual_affine_subspaces.tex
+
+minimum_residual_affine_subspaces.pdf: ../../*.tex ../../trademark.pdf *.tex minimum_residual_affine_subspaces.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode minimum_residual_affine_subspaces.tex
+	../../latexrun minimum_residual_affine_subspaces.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: minimum_residual_affine_subspaces.pdf
+	open minimum_residual_affine_subspaces.pdf
+
+o:
+	make open
+
+terms: minimum_residual_affine_subspaces.tex
+	bbk_sheet -mode ts minimum_residual_affine_subspaces.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f minimum_residual_affine_subspaces.*
+	make reset
+	bbk_sheet -mode mk > Makefile

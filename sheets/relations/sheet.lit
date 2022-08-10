@@ -1,0 +1,219 @@
+<!--
+!name:relations
+!need:set_products
+refs:paul_halmos∕naive_set_theory∕section_07
+!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕relations
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ How can we relate the elements of two sets? ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ A ❬relation❭ is a set of ordered pairs (see
+    \sheetref{ordered_pairs}{Ordered Pairs}). ⦉
+
+  ‖ So if an object $z$ is an element of a relation, there
+    exists two other objects $x, y$ so that $z = (x, y)$. ⦉
+⦉
+
+¶ ⦊
+  ‖ The ❬domain❭ of a relation is the set of all elements
+    which appear as the first coordinate of some ordered pair of
+    the relation (the projection onto the first coordinate, see
+    \sheetref{ordered_pair_projections}{Ordered Pair Projections}) ⦉
+
+  ‖ The ❬range❭ of a relation is the set of all elements which
+    appear as the second coordinate of some ordered pair of the
+    relation (the projection onto the second coordinate). ⦉
+⦉
+
+¶ ⦊
+  ‖ When the domain of a relation $R$ is a subset of $X$ and
+    the range is a subset of $Y$, we say $R$ is ❬from $X$ to
+    $Y$❭ or ❬between❭ $X$ and $Y$. ⦉
+
+  ‖ If $X = Y$, then $R$ speak of a relation ❬in❭ or ❬on❭
+    $X$. ⦉
+⦉
+
+<!--
+<div data-littype='paragraph'>
+  <div data-littype='run'> ❲% Let $A$ and $B$ be two nonempty sets.❳ </div>
+
+  <div data-littype='run'> ❲% A relation on $A$ and $B$ is a subset of $A \cross B$.❳ </div>
+
+  <div data-littype='run'> ❲% Let $C$ be a nonempty set.❳ </div>
+
+  <div data-littype='run'> ❲% A relation on a $C$ is a subset of $C \cross C$.❳ </div>
+
+  <div data-littype='run'> ❲%❳ </div>
+
+  <div data-littype='run'> ❲% Let $a ∈ A$ and $b ∈ B$.❳ </div>
+
+  <div data-littype='run'> ❲% The ordered pair $(a, b)$ may or may not be in a relation on $A$ and $B$.❳ </div>
+
+  <div data-littype='run'> ❲% Also notice that if $A ≠ B$, then $(b, a)$ is not a member of the product $A \cross B$, and therefore not in any relation on $A$ and $B$.❳ </div>
+
+  <div data-littype='run'> ❲% If $A = B$, however, it may be that $(b, a)$ is in the relation.❳ </div>
+</div>
+-->
+
+§§ Notation ⦉
+¶ ⦊
+  ‖ If $R$ is a relation, we express that $(x, y) ∈ R$ by
+    writing $x\,R\,y$, which we read as “$x$ is in relation $R$
+    to $y$}. ⦉
+
+  ‖ We denote the domain of $R$ by $\dom R$ and the range of
+    $R$ by $\ran R$. ⦉
+⦉
+
+§ Examples ⦉
+¶ ⦊
+  ‖ For an uninteresting relation, consider the empty set. ⦉
+
+  ‖ In the empty (set) relation, no object is related to any
+    other. ⦉
+
+  ‖ Both the domain and range of $∅$ are $∅$. ⦉
+
+  ‖ For another simple relation, consider the product of any two
+    sets $X$ and $Y$. ⦉
+
+  ‖ In $X × Y$, all objects are related. ⦉
+
+  ‖ The domain is $X$ and the range is $Y$. ⦉
+⦉
+
+¶ ⦊
+  ‖ For a more interesting example, define $R ⊂ X × X$ by
+    ◇ ⦊
+      ‖ R = \Set{(x, y) ∈ X × X}{x = y}. ⦉
+    ⦉⦉
+
+  ‖ This relation is the relation of equality (see
+    \sheetref{identities}{Identities}) between two objects. ⦉
+
+  ‖ Here $x\,R\,y \iff x = y$. ⦉
+
+  ‖ $\dom R = \ran R = X$. ⦉
+
+  ‖ Another similar example is if we consider the set $X$ and
+    $\powerset{X}$, and the relation
+    ◇ ⦊
+      ‖ R := \Set{(x, y) ∈ X × \powerset{X}}{x ∈ y}. ⦉
+    ⦉⦉
+
+  ‖ This relation is the relation of belonging (see
+    \sheetref{sets}{Sets}). ⦉
+
+  ‖ Here $x\,R\,y \iff x ∈ y$. ⦉
+
+  ‖ Here $\dom R = X$ and $\ran R = \powerset{X}$. ⦉
+⦉
+
+<!--
+<div data-littype='paragraph'>
+  <div data-littype='run'> ❲% \ssubsection{Notation}❳ </div>
+
+  <div data-littype='run'> ❲% Let $A$ and $B$ be nonempty sets❳ </div>
+
+  <div data-littype='run'> ❲% with $a ∈ A$ and $b ∈ B$.❳ </div>
+
+  <div data-littype='run'> ❲% Since relations are sets,❳ </div>
+
+  <div data-littype='run'> ❲% we can use upper case Latin letters.❳ </div>
+
+  <div data-littype='run'> ❲% Let $R$ be a relation on $A$ and $B$.❳ </div>
+
+  <div data-littype='run'> ❲% We denote that $(a, b) ∈ R$ by❳ </div>
+
+  <div data-littype='run'> ❲% $a R b$, read aloud as❳ </div>
+
+  <div data-littype='run'> ❲% \say{a in relation $R$ to b.}❳ </div>
+
+  <div data-littype='run'> ❲%❳ </div>
+
+  <div data-littype='run'> ❲% When $A = B$, we tend to use other symbols instead of letters.❳ </div>
+
+  <div data-littype='run'> ❲% For example,❳ </div>
+
+  <div data-littype='run'> ❲% $∼$, $=$, $<$,❳ </div>
+
+  <div data-littype='run'> ❲% $≤$, $≺$, and $≼$.❳ </div>
+</div>
+-->
+
+§ Properties ⦉
+¶ ⦊
+  ‖ Often relations are defined over a single set, and there
+    are a few useful properties to distinguish. ⦉
+⦉
+
+¶ ⦊
+  ‖ A relation is ❬reflexive❭ if every element is related to
+    itself. ⦉
+
+  ‖ A relation is ❬symmetric❭ if two objects are related
+    regardless of their order. ⦉
+
+  <!--
+  <div data-littype='run'> ❲% A relation is ❬antisymmetric❭{antisymmetric} if two different objects are related only in one order, and never both.❳ </div>
+  -->
+
+  ‖ A relation is ❬transitive❭ if a first element is related to
+    a second element and the second element is related to the
+    third element, then the first and third element are related. ⦉
+
+  ‖ Equality is reflexive, symmetric and transitive whereas
+    belonging is neither. ⦉
+
+  ‖ Exercise: what is inclusion? ⦉
+⦉
+
+<!--
+¶ ⦊
+  ‖ ⦉
+
+  ‖ ❲% \ssubsection{Notation”❳ ⦉
+
+  ‖ ❲%❳ ⦉
+
+  ‖ ❲% Let $R$ be a relation on❳ ⦉
+
+  ‖ ❲% a non-empty set $A$.❳ ⦉
+
+  ‖ ❲% $R$ is reflexive if❳ ⦉
+
+  ‖ ❲% $$(a, a) ∈ R$$❳ ⦉
+
+  ‖ ❲% for all $a ∈ A$.❳ ⦉
+
+  ‖ ❲% $R$ is transitive if❳ ⦉
+
+  ‖ ❲% $$(a, b) ∈ R ∧ (b, c) ∈ R ⟹ (a, c) ∈ R$$❳ ⦉
+
+  ‖ ❲% for all $a, b, c ∈ A$.❳ ⦉
+
+  ‖ ❲% $R$ is symmetric if❳ ⦉
+
+  ‖ ❲% $$(a, b) ∈ R ⟹ (b, a) ∈ R$$❳ ⦉
+
+  ‖ ❲% for all $a, b ∈ A$.❳ ⦉
+
+  ‖ ❲% $R$ is anti-symmetric if❳ ⦉
+
+  ‖ ❲% $$(a, b) ∈ R ⟹ (b, a) \not∈ R$$❳ ⦉
+
+  ‖ ❲% for all $a, b ∈ A$.❳ ⦉
+
+  ‖ ❲%❳ ⦉
+
+  ‖ ❲% \blankpage❳ ⦉
+
+  ‖ ⦉
+⦉
+-->
