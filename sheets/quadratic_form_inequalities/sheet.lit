@@ -1,0 +1,92 @@
+<!--
+!name:quadratic_form_inequalities
+!need:symmetric_real_matrix_eigenvalues
+!need:quadratic_forms
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ How big can a quadratic form be? ⦉
+
+  ‖ How small? ⦉
+⦉
+
+§ Result ⦉
+¶ ⦊
+  ‖ \begin{proposition} ⦉
+
+  ‖ Suppose $A ∈ 𝗦^n$ has real eigenvalues $λ_1 ≥ λ_2 ≥ ⋯ ≥
+    λ_n$. ⦉
+
+  ‖ Then
+    ◇ ⦊
+      ‖ λ_n x^⊤x ≤ x^⊤ A x ≤ λ_1 x^⊤x, ⦉
+    ⦉
+    for all $x ∈ 𝗥^n$. ⦉
+
+  ‖ \end{proposition} ⦉
+
+  ‖ \begin{proof} ⦉
+
+  ‖ Since $A$ is symmetric, there exists an orthogonal matrix $Q
+    ∈ 𝗥^{n × n}$ with $A = QΛQ^⊤$. ⦉
+
+  ‖ Express
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ x^⊤ A x = x^⊤ Q Λ Q^⊤ x ❲&❳= (Q^⊤ x)^⊤ Λ (Q^⊤ x) ᜶ ⦉
+
+      ‖ ❲&❳= ∑_{i = 1}^{n} λ_i (q_i^⊤ x)^2 ᜶ ⦉
+
+      ‖ ❲&❳= λ_1 ∑_{i = 1}^n (q_i^⊤x) = λ_1 \norm{Q^⊤ x}^2 =
+        λ_1 \norm{x}^2. ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ Similarly,
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ x^⊤ A x ❲&❳= ∑_{i = 1}^{n} λ_i (q_i^⊤ x)^2 ᜶ ⦉
+
+      ‖ ❲&❳≥ λ_n ∑_{i = 1}^n (q_i^⊤x) = λ_n \norm{Q^⊤ x}^2 =
+        λ_n \norm{x}^2. ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ \end{proof} ⦉
+⦉
+
+
+§§ Notation ⦉
+¶ ⦊
+  ‖ For this reason, it is common to order the eigenvalues of
+    $A ∈ 𝗦^n$ by magnitude with $λ_1 ≥ λ_2 ≥ ⋯ ≥ λ_n$. ⦉
+
+  ‖ $λ_1$ is sometimes denoted $λ_{\max}$ and $λ_n$ is sometimes
+    denoted $λ_{\min}$. ⦉
+⦉
+
+§ Optimization implication ⦉
+
+‖ If $z = α x$, then $z^⊤ A z = α^2 x^⊤ A x$. ⦉
+
+‖ Consider finding $x ∈ 𝗥^n$ to maximize
+  ◇ ⦊
+    ‖ \begin{aligned} ⦉
+
+    ‖ \text{ maximize } ❲&❳ \quad x^⊤ A x ᜶ ⦉
+
+    ‖ \text{ subject to } ❲&❳ \quad \norm{x} = 1. ⦉
+
+    ‖ \end{aligned} ⦉
+  ⦉⦉
+
+‖ Since the objective is $x^⊤ A x ≤ λ_1$ for all $x ∈ 𝗥^n$
+  with $\norm{x} = 1$, a solution of this problem is the
+  eigenvector $q_1 ∈ 𝗥^n$ corresponding to $λ_1$. ⦉
+
+‖ In other words, these inequalities are tight. ⦉

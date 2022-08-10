@@ -2,14 +2,27 @@
 %!need:identity_matrices
 %!need:real_vectors
 %!need:matrix_trace
+%!need:multivariate_polynomials
 
 \section*{Definition}
 
-For $A \in \R ^{n \times n}$ and $x \in \R ^n$,
+A \t{quadratic form} is a multivariate polynomial each term of which has degree two.
+
+\section*{Representation}
+
+Let $f: \R ^n \to \R $ be a quadratic form.
+There exists a matrix $A \in \R ^{n \times n}$ so that
   \[
-x^\top  A x = \sum_{i,j} A_{ij}x_{i}x_{j},
+x^\top  A x = \sum_{i,j} A_{ij}x_{i}x_{j}.
   \]
-is a quadratic form.
+Suppose $A$ is not symmetric. Then
+  \[
+f(x) = f(x)/2 + f(x)/2 = \frac{1}{2}x^\top Ax + \frac{1}{2}x^\top A^\top x = x^\top (\frac{1}{2}(A + A^\top ))x.
+  \]
+Define $B = \nicefrac{1}{2}(A^\top  + A)$.
+We call $B$ the \t{symmetric part} of $A$.
+Since every matrix $A$ has a symmetric part, we can always assume that the matrix for a quadratic form is symmetric.
+If it is not, replace it with its symmetric part, obtaining the same function.
 
 \section*{Under trace}
 

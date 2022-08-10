@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make complete_inner_product_spaces.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 complete_inner_product_spaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complete_inner_product_spaces.tex
 
