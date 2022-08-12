@@ -1,0 +1,177 @@
+<!--
+!name:minimum_residual_affine_sets
+!need:projections_on_affine_sets
+!need:projections_on_affine_sets
+!need:matrix_trace
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to find a low-dimensional affine set into which we
+    can project some high-dimensional data. ⦉
+⦉
+
+§ Problem ⦉
+¶ ⦊
+  ‖ For $a ∈ 𝗥^n$ and $U ∈ 𝗥^{n × k}$, the set $W(a, U) =
+    \Set{a + Uz}{z ∈ 𝗥^n}$ is an affine set. ⦉
+
+  ‖ Denote the projection of $x ∈ 𝗥^n$ onto $W(a, U)$ by
+    $\proj_{W(a, U)}(x)$. ⦉
+⦉
+
+¶ ⦊
+  ‖ \begin{problem} ⦉
+
+  ‖ Given $x^{(1)}, …, x^{(m)} ∈ 𝗥^n$, and a dimension $k$,
+    find $a ∈ 𝗥^n$ and $U ∈ 𝗥^{n × k}$ with $U^⊤U = I$ to
+    minimize
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ ∑_{i = 1}^{m} \norm{x^{(i)} - \proj_{W(a, U)}(x^{(i)})}^2, ⦉
+    ⦉
+    the sum of squared distances between $x^{(i)}$ and its
+    projection on $W(a, U)$. ⦉
+
+  ‖ \end{problem} ⦉
+⦉
+
+¶ ⦊
+  ‖ Express $\proj_{W(a, U)}(x)$ as $UU^⊤x + (I - UU^⊤)a$ (see
+    \sheetref{projections_on_affine_sets}{Projections on Affine Sets}). ⦉
+
+  ‖ We want to find $a ∈ 𝗥^n$ and $U ∈ 𝗥^{n × k}$ to
+    minimize
+    ◇ ⦊
+      ‖ ∑_{i = 1}^{n} \norm{x^{(i)} - UU^⊤ x^{(i)} - (I-UU^⊤)a}^2. ⦉
+    ⦉⦉
+
+  ‖ Fix $U ∈ 𝗥^{n × k}$. ⦉
+
+  ‖ Define $A ∈ 𝗥^{nm × n}$, $B ∈ 𝗥^{mn × mn}$, and
+    $\tilde{x} ∈ 𝗥^{nm}$ by
+    ◇ ⦊
+      ‖ \scriptsize ⦉
+
+      ‖ A = \bmat{ ⦉
+
+      ‖ I - UU^⊤ ᜶ ⦉
+
+      ‖ \vdots ᜶ ⦉
+
+      ‖ I - UU^⊤ ᜶ ⦉
+
+      ‖ },\text{ } B = \bmat{ ⦉
+
+      ‖ I - UU^⊤ ❲&❳ ⋯ ❲&❳ 0᜶ ⦉
+
+      ‖ ❲&❳ \ddots ❲&❳ ᜶ ⦉
+
+      ‖ 0 ❲& ❳ ⋯ ❲& ❳ I - UU^⊤ ᜶ ⦉
+
+      ‖ }, \text{ and } ⦉
+
+      ‖ \tilde{x} = \bmat{ ⦉
+
+      ‖ x^{(1)} ᜶ ⦉
+
+      ‖ \vdots ᜶ ⦉
+
+      ‖ x^{(m)} ⦉
+
+      ‖ }. ⦉
+    ⦉⦉
+
+  ‖ Then the objective is equivalent to
+    ◇ ⦊
+      ‖ \norm{Aa - B \tilde{x}}^2 ⦉
+    ⦉⦉
+
+  ‖ Any minimizer $a^★$ satisfies the normal equations
+    ◇ ⦊
+      ‖ A^⊤Aa^★ = A^⊤B\tilde{x} ⦉
+    ⦉⦉
+
+  ‖ Since $(I - UU^⊤)^⊤ = I - UU^⊤$ and $(I - UU^⊤)^2 = I -
+    UU^⊤$,
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ A^⊤A = ∑_{i = 1}^{m} I - UU^⊤ = m(I - UU^⊤) ⦉
+    ⦉
+    and
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ A^⊤B = \bmat{I - UU^⊤ ❲&❳ ⋯ ❲&❳ I - UU^⊤}. ⦉
+    ⦉⦉
+
+  ‖ Consequently, we can express $A^⊤Aa^★ = A^⊤B\tilde{x}$ as
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ m(I - UU^⊤)a^★ = ∑_{i = 1}^{m} (I - UU^⊤)x^{(i)}. ⦉
+    ⦉⦉
+
+  ‖ So $a^★$ is any vector satisfying
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ (I - UU^⊤)a^★ = (I- UU^⊤)(1/m)∑_{i = 1}^{m} (I -
+        UU^⊤)x^{(i)}. ⦉
+    ⦉⦉
+
+  ‖ One such point satisfying the above is $\bar{x} = (1/m)∑_{i
+    = 1}^{m}x^{(i)}$. ⦉
+
+  ‖ An expedient choice, as it does not depnd on $U$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Now we want to find $U ∈ 𝗥^{n × k}$ to minimize
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ ∑_{i = 1}^{m} \norm{(I-UU^⊤)(x^{(i)} - \bar{x})}^2. ⦉
+    ⦉⦉
+
+  ‖ Express the $i$th term of the sum as
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ \begin{aligned} ⦉
+
+      ‖ \norm{(I - UU^⊤)(x^{(i)} - \bar{x})}^2 ❲&❳ = (x-\bar{x})(I
+        - UU^⊤)^⊤(I - UU^⊤)(x^{(i)} - \bar{x}) ᜶ ⦉
+
+      ‖ ❲&❳ = (x^{(i)} - \bar{x})^⊤(I - UU^⊤)(x ^{(i)} -
+        \bar{x}) ᜶ ⦉
+
+      ‖ ❲&❳ = \norm{x^{(i)} - \bar{x}}^2 - \norm{U^⊤(x^{(i)} -
+        \bar{x})}^2. ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ The first term is a constant with respect to $U$. Define
+    $\bar{X} ∈ 𝗥^{n × m}$ by
+    ◇ ⦊
+      ‖ \bar{X} = \bmat{x^{(1)} - \bar{x} ❲&❳ ⋯ ❲&❳ x^{(m)} -
+        \bar{x}}. ⦉
+    ⦉
+    Express the sum of the second terms by
+    ◇ ⦊
+      ‖ \norm{U^⊤\bar{X}}_F = \tr \bar{X}^⊤UU^⊤\bar{X} =
+        \tr(U^⊤\bar{X}\bar{X}^⊤U). ⦉
+    ⦉⦉
+
+  ‖ So we seek $U ∈ 𝗥^{n × k}$ with $U^⊤U = I$ to maximize
+    ◇ ⦊
+      ‖ \tr(U^⊤\bar{X}\bar{X}^⊤U). ⦉
+    ⦉⦉
+⦉
+
+<tex>
+  ‖ \blankpage ⦉
+</tex>
