@@ -32,13 +32,6 @@
               <span class="caret">›</span>
             </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./matrix_inverses.html'" onkeypress="location.href='./matrix_inverses.html'">
-              <span>
-                Matrix Inverses
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
             <div class="need" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
               <span>
                 Matrix Transpose
@@ -49,6 +42,13 @@
             <div class="need" tabindex="0" onclick="location.href='./permutations.html'" onkeypress="location.href='./permutations.html'">
               <span>
                 Permutations
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_matrix_inverses.html'" onkeypress="location.href='./real_matrix_inverses.html'">
+              <span>
+                Real Matrix Inverses
               </span>
               <span class="caret">›</span>
             </div>
@@ -148,7 +148,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can permuting the rows or columns of a matrix be represented by matrix multiplication?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\sigma: \upto{n} \to \upto{n}$ be a permutation of $n$. The \t{permutation matrix} of $\sigma$ is the matrix $P$ defined by $P_{ij} = 1$ if $\sigma(i) = j$ and 0 otherwise. This is sometimes called the \t{column representation} (in contrast to the row representation, in which $P_{ij} = 1$ if $\sigma(j) = i$.</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R^{n \times n}$. Then pre-multipying $A$ by $P$ permutes the rows of $A$. In other words $PA$ has the same rows as $A$ but permuted according to $\sigma$. Similarly, post-multiplying by $P$ permutes the columns of $A$. In other words, $AP$ has the same columns as $A$ but permuted according to $\sigma$. Clearly, we can also speak of permuting the components of a vector.</p></div><div class="sheet-listing" id="composition"><h1 class="sheet">3. Composition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\pi, \sigma \in S_n$ with corresponding permutation matrices $P_\sigma$ and $P_\pi$. Then $P_{\pi}P_{\sigma}A$ has the same rows as $A$ but permuted by $\pi\sigma$. Likewise, $AP_{\pi}P_{\sigma}$ has the same columns as $A$ but permuted by $\pi\sigma$. Clearly, the identity permutation on $\upto{n}$ is the identity $I \in \R^{n \times n}$.</p></div><div class="sheet-listing" id="inverses"><h1 class="sheet">4. Inverses</h1></div><div class="sheet-listing"><p class="sheet"> It is clear from the definition that $P_{\sigma}^{-1} = P_{\sigma^{-1}}$ and so if $P$ is a permutation matrix then $P^{-1}$ is $\transpose{P}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can permuting the rows or columns of a matrix be represented by matrix multiplication?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\sigma : \upto{n} \to \upto{n}$ be a permutation of $n$. The \t{permutation matrix} of $\sigma $ is the matrix $P$ defined by $P_{ij} = 1$ if $\sigma (i) = j$ and 0 otherwise. This is sometimes called the \t{column representation} (in contrast to the row representation, in which $P_{ij} = 1$ if $\sigma (j) = i$.</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R ^{n \times n}$. Then pre-multipying $A$ by $P$ permutes the rows of $A$. In other words $PA$ has the same rows as $A$ but permuted according to $\sigma $. Similarly, post-multiplying by $P$ permutes the columns of $A$. In other words, $AP$ has the same columns as $A$ but permuted according to $\sigma $. Clearly, we can also speak of permuting the components of a vector.</p></div><div class="sheet-listing" id="composition"><h1 class="sheet">3. Composition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\pi , \sigma  \in S_n$ with corresponding permutation matrices $P_\sigma $ and $P_\pi $. Then $P_{\pi }P_{\sigma }A$ has the same rows as $A$ but permuted by $\pi \sigma $. Likewise, $AP_{\pi }P_{\sigma }$ has the same columns as $A$ but permuted by $\pi \sigma $. Clearly, the identity permutation on $\upto{n}$ is the identity $I \in \R ^{n \times n}$.</p></div><div class="sheet-listing" id="inverses"><h1 class="sheet">4. Inverses</h1></div><div class="sheet-listing"><p class="sheet"> It is clear from the definition that $P_{\sigma }^{-1} = P_{\sigma ^{-1}}$ and so if $P$ is a permutation matrix then $P^{-1}$ is $\transpose{P}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -252,6 +252,112 @@ MathJax.Hub.Config({
     -->
 
   
+    <div class="lit">
+    <p>
+ <span class='run'>%!name:permutation_matrices </span>
+
+ <span class='run'>%!need:permutations </span>
+
+ <span class='run'>%!need:matrices </span>
+
+ <span class='run'>%!need:matrix_transpose </span>
+
+ <span class='run'>%!need:real_matrix_inverses </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Why} </span>
+</p>
+
+
+<p>
+ <span class='run'>Can permuting the rows or columns of a matrix
+  be represented by matrix multiplication? </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Definition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $σ: \upto{n} → \upto{n}$ be a permutation
+  of $n$. </span>
+
+ <span class='run'>The <span class='term'>permutation matrix</span> of
+  $σ$ is the matrix $P$ defined by $P_{ij} = 1$
+  if $σ(i) = j$ and 0 otherwise. </span>
+
+ <span class='run'>This is sometimes called the
+  <span class='term'>column representation</span> (in
+  contrast to the row representation, in which
+  $P_{ij} = 1$ if $σ(j) = i$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A ∈ 𝗥^{n × n}$. </span>
+
+ <span class='run'>Then pre-multipying $A$ by $P$ permutes the
+  rows of $A$. </span>
+
+ <span class='run'>In other words $PA$ has the same rows as $A$
+  but permuted according to $σ$. </span>
+
+ <span class='run'>Similarly, post-multiplying by $P$ permutes the
+  columns of $A$. </span>
+
+ <span class='run'>In other words, $AP$ has the same columns as
+  $A$ but permuted according to $σ$. </span>
+
+ <span class='run'>Clearly, we can also speak of permuting the
+  components of a vector. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Composition} </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $π, σ ∈ S_n$ with corresponding permutation
+  matrices $P_σ$ and $P_π$. </span>
+
+ <span class='run'>Then $P_{π}P_{σ}A$ has the same rows as $A$
+  but permuted by $πσ$. </span>
+
+ <span class='run'>Likewise, $AP_{π}P_{σ}$ has the same columns as
+  $A$ but permuted by $πσ$. </span>
+
+ <span class='run'>Clearly, the identity permutation on $\upto{n}$
+  is the identity $I ∈ 𝗥^{n × n}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Inverses} </span>
+</p>
+
+
+<p>
+ <span class='run'>It is clear from the definition that
+  $P_{σ}^{-1} = P_{σ^{-1}}$ and so if $P$ is a
+  permutation matrix then $P^{-1}$ is
+  $\transpose{P}$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+
+ <span class='run'></span>
+</p>
+<ol class='footnotes'></ol>
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -303,7 +409,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
+      Copyright 2022 The Bourbaki Authors. Version 77ab37752.
     </span>
   </body>
 </html>

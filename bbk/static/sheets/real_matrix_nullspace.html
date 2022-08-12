@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./real_matrix_nullspace.pdf#page=2'"> Real Matrix Nullspace </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./real_matrix_nullspace.pdf#page=2'" onkeypress="location.href='./real_matrix_nullspace.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./real_matrix_nullspace-graph.pdf'" onkeypress="location.href='./real_matrix_nullspace-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./orthogonal_real_subspaces.html'" onkeypress="location.href='./orthogonal_real_subspaces.html'">
+              <span>
+                Orthogonal Real Subspaces
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+              <span>
+                Real Matrices
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_vector_angles.html'" onkeypress="location.href='./real_vector_angles.html'">
+              <span>
+                Real Vector Angles
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{nullspace} (or \t{kernel}) of a matrix $A \in \R ^{m \times n}$ is the set \[ \Set{x \in \R ^n}{Ax = 0}. \] It is the set of vectors mapped to zero by $A$. Equivalently, it is the set of vectors orthogonal to the rows of $A$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the nullspace of $A \in \R ^{m \times n}$ by $\null(A) \subset \R ^{n}$. Some authors denote the nullspace of $A$ by $\mathcal{N}(A)$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{A subspace}</p></div><div class="sheet-listing"><p class="sheet"> The nullspace of a matrix is a subspace (this justifies the terminology null<i>space</i>!). There are a few routes to see this.</p></div><div class="sheet-listing"><p class="sheet"> The first is direct. If $w, z \in \null(A)$, then $Aw = 0$ and $Az = 0$. So then $A(w + z) = Aw + Az = 0$. So $\null(A)$ is closed under vector addition. Also $A(\alpha w) = \alpha (Aw) = 0$ for all $\alpha  \in \R $. [In particular $A0 = 0$, so $0 \in \null(A)$; i.e., $\null(A)$ contains the origin.] So $\null(A)$ is closed under scalar multiplication.</p></div><div class="sheet-listing"><p class="sheet"> The second is by thinking about orthogonal complements. Second, we can view the $\null(A)$ as the set of vectors orthgonal to all the rows of $A$. In other words, $\null(A) = \set{\tilde{a}_1, \dots , \tilde{a}_m}^\perp$. The orthogonal complement of any set is a subspace (see \sheetref{orthogonal_real_subspaces}{Orthogonal Real Subspaces}).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Ambiguity in solutions}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have a solution to the system of linear equation with data $(A, y)$. In other words, we have a vector $x \in \R ^n$ so that $y = Ax$. If we have a vector $z \in \null(A)$, then $x + z$ is also a solution to the system $(A, y)$, since \[ A(x + z) = Ax + Az = Ax + 0 = y \] Conversely, suppose there were another solution $\tilde{x} \in \R ^{n}$ to the system $(A, y)$. Then $y = Ax = A\tilde{x}$, so \[ 0 = y - y = Ax - A\tilde{x} = A(x - \tilde{x}). \] Consequently, $(x - \tilde{x}) \in \null(A)$, and so $\tilde{x}$ is the solution $x$ plus some vector in the null space of $A$. Consequently we are interested in whether $A$ has vectors in its nullspace.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Zero nullspace}</p></div><div class="sheet-listing"><p class="sheet"> The origin $0$ is always in the nullspace of $A$. However, this vector does not mean that we can find different solutions, since $x + 0 = x$ for all $x \in \R ^n$. If, on the other hand, there is a nonzero vector $z \in \null(A)$, then $x + z \neq x$, and $x+z$ is a solution for $(A, y)$. We think about $A$ as a function from $\R ^n$ to $\R ^m$. In the case that there is a nonzero element in the nullspace, $A$ maps different vectors to the same vector. Here, $x$ and $x + z$ both map to $y$. In this case, the function is <i>not invertible</i>, because it is not one-to-one. If, however, zero is the only element of the null space, the function is one-to-one. So call $A$ \t{one-to-one} if $\null(A) = 0$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Equivalent statements}</p></div><div class="sheet-listing"><p class="sheet"> A matrix $A \in \R ^{m \times n}$ is \t{one-to-one} if the linear function $f: \R ^n \to \R ^m$ defined by $f(x) = Ax$ is one-to-one. In this case, if there exists $x \in \R ^n$ so that $y = Ax$, then there is only one such $x$. Different elements in $\R ^n$ map to different elements in $\R ^m$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./real_matrix_nullspace-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './real_matrix_nullspace.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./real_matrix_nullspace.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./real_matrix_nullspace.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./real_matrix_nullspace-graph.pdf">
+    </iframe>
+    -->
+
+  
+    <div class="lit">
+    <!--
+!name:real_matrix_nullspace
+!need:real_matrices
+!need:real_vector_angles
+!need:orthogonal_real_subspaces
+-->
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>The <span class='term'>nullspace</span> (or
+  <span class='term'>kernel</span>) of a matrix $A ∈
+  𝗥^{m × n}$ is the set
+  <p>\[
+   \Set{x \in \R ^n}{Ax = 0}. 
+  \]</p></span>
+
+ <span class='run'>It is the set of vectors mapped to zero by
+  $A$. </span>
+
+ <span class='run'>Equivalently, it is the set of vectors
+  orthogonal to the rows of $A$. </span>
+</p>
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>We denote the nullspace of $A ∈ 𝗥^{m × n}$
+  by $\null(A) ⊂ 𝗥^{n}$. </span>
+
+ <span class='run'>Some authors denote the nullspace of $A$ by
+  $\mathcal{N}(A)$. </span>
+</p>
+
+<h2>
+A subspace </h2>
+
+<p>
+ <span class='run'>The nullspace of a matrix is a subspace (this
+  justifies the terminology null<i>space</i>!). </span>
+
+ <span class='run'>There are a few routes to see this. </span>
+</p>
+
+
+<p>
+ <span class='run'>The first is direct. </span>
+
+ <span class='run'>If $w, z ∈ \null(A)$, then $Aw = 0$ and $Az
+  = 0$. </span>
+
+ <span class='run'>So then $A(w + z) = Aw + Az = 0$. </span>
+
+ <span class='run'>So $\null(A)$ is closed under vector addition. </span>
+
+ <span class='run'>Also $A(αw) = α(Aw) = 0$ for all $α ∈ 𝗥$. </span>
+
+ <span class='run'>[In particular $A0 = 0$, so $0 ∈ \null(A)$;
+  i.e., $\null(A)$ contains the origin.] </span>
+
+ <span class='run'>So $\null(A)$ is closed under scalar
+  multiplication. </span>
+</p>
+
+
+<p>
+ <span class='run'>The second is by thinking about orthogonal
+  complements. </span>
+
+ <span class='run'>Second, we can view the $\null(A)$ as the set
+  of vectors orthgonal to all the rows of $A$. </span>
+
+ <span class='run'>In other words, $\null(A) = \set{\tilde{a}_1, …,
+  \tilde{a}_m}^⊥$. </span>
+
+ <span class='run'>The orthogonal complement of any set is a
+  subspace (see
+  \sheetref{orthogonal_real_subspaces}{Orthogonal Real
+  Subspaces}). </span>
+</p>
+
+<h1>
+Ambiguity in solutions </h1>
+
+<p>
+ <span class='run'>Suppose we have a solution to the system of
+  linear equation with data $(A, y)$. </span>
+
+ <span class='run'>In other words, we have a vector $x ∈ 𝗥^n$
+  so that $y = Ax$. </span>
+
+ <span class='run'>If we have a vector $z ∈ \null(A)$, then $x
+  + z$ is also a solution to the system $(A,
+  y)$, since
+  <p>\[
+   A(x + z) = Ax + Az = Ax + 0 = y 
+  \]</p></span>
+
+ <span class='run'>Conversely, suppose there were another solution
+  $\tilde{x} ∈ 𝗥^{n}$ to the system $(A, y)$. </span>
+
+ <span class='run'>Then $y = Ax = A\tilde{x}$, so
+  <p>\[
+   0 = y - y = Ax - A\tilde{x} = A(x - \tilde{x}). 
+  \]</p></span>
+
+ <span class='run'>Consequently, $(x - \tilde{x}) ∈ \null(A)$, and
+  so $\tilde{x}$ is the solution $x$ plus some
+  vector in the null space of $A$. </span>
+
+ <span class='run'>Consequently we are interested in whether $A$
+  has vectors in its nullspace. </span>
+</p>
+
+<h2>
+Zero nullspace </h2>
+
+<p>
+ <span class='run'>The origin $0$ is always in the nullspace of
+  $A$. </span>
+
+ <span class='run'>However, this vector does not mean that we can
+  find different solutions, since $x + 0 = x$
+  for all $x ∈ 𝗥^n$. </span>
+
+ <span class='run'>If, on the other hand, there is a nonzero
+  vector $z ∈ \null(A)$, then $x + z ≠ x$, and
+  $x+z$ is a solution for $(A, y)$. </span>
+
+ <span class='run'>We think about $A$ as a function from $𝗥^n$
+  to $𝗥^m$. </span>
+
+ <span class='run'>In the case that there is a nonzero element
+  in the nullspace, $A$ maps different vectors to
+  the same vector. </span>
+
+ <span class='run'>Here, $x$ and $x + z$ both map to $y$. </span>
+
+ <span class='run'>In this case, the function is <i>not
+  invertible</i>, because it is not one-to-one. </span>
+
+ <span class='run'>If, however, zero is the only element of the
+  null space, the function is one-to-one. </span>
+
+ <span class='run'>So call $A$ <span class='term'>one-to-one</span>
+  if $\null(A) = 0$. </span>
+</p>
+
+<h2>
+Equivalent statements </h2>
+
+<p>
+ <span class='run'>A matrix $A ∈ 𝗥^{m × n}$ is
+  <span class='term'>one-to-one</span> if the linear
+  function $f: 𝗥^n → 𝗥^m$ defined by $f(x) = Ax$
+  is one-to-one. </span>
+
+ <span class='run'>In this case, if there exists $x ∈ 𝗥^n$ so
+  that $y = Ax$, then there is only one such
+  $x$. </span>
+
+ <span class='run'>Different elements in $𝗥^n$ map to different
+  elements in $𝗥^m$. </span>
+</p>
+<ol class='footnotes'></ol>
+    </div>
+  
+
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 77ab37752.
+    </span>
+  </body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./real_function_epigraphs.pdf#page=2'"> Real Function Epigraphs </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./real_function_epigraphs.pdf#page=2'" onkeypress="location.href='./real_function_epigraphs.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./real_function_epigraphs-graph.pdf'" onkeypress="location.href='./real_function_epigraphs-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./convex_functions.html'" onkeypress="location.href='./convex_functions.html'">
+              <span>
+                Convex Functions
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./multivariate_functions.html'" onkeypress="location.href='./multivariate_functions.html'">
+              <span>
+                Multivariate Functions
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_convex_sets.html'" onkeypress="location.href='./real_convex_sets.html'">
+              <span>
+                Real Convex Sets
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_function_graphs.html'" onkeypress="location.href='./real_function_graphs.html'">
+              <span>
+                Real Function Graphs
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: D \to \R $ be a multivariate real-valued function where $D \subset \R ^d$. The \t{graph} of $f$ is the set in $\R ^{d + 1}$ defined by \[ \Set{(x, f(x)) \in \R ^d \times \R }{x \in D}. \] The \t{epigraph} of $f$ is the set in $\R ^{d + 1}$ defined by \[ \Set{(x, t) \in \R ^{d}}{x \in D \text{ and } f(x) \leq t}. \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the epigraph of a function $f$ by $\epi f$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Connecting convex sets and convex functions}</p></div><div class="sheet-listing"><p class="sheet"> A function $f: \R ^d \to \R $ is convex if and only if $\epi f$ is a convex set. \subsection*{Note on terminology}</p></div><div class="sheet-listing"><p class="sheet"> The prefix "epi} is Greek, meaning \say{above".</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./real_function_epigraphs-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './real_function_epigraphs.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./real_function_epigraphs.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./real_function_epigraphs.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./real_function_epigraphs-graph.pdf">
+    </iframe>
+    -->
+
+  
+    <div class="lit">
+    <!--
+!name:real_function_epigraphs
+!need:real_function_graphs
+!need:multivariate_functions
+!need:real_convex_sets
+!need:convex_functions
+!refs:cvx/3.1.7
+-->
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Let $f: D → 𝗥$ be a multivariate real-valued
+  function where $D ⊂ 𝗥^d$. </span>
+
+ <span class='run'>The <span class='term'>graph</span> of $f$ is the
+  set in $𝗥^{d + 1}$ defined by
+  <p>\[
+   \Set{(x, f(x)) \in \R ^d \times  \R }{x \in D}. 
+  \]</p></span>
+
+ <span class='run'>The <span class='term'>epigraph</span> of $f$ is
+  the set in $𝗥^{d + 1}$ defined by
+  <p>\[
+   \Set{(x, t) \in \R ^{d}}{x \in D \text{ and } f(x) \leq t}. 
+  \]</p></span>
+</p>
+
+<h1>
+Notation </h1>
+
+<p>
+ <span class='run'>We denote the epigraph of a function $f$ by
+  $\epi f$. </span>
+</p>
+
+
+<!-- TODO: possibly rework, define convex functions in terms of sets -->
+
+<!-- historically, Archimedes had convex curves first, see Toeplitz genetic approach-->
+
+<h2>
+Connecting convex sets and convex functions </h2>
+
+<span class='run'>A function $f: 𝗥^d → 𝗥$ is convex if and only
+ if $\epi f$ is a convex set. </span>
+
+<h2>
+Note on terminology </h2>
+
+<p>
+ <span class='run'>The prefix “epi” is Greek, meaning “above”. </span>
+</p>
+<ol class='footnotes'></ol>
+    </div>
+  
+
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 77ab37752.
+    </span>
+  </body>
+</html>

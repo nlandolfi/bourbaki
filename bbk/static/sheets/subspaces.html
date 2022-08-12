@@ -25,6 +25,13 @@
       
         <div disabled class="need label"> Needs: </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./real_subspaces.html'" onkeypress="location.href='./real_subspaces.html'">
+              <span>
+                Real Subspaces
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
             <div class="need" tabindex="0" onclick="location.href='./vectors.html'" onkeypress="location.href='./vectors.html'">
               <span>
                 Vectors
@@ -53,6 +60,13 @@
           <div class="need" tabindex="0" onclick="location.href='./span.html'" onkeypress="location.href='./span.html'">
             <span>
             Span
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./subspace_sums.html'" onkeypress="location.href='./subspace_sums.html'">
+            <span>
+            Subspace Sums
             </span>
             <span class="caret">›</span>
           </div>
@@ -120,7 +134,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{subspace} of a vector space is a subset of vectors that is a vector space when restriction vector addition and scalar multiplication to the set. In other words, a subspace is a subset of a vector space which is closed under vector addition and scalar multiplication.</p></div><div class="sheet-listing"><p class="sheet"> For example, the entire set of vectors is a subspace. As a second example, the set consisting only of the zero vector is a subspace; we call this the \t{zero subspace}. These two subspaces are the \t{trivial subspaces}. A \t{nontrivial subspace} is a subspace that is not trivial.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $(V, \F)$ be a vector space. Let $U \subset V$ with \[ \alpha  u + \beta  v \in U \] for all $\alpha , \beta  \in \F$ and $u, v \in U$. Then $U$ is a subspace of $(V, \F)$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">4. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The intersection of a family of subspaces is a subspace. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} There exists a family of subspaces whose union is not a subspace;</p></div><div class="sheet-listing"><p class="sheet"> \begin{remark} In other words: the union of a family subspaces need not be a subspace. \end{remark} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} A subspace must contain the zero vector; in other words, every subspace is nonempty. \end{prop}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{subspace} of a vector space is a subset of vectors that is a vector space when restriction vector addition and scalar multiplication to the set. In other words, a subspace is a subset of a vector space which is closed under vector addition and scalar multiplication.</p></div><div class="sheet-listing"><p class="sheet"> For example, the entire set of vectors is a subspace. As a second example, the set consisting only of the zero vector is a subspace; we call this the \t{zero subspace}. These two subspaces are the \t{trivial subspaces}. A \t{nontrivial subspace} is a subspace that is not trivial.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $(V, \F)$ be a vector space. Let $U \subset V$ with \[ \alpha  u + \beta  v \in U \] for all $\alpha , \beta  \in \F$ and $u, v \in U$. Then $U$ is a subspace of $(V, \F )$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The intersection of a family of subspaces is a subspace. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} There exists a family of subspaces whose union is not a subspace;</p></div><div class="sheet-listing"><p class="sheet"> \begin{remark} In other words: the union of a family subspaces need not be a subspace. \end{remark} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} A subspace must contain the zero vector; in other words, every subspace is nonempty. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -225,22 +239,14 @@ MathJax.Hub.Config({
 
   
     <div class="lit">
-    <p>
- <span class='run'>%!name:subspaces </span>
+    <!--
+!name:subspaces
+!need:vectors
+!need:real_subspaces
+-->
 
- <span class='run'>%!need:vectors </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
+<h1>
+Definition </h1>
 
 <p>
  <span class='run'>A <span class='term'>subspace</span> of a vector
@@ -269,11 +275,8 @@ MathJax.Hub.Config({
   a subspace that is not trivial. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Notation} </span>
-</p>
-
+<h2>
+Notation </h2>
 
 <p>
  <span class='run'>Let $(V, \F)$ be a vector space. </span>
@@ -284,27 +287,24 @@ MathJax.Hub.Config({
   \]</p>
   for all $α, β ∈ \F$ and $u, v ∈ U$. </span>
 
- <span class='run'>Then $U$ is a subspace of $(V, \F)$. </span>
+ <span class='run'>Then $U$ is a subspace of $(V, 𝗙)$. </span>
 </p>
 
+<h1>
+Properties </h1>
 
 <p>
- <span class='run'>\ssection{Properties} </span>
-</p>
-
-
-<p>
- <span class='run'>\begin{prop} </span>
+ <span class='run'>\begin{proposition} </span>
 
  <span class='run'>The intersection of a family of subspaces is a
   subspace. </span>
 
- <span class='run'>\end{prop} </span>
+ <span class='run'>\end{proposition} </span>
 </p>
 
 
 <p>
- <span class='run'>\begin{prop} </span>
+ <span class='run'>\begin{proposition} </span>
 
  <span class='run'>There exists a family of subspaces whose union
   is not a subspace; </span>
@@ -319,19 +319,19 @@ MathJax.Hub.Config({
 
  <span class='run'>\end{remark} </span>
 
- <span class='run'>\end{prop} </span>
+ <span class='run'>\end{proposition} </span>
 </p>
 
 
 <p>
- <span class='run'>\begin{prop} </span>
+ <span class='run'>\begin{proposition} </span>
 
  <span class='run'>A subspace must contain the zero vector; in
   other words, every subspace is nonempty. </span>
 
- <span class='run'>\end{prop} </span>
+ <span class='run'>\end{proposition} </span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<ol class='footnotes'></ol>
     </div>
   
 
@@ -385,7 +385,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
+      Copyright 2022 The Bourbaki Authors. Version 77ab37752.
     </span>
   </body>
 </html>

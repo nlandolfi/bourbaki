@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./complex_exponential.pdf#page=2'"> Complex Exponential </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./complex_exponential.pdf#page=2'" onkeypress="location.href='./complex_exponential.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./complex_exponential-graph.pdf'" onkeypress="location.href='./complex_exponential-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./complex_arithmetic.html'" onkeypress="location.href='./complex_arithmetic.html'">
+              <span>
+                Complex Arithmetic
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./exponential_function.html'" onkeypress="location.href='./exponential_function.html'">
+              <span>
+                Exponential Function
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition \ifhmode\unskip\fi\footnote{ Future editions may modify this sheet, as there are several (equivalent) characterizations of the complex exponential function. }}</p></div><div class="sheet-listing"><p class="sheet"> The \t{complex exponential} of a complex number $z \in \C $ is the complex number \[ 1 + z + \frac{z^2}{2} + \frac{z^3}{3!} + \cdots = \sum_{n = 1}^{\infty}\frac{z^n}{n!}. \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the complex exponential funciton $\exp: \C  \to \C $, and so denote the complex exponential of $z \in \C $ by $\exp(z)$, as usual. This overloaded notation is justified by the fact that the complex exponential agrees with the real exponential function on reals. It is also common to denote $\exp(z)$ by $e^z$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Relation to power series of $\sin$ and $\cos$}</p></div><div class="sheet-listing"><p class="sheet"> It can be shown \ifhmode\unskip\fi\footnote{ And future editions will show it } that for $x \in \R $, \[ \exp(ix) = \cos(x) + i \sin(x). \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./complex_exponential-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './complex_exponential.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./complex_exponential.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./complex_exponential.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./complex_exponential-graph.pdf">
+    </iframe>
+    -->
+
+  
+    <div class="lit">
+    <!--
+!name:complex_exponential
+!need:exponential_function
+!need:complex_arithmetic
+-->
+
+<h1>
+Definition<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></h1>
+
+<p>
+ <span class='run'>The <span class='term'>complex exponential</span>
+  of a complex number $z ∈ 𝗖$ is the complex
+  number
+  <p>\[
+   1 + z + \frac{z^2}{2} + \frac{z^3}{3!} + \cdots = \sum_{n =
+    1}^{\infty}\frac{z^n}{n!}. 
+  \]</p></span>
+</p>
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>We denote the complex exponential funciton
+  $\exp: 𝗖 → 𝗖$, and so denote the complex
+  exponential of $z ∈ 𝗖$ by $\exp(z)$, as usual. </span>
+
+ <span class='run'>This overloaded notation is justified by the
+  fact that the complex exponential agrees with
+  the real exponential function on reals. </span>
+
+ <span class='run'>It is also common to denote $\exp(z)$ by $e^z$. </span>
+</p>
+
+<h1>
+Relation to power series of $\sin$ and $\cos$ </h1>
+
+<p>
+ <span class='run'>It can be shown<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup>
+  that for $x ∈ 𝗥$,
+  <p>\[
+   \exp(ix) = \cos(x) + i \sin(x). 
+  \]</p></span>
+</p>
+<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions may modify this sheet, as there
+  are several (equivalent) characterizations of the
+  complex exponential function. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>And future editions will show it </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+  
+
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 77ab37752.
+    </span>
+  </body>
+</html>

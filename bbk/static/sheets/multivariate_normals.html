@@ -32,13 +32,6 @@
               <span class="caret">›</span>
             </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./matrix_inverses.html'" onkeypress="location.href='./matrix_inverses.html'">
-              <span>
-                Matrix Inverses
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
             <div class="need" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
               <span>
                 Matrix Transpose
@@ -63,6 +56,13 @@
             <div class="need" tabindex="0" onclick="location.href='./positive_definite_matrices.html'" onkeypress="location.href='./positive_definite_matrices.html'">
               <span>
                 Positive Definite Matrices
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_matrix_inverses.html'" onkeypress="location.href='./real_matrix_inverses.html'">
+              <span>
+                Real Matrix Inverses
               </span>
               <span class="caret">›</span>
             </div>
@@ -183,7 +183,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We generalize the normal density to $d$-dimensional space.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $f: \R^d \to \R$ be a density such that $$f(x) = \mgaussiandensity{x}{\mu}{\Sigma}$$ where $\mu \in \R^d$, $\Sigma \in \SymMat{d}$, and $\Sigma \succ 0$. We call $f$ a \t{multivariate normal density}. A multivariate normal density with $d = 1$ is a normal density, so we refer to multivariate normal densities as \t{normal densities} without ambiguity. We frequently use the word normal as a substantive, and refer to \t{normals} when we mean multivariate normal densities. Many people call a multivariate normal distribution a \t{multivariate gaussian distribution} and speak of \t{gaussians} instead of normals.\footnote{We avoid this usage in accordance with the project's policy on historical names.}</p></div><div class="sheet-listing"><p class="sheet"> We call $\mu$ the \t{mean} and $\Sigma$ the \t{covariance matrix}. We call $\Sigma^{-1}$ the \t{precision matrix}.</p></div><div class="sheet-listing" id="maximum"><h1 class="sheet">3. Maximum</h1></div><div class="sheet-listing"><p class="sheet"> The maximum of a normal density is its mean, $\mu \in \R^d$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We generalize the normal density to $d$-dimensional space.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \R ^d \to \R $ be a density such that $$f(x) = \mgaussiandensity{x}{\mu }{\Sigma }$$ where $\mu  \in \R ^d$, $\Sigma  \in \mathbfsf{S} ^d$, and $\Sigma  \succ 0$. We call $f$ a \t{multivariate normal density}. A multivariate normal density with $d = 1$ is a normal density, so we refer to multivariate normal densities as \t{normal densities} without ambiguity. We frequently use the word normal as a substantive, and refer to \t{normals} when we mean multivariate normal densities. Many people call a multivariate normal distribution a \t{multivariate gaussian distribution} and speak of \t{gaussians} instead of normals. \ifhmode\unskip\fi\footnote{ We avoid this usage in accordance with the project's policy on historical names. }</p></div><div class="sheet-listing"><p class="sheet"> We call $\mu $ the \t{mean} and $\Sigma $ the \t{covariance matrix}. We call $\Sigma ^{-1}$ the \t{precision matrix}.</p></div><div class="sheet-listing" id="maximum"><h1 class="sheet">1. Maximum</h1></div><div class="sheet-listing"><p class="sheet"> The maximum of a normal density is its mean, $\mu  \in \R ^d$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -287,6 +287,84 @@ MathJax.Hub.Config({
     -->
 
   
+    <div class="lit">
+    <!--
+!name:multivariate_normals
+!need:normal_densities
+!need:multivariate_real_densities
+!need:positive_definite_matrices
+!need:matrix_determinants
+!need:real_matrix_inverses
+!need:matrix_transpose
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We generalize the normal density to
+  $d$-dimensional space. </span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Let $f: 𝗥^d → 𝗥$ be a density such that
+  $$f(x) = \mgaussiandensity{x}{μ}{Σ}$$ where $μ ∈
+  𝗥^d$, $Σ ∈ 𝗦^d$, and $Σ ≻ 0$. </span>
+
+ <span class='run'>We call $f$ a <span class='term'>multivariate
+  normal density</span>. </span>
+
+ <span class='run'>A multivariate normal density with $d = 1$ is
+  a normal density, so we refer to multivariate
+  normal densities as <span class='term'>normal
+  densities</span> without ambiguity. </span>
+
+ <span class='run'>We frequently use the word normal as a
+  substantive, and refer to
+  <span class='term'>normals</span> when we mean
+  multivariate normal densities. </span>
+
+ <span class='run'>Many people call a multivariate normal
+  distribution a <span class='term'>multivariate
+  gaussian distribution</span> and speak of
+  <span class='term'>gaussians</span> instead of
+  normals.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+
+<p>
+ <span class='run'>We call $μ$ the <span class='term'>mean</span>
+  and $Σ$ the <span class='term'>covariance
+  matrix</span>. </span>
+
+ <span class='run'>We call $Σ^{-1}$ the <span class='term'>precision
+  matrix</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>\ssection{Maximum} </span>
+</p>
+
+
+<p>
+ <span class='run'>The maximum of a normal density is its mean,
+  $μ ∈ 𝗥^d$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\blankpage </span>
+
+ <span class='run'></span>
+</p>
+<ol class='footnotes'><li id='footnote-1'> <span class='run'>We avoid this usage in accordance with the
+  project’s policy on historical names. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -338,7 +416,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 4a46a7197.
+      Copyright 2022 The Bourbaki Authors. Version 77ab37752.
     </span>
   </body>
 </html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+  <meta charset="utf-8"/>
+  <head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fonts.css">
+    <script src="../pdfjs/build/pdf.js"></script>
+  </head>
+  <body>
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./minimum_residual_affine_sets.pdf#page=2'"> Minimum Residual Affine Sets </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./minimum_residual_affine_sets.pdf#page=2'" onkeypress="location.href='./minimum_residual_affine_sets.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./minimum_residual_affine_sets-graph.pdf'" onkeypress="location.href='./minimum_residual_affine_sets-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./matrix_trace.html'" onkeypress="location.href='./matrix_trace.html'">
+              <span>
+                Matrix Trace
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./projections_on_affine_sets.html'" onkeypress="location.href='./projections_on_affine_sets.html'">
+              <span>
+                Projections On Affine Sets
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./projections_on_affine_sets.html'" onkeypress="location.href='./projections_on_affine_sets.html'">
+              <span>
+                Projections On Affine Sets
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {Augment: {
+    Definitions: {macros: {nicefrac: 'XFrac'}},
+    Parse: {prototype: {
+      XFrac: function (name) {
+        var num = this.ParseArg(name);
+        var den = this.ParseArg(name);
+        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+      }
+    }}
+  }}
+});
+</script>
+    <script>
+      MathJax = {
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        tex: {
+          inlineMath: [
+              ['\\(', '\\)'],
+              ['$', '$']
+            ],
+          displayMath: [
+              ['$$', '$$'],
+              ['\\[', '\\]']
+            ],
+          macros: {
+                  powerset: ["2^{#1}", 1],
+                  CV: "\\mathcal{V}",
+                  ceil: ["\\lceil #1 \\rceil", 1],
+                  num: ["\\abs{#1}",1],
+                  Set: ["\\{#1 : #2\\}", 2],
+          },
+          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+        },
+      };
+    </script>
+    <script src="../mathjax/polyfill.min.js"></script>
+    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+    <!--
+      <link rel="stylesheet" href="../katex/katex.min.css">
+      <script src="../katex/katex.min.js"></script>
+      <script src="../katex/auto-render.min.js"></script>
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(
+          document.body,
+          {
+            delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false},
+            ],
+          },
+        );
+      });
+    </script>
+    -->
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to find a low-dimensional affine set into which we can project some high-dimensional data.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Problem}</p></div><div class="sheet-listing"><p class="sheet"> For $a \in \R ^n$ and $U \in \R ^{n \times k}$, the set $W(a, U) = \Set{a + Uz}{z \in \R ^n}$ is an affine set. Denote the projection of $x \in \R ^n$ onto $W(a, U)$ by $\proj_{W(a, U)}(x)$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{problem} Given $x^{(1)}, \dots , x^{(m)} \in \R ^n$, and a dimension $k$, find $a \in \R ^n$ and $U \in \R ^{n \times k}$ with $U^\top U = I$ to minimize \[ \textstyle \sum_{i = 1}^{m} \norm{x^{(i)} - \proj_{W(a, U)}(x^{(i)})}^2, \] the sum of squared distances between $x^{(i)}$ and its projection on $W(a, U)$. \end{problem}</p></div><div class="sheet-listing"><p class="sheet"> Express $\proj_{W(a, U)}(x)$ as $UU^\top x + (I - UU^\top )a$ (see \sheetref{projections_on_affine_sets}{Projections on Affine Sets}). We want to find $a \in \R ^n$ and $U \in \R ^{n \times k}$ to minimize \[ \sum_{i = 1}^{n} \norm{x^{(i)} - UU^\top  x^{(i)} - (I-UU^\top )a}^2. \] Fix $U \in \R ^{n \times k}$. Define $A \in \R ^{nm \times n}$, $B \in \R ^{mn \times mn}$, and $\tilde{x} \in \R ^{nm}$ by \[ \scriptsize A = \bmat{ I - UU^\top  \\ \vdots \\ I - UU^\top  \\ },\text{ } B = \bmat{ I - UU^\top  & \cdots & 0\\ & \ddots & \\ 0 &  \cdots &  I - UU^\top  \\ }, \text{ and } \tilde{x} = \bmat{ x^{(1)} \\ \vdots \\ x^{(m)} }. \] Then the objective is equivalent to \[ \norm{Aa - B \tilde{x}}^2 \] Any minimizer $a^\star$ satisfies the normal equations \[ A^\top Aa^\star = A^\top B\tilde{x} \] Since $(I - UU^\top )^\top  = I - UU^\top $ and $(I - UU^\top )^2 = I - UU^\top $, \[ \textstyle A^\top A = \sum_{i = 1}^{m} I - UU^\top  = m(I - UU^\top ) \] and \[ \textstyle A^\top B = \bmat{I - UU^\top  & \cdots & I - UU^\top }. \] Consequently, we can express $A^\top Aa^\star = A^\top B\tilde{x}$ as \[ \textstyle m(I - UU^\top )a^\star = \sum_{i = 1}^{m} (I - UU^\top )x^{(i)}. \] So $a^\star$ is any vector satisfying \[ \textstyle (I - UU^\top )a^\star = (I- UU^\top )(1/m)\sum_{i = 1}^{m} (I - UU^\top )x^{(i)}. \] One such point satisfying the above is $\bar{x} = (1/m)\sum_{i = 1}^{m}x^{(i)}$. An expedient choice, as it does not depnd on $U$.</p></div><div class="sheet-listing"><p class="sheet"> Now we want to find $U \in \R ^{n \times k}$ to minimize \[ \textstyle \sum_{i = 1}^{m} \norm{(I-UU^\top )(x^{(i)} - \bar{x})}^2. \] Express the $i$th term of the sum as \[ \textstyle \begin{aligned} \norm{(I - UU^\top )(x^{(i)} - \bar{x})}^2 & = (x-\bar{x})(I - UU^\top )^\top (I - UU^\top )(x^{(i)} - \bar{x}) \\ & = (x^{(i)} - \bar{x})^\top (I - UU^\top )(x ^{(i)} - \bar{x}) \\ & = \norm{x^{(i)} - \bar{x}}^2 - \norm{U^\top (x^{(i)} - \bar{x})}^2. \end{aligned} \] The first term is a constant with respect to $U$. Define $\bar{X} \in \R ^{n \times m}$ by \[ \bar{X} = \bmat{x^{(1)} - \bar{x} & \cdots & x^{(m)} - \bar{x}}. \] Express the sum of the second terms by \[ \norm{U^\top \bar{X}}_F = \tr \bar{X}^\top UU^\top \bar{X} = \tr(U^\top \bar{X}\bar{X}^\top U). \] So we seek $U \in \R ^{n \times k}$ with $U^\top U = I$ to maximize \[ \tr(U^\top \bar{X}\bar{X}^\top U). \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./minimum_residual_affine_sets-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './minimum_residual_affine_sets.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./minimum_residual_affine_sets.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./minimum_residual_affine_sets.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./minimum_residual_affine_sets-graph.pdf">
+    </iframe>
+    -->
+
+  
+    <div class="lit">
+    <!--
+!name:minimum_residual_affine_sets
+!need:projections_on_affine_sets
+!need:projections_on_affine_sets
+!need:matrix_trace
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We want to find a low-dimensional affine set
+  into which we can project some high-dimensional
+  data. </span>
+</p>
+
+<h1>
+Problem </h1>
+
+<p>
+ <span class='run'>For $a ∈ 𝗥^n$ and $U ∈ 𝗥^{n × k}$, the set
+  $W(a, U) = \Set{a + Uz}{z ∈ 𝗥^n}$ is an
+  affine set. </span>
+
+ <span class='run'>Denote the projection of $x ∈ 𝗥^n$ onto $W(a,
+  U)$ by $\proj_{W(a, U)}(x)$. </span>
+</p>
+
+
+<p>
+ <span class='run'>\begin{problem} </span>
+
+ <span class='run'>Given $x^{(1)}, …, x^{(m)} ∈ 𝗥^n$, and a
+  dimension $k$, find $a ∈ 𝗥^n$ and $U ∈ 𝗥^{n ×
+  k}$ with $U^⊤U = I$ to minimize
+  <p>\[
+   \textstyle 
+
+   \sum_{i = 1}^{m} \norm{x^{(i)} - \proj_{W(a, U)}(x^{(i)})}^2, 
+  \]</p>
+  the sum of squared distances between $x^{(i)}$
+  and its projection on $W(a, U)$. </span>
+
+ <span class='run'>\end{problem} </span>
+</p>
+
+
+<p>
+ <span class='run'>Express $\proj_{W(a, U)}(x)$ as $UU^⊤x + (I -
+  UU^⊤)a$ (see
+  \sheetref{projections_on_affine_sets}{Projections on
+  Affine Sets}). </span>
+
+ <span class='run'>We want to find $a ∈ 𝗥^n$ and $U ∈ 𝗥^{n ×
+  k}$ to minimize
+  <p>\[
+   \sum_{i = 1}^{n} \norm{x^{(i)} - UU^\top  x^{(i)} -
+    (I-UU^\top )a}^2. 
+  \]</p></span>
+
+ <span class='run'>Fix $U ∈ 𝗥^{n × k}$. </span>
+
+ <span class='run'>Define $A ∈ 𝗥^{nm × n}$, $B ∈ 𝗥^{mn × mn}$,
+  and $\tilde{x} ∈ 𝗥^{nm}$ by
+  <p>\[
+   \scriptsize 
+
+   A = \bmat{ 
+
+   I - UU^\top  \\ 
+
+   \vdots \\ 
+
+   I - UU^\top  \\ 
+
+   },\text{ } B = \bmat{ 
+
+   I - UU^\top  & \cdots & 0\\ 
+
+   & \ddots & \\ 
+
+   0 &  \cdots &  I - UU^\top  \\ 
+
+   }, \text{ and } 
+
+   \tilde{x} = \bmat{ 
+
+   x^{(1)} \\ 
+
+   \vdots \\ 
+
+   x^{(m)} 
+
+   }. 
+  \]</p></span>
+
+ <span class='run'>Then the objective is equivalent to
+  <p>\[
+   \norm{Aa - B \tilde{x}}^2 
+  \]</p></span>
+
+ <span class='run'>Any minimizer $a^★$ satisfies the normal
+  equations
+  <p>\[
+   A^\top Aa^\star = A^\top B\tilde{x} 
+  \]</p></span>
+
+ <span class='run'>Since $(I - UU^⊤)^⊤ = I - UU^⊤$ and $(I -
+  UU^⊤)^2 = I - UU^⊤$,
+  <p>\[
+   \textstyle 
+
+   A^\top A = \sum_{i = 1}^{m} I - UU^\top  = m(I - UU^\top ) 
+  \]</p>
+  and
+  <p>\[
+   \textstyle 
+
+   A^\top B = \bmat{I - UU^\top  & \cdots & I - UU^\top }. 
+  \]</p></span>
+
+ <span class='run'>Consequently, we can express $A^⊤Aa^★ =
+  A^⊤B\tilde{x}$ as
+  <p>\[
+   \textstyle 
+
+   m(I - UU^\top )a^\star = \sum_{i = 1}^{m} (I -
+    UU^\top )x^{(i)}. 
+  \]</p></span>
+
+ <span class='run'>So $a^★$ is any vector satisfying
+  <p>\[
+   \textstyle 
+
+   (I - UU^\top )a^\star = (I- UU^\top )(1/m)\sum_{i = 1}^{m} (I
+    - UU^\top )x^{(i)}. 
+  \]</p></span>
+
+ <span class='run'>One such point satisfying the above is $\bar{x}
+  = (1/m)∑_{i = 1}^{m}x^{(i)}$. </span>
+
+ <span class='run'>An expedient choice, as it does not depnd on
+  $U$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Now we want to find $U ∈ 𝗥^{n × k}$ to
+  minimize
+  <p>\[
+   \textstyle 
+
+   \sum_{i = 1}^{m} \norm{(I-UU^\top )(x^{(i)} - \bar{x})}^2. 
+  \]</p></span>
+
+ <span class='run'>Express the $i$th term of the sum as
+  <p>\[
+   \textstyle 
+
+   \begin{aligned} 
+
+   \norm{(I - UU^\top )(x^{(i)} - \bar{x})}^2 & = (x-\bar{x})(I -
+    UU^\top )^\top (I - UU^\top )(x^{(i)} - \bar{x}) \\ 
+
+   & = (x^{(i)} - \bar{x})^\top (I - UU^\top )(x ^{(i)} -
+    \bar{x}) \\ 
+
+   & = \norm{x^{(i)} - \bar{x}}^2 - \norm{U^\top (x^{(i)} -
+    \bar{x})}^2. 
+
+   \end{aligned} 
+  \]</p></span>
+
+ <span class='run'>The first term is a constant with respect to
+  $U$. Define $\bar{X} ∈ 𝗥^{n × m}$ by
+  <p>\[
+   \bar{X} = \bmat{x^{(1)} - \bar{x} & \cdots & x^{(m)} -
+    \bar{x}}. 
+  \]</p>
+  Express the sum of the second terms by
+  <p>\[
+   \norm{U^\top \bar{X}}_F = \tr \bar{X}^\top UU^\top \bar{X} =
+    \tr(U^\top \bar{X}\bar{X}^\top U). 
+  \]</p></span>
+
+ <span class='run'>So we seek $U ∈ 𝗥^{n × k}$ with $U^⊤U = I$
+  to maximize
+  <p>\[
+   \tr(U^\top \bar{X}\bar{X}^\top U). 
+  \]</p></span>
+</p>
+<ol class='footnotes'></ol>
+    </div>
+  
+
+  <!--
+  <div id="cy" style="height:1000px;width:1000px;">
+  </div>
+    <script>
+      var cy = cytoscape({
+        container: document.getElementById('cy'), // container to render in
+                elements: [ // list of graph elements to start with
+                            { // node a
+                                          data: { id: 'a' }
+                                        },
+                            { // node b
+                                          data: { id: 'b' }
+                                        },
+                            { // edge ab
+                                          data: { id: 'ab', source: 'a', target: 'b' }
+                                        }
+                          ],
+
+                style: [ // the stylesheet for the graph
+                            {
+                                          selector: 'node',
+                                          style: {
+                                                          'background-color': '#666',
+                                                          'label': 'data(id)'
+                                                        }
+                                        },
+
+                            {
+                                          selector: 'edge',
+                                          style: {
+                                                          'width': 3,
+                                                          'line-color': '#ccc',
+                                                          'target-arrow-color': '#ccc',
+                                                          'target-arrow-shape': 'triangle',
+                                                          'curve-style': 'bezier'
+                                                        }
+                                        }
+                          ],
+
+                layout: {
+                            name: 'grid',
+                            rows: 1
+                          }
+
+      });
+    </script>
+    -->
+
+
+    <span id="footer">
+      Copyright 2022 The Bourbaki Authors. Version 77ab37752.
+    </span>
+  </body>
+</html>
