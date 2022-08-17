@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make set_inclusion.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 set_inclusion.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_inclusion.tex
 
