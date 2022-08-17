@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make cones.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 cones.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cones.tex
 
