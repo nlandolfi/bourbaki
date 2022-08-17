@@ -91,7 +91,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -120,7 +126,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{hyperplane} is a $(n-1)$-dimensional affine set in $\R ^n$.</p></div><div class="sheet-listing"><p class="sheet"> Since the $n-1$-dimensional subspaces are the orthogonal complements of the one-dimensional subspaces, they are the sets which can be specified by \[ \Set*{x \in \R ^n}{x \perp b} + a \] for $a, b \in \R ^n$. The hyperplanes are translates of these, \[ \begin{aligned} \Set*{x \in \R ^n}{x \perp b} + a &= \Set*{x + a}{\ip{x,b} = 0} \\ &= \Set*{y}{\ip{y - a,b} = 0} = \Set*{y}{\ip{y,b} = \beta }, \\ \end{aligned} \] where $\beta  = \ip{a,b}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Characterization}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} $H \subset \R ^n$ is a hyperplane if and only if there exists $\beta  \in \R $ and nonzero $b \in \R ^n$ so that $$ H = \Set*{x \in \R ^n}{\ip{x,b} = \beta }. $$ \end{prop} \begin{remark} $b$ and $\beta $ are unique up to a common nonzero multiple. For example, $b, \beta $ and $2b, 2\beta $ give the same hyperplane. \end{remark} \begin{remark} The vector $b$ is called a \t{normal} to the hyperplane. \end{remark}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{hyperplane} is a $(n-1)$-dimensional affine set in $\R ^n$.</p></div><div class="sheet-listing"><p class="sheet"> Since the $n-1$-dimensional subspaces are the orthogonal complements of the one-dimensional subspaces, they are the sets which can be specified by \[ \Set*{x \in \R ^n}{x \perp b} + a \] for $a, b \in \R ^n$. The hyperplanes are translates of these, \[ \begin{aligned} \Set*{x \in \R ^n}{x \perp b} + a &= \Set*{x + a}{\ip{x,b} = 0} \\ &= \Set*{y}{\ip{y - a,b} = 0} = \Set*{y}{\ip{y,b} = \beta }, \\ \end{aligned} \] where $\beta  = \ip{a,b}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Characterization}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}$H \subset \R ^n$ is a hyperplane if and only if there exists $\beta  \in \R $ and nonzero $b \in \R ^n$ so that \[ H = \Set*{x \in \R ^n}{\ip{x,b} = \beta }. \]\end{proposition} \begin{remark}$b$ and $\beta $ are unique up to a common nonzero multiple. For example, $b, \beta $ and $2b, 2\beta $ give the same hyperplane.\end{remark} \begin{remark}The vector $b$ is called a \t{normal} to the hyperplane.\end{remark} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -223,9 +229,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Hyperplanes </h1> 
+      <!--
 !name:hyperplanes
 !need:affine_set_dimensions
 !need:subspace_orthogonal_complements
@@ -268,39 +282,19 @@ Definition </h1>
 <h1>
 Characterization </h1>
 
-<p>
- <span class='run'>\begin{prop} </span>
-
- <span class='run'>$H ⊂ 𝗥^n$ is a hyperplane if and only if
+<div class='proposition' <span class='run'>$H ⊂ 𝗥^n$ is a hyperplane if and only if
   there exists $β ∈ 𝗥$ and nonzero $b ∈ 𝗥^n$ so
-  that </span>
-
- <span class='run'>$$ </span>
-
- <span class='run'>H = \Set*{x ∈ 𝗥^n}{\ip{x,b} = β}. </span>
-
- <span class='run'>$$ </span>
-
- <span class='run'>\end{prop} </span>
-
- <span class='run'>\begin{remark} </span>
-
- <span class='run'>$b$ and $β$ are unique up to a common nonzero
+  that
+  <p>\[
+   H = \Set*{x \in \R ^n}{\ip{x,b} = \beta }. 
+  \]</p></span></div>
+<div class='remark' <span class='run'>$b$ and $β$ are unique up to a common nonzero
   multiple. </span>
 
  <span class='run'>For example, $b, β$ and $2b, 2β$ give the
-  same hyperplane. </span>
-
- <span class='run'>\end{remark} </span>
-
- <span class='run'>\begin{remark} </span>
-
- <span class='run'>The vector $b$ is called a
-  <span class='term'>normal</span> to the hyperplane. </span>
-
- <span class='run'>\end{remark} </span>
-</p>
-<ol class='footnotes'></ol>
+  same hyperplane. </span></div>
+<div class='remark' <span class='run'>The vector $b$ is called a
+  <span class='term'>normal</span> to the hyperplane. </span></div><ol class='footnotes'></ol>
     </div>
   
 
@@ -354,7 +348,7 @@ Characterization </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

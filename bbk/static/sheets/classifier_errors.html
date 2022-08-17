@@ -84,7 +84,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -113,7 +119,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How should we compare two classifiers?</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> Let $a^1, \dots, a^n$ in $A$ be a dataset of inputs and $b^1, \dots, b^n$ in $B$ be a dataset of labels. Let $G: A \to B$ be a classifier.</p></div><div class="sheet-listing"><p class="sheet"> For each $i = 1, \dots, n$, the classifier associates a prediction $G(a^i)$ with $a^i$. The prediction $G(a^i)$ is \t{correct} if $G(a^i) = b^i$ and \t{incorrect} (\t{wrong}, \t{error}) if $G(a^i) \neq b^i$. The \t{error rate} is the proportion of the dataset for which the classifier's prediction is an error. In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i) \neq b^i}}$.</p></div><div class="sheet-listing"><p class="sheet"> Given two classifiers, it is natural to prefer the one with the lower error rate. Given that these two are the results of different inductors applied to the same, we can use a separate dataset to \t{validate} these.</p></div><div class="sheet-listing" id="boolean_case"><h1 class="sheet">3. Boolean case</h1></div><div class="sheet-listing"><p class="sheet"> In the case that $B = \set{-1, 1}$, we call the class $-1$ \t{negative} and the class $+1$ positive. Similarly, we call an example $(a^i, b^i)$ a \t{negative example} if $b^i = -1$ and a \t{positive example} if $b^i = 1$.</p></div><div class="sheet-listing"><p class="sheet"> We call the result of $G$ on $a^i$ a \t{true positive} if $b^i = 1$ and $G(a^i) = 1$, a \t{true negative} if $b^i = -1$ and $G(b^i) = -1$, a \t{false negative} (or \t{type II error}, read "type two error}) if $b^i = 1$ and $G(a^i) = -1$ and a \t{false positive} (or \t{type I error}, read \say{type one error") if $b^i = -1$ and $G(a^i) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{false positive rate} (\t{false negative rate}) of a classifier on a dataset is the proportion of dataset elements for which it predicts a \t{false positive} (\t{false negative}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{true positive rate} (or \t{sensitivity}, \t{recall}) of $G$ on a dataset is the proportion of positive examples which $G$ labels positive. The \t{precision} (or \t{positive predictive value}) of $G$ is the proportion of all examples which the classifier labels $positive$ whose label is positive. The \t{true negative rate} (or \t{specificity}, \t{selectivity}) is the proportion of negative examples which $G$ labels negative. The \t{false alarm rate} is the proportion of negative examples which $G$ <i>incorrectly</i> labels positive.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How should we compare two classifiers?</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> Let $a^1, \dots , a^n$ in $A$ be a dataset of inputs and $b^1, \dots , b^n$ in $B$ be a dataset of labels. Let $G: A \to B$ be a classifier.</p></div><div class="sheet-listing"><p class="sheet"> For each $i = 1, \dots , n$, the classifier associates a prediction $G(a^i)$ with $a^i$. The prediction $G(a^i)$ is \t{correct} if $G(a^i) = b^i$ and \t{incorrect} (\t{wrong}, \t{error}) if $G(a^i) \neq b^i$. The \t{error rate} is the proportion of the dataset for which the classifier's prediction is an error. In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i) \neq b^i}}$.</p></div><div class="sheet-listing"><p class="sheet"> Given two classifiers, it is natural to prefer the one with the lower error rate. Given that these two are the results of different inductors applied to the same, we can use a separate dataset to \t{validate} these.</p></div><div class="sheet-listing" id="boolean_case"><h1 class="sheet">3. Boolean case</h1></div><div class="sheet-listing"><p class="sheet"> In the case that $B = \set{-1, 1}$, we call the class $-1$ \t{negative} and the class $+1$ positive. Similarly, we call an example $(a^i, b^i)$ a \t{negative example} if $b^i = -1$ and a \t{positive example} if $b^i = 1$.</p></div><div class="sheet-listing"><p class="sheet"> We call the result of $G$ on $a^i$ a \t{true positive} if $b^i = 1$ and $G(a^i) = 1$, a \t{true negative} if $b^i = -1$ and $G(b^i) = -1$, a \t{false negative} (or \t{type II error}, read "type two error}) if $b^i = 1$ and $G(a^i) = -1$ and a \t{false positive} (or \t{type I error}, read \say{type one error") if $b^i = -1$ and $G(a^i) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{false positive rate} (\t{false negative rate}) of a classifier on a dataset is the proportion of dataset elements for which it predicts a \t{false positive} (\t{false negative}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{true positive rate} (or \t{sensitivity}, \t{recall}) of $G$ on a dataset is the proportion of positive examples which $G$ labels positive. The \t{precision} (or \t{positive predictive value}) of $G$ is the proportion of all examples which the classifier labels $positive$ whose label is positive. The \t{true negative rate} (or \t{specificity}, \t{selectivity}) is the proportion of negative examples which $G$ labels negative. The \t{false alarm rate} is the proportion of negative examples which $G$ <i>incorrectly</i> labels positive.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -216,9 +222,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Classifier Errors </h1> 
+      <p>
  <span class='run'>%!name:classifier_errors </span>
 
  <span class='run'>%!need:classifiers </span>
@@ -401,7 +415,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

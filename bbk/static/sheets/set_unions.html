@@ -105,7 +105,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -134,7 +140,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Can we combine sets?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We say yes. For example, if we have a first set denoted $A$ and a second set denoted $B$, then we want a third set including all the elements of the set denoted by $A$ and the elements of the set denoted by $B$. If an object appears in the set denoted by $A$ and in the set denoted by $B$, it appears in the new set. If an object appears in one set but not the other, it appears in the new set. Indeed, if we have a set of sets, the same should hold.</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Union] Given a set of sets, there exists a set which contains all elements which belong to any of the sets. \end{principle} We call this the \t{principle of union}. If we have one set and another, the axiom of unions says that there exists a set which contains all the elements that belong to at least one of the former or the latter.</p></div><div class="sheet-listing"><p class="sheet"> The set guaranteed by the principle of union may contain more elements than just those which are elements of a member of the the given set of sets. No matter: apply the axiom of specification (see \sheetref{set_specification}{Set Specification}) to form the set which contains only those elements which are appear in at least one of any of the sets. The set is unique by the principle of extension. We call that unique set \t{the union} of the sets.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathcal{A} $ be a set of sets. We denote the union of $\mathcal{A} $ by $\bigcup \mathcal{A} $. So \[ (\forall x)((x \in (\cup \mathcal{A} )) \iff (\exists A)((A \in \mathcal{A} ) \land x \in A)). \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Simple facts}</p></div><div class="sheet-listing"><p class="sheet"> It is reasonable for the union of the empty set to be empty and for the union of the singleton of a set to be itself. \ifhmode\unskip\fi\footnote{ Future editions will include the account. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\bigcup \varnothing = \varnothing$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\cup \set{A} = A$ \end{proposition}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Can we combine sets?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We say yes. For example, if we have a first set denoted $A$ and a second set denoted $B$, then we want a third set including all the elements of the set denoted by $A$ and the elements of the set denoted by $B$. If an object appears in the set denoted by $A$ and in the set denoted by $B$, it appears in the new set. If an object appears in one set but not the other, it appears in the new set. Indeed, if we have a set of sets, the same should hold.</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Union] Given a set of sets, there exists a set which contains all elements which belong to any of the sets. \end{principle} We call this the \t{principle of union}. If we have one set and another, the axiom of unions says that there exists a set which contains all the elements that belong to at least one of the former or the latter.</p></div><div class="sheet-listing"><p class="sheet"> The set guaranteed by the principle of union may contain more elements than just those which are elements of a member of the the given set of sets. No matter: apply the axiom of specification (see \sheetref{set_specification}{Set Specification}) to form the set which contains only those elements which are appear in at least one of any of the sets. The set is unique by the principle of extension. We call that unique set \t{the union} of the sets.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathcal{A} $ be a set of sets. We denote the union of $\mathcal{A} $ by $\bigcup \mathcal{A} $. So \[ (\forall x)((x \in (\cup \mathcal{A} )) \iff (\exists  A)((A \in \mathcal{A} ) \land x \in A)). \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Simple facts}</p></div><div class="sheet-listing"><p class="sheet"> It is reasonable for the union of the empty set to be empty and for the union of the singleton of a set to be itself. \ifhmode\unskip\fi\footnote{ Future editions will include the account. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\bigcup \varnothing = \varnothing$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\cup \set{A} = A$ \end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -237,9 +243,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Set Unions </h1> 
+      <!--
 !name:set_unions
 TODO(next edition): drop empty set
 !need:empty_set
@@ -454,7 +468,7 @@ Simple facts </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

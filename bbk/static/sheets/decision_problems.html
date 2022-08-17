@@ -74,7 +74,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -103,7 +109,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{decision problem} is a pair $(I, Y)$ of \t{instances} $I$ and \t{yes-instances} $Y \subset I$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Subgraph isomorphism}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathcal{G} (n)$ be the set of graphs with $n$ vertices. For $m \leq n$, define $I = \mathcal{G} (n) \times \mathcal{G} (m)$. A graph $G_1 = (V_1, E_1)$ is \t{subgraph-isomorphic} to a graph $G_2 = (V_2, E_2)$ if there exists $V' \subset V_1$, $E' \subset E_1$ with $\num{V'} = \num{V_2}$, $\num{E'} = \num{E_2}$, and bijection $f: V' \to V_1$ so that \[ \set{u, v} \in E_2 \iff \set{f(u), f(v)} \in E'. \] Define \[ Y = \Set{(G_1, G_2) \in I}{G_1 \text{ is subgraph-isomorphic to } G_2} \] We call $(Y, I)$ the \t{subgraph-isomorphism problem}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Traveling Salesman}</p></div><div class="sheet-listing"><p class="sheet"> Denote by $S^n \subset \Z ^{n \times n}$ the set of symmetric integer-valued matrices. Define $I = S^n \times \Z $. A \t{$n$-tour} is a numbering $\pi : \set{1, \dots , n} \to \set{1, \dots , n}$ and has \t{cost} $C(\pi )$ with respect to $D$ defined by \[ \textstyle C(\pi ) = D_{\pi (n), \pi (1)} + \sum_{j = 1}^{n-1} D_{\pi (i), \pi (i+1)} \] A tour is $B$-bounded if its cost is no greater than $B$. Define $Y = \Set{(D,B)}{\text{ there is a }B-\text{bounded tour with respect to } D}$.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{decision problem} is a pair $(I, Y)$ of \t{instances} $I$ and \t{yes-instances} $Y \subset I$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Subgraph isomorphism}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathcal{G} (n)$ be the set of graphs with $n$ vertices. For $m \leq n$, define $I = \mathcal{G} (n) \times \mathcal{G} (m)$. A graph $G_1 = (V_1, E_1)$ is \t{subgraph-isomorphic} to a graph $G_2 = (V_2, E_2)$ if there exists $V' \subset V_1$, $E' \subset E_1$ with $\num{V'} = \num{V_2}$, $\num{E'} = \num{E_2}$, and bijection $f: V' \to V_1$ so that \[ \set{u, v} \in E_2 \iff \set{f(u), f(v)} \in E'. \] Define \[ Y = \Set{(G_1, G_2) \in I}{G_1 \text{ is subgraph-isomorphic to } G_2} \] We call $(Y, I)$ the \t{subgraph-isomorphism problem}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Traveling Salesman}</p></div><div class="sheet-listing"><p class="sheet"> Denote by $S^n \subset \Z ^{n \times  n}$ the set of symmetric integer-valued matrices. Define $I = S^n \times  \Z $. A \t{$n$-tour} is a numbering $\pi : \set{1, \dots , n} \to \set{1, \dots , n}$ and has \t{cost} $C(\pi )$ with respect to $D$ defined by \[ \textstyle C(\pi ) = D_{\pi (n), \pi (1)} + \sum_{j = 1}^{n-1} D_{\pi (i), \pi (i+1)} \] A tour is $B$-bounded if its cost is no greater than $B$. Define $Y = \Set{(D,B)}{\text{ there is a }B-\text{bounded tour with respect to } D}$.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -206,9 +212,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Decision Problems </h1> 
+      <!--
 !name:decision_problems
 !need:integer_numbers
 !refs:michael_garey/computers_and_intractability/chapter_02
@@ -345,7 +359,7 @@ Traveling Salesman </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

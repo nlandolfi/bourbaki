@@ -119,7 +119,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -148,7 +154,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{trace} of a square real matrix is the sum of its diagonal entries.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the function which associates a matrix with its trace by $\tr: \R ^{n \times n} \to \R $. The trace of $A \in \R ^{n \times n}$ is \[ \tr A = \sum_{i = 1}^{n} A_{ii}. \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> The trace is a linear function on the vector space of $n \times n$ real matrices.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> Let $A, B \in \R Mat{n}{n}$ and $\alpha , \beta  \in \R $. Define $C = \alpha  A + \beta  B$. Then $C_{ii} = \alpha  A_{ii} + \beta  B_{ii}$. So \[ \begin{aligned} \tr C = \sum_{i = 1}^{n} C_{ii} &= \sum_{i = 1}^{n} \alpha  A_{ii} + \beta  B_{ii} \\ &= \alpha  \sum_{i = 1}^{n} A_{ii} + \beta  \sum_{i = 1}^{n} B_{ii} \\ &= \alpha  \tr A + \beta  \tr B. \end{aligned} \] \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $A, B \in \R ^{n \times n}$. Then \[ \trp{AB} = \trp{BA}. \] \end{prop} In other words, "matrices commute under the trace operator."</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $A \in \R ^{n \times n}$. Then $\tr A = \tr A^\top $. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{trace} of a square real matrix is the sum of its diagonal entries.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the function which associates a matrix with its trace by $\tr: \R ^{n \times  n} \to \R $. The trace of $A \in \R ^{n \times  n}$ is \[ \tr A = \sum_{i = 1}^{n} A_{ii}. \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> The trace is a linear function on the vector space of $n \times  n$ real matrices.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> Let $A, B \in \R Mat{n}{n}$ and $\alpha , \beta  \in \R $. Define $C = \alpha  A + \beta  B$. Then $C_{ii} = \alpha  A_{ii} + \beta  B_{ii}$. So \[ \begin{aligned} \tr C = \sum_{i = 1}^{n} C_{ii} &= \sum_{i = 1}^{n} \alpha  A_{ii} + \beta  B_{ii} \\ &= \alpha  \sum_{i = 1}^{n} A_{ii} + \beta  \sum_{i = 1}^{n} B_{ii} \\ &= \alpha  \tr A + \beta  \tr B. \end{aligned} \] \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $A, B \in \R ^{n \times  n}$. Then \[ \trp{AB} = \trp{BA}. \] \end{prop} In other words, "matrices commute under the trace operator."</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $A \in \R ^{n \times  n}$. Then $\tr A = \tr A^\top $. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -251,9 +257,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Matrix Trace </h1> 
+      <!--
 !name:matrix_trace
 !need:real_matrices
 !need:real_matrix-matrix_products
@@ -404,7 +418,7 @@ Properties </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

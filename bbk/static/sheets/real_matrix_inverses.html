@@ -147,7 +147,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -176,7 +182,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R ^{m \times n}$ and define $f: \R ^n \to \R ^m$ by $f(x) = Ax$. Then $f$ is a linear function from $\R ^{n}$ to $\R ^{m}$. Conversely, suppose $g: \R ^n \to \R ^m$ is a linear function. Then there exists a matrix $B \in \R ^{m \times n}$ so that $g(z) = Bz$. Does this function have an inverse?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Derivation}</p></div><div class="sheet-listing"><p class="sheet"> If $A \in \R ^{m \times n}$, with $m \neq n$, then the inverse of $f$ can not exist. For a <i>square} matrix $A \in \R ^{n \times n}$, $B \in \R ^{n \times n}$ is a \t{left inverse</i> if $BA = I$. In other words, $B$ is a left inverse element of $A$ in the algebra of matrices with the operation of multiplication. $C \in \R ^{n \times n}$ is a \t{right inverse} if $AC = I$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We call a square matrix $A$ \t{invertible} if there is $B \in \R ^{n \times n}$ so that $BA = I$.</p></div><div class="sheet-listing"><p class="sheet"> Now suppose that $A \in \R ^{n \times n}$. Of course, the inverse may not exist. Consider, for example if $A$ was the $n$ by $n$ matrix of zeros. If there exists a matrix $B$ so that $BA = I$ we call $B$ the \t{left inverse} of $A$ and likewise if $AC = I$ we call $C$ the \t{right inverse} of $A$. In the case that $A$ is square, the right inverse and left inverse coincide.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A, B, C \in \R ^{n \times n}$. Let $BA = I$ and $AC = I$. Then $B = C$. \begin{proof} Since $BA = AC$ we have $BBA = BAC$ so $B = C$ since $BA = I$. \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R ^{m \times  n}$ and define $f: \R ^n \to \R ^m$ by $f(x) = Ax$. Then $f$ is a linear function from $\R ^{n}$ to $\R ^{m}$. Conversely, suppose $g: \R ^n \to \R ^m$ is a linear function. Then there exists a matrix $B \in \R ^{m \times  n}$ so that $g(z) = Bz$. Does this function have an inverse?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Derivation}</p></div><div class="sheet-listing"><p class="sheet"> If $A \in \R ^{m \times  n}$, with $m \neq n$, then the inverse of $f$ can not exist. For a <i>square} matrix $A \in \R ^{n \times  n}$, $B \in \R ^{n \times  n}$ is a \t{left inverse</i> if $BA = I$. In other words, $B$ is a left inverse element of $A$ in the algebra of matrices with the operation of multiplication. $C \in \R ^{n \times  n}$ is a \t{right inverse} if $AC = I$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We call a square matrix $A$ \t{invertible} if there is $B \in \R ^{n \times  n}$ so that $BA = I$.</p></div><div class="sheet-listing"><p class="sheet"> Now suppose that $A \in \R ^{n \times  n}$. Of course, the inverse may not exist. Consider, for example if $A$ was the $n$ by $n$ matrix of zeros. If there exists a matrix $B$ so that $BA = I$ we call $B$ the \t{left inverse} of $A$ and likewise if $AC = I$ we call $C$ the \t{right inverse} of $A$. In the case that $A$ is square, the right inverse and left inverse coincide.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A, B, C \in \R ^{n \times  n}$. Let $BA = I$ and $AC = I$. Then $B = C$. \begin{proof} Since $BA = AC$ we have $BBA = BAC$ so $B = C$ since $BA = I$. \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -279,9 +285,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Real Matrix Inverses </h1> 
+      <!--
 !name:real_matrix_inverses
 !need:real_matrix-matrix_products
 !need:inverse_elements
@@ -426,7 +440,7 @@ Definition </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

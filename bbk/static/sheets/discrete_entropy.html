@@ -98,7 +98,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -127,7 +133,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{this_will_be_included_in_a_future_edition."><h1 class="sheet">1. Why}\footnote{This will be included in a future edition.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The entropy of a distribution is the expectation of the negative logarithm of the distribution under the distribution. It is sometimes called the \t{discrete entropy} to distinguish it with another related topic.\footnote{Future editions may not forward reference differential entropy.}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a finite set. Let $p:A \to \R$ be a distribution. The entropy of $p$ is \[ -\sum_{a \in A} p(a) \log(p(a)). \] We denote the entropy of $p$ by $H(p)$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> Let $x: \Omega \to V$ be a discrete random variable.</p></div><div class="sheet-listing"><p class="sheet"> \begin{enumerate} \item $H(x) \geq 0$ \item $H(f(x)) \leq H(x)$ \item Let $g$ invertible, then $H(g(x)) \leq H(x)$ \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{entropy} of a distribution is the expectation of the negative logarithm of the distribution under the distribution. It is sometimes called the \t{discrete entropy} to distinguish it with another related topic. \ifhmode\unskip\fi\footnote{ Future editions may not forward reference differential entropy. }</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a finite set. Let $p:A \to \R $ be a distribution. The entropy of $p$ is \[ -\sum_{a \in A} p(a) \log(p(a)). \] We denote the entropy of $p$ by $H(p)$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> Let $x: \Omega  \to V$ be a discrete random variable. \begin{enumerate} \item $H(x) \geq 0$ \item $H(f(x)) \leq H(x)$ \item For invertible $g$, $H(g(x)) \leq H(x)$</p></div><div class="sheet-listing"><p class="sheet"> \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -230,6 +236,72 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
+  
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Discrete Entropy </h1> 
+      <!--
+!name:discrete_entropy
+!need:probability_distributions
+!need:logarithm
+-->
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>The <span class='term'>entropy</span> of a
+  distribution is the expectation of the negative
+  logarithm of the distribution under the
+  distribution. </span>
+
+ <span class='run'>It is sometimes called the
+  <span class='term'>discrete entropy</span> to
+  distinguish it with another related topic.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>Let $A$ be a finite set. </span>
+
+ <span class='run'>Let $p:A → 𝗥$ be a distribution. </span>
+
+ <span class='run'>The entropy of $p$ is
+  <p>\[
+   -\sum_{a \in A} p(a) \log(p(a)). 
+  \]</p></span>
+
+ <span class='run'>We denote the entropy of $p$ by </span>
+
+ <span class='run'>$H(p)$. </span>
+</p>
+
+<h2>
+Properties </h2>
+
+<p>
+ <span class='run'>Let $x: Ω → V$ be a discrete random variable.
+  <ol>
+   <li>$H(x) ≥ 0$ </li>
+
+   <li>$H(f(x)) ≤ H(x)$ </li>
+
+   <li>For invertible $g$, $H(g(x)) ≤ H(x)$ </li>
+
+   <span class='run'></span>  </ol>
+</span>
+</p>
+<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions may not forward reference
+  differential entropy. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
   
 
   <!--
@@ -282,7 +354,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

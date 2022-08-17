@@ -84,7 +84,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -113,7 +119,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We are constantly thinking of the real numbers as the points of a line.\footnote{Future editions will modify this sheet.}</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> We commonly associate elements of the real numbers (see \sheetref{real_numbers}{Real Numbers}) with points on a line (see \sheetref{geometry}{Geometry}).</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Point Sets] Given a line, there exists a set of its (infinite) points. \end{principle}</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Real Line Correspondence] Let $P$ be the set of points for a line. There exists a one-to-one correspondence mapping elements of $P$ onto elements of $\R$. \end{principle} For this reason, we sometimes call elements of the real numbers \t{points}. We call the point associated with 0 the \t{origin}.</p></div><div class="sheet-listing" id="visualization"><h1 class="sheet">3. Visualization</h1></div><div class="sheet-listing"><p class="sheet"> To visualize the correspondence we draw a line. We then associate a point of the line with the $0 \in \R$. We can label it so. We then pick a unit length. We associate the points a unit length away from zero with $1 \in \R$ (on the right) and $-1 \in \R$ (on the left). We do the same for two and $2$ and $-2$, $3$ and $-3$, and then we say that we could continue the process indefinitely. We can visualize the image in Figure~\ref{real_line:figure:real_line}.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure}[h] \centering \vspace{0.5cm} \includegraphics[width=0.9\textwidth]{\figpath{real_line}{real_line}} \caption{The real line} \label{real_line:figure:real_line} \end{figure}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We are constantly thinking of the real numbers as the points of a line. \ifhmode\unskip\fi\footnote{ Future editions will modify this sheet. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> We commonly associate elements of the real numbers (see \sheetref{real_numbers}{Real Numbers}) with points on a line (see \sheetref{geometry}{Geometry}).</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Point Sets]Given a line, there exists a set of its (infinite) points.\end{principle} \begin{principle}[Real Line Correspondence]Let $P$ be the set of points for a line. There exists a one-to-one correspondence mapping elements of $P$ onto elements of $\R $.\end{principle} For this reason, we sometimes call elements of the real numbers \t{points}. We call the point associated with 0 the \t{origin}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Visualization}</p></div><div class="sheet-listing"><p class="sheet"> To visualize the correspondence we draw a line. We then associate a point of the line with the $0 \in \R $. We can label it so. We then pick a unit length. We associate the points a unit length away from zero with $1 \in \R $ (on the right) and $-1 \in \R $ (on the left). We do the same for two and $2$ and $-2$, $3$ and $-3$, and then we say that we could continue the process indefinitely. We can visualize the image in Figure~\ref{real_line:figure:real_line}.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure}[h] \centering \vspace{0.5cm} \includegraphics[width=0.9\textwidth]{\figpath{real_line}{real_line}} \caption{The real line} \label{real_line:figure:real_line} \end{figure}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -216,6 +222,103 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
+  
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Real Line </h1> 
+      <!--
+!name:real_line
+!need:real_order
+!need:integral_line
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We are constantly thinking of the real numbers
+  as the points of a line.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1>
+Discussion </h1>
+
+<p>
+ <span class='run'>We commonly associate elements of the real
+  numbers (see \sheetref{real_numbers}{Real Numbers})
+  with points on a line (see
+  \sheetref{geometry}{Geometry}). </span>
+</p>
+
+<div class='principle' text='Point Sets' <span class='run'>Given a line, there exists a set of its
+  (infinite) points. </span></div>
+<div class='principle' text='Real Line Correspondence' <span class='run'>Let $P$ be the set of points for a line. </span>
+
+ <span class='run'>There exists a one-to-one correspondence mapping
+  elements of $P$ onto elements of $𝗥$. </span></div>
+<p>
+ <span class='run'>For this reason, we sometimes call elements of
+  the real numbers <span class='term'>points</span>. </span>
+
+ <span class='run'>We call the point associated with 0 the
+  <span class='term'>origin</span>. </span>
+</p>
+
+<h2>
+Visualization </h2>
+
+<p>
+ <span class='run'>To visualize the correspondence we draw a line. </span>
+
+ <span class='run'>We then associate a point of the line with
+  the $0 ∈ 𝗥$. </span>
+
+ <span class='run'>We can label it so. </span>
+
+ <span class='run'>We then pick a unit length. </span>
+
+ <span class='run'>We associate the points a unit length away
+  from zero with $1 ∈ 𝗥$ (on the right) and $-1
+  ∈ 𝗥$ (on the left). </span>
+
+ <span class='run'>We do the same for two and $2$ and $-2$, $3$
+  and $-3$, and then we say that we could
+  continue the process indefinitely. </span>
+
+ <span class='run'>We can visualize the image in
+  Figure~\ref{real_line:figure:real_line}. </span>
+</p>
+
+
+<!--
+<div data-littype='paragraph'>
+  <div data-littype='run'> ❲% \par↤\rule{0.9\textwidth}{0.4pt}❳ </div>
+</div>
+-->
+
+<p>
+ <span class='run'>\begin{figure}[h] </span>
+
+ <span class='run'>\centering </span>
+
+ <span class='run'>\vspace{0.5cm} </span>
+
+ <span class='run'>\includegraphics[width=0.9\textwidth]{\figpath{real_line}{real_line}} </span>
+
+ <span class='run'>\caption{The real line} </span>
+
+ <span class='run'>\label{real_line:figure:real_line} </span>
+
+ <span class='run'>\end{figure} </span>
+</p>
+<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify this sheet. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
   
 
   <!--
@@ -268,7 +371,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

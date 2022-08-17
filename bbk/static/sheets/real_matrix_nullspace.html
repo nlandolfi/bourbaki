@@ -81,7 +81,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -110,7 +116,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{nullspace} (or \t{kernel}) of a matrix $A \in \R ^{m \times n}$ is the set \[ \Set{x \in \R ^n}{Ax = 0}. \] It is the set of vectors mapped to zero by $A$. Equivalently, it is the set of vectors orthogonal to the rows of $A$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the nullspace of $A \in \R ^{m \times n}$ by $\null(A) \subset \R ^{n}$. Some authors denote the nullspace of $A$ by $\mathcal{N}(A)$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{A subspace}</p></div><div class="sheet-listing"><p class="sheet"> The nullspace of a matrix is a subspace (this justifies the terminology null<i>space</i>!). There are a few routes to see this.</p></div><div class="sheet-listing"><p class="sheet"> The first is direct. If $w, z \in \null(A)$, then $Aw = 0$ and $Az = 0$. So then $A(w + z) = Aw + Az = 0$. So $\null(A)$ is closed under vector addition. Also $A(\alpha w) = \alpha (Aw) = 0$ for all $\alpha  \in \R $. [In particular $A0 = 0$, so $0 \in \null(A)$; i.e., $\null(A)$ contains the origin.] So $\null(A)$ is closed under scalar multiplication.</p></div><div class="sheet-listing"><p class="sheet"> The second is by thinking about orthogonal complements. Second, we can view the $\null(A)$ as the set of vectors orthgonal to all the rows of $A$. In other words, $\null(A) = \set{\tilde{a}_1, \dots , \tilde{a}_m}^\perp$. The orthogonal complement of any set is a subspace (see \sheetref{orthogonal_real_subspaces}{Orthogonal Real Subspaces}).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Ambiguity in solutions}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have a solution to the system of linear equation with data $(A, y)$. In other words, we have a vector $x \in \R ^n$ so that $y = Ax$. If we have a vector $z \in \null(A)$, then $x + z$ is also a solution to the system $(A, y)$, since \[ A(x + z) = Ax + Az = Ax + 0 = y \] Conversely, suppose there were another solution $\tilde{x} \in \R ^{n}$ to the system $(A, y)$. Then $y = Ax = A\tilde{x}$, so \[ 0 = y - y = Ax - A\tilde{x} = A(x - \tilde{x}). \] Consequently, $(x - \tilde{x}) \in \null(A)$, and so $\tilde{x}$ is the solution $x$ plus some vector in the null space of $A$. Consequently we are interested in whether $A$ has vectors in its nullspace.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Zero nullspace}</p></div><div class="sheet-listing"><p class="sheet"> The origin $0$ is always in the nullspace of $A$. However, this vector does not mean that we can find different solutions, since $x + 0 = x$ for all $x \in \R ^n$. If, on the other hand, there is a nonzero vector $z \in \null(A)$, then $x + z \neq x$, and $x+z$ is a solution for $(A, y)$. We think about $A$ as a function from $\R ^n$ to $\R ^m$. In the case that there is a nonzero element in the nullspace, $A$ maps different vectors to the same vector. Here, $x$ and $x + z$ both map to $y$. In this case, the function is <i>not invertible</i>, because it is not one-to-one. If, however, zero is the only element of the null space, the function is one-to-one. So call $A$ \t{one-to-one} if $\null(A) = 0$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Equivalent statements}</p></div><div class="sheet-listing"><p class="sheet"> A matrix $A \in \R ^{m \times n}$ is \t{one-to-one} if the linear function $f: \R ^n \to \R ^m$ defined by $f(x) = Ax$ is one-to-one. In this case, if there exists $x \in \R ^n$ so that $y = Ax$, then there is only one such $x$. Different elements in $\R ^n$ map to different elements in $\R ^m$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{nullspace} (or \t{kernel}) of a matrix $A \in \R ^{m \times  n}$ is the set \[ \Set{x \in \R ^n}{Ax = 0}. \] It is the set of vectors mapped to zero by $A$. Equivalently, it is the set of vectors orthogonal to the rows of $A$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the nullspace of $A \in \R ^{m \times  n}$ by $\null(A) \subset \R ^{n}$. Some authors denote the nullspace of $A$ by $\mathcal{N}(A)$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{A subspace}</p></div><div class="sheet-listing"><p class="sheet"> The nullspace of a matrix is a subspace (this justifies the terminology null<i>space</i>!). There are a few routes to see this.</p></div><div class="sheet-listing"><p class="sheet"> The first is direct. If $w, z \in \null(A)$, then $Aw = 0$ and $Az = 0$. So then $A(w + z) = Aw + Az = 0$. So $\null(A)$ is closed under vector addition. Also $A(\alpha w) = \alpha (Aw) = 0$ for all $\alpha  \in \R $. [In particular $A0 = 0$, so $0 \in \null(A)$; i.e., $\null(A)$ contains the origin.] So $\null(A)$ is closed under scalar multiplication.</p></div><div class="sheet-listing"><p class="sheet"> The second is by thinking about orthogonal complements. Second, we can view the $\null(A)$ as the set of vectors orthgonal to all the rows of $A$. In other words, $\null(A) = \set{\tilde{a}_1, \dots , \tilde{a}_m}^\perp$. The orthogonal complement of any set is a subspace (see \sheetref{orthogonal_real_subspaces}{Orthogonal Real Subspaces}).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Ambiguity in solutions}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have a solution to the system of linear equation with data $(A, y)$. In other words, we have a vector $x \in \R ^n$ so that $y = Ax$. If we have a vector $z \in \null(A)$, then $x + z$ is also a solution to the system $(A, y)$, since \[ A(x + z) = Ax + Az = Ax + 0 = y \] Conversely, suppose there were another solution $\tilde{x} \in \R ^{n}$ to the system $(A, y)$. Then $y = Ax = A\tilde{x}$, so \[ 0 = y - y = Ax - A\tilde{x} = A(x - \tilde{x}). \] Consequently, $(x - \tilde{x}) \in \null(A)$, and so $\tilde{x}$ is the solution $x$ plus some vector in the null space of $A$. Consequently we are interested in whether $A$ has vectors in its nullspace.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Zero nullspace}</p></div><div class="sheet-listing"><p class="sheet"> The origin $0$ is always in the nullspace of $A$. However, this vector does not mean that we can find different solutions, since $x + 0 = x$ for all $x \in \R ^n$. If, on the other hand, there is a nonzero vector $z \in \null(A)$, then $x + z \neq x$, and $x+z$ is a solution for $(A, y)$. We think about $A$ as a function from $\R ^n$ to $\R ^m$. In the case that there is a nonzero element in the nullspace, $A$ maps different vectors to the same vector. Here, $x$ and $x + z$ both map to $y$. In this case, the function is <i>not invertible</i>, because it is not one-to-one. If, however, zero is the only element of the null space, the function is one-to-one. So call $A$ \t{one-to-one} if $\null(A) = 0$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Equivalent statements}</p></div><div class="sheet-listing"><p class="sheet"> A matrix $A \in \R ^{m \times  n}$ is \t{one-to-one} if the linear function $f: \R ^n \to \R ^m$ defined by $f(x) = Ax$ is one-to-one. In this case, if there exists $x \in \R ^n$ so that $y = Ax$, then there is only one such $x$. Different elements in $\R ^n$ map to different elements in $\R ^m$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -213,9 +219,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Real Matrix Nullspace </h1> 
+      <!--
 !name:real_matrix_nullspace
 !need:real_matrices
 !need:real_vector_angles
@@ -435,7 +449,7 @@ Equivalent statements </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

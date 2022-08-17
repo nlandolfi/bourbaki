@@ -84,7 +84,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -113,7 +119,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We generalize the notion of angle between vectors in $\R ^2$ and $\R ^3$ to vectors in $\R ^n$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{angle} (\t{unsigned angle}) between the nonzero vectors $x, y \in \R ^n$, is the real knumber \[ \theta  = \angle(x,y) = \cos^{-1} \frac{x^\top y}{\norm{x}\norm{y}}. \] In the case that one (or both) of the vectors is zero, we define the angle between them to be 0. Thus, $x^\top y = \norm{x}\norm{y}\cos\theta $, which is a convenient way to remember the inner product norm inequality.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Terminology}</p></div><div class="sheet-listing"><p class="sheet"> $x$ and $y$ are \t{aligned} if $\theta  = 0$, in which case $x^\top y = \norm{x}\norm{y}$. In the case that $x \neq 0$, $x$ and $y$ are aligned if $x = \alpha y$ for some $\alpha  \geq 0$. $x$ and $y$ are \t{opposed} if $\theta  = \pi $, in which case $x^\top y = \norm{x}\norm{y}$. In the case that $x \neq 0$, $x$ and $y$ are opposed if $x = -\alpha y$ for some $\alpha  \geq 0$. Two nonnzero vectors $x$ and $y$ are \t{orthogonal} if $\theta = \pi /2$ or $-\pi /2$, in which case $x^\top y = \norm{x}\norm{y}$. The origin is orthogonal to every other vector. We denote that two vectors $x$ and $y$ are orthogonal by $x \perp y$. \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We generalize the notion of angle between vectors in $\R ^2$ and $\R ^3$ to vectors in $\R ^n$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{angle} (\t{unsigned angle}) between the nonzero vectors $x, y \in \R ^n$, is the real knumber \[ \theta  = \angle(x,y) = \cos^{-1} \frac{x^\top y}{\norm{x}\norm{y}}. \] In the case that one (or both) of the vectors is zero, we define the angle between them to be 0. Thus, $x^\top  y = \norm{x}\norm{y}\cos\theta $, which is a convenient way to remember the inner product norm inequality.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Terminology}</p></div><div class="sheet-listing"><p class="sheet"> $x$ and $y$ are \t{aligned} if $\theta  = 0$, in which case $x^\top  y = \norm{x}\norm{y}$. In the case that $x \neq 0$, $x$ and $y$ are aligned if $x = \alpha y$ for some $\alpha  \geq 0$. $x$ and $y$ are \t{opposed} if $\theta  = \pi $, in which case $x^\top  y = \norm{x}\norm{y}$. In the case that $x \neq 0$, $x$ and $y$ are opposed if $x = -\alpha y$ for some $\alpha  \geq 0$. Two nonnzero vectors $x$ and $y$ are \t{orthogonal} if $\theta = \pi /2$ or $-\pi /2$, in which case $x^\top  y = \norm{x}\norm{y}$. The origin is orthogonal to every other vector. We denote that two vectors $x$ and $y$ are orthogonal by $x \perp y$. \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -216,9 +222,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Real Vector Angles </h1> 
+      <!--
 !name:real_vector_angles
 !need:space_vector_angles
 !need:real_norm
@@ -336,7 +350,7 @@ Terminology </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

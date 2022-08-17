@@ -81,7 +81,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -110,7 +116,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Matrices with elements in a ring form a ring.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">2. Example</h1></div><div class="sheet-listing"><p class="sheet"> Let $(R, +, \cdot )$ be a ring. Define $C = A \bar{+} B$ by $C_{ij} = A_{ij} + B_{ij}$ and define $C = A \bar{\cdot } B$ by $C_{ij} = \sum_{k = 1}^{n} A_{ik}B_{kj}$, as with real matrices, for $A, B \in R^{n \times n}$. Then $(R^{n \times n}, \bar{+}, \bar{\cdot })$ is a ring. In other words, the set of $n \times n$ matrices with elements in $R$ is a ring, with the usual addition and multiplication of matrices.</p></div><div class="sheet-listing"><p class="sheet"> The additive identity of the ring is the matrix $0 \in R^{n \times n}$ for which $0_{ij} = 0 \in R$. The multiplicative identity the matrix $I$ for which $I_{ii} = 1 \in R$ for $i = 1, \dots , n$ and $I_{ij} = 0 \in R$ for $i \neq j = 1, \dots , n$. As seen with real-valued matrices, multiplication on $R^{n \times n}$ need not be commutative even if $R$ is.</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Show that $R^{n \times n}$ is not a division ring when $n > 1$. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Matrices with elements in a ring form a ring.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">2. Example</h1></div><div class="sheet-listing"><p class="sheet"> Let $(R, +, \cdot )$ be a ring. Define $C = A \bar{+} B$ by $C_{ij} = A_{ij} + B_{ij}$ and define $C = A \bar{\cdot } B$ by $C_{ij} = \sum_{k = 1}^{n} A_{ik}B_{kj}$, as with real matrices, for $A, B \in R^{n \times n}$. Then $(R^{n \times  n}, \bar{+}, \bar{\cdot })$ is a ring. In other words, the set of $n \times  n$ matrices with elements in $R$ is a ring, with the usual addition and multiplication of matrices.</p></div><div class="sheet-listing"><p class="sheet"> The additive identity of the ring is the matrix $0 \in R^{n \times  n}$ for which $0_{ij} = 0 \in R$. The multiplicative identity the matrix $I$ for which $I_{ii} = 1 \in R$ for $i = 1, \dots , n$ and $I_{ij} = 0 \in R$ for $i \neq j = 1, \dots , n$. As seen with real-valued matrices, multiplication on $R^{n \times  n}$ need not be commutative even if $R$ is.</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Show that $R^{n \times  n}$ is not a division ring when $n > 1$. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -213,9 +219,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Matrix Rings </h1> 
+      <p>
  <span class='run'>%!name:matrix_rings </span>
 
  <span class='run'>%!need:real_matrix-matrix_products </span>
@@ -333,7 +347,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

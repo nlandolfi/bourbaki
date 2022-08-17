@@ -74,7 +74,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -103,7 +109,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What is the inverse element under matrix multiplication.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Recall that if $A \in \R ^{m \times n}$ then $x \indent Ax$ is a function from $\R ^{n}$ to $\R ^{m}$. Clearly, if $m \neq n$, then the inverse of $f$ can not exist. \ifhmode\unskip\fi\footnote{ Future editions will expand. }</p></div><div class="sheet-listing"><p class="sheet"> Now suppose that $A \in \R ^{n \times n}$. Of course, the inverse may not exist. Consider, for example if $A$ was the $n$ by $n$ matrix of zeros. If there exists a matrix $B$ so that $BA = I$ we call $B$ the \t{left inverse} of $A$ and likewise if $AC = I$ we call $C$ the \t{right inverse} of $A$. In the case that $A$ is square, the right inverse and left inverse coincide.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A, B, C \in \R ^{n \times n}$. Let $BA = I$ and $AC = I$. Then $B = C$. \begin{proof} Since $BA = AC$ we have $BBA = BAC$ so $B = C$ since $BA = I$. \end{proof} \end{proposition}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">0.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $F$ be a field. Let $A \in \Mat{F}{n}{n}$ be invertible. We follow the notation of inverse elements and denote the inverse of $A$ by $\inv{A}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What is the inverse element under matrix multiplication.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Recall that if $A \in \R ^{m \times  n}$ then $x \indent Ax$ is a function from $\R ^{n}$ to $\R ^{m}$. Clearly, if $m \neq n$, then the inverse of $f$ can not exist. \ifhmode\unskip\fi\footnote{ Future editions will expand. }</p></div><div class="sheet-listing"><p class="sheet"> Now suppose that $A \in \R ^{n \times  n}$. Of course, the inverse may not exist. Consider, for example if $A$ was the $n$ by $n$ matrix of zeros. If there exists a matrix $B$ so that $BA = I$ we call $B$ the \t{left inverse} of $A$ and likewise if $AC = I$ we call $C$ the \t{right inverse} of $A$. In the case that $A$ is square, the right inverse and left inverse coincide.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A, B, C \in \R ^{n \times  n}$. Let $BA = I$ and $AC = I$. Then $B = C$. \begin{proof} Since $BA = AC$ we have $BBA = BAC$ so $B = C$ since $BA = I$. \end{proof} \end{proposition}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">0.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $F$ be a field. Let $A \in \Mat{F}{n}{n}$ be invertible. We follow the notation of inverse elements and denote the inverse of $A$ by $\inv{A}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -206,9 +212,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Matrix Inverses </h1> 
+      <!--
 !name:matrix_inverses
 !need:real_matrix_inverses
 !need:matrices
@@ -348,7 +362,7 @@ Definition </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

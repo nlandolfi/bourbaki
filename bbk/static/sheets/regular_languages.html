@@ -91,7 +91,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -120,7 +126,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\Sigma $ be an alphabet. A language $L \subset \str(\Sigma )$ is called \t{regular} if there exists a finite automaton that recognizes it.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Regular operations}</p></div><div class="sheet-listing"><p class="sheet"> Let $A, B \subset \str(\Sigma )$ be languages in $\Sigma $. \subsection*  {Union  }</p></div><div class="sheet-listing"><p class="sheet"> The \t{union} (\t{alternation}) of $A$ and $B$ is, as usual, the set $A \cup B$. \subsection*  {Concatenation  }</p></div><div class="sheet-listing"><p class="sheet"> The \t{concatenation} of $A$ and $B$ is the set $\Set{xy}{x \in A \text{ and } y \in B}$, where $xy$ denotes length $\num{x}+\num{y}$ string which is the concatenation of $x$ and $y$. \subsection*  {Multi-concatenation  }</p></div><div class="sheet-listing"><p class="sheet"> The \t{star} (\t{Kleene star}, \t{multi-concatenation}) of $A$ is the set \[ \Set{x \in \str(\Sigma )}{\exists k \geq 0, x = y_1y_2 \cdots y_k, y_i \in A}. \] By this definition we do mean to include the empty string $\varnothing$ in $A^*$, regardless of $A$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the alternation of $A$ and $B$ by $A \cup B$ as usual, but other notations include $A + B$, $A\mid B$, and $A \lor B$. We denote the concatenation of $A$ and $B$ by $AB$, but other notations include $A \circ B$. We denote the star of $A$ by $A^*$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\Sigma $ be an alphabet. A language $L \subset \str(\Sigma )$ is called \t{regular} if there exists a finite automaton that recognizes it.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Regular operations}</p></div><div class="sheet-listing"><p class="sheet"> Let $A, B \subset \str(\Sigma )$ be languages in $\Sigma $. \subsection*  {Union  }</p></div><div class="sheet-listing"><p class="sheet"> The \t{union} (\t{alternation}) of $A$ and $B$ is, as usual, the set $A \cup B$. \subsection*  {Concatenation  }</p></div><div class="sheet-listing"><p class="sheet"> The \t{concatenation} of $A$ and $B$ is the set $\Set{xy}{x \in A \text{ and } y \in B}$, where $xy$ denotes length $\num{x}+\num{y}$ string which is the concatenation of $x$ and $y$. \subsection*  {Multi-concatenation  }</p></div><div class="sheet-listing"><p class="sheet"> The \t{star} (\t{Kleene star}, \t{multi-concatenation}) of $A$ is the set \[ \Set{x \in \str(\Sigma )}{\exists k \geq 0, x = y_1y_2 \cdots y_k, y_i \in A}. \] By this definition we do mean to include the empty string $\varnothing$ in $A^*$, regardless of $A$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the alternation of $A$ and $B$ by $A \cup B$ as usual, but other notations include $A + B$, $A\mid  B$, and $A \lor B$. We denote the concatenation of $A$ and $B$ by $AB$, but other notations include $A \circ B$. We denote the star of $A$ by $A^*$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -223,9 +229,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Regular Languages </h1> 
+      <!--
 !name:regular_languages
 !need:formal_languages
 !need:finite_automata
@@ -348,7 +362,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

@@ -126,7 +126,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -155,7 +161,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> For general measure theory, we need an algebra of sets closed under countable unions; we define such an object. \ifhmode\unskip\fi\footnote{ Future editions will make no reference to measure theory. The entire development will be for follow the historical development for handling integration. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{countably summable subset algebra} is a subset algebra for which (1) the base set is distinguished (2) the complement of a distinguished set is distinguished (3) the union of a sequence of distinguished sets is distinguished.</p></div><div class="sheet-listing"><p class="sheet"> The name is justified, as each countably summable subset algebra is a subset algebra, because the union of $A_1, \dots, A_n$ coincides with the union of $A_1, \cdots, A_n, A_n, A_n \cdots$.</p></div><div class="sheet-listing"><p class="sheet"> We call the set of distinguished sets a \t{sigma algebra} (or \t{sigma field}) \t{on} the base set. This language is justified (as for a regular subset algebra) by the closure properties of the sigma algebra under the usual set operations. We sometimes write are $\sigma $-algebra and $\sigma $-field.</p></div><div class="sheet-listing"><p class="sheet"> A \t{sub-$\sigma $-algebra} (\t{sub-sigma-algebra}) is a subset of a sigma algebra which is itself a sigma algebra.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, \mathcal{A} )$ be a countably summable subset algebra. We often say "let $\mathcal{A} $ be a sigma algebra on $A$." Since the largest element of the sigma algebra is the base set, we can also say (without ambiguity): "let $\mathcal{A} $ be a sigma algebra." In this last case, the base set is $\cup \mathcal{A} $.</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $2^{A}$ is a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $\set{A, \emptyset}$ is a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be an infinite set. Let $\mathcal{A} $ the collection of finite subsets of $A$. $\mathcal{A} $ is not a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be an infinite set. Let $\mathcal{A} $ be the collection subsets of $A$ such that the set or its complement is finite. $\mathcal{A} $ is not a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The intersection of a family of sigma algebras is a sigma algebra. \label{sigma_algebra:sigmaintersection} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any infinite set $A$, let $\mathcal{A} $ be the set \[ \Set*{ B \subset A }{ \card{B} \leq \aleph_0 \lor \card{C_{A}(B)} \leq \aleph_0 }. \] $\mathcal{A} $ is an algebra; the \t{countable/co-countable algebra}. \ifhmode\unskip\fi\footnote{ Future editions will clean up and modify these examples. } \end{expl}</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> For general measure theory, we need an algebra of sets closed under countable unions; we define such an object. \ifhmode\unskip\fi\footnote{ Future editions will make no reference to measure theory. The entire development will be for follow the historical development for handling integration. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{countably summable subset algebra} is a subset algebra for which (1) the base set is distinguished (2) the complement of a distinguished set is distinguished (3) the union of a sequence of distinguished sets is distinguished.</p></div><div class="sheet-listing"><p class="sheet"> The name is justified, as each countably summable subset algebra is a subset algebra, because the union of $A_1, \dots , A_n$ coincides with the union of $A_1, \cdots, A_n, A_n, A_n \cdots$.</p></div><div class="sheet-listing"><p class="sheet"> We call the set of distinguished sets a \t{sigma algebra} (or \t{sigma field}) \t{on} the base set. This language is justified (as for a regular subset algebra) by the closure properties of the sigma algebra under the usual set operations. We sometimes write are $\sigma $-algebra and $\sigma $-field.</p></div><div class="sheet-listing"><p class="sheet"> A \t{sub-$\sigma $-algebra} (\t{sub-sigma-algebra}) is a subset of a sigma algebra which is itself a sigma algebra.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, \mathcal{A} )$ be a countably summable subset algebra. We often say "let $\mathcal{A} $ be a sigma algebra on $A$." Since the largest element of the sigma algebra is the base set, we can also say (without ambiguity): "let $\mathcal{A} $ be a sigma algebra." In this last case, the base set is $\cup \mathcal{A} $.</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $2^{A}$ is a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any set $A$, $\set{A, \emptyset}$ is a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be an infinite set. Let $\mathcal{A} $ the collection of finite subsets of $A$. $\mathcal{A} $ is not a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be an infinite set. Let $\mathcal{A} $ be the collection subsets of $A$ such that the set or its complement is finite. $\mathcal{A} $ is not a sigma algebra. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The intersection of a family of sigma algebras is a sigma algebra. \label{sigma_algebra:sigmaintersection} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} For any infinite set $A$, let $\mathcal{A} $ be the set \[ \Set*{ B \subset A }{ \card{B} \leq \aleph_0 \lor \card{C_{A}(B)} \leq \aleph_0 }. \] $\mathcal{A} $ is an algebra; the \t{countable/co-countable algebra}. \ifhmode\unskip\fi\footnote{ Future editions will clean up and modify these examples. } \end{expl}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -258,9 +264,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Sigma Algebras </h1> 
+      <p>
  <span class='run'>%!name:sigma_algebras </span>
 
  <span class='run'>%!need:subset_algebras </span>
@@ -499,7 +513,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

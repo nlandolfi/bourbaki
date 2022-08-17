@@ -74,7 +74,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -103,7 +109,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What is a reasonable normal density to associate with some data?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $x^1, \dots, x^n$ be a dataset in $\R^d$. The \t{empirical mean} of the dataset is \[ \frac{1}{n} \sum_{k = 1}^{n} x^k. \] The \t{empirical covariance} of the dataset is \[ \frac{1}{n} \sum_{i = 1}^{n} (x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k) (x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k)^{\tp}. \] The \t{empirical normal} associated with the dataset is the normal density whose mean is the empirical mean and whose covariance is the empirical covariance.</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What is a reasonable normal density to associate with some data?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $x^1, \dots , x^n$ be a dataset in $\R ^d$. The \t{empirical mean} of the dataset is \[ \frac{1}{n} \sum_{k = 1}^{n} x^k. \] The \t{empirical covariance} of the dataset is \[ \frac{1}{n} \sum_{i = 1}^{n} (x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k) (x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k)^{\tp}. \] The \t{empirical normal} associated with the dataset is the normal density whose mean is the empirical mean and whose covariance is the empirical covariance.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -206,9 +212,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Empirical Normal </h1> 
+      <p>
  <span class='run'>%!name:empirical_normal </span>
 
  <span class='run'>%!need:multivariate_normals </span>
@@ -305,7 +319,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

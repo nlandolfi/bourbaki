@@ -84,7 +84,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -113,7 +119,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How should we modify probabilities, given that we know some aspect of the outcomes (i.e., that some event has occurred).</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\mathbfsf{P} : \powerset{\Omega } \to \R $ be a finite probability measure. Let $A, B \subset \Omega $ and $\mathbfsf{P} (B) \neq 0$. The \t{conditional probability} of $A$ \t{given} $B$ is fraction of the probability of $A \cap B$ over the probability of $B$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> In a slightly slippery but universally standard notation, we denote the conditional probability of $A$ given $B$ by $\mathbfsf{P} (A \mid B)$. In other words, we define \[ \mathbfsf{P} (A \mid B) = \frac{\mathbfsf{P} (A \cap B)}{\mathbfsf{P} (B)}, \] for all $A, B \subset \Omega $, whenever $\mathbfsf{P} (B) \neq 0$.</p></div><div class="sheet-listing"><p class="sheet"> For example, we can express the law of total probability (see \sheetref{event_probabilities}{Event Probabilities}) as \[ \textstyle \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i)\mathbfsf{P} (B \mid A_i), \] where $A_1, \dots, A_n$ partition $\Omega $ and $B \subset \Omega $ with $\mathbfsf{P} (B) > 0$.</p></div><div class="sheet-listing" id="conditional_probability_measure"><h1 class="sheet">3. Conditional probability measure</h1></div><div class="sheet-listing"><p class="sheet"> Suppose $B \subset \Omega $ and $\mathbfsf{P} (B) > 0$. Then (i) $\mathbfsf{P} (A \mid B) \geq 0$ for all $A \subset \Omega $, since $\mathbfsf{P} (A \cap B) \geq 0$. Moreover, (ii) \[ \mathbfsf{P} (\Omega  \mid B) = \mathbfsf{P} (\Omega  \cap B)/\mathbfsf{P} (B) = \mathbfsf{P} (B)/\mathbfsf{P} (B) = 1 \] Similarly, $\mathbfsf{P} (\varnothing \mid B) = \mathbfsf{P} (\varnothing \cap B)/\mathbfsf{P} (B) = 0/\mathbfsf{P} (B) = 0$.</p></div><div class="sheet-listing"><p class="sheet"> Finally, (iii) if $A \cap C = \varnothing$, then \[ \begin{aligned} \mathbfsf{P} (A \cap C \mid B) &= \mathbfsf{P} ((A \cap C) \cap B)/\mathbfsf{P} (B) \\ &= \mathbfsf{P} ((A \cap B) \cap (C \cap B)/\mathbfsf{P} (B) \\ &\overset{(a)}{=} (\mathbfsf{P} (A \cap B) + \mathbfsf{P} (C \cap B))/\mathbfsf{P} (B) \\ &= \mathbfsf{P} (A \cap B)/\mathbfsf{P} (B) + P(C \cap B)/\mathbfsf{P} (B) \\ &= \mathbfsf{P} (A \mid B) + P(C \mid B). \end{aligned} \] where (a) follows since $A \cap B$ and $C \cap B$ are disjoint.</p></div><div class="sheet-listing"><p class="sheet"> Together, (i)-(iii) mean that $\mathbfsf{P} (\cdot \mid B)$ is itself a probability measure on $\Omega $. We therefore refer to $\mathbfsf{P} (\cdot \mid B)$ as a \t{conditional probability measure}.</p></div><div class="sheet-listing"><h2 class="sheet" id="induced_conditional_distribution">3.1 Induced conditional distribution</h2></div><div class="sheet-listing"><p class="sheet"> Therefore, we expect there to also correspond a new distribution on the set of outcomes. For $\mathbfsf{P} _p$, define $q: \Omega  \to \R $ by \[ q(\omega ) = \begin{cases} \frac{p(\omega )}{\mathbfsf{P} (B)} & \text{ if } \omega  \in B \\ 0 & \text{ otherwise. } \\ \end{cases} \] In this case $\mathbfsf{P} _q(A) = \mathbfsf{P} _p(A \mid B)$. We call $q$ the \t{conditional distribution} induced by \t{conditioning on} the event $B$.</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How should we modify probabilities, given that we know some aspect of the outcomes (i.e., that some event has occurred).</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\mathbfsf{P} : \powerset{\Omega } \to \R $ be a finite probability measure. Let $A, B \subset \Omega $ and $\mathbfsf{P} (B) \neq 0$. The \t{conditional probability} of $A$ \t{given} $B$ is fraction of the probability of $A \cap B$ over the probability of $B$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> In a slightly slippery but universally standard notation, we denote the conditional probability of $A$ given $B$ by $\mathbfsf{P} (A \mid  B)$. In other words, we define \[ \mathbfsf{P} (A \mid  B) = \frac{\mathbfsf{P} (A \cap B)}{\mathbfsf{P} (B)}, \] for all $A, B \subset \Omega $, whenever $\mathbfsf{P} (B) \neq 0$.</p></div><div class="sheet-listing"><p class="sheet"> For example, we can express the law of total probability (see \sheetref{event_probabilities}{Event Probabilities}) as \[ \textstyle \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i)\mathbfsf{P} (B \mid  A_i), \] where $A_1, \dots , A_n$ partition $\Omega $ and $B \subset \Omega $ with $\mathbfsf{P} (B) > 0$.</p></div><div class="sheet-listing" id="conditional_probability_measure"><h1 class="sheet">3. Conditional probability measure</h1></div><div class="sheet-listing"><p class="sheet"> Suppose $B \subset \Omega $ and $\mathbfsf{P} (B) > 0$. Then (i) $\mathbfsf{P} (A \mid  B) \geq 0$ for all $A \subset \Omega $, since $\mathbfsf{P} (A \cap B) \geq 0$. Moreover, (ii) \[ \mathbfsf{P} (\Omega  \mid  B) = \mathbfsf{P} (\Omega  \cap B)/\mathbfsf{P} (B) = \mathbfsf{P} (B)/\mathbfsf{P} (B) = 1 \] Similarly, $\mathbfsf{P} (\varnothing \mid  B) = \mathbfsf{P} (\varnothing \cap B)/\mathbfsf{P} (B) = 0/\mathbfsf{P} (B) = 0$.</p></div><div class="sheet-listing"><p class="sheet"> Finally, (iii) if $A \cap C = \varnothing$, then \[ \begin{aligned} \mathbfsf{P} (A \cap C \mid  B) &= \mathbfsf{P} ((A \cap C) \cap B)/\mathbfsf{P} (B) \\ &= \mathbfsf{P} ((A \cap B) \cap (C \cap B)/\mathbfsf{P} (B) \\ &\overset{(a)}{=} (\mathbfsf{P} (A \cap B) + \mathbfsf{P} (C \cap B))/\mathbfsf{P} (B) \\ &= \mathbfsf{P} (A \cap B)/\mathbfsf{P} (B) + P(C \cap B)/\mathbfsf{P} (B) \\ &= \mathbfsf{P} (A \mid  B) + P(C \mid  B). \end{aligned} \] where (a) follows since $A \cap B$ and $C \cap B$ are disjoint.</p></div><div class="sheet-listing"><p class="sheet"> Together, (i)-(iii) mean that $\mathbfsf{P} (\cdot \mid  B)$ is itself a probability measure on $\Omega $. We therefore refer to $\mathbfsf{P} (\cdot \mid  B)$ as a \t{conditional probability measure}.</p></div><div class="sheet-listing"><h2 class="sheet" id="induced_conditional_distribution">3.1 Induced conditional distribution</h2></div><div class="sheet-listing"><p class="sheet"> Therefore, we expect there to also correspond a new distribution on the set of outcomes. For $\mathbfsf{P} _p$, define $q: \Omega  \to \R $ by \[ q(\omega ) = \begin{cases} \frac{p(\omega )}{\mathbfsf{P} (B)} & \text{ if } \omega  \in B \\ 0 & \text{ otherwise. } \\ \end{cases} \] In this case $\mathbfsf{P} _q(A) = \mathbfsf{P} _p(A \mid  B)$. We call $q$ the \t{conditional distribution} induced by \t{conditioning on} the event $B$.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -216,9 +222,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Conditional Event Probabilities </h1> 
+      <p>
  <span class='run'>%!name:conditional_event_probabilities </span>
 
  <span class='run'>%!need:event_probabilities </span>
@@ -309,24 +323,24 @@ MathJax.Hub.Config({
   <p>\[
    \begin{aligned} 
 
-   \mathbfsf{P} (A \cap C \mid  B) 
+   \mathbfsf{P} (A \cap  C \mid  B) 
 
    &= 
 
-   \mathbfsf{P} ((A \cap C) \cap B)/\mathbfsf{P} (B) \\ 
+   \mathbfsf{P} ((A \cap  C) \cap  B)/\mathbfsf{P} (B) \\ 
 
    &= 
 
-   \mathbfsf{P} ((A \cap B) \cap (C \cap B)/\mathbfsf{P} (B) \\ 
+   \mathbfsf{P} ((A \cap  B) \cap  (C \cap  B)/\mathbfsf{P} (B) \\ 
 
    &\overset{(a)}{=} 
 
-   (\mathbfsf{P} (A \cap B) + \mathbfsf{P} (C \cap
+   (\mathbfsf{P} (A \cap  B) + \mathbfsf{P} (C \cap
     B))/\mathbfsf{P} (B) \\ 
 
    &= 
 
-   \mathbfsf{P} (A \cap B)/\mathbfsf{P} (B) + P(C \cap
+   \mathbfsf{P} (A \cap  B)/\mathbfsf{P} (B) + P(C \cap
     B)/\mathbfsf{P} (B) \\ 
 
    &= 
@@ -429,7 +443,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

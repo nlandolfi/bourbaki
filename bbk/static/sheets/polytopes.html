@@ -32,9 +32,9 @@
               <span class="caret">›</span>
             </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./convex_hulls.html'" onkeypress="location.href='./convex_hulls.html'">
+            <div class="need" tabindex="0" onclick="location.href='./real_convex_hulls.html'" onkeypress="location.href='./real_convex_hulls.html'">
               <span>
-                Convex Hulls
+                Real Convex Hulls
               </span>
               <span class="caret">›</span>
             </div>
@@ -74,7 +74,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -103,7 +109,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{polytope} is the convex hull of a set if finitely many points.</p></div><div class="sheet-listing"><p class="sheet"> An \t{$m$-dimensional simplex} is the convex hull of $m+1$ affinely independent points; an $m$-dimensional simplex is a polytope. The points are called the \t{vertices} of the simplex.</p></div><div class="sheet-listing"><p class="sheet"> When $m = 0, 1, 2, 3$ the simplex is a \t{point}, \t{closed line segment}, \t{triangle} or \t{tetrahedron}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{polytope} is the convex hull of a set of finitely many points.</p></div><div class="sheet-listing"><p class="sheet"> An \t{$m$-dimensional simplex} is the convex hull of $m+1$ affinely independent points; an $m$-dimensional simplex is a polytope. The points are called the \t{vertices} of the simplex.</p></div><div class="sheet-listing"><p class="sheet"> When $m = 0, 1, 2, 3$ the simplex is a \t{point}, \t{closed line segment}, \t{triangle} or \t{tetrahedron}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -206,11 +212,19 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Polytopes </h1> 
+      <!--
 !name:polytopes
-!need:convex_hulls
+!need:real_convex_hulls
 !need:affinely_independent_vectors
 -->
 
@@ -219,7 +233,7 @@ Definition </h1>
 
 <p>
  <span class='run'>A <span class='term'>polytope</span> is the convex
-  hull of a set if finitely many points. </span>
+  hull of a set of finitely many points. </span>
 </p>
 
 
@@ -294,7 +308,7 @@ Definition </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

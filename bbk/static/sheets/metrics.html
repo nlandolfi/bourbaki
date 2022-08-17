@@ -161,7 +161,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -190,7 +196,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to talk about a set with a prescribed quantitative degree of closeness (or distance) between its elements.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The correspondences which serve as a degree of closeness, or measure of distance, must satisfy our previously developed (see \sheetref{distance}{Distance}) notion of distance.</p></div><div class="sheet-listing"><p class="sheet"> A function on ordered pairs which does not depend on the order of the elements so considered is \t{symmetric}. A function into the real numbers which takes only nonnegative values is \t{nonnegative}. A repeated pair is an ordered pair of the same element twice. A function which satisfies a triangle inequality for any three elements is \t{triangularly transitive}.</p></div><div class="sheet-listing"><p class="sheet"> A \t{metric} (or \t{distance function}) is a function on ordered pairs of elements of a set which is symmetric, non-negative, zero only on repeated pairs, and triangularly transitive. A \t{metric space} is an ordered pair whose first coordinate is a nonempty set and whose second coordinate is a metric.</p></div><div class="sheet-listing"><p class="sheet"> In a metric space, we say that one pair of objects is \t{closer} together if the metric of the first pair is smaller than the metric value of the second pair.</p></div><div class="sheet-listing"><p class="sheet"> Notice that a set can be made into different metric spaces by using different metrics.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set. We commonly denote a metric by the letter $d$, as a mnemonic for "distance." Let $d: A \times A \to \R $. Then $d$ is a metric if: \begin{enumerate} \item it is non-negative, which we tend to denote by \[ d(a, b) \geq 0, \quad \forall a,b \in A. \] \item it is $0$ only on repeated pairs, which we tend to denote by \[ d(a, b) = 0 \iff a = b, \quad \forall a,b \in A. \] \item it is symmetric, which we tend to denote by: \[ d(a, b) = d(b, a), \quad \forall a,b \in A. \] \item it is triangularly transitive, which we tend to denote by \[ d(a, b) \leq d(a, c) + d(c, b), \quad \forall a,b,c \in A. \] \end{enumerate} As usual, we denote the metric space of $A$ with $d$ by $(A, d)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> $\R $ with the absolute value distance is a metric space. As is $\R ^2$ and $\R ^3$ with the Euclidean distance. $\R ^n$ with Euclidean metric is an example of a metric space for which the objects ($n$-dimensional tuples of real numbers) are impossible to visualize.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to talk about a set with a prescribed quantitative degree of closeness (or distance) between its elements.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The correspondences which serve as a degree of closeness, or measure of distance, must satisfy our previously developed (see \sheetref{distance}{Distance}) notion of distance.</p></div><div class="sheet-listing"><p class="sheet"> A function on ordered pairs which does not depend on the order of the elements so considered is \t{symmetric}. A function into the real numbers which takes only nonnegative values is \t{nonnegative}. A repeated pair is an ordered pair of the same element twice. A function which satisfies a triangle inequality for any three elements is \t{triangularly transitive}.</p></div><div class="sheet-listing"><p class="sheet"> A \t{metric} (or \t{distance function}) is a function on ordered pairs of elements of a set which is symmetric, non-negative, zero only on repeated pairs, and triangularly transitive. A \t{metric space} is an ordered pair whose first coordinate is a nonempty set and whose second coordinate is a metric.</p></div><div class="sheet-listing"><p class="sheet"> In a metric space, we say that one pair of objects is \t{closer} together if the metric of the first pair is smaller than the metric value of the second pair.</p></div><div class="sheet-listing"><p class="sheet"> Notice that a set can be made into different metric spaces by using different metrics.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a set. We commonly denote a metric by the letter $d$, as a mnemonic for "distance." Let $d: A \times  A \to \R $. Then $d$ is a metric if: \begin{enumerate} \item it is non-negative, which we tend to denote by \[ d(a, b) \geq 0, \quad \forall a,b \in A. \] \item it is $0$ only on repeated pairs, which we tend to denote by \[ d(a, b) = 0 \iff a = b, \quad \forall a,b \in A. \] \item it is symmetric, which we tend to denote by: \[ d(a, b) = d(b, a), \quad \forall a,b \in A. \] \item it is triangularly transitive, which we tend to denote by \[ d(a, b) \leq d(a, c) + d(c, b), \quad \forall a,b,c \in A. \] \end{enumerate} As usual, we denote the metric space of $A$ with $d$ by $(A, d)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> $\R $ with the absolute value distance is a metric space. As is $\R ^2$ and $\R ^3$ with the Euclidean distance. $\R ^n$ with Euclidean metric is an example of a metric space for which the objects ($n$-dimensional tuples of real numbers) are impossible to visualize.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -293,9 +299,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Metrics </h1> 
+      <!--
 !name:metrics
 !need:distance
 !need:absolute_value
@@ -477,7 +491,7 @@ Examples </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

@@ -154,7 +154,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -183,7 +189,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to find the roots of negative numbers.\footnote{Future editions will modify this, and will discuss the existence of solutions of algebraic equations.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{complex number} is an ordered pair of real numbers. The \t{real part} of a complex number is its first coordinate. The \t{imaginary part} of a complex number is its second coordinate.</p></div><div class="sheet-listing"><p class="sheet"> We can identify the imaginary numbers with no complex part (i.e., $\Set*{(a, b) \in \R^2}{b = 0}$ with $\R$ in the obvious way. For this reason, such a complex number is sometimes referred to as a \t{purely real number} Conversely, a complex number with zero imaginary part (i.e., an element of $\Set*{(a, b) \in \R^2}{a = 0}$) is said to be a \t{purely imaginary number}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> When treating $\R^2$ as the set of complex numbers, we denote it by $\C$. Let $z \in \C$ with $z = (a, b)$. The real part of $z$ is $a$ and its imaginary part is $b$. It is universal to denote $z$ by $a + ib$, and to call $i$ an (or the) \t{imaginary number}. Some authors use $j$, it is a matter of notation.</p></div><div class="sheet-listing"><p class="sheet"> We denote the real part of $z$ by $\re(z)$, read "real of z,} and the imaginary part by $\im(z)$, read \say{imaginary of z." So, in particular,  $\re(z) = a$ and $\im(z) = b$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to find the roots of negative numbers. \ifhmode\unskip\fi\footnote{ Future editions will modify this, and will discuss the existence of solutions of algebraic equations. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{complex number} is an ordered pair of real numbers. The \t{real part} of a complex number is its first coordinate. The \t{imaginary part} of a complex number is its second coordinate.</p></div><div class="sheet-listing"><p class="sheet"> We can identify the imaginary numbers with no complex part (i.e., $\Set*{(a, b) \in \R ^2}{b = 0}$ with $\R $ in the obvious way. For this reason, such a complex number is sometimes referred to as a \t{purely real number} Conversely, a complex number with zero imaginary part (i.e., an element of $\Set*{(a, b) \in \R ^2}{a = 0}$) is said to be a \t{purely imaginary number}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> When treating $\R ^2$ as the set of complex numbers, we denote it by $\C $. Let $z \in \C $ with $z = (a, b)$. The real part of $z$ is $a$ and its imaginary part is $b$. It is universal to denote $z$ by $a + ib$, and to call $i$ an (or the) \t{imaginary number}. Some authors use $j$, it is a matter of notation.</p></div><div class="sheet-listing"><p class="sheet"> We denote the real part of $z$ by $\re(z)$, read "real of z,} and the imaginary part by $\im(z)$, read \say{imaginary of z." So, in particular, $\re(z) = a$ and $\im(z) = b$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -286,6 +292,94 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
+  
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Complex Numbers </h1> 
+      <!--
+!name:complex_numbers
+!need:real_arithmetic
+!need:absolute_value
+!refs:elias_stein∕complex_analysis∕01_preliminaries_to_complex_analysis
+!refs:david_brillinger∕time_series_data_analysis_and_theory∕02_foundations
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We want to find the roots of negative numbers.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>A <span class='term'>complex number</span> is an
+  ordered pair of real numbers. </span>
+
+ <span class='run'>The <span class='term'>real part</span> of a
+  complex number is its first coordinate. </span>
+
+ <span class='run'>The <span class='term'>imaginary part</span> of a
+  complex number is its second coordinate. </span>
+</p>
+
+
+<p>
+ <span class='run'>We can identify the imaginary numbers with no
+  complex part (i.e., $\Set*{(a, b) ∈ 𝗥^2}{b =
+  0}$ with $𝗥$ in the obvious way. </span>
+
+ <span class='run'>For this reason, such a complex number is
+  sometimes referred to as a
+  <span class='term'>purely real number</span> </span>
+
+ <span class='run'>Conversely, a complex number with zero imaginary
+  part (i.e., an element of $\Set*{(a, b) ∈
+  𝗥^2}{a = 0}$) is said to be a
+  <span class='term'>purely imaginary number</span>. </span>
+</p>
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>When treating $𝗥^2$ as the set of complex
+  numbers, we denote it by $𝗖$. </span>
+
+ <span class='run'>Let $z ∈ 𝗖$ with $z = (a, b)$. </span>
+
+ <span class='run'>The real part of $z$ is $a$ and its imaginary
+  part is $b$. </span>
+
+ <span class='run'>It is universal to denote $z$ by $a + ib$,
+  and to call $i$ an (or the)
+  <span class='term'>imaginary number</span>. </span>
+
+ <span class='run'>Some authors use $j$, it is a matter of
+  notation. </span>
+</p>
+
+
+<p>
+ <span class='run'>We denote the real part of $z$ by $\re(z)$,
+  read “real of z,” and the imaginary part by
+  $\im(z)$, read “imaginary of z.” </span>
+
+ <span class='run'>So, in particular, $\re(z) = a$ and $\im(z) =
+  b$. </span>
+</p>
+<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify this, and will
+  discuss the existence of solutions of algebraic
+  equations. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
   
 
   <!--
@@ -338,7 +432,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

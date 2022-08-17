@@ -91,7 +91,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -120,7 +126,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It is often the case in considering set differences that all sets considered are subsets of one set.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. In many cases, we take the difference between a set and one contained in it. In other words, we assume that $B \subset A$. In this case, we often take complements relative to the same set $A$. So we do not refer to it, and instead refer to the relative complement of $B$ in $A$ as the \t{complement} of $B$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ denote a set, and let $B$ denote a set for which $B \subset A$. We denote the relative complement of $B$ in $A$ by $\relcomplement{B}{A}$. When we need not mention the set $A$, and instead speak of the complement of $B$ without qualification, we denote this complement by $\complement{B}$.</p></div><div class="sheet-listing" id="complement_of_a_complement"><h1 class="sheet">3. Complement of a complement</h1></div><div class="sheet-listing"><p class="sheet"> One nice property of a complement when $B \subset A$ is: \begin{proposition} $(B \subset A) \iff (\relcomplement{\relcomplement{B}{A}}{A} = B)$ \end{proposition}</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_facts">3.1 Basic Facts</h2></div><div class="sheet-listing"><p class="sheet"> Let $E$ denote a set and let $A$ and $B$ denote sets satisfying $A,B \subset E$. Then take all complements with respect to $E$. Here are some immediate consequences of the definition. \ifhmode\unskip\fi\footnote{ Future editions will include accounts. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{\complement{A}} = A$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{\emptyset} = E$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\complement{E} = \varnothing$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \subset B \iff \complement{B} \subset \complement{A}$ \end{proposition}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> It is often the case in considering set differences that all sets considered are subsets of one set.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. In many cases, we take the difference between a set and one contained in it. In other words, we assume that $B \subset A$. In this case, we often take complements relative to the same set $A$. So we do not refer to it, and instead refer to the relative complement of $B$ in $A$ as the \t{complement} of $B$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ denote a set, and let $B$ denote a set for which $B \subset A$. We denote the relative complement of $B$ in $A$ by $\relcomplement{B}{A}$. When we need not mention the set $A$, and instead speak of the complement of $B$ without qualification, we denote this complement by $\complement{B}$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Complement of a complement}</p></div><div class="sheet-listing"><p class="sheet"> One nice property of a complement when $B \subset A$ is: \begin{proposition}$(B \subset A) \iff (\relcomplement{\relcomplement{B}{A}}{A} = B)$\end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Basic facts}</p></div><div class="sheet-listing"><p class="sheet"> Let $E$ denote a set and let $A$ and $B$ denote sets satisfying $A,B \subset E$. Then take all complements with respect to $E$. Here are some immediate consequences of the definition. \ifhmode\unskip\fi\footnote{ Future editions will include accounts. }</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}$\complement{\complement{A}} = A$\end{proposition} \begin{proposition}$\complement{\emptyset} = E$\end{proposition} \begin{proposition}$\complement{E} = \varnothing$\end{proposition} \begin{proposition}$A \subset B \iff \complement{B} \subset \complement{A}$\end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -223,25 +229,26 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
- <span class='run'>%!name:set_complements </span>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Set Complements </h1> 
+      <!--
+!name:set_complements
+!need:set_differences
+!need:empty_set
+!refs:paul_halmos∕naive_set_theory∕section_05
+!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕set_operations
+-->
 
- <span class='run'>%!need:set_differences </span>
-
- <span class='run'>%!need:empty_set </span>
-
- <span class='run'>%!refs:paul_halmos∕naive_set_theory∕section_05 </span>
-
- <span class='run'>%!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕set_operations </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>
+Why </h1>
 
 <p>
  <span class='run'>It is often the case in considering set
@@ -249,11 +256,8 @@ MathJax.Hub.Config({
   of one set. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
+<h1>
+Definition </h1>
 
 <p>
  <span class='run'>Let $A$ and $B$ denote sets. </span>
@@ -271,11 +275,8 @@ MathJax.Hub.Config({
   the <span class='term'>complement</span> of $B$. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Notation} </span>
-</p>
-
+<h2>
+Notation </h2>
 
 <p>
  <span class='run'>Let $A$ denote a set, and let $B$ denote a
@@ -290,29 +291,18 @@ MathJax.Hub.Config({
   $\complement{B}$. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Complement of a complement} </span>
-</p>
-
+<h2>
+Complement of a complement </h2>
 
 <p>
  <span class='run'>One nice property of a complement when $B ⊂
   A$ is: </span>
-
- <span class='run'>\begin{proposition} </span>
-
- <span class='run'>$(B ⊂ A) \iff
-  (\relcomplement{\relcomplement{B}{A}}{A} = B)$ </span>
-
- <span class='run'>\end{proposition} </span>
+ <div class='proposition'  <span class='run'>$(B ⊂ A) \iff
+   (\relcomplement{\relcomplement{B}{A}}{A} = B)$ </span> </div>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Basic Facts} </span>
-</p>
-
+<h2>
+Basic facts </h2>
 
 <p>
  <span class='run'>Let $E$ denote a set and let $A$ and $B$
@@ -324,42 +314,10 @@ MathJax.Hub.Config({
   definition.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-
-<p>
- <span class='run'>\begin{proposition} </span>
-
- <span class='run'>$\complement{\complement{A}} = A$ </span>
-
- <span class='run'>\end{proposition} </span>
-</p>
-
-
-<p>
- <span class='run'>\begin{proposition} </span>
-
- <span class='run'>$\complement{\emptyset} = E$ </span>
-
- <span class='run'>\end{proposition} </span>
-</p>
-
-
-<p>
- <span class='run'>\begin{proposition} </span>
-
- <span class='run'>$\complement{E} = ∅$ </span>
-
- <span class='run'>\end{proposition} </span>
-</p>
-
-
-<p>
- <span class='run'>\begin{proposition} </span>
-
- <span class='run'>$A ⊂ B \iff \complement{B} ⊂ \complement{A}$ </span>
-
- <span class='run'>\end{proposition} </span>
-</p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include accounts. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<div class='proposition' <span class='run'>$\complement{\complement{A}} = A$ </span></div>
+<div class='proposition' <span class='run'>$\complement{\emptyset} = E$ </span></div>
+<div class='proposition' <span class='run'>$\complement{E} = ∅$ </span></div>
+<div class='proposition' <span class='run'>$A ⊂ B \iff \complement{B} ⊂ \complement{A}$ </span></div><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include accounts. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
   
 
@@ -413,7 +371,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

@@ -154,7 +154,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -183,7 +189,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We have seen several concepts that consist of associating with a pair of sets a third set. For example, set unions and set intersections</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> An \t{operation} (or \t{binary operation}, \t{law of composition}) on a set $A$ is a function from $A \times A$ to $A$.</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, operations \t{combine} (or \t{compose}) elements. We \t{operate} on ordered pairs.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Example: set operations}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a set. Define $g: \powerset{X} \times \powerset{X} \to \powerset{X}$ by $g(A, B) = A \cup B$. Then $g$, the function which associates with two sets their union (see \sheetref{pair_unions}{Pair Unions}) is an operation on $\powerset{X}$. Likewise, define $h : \powerset{X} \times \powerset{X} \to \powerset{X}$ by $h(A, B) = A \cap B$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Naming their properties}</p></div><div class="sheet-listing"><p class="sheet"> $\cup$ has several nice properties. For one $A \cup B = B \cup A$ and $(A \cup B) \cup C = A \cup (B \cup C)$.</p></div><div class="sheet-listing"><p class="sheet"> An operation with the first property, that the ordered pair $(A, B)$ and $(B, A)$ have the same result is called \t{commutative}. An operation with the second property, that when given three objects the order in which we operate does not matter is called \t{associative}. $\cap$ shares these properties with $\cup$.</p></div><div class="sheet-listing"><p class="sheet"> We call the operation of \t{forming unions} the function $(A, B) \mapsto A \cup B$. We call the operation of \t{forming intersections} the function $(A, B) \mapsto A \cap B$. We call the operation of \t{forming symmetric differences} the function $(A, B) \mapsto A \symdiff B$. Since forming unions commutes and is associative and likewise with forming intersections, forming symmetric differences also commutes.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Algebras}</p></div><div class="sheet-listing"><p class="sheet"> Of course, any operation is defined on some set. For this reason, we define an \t{algebra} as an ordered pair whose first element is a non-empty set and whose second element is an operation on that set. The \t{ground set} of the algebra is the set on which the operation is defined.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We have seen several concepts that consist of associating with a pair of sets a third set. For example, set unions and set intersections</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> An \t{operation} (or \t{binary operation}, \t{law of composition}) on a set $A$ is a function from $A \times  A$ to $A$.</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, operations \t{combine} (or \t{compose}) elements. We \t{operate} on ordered pairs.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Example: set operations}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a set. Define $g: \powerset{X} \times  \powerset{X} \to \powerset{X}$ by $g(A, B) = A \cup B$. Then $g$, the function which associates with two sets their union (see \sheetref{pair_unions}{Pair Unions}) is an operation on $\powerset{X}$. Likewise, define $h : \powerset{X} \times  \powerset{X} \to \powerset{X}$ by $h(A, B) = A \cap  B$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Naming their properties}</p></div><div class="sheet-listing"><p class="sheet"> $\cup$ has several nice properties. For one $A \cup B = B \cup A$ and $(A \cup B) \cup C = A \cup (B \cup C)$.</p></div><div class="sheet-listing"><p class="sheet"> An operation with the first property, that the ordered pair $(A, B)$ and $(B, A)$ have the same result is called \t{commutative}. An operation with the second property, that when given three objects the order in which we operate does not matter is called \t{associative}. $\cap $ shares these properties with $\cup$.</p></div><div class="sheet-listing"><p class="sheet"> We call the operation of \t{forming unions} the function $(A, B) \mapsto A \cup B$. We call the operation of \t{forming intersections} the function $(A, B) \mapsto A \cap  B$. We call the operation of \t{forming symmetric differences} the function $(A, B) \mapsto A \symdiff B$. Since forming unions commutes and is associative and likewise with forming intersections, forming symmetric differences also commutes.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Algebras}</p></div><div class="sheet-listing"><p class="sheet"> Of course, any operation is defined on some set. For this reason, we define an \t{algebra} as an ordered pair whose first element is a non-empty set and whose second element is an operation on that set. The \t{ground set} of the algebra is the set on which the operation is defined.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -286,9 +292,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Operations </h1> 
+      <!--
 !name:operations
 !need:pair_intersections
 !need:functions
@@ -382,8 +396,9 @@ Naming their properties </h2>
   <span class='term'>forming intersections</span> the
   function $(A, B) \mapsto A ∩ B$. </span>
 
- <span class='run'>We call the operation of \t{forming symmetric
-  differences} the function $(A, B) \mapsto A
+ <span class='run'>We call the operation of
+  <span class='term'>forming symmetric
+  differences</span> the function $(A, B) \mapsto A
   \symdiff B$. </span>
 
  <span class='run'>Since forming unions commutes and is associative
@@ -462,7 +477,7 @@ Algebras </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

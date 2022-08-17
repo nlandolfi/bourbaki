@@ -147,7 +147,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -176,7 +182,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We discuss inferring (or learning) functions from examples.</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> A \t{predictor} $f: \CU \to \CV$ is a function from $\CU$ to $\CV$. An \t{inducer} is a function from finite datasets in $\CU \times \CV$ to predictors from $\CU$ to $\CV$. A \t{learner} is a function family of inducers, indexed by $n$, each defined for datasets of size $n$. We call $\CU$ the \t{inputs}, $\CV$ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \CU$.</p></div><div class="sheet-listing" id="predicting_relations"><h1 class="sheet">3. Predicting relations</h1></div><div class="sheet-listing"><p class="sheet"> A \t{relation inducer} is a function from finite datasets in $\CU \times \CV$ to <i>relations</i> on $\CU \times \CV$. Since we can associate any relation $R$ between $\CU$ and $\CV$ with a function $f: \CU \times \CV \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">3.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $D$ be a dataset of size $n$ in $\CU \cross \CV$. Let $g: \CU \to \CV$, a predictor, which makes prediction $g(u)$ on input $u \in \CU$. Let $G_n: (\CU \cross \CV)^n \to (\CU \times \CV)$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$. Then $\set{G_n: (\CU \times \CV)^n \to \powerset{(\CU \times \CV)}}_{n \in \N}$ is a learner.</p></div><div class="sheet-listing" id="consistent_and_complete_datasets"><h1 class="sheet">4. Consistent and complete datasets</h1></div><div class="sheet-listing"><p class="sheet"> Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R \subset X \times Y$ a relation. $D$ is \t{consistent with $R$} if each $(u_i, v_i) \in R$. $D$ is \t{consistent} if there exists a relation with which it is consistent. A dataset is always consistent (take $R = \CU \times \CV$). $D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \implies y_i = y_j$. $D$ is \t{functionally complete} if $\union_i\set{x_i} = X$. In this case, the dataset includes every element of the relation.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">4.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Other terms for the inputs include \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns}, \t{instances}, or \t{observations}. Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}. An input, output pair is sometimes called a \t{record pair}.</p></div><div class="sheet-listing"><p class="sheet"> Other terms for a learner include \t{learning algorithm}, or \t{supervised learning algorithm}. Other terms for a predictor include \t{input-output} mapping, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We discuss inferring (or learning) functions from examples.</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> A \t{predictor} $f: \CU \to \CV$ is a function from $\CU$ to $\CV$. An \t{inducer} is a function from finite datasets in $\CU \times  \CV$ to predictors from $\CU$ to $\CV$. A \t{learner} is a function family of inducers, indexed by $n$, each defined for datasets of size $n$. We call $\CU$ the \t{inputs}, $\CV$ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \CU$.</p></div><div class="sheet-listing" id="predicting_relations"><h1 class="sheet">3. Predicting relations</h1></div><div class="sheet-listing"><p class="sheet"> A \t{relation inducer} is a function from finite datasets in $\CU \times  \CV$ to <i>relations</i> on $\CU \times  \CV$. Since we can associate any relation $R$ between $\CU$ and $\CV$ with a function $f: \CU \times  \CV \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">3.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $D$ be a dataset of size $n$ in $\CU \cross \CV$. Let $g: \CU \to \CV$, a predictor, which makes prediction $g(u)$ on input $u \in \CU$. Let $G_n: (\CU \cross \CV)^n \to (\CU \times  \CV)$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$. Then $\set{G_n: (\CU \times  \CV)^n \to \powerset{(\CU \times \CV)}}_{n \in \N}$ is a learner.</p></div><div class="sheet-listing" id="consistent_and_complete_datasets"><h1 class="sheet">4. Consistent and complete datasets</h1></div><div class="sheet-listing"><p class="sheet"> Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R \subset X \times  Y$ a relation. $D$ is \t{consistent with $R$} if each $(u_i, v_i) \in R$. $D$ is \t{consistent} if there exists a relation with which it is consistent. A dataset is always consistent (take $R = \CU \times  \CV$). $D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \Rightarrow y_i = y_j$. $D$ is \t{functionally complete} if $\union_i\set{x_i} = X$. In this case, the dataset includes every element of the relation.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">4.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Other terms for the inputs include \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns}, \t{instances}, or \t{observations}. Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}. An input, output pair is sometimes called a \t{record pair}.</p></div><div class="sheet-listing"><p class="sheet"> Other terms for a learner include \t{learning algorithm}, or \t{supervised learning algorithm}. Other terms for a predictor include \t{input-output} mapping, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -279,9 +285,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Predictors </h1> 
+      <p>
  <span class='run'>%!name:predictors </span>
 
  <span class='run'>%!need:lists </span>
@@ -483,7 +497,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

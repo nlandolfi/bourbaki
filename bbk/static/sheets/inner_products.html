@@ -112,7 +112,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -141,7 +147,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will complete and rework this sheet. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \R)$ be a vector space. A function $f: X \times X \to \R$ is an \t{inner product} on the vector space $(X, \R)$ if \begin{enumerate} \item $f(x,x) \geq 0$, $= 0 \iff x = 0$, \item $f(x+y,z) = f(x,z) + f(y, z)$, \item $f(x,y) = f(y,x)$, and \item $f(\alpha x,y) = \alpha f(x,y)$. \end{enumerate} An \t{inner product space} is an ordered pair: a real vector space and an inner product. \ifhmode\unskip\fi\footnote{ Future editions will discuss complex inner products. }</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.1 Examples</h2></div><div class="sheet-listing"><p class="sheet"> $\R^n$ with the usual inner product is an inner product space. Some authors call any finite-dimensional inner product space over the real numbers is a \t{Euclidean vector space}.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.2 Examples</h2></div><div class="sheet-listing"><p class="sheet"> If $f: X \times X \to \R$ is an inner product we regularly denote $f(x, x)$ by $\ip{x,x}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="orthogonality">2.3 Orthogonality</h2></div><div class="sheet-listing"><p class="sheet"> Two vectors in an inner product space are \t{orthogonal} if their inner product is zero. An \t{orthogonal family of vectors} in an inner product space is a family of vectors for which distinct family members are orthogonal.</p></div><div class="sheet-listing"><p class="sheet"> A vector is \t{normalized} if its inner product with itself is one.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will complete and rework this sheet. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \R )$ be a vector space. A function $f: X \times  X \to \R $ is an \t{inner product} on the vector space $(X, \R )$ if \begin{enumerate} \item $f(x,x) \geq 0$, $= 0 \iff x = 0$, \item $f(x+y,z) = f(x,z) + f(y, z)$, \item $f(x,y) = f(y,x)$, and \item $f(\alpha  x,y) = \alpha  f(x,y)$. \end{enumerate} An \t{inner product space} is an ordered pair: a real vector space and an inner product. \ifhmode\unskip\fi\footnote{ Future editions will discuss complex inner products. }</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.1 Examples</h2></div><div class="sheet-listing"><p class="sheet"> $\R ^n$ with the usual inner product is an inner product space. Some authors call any finite-dimensional inner product space over the real numbers is a \t{Euclidean vector space}.</p></div><div class="sheet-listing"><h2 class="sheet" id="examples">2.2 Examples</h2></div><div class="sheet-listing"><p class="sheet"> If $f: X \times  X \to \R $ is an inner product we regularly denote $f(x, x)$ by $\ip{x,x}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="orthogonality">2.3 Orthogonality</h2></div><div class="sheet-listing"><p class="sheet"> Two vectors in an inner product space are \t{orthogonal} if their inner product is zero. An \t{orthogonal family of vectors} in an inner product space is a family of vectors for which distinct family members are orthogonal.</p></div><div class="sheet-listing"><p class="sheet"> A vector is \t{normalized} if its inner product with itself is one.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -244,9 +250,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Inner Products </h1> 
+      <p>
  <span class='run'>%!name:inner_products </span>
 
  <span class='run'>%!need:vectors </span>
@@ -395,7 +409,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

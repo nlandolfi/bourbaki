@@ -84,7 +84,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -113,7 +119,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{affine hull} of a set in $n$-dimensional space is the intersection of the collection of affine sets which contain it.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the affine hull of $S$ by $\aff S$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The affine hull of $S \subset \R^n$ consists of all vectors which can be expressed as \[ \lambda_1 x_1 + \lambda_2 x_2 \cdots + \lambda_m x_m \] such that $x_i \in S$ and $\sum_i \lambda_i = 1$. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{affine hull} of a set in $n$-dimensional space is the intersection of the collection of affine sets which contain it.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the affine hull of $S$ by $\aff S$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}The affine hull of $S \subset \R ^n$ consists of all vectors which can be expressed as \[ \lambda \_1 x\_1 + \lambda \_2 x\_2 \cdots + \lambda \_m x\_m \] such that $x\_i \in S$ and $\sum\_i \lambda \_i = 1$.\end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -216,24 +222,23 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
- <span class='run'>%!name:affine_hulls </span>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Affine Hulls </h1> 
+      <!--
+!name:affine_hulls
+!need:affine_sets
+-->
 
- <span class='run'>%!need:affine_sets </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
+<h1>
+Definition </h1>
 
 <p>
  <span class='run'>The <span class='term'>affine hull</span> of a
@@ -242,35 +247,19 @@ MathJax.Hub.Config({
   it. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Notation} </span>
-</p>
-
+<h2>
+Notation </h2>
 
 <p>
  <span class='run'>We denote the affine hull of $S$ by $\aff S$. </span>
 </p>
 
-
-<p>
- <span class='run'>\begin{prop} </span>
-
- <span class='run'>The affine hull of $S ⊂ 𝗥^n$ consists of all
+<div class='proposition' <span class='run'>The affine hull of $S ⊂ 𝗥^n$ consists of all
   vectors which can be expressed as
   <p>\[
    \lambda _1 x_1 + \lambda _2 x_2 \cdots + \lambda _m x_m 
   \]</p>
-  such that $x_i ∈ S$ and $∑_i λ_i = 1$. </span>
-
- <span class='run'>\end{prop} </span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage </span>
-</p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+  such that $x_i ∈ S$ and $∑_i λ_i = 1$. </span></div><ol class='footnotes'></ol>
     </div>
   
 
@@ -324,7 +313,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

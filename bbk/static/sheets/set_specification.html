@@ -98,7 +98,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -127,7 +133,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to construct new sets out of old ones. So, can we always construct subsets?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We will say that we can. More specifically, if we have a set and some statement which may be true or false for the elements of that set, a set exists containing all and only the elements for which the statement is true.</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, the principle is like this. We have a set which contains some objects. Suppose the set of playing cards in a usual deck exists. We are taking as a principle that the set of all fives exists, so does the set of all fours, as does the set of all hearts, and the set of all face cards. Roughly, the corresponding statements are "it is a five}, \say{it is a four}, \say{it is a heart}, and \say{it is a face card".</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Specification] For any statement and any set, there is a subset whose elements satisfy the statement. \end{principle}</p></div><div class="sheet-listing"><p class="sheet"> We call this the \t{principle of specification}. We call the second set (obtained from the first) the set obtained by \t{specifying} elements according to the sentence. The principle of extension (see \sheetref{set_equality}{Set Equality}) says that this set is unique. All our basic principles about sets (other than the principle of extension, see \sheetref{set_equality}{Set Equality}) assert that we can construct new sets out of old ones in reasonable ways.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ denote a set. Let $s$ denote a statement in which the symbol $x$ and $A$ appear unbound. We assert that there is a set, denote it by $B$, for which belonging is equivalent to membership in $A$ and satisfaction of $s$. In other words, \[ (\forall x)((x \in B) \iff ((x \in A) \land s(x))). \] We denote $B$ by $\Set*{x \in A}{s(x)}$. We read the symbol $\mid$ aloud as "such that." We read the whole notation aloud as "a in A such that..." We call it \t{set-builder notation}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Nothing contains everything}</p></div><div class="sheet-listing"><p class="sheet"> As an example of the principle of specification and an important consequence, consider the statement $x \not\in x$. Using this statement and the principle of specification, we can prove that there is no set which contains every other set.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} No set contains all sets. \ifhmode\unskip\fi\footnote{ We might call such a set, if we admitted its existence, a \t{universe of discourse} or \t{universal set}. With the principle of specification, a "principle of a universal set} would give a contradiction (called \t{Russell's paradox"). } \begin{proof} Suppose there exists a set, denote it $A$ which contains all sets. In other words, suppose $(\exists  A)(\forall x)(x \in A)$. Use the principle of specification to construct $B = \Set{x \in A}{x \not\in x}$. So $(\forall x)(x \in B \iff (x \in A \land x \not\in x))$ In particular, $(B \in B \iff (B \in A \land B \not\in B))$. So $B \not\in A$.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof} \end{proposition}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to construct new sets out of old ones. So, can we always construct subsets?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We will say that we can. More specifically, if we have a set and some statement which may be true or false for the elements of that set, a set exists containing all and only the elements for which the statement is true.</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, the principle is like this. We have a set which contains some objects. Suppose the set of playing cards in a usual deck exists. We are taking as a principle that the set of all fives exists, so does the set of all fours, as does the set of all hearts, and the set of all face cards. Roughly, the corresponding statements are "it is a five}, \say{it is a four}, \say{it is a heart}, and \say{it is a face card".</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Specification]For any statement and any set, there is a subset whose elements satisfy the statement.\end{principle} We call this the \t{principle of specification}. We call the second set (obtained from the first) the set obtained by \t{specifying} elements according to the sentence. The principle of extension (see \sheetref{set\_equality}{Set Equality}) says that this set is unique. All our basic principles about sets (other than the principle of extension, see \sheetref{set\_equality}{Set Equality}) assert that we can construct new sets out of old ones in reasonable ways.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ denote a set. Let $s$ denote a statement in which the symbol $x$ and $A$ appear unbound. We assert that there is a set, denote it by $B$, for which belonging is equivalent to membership in $A$ and satisfaction of $s$. In other words, \[ (\forall x)((x \in B) \iff ((x \in A) \land s(x))). \] We denote $B$ by $\Set*{x \in A}{s(x)}$. We read the symbol $\mid$ aloud as "such that." We read the whole notation aloud as "a in A such that..." We call it \t{set-builder notation}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Nothing contains everything}</p></div><div class="sheet-listing"><p class="sheet"> As an example of the principle of specification and an important consequence, consider the statement $x \not\in x$. Using this statement and the principle of specification, we can prove that there is no set which contains every other set.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}No set contains all sets. \ifhmode\unskip\fi\footnote{ We might call such a set, if we admitted its existence, a \t{universe of discourse} or \t{universal set}. With the principle of specification, a "principle of a universal set} would give a contradiction (called \t{Russell's paradox"). } \begin{proof}Suppose there exists a set, denote it $A$ which contains all sets. In other words, suppose $(\exists  A)(\forall x)(x \in A)$. Use the principle of specification to construct $B = \Set{x \in A}{x \not\in x}$. So $(\forall x)(x \in B \iff (x \in A \land x \not\in x))$ In particular, $(B \in B \iff (B \in A \land B \not\in B))$. So $B \not\in A$. \end{proof}\end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -230,9 +236,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Set Specification </h1> 
+      <!--
 !name:set_specification
 !need:set_equality
 -->
@@ -278,17 +292,8 @@ Definition </h1>
   “it is a face card”. </span>
 </p>
 
-
-<p>
- <span class='run'>\begin{principle}[Specification] </span>
-
- <span class='run'>For any statement and any set, there is a
-  subset whose elements satisfy the statement. </span>
-
- <span class='run'>\end{principle} </span>
-</p>
-
-
+<div class='principle' text='Specification' <span class='run'>For any statement and any set, there is a
+  subset whose elements satisfy the statement. </span></div>
 <p>
  <span class='run'>We call this the <span class='term'>principle of
   specification</span>. </span>
@@ -410,32 +415,26 @@ Nothing contains everything </h1>
 </p>
 
 
-<p>
- <!--
+<!--
   TODO(next edition): explain this more.
                       -->
 
- <span class='run'>\begin{proposition} </span>
+<div class='proposition' <span class='run'>No set contains all sets.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+ <div class='proof'>  <span class='run'>Suppose there exists a set, denote it $A$
+   which contains all sets. </span>
 
- <span class='run'>No set contains all sets.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+  <span class='run'>In other words, suppose $(∃ A)(∀ x)(x ∈ A)$. </span>
 
- <span class='run'>\begin{proof} </span>
+  <span class='run'>Use the principle of specification to construct
+   $B = \Set{x ∈ A}{x ∉ x}$. </span>
 
- <span class='run'>Suppose there exists a set, denote it $A$
-  which contains all sets. </span>
+  <span class='run'>So $(∀ x)(x ∈ B \iff (x ∈ A ∧ x ∉ x))$ </span>
 
- <span class='run'>In other words, suppose $(∃ A)(∀ x)(x ∈ A)$. </span>
+  <span class='run'>In particular, $(B ∈ B \iff (B ∈ A ∧ B ∉
+   B))$. </span>
 
- <span class='run'>Use the principle of specification to construct
-  $B = \Set{x ∈ A}{x ∉ x}$. </span>
-
- <span class='run'>So $(∀ x)(x ∈ B \iff (x ∈ A ∧ x ∉ x))$ </span>
-
- <span class='run'>In particular, $(B ∈ B \iff (B ∈ A ∧ B ∉
-  B))$. </span>
-
- <span class='run'>So $B ∉ A$. </span>
- <!--
+  <span class='run'>So $B ∉ A$. </span>
+  <!--
 
   <div data-littype='run'> ❲% \begin{blankaccount}❳ </div>
 
@@ -447,13 +446,7 @@ Nothing contains everything </h1>
 
   <div data-littype='run'> ❲% \end{blankaccount}❳ </div>
   -->
-
- <span class='run'>\end{proof} </span>
-
- <span class='run'>\end{proposition} </span>
-</p>
-
-
+ </div></div>
 <!--
 <div data-littype='paragraph'>
   <div data-littype='run'> ❲% In other words, nothing contains everything.❳ </div>
@@ -563,7 +556,7 @@ Nothing contains everything </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

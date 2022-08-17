@@ -67,7 +67,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -96,7 +102,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We sometimes use special language for a function inductor, which alludes to its similarities with "learning."</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CU$ and $\CV$ be sets and let $\set{G_n: (\CU \times \CV)^n \to \powerset{X \times Y}}_{n \in \N}$ be a family of functional inductors.</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have a dataset $(u^1, v^1), \dots, (u^n, u^n) \in \CU \times \CV$, and we use our inductor (i.e., learning algorithm) to produce a predictor $f: \CU \to \CY$ defined by $f \equiv G_m(a^1, \dots, a^m)$. Thus, we have a sequence of predictors $f^1, \dots, f^n$. We can evaluate our learning algorithm on th A predictor can be used to "guess" inputs which do not necessarily appear in the dataset. For this reason, some authors call an inductor (or family of inductors) a \t{learner} or \t{learning algorithm}. In accordance with this usage, they refer to the argument of an inductor as the \t{training data} or \t{training dataset} or \t{training set}. As with our terminology dataset, the word "set," however, may mislead since since we are speaking of a sequence.</p></div><div class="sheet-listing"><p class="sheet"> It is common to refer to the construction a predictor from a dataset a \t{learning problem}. In this case, the learning problem is said to be \t{supervised learning}. By supervision, we mean to indicate that we have the outputs corresponding to the inputs. In line with this usage, the outputs are often called \t{labels} and the labels are said "\t{supervise}} or \say{to provide supervision." Since a predictor can be used to \t{guess} the output of an input, some authors call an inductor (or family of inductors) a \t{learner} or \t{learning algorithm} or \t{supervised learning algorithm} and refer to the argument as the \t{training dataset}. Often the word "supervised} is included, as in \t{supervised learning". This language intends to indicate that inputs are given along with outputs, and these outputs "provide supervision to the algorithm."</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We sometimes use special language for a function inductor, which alludes to its similarities with "learning."</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CU$ and $\CV$ be sets and let $\set{G_n: (\CU \times \CV)^n \to \powerset{X \times  Y}}_{n \in \N }$ be a family of functional inductors.</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have a dataset $(u^1, v^1), \dots , (u^n, u^n) \in \CU \times  \CV$, and we use our inductor (i.e., learning algorithm) to produce a predictor $f: \CU \to \CY$ defined by $f \equiv G_m(a^1, \dots , a^m)$. Thus, we have a sequence of predictors $f^1, \dots , f^n$. We can evaluate our learning algorithm on th A predictor can be used to "guess" inputs which do not necessarily appear in the dataset. For this reason, some authors call an inductor (or family of inductors) a \t{learner} or \t{learning algorithm}. In accordance with this usage, they refer to the argument of an inductor as the \t{training data} or \t{training dataset} or \t{training set}. As with our terminology dataset, the word "set," however, may mislead since since we are speaking of a sequence.</p></div><div class="sheet-listing"><p class="sheet"> It is common to refer to the construction a predictor from a dataset a \t{learning problem}. In this case, the learning problem is said to be \t{supervised learning}. By supervision, we mean to indicate that we have the outputs corresponding to the inputs. In line with this usage, the outputs are often called \t{labels} and the labels are said "\t{supervise}} or \say{to provide supervision." Since a predictor can be used to \t{guess} the output of an input, some authors call an inductor (or family of inductors) a \t{learner} or \t{learning algorithm} or \t{supervised learning algorithm} and refer to the argument as the \t{training dataset}. Often the word "supervised} is included, as in \t{supervised learning". This language intends to indicate that inputs are given along with outputs, and these outputs "provide supervision to the algorithm."</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -199,9 +205,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Supervised Learning Algorithms </h1> 
+      <p>
  <span class='run'>%!name:supervised_learning_algorithms </span>
 
  <span class='run'>%!need:predictors </span>
@@ -355,7 +369,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

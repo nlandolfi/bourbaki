@@ -91,7 +91,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -120,7 +126,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. Future editions may change the name of this sheet to \t{computation networks}, or may add prerequisite sheet on computation graphs. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A sequence of functions $(g_1, \dots, g_\ell)$ is \t{composable} if $g_i$ is composible with $g_{i-1}$ for $i = 2, \dots, \ell$. In this case we write $g_\ell \composed g_{\ell-1} \composed \cdots \composed g_2 \composed g_1$. For example, we write $g_3 \composed g_2 \composed g_1$ for $(g_1, g_2, g_3)$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{neural network} (or \t{feedforward neural network}) from $\R^n$ to $\R^m$ is a sequence of composable functions $(g_1, \dots, g_{\ell})$, $\dom g_1 = \R^n$, $\ran g_\ell \subset \R^m$, satisfying \[ g_i(\xi) = h_i(A_i \xi + b_i) \] for some conforming matrices $A_i$, vectors $b_i$ and functions $h_i$.</p></div><div class="sheet-listing"><p class="sheet"> The $i$th \t{layer} of the neural network is the $i$th function $g_i$. The $i$th \t{activation} of the neural network is the function $h_i$. A \t{neural network} is called \t{deep} if its number of layers is larger than 3.</p></div><div class="sheet-listing"><p class="sheet"> We call the composition of the layers of the neural network the \t{network predictor} (or just \t{predictor}). We also call it \t{the function} of the network. \ifhmode\unskip\fi\footnote{ Many authorities refer to a neural network as a function. Strictly speaking that is true for us, as well, since a sequence is a function. But the meaning of the common use is in reference to the \t{network predictor}. }</p></div><div class="sheet-listing"><p class="sheet"> A \t{multi-layer perceptron} (\t{MLP}) is a neural network with 2 layers (1 \t{hidden layer}) and for which $A_i$ and $b_i$ have unrestricted nonzero entries.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. Future editions may change the name of this sheet to \t{computation networks}, or may add prerequisite sheet on computation graphs. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A sequence of functions $(g_1, \dots , g_\ell )$ is \t{composable} if $g_i$ is composible with $g_{i-1}$ for $i = 2, \dots , \ell $. In this case we write $g_\ell  \composed g_{\ell -1} \composed \cdots \composed g_2 \composed g_1$. For example, we write $g_3 \composed g_2 \composed g_1$ for $(g_1, g_2, g_3)$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{neural network} (or \t{feedforward neural network}) from $\R ^n$ to $\R ^m$ is a sequence of composable functions $(g_1, \dots , g_{\ell })$, $\dom g_1 = \R ^n$, $\ran g_\ell  \subset \R ^m$, satisfying \[ g_i(\xi ) = h_i(A_i \xi  + b_i) \] for some conforming matrices $A_i$, vectors $b_i$ and functions $h_i$.</p></div><div class="sheet-listing"><p class="sheet"> The $i$th \t{layer} of the neural network is the $i$th function $g_i$. The $i$th \t{activation} of the neural network is the function $h_i$. A \t{neural network} is called \t{deep} if its number of layers is larger than 3.</p></div><div class="sheet-listing"><p class="sheet"> We call the composition of the layers of the neural network the \t{network predictor} (or just \t{predictor}). We also call it \t{the function} of the network. \ifhmode\unskip\fi\footnote{ Many authorities refer to a neural network as a function. Strictly speaking that is true for us, as well, since a sequence is a function. But the meaning of the common use is in reference to the \t{network predictor}. }</p></div><div class="sheet-listing"><p class="sheet"> A \t{multi-layer perceptron} (\t{MLP}) is a neural network with 2 layers (1 \t{hidden layer}) and for which $A_i$ and $b_i$ have unrestricted nonzero entries.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -223,9 +229,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Neural Networks </h1> 
+      <p>
  <span class='run'>%!name:neural_networks </span>
 
  <span class='run'>%!need:regressors </span>
@@ -395,7 +409,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

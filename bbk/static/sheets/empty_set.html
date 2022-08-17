@@ -84,7 +84,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -113,7 +119,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Can a set have no elements?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Sure. A set exists by the principle of existence (see \sheetref{sets}{Sets}); denote it by $A$. Specify elements (see \sheetref{set_specification}{Set Specification}) of any set that exists using the universally false statement $x \neq x$. We denote that set by $\Set{x \in A}{x \neq x}$. It has no elements. In other words, $(\forall x)(x \not \in A)$. The principle of extension (see \sheetref{set_equality}{Set Equality}) says that the set obtained is unique (contradiction). \ifhmode\unskip\fi\footnote{ This account will be expanded in the next edition. } We call the unique set with no elements \t{the empty set}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the empty set by $\varnothing$. In other words, in all future accounts (see \sheetref{accounts}{Accounts}), there are two implicit lines. First, "\texttt{name} $\varnothing$} and second \say{\texttt{have} $(\forall x)(x \not\in \varnothing)$".</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> It is immediate from our definition of the empty set and of the definition of inclusion (see \sheetref{set_inclusion}{Set Inclusion}) that the empty set is included in every set (including itself).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\forall A)(\varnothing \subset A)$ \end{proposition} \begin{proof} Suppose toward contradiction that $\varnothing \not\subset A$. Then there exists $y \in \varnothing$ such that $y \not \in A$. But this is impossible, since $(\forall x)(x \not \in \varnothing)$. \end{proof}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Can a set have no elements?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Sure. A set exists by the principle of existence (see \sheetref{sets}{Sets}); denote it by $A$. Specify elements (see \sheetref{set\_specification}{Set Specification}) of any set that exists using the universally false statement $x \neq x$. We denote that set by $\Set{x \in A}{x \neq x}$. It has no elements. In other words, $(\forall x)(x \not \in A)$. The principle of extension (see \sheetref{set\_equality}{Set Equality}) says that the set obtained is unique (contradiction). \ifhmode\unskip\fi\footnote{ This account will be expanded in the next edition. } We call the unique set with no elements the \t{empty set}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the empty set by $\varnothing$. In other words, in all future accounts (see \sheetref{accounts}{Accounts}), there are two implicit lines. First, "\c{name} $\varnothing$} and second \say{\c{have} $(\forall x)(x \not\in \varnothing)$".</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> It is immediate from our definition of the empty set and of the definition of inclusion (see \sheetref{set\_inclusion}{Set Inclusion}) that the empty set is included in every set (including itself).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}$(\forall A)(\varnothing \subset A)$\end{proposition} \begin{proof}Suppose toward contradiction that $\varnothing \not\subset A$. Then there exists $y \in \varnothing$ such that $y \not \in A$. But this is impossible, since $(\forall x)(x \not \in \varnothing)$.\end{proof}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -216,9 +222,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Empty Set </h1> 
+      <!--
 !name:empty_set
 !need:set_specification
 !refs:paul_halmos∕naive_set_theory∕section_03
@@ -256,8 +270,8 @@ Definition </h1>
   \sheetref{set_equality}{Set Equality}) says that
   the set obtained is unique (contradiction).<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 
- <span class='run'>We call the unique set with no elements
-  <span class='term'>the empty set</span>. </span>
+ <span class='run'>We call the unique set with no elements the
+  <span class='term'>empty set</span>. </span>
 </p>
 
 
@@ -321,8 +335,10 @@ Notation </h2>
 
  <span class='run'>In other words, in all future accounts (see
   \sheetref{accounts}{Accounts}), there are two
-  implicit lines. First, “\texttt{name} $∅$” and
-  second “\texttt{have} $(∀ x)(x ∉ ∅)$”. </span>
+  implicit lines. First,
+  “<span class='typewriter'>name</span> $∅$” and
+  second “<span class='typewriter'>have</span> $(∀
+  x)(x ∉ ∅)$”. </span>
 </p>
 
 <h1>
@@ -336,27 +352,14 @@ Properties </h1>
   (including itself). </span>
 </p>
 
-
-<p>
- <span class='run'>\begin{proposition} </span>
-
- <span class='run'>$(∀ A)(∅ ⊂ A)$ </span>
-
- <span class='run'>\end{proposition} </span>
-
- <span class='run'>\begin{proof} </span>
-
- <span class='run'>Suppose toward contradiction that $∅ \not⊂ A$. </span>
+<div class='proposition' <span class='run'>$(∀ A)(∅ ⊂ A)$ </span></div>
+<div class='proof'> <span class='run'>Suppose toward contradiction that $∅ \not⊂ A$. </span>
 
  <span class='run'>Then there exists $y ∈ ∅$ such that $y \not
   ∈ A$. </span>
 
  <span class='run'>But this is impossible, since $(∀ x)(x \not ∈
-  ∅)$. </span>
-
- <span class='run'>\end{proof} </span>
-</p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>This account will be expanded in the next
+  ∅)$. </span></div><ol class='footnotes'><li id='footnote-1'> <span class='run'>This account will be expanded in the next
   edition. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
   
@@ -411,7 +414,7 @@ Properties </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

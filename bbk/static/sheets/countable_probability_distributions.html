@@ -81,7 +81,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -110,7 +116,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we flip a coin until it lands heads. What is the probability that we see a head after one flip? Two flips? $n$ flips? We want to extend our notion of probability distribution to a set with infinite elements, but only countably many.</p></div><div class="sheet-listing" id="why"><h1 class="sheet">2. Why</h1></div><div class="sheet-listing"><p class="sheet"> Consider a set $A$. \ifhmode\unskip\fi\footnote{ Future editions will rework this sheet. } If $A$ has $n$ elements, then a probability distribution on $A$ is $p: A \to \R $ where $p(a) = 1/n$. There is a natural candidate.</p></div><div class="sheet-listing"><p class="sheet"> What if $A$ is the set of natural numbers $\N $. The principle difficulty is that not all sequences of real numbers $a: \N  \to \R $ are summable.</p></div><div class="sheet-listing"><p class="sheet"> A \t{(countable) probability distribution} on $\N $ is $p: \N \to \R $ where $p \geq 0$ and \[ \textstyle \sum_{n =1}^{\infty} p(n) = 1. \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we flip a coin until it lands heads. What is the probability that we see a head after one flip? Two flips? $n$ flips? We want to extend our notion of probability distribution to a set with infinite elements, but only countably many.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> Consider a set $A$. \ifhmode\unskip\fi\footnote{ Future editions will rework this sheet. } If $A$ has $n$ elements, then a probability distribution on $A$ is $p: A \to \R $ where $p(a) = 1/n$. There is a natural candidate.</p></div><div class="sheet-listing"><p class="sheet"> What if $A$ is the set of natural numbers $\N $. The principle difficulty is that not all sequences of real numbers $a: \N  \to \R $ are summable.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{(countable) probability distribution} on $\N $ is $p: \N \to \R $ where $p \geq 0$ and \[ \textstyle \sum_{n =1}^{\infty} p(n) = 1. \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -213,23 +219,25 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
- <span class='run'>%!name:countable_probability_distributions </span>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Countable Probability Distributions </h1> 
+      <!--
+!name:countable_probability_distributions
+!need:probability_distributions
+!need:cardinality
+!need:real_series
+-->
 
- <span class='run'>%!need:probability_distributions </span>
-
- <span class='run'>%!need:cardinality </span>
-
- <span class='run'>%!need:real_series </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>
+Why </h1>
 
 <p>
  <span class='run'>Suppose we flip a coin until it lands heads. </span>
@@ -246,11 +254,8 @@ MathJax.Hub.Config({
   but only countably many. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>
+Discussion </h1>
 
 <p>
  <span class='run'>Consider a set $A$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
@@ -272,6 +277,8 @@ MathJax.Hub.Config({
  <span class='run'>of real numbers $a: 𝗡 → 𝗥$ are summable. </span>
 </p>
 
+<h1>
+Definition </h1>
 
 <p>
  <span class='run'>A <span class='term'>(countable) probability
@@ -282,11 +289,6 @@ MathJax.Hub.Config({
 
    \sum_{n =1}^{\infty} p(n) = 1. 
   \]</p></span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage </span>
 </p>
 <ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will rework this sheet. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
@@ -342,7 +344,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

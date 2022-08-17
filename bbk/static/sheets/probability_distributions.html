@@ -168,7 +168,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -300,9 +306,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <!--
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Probability Distributions </h1> 
+      <!--
 !name:probability_distributions
 !need:real_summation
 !need:uncertain_outcomes
@@ -386,26 +400,13 @@ Notation </h2>
   \]</p></span>
 </p>
 
+<div class='proposition' <span class='run'>For all $a ∈ A$, $p(a) ≤ 1$. </span>
+ <div class='proof'>  <span class='run'>Let $a ∈ A$. </span>
 
-<p>
- <span class='run'>\begin{proposition} </span>
+  <span class='run'>By definition, $p(a) ≥ 0$.. </span>
 
- <span class='run'>For all $a ∈ A$, $p(a) ≤ 1$. </span>
-
- <span class='run'>\begin{proof} </span>
-
- <span class='run'>Let $a ∈ A$. </span>
-
- <span class='run'>By definition, $p(a) ≥ 0$.. </span>
-
- <span class='run'>Second, since $p$ is normalized, $p(a) ≤ ∑_{b
-  ∈ A} p(b) = 1$. </span>
-
- <span class='run'>\end{proof} </span>
-
- <span class='run'>\end{proposition} </span>
-</p>
-
+  <span class='run'>Second, since $p$ is normalized, $p(a) ≤ ∑_{b
+   ∈ A} p(b) = 1$. </span> </div></div>
 <h1>
 Example: coin </h1>
 
@@ -492,7 +493,7 @@ Example: die </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

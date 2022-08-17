@@ -67,7 +67,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -96,7 +102,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How do we get a joint probability distribution function from marginals? \ifhmode\unskip\fi\footnote{ Future editions will modify. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{product distribution} of a sequence $p_1, \dots, p_n: A_i \to [0, 1]$ of distributions is the function $p: \prod_{i} A_i \to [0, 1]$ defined by \[ p(x) = \prod_{i = 1}^{n} p_i(x_i). \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $p_i: A_i \to [0, 1]$ be probability distributions. Then the product distribution of $p_1, \dots, p_n$ is a probability distribution with marginals $p_1, \dots, p_n$. \ifhmode\unskip\fi\footnote{ Future editions will include. } \end{proposition}</p></div><div class="sheet-listing" id="example:_fair_coin_repeated_flips"><h1 class="sheet">3. Example: fair coin repeated flips</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we want to model a coin flipped $n$ times. Supposing the coin is fair (see \sheetref{probability_distribtuions}{Probability Distributions}) we might use our probability distribution $p: \set{0, 1} \to [0, 1]$ which assigned $p(0) = p(1) = \nicefrac{1}{2}$. Then the probability of obtaining a sequence of flips $x \in \set{0, 1}$ is \[ \textstyle p(x) = \prod_{x_i = 1} p_i(1) \prod_{x_i = 0} p_i(0). \] Notice that if we know $p_i(1) = \rho _i$, then we know $p(0) = (1-\rho _i)$ and so we can write the above as \[ \textstyle p(x) = \prod_{x_i = 1} \rho _i \prod_{x_i = 0} (1-\rho _i). \]</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How do we get a joint probability distribution function from marginals? \ifhmode\unskip\fi\footnote{ Future editions will modify. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{product distribution} of a sequence $p_1, \dots , p_n: A_i \to [0, 1]$ of distributions is the function $p: \prod_{i} A_i \to [0, 1]$ defined by \[ p(x) = \prod_{i = 1}^{n} p_i(x_i). \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $p_i: A_i \to [0, 1]$ be probability distributions. Then the product distribution of $p_1, \dots , p_n$ is a probability distribution with marginals $p_1, \dots , p_n$. \ifhmode\unskip\fi\footnote{ Future editions will include. } \end{proposition}</p></div><div class="sheet-listing" id="example:_fair_coin_repeated_flips"><h1 class="sheet">3. Example: fair coin repeated flips</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we want to model a coin flipped $n$ times. Supposing the coin is fair (see \sheetref{probability_distribtuions}{Probability Distributions}) we might use our probability distribution $p: \set{0, 1} \to [0, 1]$ which assigned $p(0) = p(1) = \nicefrac{1}{2}$. Then the probability of obtaining a sequence of flips $x \in \set{0, 1}$ is \[ \textstyle p(x) = \prod_{x_i = 1} p_i(1) \prod_{x_i = 0} p_i(0). \] Notice that if we know $p_i(1) = \rho _i$, then we know $p(0) = (1-\rho _i)$ and so we can write the above as \[ \textstyle p(x) = \prod_{x_i = 1} \rho _i \prod_{x_i = 0} (1-\rho _i). \]</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -199,9 +205,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Product Distributions </h1> 
+      <p>
  <span class='run'>%!name:product_distributions </span>
 
  <span class='run'>%!need:marginal_distributions </span>
@@ -335,7 +349,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>

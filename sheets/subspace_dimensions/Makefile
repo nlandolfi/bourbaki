@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make subspace_dimensions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 subspace_dimensions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > subspace_dimensions.tex
 

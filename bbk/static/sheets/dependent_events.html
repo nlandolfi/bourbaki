@@ -84,7 +84,13 @@ MathJax.Hub.Config({
                   CV: "\\mathcal{V}",
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
-                  Set: ["\\{#1 : #2\\}", 2],
+                  R: ["\\mathbfsf{R}"],
+                  Z: ["\\mathbfsf{Z}"],
+                  N: ["\\mathbfsf{N}"],
+                  Q: ["\\mathbfsf{Q}"],
+                  S: ["\\mathbfsf{S}"],
+                  F: ["\\mathbfsf{F}"],
+                  aff: ["\\mathsf{aff}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -113,7 +119,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about how knowledge of one aspect of an outcome can give us knowledge about another aspect.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Two events $A, B \subset \Omega $ are \t{independent} under a probability measure $\mathbfsf{P} : \powerset{\Omega } \to \R $ if \[ \mathbfsf{P} (A \cap B) = \mathbfsf{P} (A)\mathbfsf{P} (B). \] In other words, they are independent if the probability of their intersection is the product of their respective probabilities. Otherwise, we call $A$ and $B$ \t{dependent}.</p></div><div class="sheet-listing"><p class="sheet"> In the case that $\mathbfsf{P} (B) \neq 0$, then $\mathbfsf{P} (A \cap B) = \mathbfsf{P} (A)\mathbfsf{P} (B)$ is equivalent to $\mathbfsf{P} (A \mid B) = \mathbfsf{P} (A)$, which more clearly expresses the intuition captured by the definition. Roughly speaking, we interpret this second expression as encoding the fact that the occurence of event $B$ does not change the probability---intuitively, the "credibility"---of the event $A$.</p></div><div class="sheet-listing"><h2 class="sheet" id="example:_two_dice">2.1 Example: two dice</h2></div><div class="sheet-listing"><p class="sheet"> Define $\Omega  = \Set{(\omega _1, \omega _2)}{ \omega _i \in \set{1, \dots, 6}}$, and interpret $\omega  \in \Omega $ as corresponding to pips face up after rolling two dice. Define $p: \Omega  \to \R $ by $p(\omega ) = \nicefrac{1}{36}$.</p></div><div class="sheet-listing"><p class="sheet"> Two events are $A = \Set{\omega  \in \Omega }{ \omega _1 + \omega _2 > 5}$, "the sum is greater than 5}, and $B = \Set{\omega  \in \Omega }{\omega _1 > 3}$, \say{the number of pips on the first die is greater than 3". Then $\mathbfsf{P} (A) = \nicefrac{26}{36}$. Also, $\mathbfsf{P} (A \mid B) = \nicefrac{17}{16}$. So, these events are dependent. Roughly speaking, we say that knowing $B$ tells us something about $A$. In this case, we say that it "makes $A$ more probable."</p></div><div class="sheet-listing"><p class="sheet"> In the language used to describe the events, we say that knowledge that the number of pips on the first die is greater than three makes its more probable that the sum of the number of pips on each die is greater than 5.</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_implications">2.2 Basic implications</h2></div><div class="sheet-listing"><p class="sheet"> Since $\mathbfsf{P} (\cdot \mid B)$ is a probability measure, and the events $A$ and $\relcomplement{A}{\Omega }$ partition $\Omega $, we have \[ \mathbfsf{P} (A \mid B) + \mathbfsf{P} (\relcomplement{A}{\Omega } \mid B) = 1. \] From which we deduce $\mathbfsf{P} (\relcomplement{A}{\Omega } \mid B) = 1 - \mathbfsf{P} (A) = \mathbfsf{P} (\relcomplement{A}{\Omega })$. Which is equivalent to $\mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) = \mathbfsf{P} (\relcomplement{A}{\Omega })\mathbfsf{P} (B)$. In other words, $B$ and $\relcomplement{A}{\Omega }$ are independent events. Similarly, $A$ and $\relcomplement{B}{\Omega }$ are independent events. Since $(\Omega  - A) \cap (\Omega  - B) = \Omega  - (A \cup B)$, we have \[ \mathbfsf{P} (A \cup B) + P(\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) = 1. \] Since $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap B)$, we obtain \[ P(\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) = 1 - \mathbfsf{P} (A) - \mathbfsf{P} (B) - \mathbfsf{P} (A)\mathbfsf{P} (B). \] We can express the right hand side as $(1 - \mathbfsf{P} (A))(1 - \mathbfsf{P} (B))$ or $\mathbfsf{P} (\relcomplement{A}{\Omega })\mathbfsf{P} (\relcomplement{B}{\Omega })$. In other words, $\relcomplement{A}{\Omega }$ and $\relcomplement{B}{\Omega }$ are independent.</p></div>
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about how knowledge of one aspect of an outcome can give us knowledge about another aspect.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Two events $A, B \subset \Omega $ are \t{independent} under a probability measure $\mathbfsf{P} : \powerset{\Omega } \to \R $ if \[ \mathbfsf{P} (A \cap B) = \mathbfsf{P} (A)\mathbfsf{P} (B). \] In other words, they are independent if the probability of their intersection is the product of their respective probabilities. Otherwise, we call $A$ and $B$ \t{dependent}.</p></div><div class="sheet-listing"><p class="sheet"> In the case that $\mathbfsf{P} (B) \neq 0$, then $\mathbfsf{P} (A \cap B) = \mathbfsf{P} (A)\mathbfsf{P} (B)$ is equivalent to $\mathbfsf{P} (A \mid B) = \mathbfsf{P} (A)$, which more clearly expresses the intuition captured by the definition. Roughly speaking, we interpret this second expression as encoding the fact that the occurence of event $B$ does not change the probability---intuitively, the "credibility"---of the event $A$.</p></div><div class="sheet-listing"><h2 class="sheet" id="example:_two_dice">2.1 Example: two dice</h2></div><div class="sheet-listing"><p class="sheet"> Define $\Omega  = \Set{(\omega _1, \omega _2)}{ \omega _i \in \set{1, \dots , 6}}$, and interpret $\omega  \in \Omega $ as corresponding to pips face up after rolling two dice. Define $p: \Omega  \to \R $ by $p(\omega ) = \nicefrac{1}{36}$.</p></div><div class="sheet-listing"><p class="sheet"> Two events are $A = \Set{\omega  \in \Omega }{ \omega _1 + \omega _2 > 5}$, "the sum is greater than 5}, and $B = \Set{\omega  \in \Omega }{\omega _1 > 3}$, \say{the number of pips on the first die is greater than 3". Then $\mathbfsf{P} (A) = \nicefrac{26}{36}$. Also, $\mathbfsf{P} (A \mid  B) = \nicefrac{17}{16}$. So, these events are dependent. Roughly speaking, we say that knowing $B$ tells us something about $A$. In this case, we say that it "makes $A$ more probable."</p></div><div class="sheet-listing"><p class="sheet"> In the language used to describe the events, we say that knowledge that the number of pips on the first die is greater than three makes its more probable that the sum of the number of pips on each die is greater than 5.</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_implications">2.2 Basic implications</h2></div><div class="sheet-listing"><p class="sheet"> Since $\mathbfsf{P} (\cdot \mid  B)$ is a probability measure, and the events $A$ and $\relcomplement{A}{\Omega }$ partition $\Omega $, we have \[ \mathbfsf{P} (A \mid  B) + \mathbfsf{P} (\relcomplement{A}{\Omega } \mid  B) = 1. \] From which we deduce $\mathbfsf{P} (\relcomplement{A}{\Omega } \mid B) = 1 - \mathbfsf{P} (A) = \mathbfsf{P} (\relcomplement{A}{\Omega })$. Which is equivalent to $\mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) = \mathbfsf{P} (\relcomplement{A}{\Omega })\mathbfsf{P} (B)$. In other words, $B$ and $\relcomplement{A}{\Omega }$ are independent events. Similarly, $A$ and $\relcomplement{B}{\Omega }$ are independent events. Since $(\Omega  - A) \cap (\Omega  - B) = \Omega  - (A \cup B)$, we have \[ \mathbfsf{P} (A \cup B) + P(\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) = 1. \] Since $\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap B)$, we obtain \[ P(\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) = 1 - \mathbfsf{P} (A) - \mathbfsf{P} (B) - \mathbfsf{P} (A)\mathbfsf{P} (B). \] We can express the right hand side as $(1 - \mathbfsf{P} (A))(1 - \mathbfsf{P} (B))$ or $\mathbfsf{P} (\relcomplement{A}{\Omega })\mathbfsf{P} (\relcomplement{B}{\Omega })$. In other words, $\relcomplement{A}{\Omega }$ and $\relcomplement{B}{\Omega }$ are independent.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -216,9 +222,17 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
+    <span>
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+    </span>
+
   
     <div class="lit">
-    <p>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Dependent Events </h1> 
+      <p>
  <span class='run'>%!name:dependent_events </span>
 
  <span class='run'>%!need:conditional_event_probabilities </span>
@@ -244,7 +258,7 @@ MathJax.Hub.Config({
   <span class='term'>independent</span> under a
   probability measure $𝗣: \powerset{Ω} → 𝗥$ if
   <p>\[
-   \mathbfsf{P} (A \cap B) = \mathbfsf{P} (A)\mathbfsf{P} (B). 
+   \mathbfsf{P} (A \cap  B) = \mathbfsf{P} (A)\mathbfsf{P} (B). 
   \]</p></span>
 
  <span class='run'>In other words, they are independent if the
@@ -345,7 +359,7 @@ MathJax.Hub.Config({
   Since $𝗣(A ∪ B) = 𝗣(A) + 𝗣(B) - 𝗣(A ∩ B)$,
   we obtain
   <p>\[
-   P(\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) = 1
+   P(\relcomplement{A}{\Omega } \cap  \relcomplement{B}{\Omega }) = 1
     - \mathbfsf{P} (A) - \mathbfsf{P} (B) -
     \mathbfsf{P} (A)\mathbfsf{P} (B). 
   \]</p></span>
@@ -411,7 +425,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 047a36e78.
+      Copyright 2022 The Bourbaki Authors. Version 7e853e427.
     </span>
   </body>
 </html>
