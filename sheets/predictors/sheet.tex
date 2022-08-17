@@ -6,28 +6,28 @@ We discuss inferring (or learning) functions from examples.
 
 \ssection{Definitions}
 A \t{predictor} $f: \CU \to \CV$ is a function from $\CU$ to $\CV$.
-An \t{inducer} is a function from finite datasets in $\CU \times \CV$ to predictors from $\CU$ to $\CV$.
+An \t{inducer} is a function from finite datasets in $\CU \times  \CV$ to predictors from $\CU$ to $\CV$.
 A \t{learner} is a function family of inducers, indexed by $n$, each defined for datasets of size $n$.
 We call $\CU$ the \t{inputs}, $\CV$ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \CU$.
 
 \ssection{Predicting relations}
-A \t{relation inducer} is a function from finite datasets in $\CU \times \CV$ to \textit{relations} on $\CU \times \CV$.
-Since we can associate any relation $R$ between $\CU$ and $\CV$ with a function $f: \CU \times \CV \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.
+A \t{relation inducer} is a function from finite datasets in $\CU \times  \CV$ to \textit{relations} on $\CU \times  \CV$.
+Since we can associate any relation $R$ between $\CU$ and $\CV$ with a function $f: \CU \times  \CV \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.
 
 \ssubsection{Notation}
 
 Let $D$ be a dataset of size $n$ in $\CU \cross \CV$.
 Let $g: \CU \to \CV$, a predictor, which makes prediction $g(u)$ on input $u \in \CU$.
-Let $G_n: (\CU \cross \CV)^n \to (\CU \times \CV)$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$.
-Then $\set{G_n: (\CU \times \CV)^n \to \powerset{(\CU \times \CV)}}_{n \in \N}$ is a learner.
+Let $G_n: (\CU \cross \CV)^n \to (\CU \times  \CV)$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$.
+Then $\set{G_n: (\CU \times  \CV)^n \to \powerset{(\CU \times \CV)}}_{n \in \N}$ is a learner.
 
 \ssection{Consistent and complete datasets}
 
-Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R \subset X \times Y$ a relation.
+Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R \subset X \times  Y$ a relation.
 $D$ is \t{consistent with $R$} if each $(u_i, v_i) \in R$.
 $D$ is \t{consistent} if there exists a relation with which it is consistent.
-A dataset is always consistent (take $R = \CU \times \CV$).
-$D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \implies y_i = y_j$.
+A dataset is always consistent (take $R = \CU \times  \CV$).
+$D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \Rightarrow y_i = y_j$.
 $D$ is \t{functionally complete} if $\union_i\set{x_i} = X$.
 In this case, the dataset includes every element of the relation.
 

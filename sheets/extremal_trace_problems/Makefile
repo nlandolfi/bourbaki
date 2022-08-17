@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make extremal_trace_problems.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 extremal_trace_problems.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > extremal_trace_problems.tex
 
