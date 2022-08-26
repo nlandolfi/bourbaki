@@ -1,83 +1,88 @@
+<!--
+!name:classifier_errors
+!need:classifiers
+-->
+
+§ Why ⦉
 ¶ ⦊
-  ‖ ❲%!name:classifier_errors❳ ⦉
-
-  ‖ ❲%!need:classifiers❳ ⦉
-
-  ‖ ❲% %!need:set_numbers❳ ⦉
-⦉
-
-¶ ⦊
-  ‖ \ssection{Why} ⦉
-
   ‖ How should we compare two classifiers? ⦉
 ⦉
 
+§ Definition ⦉
 ¶ ⦊
-  ‖ \ssection{Definitions} ⦉
+  ‖ Let $u_1, …, u_n$ in $𝒰$ be a dataset of inputs and $v_1,
+    …, u_n$ in $𝒱$ be a dataset of labels. ⦉
 
-  ‖ Let $a^1, …, a^n$ in $A$ be a dataset of inputs and $b^1,
-    …, b^n$ in $B$ be a dataset of labels. ⦉
-
-  ‖ Let $G: A → B$ be a classifier. ⦉
+  ‖ Let $G: 𝒰 → 𝒱$ be a classifier. ⦉
 ⦉
 
 ¶ ⦊
   ‖ For each $i = 1, …, n$, the classifier associates a
-    prediction $G(a^i)$ with $a^i$. ⦉
+    prediction $G(u_i)$ with input $u_i$. ⦉
 
-  ‖ The prediction $G(a^i)$ is ❬correct❭ if $G(a^i) = b^i$ and
-    ❬incorrect❭ (❬wrong❭, ❬error❭) if $G(a^i) ≠ b^i$. ⦉
+  ‖ The prediction $G(u_i)$ is ❬correct❭ if $G(u_i) = b_i$ and
+    ❬incorrect❭ (❬wrong❭, an ❬error❭) if $G(a_i) ≠ b_i$. ⦉
 
   ‖ The ❬error rate❭ is the proportion of the dataset for which
-    the classifier’s prediction is an error. ⦉
+    the classifier’s prediction is an incorrect. ⦉
 
-  ‖ In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i) ≠ b^i}}$. ⦉
+  ‖ In other words, the error rate is $(1/n)\num{\Set{i}{G(a_i) ≠
+    b_i}}$. ⦉
 ⦉
 
 ¶ ⦊
   ‖ Given two classifiers, it is natural to prefer the one with
     the lower error rate. ⦉
 
-  ‖ Given that these two are the results of different inductors
-    applied to the same, we can use a separate dataset to
-    ❬validate❭ these. ⦉
+  ‖ If these two classifiers are the results of different
+    inductors applied to the same dataset, we can use a separate
+    dataset to ❬validate❭ these. ⦉
 ⦉
 
-¶ ⦊
-  ‖ \ssection{Boolean case} ⦉
-⦉
-
+§ Boolean case ⦉
 ¶ ⦊
   ‖ In the case that $B = \set{-1, 1}$, we call the class
-    $-1$ ❬negative❭ and the class $+1$ positive. ⦉
+    $-1$ ❬negative❭ and the class $+1$ ❬positive❭. ⦉
 
-  ‖ Similarly, we call an example $(a^i, b^i)$ a ❬negative
-    example❭ if $b^i = -1$ and a ❬positive example❭ if $b^i =
+  ‖ Similarly, we call an example $(u_i, v_i)$ a ❬negative
+    example❭ if $b_i = -1$ and a ❬positive example❭ if $b_i =
     1$. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ ❲%For input $a^i$, label $b^i$, prediction $G(b^i)$, there are four values for $(b^i, G(b^i))$.❳ ⦉
+  ‖ We call the result of $u_i$ under classifier $G$ a ❬true
+    positive❭ if $v_i = 1$ and $G(u_i) = 1$, a ❬true negative❭
+    if $v_i = -1$ and $G(v_i) = -1$. ⦉
 
-  ‖ We call the result of $G$ on $a^i$ a ❬true positive❭ if
-    $b^i = 1$ and $G(a^i) = 1$, a ❬true negative❭ if $b^i =
-    -1$ and $G(b^i) = -1$, a ❬false negative❭ (or ❬type II
-    error❭, read “type two error}) if $b^i = 1$ and $G(a^i) =
-    -1$ and a ❬false positive❭ (or ❬type I error❭, read
-    \say{type one error”) if $b^i = -1$ and $G(a^i) = 1$. ⦉
+  ‖ In these two cases, the classifier has predicted the label
+    correctly. ⦉
+⦉
+
+¶ ⦊
+  ‖ We call the result of $u_i$ under classifier $G$ a ❬false
+    positive❭ (or ❬type I error❭, read “type one error”) if $v_i
+    = -1$ and $G(u_i) = 1$ and a ❬false negative❭ (or ❬type II
+    error❭, read “type two error”) if $v_i = 1$ and $G(u_i) =
+    -1$. ⦉
+
+  ‖ In these two cases the classifier has predicted the label
+    incorrectly. ⦉
+
+  ‖ Notice that the words positive and negative reference the
+    classifier’s prediction, not the true label. ⦉
 ⦉
 
 ¶ ⦊
   ‖ The ❬false positive rate❭ (❬false negative rate❭) of a
     classifier on a dataset is the proportion of dataset elements
     for which it predicts a ❬false positive❭ (❬false negative❭). ⦉
-⦉
 
-¶ ⦊
   ‖ The ❬true positive rate❭ (or ❬sensitivity❭, ❬recall❭) of $G$
     on a dataset is the proportion of positive examples which
     $G$ labels positive. ⦉
+⦉
 
+¶ ⦊
   ‖ The ❬precision❭ (or ❬positive predictive value❭) of $G$ is
     the proportion of all examples which the classifier labels
     $positive$ whose label is positive. ⦉
@@ -89,6 +94,6 @@
     examples which $G$ ‹incorrectly› labels positive. ⦉
 ⦉
 
-¶ ⦊
+<tex>
   ‖ \blankpage ⦉
-⦉
+</tex>
