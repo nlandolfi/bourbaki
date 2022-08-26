@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make hidden_memory_chains.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 hidden_memory_chains.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > hidden_memory_chains.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make index_matrices.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 index_matrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > index_matrices.tex
 

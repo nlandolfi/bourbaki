@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make statements.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 statements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > statements.tex
 
