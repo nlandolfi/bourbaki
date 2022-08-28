@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make weighted_least_squares_linear_regressors.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 weighted_least_squares_linear_regressors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > weighted_least_squares_linear_regressors.tex
 

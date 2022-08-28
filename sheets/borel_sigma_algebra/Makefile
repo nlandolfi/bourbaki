@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make borel_sigma_algebra.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 borel_sigma_algebra.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > borel_sigma_algebra.tex
 

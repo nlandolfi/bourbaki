@@ -41,11 +41,28 @@ type ParseResult struct {
 
 	HasLitFile bool
 	litNode    *lit.Node
+
+	globalResultsMap map[string]*ParseResult
 }
 
 func (p *ParseResult) LitHTML() string {
 	var b bytes.Buffer
 	lit.WriteHTML(&b, p.litNode, "", " ")
+	return b.String()
+}
+
+func (p *ParseResult) MacrosHTML() string {
+	var b bytes.Buffer
+	fmt.Fprintf(&b, "<!-- %d %d -->", len(p.AllNeeds), len(p.NeedsParsed))
+	for _, need := range p.AllNeeds {
+		pr := p.globalResultsMap[need]
+		for _, l := range pr.MacrosLines {
+			fmt.Fprintf(&b, "\n\n<!-- %s -->\n\n", l)
+			//			fmt.Fprint(&b, "\\(")
+			fmt.Fprint(&b, l)
+			//			fmt.Fprint(&b, "\\)\n")
+		}
+	}
 	return b.String()
 }
 
@@ -193,6 +210,7 @@ func ParseAll(sheetsdir string) ([]*ParseResult, error) {
 	}
 	for _, p := range results {
 		p.AllNeeds = allNeeds(p, m)
+		p.globalResultsMap = m
 	}
 	return results, nil
 }
