@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make quantified_statements.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 quantified_statements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > quantified_statements.tex
 
