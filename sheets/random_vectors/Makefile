@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make random_vectors.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 random_vectors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_vectors.tex
 

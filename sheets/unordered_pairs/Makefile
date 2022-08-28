@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make unordered_pairs.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 unordered_pairs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > unordered_pairs.tex
 
