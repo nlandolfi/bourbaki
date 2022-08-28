@@ -92,17 +92,34 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
-                  Z: ["\\mathbfsf{Z}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
                   F: ["\\mathbfsf{F}"],
                   aff: ["\\mathsf{aff}"],
+                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
       };
     </script>
+    <!--
+    <script>
+      console.log("here");
+MathJax.Hub.Config({
+TeX: {Augment: {
+Definitions: {macros: {nicefrac: 'NiceFrac'}},
+Parse: {prototype: {
+  NiceFrac: function (name) {
+          var num = this.ParseArg(name);
+                  var den = this.ParseArg(name);
+                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+                                }
+                                    }}
+                                      }}
+                                      });
+    </script>
+    -->
     <script src="../mathjax/polyfill.min.js"></script>
     <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
     <!--
@@ -126,7 +143,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to visualize the probabilistic relations between components of outcomes in probabilistic models over large (e.g., product) outcome sets.\footnote{Future editions will modify and expand. The title of the sheet may change, since another interpretation for the words "directed graph distribution} is a distribution on directed graphs."</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A = \prod_{i} A_i$. For $x \in A$ and $S \subset \set{1, \dots, n}$, denote the subvector of $x$ indexed (in order) by $S$ by $x_S$.\footnote{Future editions will rework this treatment, perhaps combining it with the sheet \sheetref{index_matrices}{Index Matrices}, which will possibly be split up.}</p></div><div class="sheet-listing"><p class="sheet"> A distribution $p: A \to [0, 1]$ \t{factors according to a directed graph} on $\set{0, 1}$ with parent function $\pa: \set{1,\dots,n} \to \powerset{\set{1, \dots, n}}$ if \[ p(x) = \prod_{\pa_i = \emptyset} g_i(x_i) \prod_{\pa_i \neq \emptyset} g_{i}(x_i, x_{\pa_i}), \] where  $g_i$ is a distribution for all $i$ which $\pa_i = \emptyset$ and $g_{i}(\cdot, \xi)$ is a distribution for all $\xi \in \prod_{j \in \pa_i} A_j$, $i$ for which $\pa_i \neq \emptyset$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $p$ so defined is a distribution, and the $g_i$ are the marginals and conditionals.\footnote{Future editions will be precise and give an account.} \end{proposition}</p></div><div class="sheet-listing" id="examples"><h1 class="sheet">3. Examples</h1></div><div class="sheet-listing"><p class="sheet"> Consider a rooted tree distribution (see \sheetref{rooted_tree_distributions}{Rooted Tree Distributions}), or a memory chain (see \sheetref{memory_chains}{Memory Chains}), or a hidden memory chain (see \sheetref{hidden_memory_chains}{Hidden Memory Chains}).\footnote{Future editions will expand.}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to visualize the probabilistic relations between components of outcomes in probabilistic models over large (e.g., product) outcome sets. \ifhmode\unskip\fi\footnote{ Future editions will modify and expand. The title of the sheet may change, since another interpretation for the words "directed graph distribution" is a distribution on directed graphs. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $X_1, \dots , X_k$ are sets and define $X = \prod_{i = 1}^k X_i$. For $x \in X$ and $S \subset \set{1, \dots , n}$, denote the subvector of $x$ indexed (in order) by $S$ by $x_S$. \ifhmode\unskip\fi\footnote{ Future editions will rework this treatment, perhaps combining it with the sheet \sheetref{index_matrices}{Index Matrices}, which will possibly be split up. }</p></div><div class="sheet-listing"><p class="sheet"> A distribution $p: X \to [0, 1]$ \t{factors according to a directed graph} on $\set{1, \dots , n}$ with parent function $\pa: \set{1,\dots ,n} \to \powerset{\set{1, \dots , n}}$ if \[ p(x) = \prod_{\pa_i = \varnothing} g_i(x_i) \prod_{\pa_i \neq \varnothing} g_{i}(x_i, x_{\pa_i}), \] where $g_i$ is a distribution for all $i$ which $\pa_i = \varnothing$ and $g_{i}(\cdot , \xi )$ is a distribution for all $\xi  \in \prod_{j \in \pa_i} A_j$, $i$ for which $\pa_i \neq \varnothing$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}$p$ so defined is a distribution, and the $g_i$ are the marginals and conditionals. \ifhmode\unskip\fi\footnote{ Future editions will be precise and give an account. }\end{proposition} \section*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> Consider a rooted tree distribution (see \sheetref{rooted_tree_distributions}{Rooted Tree Distributions}), or a memory chain (see \sheetref{memory_chains}{Memory Chains}), or a hidden memory chain (see \sheetref{hidden_memory_chains}{Hidden Memory Chains}). \ifhmode\unskip\fi\footnote{ Future editions will expand. }</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -237,12 +254,993 @@ MathJax.Hub.Config({
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
+\(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
     </span>
 
     <span style="display:none">
-      <!-- 93 93 -->
+      <!-- 93 0 -->
+
+<!-- \newcounter{caccounts} -->
+
+\newcounter{caccounts}
+
+<!-- \newcounter{caccountlineno}[caccounts] -->
+
+\newcounter{caccountlineno}[caccounts]
+
+<!-- \newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1} -->
+
+\newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1}
+
+<!-- \newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2} -->
+
+\newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2}
+
+<!-- \newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3} -->
+
+\newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3}
+
+<!-- \newcommand{\lref}[1]{\texttt{(\ref{#1})}} -->
+
+\newcommand{\lref}[1]{\texttt{(\ref{#1})}}
+
+<!--  -->
+
+
+
+<!-- \newenvironment{caccount}{ -->
+
+\newenvironment{caccount}{
+
+<!--   \refstepcounter{caccounts} -->
+
+  \refstepcounter{caccounts}
+
+<!-- }{ -->
+
+}{
+
+<!-- } -->
+
+}
+
+<!-- \newenvironment{blankaccount}[1][]{ -->
+
+\newenvironment{blankaccount}[1][]{
+
+<!--    \hspace{-1.6cm} -->
+
+   \hspace{-1.6cm}
+
+<!--    \begin{tabular}{r|rlcc} -->
+
+   \begin{tabular}{r|rlcc}
+
+<!-- }{ -->
+
+}{
+
+<!--   \end{tabular} -->
+
+  \end{tabular}
+
+<!--   \medskip -->
+
+  \medskip
+
+<!-- } -->
+
+}
+
+<!-- \newcounter{accounts} -->
+
+\newcounter{accounts}
+
+<!-- \newcounter{accountlineno}[accounts] -->
+
+\newcounter{accountlineno}[accounts]
+
+<!-- \newenvironment{account}[1][]{ -->
+
+\newenvironment{account}[1][]{
+
+<!-- \refstepcounter{accounts} -->
+
+\refstepcounter{accounts}
+
+<!-- \noindent\textbf{Account~\theaccounts. #1} \rmfamily \\ -->
+
+\noindent\textbf{Account~\theaccounts. #1} \rmfamily \\
+
+<!--  -->
+
+
+
+<!--     \vspace*{-0.4cm} -->
+
+    \vspace*{-0.4cm}
+
+<!--    \hspace{-1.6cm} -->
+
+   \hspace{-1.6cm}
+
+<!--    \begin{tabular}{r|rlcc} -->
+
+   \begin{tabular}{r|rlcc}
+
+<!-- }{ -->
+
+}{
+
+<!--   \end{tabular} -->
+
+  \end{tabular}
+
+<!--   \medskip -->
+
+  \medskip
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\} -->
+
+\newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\}
+
+<!-- \newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\} -->
+
+\newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\thus}[3]{ -->
+
+\newcommand{\thus}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\idet}[3]{ -->
+
+\newcommand{\idet}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\same}[3]{ -->
+
+\newcommand{\same}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\ie}[3]{ -->
+
+\newcommand{\ie}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!-- % objects macros -->
+
+% objects macros
+
+<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
+
+\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
+
+<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
+
+\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
+
+<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
+
+\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
+
+<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
+
+\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
+
+\newcommand{\Z}{\mathbfsf{Z}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \set{stuff} for { stuff } -->
+
+% use \set{stuff} for { stuff }
+
+<!-- % use \set* for autosizing delimiters -->
+
+% use \set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiter{\set}{\{}{\}} -->
+
+\DeclarePairedDelimiter{\set}{\{}{\}}
+
+<!--  -->
+
+
+
+<!-- % usual epsilon is too close to \in -->
+
+% usual epsilon is too close to \in
+
+<!-- \renewcommand{\epsilon}{\varepsilon} -->
+
+\renewcommand{\epsilon}{\varepsilon}
+
+<!--  -->
+
+
+
+<!-- % usual emptyset is too close to 0 -->
+
+% usual emptyset is too close to 0
+
+<!-- \renewcommand{\emptyset}{\varnothing} -->
+
+\renewcommand{\emptyset}{\varnothing}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\SA}{\mathcal{A}} -->
+
+\newcommand{\SA}{\mathcal{A}}
+
+<!-- \newcommand{\SB}{\mathcal{B}} -->
+
+\newcommand{\SB}{\mathcal{B}}
+
+<!-- \newcommand{\SC}{\mathcal{C}} -->
+
+\newcommand{\SC}{\mathcal{C}}
+
+<!-- \newcommand{\SD}{\mathcal{D}} -->
+
+\newcommand{\SD}{\mathcal{D}}
+
+<!-- \newcommand{\SE}{\mathcal{E}} -->
+
+\newcommand{\SE}{\mathcal{E}}
+
+<!-- \newcommand{\SF}{\mathcal{F}} -->
+
+\newcommand{\SF}{\mathcal{F}}
+
+<!-- \newcommand{\SG}{\mathcal{G}} -->
+
+\newcommand{\SG}{\mathcal{G}}
+
+<!-- \newcommand{\SH}{\mathcal{H}} -->
+
+\newcommand{\SH}{\mathcal{H}}
+
+<!-- \newcommand{\SI}{\mathcal{I}} -->
+
+\newcommand{\SI}{\mathcal{I}}
+
+<!-- \newcommand{\SJ}{\mathcal{J}} -->
+
+\newcommand{\SJ}{\mathcal{J}}
+
+<!-- \newcommand{\SK}{\mathcal{K}} -->
+
+\newcommand{\SK}{\mathcal{K}}
+
+<!-- \newcommand{\SL}{\mathcal{L}} -->
+
+\newcommand{\SL}{\mathcal{L}}
+
+<!-- \newcommand{\SM}{\mathcal{M}} -->
+
+\newcommand{\SM}{\mathcal{M}}
+
+<!-- \newcommand{\SN}{\mathcal{N}} -->
+
+\newcommand{\SN}{\mathcal{N}}
+
+<!-- \newcommand{\SO}{\mathcal{O}} -->
+
+\newcommand{\SO}{\mathcal{O}}
+
+<!-- \newcommand{\SP}{\mathcal{P}} -->
+
+\newcommand{\SP}{\mathcal{P}}
+
+<!-- \newcommand{\SQ}{\mathcal{Q}} -->
+
+\newcommand{\SQ}{\mathcal{Q}}
+
+<!-- \newcommand{\SR}{\mathcal{R}} -->
+
+\newcommand{\SR}{\mathcal{R}}
+
+<!-- %\newcommand{\SS}{\mathcal{S}} -->
+
+%\newcommand{\SS}{\mathcal{S}}
+
+<!-- \newcommand{\ST}{\mathcal{T}} -->
+
+\newcommand{\ST}{\mathcal{T}}
+
+<!-- \newcommand{\SU}{\mathcal{U}} -->
+
+\newcommand{\SU}{\mathcal{U}}
+
+<!-- \newcommand{\SV}{\mathcal{V}} -->
+
+\newcommand{\SV}{\mathcal{V}}
+
+<!-- \newcommand{\SW}{\mathcal{W}} -->
+
+\newcommand{\SW}{\mathcal{W}}
+
+<!-- \newcommand{\SX}{\mathcal{X}} -->
+
+\newcommand{\SX}{\mathcal{X}}
+
+<!-- \newcommand{\SY}{\mathcal{Y}} -->
+
+\newcommand{\SY}{\mathcal{Y}}
+
+<!-- \newcommand{\SZ}{\mathcal{Z}} -->
+
+\newcommand{\SZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\CA}{\mathcal{A}} -->
+
+\newcommand{\CA}{\mathcal{A}}
+
+<!-- \newcommand{\CB}{\mathcal{B}} -->
+
+\newcommand{\CB}{\mathcal{B}}
+
+<!-- \newcommand{\CC}{\mathcal{C}} -->
+
+\newcommand{\CC}{\mathcal{C}}
+
+<!-- \newcommand{\CD}{\mathcal{D}} -->
+
+\newcommand{\CD}{\mathcal{D}}
+
+<!-- \newcommand{\CE}{\mathcal{E}} -->
+
+\newcommand{\CE}{\mathcal{E}}
+
+<!-- \newcommand{\CF}{\mathcal{F}} -->
+
+\newcommand{\CF}{\mathcal{F}}
+
+<!-- \newcommand{\CG}{\mathcal{G}} -->
+
+\newcommand{\CG}{\mathcal{G}}
+
+<!-- \newcommand{\CH}{\mathcal{H}} -->
+
+\newcommand{\CH}{\mathcal{H}}
+
+<!-- \newcommand{\CI}{\mathcal{I}} -->
+
+\newcommand{\CI}{\mathcal{I}}
+
+<!-- \newcommand{\CJ}{\mathcal{J}} -->
+
+\newcommand{\CJ}{\mathcal{J}}
+
+<!-- \newcommand{\CK}{\mathcal{K}} -->
+
+\newcommand{\CK}{\mathcal{K}}
+
+<!-- \newcommand{\CL}{\mathcal{L}} -->
+
+\newcommand{\CL}{\mathcal{L}}
+
+<!-- \newcommand{\CM}{\mathcal{M}} -->
+
+\newcommand{\CM}{\mathcal{M}}
+
+<!-- \newcommand{\CN}{\mathcal{N}} -->
+
+\newcommand{\CN}{\mathcal{N}}
+
+<!-- \newcommand{\CO}{\mathcal{O}} -->
+
+\newcommand{\CO}{\mathcal{O}}
+
+<!-- \newcommand{\CP}{\mathcal{P}} -->
+
+\newcommand{\CP}{\mathcal{P}}
+
+<!-- \newcommand{\CQ}{\mathcal{Q}} -->
+
+\newcommand{\CQ}{\mathcal{Q}}
+
+<!-- \newcommand{\CR}{\mathcal{R}} -->
+
+\newcommand{\CR}{\mathcal{R}}
+
+<!-- \newcommand{\CS}{\mathcal{S}} -->
+
+\newcommand{\CS}{\mathcal{S}}
+
+<!-- \newcommand{\CT}{\mathcal{T}} -->
+
+\newcommand{\CT}{\mathcal{T}}
+
+<!-- \newcommand{\CU}{\mathcal{U}} -->
+
+\newcommand{\CU}{\mathcal{U}}
+
+<!-- \newcommand{\CV}{\mathcal{V}} -->
+
+\newcommand{\CV}{\mathcal{V}}
+
+<!-- \newcommand{\CW}{\mathcal{W}} -->
+
+\newcommand{\CW}{\mathcal{W}}
+
+<!-- \newcommand{\CX}{\mathcal{X}} -->
+
+\newcommand{\CX}{\mathcal{X}}
+
+<!-- \newcommand{\CY}{\mathcal{Y}} -->
+
+\newcommand{\CY}{\mathcal{Y}}
+
+<!-- \newcommand{\CZ}{\mathcal{Z}} -->
+
+\newcommand{\CZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
+
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
+
+\renewcommand{\complement}[1]{C({#1})}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\cross}{\times} -->
+
+\newcommand{\cross}{\times}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\op}[1]{\left(#1\right)} -->
+
+\newcommand{\op}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
+
+\newcommand{\tuple}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
+
+\newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \Set{a}{b} for {a | b} -->
+
+% use \Set{a}{b} for {a | b}
+
+<!-- % use \Set* for autosizing delimiters -->
+
+% use \Set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2} -->
+
+\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
+
+<!-- % absolute_value macros -->
+
+% absolute_value macros
+
+<!-- % \ifdefined\abs -->
+
+% \ifdefined\abs
+
+<!-- % \else -->
+
+% \else
+
+<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
+
+%  \newcommand{\abs}[1]{\left|#1\right|}
+
+<!-- % \fi -->
+
+% \fi
+
+<!-- % the above was creating issues - NCL 2/24/2022 -->
+
+% the above was creating issues - NCL 2/24/2022
+
+<!--  -->
+
+
+
+<!-- % following (roughly) the example of set_numbers/macros -->
+
+% following (roughly) the example of set_numbers/macros
+
+<!-- \newcommand{\intabs}[1]{\left|#1\right|} -->
+
+\newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\id}{\mathword{id}} -->
+
+\newcommand{\id}{\mathword{id}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\union}{\,\cup\,} -->
+
+\newcommand{\union}{\,\cup\,}
+
+<!-- \newcommand{\bunion}{\bigcup} -->
+
+\newcommand{\bunion}{\bigcup}
+
+<!-- \newcommand{\bintersection}{\bigcap} -->
+
+\newcommand{\bintersection}{\bigcap}
+
+<!-- \newcommand{\intersect}{\cap} -->
+
+\newcommand{\intersect}{\cap}
+
+<!-- \newcommand{\intersection}{\cap} -->
+
+\newcommand{\intersection}{\cap}
+
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
+
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
+<!-- \newcommand{\R}{\mathbfsf{R}} -->
+
+\newcommand{\R}{\mathbfsf{R}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\dom}{\mathword{dom}} -->
+
+\newcommand{\dom}{\mathword{dom}}
+
+<!-- \newcommand{\ran}{\mathword{range}} -->
+
+\newcommand{\ran}{\mathword{range}}
+
+<!-- \newcommand{\range}{\ran} -->
+
+\newcommand{\range}{\ran}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\product}{\prod} -->
+
+\newcommand{\product}{\prod}
+
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+
+\def\oright#1{\right#1\mskip-10mu\circ}
+
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
+
+\def\oleft#1{\circ\mskip-10mu\left#1}
+
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
+
+<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
+
+\newcommand{\idfn}[1]{\text{id}_{#1}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
+
+\newcommand{\inv}[1]{{#1}^{-1}}
+
+<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
+
+\newcommand{\inverse}[1]{\inv{#1}}
+
+<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
+
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
+
+<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
+
+\newcommand{\inversep}[1]{\invp{#1}}
+
+<!-- \newcommand{\eqc}[1]{[#1]} -->
+
+\newcommand{\eqc}[1]{[#1]}
+
+<!-- \newcommand{\PE}{\mathbfsf{P}} -->
+
+\newcommand{\PE}{\mathbfsf{P}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
+
+<!-- % \newcommand{\pa}{\mathword{pa}} -->
+
+% \newcommand{\pa}{\mathword{pa}}
+
+<!-- % \newcommand{\ch}{\mathword{ch}} -->
+
+% \newcommand{\ch}{\mathword{ch}}
+
+<!-- \newcommand{\lev}{\mathword{lev}} -->
+
+\newcommand{\lev}{\mathword{lev}}
+
+<!-- \newcommand{\dsc}{\mathword{dsc}} -->
+
+\newcommand{\dsc}{\mathword{dsc}}
+
+<!-- \newcommand{\anc}{\mathword{anc}} -->
+
+\newcommand{\anc}{\mathword{anc}}
+
+<!-- \newcommand{\adj}{\mathword{adj}} -->
+
+\newcommand{\adj}{\mathword{adj}}
+
+<!-- \renewcommand{\deg}{\mathword{deg}} -->
+
+\renewcommand{\deg}{\mathword{deg}}
+
+<!-- \newcommand{\pa}{\mathword{pa}} -->
+
+\newcommand{\pa}{\mathword{pa}}
+
+<!-- \newcommand{\ch}{\mathword{ch}} -->
+
+\newcommand{\ch}{\mathword{ch}}
     </span>
 
+  
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Directed Graph Distributions </h1> 
+      <!--
+!name:directed_graph_distributions
+!need:hidden_memory_chains
+!need:directed_graphs
+!need:rooted_tree_distributions
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We want to visualize the probabilistic relations
+  between components of outcomes in probabilistic
+  models over large (e.g., product) outcome sets.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Suppose $X_1, …, X_k$ are sets and define $X
+  = ∏_{i = 1}^k X_i$. </span>
+
+ <span class='run'>For $x ∈ X$ and $S ⊂ \set{1, …, n}$, denote
+  the subvector of $x$ indexed (in order) by $S$
+  by $x_S$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+</p>
+
+
+<p>
+ <span class='run'>A distribution $p: X → [0, 1]$
+  <span class='term'>factors according to a directed
+  graph</span> on $\set{1, …, n}$ with parent
+  function $\pa: \set{1,…,n} → \powerset{\set{1, …,
+  n}}$ if
+  <p>\[
+   p(x) = \prod_{\pa_i = \varnothing} g_i(x_i) \prod_{\pa_i \neq
+    \varnothing} g_{i}(x_i, x_{\pa_i}), 
+  \]</p>
+  where $g_i$ is a distribution for all $i$
+  which $\pa_i = ∅$ and $g_{i}(·, ξ)$ is a
+  distribution for all $ξ ∈ ∏_{j ∈ \pa_i} A_j$,
+  $i$ for which $\pa_i ≠ ∅$. </span>
+</p>
+
+<div class='proposition' <span class='run'>$p$ so defined is a distribution, and the
+  $g_i$ are the marginals and conditionals.<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup></span></div>
+<h1>
+Examples </h1>
+
+<p>
+ <span class='run'>Consider a rooted tree distribution (see
+  \sheetref{rooted_tree_distributions}{Rooted Tree
+  Distributions}), or a memory chain (see
+  \sheetref{memory_chains}{Memory Chains}), or a
+  hidden memory chain (see
+  \sheetref{hidden_memory_chains}{Hidden Memory
+  Chains}).<sup id='footnote-4-reference'><a href='#footnote-4'>4</a></sup></span>
+</p>
+<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify and expand. The
+  title of the sheet may change, since another
+  interpretation for the words “directed graph
+  distribution” is a distribution on directed
+  graphs. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will rework this treatment,
+  perhaps combining it with the sheet
+  \sheetref{index_matrices}{Index Matrices}, which
+  will possibly be split up. </span><a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>Future editions will be precise and give an
+  account. </span><a href='#footnote-3-reference'>↩︎</a></li><li id='footnote-4'> <span class='run'>Future editions will expand. </span><a href='#footnote-4-reference'>↩︎</a></li></ol>
+    </div>
   
 
   <!--
@@ -295,7 +1293,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 4ab688d9b.
+      Copyright 2022 The Bourbaki Authors. Version f4c410309.
     </span>
   </body>
 </html>

@@ -78,17 +78,34 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
-                  Z: ["\\mathbfsf{Z}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
                   F: ["\\mathbfsf{F}"],
                   aff: ["\\mathsf{aff}"],
+                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
       };
     </script>
+    <!--
+    <script>
+      console.log("here");
+MathJax.Hub.Config({
+TeX: {Augment: {
+Definitions: {macros: {nicefrac: 'NiceFrac'}},
+Parse: {prototype: {
+  NiceFrac: function (name) {
+          var num = this.ParseArg(name);
+                  var den = this.ParseArg(name);
+                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+                                }
+                                    }}
+                                      }}
+                                      });
+    </script>
+    -->
     <script src="../mathjax/polyfill.min.js"></script>
     <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
     <!--
@@ -112,7 +129,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want symbols for "and}, \say{or}, \say{not}, and \say{implies". \ifhmode\unskip\fi\footnote{ This sheet does not explain logic. In the next edition there will be several more sheets serving this function. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Overview}</p></div><div class="sheet-listing"><p class="sheet"> We call $=$ and $\in$ \t{relational symbols}. They say how the objects denoted by a pair of placeholder names relate to each other in the sense of being or belonging. We call $\_=\_$ and $\_\in\_$ \t{simple statements}. They denote simple sentences "the object denoted by \_ is the object denoted by \_} and \say{the object denoted by \_ belongs to the set denoted by \_". The symbols introduced here are \t{logical symbols} and statements using them are \t{logical statements}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Conjunction}</p></div><div class="sheet-listing"><p class="sheet"> Consider the symbol $\land$. We will agree that it means "and". If we want to make two simple statements like $a = b$ and $a \in A$ at once, we write write $(a = b) \land (a \in A)$. The symbol $\land$ is symmetric, reflecting the fact that a statement like $(a \in A) \land (a = b)$ means the same as $(a = b) \land (a \in A)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Disjunction}</p></div><div class="sheet-listing"><p class="sheet"> Consider the symbol $\lor$. We will agree that it means "or" in the sense of either one, the other, or both. If we want to say that at least one of the simple statements like $a = b$ and $a \in A$, we write write $(a = b) \lor (a \in A)$. The symbol $\lor$ is symmetric, reflecting the fact that a statement like $(a \in A) \lor (a = b)$ means the same as $(a = b) \lor (a \in A)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Negation}</p></div><div class="sheet-listing"><p class="sheet"> Consider the symbol $\neg$. We will agree that it means "not". We will use it to say that one object "is not} another object and one object \say{does not belong to" another object. If we want to say the opposite of a simple statement like $a = b$ we will write $\neg(a = b)$. We read it aloud as "not a is b} or (the more desirable) \say{a is not b". Similarly, $\neg(a \in A)$ we read as "not, the object denoted by $a$ belongs to the set denoted by $A$". Again, the more desirable english expression is something like "the object denoted by $a$ does not belong to the set $A$." For these reasons, we introduce two new symbols $\neq$ and $\not\in$. $a \neq b$ means $\neg(a = b)$ and $a \not\in A$ means $\neg(a \in A)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Implication}</p></div><div class="sheet-listing"><p class="sheet"> Consider the symbol $\implies$. We will agree that it means "implies". For example $(a \in A) \implies (a \in B)$ means "the object denoted by $a$ belongs to the object denoted by $A$ implies the object denoted by $a$ belongs to the set denoted by $B$". It is the same as $(\neg(a \in A)) \lor (a \in B)$. In other words, if $a \in A$, then always $a \in B$. The symbol $\implies$ is not symmetric, since implication is not symmetric. The symbol $\iff$ means "if and only if".</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want symbols for "and}, \say{or}, \say{not}, and \say{implies". \ifhmode\unskip\fi\footnote{ This sheet does not explain logic. In the next edition there will be several more sheets serving this function. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Overview}</p></div><div class="sheet-listing"><p class="sheet"> We call $=$ and $\in$ \t{relational symbols}. They say how the objects denoted by a pair of placeholder names relate to each other in the sense of being or belonging. We call $\\_=\\_$ and $\\_\in\\_$ \t{simple statements}. They denote simple sentences "the object denoted by \_ is the object denoted by \_} and \say{the object denoted by \_ belongs to the set denoted by \_". The symbols introduced here are \t{logical symbols} and statements using them are \t{logical statements}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Conjunction}</p></div><div class="sheet-listing"><p class="sheet"> Consider the symbol $\land$. We will agree that it means "and". If we want to make two simple statements like $a = b$ and $a \in A$ at once, we write write $(a = b) \land (a \in A)$. The symbol $\land$ is symmetric, reflecting the fact that a statement like $(a \in A) \land (a = b)$ means the same as $(a = b) \land (a \in A)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Disjunction}</p></div><div class="sheet-listing"><p class="sheet"> Consider the symbol $\lor$. We will agree that it means "or" in the sense of either one, the other, or both. If we want to say that at least one of the simple statements like $a = b$ and $a \in A$, we write write $(a = b) \lor (a \in A)$. The symbol $\lor$ is symmetric, reflecting the fact that a statement like $(a \in A) \lor (a = b)$ means the same as $(a = b) \lor (a \in A)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Negation}</p></div><div class="sheet-listing"><p class="sheet"> Consider the symbol $\neg$. We will agree that it means "not". We will use it to say that one object "is not} another object and one object \say{does not belong to" another object. If we want to say the opposite of a simple statement like $a = b$ we will write $\neg(a = b)$. We read it aloud as "not a is b} or (the more desirable) \say{a is not b". Similarly, $\neg(a \in A)$ we read as "not, the object denoted by $a$ belongs to the set denoted by $A$". Again, the more desirable english expression is something like "the object denoted by $a$ does not belong to the set $A$." For these reasons, we introduce two new symbols $\neq$ and $\not\in$. $a \neq b$ means $\neg(a = b)$ and $a \not\in A$ means $\neg(a \in A)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Implication}</p></div><div class="sheet-listing"><p class="sheet"> Consider the symbol $\implies$. We will agree that it means "implies". For example $(a \in A) \implies (a \in B)$ means "the object denoted by $a$ belongs to the object denoted by $A$ implies the object denoted by $a$ belongs to the set denoted by $B$". It is the same as $(\neg(a \in A)) \lor (a \in B)$. In other words, if $a \in A$, then always $a \in B$. The symbol $\implies$ is not symmetric, since implication is not symmetric. The symbol $\iff$ means "if and only if".</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -223,15 +240,288 @@ MathJax.Hub.Config({
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
+\(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
     </span>
 
     <span style="display:none">
-      <!-- 6 6 -->
+      <!-- 6 0 -->
+
+<!-- % objects macros -->
+
+% objects macros
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \set{stuff} for { stuff } -->
+
+% use \set{stuff} for { stuff }
+
+<!-- % use \set* for autosizing delimiters -->
+
+% use \set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiter{\set}{\{}{\}} -->
+
+\DeclarePairedDelimiter{\set}{\{}{\}}
+
+<!--  -->
+
+
+
+<!-- % usual epsilon is too close to \in -->
+
+% usual epsilon is too close to \in
+
+<!-- \renewcommand{\epsilon}{\varepsilon} -->
+
+\renewcommand{\epsilon}{\varepsilon}
+
+<!--  -->
+
+
+
+<!-- % usual emptyset is too close to 0 -->
+
+% usual emptyset is too close to 0
+
+<!-- \renewcommand{\emptyset}{\varnothing} -->
+
+\renewcommand{\emptyset}{\varnothing}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\SA}{\mathcal{A}} -->
+
+\newcommand{\SA}{\mathcal{A}}
+
+<!-- \newcommand{\SB}{\mathcal{B}} -->
+
+\newcommand{\SB}{\mathcal{B}}
+
+<!-- \newcommand{\SC}{\mathcal{C}} -->
+
+\newcommand{\SC}{\mathcal{C}}
+
+<!-- \newcommand{\SD}{\mathcal{D}} -->
+
+\newcommand{\SD}{\mathcal{D}}
+
+<!-- \newcommand{\SE}{\mathcal{E}} -->
+
+\newcommand{\SE}{\mathcal{E}}
+
+<!-- \newcommand{\SF}{\mathcal{F}} -->
+
+\newcommand{\SF}{\mathcal{F}}
+
+<!-- \newcommand{\SG}{\mathcal{G}} -->
+
+\newcommand{\SG}{\mathcal{G}}
+
+<!-- \newcommand{\SH}{\mathcal{H}} -->
+
+\newcommand{\SH}{\mathcal{H}}
+
+<!-- \newcommand{\SI}{\mathcal{I}} -->
+
+\newcommand{\SI}{\mathcal{I}}
+
+<!-- \newcommand{\SJ}{\mathcal{J}} -->
+
+\newcommand{\SJ}{\mathcal{J}}
+
+<!-- \newcommand{\SK}{\mathcal{K}} -->
+
+\newcommand{\SK}{\mathcal{K}}
+
+<!-- \newcommand{\SL}{\mathcal{L}} -->
+
+\newcommand{\SL}{\mathcal{L}}
+
+<!-- \newcommand{\SM}{\mathcal{M}} -->
+
+\newcommand{\SM}{\mathcal{M}}
+
+<!-- \newcommand{\SN}{\mathcal{N}} -->
+
+\newcommand{\SN}{\mathcal{N}}
+
+<!-- \newcommand{\SO}{\mathcal{O}} -->
+
+\newcommand{\SO}{\mathcal{O}}
+
+<!-- \newcommand{\SP}{\mathcal{P}} -->
+
+\newcommand{\SP}{\mathcal{P}}
+
+<!-- \newcommand{\SQ}{\mathcal{Q}} -->
+
+\newcommand{\SQ}{\mathcal{Q}}
+
+<!-- \newcommand{\SR}{\mathcal{R}} -->
+
+\newcommand{\SR}{\mathcal{R}}
+
+<!-- %\newcommand{\SS}{\mathcal{S}} -->
+
+%\newcommand{\SS}{\mathcal{S}}
+
+<!-- \newcommand{\ST}{\mathcal{T}} -->
+
+\newcommand{\ST}{\mathcal{T}}
+
+<!-- \newcommand{\SU}{\mathcal{U}} -->
+
+\newcommand{\SU}{\mathcal{U}}
+
+<!-- \newcommand{\SV}{\mathcal{V}} -->
+
+\newcommand{\SV}{\mathcal{V}}
+
+<!-- \newcommand{\SW}{\mathcal{W}} -->
+
+\newcommand{\SW}{\mathcal{W}}
+
+<!-- \newcommand{\SX}{\mathcal{X}} -->
+
+\newcommand{\SX}{\mathcal{X}}
+
+<!-- \newcommand{\SY}{\mathcal{Y}} -->
+
+\newcommand{\SY}{\mathcal{Y}}
+
+<!-- \newcommand{\SZ}{\mathcal{Z}} -->
+
+\newcommand{\SZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\CA}{\mathcal{A}} -->
+
+\newcommand{\CA}{\mathcal{A}}
+
+<!-- \newcommand{\CB}{\mathcal{B}} -->
+
+\newcommand{\CB}{\mathcal{B}}
+
+<!-- \newcommand{\CC}{\mathcal{C}} -->
+
+\newcommand{\CC}{\mathcal{C}}
+
+<!-- \newcommand{\CD}{\mathcal{D}} -->
+
+\newcommand{\CD}{\mathcal{D}}
+
+<!-- \newcommand{\CE}{\mathcal{E}} -->
+
+\newcommand{\CE}{\mathcal{E}}
+
+<!-- \newcommand{\CF}{\mathcal{F}} -->
+
+\newcommand{\CF}{\mathcal{F}}
+
+<!-- \newcommand{\CG}{\mathcal{G}} -->
+
+\newcommand{\CG}{\mathcal{G}}
+
+<!-- \newcommand{\CH}{\mathcal{H}} -->
+
+\newcommand{\CH}{\mathcal{H}}
+
+<!-- \newcommand{\CI}{\mathcal{I}} -->
+
+\newcommand{\CI}{\mathcal{I}}
+
+<!-- \newcommand{\CJ}{\mathcal{J}} -->
+
+\newcommand{\CJ}{\mathcal{J}}
+
+<!-- \newcommand{\CK}{\mathcal{K}} -->
+
+\newcommand{\CK}{\mathcal{K}}
+
+<!-- \newcommand{\CL}{\mathcal{L}} -->
+
+\newcommand{\CL}{\mathcal{L}}
+
+<!-- \newcommand{\CM}{\mathcal{M}} -->
+
+\newcommand{\CM}{\mathcal{M}}
+
+<!-- \newcommand{\CN}{\mathcal{N}} -->
+
+\newcommand{\CN}{\mathcal{N}}
+
+<!-- \newcommand{\CO}{\mathcal{O}} -->
+
+\newcommand{\CO}{\mathcal{O}}
+
+<!-- \newcommand{\CP}{\mathcal{P}} -->
+
+\newcommand{\CP}{\mathcal{P}}
+
+<!-- \newcommand{\CQ}{\mathcal{Q}} -->
+
+\newcommand{\CQ}{\mathcal{Q}}
+
+<!-- \newcommand{\CR}{\mathcal{R}} -->
+
+\newcommand{\CR}{\mathcal{R}}
+
+<!-- \newcommand{\CS}{\mathcal{S}} -->
+
+\newcommand{\CS}{\mathcal{S}}
+
+<!-- \newcommand{\CT}{\mathcal{T}} -->
+
+\newcommand{\CT}{\mathcal{T}}
+
+<!-- \newcommand{\CU}{\mathcal{U}} -->
+
+\newcommand{\CU}{\mathcal{U}}
+
+<!-- \newcommand{\CV}{\mathcal{V}} -->
+
+\newcommand{\CV}{\mathcal{V}}
+
+<!-- \newcommand{\CW}{\mathcal{W}} -->
+
+\newcommand{\CW}{\mathcal{W}}
+
+<!-- \newcommand{\CX}{\mathcal{X}} -->
+
+\newcommand{\CX}{\mathcal{X}}
+
+<!-- \newcommand{\CY}{\mathcal{Y}} -->
+
+\newcommand{\CY}{\mathcal{Y}}
+
+<!-- \newcommand{\CZ}{\mathcal{Z}} -->
+
+\newcommand{\CZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
   
     <div class="lit">
-      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Logical Statements </h1> 
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Logical Statements </h1> 
       <!--
 !name:logical_statements
 !need:statements
@@ -447,7 +737,7 @@ Implication </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 4ab688d9b.
+      Copyright 2022 The Bourbaki Authors. Version f4c410309.
     </span>
   </body>
 </html>

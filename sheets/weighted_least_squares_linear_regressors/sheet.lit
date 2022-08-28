@@ -1,0 +1,53 @@
+<!--
+!name:weighted_least_squares_linear_regressors
+!need:least_squares_linear_regressors
+!need:inner_products
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ What is the best linear regressor if we choose according to
+    a weighted squared loss function. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Suppose we have a paired dataset of $n$ records with inputs
+    in $𝗥^d$ and outputs in $𝗥$. ⦉
+
+  ‖ A ❬weighted least squares linear predictor❭ for nonnegative
+    weights $w ∈ 𝗥^n$, $w ≥ 0$, is a linear transformation $f:
+    𝗥^d → 𝗥$ (the field is $𝗥$) which minimizes
+    ◇ ⦊
+      ‖ \frac{1}{n} ∑_{i = 1}^{n} w_i(y_i - \transpose{x}a^i)^2. ⦉
+    ⦉⦉
+
+  ‖ Some authors refer to this process of selecting a linear
+    predictor as the ❬weighted least-squares problem❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ Define $W ∈ 𝗥^{n ×n}$ so that $W_{ii} = w_i$ and $W_{ij}
+    = 0$ when $i ≠ j$. ⦉
+
+  ‖ So, in particular, $W$ is a diagonal matrix. ⦉
+
+  ‖ We want to find $x$ to minimize
+    ◇ ⦊
+      ‖ \normm{W(Ax - y)} ⦉
+    ⦉⦉
+⦉
+
+§ Solution ⦉
+<statement type='proposition'>
+  ¶ ⦊
+    ‖ There exists a unique weighted least squares linear
+      predictor and its parameters are given by
+      ◇ ⦊
+        ‖ \inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy. ⦉
+      ⦉⦉
+  ⦉
+</statement>
+<tex>
+  ‖ \blankpage ⦉
+</tex>

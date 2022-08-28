@@ -85,17 +85,34 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
-                  Z: ["\\mathbfsf{Z}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
                   F: ["\\mathbfsf{F}"],
                   aff: ["\\mathsf{aff}"],
+                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
       };
     </script>
+    <!--
+    <script>
+      console.log("here");
+MathJax.Hub.Config({
+TeX: {Augment: {
+Definitions: {macros: {nicefrac: 'NiceFrac'}},
+Parse: {prototype: {
+  NiceFrac: function (name) {
+          var num = this.ParseArg(name);
+                  var den = this.ParseArg(name);
+                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+                                }
+                                    }}
+                                      }}
+                                      });
+    </script>
+    -->
     <script src="../mathjax/polyfill.min.js"></script>
     <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
     <!--
@@ -119,7 +136,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What is the best linear regressor if we choose according to a weighted squared loss function.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we have a paired dataset of $n$ records with inputs in $\R^d$ and outputs in $\R$. A \t{weighted least squares linear predictor} for nonnegative weights $w \in \R^n$, $w \geq 0$, is a linear transformation $f: \R^d \to \R$ (the field is $\R$) which minimizes \[ \frac{1}{n} \sum_{i = 1}^{n} w_i(y_i - \transpose{x}a^i)^2. \] Some authors refer to this process of selecting a linear predictor as the \t{weighted least-squares problem}.</p></div><div class="sheet-listing"><p class="sheet"> Define $W \in \R^{n \times n}$ so that $W_{ii} = w_i$ and $W_{ij} = 0$ when $i \neq j$. So, in particular, $W$ is a diagonal matrix. We want to find $x$ to minimize \[ \normm{W(Ax - y)} \]</p></div><div class="sheet-listing" id="solution"><h1 class="sheet">3. Solution</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} There exists a unique weighted least squares linear predictor and its parameters are given by \[ \inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy. \] \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What is the best linear regressor if we choose according to a weighted squared loss function.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have a paired dataset of $n$ records with inputs in $\R ^d$ and outputs in $\R $. A \t{weighted least squares linear predictor} for nonnegative weights $w \in \R ^n$, $w \geq 0$, is a linear transformation $f: \R ^d \to \R $ (the field is $\R $) which minimizes \[ \frac{1}{n} \sum_{i = 1}^{n} w_i(y_i - \transpose{x}a^i)^2. \] Some authors refer to this process of selecting a linear predictor as the \t{weighted least-squares problem}.</p></div><div class="sheet-listing"><p class="sheet"> Define $W \in \R ^{n \times n}$ so that $W_{ii} = w_i$ and $W_{ij} = 0$ when $i \neq j$. So, in particular, $W$ is a diagonal matrix. We want to find $x$ to minimize \[ \normm{W(Ax - y)} \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Solution}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}There exists a unique weighted least squares linear predictor and its parameters are given by \[ \inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy. \] \end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -230,12 +247,1417 @@ MathJax.Hub.Config({
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
+\(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
     </span>
 
     <span style="display:none">
-      <!-- 154 154 -->
+      <!-- 154 0 -->
+
+<!-- \newcounter{caccounts} -->
+
+\newcounter{caccounts}
+
+<!-- \newcounter{caccountlineno}[caccounts] -->
+
+\newcounter{caccountlineno}[caccounts]
+
+<!-- \newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1} -->
+
+\newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1}
+
+<!-- \newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2} -->
+
+\newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2}
+
+<!-- \newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3} -->
+
+\newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3}
+
+<!-- \newcommand{\lref}[1]{\texttt{(\ref{#1})}} -->
+
+\newcommand{\lref}[1]{\texttt{(\ref{#1})}}
+
+<!--  -->
+
+
+
+<!-- \newenvironment{caccount}{ -->
+
+\newenvironment{caccount}{
+
+<!--   \refstepcounter{caccounts} -->
+
+  \refstepcounter{caccounts}
+
+<!-- }{ -->
+
+}{
+
+<!-- } -->
+
+}
+
+<!-- \newenvironment{blankaccount}[1][]{ -->
+
+\newenvironment{blankaccount}[1][]{
+
+<!--    \hspace{-1.6cm} -->
+
+   \hspace{-1.6cm}
+
+<!--    \begin{tabular}{r|rlcc} -->
+
+   \begin{tabular}{r|rlcc}
+
+<!-- }{ -->
+
+}{
+
+<!--   \end{tabular} -->
+
+  \end{tabular}
+
+<!--   \medskip -->
+
+  \medskip
+
+<!-- } -->
+
+}
+
+<!-- \newcounter{accounts} -->
+
+\newcounter{accounts}
+
+<!-- \newcounter{accountlineno}[accounts] -->
+
+\newcounter{accountlineno}[accounts]
+
+<!-- \newenvironment{account}[1][]{ -->
+
+\newenvironment{account}[1][]{
+
+<!-- \refstepcounter{accounts} -->
+
+\refstepcounter{accounts}
+
+<!-- \noindent\textbf{Account~\theaccounts. #1} \rmfamily \\ -->
+
+\noindent\textbf{Account~\theaccounts. #1} \rmfamily \\
+
+<!--  -->
+
+
+
+<!--     \vspace*{-0.4cm} -->
+
+    \vspace*{-0.4cm}
+
+<!--    \hspace{-1.6cm} -->
+
+   \hspace{-1.6cm}
+
+<!--    \begin{tabular}{r|rlcc} -->
+
+   \begin{tabular}{r|rlcc}
+
+<!-- }{ -->
+
+}{
+
+<!--   \end{tabular} -->
+
+  \end{tabular}
+
+<!--   \medskip -->
+
+  \medskip
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\} -->
+
+\newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\}
+
+<!-- \newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\} -->
+
+\newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\thus}[3]{ -->
+
+\newcommand{\thus}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\idet}[3]{ -->
+
+\newcommand{\idet}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\same}[3]{ -->
+
+\newcommand{\same}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\ie}[3]{ -->
+
+\newcommand{\ie}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
+
+\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
+
+<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
+
+\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
+
+<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
+
+\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
+
+<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
+
+\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\cross}{\times} -->
+
+\newcommand{\cross}{\times}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\op}[1]{\left(#1\right)} -->
+
+\newcommand{\op}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
+
+\newcommand{\tuple}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
+
+\newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\bintersection}{\bigcap} -->
+
+\newcommand{\bintersection}{\bigcap}
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
+
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
+<!-- \newcommand{\eqc}[1]{[#1]} -->
+
+\newcommand{\eqc}[1]{[#1]}
+
+<!-- % objects macros -->
+
+% objects macros
+
+<!-- % absolute_value macros -->
+
+% absolute_value macros
+
+<!-- % \ifdefined\abs -->
+
+% \ifdefined\abs
+
+<!-- % \else -->
+
+% \else
+
+<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
+
+%  \newcommand{\abs}[1]{\left|#1\right|}
+
+<!-- % \fi -->
+
+% \fi
+
+<!-- % the above was creating issues - NCL 2/24/2022 -->
+
+% the above was creating issues - NCL 2/24/2022
+
+<!--  -->
+
+
+
+<!-- % following (roughly) the example of set_numbers/macros -->
+
+% following (roughly) the example of set_numbers/macros
+
+<!-- \newcommand{\intabs}[1]{\left|#1\right|} -->
+
+\newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \newcommand{\union}{\,\cup\,} -->
+
+\newcommand{\union}{\,\cup\,}
+
+<!-- \newcommand{\bunion}{\bigcup} -->
+
+\newcommand{\bunion}{\bigcup}
+
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
+
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
+
+\renewcommand{\complement}[1]{C({#1})}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \Set{a}{b} for {a | b} -->
+
+% use \Set{a}{b} for {a | b}
+
+<!-- % use \Set* for autosizing delimiters -->
+
+% use \Set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2} -->
+
+\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\dom}{\mathword{dom}} -->
+
+\newcommand{\dom}{\mathword{dom}}
+
+<!-- \newcommand{\ran}{\mathword{range}} -->
+
+\newcommand{\ran}{\mathword{range}}
+
+<!-- \newcommand{\range}{\ran} -->
+
+\newcommand{\range}{\ran}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
+
+\newcommand{\Z}{\mathbfsf{Z}}
+
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- \newcommand{\intersect}{\cap} -->
+
+\newcommand{\intersect}{\cap}
+
+<!-- \newcommand{\intersection}{\cap} -->
+
+\newcommand{\intersection}{\cap}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\id}{\mathword{id}} -->
+
+\newcommand{\id}{\mathword{id}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]} -->
+
+\def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
+
+<!-- \renewcommand{\span}{\mathword{span}} -->
+
+\renewcommand{\span}{\mathword{span}}
+
+<!-- \newcommand{\minimization}[2]{ -->
+
+\newcommand{\minimization}[2]{
+
+<!-- \begin{aligned} -->
+
+\begin{aligned}
+
+<!-- \textbf{find} & \quad #1 \\ -->
+
+\textbf{find} & \quad #1 \\
+
+<!-- \textbf{to minimize} & \quad #2 \\ -->
+
+\textbf{to minimize} & \quad #2 \\
+
+<!-- \end{aligned} -->
+
+\end{aligned}
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\minimizationn}[3]{ -->
+
+\newcommand{\minimizationn}[3]{
+
+<!-- \begin{aligned} -->
+
+\begin{aligned}
+
+<!-- \textbf{find} & \quad #1 \\ -->
+
+\textbf{find} & \quad #1 \\
+
+<!-- \textbf{minimizing} & \quad #2 \\ -->
+
+\textbf{minimizing} & \quad #2 \\
+
+<!-- \textbf{subject to} & \quad #3 -->
+
+\textbf{subject to} & \quad #3
+
+<!-- \end{aligned} -->
+
+\end{aligned}
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\maximization}[2]{ -->
+
+\newcommand{\maximization}[2]{
+
+<!-- \begin{aligned} -->
+
+\begin{aligned}
+
+<!-- \textbf{find} & \quad #1 \\ -->
+
+\textbf{find} & \quad #1 \\
+
+<!-- \textbf{to maximize} & \quad #2 \\ -->
+
+\textbf{to maximize} & \quad #2 \\
+
+<!-- \end{aligned} -->
+
+\end{aligned}
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\maximizationn}[3]{ -->
+
+\newcommand{\maximizationn}[3]{
+
+<!-- \begin{aligned} -->
+
+\begin{aligned}
+
+<!-- \textbf{find} & \quad #1 \\ -->
+
+\textbf{find} & \quad #1 \\
+
+<!-- \textbf{to maximize} & \quad #2 \\ -->
+
+\textbf{to maximize} & \quad #2 \\
+
+<!-- \textbf{subject to} & \quad #3 -->
+
+\textbf{subject to} & \quad #3
+
+<!-- \end{aligned} -->
+
+\end{aligned}
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\minimizers}{\mathword{minimizers}} -->
+
+\newcommand{\minimizers}{\mathword{minimizers}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\argmin}{\mathword{argmin}} -->
+
+\newcommand{\argmin}{\mathword{argmin}}
+
+<!-- \newcommand{\argmax}{\mathword{argmax}} -->
+
+\newcommand{\argmax}{\mathword{argmax}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \set{stuff} for { stuff } -->
+
+% use \set{stuff} for { stuff }
+
+<!-- % use \set* for autosizing delimiters -->
+
+% use \set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiter{\set}{\{}{\}} -->
+
+\DeclarePairedDelimiter{\set}{\{}{\}}
+
+<!--  -->
+
+
+
+<!-- % usual epsilon is too close to \in -->
+
+% usual epsilon is too close to \in
+
+<!-- \renewcommand{\epsilon}{\varepsilon} -->
+
+\renewcommand{\epsilon}{\varepsilon}
+
+<!--  -->
+
+
+
+<!-- % usual emptyset is too close to 0 -->
+
+% usual emptyset is too close to 0
+
+<!-- \renewcommand{\emptyset}{\varnothing} -->
+
+\renewcommand{\emptyset}{\varnothing}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\SA}{\mathcal{A}} -->
+
+\newcommand{\SA}{\mathcal{A}}
+
+<!-- \newcommand{\SB}{\mathcal{B}} -->
+
+\newcommand{\SB}{\mathcal{B}}
+
+<!-- \newcommand{\SC}{\mathcal{C}} -->
+
+\newcommand{\SC}{\mathcal{C}}
+
+<!-- \newcommand{\SD}{\mathcal{D}} -->
+
+\newcommand{\SD}{\mathcal{D}}
+
+<!-- \newcommand{\SE}{\mathcal{E}} -->
+
+\newcommand{\SE}{\mathcal{E}}
+
+<!-- \newcommand{\SF}{\mathcal{F}} -->
+
+\newcommand{\SF}{\mathcal{F}}
+
+<!-- \newcommand{\SG}{\mathcal{G}} -->
+
+\newcommand{\SG}{\mathcal{G}}
+
+<!-- \newcommand{\SH}{\mathcal{H}} -->
+
+\newcommand{\SH}{\mathcal{H}}
+
+<!-- \newcommand{\SI}{\mathcal{I}} -->
+
+\newcommand{\SI}{\mathcal{I}}
+
+<!-- \newcommand{\SJ}{\mathcal{J}} -->
+
+\newcommand{\SJ}{\mathcal{J}}
+
+<!-- \newcommand{\SK}{\mathcal{K}} -->
+
+\newcommand{\SK}{\mathcal{K}}
+
+<!-- \newcommand{\SL}{\mathcal{L}} -->
+
+\newcommand{\SL}{\mathcal{L}}
+
+<!-- \newcommand{\SM}{\mathcal{M}} -->
+
+\newcommand{\SM}{\mathcal{M}}
+
+<!-- \newcommand{\SN}{\mathcal{N}} -->
+
+\newcommand{\SN}{\mathcal{N}}
+
+<!-- \newcommand{\SO}{\mathcal{O}} -->
+
+\newcommand{\SO}{\mathcal{O}}
+
+<!-- \newcommand{\SP}{\mathcal{P}} -->
+
+\newcommand{\SP}{\mathcal{P}}
+
+<!-- \newcommand{\SQ}{\mathcal{Q}} -->
+
+\newcommand{\SQ}{\mathcal{Q}}
+
+<!-- \newcommand{\SR}{\mathcal{R}} -->
+
+\newcommand{\SR}{\mathcal{R}}
+
+<!-- %\newcommand{\SS}{\mathcal{S}} -->
+
+%\newcommand{\SS}{\mathcal{S}}
+
+<!-- \newcommand{\ST}{\mathcal{T}} -->
+
+\newcommand{\ST}{\mathcal{T}}
+
+<!-- \newcommand{\SU}{\mathcal{U}} -->
+
+\newcommand{\SU}{\mathcal{U}}
+
+<!-- \newcommand{\SV}{\mathcal{V}} -->
+
+\newcommand{\SV}{\mathcal{V}}
+
+<!-- \newcommand{\SW}{\mathcal{W}} -->
+
+\newcommand{\SW}{\mathcal{W}}
+
+<!-- \newcommand{\SX}{\mathcal{X}} -->
+
+\newcommand{\SX}{\mathcal{X}}
+
+<!-- \newcommand{\SY}{\mathcal{Y}} -->
+
+\newcommand{\SY}{\mathcal{Y}}
+
+<!-- \newcommand{\SZ}{\mathcal{Z}} -->
+
+\newcommand{\SZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\CA}{\mathcal{A}} -->
+
+\newcommand{\CA}{\mathcal{A}}
+
+<!-- \newcommand{\CB}{\mathcal{B}} -->
+
+\newcommand{\CB}{\mathcal{B}}
+
+<!-- \newcommand{\CC}{\mathcal{C}} -->
+
+\newcommand{\CC}{\mathcal{C}}
+
+<!-- \newcommand{\CD}{\mathcal{D}} -->
+
+\newcommand{\CD}{\mathcal{D}}
+
+<!-- \newcommand{\CE}{\mathcal{E}} -->
+
+\newcommand{\CE}{\mathcal{E}}
+
+<!-- \newcommand{\CF}{\mathcal{F}} -->
+
+\newcommand{\CF}{\mathcal{F}}
+
+<!-- \newcommand{\CG}{\mathcal{G}} -->
+
+\newcommand{\CG}{\mathcal{G}}
+
+<!-- \newcommand{\CH}{\mathcal{H}} -->
+
+\newcommand{\CH}{\mathcal{H}}
+
+<!-- \newcommand{\CI}{\mathcal{I}} -->
+
+\newcommand{\CI}{\mathcal{I}}
+
+<!-- \newcommand{\CJ}{\mathcal{J}} -->
+
+\newcommand{\CJ}{\mathcal{J}}
+
+<!-- \newcommand{\CK}{\mathcal{K}} -->
+
+\newcommand{\CK}{\mathcal{K}}
+
+<!-- \newcommand{\CL}{\mathcal{L}} -->
+
+\newcommand{\CL}{\mathcal{L}}
+
+<!-- \newcommand{\CM}{\mathcal{M}} -->
+
+\newcommand{\CM}{\mathcal{M}}
+
+<!-- \newcommand{\CN}{\mathcal{N}} -->
+
+\newcommand{\CN}{\mathcal{N}}
+
+<!-- \newcommand{\CO}{\mathcal{O}} -->
+
+\newcommand{\CO}{\mathcal{O}}
+
+<!-- \newcommand{\CP}{\mathcal{P}} -->
+
+\newcommand{\CP}{\mathcal{P}}
+
+<!-- \newcommand{\CQ}{\mathcal{Q}} -->
+
+\newcommand{\CQ}{\mathcal{Q}}
+
+<!-- \newcommand{\CR}{\mathcal{R}} -->
+
+\newcommand{\CR}{\mathcal{R}}
+
+<!-- \newcommand{\CS}{\mathcal{S}} -->
+
+\newcommand{\CS}{\mathcal{S}}
+
+<!-- \newcommand{\CT}{\mathcal{T}} -->
+
+\newcommand{\CT}{\mathcal{T}}
+
+<!-- \newcommand{\CU}{\mathcal{U}} -->
+
+\newcommand{\CU}{\mathcal{U}}
+
+<!-- \newcommand{\CV}{\mathcal{V}} -->
+
+\newcommand{\CV}{\mathcal{V}}
+
+<!-- \newcommand{\CW}{\mathcal{W}} -->
+
+\newcommand{\CW}{\mathcal{W}}
+
+<!-- \newcommand{\CX}{\mathcal{X}} -->
+
+\newcommand{\CX}{\mathcal{X}}
+
+<!-- \newcommand{\CY}{\mathcal{Y}} -->
+
+\newcommand{\CY}{\mathcal{Y}}
+
+<!-- \newcommand{\CZ}{\mathcal{Z}} -->
+
+\newcommand{\CZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+
+\def\oright#1{\right#1\mskip-10mu\circ}
+
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
+
+\def\oleft#1{\circ\mskip-10mu\left#1}
+
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
+
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
+
+<!-- \newcommand{\product}{\prod} -->
+
+\newcommand{\product}{\prod}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \norm{x} for |x| 11/05/2021 I changed this back to ||x||, since that is alsmost always what I want. -->
+
+% use \norm{x} for |x| 11/05/2021 I changed this back to ||x||, since that is alsmost always what I want.
+
+<!-- % use \norm* for autosizing delimiters -->
+
+% use \norm* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiter{\norm}{\lVert}{\rVert} -->
+
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+<!--  -->
+
+
+
+<!-- % use \normm{x} for ||x|| -->
+
+% use \normm{x} for ||x||
+
+<!-- % use \normm* for autosizing delimiters -->
+
+% use \normm* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiter{\normm}{\lVert}{\rVert} -->
+
+\DeclarePairedDelimiter{\normm}{\lVert}{\rVert}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
+
+\newcommand{\idfn}[1]{\text{id}_{#1}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
+
+\newcommand{\inv}[1]{{#1}^{-1}}
+
+<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
+
+\newcommand{\inverse}[1]{\inv{#1}}
+
+<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
+
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
+
+<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
+
+\newcommand{\inversep}[1]{\invp{#1}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\RMat}[2]{\R^{#1 \cross #2}} -->
+
+\newcommand{\RMat}[2]{\R^{#1 \cross #2}}
+
+<!--  -->
+
+
+
+<!-- % matrices: needs amsmath and mathtools -->
+
+% matrices: needs amsmath and mathtools
+
+<!--  -->
+
+
+
+<!-- % \newcommand{\bmat}[1]{\begin{bmatrix}#1\end{bmatrix}} -->
+
+% \newcommand{\bmat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+
+<!-- \def\bmat#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]} -->
+
+\def\bmat#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}} -->
+
+\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}
+
+<!-- \newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}} -->
+
+\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+<!--  -->
+
+
+
+<!-- \setcounter{MaxMatrixCols}{20} -->
+
+\setcounter{MaxMatrixCols}{20}
+
+<!--  -->
+
+
+
+<!-- % allow ddots at any angle -->
+
+% allow ddots at any angle
+
+<!-- % \dddots{1}{1} produces dots at 45 degrees -->
+
+% \dddots{1}{1} produces dots at 45 degrees
+
+<!-- % \dddots{2}{1} produces dots at 30 degrees -->
+
+% \dddots{2}{1} produces dots at 30 degrees
+
+<!-- % and so on -->
+
+% and so on
+
+<!-- \def\dddots#1#2{% -->
+
+\def\dddots#1#2{%
+
+<!--   \mbox{% -->
+
+  \mbox{%
+
+<!--     \unitlength 0.083333in%r -->
+
+    \unitlength 0.083333in%r
+
+<!--     \begin{picture}(#1,#2)(0.25,0) -->
+
+    \begin{picture}(#1,#2)(0.25,0)
+
+<!--       \unitlength 0.0416666in% -->
+
+      \unitlength 0.0416666in%
+
+<!--       \multiput(0,2)(#1,-#2){3}{.} -->
+
+      \multiput(0,2)(#1,-#2){3}{.}
+
+<!--     \end{picture}% -->
+
+    \end{picture}%
+
+<!--     }% -->
+
+    }%
+
+<!--   } -->
+
+  }
+
+<!--  -->
+
+
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\R}{\mathbfsf{R}} -->
+
+\newcommand{\R}{\mathbfsf{R}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\tp}{\top} -->
+
+\newcommand{\tp}{\top}
+
+<!-- \newcommand{\transpose}[1]{{#1}^{\tp}} -->
+
+\newcommand{\transpose}[1]{{#1}^{\tp}}
+
+<!-- \newcommand{\transposep}[1]{\left({#1}\right)^{\tp}} -->
+
+\newcommand{\transposep}[1]{\left({#1}\right)^{\tp}}
+
+<!-- \newcommand{\tranpose}[1]{\transpose{#1}} -->
+
+\newcommand{\tranpose}[1]{\transpose{#1}}
+
+<!-- \newcommand{\tranposep}[1]{\transposep{#1}} -->
+
+\newcommand{\tranposep}[1]{\transposep{#1}}
+
+<!-- \newcommand{\Mat}[3]{#1^{#2 \cross #3}} -->
+
+\newcommand{\Mat}[3]{#1^{#2 \cross #3}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
+
+\newcommand{\RVec}[1]{\Vec{\R}{#1}}
+
+<!-- \newcommand{\F}{\mathbfsf{F}} -->
+
+\newcommand{\F}{\mathbfsf{F}}
+
+<!-- % added to vectors_as_matrices, around 4/23/22 -->
+
+% added to vectors_as_matrices, around 4/23/22
+
+<!-- % \newcommand{\tp}{\top} -->
+
+% \newcommand{\tp}{\top}
+
+<!-- % \newcommand{\transpose}[1]{{#1}^{\tp}} -->
+
+% \newcommand{\transpose}[1]{{#1}^{\tp}}
+
+<!-- % \newcommand{\transposep}[1]{\left({#1}\right)^{\tp}} -->
+
+% \newcommand{\transposep}[1]{\left({#1}\right)^{\tp}}
+
+<!-- % \newcommand{\tranpose}[1]{\transpose{#1}} -->
+
+% \newcommand{\tranpose}[1]{\transpose{#1}}
+
+<!-- % \newcommand{\tranposep}[1]{\transposep{#1}} -->
+
+% \newcommand{\tranposep}[1]{\transposep{#1}}
+
+<!-- \newcommand{\loss}{\ell} -->
+
+\newcommand{\loss}{\ell}
+
+<!-- \renewcommand{\Vec}[2]{{#1}^{#2}} -->
+
+\renewcommand{\Vec}[2]{{#1}^{#2}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \innerproduct{x} for ||x|| ;; 11/05/2021 I don't think this is true... -->
+
+% use \innerproduct{x} for ||x|| ;; 11/05/2021 I don't think this is true...
+
+<!-- % use \innerproduct* for autosizing delimiters -->
+
+% use \innerproduct* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1} -->
+
+\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}
+
+<!-- \newcommand{\ip}[1]{\innerproduct{#1}} -->
+
+\newcommand{\ip}[1]{\innerproduct{#1}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
+  
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Weighted Least Squares Linear Regressors </h1> 
+      <!--
+!name:weighted_least_squares_linear_regressors
+!need:least_squares_linear_regressors
+!need:inner_products
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>What is the best linear regressor if we choose
+  according to a weighted squared loss function. </span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Suppose we have a paired dataset of $n$
+  records with inputs in $𝗥^d$ and outputs in $𝗥$. </span>
+
+ <span class='run'>A <span class='term'>weighted least squares linear
+  predictor</span> for nonnegative weights $w ∈
+  𝗥^n$, $w ≥ 0$, is a linear transformation $f:
+  𝗥^d → 𝗥$ (the field is $𝗥$) which minimizes
+  <p>\[
+   \frac{1}{n} \sum_{i = 1}^{n} w_i(y_i - \transpose{x}a^i)^2. 
+  \]</p></span>
+
+ <span class='run'>Some authors refer to this process of selecting
+  a linear predictor as the
+  <span class='term'>weighted least-squares
+  problem</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>Define $W ∈ 𝗥^{n ×n}$ so that $W_{ii} = w_i$
+  and $W_{ij} = 0$ when $i ≠ j$. </span>
+
+ <span class='run'>So, in particular, $W$ is a diagonal matrix. </span>
+
+ <span class='run'>We want to find $x$ to minimize
+  <p>\[
+   \normm{W(Ax - y)} 
+  \]</p></span>
+</p>
+
+<h1>
+Solution </h1>
+
+<div class='proposition' <p>
+  <span class='run'>There exists a unique weighted least squares
+   linear predictor and its parameters are given
+   by
+   <p>\[
+    \inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy. 
+   \]</p></span>
+ </p>
+</div><ol class='footnotes'></ol>
+    </div>
   
 
   <!--
@@ -288,7 +1710,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 4ab688d9b.
+      Copyright 2022 The Bourbaki Authors. Version f4c410309.
     </span>
   </body>
 </html>

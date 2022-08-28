@@ -92,17 +92,34 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
-                  Z: ["\\mathbfsf{Z}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
                   F: ["\\mathbfsf{F}"],
                   aff: ["\\mathsf{aff}"],
+                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
       };
     </script>
+    <!--
+    <script>
+      console.log("here");
+MathJax.Hub.Config({
+TeX: {Augment: {
+Definitions: {macros: {nicefrac: 'NiceFrac'}},
+Parse: {prototype: {
+  NiceFrac: function (name) {
+          var num = this.ParseArg(name);
+                  var den = this.ParseArg(name);
+                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+                                }
+                                    }}
+                                      }}
+                                      });
+    </script>
+    -->
     <script src="../mathjax/polyfill.min.js"></script>
     <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
     <!--
@@ -237,15 +254,20 @@ MathJax.Hub.Config({
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
+\(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
     </span>
 
     <span style="display:none">
-      <!-- 2 2 -->
+      <!-- 2 0 -->
+
+<!-- % objects macros -->
+
+% objects macros
     </span>
 
   
     <div class="lit">
-      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Names </h1> 
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Names </h1> 
       <!--
 !name:names
 !need:objects
@@ -601,7 +623,7 @@ Names as placeholders </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 4ab688d9b.
+      Copyright 2022 The Bourbaki Authors. Version f4c410309.
     </span>
   </body>
 </html>

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make weighted_norms.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 weighted_norms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > weighted_norms.tex
 

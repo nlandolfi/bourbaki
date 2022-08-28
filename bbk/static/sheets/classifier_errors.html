@@ -85,17 +85,34 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
-                  Z: ["\\mathbfsf{Z}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
                   F: ["\\mathbfsf{F}"],
                   aff: ["\\mathsf{aff}"],
+                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
       };
     </script>
+    <!--
+    <script>
+      console.log("here");
+MathJax.Hub.Config({
+TeX: {Augment: {
+Definitions: {macros: {nicefrac: 'NiceFrac'}},
+Parse: {prototype: {
+  NiceFrac: function (name) {
+          var num = this.ParseArg(name);
+                  var den = this.ParseArg(name);
+                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+                                }
+                                    }}
+                                      }}
+                                      });
+    </script>
+    -->
     <script src="../mathjax/polyfill.min.js"></script>
     <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
     <!--
@@ -119,7 +136,7 @@ MathJax.Hub.Config({
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How should we compare two classifiers?</p></div><div class="sheet-listing" id="definitions"><h1 class="sheet">2. Definitions</h1></div><div class="sheet-listing"><p class="sheet"> Let $a^1, \dots , a^n$ in $A$ be a dataset of inputs and $b^1, \dots , b^n$ in $B$ be a dataset of labels. Let $G: A \to B$ be a classifier.</p></div><div class="sheet-listing"><p class="sheet"> For each $i = 1, \dots , n$, the classifier associates a prediction $G(a^i)$ with $a^i$. The prediction $G(a^i)$ is \t{correct} if $G(a^i) = b^i$ and \t{incorrect} (\t{wrong}, \t{error}) if $G(a^i) \neq b^i$. The \t{error rate} is the proportion of the dataset for which the classifier's prediction is an error. In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i) \neq b^i}}$.</p></div><div class="sheet-listing"><p class="sheet"> Given two classifiers, it is natural to prefer the one with the lower error rate. Given that these two are the results of different inductors applied to the same, we can use a separate dataset to \t{validate} these.</p></div><div class="sheet-listing" id="boolean_case"><h1 class="sheet">3. Boolean case</h1></div><div class="sheet-listing"><p class="sheet"> In the case that $B = \set{-1, 1}$, we call the class $-1$ \t{negative} and the class $+1$ positive. Similarly, we call an example $(a^i, b^i)$ a \t{negative example} if $b^i = -1$ and a \t{positive example} if $b^i = 1$.</p></div><div class="sheet-listing"><p class="sheet"> We call the result of $G$ on $a^i$ a \t{true positive} if $b^i = 1$ and $G(a^i) = 1$, a \t{true negative} if $b^i = -1$ and $G(b^i) = -1$, a \t{false negative} (or \t{type II error}, read "type two error}) if $b^i = 1$ and $G(a^i) = -1$ and a \t{false positive} (or \t{type I error}, read \say{type one error") if $b^i = -1$ and $G(a^i) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{false positive rate} (\t{false negative rate}) of a classifier on a dataset is the proportion of dataset elements for which it predicts a \t{false positive} (\t{false negative}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{true positive rate} (or \t{sensitivity}, \t{recall}) of $G$ on a dataset is the proportion of positive examples which $G$ labels positive. The \t{precision} (or \t{positive predictive value}) of $G$ is the proportion of all examples which the classifier labels $positive$ whose label is positive. The \t{true negative rate} (or \t{specificity}, \t{selectivity}) is the proportion of negative examples which $G$ labels negative. The \t{false alarm rate} is the proportion of negative examples which $G$ <i>incorrectly</i> labels positive.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How should we compare two classifiers?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $u_1, \dots , u_n$ in $\mathcal{U} $ be a dataset of inputs and $v_1, \dots , u_n$ in $\mathcal{V} $ be a dataset of labels. Let $G: \mathcal{U}  \to \mathcal{V} $ be a classifier.</p></div><div class="sheet-listing"><p class="sheet"> For each $i = 1, \dots , n$, the classifier associates a prediction $G(u_i)$ with input $u_i$. The prediction $G(u_i)$ is \t{correct} if $G(u_i) = b_i$ and \t{incorrect} (\t{wrong}, an \t{error}) if $G(a_i) \neq b_i$. The \t{error rate} is the proportion of the dataset for which the classifier's prediction is an incorrect. In other words, the error rate is $(1/n)\num{\Set{i}{G(a_i) \neq b_i}}$.</p></div><div class="sheet-listing"><p class="sheet"> Given two classifiers, it is natural to prefer the one with the lower error rate. If these two classifiers are the results of different inductors applied to the same dataset, we can use a separate dataset to \t{validate} these.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Boolean case}</p></div><div class="sheet-listing"><p class="sheet"> In the case that $B = \set{-1, 1}$, we call the class $-1$ \t{negative} and the class $+1$ \t{positive}. Similarly, we call an example $(u_i, v_i)$ a \t{negative example} if $b_i = -1$ and a \t{positive example} if $b_i = 1$.</p></div><div class="sheet-listing"><p class="sheet"> We call the result of $u_i$ under classifier $G$ a \t{true positive} if $v_i = 1$ and $G(u_i) = 1$, a \t{true negative} if $v_i = -1$ and $G(v_i) = -1$. In these two cases, the classifier has predicted the label correctly.</p></div><div class="sheet-listing"><p class="sheet"> We call the result of $u_i$ under classifier $G$ a \t{false positive} (or \t{type I error}, read "type one error}) if $v_i = -1$ and $G(u_i) = 1$ and a \t{false negative} (or \t{type II error}, read \say{type two error") if $v_i = 1$ and $G(u_i) = -1$. In these two cases the classifier has predicted the label incorrectly. Notice that the words positive and negative reference the classifier's prediction, not the true label.</p></div><div class="sheet-listing"><p class="sheet"> The \t{false positive rate} (\t{false negative rate}) of a classifier on a dataset is the proportion of dataset elements for which it predicts a \t{false positive} (\t{false negative}). The \t{true positive rate} (or \t{sensitivity}, \t{recall}) of $G$ on a dataset is the proportion of positive examples which $G$ labels positive.</p></div><div class="sheet-listing"><p class="sheet"> The \t{precision} (or \t{positive predictive value}) of $G$ is the proportion of all examples which the classifier labels $positive$ whose label is positive. The \t{true negative rate} (or \t{specificity}, \t{selectivity}) is the proportion of negative examples which $G$ labels negative. The \t{false alarm rate} is the proportion of negative examples which $G$ <i>incorrectly</i> labels positive.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -230,58 +247,832 @@ MathJax.Hub.Config({
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
+\(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
     </span>
 
     <span style="display:none">
-      <!-- 56 56 -->
+      <!-- 56 0 -->
+
+<!-- % objects macros -->
+
+% objects macros
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \set{stuff} for { stuff } -->
+
+% use \set{stuff} for { stuff }
+
+<!-- % use \set* for autosizing delimiters -->
+
+% use \set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiter{\set}{\{}{\}} -->
+
+\DeclarePairedDelimiter{\set}{\{}{\}}
+
+<!--  -->
+
+
+
+<!-- % usual epsilon is too close to \in -->
+
+% usual epsilon is too close to \in
+
+<!-- \renewcommand{\epsilon}{\varepsilon} -->
+
+\renewcommand{\epsilon}{\varepsilon}
+
+<!--  -->
+
+
+
+<!-- % usual emptyset is too close to 0 -->
+
+% usual emptyset is too close to 0
+
+<!-- \renewcommand{\emptyset}{\varnothing} -->
+
+\renewcommand{\emptyset}{\varnothing}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\SA}{\mathcal{A}} -->
+
+\newcommand{\SA}{\mathcal{A}}
+
+<!-- \newcommand{\SB}{\mathcal{B}} -->
+
+\newcommand{\SB}{\mathcal{B}}
+
+<!-- \newcommand{\SC}{\mathcal{C}} -->
+
+\newcommand{\SC}{\mathcal{C}}
+
+<!-- \newcommand{\SD}{\mathcal{D}} -->
+
+\newcommand{\SD}{\mathcal{D}}
+
+<!-- \newcommand{\SE}{\mathcal{E}} -->
+
+\newcommand{\SE}{\mathcal{E}}
+
+<!-- \newcommand{\SF}{\mathcal{F}} -->
+
+\newcommand{\SF}{\mathcal{F}}
+
+<!-- \newcommand{\SG}{\mathcal{G}} -->
+
+\newcommand{\SG}{\mathcal{G}}
+
+<!-- \newcommand{\SH}{\mathcal{H}} -->
+
+\newcommand{\SH}{\mathcal{H}}
+
+<!-- \newcommand{\SI}{\mathcal{I}} -->
+
+\newcommand{\SI}{\mathcal{I}}
+
+<!-- \newcommand{\SJ}{\mathcal{J}} -->
+
+\newcommand{\SJ}{\mathcal{J}}
+
+<!-- \newcommand{\SK}{\mathcal{K}} -->
+
+\newcommand{\SK}{\mathcal{K}}
+
+<!-- \newcommand{\SL}{\mathcal{L}} -->
+
+\newcommand{\SL}{\mathcal{L}}
+
+<!-- \newcommand{\SM}{\mathcal{M}} -->
+
+\newcommand{\SM}{\mathcal{M}}
+
+<!-- \newcommand{\SN}{\mathcal{N}} -->
+
+\newcommand{\SN}{\mathcal{N}}
+
+<!-- \newcommand{\SO}{\mathcal{O}} -->
+
+\newcommand{\SO}{\mathcal{O}}
+
+<!-- \newcommand{\SP}{\mathcal{P}} -->
+
+\newcommand{\SP}{\mathcal{P}}
+
+<!-- \newcommand{\SQ}{\mathcal{Q}} -->
+
+\newcommand{\SQ}{\mathcal{Q}}
+
+<!-- \newcommand{\SR}{\mathcal{R}} -->
+
+\newcommand{\SR}{\mathcal{R}}
+
+<!-- %\newcommand{\SS}{\mathcal{S}} -->
+
+%\newcommand{\SS}{\mathcal{S}}
+
+<!-- \newcommand{\ST}{\mathcal{T}} -->
+
+\newcommand{\ST}{\mathcal{T}}
+
+<!-- \newcommand{\SU}{\mathcal{U}} -->
+
+\newcommand{\SU}{\mathcal{U}}
+
+<!-- \newcommand{\SV}{\mathcal{V}} -->
+
+\newcommand{\SV}{\mathcal{V}}
+
+<!-- \newcommand{\SW}{\mathcal{W}} -->
+
+\newcommand{\SW}{\mathcal{W}}
+
+<!-- \newcommand{\SX}{\mathcal{X}} -->
+
+\newcommand{\SX}{\mathcal{X}}
+
+<!-- \newcommand{\SY}{\mathcal{Y}} -->
+
+\newcommand{\SY}{\mathcal{Y}}
+
+<!-- \newcommand{\SZ}{\mathcal{Z}} -->
+
+\newcommand{\SZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\CA}{\mathcal{A}} -->
+
+\newcommand{\CA}{\mathcal{A}}
+
+<!-- \newcommand{\CB}{\mathcal{B}} -->
+
+\newcommand{\CB}{\mathcal{B}}
+
+<!-- \newcommand{\CC}{\mathcal{C}} -->
+
+\newcommand{\CC}{\mathcal{C}}
+
+<!-- \newcommand{\CD}{\mathcal{D}} -->
+
+\newcommand{\CD}{\mathcal{D}}
+
+<!-- \newcommand{\CE}{\mathcal{E}} -->
+
+\newcommand{\CE}{\mathcal{E}}
+
+<!-- \newcommand{\CF}{\mathcal{F}} -->
+
+\newcommand{\CF}{\mathcal{F}}
+
+<!-- \newcommand{\CG}{\mathcal{G}} -->
+
+\newcommand{\CG}{\mathcal{G}}
+
+<!-- \newcommand{\CH}{\mathcal{H}} -->
+
+\newcommand{\CH}{\mathcal{H}}
+
+<!-- \newcommand{\CI}{\mathcal{I}} -->
+
+\newcommand{\CI}{\mathcal{I}}
+
+<!-- \newcommand{\CJ}{\mathcal{J}} -->
+
+\newcommand{\CJ}{\mathcal{J}}
+
+<!-- \newcommand{\CK}{\mathcal{K}} -->
+
+\newcommand{\CK}{\mathcal{K}}
+
+<!-- \newcommand{\CL}{\mathcal{L}} -->
+
+\newcommand{\CL}{\mathcal{L}}
+
+<!-- \newcommand{\CM}{\mathcal{M}} -->
+
+\newcommand{\CM}{\mathcal{M}}
+
+<!-- \newcommand{\CN}{\mathcal{N}} -->
+
+\newcommand{\CN}{\mathcal{N}}
+
+<!-- \newcommand{\CO}{\mathcal{O}} -->
+
+\newcommand{\CO}{\mathcal{O}}
+
+<!-- \newcommand{\CP}{\mathcal{P}} -->
+
+\newcommand{\CP}{\mathcal{P}}
+
+<!-- \newcommand{\CQ}{\mathcal{Q}} -->
+
+\newcommand{\CQ}{\mathcal{Q}}
+
+<!-- \newcommand{\CR}{\mathcal{R}} -->
+
+\newcommand{\CR}{\mathcal{R}}
+
+<!-- \newcommand{\CS}{\mathcal{S}} -->
+
+\newcommand{\CS}{\mathcal{S}}
+
+<!-- \newcommand{\CT}{\mathcal{T}} -->
+
+\newcommand{\CT}{\mathcal{T}}
+
+<!-- \newcommand{\CU}{\mathcal{U}} -->
+
+\newcommand{\CU}{\mathcal{U}}
+
+<!-- \newcommand{\CV}{\mathcal{V}} -->
+
+\newcommand{\CV}{\mathcal{V}}
+
+<!-- \newcommand{\CW}{\mathcal{W}} -->
+
+\newcommand{\CW}{\mathcal{W}}
+
+<!-- \newcommand{\CX}{\mathcal{X}} -->
+
+\newcommand{\CX}{\mathcal{X}}
+
+<!-- \newcommand{\CY}{\mathcal{Y}} -->
+
+\newcommand{\CY}{\mathcal{Y}}
+
+<!-- \newcommand{\CZ}{\mathcal{Z}} -->
+
+\newcommand{\CZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcounter{caccounts} -->
+
+\newcounter{caccounts}
+
+<!-- \newcounter{caccountlineno}[caccounts] -->
+
+\newcounter{caccountlineno}[caccounts]
+
+<!-- \newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1} -->
+
+\newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1}
+
+<!-- \newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2} -->
+
+\newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2}
+
+<!-- \newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3} -->
+
+\newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3}
+
+<!-- \newcommand{\lref}[1]{\texttt{(\ref{#1})}} -->
+
+\newcommand{\lref}[1]{\texttt{(\ref{#1})}}
+
+<!--  -->
+
+
+
+<!-- \newenvironment{caccount}{ -->
+
+\newenvironment{caccount}{
+
+<!--   \refstepcounter{caccounts} -->
+
+  \refstepcounter{caccounts}
+
+<!-- }{ -->
+
+}{
+
+<!-- } -->
+
+}
+
+<!-- \newenvironment{blankaccount}[1][]{ -->
+
+\newenvironment{blankaccount}[1][]{
+
+<!--    \hspace{-1.6cm} -->
+
+   \hspace{-1.6cm}
+
+<!--    \begin{tabular}{r|rlcc} -->
+
+   \begin{tabular}{r|rlcc}
+
+<!-- }{ -->
+
+}{
+
+<!--   \end{tabular} -->
+
+  \end{tabular}
+
+<!--   \medskip -->
+
+  \medskip
+
+<!-- } -->
+
+}
+
+<!-- \newcounter{accounts} -->
+
+\newcounter{accounts}
+
+<!-- \newcounter{accountlineno}[accounts] -->
+
+\newcounter{accountlineno}[accounts]
+
+<!-- \newenvironment{account}[1][]{ -->
+
+\newenvironment{account}[1][]{
+
+<!-- \refstepcounter{accounts} -->
+
+\refstepcounter{accounts}
+
+<!-- \noindent\textbf{Account~\theaccounts. #1} \rmfamily \\ -->
+
+\noindent\textbf{Account~\theaccounts. #1} \rmfamily \\
+
+<!--  -->
+
+
+
+<!--     \vspace*{-0.4cm} -->
+
+    \vspace*{-0.4cm}
+
+<!--    \hspace{-1.6cm} -->
+
+   \hspace{-1.6cm}
+
+<!--    \begin{tabular}{r|rlcc} -->
+
+   \begin{tabular}{r|rlcc}
+
+<!-- }{ -->
+
+}{
+
+<!--   \end{tabular} -->
+
+  \end{tabular}
+
+<!--   \medskip -->
+
+  \medskip
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\} -->
+
+\newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\}
+
+<!-- \newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\} -->
+
+\newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\thus}[3]{ -->
+
+\newcommand{\thus}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\idet}[3]{ -->
+
+\newcommand{\idet}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\same}[3]{ -->
+
+\newcommand{\same}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\ie}[3]{ -->
+
+\newcommand{\ie}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
+
+\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
+
+<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
+
+\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
+
+<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
+
+\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
+
+<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
+
+\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\cross}{\times} -->
+
+\newcommand{\cross}{\times}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\op}[1]{\left(#1\right)} -->
+
+\newcommand{\op}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
+
+\newcommand{\tuple}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
+
+\newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
+
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
+<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
+
+\newcommand{\idfn}[1]{\text{id}_{#1}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
+
+\newcommand{\inv}[1]{{#1}^{-1}}
+
+<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
+
+\newcommand{\inverse}[1]{\inv{#1}}
+
+<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
+
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
+
+<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
+
+\newcommand{\inversep}[1]{\invp{#1}}
+
+<!-- \newcommand{\eqc}[1]{[#1]} -->
+
+\newcommand{\eqc}[1]{[#1]}
+
+<!-- \newcommand{\union}{\,\cup\,} -->
+
+\newcommand{\union}{\,\cup\,}
+
+<!-- \newcommand{\bunion}{\bigcup} -->
+
+\newcommand{\bunion}{\bigcup}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \Set{a}{b} for {a | b} -->
+
+% use \Set{a}{b} for {a | b}
+
+<!-- % use \Set* for autosizing delimiters -->
+
+% use \Set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2} -->
+
+\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
+
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
+
+\renewcommand{\complement}[1]{C({#1})}
+
+<!-- \newcommand{\bintersection}{\bigcap} -->
+
+\newcommand{\bintersection}{\bigcap}
+
+<!-- \newcommand{\dom}{\mathword{dom}} -->
+
+\newcommand{\dom}{\mathword{dom}}
+
+<!-- \newcommand{\ran}{\mathword{range}} -->
+
+\newcommand{\ran}{\mathword{range}}
+
+<!-- \newcommand{\range}{\ran} -->
+
+\newcommand{\range}{\ran}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\intersect}{\cap} -->
+
+\newcommand{\intersect}{\cap}
+
+<!-- \newcommand{\intersection}{\cap} -->
+
+\newcommand{\intersection}{\cap}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\id}{\mathword{id}} -->
+
+\newcommand{\id}{\mathword{id}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
+
+<!-- \newcommand{\product}{\prod} -->
+
+\newcommand{\product}{\prod}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % TODO: why renew -->
+
+% TODO: why renew
+
+<!-- \newcommand{\seq}[1]{(#1_n)_{n}} -->
+
+\newcommand{\seq}[1]{(#1_n)_{n}}
+
+<!-- \newcommand{\seqt}[1]{#1_n} -->
+
+\newcommand{\seqt}[1]{#1_n}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
   
     <div class="lit">
-      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em"> Classifier Errors </h1> 
-      <p>
- <span class='run'>%!name:classifier_errors </span>
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Classifier Errors </h1> 
+      <!--
+!name:classifier_errors
+!need:classifiers
+-->
 
- <span class='run'>%!need:classifiers </span>
-
- <span class='run'>% %!need:set_numbers </span>
-</p>
-
+<h1>
+Why </h1>
 
 <p>
- <span class='run'>\ssection{Why} </span>
-
  <span class='run'>How should we compare two classifiers? </span>
 </p>
 
+<h1>
+Definition </h1>
 
 <p>
- <span class='run'>\ssection{Definitions} </span>
-
- <span class='run'>Let $a^1, …, a^n$ in $A$ be a dataset of
-  inputs and $b^1, …, b^n$ in $B$ be a dataset
+ <span class='run'>Let $u_1, …, u_n$ in $𝒰$ be a dataset of
+  inputs and $v_1, …, u_n$ in $𝒱$ be a dataset
   of labels. </span>
 
- <span class='run'>Let $G: A → B$ be a classifier. </span>
+ <span class='run'>Let $G: 𝒰 → 𝒱$ be a classifier. </span>
 </p>
 
 
 <p>
  <span class='run'>For each $i = 1, …, n$, the classifier
-  associates a prediction $G(a^i)$ with $a^i$. </span>
+  associates a prediction $G(u_i)$ with input $u_i$. </span>
 
- <span class='run'>The prediction $G(a^i)$ is
-  <span class='term'>correct</span> if $G(a^i) = b^i$
+ <span class='run'>The prediction $G(u_i)$ is
+  <span class='term'>correct</span> if $G(u_i) = b_i$
   and <span class='term'>incorrect</span>
-  (<span class='term'>wrong</span>,
-  <span class='term'>error</span>) if $G(a^i) ≠ b^i$. </span>
+  (<span class='term'>wrong</span>, an
+  <span class='term'>error</span>) if $G(a_i) ≠ b_i$. </span>
 
  <span class='run'>The <span class='term'>error rate</span> is the
   proportion of the dataset for which the
-  classifier’s prediction is an error. </span>
+  classifier’s prediction is an incorrect. </span>
 
- <span class='run'>In other words, $\nicefrac{1}{n}\num{\Set{i}{G(a^i)
-  ≠ b^i}}$. </span>
+ <span class='run'>In other words, the error rate is
+  $(1/n)\num{\Set{i}{G(a_i) ≠ b_i}}$. </span>
 </p>
 
 
@@ -289,44 +1080,55 @@ MathJax.Hub.Config({
  <span class='run'>Given two classifiers, it is natural to prefer
   the one with the lower error rate. </span>
 
- <span class='run'>Given that these two are the results of
-  different inductors applied to the same, we can
-  use a separate dataset to
+ <span class='run'>If these two classifiers are the results of
+  different inductors applied to the same dataset,
+  we can use a separate dataset to
   <span class='term'>validate</span> these. </span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Boolean case} </span>
-</p>
-
+<h1>
+Boolean case </h1>
 
 <p>
  <span class='run'>In the case that $B = \set{-1, 1}$, we call
   the class $-1$ <span class='term'>negative</span>
-  and the class $+1$ positive. </span>
+  and the class $+1$
+  <span class='term'>positive</span>. </span>
 
- <span class='run'>Similarly, we call an example $(a^i, b^i)$ a
-  <span class='term'>negative example</span> if $b^i
+ <span class='run'>Similarly, we call an example $(u_i, v_i)$ a
+  <span class='term'>negative example</span> if $b_i
   = -1$ and a <span class='term'>positive
-  example</span> if $b^i = 1$. </span>
+  example</span> if $b_i = 1$. </span>
 </p>
 
 
 <p>
- <span class='run'>%For input $a^i$, label $b^i$, prediction $G(b^i)$, there are four values for $(b^i, G(b^i))$. </span>
+ <span class='run'>We call the result of $u_i$ under classifier
+  $G$ a <span class='term'>true positive</span> if
+  $v_i = 1$ and $G(u_i) = 1$, a
+  <span class='term'>true negative</span> if $v_i =
+  -1$ and $G(v_i) = -1$. </span>
 
- <span class='run'>We call the result of $G$ on $a^i$ a
-  <span class='term'>true positive</span> if $b^i =
-  1$ and $G(a^i) = 1$, a <span class='term'>true
-  negative</span> if $b^i = -1$ and $G(b^i) =
-  -1$, a <span class='term'>false negative</span> (or
+ <span class='run'>In these two cases, the classifier has
+  predicted the label correctly. </span>
+</p>
+
+
+<p>
+ <span class='run'>We call the result of $u_i$ under classifier
+  $G$ a <span class='term'>false positive</span> (or
+  <span class='term'>type I error</span>, read “type
+  one error”) if $v_i = -1$ and $G(u_i) = 1$
+  and a <span class='term'>false negative</span> (or
   <span class='term'>type II error</span>, read “type
-  two error}) if $b^i = 1$ and $G(a^i) = -1$
-  and a <span class='term'>false positive</span> (or
-  <span class='term'>type I error</span>, read
-  \say{type one error”) if $b^i = -1$ and $G(a^i)
-  = 1$. </span>
+  two error”) if $v_i = 1$ and $G(u_i) = -1$. </span>
+
+ <span class='run'>In these two cases the classifier has predicted
+  the label incorrectly. </span>
+
+ <span class='run'>Notice that the words positive and negative
+  reference the classifier’s prediction, not the
+  true label. </span>
 </p>
 
 
@@ -337,16 +1139,16 @@ MathJax.Hub.Config({
   dataset elements for which it predicts a
   <span class='term'>false positive</span>
   (<span class='term'>false negative</span>). </span>
-</p>
 
-
-<p>
  <span class='run'>The <span class='term'>true positive rate</span>
   (or <span class='term'>sensitivity</span>,
   <span class='term'>recall</span>) of $G$ on a
   dataset is the proportion of positive examples
   which $G$ labels positive. </span>
+</p>
 
+
+<p>
  <span class='run'>The <span class='term'>precision</span> (or
   <span class='term'>positive predictive value</span>)
   of $G$ is the proportion of all examples which
@@ -362,11 +1164,6 @@ MathJax.Hub.Config({
  <span class='run'>The <span class='term'>false alarm rate</span> is
   the proportion of negative examples which $G$
   <i>incorrectly</i> labels positive. </span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage </span>
 </p>
 <ol class='footnotes'></ol>
     </div>
@@ -422,7 +1219,7 @@ MathJax.Hub.Config({
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 4ab688d9b.
+      Copyright 2022 The Bourbaki Authors. Version f4c410309.
     </span>
   </body>
 </html>
