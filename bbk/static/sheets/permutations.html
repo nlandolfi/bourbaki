@@ -104,6 +104,8 @@ MathJax.Hub.Config({
                   S: ["\\mathbfsf{S}"],
                   F: ["\\mathbfsf{F}"],
                   aff: ["\\mathsf{aff}"],
+                  upto: ["\\set{1,\\dots,#1}", 1],
+                  eqc: ["[#1]", 1],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
@@ -150,7 +152,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to discuss rearranging the order of some set.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a nonempty set. A \t{permutation} is a bijection from $X$ to $X$.</p></div><div class="sheet-listing"><p class="sheet"> Let $\pi: X \to X$ and $\sigma: X \to X$ be two permutations. Then $\pi \composed \sigma$ is a permutation. Also, the identity function $\id_{X}: X \to X$ is a permutation. In particular $\pi\id = \id\pi$ for all permutations. Since each permutation is invertible, inverse elements exist. And the associative law is valid for permutations since function composition is associative. Therefore the set of permutations with the operation of composition is a group (see \sheetref{groups}{Groups}). We call it the \t{symmetric group on $X$}.</p></div><div class="sheet-listing"><p class="sheet"> If $X$ is finite and $\num{X} = n$, then we can associate each element of $X$ with a number $\upto{n}$ and in so doing consider permutations of the set $\set{1, \dots, n}$. This special symmetric group is called the \t{symmetric group of degree $n$}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the symmetric group on $X$ by $\Sym(X)$. It is common to denote the symmetric group of degree $n$ by $S_n$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to discuss rearranging the order of some set.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a nonempty set. A \t{permutation} is a bijection from $X$ to $X$.</p></div><div class="sheet-listing"><p class="sheet"> Let $\pi : X \to X$ and $\sigma : X \to X$ be two permutations. Then $\pi  \composed \sigma $ is a permutation. Also, the identity function $\id_{X}: X \to X$ is a permutation. In particular $\pi \id = \id\pi $ for all permutations. Since each permutation is invertible, inverse elements exist. And the associative law is valid for permutations since function composition is associative. Therefore the set of permutations with the operation of composition is a group (see \sheetref{groups}{Groups}). We call it the \t{symmetric group on $X$}.</p></div><div class="sheet-listing"><p class="sheet"> If $X$ is finite and $\nu m{X} = n$, then we can associate each element of $X$ with a number $\upto{n}$ and in so doing consider permutations of the set $\set{1, \dots , n}$. This special symmetric group is called the \t{symmetric group of degree $n$}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the symmetric group on $X$ by $\Sym(X)$. It is common to denote the symmetric group of degree $n$ by $S_n$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1069,6 +1071,85 @@ Parse: {prototype: {
     </span>
 
   
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Permutations </h1> 
+      <!--
+!name:permutations
+!need:set_numbers
+!need:groups
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We want to discuss rearranging the order of
+  some set. </span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Let $X$ be a nonempty set. </span>
+
+ <span class='run'>A <span class='term'>permutation</span> is a
+  bijection from $X$ to $X$. </span>
+</p>
+
+
+<p>
+ <span class='run'>Let $\pi : X \to X$ and $\sigma : X \to X$
+  be two permutations. </span>
+
+ <span class='run'>Then $\pi  \composed \sigma $ is a permutation. </span>
+
+ <span class='run'>Also, the identity function $\id_{X}: X \to X$
+  is a permutation. </span>
+
+ <span class='run'>In particular $\pi \id = \id\pi $ for all
+  permutations. </span>
+
+ <span class='run'>Since each permutation is invertible, inverse
+  elements exist. </span>
+
+ <span class='run'>And the associative law is valid for
+  permutations since function composition is
+  associative. </span>
+
+ <span class='run'>Therefore the set of permutations with the
+  operation of composition is a group (see
+  \sheetref{groups}{Groups}). </span>
+
+ <span class='run'>We call it the <span class='term'>symmetric group
+  on $X$</span>. </span>
+</p>
+
+
+<p>
+ <span class='run'>If $X$ is finite and $\nu m{X} = n$, then we
+  can associate each element of $X$ with a number
+  $\upto{n}$ and in so doing consider permutations
+  of the set $\set{1, \dots , n}$. </span>
+
+ <span class='run'>This special symmetric group is called the
+  <span class='term'>symmetric group of degree
+  $n$</span>. </span>
+</p>
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>We denote the symmetric group on $X$ by
+  $\Sym(X)$. </span>
+
+ <span class='run'>It is common to denote the symmetric group of
+  degree $n$ by $S_n$. </span>
+</p>
+<ol class='footnotes'></ol>
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1120,7 +1201,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79c895a84.
+      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
     </span>
   </body>
 </html>

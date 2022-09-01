@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make digital_symbols.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 digital_symbols.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > digital_symbols.tex
 

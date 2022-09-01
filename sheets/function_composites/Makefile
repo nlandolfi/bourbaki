@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make function_composites.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 function_composites.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_composites.tex
 

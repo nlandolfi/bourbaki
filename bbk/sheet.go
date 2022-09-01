@@ -47,7 +47,7 @@ type ParseResult struct {
 
 func (p *ParseResult) LitHTML() string {
 	var b bytes.Buffer
-	lit.WriteHTML(&b, p.litNode, "", " ")
+	lit.WriteHTML(&b, p.litNode, &lit.WriteOpts{Prefix: "", Indent: " "})
 	return b.String()
 }
 

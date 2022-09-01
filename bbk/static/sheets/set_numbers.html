@@ -132,6 +132,8 @@ MathJax.Hub.Config({
                   S: ["\\mathbfsf{S}"],
                   F: ["\\mathbfsf{F}"],
                   aff: ["\\mathsf{aff}"],
+                  upto: ["\\set{1,\\dots,#1}", 1],
+                  eqc: ["[#1]", 1],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
@@ -178,7 +180,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to count the number of elements in a set.</p></div><div class="sheet-listing" id="defining_result"><h1 class="sheet">2. Defining Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} A set can be equivalent to at most one natural number.\footnote{A proof will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{number} of a finite set is the unique natural number equivalent to it. We also call this the \t{size} of the set.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the number of a set by $\num{A}$.</p></div><div class="sheet-listing" id="restriction_to_a_finite_set"><h1 class="sheet">3. Restriction to a finite set</h1></div><div class="sheet-listing"><p class="sheet"> If we restrict $E \mapsto \num{E}$ to the domain $\powerset{X}$ of some set $X$ then $\num{\cdot}: \powerset{X} \to \omega$ is a function.\footnote{Future editions will clarify this point.}</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">4. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \subset B \implies \num{A} \leq \num{B}$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to count the number of elements in a set.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Defining result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} A set can be equivalent to at most one natural number. \ifhmode\unskip\fi\footnote{ A proof will appear in future editions. }\end{proposition} The \t{number} of a finite set is the unique natural number equivalent to it. We also call this the \t{size} of the set.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the number of a set by $\num{A}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Restriction to a finite set}</p></div><div class="sheet-listing"><p class="sheet"> If we restrict $E \indent \num{E}$ to the domain $\powerset{X}$ of some set $X$ then $\num{\cdot }: \powerset{X} \to \omega $ is a function. \ifhmode\unskip\fi\footnote{ Future editions will clarify this point. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \subset B \implies \num{A} \leq \num{B}$\end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1025,6 +1027,67 @@ Parse: {prototype: {
     </span>
 
   
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Set Numbers </h1> 
+      <!--
+!name:set_numbers
+!need:finite_sets
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We want to count the number of elements in a
+  set. </span>
+</p>
+
+<h1>
+Defining result </h1>
+
+<div class='proposition' <span class='run'>A set can be equivalent to at most one
+  natural number.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span></div>
+<p>
+ <span class='run'>The <span class='term'>number</span> of a finite
+  set is the unique natural number equivalent to
+  it. </span>
+
+ <span class='run'>We also call this the
+  <span class='term'>size</span> of the set. </span>
+</p>
+
+
+<!--%TODO: include basic facts about unions and numbers0-->
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>We denote the number of a set by $\num{A}$. </span>
+</p>
+
+<h1>
+Restriction to a finite set </h1>
+
+<p>
+ <span class='run'>If we restrict $E &nbsp;&nbsp;&nbsp;&nbsp;
+  \num{E}$ to the domain $\powerset{X}$ of some
+  set $X$ then $\num{\cdot }: \powerset{X} \to
+  \omega $ is a function.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+</p>
+
+<h1>
+Properties </h1>
+
+<div class='proposition' <span class='run'>$A \subset B \implies \num{A} \leq \num{B}$ </span></div>
+<!--
+% \begin{proposition}
+%   $A \intersect B = \emptyset \implies \num{A \union B} = \num{A} + \num{B}$.
+% \end{proposition}
+-->
+<ol class='footnotes'><li id='footnote-1'> <span class='run'>A proof will appear in future editions. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will clarify this point. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1076,7 +1139,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79c895a84.
+      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
     </span>
   </body>
 </html>

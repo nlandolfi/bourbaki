@@ -104,6 +104,8 @@ MathJax.Hub.Config({
                   S: ["\\mathbfsf{S}"],
                   F: ["\\mathbfsf{F}"],
                   aff: ["\\mathsf{aff}"],
+                  upto: ["\\set{1,\\dots,#1}", 1],
+                  eqc: ["[#1]", 1],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
@@ -150,7 +152,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to have language for applying two functions one after the other. We apply a first function then a second function.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider two functions. Suppose the range of the first is a subset of the domain of the second. In other words, every value of the first is in the domain (and so can be used as an argument) for the second. In this case we say that the second function is \t{composable} with the first.</p></div><div class="sheet-listing"><p class="sheet"> The \t{composite} (or \t{composition}) of the second function \t{with} the first function is the function which associates to an element in the first's domain the element in the second's codomain that the second function associates with the result of the first.</p></div><div class="sheet-listing"><p class="sheet"> In other words, we take an element in the first's domain. We apply the first function to it. We obtain an element in the first's codomain, which is also an element in the second's domain. We apply the second function to this result. We obtain an element in the second's codomain. The composition of the second function with the first is the function so constructed. Of course the order of composition is important.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A, B, C$ be non-empty sets. Let $f: A \to B$ and $g: B \to C$. We denote the composition of $g$ with $f$ by $g \comp f$ read aloud as "g composed with f." To make clear the domain and codomain, we denote the composition $g \comp f: A \to C$. $g \comp f$ is defined by \[ (g \comp f)(a) = g(f(a)). \] for all $a \in A$. Sometimes the notation $gf$ is used for $g \comp f$.</p></div><div class="sheet-listing"><p class="sheet"> \s{Basic Properties}</p></div><div class="sheet-listing"><p class="sheet"> Function composition is associative but not commutative.\footnote{Future editions will include a counterexample.} Indeed, even if $f \comp g$ is defined, $g \comp f$ may not be.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associative] Let $f: X \to Y$, $g: Y \to Z$ and $h: Z \to U$ Then $(f \comp g) \comp h = f \comp (g \comp h)$\footnote{The proof is straightforward. Future editions will include it.} \end{proposition}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to have language for applying two functions one after the other. We apply a first function then a second function.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Consider two functions. Suppose the range of the first is a subset of the domain of the second. In other words, every value of the first is in the domain (and so can be used as an argument) for the second. In this case we say that the second function is \t{composable} with the first.</p></div><div class="sheet-listing"><p class="sheet"> The \t{composite} (or \t{composition}) of the second function \t{with} the first function is the function which associates to an element in the first's domain the element in the second's codomain that the second function associates with the result of the first.</p></div><div class="sheet-listing"><p class="sheet"> In other words, we take an element in the first's domain. We apply the first function to it. We obtain an element in the first's codomain, which is also an element in the second's domain. We apply the second function to this result. We obtain an element in the second's codomain. The composition of the second function with the first is the function so constructed. Of course the order of composition is important.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A, B, C$ be non-empty sets. Let $f: A \to B$ and $g: B \to C$. We denote the composition of $g$ with $f$ by $g \circ f$ read aloud as "g composed with f." To make clear the domain and codomain, we denote the composition $g \circ f: A \to C$. The function $g \circ f$ is defined by \[ (g \circ f)(a) = g(f(a)) \quad \text{for all } a \in A. \] Sometimes the notation $gf$ is used for $g \circ f$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Basic properties}</p></div><div class="sheet-listing"><p class="sheet"> Function composition is associative but not commutative. \ifhmode\unskip\fi\footnote{ Future editions will include a counterexample. } Indeed, even if $f \circ g$ is defined, $g \circ f$ may not be.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associative] Let $f: X \to Y$, $g: Y \to Z$ and $h: Z \to U$ Then $(f \circ g) \circ h = f \circ (g \circ h)$ \ifhmode\unskip\fi\footnote{ The proof is straightforward. Future editions will include it. }\end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -889,6 +891,117 @@ Parse: {prototype: {
     </span>
 
   
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Function Composites </h1> 
+      <!--
+!name:function_composites
+!need:functions
+-->
+
+<h1>
+Why </h1>
+
+<p>
+ <span class='run'>We want to have language for applying two
+  functions one after the other. </span>
+
+ <span class='run'>We apply a first function then a second
+  function. </span>
+</p>
+
+<h1>
+Definition </h1>
+
+<p>
+ <span class='run'>Consider two functions. </span>
+
+ <span class='run'>Suppose the range of the first is a subset of
+  the domain of the second. </span>
+
+ <span class='run'>In other words, every value of the first is
+  in the domain (and so can be used as an
+  argument) for the second. </span>
+
+ <span class='run'>In this case we say that the second function
+  is <span class='term'>composable</span> with the
+  first. </span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>composite</span> (or
+  <span class='term'>composition</span>) of the second
+  function <span class='term'>with</span> the first
+  function is the function which associates to an
+  element in the first&#39;s domain the element in
+  the second&#39;s codomain that the second
+  function associates with the result of the first. </span>
+</p>
+
+
+<p>
+ <span class='run'>In other words, we take an element in the
+  first&#39;s domain. </span>
+
+ <span class='run'>We apply the first function to it. </span>
+
+ <span class='run'>We obtain an element in the first&#39;s
+  codomain, which is also an element in the
+  second&#39;s domain. </span>
+
+ <span class='run'>We apply the second function to this result. </span>
+
+ <span class='run'>We obtain an element in the second&#39;s
+  codomain. </span>
+
+ <span class='run'>The composition of the second function with the
+  first is the function so constructed. </span>
+
+ <span class='run'>Of course the order of composition is important. </span>
+</p>
+
+<h2>
+Notation </h2>
+
+<p>
+ <span class='run'>Let $A, B, C$ be non-empty sets. </span>
+
+ <span class='run'>Let $f: A \to B$ and $g: B \to C$. </span>
+
+ <span class='run'>We denote the composition of $g$ with $f$ by
+  $g \circ f$ read aloud as “g composed with f.} </span>
+
+ <span class='run'>To make clear the domain and codomain, we
+  denote the composition $g \circ f: A \to C$. </span>
+
+ <span class='run'>The function $g \circ f$ is defined by
+  <p>\[
+   (g \circ f)(a) = g(f(a)) \quad \text{for all } a \in A. 
+  \]</p></span>
+
+ <span class='run'>Sometimes the notation $gf$ is used for $g
+  \circ f$. </span>
+</p>
+
+<h1>
+Basic properties </h1>
+
+<p>
+ <span class='run'>Function composition is associative but not
+  commutative.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>Indeed, even if $f \circ g$ is defined, $g
+  \circ f$ may not be. </span>
+</p>
+
+<div class='proposition' text='Associative' <span class='run'>Let $f: X \to Y$, $g: Y \to Z$ and $h: Z
+  \to U$ </span>
+
+ <span class='run'>Then $(f \circ g) \circ h = f \circ (g \circ
+  h)$<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span></div><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include a counterexample. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>The proof is straightforward. Future editions
+  will include it. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -940,7 +1053,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79c895a84.
+      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
     </span>
   </body>
 </html>

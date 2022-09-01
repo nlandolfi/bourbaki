@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make smooth_functions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 smooth_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > smooth_functions.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make equivalence_relations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 equivalence_relations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > equivalence_relations.tex
 
