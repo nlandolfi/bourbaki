@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make variational_autoencoders.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 variational_autoencoders.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > variational_autoencoders.tex
 

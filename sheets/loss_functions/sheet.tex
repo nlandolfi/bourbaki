@@ -2,18 +2,18 @@
 %!need:predictor_performance_metrics
 %!need:similarity_functions
 
-\ssection{Why}
+\section*{Why}
 
 We compare inductors by comparing the relations they produce.
 We can compare relations by similarity functions.
 
-\ssection{Definition}
+\section*{Definition}
 
 Let $X$ and $Y$ be sets.
-Let $\CR$ be the set of relations between $X$ and $Y$.
-Let $\CH \subset \CR$ be a set of hypothesis relations.
+Let $\mathcal{R} $ be the set of relations between $X$ and $Y$.
+Let $\mathcal{H}  \subset \mathcal{R} $ be a set of hypothesis relations.
 
-Given a similarity function $d: \CR \times \CR \to \R$ we can consider
+Given a similarity function $d: \mathcal{R}  \times  \mathcal{R} \to \R $ we can consider
 
 A \t{loss} function is a nonnegative real-valued function on pairs which is zero only on repeated pairs.
 It need not be symmetric.
@@ -27,16 +27,16 @@ Similarly, the \t{loss of a predictor on a dataset} of record pairs is the sum o
 Likewise, the \t{average loss} of a predictor is the loss of the predictor on the dataset divided by the size of the dataset.
 The average loss is also known as the \t{empirical risk} of the predictor on the dataset.
 
-\ssubsection{Notation}
+\subsection*{Notation}
 
-Let $(a, b) \in A \times B$; $A, B \neq \emptyset$.
-For a lost function $\loss: B \cross B \to \R$ and predictor $f: A \to B$, the loss of $f$ on $(a, b)$ is $\loss(f(a),b)$.
-Let $s = ((a^1, b^1), \dots, (a^n, b^n))$
+Let $(a, b) \in A \times B$; $A, B \neq \varnothing$.
+For a lost function $\loss: B \cross B \to \R $ and predictor $f: A \to B$, the loss of $f$ on $(a, b)$ is $\loss(f(a),b)$.
+Let $s = ((a^1, b^1), \dots , (a^n, b^n))$
 be a record sequence.
 The loss of $f$ on $s$ is $\sum_{k = 1}^{n} \loss(f(a^k), b^k)$.
 The average loss of $f$ on $s$ is $(\nicefrac{1}{n})\sum_{k = 1}^{n} \loss(f(a^k), b^k)$.
 
-\ssection{Training and test loss}
+\section*{Training and test loss}
 
 Recall that $s$ is a dataset of records pairs in $A \times B$.
 We call a predictor $f: A \to B$ an \t{interpolator} of the dataset $s$ if, for each pair $(a^i, b^i)$ in the dataset, $f(a^i) = b^i$.
@@ -48,6 +48,9 @@ First, the one used to construct the predictor (the \t{training dataset}) and se
 
 We judge a predictor by its average loss on the test dataset.
 We call this the \t{test loss}, in contrast with the \t{train loss} obtained on the dataset used to construct the predictor.
-A predictor whose average test loss is much larger than its average train lost is said to be \t{overfit} to the train dataset.\footnote{Many authorities will refer to this as the \say{problem} or \say{danger} of overfitting.}
+A predictor whose average test loss is much larger than its average train lost is said to be \t{overfit} to the train dataset.
+    \ifhmode\unskip\fi\footnote{
+Many authorities will refer to this as the \say{problem} or \say{danger} of overfitting.
+    }
 
 Roughly speaking, we judge an inductor by some aggregation metric of the loss of predictors it produces on datasets.

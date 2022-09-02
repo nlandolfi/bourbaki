@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make autoencoders.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 autoencoders.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > autoencoders.tex
 
