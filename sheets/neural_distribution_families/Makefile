@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make neural_distribution_families.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 neural_distribution_families.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > neural_distribution_families.tex
 

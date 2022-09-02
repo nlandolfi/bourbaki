@@ -1,65 +1,54 @@
+<!--
+!name:predictors
+!need:lists
+-->
+
+§ Why ⦉
 ¶ ⦊
-  ‖ ❲%!name:predictors❳ ⦉
-
-  ‖ ❲%!need:lists❳ ⦉
-⦉
-
-¶ ⦊
-  ‖ \ssection{Why} ⦉
-
   ‖ We discuss inferring (or learning) functions from examples. ⦉
 ⦉
 
+§ Definitions ⦉
 ¶ ⦊
-  ‖ \ssection{Definitions} ⦉
+  ‖ A ❬predictor❭ $f: 𝒰 → 𝒱$ is a function from $𝒰$ to $𝒱$. ⦉
 
-  ‖ A ❬predictor❭ $f: \CU → \CV$ is a function from $\CU$ to
-    $\CV$. ⦉
-
-  ‖ An ❬inducer❭ is a function from finite datasets in $\CU ×
-    \CV$ to predictors from $\CU$ to $\CV$. ⦉
+  ‖ An ❬inducer❭ is a function from finite datasets in $𝒰 × 𝒱$
+    to predictors from $𝒰$ to $𝒱$. ⦉
 
   ‖ A ❬learner❭ is a function family of inducers, indexed by
     $n$, each defined for datasets of size $n$. ⦉
 
-  ‖ We call $\CU$ the ❬inputs❭, $\CV$ the ❬outputs❭, and $f(u)$
-    the ❬prediction❭ of $f$ on $u ∈ \CU$. ⦉
+  ‖ We call $𝒰$ the ❬inputs❭, $𝒱$ the ❬outputs❭, and $f(u)$ the
+    ❬prediction❭ of $f$ on $u ∈ 𝒰$. ⦉
 ⦉
 
+§ Predicting relations ⦉
 ¶ ⦊
-  ‖ \ssection{Predicting relations} ⦉
-
   ‖ A ❬relation inducer❭ is a function from finite datasets in
-    $\CU × \CV$ to ‹relations› on $\CU × \CV$. ⦉
+    $𝒰 × 𝒱$ to ‹relations› on $𝒰 × 𝒱$. ⦉
 
-  ‖ Since we can associate any relation $R$ between $\CU$ and
-    $\CV$ with a function $f: \CU × \CV → \set{0, 1}$, $f(u,
-    v) = 1$ if and only if $(u, v) ∈ R$, the predictor case
-    can accomodate learning general relations, beyond functions. ⦉
+  ‖ Since we can associate any relation $R$ between $𝒰$ and $𝒱$
+    with a function $f: 𝒰 × 𝒱 → \set{0, 1}$, $f(u, v) = 1$
+    if and only if $(u, v) ∈ R$, the predictor case can
+    accomodate learning general relations, beyond functions. ⦉
 ⦉
 
+§§ Notation ⦉
 ¶ ⦊
-  ‖ \ssubsection{Notation} ⦉
+  ‖ Let $D$ be a dataset of size $n$ in $𝒰 × 𝒱$. ⦉
+
+  ‖ Let $g: 𝒰 → 𝒱$, a predictor, which makes prediction $g(u)$
+    on input $u ∈ 𝒰$. ⦉
+
+  ‖ Let $G_n: (𝒰 × 𝒱)^n → (𝒰 × 𝒱)$ be an inducer, so that
+    $G_n(D)$ is the predictor which the inductor associates with
+    dataset $D$. ⦉
+
+  ‖ Then $\set{G_n: (𝒰 × 𝒱)^n → \powerset{(𝒰 × 𝒱)}}_{n ∈ 𝗡}$
+    is a learner. ⦉
 ⦉
 
-¶ ⦊
-  ‖ Let $D$ be a dataset of size $n$ in $\CU \cross \CV$. ⦉
-
-  ‖ Let $g: \CU → \CV$, a predictor, which makes prediction
-    $g(u)$ on input $u ∈ \CU$. ⦉
-
-  ‖ Let $G_n: (\CU \cross \CV)^n → (\CU × \CV)$ be an inducer,
-    so that $G_n(D)$ is the predictor which the inductor
-    associates with dataset $D$. ⦉
-
-  ‖ Then $\set{G_n: (\CU × \CV)^n → \powerset{(\CU × \CV)}}_{n ∈
-    \N}$ is a learner. ⦉
-⦉
-
-¶ ⦊
-  ‖ \ssection{Consistent and complete datasets} ⦉
-⦉
-
+§ Consistent and complete datasets ⦉
 ¶ ⦊
   ‖ Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R ⊂
     X × Y$ a relation. ⦉
@@ -69,21 +58,18 @@
   ‖ $D$ is ❬consistent❭ if there exists a relation with which
     it is consistent. ⦉
 
-  ‖ A dataset is always consistent (take $R = \CU × \CV$). ⦉
+  ‖ A dataset is always consistent (take $R = 𝒰 × 𝒱$). ⦉
 
   ‖ $D$ is ❬functionally consistent❭ if it is consistent with a
     function; in this case, $x_i = x_j ⇒ y_i = y_j$. ⦉
 
-  ‖ $D$ is ❬functionally complete❭ if $\union_i\set{x_i} = X$. ⦉
+  ‖ $D$ is ❬functionally complete❭ if $∪_i\set{x_i} = X$. ⦉
 
   ‖ In this case, the dataset includes every element of the
     relation. ⦉
 ⦉
 
-¶ ⦊
-  ‖ \ssubsection{Other terminology} ⦉
-⦉
-
+§§ Other terminology ⦉
 ¶ ⦊
   ‖ Other terms for the inputs include ❬independent variables❭,
     ❬explanatory variables❭, ❬precepts❭, ❬covariates❭, ❬patterns❭,

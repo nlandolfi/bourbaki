@@ -1,37 +1,40 @@
 %!name:predictors
 %!need:lists
 
-\ssection{Why}
+\section*{Why}
+
 We discuss inferring (or learning) functions from examples.
 
-\ssection{Definitions}
-A \t{predictor} $f: \CU \to \CV$ is a function from $\CU$ to $\CV$.
-An \t{inducer} is a function from finite datasets in $\CU \times  \CV$ to predictors from $\CU$ to $\CV$.
+\section*{Definitions}
+
+A \t{predictor} $f: \mathcal{U}  \to \mathcal{V} $ is a function from $\mathcal{U} $ to $\mathcal{V} $.
+An \t{inducer} is a function from finite datasets in $\mathcal{U}  \times  \mathcal{V} $ to predictors from $\mathcal{U} $ to $\mathcal{V} $.
 A \t{learner} is a function family of inducers, indexed by $n$, each defined for datasets of size $n$.
-We call $\CU$ the \t{inputs}, $\CV$ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \CU$.
+We call $\mathcal{U} $ the \t{inputs}, $\mathcal{V} $ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \mathcal{U} $.
 
-\ssection{Predicting relations}
-A \t{relation inducer} is a function from finite datasets in $\CU \times  \CV$ to \textit{relations} on $\CU \times  \CV$.
-Since we can associate any relation $R$ between $\CU$ and $\CV$ with a function $f: \CU \times  \CV \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.
+\section*{Predicting relations}
 
-\ssubsection{Notation}
+A \t{relation inducer} is a function from finite datasets in $\mathcal{U}  \times  \mathcal{V} $ to \textit{relations} on $\mathcal{U}  \times  \mathcal{V} $.
+Since we can associate any relation $R$ between $\mathcal{U} $ and $\mathcal{V} $ with a function $f: \mathcal{U}  \times \mathcal{V}  \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.
 
-Let $D$ be a dataset of size $n$ in $\CU \cross \CV$.
-Let $g: \CU \to \CV$, a predictor, which makes prediction $g(u)$ on input $u \in \CU$.
-Let $G_n: (\CU \cross \CV)^n \to (\CU \times  \CV)$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$.
-Then $\set{G_n: (\CU \times  \CV)^n \to \powerset{(\CU \times \CV)}}_{n \in \N}$ is a learner.
+\subsection*{Notation}
 
-\ssection{Consistent and complete datasets}
+Let $D$ be a dataset of size $n$ in $\mathcal{U}  \times \mathcal{V} $.
+Let $g: \mathcal{U}  \to \mathcal{V} $, a predictor, which makes prediction $g(u)$ on input $u \in \mathcal{U} $.
+Let $G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to (\mathcal{U} \times  \mathcal{V} )$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$.
+Then $\set{G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to \powerset{(\mathcal{U}  \times  \mathcal{V} )}}_{n \in \N }$ is a learner.
+
+\section*{Consistent and complete datasets}
 
 Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R \subset X \times  Y$ a relation.
 $D$ is \t{consistent with $R$} if each $(u_i, v_i) \in R$.
 $D$ is \t{consistent} if there exists a relation with which it is consistent.
-A dataset is always consistent (take $R = \CU \times  \CV$).
+A dataset is always consistent (take $R = \mathcal{U}  \times \mathcal{V} $).
 $D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \Rightarrow y_i = y_j$.
-$D$ is \t{functionally complete} if $\union_i\set{x_i} = X$.
+$D$ is \t{functionally complete} if $\cup_i\set{x_i} = X$.
 In this case, the dataset includes every element of the relation.
 
-\ssubsection{Other terminology}
+\subsection*{Other terminology}
 
 Other terms for the inputs include \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns}, \t{instances}, or \t{observations}.
 Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}.

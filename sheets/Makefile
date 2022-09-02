@@ -1,5 +1,10 @@
 .PHONY: make
 
+make:
+	for file in $(find ./ -type d)
+		echo $file
+	end
+
 # accidentally run too many times
 # make:
 # 	bbk_sheets
