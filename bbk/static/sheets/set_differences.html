@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -145,7 +162,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to consider the elements of one set which are not contained in another set.</p></div><div class="sheet-listing"><p class="sheet"> \s{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. The \t{difference} between $A$ and $B$ is the set $\Set{x \in A}{x \not\in B}$. It is not necessary that $B \subset A$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">0.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the difference between $A$ and $B$ by $A - B$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">1. Properties</h1></div><div class="sheet-listing"><p class="sheet"> The following are straightforward.\footnote{Accounts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A - \emptyset = A$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A - A = \emptyset$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to consider the elements of one set which are not contained in another set.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. The \t{difference} between $A$ and $B$ is the set $\Set{x \in A}{x \not\in B}$. It is not necessary that $B \subset A$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the difference between $A$ and $B$ by $A - B$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> The following are straightforward.\footnote{Accounts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A - \varnothing = A$\end{proposition} \begin{proposition} $A - A = \varnothing$\end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -795,7 +812,181 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_specification.html'" onkeypress="location.href='./set_specification.html'">
+                <span>
+                  Set Specification
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./natural_numbers.html'" onkeypress="location.href='./natural_numbers.html'">
+            <span>
+            Natural Numbers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_complements.html'" onkeypress="location.href='./set_complements.html'">
+            <span>
+            Set Complements
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./vertex_separators.html'" onkeypress="location.href='./vertex_separators.html'">
+            <span>
+            Vertex Separators
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_differences.pdf#page=2'" onkeypress="location.href='./set_differences.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_differences-graph.pdf'" onkeypress="location.href='./set_differences-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Set Differences </h1> 
+      <!--
+!name:set_differences
+!need:set_specification
+!refs:paul_halmos/naive_set_theory/section_05
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We want to consider the elements of one set
+  which are not contained in another set.</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>Let $A$ and $B$ denote sets.</span>
+
+ <span class='run'>The <span class='term'>difference</span> between
+  $A$ and $B$ is the set $\Set{x \in A}{x
+  \not\in B}$.</span>
+
+ <span class='run'>It is not necessary that $B \subset A$.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>We denote the difference between $A$ and $B$
+  by $A - B$.</span>
+</p>
+
+<h1>Properties</h1>
+
+<p>
+ <span class='run'>The following are straightforward.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>$A - \varnothing = A$</span></div>
+<div class='proposition'>
+ <span class='run'>$A - A = \varnothing$</span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Accounts will appear in future editions.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -847,7 +1038,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

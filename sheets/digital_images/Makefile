@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make digital_images.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 digital_images.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > digital_images.tex
 

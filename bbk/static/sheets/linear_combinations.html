@@ -90,7 +90,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -106,14 +106,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1181,7 +1198,147 @@ Parse: {prototype: {
 \renewcommand{\Vec}[2]{{#1}^{#2}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_linear_combinations.html'" onkeypress="location.href='./real_linear_combinations.html'">
+                <span>
+                  Real Linear Combinations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./vectors.html'" onkeypress="location.href='./vectors.html'">
+                <span>
+                  Vectors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./linear_transformations.html'" onkeypress="location.href='./linear_transformations.html'">
+            <span>
+            Linear Transformations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./linearly_dependent_vectors.html'" onkeypress="location.href='./linearly_dependent_vectors.html'">
+            <span>
+            Linearly Dependent Vectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix-vector_products.html'" onkeypress="location.href='./matrix-vector_products.html'">
+            <span>
+            Matrix-Vector Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_convex_combinations.html'" onkeypress="location.href='./real_convex_combinations.html'">
+            <span>
+            Real Convex Combinations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linear_combinations.pdf#page=2'" onkeypress="location.href='./linear_combinations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linear_combinations-graph.pdf'" onkeypress="location.href='./linear_combinations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Linear Combinations </h1> 
       <!--
@@ -1190,45 +1347,43 @@ Parse: {prototype: {
 !need:real_linear_combinations
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to build vectors out of other vectors
-  using scalar multiplication and vector addition. </span>
+  using scalar multiplication and vector addition.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>linear combination</span>
   <span class='term'>from</span> a vector space is
   an ordered pair: the first coordinate is a
   sequence of vectors and the second is a
-  sequence of scalars. </span>
+  sequence of scalars.</span>
 
  <span class='run'>The <span class='term'>result</span> of a linear
   combination is the sum of the results of
   scaling each vector by the corresponding scalar
-  in the sequence; itself a vector in the space. </span>
+  in the sequence; itself a vector in the space.</span>
 </p>
 
 
 <p>
  <span class='run'>A <span class='term'>trivial linear
   combination</span> is one whose sequence of
-  scalars is zero at each coordinate. </span>
+  scalars is zero at each coordinate.</span>
 
  <span class='run'>The result of any trivial linear combination is
-  the zero vector. </span>
+  the zero vector.</span>
 
  <span class='run'>A <span class='term'>nontrivial linear
-  combination</span> is one which is not trivial. </span>
+  combination</span> is one which is not trivial.</span>
 
  <span class='run'>In other words, to be nontrivial, there must
   exist at least one index of the scalar sequence
-  whose corresponding value is nonzero. </span>
+  whose corresponding value is nonzero.</span>
 </p>
 
 
@@ -1239,58 +1394,59 @@ Definition </h1>
   there exists a sequence of scalars such that
   the result of the linear combination of that
   sequence of vectors and scalars is the given
-  vector. </span>
+  vector.</span>
 
  <span class='run'>In other words, a vector can be written as a
   linear combination of some other vectors if
   there exists scalars for those other vectors
   such that scaling them and adding the results
-  gives the vector. </span>
+  gives the vector.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $(V, \F )$ be a vector space. </span>
+ <span class='run'>Let $(V, \F )$ be a vector space.</span>
 
  <span class='run'>Let $v = (v_1, \dots , v_n)$ be a sequence of
-  vectors in $V$ and </span>
+  vectors in $V$ and</span>
 
  <span class='run'>$a = (a_1, \dots , a_n)$ be a sequence of
-  scalars in $\F $. </span>
+  scalars in $\F $.</span>
 
  <span class='run'>Then $(v, a)$ is a linear combination and we
   can express its result by
   <p>\[
-   a_1v_1 + a_2v_2 + \cdots + a_n v_n. 
+   a_1v_1 + a_2v_2 + \cdots + a_n v_n.
   \]</p></span>
 
  <span class='run'>If $(v,a)$ is trivial, then $a_i = 0$ for $i
   \in \upto{n}$ and the result of $(v, a)$ is
-  $0$ (the zero vector). </span>
+  $0$ (the zero vector).</span>
 
  <span class='run'>Otherwise, there exists $i \in \upto{n}$ such
   that $a_i \neq 0$; of course, the result of
-  $(v, a)$ may still be $0$. </span>
+  $(v, a)$ may still be $0$.</span>
 
  <span class='run'>A vector $u$ can be written as a linear
   combination of the vectors $v_1, v_2, \dots ,
   v_n$ if there exists scalars $a_1, a_2, \dots ,
   a_n$ so that
   <p>\[
-   u = a_1v_1 + a_2v_2 + \cdots + a_nv_n. 
+   u = a_1v_1 + a_2v_2 + \cdots + a_nv_n.
   \]</p></span>
 
  <span class='run'>We often number (see \sheetref{lists}{Lists}) a
-  set of finite vectors. </span>
+  set of finite vectors.</span>
 
  <span class='run'>In this case, we say “Let $\set{u_1, \dots ,
-  u_n}$ be a (finite) set of vectors.” </span>
+  u_n}$ be a (finite) set of vectors.”</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1342,7 +1498,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

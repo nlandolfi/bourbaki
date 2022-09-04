@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make integral_line.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 integral_line.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > integral_line.tex
 

@@ -139,7 +139,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -155,14 +155,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1806,7 +1823,196 @@ Parse: {prototype: {
 \newcommand{\sgn}{\mathword{sgn}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_determinants.html'" onkeypress="location.href='./matrix_determinants.html'">
+                <span>
+                  Matrix Determinants
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+                <span>
+                  Matrix Transpose
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./multivariate_real_densities.html'" onkeypress="location.href='./multivariate_real_densities.html'">
+                <span>
+                  Multivariate Real Densities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./normal_densities.html'" onkeypress="location.href='./normal_densities.html'">
+                <span>
+                  Normal Densities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./positive_definite_matrices.html'" onkeypress="location.href='./positive_definite_matrices.html'">
+                <span>
+                  Positive Definite Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrix_inverses.html'" onkeypress="location.href='./real_matrix_inverses.html'">
+                <span>
+                  Real Matrix Inverses
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./empirical_normal.html'" onkeypress="location.href='./empirical_normal.html'">
+            <span>
+            Empirical Normal
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_multivariate_normals.html'" onkeypress="location.href='./maximum_likelihood_multivariate_normals.html'">
+            <span>
+            Maximum Likelihood Multivariate Normals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_conditionals.html'" onkeypress="location.href='./normal_conditionals.html'">
+            <span>
+            Normal Conditionals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_correlation.html'" onkeypress="location.href='./normal_correlation.html'">
+            <span>
+            Normal Correlation
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_random_functions.html'" onkeypress="location.href='./normal_random_functions.html'">
+            <span>
+            Normal Random Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./reproducing_kernels.html'" onkeypress="location.href='./reproducing_kernels.html'">
+            <span>
+            Reproducing Kernels
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./tree_normals.html'" onkeypress="location.href='./tree_normals.html'">
+            <span>
+            Tree Normals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./multivariate_normals.pdf#page=2'" onkeypress="location.href='./multivariate_normals.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./multivariate_normals-graph.pdf'" onkeypress="location.href='./multivariate_normals-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Multivariate Normals </h1> 
       <!--
@@ -1819,35 +2025,33 @@ Parse: {prototype: {
 !need:matrix_transpose
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We generalize the normal density to
-  $d$-dimensional space. </span>
+  $d$-dimensional space.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Let $f: \R ^d \to \R $ be a density such that
   $$f(x) = \mgaussiandensity{x}{μ}{Σ}$$ where $\mu
   \in \R ^d$, $\Sigma  \in \mathbfsf{S} ^d$, and
-  $\Sigma  \succ 0$. </span>
+  $\Sigma  \succ 0$.</span>
 
  <span class='run'>We call $f$ a <span class='term'>multivariate
-  normal density</span>. </span>
+  normal density</span>.</span>
 
  <span class='run'>A multivariate normal density with $d = 1$ is
   a normal density, so we refer to multivariate
   normal densities as <span class='term'>normal
-  densities</span> without ambiguity. </span>
+  densities</span> without ambiguity.</span>
 
  <span class='run'>We frequently use the word normal as a
   substantive, and refer to
   <span class='term'>normals</span> when we mean
-  multivariate normal densities. </span>
+  multivariate normal densities.</span>
 
  <span class='run'>Many people call a multivariate normal
   distribution a <span class='term'>multivariate
@@ -1860,33 +2064,35 @@ Definition </h1>
 <p>
  <span class='run'>We call $\mu $ the <span class='term'>mean</span>
   and $\Sigma $ the <span class='term'>covariance
-  matrix</span>. </span>
+  matrix</span>.</span>
 
  <span class='run'>We call $\Sigma ^{-1}$ the
-  <span class='term'>precision matrix</span>. </span>
+  <span class='term'>precision matrix</span>.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Maximum} </span>
+ <span class='run'>\ssection{Maximum}</span>
 </p>
 
 
 <p>
  <span class='run'>The maximum of a normal density is its mean,
-  $\mu  \in \R ^d$. </span>
+  $\mu  \in \R ^d$.</span>
 </p>
 
 
 <p>
- <span class='run'>\blankpage </span>
+ <span class='run'>\blankpage</span>
 
  <span class='run'></span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>We avoid this usage in accordance with the
-  project’s policy on historical names. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>We avoid this usage in accordance with the
+  project’s policy on historical names.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1938,7 +2144,7 @@ Definition </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

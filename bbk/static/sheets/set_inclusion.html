@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -78,14 +78,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -729,7 +746,119 @@ Parse: {prototype: {
 \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./standardized_accounts.html'" onkeypress="location.href='./standardized_accounts.html'">
+                <span>
+                  Standardized Accounts
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_equality.html'" onkeypress="location.href='./set_equality.html'">
+            <span>
+            Set Equality
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_inclusion.pdf#page=2'" onkeypress="location.href='./set_inclusion.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_inclusion-graph.pdf'" onkeypress="location.href='./set_inclusion-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Set Inclusion </h1> 
       <!--
@@ -738,43 +867,41 @@ Parse: {prototype: {
 !refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕sets_and_subsets
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want language for all of the elements of a
-  first set being the elements of a second set. </span>
+  first set being the elements of a second set.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>Denote a set by $A$ and a set by $B$. </span>
+ <span class='run'>Denote a set by $A$ and a set by $B$.</span>
 
  <span class='run'>If every element of the set denoted by $A$ is
   an element of the set denoted by $B$, then we
   say that the set denoted by $A$ is a
   <span class='term'>subset</span> of the set denoted
-  by $B$. </span>
+  by $B$.</span>
 </p>
 
 
 <p>
  <span class='run'>We say that the set denoted by $A$ is
   <span class='term'>included</span> in the set
-  denoted by $B$. </span>
+  denoted by $B$.</span>
 
  <span class='run'>We say that the set denoted by $B$ is a
   <span class='term'>superset</span> of the set
   denoted by $A$ or that the set denoted by $B$
   <span class='term'>includes</span> the set denoted
-  by $A$. </span>
+  by $A$.</span>
 </p>
 
 
 <p>
- <span class='run'>Every set is included in and includes itself. </span>
+ <span class='run'>Every set is included in and includes itself.</span>
 </p>
 
 
@@ -823,74 +950,74 @@ Definition </h1>
 %In other words, $B$ is an improper subset of $A$ if and only if $A$ includes $B$, $B \neq A$ and $B \neq \emptyset$.
 -->
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $A$ denote a set and $B$ denote a set. </span>
+ <span class='run'>Let $A$ denote a set and $B$ denote a set.</span>
 
  <span class='run'>We denote that the set $A$ is included in the
-  set $B$ by $A \subset B$. </span>
+  set $B$ by $A \subset B$.</span>
 
  <span class='run'>In other words, $A \subset B$ means $(\forall
-  x)((x \in A) \implies (x \in B))$. </span>
+  x)((x \in A) \implies (x \in B))$.</span>
 
  <span class='run'>We read the notation $A \subset B$ aloud as
-  “A is included in B} or “A subset B”. </span>
+  “A is included in B} or “A subset B”.</span>
 
  <span class='run'>Or we write $B \supset A$, and read it aloud
-  “B includes A} or “B superset $A$”. </span>
+  “B includes A} or “B superset $A$”.</span>
 
  <span class='run'>$B \supset A$ also means $(\forall x)((x \in
-  A) \implies (x \in B))$. </span>
+  A) \implies (x \in B))$.</span>
 </p>
 
-<h2>
-Properties </h2>
+<h2>Properties</h2>
 
 <!-- TODO(next edition): fix and expand this. -->
 
 <p>
  <span class='run'>There are some properties that our intuition
-  suggests inclusion should have. </span>
+  suggests inclusion should have.</span>
 
- <span class='run'>First, every set should include itself. </span>
+ <span class='run'>First, every set should include itself.</span>
 
  <span class='run'>We describe this fact by saying that inclusion
-  is <span class='term'>reflexive</span>. </span>
- <div class='proposition' text='Reflexive'  <span class='run'>Every set is included in itself. </span> </div>
+  is <span class='term'>reflexive</span>.</span>
+ <div class='proposition' text='Reflexive'>
+  <span class='run'>Every set is included in itself.</span> </div>
 </p>
 
 
 <p>
  <span class='run'>Next, we expect that if one set is included
-  in another, </span>
+  in another,</span>
 
  <span class='run'>This fact is described by saying that inclusion
-  is <span class='term'>transitive</span> </span>
- <div class='proposition' text='Transitive'  <span class='run'>If a set is included in another, and the
+  is <span class='term'>transitive</span></span>
+ <div class='proposition' text='Transitive'>
+  <span class='run'>If a set is included in another, and the
    latter in yet another, then the first is
-   included in the last. </span> </div>
+   included in the last.</span> </div>
  <!--<div data-littype='run'> ❲%TODO(next edition): define modus ponens!❳ </div>-->
 
 </p>
 
 
 <p>
- <span class='run'>Equality $(=)$ shares these two properties. </span>
+ <span class='run'>Equality $(=)$ shares these two properties.</span>
 
- <span class='run'>Let $A$ denote an object. </span>
+ <span class='run'>Let $A$ denote an object.</span>
 
- <span class='run'>Then $A = A$. </span>
+ <span class='run'>Then $A = A$.</span>
 
- <span class='run'>Let $B$ and $C$ also denote objects. </span>
+ <span class='run'>Let $B$ and $C$ also denote objects.</span>
 
- <span class='run'>If $A = B$ and $B = C$, then $A = C$. </span>
+ <span class='run'>If $A = B$ and $B = C$, then $A = C$.</span>
 
- <span class='run'>Of course, inclusion is not symmetric.. </span>
+ <span class='run'>Of course, inclusion is not symmetric..</span>
 
  <span class='run'>Belonging ($\in)$ may be, but need not be
-  reflexive and transitive. </span>
+  reflexive and transitive.</span>
 </p>
 
 
@@ -905,9 +1032,11 @@ Properties </h2>
 % %Is $A \in A$ ever true?
 % Inclusion is transitive, whereas belonging is not.
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -959,7 +1088,7 @@ Properties </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

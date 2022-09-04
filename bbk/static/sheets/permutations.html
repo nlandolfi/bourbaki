@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1070,7 +1087,140 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./groups.html'" onkeypress="location.href='./groups.html'">
+                <span>
+                  Groups
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_numbers.html'" onkeypress="location.href='./set_numbers.html'">
+                <span>
+                  Set Numbers
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_determinants.html'" onkeypress="location.href='./matrix_determinants.html'">
+            <span>
+            Matrix Determinants
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_permanents.html'" onkeypress="location.href='./matrix_permanents.html'">
+            <span>
+            Matrix Permanents
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./permutation_matrices.html'" onkeypress="location.href='./permutation_matrices.html'">
+            <span>
+            Permutation Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./permutations.pdf#page=2'" onkeypress="location.href='./permutations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./permutations-graph.pdf'" onkeypress="location.href='./permutations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Permutations </h1> 
       <!--
@@ -1079,50 +1229,48 @@ Parse: {prototype: {
 !need:groups
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to discuss rearranging the order of
-  some set. </span>
+  some set.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>Let $X$ be a nonempty set. </span>
+ <span class='run'>Let $X$ be a nonempty set.</span>
 
  <span class='run'>A <span class='term'>permutation</span> is a
-  bijection from $X$ to $X$. </span>
+  bijection from $X$ to $X$.</span>
 </p>
 
 
 <p>
  <span class='run'>Let $\pi : X \to X$ and $\sigma : X \to X$
-  be two permutations. </span>
+  be two permutations.</span>
 
- <span class='run'>Then $\pi  \composed \sigma $ is a permutation. </span>
+ <span class='run'>Then $\pi  \composed \sigma $ is a permutation.</span>
 
  <span class='run'>Also, the identity function $\id_{X}: X \to X$
-  is a permutation. </span>
+  is a permutation.</span>
 
  <span class='run'>In particular $\pi \id = \id\pi $ for all
-  permutations. </span>
+  permutations.</span>
 
  <span class='run'>Since each permutation is invertible, inverse
-  elements exist. </span>
+  elements exist.</span>
 
  <span class='run'>And the associative law is valid for
   permutations since function composition is
-  associative. </span>
+  associative.</span>
 
  <span class='run'>Therefore the set of permutations with the
   operation of composition is a group (see
-  \sheetref{groups}{Groups}). </span>
+  \sheetref{groups}{Groups}).</span>
 
  <span class='run'>We call it the <span class='term'>symmetric group
-  on $X$</span>. </span>
+  on $X$</span>.</span>
 </p>
 
 
@@ -1130,26 +1278,27 @@ Definition </h1>
  <span class='run'>If $X$ is finite and $\nu m{X} = n$, then we
   can associate each element of $X$ with a number
   $\upto{n}$ and in so doing consider permutations
-  of the set $\set{1, \dots , n}$. </span>
+  of the set $\set{1, \dots , n}$.</span>
 
  <span class='run'>This special symmetric group is called the
   <span class='term'>symmetric group of degree
-  $n$</span>. </span>
+  $n$</span>.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We denote the symmetric group on $X$ by
-  $\Sym(X)$. </span>
+  $\Sym(X)$.</span>
 
  <span class='run'>It is common to denote the symmetric group of
-  degree $n$ by $S_n$. </span>
+  degree $n$ by $S_n$.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1201,7 +1350,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

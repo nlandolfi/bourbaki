@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1176,7 +1193,126 @@ Parse: {prototype: {
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./absolute_value.html'" onkeypress="location.href='./absolute_value.html'">
+                <span>
+                  Absolute Value
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_limits.html'" onkeypress="location.href='./real_limits.html'">
+                <span>
+                  Real Limits
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./egoprox_sequences.html'" onkeypress="location.href='./egoprox_sequences.html'">
+            <span>
+            Egoprox Sequences
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_egoprox_sequences.pdf#page=2'" onkeypress="location.href='./real_egoprox_sequences.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_egoprox_sequences-graph.pdf'" onkeypress="location.href='./real_egoprox_sequences-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Egoprox Sequences </h1> 
       <!--
@@ -1186,19 +1322,17 @@ Parse: {prototype: {
 !refs:elias_stein∕complex_analysis∕01_preliminaries_to_complex_analysis
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>In the case that it is not possible to easily
   identify (or guess) the limit of a sequence, we
   are naturally interested in a simple condition
   on the sequence which is equivalent to
-  convergence. </span>
+  convergence.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A sequence $(x_n)_{n \in \N }$ in $\R $ is
@@ -1207,67 +1341,67 @@ Definition </h1>
   <span class='term'>Cauchy sequence</span>) if for
   every $\epsilon  &gt; 0$, there exists $N \in
   \N $ so that for all $m, n &gt; N$, $\abs{x_m
-  - x_n} &lt; \epsilon $. </span>
+  - x_n} &lt; \epsilon $.</span>
 
  <span class='run'>We call this property of the sequence
-  <span class='term'>(eventual) egoproximity</span>. </span>
+  <span class='term'>(eventual) egoproximity</span>.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We sometimes denote this property as
   <p>\[
    \abs{x_n - x_m} \to 0 \quad \text{ as } \quad m, n \to
-    \infty. 
+    \infty.
   \]</p></span>
 </p>
 
-<h2>
-Examples </h2>
+<h2>Examples</h2>
 
 <p>
  <span class='run'>For example, consider $\lim_{N \to \infty}
-  \sum_{n = 1}^{N} 1/n^3$. </span>
+  \sum_{n = 1}^{N} 1∕n^3$.</span>
 </p>
 
-<h2>
-Sufficiency in $\R $ </h2>
+<h2>Sufficiency in $\R $</h2>
 
 <p>
  <span class='run'>Clearly a convergent sequence is egoprox.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 
- <span class='run'>What of the converse? </span>
+ <span class='run'>What of the converse?</span>
 
  <span class='run'>Recall that we think of egoprox sequences as
-  “bunching up.} </span>
+  “bunching up.}</span>
 
  <span class='run'>For the reals, if a sequence is bunching up,
   then our intuition is that it should be
-  converging. </span>
+  converging.</span>
 
  <span class='run'>In other words, an egoprox real sequence always
-  converges. </span>
+  converges.</span>
 
- <span class='run'>The egoprox condition is sufficient. </span>
+ <span class='run'>The egoprox condition is sufficient.</span>
 
- <span class='run'>Bunching up is sufficient. </span>
+ <span class='run'>Bunching up is sufficient.</span>
 </p>
 
-<div class='proposition' <span class='run'>If $(x_n)_{n \in \N }$ is egoprox, then there
+<div class='proposition'>
+ <span class='run'>If $(x_n)_{n \in \N }$ is egoprox, then there
   exists $x_0 \in \R $ so that $\lim_{n \to
-  \infty} x_n = x_0$. </span></div>
+  \infty} x_n = x_0$.</span></div>
 <p>
  <span class='run'>In other words, in $\R $ egoproximity is
-  equivalent to convergence. </span>
+  equivalent to convergence.</span>
 
  <span class='run'>The above is sometimes called the
-  <span class='term'>Bolzano-Weierstrass theorem</span>. </span>
+  <span class='term'>Bolzano-Weierstrass theorem</span>.</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions may elaborate here. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions may elaborate here.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1319,7 +1453,7 @@ Sufficiency in $\R $ </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

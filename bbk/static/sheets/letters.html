@@ -54,7 +54,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -70,14 +70,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -123,7 +140,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to communicate and remember.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> A \t{language} is a conventional correspondence of sounds to affections of mind. We deliberately leave the definition of \t{affections} vague. A \t{spoken word} is a succession of sounds. By using these sounds, our mind can communicate with other minds.</p></div><div class="sheet-listing"><p class="sheet"> A \t{symbol} is a written mark. A \t{script} is a collection of symbols called \t{letters}. In \t{phonetic} languages the letters correspond to sounds and rules for composing these letters into successions called written words. This succession of letters corresponds to a succession of sounds and so a written word corresponds to a spoken word. By making marks, we communicate with other minds---including our own---in the future.</p></div><div class="sheet-listing"><p class="sheet"> To write this sheet, we use Latin letters arranged into written words which are meant to denote the spoken words of the English language. The written words on this page are several letters one after the other. For example, the word "word} is composed of the letters \say{w}, \say{o}, \say{r}, \say{d".</p></div><div class="sheet-listing"><p class="sheet"> These endeavors are at once obvious and remarkable. They are obvious by their prevalence, and remarkable by their success. We do not long forget the difficulty in communicating affections of the mind, however, and this leads us to be very particular about how we communicate throughout these sheets.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Latin letters}</p></div><div class="sheet-listing"><p class="sheet"> We will start by officially introducing the letters of the Latin language. These come in two kinds, or cases. The \t{lower case latin letters}. \begin{center}\begin{tabular}{ccccccccc}</p></div><div class="sheet-listing"><p class="sheet"> a & b & c & d & e & f & g & h & i \\</p></div><div class="sheet-listing"><p class="sheet"> j & k & l & m & n & o & p & q & r \\</p></div><div class="sheet-listing"><p class="sheet"> s & t & u & v & w & x & y & z & \\</p></div><div class="sheet-listing"><p class="sheet"> \end{tabular}\end{center} And the \t{upper case latin letters}. \begin{center}\begin{tabular}{ccccccccc}</p></div><div class="sheet-listing"><p class="sheet"> A & B & C & D & E & F & G & H & I \\</p></div><div class="sheet-listing"><p class="sheet"> J & K & L & M & N & O & P & Q & R \\</p></div><div class="sheet-listing"><p class="sheet"> S & T & U & V & W & X & Y & Z & \\</p></div><div class="sheet-listing"><p class="sheet"> \end{tabular}\end{center} So, A is the upper case of a, and a the lower case of A. Similarly with b and B, with c and C, and all the rest.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Arabic numerals}</p></div><div class="sheet-listing"><p class="sheet"> We also use the \t{Arabic numerals}. \begin{center}\begin{tabular}{cccccccccc}</p></div><div class="sheet-listing"><p class="sheet"> 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\</p></div><div class="sheet-listing"><p class="sheet"> \end{tabular}\end{center}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Other symbols}</p></div><div class="sheet-listing"><p class="sheet"> We also use the following symbols. \begin{center}\begin{tabular}{cccccccccccccccc}</p></div><div class="sheet-listing"><p class="sheet"> $’$ & $($ & $)$ & $\{$ & $\}$ & $\lor$ & $\land$ & $\neg$ & $\forall$ & $\exists $ & $\Rightarrow$ & $\iff$ & $=$ & $\in$ & $\to$ & $\sim$</p></div><div class="sheet-listing"><p class="sheet"> \end{tabular}\end{center}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to communicate and remember.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> A \t{language} is a conventional correspondence of sounds to affections of mind. We deliberately leave the definition of \t{affections} vague. A \t{spoken word} is a succession of sounds. By using these sounds, our mind can communicate with other minds.</p></div><div class="sheet-listing"><p class="sheet"> A \t{symbol} is a written mark. A \t{script} is a collection of symbols called \t{letters}. In \t{phonetic} languages the letters correspond to sounds and rules for composing these letters into successions called written words. This succession of letters corresponds to a succession of sounds and so a written word corresponds to a spoken word. By making marks, we communicate with other minds---including our own---in the future.</p></div><div class="sheet-listing"><p class="sheet"> To write this sheet, we use Latin letters arranged into written words which are meant to denote the spoken words of the English language. The written words on this page are several letters one after the other. For example, the word "word} is composed of the letters \say{w}, \say{o}, \say{r}, \say{d".</p></div><div class="sheet-listing"><p class="sheet"> These endeavors are at once obvious and remarkable. They are obvious by their prevalence, and remarkable by their success. We do not long forget the difficulty in communicating affections of the mind, however, and this leads us to be very particular about how we communicate throughout these sheets.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Latin letters}</p></div><div class="sheet-listing"><p class="sheet"> We will start by officially introducing the letters of the Latin language. These come in two kinds, or cases. The \t{lower case latin letters}. \begin{center}\begin{tabular}{ccccccccc}</p></div><div class="sheet-listing"><p class="sheet"> a & b & c & d & e & f & g & h & i \\</p></div><div class="sheet-listing"><p class="sheet"> j & k & l & m & n & o & p & q & r \\</p></div><div class="sheet-listing"><p class="sheet"> s & t & u & v & w & x & y & z & \\</p></div><div class="sheet-listing"><p class="sheet"> \end{tabular}\end{center} And the \t{upper case latin letters}. \begin{center}\begin{tabular}{ccccccccc}</p></div><div class="sheet-listing"><p class="sheet"> A & B & C & D & E & F & G & H & I \\</p></div><div class="sheet-listing"><p class="sheet"> J & K & L & M & N & O & P & Q & R \\</p></div><div class="sheet-listing"><p class="sheet"> S & T & U & V & W & X & Y & Z & \\</p></div><div class="sheet-listing"><p class="sheet"> \end{tabular}\end{center} So, A is the upper case of a, and a the lower case of A. Similarly with b and B, with c and C, and all the rest.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Arabic numerals}</p></div><div class="sheet-listing"><p class="sheet"> We also use the \t{Arabic numerals}. \begin{center} \vspace{0.3cm} \begin{tabular}{cccccccccc} 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ \end{tabular} \vspace{0.1cm}</p></div><div class="sheet-listing"><p class="sheet"> \end{center}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Other symbols}</p></div><div class="sheet-listing"><p class="sheet"> We also use the following symbols. \begin{center}\begin{tabular}{cccccccccccccccc}</p></div><div class="sheet-listing"><p class="sheet"> $’$ & $($ & $)$ & $\{$ & $\}$ & $\lor$ & $\land$ & $\neg$ & $\forall$ & $\exists $ & $\Rightarrow$ & $\iff$ & $=$ & $\in$ & $\to$ & $\sim$</p></div><div class="sheet-listing"><p class="sheet"> \end{tabular}\end{center}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -241,98 +258,200 @@ Parse: {prototype: {
       <!-- 0 0 -->
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          <div class="neednone2">None.</div>
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./names.html'" onkeypress="location.href='./names.html'">
+            <span>
+            Names
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./letters.pdf#page=2'" onkeypress="location.href='./letters.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./letters-graph.pdf'" onkeypress="location.href='./letters-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Letters </h1> 
       <!--
 !name:letters
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>We want to communicate and remember. </span>
+ <span class='run'>We want to communicate and remember.</span>
 </p>
 
-<h1>
-Discussion </h1>
+<h1>Discussion</h1>
 
 <p>
  <span class='run'>A <span class='term'>language</span> is a
   conventional correspondence of sounds to
-  affections of mind. </span>
+  affections of mind.</span>
 
  <span class='run'>We deliberately leave the definition of
-  <span class='term'>affections</span> vague. </span>
+  <span class='term'>affections</span> vague.</span>
 
  <span class='run'>A <span class='term'>spoken word</span> is a
-  succession of sounds. </span>
+  succession of sounds.</span>
 
  <span class='run'>By using these sounds, our mind can communicate
-  with other minds. </span>
+  with other minds.</span>
 </p>
 
 
 <p>
  <span class='run'>A <span class='term'>symbol</span> is a written
-  mark. </span>
+  mark.</span>
 
  <span class='run'>A <span class='term'>script</span> is a collection
-  of symbols called <span class='term'>letters</span>. </span>
+  of symbols called <span class='term'>letters</span>.</span>
 
  <span class='run'>In <span class='term'>phonetic</span> languages the
   letters correspond to sounds and rules for
   composing these letters into successions called
-  written words. </span>
+  written words.</span>
 
  <span class='run'>This succession of letters corresponds to a
   succession of sounds and so a written word
-  corresponds to a spoken word. </span>
+  corresponds to a spoken word.</span>
 
  <span class='run'>By making marks, we communicate with other
-  minds—including our own—in the future. </span>
+  minds—including our own—in the future.</span>
 </p>
 
 
 <p>
  <span class='run'>To write this sheet, we use Latin letters
   arranged into written words which are meant to
-  denote the spoken words of the English language. </span>
+  denote the spoken words of the English language.</span>
 
  <span class='run'>The written words on this page are several
-  letters one after the other. </span>
+  letters one after the other.</span>
 
  <span class='run'>For example, the word “word” is composed of
-  the letters “w”, “o”, “r”, “d”. </span>
+  the letters “w”, “o”, “r”, “d”.</span>
 </p>
 
 
 <p>
  <span class='run'>These endeavors are at once obvious and
-  remarkable. </span>
+  remarkable.</span>
 
  <span class='run'>They are obvious by their prevalence, and
-  remarkable by their success. </span>
+  remarkable by their success.</span>
 
  <span class='run'>We do not long forget the difficulty in
   communicating affections of the mind, however,
   and this leads us to be very particular about
-  how we communicate throughout these sheets. </span>
+  how we communicate throughout these sheets.</span>
 </p>
 
-<h1>
-Latin letters </h1>
+<h1>Latin letters</h1>
 
 <p>
  <span class='run'>We will start by officially introducing the
-  letters of the Latin language. </span>
+  letters of the Latin language.</span>
 
- <span class='run'>These come in two kinds, or cases. </span>
+ <span class='run'>These come in two kinds, or cases.</span>
 
  <span class='run'>The <span class='term'>lower case latin
-  letters</span>. </span>
-<div style='text-align:center'> <span class='run'>\begin{tabular}{ccccccccc}
+  letters</span>.</span>
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div> <span class='run'>\begin{tabular}{ccccccccc}
 
    a & b & c & d & e & f & g & h & i \\
 
@@ -340,10 +459,10 @@ Latin letters </h1>
 
    s & t & u & v & w & x & y & z & \\
 
-   \end{tabular} </span></div>
+   \end{tabular}</span></div></div>
  <span class='run'>And the <span class='term'>upper case latin
-  letters</span>. </span>
-<div style='text-align:center'> <span class='run'>\begin{tabular}{ccccccccc}
+  letters</span>.</span>
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div> <span class='run'>\begin{tabular}{ccccccccc}
 
    A & B & C & D & E & F & G & H & I \\
 
@@ -351,43 +470,74 @@ Latin letters </h1>
 
    S & T & U & V & W & X & Y & Z & \\
 
-\end{tabular} </span></div>
+\end{tabular}</span></div></div>
  <span class='run'>So, A is the upper case of a, and a the
-  lower case of A. </span>
+  lower case of A.</span>
 
  <span class='run'>Similarly with b and B, with c and C, and
-  all the rest. </span>
+  all the rest.</span>
 </p>
 
-<h1>
-Arabic numerals </h1>
+<h1>Arabic numerals</h1>
 
 <p>
  <span class='run'>We also use the <span class='term'>Arabic
-  numerals</span>. </span>
-<div style='text-align:center'> <span class='run'>\begin{tabular}{cccccccccc}
+  numerals</span>.</span>
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div><table tex='cccccccccc'><tbody><tr><td> <span class='run'>0</span></td>
+<td> <span class='run'>1</span></td>
+<td> <span class='run'>2</span></td>
+<td> <span class='run'>3</span></td>
+<td> <span class='run'>4</span></td>
+<td> <span class='run'>5</span></td>
+<td> <span class='run'>6</span></td>
+<td> <span class='run'>7</span></td>
+<td> <span class='run'>8</span></td>
+<td> <span class='run'>9</span></td></tr></tbody></table>
+ <!--
+   \begin{tabular}{cccccccccc}
 
    0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
 
-   \end{tabular} </span></div>
+   \end{tabular}-->
+</div></div>
 </p>
 
-<h1>
-Other symbols </h1>
+<h1>Other symbols</h1>
 
 <p>
- <span class='run'>We also use the following symbols. </span>
-<div style='text-align:center'> <span class='run'>\begin{tabular}{cccccccccccccccc}
+ <span class='run'>We also use the following symbols.</span>
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div><table tex='cccccccccccccccc'><tbody><tr><td> <span class='run'>$&#39;$</span></td>
+<td> <span class='run'>$($</span></td>
+<td> <span class='run'>$)$</span></td>
+<td> <span class='run'>$\{$</span></td>
+<td> <span class='run'>$\}$</span></td>
+<td> <span class='run'>$\lor$</span></td>
+<td> <span class='run'>$\land$</span></td>
+<td> <span class='run'>$\neg$</span></td>
+<td> <span class='run'>$\forall$</span></td>
+<td> <span class='run'>$\exists $</span></td>
+<td> <span class='run'>$\Rightarrow$</span></td>
+<td> <span class='run'>$\iff$</span></td>
+<td> <span class='run'>$=$</span></td>
+<td> <span class='run'>$\in$</span></td>
+<td> <span class='run'>$\to$</span></td>
+<td> <span class='run'>$\sim$</span></td></tr></tbody></table>
+ <!--
+     \begin{tabular}{cccccccccccccccc}
 
    $’$ & $($ & $)$ & $\{$ & $\}$ & $\lor$ & $\land$ &
     $\neg$ & $∀$ & $∃$ & $⇒$ & $\iff$ & $=$ & $∈$ & $→$ &
     $∼$
 
-   \end{tabular} </span></div>
+   \end{tabular}
+   -->
+</div></div>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -439,7 +589,7 @@ Other symbols </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -774,7 +791,140 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_equality.html'" onkeypress="location.href='./set_equality.html'">
+                <span>
+                  Set Equality
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./empty_set.html'" onkeypress="location.href='./empty_set.html'">
+            <span>
+            Empty Set
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./pair_intersections.html'" onkeypress="location.href='./pair_intersections.html'">
+            <span>
+            Pair Intersections
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_differences.html'" onkeypress="location.href='./set_differences.html'">
+            <span>
+            Set Differences
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./unordered_pairs.html'" onkeypress="location.href='./unordered_pairs.html'">
+            <span>
+            Unordered Pairs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_specification.pdf#page=2'" onkeypress="location.href='./set_specification.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_specification-graph.pdf'" onkeypress="location.href='./set_specification-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Set Specification </h1> 
       <!--
@@ -782,67 +932,62 @@ Parse: {prototype: {
 !need:set_equality
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>We want to construct new sets out of old ones. </span>
+ <span class='run'>We want to construct new sets out of old ones.</span>
 
- <span class='run'>So, can we always construct subsets? </span>
+ <span class='run'>So, can we always construct subsets?</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>We will say that we can. </span>
+ <span class='run'>We will say that we can.</span>
 
  <span class='run'>More specifically, if we have a set and some
   statement which may be true or false for the
   elements of that set, a set exists containing
   all and only the elements for which the
-  statement is true. </span>
+  statement is true.</span>
 </p>
 
 
 <p>
- <span class='run'>Roughly speaking, the principle is like this. </span>
+ <span class='run'>Roughly speaking, the principle is like this.</span>
 
- <span class='run'>We have a set which contains some objects. </span>
+ <span class='run'>We have a set which contains some objects.</span>
 
  <span class='run'>Suppose the set of playing cards in a usual
-  deck exists. </span>
+  deck exists.</span>
 
  <span class='run'>We are taking as a principle that the set of
   all fives exists, so does the set of all
   fours, as does the set of all hearts, and the
-  set of all face cards. </span>
+  set of all face cards.</span>
 
  <span class='run'>Roughly, the corresponding statements are “it is
   a five”, “it is a four”, “it is a heart”, and
-  “it is a face card”. </span>
+  “it is a face card”.</span>
 </p>
 
-<div class='principle' text='Specification' <span class='run'>For any statement and any set, there is a
-  subset whose elements satisfy the statement. </span></div>
+<div class='principle' text='Specification'>
+ <span class='run'>For any statement and any set, there is a
+  subset whose elements satisfy the statement.</span></div>
 <p>
  <span class='run'>We call this the <span class='term'>principle of
-  specification</span>. </span>
+  specification</span>.</span>
 
  <span class='run'>We call the second set (obtained from the
   first) the set obtained by
   <span class='term'>specifying</span> elements
-  according to the sentence. </span>
+  according to the sentence.</span>
 
- <span class='run'>The principle of extension (see
-  \sheetref{set_equality}{Set Equality}) says that
-  this set is unique. </span>
+ <span class='run'>The principle of extension (see&nbsp;<a href='/sheets/set_equality.html'/><span class='run'>Set Equality</span></a>) says that this set is unique.</span>
 
  <span class='run'>All our basic principles about sets (other than
-  the principle of extension, see
-  \sheetref{set_equality}{Set Equality}) assert that
-  we can construct new sets out of old ones in
-  reasonable ways. </span>
+  the principle of extension, see&nbsp;<a href='/sheets/set_equality.html'/><span class='run'>Set Equality</span></a>) assert that we can construct new sets out
+of old ones in reasonable ways.</span>
 </p>
 
 
@@ -860,33 +1005,32 @@ Definition </h1>
 </div>
 -->
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $A$ denote a set. </span>
+ <span class='run'>Let $A$ denote a set.</span>
 
  <span class='run'>Let $s$ denote a statement in which the symbol
-  $x$ and $A$ appear unbound. </span>
+  $x$ and $A$ appear unbound.</span>
 
  <span class='run'>We assert that there is a set, denote it by
   $B$, for which belonging is equivalent to
-  membership in $A$ and satisfaction of $s$. </span>
+  membership in $A$ and satisfaction of $s$.</span>
 
  <span class='run'>In other words,
   <p>\[
-   (\forall x)((x \in B) \iff ((x \in A) \land s(x))). 
+   (\forall x)((x \in B) \iff ((x \in A) \land s(x))).
   \]</p>
-  <span class='run'>We denote $B$ by $\Set*{x \in A}{s(x)}$. </span>
+  <span class='run'>We denote $B$ by $\Set*{x \in A}{s(x)}$.</span>
 
   <span class='run'>We read the symbol $\mid$ aloud as “such
-   that.” </span>
+   that.”</span>
 
   <span class='run'>We read the whole notation aloud as “a in A
-   such that...” </span>
+   such that...”</span>
 
   <span class='run'>We call it <span class='term'>set-builder
-   notation</span>. </span></span>
+   notation</span>.</span></span>
 </p>
 
 
@@ -932,17 +1076,16 @@ Notation </h2>
 </div>
 -->
 
-<h1>
-Nothing contains everything </h1>
+<h1>Nothing contains everything</h1>
 
 <p>
  <span class='run'>As an example of the principle of specification
   and an important consequence, consider the
-  statement $x \not\in x$. </span>
+  statement $x \not\in x$.</span>
 
  <span class='run'>Using this statement and the principle of
   specification, we can prove that there is no
-  set which contains every other set. </span>
+  set which contains every other set.</span>
 </p>
 
 
@@ -950,23 +1093,24 @@ Nothing contains everything </h1>
   TODO(next edition): explain this more.
                       -->
 
-<div class='proposition' <span class='run'>No set contains all sets.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+<div class='proposition'>
+ <span class='run'>No set contains all sets.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
  <div class='proof'>  <span class='run'>Suppose there exists a set, denote it $A$
-   which contains all sets. </span>
+   which contains all sets.</span>
 
   <span class='run'>In other words, suppose $(\exists  A)(\forall
-   x)(x \in A)$. </span>
+   x)(x \in A)$.</span>
 
   <span class='run'>Use the principle of specification to construct
-   $B = \Set{x \in A}{x \not\in x}$. </span>
+   $B = \Set{x \in A}{x \not\in x}$.</span>
 
   <span class='run'>So $(\forall x)(x \in B \iff (x \in A \land
-   x \not\in x))$ </span>
+   x \not\in x))$</span>
 
   <span class='run'>In particular, $(B \in B \iff (B \in A \land
-   B \not\in B))$. </span>
+   B \not\in B))$.</span>
 
-  <span class='run'>So $B \not\in A$. </span>
+  <span class='run'>So $B \not\in A$.</span>
   <!--
 
   <div data-littype='run'> ❲% \begin{blankaccount}❳ </div>
@@ -1027,17 +1171,19 @@ Nothing contains everything </h1>
 <!--
   !TODO: russel’s paradox? p 6 of halmos
 -->
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>We might call such a set, if we admitted its
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>We might call such a set, if we admitted its
   existence, a <span class='term'>universe of
   discourse</span> or <span class='term'>universal
-  set</span>. </span>
+  set</span>.</span>
 
  <span class='run'>With the principle of specification, a
   “principle of a universal set” would give a
   contradiction (called <span class='term'>Russell’s
-  paradox</span>). </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+  paradox</span>).</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1089,7 +1235,7 @@ Nothing contains everything </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -145,7 +162,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> $\set{a} \union \set{b} = \set{a, b}$</p></div><div class="sheet-listing"><p class="sheet"> \s{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $a$, $b$ and $c$ denote objects. From the associativity of pair unions (see \sheetref{pair_unions}{Pair Unions}), we have \[ (\set{a} \union \set{b}) \union \set{b} = \set{a} \union (\set{b} \union \set{c}). \] So we will drop the parentheses, and write $\set{a} \union \set{b} \union \set{c}$. We call such a set the \t{unordered triple} of $a$, $b$ and $c$. The unordered triple of $a$, $b$ and $c$ is the set containing these elements and no others.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Such sets are so commonplace that we denote the unordered triple of $a$, $b$ and $c$ by $\set{a, b, c}$.</p></div><div class="sheet-listing"><p class="sheet"> \s{Quadruples}</p></div><div class="sheet-listing"><p class="sheet"> Let $d$ denote an object. Again, the associativity of pair unions allows us to drop the parentheses from \[ (((\set{a} \union \set{b}) \union \set{c}) \union \set{d})). \] We can therefore write $\set{a} \union \set{b} \union \set{c} \union \set{d}$ without ambiguity. We call this set the \t{unordered quadruple}. As before, the unordered quadruple contains of $a$, $b$, $c$ and $d$ contains $a$, $b$, $c$, and $d$ and nothing besides these.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Notation} We denote the unordered quadruple of the objected denoted by $a$, $b$, $c$ and $d$, denote this set by $\set{a, b, c, d}$.</p></div><div class="sheet-listing"><p class="sheet"> \s{The case of several named objects}</p></div><div class="sheet-listing"><p class="sheet"> In a similar way we speak of \t{unordered pentuples}, \t{unordered sextuples}, \t{unordered septuples} and so on. If we have several objects named, we denote the set containing these objects be writing their names in between the left brace $\{$ and right brace$\}$, separating the names by commas. For example, if we $A$, $b$, $x$ and $Y$ and $z$ denote objects, then we denote the set containing these elements by \[ \set{A, b, x, Y, z}. \]</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> $\set{a} \cup \set{b} = \set{a, b}$</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $a$, $b$ and $c$ denote objects. From the associativity of pair unions (see \sheetref{pair_unions}{Pair Unions} ), we have \[ (\set{a} \cup \set{b}) \cup \set{b} = \set{a} \cup (\set{b} \cup \set{c}). \] So we will drop the parentheses, and write $\set{a} \cup \set{b} \cup \set{c}$. We call such a set the \t{unordered triple} of $a$, $b$ and $c$. The unordered triple of $a$, $b$ and $c$ is the set containing these elements and no others.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Such sets are so commonplace that we denote the unordered triple of $a$, $b$ and $c$ by $\set{a, b, c}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Quadruples}</p></div><div class="sheet-listing"><p class="sheet"> Let $d$ denote an object. Again, the associativity of pair unions allows us to drop the parentheses from \[ (((\set{a} \cup \set{b}) \cup \set{c}) \cup \set{d})). \] We can therefore write $\set{a} \cup \set{b} \cup \set{c} \cup \set{d}$ without ambiguity. We call this set the \t{unordered quadruple}. As before, the unordered quadruple contains of $a$, $b$, $c$ and $d$ contains $a$, $b$, $c$, and $d$ and nothing besides these.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the unordered quadruple of the objected denoted by $a$, $b$, $c$ and $d$, denote this set by $\set{a, b, c, d}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{The case of several named objects}</p></div><div class="sheet-listing"><p class="sheet"> In a similar way we speak of \t{unordered pentuples}, \t{unordered sextuples}, \t{unordered septuples} and so on. If we have several objects named, we denote the set containing these objects be writing their names in between the left brace $\{$ and right brace$\}$, separating the names by commas. For example, if we $A$, $b$, $x$ and $Y$ and $z$ denote objects, then we denote the set containing these elements by \[ \set{A, b, x, Y, z}. \]</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -803,7 +820,232 @@ Parse: {prototype: {
 \newcommand{\bunion}{\bigcup}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./pair_unions.html'" onkeypress="location.href='./pair_unions.html'">
+                <span>
+                  Pair Unions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./counts.html'" onkeypress="location.href='./counts.html'">
+            <span>
+            Counts
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./ordering_sets.html'" onkeypress="location.href='./ordering_sets.html'">
+            <span>
+            Ordering Sets
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_powers.html'" onkeypress="location.href='./set_powers.html'">
+            <span>
+            Set Powers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./unordered_triples.pdf#page=2'" onkeypress="location.href='./unordered_triples.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./unordered_triples-graph.pdf'" onkeypress="location.href='./unordered_triples-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Unordered Triples </h1> 
+      <!--
+!name:unordered_triples
+!need:pair_unions
+!refs:bert_mendelson/introduction_to_topology/theory_of_sets/sets_and_subsets
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>$\set{a} \cup \set{b} = \set{a, b}$</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>Let $a$, $b$ and $c$ denote objects.</span>
+
+ <span class='run'>From the associativity of pair unions (see<a href='/sheets/pair_unions.html'/><span class='run'>Pair Unions</span></a>), we have
+  <p>\[
+   (\set{a} \cup \set{b}) \cup \set{b} = \set{a} \cup (\set{b}
+    \cup \set{c}).
+  \]</p>
+  <span class='run'>So we will drop the parentheses, and write
+   $\set{a} \cup \set{b} \cup \set{c}$.</span>
+
+  <span class='run'>We call such a set the
+   <span class='term'>unordered triple</span> of $a$,
+   $b$ and $c$.</span>
+
+  <span class='run'>The unordered triple of $a$, $b$ and $c$ is
+   the set containing these elements and no others.</span></span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>Such sets are so commonplace that we denote
+  the unordered triple of $a$, $b$ and $c$ by
+  $\set{a, b, c}$.</span>
+</p>
+
+<h1>Quadruples</h1>
+
+<p>
+ <span class='run'>Let $d$ denote an object.</span>
+
+ <span class='run'>Again, the associativity of pair unions allows
+  us to drop the parentheses from
+  <p>\[
+   (((\set{a} \cup \set{b}) \cup \set{c}) \cup \set{d})).
+  \]</p></span>
+
+ <span class='run'>We can therefore write $\set{a} \cup \set{b}
+  \cup \set{c} \cup \set{d}$ without ambiguity.</span>
+
+ <span class='run'>We call this set the <span class='term'>unordered
+  quadruple</span>.</span>
+
+ <span class='run'>As before, the unordered quadruple contains of
+  $a$, $b$, $c$ and $d$ contains $a$, $b$, $c$,
+  and $d$ and nothing besides these.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>We denote the unordered quadruple of the
+  objected denoted by $a$, $b$, $c$ and $d$,
+  denote this set by $\set{a, b, c, d}$.</span>
+</p>
+
+<h1>The case of several named objects</h1>
+
+<p>
+ <span class='run'>In a similar way we speak of
+  <span class='term'>unordered pentuples</span>,
+  <span class='term'>unordered sextuples</span>,
+  <span class='term'>unordered septuples</span> and so
+  on.</span>
+
+ <span class='run'>If we have several objects named, we denote
+  the set containing these objects be writing
+  their names in between the left brace $\{$ and
+  right brace$\}$, separating the names by commas.</span>
+
+ <span class='run'>For example, if we $A$, $b$, $x$ and $Y$ and
+  $z$ denote objects, then we denote the set
+  containing these elements by
+  <p>\[
+   \set{A, b, x, Y, z}.
+  \]</p></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -855,7 +1097,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

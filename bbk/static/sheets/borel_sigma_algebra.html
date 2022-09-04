@@ -52,7 +52,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -68,14 +68,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1183,7 +1200,112 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./topological_sigma_algebra.html'" onkeypress="location.href='./topological_sigma_algebra.html'">
+                <span>
+                  Topological Sigma Algebra
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./borel_sigma_algebra.pdf#page=2'" onkeypress="location.href='./borel_sigma_algebra.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./borel_sigma_algebra-graph.pdf'" onkeypress="location.href='./borel_sigma_algebra-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Borel Sigma Algebra </h1> 
       <!--
@@ -1191,118 +1313,116 @@ Parse: {prototype: {
 !need:topological_sigma_algebra
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We name and discuss the topological sigma
   algebra on the real numbers; the language and
   results generalize to finite direct products of
-  the real numbers. </span>
+  the real numbers.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>The <span class='term'>Borel sigma algebra</span>
   is the topological sigma algebra for the real
   numbers with the usual topology; we call its
-  members the <span class='term'>Borel sets</span>. </span>
+  members the <span class='term'>Borel sets</span>.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We denote the Borel sigma algebra on $\R ^d$
-  by $\mathcal{B} (\R ^d)$. </span>
+  by $\mathcal{B} (\R ^d)$.</span>
 
  <span class='run'>We denote $\mathcal{B} (\R ^1)$ by
-  $\mathcal{B} (\R )$. </span>
+  $\mathcal{B} (\R )$.</span>
 </p>
 
-<h1>
-Alternate Generations </h1>
+<h1>Alternate Generations</h1>
 
 <p>
  <span class='run'>The Borel sigma algebra is useful because it
-  contains interesting sets besides the open sets. </span>
+  contains interesting sets besides the open sets.</span>
 
  <span class='run'>To make precise this statement, we show that
   the Borel sigma algebra is generated by, and
-  therefore contains, other common subsets of $R$. </span>
+  therefore contains, other common subsets of $R$.</span>
 </p>
 
-<div class='proposition' <span class='run'>If a sigma algebra $\mathcal{A} $ includes a
+<div class='proposition'>
+ <span class='run'>If a sigma algebra $\mathcal{A} $ includes a
   particular set of subsets $\mathcal{B} $, then
-  $\mathcal{A} $ includes $\sigma (\mathcal{B} )$. </span></div>
-<div class='proposition' id='borelalternategenerations' <span class='run'>Each of
+  $\mathcal{A} $ includes $\sigma (\mathcal{B} )$.</span></div>
+<div class='proposition' id='borelalternategenerations'>
+ <span class='run'>Each of
   <ol>
-   <li><span class='run'>the collection of all closed subsets of $R$, </span></li>
+   <li><span class='run'>the collection of all closed subsets of $R$,</span></li>
 
    <li><span class='run'>the collection of all subintervals of $R$ of
-     the form $(-\infty, b]$, </span></li>
+     the form $(-\infty, b]$,</span></li>
 
    <li><span class='run'>the collection of all subintervals of $R$ of
-     the form $(a, b]$, </span></li>
+     the form $(a, b]$,</span></li>
 
-   <span class='run'>generate $\mathcal{B} (R)$. </span>  </ol>
+   <span class='run'>generate $\mathcal{B} (R)$.</span>  </ol>
 </span></div>
 <div class='proof'> <p>
   <span class='run'>Denote the sigma algebra which corresponds to
    (1) by $\mathcal{B} _1$, that which corresponds
    to (2) by $\mathcal{B} _2$, and that which
-   corresponds to (3) by $\mathcal{B} _3$. </span>
+   corresponds to (3) by $\mathcal{B} _3$.</span>
 
   <span class='run'>It suffices to establish $\mathcal{B} (R)
    \subset \mathcal{B} _3 \subset \mathcal{B} _2
-   \subset \mathcal{B} _1 \subset \mathcal{B} (R)$. </span>
+   \subset \mathcal{B} _1 \subset \mathcal{B} (R)$.</span>
  </p>
 
 
  <p>
-  <span class='run'>Start with $\mathcal{B} _1$. </span>
+  <span class='run'>Start with $\mathcal{B} _1$.</span>
 
-  <span class='run'>Closed sets are the complement of open sets. </span>
+  <span class='run'>Closed sets are the complement of open sets.</span>
 
   <span class='run'>Thus $\mathcal{B} (R)$ contains all closed sets
    and so contains the sigma algebra generated by
-   all closed sets, namely $\mathcal{B} _1$. </span>
+   all closed sets, namely $\mathcal{B} _1$.</span>
  </p>
 
 
  <p>
-  <span class='run'>Next, $\mathcal{B} _2$. </span>
+  <span class='run'>Next, $\mathcal{B} _2$.</span>
 
-  <span class='run'>The intervals $(-\infty, b])$ are closed. </span>
+  <span class='run'>The intervals $(-\infty, b])$ are closed.</span>
 
   <span class='run'>Thus $\mathcal{B} _1$ contains all such
    intervals, and so contains the sigma algebra
    generated by such intervals, namely
-   $\mathcal{B} _2$. </span>
+   $\mathcal{B} _2$.</span>
  </p>
 
 
  <p>
-  <span class='run'>Next, $\mathcal{B} _3$. </span>
+  <span class='run'>Next, $\mathcal{B} _3$.</span>
 
   <span class='run'>An interval $(a, b]$ is $(-\infty, b) \cap
-   C_R((-\infty, a])$. </span>
+   C_R((-\infty, a])$.</span>
 
   <span class='run'>Thus, all such intervals are contained in
    $\mathcal{B} _2$, and so $\mathcal{B} _2$ contains
    the sigma algebra generated by all such
-   intervals, namely, $\mathcal{B} _3$. </span>
+   intervals, namely, $\mathcal{B} _3$.</span>
  </p>
 
 
  <p>
   <span class='run'>Each open interval of $R$ is the union of a
-   sequence of sets $(a, b]$; namely $(a, b-1/n]$. </span>
+   sequence of sets $(a, b]$; namely $(a, b-1∕n]$.</span>
 
   <span class='run'>So $\mathcal{B} _3$ contains all open intervals
-   $(a, b)$. </span>
+   $(a, b)$.</span>
 
   <span class='run'>Each open set of $R$ can be written as a
    countable union of open intervals.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
@@ -1310,53 +1430,56 @@ Alternate Generations </h1>
   <span class='run'>Thus, $\mathcal{B} _3$ contains all open sets,
    and therefore contains the sigma algebra
    generated by the open subsets, namely
-   $\mathcal{B} (R)$. </span>
+   $\mathcal{B} (R)$.</span>
  </p>
 </div>
-<div class='proposition' <span class='run'>Each of:
+<div class='proposition'>
+ <span class='run'>Each of:
   <ol>
-   <li>the collection of all closed subsets of $R^d$, </li>
+   <li>the collection of all closed subsets of $R^d$,</li>
 
    <li>the collection of all closed half-spaces of $R^d$ of the
     form
     <p>\[
-     \Set{(x_1, \dots , x_d)}{x_i \leq b_i} 
+     \Set{(x_1, \dots , x_d)}{x_i \leq b_i}
     \]</p>
-    for some index $i$ and some $b$ in $R$, and </li>
+    for some index $i$ and some $b$ in $R$, and</li>
 
    <li>the collection of all rectangles of $R^d$ of the form
     <p>\[
-     \Set{(x_1, \dots , x_d)}{a_i < x_i \leq b_i} 
+     \Set{(x_1, \dots , x_d)}{a_i < x_i \leq b_i}
     \]</p></li>  </ol>
 
-  generate $B(R^d)$. </span></div>
+  generate $B(R^d)$.</span></div>
 <div class='proof'> <p>
   <span class='run'>Follow the proof of
-   Proposition~\ref{borelalternategenerations}. </span>
+   Proposition~\ref{borelalternategenerations}.</span>
  </p>
 
 
  <p>
-  <span class='run'>The complement of open sets are closed. </span>
+  <span class='run'>The complement of open sets are closed.</span>
 
-  <span class='run'>Closed half spaces are closed. </span>
+  <span class='run'>Closed half spaces are closed.</span>
 
   <span class='run'>A strip of the form $\Set{(x_1, \dots ,
    x_d)}{a_i &lt; x_i \leq b_i}$ is the
-   intersection of two half-spaces in (b). </span>
+   intersection of two half-spaces in (b).</span>
 
   <span class='run'>Each rectangle in (c) is the union of $d$
    such strips.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
  </p>
-</div><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include a proof. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will complete the proof: </span>
+</div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include a proof.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will complete the proof:</span>
 
- <span class='run'>open rectangles are unions of </span>
+ <span class='run'>open rectangles are unions of</span>
 
- <span class='run'>rectangles in (c) and </span>
+ <span class='run'>rectangles in (c) and</span>
 
- <span class='run'>open sets are union of open rectangles. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+ <span class='run'>open sets are union of open rectangles.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1408,7 +1531,7 @@ Alternate Generations </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

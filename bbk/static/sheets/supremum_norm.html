@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -145,7 +162,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want a norm on the vector space of continuous functions.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider a function from a closed real interval to the real numbers. The <i>absolute supremum</i> of the function is the absolute value of its results on the interval. Since the function is continuous and defined on a closed interval, the supremum is finite.</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The functional mapping $f \in C[a, b]$ to its absolute supremum is a norm. \begin{proof} Let $R$ denote the set of real numbers. Define $\phi: C[a, b] \to R$ by: \[ \phi(f) = \sup \Set{\abs{f(x)}}{x \in [a, b]}. \] \begin{enumerate} \item $\abs{f(x)} \geq 0$ for all $x \in [a, b]$, so $\phi(f) \geq 0$.</p></div><div class="sheet-listing"><p class="sheet"> \item If $\phi(f) = 0$ then $\abs{f(x)} \leq 0$ for all $x$ and so $f(x) = 0$ for all $x \in [a, b]$. If $f = 0$, then $\abs{f(x)} = 0$ for all $x \in [a, b]$</p></div><div class="sheet-listing"><p class="sheet"> \item For all $\alpha$ real, $\abs{\alpha f(x)} = \abs{\alpha}\abs{f(x)}$. so $\phi(\alpha f) = \abs{\alpha}\phi(f)$</p></div><div class="sheet-listing"><p class="sheet"> \item For all $f, g \in C[a, b]$, and $x \in [a, b]$, $\abs{f(x) + g(x)} \leq \abs{f(x)} + \abs{g(x)}$ by the triangle inequality for absolute value. Thus, \[ \begin{aligned} \phi(f + g) &\leq \sup \Set{\abs{f(x)} + \abs{g(x)}}{x \in [a, b]} \\ &\leq \sup \Set{\abs{f(x)}}{x \in [a,b]} + \sup \Set{\abs{g(x)}}{x \in [a, b]} \\ &= \phi(f) + \phi(g) \end{aligned} \] \end{enumerate} \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> We call the functional $\phi$ defined above the <i>supremum norm</i>.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $f \in C[a, b]$. We denote the supremum norm of $f$ by $\supnorm{f}$.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want a norm on the vector space of continuous functions.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Consider a function from a closed real interval to the real numbers. The \t{absolute supremum} of the function is the supremum of the absolute value of its results on the interval. Since the function is continuous and defined on a closed interval, the supremum is finite.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The functional mapping $f \in C[a, b]$ to its absolute supremum is a norm.\end{proposition} \begin{proof}Let $R$ denote the set of real numbers. Define $\phi : C[a, b] \to R$ by: \[ \phi (f) = \sup \Set{\abs{f(x)}}{x \in [a, b]}. \] \begin{enumerate} \item $\abs{f(x)} \geq 0$ for all $x \in [a, b]$, so $\phi (f) \geq 0$. \item If $\phi (f) = 0$ then $\abs{f(x)} \leq 0$ for all $x$ and so $f(x) = 0$ for all $x \in [a, b]$. If $f = 0$, then $\abs{f(x)} = 0$ for all $x \in [a, b]$ \item For all $\alpha $ real, $\abs{\alpha  f(x)} = \abs{\alpha }\abs{f(x)}$. So $\phi (\alpha  f) = \abs{\alpha }\phi (f)$ \item For all $f, g \in C[a, b]$, and $x \in [a, b]$, $\abs{f(x) + g(x)} \leq \abs{f(x)} + \abs{g(x)}$ by the triangle inequality for absolute value. Thus, \[ \begin{aligned} \phi (f + g) &\leq \sup \Set{\abs{f(x)} + \abs{g(x)}}{x \in [a, b]} \\ &\leq \sup \Set{\abs{f(x)}}{x \in [a,b]} + \sup \Set{\abs{g(x)}}{x \in [a, b]} \\ &= \phi (f) + \phi (g) \end{aligned} \] \end{enumerate}\end{proof} We call the functional $\phi $ defined above the \t{supremum norm}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $f \in C[a, b]$. We denote the supremum norm of $f$ by $\norm{f}_{\sup}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1231,7 +1248,227 @@ Parse: {prototype: {
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./absolute_value.html'" onkeypress="location.href='./absolute_value.html'">
+                <span>
+                  Absolute Value
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./least_upper_bounds.html'" onkeypress="location.href='./least_upper_bounds.html'">
+                <span>
+                  Least Upper Bounds
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./norms.html'" onkeypress="location.href='./norms.html'">
+                <span>
+                  Norms
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./supremum_norm_complete.html'" onkeypress="location.href='./supremum_norm_complete.html'">
+            <span>
+            Supremum Norm Complete
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./supremum_norm.pdf#page=2'" onkeypress="location.href='./supremum_norm.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./supremum_norm-graph.pdf'" onkeypress="location.href='./supremum_norm-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Supremum Norm </h1> 
+      <!--
+!name:supremum_norm
+!need:norms
+!need:absolute_value
+!need:least_upper_bounds
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We want a norm on the vector space of
+  continuous functions.</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>Consider a function from a closed real interval
+  to the real numbers.</span>
+
+ <span class='run'>The <span class='term'>absolute supremum</span> of
+  the function is the supremum of the absolute
+  value of its results on the interval.</span>
+
+ <span class='run'>Since the function is continuous and defined on
+  a closed interval, the supremum is finite.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>The functional mapping $f \in C[a, b]$ to its
+  absolute supremum is a norm.</span></div>
+<div class='proof'> <span class='run'>Let $R$ denote the set of real numbers.</span>
+
+ <span class='run'>Define $\phi : C[a, b] \to R$ by:
+  <p>\[
+   \phi (f) = \sup \Set{\abs{f(x)}}{x \in [a, b]}.
+  \]</p></span>
+ <ol>
+  <li><span class='run'>$\abs{f(x)} \geq 0$ for all $x \in [a, b]$, so
+    $\phi (f) \geq 0$.</span></li>
+
+  <li><span class='run'>If $\phi (f) = 0$ then $\abs{f(x)} \leq 0$ for
+    all $x$ and so $f(x) = 0$ for all $x \in [a,
+    b]$.</span>
+
+   <span class='run'>If $f = 0$, then $\abs{f(x)} = 0$ for all
+    $x \in [a, b]$</span></li>
+
+  <li><span class='run'>For all $\alpha $ real, $\abs{\alpha  f(x)} =
+    \abs{\alpha }\abs{f(x)}$.</span>
+
+   <span class='run'>So $\phi (\alpha  f) = \abs{\alpha }\phi (f)$</span></li>
+
+  <li><span class='run'>For all $f, g \in C[a, b]$, and $x \in [a,
+    b]$, $\abs{f(x) + g(x)} \leq \abs{f(x)} +
+    \abs{g(x)}$ by the triangle inequality for
+    absolute value.</span>
+
+   <span class='run'>Thus,
+    <p>\[
+     \begin{aligned}
+
+     \phi (f + g)
+
+     &\leq \sup \Set{\abs{f(x)} + \abs{g(x)}}{x \in [a, b]} \\
+
+     &\leq \sup \Set{\abs{f(x)}}{x \in [a,b]} + \sup
+      \Set{\abs{g(x)}}{x \in [a, b]} \\
+
+     &= \phi (f) + \phi (g)
+
+     \end{aligned}
+    \]</p></span></li> </ol>
+</div>
+<p>
+ <span class='run'>We call the functional $\phi $ defined above
+  the <span class='term'>supremum norm</span>.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>Let $f \in C[a, b]$.</span>
+
+ <span class='run'>We denote the supremum norm of $f$ by
+  $\norm{f}_{\sup}$.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1283,7 +1520,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

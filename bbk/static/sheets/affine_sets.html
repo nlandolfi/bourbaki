@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1150,7 +1167,140 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./n-dimensional_lines.html'" onkeypress="location.href='./n-dimensional_lines.html'">
+                <span>
+                  N-Dimensional Lines
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./n-dimensional_space.html'" onkeypress="location.href='./n-dimensional_space.html'">
+                <span>
+                  N-Dimensional Space
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./affine_hulls.html'" onkeypress="location.href='./affine_hulls.html'">
+            <span>
+            Affine Hulls
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./affine_sets_and_linear_equations.html'" onkeypress="location.href='./affine_sets_and_linear_equations.html'">
+            <span>
+            Affine Sets and Linear Equations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./affine_sets_and_subspaces.html'" onkeypress="location.href='./affine_sets_and_subspaces.html'">
+            <span>
+            Affine Sets and Subspaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./affine_sets.pdf#page=2'" onkeypress="location.href='./affine_sets.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./affine_sets-graph.pdf'" onkeypress="location.href='./affine_sets-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Affine Sets </h1> 
       <!--
@@ -1160,8 +1310,7 @@ Parse: {prototype: {
 !refs:rockafeller/section_1/affine_sets
 -->
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A subset of $\R ^n$ is
@@ -1169,7 +1318,7 @@ Definition </h1>
   <span class='term'>affine variety</span>,
   <span class='term'>linear variety</span>, or
   <span class='term'>flat</span>) if it contains the
-  lines through each of its points. </span>
+  lines through each of its points.</span>
 </p>
 
 
@@ -1177,70 +1326,68 @@ Definition </h1>
  <span class='run'>Some authors use the term
   <span class='term'>affine subspace</span>, but we
   avoid this terminology because affine sets are
-  not subspaces. </span>
+  not subspaces.</span>
 
- <span class='run'>In fact, they are translated subspaces. </span>
+ <span class='run'>In fact, they are translated subspaces.</span>
 </p>
 
-<h2>
-Examples </h2>
+<h2>Examples</h2>
 
 <p>
- <span class='run'>The empty set is trivially an affine set. </span>
+ <span class='run'>The empty set is trivially an affine set.</span>
 
  <span class='run'>The entire set of points in $n$-dimensional
-  space is an affine set. </span>
+  space is an affine set.</span>
 
- <span class='run'>Any singleton is an affine set. </span>
+ <span class='run'>Any singleton is an affine set.</span>
 </p>
 
 
 <p>
  <span class='run'>Our definition is meant to capture the
   intuitive idea of an infinite, uncurved set,
-  like a line or a plane in space. </span>
+  like a line or a plane in space.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>As usual, let $L(x, y)$ denote the line
-  between $x, y \in \R ^n$. </span>
+  between $x, y \in \R ^n$.</span>
 
  <span class='run'>The set $M \subset \R ^n$ is affine if $L(a,
-  b) \subset M$ for all $a, b \in M$. </span>
+  b) \subset M$ for all $a, b \in M$.</span>
 
  <span class='run'>For any $x, y \in M$ and $\lambda  \in \R $,
   <p>\[
-   (1-\lambda )x + \lambda y \in M. 
+   (1-\lambda )x + \lambda y \in M.
   \]</p></span>
 </p>
 
-<h1>
-Translations </h1>
+<h1>Translations</h1>
 
 <p>
  <span class='run'>The set of affine sets is closed under
-  translation. </span>
- <div class='proposition'  <span class='run'>Let $M \subset \R ^n$ affine. </span>
+  translation.</span>
+ <div class='proposition'>
+  <span class='run'>Let $M \subset \R ^n$ affine.</span>
 
-  <span class='run'>Then $M + a$ is affine for any $a \in \R $. </span>
-  <div class='proof'>   <span class='run'>Suppose $x, y \in M+a$. </span>
+  <span class='run'>Then $M + a$ is affine for any $a \in \R $.</span>
+  <div class='proof'>   <span class='run'>Suppose $x, y \in M+a$.</span>
 
    <span class='run'>There exist $\tilde{x}, \tilde{y} \in M$ with
-    $x = \tilde{x} + a$ and $y = \tilde{y} + a$. </span>
+    $x = \tilde{x} + a$ and $y = \tilde{y} + a$.</span>
 
    <span class='run'>For any $\lambda  \in \R $,
     <p>\[
-     \begin{aligned} 
+     \begin{aligned}
 
      (1-\lambda )x + \lambda y & = (1-\lambda )(\tilde{x} + a) +
-      \lambda (\tilde{y} + a) \\ 
+      \lambda (\tilde{y} + a) \\
 
-     &= ((1-\lambda )\tilde{x} + \lambda \tilde{y}) + a. 
+     &= ((1-\lambda )\tilde{x} + \lambda \tilde{y}) + a.
 
-     \end{aligned} 
+     \end{aligned}
     \]</p></span>  </div> </div>
 </p>
 
@@ -1249,31 +1396,33 @@ Translations </h1>
  <span class='run'>An affine set $M$ is
   <span class='term'>parallel</span> to an affine set
   $L$ if there exists $a \in \R ^n$ so that $M
-  = L + a$. </span>
+  = L + a$.</span>
 
  <span class='run'>The relation “$M$ is parallel to $L$” on the
-  set of affine sets is an equivalence relation. </span>
+  set of affine sets is an equivalence relation.</span>
 
  <span class='run'>This notion of parallelism is more restrictive
   than the natural one, in which we may speak of
-  a line being parallel to a plane. </span>
+  a line being parallel to a plane.</span>
 
  <span class='run'>We must speak of a line which is parallel to
-  another line within the given plane. </span>
+  another line within the given plane.</span>
 </p>
 
-<h1>
-Properties </h1>
+<h1>Properties</h1>
 
 <p>
  <span class='run'>The set of affine sets is closed under
-  intersection. </span>
- <div class='proposition'  <span class='run'>If $\mathcal{M} $ is a family of affine sets,
-   then $\cap \mathcal{M} $ is affine. </span> </div>
+  intersection.</span>
+ <div class='proposition'>
+  <span class='run'>If $\mathcal{M} $ is a family of affine sets,
+   then $\cap \mathcal{M} $ is affine.</span> </div>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1325,7 +1474,7 @@ Properties </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

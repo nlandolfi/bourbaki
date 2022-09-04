@@ -139,7 +139,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -155,14 +155,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -970,7 +987,196 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./functions.html'" onkeypress="location.href='./functions.html'">
+                <span>
+                  Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./pair_intersections.html'" onkeypress="location.href='./pair_intersections.html'">
+                <span>
+                  Pair Intersections
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_symmetric_differences.html'" onkeypress="location.href='./set_symmetric_differences.html'">
+                <span>
+                  Set Symmetric Differences
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./arithmetic.html'" onkeypress="location.href='./arithmetic.html'">
+            <span>
+            Arithmetic
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./associative_operations.html'" onkeypress="location.href='./associative_operations.html'">
+            <span>
+            Associative Operations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./commutative_operations.html'" onkeypress="location.href='./commutative_operations.html'">
+            <span>
+            Commutative Operations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./element_functions.html'" onkeypress="location.href='./element_functions.html'">
+            <span>
+            Element Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./extended_real_numbers.html'" onkeypress="location.href='./extended_real_numbers.html'">
+            <span>
+            Extended Real Numbers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./family_operations.html'" onkeypress="location.href='./family_operations.html'">
+            <span>
+            Family Operations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./identity_elements.html'" onkeypress="location.href='./identity_elements.html'">
+            <span>
+            Identity Elements
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./isomorphisms.html'" onkeypress="location.href='./isomorphisms.html'">
+            <span>
+            Isomorphisms
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./pointwise_and_measure_limits.html'" onkeypress="location.href='./pointwise_and_measure_limits.html'">
+            <span>
+            Pointwise and Measure Limits
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./subset_algebras.html'" onkeypress="location.href='./subset_algebras.html'">
+            <span>
+            Subset Algebras
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./operations.pdf#page=2'" onkeypress="location.href='./operations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./operations-graph.pdf'" onkeypress="location.href='./operations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Operations </h1> 
       <!--
@@ -983,64 +1189,60 @@ Parse: {prototype: {
 !refs:paul_halmos∕naive_set_theory∕section_08
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We have seen several concepts that consist of
-  associating with a pair of sets a third set. </span>
+  associating with a pair of sets a third set.</span>
 
- <span class='run'>For example, set unions and set intersections </span>
+ <span class='run'>For example, set unions and set intersections</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>An <span class='term'>operation</span> (or
   <span class='term'>binary operation</span>,
   <span class='term'>law of composition</span>) on a
   set $A$ is a function from $A \times  A$ to
-  $A$. </span>
+  $A$.</span>
 </p>
 
 
 <p>
  <span class='run'>Roughly speaking, operations
   <span class='term'>combine</span> (or
-  <span class='term'>compose</span>) elements. </span>
+  <span class='term'>compose</span>) elements.</span>
 
  <span class='run'>We <span class='term'>operate</span> on ordered
-  pairs. </span>
+  pairs.</span>
 </p>
 
-<h2>
-Example: set operations </h2>
+<h2>Example: set operations</h2>
 
 <p>
- <span class='run'>Let $X$ be a set. </span>
+ <span class='run'>Let $X$ be a set.</span>
 
  <span class='run'>Define $g: \powerset{X} \times  \powerset{X} \to
-  \powerset{X}$ by $g(A, B) = A \cup B$. </span>
+  \powerset{X}$ by $g(A, B) = A \cup B$.</span>
 
  <span class='run'>Then $g$, the function which associates with
   two sets their union (see
   \sheetref{pair_unions}{Pair Unions}) is an
-  operation on $\powerset{X}$. </span>
+  operation on $\powerset{X}$.</span>
 
  <span class='run'>Likewise, define $h : \powerset{X} \times
   \powerset{X} \to \powerset{X}$ by $h(A, B) = A
-  \cap  B$. </span>
+  \cap  B$.</span>
 </p>
 
-<h2>
-Naming their properties </h2>
+<h2>Naming their properties</h2>
 
 <p>
- <span class='run'>$\cup$ has several nice properties. </span>
+ <span class='run'>$\cup$ has several nice properties.</span>
 
  <span class='run'>For one $A \cup B = B \cup A$ and $(A \cup
-  B) \cup C = A \cup (B \cup C)$. </span>
+  B) \cup C = A \cup (B \cup C)$.</span>
 </p>
 
 
@@ -1048,56 +1250,57 @@ Naming their properties </h2>
  <span class='run'>An operation with the first property, that the
   ordered pair $(A, B)$ and $(B, A)$ have the
   same result is called
-  <span class='term'>commutative</span>. </span>
+  <span class='term'>commutative</span>.</span>
 
  <span class='run'>An operation with the second property, that
   when given three objects the order in which we
   operate does not matter is called
-  <span class='term'>associative</span>. </span>
+  <span class='term'>associative</span>.</span>
 
- <span class='run'>$\cap $ shares these properties with $\cup$. </span>
+ <span class='run'>$\cap $ shares these properties with $\cup$.</span>
 </p>
 
 
 <p>
  <span class='run'>We call the operation of
   <span class='term'>forming unions</span> the
-  function $(A, B) \mapsto A \cup B$. </span>
+  function $(A, B) \mapsto A \cup B$.</span>
 
  <span class='run'>We call the operation of
   <span class='term'>forming intersections</span> the
-  function $(A, B) \mapsto A \cap  B$. </span>
+  function $(A, B) \mapsto A \cap  B$.</span>
 
  <span class='run'>We call the operation of
   <span class='term'>forming symmetric
   differences</span> the function $(A, B) \mapsto A
-  \symdiff B$. </span>
+  \symdiff B$.</span>
 
  <span class='run'>Since forming unions commutes and is associative
   and likewise with forming intersections, forming
-  symmetric differences also commutes. </span>
+  symmetric differences also commutes.</span>
 </p>
 
-<h1>
-Algebras </h1>
+<h1>Algebras</h1>
 
 <p>
  <span class='run'>Of course, any operation is defined on some
-  set. </span>
+  set.</span>
 
  <span class='run'>For this reason, we define an
   <span class='term'>algebra</span> as an ordered
   pair whose first element is a non-empty set and
   whose second element is an operation on that
-  set. </span>
+  set.</span>
 
  <span class='run'>The <span class='term'>ground set</span> of the
   algebra is the set on which the operation is
-  defined. </span>
+  defined.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1149,7 +1352,7 @@ Algebras </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

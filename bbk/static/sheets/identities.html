@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -78,14 +78,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -253,7 +270,119 @@ Parse: {prototype: {
 % objects macros
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./names.html'" onkeypress="location.href='./names.html'">
+                <span>
+                  Names
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./statements.html'" onkeypress="location.href='./statements.html'">
+            <span>
+            Statements
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./identities.pdf#page=2'" onkeypress="location.href='./identities.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./identities-graph.pdf'" onkeypress="location.href='./identities-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Identities </h1> 
       <!--
@@ -261,69 +390,66 @@ Parse: {prototype: {
 !need:names
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We can give the same object two different
-  names. </span>
+  names.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>An object <span class='term'>is</span> itself. </span>
+ <span class='run'>An object <span class='term'>is</span> itself.</span>
 
  <span class='run'>If the object denoted by one name is the same
   as the object denoted by a second name, then
   we say that the two names are
-  <span class='term'>equal</span>. </span>
+  <span class='term'>equal</span>.</span>
 
  <span class='run'>The object associated with a
   <span class='term'>name</span> is the
-  <span class='term'>identity</span> of the name. </span>
+  <span class='term'>identity</span> of the name.</span>
 </p>
 
 
 <p>
  <span class='run'>Let $A$ denote an object and let $B$ denote
-  an object. </span>
+  an object.</span>
 
- <span class='run'>Here we are using $A$ and $B$ as placeholders. </span>
+ <span class='run'>Here we are using $A$ and $B$ as placeholders.</span>
 
  <span class='run'>They are names for objects, but we do not
-  know—or care—which objects. </span>
+  know—or care—which objects.</span>
 
  <span class='run'>We say “$A$ equals $B$” as a shorthand for
   “the object denoted by $A$ is the same as the
-  object denoted by $B$.” </span>
+  object denoted by $B$.”</span>
 
  <span class='run'>In other words, $A$ and $B$ are two names for
-  the same object. </span>
+  the same object.</span>
 </p>
 
-<h1>
-Symmetry </h1>
+<h1>Symmetry</h1>
 
 <p>
  <span class='run'>Let $A$ denote an object and let $B$ denote
-  an object. </span>
+  an object.</span>
 
  <span class='run'>“$A$ equals $B$” means the same as “$B$ equals
-  $A$”. </span>
+  $A$”.</span>
 
  <span class='run'>The identity of the names is not dependent on
-  the order in which the names are given. </span>
+  the order in which the names are given.</span>
 
  <span class='run'>We call this the <span class='term'>symmetry of
-  identity</span>. </span>
+  identity</span>.</span>
 
  <span class='run'>It means we can switch the spots of $A$ and
-  $B$ and say the same thing. </span>
+  $B$ and say the same thing.</span>
 
  <span class='run'>In other words, there are two ways to make
-  the statement. </span>
+  the statement.</span>
  <!--
   <div data-littype='run'> ❲% If we switch the spots of $A$ and $B$.❳ </div>
 
@@ -334,25 +460,24 @@ Symmetry </h1>
 
 </p>
 
-<h1>
-Reflexivity </h1>
+<h1>Reflexivity</h1>
 
 <p>
- <span class='run'>Let $A$ denote an object. </span>
+ <span class='run'>Let $A$ denote an object.</span>
 
  <span class='run'>Since every object is the same as itself, the
   object denoted by $A$ is the same as the
-  object denoted by $A$. </span>
+  object denoted by $A$.</span>
 
- <span class='run'>We say “$A$ equals $A$”. </span>
+ <span class='run'>We say “$A$ equals $A$”.</span>
 
- <span class='run'>In other words, every name equals itself. </span>
+ <span class='run'>In other words, every name equals itself.</span>
 
  <span class='run'>This fact is called the
-  <span class='term'>reflexivity of identity</span>. </span>
+  <span class='term'>reflexivity of identity</span>.</span>
 
  <span class='run'>A name is equal to itself because an object
-  is itself. </span>
+  is itself.</span>
 </p>
 
 <!--
@@ -443,9 +568,11 @@ Reflexivity </h1>
 % In this case, we call the
 % equation \ct{indeterminate}{}
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -497,7 +624,7 @@ Reflexivity </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

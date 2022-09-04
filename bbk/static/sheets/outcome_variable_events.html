@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1056,7 +1073,126 @@ Parse: {prototype: {
 \newcommand{\PE}{\mathbfsf{P}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./event_probabilities.html'" onkeypress="location.href='./event_probabilities.html'">
+                <span>
+                  Event Probabilities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+                <span>
+                  Uncertain Outcomes
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./induced_probability_distributions.html'" onkeypress="location.href='./induced_probability_distributions.html'">
+            <span>
+            Induced Probability Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./outcome_variable_events.pdf#page=2'" onkeypress="location.href='./outcome_variable_events.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./outcome_variable_events-graph.pdf'" onkeypress="location.href='./outcome_variable_events-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Outcome Variable Events </h1> 
       <!--
@@ -1065,104 +1201,105 @@ Parse: {prototype: {
 !need:event_probabilities
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>For each value of a random variable’s codomain,
   the set of outcomes corresponding to that value
-  is the inverse image of the random variable. </span>
+  is the inverse image of the random variable.</span>
 
  <span class='run'>We can speak of the probability that a random
   variable takes a value then, by assigning it
   the probability of the set of outcomes
-  corresponding to that value. </span>
+  corresponding to that value.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Let $p: \Omega  \to \R $ be a probability
   distribution with corresponding probability measure
-  $\mathbfsf{P} : \powerset{\Omega } \to \R $. </span>
+  $\mathbfsf{P} : \powerset{\Omega } \to \R $.</span>
 
  <span class='run'>Suppose $x: \Omega  \to V$ is an outcome
-  variable. </span>
+  variable.</span>
 
  <span class='run'>The <span class='term'>probability $x = a$</span>,
   for $a \in \Omega $, is
   <p>\[
-   \textstyle 
+   \textstyle
 
-   \mathbfsf{P} (\Set{\omega  \in \Omega }{x(\omega ) = a}). 
+   \mathbfsf{P} (\Set{\omega  \in \Omega }{x(\omega ) = a}).
   \]</p></span>
 
  <span class='run'>From the definition of $\mathbfsf{P} $, we
   express the above as
   <p>\[
-   \textstyle 
+   \textstyle
 
-   \sum_{\omega  \in \Omega  \mid  x(\omega ) = a} p(\omega ). 
+   \sum_{\omega  \in \Omega  \mid  x(\omega ) = a} p(\omega ).
   \]</p></span>
 
  <span class='run'>We refer to the probability of the <i>event</i>
-  that $x = a$. </span>
+  that $x = a$.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We denote the probability that $x = a$ by
-  $\mathbfsf{P} [x =a]$. </span>
+  $\mathbfsf{P} [x =a]$.</span>
 
  <span class='run'>Our square brackets deviate from the slightly
   slippery but universally standard notation
-  $\mathbfsf{P} (x = a)$. </span>
+  $\mathbfsf{P} (x = a)$.</span>
 
  <span class='run'>We prefer the square brackets, since $x=a$ is
   not itself an argument to $\mathbfsf{P} $, but
   shorthand for $(\Set{\omega  \in
-  \Omega }{x(\omega ) = a})$. </span>
+  \Omega }{x(\omega ) = a})$.</span>
 </p>
 
 
 <p>
- <span class='run'>There are many similar notations. </span>
+ <span class='run'>There are many similar notations.</span>
 
  <span class='run'>For example, $\mathbfsf{P} [x \in C]$ means
   $\mathbfsf{P} (\Set{x \in \Omega }{x(\omega ) \in
-  C})$. </span>
+  C})$.</span>
 
  <span class='run'>In particular, if $x: \Omega  \to \R $,
   $\mathbfsf{P} [x \geq a]$ means
   $\mathbfsf{P} (\Set{\omega  \in \Omega }{x(\omega )
-  \geq a})$. </span>
+  \geq a})$.</span>
 
  <span class='run'>Since the <i>event</i> that $x = a$ is the
   inverse image of $\set{a}$ under $x$, we also
   use the notations $\mathbfsf{P} (x^{-1}(a))$ and
-  $\mathbfsf{P} (x^{-1}(C))$. </span>
+  $\mathbfsf{P} (x^{-1}(C))$.</span>
 </p>
 
-<h2>
-Example: sum of two dice </h2>
+<h2>Example: sum of two dice</h2>
 
 <p>
  <span class='run'>Define $\Omega  = \set{1, \dots , 6}^2$ and
   define $p: \Omega  \to \R $ with $p(\omega ) =
-  \nicefrac{1}{36}$ for each $\omega  \in \Omega $. </span>
+  1/36$ for each $\omega  \in \Omega $.</span>
 
  <span class='run'>Define $x: \Omega  \to \N $ by $x(\omega _1,
-  \omega _2) = \omega _1 + \omega _2$. </span>
+  \omega _2) = \omega _1 + \omega _2$.</span>
 
- <span class='run'>Then $\mathbfsf{P} [x = 4] = p((2, 2)) + p(1,
-  3) + p(3, 1) = \nicefrac{1}{12}$. </span>
+ <span class='run'>Then
+  <p>\[
+   \mathbfsf{P} [x = 4] = p((2, 2)) + p(1, 3) + p(3, 1) =
+    1/12.
+  \]</p></span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1214,7 +1351,7 @@ Example: sum of two dice </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

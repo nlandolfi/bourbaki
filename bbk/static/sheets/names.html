@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -267,7 +284,133 @@ Parse: {prototype: {
 % objects macros
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./letters.html'" onkeypress="location.href='./letters.html'">
+                <span>
+                  Letters
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./objects.html'" onkeypress="location.href='./objects.html'">
+                <span>
+                  Objects
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./identities.html'" onkeypress="location.href='./identities.html'">
+            <span>
+            Identities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./sets.html'" onkeypress="location.href='./sets.html'">
+            <span>
+            Sets
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./names.pdf#page=2'" onkeypress="location.href='./names.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./names-graph.pdf'" onkeypress="location.href='./names-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Names </h1> 
       <!--
@@ -276,120 +419,116 @@ Parse: {prototype: {
 !need:letters
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>We (still) want to talk and write about things. </span>
+ <span class='run'>We (still) want to talk and write about things.</span>
 </p>
 
-<h1>
-Names </h1>
+<h1>Names</h1>
 
 <p>
  <!-- TODO(next edition) define subscripts and superscripts -->
 
  <span class='run'>As we use sounds to speak about objects, we
-  use symbols to write about objects. </span>
+  use symbols to write about objects.</span>
 
  <span class='run'>In these sheets, we will mostly use the upper
-  and lower case latin letters to denote objects. </span>
+  and lower case latin letters to denote objects.</span>
 
  <span class='run'>We sometimes also use an
   <span class='term'>accent</span> $&#39;$ or
-  subscripts or superscripts. </span>
+  subscripts or superscripts.</span>
 
  <span class='run'>When we write the symbols we say that the
   composite symbol formed
-  <span class='term'>denotes</span> the object. </span>
+  <span class='term'>denotes</span> the object.</span>
 
  <span class='run'>We call it the <span class='term'>name</span> of
-  the object. </span>
+  the object.</span>
 </p>
 
 
 <p>
  <span class='run'>Since we use these same symbols for spoken
   words of the English language, we want to
-  distinguish names from words. </span>
+  distinguish names from words.</span>
 
  <span class='run'>One idea is to box our names, and agree that
   everything in a box is a name, and that a
-  name always denotes the object. </span>
+  name always denotes the object.</span>
 
  <span class='run'>For example, \fbox{A} or \fbox{A’} or
-  \fbox{A$_0$}. </span>
+  \fbox{A$_0$}.</span>
 
  <span class='run'>The box works well to group the symbols and
   clarifies that \fbox{A}\fbox{A} is different from
-  \fbox{AA}. </span>
+  \fbox{AA}.</span>
 
  <span class='run'>But experience shows that we need not use
-  boxes. </span>
+  boxes.</span>
 </p>
 
 
 <p>
- <span class='run'>We indicate a name for an object with italics. </span>
+ <span class='run'>We indicate a name for an object with italics.</span>
 
  <span class='run'>Instead of \fbox{A’} we use $A&#39;$, instead
-  of \fbox{A$_0$} we use $A_0$. </span>
+  of \fbox{A$_0$} we use $A_0$.</span>
 
  <span class='run'>Experience shows that this subtlety is enough
   for clarity and it agrees with traditional and
-  modern practice. </span>
+  modern practice.</span>
 
  <span class='run'>Other examples include $A&#39;&#39;$,
   $A&#39;&#39;&#39;$, $A&#39;&#39;&#39;&#39;$, $B$,
-  $C$, $D$, $E$, $F$, $f$, $f&#39;$ $f_a$. </span>
+  $C$, $D$, $E$, $F$, $f$, $f&#39;$ $f_a$.</span>
 </p>
 
-<h1>
-No repetitions </h1>
+<h1>No repetitions</h1>
 
 <p>
  <span class='run'>We never use the same name to refer to two
-  different objects. </span>
+  different objects.</span>
 
  <span class='run'>Using the same name for two different objects
-  causes confusion. </span>
+  causes confusion.</span>
 
  <span class='run'>We make clear when we reuse symbols to mean
-  different objects. </span>
+  different objects.</span>
 
  <span class='run'>We tend to introduce the names used at the
-  beginning of a paragraph or section. </span>
+  beginning of a paragraph or section.</span>
 </p>
 
-<h1>
-Names are objects </h1>
+<h1>Names are objects</h1>
 
 <p>
- <span class='run'>There is an odd aspect in these considerations. </span>
+ <span class='run'>There is an odd aspect in these considerations.</span>
 
  <span class='run'>The symbol $A$ may denote itself, that
-  particular mark on the page. </span>
+  particular mark on the page.</span>
 
- <span class='run'>There is no helping it. </span>
+ <span class='run'>There is no helping it.</span>
 
  <span class='run'>As soon as we use some symbols to identify
   any object, these symbols can reference
-  themselves. </span>
+  themselves.</span>
 </p>
 
 
 <p>
  <span class='run'>An interpretation of this peculiarity is that
-  names are objects. </span>
+  names are objects.</span>
 
  <span class='run'>In other words, the name is an abstract
   object, it is that which we use to refer to
-  another object. </span>
+  another object.</span>
 
- <span class='run'>It is the thing pointing to another object. </span>
+ <span class='run'>It is the thing pointing to another object.</span>
 
  <span class='run'>And the marks on the page which are meant to
-  look similar are the several uses of a name. </span>
+  look similar are the several uses of a name.</span>
 </p>
 
 
@@ -548,32 +687,33 @@ Names are objects </h1>
 </div>
 -->
 
-<h1>
-Names as placeholders </h1>
+<h1>Names as placeholders</h1>
 
 <p>
  <span class='run'>We frequently use a name as a
-  <span class='term'>placeholder</span>. </span>
+  <span class='term'>placeholder</span>.</span>
 
  <span class='run'>In this case, we will say “let $A$ denote an
-  object”. </span>
+  object”.</span>
 
  <span class='run'>By this we mean that $A$ is a name for an
-  object, but we do not know what that object is. </span>
+  object, but we do not know what that object is.</span>
 
  <span class='run'>This is frequently useful when the arguments we
   will make do not depend upon the particular
-  object considered. </span>
+  object considered.</span>
 
- <span class='run'>This practice is also old. </span>
+ <span class='run'>This practice is also old.</span>
 
- <span class='run'>Experience shows it is effective. </span>
+ <span class='run'>Experience shows it is effective.</span>
 
- <span class='run'>As usual, it is best understood by example. </span>
+ <span class='run'>As usual, it is best understood by example.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -625,7 +765,7 @@ Names as placeholders </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

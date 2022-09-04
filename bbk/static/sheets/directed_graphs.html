@@ -104,7 +104,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -120,14 +120,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1035,7 +1052,161 @@ Parse: {prototype: {
 \renewcommand{\deg}{\mathword{deg}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./undirected_graphs.html'" onkeypress="location.href='./undirected_graphs.html'">
+                <span>
+                  Undirected Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./composition_graphs.html'" onkeypress="location.href='./composition_graphs.html'">
+            <span>
+            Composition Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./controlled_dynamical_systems.html'" onkeypress="location.href='./controlled_dynamical_systems.html'">
+            <span>
+            Controlled Dynamical Systems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./directed_graph_distributions.html'" onkeypress="location.href='./directed_graph_distributions.html'">
+            <span>
+            Directed Graph Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./directed_paths.html'" onkeypress="location.href='./directed_paths.html'">
+            <span>
+            Directed Paths
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./function_graphs.html'" onkeypress="location.href='./function_graphs.html'">
+            <span>
+            Function Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./rooted_trees.html'" onkeypress="location.href='./rooted_trees.html'">
+            <span>
+            Rooted Trees
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./weighted_graphs.html'" onkeypress="location.href='./weighted_graphs.html'">
+            <span>
+            Weighted Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./directed_graphs.pdf#page=2'" onkeypress="location.href='./directed_graphs.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./directed_graphs-graph.pdf'" onkeypress="location.href='./directed_graphs-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Directed Graphs </h1> 
       <!--
@@ -1043,46 +1214,44 @@ Parse: {prototype: {
 !need:undirected_graphs
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>We want to visualize (nonsymmetric) relations. </span>
+ <span class='run'>We want to visualize (nonsymmetric) relations.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>directed graph</span> is a
   pair $(V, E)$ in which $V$ is a finite
   nonempty set and $E$ is a subset of $V
-  \times V$. </span>
+  \times V$.</span>
 
- <span class='run'>In other words, $E$ is a relation on $V$. </span>
+ <span class='run'>In other words, $E$ is a relation on $V$.</span>
 
  <span class='run'>We call the elements of the first set the
   <span class='term'>vertices</span> of the graph and
   the elements of the second set the
-  <span class='term'>edges</span>. </span>
+  <span class='term'>edges</span>.</span>
 </p>
 
 
 <p>
- <span class='run'>Let $(v, w) \in E$. </span>
+ <span class='run'>Let $(v, w) \in E$.</span>
 
  <span class='run'>We say that $(v, w)$ is an edge
   <span class='term'>from</span> $v$
   <span class='term'>to</span> $w$, and that it is
   an <span class='term'>outgoing edge</span> of $v$
   and an <span class='term'>incoming edge</span> of
-  $w$. </span>
+  $w$.</span>
 
  <span class='run'>We call $v$ a <span class='term'>parent</span> of
-  $w$ and we call $w$ a child of $v$. </span>
+  $w$ and we call $w$ a child of $v$.</span>
 
  <span class='run'>We say that the edge $(v, w)$ is
-  <span class='term'>incident</span> to $v$ and $w$. </span>
+  <span class='term'>incident</span> to $v$ and $w$.</span>
 </p>
 
 
@@ -1093,7 +1262,7 @@ Definition </h1>
   set</span>; we refer to these sets as the
   <span class='term'>children</span> and
   <span class='term'>parents</span> of the vertex,
-  respectively. </span>
+  respectively.</span>
 
  <span class='run'>A vertex is a <span class='term'>source</span>
   vertex if it only has outgoing edges (i.e., is
@@ -1101,7 +1270,7 @@ Definition </h1>
   empty) and a vertex is a
   <span class='term'>sink</span> if it only has
   incoming edges (i.e., is the parent of no
-  vertex). </span>
+  vertex).</span>
 </p>
 
 
@@ -1109,24 +1278,22 @@ Definition </h1>
  <span class='run'>A directed graph is
   <span class='term'>complete</span> if every vertex
   is both a child and parent of every other
-  vertex. </span>
+  vertex.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>Let $\pa: V \to \powerset{V}$ and $\ch: V \to
   \powerset{V}$ be the functions associating to
   each vertex its set of parents and set of
-  children, respectively. </span>
+  children, respectively.</span>
 
  <span class='run'>As usual, we denote the parents of vertex $v$
-  by $\pa_v$ and the children by $\ch_v$. </span>
+  by $\pa_v$ and the children by $\ch_v$.</span>
 </p>
 
-<h2>
-Skeletons </h2>
+<h2>Skeletons</h2>
 
 <p>
  <span class='run'>The <span class='term'>skeleton</span> of the
@@ -1134,21 +1301,21 @@ Skeletons </h2>
   $(V, F)$ where
   <p>\[
    F = \Set*{\set{v, w} \subset V}{(v, w) \in E \text{ or }
-    (w, v) \in E}. 
+    (w, v) \in E}.
   \]</p>
   <span class='run'>In other words, the skeleton is an undirected
    graph whose vertex set is $V$ and whose edges
    are all (unordered) pairs which appear as an
-   ordered pair in the directed graph. </span>
+   ordered pair in the directed graph.</span>
 
   <span class='run'>If the $(V, E)$ is a directed graph and $E$
    is a symmetric relation, then we the skeleton
    of $(V, E)$ is a natural undirected graph to
-   associate with $(V, E)$. </span>
+   associate with $(V, E)$.</span>
 
   <span class='run'>An <span class='term'>orientation</span> of an
    undirected graph $G$ is a directed graph whose
-   skeleton is $G$. </span></span>
+   skeleton is $G$.</span></span>
 </p>
 
 
@@ -1165,9 +1332,11 @@ Skeletons </h2>
   <div data-littype='run'> </div>
 </div>
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1219,7 +1388,7 @@ Skeletons </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

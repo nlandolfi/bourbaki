@@ -97,7 +97,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -113,14 +113,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1400,7 +1417,154 @@ Parse: {prototype: {
 \newcommand{\sgn}{\mathword{sgn}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_determinants.html'" onkeypress="location.href='./matrix_determinants.html'">
+                <span>
+                  Matrix Determinants
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./monic_polynomials.html'" onkeypress="location.href='./monic_polynomials.html'">
+                <span>
+                  Monic Polynomials
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./norms.html'" onkeypress="location.href='./norms.html'">
+                <span>
+                  Norms
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+                <span>
+                  Real Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_vectors.html'" onkeypress="location.href='./real_vectors.html'">
+                <span>
+                  Real Vectors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./eigenvalue_decomposition.html'" onkeypress="location.href='./eigenvalue_decomposition.html'">
+            <span>
+            Eigenvalue Decomposition
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./symmetric_real_matrix_eigenvalues.html'" onkeypress="location.href='./symmetric_real_matrix_eigenvalues.html'">
+            <span>
+            Symmetric Real Matrix Eigenvalues
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./eigenvalues_and_eigenvectors.pdf#page=2'" onkeypress="location.href='./eigenvalues_and_eigenvectors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./eigenvalues_and_eigenvectors-graph.pdf'" onkeypress="location.href='./eigenvalues_and_eigenvectors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Eigenvalues and Eigenvectors </h1> 
       <!--
@@ -1412,42 +1576,40 @@ Parse: {prototype: {
 !need:monic_polynomials
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We discuss vectors for which the action of a
   matrix is scalar multiplication.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Let $A \in \R ^{n \times  n}$ be a square
-  matrix. </span>
+  matrix.</span>
 
  <span class='run'>A nonzero vector $x \in \R ^{n}$ is an
   <span class='term'>eigenvector</span> of $A$, and
   $\lambda  \in \R $ is its corresponding
   <span class='term'>eigenvalue</span>, if $A x =
-  \lambda  x$. </span>
+  \lambda  x$.</span>
 
  <span class='run'>In other words, $x \neq 0$ is an eigenvector
   if the action of $A$ on $x$ is to mimic
-  scalar multiplication. </span>
+  scalar multiplication.</span>
 </p>
 
 
 <p>
  <span class='run'>Speaking of eigenvalues is sensible only when
-  the matrix involved is square. </span>
+  the matrix involved is square.</span>
 
  <span class='run'>In other words, when the domain and codomain
-  are the same. </span>
+  are the same.</span>
 
  <span class='run'>We often care about eigenvalue computations when
-  a matrix is compounded iteratively. </span>
+  a matrix is compounded iteratively.</span>
 </p>
 
 
@@ -1461,58 +1623,56 @@ Definition </h1>
 </div>
 -->
 
-<h1>
-Eigenspaces </h1>
+<h1>Eigenspaces</h1>
 
 <p>
  <span class='run'>If $x$ is an eigenvector with eigenvalue
   $\lambda $, then for any $\alpha  \in \R $,
   $\alpha  x$ is an eigenvector with eigenvalue
   $\alpha \lambda $, since $A (\alpha  x) = \alpha
-  (Ax) = (\alpha \lambda ) x$. </span>
+  (Ax) = (\alpha \lambda ) x$.</span>
 
  <span class='run'>In other words, if $A$ has an eigenvector then
   the action of $A$ on some subspace $S \subset
-  \R ^n$ is to mimic scalar multiplication. </span>
+  \R ^n$ is to mimic scalar multiplication.</span>
 
  <span class='run'>In this case, we call the subspace $S$ an
   <span class='term'>eigenspace</span>, and any
-  nonzero $x \in S$ an eigenvector. </span>
+  nonzero $x \in S$ an eigenvector.</span>
 </p>
 
 
 <p>
  <span class='run'>An eigenspace is an <span class='term'>invariant
-  subspace</span> of $A$. </span>
+  subspace</span> of $A$.</span>
 
  <span class='run'>In other words, if $E$ is an eigenspace
   corresponding to eigenvalue $\lambda $ then $AE
-  \subset E$. </span>
+  \subset E$.</span>
 </p>
 
 
 <p>
  <span class='run'>The dimension of $E$ is the maximum number of
   linear independent eigenvectors which have the
-  same eigenvalue $\lambda $. </span>
+  same eigenvalue $\lambda $.</span>
 
  <span class='run'>We call this number the
   <span class='term'>geometric multiplicity</span> of
-  $\lambda $. </span>
+  $\lambda $.</span>
 </p>
 
-<h1>
-Characteristic polynomial </h1>
+<h1>Characteristic polynomial</h1>
 
 <p>
  <span class='run'>If $x$ is an eigenvector for $A$ associated
   with $\lambda $ then $Ax = \lambda  x$ so $Ax
   - \lambda  x = 0$ and $(A - \lambda  I)x =
-  0$. </span>
+  0$.</span>
 
  <span class='run'>In other words, $x$ is an element of the
   nullspace of $A - \lambda  I$. Or equivalently,
-  $\lambda  I - A$. </span>
+  $\lambda  I - A$.</span>
 </p>
 
 
@@ -1522,34 +1682,34 @@ Characteristic polynomial </h1>
   is the polynomial $p: \R  \to \R $ in defined
   by
   <p>\[
-   p(x) = \det (zI - A). 
+   p(x) = \det (zI - A).
   \]</p>
   <span class='run'>$p$ is monic: the coefficient of the degree
-   $n$ term is 1. </span>
+   $n$ term is 1.</span>
 
-  <span class='run'>\begin{proposition} </span>
+  <span class='run'>\begin{proposition}</span>
 
   <span class='run'>$\lambda $ is an eigenvalue of $A$ if and
-   only if $p(\lambda ) = 0$. </span>
+   only if $p(\lambda ) = 0$.</span>
 
-  <span class='run'>\begin{proof} </span>
+  <span class='run'>\begin{proof}</span>
 
   <span class='run'>Since $\lambda $ is an eigenvalue if and only
    if there is a nonzero vector $x$ such that
    $\lambda  x - Ax = 0$, if and only if
    $\lambda  I - A$ is singular, if and only if
-   $\det(\lambda  I - A) = 0$. </span>
+   $\det(\lambda  I - A) = 0$.</span>
 
-  <span class='run'>\end{proof} </span>
+  <span class='run'>\end{proof}</span>
 
-  <span class='run'>\label{proposition:eigenvalues_and_eigenvectors:characteristic_polynomial} </span>
+  <span class='run'>\label{proposition:eigenvalues_and_eigenvectors:characteristic_polynomial}</span>
 
-  <span class='run'>\end{proposition} </span>
+  <span class='run'>\end{proposition}</span>
 
   <span class='run'>A simple consequence of
    Proposition~\ref{proposition:eigenvalues_and_eigenvectors:characteristic_polynomial}
    is that a (real) matrix may have complex
-   eigenvalues. </span></span>
+   eigenvalues.</span></span>
 </p>
 
 
@@ -1578,9 +1738,11 @@ So eigenvectors and eigenvalues come in pairs.
 \blankpage
 
 -->
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1632,7 +1794,7 @@ So eigenvectors and eigenvalues come in pairs.
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

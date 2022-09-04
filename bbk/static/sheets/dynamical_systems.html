@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -78,14 +78,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -977,7 +994,119 @@ Parse: {prototype: {
 \newcommand{\R}{\mathbfsf{R}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_numbers.html'" onkeypress="location.href='./real_numbers.html'">
+                <span>
+                  Real Numbers
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./controlled_dynamical_systems.html'" onkeypress="location.href='./controlled_dynamical_systems.html'">
+            <span>
+            Controlled Dynamical Systems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./dynamical_systems.pdf#page=2'" onkeypress="location.href='./dynamical_systems.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./dynamical_systems-graph.pdf'" onkeypress="location.href='./dynamical_systems-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Dynamical Systems </h1> 
       <!--
@@ -985,24 +1114,22 @@ Parse: {prototype: {
 !need:real_numbers
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to model natural phenomena.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Let $X_0, X_1, \dots , X_T$ be a sequence of
   sets and let $f_t: X_t \to X_{t+1}$ for $t =
-  0, \dots , T-1$. </span>
+  0, \dots , T-1$.</span>
 
  <span class='run'>We call $((X_0, \dots , X_T), (f_1, \dots ,
   f_{T-1}))$ a <span class='term'>deterministic
-  discrete-time dynamical system</span>. </span>
+  discrete-time dynamical system</span>.</span>
 </p>
 
 
@@ -1010,14 +1137,14 @@ Definition </h1>
  <span class='run'>We call the index $t$ the
   <span class='term'>epoch</span>, the
   <span class='term'>stage</span> or the
-  <span class='term'>period</span>. </span>
+  <span class='term'>period</span>.</span>
 
  <span class='run'>We call $X_t$ the <span class='term'>state
-  space</span> at period $t$. </span>
+  space</span> at period $t$.</span>
 
  <span class='run'>We call $f_t$ the <span class='term'>transition
   function</span> or <span class='term'>dynamics
-  function</span>. </span>
+  function</span>.</span>
 </p>
 
 
@@ -1026,37 +1153,39 @@ Definition </h1>
   sequence $x_1 \in \mathcal{X} _1, \dots , x_T \in
   \mathcal{X} _T$ by
   <p>\[
-   x_{t+1} = f_t(x_t, u_t). 
+   x_{t+1} = f_t(x_t, u_t).
   \]</p>
   <span class='run'>In this case we call $x_0$ the
-   <span class='term'>initial state</span>. </span>
+   <span class='term'>initial state</span>.</span>
 
   <span class='run'>We call the $x_t$ the
    <span class='term'>trajectory</span> associatd with
-   initial state $x_0$. </span></span>
+   initial state $x_0$.</span></span>
 </p>
 
 
 <p>
- <span class='run'>We call $T$ the <span class='term'>horizon</span>. </span>
+ <span class='run'>We call $T$ the <span class='term'>horizon</span>.</span>
 
  <span class='run'>In the case that we have an infinite sequence
   of state sets, input sets, and dynamics, then
   we refer to a
   <span class='term'>infinite-horizon</span> dynamical
-  system. </span>
+  system.</span>
 
  <span class='run'>To use language in contrast with this case, we
   refer to the dynamical system when $T$ is
   finite as a <span class='term'>finite-horizon</span>
-  dynamical system. </span>
+  dynamical system.</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify, and may develop
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify, and may develop
   dynamic systems via the genetic approach by
   appealing to their classical use in Newtonian
-  physics for modeling celestial mechanics. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+  physics for modeling celestial mechanics.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1108,7 +1237,7 @@ Definition </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

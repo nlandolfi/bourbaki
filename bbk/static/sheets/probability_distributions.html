@@ -153,7 +153,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -169,14 +169,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1136,7 +1153,210 @@ Parse: {prototype: {
 \newcommand{\coi}[1]{[#1)}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./intervals.html'" onkeypress="location.href='./intervals.html'">
+                <span>
+                  Intervals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_summation.html'" onkeypress="location.href='./real_summation.html'">
+                <span>
+                  Real Summation
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+                <span>
+                  Uncertain Outcomes
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./countable_probability_distributions.html'" onkeypress="location.href='./countable_probability_distributions.html'">
+            <span>
+            Countable Probability Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./cross_entropy.html'" onkeypress="location.href='./cross_entropy.html'">
+            <span>
+            Cross Entropy
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./decision_processes.html'" onkeypress="location.href='./decision_processes.html'">
+            <span>
+            Decision Processes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./discrete_entropy.html'" onkeypress="location.href='./discrete_entropy.html'">
+            <span>
+            Discrete Entropy
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./empirical_distribution.html'" onkeypress="location.href='./empirical_distribution.html'">
+            <span>
+            Empirical Distribution
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./event_probabilities.html'" onkeypress="location.href='./event_probabilities.html'">
+            <span>
+            Event Probabilities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./joint_distributions.html'" onkeypress="location.href='./joint_distributions.html'">
+            <span>
+            Joint Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_distributions.html'" onkeypress="location.href='./maximum_likelihood_distributions.html'">
+            <span>
+            Maximum Likelihood Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./probabilistic_classifiers.html'" onkeypress="location.href='./probabilistic_classifiers.html'">
+            <span>
+            Probabilistic Classifiers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./probability_densities.html'" onkeypress="location.href='./probability_densities.html'">
+            <span>
+            Probability Densities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./probability_vectors.html'" onkeypress="location.href='./probability_vectors.html'">
+            <span>
+            Probability Vectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./uncertain_decisions.html'" onkeypress="location.href='./uncertain_decisions.html'">
+            <span>
+            Uncertain Decisions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./probability_distributions.pdf#page=2'" onkeypress="location.href='./probability_distributions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./probability_distributions-graph.pdf'" onkeypress="location.href='./probability_distributions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Probability Distributions </h1> 
       <!--
@@ -1146,8 +1366,7 @@ Parse: {prototype: {
 !need:intervals
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>To talk about uncertain outcomes, we assign
@@ -1155,8 +1374,7 @@ Why </h1>
   intuition of proportion.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>probability distribution</span>
@@ -1164,34 +1382,34 @@ Definition </h1>
   function</span> (<span class='term'>pmf</span>), or
   <span class='term'>proportion distribution</span>) is
   a real-valued function from a finite set of
-  outcomes which is non-negative and normalized. </span>
+  outcomes which is non-negative and normalized.</span>
 
  <span class='run'>A real-valued function on a finite set is
   <span class='term'>normalized</span> if the sum of
-  its results is 1. </span>
+  its results is 1.</span>
 
  <span class='run'>We will refer to these as
-  <span class='term'>distributions</span>. </span>
+  <span class='term'>distributions</span>.</span>
 
  <span class='run'>The <span class='term'>probability of an
   outcome</span> is the result of the outcome
-  under the distribution. </span>
+  under the distribution.</span>
 </p>
 
 
 <p>
  <span class='run'>The probability of an outcome is meant to
-  indicate the credibility of an outcome. </span>
+  indicate the credibility of an outcome.</span>
 
  <span class='run'>The word probabiliy has its roots in the
   English word probable, which has the Middle
-  English sense “worthy of belief}. </span>
+  English sense “worthy of belief}.</span>
 
  <span class='run'>The probability of an outcome models how worthy
-  of belief it is, relative to other outcomes. </span>
+  of belief it is, relative to other outcomes.</span>
 
  <span class='run'>In the case of flipping a coin, or rolling a
-  die, all outcomes are equally worthy of belief. </span>
+  die, all outcomes are equally worthy of belief.</span>
 </p>
 
 
@@ -1199,72 +1417,72 @@ Definition </h1>
  <span class='run'>When an outcome has a higher probability than
   a second outcome we say that the first is
   <span class='term'>more probable</span> than the
-  second. </span>
+  second.</span>
 
  <span class='run'>Similarly we say that the first outcome is
   <span class='term'>less probable</span> than the
   second outcome if it has higher probability than
-  the second. </span>
+  the second.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>Let $A$ be a set and let $p: A \to \R $ be
-  a distribution. </span>
+  a distribution.</span>
 
  <span class='run'>Then
   <p>\[
-   \textstyle 
+   \textstyle
 
    p(a) \geq 0 \text{ for all } a \in A \text{ and } \sum_{a
-    \in A} p(a) = 1. 
+    \in A} p(a) = 1.
   \]</p></span>
 </p>
 
-<div class='proposition' <span class='run'>For all $a \in A$, $p(a) \leq 1$. </span>
- <div class='proof'>  <span class='run'>Let $a \in A$. </span>
+<div class='proposition'>
+ <span class='run'>For all $a \in A$, $p(a) \leq 1$.</span>
+ <div class='proof'>  <span class='run'>Let $a \in A$.</span>
 
-  <span class='run'>By definition, $p(a) \geq 0$.. </span>
+  <span class='run'>By definition, $p(a) \geq 0$..</span>
 
   <span class='run'>Second, since $p$ is normalized, $p(a) \leq
-   \sum_{b \in A} p(b) = 1$. </span> </div></div>
-<h1>
-Example: coin </h1>
+   \sum_{b \in A} p(b) = 1$.</span> </div></div>
+<h1>Example: coin</h1>
 
 <p>
  <span class='run'>When flipping a coin, both a heads and a
-  tails are equally worthy of belief. </span>
+  tails are equally worthy of belief.</span>
 
  <span class='run'>Thus we say that the outcome $0$ (tails) has
   probability $\nicefrac{1}{2}$ and likewise for the
-  outcome $1$ (heads) </span>
+  outcome $1$ (heads)</span>
 
  <span class='run'>In this case we say that we are modeling a
-  <span class='term'>fair coin</span>. </span>
+  <span class='term'>fair coin</span>.</span>
 </p>
 
-<h1>
-Example: die </h1>
+<h1>Example: die</h1>
 
 <p>
  <span class='run'>When rolling a die, all six sides are equally
-  worthy of belief. </span>
+  worthy of belief.</span>
 
  <span class='run'>Thus we say that the outcomes $1, 2, 3, 4,
-  5, 6$ each have probability $\nicefrac{1}{6}$. </span>
+  5, 6$ each have probability $\nicefrac{1}{6}$.</span>
 
- <span class='run'>Prior to roll, each is equally credible. </span>
+ <span class='run'>Prior to roll, each is equally credible.</span>
 
  <span class='run'>In this case we say that we are modeing a
-  <span class='term'>fair die</span>. </span>
+  <span class='term'>fair die</span>.</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions may drop the dependence on real
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions may drop the dependence on real
   numbers, and use intuition of repeated trials to
-  introduce <i>rational</i> probability distributions. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+  introduce <i>rational</i> probability distributions.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1316,7 +1534,7 @@ Example: die </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

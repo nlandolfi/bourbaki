@@ -111,7 +111,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -127,14 +127,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1086,7 +1103,168 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./geometry.html'" onkeypress="location.href='./geometry.html'">
+                <span>
+                  Geometry
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./lists.html'" onkeypress="location.href='./lists.html'">
+                <span>
+                  Lists
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_order.html'" onkeypress="location.href='./real_order.html'">
+                <span>
+                  Real Order
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./circular_coordinates.html'" onkeypress="location.href='./circular_coordinates.html'">
+            <span>
+            Circular Coordinates
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./complex_plane.html'" onkeypress="location.href='./complex_plane.html'">
+            <span>
+            Complex Plane
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./plane_distance.html'" onkeypress="location.href='./plane_distance.html'">
+            <span>
+            Plane Distance
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./plane_vectors.html'" onkeypress="location.href='./plane_vectors.html'">
+            <span>
+            Plane Vectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_space.html'" onkeypress="location.href='./real_space.html'">
+            <span>
+            Real Space
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./rectangles.html'" onkeypress="location.href='./rectangles.html'">
+            <span>
+            Rectangles
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_plane.pdf#page=2'" onkeypress="location.href='./real_plane.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_plane-graph.pdf'" onkeypress="location.href='./real_plane-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Plane </h1> 
       <!--
@@ -1096,107 +1274,75 @@ Parse: {prototype: {
 !need:geometry
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We are constantly thinking of the elements of
   $\R ^2$ as points of a plane.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<h1>
-Discussion </h1>
+<h1>Discussion</h1>
 
 <p>
  <span class='run'>We commonly associate elements of $\R ^2$ with
-  points on a plane. (see
-  \sheetref{geometry}{Geometry}). </span>
+  points on a plane. (see&nbsp;<a href='/sheets/geometry.html'/><span class='run'>Geometry</span></a>).</span>
 </p>
 
-
-<p>
- <span class='run'>\begin{principle}[Line Sets] </span>
-
+<div class='principle' text='Line Sets'>
  <span class='run'>Given a plane, there exists a set of its
-  (infinite) lines. </span>
-
- <span class='run'>\end{principle} </span>
-</p>
-
-
-<p>
- <span class='run'>\begin{principle}[Real Plane Correspondence] </span>
-
- <span class='run'>Let $L$ be the set of lines of a plane. </span>
+  (infinite) lines.</span></div>
+<div class='principle' text='Real Plane Correspondence'>
+ <span class='run'>Let $L$ be the set of lines of a plane.</span>
 
  <span class='run'>Then $\cup L$ is the set of points of the
-  plane. </span>
+  plane.</span>
 
  <span class='run'>There exists a one-to-one correspondence mapping
-  elements of $\cup L$ onto elements of $\R ^2$. </span>
+  elements of $\cup L$ onto elements of $\R ^2$.</span></div>
+<span class='run'>For this reason, we sometimes call elements of
+ $\R ^2$ <span class='term'>points</span>.</span>
 
- <span class='run'>\end{principle} </span>
+<span class='run'>We call the point associated with $(0, 0)$ the
+ <span class='term'>origin</span>.</span>
 
- <span class='run'>For this reason, we sometimes call elements of
-  $\R ^2$ <span class='term'>points</span>. </span>
+<span class='run'>We call the element of $\R ^2$ which corresponds
+ to a point the <span class='term'>coordinates</span>
+ of the point.</span>
 
- <span class='run'>We call the point associated with $(0, 0)$ the
-  <span class='term'>origin</span>. </span>
-
- <span class='run'>We call the element of $\R ^2$ which
-  corresponds to a point the
-  <span class='term'>coordinates</span> of the point. </span>
-</p>
-
-<h1>
-Visualization </h1>
+<h1>Visualization</h1>
 
 <p>
  <span class='run'>To visualize the correspondence we draw two
-  perpendicular lines. </span>
+  perpendicular lines.</span>
 
  <span class='run'>We then associate a point of the line with
-  $(0, 0) \in \R ^2$. </span>
+  $(0, 0) \in \R ^2$.</span>
 
- <span class='run'>We can label it so. </span>
+ <span class='run'>We can label it so.</span>
 
- <span class='run'>We then pick a unit length. </span>
+ <span class='run'>We then pick a unit length.</span>
 
  <span class='run'>And proceed as usual.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
 </p>
 
-
-<p>
- <span class='run'>\begin{figure}[h] </span>
-
- <span class='run'>\centering </span>
-
- <span class='run'>\vspace{0.5cm} </span>
-
- <img src="./graphics/real_plane.pdf" width="90%"/>
- <span class='run'>\caption{The real plane} </span>
-
- <span class='run'>\label{real_plane:figure:real_plane} </span>
-
- <span class='run'>\end{figure} </span>
-</p>
-
-
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div><img src="./graphics/real_plane.pdf" width="70%"/></div></div>
 <p>
  <span class='run'>Given that we have identified a plane with
   $\R ^2$ in this way, we call $(x, y) \in
   \R ^2$ the <span class='term'>coordinates</span> of
-  the point it corresponds to. </span>
+  the point it corresponds to.</span>
 
  <span class='run'>Many authors refer to this identification as a
   <span class='term'>Cartesian coordinate system</span>
   (or <span class='term'>Rectangular coordinate
   system</span>, <span class='term'>$x$-$y$ coordinate
-  system</span>). </span>
+  system</span>).</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify this sheet. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will expand this. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify this sheet.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will expand this.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1248,7 +1394,7 @@ Visualization </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

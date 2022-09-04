@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make tree_densities.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 tree_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_densities.tex
 

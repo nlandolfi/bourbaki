@@ -132,7 +132,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -148,14 +148,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1419,7 +1436,189 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_inner_product.html'" onkeypress="location.href='./real_inner_product.html'">
+                <span>
+                  Real Inner Product
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+                <span>
+                  Real Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_norm.html'" onkeypress="location.href='./real_norm.html'">
+                <span>
+                  Real Norm
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_vectors.html'" onkeypress="location.href='./real_vectors.html'">
+                <span>
+                  Real Vectors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./data_matrix.html'" onkeypress="location.href='./data_matrix.html'">
+            <span>
+            Data Matrix
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix-vector_products.html'" onkeypress="location.href='./matrix-vector_products.html'">
+            <span>
+            Matrix-Vector Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+            <span>
+            Matrix Transpose
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./orthogonal_real_subspaces.html'" onkeypress="location.href='./orthogonal_real_subspaces.html'">
+            <span>
+            Orthogonal Real Subspaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_halfspaces.html'" onkeypress="location.href='./real_halfspaces.html'">
+            <span>
+            Real Halfspaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_linear_functionals.html'" onkeypress="location.href='./real_linear_functionals.html'">
+            <span>
+            Real Linear Functionals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrix-vector_products.html'" onkeypress="location.href='./real_matrix-vector_products.html'">
+            <span>
+            Real Matrix-Vector Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./symmetric_real_matrices.html'" onkeypress="location.href='./symmetric_real_matrices.html'">
+            <span>
+            Symmetric Real Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./vectors_as_matrices.pdf#page=2'" onkeypress="location.href='./vectors_as_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./vectors_as_matrices-graph.pdf'" onkeypress="location.href='./vectors_as_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Vectors as Matrices </h1> 
       <!--
@@ -1430,24 +1629,22 @@ Parse: {prototype: {
 !need:real_matrices
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>Vectors can be identified with matrices of
-  width 1. </span>
+  width 1.</span>
 </p>
 
-<h1>
-Canonical identification </h1>
+<h1>Canonical identification</h1>
 
 <p>
  <span class='run'>We identify $\R ^{n}$ with $\R ^{n \times  1}$
-  in the obvious way. </span>
+  in the obvious way.</span>
 
  <span class='run'>For this reason, we call $x \in \R ^{n \times
   1}$ (meaning $x \in \R ^{n}$) a
-  <span class='term'>column vector</span>. </span>
+  <span class='term'>column vector</span>.</span>
 </p>
 
 
@@ -1456,37 +1653,36 @@ Canonical identification </h1>
   $\R ^{n \times  1}$, we write the vector $a =
   (a_1, a_2, a_3) \in \R ^3$ as
   <p>\[
-   \bmat{a_1 \\ a_2 \\ a_3} 
+   \bmat{a_1 \\ a_2 \\ a_3}
 
-   \text{ or } 
+   \text{ or }
 
-   \pmat{ a_1 \\ a_2 \\ a_3}. 
+   \pmat{ a_1 \\ a_2 \\ a_3}.
   \]</p></span>
 </p>
 
 
 <p>
  <span class='run'>We could as easily also identify $\R ^{n}$ with
-  $\R ^{1 \times  n}$. </span>
+  $\R ^{1 \times  n}$.</span>
 
- <span class='run'>We avoid this convention. </span>
+ <span class='run'>We avoid this convention.</span>
 
  <span class='run'>However, by analogy with the language “column
   vector,” we refer to the <i>matrix</i> $y \in
   \R ^{1 \times  n}$ as a <span class='term'>row
-  vector</span>. </span>
+  vector</span>.</span>
 </p>
 
-<h1>
-Matrix transpose </h1>
+<h1>Matrix transpose</h1>
 
 <p>
  <span class='run'>We frequently move from $\R ^{n \times  1}$ and
-  $\R ^{1 \times  n}$. </span>
+  $\R ^{1 \times  n}$.</span>
 
  <span class='run'>If $a \in \R ^{n \times  1}$, we denote $b
   \in \R ^{1 \times  n}$ defined by $b_i = a_i$
-  by $a^\top $. </span>
+  by $a^\top $.</span>
 </p>
 
 
@@ -1494,64 +1690,64 @@ Matrix transpose </h1>
  <span class='run'>More generally, given a matrix $A \in \R ^{m
   \times  n}$, we denote the matrix $B \in \R ^{m
   \times  n}$ defined by $B_{ij} = A_{ji}$ by
-  $A^\top $. </span>
+  $A^\top $.</span>
 
  <span class='run'>Notice that the entries of $i$ and $j$ have
-  swapped. </span>
+  swapped.</span>
 
  <span class='run'>We call the matrix $B$ the
   <span class='term'>transpose</span> of $A$, and
   similarly call $a^\top $ the
   <span class='term'>transpose</span> of the vector
-  $a$. </span>
+  $a$.</span>
 
  <span class='run'>Clearly, $(A^\top )^\top  = A$, which includes
-  $(a^\top )^\top  = a$. </span>
+  $(a^\top )^\top  = a$.</span>
 </p>
 
-<h2>
-Reals as vectors </h2>
+<h2>Reals as vectors</h2>
 
 <p>
  <span class='run'>There is a similar, and similarly obvious,
   identification of scalars $a \in \R $ with the
   1-vectors $\R ^{1}$ (and so with the 1 by 1
-  matrices $\R ^{1 \times  1}$). </span>
+  matrices $\R ^{1 \times  1}$).</span>
 
  <span class='run'>Given our definition of matrix-vector products,
   if we identify $a \in \R $ with $A \in \R ^{1
-  \times  1}$ where $A_{11} = a$, then $Ax = ax$. </span>
+  \times  1}$ where $A_{11} = a$, then $Ax = ax$.</span>
 </p>
 
-<h1>
-Familiar concepts, new notation </h1>
+<h1>Familiar concepts, new notation</h1>
 
 <p>
  <span class='run'>These identifications and the notation of
   transposition give allow us to write several
-  familiar concepts in a compact notation. </span>
+  familiar concepts in a compact notation.</span>
 
  <span class='run'>We write the norm as
   <p>\[
    \norm{x} = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2} =
-    \sqrt{x^\top  x}. 
+    \sqrt{x^\top  x}.
   \]</p></span>
 
  <span class='run'>We write the inner product as
   <p>\[
-   \ip{x,y} = 
+   \ip{x,y} =
 
-   x_1y_1 + x_2y_2 + \cdots + x_ny_n 
+   x_1y_1 + x_2y_2 + \cdots + x_ny_n
 
-   = x^\top  y. 
+   = x^\top  y.
   \]</p></span>
 
  <span class='run'>We express the symmetry of the inner product
-  by $x^\top  y = y^\top  x$. </span>
+  by $x^\top  y = y^\top  x$.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1603,7 +1799,7 @@ Familiar concepts, new notation </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

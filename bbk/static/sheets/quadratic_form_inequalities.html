@@ -59,7 +59,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -75,14 +75,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1474,7 +1491,119 @@ Parse: {prototype: {
 \newcommand{\trp}[1]{\tr\left(#1\right)}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./quadratic_forms.html'" onkeypress="location.href='./quadratic_forms.html'">
+                <span>
+                  Quadratic Forms
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./symmetric_real_matrix_eigenvalues.html'" onkeypress="location.href='./symmetric_real_matrix_eigenvalues.html'">
+                <span>
+                  Symmetric Real Matrix Eigenvalues
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./quadratic_form_inequalities.pdf#page=2'" onkeypress="location.href='./quadratic_form_inequalities.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./quadratic_form_inequalities-graph.pdf'" onkeypress="location.href='./quadratic_form_inequalities-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Quadratic Form Inequalities </h1> 
       <!--
@@ -1483,109 +1612,107 @@ Parse: {prototype: {
 !need:quadratic_forms
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>How big can a quadratic form be? </span>
+ <span class='run'>How big can a quadratic form be?</span>
 
- <span class='run'>How small? </span>
+ <span class='run'>How small?</span>
 </p>
 
-<h1>
-Result </h1>
+<h1>Result</h1>
 
 <p>
- <span class='run'>\begin{proposition} </span>
+ <span class='run'>\begin{proposition}</span>
 
  <span class='run'>Suppose $A \in \mathbfsf{S} ^n$ has real
   eigenvalues $\lambda _1 \geq \lambda _2 \geq
-  \cdots \geq \lambda _n$. </span>
+  \cdots \geq \lambda _n$.</span>
 
  <span class='run'>Then
   <p>\[
-   \lambda _n x^\top x \leq x^\top  A x \leq \lambda _1 x^\top x, 
+   \lambda _n x^\top x \leq x^\top  A x \leq \lambda _1 x^\top x,
   \]</p>
-  for all $x \in \R ^n$. </span>
+  for all $x \in \R ^n$.</span>
 
- <span class='run'>\end{proposition} </span>
+ <span class='run'>\end{proposition}</span>
 
- <span class='run'>\begin{proof} </span>
+ <span class='run'>\begin{proof}</span>
 
  <span class='run'>Since $A$ is symmetric, there exists an
   orthogonal matrix $Q \in \R ^{n \times  n}$ with
-  $A = Q\Lambda  Q^\top $. </span>
+  $A = Q\Lambda  Q^\top $.</span>
 
  <span class='run'>Express
   <p>\[
-   \begin{aligned} 
+   \begin{aligned}
 
    x^\top  A x = x^\top  Q \Lambda   Q^\top  x &= (Q^\top
-    x)^\top  \Lambda   (Q^\top  x) \\ 
+    x)^\top  \Lambda   (Q^\top  x) \\
 
-   &= \sum_{i = 1}^{n} \lambda _i (q_i^\top  x)^2 \\ 
+   &= \sum_{i = 1}^{n} \lambda _i (q_i^\top  x)^2 \\
 
    &= \lambda _1 \sum_{i = 1}^n (q_i^\top x) = \lambda _1
-    \norm{Q^\top  x}^2 = \lambda _1 \norm{x}^2. 
+    \norm{Q^\top  x}^2 = \lambda _1 \norm{x}^2.
 
-   \end{aligned} 
+   \end{aligned}
   \]</p></span>
 
  <span class='run'>Similarly,
   <p>\[
-   \begin{aligned} 
+   \begin{aligned}
 
-   x^\top  A x &= \sum_{i = 1}^{n} \lambda _i (q_i^\top  x)^2 \\ 
+   x^\top  A x &= \sum_{i = 1}^{n} \lambda _i (q_i^\top  x)^2 \\
 
    &\geq \lambda _n \sum_{i = 1}^n (q_i^\top x) = \lambda _n
-    \norm{Q^\top  x}^2 = \lambda _n \norm{x}^2. 
+    \norm{Q^\top  x}^2 = \lambda _n \norm{x}^2.
 
-   \end{aligned} 
+   \end{aligned}
   \]</p></span>
 
- <span class='run'>\end{proof} </span>
+ <span class='run'>\end{proof}</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>For this reason, it is common to order the
   eigenvalues of $A \in \mathbfsf{S} ^n$ by
   magnitude with $\lambda _1 \geq \lambda _2 \geq
-  \cdots \geq \lambda _n$. </span>
+  \cdots \geq \lambda _n$.</span>
 
  <span class='run'>$\lambda _1$ is sometimes denoted
   $\lambda _{\max}$ and $\lambda _n$ is sometimes
-  denoted $\lambda _{\min}$. </span>
+  denoted $\lambda _{\min}$.</span>
 </p>
 
-<h1>
-Optimization implication </h1>
+<h1>Optimization implication</h1>
 
 <span class='run'>If $z = \alpha  x$, then $z^\top  A z =
- \alpha ^2 x^\top  A x$. </span>
+ \alpha ^2 x^\top  A x$.</span>
 
 <span class='run'>Consider finding $x \in \R ^n$ to maximize
  <p>\[
-  \begin{aligned} 
+  \begin{aligned}
 
-  \text{ maximize } & \quad x^\top  A x \\ 
+  \text{ maximize } & \quad x^\top  A x \\
 
-  \text{ subject to } & \quad \norm{x} = 1. 
+  \text{ subject to } & \quad \norm{x} = 1.
 
-  \end{aligned} 
+  \end{aligned}
  \]</p></span>
 
 <span class='run'>Since the objective is $x^\top  A x \leq
  \lambda _1$ for all $x \in \R ^n$ with $\norm{x}
  = 1$, a solution of this problem is the
  eigenvector $q_1 \in \R ^n$ corresponding to
- $\lambda _1$. </span>
+ $\lambda _1$.</span>
 
-<span class='run'>In other words, these inequalities are tight. </span><ol class='footnotes'></ol>
+<span class='run'>In other words, these inequalities are tight.</span><hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1637,7 +1764,7 @@ Optimization implication </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

@@ -104,7 +104,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -120,14 +120,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1027,7 +1044,161 @@ Parse: {prototype: {
 \newcommand{\num}[1]{\left|#1\right|}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_numbers.html'" onkeypress="location.href='./set_numbers.html'">
+                <span>
+                  Set Numbers
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./bipartite_graphs.html'" onkeypress="location.href='./bipartite_graphs.html'">
+            <span>
+            Bipartite Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./conditional_dependency_graph.html'" onkeypress="location.href='./conditional_dependency_graph.html'">
+            <span>
+            Conditional Dependency Graph
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./decision_problems.html'" onkeypress="location.href='./decision_problems.html'">
+            <span>
+            Decision Problems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./directed_graphs.html'" onkeypress="location.href='./directed_graphs.html'">
+            <span>
+            Directed Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./ordered_undirected_graphs.html'" onkeypress="location.href='./ordered_undirected_graphs.html'">
+            <span>
+            Ordered Undirected Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./perfect_matchings.html'" onkeypress="location.href='./perfect_matchings.html'">
+            <span>
+            Perfect Matchings
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./undirected_paths.html'" onkeypress="location.href='./undirected_paths.html'">
+            <span>
+            Undirected Paths
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./undirected_graphs.pdf#page=2'" onkeypress="location.href='./undirected_graphs.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./undirected_graphs-graph.pdf'" onkeypress="location.href='./undirected_graphs-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Undirected Graphs </h1> 
       <!--
@@ -1035,83 +1206,79 @@ Parse: {prototype: {
 !need:set_numbers
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>We want to visualize symmetric relations. </span>
+ <span class='run'>We want to visualize symmetric relations.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>An <span class='term'>undirected graph</span> is a
   pair $(V, E)$ in which $V$ is a finite
   nonempty set and $E$ is a subset of unordered
-  pairs of elements in $V$. </span>
+  pairs of elements in $V$.</span>
 
  <span class='run'>We call the elements of $V$ the
   <span class='term'>vertices</span> of the graph and
   the elements of $E$ the
-  <span class='term'>edges</span>. </span>
+  <span class='term'>edges</span>.</span>
 
  <span class='run'>We call $(V, E)$ an undirected graph
-  <span class='term'>on</span> $V$. </span>
+  <span class='term'>on</span> $V$.</span>
 </p>
 
 
 <p>
  <span class='run'>Two vertices are <span class='term'>adjacent</span>
-  if their pair is in the edge set. </span>
+  if their pair is in the edge set.</span>
 
  <span class='run'>We say that the corresponding edge is
-  <span class='term'>incident</span> to those vertices. </span>
+  <span class='term'>incident</span> to those vertices.</span>
 
  <span class='run'>The <span class='term'>adjacency set</span> of a
-  vertex is the set of vertices adjacent to it. </span>
+  vertex is the set of vertices adjacent to it.</span>
 
  <span class='run'>The <span class='term'>degree</span> of a vertex
   is the number of vertices adjacent to it; in
-  other words, the size of its adjacency set. </span>
+  other words, the size of its adjacency set.</span>
 
  <span class='run'>A graph is <span class='term'>complete</span> if
-  each pair of two distinct vertices is adjacent. </span>
+  each pair of two distinct vertices is adjacent.</span>
 </p>
 
 
 <p>
  <span class='run'>The <span class='term'>complement</span> of $(V,
   E)$ is the graph $(V, F)$ where $F$ is the
-  complement of $E$ in the set of pairs from $V$. </span>
+  complement of $E$ in the set of pairs from $V$.</span>
 </p>
 
-<h2>
-Other terminology </h2>
+<h2>Other terminology</h2>
 
 <p>
  <span class='run'>Some authors call the adjacency set the
-  <span class='term'>neighborhood</span> of the vertex. </span>
+  <span class='term'>neighborhood</span> of the vertex.</span>
 
  <span class='run'>They call the union of the adjacency set of
   the vertex $v \in V$ with the singleton
   $\set{v}$ the <span class='term'>closed
-  neighborhood</span> of $v$. </span>
+  neighborhood</span> of $v$.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $V$ be a nonempty set. </span>
+ <span class='run'>Let $V$ be a nonempty set.</span>
 
- <span class='run'>Let $E \subset \Set*{\set{v, w}}{v, w \in V}$. </span>
+ <span class='run'>Let $E \subset \Set*{\set{v, w}}{v, w \in V}$.</span>
 
- <span class='run'>Then the pair $(V, E)$ is an undirected graph. </span>
+ <span class='run'>Then the pair $(V, E)$ is an undirected graph.</span>
 
  <span class='run'>We regularly say “Let $G = (V, E)$” be a
   graph, in which the relevant properties of $V$
-  and $E$ are implicit. </span>
+  and $E$ are implicit.</span>
 </p>
 
 
@@ -1119,44 +1286,43 @@ Notation </h2>
  <span class='run'>The notation $\set{v, w} \in E$ for an edge
   between vertices $v, w \in V$ reminds us that
   the edges are unordered pairs of distinct
-  vertices. </span>
+  vertices.</span>
 
  <span class='run'>We denote the adjacency set of $v$ by
-  $\adj(v)$ and the degree of $v$ by $\deg(v)$. </span>
+  $\adj(v)$ and the degree of $v$ by $\deg(v)$.</span>
 </p>
 
-<h1>
-Example </h1>
+<h1>Example</h1>
 
 <p>
- <span class='run'>\begin{figure} </span>
+ <span class='run'>\begin{figure}</span>
 
- <span class='run'>\centering </span>
+ <span class='run'>\centering</span>
 
  <img src="./graphics_included/undirected_graph.pdf" width="30%"/>
- <span class='run'>\caption{Undirected graph.} </span>
+ <span class='run'>\caption{Undirected graph.}</span>
 
- <span class='run'>\end{figure} </span>
+ <span class='run'>\end{figure}</span>
 </p>
 
 
 <p>
  <span class='run'>For example, let $a, b, c, d, e$ be objects
   and consider an undirected graph $(V, E)$ defind
-  by </span>
+  by</span>
 
- <span class='run'>$V = \set{a, b, c, d, e}$ </span>
+ <span class='run'>$V = \set{a, b, c, d, e}$</span>
 
  <span class='run'>and
   <p>\[
    E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d},
-    \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}. 
+    \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}.
   \]</p></span>
 
  <span class='run'>In visualizations of undirected graphs, the
   vertices are frequently represented as circles or
   rectangles in the plane and edges are shown as
-  lines connecting the vertices. </span>
+  lines connecting the vertices.</span>
 </p>
 
 
@@ -1175,9 +1341,11 @@ Example </h1>
   <div data-littype='run'> </div>
 </div>
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1229,7 +1397,7 @@ Example </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

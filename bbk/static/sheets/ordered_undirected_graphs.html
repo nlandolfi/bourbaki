@@ -90,7 +90,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -106,14 +106,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1033,17 +1050,157 @@ Parse: {prototype: {
 \renewcommand{\deg}{\mathword{deg}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./lists.html'" onkeypress="location.href='./lists.html'">
+                <span>
+                  Lists
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./undirected_graphs.html'" onkeypress="location.href='./undirected_graphs.html'">
+                <span>
+                  Undirected Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./elimination_graphs.html'" onkeypress="location.href='./elimination_graphs.html'">
+            <span>
+            Elimination Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./filled_graphs.html'" onkeypress="location.href='./filled_graphs.html'">
+            <span>
+            Filled Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./monotone_neighborhoods.html'" onkeypress="location.href='./monotone_neighborhoods.html'">
+            <span>
+            Monotone Neighborhoods
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./ordered_undirected_graph_orientations.html'" onkeypress="location.href='./ordered_undirected_graph_orientations.html'">
+            <span>
+            Ordered Undirected Graph Orientations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./ordered_undirected_graphs.pdf#page=2'" onkeypress="location.href='./ordered_undirected_graphs.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./ordered_undirected_graphs-graph.pdf'" onkeypress="location.href='./ordered_undirected_graphs-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Ordered Undirected Graphs </h1> 
       <p>
- <span class='run'>%!name:ordered_undirected_graphs </span>
+ <span class='run'>%!name:ordered_undirected_graphs</span>
 
- <span class='run'>%!need:undirected_graphs </span>
+ <span class='run'>%!need:undirected_graphs</span>
 
- <span class='run'>%!need:lists </span>
+ <span class='run'>%!need:lists</span>
 
- <span class='run'>%!refs:vandenberghe2014chordal </span>
+ <span class='run'>%!refs:vandenberghe2014chordal</span>
 </p>
 
 
@@ -1053,39 +1210,39 @@ Parse: {prototype: {
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
 <p>
  <span class='run'>An <span class='term'>ordering</span> of an
   undirected graph is an ordering (see
-  \sheetref{lists}{Lists}) of its vertices. </span>
+  \sheetref{lists}{Lists}) of its vertices.</span>
 
  <span class='run'>An <span class='term'>ordered undirected
   graph</span> is an ordered pair $((V, E),
   \sigma : \upto{\num{V}} \to V)$ where $(V, E)$
   is an undirected graph (see
   \sheetref{undirected_graphs}{Undirected Graphs}) and
-  $\sigma $ is an ordering of the vertex set $V$. </span>
+  $\sigma $ is an ordering of the vertex set $V$.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Notation} </span>
+ <span class='run'>\ssection{Notation}</span>
 </p>
 
 
 <p>
  <span class='run'>Let $((V, E), \sigma )$ be an ordered
-  undirected graph. </span>
+  undirected graph.</span>
 
  <span class='run'>We commonly associate it with $(V, E, \sigma )$
   and call this ordered triple an undirected graph
-  as well. </span>
+  as well.</span>
 
  <span class='run'>But, throughout these sheets, an ordered
-  undirected graph is an ordered pair. </span>
+  undirected graph is an ordered pair.</span>
 </p>
 
 
@@ -1093,58 +1250,60 @@ Parse: {prototype: {
  <span class='run'>We denote that $\inv{\sigma }(v) &lt;
   \inv{\sigma }(w)$ by $v \prec_{\sigma } w$ and $v
   \succeq_{\sigma } w$ by $\inv{\sigma }(v) \leq
-  \inv{\sigma }(w)$. </span>
+  \inv{\sigma }(w)$.</span>
 
  <span class='run'>We occasionally omit the subscripts in
   $\prec_{\sigma }$ and $\succeq_{\sigma }$ when
-  clear from context. </span>
+  clear from context.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Visualization} </span>
+ <span class='run'>\ssection{Visualization}</span>
 </p>
 
 
 <p>
  <span class='run'>We visualize an ordered undirected graph by
   labeling its nodes with the indices of each
-  vertex. </span>
+  vertex.</span>
 
  <span class='run'>Let $(V, E)$ be an undirected graph with $V =
   \set{a,b,c,d,e}$ and
   <p>\[
    E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d},
-    \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}. 
+    \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}.
   \]</p></span>
 
  <span class='run'>Let $\sigma : \set{1, \dots , 5} \to V$ be an
   ordering with
   <p>\[
    \sigma (1) = a \quad \sigma (2) = c \quad \sigma (3) = d
-    \quad \sigma (4) = b \quad \sigma (e) = 5. 
+    \quad \sigma (4) = b \quad \sigma (e) = 5.
   \]</p></span>
 
- <span class='run'>We visualize the ordered graph in the figure. </span>
+ <span class='run'>We visualize the ordered graph in the figure.</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{figure} </span>
+ <span class='run'>\begin{figure}</span>
 
- <span class='run'>\centering </span>
+ <span class='run'>\centering</span>
 
- <span class='run'>\includegraphics[width=0.3\textwidth]{graphics_included∕ordered_undirected_graph} </span>
+ <span class='run'>\includegraphics[width=0.3\textwidth]{graphics_included∕ordered_undirected_graph}</span>
 
- <span class='run'>\caption{Ordered undirected graph.} </span>
+ <span class='run'>\caption{Ordered undirected graph.}</span>
 
- <span class='run'>\end{figure} </span>
+ <span class='run'>\end{figure}</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. This sheet is
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. This sheet is
   needed, for example, in discussing perfect
-  elimination orderings. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+  elimination orderings.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1196,7 +1355,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

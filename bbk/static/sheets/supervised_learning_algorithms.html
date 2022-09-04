@@ -52,7 +52,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -68,14 +68,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -987,27 +1004,132 @@ Parse: {prototype: {
 \newcommand{\product}{\prod}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./predictors.html'" onkeypress="location.href='./predictors.html'">
+                <span>
+                  Predictors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./supervised_learning_algorithms.pdf#page=2'" onkeypress="location.href='./supervised_learning_algorithms.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./supervised_learning_algorithms-graph.pdf'" onkeypress="location.href='./supervised_learning_algorithms-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Supervised Learning Algorithms </h1> 
       <p>
- <span class='run'>%!name:supervised_learning_algorithms </span>
+ <span class='run'>%!name:supervised_learning_algorithms</span>
 
- <span class='run'>%!need:predictors </span>
+ <span class='run'>%!need:predictors</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 
  <span class='run'>We sometimes use special language for a
   function inductor, which alludes to its
-  similarities with “learning.” </span>
+  similarities with “learning.”</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
@@ -1015,7 +1137,7 @@ Parse: {prototype: {
  <span class='run'>Let $\CU$ and $\CV$ be sets and let $\set{G_n:
   (\CU \times  \CV)^n \to \powerset{X \times
   Y}}_{n \in \N }$ be a family of functional
-  inductors. </span>
+  inductors.</span>
 </p>
 
 
@@ -1024,49 +1146,49 @@ Parse: {prototype: {
   (u^n, u^n) \in \CU \times  \CV$, and we use
   our inductor (i.e., learning algorithm) to
   produce a predictor $f: \CU \to \CY$ defined by
-  $f \equiv G_m(a^1, \dots , a^m)$. </span>
+  $f \equiv G_m(a^1, \dots , a^m)$.</span>
 
  <span class='run'>Thus, we have a sequence of predictors $f^1,
-  \dots , f^n$. </span>
+  \dots , f^n$.</span>
 
- <span class='run'>We can evaluate our learning algorithm on th </span>
+ <span class='run'>We can evaluate our learning algorithm on th</span>
 
  <span class='run'>A predictor can be used to “guess” inputs
-  which do not necessarily appear in the dataset. </span>
+  which do not necessarily appear in the dataset.</span>
 
  <span class='run'>For this reason, some authors call an inductor
   (or family of inductors) a
   <span class='term'>learner</span> or
-  <span class='term'>learning algorithm</span>. </span>
+  <span class='term'>learning algorithm</span>.</span>
 
  <span class='run'>In accordance with this usage, they refer to
   the argument of an inductor as the
   <span class='term'>training data</span> or
   <span class='term'>training dataset</span> or
-  <span class='term'>training set</span>. </span>
+  <span class='term'>training set</span>.</span>
 
  <span class='run'>As with our terminology dataset, the word
   “set,” however, may mislead since since we are
-  speaking of a sequence. </span>
+  speaking of a sequence.</span>
 </p>
 
 
 <p>
  <span class='run'>It is common to refer to the construction a
   predictor from a dataset a
-  <span class='term'>learning problem</span>. </span>
+  <span class='term'>learning problem</span>.</span>
 
  <span class='run'>In this case, the learning problem is said to
-  be <span class='term'>supervised learning</span>. </span>
+  be <span class='term'>supervised learning</span>.</span>
 
  <span class='run'>By supervision, we mean to indicate that we
-  have the outputs corresponding to the inputs. </span>
+  have the outputs corresponding to the inputs.</span>
 
  <span class='run'>In line with this usage, the outputs are often
   called <span class='term'>labels</span> and the
   labels are said
   “<span class='term'>supervise</span>” or “to provide
-  supervision.” </span>
+  supervision.”</span>
 
  <span class='run'>Since a predictor can be used to
   <span class='term'>guess</span> the output of an
@@ -1075,25 +1197,27 @@ Parse: {prototype: {
   or <span class='term'>learning algorithm</span> or
   <span class='term'>supervised learning
   algorithm</span> and refer to the argument as
-  the <span class='term'>training dataset</span>. </span>
+  the <span class='term'>training dataset</span>.</span>
 
  <span class='run'>Often the word “supervised” is included, as in
-  <span class='term'>supervised learning</span>. </span>
+  <span class='term'>supervised learning</span>.</span>
 
  <span class='run'>This language intends to indicate that inputs
   are given along with outputs, and these outputs
-  “provide supervision to the algorithm.” </span>
+  “provide supervision to the algorithm.”</span>
 </p>
 
 
 <p>
- <span class='run'>\blankpage </span>
+ <span class='run'>\blankpage</span>
 
  <span class='run'></span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1145,7 +1269,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

@@ -132,7 +132,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -148,14 +148,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -201,7 +218,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We define the area under an extended real function.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{positive part} of an extended-real-valued function is the function mapping each element to the maximum of the function's result and zero. The \t{negative part} of an extended-real-valued function is the function mapping each element to the maximum of the additive inverse of function's result and zero.</p></div><div class="sheet-listing"><p class="sheet"> We decompose an extended-real-valued function as the difference of its positive part and its negative part. Both the positive and negative parts are non-negative extended-real-valued functions.</p></div><div class="sheet-listing"><p class="sheet"> Consider a measure space. An \t{integrable} function is a measurable extended real function for which the non-negative integral of the posititve part and the non-negative integral of the negative part of the function are finite. The \t{integral} of an integrable function is the difference of the non-negative integral of the posititive part and and the non-negative integral of the negative part.</p></div><div class="sheet-listing"><p class="sheet"> If one but not both of the parts of the function are finite, we say that the integral \t{exists} and again define it as before. In this way we avoid arithmetic between two infinities.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ a non-empty set. Let $g: A \to [-\infty, \infty]$. We denote the positive part of $g$ by $g^+$ and the negative part of $g$ by $g^-$: \[ g^+(x) = \max\set{g(x), 0} \quad \text{ and } \quad g^-(x) = \max\set{-g(x), 0}. \] Moreover, we decompose $g$ as $g = g^+ - g^-$. We observed that $g^+(x) \geq 0$ and $g^-(x) \geq 0$ for all $x \in X$.</p></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A}, \mu)$ be a measure space. Let $f: X \to [-\infty, +\infty]$ measurable and one of $\int f^+ d \mu$ or $\int f^- d \mu$ is finite (if both are finite, $f$ is integrable).</p></div><div class="sheet-listing"><p class="sheet"> We denote the integral of $f$ with respect to the measure $\mu$ by $\int f d \mu$. We defined: \[ \int f d\mu = \left(\int f^+ d\mu\right) - \left(\int f^- d\mu\right). \]</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We define the area under an extended real function.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{positive part} of an extended-real-valued function is the function mapping each element to the maximum of the function's result and zero. The \t{negative part} of an extended-real-valued function is the function mapping each element to the maximum of the additive inverse of function's result and zero.</p></div><div class="sheet-listing"><p class="sheet"> We decompose an extended-real-valued function as the difference of its positive part and its negative part. Both the positive and negative parts are non-negative extended-real-valued functions.</p></div><div class="sheet-listing"><p class="sheet"> Consider a measure space. An \t{integrable} function is a measurable extended-real-valued function for which the non-negative integral of the posititve part and the non-negative integral of the negative part of the function are finite. The \t{integral} of an integrable function is the difference of the non-negative integral of the posititive part and and the non-negative integral of the negative part.</p></div><div class="sheet-listing"><p class="sheet"> If one but not both of the parts of the function are finite, we say that the integral \t{exists} and again define it as before. In this way we avoid arithmetic between two infinities.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ a non-empty set. Let $g: A \to [-\infty, \infty]$. We denote the positive part of $g$ by $g^+$ and the negative part of $g$ by $g^-$: \[ g^+(x) = \max\set{g(x), 0} \quad \text{ and } \quad g^-(x) = \max\set{-g(x), 0}. \] Moreover, we decompose $g$ as $g = g^+ - g^-$. We observed that $g^+(x) \geq 0$ and $g^-(x) \geq 0$ for all $x \in X$.</p></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A} , \mu )$ be a measure space. Let $f: X \to [-\infty, +\infty]$ measurable and one of $\int f^+ d \mu $ or $\int  f^- d \mu $ is finite (if both are finite, $f$ is integrable).</p></div><div class="sheet-listing"><p class="sheet"> We denote the integral of $f$ with respect to the measure $\mu $ by $\int  f d \mu $. We defined: \[ \int  f d\mu  = \left(\int  f^+ d\mu \right) - \left(\int  f^- d\mu \right). \]</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1407,7 +1424,306 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./nonnegative_integrals.html'" onkeypress="location.href='./nonnegative_integrals.html'">
+                <span>
+                  Nonnegative Integrals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./complex_integrals.html'" onkeypress="location.href='./complex_integrals.html'">
+            <span>
+            Complex Integrals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integrable_function_space.html'" onkeypress="location.href='./integrable_function_space.html'">
+            <span>
+            Integrable Function Space
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integrable_function_spaces.html'" onkeypress="location.href='./integrable_function_spaces.html'">
+            <span>
+            Integrable Function Spaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./iterated_integrals.html'" onkeypress="location.href='./iterated_integrals.html'">
+            <span>
+            Iterated Integrals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./iterated_rectangular_integrals.html'" onkeypress="location.href='./iterated_rectangular_integrals.html'">
+            <span>
+            Iterated Rectangular Integrals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./measurable_sections.html'" onkeypress="location.href='./measurable_sections.html'">
+            <span>
+            Measurable Sections
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./probability_densities.html'" onkeypress="location.href='./probability_densities.html'">
+            <span>
+            Probability Densities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_integral_dominated_convergence.html'" onkeypress="location.href='./real_integral_dominated_convergence.html'">
+            <span>
+            Real Integral Dominated Convergence
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_integral_limit_inferior_bound.html'" onkeypress="location.href='./real_integral_limit_inferior_bound.html'">
+            <span>
+            Real Integral Limit Inferior Bound
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_integral_monotone_convergence.html'" onkeypress="location.href='./real_integral_monotone_convergence.html'">
+            <span>
+            Real Integral Monotone Convergence
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_integral_series_convergence.html'" onkeypress="location.href='./real_integral_series_convergence.html'">
+            <span>
+            Real Integral Series Convergence
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_integrals.pdf#page=2'" onkeypress="location.href='./real_integrals.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_integrals-graph.pdf'" onkeypress="location.href='./real_integrals-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Integrals </h1> 
+      <!--
+!name:real_integrals
+!need:nonnegative_integrals
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We define the area under an extended real
+  function.</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>The <span class='term'>positive part</span> of an
+  extended-real-valued function is the function
+  mapping each element to the maximum of the
+  function’s result and zero.</span>
+
+ <span class='run'>The <span class='term'>negative part</span> of an
+  extended-real-valued function is the function
+  mapping each element to the maximum of the
+  additive inverse of function&#39;s result and
+  zero.</span>
+</p>
+
+
+<p>
+ <span class='run'>We decompose an extended-real-valued function as
+  the difference of its positive part and its
+  negative part.</span>
+
+ <span class='run'>Both the positive and negative parts are
+  non-negative extended-real-valued functions.</span>
+</p>
+
+
+<p>
+ <span class='run'>Consider a measure space.</span>
+
+ <span class='run'>An <span class='term'>integrable</span> function is
+  a measurable extended-real-valued function for
+  which the non-negative integral of the posititve
+  part and the non-negative integral of the
+  negative part of the function are finite.</span>
+
+ <span class='run'>The <span class='term'>integral</span> of an
+  integrable function is the difference of the
+  non-negative integral of the posititive part and
+  and the non-negative integral of the negative
+  part.</span>
+</p>
+
+
+<p>
+ <span class='run'>If one but not both of the parts of the
+  function are finite, we say that the integral
+  <span class='term'>exists</span> and again define
+  it as before.</span>
+
+ <span class='run'>In this way we avoid arithmetic between two
+  infinities.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>Let $A$ a non-empty set.</span>
+
+ <span class='run'>Let $g: A \to [-\infty, \infty]$.</span>
+
+ <span class='run'>We denote the positive part</span>
+
+ <span class='run'>of $g$ by $g^+$ and the negative</span>
+
+ <span class='run'>part of $g$ by $g^-$:
+  <p>\[
+   g^+(x) = \max\set{g(x), 0} \quad \text{ and } \quad g^-(x) =
+    \max\set{-g(x), 0}.
+  \]</p></span>
+
+ <span class='run'>Moreover, we decompose $g$ as $g = g^+ - g^-$.</span>
+
+ <span class='run'>We observed that $g^+(x) \geq 0$ and $g^-(x)
+  \geq 0$ for all $x \in X$.</span>
+</p>
+
+
+<p>
+ <span class='run'>Let $(X, \mathcal{A} , \mu )$ be a measure
+  space.</span>
+
+ <span class='run'>Let $f: X \to [-\infty, +\infty]$ measurable
+  and one of $\int  f^+ d \mu $ or $\int  f^- d
+  \mu $ is finite (if both are finite, $f$ is
+  integrable).</span>
+</p>
+
+
+<p>
+ <span class='run'>We denote the integral of $f$ with respect to
+  the measure $\mu $ by $\int  f d \mu $.</span>
+
+ <span class='run'>We defined:
+  <p>\[
+   \int  f d\mu  = \left(\int  f^+ d\mu \right) - \left(\int
+    f^- d\mu \right).
+  \]</p></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1459,7 +1775,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

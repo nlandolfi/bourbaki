@@ -146,7 +146,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -162,14 +162,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1217,7 +1234,203 @@ Parse: {prototype: {
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./absolute_value.html'" onkeypress="location.href='./absolute_value.html'">
+                <span>
+                  Absolute Value
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./distance.html'" onkeypress="location.href='./distance.html'">
+                <span>
+                  Distance
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./egoprox_sequences.html'" onkeypress="location.href='./egoprox_sequences.html'">
+            <span>
+            Egoprox Sequences
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./isometries.html'" onkeypress="location.href='./isometries.html'">
+            <span>
+            Isometries
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./metric_balls.html'" onkeypress="location.href='./metric_balls.html'">
+            <span>
+            Metric Balls
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./metric_continuity.html'" onkeypress="location.href='./metric_continuity.html'">
+            <span>
+            Metric Continuity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./metric_limits.html'" onkeypress="location.href='./metric_limits.html'">
+            <span>
+            Metric Limits
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./metric_space_examples.html'" onkeypress="location.href='./metric_space_examples.html'">
+            <span>
+            Metric Space Examples
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./metric_space_functions.html'" onkeypress="location.href='./metric_space_functions.html'">
+            <span>
+            Metric Space Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./nearest_neighbor_predictors.html'" onkeypress="location.href='./nearest_neighbor_predictors.html'">
+            <span>
+            Nearest Neighbor Predictors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./norm_metrics.html'" onkeypress="location.href='./norm_metrics.html'">
+            <span>
+            Norm Metrics
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./product_metrics.html'" onkeypress="location.href='./product_metrics.html'">
+            <span>
+            Product Metrics
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./similarity_functions.html'" onkeypress="location.href='./similarity_functions.html'">
+            <span>
+            Similarity Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./topological_spaces.html'" onkeypress="location.href='./topological_spaces.html'">
+            <span>
+            Topological Spaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./metrics.pdf#page=2'" onkeypress="location.href='./metrics.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./metrics-graph.pdf'" onkeypress="location.href='./metrics-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Metrics </h1> 
       <!--
@@ -1228,41 +1441,38 @@ Parse: {prototype: {
 !refs:bert_mendelson∕introduction_to_topology∕metric_spaces∕metric_spaces
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to talk about a set with a prescribed
   quantitative degree of closeness (or distance)
-  between its elements. </span>
+  between its elements.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>The correspondences which serve as a degree of
   closeness, or measure of distance, must satisfy
-  our previously developed (see
-  \sheetref{distance}{Distance}) notion of distance. </span>
+  our previously developed (see&nbsp;<a href='/sheets/distance.html'/><span class='run'>Distance</span></a>) notion of distance.</span>
 </p>
 
 
 <p>
  <span class='run'>A function on ordered pairs which does not
   depend on the order of the elements so
-  considered is <span class='term'>symmetric</span>. </span>
+  considered is <span class='term'>symmetric</span>.</span>
 
  <span class='run'>A function into the real numbers which takes
   only nonnegative values is
-  <span class='term'>nonnegative</span>. </span>
+  <span class='term'>nonnegative</span>.</span>
 
  <span class='run'>A repeated pair is an ordered pair of the
-  same element twice. </span>
+  same element twice.</span>
 
  <span class='run'>A function which satisfies a triangle inequality
   for any three elements is
-  <span class='term'>triangularly transitive</span>. </span>
+  <span class='term'>triangularly transitive</span>.</span>
 </p>
 
 
@@ -1271,12 +1481,12 @@ Definition </h1>
   <span class='term'>distance function</span>) is a
   function on ordered pairs of elements of a set
   which is symmetric, non-negative, zero only on
-  repeated pairs, and triangularly transitive. </span>
+  repeated pairs, and triangularly transitive.</span>
 
  <span class='run'>A <span class='term'>metric space</span> is an
   ordered pair whose first coordinate is a
   nonempty set and whose second coordinate is a
-  metric. </span>
+  metric.</span>
 </p>
 
 
@@ -1284,73 +1494,73 @@ Definition </h1>
  <span class='run'>In a metric space, we say that one pair of
   objects is <span class='term'>closer</span> together
   if the metric of the first pair is smaller
-  than the metric value of the second pair. </span>
+  than the metric value of the second pair.</span>
 </p>
 
 
 <p>
  <span class='run'>Notice that a set can be made into different
-  metric spaces by using different metrics. </span>
+  metric spaces by using different metrics.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $A$ be a set. </span>
+ <span class='run'>Let $A$ be a set.</span>
 
  <span class='run'>We commonly denote a metric by the letter $d$,
-  as a mnemonic for “distance.} </span>
+  as a mnemonic for “distance.”</span>
 
- <span class='run'>Let $d: A \times  A \to \R $. </span>
+ <span class='run'>Let $d: A \times  A \to \R $.</span>
 
  <span class='run'>Then $d$ is a metric if:
   <ol>
    <li>it is non-negative, which we tend to denote by
     <p>\[
-     d(a, b) \geq 0, \quad \forall a,b \in A. 
+     d(a, b) \geq 0, \quad \forall a,b \in A.
     \]</p></li>
 
    <li>it is $0$ only on repeated pairs, which we tend to
     denote by
     <p>\[
-     d(a, b) = 0 \iff a = b, \quad \forall a,b \in A. 
+     d(a, b) = 0 \iff a = b, \quad \forall a,b \in A.
     \]</p></li>
 
    <li>it is symmetric, which we tend to denote by:
     <p>\[
-     d(a, b) = d(b, a), \quad \forall a,b \in A. 
+     d(a, b) = d(b, a), \quad \forall a,b \in A.
     \]</p></li>
 
    <li>it is triangularly transitive, which we tend to denote by
     <p>\[
      d(a, b) \leq d(a, c) + d(c, b), \quad \forall a,b,c \in
-      A. 
+      A.
     \]</p></li>  </ol>
 </span>
 
  <span class='run'>As usual, we denote the metric space of $A$
-  with $d$ by $(A, d)$. </span>
+  with $d$ by $(A, d)$.</span>
 </p>
 
-<h1>
-Examples </h1>
+<h1>Examples</h1>
 
 <p>
  <span class='run'>$\R $ with the absolute value distance is a
-  metric space. </span>
+  metric space.</span>
 
  <span class='run'>As is $\R ^2$ and $\R ^3$ with the Euclidean
-  distance. </span>
+  distance.</span>
 
  <span class='run'>$\R ^n$ with Euclidean metric is an example of
   a metric space for which the objects
   ($n$-dimensional tuples of real numbers) are
-  impossible to visualize. </span>
+  impossible to visualize.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1402,7 +1612,7 @@ Examples </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

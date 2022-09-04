@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -788,7 +805,126 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_specification.html'" onkeypress="location.href='./set_specification.html'">
+                <span>
+                  Set Specification
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_complements.html'" onkeypress="location.href='./set_complements.html'">
+            <span>
+            Set Complements
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_unions.html'" onkeypress="location.href='./set_unions.html'">
+            <span>
+            Set Unions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./empty_set.pdf#page=2'" onkeypress="location.href='./empty_set.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./empty_set-graph.pdf'" onkeypress="location.href='./empty_set-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Empty Set </h1> 
       <!--
@@ -798,40 +934,35 @@ Parse: {prototype: {
 !refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕sets_and_subsets
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>Can a set have no elements? </span>
+ <span class='run'>Can a set have no elements?</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>Sure. </span>
+ <span class='run'>Sure.</span>
 
  <span class='run'>A set exists by the principle of existence
-  (see \sheetref{sets}{Sets}); denote it by $A$. </span>
+  (see&nbsp;<a href='/sheets/sets.html'/><span class='run'>Sets</span></a>); denote it by $A$.</span>
 
- <span class='run'>Specify elements (see
-  \sheetref{set_specification}{Set Specification}) of
-  any set that exists using the universally false
-  statement $x \neq x$. </span>
+ <span class='run'>Specify elements (see&nbsp;<a href='/sheets/set_specification.html'/><span class='run'>Set Specification</span></a>) of any set that exists using the universally
+false statement $x \neq x$.</span>
 
  <span class='run'>We denote that set by $\Set{x \in A}{x \neq
-  x}$. </span>
+  x}$.</span>
 
- <span class='run'>It has no elements. </span>
+ <span class='run'>It has no elements.</span>
 
- <span class='run'>In other words, $(\forall x)(x \not \in A)$. </span>
+ <span class='run'>In other words, $(\forall x)(x \not \in A)$.</span>
 
- <span class='run'>The principle of extension (see
-  \sheetref{set_equality}{Set Equality}) says that
-  the set obtained is unique (contradiction).<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+ <span class='run'>The principle of extension (see&nbsp;<a href='/sheets/set_equality.html'/><span class='run'>Set Equality</span></a>) says that the set obtained is unique
+(contradiction).<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 
  <span class='run'>We call the unique set with no elements the
-  <span class='term'>empty set</span>. </span>
+  <span class='term'>empty set</span>.</span>
 </p>
 
 
@@ -887,43 +1018,41 @@ Definition </h1>
 </div>
 -->
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>We denote the empty set by $\varnothing$. </span>
+ <span class='run'>We denote the empty set by $\varnothing$.</span>
 
- <span class='run'>In other words, in all future accounts (see
-  \sheetref{accounts}{Accounts}), there are two
-  implicit lines. First,
-  “<span class='typewriter'>name</span> $\varnothing$”
-  and second “<span class='typewriter'>have</span>
-  $(\forall x)(x \not\in \varnothing)$”. </span>
+ <span class='run'>In other words, in all future accounts (see&nbsp;<a href='/sheets/accounts.html'/><span class='run'>Accounts</span></a>), there are two implicit lines. First,
+“<span class='typewriter'>name</span> $\varnothing$”
+and second “<span class='typewriter'>have</span>
+$(\forall x)(x \not\in \varnothing)$”.</span>
 </p>
 
-<h1>
-Properties </h1>
+<h1>Properties</h1>
 
 <p>
  <span class='run'>It is immediate from our definition of the
   empty set and of the definition of inclusion
-  (see \sheetref{set_inclusion}{Set Inclusion}) that
-  the empty set is included in every set
-  (including itself). </span>
+  (see&nbsp;<a href='/sheets/set_inclusion.html'/><span class='run'>Set Inclusion</span></a>) that the empty set is included in every set
+(including itself).</span>
 </p>
 
-<div class='proposition' <span class='run'>$(\forall A)(\varnothing \subset A)$ </span></div>
+<div class='proposition'>
+ <span class='run'>$(\forall A)(\varnothing \subset A)$</span></div>
 <div class='proof'> <span class='run'>Suppose toward contradiction that $\varnothing
-  \not\subset A$. </span>
+  \not\subset A$.</span>
 
  <span class='run'>Then there exists $y \in \varnothing$ such that
-  $y \not \in A$. </span>
+  $y \not \in A$.</span>
 
  <span class='run'>But this is impossible, since $(\forall x)(x
-  \not \in \varnothing)$. </span></div><ol class='footnotes'><li id='footnote-1'> <span class='run'>This account will be expanded in the next
-  edition. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+  \not \in \varnothing)$.</span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This account will be expanded in the next
+  edition.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -975,7 +1104,7 @@ Properties </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

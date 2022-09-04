@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -78,14 +78,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -521,7 +538,119 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./quantified_statements.html'" onkeypress="location.href='./quantified_statements.html'">
+                <span>
+                  Quantified Statements
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./accounts.html'" onkeypress="location.href='./accounts.html'">
+            <span>
+            Accounts
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./deductions.pdf#page=2'" onkeypress="location.href='./deductions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./deductions-graph.pdf'" onkeypress="location.href='./deductions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Deductions </h1> 
       <!--
@@ -529,138 +658,133 @@ Parse: {prototype: {
 !need:quantified_statements
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>We want to make conclusions. </span>
+ <span class='run'>We want to make conclusions.</span>
 </p>
 
-<h1>
-Discussion </h1>
+<h1>Discussion</h1>
 
 <p>
  <span class='run'>A <span class='term'>conclusion</span> is a
   statement that holds necessarily as a consequence
-  of other statements. </span>
+  of other statements.</span>
 
  <span class='run'>We have a list of quantified logical
   statements, and we call them
-  <span class='term'>premisses</span>. </span>
+  <span class='term'>premisses</span>.</span>
 
  <span class='run'>We want to state which other statements hold
-  necessarily if the premisses hold. </span>
+  necessarily if the premisses hold.</span>
 
  <span class='run'>A sequence of statements, each of which follows
   from the previous, ending with a
   <span class='term'>conclusion</span> is called a
-  <span class='term'>proof</span> of the conclusion. </span>
+  <span class='term'>proof</span> of the conclusion.</span>
 
- <span class='run'>The process is <span class='term'>deduction</span>. </span>
+ <span class='run'>The process is <span class='term'>deduction</span>.</span>
 
  <span class='run'>A <span class='term'>deduction</span> is a
   statement which follows necessarily from other
-  premisses. </span>
+  premisses.</span>
 </p>
 
 
 <p>
  <span class='run'>A <span class='term'>proposition</span> is another
-  term for a statement. </span>
+  term for a statement.</span>
 
  <span class='run'>An unproven statement (or premiss) is also
-  called a <span class='term'>principle</span>. </span>
+  called a <span class='term'>principle</span>.</span>
 
  <span class='run'>We will often set apart propositions and
-  principles from the text. </span>
+  principles from the text.</span>
 
  <span class='run'>We bold them and label them with Arabic
   numerals (see \sheetref{letters}{Letters}) to
-  enable us to reference them. </span>
+  enable us to reference them.</span>
 </p>
 
-<h1>
-Examples </h1>
+<h1>Examples</h1>
 
 <p>
  <span class='run'>Since principles have no proofs, they will look
   like
-  <div class='principle'   <span class='run'>(Here is where the statement would go). </span>  </div></span>
+  <div class='principle'>
+   <span class='run'>(Here is where the statement would go).</span>  </div></span>
 </p>
 
 
 <p>
  <span class='run'>Since propositions have proofs, but are used
   like principles, they will appear stated first,
-  and followed by their proof. </span>
+  and followed by their proof.</span>
 </p>
 
-<div class='proposition' <span class='run'>(Here is where the statement would go). </span>
- <div class='proof'>  <span class='run'>(Here is the where the account would go). </span> </div></div>
-<h1>
-Methods of proof </h1>
+<div class='proposition'>
+ <span class='run'>(Here is where the statement would go).</span>
+ <div class='proof'>  <span class='run'>(Here is the where the account would go).</span> </div></div>
+<h1>Methods of proof</h1>
 
 <p>
  <span class='run'>We outline a few of the methods of proof used
-  in this text. </span>
+  in this text.</span>
 </p>
 
-<h2>
-Forward reasoning </h2>
+<h2>Forward reasoning</h2>
 
 <p>
  <span class='run'>If we have as premisses that a statement $P$
   implies a statement $Q$, and we have $P$, then
-  we have $Q$. </span>
+  we have $Q$.</span>
 
  <span class='run'>It is common that this reasoning is done in
-  chains. </span>
+  chains.</span>
 
  <span class='run'>$P$ implies $Q$, and $Q$ implies $R$. So if
   we have $P$ then we have $Q$ and if we have
-  $Q$ then we have $R$. </span>
+  $Q$ then we have $R$.</span>
 
  <span class='run'>So in other words, we can also deduce that
-  $P$ implies $R$. </span>
+  $P$ implies $R$.</span>
 </p>
 
-<h2>
-Contradiction </h2>
+<h2>Contradiction</h2>
 
 <p>
  <span class='run'>A contradiction occurs when we can deduce a
   statement and its opposite from the same
-  premisses. </span>
+  premisses.</span>
 
  <span class='run'>If we can deduce a contradiction when we
   append to a list of premisses a given premiss
-  we can conclude that the given premiss is false. </span>
+  we can conclude that the given premiss is false.</span>
 </p>
 
-<h1>
-Terms </h1>
+<h1>Terms</h1>
 
 <p>
  <span class='run'>To make propositions and principles easy to
-  state, we will often introduce new terms. </span>
+  state, we will often introduce new terms.</span>
 
  <span class='run'>Doing so is a process of
-  <span class='term'>definition</span>. </span>
+  <span class='term'>definition</span>.</span>
 
  <span class='run'>These definitions are abbreviations for more
   complicated to explain objects or properties of
-  objects. </span>
+  objects.</span>
 
  <span class='run'>In other words, all definitions are
   <span class='term'>nominal</span>, which means that
   they just name things which are already known
-  to exist. </span>
+  to exist.</span>
 
  <span class='run'>They are made to give us language and to save
-  space. </span>
+  space.</span>
 
  <span class='run'>When we are defining a term, we will put it
-  in italics. </span>
+  in italics.</span>
 </p>
 
 
@@ -668,9 +792,11 @@ Terms </h1>
 % They are given set apart from the text with the bold word «Definition \#.» and then often with naming or sumamry text between parantheses.
 % The definition body statement is in italics.
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -722,7 +848,7 @@ Terms </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

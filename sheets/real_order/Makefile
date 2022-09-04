@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make real_order.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 real_order.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_order.tex
 

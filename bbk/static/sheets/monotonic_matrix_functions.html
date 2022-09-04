@@ -80,7 +80,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -96,14 +96,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1483,7 +1500,140 @@ Parse: {prototype: {
 \newcommand{\trp}[1]{\tr\left(#1\right)}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./inner_product_norms.html'" onkeypress="location.href='./inner_product_norms.html'">
+                <span>
+                  Inner Product Norms
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_scalar_product.html'" onkeypress="location.href='./matrix_scalar_product.html'">
+                <span>
+                  Matrix Scalar Product
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./monotonic_functions.html'" onkeypress="location.href='./monotonic_functions.html'">
+                <span>
+                  Monotonic Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./positive_semidefinite_matrix_order.html'" onkeypress="location.href='./positive_semidefinite_matrix_order.html'">
+                <span>
+                  Positive Semidefinite Matrix Order
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrix_inverses.html'" onkeypress="location.href='./real_matrix_inverses.html'">
+                <span>
+                  Real Matrix Inverses
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./monotonic_matrix_functions.pdf#page=2'" onkeypress="location.href='./monotonic_matrix_functions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./monotonic_matrix_functions-graph.pdf'" onkeypress="location.href='./monotonic_matrix_functions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Monotonic Matrix Functions </h1> 
       <!--
@@ -1496,88 +1646,87 @@ Parse: {prototype: {
 !refs:pukelsheim2004optimal∕1.11
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>Since we have a partial order on the set of
   positive semidefinite matrices, we can study
   which familiar functions are have order-preserving
-  or order-reversing properties. </span>
+  or order-reversing properties.</span>
 </p>
 
-<h1>
-Norms </h1>
+<h1>Norms</h1>
 
 <p>
  <span class='run'>It would be nice if the matrix norm induced
   by the matrix scalar produce (see
   \sheetref{matrix_scalar_product}{Matrix Scalar
-  Product}) was an isotonic function. </span>
+  Product}) was an isotonic function.</span>
 
  <span class='run'>In other words, if $A, B \in \SymMat{d}$
   satisfy $A \geq B$, does $\normm{A} \geq
-  \normm{B}$? </span>
+  \normm{B}$?</span>
 </p>
 
 
 <p>
  <span class='run'>Since $\normm{A}^2 = \tr A^2$, we should study
-  the trace first.. </span>
+  the trace first..</span>
 </p>
 
-<h2>
-Trace </h2>
+<h2>Trace</h2>
 
 <p>
- <span class='run'>\begin{proposition} </span>
+ <span class='run'>\begin{proposition}</span>
 
  <span class='run'>Let $f: \SymMat{d} \to \R $ defined by $f(A) =
-  \tr A$. </span>
+  \tr A$.</span>
 
- <span class='run'>\end{proposition} </span>
+ <span class='run'>\end{proposition}</span>
 </p>
 
 
 <p>
  <span class='run'>In other words, the function $f$ is the
   restriction of the trace function onto the set
-  of symmetric matrices. </span>
+  of symmetric matrices.</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{proposition} </span>
+ <span class='run'>\begin{proposition}</span>
 
- <span class='run'>Let $B \in \SymMat{d}$ </span>
+ <span class='run'>Let $B \in \SymMat{d}$</span>
 
  <span class='run'>Let $f_B: \SymMat{d} \to \R $ defined by $f(A)
-  = \tr AB$. </span>
+  = \tr AB$.</span>
 
- <span class='run'>\end{proposition} </span>
+ <span class='run'>\end{proposition}</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Inversion} </span>
+ <span class='run'>\ssection{Inversion}</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{proposition} </span>
+ <span class='run'>\begin{proposition}</span>
 
- <span class='run'>Let $A \in \mathbfsf{S} _{++}^d$. </span>
+ <span class='run'>Let $A \in \mathbfsf{S} _{++}^d$.</span>
 
  <span class='run'>Then the map $f: \mathbfsf{S} _{++}^d \to
   \mathbfsf{S} _{++}^d$ satisfying $f(A) =
   \inverse{A}$ is an isotonic function mapping the
   (open) positive definite cone into itself.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 
- <span class='run'>\end{proposition} </span>
+ <span class='run'>\end{proposition}</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include a proof. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include a proof.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1629,7 +1778,7 @@ Trace </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

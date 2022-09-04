@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -267,7 +284,133 @@ Parse: {prototype: {
 % objects macros
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./names.html'" onkeypress="location.href='./names.html'">
+                <span>
+                  Names
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./geometry.html'" onkeypress="location.href='./geometry.html'">
+            <span>
+            Geometry
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_examples.html'" onkeypress="location.href='./set_examples.html'">
+            <span>
+            Set Examples
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./statements.html'" onkeypress="location.href='./statements.html'">
+            <span>
+            Statements
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./sets.pdf#page=2'" onkeypress="location.href='./sets.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./sets-graph.pdf'" onkeypress="location.href='./sets-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Sets </h1> 
       <!--
@@ -278,139 +421,129 @@ Parse: {prototype: {
 !refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕set_operations
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to talk about none, one, or several
-  objects considered together, as an aggregate. </span>
+  objects considered together, as an aggregate.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>When we think of several objects considered as
   an intangible whole, or group, we call the
   intangible object which is the group a
-  <span class='term'>set</span>. </span>
+  <span class='term'>set</span>.</span>
 
  <span class='run'>We say that these objects
-  <span class='term'>belong</span> to the set. </span>
+  <span class='term'>belong</span> to the set.</span>
 
  <span class='run'>They are the set’s
   <span class='term'>members</span> or
-  <span class='term'>elements</span>. </span>
+  <span class='term'>elements</span>.</span>
 
- <span class='run'>They are <span class='term'>in</span> the set. </span>
+ <span class='run'>They are <span class='term'>in</span> the set.</span>
 </p>
 
 
 <!--
-<div data-littype='paragraph'>
-  <div data-littype='run'> ❲% \begin{principle}[Existence of Sets]❳ </div>
-
-  <div data-littype='run'> ❲% 	Intangible groups exist.❳ </div>
-
-  <div data-littype='run'> ❲% \end{principle}❳ </div>
-</div>
+\begin{principle}[Existence of Sets]
+Intangible groups exist.
+\end{principle}
 -->
 
 <p>
- <span class='run'>A set may have other sets as its members. </span>
+ <span class='run'>A set may have other sets as its members.</span>
 
- <span class='run'>This is subtle but becomes familiar. </span>
+ <span class='run'>This is subtle but becomes familiar.</span>
 
  <span class='run'>We call a set which contains no objects
-  <span class='term'>empty</span>. </span>
+  <span class='term'>empty</span>.</span>
 
  <span class='run'>Otherwise we call a set
-  <span class='term'>nonempty</span>. </span>
+  <span class='term'>nonempty</span>.</span>
 </p>
 
-<h1>
-Denoting a set </h1>
+<h1>Denoting a set</h1>
 
 <p>
- <span class='run'>Let $A$ denote a set. </span>
+ <span class='run'>Let $A$ denote a set.</span>
 
- <span class='run'>Then $A$ is a name for an object. </span>
+ <span class='run'>Then $A$ is a name for an object.</span>
 
- <span class='run'>That object is a set. </span>
+ <span class='run'>That object is a set.</span>
 
  <span class='run'>So $A$ is a name for an object which is a
-  grouping of other objects. </span>
+  grouping of other objects.</span>
 </p>
 
-<h1>
-Belonging </h1>
+<h1>Belonging</h1>
 
 <p>
- <span class='run'>Let $a$ denote an object and $A$ denote a set. </span>
+ <span class='run'>Let $a$ denote an object and $A$ denote a set.</span>
 
  <span class='run'>So we are using the names $a$ and $A$ as
   placeholders for some object and some set, we
-  do not particularly know which. </span>
+  do not particularly know which.</span>
 
  <span class='run'>Suppose though, that whatever this object and
   set are, it is the case that the object
-  belongs to the set. </span>
+  belongs to the set.</span>
 
  <span class='run'>In other words, the object is a member or an
-  element of the set. </span>
+  element of the set.</span>
 
  <span class='run'>We say “The object denoted by $a$ belongs to
-  the set denoted by $A$”. </span>
+  the set denoted by $A$”.</span>
 </p>
 
-<h1>
-Not symmetric </h1>
+<h1>Not symmetric</h1>
 
 <p>
- <span class='run'>Notice that belonging is not symmetric. </span>
+ <span class='run'>Notice that belonging is not symmetric.</span>
 
  <span class='run'>Saying “the object denoted by $a$ belongs to
   the set denoted by $A$” does not mean the same
   as “the set denoted by $A$ belongs to the
-  object denoted by $a$.” </span>
+  object denoted by $a$.”</span>
 
  <span class='run'>In fact, the latter sentence is nonsensical
-  unless the object denoted by $a$ is also a set. </span>
+  unless the object denoted by $a$ is also a set.</span>
 </p>
 
-<h1>
-Not transitive </h1>
+<h1>Not transitive</h1>
 
 <p>
  <span class='run'>Let $a$ denote an object and let $A$ and $B$
-  both denote sets. </span>
+  both denote sets.</span>
 
  <span class='run'>If the object denoted by $a$ is “a part of”
   the set denoted by $A$, and the set denoted by
   $A$ is “a part of” the set denoted by $B$,
   then usual English usage would suggest that $a$
-  is “a part of” the set denoted by $B$. </span>
+  is “a part of” the set denoted by $B$.</span>
 
  <span class='run'>In other words, if a thing is a part of a
   second thing, and the second thing is part of
   a third thing, then the first thing is often
-  said to be a part of the third thing. </span>
+  said to be a part of the third thing.</span>
 </p>
 
 
 <p>
  <span class='run'>The relation of belonging does not follow this
-  familiar usage. </span>
+  familiar usage.</span>
 
  <span class='run'>In contrast, if an object is an element of a
   set, that set may be an element of another
   set, but this does not mean that the the first
-  object is also an element of that other set. </span>
+  object is also an element of that other set.</span>
 
  <span class='run'>The upshot is that sets are nested: we can
   have intangible groups of intangible groups, and
   have them be different than the intangible group
-  of all the members of each group. </span>
+  of all the members of each group.</span>
 </p>
 
 
@@ -497,9 +630,11 @@ Not transitive </h1>
   <div data-littype='run'> </div>
 </div>
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -551,7 +686,7 @@ Not transitive </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

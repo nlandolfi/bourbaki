@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1451,7 +1468,133 @@ Parse: {prototype: {
 
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrices.html'" onkeypress="location.href='./matrices.html'">
+                <span>
+                  Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+                <span>
+                  Matrix Transpose
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./permutation_matrices.html'" onkeypress="location.href='./permutation_matrices.html'">
+                <span>
+                  Permutation Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./lower_upper_triangular_factorizations.html'" onkeypress="location.href='./lower_upper_triangular_factorizations.html'">
+            <span>
+            Lower Upper Triangular Factorizations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./index_matrices.pdf#page=2'" onkeypress="location.href='./index_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./index_matrices-graph.pdf'" onkeypress="location.href='./index_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Index Matrices </h1> 
       <!--
@@ -1461,96 +1604,93 @@ Parse: {prototype: {
 !need:matrix_transpose
 -->
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>An <span class='term'>index sequence</span> of
   <span class='term'>order</span> $n$ is a finite
   sequence of distinct elements of $\upto{n}$ whose
-  length is less than or equal to $n$. </span>
+  length is less than or equal to $n$.</span>
 
  <span class='run'>We call the $i$th coordinate of an index
   sequence the <span class='term'>$i$-index</span> of
-  the sequence. </span>
+  the sequence.</span>
 
  <span class='run'>The <span class='term'>index matrix</span>
   associated with an index sequence is the $r
   \times n$ matrix whose $i,j$th entry is 1 if
   the index sequences’s $i$th coordinate is $j$,
-  and $0$ otherwise. </span>
+  and $0$ otherwise.</span>
 
  <span class='run'>If $r = n$ then the index matrix is a
-  permutation matrix. </span>
+  permutation matrix.</span>
 </p>
 
 
 <p>
  <span class='run'>Multiplying a vector by an index matrix
-  produces a permuted subvector. </span>
+  produces a permuted subvector.</span>
 
  <span class='run'>The <span class='term'>subvector</span> of an
   $n$-vector {associated with} a length-$r$ index
   sequence is the product of the $r \times n$
-  index matrix with the $n$-dimensional vector. </span>
+  index matrix with the $n$-dimensional vector.</span>
 
  <span class='run'>Its $i$th entry is the $i$-index entry of the
-  vector. </span>
+  vector.</span>
 </p>
 
-<h2>
-Other terminology </h2>
+<h2>Other terminology</h2>
 
 <p>
  <span class='run'>Some authors use the term
   <span class='term'>index set</span> for index
   sequences; but since these are sequences (which
   are functions), they are not sets of indices,
-  so we avoid this usage. </span>
+  so we avoid this usage.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $r \leq n$ be natural numbers. </span>
+ <span class='run'>Let $r \leq n$ be natural numbers.</span>
 
  <span class='run'>Let $\alpha : \upto{r} \to \upto{n}$ be an
-  index sequence. </span>
+  index sequence.</span>
 
  <span class='run'>We denote the index matrix associated with
-  $\alpha $ by $\IdxMat{\alpha }$. </span>
+  $\alpha $ by $\IdxMat{\alpha }$.</span>
 
  <span class='run'>This matrix $\IdxMat{\alpha }$ is an element of
   $\Mat{\N }{r}{n}$ and is defined by
   <p>\[
-   (\IdxMat{\alpha })_{ij} = \begin{cases} 
+   (\IdxMat{\alpha })_{ij} = \begin{cases}
 
-   1 \& j = \alpha (i) \\ 
+   1 \& j = \alpha (i) \\
 
-   0 \& \ow 
+   0 \& \ow
 
-   \end{cases} 
+   \end{cases}
   \]</p></span>
 </p>
 
 
 <p>
  <span class='run'>Let $A$ be a nonempty set and let $x \in
-  \Vec{A}{n}$. </span>
+  \Vec{A}{n}$.</span>
 
  <span class='run'>then the subvector of $x$ associated with
   $\IdxMat{\alpha }$ (and so with $\alpha $) is
   <p>\[
-   \IdxMat{\alpha }x = \pmat{x_{\alpha (1)}, \dots , x_{\alpha (r)}} 
+   \IdxMat{\alpha }x = \pmat{x_{\alpha (1)}, \dots , x_{\alpha (r)}}
   \]</p></span>
 
  <span class='run'>We denote the product $\IdxMat{\alpha }x$ by
-  $x_{\alpha }$. </span>
+  $x_{\alpha }$.</span>
 
  <span class='run'>We denote the product
   $\IdxMat{\alpha }X\transpose{\IdxMat{\alpha }}$ by
-  $X_{\alpha \alpha }$. </span>
+  $X_{\alpha \alpha }$.</span>
 </p>
 
 
@@ -1575,9 +1715,11 @@ Notation </h2>
   <div data-littype='run'> </div>
 </div>
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1629,7 +1771,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

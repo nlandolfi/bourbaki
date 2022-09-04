@@ -97,7 +97,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -113,14 +113,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -908,7 +925,154 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./partitions.html'" onkeypress="location.href='./partitions.html'">
+                <span>
+                  Partitions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./relations.html'" onkeypress="location.href='./relations.html'">
+                <span>
+                  Relations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./canonical_maps.html'" onkeypress="location.href='./canonical_maps.html'">
+            <span>
+            Canonical Maps
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./equivalent_sets.html'" onkeypress="location.href='./equivalent_sets.html'">
+            <span>
+            Equivalent Sets
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integer_numbers.html'" onkeypress="location.href='./integer_numbers.html'">
+            <span>
+            Integer Numbers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./inverses_of_composite_relations.html'" onkeypress="location.href='./inverses_of_composite_relations.html'">
+            <span>
+            Inverses of Composite Relations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_similarity.html'" onkeypress="location.href='./matrix_similarity.html'">
+            <span>
+            Matrix Similarity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./equivalence_relations.pdf#page=2'" onkeypress="location.href='./equivalence_relations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./equivalence_relations-graph.pdf'" onkeypress="location.href='./equivalence_relations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Equivalence Relations </h1> 
       <!--
@@ -919,55 +1083,51 @@ Parse: {prototype: {
 !refs:bert_mendelson/introduction_to_topology/theory_of_sets/relations
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to handle at once all the objects of
   a set which are indistinguishable or equivalent
-  in some aspect. </span>
+  in some aspect.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>An <span class='term'>equivalence relation</span>
   on a set $X$ is a reflexive, symmetric, and
-  transitive relation on $X$ (see
-  \sheetref{relations}{Relations}). </span>
+  transitive relation on $X$ (see<a href='/sheets/relations.html'/><span class='run'>Relations</span></a>).</span>
 
  <span class='run'>The smallest equivalence relation in a set $X$
-  is the relation of equality in $X$. </span>
+  is the relation of equality in $X$.</span>
 
  <span class='run'>The largest equivalence relation in a set $X$
-  is $X \times X$. </span>
+  is $X \times X$.</span>
 </p>
 
 
 <p>
  <span class='run'>Equivalence relations are useful because they
-  partition (see \sheetref{partitions}{Partitions})
-  the set. </span>
+  partition (see<a href='/sheets/partitions.html'/><span class='run'>Partitions</span></a>) the set.</span>
 
  <span class='run'>If $R$ is an equivalence relation on $X$, the
   <span class='term'>equivalence class</span> of an
   object $x \in X$ is the set $\Set{y \in
-  X}{x\;R\;y}$. </span>
+  X}{x\;R\;y}$.</span>
 
  <span class='run'>We call the set of equivalence classes the
   <span class='term'>quotient set</span> of the set
   under the relation (or the
   <span class='term'>quotient</span> of the set
-  <span class='term'>by the relation</span>). </span>
+  <span class='term'>by the relation</span>).</span>
 
  <span class='run'>An equally good name is the divided set of
   the set under the relation, but this terminology
-  is not standard. </span>
+  is not standard.</span>
 
  <span class='run'>The language in both cases reminds us that the
   relation partitions the set into equivalence
-  classes. </span>
+  classes.</span>
 </p>
 
 
@@ -975,80 +1135,83 @@ Definition </h1>
  <span class='run'>If $\mathcal{C} $ is a partition of $X$, we
   can define a relation $R$ on $X$ for which
   $x\,R\,y \iff (\exists A \in \mathcal{C} )(x \in
-  A \land y \in A)$. </span>
+  A \land y \in A)$.</span>
 
  <span class='run'>In other words, if $x$ and $y$ are in the
-  same piece (see \sheetref{partitions}{Partitions})
-  of $\mathcal{C} $. </span>
+  same piece (see<a href='/sheets/partitions.html'/><span class='run'>Partitions</span></a>) of $\mathcal{C} $.</span>
 </p>
 
 
 <p>
  <span class='run'>The key result is that every equivalence
   relation partitions the set and every partition
-  of the set is an equivalence relation. </span>
+  of the set is an equivalence relation.</span>
 
  <span class='run'>Moreover, if we start with an equivalence
   relation, look for the partition, and then get
   the relation defined by the partition, we end
-  up with the relation we started with. </span>
+  up with the relation we started with.</span>
 
  <span class='run'>Likewise, if we start with a partition
   relation, get the equivalence relation, and then
   get the partition defined by the relation, we
-  end up with the partition we started with. </span>
+  end up with the partition we started with.</span>
 
  <span class='run'>Before stating and proving this result, we give
-  some notation. </span>
+  some notation.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>Let $R$ denote an equivalence relation on a
-  set denoted by $X$. </span>
+  set denoted by $X$.</span>
 
  <span class='run'>We denote the equivalence class of $x \in X$
-  by $x / R$. </span>
+  by $x / R$.</span>
 
  <span class='run'>We denote the set of equivalence classes of
   $R$ by $X/R$, read aloud as “$X$ modulo $R$”
-  or “$x$ mod $R$”. </span>
+  or “$x$ mod $R$”.</span>
 
  <span class='run'>We denote the equivalence class of an element
-  $x \in X$ by $\eqc{x}$. </span>
+  $x \in X$ by $\eqc{x}$.</span>
 </p>
 
-<h1>
-Main Results </h1>
+<h1>Main Results</h1>
 
 <p>
  <span class='run'>The proofs of these results are straightforward.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<div class='proposition' <span class='run'>$X/\mathcal{C} $ is an equivalence relation </span></div>
-<div class='proposition' <span class='run'>$X/R$ is a a partition. </span></div>
-<div class='proposition' <span class='run'>If $R$ is an equivalence relation on $X$, then
-  $X/(X/R) = R$ </span></div>
-<div class='proposition' <span class='run'>If $\mathcal{C} $ is a partition of $X$, then
-  $X/(X/\mathcal{C} ) = \mathcal{C} $. </span></div>
+<div class='proposition'>
+ <span class='run'>$X/\mathcal{C} $ is an equivalence relation</span></div>
+<div class='proposition'>
+ <span class='run'>$X/R$ is a a partition.</span></div>
+<div class='proposition'>
+ <span class='run'>If $R$ is an equivalence relation on $X$, then
+  $X/(X/R) = R$</span></div>
+<div class='proposition'>
+ <span class='run'>If $\mathcal{C} $ is a partition of $X$, then
+  $X/(X/\mathcal{C} ) = \mathcal{C} $.</span></div>
 <p>
  <span class='run'>These last two propositions make clear the
-  rationale for the notation. </span>
+  rationale for the notation.</span>
 
  <span class='run'>The function mapping an element to its
   equivalence class is onto and is sometimes
-  called the <span class='term'>projection</span>. </span>
+  called the <span class='term'>projection</span>.</span>
  <!--
   Of course, we have not yet had occasion to speak of numbers, much less of division.
   -->
 
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Nonetheless, the full accounts will appear in
-  future editions. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Nonetheless, the full accounts will appear in
+  future editions.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1100,7 +1263,7 @@ Main Results </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

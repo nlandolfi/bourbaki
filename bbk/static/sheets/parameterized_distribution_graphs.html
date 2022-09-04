@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -145,7 +162,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $G$ be a directed graph on $\set{1,\dots, n}$. A \t{parametric distribution graph family} (or \t{parametric distribution network familiy}, \t{parameteric conditional distribution network family}) is a family of conditional distribution networks $\set{G, \set{g_i^{(\theta)}}_{i=1}^{n}}_{\theta \in \Theta}$. We call the index set $\Theta$ the \t{parameter set}. $G$ does not depend on the parameters.</p></div><div class="sheet-listing"><p class="sheet"> In the case that $\pa_i = \emptyset$ in $G$, $\set{g_i^{(\theta)}}_\theta$ is a parametric distribution family on $A_i$ and in the case that $\pa_i \neq \emptyset$, $\set{g_i^{(\theta)}}_{\theta}$ is a parametric conditional distribution family on $A_i$ from $\prod_{j \in \pa_{i}} A_j$ (for both these terms, see \sheetref{parameterized_distributions}{Parameterized Distributions}).</p></div><div class="sheet-listing"><p class="sheet"> A parametric distribution network family is \t{functionally parameterizable} if each of the conditionals is functionally parameterizable (again, see \sheetref{parameterized_distributions}{Parameterized Distributions}).</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $G$ be a directed graph on $\set{1,\dots , n}$. A \t{parametric distribution graph family} (or \t{parametric distribution network familiy}, \t{parameteric conditional distribution network family}) is a family of conditional distribution networks $\set{G, \set{g_i^{(\theta )}}_{i=1}^{n}}_{\theta  \in \Theta }$. We call the index set $\Theta $ the \t{parameter set}. $G$ does not depend on the parameters.</p></div><div class="sheet-listing"><p class="sheet"> In the case that $\pa_i = \emptyset$ in $G$, $\set{g_i^{(\theta )}}_\theta $ is a parametric distribution family on $A_i$ and in the case that $\pa_i \neq \emptyset$, $\set{g_i^{(\theta )}}_{\theta }$ is a parametric conditional distribution family on $A_i$ from $\prod_{j \in \pa_{i}} A_j$ (for both these terms, see \sheetref{parameterized\_distributions}{Parameterized Distributions}).</p></div><div class="sheet-listing"><p class="sheet"> A parametric distribution network family is \t{functionally parameterizable} if each of the conditionals is functionally parameterizable (again, see \sheetref{parameterized\_distributions}{Parameterized Distributions}).</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1415,7 +1432,191 @@ Parse: {prototype: {
 \newcommand{\ch}{\mathword{ch}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./distribution_graphs.html'" onkeypress="location.href='./distribution_graphs.html'">
+                <span>
+                  Distribution Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./parameterized_distributions.html'" onkeypress="location.href='./parameterized_distributions.html'">
+                <span>
+                  Parameterized Distributions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./distribution_graph_selectors.html'" onkeypress="location.href='./distribution_graph_selectors.html'">
+            <span>
+            Distribution Graph Selectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./latent_generation_pairs.html'" onkeypress="location.href='./latent_generation_pairs.html'">
+            <span>
+            Latent Generation Pairs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./parameterized_distribution_graphs.pdf#page=2'" onkeypress="location.href='./parameterized_distribution_graphs.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./parameterized_distribution_graphs-graph.pdf'" onkeypress="location.href='./parameterized_distribution_graphs-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Parameterized Distribution Graphs </h1> 
+      <!--
+!name:parameterized_distribution_graphs
+!need:distribution_graphs
+!need:parameterized_distributions
+% %!need:distribution_families
+-->
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>Let $G$ be a directed graph on $\set{1,\dots ,
+  n}$.</span>
+
+ <span class='run'>A <span class='term'>parametric distribution graph
+  family</span> (or <span class='term'>parametric
+  distribution network familiy</span>,
+  <span class='term'>parameteric conditional
+  distribution network family</span>) is a family
+  of conditional distribution networks $\set{G,
+  \set{g_i^{(\theta )}}_{i=1}^{n}}_{\theta  \in
+  \Theta }$.</span>
+
+ <span class='run'>We call the index set $\Theta $ the
+  <span class='term'>parameter set</span>.</span>
+
+ <span class='run'>$G$ does not depend on the parameters.</span>
+</p>
+
+
+<p>
+ <span class='run'>In the case that $\pa_i = \emptyset$ in $G$,
+  $\set{g_i^{(\theta )}}_\theta $ is a parametric
+  distribution family on $A_i$ and in the case
+  that $\pa_i \neq \emptyset$,
+  $\set{g_i^{(\theta )}}_{\theta }$ is a parametric
+  conditional distribution family on $A_i$ from
+  $\prod_{j \in \pa_{i}} A_j$ (for both these
+  terms, see
+  \sheetref{parameterized_distributions}{Parameterized
+  Distributions}).</span>
+</p>
+
+
+<p>
+ <span class='run'>A parametric distribution network family is
+  <span class='term'>functionally parameterizable</span>
+  if each of the conditionals is functionally
+  parameterizable (again, see
+  \sheetref{parameterized_distributions}{Parameterized
+  Distributions}).</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1467,7 +1668,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

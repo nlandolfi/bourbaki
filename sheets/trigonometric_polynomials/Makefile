@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make trigonometric_polynomials.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 trigonometric_polynomials.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > trigonometric_polynomials.tex
 

@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -152,7 +169,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What are some simple functions? Here's one answer: those that only involve addition and multiplication.\footnote{Future editions will modify and expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{real polynomial} (or \t{polynomial}) of degree $d$ is a function $p: \R \to \R$ for which there exists a finite sequence $a = (a_0, a_1, \dots, a_d)$ so that \[ p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_nx^d. \] In particular, $q(x) = ax + b$ for $a, b \in \R$ is a polynomial of the first degree and $r(x) = ax^2 + bx + c$ for $a, b, c \in \R$ is a polynomial of the second degree.</p></div><div class="sheet-listing"><p class="sheet"> In a sense, these are "simple" functions. We require addition (and substraction) and multiplication; but no division.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $p: \R \to \R$ be a polynomial of degree $d$. Then $p$ is continuous. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $p: \R \to \R$ be a polynomial of degree $d$. Then $p$ has derivatives of all orders. Every derivative of $p$ is a polynomial. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What are some simple functions? Here's one answer: those that only involve addition and multiplication. \ifhmode\unskip\fi\footnote{ Future editions will modify and expand. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{real polynomial} (or \t{polynomial}) of degree $d$ is a function $p: \R  \to \R $ for which there exists a finite sequence $a = (a_0, a_1, \dots , a_d)$ so that \[ p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_nx^d. \] In particular, $q(x) = ax + b$ for $a, b \in \R $ is a polynomial of the first degree and $r(x) = ax^2 + bx + c$ for $a, b, c \in \R $ is a polynomial of the second degree.</p></div><div class="sheet-listing"><p class="sheet"> In a sense, these are "simple" functions. We require addition (and substraction) and multiplication; but no division.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $p: \R  \to \R $ be a polynomial of degree $d$. Then $p$ is continuous.\end{proposition} \begin{proposition} Let $p: \R  \to \R $ be a polynomial of degree $d$. Then $p$ has derivatives of all orders. Every derivative of $p$ is a polynomial.\end{proposition} \begin{proposition} Let $p: \R  \to \R $ be a polynomial of degree $d$. The every derivative of order $d+1$ or greater is the constant 0 function.\end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1058,7 +1075,207 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_arithmetic.html'" onkeypress="location.href='./real_arithmetic.html'">
+                <span>
+                  Real Arithmetic
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./first_degree_equations.html'" onkeypress="location.href='./first_degree_equations.html'">
+            <span>
+            First Degree Equations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./multivariate_polynomials.html'" onkeypress="location.href='./multivariate_polynomials.html'">
+            <span>
+            Multivariate Polynomials
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_rational_functions.html'" onkeypress="location.href='./real_rational_functions.html'">
+            <span>
+            Real Rational Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./trigonometric_polynomials.html'" onkeypress="location.href='./trigonometric_polynomials.html'">
+            <span>
+            Trigonometric Polynomials
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_polynomials.pdf#page=2'" onkeypress="location.href='./real_polynomials.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_polynomials-graph.pdf'" onkeypress="location.href='./real_polynomials-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Polynomials </h1> 
+      <!--
+!name:real_polynomials
+!need:real_arithmetic
+!refs:yellow/I/II/9
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>What are some simple functions?</span>
+
+ <span class='run'>Here&#39;s one answer: those that only involve
+  addition and multiplication.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>real polynomial</span> (or
+  <span class='term'>polynomial</span>) of degree $d$
+  is a function $p: \R  \to \R $ for which there
+  exists a finite sequence $a = (a_0, a_1,
+  \dots , a_d)$ so that
+  <p>\[
+   p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_nx^d.
+  \]</p></span>
+
+ <span class='run'>In particular, $q(x) = ax + b$ for $a, b \in
+  \R $ is a polynomial of the first degree and
+  $r(x) = ax^2 + bx + c$ for $a, b, c \in
+  \R $ is a polynomial of the second degree.</span>
+</p>
+
+
+<p>
+ <span class='run'>In a sense, these are “simple” functions.</span>
+
+ <span class='run'>We require addition (and substraction) and
+  multiplication; but no division.</span>
+</p>
+
+<h1>Properties</h1>
+
+<div class='proposition'>
+ <span class='run'>Let $p: \R  \to \R $ be a polynomial of
+  degree $d$.</span>
+
+ <span class='run'>Then $p$ is continuous.</span></div>
+<div class='proposition'>
+ <span class='run'>Let $p: \R  \to \R $ be a polynomial of
+  degree $d$.</span>
+
+ <span class='run'>Then $p$ has derivatives of all orders.</span>
+
+ <span class='run'>Every derivative of $p$ is a polynomial.</span></div>
+<div class='proposition'>
+ <span class='run'>Let $p: \R  \to \R $ be a polynomial of
+  degree $d$.</span>
+
+ <span class='run'>The every derivative of order $d+1$ or greater
+  is the constant 0 function.</span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify and expand.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1110,7 +1327,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

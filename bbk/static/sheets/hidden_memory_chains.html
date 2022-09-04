@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -78,14 +78,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1109,7 +1126,119 @@ Parse: {prototype: {
 \newcommand{\PE}{\mathbfsf{P}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./memory_chains.html'" onkeypress="location.href='./memory_chains.html'">
+                <span>
+                  Memory Chains
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./directed_graph_distributions.html'" onkeypress="location.href='./directed_graph_distributions.html'">
+            <span>
+            Directed Graph Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./hidden_memory_chains.pdf#page=2'" onkeypress="location.href='./hidden_memory_chains.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./hidden_memory_chains-graph.pdf'" onkeypress="location.href='./hidden_memory_chains-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Hidden Memory Chains </h1> 
       <!--
@@ -1117,11 +1246,10 @@ Parse: {prototype: {
 !need:memory_chains
 -->
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>Let $X$ and $Y$ be sets. </span>
+ <span class='run'>Let $X$ and $Y$ be sets.</span>
 
  <span class='run'>A <span class='term'>hidden memory chain</span>
   (<span class='term'>hidden markov chain</span>,
@@ -1136,19 +1264,20 @@ Definition </h1>
   satisfying
   <p>\[
    p(x, y) = f(x)g(y_1, x_1)\prod_{i = 1}^{n} h(x_i, x_{i-1})
-    g(y_i, x_i), 
+    g(y_i, x_i),
   \]</p>
   where $f: X \to [0, 1]$ is a distribution,
   and $g$ and $h$ are functions satisfying
   $g(\cdot , \xi )$ and $h(\cdot , \xi )$ are
   distributions on $Y$ and $X$, respectively, for
-  all $\xi  \in X$. </span>
- <div class='proposition'  <span class='run'>$p$ so defined is a distribution. </span>
+  all $\xi  \in X$.</span>
+ <div class='proposition'>
+  <span class='run'>$p$ so defined is a distribution.</span>
 
-  <span class='run'>The function $f$ is the distribition $p_{1}$. </span>
+  <span class='run'>The function $f$ is the distribition $p_{1}$.</span>
 
   <span class='run'>For all $i = 1, \dots , n$, $p_{n+1 \mid i}
-   \equiv gg$. </span>
+   \equiv gg$.</span>
 
   <span class='run'>For all $i = 2, \dots , n$, $p_{i \mid i-1}
    \equiv h$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span> </div>
@@ -1157,17 +1286,17 @@ Definition </h1>
 
 <p>
  <span class='run'>Clearly, $p_{1, \dots , n}$ is a memory chain
-  (see \sheetref{memory_chains}{Memory Chains}). </span>
+  (see \sheetref{memory_chains}{Memory Chains}).</span>
 
  <span class='run'>For this reason, we continue to refer to $h$
   as the <span class='term'>conditional
-  distribution</span>. </span>
+  distribution</span>.</span>
 
  <span class='run'>We continute to refer to $f$ as the
-  <span class='term'>initial distribution</span>. </span>
+  <span class='term'>initial distribution</span>.</span>
 
  <span class='run'>We refer to $h$ as the
-  <span class='term'>observation distribution</span>. </span>
+  <span class='term'>observation distribution</span>.</span>
 </p>
 
 
@@ -1175,20 +1304,22 @@ Definition </h1>
  <span class='run'>The word “hidden” refers to the situation in
   which we observe outcomes $y$, and we
   hypothesize that they were “generated by”
-  unobserved outcomes $x$. </span>
+  unobserved outcomes $x$.</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>This term is universal. </span>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This term is universal.</span>
 
  <span class='run'>We avoid it because of the Bourbaki project’s
-  policy on naming. </span>
+  policy on naming.</span>
 
  <span class='run'>The skeptical reader will note (as in
   \sheetref{memory_chains} {Memory Chains}) that our
-  term and this term have the same initials. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will define everything needed in
+  term and this term have the same initials.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will define everything needed in
   this proposition in the proposition statement, as
-  ooposed to saying “$p$ so defined” </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+  ooposed to saying “$p$ so defined”</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1240,7 +1371,7 @@ Definition </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

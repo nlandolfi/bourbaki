@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1140,7 +1157,126 @@ Parse: {prototype: {
 \newcommand{\pd}[2]{\frac{\partial_#1}{\partial #2}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./partial_derivatives.html'" onkeypress="location.href='./partial_derivatives.html'">
+                <span>
+                  Partial Derivatives
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./smooth_real_functions.html'" onkeypress="location.href='./smooth_real_functions.html'">
+                <span>
+                  Smooth Real Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./smooth_functions.html'" onkeypress="location.href='./smooth_functions.html'">
+            <span>
+            Smooth Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./smooth_multivariate_functions.pdf#page=2'" onkeypress="location.href='./smooth_multivariate_functions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./smooth_multivariate_functions-graph.pdf'" onkeypress="location.href='./smooth_multivariate_functions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Smooth Multivariate Functions </h1> 
       <!--
@@ -1149,8 +1285,7 @@ Parse: {prototype: {
 !need:smooth_real_functions
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>What is the natural generalization of a smooth
@@ -1158,48 +1293,48 @@ Why </h1>
   $\R ^k$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Let $U \subset \R ^d$ be an open set (see
-  \sheetref{real_open_sets}{Real Open Sets}). </span>
+  \sheetref{real_open_sets}{Real Open Sets}).</span>
 
  <span class='run'>A function $f: U \to \R $ is
   <span class='term'>smooth</span> if all its partial
-  derivatives exists and are continuous. </span>
+  derivatives exists and are continuous.</span>
 </p>
 
 
 <p>
- <span class='run'>More generally, let $X \subset \R ^d$. </span>
+ <span class='run'>More generally, let $X \subset \R ^d$.</span>
 
  <span class='run'>A function $f: X \to R$ is
   <span class='term'>smooth</span> if there exists an
   open set $U \subset \R ^d$ and a smooth $F: U
   \to \R $ so that $F(x) = f(x)$ for all $x \in
-  U \cap  X$. </span>
+  U \cap  X$.</span>
 </p>
 
-<h2>
-Example </h2>
+<h2>Example</h2>
 
 <p>
- <span class='run'>The identity map is smooth. </span>
+ <span class='run'>The identity map is smooth.</span>
 
  <span class='run'>In other words, let $f: \R ^d \to \R $ be so
-  that $X \subset \R ^d$. </span>
+  that $X \subset \R ^d$.</span>
 
- <span class='run'>Then $f: X \to \R $ s </span>
+ <span class='run'>Then $f: X \to \R $ s</span>
 </p>
 
-<h1>
-Properties </h1>
+<h1>Properties</h1>
 
-<div class='proposition' <span class='run'>The composition of two smooth functions is
-  smooth. </span></div><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<div class='proposition'>
+ <span class='run'>The composition of two smooth functions is
+  smooth.</span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1251,7 +1386,7 @@ Properties </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

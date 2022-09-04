@@ -66,7 +66,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -82,14 +82,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1377,7 +1394,126 @@ Parse: {prototype: {
 
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./orthogonal_real_subspaces.html'" onkeypress="location.href='./orthogonal_real_subspaces.html'">
+                <span>
+                  Orthogonal Real Subspaces
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+                <span>
+                  Real Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_vector_angles.html'" onkeypress="location.href='./real_vector_angles.html'">
+                <span>
+                  Real Vector Angles
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_matrix_nullspace.pdf#page=2'" onkeypress="location.href='./real_matrix_nullspace.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_matrix_nullspace-graph.pdf'" onkeypress="location.href='./real_matrix_nullspace-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Matrix Nullspace </h1> 
       <!--
@@ -1387,169 +1523,165 @@ Parse: {prototype: {
 !need:orthogonal_real_subspaces
 -->
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>The <span class='term'>nullspace</span> (or
   <span class='term'>kernel</span>) of a matrix $A
   \in \R ^{m \times  n}$ is the set
   <p>\[
-   \Set{x \in \R ^n}{Ax = 0}. 
+   \Set{x \in \R ^n}{Ax = 0}.
   \]</p></span>
 
  <span class='run'>It is the set of vectors mapped to zero by
-  $A$. </span>
+  $A$.</span>
 
  <span class='run'>Equivalently, it is the set of vectors
-  orthogonal to the rows of $A$. </span>
+  orthogonal to the rows of $A$.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We denote the nullspace of $A \in \R ^{m
-  \times  n}$ by $\null(A) \subset \R ^{n}$. </span>
+  \times  n}$ by $\null(A) \subset \R ^{n}$.</span>
 
  <span class='run'>Some authors denote the nullspace of $A$ by
-  $\mathcal{N}(A)$. </span>
+  $\mathcal{N}(A)$.</span>
 </p>
 
-<h2>
-A subspace </h2>
+<h2>A subspace</h2>
 
 <p>
  <span class='run'>The nullspace of a matrix is a subspace (this
-  justifies the terminology null<i>space</i>!). </span>
+  justifies the terminology null<i>space</i>!).</span>
 
- <span class='run'>There are a few routes to see this. </span>
+ <span class='run'>There are a few routes to see this.</span>
 </p>
 
 
 <p>
- <span class='run'>The first is direct. </span>
+ <span class='run'>The first is direct.</span>
 
  <span class='run'>If $w, z \in \null(A)$, then $Aw = 0$ and
-  $Az = 0$. </span>
+  $Az = 0$.</span>
 
- <span class='run'>So then $A(w + z) = Aw + Az = 0$. </span>
+ <span class='run'>So then $A(w + z) = Aw + Az = 0$.</span>
 
- <span class='run'>So $\null(A)$ is closed under vector addition. </span>
+ <span class='run'>So $\null(A)$ is closed under vector addition.</span>
 
  <span class='run'>Also $A(\alpha w) = \alpha (Aw) = 0$ for all
-  $\alpha  \in \R $. </span>
+  $\alpha  \in \R $.</span>
 
  <span class='run'>[In particular $A0 = 0$, so $0 \in \null(A)$;
-  i.e., $\null(A)$ contains the origin.] </span>
+  i.e., $\null(A)$ contains the origin.]</span>
 
  <span class='run'>So $\null(A)$ is closed under scalar
-  multiplication. </span>
+  multiplication.</span>
 </p>
 
 
 <p>
  <span class='run'>The second is by thinking about orthogonal
-  complements. </span>
+  complements.</span>
 
  <span class='run'>Second, we can view the $\null(A)$ as the set
-  of vectors orthgonal to all the rows of $A$. </span>
+  of vectors orthgonal to all the rows of $A$.</span>
 
  <span class='run'>In other words, $\null(A) = \set{\tilde{a}_1,
-  \dots , \tilde{a}_m}^\perp$. </span>
+  \dots , \tilde{a}_m}^\perp$.</span>
 
  <span class='run'>The orthogonal complement of any set is a
   subspace (see
   \sheetref{orthogonal_real_subspaces}{Orthogonal Real
-  Subspaces}). </span>
+  Subspaces}).</span>
 </p>
 
-<h1>
-Ambiguity in solutions </h1>
+<h1>Ambiguity in solutions</h1>
 
 <p>
  <span class='run'>Suppose we have a solution to the system of
-  linear equation with data $(A, y)$. </span>
+  linear equation with data $(A, y)$.</span>
 
  <span class='run'>In other words, we have a vector $x \in
-  \R ^n$ so that $y = Ax$. </span>
+  \R ^n$ so that $y = Ax$.</span>
 
  <span class='run'>If we have a vector $z \in \null(A)$, then $x
   + z$ is also a solution to the system $(A,
   y)$, since
   <p>\[
-   A(x + z) = Ax + Az = Ax + 0 = y 
+   A(x + z) = Ax + Az = Ax + 0 = y
   \]</p></span>
 
  <span class='run'>Conversely, suppose there were another solution
-  $\tilde{x} \in \R ^{n}$ to the system $(A, y)$. </span>
+  $\tilde{x} \in \R ^{n}$ to the system $(A, y)$.</span>
 
  <span class='run'>Then $y = Ax = A\tilde{x}$, so
   <p>\[
-   0 = y - y = Ax - A\tilde{x} = A(x - \tilde{x}). 
+   0 = y - y = Ax - A\tilde{x} = A(x - \tilde{x}).
   \]</p></span>
 
  <span class='run'>Consequently, $(x - \tilde{x}) \in \null(A)$,
   and so $\tilde{x}$ is the solution $x$ plus
-  some vector in the null space of $A$. </span>
+  some vector in the null space of $A$.</span>
 
  <span class='run'>Consequently we are interested in whether $A$
-  has vectors in its nullspace. </span>
+  has vectors in its nullspace.</span>
 </p>
 
-<h2>
-Zero nullspace </h2>
+<h2>Zero nullspace</h2>
 
 <p>
  <span class='run'>The origin $0$ is always in the nullspace of
-  $A$. </span>
+  $A$.</span>
 
  <span class='run'>However, this vector does not mean that we can
   find different solutions, since $x + 0 = x$
-  for all $x \in \R ^n$. </span>
+  for all $x \in \R ^n$.</span>
 
  <span class='run'>If, on the other hand, there is a nonzero
   vector $z \in \null(A)$, then $x + z \neq x$,
-  and $x+z$ is a solution for $(A, y)$. </span>
+  and $x+z$ is a solution for $(A, y)$.</span>
 
  <span class='run'>We think about $A$ as a function from $\R ^n$
-  to $\R ^m$. </span>
+  to $\R ^m$.</span>
 
  <span class='run'>In the case that there is a nonzero element
   in the nullspace, $A$ maps different vectors to
-  the same vector. </span>
+  the same vector.</span>
 
- <span class='run'>Here, $x$ and $x + z$ both map to $y$. </span>
+ <span class='run'>Here, $x$ and $x + z$ both map to $y$.</span>
 
  <span class='run'>In this case, the function is <i>not
-  invertible</i>, because it is not one-to-one. </span>
+  invertible</i>, because it is not one-to-one.</span>
 
  <span class='run'>If, however, zero is the only element of the
-  null space, the function is one-to-one. </span>
+  null space, the function is one-to-one.</span>
 
  <span class='run'>So call $A$ <span class='term'>one-to-one</span>
-  if $\null(A) = 0$. </span>
+  if $\null(A) = 0$.</span>
 </p>
 
-<h2>
-Equivalent statements </h2>
+<h2>Equivalent statements</h2>
 
 <p>
  <span class='run'>A matrix $A \in \R ^{m \times  n}$ is
   <span class='term'>one-to-one</span> if the linear
   function $f: \R ^n \to \R ^m$ defined by $f(x)
-  = Ax$ is one-to-one. </span>
+  = Ax$ is one-to-one.</span>
 
  <span class='run'>In this case, if there exists $x \in \R ^n$
   so that $y = Ax$, then there is only one such
-  $x$. </span>
+  $x$.</span>
 
  <span class='run'>Different elements in $\R ^n$ map to different
-  elements in $\R ^m$. </span>
+  elements in $\R ^m$.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1601,7 +1733,7 @@ Equivalent statements </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

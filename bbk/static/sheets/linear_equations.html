@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1166,7 +1183,140 @@ Parse: {prototype: {
 \def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./arrays.html'" onkeypress="location.href='./arrays.html'">
+                <span>
+                  Arrays
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./linear_functions.html'" onkeypress="location.href='./linear_functions.html'">
+                <span>
+                  Linear Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./natural_equations.html'" onkeypress="location.href='./natural_equations.html'">
+                <span>
+                  Natural Equations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./linear_equation_solutions.html'" onkeypress="location.href='./linear_equation_solutions.html'">
+            <span>
+            Linear Equation Solutions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+            <span>
+            Real Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linear_equations.pdf#page=2'" onkeypress="location.href='./linear_equations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linear_equations-graph.pdf'" onkeypress="location.href='./linear_equations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Linear Equations </h1> 
       <!--
@@ -1176,30 +1326,28 @@ Parse: {prototype: {
 !need:arrays
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>Linear equations are ubiquitous. </span>
+ <span class='run'>Linear equations are ubiquitous.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Given $a \in \R ^n$ and $y \in \R $, suppose
   we want to find $x \in \R ^n$ satisfying
   <p>\[
-   a_1x_1 + a_2x_2 + \cdots + a_nx_n = y. 
+   a_1x_1 + a_2x_2 + \cdots + a_nx_n = y.
   \]</p></span>
 
  <span class='run'>We refer to this expression as a
   <span class='term'>real linear equation</span> or
-  <span class='term'>linear equation</span>. </span>
+  <span class='term'>linear equation</span>.</span>
 
  <span class='run'>We treat each component $x_i \in \R $ as a
   variable and we treat each component $a_i \in
-  \R $ and $y \in \R $ as constants. </span>
+  \R $ and $y \in \R $ as constants.</span>
 
  <span class='run'>We call the pair $(a, y)$ the
   <span class='term'>real linear equation
@@ -1209,13 +1357,13 @@ Definition </h1>
 
 <p>
  <span class='run'>The source of the terminology “linear} is by
-  viewing the left hand side as a function. </span>
+  viewing the left hand side as a function.</span>
 
  <span class='run'>Define $f: \R ^n \to \R $ by $f(x) =
-  \sum_{i}a_ix_i$. </span>
+  \sum_{i}a_ix_i$.</span>
 
  <span class='run'>We want to find $x \in \R ^n$ to satisfy
-  $f(x) = b$. </span>
+  $f(x) = b$.</span>
 
  <span class='run'>Notice that $f$ is a <i>linear</i> real
   function.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
@@ -1225,54 +1373,56 @@ Definition </h1>
 <p>
  <span class='run'>Moreover, to each linear function $f: \R ^d \to
   \R $ there exists a vector $a \in \R ^d$ so
-  that $f(x) = \sum_{i} a_ix_i$. </span>
+  that $f(x) = \sum_{i} a_ix_i$.</span>
 
  <span class='run'>For this reason, if we are given several
   linear function $f_1, \dots , f_m$, then we can
   think of these as several vectors $a^1, \dots ,
-  a^n$. </span>
+  a^n$.</span>
 
  <span class='run'>If we are also given $b_i \in \R $ for each
   $i = 1, \dots , m$, then we have the vector
-  $b \in \R ^m$ </span>
+  $b \in \R ^m$</span>
 </p>
 
 
 <p>
  <span class='run'>We can define the two-dimensional array $A \in
-  \R ^{m \times  n}$ by $A_{ij} = a^{i}_j$. </span>
+  \R ^{m \times  n}$ by $A_{ij} = a^{i}_j$.</span>
 
  <span class='run'>For this reason, a <span class='term'>linear
-  system of equations</span> is a pair $(A, b)$. </span>
+  system of equations</span> is a pair $(A, b)$.</span>
 
  <span class='run'>A solution of a linear system of equations is
   a vector $x \in \R ^n$ satisfying the equations
   <p>\[
-   \begin{aligned} 
+   \begin{aligned}
 
    A_{11}x_1 & + & A_{12}x_2 & + & \cdots \, & + & A_{1n}x_n
-    & = \, & b_1 \\ 
+    & = \, & b_1 \\
 
    A_{21}x_1 & + & A_{22}x_2 & + & \cdots & + & A_{2n}x_n &
-    = & b_2 \\ 
+    = & b_2 \\
 
-   \vdots & & \vdots & & & & \vdots & & \vdots \\ 
+   \vdots & & \vdots & & & & \vdots & & \vdots \\
 
    A_{m1}x_1 & + & A_{m2}x_2 & + & \cdots & + & A_{mn}x_n &
-    = & b_n \\ 
+    = & b_n \\
 
-   \end{aligned} 
+   \end{aligned}
   \]</p></span>
 
  <span class='run'>Other terminology includes a
   <span class='term'>system of linear equations</span>
   or <span class='term'>linear system</span> or
   <span class='term'>simultaneous linear
-  equations</span> </span>
+  equations</span></span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will clarify. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions may require a sheet here. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will clarify.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions may require a sheet here.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1324,7 +1474,7 @@ Definition </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

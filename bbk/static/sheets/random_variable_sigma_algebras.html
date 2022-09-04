@@ -52,7 +52,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -68,14 +68,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1371,24 +1388,129 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./random_variables.html'" onkeypress="location.href='./random_variables.html'">
+                <span>
+                  Random Variables
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./random_variable_sigma_algebras.pdf#page=2'" onkeypress="location.href='./random_variable_sigma_algebras.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./random_variable_sigma_algebras-graph.pdf'" onkeypress="location.href='./random_variable_sigma_algebras-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Random Variable Sigma Algebras </h1> 
       <p>
- <span class='run'>%!name:random_variable_sigma_algebras </span>
+ <span class='run'>%!name:random_variable_sigma_algebras</span>
 
- <span class='run'>%!need:random_variables </span>
+ <span class='run'>%!need:random_variables</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
 <p>
  <span class='run'>What does it mean for two random variables to
-  be independent? </span>
+  be independent?</span>
 
  <span class='run'>What are the events associated with a random
   variable?<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
@@ -1396,93 +1518,93 @@ Parse: {prototype: {
 
 
 <p>
- <span class='run'>\ssubsection{Defining Result} </span>
+ <span class='run'>\ssubsection{Defining Result}</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{proposition} </span>
+ <span class='run'>\begin{proposition}</span>
 </p>
 
 
 <p>
  <span class='run'>The set of inverse images the distinguished
   sets of a measurable space under a function
-  from a set to that space is a sigma algebra. </span>
+  from a set to that space is a sigma algebra.</span>
 </p>
 
 
 <p>
  <span class='run'>If the first set and the function are
   measurable, the sigma algebra is a sub sigma
-  algebra of the domain sigma algebra. </span>
+  algebra of the domain sigma algebra.</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{proof} </span>
+ <span class='run'>\begin{proof}</span>
 </p>
 
 
 <p>
  <span class='run'>Let $(X, \SA)$ and $(Y, \SB)$ be measurable
-  spaces. </span>
+  spaces.</span>
 
  <span class='run'>Let $f: X \to Y$ be a measurable function.
   Define
   <p>\[
-   \SC := \Set*{f^{-1}(B)}{B \in \SB}. 
+   \SC := \Set*{f^{-1}(B)}{B \in \SB}.
   \]</p></span>
 </p>
 
 
 <p>
- <span class='run'>First, since $f^{-1}(Y) = X$, $X \in \SC$. </span>
+ <span class='run'>First, since $f^{-1}(Y) = X$, $X \in \SC$.</span>
 </p>
 
 
 <p>
  <span class='run'>Second, let $C \in \SC$. Then there is $B$
   such that $C = f^{-1}(B)$. Then $X - C = X -
-  f^{-1}(B) = f^{-1}(Y - B)$. </span>
+  f^{-1}(B) = f^{-1}(Y - B)$.</span>
 
  <span class='run'>Since $\SB$ is a sigma algebra, $B \in \SB, Y
-  - B \in \SB$ and so $X - C \in \SC$. </span>
+  - B \in \SB$ and so $X - C \in \SC$.</span>
 </p>
 
 
 <p>
- <span class='run'>Finally, let $\seq{C} \subset \SC$. </span>
+ <span class='run'>Finally, let $\seq{C} \subset \SC$.</span>
 
  <span class='run'>Then for every $n$ there exists a $B_n \in
-  \SB$ so that $C_n = f^{-1}(B_n)$. </span>
+  \SB$ so that $C_n = f^{-1}(B_n)$.</span>
 
  <span class='run'>Then:
   <p>\[
-   \union_{n} C_n = \union_n f^{-1}(B_n) = f^{-1}(\union B_n). 
+   \union_{n} C_n = \union_n f^{-1}(B_n) = f^{-1}(\union B_n).
   \]</p></span>
 
- <span class='run'>Since $\SB$ is a sigma algebra, </span>
+ <span class='run'>Since $\SB$ is a sigma algebra,</span>
 
  <span class='run'>$\union_n B_n \in \SB$ and so $\union_{n} C_n
-  \in \SC$. </span>
+  \in \SC$.</span>
 </p>
 
 
 <p>
  <span class='run'>Since $f$ is measurable, $f^{-1}(B) \in \SA$
   for every $B \in \SB$, and so $\SC \subset
-  \SA$. </span>
+  \SA$.</span>
 </p>
 
 
 <p>
- <span class='run'>\end{proof} </span>
+ <span class='run'>\end{proof}</span>
 </p>
 
 
 <p>
- <span class='run'>\end{proposition} </span>
+ <span class='run'>\end{proposition}</span>
 </p>
 
 
@@ -1490,7 +1612,7 @@ Parse: {prototype: {
  <span class='run'>The sigma algebra <span class='term'>generated by
   a random variable</span> is the sigma algebra
   consisting of the inverse images of every
-  measurable set of the codomain. </span>
+  measurable set of the codomain.</span>
 </p>
 
 
@@ -1498,44 +1620,46 @@ Parse: {prototype: {
  <span class='run'>The sigma algebra generated by a family of
   random variables is the sigma algebra generated
   by the union of the sigma algebras generated
-  individually by each of the random variables. </span>
+  individually by each of the random variables.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssubsection{Notation} </span>
+ <span class='run'>\ssubsection{Notation}</span>
 </p>
 
 
 <p>
  <span class='run'>Let $(X, \SA, \mu )$ be a probability space
-  and $(Y, \SB)$ be a measurable space. </span>
+  and $(Y, \SB)$ be a measurable space.</span>
 
- <span class='run'>Let $f: X \to Y$ be a random variable. </span>
+ <span class='run'>Let $f: X \to Y$ be a random variable.</span>
 
  <span class='run'>Denote by $\sigma (f)$ the sigma algebra
-  generated by $f$. </span>
+  generated by $f$.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Results} </span>
+ <span class='run'>\ssection{Results}</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{proposition} </span>
+ <span class='run'>\begin{proposition}</span>
 
  <span class='run'>The sigma algebra generated by a family of
   random variables is the smallest sigma algebra
   for with respect to which each random variable
-  is measurably. </span>
+  is measurably.</span>
 
- <span class='run'>\end{proposition} </span>
+ <span class='run'>\end{proposition}</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1587,7 +1711,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -78,14 +78,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1133,7 +1150,119 @@ Parse: {prototype: {
 \newcommand{\RVec}[1]{\Vec{\R}{#1}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_linear_combinations.html'" onkeypress="location.href='./real_linear_combinations.html'">
+                <span>
+                  Real Linear Combinations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_vector_bases.html'" onkeypress="location.href='./real_vector_bases.html'">
+            <span>
+            Real Vector Bases
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./independent_set_of_real_vectors.pdf#page=2'" onkeypress="location.href='./independent_set_of_real_vectors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./independent_set_of_real_vectors-graph.pdf'" onkeypress="location.href='./independent_set_of_real_vectors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Independent Set of Real Vectors </h1> 
       <!--
@@ -1141,95 +1270,94 @@ Parse: {prototype: {
 !need:real_linear_combinations
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to capture the useful properties of
-  the standard basis vectors. </span>
+  the standard basis vectors.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A set of vectors $\set{v_1, \dots , v_k}$ is
   <span class='term'>independent</span> if
   <p>\[
    \alpha _1v_1 + \alpha _2v_2 + \cdots + \alpha _kv_k = 0
-    \Rightarrow \alpha _1 = \alpha _2 = \cdots = \alpha _k = 0. 
+    \Rightarrow \alpha _1 = \alpha _2 = \cdots = \alpha _k = 0.
   \]</p></span>
 
  <span class='run'>Notice that independence is a property of a
-  set of vectors, not of any vector in particular. </span>
+  set of vectors, not of any vector in particular.</span>
 
  <span class='run'>Another way of saying this is that no vector
   can be represented as a linear combination of
-  another. </span>
+  another.</span>
 </p>
 
-<h2>
-Unique representation </h2>
+<h2>Unique representation</h2>
 
 <p>
  <span class='run'>Suppose $v_1, \dots , v_k$ are independent and
   we have
   <p>\[
    x = \sum_{i = 1}^{k}\alpha _i v_i \quad \text{ and } \quad
-    x = \sum_{i = 1}^{k} \beta _i v_i. 
+    x = \sum_{i = 1}^{k} \beta _i v_i.
   \]</p></span>
 
  <span class='run'>Then
   <p>\[
-   0 = x - x = \sum_{i = 1}^{n} (\alpha _i - \beta _i)v_k. 
+   0 = x - x = \sum_{i = 1}^{n} (\alpha _i - \beta _i)v_k.
   \]</p></span>
 
  <span class='run'>Using the definition of independence, we
   conclude $\alpha _i - \beta _i = 0$ for $i =
-  1, \dots  k$. </span>
+  1, \dots  k$.</span>
 
- <span class='run'>Consequently, $\alpha _i = \beta _i$. </span>
+ <span class='run'>Consequently, $\alpha _i = \beta _i$.</span>
 
  <span class='run'>In other words, if $x$ can be represented as
   a linear combination of the vectors $v_1,
-  \dots , v_k$, that representation is <i>unique</i>. </span>
+  \dots , v_k$, that representation is <i>unique</i>.</span>
 
  <span class='run'>We have shown that independence implies
-  uniqueness? </span>
+  uniqueness?</span>
 
- <span class='run'>What of the converse? </span>
+ <span class='run'>What of the converse?</span>
 </p>
 
 
 <p>
  <span class='run'>We show that lack of independence gives a lack
-  of uniqueness. </span>
+  of uniqueness.</span>
 
  <span class='run'>Suppose there exists $\alpha _1, \dots ,
   \alpha _k$, not all zero, so that
   <p>\[
-   \alpha _1v_1 + + \alpha _2 v_2 + \cdots + \alpha _kv_k = 0. 
+   \alpha _1v_1 + + \alpha _2 v_2 + \cdots + \alpha _kv_k = 0.
   \]</p></span>
 
- <span class='run'>In particular, suppose $\alpha _i \neq 0$. </span>
+ <span class='run'>In particular, suppose $\alpha _i \neq 0$.</span>
 
  <span class='run'>Then we have
   <p>\[
-   v_i = (1/\alpha _i) \sum_{j \neq i}\alpha _j v_j. 
+   v_i = (1/\alpha _i) \sum_{j \neq i}\alpha _j v_j.
   \]</p></span>
 
  <span class='run'>Suppose $x$ can be written as a linear
-  combination of $v_1, \dots , v_k$. </span>
+  combination of $v_1, \dots , v_k$.</span>
 
  <span class='run'>In other words, there are $\beta _1, \dots ,
   \beta _k$ so that
   <p>\[
-   x = \beta _1 v_1 + \beta _2 v_2 + \cdots + \beta _k v_k 
+   x = \beta _1 v_1 + \beta _2 v_2 + \cdots + \beta _k v_k
   \]</p></span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1281,7 +1409,7 @@ Unique representation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

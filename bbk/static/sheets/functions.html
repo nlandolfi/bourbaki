@@ -118,7 +118,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -134,14 +134,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -187,7 +204,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want a notion for a correspondence between two sets.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{function} (or \t{mapping} or \t{map}) $f$ \t{from} a set $X$ \t{to} a set $Y$ is a relation (see \sheetref{relations}{Relations}) whose domain is $X$, whose range is a subset of $Y$, such that for each $x \in X$, there exists a unique $y \in Y$ so that $(x, y) \in f$.</p></div><div class="sheet-listing"><p class="sheet"> We call the unique $y \in Y$ the \t{result} of the function \t{at} the \t{argument} $x$. We call $Y$ the \t{codomain}. If the range is $Y$ we say that $f$ is a function from $X$ \t{onto} $Y$ (or $f$ is \t{surjective}). If distinct elements of $X$ are mapped to distinct elements of $Y$, we say that the function is \t{one-to-one} (or \t{injective}).</p></div><div class="sheet-listing"><p class="sheet"> We say that the function \t{maps} (or \t{takes}) elements from the domain to the codomain. Since the word "function} and the verb \say{maps} connote activity, some authors refer to the set of ordered pairs as the \t{graph} of a function and avoid defining \say{function" in terms of sets.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ and $Y$ denote sets. We denote a function named $f$ whose domain is $X$ and whose codomain is $Y$ by $f: X \to Y$. We read the notation aloud as "$f$ from $X$ to $Y$". We denote the set of all functions from $X$ to $Y$ (which is a subset of $\powerset{(X \times  Y)}$) by $Y^{X}$. A less standard but equally good notation is $X \to Y$, read aloud as "$A$ to $B$". Using the earlier notation, we denote that $f \in (A \to B)$ by $f: A \to B$. We tend to denote function by lower case latin letters, especially $f$, $g$, and $h$. $f$ is a mnemonic for function and $g$ and $h$ are nearby in the usual ordering of the Latin alphabet.</p></div><div class="sheet-listing"><p class="sheet"> Let $f: A \to B$. For each element $a \in A$, we denote the result of applying $f$ to $a$ by $f(a)$, read aloud "f of a." We sometimes drop the parentheses, and write the result as $f_a$, read aloud as "f sub a." Let $g: A \times  B \to C$. We often write $g(a,b)$ or $g_{ab}$ instead of $g((a,b))$. We read $g(a, b)$ aloud as "g of a and b". We read $g_{ab}$ aloud as "g sub a b."</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> If $X \subset Y$, the function $\Set{(x, y) \in X \times  Y}{x = y}$ is the \t{inclusion function} of $X$ into $Y$. We often introduce such a function as "the function from $X$ to $Y$ defined by $f(x) = y$". We mean by this that $f$ is a function and that we are specifying the appropraite ordered pairs using the statement, called \t{argument-value notation}. The inclusion function of $X$ into $X$ is called the \t{identity function} of $X$. If we view the identity function as a relation on $X$, it is the relation of equality on $X$.</p></div><div class="sheet-listing"><p class="sheet"> The functions $f: (X \times  Y) \to X$ defined by $f(x, y) = x$ is the \t{pair projection} of $X \times  Y$ ono $X$. Similarly $g: (X \times  Y) \to Y$ defined by $g(x, y) = y$ is the pair projection of $X \times  Y$ onto $Y$. The identity function is one-to-one and onto, the inclusion functions are one-to-one but not always onto, and the pair projections are usually not one-to-one.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want a notion for a correspondence between two sets.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{function} (or \t{mapping} or \t{map}) $f$ \t{from} a set $X$ \t{to} a set $Y$ is a relation (see \sheetref{relations}{Relations} \sheetref{relations}{Relations}) whose domain is $X$, whose range is a subset of $Y$, such that for each $x \in X$, there exists a unique $y \in Y$ so that $(x, y) \in f$.</p></div><div class="sheet-listing"><p class="sheet"> We call the unique $y \in Y$ the \t{result} of the function \t{at} the \t{argument} $x$. We call $Y$ the \t{codomain}. If the range is $Y$ we say that $f$ is a function from $X$ \t{onto} $Y$ (or $f$ is \t{surjective}). If distinct elements of $X$ are mapped to distinct elements of $Y$, we say that the function is \t{one-to-one} (or \t{injective}).</p></div><div class="sheet-listing"><p class="sheet"> We say that the function \t{maps} (or \t{takes}) elements from the domain to the codomain. Since the word "function} and the verb \say{maps} connote activity, some authors refer to the set of ordered pairs as the \t{graph} of a function and avoid defining \say{function" in terms of sets.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ and $Y$ denote sets. We denote a function named $f$ whose domain is $X$ and whose codomain is $Y$ by $f: X \to Y$. We read the notation aloud as "$f$ from $X$ to $Y$". We denote the set of all functions from $X$ to $Y$ (which is a subset of $\powerset{(X \times  Y)}$) by $Y^{X}$. A less standard but equally good notation is $X \to Y$, read aloud as "$A$ to $B$". Using the earlier notation, we denote that $f \in (A \to B)$ by $f: A \to B$. We tend to denote function by lower case latin letters, especially $f$, $g$, and $h$. $f$ is a mnemonic for function and $g$ and $h$ are nearby in the usual ordering of the Latin alphabet.</p></div><div class="sheet-listing"><p class="sheet"> Let $f: A \to B$. For each element $a \in A$, we denote the result of applying $f$ to $a$ by $f(a)$, read aloud "f of a." We sometimes drop the parentheses, and write the result as $f_a$, read aloud as "f sub a." Let $g: A \times  B \to C$. We often write $g(a,b)$ or $g_{ab}$ instead of $g((a,b))$. We read $g(a, b)$ aloud as "g of a and b". We read $g_{ab}$ aloud as "g sub a b."</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> If $X \subset Y$, the function $\Set{(x, y) \in X \times  Y}{x = y}$ is the \t{inclusion function} of $X$ into $Y$. We often introduce such a function as "the function from $X$ to $Y$ defined by $f(x) = y$". We mean by this that $f$ is a function and that we are specifying the appropraite ordered pairs using the statement, called \t{argument-value notation}. The inclusion function of $X$ into $X$ is called the \t{identity function} of $X$. If we view the identity function as a relation on $X$, it is the relation of equality on $X$.</p></div><div class="sheet-listing"><p class="sheet"> The functions $f: (X \times  Y) \to X$ defined by $f(x, y) = x$ is the \t{pair projection} of $X \times  Y$ ono $X$. Similarly $g: (X \times  Y) \to Y$ defined by $g(x, y) = y$ is the pair projection of $X \times  Y$ onto $Y$. The identity function is one-to-one and onto, the inclusion functions are one-to-one but not always onto, and the pair projections are usually not one-to-one.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -905,7 +922,175 @@ Parse: {prototype: {
 \newcommand{\range}{\ran}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./relations.html'" onkeypress="location.href='./relations.html'">
+                <span>
+                  Relations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./canonical_maps.html'" onkeypress="location.href='./canonical_maps.html'">
+            <span>
+            Canonical Maps
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./categories.html'" onkeypress="location.href='./categories.html'">
+            <span>
+            Categories
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./constant_functions.html'" onkeypress="location.href='./constant_functions.html'">
+            <span>
+            Constant Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./equations.html'" onkeypress="location.href='./equations.html'">
+            <span>
+            Equations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./families.html'" onkeypress="location.href='./families.html'">
+            <span>
+            Families
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./function_composites.html'" onkeypress="location.href='./function_composites.html'">
+            <span>
+            Function Composites
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./function_images.html'" onkeypress="location.href='./function_images.html'">
+            <span>
+            Function Images
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./function_restrictions_and_extensions.html'" onkeypress="location.href='./function_restrictions_and_extensions.html'">
+            <span>
+            Function Restrictions and Extensions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./operations.html'" onkeypress="location.href='./operations.html'">
+            <span>
+            Operations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./functions.pdf#page=2'" onkeypress="location.href='./functions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./functions-graph.pdf'" onkeypress="location.href='./functions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Functions </h1> 
       <!--
@@ -917,16 +1102,14 @@ for inclusion mappings:
 !refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕inverse_functions_extensions_and_restrictions
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want a notion for a correspondence between
-  two sets. </span>
+  two sets.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>function</span> (or
@@ -934,10 +1117,10 @@ Definition </h1>
   <span class='term'>map</span>) $f$
   <span class='term'>from</span> a set $X$
   <span class='term'>to</span> a set $Y$ is a
-  relation (see \sheetref{relations}{Relations}) whose
-  domain is $X$, whose range is a subset of $Y$,
-  such that for each $x \in X$, there exists a
-  unique $y \in Y$ so that $(x, y) \in f$. </span>
+  relation (see<a href='/sheets/relations.html'/><span class='run'>Relations</span></a>) whose domain is $X$, whose range is a
+subset of $Y$, such that for each $x \in X$,
+there exists a unique $y \in Y$ so that $(x,
+y) \in f$.</span>
 </p>
 
 
@@ -945,19 +1128,19 @@ Definition </h1>
  <span class='run'>We call the unique $y \in Y$ the
   <span class='term'>result</span> of the function
   <span class='term'>at</span> the
-  <span class='term'>argument</span> $x$. </span>
+  <span class='term'>argument</span> $x$.</span>
 
- <span class='run'>We call $Y$ the <span class='term'>codomain</span>. </span>
+ <span class='run'>We call $Y$ the <span class='term'>codomain</span>.</span>
 
  <span class='run'>If the range is $Y$ we say that $f$ is a
   function from $X$ <span class='term'>onto</span>
   $Y$ (or $f$ is
-  <span class='term'>surjective</span>). </span>
+  <span class='term'>surjective</span>).</span>
 
  <span class='run'>If distinct elements of $X$ are mapped to
   distinct elements of $Y$, we say that the
   function is <span class='term'>one-to-one</span> (or
-  <span class='term'>injective</span>). </span>
+  <span class='term'>injective</span>).</span>
 </p>
 
 
@@ -967,13 +1150,13 @@ Definition </h1>
  <span class='run'>We say that the function
   <span class='term'>maps</span> (or
   <span class='term'>takes</span>) elements from the
-  domain to the codomain. </span>
+  domain to the codomain.</span>
 
  <span class='run'>Since the word “function} and the verb “maps”
   connote activity, some authors refer to the set
   of ordered pairs as the
   <span class='term'>graph</span> of a function and
-  avoid defining “function” in terms of sets. </span>
+  avoid defining “function” in terms of sets.</span>
  <!--
   <div data-littype='run'> ❲% ill-define.❳ </div>
 
@@ -984,55 +1167,54 @@ Definition </h1>
 
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $X$ and $Y$ denote sets. </span>
+ <span class='run'>Let $X$ and $Y$ denote sets.</span>
 
  <span class='run'>We denote a function named $f$ whose domain is
-  $X$ and whose codomain is $Y$ by $f: X \to Y$. </span>
+  $X$ and whose codomain is $Y$ by $f: X \to Y$.</span>
 
  <span class='run'>We read the notation aloud as “$f$ from $X$
-  to $Y$”. </span>
+  to $Y$”.</span>
 
  <span class='run'>We denote the set of all functions from $X$
   to $Y$ (which is a subset of $\powerset{(X
-  \times  Y)}$) by $Y^{X}$. </span>
+  \times  Y)}$) by $Y^{X}$.</span>
 
  <span class='run'>A less standard but equally good notation is
-  $X \to Y$, read aloud as “$A$ to $B$”. </span>
+  $X \to Y$, read aloud as “$A$ to $B$”.</span>
 
  <span class='run'>Using the earlier notation, we denote that $f
-  \in (A \to B)$ by $f: A \to B$. </span>
+  \in (A \to B)$ by $f: A \to B$.</span>
 
  <span class='run'>We tend to denote function by lower case latin
-  letters, especially $f$, $g$, and $h$. </span>
+  letters, especially $f$, $g$, and $h$.</span>
 
  <span class='run'>$f$ is a mnemonic for function and $g$ and
   $h$ are nearby in the usual ordering of the
-  Latin alphabet. </span>
+  Latin alphabet.</span>
 </p>
 
 
 <p>
- <span class='run'>Let $f: A \to B$. </span>
+ <span class='run'>Let $f: A \to B$.</span>
 
  <span class='run'>For each element $a \in A$, we denote the
   result of applying $f$ to $a$ by $f(a)$, read
-  aloud “f of a.” </span>
+  aloud “f of a.”</span>
 
  <span class='run'>We sometimes drop the parentheses, and write
-  the result as $f_a$, read aloud as “f sub a.” </span>
+  the result as $f_a$, read aloud as “f sub a.”</span>
 
- <span class='run'>Let $g: A \times  B \to C$. </span>
+ <span class='run'>Let $g: A \times  B \to C$.</span>
 
  <span class='run'>We often write $g(a,b)$ or $g_{ab}$ instead of
-  $g((a,b))$. </span>
+  $g((a,b))$.</span>
 
- <span class='run'>We read $g(a, b)$ aloud as “g of a and b”. </span>
+ <span class='run'>We read $g(a, b)$ aloud as “g of a and b”.</span>
 
- <span class='run'>We read $g_{ab}$ aloud as “g sub a b.” </span>
+ <span class='run'>We read $g_{ab}$ aloud as “g sub a b.”</span>
  <!--
 
   <div data-littype='run'> ❲%TODO: maps to notation❳ </div>
@@ -1042,48 +1224,46 @@ Notation </h2>
 
 </p>
 
-<h2>
-Examples </h2>
+<h2>Examples</h2>
 
 <p>
  <span class='run'>If $X \subset Y$, the function $\Set{(x, y)
   \in X \times  Y}{x = y}$ is the
   <span class='term'>inclusion function</span> of $X$
-  into $Y$. </span>
+  into $Y$.</span>
 
  <span class='run'>We often introduce such a function as “the
   function from $X$ to $Y$ defined by $f(x) =
-  y$”. </span>
+  y$”.</span>
 
  <span class='run'>We mean by this that $f$ is a function and
   that we are specifying the appropraite ordered
   pairs using the statement, called
-  <span class='term'>argument-value notation</span>. </span>
+  <span class='term'>argument-value notation</span>.</span>
 
  <span class='run'>The inclusion function of $X$ into $X$ is
   called the <span class='term'>identity
-  function</span> of $X$. </span>
+  function</span> of $X$.</span>
 
  <span class='run'>If we view the identity function as a relation
-  on $X$, it is the relation of equality on $X$. </span>
+  on $X$, it is the relation of equality on $X$.</span>
 </p>
 
 
 <p>
  <span class='run'>The functions $f: (X \times  Y) \to X$ defined
   by $f(x, y) = x$ is the <span class='term'>pair
-  projection</span> of $X \times  Y$ ono $X$. </span>
+  projection</span> of $X \times  Y$ ono $X$.</span>
 
  <span class='run'>Similarly $g: (X \times  Y) \to Y$ defined by
   $g(x, y) = y$ is the pair projection of $X
-  \times  Y$ onto $Y$. </span>
-
- <span class='run'>% The range of $f$ is the first coordinate projection of $f$ and the range of $g$ is the second coordinate projection of $f$ (see \sheetref{ordered_pair_projections}{Ordered Pair Projections}). </span>
+  \times  Y$ onto $Y$.</span>
+ <!-- The range of $f$ is the first coordinate projection of $f$ and the range of $g$ is the second coordinate projection of $f$ (see \sheetref{ordered_pair_projections}{Ordered Pair Projections}). -->
 
  <span class='run'>The identity function is one-to-one and onto,
   the inclusion functions are one-to-one but not
   always onto, and the pair projections are
-  usually not one-to-one. </span>
+  usually not one-to-one.</span>
 </p>
 
 
@@ -1270,9 +1450,11 @@ Examples </h2>
   <div data-littype='run'> </div>
 </div>
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1324,7 +1506,7 @@ Examples </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

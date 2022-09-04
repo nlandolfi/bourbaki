@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1019,7 +1036,133 @@ Parse: {prototype: {
 \newcommand{\str}{\mathsf{str}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./finite_automata.html'" onkeypress="location.href='./finite_automata.html'">
+                <span>
+                  Finite Automata
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./formal_languages.html'" onkeypress="location.href='./formal_languages.html'">
+                <span>
+                  Formal Languages
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./nondeterministic_finite_automata.html'" onkeypress="location.href='./nondeterministic_finite_automata.html'">
+            <span>
+            Nondeterministic Finite Automata
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./regular_expressions.html'" onkeypress="location.href='./regular_expressions.html'">
+            <span>
+            Regular Expressions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./regular_languages.pdf#page=2'" onkeypress="location.href='./regular_languages.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./regular_languages-graph.pdf'" onkeypress="location.href='./regular_languages-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Regular Languages </h1> 
       <!--
@@ -1029,42 +1172,37 @@ Parse: {prototype: {
 !refs:sipser/1
 -->
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>Let $\Sigma $ be an alphabet. </span>
+ <span class='run'>Let $\Sigma $ be an alphabet.</span>
 
  <span class='run'>A language $L \subset \str(\Sigma )$ is called
   <span class='term'>regular</span> if there exists a
-  finite automaton that recognizes it. </span>
+  finite automaton that recognizes it.</span>
 </p>
 
-<h1>
-Regular operations </h1>
+<h1>Regular operations</h1>
 
 <p>
  <span class='run'>Let $A, B \subset \str(\Sigma )$ be languages
-  in $\Sigma $. </span>
+  in $\Sigma $.</span>
 
- <h2>
-Union  </h2>
+ <h2>Union</h2>
 
  <span class='run'>The <span class='term'>union</span>
   (<span class='term'>alternation</span>) of $A$ and
-  $B$ is, as usual, the set $A \cup B$. </span>
+  $B$ is, as usual, the set $A \cup B$.</span>
 
- <h2>
-Concatenation  </h2>
+ <h2>Concatenation</h2>
 
  <span class='run'>The <span class='term'>concatenation</span> of $A$
   and $B$ is the set $\Set{xy}{x \in A \text{
   and } y \in B}$, where $xy$ denotes length
   $\num{x}+\num{y}$ string which is the
-  concatenation of $x$ and $y$. </span>
+  concatenation of $x$ and $y$</span>
 
- <h2>
-Multi-concatenation  </h2>
+ <h2>Multi-concatenation</h2>
 
  <span class='run'>The <span class='term'>star</span>
   (<span class='term'>Kleene star</span>,
@@ -1072,30 +1210,31 @@ Multi-concatenation  </h2>
   is the set
   <p>\[
    \Set{x \in \str(\Sigma )}{\exists k \geq 0, x = y_1y_2 \cdots
-    y_k, y_i \in A}. 
+    y_k, y_i \in A}.
   \]</p></span>
 
  <span class='run'>By this definition we do mean to include the
   empty string $\varnothing$ in $A^*$, regardless
-  of $A$. </span>
+  of $A$.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We denote the alternation of $A$ and $B$ by
   $A \cup B$ as usual, but other notations
-  include $A + B$, $A\mid  B$, and $A \lor B$. </span>
+  include $A + B$, $A\mid  B$, and $A \lor B$.</span>
 
  <span class='run'>We denote the concatenation of $A$ and $B$ by
-  $AB$, but other notations include $A \circ B$. </span>
+  $AB$, but other notations include $A \circ B$.</span>
 
- <span class='run'>We denote the star of $A$ by $A^*$. </span>
+ <span class='run'>We denote the star of $A$ by $A^*$.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1147,7 +1286,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

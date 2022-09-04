@@ -59,7 +59,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -75,14 +75,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -128,7 +145,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include._future_editions_may_also_change_the_name_of_this_sheet._it_is_also_likely_that_there_will_be_added_prerequisite_sheets_on_variational_inference."><h1 class="sheet">1. Why}\footnote{Future editions will include. Future editions may also change the name of this sheet. It is also likely that there will be added prerequisite sheets on variational inference.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{variational autoencoder} (\t{VAE}) from \t{latent set} $Z$ to \t{observation set} $X$ is an ordered pair $((p_{z}^{(\theta)}, p^{(\theta)}_{x \mid z}),  q^{\phi}_{z \mid x})$ whose first coordinate is a deep latent generation pair from $Z$ to $X$ (with parameters $\theta$) and whose second coordinate is deep conditional distribution from $X$ to $Z$ (with parameters $\phi$).</p></div><div class="sheet-listing"><p class="sheet"> A VAE inherits its \t{joint function} from its deep latent generation pair. $p_z^{(\theta)}$ is called the \t{latent distribution} (or \t{prior distribution}, \t{latent model}). $p_{x \mid z}^{(\theta)}$ is called the \t{decoder distribution}. $q_{z \mid x}^{(\theta)}$ is called the \t{encoder distribution} (or \t{inference distribution}, \t{recognition distribution}).</p></div><div class="sheet-listing"><p class="sheet"> A \t{variational autoencoder family}, from $Z$ to $X$, is a family of autoencoders  $\set{ ((p_{z}^{(\theta)}, p^{(\theta)}_{x \mid z}) ,  q_{z \mid x}^{(\phi)}}_{(\theta, \phi) \in \Theta \times \Phi}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. Future editions may also change the name of this sheet. It is also likely that there will be added prerequisite sheets on variational inference. } \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{variational autoencoder} (\t{VAE}) from \t{latent set} $Z$ to \t{observation set} $X$ is an ordered pair $((p_{z}^{(\theta )}, p^{(\theta )}_{x \mid z}), q^{\phi }_{z \mid x})$ whose first coordinate is a deep latent generation pair from $Z$ to $X$ (with parameters $\theta $) and whose second coordinate is deep conditional distribution from $X$ to $Z$ (with parameters $\phi $).</p></div><div class="sheet-listing"><p class="sheet"> A VAE inherits its \t{joint function} from its deep latent generation pair. $p_z^{(\theta )}$ is called the \t{latent distribution} (or \t{prior distribution}, \t{latent model}). $p_{x \mid z}^{(\theta )}$ is called the \t{decoder distribution}. $q_{z \mid x}^{(\theta )}$ is called the \t{encoder distribution} (or \t{inference distribution}, \t{recognition distribution}).</p></div><div class="sheet-listing"><p class="sheet"> A \t{variational autoencoder family}, from $Z$ to $X$, is a family of autoencoders $\set{ ((p_{z}^{(\theta )}, p^{(\theta )}_{x \mid z}) , q_{z \mid x}^{(\phi )}}_{(\theta , \phi ) \in \Theta \times  \Phi }$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1658,7 +1675,183 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./autoencoders.html'" onkeypress="location.href='./autoencoders.html'">
+                <span>
+                  Autoencoders
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./neural_distribution_families.html'" onkeypress="location.href='./neural_distribution_families.html'">
+                <span>
+                  Neural Distribution Families
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./variational_autoencoders.pdf#page=2'" onkeypress="location.href='./variational_autoencoders.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./variational_autoencoders-graph.pdf'" onkeypress="location.href='./variational_autoencoders-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Variational Autoencoders </h1> 
+      <!--
+!name:variational_autoencoders
+!need:autoencoders
+!need:neural_distribution_families
+% get this from the above, may change in future
+% %!need:parameterized_distribution_graphs
+-->
+
+<h1>Why</h1>
+<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup>
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>variational autoencoder</span>
+  (<span class='term'>VAE</span>) from
+  <span class='term'>latent set</span> $Z$ to
+  <span class='term'>observation set</span> $X$ is an
+  ordered pair $((p_{z}^{(\theta )}, p^{(\theta )}_{x
+  \mid z}), q^{\phi }_{z \mid x})$ whose first
+  coordinate is a deep latent generation pair from
+  $Z$ to $X$ (with parameters $\theta $) and whose
+  second coordinate is deep conditional distribution
+  from $X$ to $Z$ (with parameters $\phi $).</span>
+</p>
+
+
+<p>
+ <span class='run'>A VAE inherits its <span class='term'>joint
+  function</span> from its deep latent generation
+  pair.</span>
+
+ <span class='run'>$p_z^{(\theta )}$ is called the
+  <span class='term'>latent distribution</span> (or
+  <span class='term'>prior distribution</span>,
+  <span class='term'>latent model</span>).</span>
+
+ <span class='run'>$p_{x \mid z}^{(\theta )}$ is called the
+  <span class='term'>decoder distribution</span>.</span>
+
+ <span class='run'>$q_{z \mid x}^{(\theta )}$ is called the
+  <span class='term'>encoder distribution</span> (or
+  <span class='term'>inference distribution</span>,
+  <span class='term'>recognition distribution</span>).</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>variational autoencoder
+  family</span>, from $Z$ to $X$, is a family of
+  autoencoders $\set{ ((p_{z}^{(\theta )},
+  p^{(\theta )}_{x \mid z}) , q_{z
+  \mid x}^{(\phi )}}_{(\theta , \phi ) \in \Theta
+  \times  \Phi }$.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. Future editions
+  may also change the name of this sheet. It is
+  also likely that there will be added
+  prerequisite sheets on variational inference.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1710,7 +1903,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

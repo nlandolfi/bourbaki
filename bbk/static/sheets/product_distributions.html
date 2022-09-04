@@ -52,7 +52,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -68,14 +68,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1095,18 +1112,123 @@ Parse: {prototype: {
 \newcommand{\product}{\prod}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./marginal_distributions.html'" onkeypress="location.href='./marginal_distributions.html'">
+                <span>
+                  Marginal Distributions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./product_distributions.pdf#page=2'" onkeypress="location.href='./product_distributions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./product_distributions-graph.pdf'" onkeypress="location.href='./product_distributions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Product Distributions </h1> 
       <p>
- <span class='run'>%!name:product_distributions </span>
+ <span class='run'>%!name:product_distributions</span>
 
- <span class='run'>%!need:marginal_distributions </span>
+ <span class='run'>%!need:marginal_distributions</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
@@ -1117,7 +1239,7 @@ Parse: {prototype: {
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
@@ -1127,60 +1249,62 @@ Parse: {prototype: {
   1]$ of distributions is the function $p:
   \prod_{i} A_i \to [0, 1]$ defined by
   <p>\[
-   p(x) = \prod_{i = 1}^{n} p_i(x_i). 
+   p(x) = \prod_{i = 1}^{n} p_i(x_i).
   \]</p></span>
 </p>
 
 
 <p>
- <span class='run'>\begin{proposition} </span>
+ <span class='run'>\begin{proposition}</span>
 
  <span class='run'>Let $p_i: A_i \to [0, 1]$ be probability
-  distributions. </span>
+  distributions.</span>
 
  <span class='run'>Then the product distribution of $p_1, \dots ,
   p_n$ is a probability distribution with marginals
   $p_1, \dots , p_n$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
 
- <span class='run'>\end{proposition} </span>
+ <span class='run'>\end{proposition}</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Example: fair coin repeated flips} </span>
+ <span class='run'>\ssection{Example: fair coin repeated flips}</span>
 </p>
 
 
 <p>
  <span class='run'>Suppose we want to model a coin flipped $n$
-  times. </span>
+  times.</span>
 
  <span class='run'>Supposing the coin is fair (see
   \sheetref{probability_distribtuions}{Probability
   Distributions}) we might use our probability
   distribution $p: \set{0, 1} \to [0, 1]$ which
-  assigned $p(0) = p(1) = \nicefrac{1}{2}$. </span>
+  assigned $p(0) = p(1) = \nicefrac{1}{2}$.</span>
 
  <span class='run'>Then the probability of obtaining a sequence of
   flips $x \in \set{0, 1}$ is
   <p>\[
-   \textstyle 
+   \textstyle
 
-   p(x) = \prod_{x_i = 1} p_i(1) \prod_{x_i = 0} p_i(0). 
+   p(x) = \prod_{x_i = 1} p_i(1) \prod_{x_i = 0} p_i(0).
   \]</p></span>
 
  <span class='run'>Notice that if we know $p_i(1) = \rho _i$,
   then we know $p(0) = (1-\rho _i)$ and so we
   can write the above as
   <p>\[
-   \textstyle 
+   \textstyle
 
-   p(x) = \prod_{x_i = 1} \rho _i \prod_{x_i = 0} (1-\rho _i). 
+   p(x) = \prod_{x_i = 1} \rho _i \prod_{x_i = 0} (1-\rho _i).
   \]</p></span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will include. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will include.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1232,7 +1356,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

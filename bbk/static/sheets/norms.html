@@ -160,7 +160,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -176,14 +176,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1315,7 +1332,217 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./functionals.html'" onkeypress="location.href='./functionals.html'">
+                <span>
+                  Functionals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_norm.html'" onkeypress="location.href='./real_norm.html'">
+                <span>
+                  Real Norm
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./affine_mMSE_estimators.html'" onkeypress="location.href='./affine_mMSE_estimators.html'">
+            <span>
+            Affine MMSE Estimators
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./bounded_functions.html'" onkeypress="location.href='./bounded_functions.html'">
+            <span>
+            Bounded Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./distance_covariance_functions.html'" onkeypress="location.href='./distance_covariance_functions.html'">
+            <span>
+            Distance Covariance Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./eigenvalues_and_eigenvectors.html'" onkeypress="location.href='./eigenvalues_and_eigenvectors.html'">
+            <span>
+            Eigenvalues and Eigenvectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./functional_analysis.html'" onkeypress="location.href='./functional_analysis.html'">
+            <span>
+            Functional Analysis
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./inner_product_norms.html'" onkeypress="location.href='./inner_product_norms.html'">
+            <span>
+            Inner Product Norms
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./least_squares_linear_regressors.html'" onkeypress="location.href='./least_squares_linear_regressors.html'">
+            <span>
+            Least Squares Linear Regressors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./minimum_mean_squared_error_estimates.html'" onkeypress="location.href='./minimum_mean_squared_error_estimates.html'">
+            <span>
+            Minimum Mean Squared Error Estimates
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./minimum_mean_squared_error_estimator.html'" onkeypress="location.href='./minimum_mean_squared_error_estimator.html'">
+            <span>
+            Minimum Mean Squared Error Estimator
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./norm_metrics.html'" onkeypress="location.href='./norm_metrics.html'">
+            <span>
+            Norm Metrics
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./sequence_spaces.html'" onkeypress="location.href='./sequence_spaces.html'">
+            <span>
+            Sequence Spaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./supremum_norm.html'" onkeypress="location.href='./supremum_norm.html'">
+            <span>
+            Supremum Norm
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./total_variation.html'" onkeypress="location.href='./total_variation.html'">
+            <span>
+            Total Variation
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./weighted_norms.html'" onkeypress="location.href='./weighted_norms.html'">
+            <span>
+            Weighted Norms
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./norms.pdf#page=2'" onkeypress="location.href='./norms.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./norms-graph.pdf'" onkeypress="location.href='./norms-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Norms </h1> 
       <!--
@@ -1324,33 +1551,31 @@ Parse: {prototype: {
 !need:functionals
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We generalize our notion of norm on real
-  vectors to abstract vector spaces. </span>
+  vectors to abstract vector spaces.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>norm</span> is a real-valued
-  functional that is </span>
+  functional that is</span>
 
- <span class='run'>(a) non-negative, </span>
+ <span class='run'>(a) non-negative,</span>
 
- <span class='run'>(b) definite, </span>
+ <span class='run'>(b) definite,</span>
 
- <span class='run'>(c) absolutely homogeneous, </span>
+ <span class='run'>(c) absolutely homogeneous,</span>
 
- <span class='run'>(d) and satisifies a triangle inequality. </span>
+ <span class='run'>(d) and satisifies a triangle inequality.</span>
 
  <span class='run'>The triangle inequality property requires that
   the norm applied to the sum of any two vectors
   is less than the sum of the norms on those
-  vectors. </span>
+  vectors.</span>
 </p>
 
 
@@ -1358,65 +1583,65 @@ Definition </h1>
  <span class='run'>A <span class='term'>normed space</span> (or
   <span class='term'>norm space</span>) is an ordered
   pair: a vector space whose field is the real
-  or complex numbers and a norm on the space. </span>
+  or complex numbers and a norm on the space.</span>
 
  <span class='run'>We require the vector space to be over the
   field of real or complex numbers because of
   absolute homogeneity: the absolute value of a
-  scalar must be defined. </span>
+  scalar must be defined.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>Let $(X, \F )$ be a vector space where $\F $
   is the field of real numbers or the field of
-  complex numbers. </span>
+  complex numbers.</span>
 
- <span class='run'>Let $R$ denote the set of real numbers. </span>
+ <span class='run'>Let $R$ denote the set of real numbers.</span>
 
- <span class='run'>Let $f: X \to R$. </span>
+ <span class='run'>Let $f: X \to R$.</span>
 
  <span class='run'>The functional $f$ is a norm if
   <ol>
-   <li>$f(v) \geq 0$ for all $x \in V$ </li>
+   <li>$f(v) \geq 0$ for all $x \in V$</li>
 
-   <li>$f(v) = 0$ if and only if $x = 0 \in X$. </li>
+   <li>$f(v) = 0$ if and only if $x = 0 \in X$.</li>
 
    <li>$f(\alpha  x) = \abs{\alpha }f(x)$ for all $\alpha  \in
-    \F $, $x \in X$ </li>
+    \F $, $x \in X$</li>
 
-   <li>$f(x + y) \leq f(x) + f(y)$ for all $x, y \in X$. </li>  </ol>
+   <li>$f(x + y) \leq f(x) + f(y)$ for all $x, y \in X$.</li>  </ol>
 </span>
 </p>
 
 
 <p>
  <span class='run'>In this case, for $x \in X$, we denote $f(x)$
-  by $\norm{x}$, read aloud “norm x”. </span>
+  by $\norm{x}$, read aloud “norm x”.</span>
 
  <span class='run'>The notation follows the notation of absolute
-  value as a norm. </span>
+  value as a norm.</span>
 
  <span class='run'>In some cases, we go further, and for a norm
   indexed by some parameter $\alpha $ or set $A$
-  we write $\normm{x}_\alpha $ or $\normm{x}_A$. </span>
+  we write $\normm{x}_\alpha $ or $\normm{x}_A$.</span>
 </p>
 
-<h2>
-Examples </h2>
+<h2>Examples</h2>
 
 <p>
  <span class='run'>The absolute value function is a norm on the
-  vector space of real norms. </span>
+  vector space of real norms.</span>
 
  <span class='run'>In addition, the (Euclidean norm) is a norm on
-  the vector space $\R ^n$. </span>
+  the vector space $\R ^n$.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1468,7 +1693,7 @@ Examples </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

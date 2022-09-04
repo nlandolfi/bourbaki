@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make unbiased_estimators.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 unbiased_estimators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > unbiased_estimators.tex
 

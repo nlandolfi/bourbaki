@@ -66,7 +66,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -82,14 +82,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1653,7 +1670,126 @@ Parse: {prototype: {
 \newcommand{\trp}[1]{\tr\left(#1\right)}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_trace.html'" onkeypress="location.href='./matrix_trace.html'">
+                <span>
+                  Matrix Trace
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./projections_on_affine_sets.html'" onkeypress="location.href='./projections_on_affine_sets.html'">
+                <span>
+                  Projections On Affine Sets
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./projections_on_affine_sets.html'" onkeypress="location.href='./projections_on_affine_sets.html'">
+                <span>
+                  Projections On Affine Sets
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./minimum_residual_affine_sets.pdf#page=2'" onkeypress="location.href='./minimum_residual_affine_sets.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./minimum_residual_affine_sets-graph.pdf'" onkeypress="location.href='./minimum_residual_affine_sets-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Minimum Residual Affine Sets </h1> 
       <!--
@@ -1663,44 +1799,42 @@ Parse: {prototype: {
 !need:matrix_trace
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to find a low-dimensional affine set
   into which we can project some high-dimensional
-  data. </span>
+  data.</span>
 </p>
 
-<h1>
-Problem </h1>
+<h1>Problem</h1>
 
 <p>
  <span class='run'>For $a \in \R ^n$ and $U \in \R ^{n \times
   k}$, the set $W(a, U) = \Set{a + Uz}{z \in
-  \R ^n}$ is an affine set. </span>
+  \R ^n}$ is an affine set.</span>
 
  <span class='run'>Denote the projection of $x \in \R ^n$ onto
-  $W(a, U)$ by $\proj_{W(a, U)}(x)$. </span>
+  $W(a, U)$ by $\proj_{W(a, U)}(x)$.</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{problem} </span>
+ <span class='run'>\begin{problem}</span>
 
  <span class='run'>Given $x^{(1)}, \dots , x^{(m)} \in \R ^n$, and
   a dimension $k$, find $a \in \R ^n$ and $U \in
   \R ^{n \times  k}$ with $U^\top U = I$ to
   minimize
   <p>\[
-   \textstyle 
+   \textstyle
 
-   \sum_{i = 1}^{m} \norm{x^{(i)} - \proj_{W(a, U)}(x^{(i)})}^2, 
+   \sum_{i = 1}^{m} \norm{x^{(i)} - \proj_{W(a, U)}(x^{(i)})}^2,
   \]</p>
   the sum of squared distances between $x^{(i)}$
-  and its projection on $W(a, U)$. </span>
+  and its projection on $W(a, U)$.</span>
 
- <span class='run'>\end{problem} </span>
+ <span class='run'>\end{problem}</span>
 </p>
 
 
@@ -1708,99 +1842,99 @@ Problem </h1>
  <span class='run'>Express $\proj_{W(a, U)}(x)$ as $UU^\top x + (I
   - UU^\top )a$ (see
   \sheetref{projections_on_affine_sets}{Projections on
-  Affine Sets}). </span>
+  Affine Sets}).</span>
 
  <span class='run'>We want to find $a \in \R ^n$ and $U \in
   \R ^{n \times  k}$ to minimize
   <p>\[
    \sum_{i = 1}^{n} \norm{x^{(i)} - UU^\top  x^{(i)} -
-    (I-UU^\top )a}^2. 
+    (I-UU^\top )a}^2.
   \]</p></span>
 
- <span class='run'>Fix $U \in \R ^{n \times  k}$. </span>
+ <span class='run'>Fix $U \in \R ^{n \times  k}$.</span>
 
  <span class='run'>Define $A \in \R ^{nm \times  n}$, $B \in
   \R ^{mn \times  mn}$, and $\tilde{x} \in
   \R ^{nm}$ by
   <p>\[
-   \scriptsize 
+   \scriptsize
 
-   A = \bmat{ 
+   A = \bmat{
 
-   I - UU^\top  \\ 
+   I - UU^\top  \\
 
-   \vdots \\ 
+   \vdots \\
 
-   I - UU^\top  \\ 
+   I - UU^\top  \\
 
-   },\text{ } B = \bmat{ 
+   },\text{ } B = \bmat{
 
-   I - UU^\top  & \cdots & 0\\ 
+   I - UU^\top  & \cdots & 0\\
 
-   & \ddots & \\ 
+   & \ddots & \\
 
-   0 &  \cdots &  I - UU^\top  \\ 
+   0 &  \cdots &  I - UU^\top  \\
 
-   }, \text{ and } 
+   }, \text{ and }
 
-   \tilde{x} = \bmat{ 
+   \tilde{x} = \bmat{
 
-   x^{(1)} \\ 
+   x^{(1)} \\
 
-   \vdots \\ 
+   \vdots \\
 
-   x^{(m)} 
+   x^{(m)}
 
-   }. 
+   }.
   \]</p></span>
 
  <span class='run'>Then the objective is equivalent to
   <p>\[
-   \norm{Aa - B \tilde{x}}^2 
+   \norm{Aa - B \tilde{x}}^2
   \]</p></span>
 
  <span class='run'>Any minimizer $a^\star$ satisfies the normal
   equations
   <p>\[
-   A^\top Aa^\star = A^\top B\tilde{x} 
+   A^\top Aa^\star = A^\top B\tilde{x}
   \]</p></span>
 
  <span class='run'>Since $(I - UU^\top )^\top  = I - UU^\top $
   and $(I - UU^\top )^2 = I - UU^\top $,
   <p>\[
-   \textstyle 
+   \textstyle
 
-   A^\top A = \sum_{i = 1}^{m} I - UU^\top  = m(I - UU^\top ) 
+   A^\top A = \sum_{i = 1}^{m} I - UU^\top  = m(I - UU^\top )
   \]</p>
   and
   <p>\[
-   \textstyle 
+   \textstyle
 
-   A^\top B = \bmat{I - UU^\top  & \cdots & I - UU^\top }. 
+   A^\top B = \bmat{I - UU^\top  & \cdots & I - UU^\top }.
   \]</p></span>
 
  <span class='run'>Consequently, we can express $A^\top Aa^\star =
   A^\top B\tilde{x}$ as
   <p>\[
-   \textstyle 
+   \textstyle
 
    m(I - UU^\top )a^\star = \sum_{i = 1}^{m} (I -
-    UU^\top )x^{(i)}. 
+    UU^\top )x^{(i)}.
   \]</p></span>
 
  <span class='run'>So $a^\star$ is any vector satisfying
   <p>\[
-   \textstyle 
+   \textstyle
 
    (I - UU^\top )a^\star = (I- UU^\top )(1/m)\sum_{i = 1}^{m} (I
-    - UU^\top )x^{(i)}. 
+    - UU^\top )x^{(i)}.
   \]</p></span>
 
  <span class='run'>One such point satisfying the above is $\bar{x}
-  = (1/m)\sum_{i = 1}^{m}x^{(i)}$. </span>
+  = (1/m)\sum_{i = 1}^{m}x^{(i)}$.</span>
 
  <span class='run'>An expedient choice, as it does not depnd on
-  $U$. </span>
+  $U$.</span>
 </p>
 
 
@@ -1808,50 +1942,52 @@ Problem </h1>
  <span class='run'>Now we want to find $U \in \R ^{n \times  k}$
   to minimize
   <p>\[
-   \textstyle 
+   \textstyle
 
-   \sum_{i = 1}^{m} \norm{(I-UU^\top )(x^{(i)} - \bar{x})}^2. 
+   \sum_{i = 1}^{m} \norm{(I-UU^\top )(x^{(i)} - \bar{x})}^2.
   \]</p></span>
 
  <span class='run'>Express the $i$th term of the sum as
   <p>\[
-   \textstyle 
+   \textstyle
 
-   \begin{aligned} 
+   \begin{aligned}
 
    \norm{(I - UU^\top )(x^{(i)} - \bar{x})}^2 & = (x-\bar{x})(I -
-    UU^\top )^\top (I - UU^\top )(x^{(i)} - \bar{x}) \\ 
+    UU^\top )^\top (I - UU^\top )(x^{(i)} - \bar{x}) \\
 
    & = (x^{(i)} - \bar{x})^\top (I - UU^\top )(x ^{(i)} -
-    \bar{x}) \\ 
+    \bar{x}) \\
 
    & = \norm{x^{(i)} - \bar{x}}^2 - \norm{U^\top (x^{(i)} -
-    \bar{x})}^2. 
+    \bar{x})}^2.
 
-   \end{aligned} 
+   \end{aligned}
   \]</p></span>
 
  <span class='run'>The first term is a constant with respect to
   $U$. Define $\bar{X} \in \R ^{n \times  m}$ by
   <p>\[
    \bar{X} = \bmat{x^{(1)} - \bar{x} & \cdots & x^{(m)} -
-    \bar{x}}. 
+    \bar{x}}.
   \]</p>
   Express the sum of the second terms by
   <p>\[
    \norm{U^\top \bar{X}}_F = \tr \bar{X}^\top UU^\top \bar{X} =
-    \tr(U^\top \bar{X}\bar{X}^\top U). 
+    \tr(U^\top \bar{X}\bar{X}^\top U).
   \]</p></span>
 
  <span class='run'>So we seek $U \in \R ^{n \times  k}$ with
   $U^\top U = I$ to maximize
   <p>\[
-   \tr(U^\top \bar{X}\bar{X}^\top U). 
+   \tr(U^\top \bar{X}\bar{X}^\top U).
   \]</p></span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1903,7 +2039,7 @@ Problem </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

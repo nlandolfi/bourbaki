@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -138,7 +155,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want symbols to represent identity and belonging.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> In the English language, nouns are words that name people, places and things. In these sheets, names (see \sheetref{names}{Names}) serve the role of nouns. In the English language, verbs are words which talk about actions or relations. In these sheets, we use the verbs "is} and \say{belongs" for the objects discussed. And we exclusively use the present tense.</p></div><div class="sheet-listing"><p class="sheet"> Experience shows that we can avoid the English language and use symbols for verbs. By doing this, we introduce odd new shapes and forms to which we can give specific meanings. As we use italics for names to remind us that the symbol is denoting a possibly intangible arbitrary object, we use new symbols for verbs to remind us that we are using particular verbs, in a particular sense, with a particular tense. A \t{statement} is a succession of symbols.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Identity}</p></div><div class="sheet-listing"><p class="sheet"> As an example, consider the symbol $=$. Let $a$ denote an object and $b$ denote an object. Let us suppose that these two objects are the same object (see \sheetref{identities}{Identities}). We agree that $=$ means "is" in this sense. Then we write $a = b$. It's an odd series of symbols, but a series of symbols nonetheless. And if we read it aloud, we would read $a$ as "the object denoted by a}, then $=$ as \say{is}, then $b$ as \say{the object denoted by b". Altogether then, "the object denoted by $a$ is the object denoted by $b$." We might box these three symbols \fbox{$a = b$} to make clear that they are meant to be read together, but experience shows that (as with English sentences and words) we do not need boxes.</p></div><div class="sheet-listing"><p class="sheet"> The symbol $=$ is (appropriately) a symmetric symbol. If we flip it left and right, it is the same symbol. This reflects the symmetry of the English sentences represented (see \sheetref{identities}{Identities}). The symbols $a = b$ mean the same as the symbols $b = a$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Belonging}</p></div><div class="sheet-listing"><p class="sheet"> As a second example, consider the symbol $\in$. Let $a$ denote an object and let $A$ denote a set. We agree that $\in$ means "belongs to} in the sense of \say{is an element of} or \say{is a member of} (see \sheetref{sets}{Sets"). Then we write $a \in A$. We read these symbols as "the object denoted by $a$ belongs to the set denoted by $A$". \ifhmode\unskip\fi\footnote{ The symbol $\in$ is a stylized lower case Greek letter $\epsilon $, which is a mnemonic for the ancient Greek word $\grave{\epsilon } \sigma  \tau  \acute{\iota }$ which means, roughly, "belongs". Since in English, $\epsilon $ is read aloud "ehp-sih-lawn,} $\in$ is also a mnemonic for \say{element of". }</p></div><div class="sheet-listing"><p class="sheet"> The symbol $\in$ is not symmetric. If we flip it left and right it looks different. This reflects that $a \in A$ does not the mean the same as $A \in a$ (see \sheetref{sets}{Sets}). As with english words, the order of symbols is significant. The word "word} is not the same as the word \say{drow". Our symbolism for belonging reflects the concept's lack of symmetry.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want symbols to represent identity and belonging.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> In the English language, nouns are words that name people, places and things. In these sheets, names (see \sheetref{names}{Names}) serve the role of nouns. In the English language, verbs are words which talk about actions or relations. In these sheets, we use the verbs "is} and \say{belongs" for the objects discussed. And we exclusively use the present tense.</p></div><div class="sheet-listing"><p class="sheet"> Experience shows that we can avoid the English language and use symbols for verbs. By doing this, we introduce odd new shapes and forms to which we can give specific meanings.</p></div><div class="sheet-listing"><p class="sheet"> As we use italics for names to remind us that the symbol is denoting a possibly intangible arbitrary object, we use new symbols for verbs to remind us that we are using particular verbs, in a particular sense, with a particular tense.</p></div><div class="sheet-listing"><p class="sheet"> A \t{statement} is a succession of symbols.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Identity}</p></div><div class="sheet-listing"><p class="sheet"> As an example, consider the symbol $=$. Let $a$ denote an object and $b$ denote an object. Let us suppose that these two objects are the same object (see \sheetref{identities}{Identities}).</p></div><div class="sheet-listing"><p class="sheet"> We agree that $=$ means "is" in this sense. Then we write $a = b$. It's an odd series of symbols, but a series of symbols nonetheless. And if we read it aloud, we would read $a$ as "the object denoted by a}, then $=$ as \say{is}, then $b$ as \say{the object denoted by b". Altogether then, "the object denoted by $a$ is the object denoted by $b$." We might box these three symbols \fbox{$a = b$} to make clear that they are meant to be read together, but experience shows that (as with English sentences and words) we do not need boxes.</p></div><div class="sheet-listing"><p class="sheet"> The symbol $=$ is (appropriately) a symmetric symbol. If we flip it left and right, it is the same symbol. This reflects the symmetry of the English sentences represented (see \sheetref{identities}{Identities}). The symbols $a = b$ mean the same as the symbols $b = a$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Belonging}</p></div><div class="sheet-listing"><p class="sheet"> As a second example, consider the symbol $\in$. Let $a$ denote an object and let $A$ denote a set.</p></div><div class="sheet-listing"><p class="sheet"> We agree that $\in$ means "belongs to} in the sense of \say{is an element of} or \say{is a member of} (see \sheetref{sets}{Sets"). Then we write $a \in A$. We read these symbols as "the object denoted by $a$ belongs to the set denoted by $A$". \ifhmode\unskip\fi\footnote{ The symbol $\in$ is a stylized lower case Greek letter $\epsilon $, which is a mnemonic for the ancient Greek word which means, roughly, "belongs". Since in English, $\epsilon $ is read aloud "ehp-sih-lawn,} $\in$ is also a mnemonic for \say{element of". }</p></div><div class="sheet-listing"><p class="sheet"> The symbol $\in$ is not symmetric. If we flip it left and right it looks different. This reflects that $a \in A$ does not the mean the same as $A \in a$ (see \sheetref{sets}{Sets}). As with english words, the order of symbols is significant. The word "word} is not the same as the word \say{drow".</p></div><div class="sheet-listing"><p class="sheet"> Our symbolism for belonging reflects the concept's lack of symmetry.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -528,7 +545,126 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./identities.html'" onkeypress="location.href='./identities.html'">
+                <span>
+                  Identities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./sets.html'" onkeypress="location.href='./sets.html'">
+                <span>
+                  Sets
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./logical_statements.html'" onkeypress="location.href='./logical_statements.html'">
+            <span>
+            Logical Statements
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./statements.pdf#page=2'" onkeypress="location.href='./statements.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./statements-graph.pdf'" onkeypress="location.href='./statements-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Statements </h1> 
       <!--
@@ -537,12 +673,11 @@ Parse: {prototype: {
 !need:sets
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want symbols to represent identity and
-  belonging. </span>
+  belonging.</span>
  <!--
 % We want to form say that objects are the same and that objects belong to sets.
 % about objects.
@@ -552,23 +687,21 @@ Why </h1>
 
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>In the English language, nouns are words that
-  name people, places and things. </span>
+  name people, places and things.</span>
 
- <span class='run'>In these sheets, names (see
-  \sheetref{names}{Names}) serve the role of nouns. </span>
+ <span class='run'>In these sheets, names (see<a href='/sheets/names.html'/><span class='run'>Names</span></a>) serve the role of nouns.</span>
 
  <span class='run'>In the English language, verbs are words which
-  talk about actions or relations. </span>
+  talk about actions or relations.</span>
 
  <span class='run'>In these sheets, we use the verbs “is” and
-  “belongs” for the objects discussed. </span>
+  “belongs” for the objects discussed.</span>
 
- <span class='run'>And we exclusively use the present tense. </span>
+ <span class='run'>And we exclusively use the present tense.</span>
  <!--
 % Particular verbs like \say{is} and \say{belongs} reference relationships between objects.
 % These special symbols are meant
@@ -581,26 +714,28 @@ Definition </h1>
 
 <p>
  <span class='run'>Experience shows that we can avoid the English
-  language and use symbols for verbs. </span>
+  language and use symbols for verbs.</span>
 
  <span class='run'>By doing this, we introduce odd new shapes and
-  forms to which we can give specific meanings. </span>
-
- <span class='run'>% Of course, the forms and symbols we will use are taken from other authors, and so have been given meanings there, and so there is still a possibility for confusion. </span>
+  forms to which we can give specific meanings.</span>
+ <!--
+  <div data-littype='run'> ❲% Of course, the forms and symbols we will use are taken from other authors, and so have been given meanings there, and so there is still a possibility for confusion.❳ </div>
+  -->
 
  <span class='run'>As we use italics for names to remind us that
   the symbol is denoting a possibly intangible
   arbitrary object, we use new symbols for verbs
   to remind us that we are using particular
   verbs, in a particular sense, with a particular
-  tense. </span>
+  tense.</span>
+ <!--
+  <div data-littype='run'> ❲% ), we use symbols  relations between objects to remind us that these relations have been given very particular meanings.❳ </div>
 
- <span class='run'>% ), we use symbols  relations between objects to remind us that these relations have been given very particular meanings. </span>
-
- <span class='run'>% We want to give particular meanings so that we know what we say, and to help avoid saying something which we have not said what it means. </span>
+  <div data-littype='run'> ❲% We want to give particular meanings so that we know what we say, and to help avoid saying something which we have not said what it means.❳ </div>
+  -->
 
  <span class='run'>A <span class='term'>statement</span> is a
-  succession of symbols. </span>
+  succession of symbols.</span>
 </p>
 
 
@@ -668,59 +803,61 @@ Definition </h1>
 % \end{account}
 -->
 
-<h2>
-Identity </h2>
+<h2>Identity</h2>
 
 <p>
- <span class='run'>As an example, consider the symbol $=$. </span>
+ <span class='run'>As an example, consider the symbol $=$.</span>
 
  <span class='run'>Let $a$ denote an object and $b$ denote an
-  object. </span>
+  object.</span>
 
  <span class='run'>Let us suppose that these two objects are the
-  same object (see \sheetref{identities}{Identities}). </span>
+  same object (see<a href='/sheets/identities.html'/><span class='run'>Identities</span></a>).</span>
+ <!--
 
- <span class='run'>% and that we know what \say{similar} means. </span>
+  <div data-littype='run'> ❲% and that we know what \say{similar} means.❳ </div>
 
- <span class='run'>% We might say that these objects are in the relationship of being similar, and. </span>
+  <div data-littype='run'> ❲% We might say that these objects are in the relationship of being similar, and.❳ </div>
+  -->
 
- <span class='run'>We agree that $=$ means “is” in this sense. </span>
+ <span class='run'>We agree that $=$ means “is” in this sense.</span>
 
- <span class='run'>Then we write $a = b$. </span>
+ <span class='run'>Then we write $a = b$.</span>
 
  <span class='run'>It’s an odd series of symbols, but a series
-  of symbols nonetheless. </span>
+  of symbols nonetheless.</span>
 
  <span class='run'>And if we read it aloud, we would read $a$
   as “the object denoted by a”, then $=$ as
-  “is”, then $b$ as “the object denoted by b”. </span>
+  “is”, then $b$ as “the object denoted by b”.</span>
 
  <span class='run'>Altogether then, “the object denoted by $a$ is
-  the object denoted by $b$.” </span>
+  the object denoted by $b$.”</span>
 
  <span class='run'>We might box these three symbols \fbox{$a =
   b$} to make clear that they are meant to be
   read together, but experience shows that (as
   with English sentences and words) we do not
-  need boxes. </span>
+  need boxes.</span>
 </p>
 
 
 <p>
- <span class='run'>% The symbol $=$ is traditionally used for statements of identity or equality. </span>
+ <!--
+  <div data-littype='run'> ❲% The symbol $=$ is traditionally used for statements of identity or equality.❳ </div>
+  -->
 
  <span class='run'>The symbol $=$ is (appropriately) a symmetric
-  symbol. </span>
+  symbol.</span>
 
  <span class='run'>If we flip it left and right, it is the same
-  symbol. </span>
+  symbol.</span>
 
  <span class='run'>This reflects the symmetry of the English
-  sentences represented (see
-  \sheetref{identities}{Identities}). </span>
+  sentences represented (see<a href='/sheets/identities.html'/><span class='run'>Identities</span></a>).</span>
 
  <span class='run'>The symbols $a = b$ mean the same as the
-  symbols $b = a$. </span>
+  symbols $b = a$.</span>
 </p>
 
 
@@ -738,22 +875,22 @@ Identity </h2>
 % \s{Comparison to English}
 -->
 
-<h2>
-Belonging </h2>
+<h2>Belonging</h2>
 
 <p>
- <span class='run'>As a second example, consider the symbol $\in$. </span>
+ <span class='run'>As a second example, consider the symbol $\in$.</span>
 
  <span class='run'>Let $a$ denote an object and let $A$ denote a
-  set. </span>
-
- <span class='run'>%Let us suppose that the object denoted by $a$ belongs to the set denoted by $A$ (see \sheetref{sets}{Sets}). </span>
+  set.</span>
+ <!--
+  <div data-littype='run'> ❲%Let us suppose that the object denoted by $a$ belongs to the set denoted by $A$ (see \sheetref{sets}{Sets}).❳ </div>
+  -->
 
  <span class='run'>We agree that $\in$ means “belongs to” in the
   sense of “is an element of” or “is a member
-  of” (see \sheetref{sets}{Sets}). </span>
+  of” (see<a href='/sheets/sets.html'/><span class='run'>Sets</span></a>).</span>
 
- <span class='run'>Then we write $a \in A$. </span>
+ <span class='run'>Then we write $a \in A$.</span>
 
  <span class='run'>We read these symbols as “the object denoted
   by $a$ belongs to the set denoted by $A$”.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
@@ -761,25 +898,25 @@ Belonging </h2>
 
 
 <p>
- <span class='run'>The symbol $\in$ is not symmetric. </span>
+ <span class='run'>The symbol $\in$ is not symmetric.</span>
 
  <span class='run'>If we flip it left and right it looks
-  different. </span>
+  different.</span>
 
  <span class='run'>This reflects that $a \in A$ does not the
-  mean the same as $A \in a$ (see
-  \sheetref{sets}{Sets}). </span>
+  mean the same as $A \in a$ (see<a href='/sheets/sets.html'/><span class='run'>Sets</span></a>).</span>
 
  <span class='run'>As with english words, the order of symbols is
-  significant. </span>
+  significant.</span>
 
  <span class='run'>The word “word” is not the same as the word
-  “drow”. </span>
-
- <span class='run'>%The symmetry of identity $=$ is special. </span>
+  “drow”.</span>
+ <!--
+  <div data-littype='run'> ❲%The symmetry of identity $=$ is special.❳ </div>
+  -->
 
  <span class='run'>Our symbolism for belonging reflects the
-  concept’s lack of symmetry. </span>
+  concept’s lack of symmetry.</span>
 </p>
 
 
@@ -973,17 +1110,18 @@ Belonging </h2>
 %
 % \blankpage
 -->
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>The symbol $\in$ is a stylized lower case
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>The symbol $\in$ is a stylized lower case
   Greek letter $\epsilon $, which is a mnemonic
-  for the ancient Greek word $\grave{\epsilon }
-  \sigma  \tau  \acute{\iota }$ which means,
-  roughly, “belongs”. </span>
+  for the ancient Greek word ἐστί which means,
+  roughly, “belongs”.</span>
 
  <span class='run'>Since in English, $\epsilon $ is read aloud
   “ehp-sih-lawn,” $\in$ is also a mnemonic for
-  “element of”. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+  “element of”.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1035,7 +1173,7 @@ Belonging </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

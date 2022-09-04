@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1390,7 +1407,140 @@ Parse: {prototype: {
 \newcommand{\tranposep}[1]{\transposep{#1}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_linear_combinations.html'" onkeypress="location.href='./real_linear_combinations.html'">
+                <span>
+                  Real Linear Combinations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./vectors_as_matrices.html'" onkeypress="location.href='./vectors_as_matrices.html'">
+                <span>
+                  Vectors as Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix-vector_products.html'" onkeypress="location.href='./matrix-vector_products.html'">
+            <span>
+            Matrix-Vector Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./neural_networks.html'" onkeypress="location.href='./neural_networks.html'">
+            <span>
+            Neural Networks
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrix-matrix_products.html'" onkeypress="location.href='./real_matrix-matrix_products.html'">
+            <span>
+            Real Matrix-Matrix Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_matrix-vector_products.pdf#page=2'" onkeypress="location.href='./real_matrix-vector_products.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_matrix-vector_products-graph.pdf'" onkeypress="location.href='./real_matrix-vector_products-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Matrix-Vector Products </h1> 
       <!--
@@ -1400,15 +1550,13 @@ Parse: {prototype: {
 !refs:nl
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>We explore matrix-vector multiplication. </span>
+ <span class='run'>We explore matrix-vector multiplication.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Given a matrix $A \in \R ^{m \times  n}$ and
@@ -1417,136 +1565,137 @@ Definition </h1>
   <span class='term'>with</span> $x$ is the vector
   $y \in \R ^{m}$ defined by
   <p>\[
-   y_i = \sum_{j = 1}^{n} A_{ij} x_j, \quad i = 1, \dots , m. 
+   y_i = \sum_{j = 1}^{n} A_{ij} x_j, \quad i = 1, \dots , m.
   \]</p></span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>We denote the product of $A$ with $x$ by $Ax$. </span>
+ <span class='run'>We denote the product of $A$ with $x$ by $Ax$.</span>
 
  <span class='run'>With which we concisely write the system of
-  linear equations $(A, b)$ as $b = Ax$. </span>
+  linear equations $(A, b)$ as $b = Ax$.</span>
 </p>
 
 
 <p>
  <span class='run'>This notation suggests both algebraic and
   geometric interpretations of solving systems of
-  linear equations. </span>
+  linear equations.</span>
 
  <span class='run'>The algebraic interpretation is that we are
   interested in the invertibility of the function
-  $x \mapsto Ax$. </span>
+  $x \mapsto Ax$.</span>
 
  <span class='run'>In other words, we are interested in the
-  existence of an inverse element of $A$. </span>
+  existence of an inverse element of $A$.</span>
 
  <span class='run'>The geometric interpretation is that $A$
-  transforms the vector $x$. </span>
+  transforms the vector $x$.</span>
 </p>
 
 
 <p>
  <span class='run'>Conversely, we can view $x$ as transforming
-  (acting on) $A$. </span>
+  (acting on) $A$.</span>
 
  <span class='run'>Let $a^j \in \R ^m$ denote the $j$th column of
   $A$, then
   <p>\[
-   Ax = \sum_{j = 1}^{n} x_j a^j. 
+   Ax = \sum_{j = 1}^{n} x_j a^j.
   \]</p></span>
 
  <span class='run'>In other words, $y$ is linear combination of
-  the columns of $A$. </span>
+  the columns of $A$.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Properties} </span>
+ <span class='run'>\ssection{Properties}</span>
 
  <span class='run'>We call the function $f: \R ^n \to \R ^m$
   defined by $f(x) = Ax$ the
   <span class='term'>matrix multiplication
   function</span> (or <span class='term'>matrix-vector
-  product function</span>) associated with $A$. </span>
+  product function</span>) associated with $A$.</span>
 
  <span class='run'>$f$ is satisfies the following two important
   properties:
   <ol>
-   <li>$A(x + y) = Ax + Ay$ </li>
+   <li>$A(x + y) = Ax + Ay$</li>
 
-   <li>$A(\alpha x) = \alpha Ax$. </li>  </ol>
+   <li>$A(\alpha x) = \alpha Ax$.</li>  </ol>
 </span>
 
  <span class='run'>We call such a function $f$
-  <span class='term'>linear</span>. </span>
+  <span class='term'>linear</span>.</span>
 
  <span class='run'>In other words, the matrix multiplication
-  function is linear. </span>
+  function is linear.</span>
 
  <span class='run'>Conversely, if $g: \R ^n \to \R ^m$ is linear,
-  there exists a matrix inducing $g$. </span>
+  there exists a matrix inducing $g$.</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{proposition} </span>
+ <span class='run'>\begin{proposition}</span>
 
- <span class='run'>Let $f: \R ^n \to \R ^m$ be linear. </span>
+ <span class='run'>Let $f: \R ^n \to \R ^m$ be linear.</span>
 
  <span class='run'>Then there exists a unique $A \in \R ^{m
   \times  n}$ satisfying $f(x) = Ax$ for all $x
-  \in \R ^n$. </span>
+  \in \R ^n$.</span>
 
- <span class='run'>\end{proposition} </span>
+ <span class='run'>\end{proposition}</span>
 
- <span class='run'>\begin{proof} </span>
+ <span class='run'>\begin{proof}</span>
 
- <span class='run'>Evaluate $f$ at the standard unit vectors $e_i$. </span>
+ <span class='run'>Evaluate $f$ at the standard unit vectors $e_i$.</span>
 
  <span class='run'>The $i$th component of $e_i$ is 1 and all
-  other components are 0. </span>
+  other components are 0.</span>
 
- <span class='run'>\end{proof} </span>
+ <span class='run'>\end{proof}</span>
 
  <span class='run'>Moreover, this matrix representation of $f$ is
-  unique. </span>
+  unique.</span>
 
- <span class='run'>\begin{proposition} </span>
+ <span class='run'>\begin{proposition}</span>
 
  <span class='run'>If $A, B \in \R ^{m \times  n}$ are two
   matrices so that $f(x) = Ax = Bx$, then $A =
   B$.
-  <span class='run'>\end{proposition} </span></span>
+  <span class='run'>\end{proposition}</span></span>
 </p>
 
 
 <p>
- <span class='run'>\begin{proof} </span>
+ <span class='run'>\begin{proof}</span>
 
  <span class='run'>We have $Ax - Bx = 0$ so $(A - B)x = 0$
-  for every $x$. </span>
+  for every $x$.</span>
 
  <span class='run'>In particular $y^\top (A - B)x = 0$ for every
-  $x \in \R ^{n}, y \in \R ^m$. </span>
+  $x \in \R ^{n}, y \in \R ^m$.</span>
 
  <span class='run'>In particular, $e_{i}^\top (A - b)e_{j} = 0$.
   Conclusion: $A_{ij} - B_{ij} = 0$, and conclude
-  that $A_{ij} = B_{ij}$. Thus, $A = B$. </span>
+  that $A_{ij} = B_{ij}$. Thus, $A = B$.</span>
 
- <span class='run'>Evaluate $f$ at the standard unit vectors $e_i$. </span>
+ <span class='run'>Evaluate $f$ at the standard unit vectors $e_i$.</span>
 
  <span class='run'>The $i$th component of $e_i$ is 1 and all
-  other components are 0. </span>
+  other components are 0.</span>
 
- <span class='run'>\end{proof} </span>
+ <span class='run'>\end{proof}</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1598,7 +1747,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

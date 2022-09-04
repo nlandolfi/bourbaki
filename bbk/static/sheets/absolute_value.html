@@ -181,7 +181,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -197,14 +197,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1176,7 +1193,238 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./interval_length.html'" onkeypress="location.href='./interval_length.html'">
+                <span>
+                  Interval Length
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./complex_numbers.html'" onkeypress="location.href='./complex_numbers.html'">
+            <span>
+            Complex Numbers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./convergence_in_measure.html'" onkeypress="location.href='./convergence_in_measure.html'">
+            <span>
+            Convergence In Measure
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./convergence_in_probability.html'" onkeypress="location.href='./convergence_in_probability.html'">
+            <span>
+            Convergence In Probability
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./expectation_deviation_upper_bound.html'" onkeypress="location.href='./expectation_deviation_upper_bound.html'">
+            <span>
+            Expectation Deviation Upper Bound
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./function_growth_classes.html'" onkeypress="location.href='./function_growth_classes.html'">
+            <span>
+            Function Growth Classes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./functionals.html'" onkeypress="location.href='./functionals.html'">
+            <span>
+            Functionals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integrable_function_spaces.html'" onkeypress="location.href='./integrable_function_spaces.html'">
+            <span>
+            Integrable Function Spaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./metric_space_examples.html'" onkeypress="location.href='./metric_space_examples.html'">
+            <span>
+            Metric Space Examples
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./metrics.html'" onkeypress="location.href='./metrics.html'">
+            <span>
+            Metrics
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./plane_norm.html'" onkeypress="location.href='./plane_norm.html'">
+            <span>
+            Plane Norm
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./pointwise_and_measure_limits.html'" onkeypress="location.href='./pointwise_and_measure_limits.html'">
+            <span>
+            Pointwise and Measure Limits
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_continuity.html'" onkeypress="location.href='./real_continuity.html'">
+            <span>
+            Real Continuity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_egoprox_sequences.html'" onkeypress="location.href='./real_egoprox_sequences.html'">
+            <span>
+            Real Egoprox Sequences
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_integral_monotone_convergence.html'" onkeypress="location.href='./real_integral_monotone_convergence.html'">
+            <span>
+            Real Integral Monotone Convergence
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_limits.html'" onkeypress="location.href='./real_limits.html'">
+            <span>
+            Real Limits
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_norm.html'" onkeypress="location.href='./real_norm.html'">
+            <span>
+            Real Norm
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./supremum_norm.html'" onkeypress="location.href='./supremum_norm.html'">
+            <span>
+            Supremum Norm
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./variation_measure.html'" onkeypress="location.href='./variation_measure.html'">
+            <span>
+            Variation Measure
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./absolute_value.pdf#page=2'" onkeypress="location.href='./absolute_value.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./absolute_value-graph.pdf'" onkeypress="location.href='./absolute_value-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Absolute Value </h1> 
       <!--
@@ -1184,83 +1432,81 @@ Parse: {prototype: {
 !need:interval_length
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want a notion of distance between elements
-  of the real line. </span>
+  of the real line.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <!-- We define a function which maps the real numbers onto the nonnegative real numbers.-->
 
  <span class='run'>The <span class='term'>absolute value</span> of a
   real number is the greater of itself and its
-  additive inverse. </span>
+  additive inverse.</span>
 
  <span class='run'>In other words, if $x$ is positive, then the
-  absolute value of $x$ is $x$. </span>
+  absolute value of $x$ is $x$.</span>
 
  <span class='run'>If $x$ is negative, then the absolute value of
   $x$ is $-x$ (which would be a positive real
-  number). </span>
+  number).</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We denote the absolute value of a real number
-  $x \in \R $ by $\abs{x}$. </span>
+  $x \in \R $ by $\abs{x}$.</span>
  <!--Thus $\abs{·}: 𝗥 → 𝗥$ can be viewed as a real-valued function on the real numbers which is nonnegative.-->
 
 </p>
 
-<h2>
-Distance </h2>
+<h2>Distance</h2>
 
 <p>
  <span class='run'>The absolute value can be interpreted as the
   distance between the point corresponding to the
-  real number and the point corresponding to 0. </span>
+  real number and the point corresponding to 0.</span>
 
- <span class='run'>We can generalize this idea. </span>
+ <span class='run'>We can generalize this idea.</span>
 
- <span class='run'>Consider $x, y \in \R $. </span>
+ <span class='run'>Consider $x, y \in \R $.</span>
 
  <span class='run'>If $x &gt; y$, then $x - y &gt; 0$ and so
   the distance between the corresponding points is
-  $x - y$. </span>
+  $x - y$.</span>
 
  <span class='run'>If $x &lt; y$ then $y - x &gt; 0$, and so
-  the distance is $y - x$. </span>
+  the distance is $y - x$.</span>
 </p>
 
 
 <p>
- <span class='run'>The observation is that $\abs{-x} = \abs{x}$. </span>
+ <span class='run'>The observation is that $\abs{-x} = \abs{x}$.</span>
 
  <span class='run'>So
   <p>\[
-   \abs{y - x} = \abs{-(x - y)} = \abs{x-y}. 
+   \abs{y - x} = \abs{-(x - y)} = \abs{x-y}.
   \]</p></span>
 
  <span class='run'>So if we just care about the distance between
   the points corresponding to $y$ and $x$, we can
   consider $\abs{x - y}$, without regard for their
-  order. </span>
+  order.</span>
 
  <span class='run'>In other words, the function $(x, y)
   &nbsp;&nbsp;&nbsp;&nbsp; \abs{x - y}$ is symmetric
-  in $x$ and $y$. </span>
+  in $x$ and $y$.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1312,7 +1558,7 @@ Distance </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

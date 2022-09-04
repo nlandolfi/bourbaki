@@ -90,7 +90,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -106,14 +106,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1165,7 +1182,147 @@ Parse: {prototype: {
 \renewcommand{\span}{\mathword{span}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_vectors_span.html'" onkeypress="location.href='./real_vectors_span.html'">
+                <span>
+                  Real Vectors Span
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./invariant_real_subspaces.html'" onkeypress="location.href='./invariant_real_subspaces.html'">
+            <span>
+            Invariant Real Subspaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./orthogonal_real_subspaces.html'" onkeypress="location.href='./orthogonal_real_subspaces.html'">
+            <span>
+            Orthogonal Real Subspaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrix_range.html'" onkeypress="location.href='./real_matrix_range.html'">
+            <span>
+            Real Matrix Range
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrix_rank.html'" onkeypress="location.href='./real_matrix_rank.html'">
+            <span>
+            Real Matrix Rank
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./subspaces.html'" onkeypress="location.href='./subspaces.html'">
+            <span>
+            Subspaces
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_subspaces.pdf#page=2'" onkeypress="location.href='./real_subspaces.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_subspaces-graph.pdf'" onkeypress="location.href='./real_subspaces-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Subspaces </h1> 
       <!--
@@ -1174,80 +1331,79 @@ Parse: {prototype: {
 !refs:ee263/linalg
 -->
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A nonempty set $S \subset \R ^n$ is called a
   <span class='term'>subspace</span>
   (<span class='term'>linear subspace</span>) if
   <ol>
-   <li>$x + y \in S$ for all $x, y \in S$, and </li>
+   <li>$x + y \in S$ for all $x, y \in S$, and</li>
 
-   <li>$\alpha x \in S$ for all $\alpha  \in \R $, $x \in S$. </li>  </ol>
+   <li>$\alpha x \in S$ for all $\alpha  \in \R $, $x \in S$.</li>  </ol>
 </span>
 
  <span class='run'>We say that that $S$ is (1)
   <span class='term'>closed under vector
   addition</span> and (2) <span class='term'>closed
-  under scalar multiplication</span>. </span>
+  under scalar multiplication</span>.</span>
 </p>
 
-<h1>
-Examples </h1>
+<h1>Examples</h1>
 
 <p>
  <span class='run'>The set $S_1 = \R ^n$ is a subspace. In other
-  words, the entire set is a subspace of itself. </span>
+  words, the entire set is a subspace of itself.</span>
 
  <span class='run'>The set $S_2 = \set{0}$, consisting of a
-  single point, the origin, is a subspace. </span>
+  single point, the origin, is a subspace.</span>
 
- <span class='run'>$S_1$ is the biggest subspace. </span>
+ <span class='run'>$S_1$ is the biggest subspace.</span>
 
  <span class='run'>In other words, if $S&#39;$ is another subspace
-  of $\R ^n$, then $S&#39; \subset S_1$. </span>
+  of $\R ^n$, then $S&#39; \subset S_1$.</span>
 
  <span class='run'>If $S$ is a subspace, it is nonempty, so
   there is $x \in S$, and it is closed under
-  scalar multiplication, so $0\cdot x = 0 \in S$. </span>
+  scalar multiplication, so $0\cdot x = 0 \in S$.</span>
 
  <span class='run'>In other words, every subspace contains the
-  origin. </span>
+  origin.</span>
 
  <span class='run'>So $S_2$ is the smallest subspace, in the
   sense that if $S&#39;$ is another subspace $S_2
-  \subset S&#39;$. </span>
+  \subset S&#39;$.</span>
 </p>
 
 
 <p>
  <span class='run'>The span (see \sheetref{real_vectors_span}{Real
   Vectors Span}) of a set of vectors $v_1,
-  \dots , v_k$ is a subspace. </span>
+  \dots , v_k$ is a subspace.</span>
 
  <span class='run'>For two subspaces $S, T \subset \R ^n$, their
   sum
   <p>\[
-   S + T = \Set{x + y}{x \in S, y \in T} 
+   S + T = \Set{x + y}{x \in S, y \in T}
   \]</p>
-  is a subspace. </span>
+  is a subspace.</span>
 </p>
 
-<h2>
-Geometric intuition </h2>
+<h2>Geometric intuition</h2>
 
 <p>
  <span class='run'>Roughly speaking, a subspace $S$ is a flat set
-  which passes through the origin. </span>
+  which passes through the origin.</span>
 
- <span class='run'>In $\R ^2$, the subspaces are the lines. </span>
+ <span class='run'>In $\R ^2$, the subspaces are the lines.</span>
 
- <span class='run'>In $\R ^3$, the lines and the planes. </span>
+ <span class='run'>In $\R ^3$, the lines and the planes.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1299,7 +1455,7 @@ Geometric intuition </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

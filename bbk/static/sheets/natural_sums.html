@@ -90,7 +90,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -106,14 +106,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -159,7 +176,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to combine two groups.\footnote{Future editions will change this section.}</p></div><div class="sheet-listing" id="defining_result"><h1 class="sheet">2. Defining Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For each natural number $m$, there exists a function $s_m: \omega \to \omega$ which satisfies \[ s_m(0) = m \quad \text{ and } \quad s_m(\ssuc{n}) = \ssuc{(s_m(n))} \] for every natural number $n$. \end{proposition} \begin{proof} The proof uses the recursion theorem (see \sheetref{recursion_theorem}{Recursion Theorem}).\footnote{Future editions will give the entire account.} \end{proof} Let $m$ and $n$ be natural numbers. The value $s_m(n)$ is the \t{sum} of $m$ with $n$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the sum $s_m(n)$ by $m + n$.</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> The properties of sums are direct applications of the principle of mathematical induction (see \sheetref{natural_induction}{Natural Induction}).\footnote{Future editions will include the accounts.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associative] Let $k$, $m$, and $n$ be natural numbers. Then \[ (k + m) + n = k + (m + n). \] \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Commutative] Let $m$ and $n$ be natural numbers. Then \[ m + n = n + m. \] \end{proposition}</p></div><div class="sheet-listing" id="relation_to_addition"><h1 class="sheet">4. Relation to Addition</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Distributive] Let $k$, $m$, and $n$ be natural numbers. Then \[ k \cdot (m + n) = (k \cdot m) + (k \cdot n). \] \end{proposition}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to combine two groups.\footnote{Future editions will change this section.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Defining result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For each natural number $m$, there exists a function $s_m: \omega  \to \omega $ which satisfies \[ s_m(0) = m \quad \text{ and } \quad s_m(\ssuc{n}) = \ssuc{(s_m(n))} \] for every natural number $n$.\end{proposition} \begin{proof}The proof uses the recursion theorem (see \sheetref{recursion_theorem}{Recursion Theorem}).\footnote{Future editions will give the entire account.}\end{proof} Let $m$ and $n$ be natural numbers. The value $s_m(n)$ is the \t{sum} of $m$ with $n$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the sum $s_m(n)$ by $m + n$. \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> The properties of sums are direct applications of the principle of mathematical induction (see \sheetref{natural_induction}{Natural Induction}).\footnote{Future editions will include the accounts.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associative] Let $k$, $m$, and $n$ be natural numbers. Then \[ (k + m) + n = k + (m + n). \]\end{proposition} \begin{proposition}[Commutative] Let $m$ and $n$ be natural numbers. Then \[ m + n = n + m. \]\end{proposition} \section*{Relation to addition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Distributive] Let $k$, $m$, and $n$ be natural numbers. Then \[ k \cdot  (m + n) = (k \cdot  m) + (k \cdot  n). \]\end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -861,7 +878,239 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./recursion_theorem.html'" onkeypress="location.href='./recursion_theorem.html'">
+                <span>
+                  Recursion Theorem
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integer_order.html'" onkeypress="location.href='./integer_order.html'">
+            <span>
+            Integer Order
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integer_sums.html'" onkeypress="location.href='./integer_sums.html'">
+            <span>
+            Integer Sums
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./natural_equations.html'" onkeypress="location.href='./natural_equations.html'">
+            <span>
+            Natural Equations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./natural_products.html'" onkeypress="location.href='./natural_products.html'">
+            <span>
+            Natural Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./natural_summation.html'" onkeypress="location.href='./natural_summation.html'">
+            <span>
+            Natural Summation
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./natural_sums.pdf#page=2'" onkeypress="location.href='./natural_sums.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./natural_sums-graph.pdf'" onkeypress="location.href='./natural_sums-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Natural Sums </h1> 
+      <!--
+!name:natural_sums
+!need:recursion_theorem
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We want to combine two groups.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1>Defining result</h1>
+
+<div class='proposition'>
+ <span class='run'>For each natural number $m$, there exists a
+  function $s_m: \omega  \to \omega $ which
+  satisfies
+  <p>\[
+   s_m(0) = m \quad \text{ and } \quad s_m(\ssuc{n}) =
+    \ssuc{(s_m(n))}
+  \]</p>
+  for every natural number $n$.</span></div>
+<div class='proof'> <span class='run'>The proof uses the recursion theorem (see<a href='/sheets/recursion_theorem.html'/><span class='run'>Recursion Theorem</span></a>).<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span></div>
+<p>
+ <span class='run'>Let $m$ and $n$ be natural numbers.</span>
+
+ <span class='run'>The value $s_m(n)$ is the
+  <span class='term'>sum</span> of $m$ with $n$.</span>
+</p>
+
+
+<!--
+% Let $m$ and $n$ be two natural numbers.\footnote{Future editions will explicitly use the recursion theorem.}
+% If we apply the successor function to $m$ $n$
+% times we obtain a number.
+% If we apply the successor function to $n$ $m$
+% times we obtain a number.
+% Indeed, we obtain the same number in both cases.
+% We call this number the \tasdf{sum}
+% of $m$ and $n$.
+% We say we \tasdf{add} $m$ to $n$,
+% or vice versa.
+% We call this correspondence, between
+% $(m, n)$ and the sum, \tasdf{addition}.
+-->
+
+<h2>Notation</h2>
+
+<span class='run'>We denote the sum $s_m(n)$ by $m + n$.</span>
+<!--
+% two numbers by $m + n$.
+% We denote the function addition by $+$
+% and so denote the sum of the naturals
+% $m$ and $n$ by $m + n$.
+-->
+
+<h1>Properties</h1>
+
+<p>
+ <span class='run'>The properties of sums are direct applications
+  of the principle of mathematical induction (see<a href='/sheets/natural_induction.html'/><span class='run'>Natural Induction</span></a>).<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup></span>
+</p>
+
+<div class='proposition' text='Associative'>
+ <span class='run'>Let $k$, $m$, and $n$ be natural numbers.</span>
+
+ <span class='run'>Then
+  <p>\[
+   (k + m) + n = k + (m + n).
+  \]</p></span></div>
+<div class='proposition' text='Commutative'>
+ <span class='run'>Let $m$ and $n$ be natural numbers.</span>
+
+ <span class='run'>Then
+  <p>\[
+   m + n = n + m.
+  \]</p></span></div>
+<h1>Relation to addition</h1>
+
+<div class='proposition' text='Distributive'>
+ <span class='run'>Let $k$, $m$, and $n$ be natural numbers.</span>
+
+ <span class='run'>Then
+  <p>\[
+   k \cdot  (m + n) = (k \cdot  m) + (k \cdot  n).
+  \]</p></span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will change this section.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will give the entire account.</span><a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>Future editions will include the accounts.</span><a href='#footnote-3-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -913,7 +1162,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

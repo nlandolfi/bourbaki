@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -145,7 +162,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We compare inductors by comparing the relations they produce. We can compare relations by similarity functions.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $X$ and $Y$ be sets. Let $\CR$ be the set of relations between $X$ and $Y$. Let $\CH \subset \CR$ be a set of hypothesis relations.</p></div><div class="sheet-listing"><p class="sheet"> Given a similarity function $d: \CR \times \CR \to \R$ we can consider</p></div><div class="sheet-listing"><p class="sheet"> A \t{loss} function is a nonnegative real-valued function on pairs which is zero only on repeated pairs. It need not be symmetric. A loss function is often also called a \t{cost} or \t{risk} function.</p></div><div class="sheet-listing"><p class="sheet"> We use loss functions to judge a prediction in comparison to the recorded postcept. The first argument of the loss function is the predicted postcept and the second is the recorded (observed, true, recorded) postcept.</p></div><div class="sheet-listing"><p class="sheet"> The \t{loss of a predictor on a pair} is the result of the loss function on the pair. Similarly, the \t{loss of a predictor on a dataset} of record pairs is the sum of the losses on the pairs of the dataset. Likewise, the \t{average loss} of a predictor is the loss of the predictor on the dataset divided by the size of the dataset. The average loss is also known as the \t{empirical risk} of the predictor on the dataset.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(a, b) \in A \times B$; $A, B \neq \emptyset$. For a lost function $\loss: B \cross B \to \R$ and predictor $f: A \to B$, the loss of $f$ on $(a, b)$ is $\loss(f(a),b)$. Let $s = ((a^1, b^1), \dots, (a^n, b^n))$ be a record sequence. The loss of $f$ on $s$ is $\sum_{k = 1}^{n} \loss(f(a^k), b^k)$. The average loss of $f$ on $s$ is $(\nicefrac{1}{n})\sum_{k = 1}^{n} \loss(f(a^k), b^k)$.</p></div><div class="sheet-listing" id="training_and_test_loss"><h1 class="sheet">3. Training and test loss</h1></div><div class="sheet-listing"><p class="sheet"> Recall that $s$ is a dataset of records pairs in $A \times B$. We call a predictor $f: A \to B$ an \t{interpolator} of the dataset $s$ if, for each pair $(a^i, b^i)$ in the dataset, $f(a^i) = b^i$. An interpolator achieves zero loss on the dataset it interpolates.</p></div><div class="sheet-listing"><p class="sheet"> The rub is that an interpolator may have nonzero loss a record pair which is not contained in the dataset used to construct it. For this reason, it is common to consider two datasets. First, the one used to construct the predictor (the \t{training dataset}) and second, one used to evaluate the predictor (the \t{test dataset}, \t{validation dataset} or \t{evaluation dataset}).</p></div><div class="sheet-listing"><p class="sheet"> We judge a predictor by its average loss on the test dataset. We call this the \t{test loss}, in contrast with the \t{train loss} obtained on the dataset used to construct the predictor. A predictor whose average test loss is much larger than its average train lost is said to be \t{overfit} to the train dataset.\footnote{Many authorities will refer to this as the "problem} or \say{danger} of overfitting."</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, we judge an inductor by some aggregation metric of the loss of predictors it produces on datasets.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We compare inductors by comparing the relations they produce. We can compare relations by similarity functions.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ and $Y$ be sets. Let $\mathcal{R} $ be the set of relations between $X$ and $Y$. Let $\mathcal{H}  \subset \mathcal{R} $ be a set of hypothesis relations.</p></div><div class="sheet-listing"><p class="sheet"> Given a similarity function $d: \mathcal{R}  \times  \mathcal{R} \to \R $ we can consider</p></div><div class="sheet-listing"><p class="sheet"> A \t{loss} function is a nonnegative real-valued function on pairs which is zero only on repeated pairs. It need not be symmetric. A loss function is often also called a \t{cost} or \t{risk} function.</p></div><div class="sheet-listing"><p class="sheet"> We use loss functions to judge a prediction in comparison to the recorded postcept. The first argument of the loss function is the predicted postcept and the second is the recorded (observed, true, recorded) postcept.</p></div><div class="sheet-listing"><p class="sheet"> The \t{loss of a predictor on a pair} is the result of the loss function on the pair. Similarly, the \t{loss of a predictor on a dataset} of record pairs is the sum of the losses on the pairs of the dataset. Likewise, the \t{average loss} of a predictor is the loss of the predictor on the dataset divided by the size of the dataset. The average loss is also known as the \t{empirical risk} of the predictor on the dataset.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $(a, b) \in A \times B$; $A, B \neq \varnothing$. For a lost function $\loss: B \cross B \to \R $ and predictor $f: A \to B$, the loss of $f$ on $(a, b)$ is $\loss(f(a),b)$. Let $s = ((a^1, b^1), \dots , (a^n, b^n))$ be a record sequence. The loss of $f$ on $s$ is $\sum_{k = 1}^{n} \loss(f(a^k), b^k)$. The average loss of $f$ on $s$ is $(\nicefrac{1}{n})\sum_{k = 1}^{n} \loss(f(a^k), b^k)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Training and test loss}</p></div><div class="sheet-listing"><p class="sheet"> Recall that $s$ is a dataset of records pairs in $A \times B$. We call a predictor $f: A \to B$ an \t{interpolator} of the dataset $s$ if, for each pair $(a^i, b^i)$ in the dataset, $f(a^i) = b^i$. An interpolator achieves zero loss on the dataset it interpolates.</p></div><div class="sheet-listing"><p class="sheet"> The rub is that an interpolator may have nonzero loss a record pair which is not contained in the dataset used to construct it. For this reason, it is common to consider two datasets. First, the one used to construct the predictor (the \t{training dataset}) and second, one used to evaluate the predictor (the \t{test dataset}, \t{validation dataset} or \t{evaluation dataset}).</p></div><div class="sheet-listing"><p class="sheet"> We judge a predictor by its average loss on the test dataset. We call this the \t{test loss}, in contrast with the \t{train loss} obtained on the dataset used to construct the predictor. A predictor whose average test loss is much larger than its average train lost is said to be \t{overfit} to the train dataset. \ifhmode\unskip\fi\footnote{ Many authorities will refer to this as the "problem} or \say{danger" of overfitting. }</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, we judge an inductor by some aggregation metric of the loss of predictors it produces on datasets.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1159,7 +1176,294 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./predictor_performance_metrics.html'" onkeypress="location.href='./predictor_performance_metrics.html'">
+                <span>
+                  Predictor Performance Metrics
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./similarity_functions.html'" onkeypress="location.href='./similarity_functions.html'">
+                <span>
+                  Similarity Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./least_squares_linear_regressors.html'" onkeypress="location.href='./least_squares_linear_regressors.html'">
+            <span>
+            Least Squares Linear Regressors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_random_function_regressors.html'" onkeypress="location.href='./normal_random_function_regressors.html'">
+            <span>
+            Normal Random Function Regressors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./loss_functions.pdf#page=2'" onkeypress="location.href='./loss_functions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./loss_functions-graph.pdf'" onkeypress="location.href='./loss_functions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Loss Functions </h1> 
+      <!--
+!name:loss_functions
+!need:predictor_performance_metrics
+!need:similarity_functions
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We compare inductors by comparing the relations
+  they produce.</span>
+
+ <span class='run'>We can compare relations by similarity functions.</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>Let $X$ and $Y$ be sets.</span>
+
+ <span class='run'>Let $\mathcal{R} $ be the set of relations
+  between $X$ and $Y$.</span>
+
+ <span class='run'>Let $\mathcal{H}  \subset \mathcal{R} $ be a set
+  of hypothesis relations.</span>
+</p>
+
+
+<p>
+ <span class='run'>Given a similarity function $d: \mathcal{R}
+  \times  \mathcal{R}  \to \R $ we can consider</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>loss</span> function is a
+  nonnegative real-valued function on pairs which
+  is zero only on repeated pairs.</span>
+
+ <span class='run'>It need not be symmetric.</span>
+
+ <span class='run'>A loss function is often also called a
+  <span class='term'>cost</span> or
+  <span class='term'>risk</span> function.</span>
+</p>
+
+
+<p>
+ <span class='run'>We use loss functions to judge a prediction in
+  comparison to the recorded postcept.</span>
+
+ <span class='run'>The first argument of the loss function is the
+  predicted postcept and the second is the
+  recorded (observed, true, recorded) postcept.</span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>loss of a predictor on a
+  pair</span> is the result of the loss function
+  on the pair.</span>
+
+ <span class='run'>Similarly, the <span class='term'>loss of a
+  predictor on a dataset</span> of record pairs is
+  the sum of the losses on the pairs of the
+  dataset.</span>
+
+ <span class='run'>Likewise, the <span class='term'>average
+  loss</span> of a predictor is the loss of the
+  predictor on the dataset divided by the size of
+  the dataset.</span>
+
+ <span class='run'>The average loss is also known as the
+  <span class='term'>empirical risk</span> of the
+  predictor on the dataset.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>Let $(a, b) \in A \times B$; $A, B \neq
+  \varnothing$.</span>
+
+ <span class='run'>For a lost function $\loss: B \cross B \to
+  \R $ and predictor $f: A \to B$, the loss of
+  $f$ on $(a, b)$ is $\loss(f(a),b)$.</span>
+
+ <span class='run'>Let $s = ((a^1, b^1), \dots , (a^n, b^n))$</span>
+
+ <span class='run'>be a record sequence.</span>
+
+ <span class='run'>The loss of $f$ on $s$ is $\sum_{k = 1}^{n}
+  \loss(f(a^k), b^k)$.</span>
+
+ <span class='run'>The average loss of $f$ on $s$ is
+  $(\nicefrac{1}{n})\sum_{k = 1}^{n} \loss(f(a^k),
+  b^k)$.</span>
+</p>
+
+<h1>Training and test loss</h1>
+
+<p>
+ <span class='run'>Recall that $s$ is a dataset of records pairs
+  in $A \times B$.</span>
+
+ <span class='run'>We call a predictor $f: A \to B$ an
+  <span class='term'>interpolator</span> of the
+  dataset $s$ if, for each pair $(a^i, b^i)$ in
+  the dataset, $f(a^i) = b^i$.</span>
+
+ <span class='run'>An interpolator achieves zero loss on the
+  dataset it interpolates.</span>
+</p>
+
+
+<p>
+ <span class='run'>The rub is that an interpolator may have
+  nonzero loss a record pair which is not
+  contained in the dataset used to construct it.</span>
+
+ <span class='run'>For this reason, it is common to consider two
+  datasets.</span>
+
+ <span class='run'>First, the one used to construct the predictor
+  (the <span class='term'>training dataset</span>) and
+  second, one used to evaluate the predictor (the
+  <span class='term'>test dataset</span>,
+  <span class='term'>validation dataset</span> or
+  <span class='term'>evaluation dataset</span>).</span>
+</p>
+
+
+<p>
+ <span class='run'>We judge a predictor by its average loss on
+  the test dataset.</span>
+
+ <span class='run'>We call this the <span class='term'>test
+  loss</span>, in contrast with the
+  <span class='term'>train loss</span> obtained on
+  the dataset used to construct the predictor.</span>
+
+ <span class='run'>A predictor whose average test loss is much
+  larger than its average train lost is said to
+  be <span class='term'>overfit</span> to the train
+  dataset.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+
+<p>
+ <span class='run'>Roughly speaking, we judge an inductor by some
+  aggregation metric of the loss of predictors it
+  produces on datasets.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Many authorities will refer to this as the
+  “problem” or “danger” of overfitting.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1211,7 +1515,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

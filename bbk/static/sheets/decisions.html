@@ -90,7 +90,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -106,14 +106,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1013,22 +1030,162 @@ Parse: {prototype: {
 \newcommand{\num}[1]{\left|#1\right|}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./orders.html'" onkeypress="location.href='./orders.html'">
+                <span>
+                  Orders
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_numbers.html'" onkeypress="location.href='./set_numbers.html'">
+                <span>
+                  Set Numbers
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+                <span>
+                  Uncertain Outcomes
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./games.html'" onkeypress="location.href='./games.html'">
+            <span>
+            Games
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./sequential_decisions.html'" onkeypress="location.href='./sequential_decisions.html'">
+            <span>
+            Sequential Decisions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./uncertain_decisions.html'" onkeypress="location.href='./uncertain_decisions.html'">
+            <span>
+            Uncertain Decisions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./decisions.pdf#page=2'" onkeypress="location.href='./decisions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./decisions-graph.pdf'" onkeypress="location.href='./decisions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Decisions </h1> 
       <p>
- <span class='run'>%!name:decisions </span>
+ <span class='run'>%!name:decisions</span>
 
- <span class='run'>%!need:set_numbers </span>
+ <span class='run'>%!need:set_numbers</span>
 
- <span class='run'>%!need:uncertain_outcomes </span>
+ <span class='run'>%!need:uncertain_outcomes</span>
 
- <span class='run'>%!need:orders </span>
+ <span class='run'>%!need:orders</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
@@ -1036,51 +1193,51 @@ Parse: {prototype: {
  <span class='run'>We want to discuss making a decision.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 
  <span class='run'>To discuss decisions, we first must speak of
-  the choices to be made. </span>
+  the choices to be made.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
 <p>
  <span class='run'>We have a set which includes all possible
-  choices. </span>
+  choices.</span>
 
  <span class='run'>The set is called the
   <span class='term'>actions</span>,
   <span class='term'>acts</span>,
   <span class='term'>decisions</span>,
   <span class='term'>choices</span> or
-  <span class='term'>designs</span>. </span>
+  <span class='term'>designs</span>.</span>
 </p>
 
 
 <p>
  <span class='run'>For each decision, we have a set which
-  includes all possible outcomes. </span>
+  includes all possible outcomes.</span>
 
  <span class='run'>Often the outcomes are uncertain, and associated
   with the future (see \sheetref{uncertain
-  outcomes}{Uncertain Outcomes}). </span>
+  outcomes}{Uncertain Outcomes}).</span>
 </p>
 
 
 <p>
  <span class='run'>Since we select an action prior to observing
   the outcome, we want to talk about which
-  actions and outcomes are preferable to others. </span>
+  actions and outcomes are preferable to others.</span>
 
  <span class='run'>We call an action-outcome pair a
-  <span class='term'>history</span>. </span>
+  <span class='term'>history</span>.</span>
 
  <span class='run'>We refer to the set of action-outcome pairs
-  the <span class='term'>histories</span>. </span>
+  the <span class='term'>histories</span>.</span>
 
  <span class='run'>A <span class='term'>preference</span> is an order
-  on histories. </span>
+  on histories.</span>
 </p>
 
 
@@ -1090,22 +1247,22 @@ Parse: {prototype: {
   in which $A$ is a set of actions, $\set{O_a}$
   is a family of sets of outcomes, and $\preceq$
   is a preference on the histories $\Set*{(a,
-  o)}{a \in A, o \in O_a}$. </span>
+  o)}{a \in A, o \in O_a}$.</span>
 </p>
 
 
 <p>
  <span class='run'></span>
 
- <span class='run'>\ssection{Example: party} </span>
+ <span class='run'>\ssection{Example: party}</span>
 </p>
 
 
 <p>
  <span class='run'>Consider deciding whether to host a party
-  indoors or outdoors. </span>
+  indoors or outdoors.</span>
 
- <span class='run'>We are unsure of the weather. </span>
+ <span class='run'>We are unsure of the weather.</span>
 
  <span class='run'>We have a set of two actions $A =
   \set{<span class='smallcaps'>In</span>,
@@ -1113,14 +1270,14 @@ Parse: {prototype: {
   two outcomes (the same for each action) $O_a =
   W = \set{<span class='smallcaps'>Rain</span>,
   <span class='smallcaps'>Shine</span>}$ for $a \in
-  A$. </span>
+  A$.</span>
 
  <span class='run'>Although many orders on $A \times  W$ exist,
   one such order is
   <p>\[
    (\textsc{Out}, \textsc{Shine}) \prec (\textsc{In}, \textsc{Rain})
     \prec (\textsc{In}, \textsc{Shine}) \prec (\textsc{Out},
-    \textsc{Rain}). 
+    \textsc{Rain}).
   \]</p></span>
 
  <span class='run'>In other words, having the party outside in
@@ -1128,25 +1285,25 @@ Parse: {prototype: {
   it is raining, but both of these are preferred
   to having it inside when the sun is shining,
   and all of these are preferred to having it
-  outdoors in the rain. </span>
+  outdoors in the rain.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Best actions} </span>
+ <span class='run'>\ssection{Best actions}</span>
 </p>
 
 
 <p>
  <span class='run'>Let $(A, \set{O_a}, \preceq)$ be a simple
   decision problem in which $O_a = S$ for each
-  $a \in A$. </span>
+  $a \in A$.</span>
 
- <span class='run'>Let $o \in S$. </span>
+ <span class='run'>Let $o \in S$.</span>
 
  <span class='run'>An action $a \in A$ is <span class='term'>best
   for outcome $o$</span> if $(a, o) \preceq
-  (a&#39;, o)$ for all $a&#39; \in A$. </span>
+  (a&#39;, o)$ for all $a&#39; \in A$.</span>
 
  <span class='run'>An action $a \in A$ is <span class='term'>best
   for all outcomes</span> (or
@@ -1161,10 +1318,10 @@ Parse: {prototype: {
   $<span class='smallcaps'>Rain</span>$ is
   $<span class='smallcaps'>In</span>$ and the best
   action for $<span class='smallcaps'>Shine</span>$ is
-  <span class='smallcaps'>Out</span>. </span>
+  <span class='smallcaps'>Out</span>.</span>
 
  <span class='run'>On the other hand, there is no uniformly best
-  action. </span>
+  action.</span>
 
  <span class='run'>For the action
   $<span class='smallcaps'>Out</span>$, there is an
@@ -1175,21 +1332,23 @@ Parse: {prototype: {
   $(<span class='smallcaps'>In</span>,
   <span class='smallcaps'>Rain</span>) \prec
   (<span class='smallcaps'>Out</span>,
-  <span class='smallcaps'>Rain</span>)$. </span>
+  <span class='smallcaps'>Rain</span>)$.</span>
 
  <span class='run'>In other words,
   $<span class='smallcaps'>Out</span>$ is not
   uniformly best, because there is an outcome,
   $<span class='smallcaps'>Rain</span>$ for which the
   action $<span class='smallcaps'>In</span>$ is
-  preferred. </span>
+  preferred.</span>
 
- <span class='run'>Similarly for $<span class='smallcaps'>In</span>$. </span>
+ <span class='run'>Similarly for $<span class='smallcaps'>In</span>$.</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will clarify, and may remove
-  this section. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will clarify, and may remove
+  this section.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1241,7 +1400,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

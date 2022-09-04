@@ -59,7 +59,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -75,14 +75,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1278,7 +1295,119 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./measures.html'" onkeypress="location.href='./measures.html'">
+                <span>
+                  Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_limits.html'" onkeypress="location.href='./real_limits.html'">
+                <span>
+                  Real Limits
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measure_derivatives.pdf#page=2'" onkeypress="location.href='./measure_derivatives.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measure_derivatives-graph.pdf'" onkeypress="location.href='./measure_derivatives-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Measure Derivatives </h1> 
       <!--
@@ -1287,222 +1416,212 @@ Parse: {prototype: {
 !need:measures
 -->
 
-<h1>
-Defining result </h1>
+<h1>Defining result</h1>
 
-<p>
- <span class='run'>\begin{proposition} </span>
+<div class='proposition'>
+ <p>
+  <span class='run'>Let $(X, \mathcal{A} )$ be a measurable space.</span>
 
- <span class='run'>Let $(X, \SA)$ be a measurable space. </span>
+  <span class='run'>Let $\mu $ and $\nu $ be finite measures with
+   $\nu  \ll \mu $.</span>
 
- <span class='run'>Let $\mu $ and $\nu $ be finite measures with
-  $\nu  \ll \mu $. </span>
-</p>
+  <span class='run'>There exists $g: X \to [0, \infty)$ such that
+   <p>\[
+    \nu (A) = \int _A g \, d\mu
+   \]</p>
+   for all $A \in \mathcal{A} $.</span>
 
-
-<p>
- <span class='run'>There exists $g: X \to [0, \infty)$ such that
+  <span class='run'>The function $g$ is $\mu $-almost everywhere
+   unique.</span>
+ </p>
+</div>
+<div class='proof'> <span class='run'>Define
   <p>\[
-   \nu (A) = \int _A g \, d\mu 
-  \]</p>
-  for all $A \in \SA$. </span>
+   \mathcal{F}  = \Set*{
 
- <span class='run'>The function $g$ is $\mu $-almost everywhere
-  unique. </span>
+   f: X \to [0, \infty)
 
- <span class='run'>\begin{proof} </span>
+   }{
 
- <span class='run'>Define
-  <p>\[
-   \SF = \Set*{ 
+   f \text{ measurable and }
 
-   f: X \to [0, \infty) 
+   \int _A f d\mu  \leq \nu (A)
 
-   }{ 
-
-   f \text{ measurable and } 
-
-   \int_A f d\mu  \leq \nu (A) 
-
-   }. 
+   }.
   \]</p></span>
 
  <span class='run'>The function $f \equiv 0$ is in $\mathcal{F} $,
   since it is a measurable simple function whose
-  integral over every measureable set is zero. </span>
-</p>
+  integral over every measureable set is zero.</span>
+ <p>
+  <span class='run'>If $f_1$ and $f_2$ are in $\mathcal{F} $, then
+   $f_1 \vee f_2$ is in $\mathcal{F} $.</span>
+
+  <span class='run'>To check, let $A \in \mathcal{A} $, and define
+   the sets $A_1 = \Set{x \in A}{f_1(x) &gt;
+   f_2(x)}$ and $A_2 = \Set{x \in A}{f_1(x) \leq
+   f_2(x)}$.</span>
+
+  <span class='run'>$A_1$ and $A_2$ partition $A$, so</span>
+
+  <span class='run'>   <p>\[
+    \begin{aligned}
+
+    \int _A f_1 \vee f_2
+
+    &= \int _{A_1} f_1 \vee f_2 + \int _{A_2} f_1 \vee f_2 \\
+
+    &= \int _{A_1} f_1 + \int _{A_2} f_2 \\
+
+    &\leq \nu (A_1) + \nu (A_2)
+
+    \end{aligned}
+   \]</p>
+   <span class='run'>Since $A_1$ and $A_2$ partition $A$,
+    <p>\[
+     \nu (A_1) + \nu (A_2) =
+
+     \nu (A_1 \cup A_2) =
+
+     \nu (A).
+    \]</p></span></span>
+ </p>
 
 
-<p>
- <span class='run'>If $f_1$ and $f_2$ are in $\SF$, then $f_1
-  \vee f_2$ is in $\SF$. </span>
+ <p>
+  <span class='run'>Select a sequence of</span>
 
- <span class='run'>To check, let $A \in \SA$, and define the
-  sets $A_1 = \Set{x \in A}{f_1(x) &gt; f_2(x)}$
-  and $A_2 = \Set{x \in A}{f_1(x) \leq f_2(x)}$. </span>
+  <span class='run'>functions $\seq{f}$ in $\mathcal{F} $</span>
 
- <span class='run'>$A_1$ and $A_2$ partition $A$, so </span>
+  <span class='run'>so that</span>
+  <p>\[
+   \lim_{n} \int  \seqt{f} =
 
- <span class='run'>  <p>\[
-   \begin{aligned} 
-
-   \int _A f_1 \vee f_2 
-
-   &= \int _{A_1} f_1 \vee f_2 + \int _{A_2} f_1 \vee f_2 \\ 
-
-   &= \int _{A_1} f_1 + \int _{A_2} f_2 \\ 
-
-   &\leq \nu (A_1) + \nu (A_2) 
-
-   \end{aligned} 
+   \sup\Set*{\int  f}{f \in \mathcal{F} }.
   \]</p>
-  <span class='run'>Since $A_1$ and $A_2$ partition $A$,
+  <span class='run'>Toward ensuring the sequence</span>
+
+  <span class='run'>is increasing, define</span>
+
+  <span class='run'>$g_1 = f_1$, $g_2 = g_1 \vee f_2$,</span>
+
+  <span class='run'>and $g_n = g_{n-1} \vee f_n$</span>
+
+  <span class='run'>for $n \geq 3$.</span>
+
+  <span class='run'>Using the observation in the previous</span>
+
+  <span class='run'>paragraph, $g_n \in \mathcal{F} $ for each $n$.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>Let $g$ be the pointwise limit</span>
+
+  <span class='run'>of the $\seq{g}$.</span>
+
+  <span class='run'>The monotone convergence of integrals shows
    <p>\[
-    \nu (A_1) + \nu (A_2) = 
+    \int _A g = \lim_n \int _A g_n.
+   \]</p>
+   for each $A \in \mathcal{A} $.</span>
 
-    \nu (A_1 \cup A_2) = 
+  <span class='run'>Since $\int _A g_n \leq \nu (A)$,</span>
 
-    \nu (A). 
-   \]</p></span></span>
-</p>
+  <span class='run'>so too is the limit and thus</span>
 
+  <span class='run'>so too is $\int _A g$.</span>
 
-<p>
- <span class='run'>Select a sequence of </span>
+  <span class='run'>Thus, $g \in \mathcal{F} $.</span>
 
- <span class='run'>functions $\seq{f}$ in $\SF$ </span>
+  <span class='run'>By construction,</span>
 
- <span class='run'>so that </span>
- <p>\[
-  \lim_{n} \int \seqt{f} = 
+  <span class='run'>for $A = X$,</span>
 
-  \sup\Set*{\int f}{f \in \SF}. 
- \]</p>
- <span class='run'>Toward ensuring the sequence </span>
+  <span class='run'>$\int  g = \sup\Set*{\int  f}{f \in
+   \mathcal{F} }$.</span>
 
- <span class='run'>is increasing, define </span>
+  <span class='run'>We have constructed an element of $\mathcal{F} $</span>
 
- <span class='run'>$g_1 = f_1$, $g_2 = g_1 \vee f_2$, </span>
-
- <span class='run'>and $g_n = g_{n-1} \vee f_n$ </span>
-
- <span class='run'>for $n \geq 3$. </span>
-
- <span class='run'>Using the observation in the previous </span>
-
- <span class='run'>paragraph, $g_n \in \SF$ for each $n$. </span>
-</p>
+  <span class='run'>attaining the supremum.</span>
+ </p>
 
 
-<p>
- <span class='run'>Let $g$ be the pointwise limit </span>
+ <p>
+  <span class='run'>We know that the integral of</span>
 
- <span class='run'>of the $\seq{g}$. </span>
+  <span class='run'>$g$ on $A$ with respect to $\mu $</span>
 
- <span class='run'>The monotone convergence of integrals shows
-  <p>\[
-   \int _A g = \lim_n \int_A g_n. 
-  \]</p>
-  for each $A \in \SA$. </span>
+  <span class='run'>is bounded above by $\nu (A)$.</span>
 
- <span class='run'>Since $\int_A g_n \leq \nu (A)$, </span>
+  <span class='run'>We want the gap to be zero.</span>
 
- <span class='run'>so too is the limit and thus </span>
+  <span class='run'>Regardless of the gap, the function $\nu _0:
+   \mathcal{A}  \to [0, \infty)$ defined by
+   <p>\[
+    \nu _0(A) = \nu (A) - \int (g, A, \mu ),
+   \]</p>
+   for each $A \in \mathcal{A} $ is a positive
+   measure.</span>
 
- <span class='run'>so too is $\int_A g$. </span>
-
- <span class='run'>Thus, $g \in \SF$. </span>
-
- <span class='run'>By construction, </span>
-
- <span class='run'>for $A = X$, </span>
-
- <span class='run'>$\int g = \sup\Set*{\int f}{f \in \SF}$. </span>
-
- <span class='run'>We have constructed an element of $\SF$ </span>
-
- <span class='run'>attaining the supremum. </span>
-</p>
+  <span class='run'>If $\nu _0$ is identically zero, then there is
+   no gap.</span>
+ </p>
 
 
-<p>
- <span class='run'>We know that the integral of </span>
+ <p>
+  <span class='run'>Suppose there is a gap: then there exists a
+   measurable set with strictly positive measure
+   under $\nu _0$.</span>
 
- <span class='run'>$g$ on $A$ with respect to $\mu $ </span>
+  <span class='run'>Since the base set contains this set, and
+   measures are monotone, the base set must have
+   stricty positive measure.</span>
 
- <span class='run'>is bounded above by $\nu (A)$. </span>
-
- <span class='run'>We want the gap to be zero. </span>
-
- <span class='run'>Regardless of the gap, the function $\nu _0:
-  \SA \to [0, \infty)$ defined by
-  <p>\[
-   \nu _0(A) = \nu (A) - \int(g, A, \mu ), 
-  \]</p>
-  for each $A \in \SA$ is a positive measure. </span>
-
- <span class='run'>If $\nu _0$ is identically zero, then there is
-  no gap. </span>
-</p>
+  <span class='run'>Since $\mu $ is finite, there exists a natural
+   number $n$ so that
+   <p>\[
+    \nu _0(X) > \frac{1}{n}\mu (X).
+   \]</p></span>
+ </p>
 
 
-<p>
- <span class='run'>Suppose there is a gap: then there exists a
-  measurable set with strictly positive measure
-  under $\nu _0$. </span>
+ <p>
+  <span class='run'>Define a new measure $\nu _1 = \nu _0 -
+   \frac{1}{n}\mu $.</span>
 
- <span class='run'>Since the base set contains this set, and
-  measures are monotone, the base set must have
-  stricty positive measure. </span>
+  <span class='run'>Denote a signed-set decomposition of $\nu _1$</span>
 
- <span class='run'>Since $\mu $ is finite, there exists a natural
-  number $n$ so that
-  <p>\[
-   \nu _0(X) > \frac{1}{n}\mu (X). 
-  \]</p></span>
-</p>
+  <span class='run'>by $(P, N)$.</span>
 
+  <span class='run'>Then $\nu _1(A \cap  P) \geq 0$, or
+   equivalently,
+   <p>\[
+    \nu _0(A \cap  P) - \frac{1}{n}\mu (A \cap  P) \geq 0,
+   \]</p>
+   for all $A$, and so
+   <p>\[
+    \begin{aligned}
 
-<p>
- <span class='run'>Define a new measure $\nu _1 = \nu _0 -
-  \frac{1}{n}\mu $. </span>
+    \nu (A) &= \nu _0(A) + \int (g, A, \mu ) \\
 
- <span class='run'>Denote a signed-set decomposition of $\nu _1$ </span>
+    &\geq \nu _0(A \cap  P) + \int  (g, A, \mu ).
 
- <span class='run'>by $(P, N)$. </span>
-
- <span class='run'>Then $\nu _1(A \cap  P) \geq 0$, or
-  equivalently,
-  <p>\[
-   \nu _0(A \cap  P) - \frac{1}{n}\mu (A \cap  P) \geq 0, 
-  \]</p>
-  for all $A$, and so
-  <p>\[
-   \begin{aligned} 
-
-   \nu (A) &= \nu _0(A) + \int (g, A, \mu ) \\ 
-
-   &\geq \nu _0(A \cap  P) + \int  (g, A, \mu ). 
-
-   \end{aligned} 
-  \]</p></span>
-
- <span class='run'>\end{proof} </span>
-
- <span class='run'>\end{proposition} </span>
-</p>
-
-
+    \end{aligned}
+   \]</p></span>
+ </p>
+</div>
 <p>
  <span class='run'>Many authorities refer to this result as the
-  <span class='term'>Radon-Nikodym theorem</span>. </span>
+  <span class='term'>Radon-Nikodym theorem</span>.</span>
 </p>
 
-<h2>
-Notation </h2>
-<ol class='footnotes'></ol>
+<h2>Notation</h2>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1554,7 +1673,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

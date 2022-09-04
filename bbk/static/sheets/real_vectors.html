@@ -146,7 +146,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -162,14 +162,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -215,7 +232,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If we interpret a list of two numbers as displacement in a plane, and a list of three numbers as displacement in a space, what of a list of $n$ numbers as displacement in $\R ^n$?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{real vector} (\t{vector}, \t{$n$-dimensional vector}, \t{$n$-vector}) is a length-$n$ list of real numbers.</p></div><div class="sheet-listing" id="algebra"><h1 class="sheet">3. Algebra</h1></div><div class="sheet-listing"><p class="sheet"> For $x, y \in \R ^n$, we define the \t{real vector sum} (or \t{sum}) of $x$ and $y$ as the vector $z \in \R^n$ where $z_i = x_i + y_i$ for $i = 1, \dots , n$. As usual, we denote the sum by $x+y$, so \[ x + y = (x_1 +y_1, \dots , x_n + y_n). \] For $\alpha  \in \R $ and $x \in \R ^n$, \t{real scalar-vector product} (or \t{scalar product}, \t{product}) $z \in \R ^{n}$ is defined by $z_i = \alpha  x_i$ for $i = 1, \dots , n$. As usual, we denote the product $\alpha  x$, and write \[ \alpha  x = (\alpha  x_1, \dots , \alpha  x_n). \]</p></div><div class="sheet-listing"><p class="sheet"> Our intuition for both of these <i>operations</i> comes from their special cases in $\R ^2$ and $\R^3$. As usual, the \t{real-vector difference} (or \t{difference}) of $x$ and $y$ is the vector $z \in \R ^{n}$ defined by $z_i = x_i - y_i$ for $i = 1, \dots , n$. As usual, we denote it by $x - y$, and note that $x - y = x + (-y)$.</p></div><div class="sheet-listing"><p class="sheet"> The algebra given here for vectors is natural in view of their generalization as $n$-dimensional <i>displacements</i>. However, we keep in mind that this algebra is over lists of numbers, and that these sums and products can be defined on these lists of numbers regardless of interpretation.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> If we interpret a list of two numbers as displacement in a plane, and a list of three numbers as displacement in a space, what of a list of $n$ numbers as displacement in $\R ^n$?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{real vector} (\t{vector}, \t{$n$-dimensional vector}, \t{$n$-vector}) is a length-$n$ list of real numbers.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Algebra}</p></div><div class="sheet-listing"><p class="sheet"> For $x, y \in \R ^n$, we define the \t{real vector sum} (or \t{sum}) of $x$ and $y$ as the vector $z \in \R ^n$ where $z_i = x_i + y_i$ for $i = 1, \dots , n$. As usual, we denote the sum by $x+y$, so \[ x + y = (x_1 +y_1, \dots , x_n + y_n). \] For $\alpha  \in \R $ and $x \in \R ^n$, \t{real scalar-vector product} (or \t{scalar product}, \t{product}) $z \in \R ^{n}$ is defined by $z_i = \alpha  x_i$ for $i = 1, \dots , n$. As usual, we denote the product $\alpha  x$, and write \[ \alpha  x = (\alpha  x_1, \dots , \alpha  x_n). \]</p></div><div class="sheet-listing"><p class="sheet"> Our intuition for both of these <i>operations</i> comes from their special cases in $\R ^2$ and $\R ^3$. As usual, the \t{real-vector difference} (or \t{difference}) of $x$ and $y$ is the vector $z \in \R ^{n}$ defined by $z_i = x_i - y_i$ for $i = 1, \dots , n$. As usual, we denote it by $x - y$, and note that $x - y = x + (-y)$.</p></div><div class="sheet-listing"><p class="sheet"> The algebra given here for vectors is natural in view of their generalization as $n$-dimensional <i>displacements</i>. However, we keep in mind that this algebra is over lists of numbers, and that these sums and products can be defined on these lists of numbers regardless of interpretation.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1213,57 +1230,245 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./n-dimensional_space.html'" onkeypress="location.href='./n-dimensional_space.html'">
+                <span>
+                  N-Dimensional Space
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./plane_vector_sums_and_differences.html'" onkeypress="location.href='./plane_vector_sums_and_differences.html'">
+                <span>
+                  Plane Vector Sums and Differences
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./space_vectors.html'" onkeypress="location.href='./space_vectors.html'">
+                <span>
+                  Space Vectors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./constrained_quadratic_form_extrema.html'" onkeypress="location.href='./constrained_quadratic_form_extrema.html'">
+            <span>
+            Constrained Quadratic Form Extrema
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./eigenvalues_and_eigenvectors.html'" onkeypress="location.href='./eigenvalues_and_eigenvectors.html'">
+            <span>
+            Eigenvalues and Eigenvectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./probability_vectors.html'" onkeypress="location.href='./probability_vectors.html'">
+            <span>
+            Probability Vectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./quadratic_forms.html'" onkeypress="location.href='./quadratic_forms.html'">
+            <span>
+            Quadratic Forms
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_linear_combinations.html'" onkeypress="location.href='./real_linear_combinations.html'">
+            <span>
+            Real Linear Combinations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+            <span>
+            Real Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_norm.html'" onkeypress="location.href='./real_norm.html'">
+            <span>
+            Real Norm
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_similarity_transformations.html'" onkeypress="location.href='./real_similarity_transformations.html'">
+            <span>
+            Real Similarity Transformations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./vector-valued_multivariate_functions.html'" onkeypress="location.href='./vector-valued_multivariate_functions.html'">
+            <span>
+            Vector-Valued Multivariate Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./vectors.html'" onkeypress="location.href='./vectors.html'">
+            <span>
+            Vectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./vectors_as_matrices.html'" onkeypress="location.href='./vectors_as_matrices.html'">
+            <span>
+            Vectors as Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_vectors.pdf#page=2'" onkeypress="location.href='./real_vectors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_vectors-graph.pdf'" onkeypress="location.href='./real_vectors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Vectors </h1> 
-      <p>
- <span class='run'>%!name:real_vectors </span>
+      <!--
+!name:real_vectors
+%thur space !need:real_numbers
+!need:n-dimensional_space
+!need:space_vectors
+!need:plane_vector_sums_and_differences
+!refs:vmls/1
+-->
 
- <span class='run'>%%thur space !need:real_numbers </span>
-
- <span class='run'>%!need:n-dimensional_space </span>
-
- <span class='run'>%!need:space_vectors </span>
-
- <span class='run'>%!need:plane_vector_sums_and_differences </span>
-
- <span class='run'>%!refs:vmls/1 </span>
-</p>
-
+<h1>Why</h1>
 
 <p>
- <span class='run'>\ssection{Why} </span>
-
  <span class='run'>If we interpret a list of two numbers as
   displacement in a plane, and a list of three
   numbers as displacement in a space, what of a
-  list of $n$ numbers as displacement in $\R ^n$? </span>
+  list of $n$ numbers as displacement in $\R ^n$?</span>
 </p>
 
+<h1>Definition</h1>
 
 <p>
- <span class='run'>\ssection{Definition} </span>
-
  <span class='run'>A <span class='term'>real vector</span>
   (<span class='term'>vector</span>,
   <span class='term'>$n$-dimensional vector</span>,
   <span class='term'>$n$-vector</span>) is a
-  length-$n$ list of real numbers. </span>
+  length-$n$ list of real numbers.</span>
 </p>
 
+<h1>Algebra</h1>
 
 <p>
- <span class='run'>\ssection{Algebra} </span>
-
  <span class='run'>For $x, y \in \R ^n$, we define the
   <span class='term'>real vector sum</span> (or
   <span class='term'>sum</span>) of $x$ and $y$ as
-  the vector $z \in \R^n$ where $z_i = x_i +
-  y_i$ for $i = 1, \dots , n$. </span>
+  the vector $z \in \R ^n$ where $z_i = x_i +
+  y_i$ for $i = 1, \dots , n$.</span>
 
  <span class='run'>As usual, we denote the sum by $x+y$, so
   <p>\[
-   x + y = (x_1 +y_1, \dots , x_n + y_n). 
+   x + y = (x_1 +y_1, \dots , x_n + y_n).
   \]</p></span>
 
  <span class='run'>For $\alpha  \in \R $ and $x \in \R ^n$,
@@ -1271,12 +1476,12 @@ Parse: {prototype: {
   (or <span class='term'>scalar product</span>,
   <span class='term'>product</span>) $z \in \R ^{n}$
   is defined by $z_i = \alpha  x_i$ for $i = 1,
-  \dots , n$. </span>
+  \dots , n$.</span>
 
  <span class='run'>As usual, we denote the product $\alpha  x$,
   and write
   <p>\[
-   \alpha  x = (\alpha  x_1, \dots , \alpha  x_n). 
+   \alpha  x = (\alpha  x_1, \dots , \alpha  x_n).
   \]</p></span>
 </p>
 
@@ -1284,37 +1489,34 @@ Parse: {prototype: {
 <p>
  <span class='run'>Our intuition for both of these
   <i>operations</i> comes from their special cases
-  in $\R ^2$ and $\R^3$. </span>
+  in $\R ^2$ and $\R ^3$.</span>
 
  <span class='run'>As usual, the <span class='term'>real-vector
   difference</span> (or
   <span class='term'>difference</span>) of $x$ and
   $y$ is the vector $z \in \R ^{n}$ defined by
-  $z_i = x_i - y_i$ for $i = 1, \dots , n$. </span>
+  $z_i = x_i - y_i$ for $i = 1, \dots , n$.</span>
 
  <span class='run'>As usual, we denote it by $x - y$, and note
-  that $x - y = x + (-y)$. </span>
+  that $x - y = x + (-y)$.</span>
 </p>
 
 
 <p>
  <span class='run'>The algebra given here for vectors is natural
   in view of their generalization as
-  $n$-dimensional <i>displacements</i>. </span>
+  $n$-dimensional <i>displacements</i>.</span>
 
  <span class='run'>However, we keep in mind that this algebra is
   over lists of numbers, and that these sums and
   products can be defined on these lists of
-  numbers regardless of interpretation. </span>
+  numbers regardless of interpretation.</span>
 </p>
-
-
-<p>
- <span class='run'>\blankpage </span>
-</p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1366,7 +1568,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

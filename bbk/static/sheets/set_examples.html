@@ -52,7 +52,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -68,14 +68,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -511,228 +528,335 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./sets.html'" onkeypress="location.href='./sets.html'">
+                <span>
+                  Sets
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_examples.pdf#page=2'" onkeypress="location.href='./set_examples.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_examples-graph.pdf'" onkeypress="location.href='./set_examples-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Set Examples </h1> 
       <p>
- <span class='run'>%!name:set_examples </span>
+ <span class='run'>%!name:set_examples</span>
 
- <span class='run'>%!need:sets </span>
+ <span class='run'>%!need:sets</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
 <p>
- <span class='run'>We give some examples of objects and sets. </span>
+ <span class='run'>We give some examples of objects and sets.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Examples} </span>
+ <span class='run'>\ssection{Examples}</span>
 </p>
 
 
 <p>
- <span class='run'>For familiar examples, </span>
+ <span class='run'>For familiar examples,</span>
 
- <span class='run'>let us start </span>
+ <span class='run'>let us start</span>
 
- <span class='run'>with some tangible </span>
+ <span class='run'>with some tangible</span>
 
- <span class='run'>objects. </span>
+ <span class='run'>objects.</span>
 
- <span class='run'>Find, or call to </span>
+ <span class='run'>Find, or call to</span>
 
- <span class='run'>mind, </span>
+ <span class='run'>mind,</span>
 
- <span class='run'>a deck </span>
+ <span class='run'>a deck</span>
 
- <span class='run'>of playing cards. </span>
+ <span class='run'>of playing cards.</span>
 </p>
 
 
 <p>
- <span class='run'>First, consider </span>
+ <span class='run'>First, consider</span>
 
- <span class='run'>the set of all </span>
+ <span class='run'>the set of all</span>
 
- <span class='run'>the cards. </span>
+ <span class='run'>the cards.</span>
 
- <span class='run'>This set contains </span>
+ <span class='run'>This set contains</span>
 
- <span class='run'>fifty-two elements. </span>
+ <span class='run'>fifty-two elements.</span>
 
- <span class='run'>Second, consider </span>
+ <span class='run'>Second, consider</span>
 
- <span class='run'>the set of cards </span>
+ <span class='run'>the set of cards</span>
 
- <span class='run'>whose suit is hearts. </span>
+ <span class='run'>whose suit is hearts.</span>
 
- <span class='run'>This set contains </span>
+ <span class='run'>This set contains</span>
 
- <span class='run'>thirteen elements: </span>
+ <span class='run'>thirteen elements:</span>
 
- <span class='run'>the ace, two, three, four, five, </span>
+ <span class='run'>the ace, two, three, four, five,</span>
 
- <span class='run'>six, seven, eight, nine, ten, </span>
+ <span class='run'>six, seven, eight, nine, ten,</span>
 
- <span class='run'>jack, queen, and </span>
+ <span class='run'>jack, queen, and</span>
 
- <span class='run'>king of hearts. </span>
+ <span class='run'>king of hearts.</span>
 
- <span class='run'>Third, consider </span>
+ <span class='run'>Third, consider</span>
 
- <span class='run'>the set of twos. </span>
+ <span class='run'>the set of twos.</span>
 
- <span class='run'>This set contains </span>
+ <span class='run'>This set contains</span>
 
- <span class='run'>four elements: </span>
+ <span class='run'>four elements:</span>
 
- <span class='run'>the two of clubs, </span>
+ <span class='run'>the two of clubs,</span>
 
- <span class='run'>the two of spades, </span>
+ <span class='run'>the two of spades,</span>
 
- <span class='run'>the two of hearts, </span>
+ <span class='run'>the two of hearts,</span>
 
- <span class='run'>and the two of diamonds. </span>
+ <span class='run'>and the two of diamonds.</span>
 </p>
 
 
 <p>
- <span class='run'>We can imagine many </span>
+ <span class='run'>We can imagine many</span>
 
- <span class='run'>more sets of cards. </span>
+ <span class='run'>more sets of cards.</span>
 
- <span class='run'>If we are holding a deck, </span>
+ <span class='run'>If we are holding a deck,</span>
 
- <span class='run'>each of these can be </span>
+ <span class='run'>each of these can be</span>
 
- <span class='run'>made tangible: we can </span>
+ <span class='run'>made tangible: we can</span>
 
- <span class='run'>touch the elements of </span>
+ <span class='run'>touch the elements of</span>
 
- <span class='run'>the set. </span>
+ <span class='run'>the set.</span>
 
- <span class='run'>But the set itself </span>
+ <span class='run'>But the set itself</span>
 
- <span class='run'>is always abstract: </span>
+ <span class='run'>is always abstract:</span>
 
- <span class='run'>we can not touch it. </span>
+ <span class='run'>we can not touch it.</span>
 
- <span class='run'>It is the idea of the </span>
+ <span class='run'>It is the idea of the</span>
 
- <span class='run'>group as distinct from </span>
+ <span class='run'>group as distinct from</span>
 
- <span class='run'>any individual member. </span>
+ <span class='run'>any individual member.</span>
 </p>
 
 
 <p>
- <span class='run'>Moreover, the </span>
+ <span class='run'>Moreover, the</span>
 
- <span class='run'>elements of a set </span>
+ <span class='run'>elements of a set</span>
 
- <span class='run'>need not be tangible. </span>
+ <span class='run'>need not be tangible.</span>
 
- <span class='run'>First, consider the set </span>
+ <span class='run'>First, consider the set</span>
 
- <span class='run'>consisting of the suits of </span>
+ <span class='run'>consisting of the suits of</span>
 
- <span class='run'>the playing card: </span>
+ <span class='run'>the playing card:</span>
 
- <span class='run'>hearts, diamonds, spades, and clubs. </span>
+ <span class='run'>hearts, diamonds, spades, and clubs.</span>
 
- <span class='run'>This set has four elements. </span>
+ <span class='run'>This set has four elements.</span>
 
- <span class='run'>Each element is a suit, whatever that is. </span>
+ <span class='run'>Each element is a suit, whatever that is.</span>
 </p>
 
 
 <p>
- <span class='run'>Second, consider the set </span>
+ <span class='run'>Second, consider the set</span>
 
- <span class='run'>consisting of the card types. </span>
+ <span class='run'>consisting of the card types.</span>
 
- <span class='run'>This set has thirteen elements: </span>
+ <span class='run'>This set has thirteen elements:</span>
 
- <span class='run'>ace, two, three, four, five, </span>
+ <span class='run'>ace, two, three, four, five,</span>
 
- <span class='run'>six, seven, eight, nine, ten, </span>
+ <span class='run'>six, seven, eight, nine, ten,</span>
 
- <span class='run'>jack, queen, king. </span>
+ <span class='run'>jack, queen, king.</span>
 
- <span class='run'>The subtlety here is that </span>
+ <span class='run'>The subtlety here is that</span>
 
- <span class='run'>this set is different than </span>
+ <span class='run'>this set is different than</span>
 
- <span class='run'>the set of hearts, namely </span>
+ <span class='run'>the set of hearts, namely</span>
 
- <span class='run'>those thirteen cards which are </span>
+ <span class='run'>those thirteen cards which are</span>
 
- <span class='run'>hearts. </span>
+ <span class='run'>hearts.</span>
 
- <span class='run'>However these sets are </span>
+ <span class='run'>However these sets are</span>
 
- <span class='run'>similar: they both have thirteen </span>
+ <span class='run'>similar: they both have thirteen</span>
 
- <span class='run'>elements, and there is a natural </span>
+ <span class='run'>elements, and there is a natural</span>
 
- <span class='run'>correspondence between their </span>
+ <span class='run'>correspondence between their</span>
 
- <span class='run'>elements: the ace of hearts </span>
+ <span class='run'>elements: the ace of hearts</span>
 
- <span class='run'>with the type ace, the two </span>
+ <span class='run'>with the type ace, the two</span>
 
- <span class='run'>of hearts with the type two, </span>
+ <span class='run'>of hearts with the type two,</span>
 
- <span class='run'>and so on. </span>
+ <span class='run'>and so on.</span>
 </p>
 
 
 <p>
- <span class='run'>Of course, sets need have nothing to </span>
+ <span class='run'>Of course, sets need have nothing to</span>
 
- <span class='run'>do with playing cards. </span>
+ <span class='run'>do with playing cards.</span>
 
- <span class='run'>For example, consider the set of </span>
+ <span class='run'>For example, consider the set of</span>
 
- <span class='run'>seasons: autumn, winter, spring, </span>
+ <span class='run'>seasons: autumn, winter, spring,</span>
 
- <span class='run'>and summer. </span>
+ <span class='run'>and summer.</span>
 
- <span class='run'>This set has four elements. </span>
+ <span class='run'>This set has four elements.</span>
 
- <span class='run'>For another example, </span>
+ <span class='run'>For another example,</span>
 
  <span class='run'>consider the set of lower case latin letters
   (introduced in \sheetref{letters}{Letters}): a, b,
-  c, …, x, y, z. </span>
+  c, …, x, y, z.</span>
 
- <span class='run'>This set has twenty-six elements. </span>
+ <span class='run'>This set has twenty-six elements.</span>
 
  <span class='run'>Finally, consider a pack of wolves, or a bunch
-  of grapes, or a flock of pigeons. </span>
+  of grapes, or a flock of pigeons.</span>
 </p>
 
 
 <p>
- <span class='run'>%We develop herein a language </span>
+ <span class='run'>%We develop herein a language</span>
 
- <span class='run'>%for specifying things by either </span>
+ <span class='run'>%for specifying things by either</span>
 
- <span class='run'>%listing them explicitly or </span>
+ <span class='run'>%listing them explicitly or</span>
 
- <span class='run'>%by listing their defining properties. </span>
+ <span class='run'>%by listing their defining properties.</span>
 
  <span class='run'></span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -784,7 +908,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make pair_intersections.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 pair_intersections.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > pair_intersections.tex
 

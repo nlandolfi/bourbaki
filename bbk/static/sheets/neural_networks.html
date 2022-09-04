@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -145,7 +162,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. Future editions may change the name of this sheet to \t{computation networks}, or may add prerequisite sheet on computation graphs. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A sequence of functions $(g_1, \dots , g_\ell )$ is \t{composable} if $g_i$ is composible with $g_{i-1}$ for $i = 2, \dots , \ell $. In this case we write $g_\ell  \composed g_{\ell -1} \composed \cdots \composed g_2 \composed g_1$. For example, we write $g_3 \composed g_2 \composed g_1$ for $(g_1, g_2, g_3)$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{neural network} (or \t{feedforward neural network}) from $\R ^n$ to $\R ^m$ is a sequence of composable functions $(g_1, \dots , g_{\ell })$, $\dom g_1 = \R ^n$, $\ran g_\ell  \subset \R ^m$, satisfying \[ g_i(\xi ) = h_i(A_i \xi  + b_i) \] for some conforming matrices $A_i$, vectors $b_i$ and functions $h_i$.</p></div><div class="sheet-listing"><p class="sheet"> The $i$th \t{layer} of the neural network is the $i$th function $g_i$. The $i$th \t{activation} of the neural network is the function $h_i$. A \t{neural network} is called \t{deep} if its number of layers is larger than 3.</p></div><div class="sheet-listing"><p class="sheet"> We call the composition of the layers of the neural network the \t{network predictor} (or just \t{predictor}). We also call it \t{the function} of the network. \ifhmode\unskip\fi\footnote{ Many authorities refer to a neural network as a function. Strictly speaking that is true for us, as well, since a sequence is a function. But the meaning of the common use is in reference to the \t{network predictor}. }</p></div><div class="sheet-listing"><p class="sheet"> A \t{multi-layer perceptron} (\t{MLP}) is a neural network with 2 layers (1 \t{hidden layer}) and for which $A_i$ and $b_i$ have unrestricted nonzero entries.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. Future editions may change the name of this sheet to \t{computation networks}, or may add a prerequisite sheet on computation graphs. } \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A sequence of functions $(g_1, \dots , g_\ell )$ is \t{composable} if $g_i$ is composible with $g_{i-1}$ for $i = 2, \dots , \ell $. In this case we write $g_\ell  \circ g_{\ell -1} \circ \cdots \circ g_2 \circ g_1$. For example, we write $g_3 \circ g_2 \circ g_1$ for $(g_1, g_2, g_3)$.</p></div><div class="sheet-listing"><p class="sheet"> A \t{neural network} (or \t{feedforward neural network}) from $\R ^n$ to $\R ^m$ is a sequence of composable functions $(g_1, \dots , g_{\ell })$, $\dom g_1 = \R ^n$, $\ran g_\ell  \subset \R ^m$, satisfying \[ g_i(\xi ) = h_i(A_i \xi  + b_i) \] for some conforming matrices $A_i$, vectors $b_i$ and functions $h_i$.</p></div><div class="sheet-listing"><p class="sheet"> The $i$th \t{layer} of the neural network is the $i$th function $g_i$. The $i$th \t{activation} of the neural network is the function $h_i$. A \t{neural network} is called \t{deep} if its number of layers is larger than 3.</p></div><div class="sheet-listing"><p class="sheet"> We call the composition of the layers of the neural network the \t{network predictor} (or just \t{predictor}). We also call it \t{the function} of the network. \ifhmode\unskip\fi\footnote{ Many authorities refer to a neural network as a function. Strictly speaking that is true for us, as well, since a sequence is a function. But the meaning of the common use is in reference to the \t{network predictor}. }</p></div><div class="sheet-listing"><p class="sheet"> A \t{multi-layer perceptron} (\t{MLP}) is a neural network with 2 layers (1 \t{hidden layer}) and for which $A_i$ and $b_i$ have unrestricted nonzero entries.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1383,43 +1400,156 @@ Parse: {prototype: {
 \newcommand{\tranposep}[1]{\transposep{#1}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrix-vector_products.html'" onkeypress="location.href='./real_matrix-vector_products.html'">
+                <span>
+                  Real Matrix-Vector Products
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./regressors.html'" onkeypress="location.href='./regressors.html'">
+                <span>
+                  Regressors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./autoencoders.html'" onkeypress="location.href='./autoencoders.html'">
+            <span>
+            Autoencoders
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./neural_distribution_families.html'" onkeypress="location.href='./neural_distribution_families.html'">
+            <span>
+            Neural Distribution Families
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./neural_networks.pdf#page=2'" onkeypress="location.href='./neural_networks.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./neural_networks-graph.pdf'" onkeypress="location.href='./neural_networks-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Neural Networks </h1> 
-      <p>
- <span class='run'>%!name:neural_networks </span>
+      <!--
+!name:neural_networks
+!need:regressors
+!need:real_matrix-vector_products
+!refs:∕sanjay_lall∕introduction_to_machine_learning∕neural_networks
+-->
 
- <span class='run'>%!need:regressors </span>
-
- <span class='run'>% %!need:inductors </span>
-
- <span class='run'>%!need:real_matrix-vector_products </span>
-
- <span class='run'>%!refs:∕sanjay_lall∕introduction_to_machine_learning∕neural_networks </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Definition} </span>
-</p>
-
+<h1>Why</h1>
+<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A sequence of functions $(g_1, \dots , g_\ell )$
   is <span class='term'>composable</span> if $g_i$ is
   composible with $g_{i-1}$ for $i = 2, \dots ,
-  \ell $. </span>
+  \ell $.</span>
 
- <span class='run'>In this case we write $g_\ell  \composed
-  g_{\ell -1} \composed \cdots \composed g_2
-  \composed g_1$. For example, we write $g_3
-  \composed g_2 \composed g_1$ for $(g_1, g_2,
-  g_3)$. </span>
+ <span class='run'>In this case we write $g_\ell  \circ
+  g_{\ell -1} \circ \cdots \circ g_2 \circ g_1$.
+  For example, we write $g_3 \circ g_2 \circ g_1$
+  for $(g_1, g_2, g_3)$.</span>
 </p>
 
 
@@ -1431,23 +1561,23 @@ Parse: {prototype: {
   $\dom g_1 = \R ^n$, $\ran g_\ell  \subset
   \R ^m$, satisfying
   <p>\[
-   g_i(\xi ) = h_i(A_i \xi  + b_i) 
+   g_i(\xi ) = h_i(A_i \xi  + b_i)
   \]</p>
   for some conforming matrices $A_i$, vectors
-  $b_i$ and functions $h_i$. </span>
+  $b_i$ and functions $h_i$.</span>
 </p>
 
 
 <p>
  <span class='run'>The $i$th <span class='term'>layer</span> of the
-  neural network is the $i$th function $g_i$. </span>
+  neural network is the $i$th function $g_i$.</span>
 
  <span class='run'>The $i$th <span class='term'>activation</span> of
-  the neural network is the function $h_i$. </span>
+  the neural network is the function $h_i$.</span>
 
  <span class='run'>A <span class='term'>neural network</span> is
   called <span class='term'>deep</span> if its number
-  of layers is larger than 3. </span>
+  of layers is larger than 3.</span>
 </p>
 
 
@@ -1455,7 +1585,7 @@ Parse: {prototype: {
  <span class='run'>We call the composition of the layers of the
   neural network the <span class='term'>network
   predictor</span> (or just
-  <span class='term'>predictor</span>). </span>
+  <span class='term'>predictor</span>).</span>
 
  <span class='run'>We also call it <span class='term'>the
   function</span> of the network.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
@@ -1467,47 +1597,35 @@ Parse: {prototype: {
   (<span class='term'>MLP</span>) is a neural network
   with 2 layers (1 <span class='term'>hidden
   layer</span>) and for which $A_i$ and $b_i$ have
-  unrestricted nonzero entries. </span>
+  unrestricted nonzero entries.</span>
 </p>
 
 
-<p>
- <span class='run'></span>
-
- <span class='run'>% \ssubsection{Notation} </span>
-
- <span class='run'>% </span>
-
- <span class='run'>% Let $g^1: 𝗥^d → 𝗥^k$, $g^2: 𝗥^k → 𝗥^k$, $g^3: 𝗥^k → 𝗥^m$. </span>
-
- <span class='run'>% Then $(g^1, g^2, g^3)$ is a neural network. </span>
-
- <span class='run'>% Notice that the codomain of $g^1$ ($𝗥^k$ </span>
-
- <span class='run'>% </span>
-
- <span class='run'>% \ssubsection{Activation functions} </span>
-
- <span class='run'>% </span>
-
- <span class='run'>% An activation function $h: 𝗥 → 𝗥$ is nonlinear. </span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage </span>
-</p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. Future editions
+<!--
+% \ssubsection{Notation}
+%
+% Let $g^1: \R^d \to \R^k$, $g^2: \R^k \to \R^k$, $g^3: \R^k \to \R^m$.
+% Then $(g^1, g^2, g^3)$ is a neural network.
+% Notice that the codomain of $g^1$ ($\R^k$
+%
+% \ssubsection{Activation functions}
+%
+% An activation function $h: \R \to \R$ is nonlinear.
+-->
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. Future editions
   may change the name of this sheet to
   <span class='term'>computation networks</span>, or
-  may add prerequisite sheet on computation graphs. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Many authorities refer to a neural network as
+  may add a prerequisite sheet on computation
+  graphs.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Many authorities refer to a neural network as
   a function. Strictly speaking that is true for
   us, as well, since a sequence is a function.
   But the meaning of the common use is in
   reference to the <span class='term'>network
-  predictor</span>. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+  predictor</span>.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1559,7 +1677,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

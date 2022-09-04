@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1019,17 +1036,143 @@ Parse: {prototype: {
 \renewcommand{\deg}{\mathword{deg}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./lists.html'" onkeypress="location.href='./lists.html'">
+                <span>
+                  Lists
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./undirected_graphs.html'" onkeypress="location.href='./undirected_graphs.html'">
+                <span>
+                  Undirected Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./trees.html'" onkeypress="location.href='./trees.html'">
+            <span>
+            Trees
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./undirected_subgraphs.html'" onkeypress="location.href='./undirected_subgraphs.html'">
+            <span>
+            Undirected Subgraphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./undirected_paths.pdf#page=2'" onkeypress="location.href='./undirected_paths.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./undirected_paths-graph.pdf'" onkeypress="location.href='./undirected_paths-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Undirected Paths </h1> 
       <p>
- <span class='run'>%!name:undirected_paths </span>
+ <span class='run'>%!name:undirected_paths</span>
 
- <span class='run'>%!need:undirected_graphs </span>
+ <span class='run'>%!need:undirected_graphs</span>
 
- <span class='run'>%!need:lists </span>
+ <span class='run'>%!need:lists</span>
 
- <span class='run'>%!ref:vandenberghe∕chordal </span>
+ <span class='run'>%!ref:vandenberghe∕chordal</span>
 </p>
 
 
@@ -1039,64 +1182,64 @@ Parse: {prototype: {
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
 <p>
- <span class='run'>Let $(V, E)$ be an undirected graph. </span>
+ <span class='run'>Let $(V, E)$ be an undirected graph.</span>
 
  <span class='run'>An (undirected) <span class='term'>path</span>
   between vertex $v \in V$ and vertex $w \neq v$
   is a finite sequence of distinct vertices, whose
   first coordinate is $v$ and whose last
   coordinate is $w$, and whose consecutive
-  coordinates are adjacent in the graph. </span>
+  coordinates are adjacent in the graph.</span>
 
  <span class='run'>We call the first and last coordinate the
-  <span class='term'>endpoints</span> of the path. </span>
+  <span class='term'>endpoints</span> of the path.</span>
 
  <span class='run'>We say the path is
-  <span class='term'>between</span> its endpoints. </span>
+  <span class='term'>between</span> its endpoints.</span>
 </p>
 
 
 <p>
  <span class='run'>The <span class='term'>length</span> of a path is
   one less than the number of vertices: namely,
-  the number of edges. </span>
+  the number of edges.</span>
 
  <span class='run'>Notice that this definition disagrees with the
   definition of the “length} of the sequence of
-  vertices (namely, the number of vertices). </span>
+  vertices (namely, the number of vertices).</span>
 
  <span class='run'>The length of a path is always at least one:
   there exists a path of length one between any
-  two adjacent vertices. </span>
+  two adjacent vertices.</span>
 
  <span class='run'>If a path has length two or greater, we call
   a vertex which is not the first or last vertex
-  an <span class='term'>interior vertex</span>. </span>
+  an <span class='term'>interior vertex</span>.</span>
 </p>
 
 
 <p>
  <span class='run'>Two vertices are
   <span class='term'>connected</span> in a graph if
-  there exists at least one path between them. </span>
+  there exists at least one path between them.</span>
 
  <span class='run'>A graph is <span class='term'>connected</span> if
-  each pair of vertices is connected. </span>
+  each pair of vertices is connected.</span>
 
  <span class='run'>Recall that two vertices are
   <span class='term'>adjancent</span> if they are
-  connected by a path of length one. </span>
+  connected by a path of length one.</span>
 
  <span class='run'>In contrast, two vertices are connected if they
-  are connected by a path of any length. </span>
+  are connected by a path of any length.</span>
 
  <span class='run'>In other words, all adjacent vertices are
-  connected. </span>
+  connected.</span>
 </p>
 
 
@@ -1104,51 +1247,53 @@ Parse: {prototype: {
  <span class='run'>A <span class='term'>cycle</span> is a sequence
   whose first and last coordinate are identical,
   all other coordinates are distinct, and
-  consecutive coordinates are adjacent. </span>
+  consecutive coordinates are adjacent.</span>
 
  <span class='run'>An undirected graph is
   <span class='term'>acyclic</span> if there are no
-  cycles of its vertices. </span>
+  cycles of its vertices.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssubsection{Other Terminology} </span>
+ <span class='run'>\ssubsection{Other Terminology}</span>
 </p>
 
 
 <p>
  <span class='run'>Some authors allow paths to contain repeated
   vertices, and call a path with distinct vertices
-  a <span class='term'>simple path</span>. </span>
+  a <span class='term'>simple path</span>.</span>
 
  <span class='run'>Similarly, some authors allow a cycle to
   contain repeated vertices, and call a path with
   distinct vertices a <span class='term'>simple
-  cycle</span> or <span class='term'>circuit</span>. </span>
+  cycle</span> or <span class='term'>circuit</span>.</span>
 
  <span class='run'>Some authors use the term
   <span class='term'>loop</span> instead of
-  <span class='term'>cycle</span>. </span>
+  <span class='term'>cycle</span>.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssubsection{Notation} </span>
+ <span class='run'>\ssubsection{Notation}</span>
 </p>
 
 
 <p>
- <span class='run'>Let $G = (V, E)$ be a graph. </span>
+ <span class='run'>Let $G = (V, E)$ be a graph.</span>
 
  <span class='run'>A path between $v$ and $w$ (with $v \neq w$)
   in $G$ is a sequence $(v_0, v_1, \dots , v_k)$
   where $v_0 = v$ and $v_k = w$ and $\set{v_i,
-  v_{i+1}} \in E$ for $i = 0, \dots , k-1$. </span>
+  v_{i+1}} \in E$ for $i = 0, \dots , k-1$.</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1200,7 +1345,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

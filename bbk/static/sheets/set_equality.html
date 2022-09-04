@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -78,14 +78,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -741,7 +758,119 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_inclusion.html'" onkeypress="location.href='./set_inclusion.html'">
+                <span>
+                  Set Inclusion
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_specification.html'" onkeypress="location.href='./set_specification.html'">
+            <span>
+            Set Specification
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_equality.pdf#page=2'" onkeypress="location.href='./set_equality.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_equality-graph.pdf'" onkeypress="location.href='./set_equality-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Set Equality </h1> 
       <!--
@@ -751,25 +880,23 @@ Parse: {prototype: {
 !refs:paul_halmos∕naive_set_theory
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>When are two sets the same? </span>
+ <span class='run'>When are two sets the same?</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>Let $A$ and $B$ denote sets. </span>
+ <span class='run'>Let $A$ and $B$ denote sets.</span>
 
  <span class='run'>If $A = B$ then every element of $A$ is an
   element of $B$ and every element of $B$ is an
-  element of $A$. </span>
+  element of $A$.</span>
 
  <span class='run'>In other words, $(A = B) \implies ((A \subset
-  B) \land (B \subset A))$. </span>
+  B) \land (B \subset A))$.</span>
 </p>
 
 
@@ -790,84 +917,83 @@ Definition </h1>
 -->
 
 <p>
- <span class='run'>What of the converse? </span>
+ <span class='run'>What of the converse?</span>
 
  <span class='run'>Suppose every element of $A$ is an element of
   $B$ and every element of $B$ is an element of
-  $A$. </span>
+  $A$.</span>
 
- <span class='run'>Then $A = B$? </span>
+ <span class='run'>Then $A = B$?</span>
 
- <span class='run'>We define it to be so. </span>
+ <span class='run'>We define it to be so.</span>
 
- <span class='run'>Sets are determined by their members. </span>
+ <span class='run'>Sets are determined by their members.</span>
 </p>
 
-<div class='principle' text='Extension' <span class='run'>Sets are the same if every member of one is
-  a member of the other and vice versa. </span></div>
+<div class='principle' text='Extension'>
+ <span class='run'>Sets are the same if every member of one is
+  a member of the other and vice versa.</span></div>
 <p>
  <span class='run'>In other words, two sets are identical if and
   only if every element of one is an element of
-  the other. </span>
+  the other.</span>
 
  <span class='run'>This principle is sometimes called the
-  <span class='term'>principle of extension</span>. </span>
+  <span class='term'>principle of extension</span>.</span>
 
  <span class='run'>We refer to the elements of a set as its
-  <span class='term'>extension</span>. </span>
+  <span class='term'>extension</span>.</span>
 
  <span class='run'>Roughly speaking, we have declared that if we
-  know the extension then we know the set. </span>
+  know the extension then we know the set.</span>
 
- <span class='run'>A set is determined by its extension. </span>
+ <span class='run'>A set is determined by its extension.</span>
 </p>
 
-<h2>
-Deductive principle </h2>
+<h2>Deductive principle</h2>
 
 <p>
  <span class='run'>We can use this definition to deduce $A= B$
   if we first deduce $A \subset B$ and $B
-  \subset A$. </span>
+  \subset A$.</span>
 
  <span class='run'>With these two implications, we use the
   principle of extension to conclude that the sets
-  are the same. </span>
+  are the same.</span>
 
  <span class='run'>In other words, $(A = B) \iff ((A \subset B)
-  \land (B \subset A))$. </span>
+  \land (B \subset A))$.</span>
 
  <span class='run'>We also describe this fact by saying that
   inclusion ($\subset)$ is
-  <span class='term'>antisymmetric</span>. </span>
+  <span class='term'>antisymmetric</span>.</span>
 </p>
 
-<h2>
-Belonging and sets compared with ancestry and humans </h2>
+<h2>Belonging and sets compared with ancestry and humans</h2>
 
 <p>
  <span class='run'>Compare the principle of extension for
   identifying sets from their elements with an
   analogous principle for identifying people from
-  their ancestors. </span>
+  their ancestors.</span>
 </p>
 
 
 <p>
- <span class='run'>We can consider a person’s ancestors. </span>
+ <span class='run'>We can consider a person’s ancestors.</span>
 
  <span class='run'>Namely, the person’s parents, grandparents, great
-  grandparents and so on. </span>
+  grandparents and so on.</span>
 
  <span class='run'>It is clear that if we label the same human
   with two names $A$ and $B$, then $A$ and $B$
-  have the same ancestors. </span>
+  have the same ancestors.</span>
 
  <span class='run'>In other words, same human implies same
-  ancestors. </span>
+  ancestors.</span>
 
  <span class='run'>This is the analog of “if two sets are equal
-  they have the same members”. </span>
+  they have the same members”.</span>
 </p>
 
 
@@ -875,27 +1001,27 @@ Belonging and sets compared with ancestry and humans </h2>
  <span class='run'>On the other hand, if we have two people
   denoted by $A$ and $B$, and we know that $A$
   has the same ancestors as $B$, we can not
-  conclude that $A$ and $B$ denote the same human. </span>
+  conclude that $A$ and $B$ denote the same human.</span>
 
  <span class='run'>For example, siblings have the same ancestors
-  but are different people. </span>
+  but are different people.</span>
 
  <span class='run'>This direction, same ancestors implies same
   human, is the analogue of “if they have the
-  same elements, two sets are the same”. </span>
+  same elements, two sets are the same”.</span>
 
  <span class='run'>It is false for humans and ancestors, but we
-  define it to be true for sets and members. </span>
+  define it to be true for sets and members.</span>
 </p>
 
 
 <p>
  <span class='run'>The principle of extension is more than a
-  statement about equality. </span>
+  statement about equality.</span>
 
  <span class='run'>It is also a statement about our notion of
   belonging, of what it means to be an element
-  of a set, and what a set is. </span>
+  of a set, and what a set is.</span>
 </p>
 
 
@@ -908,9 +1034,11 @@ Belonging and sets compared with ancestry and humans </h2>
   <div data-littype='run'> </div>
 </div>
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -962,7 +1090,7 @@ Belonging and sets compared with ancestry and humans </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

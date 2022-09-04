@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1056,60 +1073,179 @@ Parse: {prototype: {
 \newcommand{\PE}{\mathbfsf{P}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./event_probabilities.html'" onkeypress="location.href='./event_probabilities.html'">
+                <span>
+                  Event Probabilities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./conditional_distributions.html'" onkeypress="location.href='./conditional_distributions.html'">
+            <span>
+            Conditional Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./dependent_events.html'" onkeypress="location.href='./dependent_events.html'">
+            <span>
+            Dependent Events
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./conditional_event_probabilities.pdf#page=2'" onkeypress="location.href='./conditional_event_probabilities.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./conditional_event_probabilities-graph.pdf'" onkeypress="location.href='./conditional_event_probabilities-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Conditional Event Probabilities </h1> 
       <p>
- <span class='run'>%!name:conditional_event_probabilities </span>
+ <span class='run'>%!name:conditional_event_probabilities</span>
 
- <span class='run'>%!need:event_probabilities </span>
+ <span class='run'>%!need:event_probabilities</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
 <p>
  <span class='run'>How should we modify probabilities, given that
   we know some aspect of the outcomes (i.e., that
-  some event has occurred). </span>
+  some event has occurred).</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 
  <span class='run'>Let $\mathbfsf{P} : \powerset{\Omega } \to \R $
-  be a finite probability measure. </span>
+  be a finite probability measure.</span>
 
  <span class='run'>Let $A, B \subset \Omega $ and $\mathbfsf{P} (B)
-  \neq 0$. </span>
+  \neq 0$.</span>
 
  <span class='run'>The <span class='term'>conditional
   probability</span> of $A$
   <span class='term'>given</span> $B$ is fraction of
   the probability of $A \cap  B$ over the
-  probability of $B$. </span>
+  probability of $B$.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssubsection{Notation} </span>
+ <span class='run'>\ssubsection{Notation}</span>
 
  <span class='run'>In a slightly slippery but universally standard
   notation, we denote the conditional probability
-  of $A$ given $B$ by $\mathbfsf{P} (A \mid  B)$. </span>
+  of $A$ given $B$ by $\mathbfsf{P} (A \mid  B)$.</span>
 
  <span class='run'>In other words, we define
   <p>\[
    \mathbfsf{P} (A \mid  B) = \frac{\mathbfsf{P} (A \cap
-    B)}{\mathbfsf{P} (B)}, 
+    B)}{\mathbfsf{P} (B)},
   \]</p></span>
 
  <span class='run'>for all $A, B \subset \Omega $, whenever
-  $\mathbfsf{P} (B) \neq 0$. </span>
+  $\mathbfsf{P} (B) \neq 0$.</span>
 </p>
 
 
@@ -1118,36 +1254,36 @@ Parse: {prototype: {
   probability (see \sheetref{event_probabilities}{Event
   Probabilities}) as
   <p>\[
-   \textstyle 
+   \textstyle
 
    \mathbfsf{P} (B) = \sum_{i = 1}^{n}
-    \mathbfsf{P} (A_i)\mathbfsf{P} (B \mid  A_i), 
+    \mathbfsf{P} (A_i)\mathbfsf{P} (B \mid  A_i),
   \]</p>
   where $A_1, \dots , A_n$ partition $\Omega $ and
   $B \subset \Omega $ with $\mathbfsf{P} (B) &gt;
-  0$. </span>
+  0$.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Conditional probability measure} </span>
+ <span class='run'>\ssection{Conditional probability measure}</span>
 
  <span class='run'>Suppose $B \subset \Omega $ and $\mathbfsf{P} (B)
-  &gt; 0$. </span>
+  &gt; 0$.</span>
 
  <span class='run'>Then (i) $\mathbfsf{P} (A \mid  B) \geq 0$ for
   all $A \subset \Omega $, since $\mathbfsf{P} (A
-  \cap  B) \geq 0$. </span>
+  \cap  B) \geq 0$.</span>
 
  <span class='run'>Moreover, (ii)
   <p>\[
    \mathbfsf{P} (\Omega  \mid  B) = \mathbfsf{P} (\Omega  \cap
-    B)/\mathbfsf{P} (B) = \mathbfsf{P} (B)/\mathbfsf{P} (B) = 1 
+    B)/\mathbfsf{P} (B) = \mathbfsf{P} (B)/\mathbfsf{P} (B) = 1
   \]</p></span>
 
  <span class='run'>Similarly, $\mathbfsf{P} (\varnothing \mid  B) =
   \mathbfsf{P} (\varnothing \cap  B)/\mathbfsf{P} (B)
-  = 0/\mathbfsf{P} (B) = 0$. </span>
+  = 0/\mathbfsf{P} (B) = 0$.</span>
 </p>
 
 
@@ -1155,80 +1291,82 @@ Parse: {prototype: {
  <span class='run'>Finally, (iii) if $A \cap  C = \varnothing$,
   then
   <p>\[
-   \begin{aligned} 
+   \begin{aligned}
 
-   \mathbfsf{P} (A \cap  C \mid  B) 
+   \mathbfsf{P} (A \cap  C \mid  B)
 
-   &= 
+   &=
 
-   \mathbfsf{P} ((A \cap  C) \cap  B)/\mathbfsf{P} (B) \\ 
+   \mathbfsf{P} ((A \cap  C) \cap  B)/\mathbfsf{P} (B) \\
 
-   &= 
+   &=
 
-   \mathbfsf{P} ((A \cap  B) \cap  (C \cap  B)/\mathbfsf{P} (B) \\ 
+   \mathbfsf{P} ((A \cap  B) \cap  (C \cap  B)/\mathbfsf{P} (B) \\
 
-   &\overset{(a)}{=} 
+   &\overset{(a)}{=}
 
    (\mathbfsf{P} (A \cap  B) + \mathbfsf{P} (C \cap
-    B))/\mathbfsf{P} (B) \\ 
+    B))/\mathbfsf{P} (B) \\
 
-   &= 
+   &=
 
    \mathbfsf{P} (A \cap  B)/\mathbfsf{P} (B) + P(C \cap
-    B)/\mathbfsf{P} (B) \\ 
+    B)/\mathbfsf{P} (B) \\
 
-   &= 
+   &=
 
-   \mathbfsf{P} (A \mid  B) + P(C \mid  B). 
+   \mathbfsf{P} (A \mid  B) + P(C \mid  B).
 
-   \end{aligned} 
+   \end{aligned}
   \]</p>
   where (a) follows since $A \cap  B$ and $C
-  \cap  B$ are disjoint. </span>
+  \cap  B$ are disjoint.</span>
 </p>
 
 
 <p>
  <span class='run'>Together, (i)-(iii) mean that $\mathbfsf{P} (\cdot
   \mid  B)$ is itself a probability measure on
-  $\Omega $. </span>
+  $\Omega $.</span>
 
  <span class='run'>We therefore refer to $\mathbfsf{P} (\cdot \mid
   B)$ as a <span class='term'>conditional probability
-  measure</span>. </span>
+  measure</span>.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssubsection{Induced conditional distribution} </span>
+ <span class='run'>\ssubsection{Induced conditional distribution}</span>
 
  <span class='run'>Therefore, we expect there to also correspond a
-  new distribution on the set of outcomes. </span>
+  new distribution on the set of outcomes.</span>
 
  <span class='run'>For $\mathbfsf{P} _p$, define $q: \Omega  \to
   \R $ by
   <p>\[
-   q(\omega ) = \begin{cases} 
+   q(\omega ) = \begin{cases}
 
    \frac{p(\omega )}{\mathbfsf{P} (B)} & \text{ if } \omega  \in B
-    \\ 
+    \\
 
-   0 & \text{ otherwise. } \\ 
+   0 & \text{ otherwise. } \\
 
-   \end{cases} 
+   \end{cases}
   \]</p></span>
 
  <span class='run'>In this case $\mathbfsf{P} _q(A) =
-  \mathbfsf{P} _p(A \mid  B)$. </span>
+  \mathbfsf{P} _p(A \mid  B)$.</span>
 
  <span class='run'>We call $q$ the <span class='term'>conditional
   distribution</span> induced by
   <span class='term'>conditioning on</span> the event
-  $B$. </span>
+  $B$.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1280,7 +1418,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

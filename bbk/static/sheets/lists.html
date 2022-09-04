@@ -153,7 +153,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -169,14 +169,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1088,7 +1105,210 @@ Parse: {prototype: {
 \newcommand{\product}{\prod}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./direct_products.html'" onkeypress="location.href='./direct_products.html'">
+                <span>
+                  Direct Products
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./family_unions_and_intersections.html'" onkeypress="location.href='./family_unions_and_intersections.html'">
+                <span>
+                  Family Unions and Intersections
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_numbers.html'" onkeypress="location.href='./set_numbers.html'">
+                <span>
+                  Set Numbers
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./alphabets.html'" onkeypress="location.href='./alphabets.html'">
+            <span>
+            Alphabets
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./arrays.html'" onkeypress="location.href='./arrays.html'">
+            <span>
+            Arrays
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./decision_processes.html'" onkeypress="location.href='./decision_processes.html'">
+            <span>
+            Decision Processes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./function_graphs.html'" onkeypress="location.href='./function_graphs.html'">
+            <span>
+            Function Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./joint_distributions.html'" onkeypress="location.href='./joint_distributions.html'">
+            <span>
+            Joint Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_distributions.html'" onkeypress="location.href='./maximum_likelihood_distributions.html'">
+            <span>
+            Maximum Likelihood Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./ordered_undirected_graphs.html'" onkeypress="location.href='./ordered_undirected_graphs.html'">
+            <span>
+            Ordered Undirected Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./polynomials.html'" onkeypress="location.href='./polynomials.html'">
+            <span>
+            Polynomials
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./predictors.html'" onkeypress="location.href='./predictors.html'">
+            <span>
+            Predictors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_plane.html'" onkeypress="location.href='./real_plane.html'">
+            <span>
+            Real Plane
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./sequences.html'" onkeypress="location.href='./sequences.html'">
+            <span>
+            Sequences
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./undirected_paths.html'" onkeypress="location.href='./undirected_paths.html'">
+            <span>
+            Undirected Paths
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./lists.pdf#page=2'" onkeypress="location.href='./lists.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./lists-graph.pdf'" onkeypress="location.href='./lists-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Lists </h1> 
       <!--
@@ -1100,26 +1320,24 @@ Parse: {prototype: {
 !refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕indexed_families_of_sets
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>We want to talk about several objects in order. </span>
+ <span class='run'>We want to talk about several objects in order.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>list</span> in $A$ is a
-  function $a: \set{1, \dots , n} \to A$. </span>
+  function $a: \set{1, \dots , n} \to A$.</span>
 
  <span class='run'>In other words, a list is a <i>family</i>
-  whose index set is $\set{1, \dots , n}$ </span>
+  whose index set is $\set{1, \dots , n}$</span>
 
  <span class='run'>We call $n$ the <span class='term'>length</span>
   $n$ and we call $a_k$ is the
-  <span class='term'>$k$th entry</span> of $A$. </span>
+  <span class='term'>$k$th entry</span> of $A$.</span>
 </p>
 
 
@@ -1130,100 +1348,97 @@ Definition </h1>
   <span class='term'>string</span>, or
   <span class='term'>dataset</span>, and refer to the
   length of the list as its
-  <span class='term'>size</span>. </span>
+  <span class='term'>size</span>.</span>
 
  <span class='run'>We will sometimes say that the list is
   &#34;<span class='term'>in</span> $A$&#34;, or
   “<span class='term'>of</span> elements of/from $A$”,
   and call an entry of $k$ a
   <span class='term'>term</span> or
-  <span class='term'>record</span>. </span>
+  <span class='term'>record</span>.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>Since the natural numbers are ordered, we
   regularly denote lists from left to right
-  between parentheses. </span>
+  between parentheses.</span>
 
  <span class='run'>For example, we denote $a: \set{1, \dots , 4}
-  \to A$ by $(a_1, a_2, a_3, a_4)$. </span>
+  \to A$ by $(a_1, a_2, a_3, a_4)$.</span>
 </p>
 
-<h2>
-Orderings and numberings </h2>
+<h2>Orderings and numberings</h2>
 
 <p>
- <span class='run'>Let $A$ be a set with $\num{A} = n$. </span>
+ <span class='run'>Let $A$ be a set with $\num{A} = n$.</span>
 
  <span class='run'>A sequence $a: \set{1, \dots , n} \to A$ is
   an <span class='term'>ordering</span> of $A$ if
-  $a$ is invertible. </span>
+  $a$ is invertible.</span>
 
  <span class='run'>In this case, we call the inverse a
-  <span class='term'>numbering</span> of $A$. </span>
+  <span class='term'>numbering</span> of $A$.</span>
 
  <span class='run'>An ordering associates with each number a
   unique object and a numbering associates with
   each object a unique number (the object’s
-  <span class='term'>index</span>). </span>
+  <span class='term'>index</span>).</span>
 </p>
 
-<h2>
-Relation to Direct Products </h2>
+<h2>Relation to Direct Products</h2>
 
 <p>
  <span class='run'>A <span class='term'>natural direct product</span>
-  is a product of a list of sets. </span>
+  is a product of a list of sets.</span>
 
  <span class='run'>We denote the direct product of a list of
   sets $A_1, \dots , A_n$ by $\prod_{i = 1}^{n}
-  A_i$. </span>
+  A_i$.</span>
 
  <span class='run'>If each $A_i$ is the same set $A$, then we
   denote the product $\prod_{i = 1}^{n} A_i$ by
-  $A^n$. </span>
+  $A^n$.</span>
 
  <span class='run'>The direct product $A^n$ is set of lists in
-  $A$ . </span>
+  $A$ .</span>
 </p>
 
-<h1>
-Natural unions and intersections </h1>
+<h1>Natural unions and intersections</h1>
 
 <span class='run'>We denote the family union of the list of sets
- $A_1, \dots , A_n$ by $\cup_{i = 1}^{n} A_i$. </span>
+ $A_1, \dots , A_n$ by $\cup_{i = 1}^{n} A_i$.</span>
 
 <span class='run'>Similarly, we denote the intersection by
- $\cap _{i = 1}^{n} A_i$. </span>
+ $\cap _{i = 1}^{n} A_i$.</span>
 
-<h1>
-Slices </h1>
+<h1>Slices</h1>
 
 <p>
  <span class='run'>An <span class='term'>index range</span> for a
   list $s$ of length $n$ is a pair $(i, j)$ for
-  which $1 \leq i &lt; j \leq n$. </span>
+  which $1 \leq i &lt; j \leq n$.</span>
 
  <span class='run'>The <span class='term'>slice</span> corresponding
   to $(i,j)$ is the length $j-i$ list $s&#39;$
   defined by $s&#39;_1 = s_{i}$, $s&#39;_2 =
-  s_{i+1}, \dots, s&#39;_{j} = s_{i + j-1}$. </span>
+  s_{i+1}, \dots, s&#39;_{j} = s_{i + j-1}$.</span>
 </p>
 
 
 <p>
- <span class='run'>We denote the $(i,j)$-slice of $s$ by $s_{i:j}$. </span>
+ <span class='run'>We denote the $(i,j)$-slice of $s$ by $s_{i:j}$.</span>
 
  <span class='run'>If $i = 1$ we use $s_{:j}$ and if $j = n$
   we use $s_{i:}$ as shorthands for the slices
-  $s_{1:j}$ and $s_{i:n}$. </span>
+  $s_{1:j}$ and $s_{i:n}$.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1275,7 +1490,7 @@ Slices </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

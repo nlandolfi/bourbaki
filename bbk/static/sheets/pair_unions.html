@@ -104,7 +104,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -120,14 +120,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -173,7 +190,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We often unite the elements of one set with another.</p></div><div class="sheet-listing"><p class="sheet"> \s{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. We call $\union \set{A, B}$ the \t{pair union} of $A$ and $B$. We denote the union of the pair $\set{A, B}$ by $A \union B$. Clearly the pair union does not depend on the order of $A$ and $B$. In other words, $A \union B = B \union A$.</p></div><div class="sheet-listing"><p class="sheet"> \s{Facts}</p></div><div class="sheet-listing"><p class="sheet"> Here are some basic facts about unions of a pair of sets.\footnote{Proofs will appear in the next edition.} Let $A$ and $B$ denote sets.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Identity Element] $A \union \emptyset = A$ \label{pair_unions:identity_element} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Commutativity] $A \union B = B \union A$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Associativity] $(A \union B) \union C = A \union (B \union C)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Idempotence] $A \union A = A$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $A \subset B \iff A \union B = B$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We often unite the elements of one set with another.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. We call $\cup \set{A, B}$ the \t{pair union} of $A$ and $B$. We denote the union of the pair $\set{A, B}$ by $A \cup B$. Clearly the pair union does not depend on the order of $A$ and $B$. In other words, $A \cup B = B \cup A$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Facts}</p></div><div class="sheet-listing"><p class="sheet"> Here are some basic facts about unions of a pair of sets. \ifhmode\unskip\fi\footnote{ Proofs will appear in the next edition. } Let $A$ and $B$ denote sets.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Identity Element]</p></div><div class="sheet-listing"><p class="sheet"> \label{pair_unions:identity_element}$A \cup \varnothing = A$\end{proposition} \begin{proposition}[Commutativity] $A \cup B = B \cup A$\end{proposition} \begin{proposition}[Commutativity] $(A \cup B) \cup C = A \cup (B \cup C)$\end{proposition} \begin{proposition}[Idempotence] $A \cup A = A$.\end{proposition} \begin{proposition} $A \subset B \iff A \cup B = B$\end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -831,7 +848,218 @@ Parse: {prototype: {
 \newcommand{\bunion}{\bigcup}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_unions.html'" onkeypress="location.href='./set_unions.html'">
+                <span>
+                  Set Unions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./intersection_of_empty_set.html'" onkeypress="location.href='./intersection_of_empty_set.html'">
+            <span>
+            Intersection of Empty Set
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_dualities.html'" onkeypress="location.href='./set_dualities.html'">
+            <span>
+            Set Dualities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_unions_and_intersections.html'" onkeypress="location.href='./set_unions_and_intersections.html'">
+            <span>
+            Set Unions and Intersections
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./successor_sets.html'" onkeypress="location.href='./successor_sets.html'">
+            <span>
+            Successor Sets
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+            <span>
+            Uncertain Outcomes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./unordered_triples.html'" onkeypress="location.href='./unordered_triples.html'">
+            <span>
+            Unordered Triples
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./venn_diagrams.html'" onkeypress="location.href='./venn_diagrams.html'">
+            <span>
+            Venn Diagrams
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./pair_unions.pdf#page=2'" onkeypress="location.href='./pair_unions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./pair_unions-graph.pdf'" onkeypress="location.href='./pair_unions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Pair Unions </h1> 
+      <!--
+!name:pair_unions
+!need:set_unions
+!refs:paul_halmos/naive_set_theory/section_04
+!refs:bert_mendelson/introduction_to_topology/theory_of_sets/set_operations
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We often unite the elements of one set with
+  another.</span>
+</p>
+
+<h1>Discussion</h1>
+
+<p>
+ <span class='run'>Let $A$ and $B$ denote sets.</span>
+
+ <span class='run'>We call $\cup \set{A, B}$ the
+  <span class='term'>pair union</span> of $A$ and
+  $B$.</span>
+
+ <span class='run'>We denote the union of the pair $\set{A, B}$
+  by $A \cup B$.</span>
+
+ <span class='run'>Clearly the pair union does not depend on the
+  order of $A$ and $B$.</span>
+
+ <span class='run'>In other words, $A \cup B = B \cup A$.</span>
+</p>
+
+<h1>Facts</h1>
+
+<p>
+ <span class='run'>Here are some basic facts about unions of a
+  pair of sets.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>Let $A$ and $B$ denote sets.</span>
+</p>
+
+<div class='proposition' text='Identity Element' id='pair_unions:identity_element'>
+ <span class='run'>$A \cup \varnothing = A$</span></div>
+<div class='proposition' text='Commutativity'>
+ <span class='run'>$A \cup B = B \cup A$</span></div>
+<div class='proposition' text='Commutativity'>
+ <span class='run'>$(A \cup B) \cup C = A \cup (B \cup C)$</span></div>
+<div class='proposition' text='Idempotence'>
+ <span class='run'>$A \cup A = A$.</span></div>
+<div class='proposition'>
+ <span class='run'>$A \subset B \iff A \cup B = B$</span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Proofs will appear in the next edition.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -883,7 +1111,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

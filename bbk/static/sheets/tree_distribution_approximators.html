@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1358,33 +1375,166 @@ Parse: {prototype: {
 \newcommand{\num}[1]{\left|#1\right|}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./distribution_approximators.html'" onkeypress="location.href='./distribution_approximators.html'">
+                <span>
+                  Distribution Approximators
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./relative_entropy.html'" onkeypress="location.href='./relative_entropy.html'">
+                <span>
+                  Relative Entropy
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./tree_distributions.html'" onkeypress="location.href='./tree_distributions.html'">
+                <span>
+                  Tree Distributions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./optimal_tree_distribution_approximators.html'" onkeypress="location.href='./optimal_tree_distribution_approximators.html'">
+            <span>
+            Optimal Tree Distribution Approximators
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./tree_density_approximators.html'" onkeypress="location.href='./tree_density_approximators.html'">
+            <span>
+            Tree Density Approximators
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./tree_distribution_approximators.pdf#page=2'" onkeypress="location.href='./tree_distribution_approximators.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./tree_distribution_approximators-graph.pdf'" onkeypress="location.href='./tree_distribution_approximators-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Tree Distribution Approximators </h1> 
       <p>
- <span class='run'>%!name:tree_distribution_approximators </span>
+ <span class='run'>%!name:tree_distribution_approximators</span>
 
- <span class='run'>%!need:distribution_approximators </span>
+ <span class='run'>%!need:distribution_approximators</span>
 
- <span class='run'>%!need:tree_distributions </span>
+ <span class='run'>%!need:tree_distributions</span>
 
- <span class='run'>%!need:relative_entropy </span>
+ <span class='run'>%!need:relative_entropy</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
 <p>
  <span class='run'>We want to approximate a given distribution
-  with one which factors according to a tree. </span>
+  with one which factors according to a tree.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
@@ -1393,137 +1543,139 @@ Parse: {prototype: {
   distribution $p$ on $A$ and tree $T$ on
   $\set{1, \dots , n}$ to
   <p>\[
-   \begin{aligned} 
+   \begin{aligned}
 
-   \text{minimize} & \quad d_{kl}(q, p) \\ 
+   \text{minimize} & \quad d_{kl}(q, p) \\
 
-   \text{subject to} & \quad p \text{ factors according to } T. 
+   \text{subject to} & \quad p \text{ factors according to } T.
 
-   \end{aligned} 
+   \end{aligned}
   \]</p>
   where $d_{kl}$ is the relative entropy as a
-  criterion of approximation. </span>
+  criterion of approximation.</span>
 
  <span class='run'>We call such a distribution a
   <span class='term'>tree distribution
   approximator</span> (or <span class='term'>tree
   approximator</span>) and we call the tree the
-  <span class='term'>approximator tree</span>. </span>
+  <span class='term'>approximator tree</span>.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Result} </span>
+ <span class='run'>\ssection{Result}</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{prop} </span>
+ <span class='run'>\begin{prop}</span>
 </p>
 
 
 <p>
- <span class='run'>Let $A_1, \dots , A_n$ be finite non-empty sets. </span>
+ <span class='run'>Let $A_1, \dots , A_n$ be finite non-empty sets.</span>
 
- <span class='run'>Define $A = \prod_{i = 1}^{n} A_i$. </span>
+ <span class='run'>Define $A = \prod_{i = 1}^{n} A_i$.</span>
 
  <span class='run'>Let $q: A \to [0, 1]$ a distribution and $T$
-  a tree on $\set{1, \dots , n}$. </span>
+  a tree on $\set{1, \dots , n}$.</span>
 
  <span class='run'>The distribution $p^*_T: A \to [0, 1]$ defined
   by
   <p>\[
-   p^*_T = q_1 \prod_{i \neq 1} q_{i \mid \pa{i}} 
+   p^*_T = q_1 \prod_{i \neq 1} q_{i \mid \pa{i}}
   \]</p>
   minimizes the relative entropy with $q$ among
   all distributions on $A$ which factor according
-  to $T$. </span>
+  to $T$.</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{proof} </span>
+ <span class='run'>\begin{proof}</span>
 </p>
 
 
 <p>
  <span class='run'>Let $p: A \to [0, 1]$ be a distribution which
-  factors according to $T$. </span>
+  factors according to $T$.</span>
 
  <span class='run'>First, express
   <p>\[
-   p = p_1 \prod_{i \neq i} p_{i \mid \pa{i}} 
+   p = p_1 \prod_{i \neq i} p_{i \mid \pa{i}}
   \]</p>
   <span class='run'>where $\pa{i}$ is the parent of vertex $i$ in
-   $T$ rooted at vertex 1 ($i = 2, \dots , n$). </span></span>
+   $T$ rooted at vertex 1 ($i = 2, \dots , n$).</span></span>
 </p>
 
 
 <p>
  <span class='run'>Second, recall that the relative entropy of $q$
-  with $p$ is $H(q, p) - H(q)$. </span>
+  with $p$ is $H(q, p) - H(q)$.</span>
 
  <span class='run'>Since $H(q)$ does not depend on $p$, $p$ is a
   minimizer of the relative of $q$ with $p$ if
-  and only if $p$ is a minimizer of $H(q, p)$. </span>
+  and only if $p$ is a minimizer of $H(q, p)$.</span>
 </p>
 
 
 <p>
  <span class='run'>Third, express
   <p>\[
-   \begin{aligned} 
+   \begin{aligned}
 
-   H(q, p) &= - \sum_{a \in A} q(a) \log p(a) \\ 
+   H(q, p) &= - \sum_{a \in A} q(a) \log p(a) \\
 
    &= - \sum_{a \in A} q(a) \parens*{\log p_1(a_1) + \sum_{i
-    \neq 1} \log p_{i \mid \pa{i}}\parens*{a_i, a_{\pa{i}}}} \\ 
+    \neq 1} \log p_{i \mid \pa{i}}\parens*{a_i, a_{\pa{i}}}} \\
 
    &= H(q_1, p_1) + \sum_{i \neq 1} \sum_{a_{\pa{i}} \in
     A_{\pa{i}}} q_{\pa{i}}(a_{\pa{i}})H\parens*{q_{i\mid\pa{i}}(\cdot,
-    a_{\pa{i}}), p_{i\mid\pa{i}}(\cdot, a_{\pa{i}})} 
+    a_{\pa{i}}), p_{i\mid\pa{i}}(\cdot, a_{\pa{i}})}
 
-   \end{aligned} 
+   \end{aligned}
   \]</p>
   which separates across $p_1$ an $p_{i \mid
   \pa{i}}(\cdot, a_{\pa{i}})$ for $i = 2, \dots ,
-  n$ and $a_{pa_{i}} \in A_{\pa{i}}$. </span>
+  n$ and $a_{pa_{i}} \in A_{\pa{i}}$.</span>
 </p>
 
 
 <p>
  <span class='run'>Fourth, recall $H(\cdot, \cdot) \geq 0$ and is
-  zero on repeated pairs. </span>
+  zero on repeated pairs.</span>
 
  <span class='run'>By this, we mean, for example, $H(p_1, p_1) =
-  0$. </span>
+  0$.</span>
 
  <span class='run'>So $p_1 = q_1$ and $p_{i \mid \pa{i}} = q_{i
-  \mid \pa{i}}$ are solutions. </span>
+  \mid \pa{i}}$ are solutions.</span>
 </p>
 
 
 <p>
- <span class='run'>\end{proof} </span>
+ <span class='run'>\end{proof}</span>
 </p>
 
 
 <p>
- <span class='run'>\label{prop:treeapproximators} </span>
+ <span class='run'>\label{prop:treeapproximators}</span>
 
- <span class='run'>\end{prop} </span>
+ <span class='run'>\end{prop}</span>
 </p>
 
 
 <p>
  <span class='run'>Proposition~\ref{prop:treeapproximators} states the
-  form of an optimal approximator given a tree. </span>
+  form of an optimal approximator given a tree.</span>
 
- <span class='run'>A natural next question is to select the tree. </span>
+ <span class='run'>A natural next question is to select the tree.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1575,7 +1727,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

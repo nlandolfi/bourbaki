@@ -167,7 +167,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -183,14 +183,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1374,7 +1391,224 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./extended_real_numbers.html'" onkeypress="location.href='./extended_real_numbers.html'">
+                <span>
+                  Extended Real Numbers
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./sigma_algebras.html'" onkeypress="location.href='./sigma_algebras.html'">
+                <span>
+                  Sigma Algebras
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./complex_measures.html'" onkeypress="location.href='./complex_measures.html'">
+            <span>
+            Complex Measures
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./convergence_in_measure.html'" onkeypress="location.href='./convergence_in_measure.html'">
+            <span>
+            Convergence In Measure
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./counting_measures.html'" onkeypress="location.href='./counting_measures.html'">
+            <span>
+            Counting Measures
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./finite_measures.html'" onkeypress="location.href='./finite_measures.html'">
+            <span>
+            Finite Measures
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./image_measures.html'" onkeypress="location.href='./image_measures.html'">
+            <span>
+            Image Measures
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./measurable_functions.html'" onkeypress="location.href='./measurable_functions.html'">
+            <span>
+            Measurable Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./measure_derivatives.html'" onkeypress="location.href='./measure_derivatives.html'">
+            <span>
+            Measure Derivatives
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./measure_properties.html'" onkeypress="location.href='./measure_properties.html'">
+            <span>
+            Measure Properties
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./negligible_sets.html'" onkeypress="location.href='./negligible_sets.html'">
+            <span>
+            Negligible Sets
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./probability_measures.html'" onkeypress="location.href='./probability_measures.html'">
+            <span>
+            Probability Measures
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./product_measures.html'" onkeypress="location.href='./product_measures.html'">
+            <span>
+            Product Measures
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./section_measures.html'" onkeypress="location.href='./section_measures.html'">
+            <span>
+            Section Measures
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./signed_measures.html'" onkeypress="location.href='./signed_measures.html'">
+            <span>
+            Signed Measures
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./singular_measures.html'" onkeypress="location.href='./singular_measures.html'">
+            <span>
+            Singular Measures
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./variation_measure.html'" onkeypress="location.href='./variation_measure.html'">
+            <span>
+            Variation Measure
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measures.pdf#page=2'" onkeypress="location.href='./measures.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measures-graph.pdf'" onkeypress="location.href='./measures-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Measures </h1> 
       <!--
@@ -1383,17 +1617,15 @@ Parse: {prototype: {
 !need:extended_real_numbers
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We extend our notion of length, area, volume
   beyond the Lebesgue measure on the product
-  spaces of real numbers. </span>
+  spaces of real numbers.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>An extended-real-valued non-negative function on
@@ -1402,7 +1634,7 @@ Definition </h1>
   applied to the union of a disjoint finite
   family of distinguished sets is the sum of the
   results of the function applied to each of the
-  sets individually. </span>
+  sets individually.</span>
 </p>
 
 
@@ -1413,7 +1645,7 @@ Definition </h1>
   applied to the union of a disjoint countable
   family of distinguished sets is the limit of
   the partial sums of the results of the function
-  applied to each of the sets individually. </span>
+  applied to each of the sets individually.</span>
 </p>
 
 
@@ -1422,385 +1654,385 @@ Definition </h1>
   measure</span> is an extended-real-valued
   non-negative finitely additive function which
   associates the empty set with the real number
-  $0$. </span>
+  $0$.</span>
 
  <span class='run'>A <span class='term'>countably additive
   measure</span> is an extended-real-valued
   non-negative countably additive function which
   associates the empty set with the real number
-  $0$. </span>
+  $0$.</span>
 
  <span class='run'>We call countably additive measures
-  <span class='term'>measures</span>, for short. </span>
+  <span class='term'>measures</span>, for short.</span>
 </p>
 
 
 <p>
  <span class='run'>Every countably additive measure is finitely
-  additive. </span>
+  additive.</span>
 
  <span class='run'>On the other hand, there exist finitely
   additive measures which are not countable
-  additive. </span>
+  additive.</span>
 </p>
 
 
 <p>
  <span class='run'>In the context of measure, we call a countably
   unitable subset algebra a
-  <span class='term'>measurable space</span>. </span>
+  <span class='term'>measurable space</span>.</span>
 
  <span class='run'>We call the distinguished sets
-  <span class='term'>measurable</span> sets. </span>
+  <span class='term'>measurable</span> sets.</span>
 
  <span class='run'>A <span class='term'>measure space</span> is
-  triple. </span>
+  triple.</span>
 
  <span class='run'>As a pair, the first two objects are a
-  measurable space. </span>
+  measurable space.</span>
 
  <span class='run'>The third object is a measure defined on the
-  sigma algebra of the measurable space. </span>
+  sigma algebra of the measurable space.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $A$ a set. </span>
+ <span class='run'>Let $A$ a set.</span>
 
- <span class='run'>Let $\mathcal{A} $ a sigma algebra on $A$. </span>
+ <span class='run'>Let $\mathcal{A} $ a sigma algebra on $A$.</span>
 
  <span class='run'>The pair $(A, \mathcal{A} )$ is a measurable
-  space. </span>
+  space.</span>
 </p>
 
 
 <p>
  <span class='run'>Let $\mu : \mathcal{A}  \to [0, \infty]$ a
-  measure; </span>
+  measure;</span>
 
- <span class='run'>thus: </span>
+ <span class='run'>thus:</span>
 
- <span class='run'>(a) $\mu (\varnothing) = 0$ and </span>
+ <span class='run'>(a) $\mu (\varnothing) = 0$ and</span>
 
- <span class='run'>(b) for disjoint $\set{A_n} \subset \mathcal{A} $, </span>
+ <span class='run'>(b) for disjoint $\set{A_n} \subset \mathcal{A} $,</span>
 
  <span class='run'>$\mu (\cup_{n = 1}^{\infty} A_n) = \sum_{n =
-  1}^{\infty} \mu (A_n)$ </span>
+  1}^{\infty} \mu (A_n)$</span>
 
  <span class='run'>The triple $(A, \mathcal{A} , \mu )$ is a
-  measure space. </span>
+  measure space.</span>
 </p>
 
 
 <p>
  <span class='run'>We use $\mu $ since it is a mnemonic for
-  “measure”. </span>
+  “measure”.</span>
 
  <span class='run'>We often also us $\nu $ to denote measures,
   since it is after $\mu $ in the Greek alphabet,
   and $\lambda $, since it is before $\mu $ in
-  the Greek alphabet. </span>
+  the Greek alphabet.</span>
 </p>
 
-<h2>
-Examples </h2>
+<h2>Examples</h2>
 
 <p>
- <span class='run'>\begin{expl} </span>
+ <span class='run'>\begin{expl}</span>
 
- <span class='run'>Let $(A, \mathcal{A} )$ a measurable space. </span>
+ <span class='run'>Let $(A, \mathcal{A} )$ a measurable space.</span>
 
  <span class='run'>Let $\mu : \mathcal{A}  \to [0, +\infty]$ such
   that $\mu (A)$ is $\card{A}$ if $A$ is finite
-  and $\mu (A)$ is $+\infty$ otherwise. </span>
+  and $\mu (A)$ is $+\infty$ otherwise.</span>
 
- <span class='run'>Then $\mu $ is a measure. </span>
+ <span class='run'>Then $\mu $ is a measure.</span>
 
  <span class='run'>We call $\mu $ the <span class='term'>counting
-  measure</span>. </span>
+  measure</span>.</span>
 
- <span class='run'>\end{expl} </span>
+ <span class='run'>\end{expl}</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{expl} </span>
+ <span class='run'>\begin{expl}</span>
 
- <span class='run'>Let $(A, \mathcal{A} )$ measurable. </span>
+ <span class='run'>Let $(A, \mathcal{A} )$ measurable.</span>
 
- <span class='run'>Fix $a \in A$. </span>
+ <span class='run'>Fix $a \in A$.</span>
 
  <span class='run'>Let $\mu : \mathcal{A}  \to [0, +\infty]$ such
   that $\mu (A)$ is $1$ if $a \in A$ and
-  $\mu (A)$ is $0$ otherwise. </span>
+  $\mu (A)$ is $0$ otherwise.</span>
 
- <span class='run'>Then $\mu $ is a measure. </span>
+ <span class='run'>Then $\mu $ is a measure.</span>
 
  <span class='run'>We call $\mu $ the <span class='term'>point
-  mass</span> concentrated at $a$. </span>
+  mass</span> concentrated at $a$.</span>
 
- <span class='run'>\end{expl} </span>
+ <span class='run'>\end{expl}</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{expl} </span>
+ <span class='run'>\begin{expl}</span>
 
  <span class='run'>The Lebesgue measure on the measurable space
-  $(\R , \mathcal{B} (\R ))$ is a measure. </span>
+  $(\R , \mathcal{B} (\R ))$ is a measure.</span>
 
- <span class='run'>\end{expl} </span>
+ <span class='run'>\end{expl}</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{expl} </span>
+ <span class='run'>\begin{expl}</span>
 
- <span class='run'>Let $\mathcal{A} $ the co-finite algebra on $N$. </span>
+ <span class='run'>Let $\mathcal{A} $ the co-finite algebra on $N$.</span>
 
  <span class='run'>Let $\mu : \mathcal{A}  \to [0, +\infty]$ be
   such that $\mu (A)$ is 1 if $A$ is infinite or
-  0 otherwise. </span>
+  0 otherwise.</span>
 
- <span class='run'>Then $\mu $ is a finitely additive measure. </span>
+ <span class='run'>Then $\mu $ is a finitely additive measure.</span>
 
  <span class='run'>However it is impossible to extend $\mu $ to
-  be a countably additive measure. </span>
+  be a countably additive measure.</span>
 
  <span class='run'>Observe that if $A_n = \set{n}$ the
   $\mu (\cup_{n} A_n) = 1$ but $\sum_{n} \mu (A_n)
-  = 0$. </span>
+  = 0$.</span>
 
- <span class='run'>\end{expl} </span>
+ <span class='run'>\end{expl}</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{expl} </span>
+ <span class='run'>\begin{expl}</span>
 
- <span class='run'>Let $(A, \mathcal{A} )$ a measurable space. </span>
+ <span class='run'>Let $(A, \mathcal{A} )$ a measurable space.</span>
 
  <span class='run'>Let $\mu : \mathcal{A}  \to [0, +\infty]$ be
   $0$ if $A = \varnothing$ and $\mu (A)$ is
-  $+\infty$ otherwise. </span>
+  $+\infty$ otherwise.</span>
 
- <span class='run'>Then $\mu $ is a measure. </span>
+ <span class='run'>Then $\mu $ is a measure.</span>
 
- <span class='run'>\end{expl} </span>
+ <span class='run'>\end{expl}</span>
 </p>
 
 
 <p>
- <span class='run'>\begin{expl} </span>
+ <span class='run'>\begin{expl}</span>
 
  <span class='run'>Let $A$ be set with at least two elements
-  ($\card{A} \geq 2$). </span>
+  ($\card{A} \geq 2$).</span>
 
- <span class='run'>Let $\mathcal{A}  = \powerset{A}$. </span>
+ <span class='run'>Let $\mathcal{A}  = \powerset{A}$.</span>
 
  <span class='run'>Let $\mu : \mathcal{A}  \to [0, +\infty]$ such
   that $\mu (A)$ is $0$ if $A = \varnothing$ and
-  $\mu (A) = 1$ otherwise. </span>
+  $\mu (A) = 1$ otherwise.</span>
 
  <span class='run'>Then $\mu $ is not a measure, nor is $\mu $
-  finitely additive. </span>
+  finitely additive.</span>
 
- <span class='run'>\begin{proof} </span>
+ <span class='run'>\begin{proof}</span>
 
- <span class='run'>Let $B, C \in \mathcal{A} $, </span>
+ <span class='run'>Let $B, C \in \mathcal{A} $,</span>
 
- <span class='run'>$B \cap  C = \varnothing$ </span>
+ <span class='run'>$B \cap  C = \varnothing$</span>
 
- <span class='run'>then using finite additivity </span>
+ <span class='run'>then using finite additivity</span>
 
- <span class='run'>we obtain a contradiction </span>
+ <span class='run'>we obtain a contradiction</span>
 
- <span class='run'>$ </span>
+ <span class='run'>$</span>
 
- <span class='run'>1 = μ(B ∪ C) = μ(B) + μ(C) = 2 </span>
+ <span class='run'>1 = μ(B ∪ C) = μ(B) + μ(C) = 2</span>
 
- <span class='run'>$. </span>
+ <span class='run'>$.</span>
 
- <span class='run'>\end{proof} </span>
+ <span class='run'>\end{proof}</span>
 
- <span class='run'>\end{expl} </span>
+ <span class='run'>\end{expl}</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
 <p>
  <span class='run'>We want to generalize the notions of length,
-  area, and volume. </span>
+  area, and volume.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
 <p>
  <span class='run'>A <span class='term'>measurable space</span>
-  <span class='run'>is a sigma algebra. </span>
+  <span class='run'>is a sigma algebra.</span>
 
-  <span class='run'>We call the </span>
+  <span class='run'>We call the</span>
 
-  <span class='run'>\rt{distinguished subsets}{distinguishedsubsets} </span>
+  <span class='run'>\rt{distinguished subsets}{distinguishedsubsets}</span>
 
-  <span class='run'>the \ct{measurable sets}{measurablesets}. </span></span>
+  <span class='run'>the \ct{measurable sets}{measurablesets}.</span></span>
  <p>
-  <span class='run'>A </span>
+  <span class='run'>A</span>
 
-  <span class='run'>\ct{measure}{measure} </span>
+  <span class='run'>\ct{measure}{measure}</span>
 
-  <span class='run'>on a measurable space </span>
+  <span class='run'>on a measurable space</span>
 
-  <span class='run'>is a function from the sigma algebra </span>
+  <span class='run'>is a function from the sigma algebra</span>
 
-  <span class='run'>to the positive extended reals. </span>
+  <span class='run'>to the positive extended reals.</span>
 
-  <span class='run'>A </span>
+  <span class='run'>A</span>
 
-  <span class='run'>\ct{measure space}{measurespace} </span>
+  <span class='run'>\ct{measure space}{measurespace}</span>
 
-  <span class='run'>is a measurable space and a measure. </span>
+  <span class='run'>is a measurable space and a measure.</span>
  </p>
 
 
  <p>
-  <span class='run'>\ssubsection{Notation} </span>
+  <span class='run'>\ssubsection{Notation}</span>
  </p>
 
 
  <p>
-  <span class='run'>\ssubsection{Properties} </span>
+  <span class='run'>\ssubsection{Properties}</span>
  </p>
 
 
  <p>
-  <span class='run'>\begin{prop} </span>
+  <span class='run'>\begin{prop}</span>
 
   <span class='run'>Let $(A, \mathcal{A} )$ be a measurable space
-   and </span>
+   and</span>
 
-  <span class='run'>$m: \mathcal{A}  \to [0, \infty]$ be a measure. </span>
+  <span class='run'>$m: \mathcal{A}  \to [0, \infty]$ be a measure.</span>
  </p>
 
 
  <p>
   <span class='run'>If $B \subset C \subset A$, then $m(B) \leq
-   m(C)$. </span>
+   m(C)$.</span>
 
-  <span class='run'>We call this property the of measures </span>
+  <span class='run'>We call this property the of measures</span>
 
-  <span class='run'>\ct{monotonicity of measure}{}. </span>
+  <span class='run'>\ct{monotonicity of measure}{}.</span>
 
-  <span class='run'>\end{prop} </span>
+  <span class='run'>\end{prop}</span>
  </p>
 
 
  <p>
-  <span class='run'>\begin{prop} </span>
+  <span class='run'>\begin{prop}</span>
 
-  <span class='run'>For a measure space $(A, \mathcal{A} , m)$. </span>
+  <span class='run'>For a measure space $(A, \mathcal{A} , m)$.</span>
  </p>
 
 
  <p>
   <span class='run'>If $B \subset C \subset A$, then $m(B) \leq
-   m(C)$. </span>
+   m(C)$.</span>
  </p>
 
 
  <p>
-  <span class='run'>We call this property the </span>
+  <span class='run'>We call this property the</span>
 
-  <span class='run'>\ct{monotonicity of measure}{}. </span>
+  <span class='run'>\ct{monotonicity of measure}{}.</span>
 
-  <span class='run'>\end{prop} </span>
+  <span class='run'>\end{prop}</span>
  </p>
 
 
  <p>
-  <span class='run'>\begin{prop} </span>
+  <span class='run'>\begin{prop}</span>
 
-  <span class='run'>For a measure space $(A, \mathcal{A} , m)$. </span>
- </p>
-
-
- <p>
-  <span class='run'>If $\set{A_n} \subset \mathcal{A} $ a countable
-   family, </span>
-
-  <span class='run'>then $m(\cup A_n) \leq \sum_{i} m(A_i)$. </span>
- </p>
-
-
- <p>
-  <span class='run'>We this property the </span>
-
-  <span class='run'>\ct{sub-additivty of measure}{}. </span>
-
-  <span class='run'>\end{prop} </span>
- </p>
-
-
- <p>
-  <span class='run'>\begin{prop} </span>
-
-  <span class='run'>For a measure space $(A, \mathcal{A} , m)$. </span>
+  <span class='run'>For a measure space $(A, \mathcal{A} , m)$.</span>
  </p>
 
 
  <p>
   <span class='run'>If $\set{A_n} \subset \mathcal{A} $ a countable
-   family, </span>
+   family,</span>
 
-  <span class='run'>then $m(\cup A_n) \leq \sum_{i} m(A_i)$. </span>
+  <span class='run'>then $m(\cup A_n) \leq \sum_{i} m(A_i)$.</span>
  </p>
 
 
  <p>
-  <span class='run'>We this property the </span>
+  <span class='run'>We this property the</span>
 
-  <span class='run'>\ct{sub-additivty of measure}{}. </span>
+  <span class='run'>\ct{sub-additivty of measure}{}.</span>
 
-  <span class='run'>\end{prop} </span>
+  <span class='run'>\end{prop}</span>
  </p>
 
 
  <p>
-  <span class='run'>\begin{prop} </span>
+  <span class='run'>\begin{prop}</span>
+
+  <span class='run'>For a measure space $(A, \mathcal{A} , m)$.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>If $\set{A_n} \subset \mathcal{A} $ a countable
+   family,</span>
+
+  <span class='run'>then $m(\cup A_n) \leq \sum_{i} m(A_i)$.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>We this property the</span>
+
+  <span class='run'>\ct{sub-additivty of measure}{}.</span>
+
+  <span class='run'>\end{prop}</span>
+ </p>
+
+
+ <p>
+  <span class='run'>\begin{prop}</span>
 
   <span class='run'>For a measure space $(A, \mathcal{A} , m)$.
    <p>\[
-    m(\cup_{n = 1}^{\infty} A_i) = \lim_{n \to \infty} m(A_i) 
+    m(\cup_{n = 1}^{\infty} A_i) = \lim_{n \to \infty} m(A_i)
    \]</p></span>
 
-  <span class='run'>\end{prop} </span>
+  <span class='run'>\end{prop}</span>
  </p>
 
 
  <p>
-  <span class='run'>\begin{prop} </span>
+  <span class='run'>\begin{prop}</span>
 
-  <span class='run'>For a measure space $(A, \mathcal{A} , m)$. </span>
+  <span class='run'>For a measure space $(A, \mathcal{A} , m)$.</span>
   <p>\[
-   m(\cap _{n = 1}^{\infty} A_i) = \lim_{n \to \infty} m(A_i) 
+   m(\cap _{n = 1}^{\infty} A_i) = \lim_{n \to \infty} m(A_i)
   \]</p>
-  <span class='run'>\end{prop} </span>
+  <span class='run'>\end{prop}</span>
  </p>
 
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1852,7 +2084,7 @@ Examples </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

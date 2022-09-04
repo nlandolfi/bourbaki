@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -799,7 +816,133 @@ Parse: {prototype: {
 \renewcommand{\setminus}{-}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./empty_set.html'" onkeypress="location.href='./empty_set.html'">
+                <span>
+                  Empty Set
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_differences.html'" onkeypress="location.href='./set_differences.html'">
+                <span>
+                  Set Differences
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_dualities.html'" onkeypress="location.href='./set_dualities.html'">
+            <span>
+            Set Dualities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_symmetric_differences.html'" onkeypress="location.href='./set_symmetric_differences.html'">
+            <span>
+            Set Symmetric Differences
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_complements.pdf#page=2'" onkeypress="location.href='./set_complements.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./set_complements-graph.pdf'" onkeypress="location.href='./set_complements-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Set Complements </h1> 
       <!--
@@ -810,80 +953,82 @@ Parse: {prototype: {
 !refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕set_operations
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>It is often the case in considering set
   differences that all sets considered are subsets
-  of one set. </span>
+  of one set.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>Let $A$ and $B$ denote sets. </span>
+ <span class='run'>Let $A$ and $B$ denote sets.</span>
 
  <span class='run'>In many cases, we take the difference between
-  a set and one contained in it. </span>
+  a set and one contained in it.</span>
 
- <span class='run'>In other words, we assume that $B \subset A$. </span>
+ <span class='run'>In other words, we assume that $B \subset A$.</span>
 
  <span class='run'>In this case, we often take complements
-  relative to the same set $A$. </span>
+  relative to the same set $A$.</span>
 
  <span class='run'>So we do not refer to it, and instead refer
   to the relative complement of $B$ in $A$ as
-  the <span class='term'>complement</span> of $B$. </span>
+  the <span class='term'>complement</span> of $B$.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>Let $A$ denote a set, and let $B$ denote a
-  set for which $B \subset A$. </span>
+  set for which $B \subset A$.</span>
 
  <span class='run'>We denote the relative complement of $B$ in
-  $A$ by $\relcomplement{B}{A}$. </span>
+  $A$ by $\relcomplement{B}{A}$.</span>
 
  <span class='run'>When we need not mention the set $A$, and
   instead speak of the complement of $B$ without
   qualification, we denote this complement by
-  $\complement{B}$. </span>
+  $\complement{B}$.</span>
 </p>
 
-<h2>
-Complement of a complement </h2>
+<h2>Complement of a complement</h2>
 
 <p>
  <span class='run'>One nice property of a complement when $B
-  \subset A$ is: </span>
- <div class='proposition'  <span class='run'>$(B \subset A) \iff
-   (\relcomplement{\relcomplement{B}{A}}{A} = B)$ </span> </div>
+  \subset A$ is:</span>
+ <div class='proposition'>
+  <span class='run'>$(B \subset A) \iff
+   (\relcomplement{\relcomplement{B}{A}}{A} = B)$</span> </div>
 </p>
 
-<h2>
-Basic facts </h2>
+<h2>Basic facts</h2>
 
 <p>
  <span class='run'>Let $E$ denote a set and let $A$ and $B$
-  denote sets satisfying $A,B \subset E$. </span>
+  denote sets satisfying $A,B \subset E$.</span>
 
- <span class='run'>Then take all complements with respect to $E$. </span>
+ <span class='run'>Then take all complements with respect to $E$.</span>
 
  <span class='run'>Here are some immediate consequences of the
   definition.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<div class='proposition' <span class='run'>$\complement{\complement{A}} = A$ </span></div>
-<div class='proposition' <span class='run'>$\complement{\emptyset} = E$ </span></div>
-<div class='proposition' <span class='run'>$\complement{E} = \varnothing$ </span></div>
-<div class='proposition' <span class='run'>$A \subset B \iff \complement{B} \subset
-  \complement{A}$ </span></div><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include accounts. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<div class='proposition'>
+ <span class='run'>$\complement{\complement{A}} = A$</span></div>
+<div class='proposition'>
+ <span class='run'>$\complement{\emptyset} = E$</span></div>
+<div class='proposition'>
+ <span class='run'>$\complement{E} = \varnothing$</span></div>
+<div class='proposition'>
+ <span class='run'>$A \subset B \iff \complement{B} \subset
+  \complement{A}$</span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include accounts.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -935,7 +1080,7 @@ Basic facts </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

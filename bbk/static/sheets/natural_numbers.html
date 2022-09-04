@@ -104,7 +104,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -120,14 +120,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -855,7 +872,161 @@ Parse: {prototype: {
 \renewcommand{\setminus}{-}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./intersection_of_empty_set.html'" onkeypress="location.href='./intersection_of_empty_set.html'">
+                <span>
+                  Intersection of Empty Set
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_differences.html'" onkeypress="location.href='./set_differences.html'">
+                <span>
+                  Set Differences
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./successor_sets.html'" onkeypress="location.href='./successor_sets.html'">
+                <span>
+                  Successor Sets
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./characteristic_functions.html'" onkeypress="location.href='./characteristic_functions.html'">
+            <span>
+            Characteristic Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integer_numbers.html'" onkeypress="location.href='./integer_numbers.html'">
+            <span>
+            Integer Numbers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./natural_induction.html'" onkeypress="location.href='./natural_induction.html'">
+            <span>
+            Natural Induction
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./natural_numbers_exercises.html'" onkeypress="location.href='./natural_numbers_exercises.html'">
+            <span>
+            Natural Numbers Exercises
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+            <span>
+            Uncertain Outcomes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./natural_numbers.pdf#page=2'" onkeypress="location.href='./natural_numbers.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./natural_numbers-graph.pdf'" onkeypress="location.href='./natural_numbers-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Natural Numbers </h1> 
       <!--
@@ -867,88 +1038,83 @@ Parse: {prototype: {
 !refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕introduction
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>What are numbers? </span>
+ <span class='run'>What are numbers?</span>
 
- <span class='run'>We want to count, forever. </span>
+ <span class='run'>We want to count, forever.</span>
 
  <span class='run'>Does a set exist which contains zero, and one,
-  and two, and three, and all the rest? </span>
+  and two, and three, and all the rest?</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>In \sheetref{successor_sets}{Successor Sets}, </span>
+ <span class='run'>In&nbsp;<a href='/sheets/successor_sets.html'/><span class='run'>Successor Sets</span></a>, we said “and we continue as usual using the
+English language...” in our definition of zero,
+and one and two and three.</span>
 
- <span class='run'>we said “and we continue as usual using the
-  English language...} in our definition of zero,
-  and one and two and three. </span>
+ <span class='run'>Can this really be carried on and on?</span>
 
- <span class='run'>Can this really be carried on and on? </span>
-
- <span class='run'>We will say yes. </span>
+ <span class='run'>We will say yes.</span>
 
  <span class='run'>We will say that there exists a set which
   contains zero and contains the successor of each
-  of its elements. </span>
+  of its elements.</span>
 </p>
 
 
 <p>
- <div class='principle' text='Natural Numbers'  <span class='run'>A set which contains 0 and contains the
-   successor of each of its elements exists. </span> </div>
+ <div class='principle' text='Natural Numbers'>
+  <span class='run'>A set which contains 0 and contains the
+   successor of each of its elements exists.</span> </div>
  <span class='run'>This principle is sometimes called the
-  <span class='term'>principle of infinity</span>. </span>
+  <span class='term'>principle of infinity</span>.</span>
 </p>
 
 
 <p>
- <span class='run'>We want this set to be unique. </span>
+ <span class='run'>We want this set to be unique.</span>
 
  <span class='run'>The principle says one successor set exists,
-  but not that it is unique. </span>
+  but not that it is unique.</span>
 
  <span class='run'>To see that it is unique, notice that the
   intersection of a nonempty family of successor
   sets is a successor set.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 
  <span class='run'>Consider the intersection of the family of all
-  successor sets. </span>
+  successor sets.</span>
 
  <span class='run'>The intersection is nonempty by the principle
-  of infinity (see
-  \sheetref{intersection_of_empty_set}{Intersection of
-  Empty Set} for this subtlety). </span>
+  of infinity (see&nbsp;<a href='/sheets/intersection_of_empty_set.html'/><span class='run'>Intersection of Empty Set</span></a>&nbsp;for this subtlety).</span>
 
  <span class='run'>The axiom of extension guarantees that this
   intersection, which is a successor set contained
-  in every other successor set, is unique. </span>
+  in every other successor set, is unique.</span>
 
- <span class='run'>We summarize: </span>
+ <span class='run'>We summarize:</span>
 </p>
 
-<div class='proposition' id='natural_numbers:proposition:omega' <span class='run'>There exists a unique successor smallest
-  successor set. </span></div>
+<div class='proposition' id='natural_numbers:proposition:omega'>
+ <span class='run'>There exists a unique successor smallest
+  successor set.</span></div>
 <p>
  <span class='run'>A <span class='term'>natural number</span> or
   <span class='term'>number</span> or
   <span class='term'>natural</span> is an element of
-  this minimal successor set. </span>
+  this minimal successor set.</span>
 
  <span class='run'>The <span class='term'>set of natural
   numbers</span> or <span class='term'>natural
   numbers</span> or <span class='term'>naturals</span>
   or <span class='term'>numbers</span> is the minimal
-  successor set. </span>
+  successor set.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We denote the set which exists by
@@ -956,22 +1122,22 @@ Notation </h2>
   $\omega $.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
 
  <span class='run'>We denote the set of natural numbers without 0
-  by $\N $, a mnemonic for natural. </span>
+  by $\N $, a mnemonic for natural.</span>
 
- <span class='run'>In other words $\N  = \omega  - \set{0}$. </span>
+ <span class='run'>In other words $\N  = \omega  - \set{0}$.</span>
 
  <span class='run'>We often denote elements of $\omega $ or $\N $
   by $n$, a mnemonic for number, or $m$, a
-  letter close to $n$. </span>
+  letter close to $n$.</span>
 </p>
 
 
 <p>
  <span class='run'>We denote the natural numbers up to $n$ by
-  $\upto{n}$. </span>
+  $\upto{n}$.</span>
 
  <span class='run'>We have defined $n$ so that $n - \set{0} =
-  \upto{n}$. </span>
+  \upto{n}$.</span>
 </p>
 
 
@@ -1047,13 +1213,15 @@ Notation </h2>
 % also called
 % \t{addition}.
 -->
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>This account will be expanded in future
-  editions. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>We use this notation to follow many authorities
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This account will be expanded in future
+  editions.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>We use this notation to follow many authorities
   on the subject, and to meet the exigencies of
   time in producing this first edition. Future
-  editions are likely to rework the treatment. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+  editions are likely to rework the treatment.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1105,7 +1273,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

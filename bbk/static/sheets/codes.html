@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1012,7 +1029,126 @@ Parse: {prototype: {
 \newcommand{\str}{\mathsf{str}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./dot-dash_code.html'" onkeypress="location.href='./dot-dash_code.html'">
+                <span>
+                  Dot-Dash Code
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./bit_strings.html'" onkeypress="location.href='./bit_strings.html'">
+            <span>
+            Bit Strings
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./prefix-free_codes.html'" onkeypress="location.href='./prefix-free_codes.html'">
+            <span>
+            Prefix-Free Codes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./codes.pdf#page=2'" onkeypress="location.href='./codes.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./codes-graph.pdf'" onkeypress="location.href='./codes-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Codes </h1> 
       <!--
@@ -1021,111 +1157,109 @@ Parse: {prototype: {
 !refs:david_huffman∕a_method_for_the_construction_of_minimum_redundancy_codes
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>Can we generalize the idea of flash codes.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>Let $X$ be a set and $A$ be an alphabet set. </span>
+ <span class='run'>Let $X$ be a set and $A$ be an alphabet set.</span>
 
  <span class='run'>We denote the set of all finite sequences
-  (strings) in $A$ by $\str(A)$. </span>
+  (strings) in $A$ by $\str(A)$.</span>
 
  <span class='run'>We read $\str(A)$ aloud as “the strings in
-  $A$.” </span>
+  $A$.”</span>
 
- <span class='run'>The length zero string is $\varnothing$. </span>
+ <span class='run'>The length zero string is $\varnothing$.</span>
 </p>
 
 
 <p>
  <span class='run'>A <span class='term'>code</span> for $X$
   <span class='term'>in</span> $A$ is a function
-  from $X$ to $\str(A)$. </span>
+  from $X$ to $\str(A)$.</span>
 
  <span class='run'>In this context, we refer to the finite set
   $A$ as an <span class='term'>alphabet</span> and
   we call $c(x)$ the
-  <span class='term'>codeword</span> of $x$. </span>
+  <span class='term'>codeword</span> of $x$.</span>
 
  <span class='run'>The <span class='term'>length</span> of $x \in
   X$, with respect to a code $c: X \to \str(A)$,
   is the length of the sequence $c(x)$ (its
-  codeword). </span>
+  codeword).</span>
 
  <span class='run'>We call a code
   <span class='term'>nonsingular</span> if it is
-  injective. </span>
+  injective.</span>
 </p>
 
-<h2>
-Examples </h2>
+<h2>Examples</h2>
 
 <p>
  <span class='run'>Define $c: \set{\alpha , \beta } \to \set{0, 1}$
   by $c(\alpha ) = (0,)$ and $c(\beta ) = (1,)$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
 </p>
 
-<h1>
-Code extensions </h1>
+<h1>Code extensions</h1>
 
 <p>
  <span class='run'></span>
 
  <span class='run'>Let $s,t \in \str(A)$ of length $m$ and $n$
-  respectively. </span>
+  respectively.</span>
 
  <span class='run'>The <span class='term'>concatenation</span> of $s$
   with $t$ is the length $m+n$ string $u \in
   \str(A)$ defined by $u_{1} = s_1, \dots , u_m =
-  s_m$ and $u_{m+1} = t_1, \dots , u_{m+n} = t_n$. </span>
+  s_m$ and $u_{m+1} = t_1, \dots , u_{m+n} = t_n$.</span>
 
  <span class='run'>We denote the concatenation of $s$ and $t$ by
-  $st$. </span>
+  $st$.</span>
 
  <span class='run'>Note, however, that $st \neq ts$, although
-  $s(tr) = (st)r$. </span>
+  $s(tr) = (st)r$.</span>
 </p>
 
 
 <p>
  <span class='run'>Given a code $c: X \to \str(A)$, we can
-  produce a code for $\str(X)$ in a natural way. </span>
+  produce a code for $\str(X)$ in a natural way.</span>
 
  <span class='run'>The <span class='term'>extension</span> of $c$ is
   the function $C: \str(X) \to \str(A)$ defined,
   for $\xi  = (\xi _1, \dots , \xi _n) \in
   \str(X)$, by
   <p>\[
-   C(\xi ) = c(\xi _1) \cdots c(\xi _n). 
+   C(\xi ) = c(\xi _1) \cdots c(\xi _n).
   \]</p></span>
 
  <span class='run'>We call an code <span class='term'>uniquely
-  decodable</span> if its extension is injective. </span>
+  decodable</span> if its extension is injective.</span>
 
  <span class='run'>In other words, given the code $C(\xi )$ for a
   sequence $\xi  \in \str(X)$, we can recover
-  $\xi $. </span>
+  $\xi $.</span>
 
  <span class='run'>We call $C(\xi )$ the
-  <span class='term'>encoding</span> of $\xi $. </span>
+  <span class='term'>encoding</span> of $\xi $.</span>
 
  <span class='run'>We call $\xi $ the
-  <span class='term'>decoding</span> of $C(\xi )$. </span>
+  <span class='term'>decoding</span> of $C(\xi )$.</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>The reliance of this sheet on
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>The reliance of this sheet on
   \sheetref{flash_codes}{Flash Codes} and
   \sheetref{dot-dash_codes}{Dot-Dash Codes} is for
   this justification, and not for any of the
-  terms presented. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will include additional examples. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+  terms presented.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will include additional examples.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1177,7 +1311,7 @@ Code extensions </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

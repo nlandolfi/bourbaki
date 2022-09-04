@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -145,7 +162,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We are constantly thinking of the integers as the endpoints of equal length segments of a line.</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> We commonly associate elements of the integers with the endpoints of equal-length segments of a real line. Take segment $S_0$ of $L$ with endpoints $p$ and $q$. Associate the point $p$ with $0$. Associate the point $q$ with $1$. Take a segment $S_1$ of equal length, non-overlapping with $S_0$, who shares the endpoint $q$. Associate the second endpoint of this segment $2$. Continue with the rest.\footnote{Future editions will expand.} We call the line so formed the \t{integral line} of unit $S_0$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure}[h] \centering \vspace{0.5cm} \includegraphics[width=0.9\textwidth]{\figpath{integral_segments}{real_line}} \caption{The integral segments.} \label{figures:integral_segments:real_line} \end{figure}</p></div><div class="sheet-listing" id="integral_distance"><h1 class="sheet">3. Integral Distance</h1></div><div class="sheet-listing"><p class="sheet"> Let $f: \Z \to \Z$ be defined by $f(a, b) = a - b$ if $a > b$ and $f(a, b) = b - a$ if $b > a$. Notice that $f$ is symmetric: $f(a,b) = f(b, a)$. The (geometric) interpretation of $f$ is the distance between the points associated with the two integers $a, b \in \Z$ in some integral line. We call $f$ the \t{integral distance}. Notice that $f(a, b) > 0$ for all $a, b \in \Z$.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">4. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the distance between $a, b \in \Z$ by $\intabs{a - b}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We are constantly thinking of the integers as the endpoints of equal length segments of a line.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> We commonly associate elements of the integers with the endpoints of equal-length segments of a real line. Take segment $S_0$ of $L$ with endpoints $p$ and $q$. Associate the point $p$ with $0$. Associate the point $q$ with $1$. Take a segment $S_1$ of equal length, non-overlapping with $S_0$, who shares the endpoint $q$. Associate the second endpoint of this segment $2$. Continue with the rest.\footnote{Future editions will expand.} We call the line so formed the \t{integral line} of unit $S_0$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{center}\includegraphics[width=0.70\textwidth]{./graphics/integral_line.pdf}\end{center} \section*{Integral Distance}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \Z  \to \Z $ be defined by $f(a, b) = a - b$ if $a > b$ and $f(a, b) = b - a$ if $b > a$. Notice that $f$ is symmetric: $f(a,b) = f(b, a)$. The (geometric) interpretation of $f$ is the distance between the points associated with the two integers $a, b \in \Z $ in some integral line. We call $f$ the \t{integral distance}. Notice that $f(a, b) > 0$ for all $a, b \in \Z $.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the distance between $a, b \in \Z $ by $\intabs{a - b}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -983,7 +1000,211 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./geometry.html'" onkeypress="location.href='./geometry.html'">
+                <span>
+                  Geometry
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./integer_arithmetic.html'" onkeypress="location.href='./integer_arithmetic.html'">
+                <span>
+                  Integer Arithmetic
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./chordal_graphs.html'" onkeypress="location.href='./chordal_graphs.html'">
+            <span>
+            Chordal Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_line.html'" onkeypress="location.href='./real_line.html'">
+            <span>
+            Real Line
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./integral_line.pdf#page=2'" onkeypress="location.href='./integral_line.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./integral_line-graph.pdf'" onkeypress="location.href='./integral_line-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Integral Line </h1> 
+      <!--
+!name:integral_line
+!need:geometry
+!need:integer_arithmetic
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We are constantly thinking of the integers as
+  the endpoints of equal length segments of a
+  line.</span>
+</p>
+
+<h1>Discussion</h1>
+
+<p>
+ <span class='run'>We commonly associate elements of the integers
+  with the endpoints of equal-length segments of a
+  real line.</span>
+
+ <span class='run'>Take segment $S_0$ of $L$ with endpoints $p$
+  and $q$.</span>
+
+ <span class='run'>Associate the point $p$ with $0$.</span>
+
+ <span class='run'>Associate the point $q$ with $1$.</span>
+
+ <span class='run'>Take a segment $S_1$ of equal length,
+  non-overlapping with $S_0$, who shares the
+  endpoint $q$.</span>
+
+ <span class='run'>Associate the second endpoint of this segment
+  $2$.</span>
+
+ <span class='run'>Continue with the rest.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>We call the line so formed the
+  <span class='term'>integral line</span> of unit
+  $S_0$.</span>
+</p>
+
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div><img src="./graphics/integral_line.pdf" width="70%"/></div></div>
+<h1>Integral Distance</h1>
+
+<p>
+ <span class='run'>Let $f: \Z  \to \Z $ be defined by $f(a, b)
+  = a - b$ if $a &gt; b$ and $f(a, b) = b -
+  a$ if $b &gt; a$.</span>
+
+ <span class='run'>Notice that $f$ is symmetric: $f(a,b) = f(b,
+  a)$.</span>
+
+ <span class='run'>The (geometric) interpretation of $f$ is the
+  distance between the points associated with the
+  two integers $a, b \in \Z $ in some integral
+  line.</span>
+
+ <span class='run'>We call $f$ the <span class='term'>integral
+  distance</span>.</span>
+
+ <span class='run'>Notice that $f(a, b) &gt; 0$ for all $a, b
+  \in \Z $.</span>
+</p>
+
+<h1>Notation</h1>
+
+<p>
+ <span class='run'>We denote the distance between $a, b \in \Z $
+  by $\intabs{a - b}$.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1035,7 +1256,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

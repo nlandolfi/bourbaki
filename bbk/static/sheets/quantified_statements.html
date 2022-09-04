@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -78,14 +78,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -521,7 +538,119 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./logical_statements.html'" onkeypress="location.href='./logical_statements.html'">
+                <span>
+                  Logical Statements
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./deductions.html'" onkeypress="location.href='./deductions.html'">
+            <span>
+            Deductions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./quantified_statements.pdf#page=2'" onkeypress="location.href='./quantified_statements.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./quantified_statements-graph.pdf'" onkeypress="location.href='./quantified_statements-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Quantified Statements </h1> 
       <!--
@@ -529,8 +658,7 @@ Parse: {prototype: {
 !need:logical_statements
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want symbols for talking about the existence
@@ -538,35 +666,34 @@ Why </h1>
   for all objects.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>If we say there exists an object that is
   blue, we mean the same as if we say that not
-  every object is not blue. </span>
+  every object is not blue.</span>
 
  <span class='run'>If we say that every object is blue, we mean
   the same as if we say there does not exist an
-  object that is not blue. </span>
+  object that is not blue.</span>
 
  <span class='run'>In other words, “there exists an object so
   that _” is the same as “not every object is
-  not _”. </span>
+  not _”.</span>
 
  <span class='run'>Or, “every object is _” is the same as “there
-  does not exist an object that is _”. </span>
+  does not exist an object that is _”.</span>
 </p>
 
 
 <p>
  <span class='run'>When we assert something of every object we
   also assert the nonexistence of the contrary of
-  that assertion. </span>
+  that assertion.</span>
 
  <span class='run'>And likewise when we assert that an object
   exists with some conditions, we assert that not
-  every object exists without that condition. </span>
+  every object exists without that condition.</span>
 </p>
 
 
@@ -575,30 +702,29 @@ Definition </h1>
   statements (see \sheetref{logical_statements}{Logical
   Statements}) and when we want to make them for
   all objects or for no object we will use the
-  following symbols. </span>
+  following symbols.</span>
 
  <span class='run'>The symbols introduced here are
   <span class='term'>quantifier symbols</span> and
   statements using them are
-  <span class='term'>quantified statements</span>. </span>
+  <span class='term'>quantified statements</span>.</span>
 </p>
 
-<h2>
-Existential quantifier </h2>
+<h2>Existential quantifier</h2>
 
 <p>
- <span class='run'>Consider the symbol $\exists $. </span>
+ <span class='run'>Consider the symbol $\exists $.</span>
 
  <span class='run'>We agree that it means “there exists an
-  object”. </span>
+  object”.</span>
 
  <span class='run'>We write $(\exists x)(\_)$ and then substitute
   any logical statement which uses the name $x$
-  for $\_$ . </span>
+  for $\_$ .</span>
 
  <span class='run'>For example, we write $(\exists x)(x \in A)$ to
   mean “there exists an object in the set denoted
-  by $A$.” </span>
+  by $A$.”</span>
  <!--
   % For \say{there exists an object and we denote that very object by $a$} by $∃a$.
   % We want to say that there exists an object.
@@ -607,61 +733,60 @@ Existential quantifier </h2>
 
  <span class='run'>We call $\exists $ the
   <span class='term'>existential quantifier</span>
-  symbol. </span>
+  symbol.</span>
 </p>
 
-<h2>
-Universal quantifier </h2>
+<h2>Universal quantifier</h2>
 
 <p>
- <span class='run'>Consider the symbol $\forall$. </span>
+ <span class='run'>Consider the symbol $\forall$.</span>
 
- <span class='run'>We agree that it means “for every object”. </span>
+ <span class='run'>We agree that it means “for every object”.</span>
 
  <span class='run'>We write $(\forall x)(\_)$ and then substitute
   any logical statement which uses the name $x$
-  for $\_$. </span>
+  for $\_$.</span>
 
  <span class='run'>For example, we write $(\forall x)((x \in
   A)\implies(x \in B)$ to mean, “every object
   which is in the set denoted by $A$ is in the
-  set denoted by $B$”. </span>
+  set denoted by $B$”.</span>
 
  <span class='run'>We call $\forall$ the <span class='term'>universal
-  quantifier</span> symbol. </span>
+  quantifier</span> symbol.</span>
 </p>
 
-<h2>
-Binding </h2>
+<h2>Binding</h2>
 
 <p>
  <span class='run'>When we have a name following a $\forall$ or
   $\exists $ we say that the name is
-  <span class='term'>bound</span>. </span>
+  <span class='term'>bound</span>.</span>
 
  <span class='run'>If a name is bound, then the statement uses
-  it in one sense but not in another. </span>
+  it in one sense but not in another.</span>
 
- <span class='run'>The name is only used in that single statement. </span>
+ <span class='run'>The name is only used in that single statement.</span>
 
  <span class='run'>Regular names in statements we call
   <span class='term'>unbound</span> or
-  <span class='term'>free</span>. </span>
+  <span class='term'>free</span>.</span>
 </p>
 
-<h2>
-Negations </h2>
+<h2>Negations</h2>
 
 <p>
  <span class='run'>The statement $\neg(\forall x)(\_)$ is the same
   as $(\exists x)(\neg(\_))$ and $\neg(\exists x)(\_)$
-  is the same as $(\forall x)(\neg(\_))$. </span>
+  is the same as $(\forall x)(\neg(\_))$.</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>This sheet does not explain quantifiers. In the
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This sheet does not explain quantifiers. In the
   next edition there will be several more sheets
-  serving this function </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+  serving this function</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -713,7 +838,7 @@ Negations </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

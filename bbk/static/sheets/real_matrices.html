@@ -230,7 +230,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -246,14 +246,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1317,7 +1334,287 @@ Parse: {prototype: {
 \newcommand{\RVec}[1]{\Vec{\R}{#1}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./linear_equations.html'" onkeypress="location.href='./linear_equations.html'">
+                <span>
+                  Linear Equations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_vectors.html'" onkeypress="location.href='./real_vectors.html'">
+                <span>
+                  Real Vectors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./affine_sets_and_linear_equations.html'" onkeypress="location.href='./affine_sets_and_linear_equations.html'">
+            <span>
+            Affine Sets and Linear Equations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./autonomous_continuous-time_linear_dynamical_systems.html'" onkeypress="location.href='./autonomous_continuous-time_linear_dynamical_systems.html'">
+            <span>
+            Autonomous Continuous-Time Linear Dynamical Systems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./circulant_matrices.html'" onkeypress="location.href='./circulant_matrices.html'">
+            <span>
+            Circulant Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./complex_matrices.html'" onkeypress="location.href='./complex_matrices.html'">
+            <span>
+            Complex Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./confusion_matrices.html'" onkeypress="location.href='./confusion_matrices.html'">
+            <span>
+            Confusion Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./covariance_matrix.html'" onkeypress="location.href='./covariance_matrix.html'">
+            <span>
+            Covariance Matrix
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./data_matrix.html'" onkeypress="location.href='./data_matrix.html'">
+            <span>
+            Data Matrix
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./diagonal_constant_matrices.html'" onkeypress="location.href='./diagonal_constant_matrices.html'">
+            <span>
+            Diagonal Constant Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./eigenvalues_and_eigenvectors.html'" onkeypress="location.href='./eigenvalues_and_eigenvectors.html'">
+            <span>
+            Eigenvalues and Eigenvectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrices.html'" onkeypress="location.href='./matrices.html'">
+            <span>
+            Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_determinant_of_product.html'" onkeypress="location.href='./matrix_determinant_of_product.html'">
+            <span>
+            Matrix Determinant of Product
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_determinants.html'" onkeypress="location.href='./matrix_determinants.html'">
+            <span>
+            Matrix Determinants
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_permanents.html'" onkeypress="location.href='./matrix_permanents.html'">
+            <span>
+            Matrix Permanents
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_similarity.html'" onkeypress="location.href='./matrix_similarity.html'">
+            <span>
+            Matrix Similarity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_trace.html'" onkeypress="location.href='./matrix_trace.html'">
+            <span>
+            Matrix Trace
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./range_and_null_space.html'" onkeypress="location.href='./range_and_null_space.html'">
+            <span>
+            Range and Null Space
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrix_exponential.html'" onkeypress="location.href='./real_matrix_exponential.html'">
+            <span>
+            Real Matrix Exponential
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrix_nullspace.html'" onkeypress="location.href='./real_matrix_nullspace.html'">
+            <span>
+            Real Matrix Nullspace
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrix_polynomials.html'" onkeypress="location.href='./real_matrix_polynomials.html'">
+            <span>
+            Real Matrix Polynomials
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrix_range.html'" onkeypress="location.href='./real_matrix_range.html'">
+            <span>
+            Real Matrix Range
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_matrix_rank.html'" onkeypress="location.href='./real_matrix_rank.html'">
+            <span>
+            Real Matrix Rank
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_similarity_transformations.html'" onkeypress="location.href='./real_similarity_transformations.html'">
+            <span>
+            Real Similarity Transformations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./row_reducer_matrices.html'" onkeypress="location.href='./row_reducer_matrices.html'">
+            <span>
+            Row Reducer Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./vectors_as_matrices.html'" onkeypress="location.href='./vectors_as_matrices.html'">
+            <span>
+            Vectors as Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_matrices.pdf#page=2'" onkeypress="location.href='./real_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_matrices-graph.pdf'" onkeypress="location.href='./real_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Matrices </h1> 
       <!--
@@ -1326,133 +1623,129 @@ Parse: {prototype: {
 !need:real_vectors
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
- <span class='run'>We compress the notation for linear equations. </span>
+ <span class='run'>We compress the notation for linear equations.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>real matrix</span>
   (<span class='term'>matrix</span>,
   <span class='term'>rectangular array</span>) is a
-  two-dimensional array of real numbers. </span>
+  two-dimensional array of real numbers.</span>
 
  <span class='run'>We denote the elements of a matrix in a grid
   between two rectangular braces, as in
   <p>\[
-   A = \bmat{ 
+   A = \bmat{
 
-   A_{11} & A_{12} & \cdots & A_{1n} \\ 
+   A_{11} & A_{12} & \cdots & A_{1n} \\
 
-   A_{21} & A_{22} & \cdots & A_{2n} \\ 
+   A_{21} & A_{22} & \cdots & A_{2n} \\
 
-   \vdots & & \ddots & \vdots \\ 
+   \vdots & & \ddots & \vdots \\
 
-   A_{m1} & A_{m2} & \cdots & A_{mn} \\ 
+   A_{m1} & A_{m2} & \cdots & A_{mn} \\
 
-   }. 
+   }.
   \]</p></span>
 </p>
 
 
 <p>
  <span class='run'>We call $m$ and $n$ the
-  <span class='term'>dimensions</span> of the matrix. </span>
+  <span class='term'>dimensions</span> of the matrix.</span>
 
  <span class='run'>We call $m$ the <span class='term'>height</span>
-  and $n$ the <span class='term'>width</span>. </span>
+  and $n$ the <span class='term'>width</span>.</span>
 
  <span class='run'>If the height of the matrix is the same as
   the width of the matrix then we call the
-  matrix <span class='term'>square</span>. </span>
+  matrix <span class='term'>square</span>.</span>
 
  <span class='run'>If the height is larger than the width, we
-  call the matrix <span class='term'>tall</span>. </span>
+  call the matrix <span class='term'>tall</span>.</span>
 
  <span class='run'>If the width is larger than the height, we
-  call the matrix <span class='term'>wide</span>. </span>
+  call the matrix <span class='term'>wide</span>.</span>
 </p>
 
-<h2>
-Linear equations </h2>
+<h2>Linear equations</h2>
 
 <p>
  <span class='run'>Recall that we are interested in solutions of
   the linear equations
   <p>\[
-   \begin{aligned} 
+   \begin{aligned}
 
-   y_1 &= A_{11}x_1 + A_{12}x_2 + \cdots + A_{1n}x_n, \\ 
+   y_1 &= A_{11}x_1 + A_{12}x_2 + \cdots + A_{1n}x_n, \\
 
-   y_2 &= A_{21}x_1 + A_{22}x_2 + \cdots + A_{2n}x_n, \\ 
+   y_2 &= A_{21}x_1 + A_{22}x_2 + \cdots + A_{2n}x_n, \\
 
-   &\vdots \\ 
+   &\vdots \\
 
-   y_n &= A_{m1}x_1 + A_{m2}x_2 + \cdots + A_{mn}x_n. \\ 
+   y_n &= A_{m1}x_1 + A_{m2}x_2 + \cdots + A_{mn}x_n. \\
 
-   \end{aligned} 
+   \end{aligned}
   \]</p></span>
 
  <span class='run'>We have suggestively used the notation $A_{ij}$
   for the coefficients of the equations, so they
-  are the entries of $A \in \R ^{m \times  n}$. </span>
+  are the entries of $A \in \R ^{m \times  n}$.</span>
 </p>
 
-<h1>
-A primer on matrix-vector products </h1>
+<h1>A primer on matrix-vector products</h1>
 
 <p>
  <span class='run'>Using the notation $A \in \R ^{m \times  n}$
   and $x \in \R ^n$ we want a compressed way to
-  write the above system of linear equations. </span>
+  write the above system of linear equations.</span>
 
  <span class='run'>Define the <span class='term'>real matrix-vector
   product</span> $z \in \R ^m$ of $A$ with $x$ by
   <p>\[
-   z_{i} = \sum_{j = 1}^{n} A_{ij}x_j, \quad i = 1, \dots , m. 
+   z_{i} = \sum_{j = 1}^{n} A_{ij}x_j, \quad i = 1, \dots , m.
   \]</p></span>
 
  <span class='run'>We denote the matrix vector product $z$ by
-  $Ax$. </span>
+  $Ax$.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We express the above system of linear equations
   as
   <p>\[
-   y = Ax, 
+   y = Ax,
   \]</p>
   where $y = (y_1, \dots , y_n) \in \R ^{n}$ and
-  $x = (x_1, \dots , x_n) \in \R ^n$. </span>
+  $x = (x_1, \dots , x_n) \in \R ^n$.</span>
 
  <span class='run'>The compact notation $y = Ax$ is sometimes
   called the <span class='term'>matrix form</span> of
   the $m$ linear equations and $A$ the
-  <span class='term'>coefficient matrix</span>. </span>
+  <span class='term'>coefficient matrix</span>.</span>
 </p>
 
-<h2>
-Note on terminology </h2>
+<h2>Note on terminology</h2>
 
 <p>
  <span class='run'>The word “matrix” is from the Latin “mater,”
   meaning mother, and has an old sense in English
-  similar “womb.” </span>
+  similar “womb.”</span>
 
  <span class='run'>The matrix is source of many determinants
-  (discussed elsewhere). </span>
+  (discussed elsewhere).</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1504,7 +1797,7 @@ Note on terminology </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

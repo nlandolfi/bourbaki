@@ -59,7 +59,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -75,14 +75,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -994,7 +1011,119 @@ Parse: {prototype: {
 \newcommand{\Z}{\mathbfsf{Z}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./integer_numbers.html'" onkeypress="location.href='./integer_numbers.html'">
+                <span>
+                  Integer Numbers
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./undirected_graphs.html'" onkeypress="location.href='./undirected_graphs.html'">
+                <span>
+                  Undirected Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./decision_problems.pdf#page=2'" onkeypress="location.href='./decision_problems.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./decision_problems-graph.pdf'" onkeypress="location.href='./decision_problems-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Decision Problems </h1> 
       <!--
@@ -1004,29 +1133,26 @@ Parse: {prototype: {
 !need:undirected_graphs
 -->
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>decision problem</span> is a
   pair $(I, Y)$ of
   <span class='term'>instances</span> $I$ and
   <span class='term'>yes-instances</span> $Y \subset
-  I$. </span>
+  I$.</span>
 </p>
 
-<h1>
-Examples </h1>
+<h1>Examples</h1>
 
-<h2>
-Subgraph isomorphism </h2>
+<h2>Subgraph isomorphism</h2>
 
 <p>
  <span class='run'>Let $\mathcal{G} (n)$ be the set of graphs with
-  $n$ vertices. </span>
+  $n$ vertices.</span>
 
  <span class='run'>For $m \leq n$, define $I = \mathcal{G} (n)
-  \times  \mathcal{G} (m)$. </span>
+  \times  \mathcal{G} (m)$.</span>
 
  <span class='run'>A graph $G_1 = (V_1, E_1)$ is
   <span class='term'>subgraph-isomorphic</span> to a
@@ -1036,44 +1162,43 @@ Subgraph isomorphism </h2>
   \num{E_2}$, and bijection $f: V&#39; \to V_1$ so
   that
   <p>\[
-   \set{u, v} \in E_2 \iff \set{f(u), f(v)} \in E'. 
+   \set{u, v} \in E_2 \iff \set{f(u), f(v)} \in E'.
   \]</p></span>
 
  <span class='run'>Define
   <p>\[
    Y = \Set{(G_1, G_2) \in I}{G_1 \text{ is subgraph-isomorphic
-    to } G_2} 
+    to } G_2}
   \]</p></span>
 
  <span class='run'>We call $(Y, I)$ the
-  <span class='term'>subgraph-isomorphism problem</span>. </span>
+  <span class='term'>subgraph-isomorphism problem</span>.</span>
 </p>
 
-<h2>
-Traveling Salesman </h2>
+<h2>Traveling Salesman</h2>
 
 <p>
  <span class='run'>Denote by $S^n \subset \Z ^{n \times  n}$ the
-  set of symmetric integer-valued matrices. </span>
+  set of symmetric integer-valued matrices.</span>
 
- <span class='run'>Define $I = S^n \times  \Z $. </span>
+ <span class='run'>Define $I = S^n \times  \Z $.</span>
 
  <span class='run'>A <span class='term'>$n$-tour</span> is a
   numbering $\pi : \set{1, \dots , n} \to \set{1,
   \dots , n}$ and has <span class='term'>cost</span>
   $C(\pi )$ with respect to $D$ defined by
   <p>\[
-   \textstyle 
+   \textstyle
 
    C(\pi ) = D_{\pi (n), \pi (1)} + \sum_{j = 1}^{n-1}
-    D_{\pi (i), \pi (i+1)} 
+    D_{\pi (i), \pi (i+1)}
   \]</p></span>
 
  <span class='run'>A tour is $B$-bounded if its cost is no
-  greater than $B$. </span>
+  greater than $B$.</span>
 
  <span class='run'>Define $Y = \Set{(D,B)}{\text{ there is a
-  }B-\text{bounded tour with respect to } D}$. </span>
+  }B-\text{bounded tour with respect to } D}$.</span>
 </p>
 
 
@@ -1082,9 +1207,11 @@ Traveling Salesman </h2>
   <div data-littype='run'> \blankpage </div>
 </tex>
 -->
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1136,7 +1263,7 @@ Traveling Salesman </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

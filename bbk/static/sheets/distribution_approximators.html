@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1288,115 +1305,236 @@ Parse: {prototype: {
 \newcommand{\num}[1]{\left|#1\right|}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./approximators.html'" onkeypress="location.href='./approximators.html'">
+                <span>
+                  Approximators
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./empirical_distribution.html'" onkeypress="location.href='./empirical_distribution.html'">
+                <span>
+                  Empirical Distribution
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./tree_distribution_approximators.html'" onkeypress="location.href='./tree_distribution_approximators.html'">
+            <span>
+            Tree Distribution Approximators
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./distribution_approximators.pdf#page=2'" onkeypress="location.href='./distribution_approximators.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./distribution_approximators-graph.pdf'" onkeypress="location.href='./distribution_approximators-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Distribution Approximators </h1> 
       <p>
- <span class='run'>%!name:distribution_approximators </span>
+ <span class='run'>%!name:distribution_approximators</span>
 
- <span class='run'>%!need:approximators </span>
+ <span class='run'>%!need:approximators</span>
 
- <span class='run'>%!need:empirical_distribution </span>
+ <span class='run'>%!need:empirical_distribution</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
 <p>
- <span class='run'>We have a distribution to approximate. </span>
+ <span class='run'>We have a distribution to approximate.</span>
 
  <span class='run'>It is, for some reason, unsuitable to our
   needs and we want to replace it with one more
-  suitable. </span>
+  suitable.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
 <p>
  <span class='run'>A <span class='term'>distribution
   approximator</span> is an approximator of a
-  probability distribution. </span>
+  probability distribution.</span>
 
- <span class='run'>It is also a distribution. </span>
+ <span class='run'>It is also a distribution.</span>
 
  <span class='run'>The criterion of approximation is any similarity
-  function on distributions over the same space. </span>
+  function on distributions over the same space.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Notation} </span>
+ <span class='run'>\ssection{Notation}</span>
 </p>
 
 
 <p>
  <span class='run'>Let $A$ be a non-empty set and $q: A \to
-  \R $ be a distribution. </span>
+  \R $ be a distribution.</span>
 
- <span class='run'>Let $p: A \to \R $ be a distribution. </span>
+ <span class='run'>Let $p: A \to \R $ be a distribution.</span>
 
  <span class='run'>Then $p: A \to \R $ is a distribution
-  approximator of $q$. </span>
+  approximator of $q$.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Reasons for approximation} </span>
+ <span class='run'>\ssection{Reasons for approximation}</span>
 </p>
 
 
 <p>
  <span class='run'></span>
 
- <span class='run'><b>Infeasible to represent.</b> </span>
+ <span class='run'><b>Infeasible to represent.</b></span>
 
  <span class='run'>If there are many outcomes, many numbers are
-  required to specify the distribution. </span>
+  required to specify the distribution.</span>
 
  <span class='run'>If $p: A^n \to \R $ where $\mid A\mid  = k$,
   then there are $k^n$ outcomes; take, for
-  example, $k = 2$ and $n = 100$. </span>
+  example, $k = 2$ and $n = 100$.</span>
 
  <span class='run'>So we might want to find a distribution which
-  requires fewer numbers to express. </span>
+  requires fewer numbers to express.</span>
 
  <span class='run'>In other words, we want a different
   distribution, selected from the set of those
   which is easier to express, which is close to
-  the original. </span>
+  the original.</span>
 </p>
 
 
 <p>
- <span class='run'><b>Unreasonable from common sense.</b> </span>
+ <span class='run'><b>Unreasonable from common sense.</b></span>
 
  <span class='run'>The distribution may be unreasonable as a
-  result of our common sense. </span>
+  result of our common sense.</span>
 
  <span class='run'>For example, it may give zero probability to
   an outcome which we know to be possible, and
-  would like to model with non-zero probability. </span>
+  would like to model with non-zero probability.</span>
 
  <span class='run'>This may happen when working with an empirical
   distribution: a particular outcome does not
   appear in the dataset, however, our common sense
-  suggests is possible. </span>
+  suggests is possible.</span>
 
  <span class='run'>In this case, we want to find a different
   distribution, selected from the set of those
   which is more reasonable based on common sense,
-  which is close to the original. </span>
+  which is close to the original.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1448,7 +1586,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

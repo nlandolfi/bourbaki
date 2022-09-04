@@ -132,7 +132,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -148,14 +148,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -201,7 +218,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What are addition and multiplication for integers? What are the identity elements?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We call the operation of forming integer sums \t{integer addition}. We call the operation of forming integer products \t{integer multiplication}.</p></div><div class="sheet-listing" id="results"><h1 class="sheet">3. Results</h1></div><div class="sheet-listing"><p class="sheet"> It is easy to see the following.\footnote{Nonetheless, the full accounts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The additive identity for $\Z$ is $\eqc{(0, 0)}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The multiplicative identity for $\Z$ is $\eqc{(0, 0)}$. \end{proposition}</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">4. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the additive identity of $\Z$ by $0_{\Z}$ and the multiplicative identity by $1_{\Z}$. When it is clear from context, we call $0_{\Z}$ "zero} and we call $1_{\Z}$ \say{one".</p></div><div class="sheet-listing" id="distributive"><h1 class="sheet">5. Distributive</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For integers $x, y, z \in \Z$, $x \cdot (y + z) = x\cdot y + x\cdot z$.\footnote{An account will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What are addition and multiplication for integers? What are the identity elements?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We call the operation of forming integer sums \t{integer addition}. We call the operation of forming integer products \t{integer multiplication}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Results}</p></div><div class="sheet-listing"><p class="sheet"> It is easy to see the following.\footnote{Nonetheless, the full accounts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The additive identity for $\Z $ is $\eqc{(0, 0)}$.\end{proposition} \begin{proposition} The multiplicative identity for $\Z $ is $\eqc{(0, 0)}$.\end{proposition} \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the additive identity of $\Z $ by $0_{\Z }$ and the multiplicative identity by $1_{\Z }$. When it is clear from context, we call $0_{\Z }$ "zero} and we call $1_{\Z }$ \say{one".</p></div><div class="sheet-listing"><p class="sheet"> \section*{Distributive}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For integers $x, y, z \in \Z $, $x \cdot  (y + z) = x\cdot y + x\cdot  z$.\footnote{An account will appear in future editions.}\end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1039,7 +1056,253 @@ Parse: {prototype: {
 \newcommand{\Z}{\mathbfsf{Z}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./integer_products.html'" onkeypress="location.href='./integer_products.html'">
+                <span>
+                  Integer Products
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./integer_sums.html'" onkeypress="location.href='./integer_sums.html'">
+                <span>
+                  Integer Sums
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./natural_additive_identity.html'" onkeypress="location.href='./natural_additive_identity.html'">
+                <span>
+                  Natural Additive Identity
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./natural_multiplicative_identity.html'" onkeypress="location.href='./natural_multiplicative_identity.html'">
+                <span>
+                  Natural Multiplicative Identity
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integer_arithmetic_and_order.html'" onkeypress="location.href='./integer_arithmetic_and_order.html'">
+            <span>
+            Integer Arithmetic and Order
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integer_divisors.html'" onkeypress="location.href='./integer_divisors.html'">
+            <span>
+            Integer Divisors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integral_line.html'" onkeypress="location.href='./integral_line.html'">
+            <span>
+            Integral Line
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./modular_arithmetic.html'" onkeypress="location.href='./modular_arithmetic.html'">
+            <span>
+            Modular Arithmetic
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./rational_arithmetic.html'" onkeypress="location.href='./rational_arithmetic.html'">
+            <span>
+            Rational Arithmetic
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./rational_multiplicative_inverses.html'" onkeypress="location.href='./rational_multiplicative_inverses.html'">
+            <span>
+            Rational Multiplicative Inverses
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./rational_numbers.html'" onkeypress="location.href='./rational_numbers.html'">
+            <span>
+            Rational Numbers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./rings.html'" onkeypress="location.href='./rings.html'">
+            <span>
+            Rings
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./integer_arithmetic.pdf#page=2'" onkeypress="location.href='./integer_arithmetic.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./integer_arithmetic-graph.pdf'" onkeypress="location.href='./integer_arithmetic-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Integer Arithmetic </h1> 
+      <!--
+!name:integer_arithmetic
+!need:integer_products
+!need:integer_sums
+!need:natural_additive_identity
+!need:natural_multiplicative_identity
+!!need:arithmetic (implicit)
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>What are addition and multiplication for
+  integers?</span>
+
+ <span class='run'>What are the identity elements?</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>We call the operation of forming integer sums
+  <span class='term'>integer addition</span>.</span>
+
+ <span class='run'>We call the operation of forming integer
+  products <span class='term'>integer
+  multiplication</span>.</span>
+</p>
+
+<h1>Results</h1>
+
+<p>
+ <span class='run'>It is easy to see the following.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>The additive identity for $\Z $ is $\eqc{(0,
+  0)}$.</span></div>
+<div class='proposition'>
+ <span class='run'>The multiplicative identity for $\Z $ is
+  $\eqc{(0, 0)}$.</span></div>
+<h1>Notation</h1>
+
+<p>
+ <span class='run'>We denote the additive identity of $\Z $ by
+  $0_{\Z }$ and the multiplicative identity by
+  $1_{\Z }$.</span>
+
+ <span class='run'>When it is clear from context, we call
+  $0_{\Z }$ “zero} and we call $1_{\Z }$ “one”.</span>
+</p>
+
+<h1>Distributive</h1>
+
+<div class='proposition'>
+ <span class='run'>For integers $x, y, z \in \Z $, $x \cdot  (y
+  + z) = x\cdot  y + x\cdot  z$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Nonetheless, the full accounts will appear in
+  future editions.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>An account will appear in future editions.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1091,7 +1354,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

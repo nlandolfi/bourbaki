@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -138,7 +155,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What is the best linear regressor if we choose according to a weighted squared loss function.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have a paired dataset of $n$ records with inputs in $\R ^d$ and outputs in $\R $. A \t{weighted least squares linear predictor} for nonnegative weights $w \in \R ^n$, $w \geq 0$, is a linear transformation $f: \R ^d \to \R $ (the field is $\R $) which minimizes \[ \frac{1}{n} \sum_{i = 1}^{n} w_i(y_i - \transpose{x}a^i)^2. \] Some authors refer to this process of selecting a linear predictor as the \t{weighted least-squares problem}.</p></div><div class="sheet-listing"><p class="sheet"> Define $W \in \R ^{n \times n}$ so that $W_{ii} = w_i$ and $W_{ij} = 0$ when $i \neq j$. So, in particular, $W$ is a diagonal matrix. We want to find $x$ to minimize \[ \normm{W(Ax - y)} \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Solution}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}There exists a unique weighted least squares linear predictor and its parameters are given by \[ \inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy. \] \end{proposition} \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What is the best linear regressor if we choose according to a weighted squared loss function.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have a paired dataset of $n$ records with inputs in $\R ^d$ and outputs in $\R $. A \t{weighted least squares linear predictor} for nonnegative weights $w \in \R ^n$, $w \geq 0$, is a linear transformation $f: \R ^d \to \R $ (the field is $\R $) which minimizes \[ \frac{1}{n} \sum_{i = 1}^{n} w_i(y_i - x^\top a^i)^2. \] Some authors refer to this process of selecting a linear predictor as the \t{weighted least-squares problem}.</p></div><div class="sheet-listing"><p class="sheet"> Define $W \in \R ^{n \times n}$ so that $W_{ii} = w_i$ and $W_{ij} = 0$ when $i \neq j$. So, in particular, $W$ is a diagonal matrix. We want to find $x$ to minimize \[ \normm{W(Ax - y)} \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Solution}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} There exists a unique weighted least squares linear predictor and its parameters are given by \[ \inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy. \] \end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1596,7 +1613,126 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./inner_products.html'" onkeypress="location.href='./inner_products.html'">
+                <span>
+                  Inner Products
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./least_squares_linear_regressors.html'" onkeypress="location.href='./least_squares_linear_regressors.html'">
+                <span>
+                  Least Squares Linear Regressors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./norm_weighted_least_squares_linear_regressors.html'" onkeypress="location.href='./norm_weighted_least_squares_linear_regressors.html'">
+            <span>
+            Norm Weighted Least Squares Linear Regressors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./weighted_least_squares_linear_regressors.pdf#page=2'" onkeypress="location.href='./weighted_least_squares_linear_regressors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./weighted_least_squares_linear_regressors-graph.pdf'" onkeypress="location.href='./weighted_least_squares_linear_regressors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Weighted Least Squares Linear Regressors </h1> 
       <!--
@@ -1605,21 +1741,19 @@ Parse: {prototype: {
 !need:inner_products
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>What is the best linear regressor if we choose
-  according to a weighted squared loss function. </span>
+  according to a weighted squared loss function.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Suppose we have a paired dataset of $n$
   records with inputs in $\R ^d$ and outputs in
-  $\R $. </span>
+  $\R $.</span>
 
  <span class='run'>A <span class='term'>weighted least squares linear
   predictor</span> for nonnegative weights $w \in
@@ -1627,42 +1761,44 @@ Definition </h1>
   $f: \R ^d \to \R $ (the field is $\R $) which
   minimizes
   <p>\[
-   \frac{1}{n} \sum_{i = 1}^{n} w_i(y_i - \transpose{x}a^i)^2. 
+   \frac{1}{n} \sum_{i = 1}^{n} w_i(y_i - x^\top a^i)^2.
   \]</p></span>
 
  <span class='run'>Some authors refer to this process of selecting
   a linear predictor as the
   <span class='term'>weighted least-squares
-  problem</span>. </span>
+  problem</span>.</span>
 </p>
 
 
 <p>
  <span class='run'>Define $W \in \R ^{n \times n}$ so that $W_{ii}
-  = w_i$ and $W_{ij} = 0$ when $i \neq j$. </span>
+  = w_i$ and $W_{ij} = 0$ when $i \neq j$.</span>
 
- <span class='run'>So, in particular, $W$ is a diagonal matrix. </span>
+ <span class='run'>So, in particular, $W$ is a diagonal matrix.</span>
 
  <span class='run'>We want to find $x$ to minimize
   <p>\[
-   \normm{W(Ax - y)} 
+   \normm{W(Ax - y)}
   \]</p></span>
 </p>
 
-<h1>
-Solution </h1>
+<h1>Solution</h1>
 
-<div class='proposition' <p>
+<div class='proposition'>
+ <p>
   <span class='run'>There exists a unique weighted least squares
    linear predictor and its parameters are given
    by
    <p>\[
-    \inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy. 
+    \inversep{\transpose{A}W\transpose{A}}\transpose{A}Wy.
    \]</p></span>
  </p>
-</div><ol class='footnotes'></ol>
+</div><hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1714,7 +1850,7 @@ Solution </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

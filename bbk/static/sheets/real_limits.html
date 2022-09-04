@@ -153,7 +153,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -169,14 +169,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1240,7 +1257,210 @@ Parse: {prototype: {
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./absolute_value.html'" onkeypress="location.href='./absolute_value.html'">
+                <span>
+                  Absolute Value
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_sequences.html'" onkeypress="location.href='./real_sequences.html'">
+                <span>
+                  Real Sequences
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./convergence_in_measure.html'" onkeypress="location.href='./convergence_in_measure.html'">
+            <span>
+            Convergence In Measure
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./convergence_in_probability.html'" onkeypress="location.href='./convergence_in_probability.html'">
+            <span>
+            Convergence In Probability
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./directional_derivatives.html'" onkeypress="location.href='./directional_derivatives.html'">
+            <span>
+            Directional Derivatives
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./extended_real_numbers.html'" onkeypress="location.href='./extended_real_numbers.html'">
+            <span>
+            Extended Real Numbers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./measure_derivatives.html'" onkeypress="location.href='./measure_derivatives.html'">
+            <span>
+            Measure Derivatives
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./metric_limits.html'" onkeypress="location.href='./metric_limits.html'">
+            <span>
+            Metric Limits
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./negligible_sets.html'" onkeypress="location.href='./negligible_sets.html'">
+            <span>
+            Negligible Sets
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./pointwise_and_measure_limits.html'" onkeypress="location.href='./pointwise_and_measure_limits.html'">
+            <span>
+            Pointwise and Measure Limits
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_egoprox_sequences.html'" onkeypress="location.href='./real_egoprox_sequences.html'">
+            <span>
+            Real Egoprox Sequences
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_limit_algebra.html'" onkeypress="location.href='./real_limit_algebra.html'">
+            <span>
+            Real Limit Algebra
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_limiting_bounds.html'" onkeypress="location.href='./real_limiting_bounds.html'">
+            <span>
+            Real Limiting Bounds
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_series.html'" onkeypress="location.href='./real_series.html'">
+            <span>
+            Real Series
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./supremum_norm_complete.html'" onkeypress="location.href='./supremum_norm_complete.html'">
+            <span>
+            Supremum Norm Complete
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_limits.pdf#page=2'" onkeypress="location.href='./real_limits.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_limits-graph.pdf'" onkeypress="location.href='./real_limits-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Limits </h1> 
       <!--
@@ -1249,22 +1469,20 @@ Parse: {prototype: {
 !need:absolute_value
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to talk about sequences of real
   numbers which, as we go further and further in
   the sequence, get closer and closer to some
-  fixed real number. </span>
+  fixed real number.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>We need to talk about “where” a sequence is
-  “approaching.” </span>
+  “approaching.”</span>
 </p>
 
 
@@ -1274,49 +1492,48 @@ Definition </h1>
   number $x_0$ with the property that, for any
   interval centered at $x_0$, we can find a final
   part of the sequence wholly contained in that
-  interval; no matter how small the interval. </span>
+  interval; no matter how small the interval.</span>
 
  <span class='run'>By making the interval small, we capture to
   intuition that the sequence is “close” to its
-  limit. </span>
+  limit.</span>
 </p>
 
 
 <p>
  <span class='run'>In other words, you propose a limit for a
-  sequence. </span>
+  sequence.</span>
 
  <span class='run'>To test this proposal, I specify some small
-  positive real number. </span>
+  positive real number.</span>
 
  <span class='run'>Then we look for a final part of the sequence
   which is wholly contained in the interval whose
-  width is twice the small positive number. </span>
+  width is twice the small positive number.</span>
 
  <span class='run'>If we can always find the final part, no
   matter how small the positive number I
-  specified, then the proposed limit is true. </span>
+  specified, then the proposed limit is true.</span>
 </p>
 
-<h2>
-Existence </h2>
+<h2>Existence</h2>
 
 <p>
- <span class='run'>Some sequences have no limit. </span>
+ <span class='run'>Some sequences have no limit.</span>
 
  <span class='run'>Consider the sequence which alternates between
-  $+1$ and $-1$. </span>
+  $+1$ and $-1$.</span>
 
  <span class='run'>To show that the limit does not exist, we
-  argue indirectly. </span>
+  argue indirectly.</span>
 
  <span class='run'>We take any real number and test it with the
-  interval length one. </span>
+  interval length one.</span>
 
  <span class='run'>No matter which real number we have selected,
   $+1$ and $-1$ are a distance two apart, and so
   can not both be contained in an interval of
-  width one. </span>
+  width one.</span>
 </p>
 
 
@@ -1327,100 +1544,99 @@ Existence </h2>
   (or we say that it
   <span class='term'>converges</span>, or call it
   <span class='term'>convergent</span> or
-  <span class='term'>converging</span>). </span>
+  <span class='term'>converging</span>).</span>
 </p>
 
-<h2>
-Uniqueness </h2>
+<h2>Uniqueness</h2>
 
 <p>
  <span class='run'>If a sequence has a limit, it has only one
-  limit. </span>
+  limit.</span>
 
  <span class='run'>So, from here on, we will speak of
-  <span class='term'>the limit</span> of the sequence. </span>
+  <span class='term'>the limit</span> of the sequence.</span>
 </p>
 
 
 <p>
  <span class='run'>To see this uniqueness, suppose that two real
-  numbers satisfy the limiting property. </span>
+  numbers satisfy the limiting property.</span>
 
  <span class='run'>We now argue indirectly: suppose also that they
-  are not equal. </span>
+  are not equal.</span>
 
- <span class='run'>Denote the distance between them by $x$. </span>
+ <span class='run'>Denote the distance between them by $x$.</span>
 
  <span class='run'>Then ask for final parts in intervals of width
-  $x/2$ for both limits. </span>
+  $x∕2$ for both limits.</span>
 </p>
 
-<h2>
-Approximation </h2>
+<h2>Approximation</h2>
 
 <p>
  <span class='run'>We use limits to speak about the terminating
-  behavior of infinite processes. </span>
+  behavior of infinite processes.</span>
 
  <span class='run'>We think about the sequence as approximating
-  the limit. </span>
+  the limit.</span>
 
  <span class='run'>The sequence may never actually take the value
   of its limit, so the limit need not be in the
-  set of terms of the sequence. </span>
+  set of terms of the sequence.</span>
 
  <span class='run'>But the idea, of course, is that the set of
   terms, especially those “far out” in the
-  sequence, are close to the limit. </span>
+  sequence, are close to the limit.</span>
 </p>
 
 
 <p>
  <span class='run'>The definition, moreover, ensures that the
-  sequence will get arbitrarily close. </span>
+  sequence will get arbitrarily close.</span>
 
  <span class='run'>We can operationalize this property, by taking
   the first element of that final part after
-  which all elements are close to the limit. </span>
+  which all elements are close to the limit.</span>
 
  <span class='run'>This element of the sequence approximates the
-  limit value well. </span>
+  limit value well.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $\seq{a}$ be a sequence of real numbers. </span>
+ <span class='run'>Let $\seq{a}$ be a sequence of real numbers.</span>
 
- <span class='run'>Let $a$ be a real number. </span>
+ <span class='run'>Let $a$ be a real number.</span>
 
  <span class='run'>We denote that $a$ is the limit of $\seq{a}$
   by
   <p>\[
-   a = \lim_{n \to \infty} a_n. 
+   a = \lim_{n \to \infty} a_n.
   \]</p></span>
 
  <span class='run'>The abbreviation “lim” is from the Latin word
-  <i>limes</i>, which means boundary, or limit. </span>
+  <i>limes</i>, which means boundary, or limit.</span>
 </p>
 
 
 <p>
  <span class='run'>We read this statement aloud as “a is the
-  limit of a sub n.” </span>
+  limit of a sub n.”</span>
 
  <span class='run'>The above statement asserts two facts: (1) the
   sequence $\seq{a}$ has a limit and (2) the
-  limit is the real number $a$. </span>
+  limit is the real number $a$.</span>
 
- <span class='run'>We sometimes abbreviate this by writing </span>
+ <span class='run'>We sometimes abbreviate this by writing</span>
 
- <span class='run'>$a = \lim_{n} a_n$. </span>
+ <span class='run'>$a = \lim_{n} a_n$.</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1472,7 +1688,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

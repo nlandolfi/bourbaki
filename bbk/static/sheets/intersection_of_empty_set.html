@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -815,7 +832,225 @@ Parse: {prototype: {
 \newcommand{\bintersection}{\bigcap}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./pair_unions.html'" onkeypress="location.href='./pair_unions.html'">
+                <span>
+                  Pair Unions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_intersections.html'" onkeypress="location.href='./set_intersections.html'">
+                <span>
+                  Set Intersections
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./generalized_set_dualities.html'" onkeypress="location.href='./generalized_set_dualities.html'">
+            <span>
+            Generalized Set Dualities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./natural_numbers.html'" onkeypress="location.href='./natural_numbers.html'">
+            <span>
+            Natural Numbers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./intersection_of_empty_set.pdf#page=2'" onkeypress="location.href='./intersection_of_empty_set.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./intersection_of_empty_set-graph.pdf'" onkeypress="location.href='./intersection_of_empty_set-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Intersection of Empty Set </h1> 
+      <!--
+!name:intersection_of_empty_set
+!need:set_intersections
+!need:pair_unions
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We only define set intersections for nonempty
+  sets of sets.</span>
+
+ <span class='run'>Why?</span>
+</p>
+
+<h1>Discussion</h1>
+
+<p>
+ <span class='run'>Which objects are specified by the sentence
+  $(\forall x \in \varnothing)(x \in X)$?</span>
+
+ <span class='run'>Well, since no objects fail to satisfy the
+  statement,<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup>
+  the sentence specifies all objects.</span>
+
+ <span class='run'>So in other words, the condition we used to
+  define set intersections (<a href='/sheets/set_intersections.html'/><span class='run'>Set Intersections</span></a>) specifies the “set of everything}.</span>
+
+ <span class='run'>In order to maintain other more desirable set
+  principles like selection, we have said that
+  such a set does not exist (see&nbsp;<a href='/sheets/set_specification.html'/><span class='run'>Set Specification</span></a>).</span>
+</p>
+
+
+<p>
+ <span class='run'>If, however, all sets under consideration are
+  subsets of one paticular set—denote it $E$—then
+  we can define intersections as follows.</span>
+
+ <span class='run'>Let $\mathcal{C} $ be a possibly nonempty
+  collection of sets
+  <p>\[
+   \bigcap \mathcal{C}  = \Set{X \in E}{(\forall X \in
+    \mathcal{C} )(x \in X)}.
+  \]</p></span>
+
+ <span class='run'>This definition agrees with that given in&nbsp;<a href='/sheets/set_intersections.html'/><span class='run'>Set Intersections</span></a>.</span>
+
+ <span class='run'>In particular, it is the intersection of the
+  set $\mathcal{C}  \cup \set{E}$</span>
+</p>
+
+<h1>Another definition</h1>
+
+<p>
+ <span class='run'>This begs the following question.</span>
+
+ <span class='run'>Why not define intersections by selecting from
+  the union.</span>
+
+ <span class='run'>Let $\mathcal{A} $ be a possibly nonempty set
+  of sets.</span>
+
+ <span class='run'>Then define:
+  <p>\[
+   \bigcap \mathcal{A}  = \Set{x \in \bigcup \mathcal{A} }{(\forall
+    A \in \mathcal{A} )(x \in A)}.
+  \]</p>
+  <span class='run'>If $\mathcal{A} $ is empty, so is $\bigcup
+   \mathcal{A} $ and then there are no elements in
+   the set to select from so $\bigcap
+   \mathcal{A} $ is empty.</span>
+
+  <span class='run'>This does not agree with the previous
+   definitions for the empty set, but does for
+   all other sets of sets.</span></span>
+ <p>
+  <span class='run'>For these reasons, the intersection of the
+   empty set is delicate.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+
+  <span class='run'></span>
+ </p>
+
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will offer an account of this.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will expand on the preference
+  for the former definition.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -867,7 +1102,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

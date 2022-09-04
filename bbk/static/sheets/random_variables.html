@@ -146,7 +146,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -162,14 +162,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1453,7 +1470,203 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./measurable_functions.html'" onkeypress="location.href='./measurable_functions.html'">
+                <span>
+                  Measurable Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./probability_measures.html'" onkeypress="location.href='./probability_measures.html'">
+                <span>
+                  Probability Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./topological_sigma_algebra.html'" onkeypress="location.href='./topological_sigma_algebra.html'">
+                <span>
+                  Topological Sigma Algebra
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+                <span>
+                  Uncertain Outcomes
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./central_limit_theorem.html'" onkeypress="location.href='./central_limit_theorem.html'">
+            <span>
+            Central Limit Theorem
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./conditional_dependency_graph.html'" onkeypress="location.href='./conditional_dependency_graph.html'">
+            <span>
+            Conditional Dependency Graph
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./cumulative_distribution_functions.html'" onkeypress="location.href='./cumulative_distribution_functions.html'">
+            <span>
+            Cumulative Distribution Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./distortion_functions.html'" onkeypress="location.href='./distortion_functions.html'">
+            <span>
+            Distortion Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./estimates.html'" onkeypress="location.href='./estimates.html'">
+            <span>
+            Estimates
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./expectation.html'" onkeypress="location.href='./expectation.html'">
+            <span>
+            Expectation
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./independent_identical_sums.html'" onkeypress="location.href='./independent_identical_sums.html'">
+            <span>
+            Independent Identical Sums
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./independent_random_variables.html'" onkeypress="location.href='./independent_random_variables.html'">
+            <span>
+            Independent Random Variables
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./random_variable_sigma_algebras.html'" onkeypress="location.href='./random_variable_sigma_algebras.html'">
+            <span>
+            Random Variable Sigma Algebras
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./random_vectors.html'" onkeypress="location.href='./random_vectors.html'">
+            <span>
+            Random Vectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./random_variables.pdf#page=2'" onkeypress="location.href='./random_variables.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./random_variables-graph.pdf'" onkeypress="location.href='./random_variables-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Random Variables </h1> 
       <!--
@@ -1464,13 +1677,12 @@ Parse: {prototype: {
 !need:uncertain_outcomes
 -->
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>random variable</span> is a
   measurable map from a probability space to a
-  measurable space. </span>
+  measurable space.</span>
 </p>
 
 
@@ -1478,87 +1690,88 @@ Definition </h1>
  <span class='run'>A <span class='term'>real-valued random
   variable</span> is a measurable map between the
   probability space and the set of real numbers
-  with its topological sigma algebra. </span>
+  with its topological sigma algebra.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>Let $(X, \mathcal{A} , \mathbfsf{P} )$ be a
-  probability space. </span>
+  probability space.</span>
 
- <span class='run'>Let $(Y, \mathcal{B} )$ a measurable space. </span>
+ <span class='run'>Let $(Y, \mathcal{B} )$ a measurable space.</span>
 
  <span class='run'>A random variable is a measurable function $f:
-  X \to Y$. </span>
+  X \to Y$.</span>
 </p>
 
 
 <p>
  <span class='run'>Some authors denote real-valued random variables
   by upper case Latin letters: for example, $X,
-  Y, Z$. </span>
+  Y, Z$.</span>
 
  <span class='run'>In this case, the base probability space is
-  denoted by $\Omega $, a mnemonic for “outcomes.” </span>
+  denoted by $\Omega $, a mnemonic for “outcomes.”</span>
 
  <span class='run'>Let $(\Omega ,\mathcal{A} ,\mathbfsf{P} )$ be a
-  probability space. </span>
+  probability space.</span>
 
- <span class='run'>Let $X: \Omega  \to \R $ be measurable. </span>
+ <span class='run'>Let $X: \Omega  \to \R $ be measurable.</span>
 
- <span class='run'>Then $X$ is a real-valued random variable. </span>
+ <span class='run'>Then $X$ is a real-valued random variable.</span>
 </p>
 
 
 <p>
  <span class='run'>Some authors use notation for the probability
-  of particular, common sets. </span>
+  of particular, common sets.</span>
 
  <span class='run'>Although the authors often use regular
   parentheses, we will use “$[$” and “$]$” for
-  precision. </span>
+  precision.</span>
 
- <span class='run'>Let $A \in \mathcal{B} (\R )$. </span>
+ <span class='run'>Let $A \in \mathcal{B} (\R )$.</span>
 
  <span class='run'>Let $\mathbfsf{P} [X \in A]$ denote
-  $\mathbfsf{P} (X^{-1}(A))$. </span>
+  $\mathbfsf{P} (X^{-1}(A))$.</span>
 
  <span class='run'>These are equivalent to
   <p>\[
-   \mathbfsf{P} (\Set*{\omega  \in \Omega }{X(\omega ) \in A}). 
+   \mathbfsf{P} (\Set*{\omega  \in \Omega }{X(\omega ) \in A}).
   \]</p></span>
 
  <span class='run'>As we mentioned, some authors use $P(X \in A)$
-  for $P[X \in A]$, which is mostly harmless. </span>
+  for $P[X \in A]$, which is mostly harmless.</span>
 </p>
 
 
 <p>
  <span class='run'>Next, let $Y: \Omega  \to \R $ a measurable
-  function and let $B \in \mathcal{B} (\R )$. </span>
+  function and let $B \in \mathcal{B} (\R )$.</span>
 
  <span class='run'>Similar to the above, let $\mathbfsf{P} [X \in
   A, Y \in B]$ denote $\mathbfsf{P} (X^{-1}(A)
-  \cap  Y^{-1}(B))$. </span>
+  \cap  Y^{-1}(B))$.</span>
 
  <span class='run'>These are equivalent to
   <p>\[
    \mathbfsf{P} (\Set*{\omega  \in \Omega }{X(\omega ) \in A \text{
-    and } Y(\omega ) \in B}). 
+    and } Y(\omega ) \in B}).
   \]</p></span>
 
  <span class='run'>Similarly for $n$ random variables $X_1, \dots ,
   X_n: \Omega  \to \R $,
   <p>\[
    \mathbfsf{P} [X_1 \in A_1, \dots , X_n \in A_n] =
-    \mathbfsf{P} (\cap _{i = 1}^{n} X_i^{-1}(A_i)). 
+    \mathbfsf{P} (\cap _{i = 1}^{n} X_i^{-1}(A_i)).
   \]</p></span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1610,7 +1823,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

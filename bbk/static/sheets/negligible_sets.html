@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1302,43 +1319,176 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./measures.html'" onkeypress="location.href='./measures.html'">
+                <span>
+                  Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_limits.html'" onkeypress="location.href='./real_limits.html'">
+                <span>
+                  Real Limits
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./almost_everywhere_measurability.html'" onkeypress="location.href='./almost_everywhere_measurability.html'">
+            <span>
+            Almost Everywhere Measurability
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./almost_sure_events.html'" onkeypress="location.href='./almost_sure_events.html'">
+            <span>
+            Almost Sure Events
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./iterated_integrals.html'" onkeypress="location.href='./iterated_integrals.html'">
+            <span>
+            Iterated Integrals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./negligible_sets.pdf#page=2'" onkeypress="location.href='./negligible_sets.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./negligible_sets-graph.pdf'" onkeypress="location.href='./negligible_sets-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Negligible Sets </h1> 
       <p>
- <span class='run'>%!name:negligible_sets </span>
+ <span class='run'>%!name:negligible_sets</span>
 
- <span class='run'>%!need:measures </span>
+ <span class='run'>%!need:measures</span>
 
- <span class='run'>%!need:real_limits </span>
+ <span class='run'>%!need:real_limits</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
 <p>
  <span class='run'>Some reasonable statements do not hold <i>for
   all</i> elements of the base set of a
-  measurable space. </span>
+  measurable space.</span>
 
  <span class='run'>Even so, these statements often hold “broadly,”
   in the sense that the measure of the set on
-  which they fail is small (i.e., zero). </span>
+  which they fail is small (i.e., zero).</span>
 
  <span class='run'>With this idea, we can often treat statements
   which fail on a set of measure zero as though
-  they occur everywhere. </span>
+  they occur everywhere.</span>
 
  <span class='run'>We take this route especially often in
-  discussions of convergence and integration. </span>
+  discussions of convergence and integration.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
@@ -1346,14 +1496,14 @@ Parse: {prototype: {
  <span class='run'>A subset of the base set of a measure space
   is <span class='term'>negligible</span> if there
   exists a measurable set with measure zero
-  containing the subset. </span>
+  containing the subset.</span>
 
  <span class='run'>The qualification “if there exists a measurable
   set...” allows us to speak of nonmeasurable
-  negligible sets. </span>
+  negligible sets.</span>
 
  <span class='run'>In other words, negligible sets need not be
-  measurable. </span>
+  measurable.</span>
 </p>
 
 
@@ -1364,7 +1514,7 @@ Parse: {prototype: {
   everywhere</span> with respect to a measure on a
   measure space if the set of elements of the
   base set on which the property does not hold
-  is negligible. </span>
+  is negligible.</span>
 </p>
 
 
@@ -1372,68 +1522,68 @@ Parse: {prototype: {
  <span class='run'>Naturally, if the property holds everywhere then
   it holds almost everywhere, too, though we
   always use the stronger statement that it holds
-  everywhere. </span>
+  everywhere.</span>
 
  <span class='run'>With this in mind, we call the almost
   everywhere sense “weaker” than the everywhere
-  sense. </span>
+  sense.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssubsection{Notation} </span>
+ <span class='run'>\ssubsection{Notation}</span>
 </p>
 
 
 <p>
- <span class='run'>Let $(X, \mathcal{A}, \mu )$ be a measure space. </span>
+ <span class='run'>Let $(X, \mathcal{A}, \mu )$ be a measure space.</span>
 
  <span class='run'>A set $N \subset X$ is negligible if there
   exists $A \in \mathcal{A}$ with $N \subset A$
-  and $\mu (N) = 0$. </span>
+  and $\mu (N) = 0$.</span>
 </p>
 
 
 <p>
  <span class='run'>We abbreviate almost everywhere as \say{a.e.,}
-  read \say{almost everywhere}. </span>
+  read \say{almost everywhere}.</span>
 
- <span class='run'>We say that a property \say{holds a.e.} </span>
+ <span class='run'>We say that a property \say{holds a.e.}</span>
 
  <span class='run'>If the measure $\mu $ is not clear from
   context, we say that the property holds almost
   everywhere $[\mu ]$ or $\mu $-a.e., read \say{mu
-  almost everywhere.} </span>
+  almost everywhere.}</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Examples} </span>
+ <span class='run'>\ssection{Examples}</span>
 </p>
 
 
 <p>
- <span class='run'>Let $(X, \mathcal{A}, \mu )$ be a measure space. </span>
+ <span class='run'>Let $(X, \mathcal{A}, \mu )$ be a measure space.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssubsection{Function Comparisons} </span>
+ <span class='run'>\ssubsection{Function Comparisons}</span>
 </p>
 
 
 <p>
  <span class='run'>Let $f, g: X \to \R $, not necessarily
-  measurable. </span>
+  measurable.</span>
 
  <span class='run'>Then $f = g$ almost everywhere if the set of
-  points at which the functions disagree is </span>
+  points at which the functions disagree is</span>
 
- <span class='run'>$\mu $-negligible. </span>
+ <span class='run'>$\mu $-negligible.</span>
 
  <span class='run'>Similarly, $f \geq g$ almost everywhere if the
   set of points where $f$ is less than $g$ is
-  $\mu $-negligible. </span>
+  $\mu $-negligible.</span>
 </p>
 
 
@@ -1441,42 +1591,44 @@ Parse: {prototype: {
  <span class='run'>Now suppose $f$ and $g$ are
   $\mathcal{A}$-measurable, then the sets
   <p>\[
-   \Set*{x \in X}{f(x) \neq g(x)} 
+   \Set*{x \in X}{f(x) \neq g(x)}
 
-   \text{ and } 
+   \text{ and }
 
-   \Set*{x \in X}{f(x) < g(x)} 
+   \Set*{x \in X}{f(x) < g(x)}
   \]</p>
-  <span class='run'>are measurable. </span>
+  <span class='run'>are measurable.</span>
 
-  <span class='run'>In general, these sets need not be measurable. </span>
+  <span class='run'>In general, these sets need not be measurable.</span>
 
   <span class='run'>This is one example justification for our
    including nonmeasurable sets in the definition,
-   as mentioned above. </span></span>
+   as mentioned above.</span></span>
 </p>
 
 
 <p>
- <span class='run'>\ssubsection{Function Limits} </span>
+ <span class='run'>\ssubsection{Function Limits}</span>
 
  <span class='run'>Let $\seqt{f}: X \to R$ for each natural
-  number $n$ and let $f: X \to R$ be a function. </span>
+  number $n$ and let $f: X \to R$ be a function.</span>
 
  <span class='run'>The sequence $\seq{f}$ <span class='term'>converges
   to $f$ almost everywhere</span> if
   <p>\[
    \Set*{x \in X}{\lim_{n} \seqt{f}(x) \text{ does not exist, or
-    } f(x) \neq \lim_{n} \seqt{f}(x)} 
+    } f(x) \neq \lim_{n} \seqt{f}(x)}
   \]</p>
-  is $\mu $-negligible. </span>
+  is $\mu $-negligible.</span>
 
  <span class='run'>In this case, we write “$f = \lim_n \seqt{f}$
-  a.e.” </span>
+  a.e.”</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1528,7 +1680,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

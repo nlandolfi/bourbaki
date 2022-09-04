@@ -59,7 +59,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -75,14 +75,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1262,29 +1279,141 @@ Parse: {prototype: {
 \newcommand{\rank}{\mathsf{rank}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./dependent_events.html'" onkeypress="location.href='./dependent_events.html'">
+                <span>
+                  Dependent Events
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrix_rank.html'" onkeypress="location.href='./real_matrix_rank.html'">
+                <span>
+                  Real Matrix Rank
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./joint_probability_matrices.pdf#page=2'" onkeypress="location.href='./joint_probability_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./joint_probability_matrices-graph.pdf'" onkeypress="location.href='./joint_probability_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Joint Probability Matrices </h1> 
       <p>
- <span class='run'>%!name:joint_probability_matrices </span>
+ <span class='run'>%!name:joint_probability_matrices</span>
 
- <span class='run'>%!need:real_matrix_rank </span>
+ <span class='run'>%!need:real_matrix_rank</span>
 
- <span class='run'>%!need:dependent_events </span>
+ <span class='run'>%!need:dependent_events</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 
  <span class='run'>We can characterize the dependence of two
   events in terms of the rank of a particular
-  matrix. </span>
+  matrix.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 
  <span class='run'>Given a probability measure $\mathbfsf{P} :
   \powerset{\Omega } \to \R $ on the finite set
@@ -1292,80 +1421,82 @@ Parse: {prototype: {
   the <span class='term'>joint probability
   matrix</span> of $A$ and $B$ is the matrix
   <p>\[
-   M = \bmat{ 
+   M = \bmat{
 
    \mathbfsf{P} (A \cap  B) & \mathbfsf{P} (A \cap
-    \relcomplement{B}{\Omega }) \\ 
+    \relcomplement{B}{\Omega }) \\
 
    \mathbfsf{P} (\relcomplement{A}{\Omega } \cap  B) &
     \mathbfsf{P} (\relcomplement{A}{\Omega } \cap
-    \relcomplement{B}{\Omega }) \\ 
+    \relcomplement{B}{\Omega }) \\
 
-   }. 
+   }.
   \]</p></span>
 </p>
 
 
 <p>
- <span class='run'>\ssubsection{Characterization of independence} </span>
+ <span class='run'>\ssubsection{Characterization of independence}</span>
 
  <span class='run'>If $A$ and $B$ are independent, then so are
   $A$ and $\relcomplement{B}{\Omega }$, $B$ and
   $\relcomplement{A}{\Omega }$, and
   $\relcomplement{A}{\Omega }$
-  and$\relcomplement{B}{\Omega }$. </span>
+  and$\relcomplement{B}{\Omega }$.</span>
 
  <span class='run'>In other words,
   <p>\[
    M = \bmat{\mathbfsf{P} (A) \\
     \mathbfsf{P} (\relcomplement{A}{\Omega }) }\bmat{\mathbfsf{P} (B) &
-    \mathbfsf{P} (\relcomplement{B}{\Omega }}. 
+    \mathbfsf{P} (\relcomplement{B}{\Omega }}.
   \]</p></span>
 
- <span class='run'>In this case, we see that $\rank(M) = 1$. </span>
+ <span class='run'>In this case, we see that $\rank(M) = 1$.</span>
 </p>
 
 
 <p>
- <span class='run'>Conversely, suppose $\rank(M) = 1$. </span>
+ <span class='run'>Conversely, suppose $\rank(M) = 1$.</span>
 
  <span class='run'>Then, using the law of total probabiliy, each
   row is a multiple of
   <p>\[
    M1 = \bmat{\mathbfsf{P} (A) \\
-    \mathbfsf{P} (\relcomplement{A}{\Omega })} . 
+    \mathbfsf{P} (\relcomplement{A}{\Omega })} .
   \]</p></span>
 
  <span class='run'>In particular, we have $\mathbfsf{P} (A \cap  B)
   = \alpha  \mathbfsf{P} (A)$ and
   $\mathbfsf{P} (\relcomplement{A}{\Omega } \cap  B) =
-  \alpha P(\relcomplement{A}{\Omega })$. </span>
+  \alpha P(\relcomplement{A}{\Omega })$.</span>
 
  <span class='run'>So
   <p>\[
    \mathbfsf{P} (A \cap  B) +
     \mathbfsf{P} (\relcomplement{A}{\Omega } \cap  B) =
-    \alpha (\mathbfsf{P} (B) + \mathbfsf{P} (\relcomplement{A}{\Omega })), 
+    \alpha (\mathbfsf{P} (B) + \mathbfsf{P} (\relcomplement{A}{\Omega })),
   \]</p>
-  from which we deduce $\alpha  = \mathbfsf{P} (B)$ </span>
+  from which we deduce $\alpha  = \mathbfsf{P} (B)$</span>
 
  <span class='run'>Likewise, the multiplier for the second column
   of $M$ is
-  $\mathbfsf{P} (\relcomplement{B}{\Omega })$. </span>
+  $\mathbfsf{P} (\relcomplement{B}{\Omega })$.</span>
 
- <span class='run'>In other words, $A$ and $B$ are independent. </span>
+ <span class='run'>In other words, $A$ and $B$ are independent.</span>
 
  <span class='run'>We conclude that $A$ and $B$ are independent
-  if and only if $\rank(M) = 1$. </span>
+  if and only if $\rank(M) = 1$.</span>
 </p>
 
 
 <p>
- <span class='run'>\blankpage </span>
+ <span class='run'>\blankpage</span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1417,7 +1548,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

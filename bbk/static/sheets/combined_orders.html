@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -138,7 +155,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Given multiple orders, can we combine them?</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we have two orders $\prec_1$ and $\prec_2$ on $A$. Define $\prec$ by $a \prec b$ if and only if $a \prec_1 b$ and $b \prec_2 a$. Notice that $\prec$ is reflexive, transitive, and antisymmetric, and so it is a partial order. Call it the \t{combined order}.</p></div><div class="sheet-listing"><p class="sheet"> Here's the rub. Even if $\prec_1$ and $\prec_2$ are total, $\prec$ may not be total.\footnote{Future editions will include and expand.} Consider the basic case $A = \set{a, b}$ and $\prec_1 \; = \set{(a,a), (a, b), (b,b)}$ and $\prec_2 \; = \set{(a,a), (b,a), (b,b)}$ Then $\prec \; = \set{(a,a), (b,b)}$, a partial order, to be sure, but not really any order at all.</p></div><div class="sheet-listing"><p class="sheet"> There is not anything to be done about it, it is a fact. Total orders do not (necessarily) induce total combined orders.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Given multiple orders, can we combine them?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we have two orders $\prec_1$ and $\prec_2$ on $A$. Define $\prec$ by $a \prec b$ if and only if $a \prec_1 b$ and $b \prec_2 a$. Notice that $\prec$ is reflexive, transitive, and antisymmetric, and so it is a partial order. Call it the \t{combined order}.</p></div><div class="sheet-listing"><p class="sheet"> Here's the rub. Even if $\prec_1$ and $\prec_2$ are total, $\prec$ may not be total.\footnote{Future editions will include and expand.} Consider the basic case $A = \set{a, b}$ and $\prec_1 \; = \set{(a,a), (a, b), (b,b)}$ and $\prec_2 \; = \set{(a,a), (b,a), (b,b)}$ Then $\prec \; = \set{(a,a), (b,b)}$, a partial order, to be sure, but not really any order at all.</p></div><div class="sheet-listing"><p class="sheet"> There is not anything to be done about it, it is a fact. Total orders do not (necessarily) induce total combined orders.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -900,7 +917,184 @@ Parse: {prototype: {
 \newcommand{\range}{\ran}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./orders.html'" onkeypress="location.href='./orders.html'">
+                <span>
+                  Orders
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./multiobjective_optimization_problems.html'" onkeypress="location.href='./multiobjective_optimization_problems.html'">
+            <span>
+            Multiobjective Optimization Problems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./optimal_classifiers.html'" onkeypress="location.href='./optimal_classifiers.html'">
+            <span>
+            Optimal Classifiers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./combined_orders.pdf#page=2'" onkeypress="location.href='./combined_orders.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./combined_orders-graph.pdf'" onkeypress="location.href='./combined_orders-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Combined Orders </h1> 
+      <!--
+!name:combined_orders
+!need:orders
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>Given multiple orders, can we combine them?</span>
+</p>
+
+<h1>Discussion</h1>
+
+<p>
+ <span class='run'>Suppose we have two orders $\prec_1$ and
+  $\prec_2$ on $A$.</span>
+
+ <span class='run'>Define $\prec$ by $a \prec b$ if and only if
+  $a \prec_1 b$ and $b \prec_2 a$.</span>
+
+ <span class='run'>Notice that $\prec$ is reflexive, transitive,
+  and antisymmetric, and so it is a partial order.</span>
+
+ <span class='run'>Call it the <span class='term'>combined
+  order</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>Here&#39;s the rub.</span>
+
+ <span class='run'>Even if $\prec_1$ and $\prec_2$ are total,
+  $\prec$ may not be total.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>Consider the basic case $A = \set{a, b}$ and
+  $\prec_1 \; = \set{(a,a), (a, b), (b,b)}$ and
+  $\prec_2 \; = \set{(a,a), (b,a), (b,b)}$</span>
+
+ <span class='run'>Then $\prec \; = \set{(a,a), (b,b)}$, a partial
+  order, to be sure, but not really any order at
+  all.</span>
+</p>
+
+
+<p>
+ <span class='run'>There is not anything to be done about it, it
+  is a fact.</span>
+
+ <span class='run'>Total orders do not (necessarily) induce total
+  combined orders.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include and expand.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -952,7 +1146,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

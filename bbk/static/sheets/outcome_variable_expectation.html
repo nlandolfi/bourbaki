@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1070,7 +1087,140 @@ Parse: {prototype: {
 \newcommand{\PE}{\mathbfsf{P}}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./induced_probability_distributions.html'" onkeypress="location.href='./induced_probability_distributions.html'">
+                <span>
+                  Induced Probability Distributions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./expectation.html'" onkeypress="location.href='./expectation.html'">
+            <span>
+            Expectation
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./expectation_maximization.html'" onkeypress="location.href='./expectation_maximization.html'">
+            <span>
+            Expectation Maximization
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./outcome_variable_covariance.html'" onkeypress="location.href='./outcome_variable_covariance.html'">
+            <span>
+            Outcome Variable Covariance
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./probability_vectors.html'" onkeypress="location.href='./probability_vectors.html'">
+            <span>
+            Probability Vectors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./outcome_variable_expectation.pdf#page=2'" onkeypress="location.href='./outcome_variable_expectation.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./outcome_variable_expectation-graph.pdf'" onkeypress="location.href='./outcome_variable_expectation-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Outcome Variable Expectation </h1> 
       <!--
@@ -1079,8 +1229,7 @@ Parse: {prototype: {
 %!refs:sanjay_lall/linear_control_systems_2/random_variables
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>If we model some measured value as a random
@@ -1091,8 +1240,7 @@ Why </h1>
   measure the value $v$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Given a distribution $p: \Omega  \to \R $ and
@@ -1100,99 +1248,96 @@ Definition </h1>
   \to \R $, the <span class='term'>expectation</span>
   (or <span class='term'>mean</span>) of $x$ under
   $p$ is $\sum_{\omega  \in \Omega }
-  p(\omega )x(\omega )$. </span>
+  p(\omega )x(\omega )$.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
  <span class='run'>We denote the expectation of $x$ under $p$ by
-  $\E (x)$. </span>
+  $\E (x)$.</span>
 
  <span class='run'>When there is no chance of ambiguity, we write
-  $\E (x)$. </span>
+  $\E (x)$.</span>
 </p>
 
-<h1>
-Properties </h1>
+<h1>Properties</h1>
 
 <p>
  <span class='run'>Let $x, y : \Omega  \to \R $ be two outcome
   variables and $p: \Omega  \to \R $ a
-  distribution. </span>
+  distribution.</span>
 
- <span class='run'>Let $\alpha , \beta  \in \R $. </span>
+ <span class='run'>Let $\alpha , \beta  \in \R $.</span>
 
  <span class='run'>Define $z = \alpha x + \beta y$ by $z(\omega )
-  = \alpha x(\omega ) + \beta y(\omega )$. </span>
+  = \alpha x(\omega ) + \beta y(\omega )$.</span>
 
- <span class='run'>Then $\E (z) = \alpha \E (x) + \beta \E (z)$. </span>
+ <span class='run'>Then $\E (z) = \alpha \E (x) + \beta \E (z)$.</span>
 </p>
 
-<h1>
-Example: expectation </h1>
+<h1>Example: expectation</h1>
 
 <p>
  <span class='run'>Suppose $\Omega  = \set{1, 2, 3, 4, 5}$ with
   $p(1) = 0.1$, $p(2) = 0.15$, $p(3) = 0.1$,
-  $p(5) = 0.25$ and $p(5) = 0.4$. </span>
+  $p(5) = 0.25$ and $p(5) = 0.4$.</span>
 
  <span class='run'>Define $x: \Omega  \to \R $ by
   <p>\[
-   x(a) = \begin{cases} 
+   x(a) = \begin{cases}
 
-   -1 & \text{ if } a = 1 \text{ or } a = 2, \\ 
+   -1 & \text{ if } a = 1 \text{ or } a = 2, \\
 
-   1 & \text{ if } a = 3 \text{ or } a = 4, \\ 
+   1 & \text{ if } a = 3 \text{ or } a = 4, \\
 
-   2 & \text{ if } a = 5. \\ 
+   2 & \text{ if } a = 5. \\
 
-   \end{cases} 
+   \end{cases}
   \]</p></span>
 
  <span class='run'>The expectation of $x$ under $p$ is
   <p>\[
-   \E x = -1 -0.15 + 0.1 + 0.25 + 2(0.4) = 0.9. 
+   \E x = -1 -0.15 + 0.1 + 0.25 + 2(0.4) = 0.9.
   \]</p></span>
 </p>
 
-<h2>
-Two routes for computation </h2>
+<h2>Two routes for computation</h2>
 
 <p>
  <span class='run'>Denote by $p_x: V \to \R $ the induced
   distribution of $x: \Omega  \to V$ (where $V
-  \subset \R $). </span>
+  \subset \R $).</span>
 
  <span class='run'>Then $\E (x) = \sum_{v \in V} p_x(v)v$ since
   <p>\[
-   \begin{aligned} 
+   \begin{aligned}
 
    \textstyle \sum_{\omega  \in \Omega } p(\omega )x(\omega ) &=
     \sum_{v \in V} \sum_{\omega  \in x^{-1}(v)} x(\omega )p(\omega )
-    \\ 
+    \\
 
    \textstyle &= \sum_{v \in V} v \sum_{\omega  \in x^{-1}(v)}
-    p(\omega ) \\ 
+    p(\omega ) \\
 
-   \textstyle & = \sum_{v \in V} x(v) p_x(v). 
+   \textstyle & = \sum_{v \in V} x(v) p_x(v).
 
-   \end{aligned} 
+   \end{aligned}
   \]</p></span>
 </p>
 
-<h1>
-Interpretations </h1>
+<h1>Interpretations</h1>
 
 <p>
  <span class='run'>We interpret the mean as the center of mass
-  of the induced distribution. </span>
+  of the induced distribution.</span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions may modify this explanation, and
-  take a genetic approach via summary statistics. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions may modify this explanation, and
+  take a genetic approach via summary statistics.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1244,7 +1389,7 @@ Interpretations </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

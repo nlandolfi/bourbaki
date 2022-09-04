@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -138,7 +155,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="why"><h1 class="sheet">2. Why</h1></div><div class="sheet-listing"><p class="sheet"> A conditional distribution (density) $q: Y \times X \to \R$ is \t{functionally parametrizable} if there exists a function $f: X \to \Theta$ and distribution (density) family $\set{p^{(\theta)}: Y \to \R}_{\theta \in \Theta}$ satisfying $q(y, x) \equiv p^{(f(x))}(\gamma)$ for all $x \in X$ and $y \in Y$.</p></div><div class="sheet-listing"><p class="sheet"> In this case we call $f$ the \t{parameterizer} and we call $\set{p^{(\theta)}}_{\theta \in \Theta}$ the \t{parameterized family}. A \t{parameterized conditional distribution} is an ordered pair whose first coordinate is a function from $X$ to $\Theta$ and whose second coordinate is a family of distributions on $X$ with parameter set $\Theta$. For a particular choice of parameterizer and family, it induces a conditional distribution.</p></div><div class="sheet-listing"><p class="sheet"> Since all conditional distributions are functionally parametrizable (consider $\set{q(\cdot, \xi)}_{\xi \in X}$ with parameters $X$ and identity parameterizer), we are interested in parameterizers and parameterized families that are simple. Said differently, we are interested in approximating a conditional distribution by selecting an appropriate parameterizer and parameterized family.</p></div><div class="sheet-listing"><p class="sheet"> If $\set{f_{\phi}: X \to \Theta}_{\phi \in \Phi}$ is a family of functions and $\set{q^{(\theta)}}$ is a family of distributions, then $\set{p^{(\phi)}: X \times Z \to \R}_{\phi}$ defined by $p^{(\phi)}(\cdot, \zeta) \equiv q^{f_\phi(\zeta)}$ is a conditional distribution family called a \t{functionally parameterized conditional distribution family}. In other words, by selecting some parameters $\phi$, we induce a conditional distribution $p^{(\phi)}: X \times Z \to \R$</p></div><div class="sheet-listing"><p class="sheet"> We similarly define \t{parameterized conditional densities} and \t{functionally parameterized conditional density families}.</p></div><div class="sheet-listing"><h2 class="sheet" id="basic_example">2.1 Basic example</h2></div><div class="sheet-listing"><p class="sheet"> Let $Z = \set{1, 2}$ and $X = \R$. Let $f: \set{1, 2} \to  \R \times \R_+$ be defined by $f(1) = (\mu_1, \sigma_1)$ and $f(2) = (\mu_2, \sigma_2)$. Let $\set{g^{(\theta)}}_{\theta}$ be the normal family. Then $(f, \set{g^{(\theta)}})$ is a \t{functionally parameterized conditional density}.\footnote{Future editions will modify.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A conditional distribution (density) $q: Y \times X \to \R $ is \t{functionally parametrizable} if there exists a function $f: X \to \Theta$ and distribution (density) family $\set{p^{(\theta )}: Y \to \R }_{\theta  \in \Theta}$ satisfying $q(y, x) \equiv p^{(f(x))}(\gamma )$ for all $x \in X$ and $y \in Y$.</p></div><div class="sheet-listing"><p class="sheet"> In this case we call $f$ the \t{parameterizer} and we call $\set{p^{(\theta )}}_{\theta  \in \Theta}$ the \t{parameterized family}. A \t{parameterized conditional distribution} is an ordered pair whose first coordinate is a function from $X$ to $\Theta$ and whose second coordinate is a family of distributions on $X$ with parameter set $\Theta$. For a particular choice of parameterizer and family, it induces a conditional distribution.</p></div><div class="sheet-listing"><p class="sheet"> Since all conditional distributions are functionally parametrizable (consider $\set{q(\cdot , \xi )}_{\xi  \in X}$ with parameters $X$ and identity parameterizer), we are interested in parameterizers and parameterized families that are simple. Said differently, we are interested in approximating a conditional distribution by selecting an appropriate parameterizer and parameterized family.</p></div><div class="sheet-listing"><p class="sheet"> If $\set{f_{\phi }: X \to \Theta}_{\phi  \in \Phi}$ is a family of functions and $\set{q^{(\theta )}}$ is a family of distributions, then $\set{p^{(\phi )}: X \times Z \to \R }_{\phi }$ defined by $p^{(\phi )}(\cdot , \zeta ) \equiv q^{f_\phi (\zeta )}$ is a conditional distribution family called a \t{functionally parameterized conditional distribution family}. In other words, by selecting some parameters $\phi $, we induce a conditional distribution $p^{(\phi )}: X \times Z \to \R $</p></div><div class="sheet-listing"><p class="sheet"> We similarly define \t{parameterized conditional densities} and \t{functionally parameterized conditional density families}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Basic example}</p></div><div class="sheet-listing"><p class="sheet"> Let $Z = \set{1, 2}$ and $X = \R $. Let $f: \set{1, 2} \to \R  \times \R _+$ be defined by $f(1) = (\mu _1, \sigma _1)$ and $f(2) = (\mu _2, \sigma _2)$. Let $\set{g^{(\theta )}}_{\theta }$ be the normal family. Then $(f, \set{g^{(\theta )}})$ is a \t{functionally parameterized conditional density}. \ifhmode\unskip\fi\footnote{ Future editions will modify. }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1356,7 +1373,225 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./distribution_families.html'" onkeypress="location.href='./distribution_families.html'">
+                <span>
+                  Distribution Families
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./neural_distribution_families.html'" onkeypress="location.href='./neural_distribution_families.html'">
+            <span>
+            Neural Distribution Families
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./parameterized_distribution_graphs.html'" onkeypress="location.href='./parameterized_distribution_graphs.html'">
+            <span>
+            Parameterized Distribution Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./parameterized_distributions.pdf#page=2'" onkeypress="location.href='./parameterized_distributions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./parameterized_distributions-graph.pdf'" onkeypress="location.href='./parameterized_distributions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Parameterized Distributions </h1> 
+      <!--
+!name:parameterized_distributions
+!need:distribution_families
+-->
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>A conditional distribution (density) $q: Y
+  \times X \to \R $ is
+  <span class='term'>functionally parametrizable</span>
+  if there exists a function $f: X \to \Theta$
+  and distribution (density) family
+  $\set{p^{(\theta )}: Y \to \R }_{\theta  \in
+  \Theta}$ satisfying $q(y, x) \equiv
+  p^{(f(x))}(\gamma )$ for all $x \in X$ and $y
+  \in Y$.</span>
+</p>
+
+
+<p>
+ <span class='run'>In this case we call $f$ the
+  <span class='term'>parameterizer</span> and we call
+  $\set{p^{(\theta )}}_{\theta  \in \Theta}$ the
+  <span class='term'>parameterized family</span>.</span>
+
+ <span class='run'>A <span class='term'>parameterized conditional
+  distribution</span> is an ordered pair whose
+  first coordinate is a function from $X$ to
+  $\Theta$ and whose second coordinate is a family
+  of distributions on $X$ with parameter set
+  $\Theta$.</span>
+
+ <span class='run'>For a particular choice of parameterizer and
+  family, it induces a conditional distribution.</span>
+</p>
+
+
+<p>
+ <span class='run'>Since all conditional distributions are
+  functionally parametrizable (consider
+  $\set{q(\cdot , \xi )}_{\xi  \in X}$ with
+  parameters $X$ and identity parameterizer), we
+  are interested in parameterizers and parameterized
+  families that are simple.</span>
+
+ <span class='run'>Said differently, we are interested in
+  approximating a conditional distribution by
+  selecting an appropriate parameterizer and
+  parameterized family.</span>
+</p>
+
+
+<p>
+ <span class='run'>If $\set{f_{\phi }: X \to \Theta}_{\phi  \in
+  \Phi}$ is a family of functions and
+  $\set{q^{(\theta )}}$ is a family of
+  distributions, then $\set{p^{(\phi )}: X \times Z
+  \to \R }_{\phi }$ defined by $p^{(\phi )}(\cdot ,
+  \zeta ) \equiv q^{f_\phi (\zeta )}$ is a
+  conditional distribution family called a
+  <span class='term'>functionally parameterized
+  conditional distribution family</span>.</span>
+
+ <span class='run'>In other words, by selecting some parameters
+  $\phi $, we induce a conditional distribution
+  $p^{(\phi )}: X \times Z \to \R $</span>
+</p>
+
+
+<p>
+ <span class='run'>We similarly define
+  <span class='term'>parameterized conditional
+  densities</span> and <span class='term'>functionally
+  parameterized conditional density families</span>.</span>
+</p>
+
+<h2>Basic example</h2>
+
+<p>
+ <span class='run'>Let $Z = \set{1, 2}$ and $X = \R $. Let $f:
+  \set{1, 2} \to \R  \times \R _+$ be defined by
+  $f(1) = (\mu _1, \sigma _1)$ and $f(2) =
+  (\mu _2, \sigma _2)$.</span>
+
+ <span class='run'>Let $\set{g^{(\theta )}}_{\theta }$ be the normal
+  family.</span>
+
+ <span class='run'>Then $(f, \set{g^{(\theta )}})$ is a
+  <span class='term'>functionally parameterized
+  conditional density</span>.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1408,7 +1643,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

@@ -104,7 +104,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -120,14 +120,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -563,7 +580,161 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./sets.html'" onkeypress="location.href='./sets.html'">
+                <span>
+                  Sets
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./area.html'" onkeypress="location.href='./area.html'">
+            <span>
+            Area
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integral_line.html'" onkeypress="location.href='./integral_line.html'">
+            <span>
+            Integral Line
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_plane.html'" onkeypress="location.href='./real_plane.html'">
+            <span>
+            Real Plane
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_space.html'" onkeypress="location.href='./real_space.html'">
+            <span>
+            Real Space
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./right_triangle_sides_relation.html'" onkeypress="location.href='./right_triangle_sides_relation.html'">
+            <span>
+            Right Triangle Sides Relation
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./squares.html'" onkeypress="location.href='./squares.html'">
+            <span>
+            Squares
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./venn_diagrams.html'" onkeypress="location.href='./venn_diagrams.html'">
+            <span>
+            Venn Diagrams
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./geometry.pdf#page=2'" onkeypress="location.href='./geometry.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./geometry-graph.pdf'" onkeypress="location.href='./geometry-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Geometry </h1> 
       <!--
@@ -571,50 +742,48 @@ Parse: {prototype: {
 !need:sets
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <span class='run'>We need some basic geometric concepts.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 
-<h1>
-Definitions </h1>
+<h1>Definitions</h1>
 
 <p>
  <span class='run'>A <span class='term'>point</span> is that which
   has no part.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
 
  <span class='run'>A <span class='term'>line</span> is a breadthless
-  length. </span>
+  length.</span>
 
  <span class='run'>The <span class='term'>extremities of a
   line</span><sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup>
-  are points. </span>
+  are points.</span>
 
  <span class='run'>A <span class='term'>straight line</span> is a
   line which lies evenly with the points on
-  itself. </span>
+  itself.</span>
 
  <span class='run'>A <span class='term'>surface</span> is that which
-  has length and breadth only. </span>
+  has length and breadth only.</span>
 
  <span class='run'>The <span class='term'>extremities of a
-  surface</span> are lines. </span>
+  surface</span> are lines.</span>
 </p>
 
 
 <p>
  <span class='run'>A <span class='term'>plane surface</span> is a
   surface which lies evenly with the straight
-  lines on itself. </span>
+  lines on itself.</span>
 
  <span class='run'>A <span class='term'>plane angle</span> is the
   inclination to one another of two lines in a
   plane which meet one another and do not lie in
-  a straight line. </span>
+  a straight line.</span>
 
  <span class='run'>And when teh lines containing the angle are
   straight, the angle is called
-  <span class='term'>rectilineal</span>. </span>
+  <span class='term'>rectilineal</span>.</span>
 
  <span class='run'>When a straight line set up on a straight
   line makes the adjacent angles equal to one
@@ -622,7 +791,7 @@ Definitions </h1>
   <span class='term'>right</span>, and the straight
   line standing on the other side is called a
   <span class='term'>perpendicular</span> to that on
-  which it stands. </span>
+  which it stands.</span>
 </p>
 
 
@@ -634,19 +803,19 @@ Definitions </h1>
   -->
 
  <span class='run'>A <span class='term'>boundary</span> is that which
-  is an extremity of any thing. </span>
+  is an extremity of any thing.</span>
 
  <span class='run'>A <span class='term'>figure</span> is that which
-  is contained by any boundary or boundaries. </span>
+  is contained by any boundary or boundaries.</span>
 
  <span class='run'>A <span class='term'>circle</span> is a plane
   figure contained by one line such that allthe
   straight lines falling upon it from one point
   among those lying withing the figure are equal
-  to one another. </span>
+  to one another.</span>
 
  <span class='run'>The point is called the
-  <span class='term'>center</span> of the circle. </span>
+  <span class='term'>center</span> of the circle.</span>
 
  <span class='run'>A <span class='term'>diameter</span> of the circle
   is any straight line drawn through the center
@@ -654,16 +823,18 @@ Definitions </h1>
   circumference of the circle, and such a straight
   line also bisects the circle.<sup id='footnote-4-reference'><a href='#footnote-4'>4</a></sup></span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>This sheet will be expanded into several in
-  future editions. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>This and all that follows is taken (nearly)
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This sheet will be expanded into several in
+  future editions.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>This and all that follows is taken (nearly)
   verbatim from Heath’s translation of Book I of
   Euclid’s Elements. In future editions, there will
   be a reference to the Litterae manuscript of
-  this text. </span><a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>We have departed from Heath and made extremity
-  here a term. </span><a href='#footnote-3-reference'>↩︎</a></li><li id='footnote-4'> <span class='run'>We end here. Of course, Euclid goes on to
-  discuss semicircles, rectilineal figures, etc. </span><a href='#footnote-4-reference'>↩︎</a></li></ol>
+  this text.</span><a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>We have departed from Heath and made extremity
+  here a term.</span><a href='#footnote-3-reference'>↩︎</a></li><li id='footnote-4'> <span class='run'>We end here. Of course, Euclid goes on to
+  discuss semicircles, rectilineal figures, etc.</span><a href='#footnote-4-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -715,7 +886,7 @@ Definitions </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

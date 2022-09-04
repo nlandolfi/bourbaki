@@ -76,7 +76,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -92,14 +92,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -145,7 +162,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We are constantly thinking of $\R ^3$ as points of space. \ifhmode\unskip\fi\footnote{ Future editions will modify this sheet. }</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> We commonly associate elements of $\R ^3$ with points in space. (see \sheetref{geometry}{Geometry}).</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Plane Sets] There exists a set of all planes. \end{principle}</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Real Space Correspondence] Let $P$ be the set of all planes of space. Then $\cup P$ is the set of all lines and $\cup \cup P$ is the set of all points. There exists a one-to-one correspondence mapping elements of $\cup \cup P$ onto elements of $\R ^3$. \end{principle} For this reason, we sometimes call elements of $\R ^3$ \t{points}. We call the point associated with $(0, 0, 0)$ the \t{origin}. We call the element of $\R ^3$ which corresponds to a point the \t{coordinates} of the point.</p></div><div class="sheet-listing" id="visualization"><h1 class="sheet">3. Visualization</h1></div><div class="sheet-listing"><p class="sheet"> To visualize the correspondence we draw three perpendicular lines. We call these \t{axes}. We then associate a point of the line with $(0, 0, 0) \in \R ^3$. We can label it so. We then pick a unit length. And proceed as usual. \ifhmode\unskip\fi\footnote{ Future editions will expand this. }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We are constantly thinking of $\R ^3$ as points of space. \ifhmode\unskip\fi\footnote{ Future editions will modify this sheet. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We commonly associate elements of $\R ^3$ with points in space. (see \sheetref{geometry}{Geometry} ). \begin{principle}[Plane Sets] There exists a set of all planes.\end{principle} \begin{principle}[Real Space Correspondence] Let $P$ be the set of all planes of space. Then $\cup P$ is the set of all lines and $\cup \cup P$ is the set of all points. There exists a one-to-one correspondence mapping elements of $\cup \cup P$ onto elements of $\R ^3$.\end{principle} For this reason, we sometimes call elements of $\R ^3$ \t{points}. We call the point associated with $(0, 0, 0)$ the \t{origin}. We call the element of $\R ^3$ which corresponds to a point the \t{coordinates} of the point.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Visualization}</p></div><div class="sheet-listing"><p class="sheet"> To visualize the correspondence we draw three perpendicular lines. We call these \t{axes}. We then associate a point of the line with $(0, 0, 0) \in \R ^3$. We can label it so. We then pick a unit length. And proceed as usual. \ifhmode\unskip\fi\footnote{ Future editions will expand this. }</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1051,104 +1068,197 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./geometry.html'" onkeypress="location.href='./geometry.html'">
+                <span>
+                  Geometry
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_plane.html'" onkeypress="location.href='./real_plane.html'">
+                <span>
+                  Real Plane
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./cubes.html'" onkeypress="location.href='./cubes.html'">
+            <span>
+            Cubes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./space_distance.html'" onkeypress="location.href='./space_distance.html'">
+            <span>
+            Space Distance
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_space.pdf#page=2'" onkeypress="location.href='./real_space.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_space-graph.pdf'" onkeypress="location.href='./real_space-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Space </h1> 
-      <p>
- <span class='run'>%!name:real_space </span>
+      <!--
+!name:real_space
+!need:real_plane
+!need:geometry
+-->
 
- <span class='run'>%!need:real_plane </span>
-
- <span class='run'>%!need:geometry </span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why} </span>
-</p>
-
+<h1>Why</h1>
 
 <p>
  <span class='run'>We are constantly thinking of $\R ^3$ as points
   of space.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Discussion} </span>
-</p>
-
+<h1>Definition</h1>
 
 <p>
  <span class='run'>We commonly associate elements of $\R ^3$ with
-  points in space. (see
-  \sheetref{geometry}{Geometry}). </span>
-</p>
+  points in space. (see<a href='/sheets/geometry.html'/><span class='run'>Geometry</span></a>).</span>
+ <div class='principle' text='Plane Sets'>
+  <span class='run'>There exists a set of all planes.</span> </div>
+ <div class='principle' text='Real Space Correspondence'>
+  <span class='run'>Let $P$ be the set of all planes of space.</span>
 
+  <span class='run'>Then $\cup P$ is the set of all lines and
+   $\cup \cup P$ is the set of all points.</span>
 
-<p>
- <span class='run'>\begin{principle}[Plane Sets] </span>
-
- <span class='run'>There exists a set of all planes. </span>
-
- <span class='run'>\end{principle} </span>
-</p>
-
-
-<p>
- <span class='run'>\begin{principle}[Real Space Correspondence] </span>
-
- <span class='run'>Let $P$ be the set of all planes of space. </span>
-
- <span class='run'>Then $\cup P$ is the set of all lines and
-  $\cup \cup P$ is the set of all points. </span>
-
- <span class='run'>There exists a one-to-one correspondence mapping
-  elements of $\cup \cup P$ onto elements of
-  $\R ^3$. </span>
-
- <span class='run'>\end{principle} </span>
-
+  <span class='run'>There exists a one-to-one correspondence mapping
+   elements of $\cup \cup P$ onto elements of
+   $\R ^3$.</span> </div>
  <span class='run'>For this reason, we sometimes call elements of
-  $\R ^3$ <span class='term'>points</span>. </span>
+  $\R ^3$ <span class='term'>points</span>.</span>
 
  <span class='run'>We call the point associated with $(0, 0, 0)$
-  the <span class='term'>origin</span>. </span>
+  the <span class='term'>origin</span>.</span>
 
  <span class='run'>We call the element of $\R ^3$ which
   corresponds to a point the
-  <span class='term'>coordinates</span> of the point. </span>
+  <span class='term'>coordinates</span> of the point.</span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Visualization} </span>
-</p>
-
+<h1>Visualization</h1>
 
 <p>
  <span class='run'>To visualize the correspondence we draw three
-  perpendicular lines. </span>
+  perpendicular lines.</span>
 
- <span class='run'>We call these <span class='term'>axes</span>. </span>
+ <span class='run'>We call these <span class='term'>axes</span>.</span>
 
  <span class='run'>We then associate a point of the line with
-  $(0, 0, 0) \in \R ^3$. </span>
+  $(0, 0, 0) \in \R ^3$.</span>
 
- <span class='run'>We can label it so. </span>
+ <span class='run'>We can label it so.</span>
 
- <span class='run'>We then pick a unit length. </span>
+ <span class='run'>We then pick a unit length.</span>
 
  <span class='run'>And proceed as usual.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
 </p>
-
-
-<p>
- <span class='run'>\blankpage </span>
-</p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify this sheet. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will expand this. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify this sheet.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will expand this.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1200,7 +1310,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

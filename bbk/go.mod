@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/nlandolfi/lit v0.0.0-20220831054411-b149e95df27e // indirect
+	github.com/nlandolfi/lit v0.0.0-20220904192559-58c3c75791e8 // indirect
 	github.com/nlandolfi/spin v0.0.0-20220124175644-66083e100e91 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/net v0.0.0-20220826154423-83b083e8dc8b // indirect

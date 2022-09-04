@@ -69,7 +69,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -85,14 +85,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -138,7 +155,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include._future_editions_may_also_change_the_name_of_this_sheet."><h1 class="sheet">1. Why}\footnote{Future editions will include. Future editions may also change the name of this sheet.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A neural network $\nu$ commutes with a neural network $\mu$ if their associated predictors commute as functions.</p></div><div class="sheet-listing"><p class="sheet"> An \t{autoencoder} (or \t{feedforward autoencoder}) is a pair of neural networks $((\phi_1, \dots, \phi_k), (\psi_1, \dots, \psi_\ell))$. If the networks commute and $\dom \phi_1 = \dom \psi_\ell$, we call the autoencoder \t{regular}. We call the predictor of the first network the \t{encoder} and the predictor the second network the \t{decoder}. We call the image of an input to the encoder an \t{embedding} (or \t{feature vector}, \t{representation}, \t{code}).</p></div><div class="sheet-listing" id="compressive_autoencoders"><h1 class="sheet">3. Compressive autoencoders</h1></div><div class="sheet-listing"><p class="sheet"> Let $(\phi, \psi)$ be regular and let $f: \R^d \to \R^k$ be the encoder and $g: \R^k \to \R^d$ be the decoder. If $k < d$, we call the autoencoder \t{compressive}. Otherwise, we call the autoencoder \t{noncompressive}. An autoencoder is \t{perfect} if $g \composed f$ is the identity function. Clearly, a compressive autoencoder can not be perfect.</p></div><div class="sheet-listing"><p class="sheet"> Let us relax our notion of perfect by introducing a similarity function $\ell: \R^d \times \R^d \to \R$ (see \sheetref{similarity_functions}{Similarity Functions}). An autoencoder is optimal with respect to $\ell$ if it minimizes $\int_{\R^d} \ell(g(f(z)), z) dz$. This integral may diverge. Even if it converges for some autoencoders, there may not be an optimal autoencoder, or a unique one.</p></div><div class="sheet-listing"><p class="sheet"> If we parameterize a family of autoencoders $\set{x_{\theta}}_{\theta \in \Theta}$ by a compact set $\Theta$, ... \footnote{Future editions will continue.}</p></div><div class="sheet-listing"><p class="sheet"> It is natural to be interested in compressive autoencoders.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. Future editions may also change the name of this sheet. } \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A neural network $\nu $ commutes with a neural network $\mu $ if their associated predictors commute as functions.</p></div><div class="sheet-listing"><p class="sheet"> An \t{autoencoder} (or \t{feedforward autoencoder}) is a pair of neural networks $((\phi _1, \dots , \phi _k), (\psi _1, \dots , \psi _\ell ))$. If the networks commute and $\dom \phi _1 = \dom \psi _\ell $, we call the autoencoder \t{regular}. We call the predictor of the first network the \t{encoder} and the predictor the second network the \t{decoder}. We call the image of an input to the encoder an \t{embedding} (or \t{feature vector}, \t{representation}, \t{code}).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Compressive autoencoders}</p></div><div class="sheet-listing"><p class="sheet"> Let $(\phi , \psi )$ be regular and let $f: \R ^d \to \R ^k$ be the encoder and $g: \R ^k \to \R ^d$ be the decoder. If $k < d$, we call the autoencoder \t{compressive}. Otherwise, we call the autoencoder \t{noncompressive}. An autoencoder is \t{perfect} if $g \circ f$ is the identity function. Clearly, a compressive autoencoder can not be perfect.</p></div><div class="sheet-listing"><p class="sheet"> Let us relax our notion of perfect by introducing a similarity function $\ell : \R ^d \times \R ^d \to \R $ (see \sheetref{similarity\_functions}{Similarity Functions}). An autoencoder is optimal with respect to $\ell $ if it minimizes $\int_{\R ^d} \ell (g(f(z)), z) dz$. This integral may diverge. Even if it converges for some autoencoders, there may not be an optimal autoencoder, or a unique one.</p></div><div class="sheet-listing"><p class="sheet"> If we parameterize a family of autoencoders $\set{x_{\theta }}_{\theta  \in \Theta }$ by a compact set $\Theta $, ... \ifhmode\unskip\fi\footnote{ Future editions will continue. }</p></div><div class="sheet-listing"><p class="sheet"> It is natural to be interested in compressive autoencoders.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1388,7 +1405,222 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./neural_networks.html'" onkeypress="location.href='./neural_networks.html'">
+                <span>
+                  Neural Networks
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./similarity_functions.html'" onkeypress="location.href='./similarity_functions.html'">
+                <span>
+                  Similarity Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./variational_autoencoders.html'" onkeypress="location.href='./variational_autoencoders.html'">
+            <span>
+            Variational Autoencoders
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./autoencoders.pdf#page=2'" onkeypress="location.href='./autoencoders.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./autoencoders-graph.pdf'" onkeypress="location.href='./autoencoders-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Autoencoders </h1> 
+      <!--
+!name:autoencoders
+!need:neural_networks
+!need:similarity_functions
+-->
+
+<h1>Why</h1>
+<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup>
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>A neural network $\nu $ commutes with a neural
+  network $\mu $ if their associated predictors
+  commute as functions.</span>
+</p>
+
+
+<p>
+ <span class='run'>An <span class='term'>autoencoder</span> (or
+  <span class='term'>feedforward autoencoder</span>) is
+  a pair of neural networks $((\phi _1, \dots ,
+  \phi _k), (\psi _1, \dots , \psi _\ell ))$.</span>
+
+ <span class='run'>If the networks commute and $\dom \phi _1 =
+  \dom \psi _\ell $, we call the autoencoder
+  <span class='term'>regular</span>.</span>
+
+ <span class='run'>We call the predictor of the first network the
+  <span class='term'>encoder</span> and the predictor
+  the second network the
+  <span class='term'>decoder</span>.</span>
+
+ <span class='run'>We call the image of an input to the encoder
+  an <span class='term'>embedding</span> (or
+  <span class='term'>feature vector</span>,
+  <span class='term'>representation</span>,
+  <span class='term'>code</span>).</span>
+</p>
+
+<h1>Compressive autoencoders</h1>
+
+<p>
+ <span class='run'>Let $(\phi , \psi )$ be regular and let $f:
+  \R ^d \to \R ^k$ be the encoder and $g: \R ^k
+  \to \R ^d$ be the decoder.</span>
+
+ <span class='run'>If $k &lt; d$, we call the autoencoder
+  <span class='term'>compressive</span>.</span>
+
+ <span class='run'>Otherwise, we call the autoencoder
+  <span class='term'>noncompressive</span>.</span>
+
+ <span class='run'>An autoencoder is <span class='term'>perfect</span>
+  if $g \circ f$ is the identity function.</span>
+
+ <span class='run'>Clearly, a compressive autoencoder can not be
+  perfect.</span>
+</p>
+
+
+<p>
+ <span class='run'>Let us relax our notion of perfect by
+  introducing a similarity function $\ell : \R ^d
+  \times \R ^d \to \R $ (see&nbsp;<a href='/sheets/similarity_functions.html'/><span class='run'>Similarity Functions</span></a>).</span>
+
+ <span class='run'>An autoencoder is optimal with respect to
+  $\ell $ if it minimizes $\int_{\R ^d}
+  \ell (g(f(z)), z) dz$.</span>
+
+ <span class='run'>This integral may diverge.</span>
+
+ <span class='run'>Even if it converges for some autoencoders,
+  there may not be an optimal autoencoder, or a
+  unique one.</span>
+</p>
+
+
+<p>
+ <span class='run'>If we parameterize a family of autoencoders
+  $\set{x_{\theta }}_{\theta  \in \Theta }$ by a
+  compact set $\Theta $, ...<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+</p>
+
+
+<p>
+ <span class='run'>It is natural to be interested in compressive
+  autoencoders.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. Future editions
+  may also change the name of this sheet.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will continue.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1440,7 +1672,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

@@ -90,7 +90,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -106,14 +106,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -829,7 +846,147 @@ Parse: {prototype: {
 \newcommand{\bintersection}{\bigcap}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_intersections.html'" onkeypress="location.href='./set_intersections.html'">
+                <span>
+                  Set Intersections
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_unions.html'" onkeypress="location.href='./set_unions.html'">
+                <span>
+                  Set Unions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./equivalence_relations.html'" onkeypress="location.href='./equivalence_relations.html'">
+            <span>
+            Equivalence Relations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_length_impossible.html'" onkeypress="location.href='./real_length_impossible.html'">
+            <span>
+            Real Length Impossible
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./set_exercises.html'" onkeypress="location.href='./set_exercises.html'">
+            <span>
+            Set Exercises
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./split_graphs.html'" onkeypress="location.href='./split_graphs.html'">
+            <span>
+            Split Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./partitions.pdf#page=2'" onkeypress="location.href='./partitions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./partitions-graph.pdf'" onkeypress="location.href='./partitions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Partitions </h1> 
       <!--
@@ -839,47 +996,44 @@ Parse: {prototype: {
 !refs:paul_halmos∕naive_set_theory∕section_07
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We divide a set into disjoint subsets whose
-  union is the whole set. </span>
+  union is the whole set.</span>
 
  <span class='run'>In this way we can handle each subset of the
   main set individually, and so handle the entire
-  set piece by piece. </span>
+  set piece by piece.</span>
 </p>
 
-<h1>
-Decomposing a set </h1>
+<h1>Decomposing a set</h1>
 
 <p>
  <span class='run'>Two sets $A$ and $B$
   <span class='term'>divide</span> a set $X$ if $A
-  \cup B = X$ and $A \cap  B = \varnothing$. </span>
+  \cup B = X$ and $A \cap  B = \varnothing$.</span>
 
  <span class='run'>Although every element is in either $A$ or
-  $B$, no element is in both. </span>
+  $B$, no element is in both.</span>
 
  <span class='run'>If $\mathcal{A} $ is a set of sets, and $A, B
   \in \mathcal{A} $, then $\mathcal{A} $ is
   <span class='term'>pairwise disjoint</span> if $A
-  \cap  B = \varnothing$ whenever $A \neq B$. </span>
+  \cap  B = \varnothing$ whenever $A \neq B$.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>partition</span> (or
   <span class='term'>decomposition</span>) of a set
   $X$ is a set of pairwise disjoint nonempty
-  subsets of $X$ whose union is $X$. </span>
+  subsets of $X$ whose union is $X$.</span>
 
  <span class='run'>We call the elements of a partition the
   <span class='term'>parts</span> (or
-  <span class='term'>pieces</span>) of the partition. </span>
+  <span class='term'>pieces</span>) of the partition.</span>
 </p>
 
 
@@ -892,9 +1046,11 @@ Definition </h1>
   <span class='term'>collectively exhaustive</span>, by
   which we mean that their union is full set.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
-<ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include diagrams. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include diagrams.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -946,7 +1102,7 @@ Definition </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

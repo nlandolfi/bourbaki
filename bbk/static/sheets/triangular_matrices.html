@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -78,14 +78,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -131,7 +148,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{these_arise_often._future_editions_will_clarify."><h1 class="sheet">1. Why}\footnote{These arise often. Future editions will clarify.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A matrix is \t{upper triangular} if all its entries below the diagonal are zero. A matrix is \t{lower triangular} if all its entries above the diagonal are zero. If, in addition, the diagonal is zero, then the matrix is \t{strictly upper triangular} and \t{strictle lower triangular} respectively.</p></div><div class="sheet-listing"><p class="sheet"> A \t{triangular} matrix is either upper or lower triangular. A \t{strictly triangular} matrix is either strictly upper triangular or strictly lower triangular.</p></div><div class="sheet-listing"><p class="sheet"> A \t{unit triangular matrix} is a triangular matrix (upper or lower) whose diagonal entries are one. Somtimes such matrices are called \t{unitriangular} (a \t{unitriangular matrix}). So we speak of \t{lower unit triangular}, \t{upper unit triangular}, \t{lower unitriangular} and \t{lower unitriangular} matrices.</p></div><div class="sheet-listing" id="other_terminology"><h1 class="sheet">3. Other Terminology</h1></div><div class="sheet-listing"><p class="sheet"> Some authors call lower triangular matrices \t{left triangular} and upper triangular matrices \t{right triangular}. Historically, some authors have called triangular matrices \t{semidiagonal}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A matrix is \t{upper triangular} if all its entries below the diagonal are zero. A matrix is \t{lower triangular} if all its entries above the diagonal are zero. If, in addition, the diagonal is zero, then the matrix is \t{strictly upper triangular} and \t{strictle lower triangular} respectively.</p></div><div class="sheet-listing"><p class="sheet"> A \t{triangular} matrix is either upper or lower triangular. A \t{strictly triangular} matrix is either strictly upper triangular or strictly lower triangular.</p></div><div class="sheet-listing"><p class="sheet"> A \t{unit triangular matrix} is a triangular matrix (upper or lower) whose diagonal entries are one. Somtimes such matrices are called \t{unitriangular} (a \t{unitriangular matrix}). So we speak of \t{lower unit triangular}, \t{upper unit triangular}, \t{lower unitriangular} and \t{lower unitriangular} matrices.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Other terminology}</p></div><div class="sheet-listing"><p class="sheet"> Some authors call lower triangular matrices \t{left triangular} and upper triangular matrices \t{right triangular}. Historically, some authors have called triangular matrices \t{semidiagonal}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1281,7 +1298,187 @@ Parse: {prototype: {
 
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./diagonal_matrices.html'" onkeypress="location.href='./diagonal_matrices.html'">
+                <span>
+                  Diagonal Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./row_reducer_matrices.html'" onkeypress="location.href='./row_reducer_matrices.html'">
+            <span>
+            Row Reducer Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./triangular_matrices.pdf#page=2'" onkeypress="location.href='./triangular_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./triangular_matrices-graph.pdf'" onkeypress="location.href='./triangular_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Triangular Matrices </h1> 
+      <!--
+!name:triangular_matrices
+todo: maybe just matrices, but want to use "above the diagonal"
+!need:diagonal_matrices
+-->
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>A matrix is <span class='term'>upper
+  triangular</span> if all its entries below the
+  diagonal are zero.</span>
+
+ <span class='run'>A matrix is <span class='term'>lower
+  triangular</span> if all its entries above the
+  diagonal are zero.</span>
+
+ <span class='run'>If, in addition, the diagonal is zero, then
+  the matrix is <span class='term'>strictly upper
+  triangular</span> and <span class='term'>strictle
+  lower triangular</span> respectively.</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>triangular</span> matrix is
+  either upper or lower triangular.</span>
+
+ <span class='run'>A <span class='term'>strictly triangular</span>
+  matrix is either strictly upper triangular or
+  strictly lower triangular.</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>unit triangular matrix</span>
+  is a triangular matrix (upper or lower) whose
+  diagonal entries are one.</span>
+
+ <span class='run'>Somtimes such matrices are called
+  <span class='term'>unitriangular</span> (a
+  <span class='term'>unitriangular matrix</span>).</span>
+
+ <span class='run'>So we speak of <span class='term'>lower unit
+  triangular</span>, <span class='term'>upper unit
+  triangular</span>, <span class='term'>lower
+  unitriangular</span> and <span class='term'>lower
+  unitriangular</span> matrices.</span>
+</p>
+
+<h1>Other terminology</h1>
+
+<p>
+ <span class='run'>Some authors call lower triangular matrices
+  <span class='term'>left triangular</span> and upper
+  triangular matrices <span class='term'>right
+  triangular</span>.</span>
+
+ <span class='run'>Historically, some authors have called triangular
+  matrices <span class='term'>semidiagonal</span>.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1333,7 +1530,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

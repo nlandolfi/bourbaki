@@ -52,7 +52,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -68,14 +68,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1075,7 +1092,112 @@ Parse: {prototype: {
 \renewcommand{\setminus}{-}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./vertex_separators.html'" onkeypress="location.href='./vertex_separators.html'">
+                <span>
+                  Vertex Separators
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./chordal_graphs_and_vertex_separators.pdf#page=2'" onkeypress="location.href='./chordal_graphs_and_vertex_separators.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./chordal_graphs_and_vertex_separators-graph.pdf'" onkeypress="location.href='./chordal_graphs_and_vertex_separators-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Chordal Graphs and Vertex Separators </h1> 
       <!--
@@ -1083,151 +1205,152 @@ Parse: {prototype: {
 !need:vertex_separators
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We characterize chordal graphs using vertex
   separators, and vice versa.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-<h1>
-Main Result </h1>
+<h1>Main Result</h1>
 
-<div class='proposition' text='Chordal Graphs and Vertex Separators' <span class='run'>An undirected graph is chordal if and only if
-  all minimal vertex separators are complete. </span></div>
-<div class='proof'> <span class='run'>Let $G = (V, E)$ be an undirected graph. </span>
+<div class='proposition' text='Chordal Graphs and Vertex Separators'>
+ <span class='run'>An undirected graph is chordal if and only if
+  all minimal vertex separators are complete.</span></div>
+<div class='proof'> <span class='run'>Let $G = (V, E)$ be an undirected graph.</span>
  <p>
   <span class='run'>First, suppose that all minimal vertex
-   separators of $G$ are complete. </span>
+   separators of $G$ are complete.</span>
 
-  <span class='run'>Let $c$ be a cycle of length greater than 3. </span>
+  <span class='run'>Let $c$ be a cycle of length greater than 3.</span>
 
-  <span class='run'>Let $v, w$ be nonconsecutive vertices in $c$. </span>
+  <span class='run'>Let $v, w$ be nonconsecutive vertices in $c$.</span>
 
   <span class='run'>If $v$ and $w$ are adjacent in $G$, then
-   $\set{v, w} \in E$ is a chord. </span>
+   $\set{v, w} \in E$ is a chord.</span>
 
   <span class='run'>If $v$ and $w$ are nonadjacent, then
-   $vw$-separator exists. </span>
+   $vw$-separator exists.</span>
  </p>
 
 
  <p>
   <span class='run'>The key insight is that there exists two
    non-consecutive vertices in the cycle that are
-   also included in any $vw$-separator $T$. </span>
+   also included in any $vw$-separator $T$.</span>
 
   <span class='run'>Split the cycle into the path from $v$ to
    $w$, call it $p_1$ and the path from $w$ to
-   $v$, call it $p_2$. </span>
+   $v$, call it $p_2$.</span>
 
   <span class='run'>$T$ must include an interior point of $p_1$,
    call it $u_1$, otherwise $v$ and $w$ are
-   connected. </span>
+   connected.</span>
 
   <span class='run'>Similarly, $T$ must include an interior point
-   of $p_2$, call it $u_2$. </span>
+   of $p_2$, call it $u_2$.</span>
 
   <span class='run'>$u_1$ and $u_2$ are not consecutive in $c$,
-   since they are distinct from $x$ and $y$. </span>
+   since they are distinct from $x$ and $y$.</span>
  </p>
 
 
  <p>
-  <span class='run'>Let $S$ be a minimal $vw$-separator. </span>
+  <span class='run'>Let $S$ be a minimal $vw$-separator.</span>
 
   <span class='run'>Let $s, t \in S$ be two non-consecutive
    vertices in the cycle different from $v$ and
-   $w$ </span>
+   $w$</span>
 
   <span class='run'>By assumption $S$ is complete, so $s$ and $t$
-   are adjacent in $G$. </span>
+   are adjacent in $G$.</span>
  </p>
 
 
  <p>
-  <span class='run'>Second, let $G = (V, E)$ be a chordal graph. </span>
+  <span class='run'>Second, let $G = (V, E)$ be a chordal graph.</span>
 
-  <span class='run'>Let $S$ be a minimal $vw$-separator. </span>
+  <span class='run'>Let $S$ be a minimal $vw$-separator.</span>
 
   <span class='run'>Let $C_v$ and $C_w$ be the connected
    components containing $v$ and $w$ of the
-   subgraph induced by $V \setminus S$. </span>
+   subgraph induced by $V \setminus S$.</span>
  </p>
 
 
  <p>
-  <span class='run'>If $\nu m{S} = 1$, then $S$ is complete. </span>
+  <span class='run'>If $\nu m{S} = 1$, then $S$ is complete.</span>
 
-  <span class='run'>Otherwise, let $x, y \in S$ by distinct. </span>
+  <span class='run'>Otherwise, let $x, y \in S$ by distinct.</span>
 
-  <span class='run'>We want to show $\set{x, y} \in E$. </span>
+  <span class='run'>We want to show $\set{x, y} \in E$.</span>
 
   <span class='run'>The key insight is that $x$ is adjacent to
-   vertices in $C_v$ and $C_w$. </span>
+   vertices in $C_v$ and $C_w$.</span>
 
   <span class='run'>If there were no such vertex, $S \setminus
    \set{x}$ would be a $vw$-separator and $S$
-   would not be minimal. </span>
+   would not be minimal.</span>
 
-  <span class='run'>Similarly with $y$. </span>
+  <span class='run'>Similarly with $y$.</span>
 
-  <span class='run'>Also, $\nu m{C_v}, \nu m{C_w} \geq 1$. </span>
+  <span class='run'>Also, $\nu m{C_v}, \nu m{C_w} \geq 1$.</span>
  </p>
 
 
  <p>
   <span class='run'>With these observations, there exists a path
-   from $x$ to $y$ through $C_v$. </span>
+   from $x$ to $y$ through $C_v$.</span>
 
   <span class='run'>Let $p_v = (x, v_1, \dots , v_k, y)$ be a
    path of shortest length with at least one
    interior vertex (so $k \geq 1$) from $x$ to
    $y$ using interior vertices in $v_1, \dots ,
-   v_k \in C_v$. </span>
+   v_k \in C_v$.</span>
 
   <span class='run'>Let $p_w = (y, w_1, \dots , w_l, x)$ be a
    path of shortest length with at least one
    interior vertex (so $l \geq 1$) from $y$ to
    $x$ using interior vertices $w_1, \dots , w_k
-   \in C_w$. </span>
+   \in C_w$.</span>
 
   <span class='run'>Use $p_v$ and $p_w$ to define the cycle $c =
    (x, v_1, \dots , v_k, y, w_1, \dots , w_l, x)$
-   which has length at least four. </span>
+   which has length at least four.</span>
 
-  <span class='run'>$G$ is chordal, so $c$ has a chord. </span>
+  <span class='run'>$G$ is chordal, so $c$ has a chord.</span>
  </p>
 
 
  <p>
   <span class='run'>We argue that the chord of $c$ is $\set{x,
-   y}$. </span>
+   y}$.</span>
 
   <span class='run'>Since $C_w$ and $C_V$ are different connected
    components (whose vertices are not included in
    $S$), there are no edges $\set{v_i, w_j}$ for
-   $i = 1, \dots , k$ and $j = 1, \dots , l$. </span>
+   $i = 1, \dots , k$ and $j = 1, \dots , l$.</span>
 
   <span class='run'>Since $p_v$ and $p_w$ are paths of shortest
-   length, they have no chords. </span>
+   length, they have no chords.</span>
 
   <span class='run'>In particular, there is no edge $\set{v_i,
    v_j}$ for $\intabs{i - j} &gt; 1$ or
-   $\set{v_i, x}$ for $i = 1, \dots , l$. </span>
+   $\set{v_i, x}$ for $i = 1, \dots , l$.</span>
 
   <span class='run'>Similarly, there is no edge $\set{w_i, w_j}$
    for $\intabs{i - j} &gt; 1$ or $\set{w_i, y}$
-   for $i = 1, \dots , l$. </span>
+   for $i = 1, \dots , l$.</span>
 
   <span class='run'>The only remaining pair is $\set{x, y}$, and
-   so it must be the chord. </span>
+   so it must be the chord.</span>
  </p>
-</div><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand and may include
-  graphics. </span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+</div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand and may include
+  graphics.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1279,7 +1402,7 @@ Main Result </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

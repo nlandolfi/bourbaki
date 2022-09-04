@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make almost_sure_events.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 almost_sure_events.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > almost_sure_events.tex
 

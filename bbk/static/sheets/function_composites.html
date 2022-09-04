@@ -83,7 +83,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -99,14 +99,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -890,7 +907,140 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./functions.html'" onkeypress="location.href='./functions.html'">
+                <span>
+                  Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./composition_graphs.html'" onkeypress="location.href='./composition_graphs.html'">
+            <span>
+            Composition Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./function_graphs.html'" onkeypress="location.href='./function_graphs.html'">
+            <span>
+            Function Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./function_inverses.html'" onkeypress="location.href='./function_inverses.html'">
+            <span>
+            Function Inverses
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./subsequences.html'" onkeypress="location.href='./subsequences.html'">
+            <span>
+            Subsequences
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./function_composites.pdf#page=2'" onkeypress="location.href='./function_composites.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./function_composites-graph.pdf'" onkeypress="location.href='./function_composites-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Function Composites </h1> 
       <!--
@@ -898,33 +1048,31 @@ Parse: {prototype: {
 !need:functions
 -->
 
-<h1>
-Why </h1>
+<h1>Why</h1>
 
 <p>
  <span class='run'>We want to have language for applying two
-  functions one after the other. </span>
+  functions one after the other.</span>
 
  <span class='run'>We apply a first function then a second
-  function. </span>
+  function.</span>
 </p>
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
- <span class='run'>Consider two functions. </span>
+ <span class='run'>Consider two functions.</span>
 
  <span class='run'>Suppose the range of the first is a subset of
-  the domain of the second. </span>
+  the domain of the second.</span>
 
  <span class='run'>In other words, every value of the first is
   in the domain (and so can be used as an
-  argument) for the second. </span>
+  argument) for the second.</span>
 
  <span class='run'>In this case we say that the second function
   is <span class='term'>composable</span> with the
-  first. </span>
+  first.</span>
 </p>
 
 
@@ -935,73 +1083,74 @@ Definition </h1>
   function is the function which associates to an
   element in the first&#39;s domain the element in
   the second&#39;s codomain that the second
-  function associates with the result of the first. </span>
+  function associates with the result of the first.</span>
 </p>
 
 
 <p>
  <span class='run'>In other words, we take an element in the
-  first&#39;s domain. </span>
+  first&#39;s domain.</span>
 
- <span class='run'>We apply the first function to it. </span>
+ <span class='run'>We apply the first function to it.</span>
 
  <span class='run'>We obtain an element in the first&#39;s
   codomain, which is also an element in the
-  second&#39;s domain. </span>
+  second&#39;s domain.</span>
 
- <span class='run'>We apply the second function to this result. </span>
+ <span class='run'>We apply the second function to this result.</span>
 
  <span class='run'>We obtain an element in the second&#39;s
-  codomain. </span>
+  codomain.</span>
 
  <span class='run'>The composition of the second function with the
-  first is the function so constructed. </span>
+  first is the function so constructed.</span>
 
- <span class='run'>Of course the order of composition is important. </span>
+ <span class='run'>Of course the order of composition is important.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $A, B, C$ be non-empty sets. </span>
+ <span class='run'>Let $A, B, C$ be non-empty sets.</span>
 
- <span class='run'>Let $f: A \to B$ and $g: B \to C$. </span>
+ <span class='run'>Let $f: A \to B$ and $g: B \to C$.</span>
 
  <span class='run'>We denote the composition of $g$ with $f$ by
-  $g \circ f$ read aloud as “g composed with f.} </span>
+  $g \circ f$ read aloud as “g composed with f.}</span>
 
  <span class='run'>To make clear the domain and codomain, we
-  denote the composition $g \circ f: A \to C$. </span>
+  denote the composition $g \circ f: A \to C$.</span>
 
  <span class='run'>The function $g \circ f$ is defined by
   <p>\[
-   (g \circ f)(a) = g(f(a)) \quad \text{for all } a \in A. 
+   (g \circ f)(a) = g(f(a)) \quad \text{for all } a \in A.
   \]</p></span>
 
  <span class='run'>Sometimes the notation $gf$ is used for $g
-  \circ f$. </span>
+  \circ f$.</span>
 </p>
 
-<h1>
-Basic properties </h1>
+<h1>Basic properties</h1>
 
 <p>
  <span class='run'>Function composition is associative but not
   commutative.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 
  <span class='run'>Indeed, even if $f \circ g$ is defined, $g
-  \circ f$ may not be. </span>
+  \circ f$ may not be.</span>
 </p>
 
-<div class='proposition' text='Associative' <span class='run'>Let $f: X \to Y$, $g: Y \to Z$ and $h: Z
-  \to U$ </span>
+<div class='proposition' text='Associative'>
+ <span class='run'>Let $f: X \to Y$, $g: Y \to Z$ and $h: Z
+  \to U$</span>
 
  <span class='run'>Then $(f \circ g) \circ h = f \circ (g \circ
-  h)$<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span></div><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include a counterexample. </span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>The proof is straightforward. Future editions
-  will include it. </span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+  h)$<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include a counterexample.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>The proof is straightforward. Future editions
+  will include it.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1053,7 +1202,7 @@ Basic properties </h1>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

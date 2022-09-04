@@ -90,7 +90,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -106,14 +106,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1073,7 +1090,147 @@ Parse: {prototype: {
 \newcommand{\coi}[1]{[#1)}
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_functions.html'" onkeypress="location.href='./real_functions.html'">
+                <span>
+                  Real Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./differential_equations.html'" onkeypress="location.href='./differential_equations.html'">
+            <span>
+            Differential Equations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./exponential_derivatives.html'" onkeypress="location.href='./exponential_derivatives.html'">
+            <span>
+            Exponential Derivatives
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./holomorphic_functions.html'" onkeypress="location.href='./holomorphic_functions.html'">
+            <span>
+            Holomorphic Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./partial_derivatives.html'" onkeypress="location.href='./partial_derivatives.html'">
+            <span>
+            Partial Derivatives
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./second_derivatives.html'" onkeypress="location.href='./second_derivatives.html'">
+            <span>
+            Second Derivatives
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./differentiable_functions.pdf#page=2'" onkeypress="location.href='./differentiable_functions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./differentiable_functions-graph.pdf'" onkeypress="location.href='./differentiable_functions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Differentiable Functions </h1> 
       <!--
@@ -1081,44 +1238,43 @@ Parse: {prototype: {
 !need:real_functions
 -->
 
-<h1>
-Definition </h1>
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Consider an open interval of real numbers and
-  a function on the interval. </span>
+  a function on the interval.</span>
 
  <span class='run'>Take a real number in the interval. It
   corresponds to some element in the graph of the
-  function. </span>
+  function.</span>
 
- <span class='run'>Next take a second real number in the interval. </span>
+ <span class='run'>Next take a second real number in the interval.</span>
 
  <span class='run'>It too corresponds to some element in the
-  graph of the function. </span>
+  graph of the function.</span>
 
  <span class='run'>We have two distinct elements of the interval
-  corresponding to two elements of the graph. </span>
+  corresponding to two elements of the graph.</span>
 </p>
 
 
 <p>
  <span class='run'>Next, consider the line in the plane which
   passes through these two elements of the graph
-  of the function. </span>
+  of the function.</span>
 
  <span class='run'>Consider the slope of this line, in other
   words, the tangent of the angle between the
   line and a horizontal line passing through the
-  original point. </span>
+  original point.</span>
 
  <span class='run'>Consider the tangent of the angle which the
-  line makes with the horizontal. </span>
+  line makes with the horizontal.</span>
 
  <span class='run'>The quantity is the quotient of the result on
   the second real number less the result on the
   first real number with the second real number
-  less the first real number. </span>
+  less the first real number.</span>
 </p>
 
 
@@ -1126,17 +1282,17 @@ Definition </h1>
  <span class='run'>For a selected first number, define a new
   function which maps a second distinct real
   number (in the interval) to this quantity, the
-  slope of the line between them. </span>
+  slope of the line between them.</span>
 
  <span class='run'>Next, we consider if this second function has
   a limit as its argument approaches the first
-  fixed number. </span>
+  fixed number.</span>
 
  <span class='run'>If it does, we say that the original function
   is <span class='term'>differentiable at</span> the
   first number. We call the limiting real number
   the <span class='term'>derivative at</span> the
-  first real number of the original function. </span>
+  first real number of the original function.</span>
 </p>
 
 
@@ -1149,46 +1305,47 @@ Definition </h1>
   in the interval the real number which is the
   derivative at the argument of the function the
   <span class='term'>derivative of</span> the original
-  function. </span>
+  function.</span>
 </p>
 
-<h2>
-Notation </h2>
+<h2>Notation</h2>
 
 <p>
- <span class='run'>Let $I$ be an open interval of $\R $. </span>
+ <span class='run'>Let $I$ be an open interval of $\R $.</span>
 
- <span class='run'>Let $f: I \to \R $ and $a \in I$. </span>
+ <span class='run'>Let $f: I \to \R $ and $a \in I$.</span>
 
  <span class='run'>Define $A = I - \set{a}$, and define $g: A
-  \to \R $ by $g(x) = (f(x) - f(a))/(x - a)$. </span>
+  \to \R $ by $g(x) = (f(x) - f(a))∕(x - a)$.</span>
 
  <span class='run'>We say that $f$ is differentiable at $a$ if
-  $\lim_{x \to a} g(x)$ exists in $\R $. </span>
+  $\lim_{x \to a} g(x)$ exists in $\R $.</span>
 
  <span class='run'>In other words, $f$ is differentiable if
   <p>\[
-   \lim_{x \to x_0} 
+   \lim_{x \to x_0}
 
-   \frac{f(x) - f(x_0)}{x - x_0} 
+   \frac{f(x) - f(x_0)}{x - x_0}
   \]</p>
-  exists in $\R $. </span>
+  exists in $\R $.</span>
 </p>
 
 
 <p>
  <span class='run'>If $f$ is differentiable at $a$ for each $a
-  \in I$, then $f$ is differentiable. </span>
+  \in I$, then $f$ is differentiable.</span>
 
  <span class='run'>In this case, the derivative of $f$ is the
   function $h: I \to \R $ defined by
   <p>\[
-   h(x) = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}. 
+   h(x) = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}.
   \]</p></span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1240,7 +1397,7 @@ Notation </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

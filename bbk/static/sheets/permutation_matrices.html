@@ -104,7 +104,7 @@ MathJax.Hub.Config({
 </script>
     <script>
       MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
+        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
         tex: {
           inlineMath: [
               ['\\(', '\\)'],
@@ -120,14 +120,31 @@ MathJax.Hub.Config({
                   ceil: ["\\lceil #1 \\rceil", 1],
                   num: ["\\abs{#1}",1],
                   R: ["\\mathbfsf{R}"],
+                  C: ["\\mathbfsf{C}"],
                   N: ["\\mathbfsf{N}"],
                   Q: ["\\mathbfsf{Q}"],
                   S: ["\\mathbfsf{S}"],
+                  Z: ["\\mathbfsf{Z}"],
                   F: ["\\mathbfsf{F}"],
+                  E: ["\\mathbfsf{E}"],
                   aff: ["\\mathsf{aff}"],
                   upto: ["\\set{1,\\dots,#1}", 1],
                   eqc: ["[#1]", 1],
+                  adj: ["\\mathword{adj}"],
+                  def: ["\\mathword{def}"],
+                  pa: ["\\mathword{pa}"],
+                  ch: ["\\mathword{ch}"],
+                  str: ["\\mathword{str}"],
                   textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                  seq: ["(#1_n)_{n}", 1],
+                  seqt: ["#1_n", 1],
+                  union: ["\\cup"],
+                  intersection: ["\\cap"],
+                  dom: ["\\mathword{dom}"],
+                  range: ["\\mathword{range}"],
+                  ran: ["\\mathword{range}"],
+                  relcomplement: ["C_{#2}({#1})", 2],
+                  complement: ["C({#1})", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -1479,95 +1496,249 @@ Parse: {prototype: {
 
     </span>
 
-  
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<script>
+  var showingSidebar = true;
+
+
+
+</script>
+
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrices.html'" onkeypress="location.href='./matrices.html'">
+                <span>
+                  Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+                <span>
+                  Matrix Transpose
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./permutations.html'" onkeypress="location.href='./permutations.html'">
+                <span>
+                  Permutations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrix_inverses.html'" onkeypress="location.href='./real_matrix_inverses.html'">
+                <span>
+                  Real Matrix Inverses
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./index_matrices.html'" onkeypress="location.href='./index_matrices.html'">
+            <span>
+            Index Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./lower_upper_triangular_factorizations.html'" onkeypress="location.href='./lower_upper_triangular_factorizations.html'">
+            <span>
+            Lower Upper Triangular Factorizations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_similarity.html'" onkeypress="location.href='./matrix_similarity.html'">
+            <span>
+            Matrix Similarity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./pivoted_reducer_factorization.html'" onkeypress="location.href='./pivoted_reducer_factorization.html'">
+            <span>
+            Pivoted Reducer Factorization
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./permutation_matrices.pdf#page=2'" onkeypress="location.href='./permutation_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./permutation_matrices-graph.pdf'" onkeypress="location.href='./permutation_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Permutation Matrices </h1> 
       <p>
- <span class='run'>%!name:permutation_matrices </span>
+ <span class='run'>%!name:permutation_matrices</span>
 
- <span class='run'>%!need:permutations </span>
+ <span class='run'>%!need:permutations</span>
 
- <span class='run'>%!need:matrices </span>
+ <span class='run'>%!need:matrices</span>
 
- <span class='run'>%!need:matrix_transpose </span>
+ <span class='run'>%!need:matrix_transpose</span>
 
- <span class='run'>%!need:real_matrix_inverses </span>
+ <span class='run'>%!need:real_matrix_inverses</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why} </span>
+ <span class='run'>\ssection{Why}</span>
 </p>
 
 
 <p>
  <span class='run'>Can permuting the rows or columns of a matrix
-  be represented by matrix multiplication? </span>
+  be represented by matrix multiplication?</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition} </span>
+ <span class='run'>\ssection{Definition}</span>
 </p>
 
 
 <p>
  <span class='run'>Let $\sigma : \upto{n} \to \upto{n}$ be a
-  permutation of $n$. </span>
+  permutation of $n$.</span>
 
  <span class='run'>The <span class='term'>permutation matrix</span> of
   $\sigma $ is the matrix $P$ defined by $P_{ij}
-  = 1$ if $\sigma (i) = j$ and 0 otherwise. </span>
+  = 1$ if $\sigma (i) = j$ and 0 otherwise.</span>
 
  <span class='run'>This is sometimes called the
   <span class='term'>column representation</span> (in
   contrast to the row representation, in which
-  $P_{ij} = 1$ if $\sigma (j) = i$. </span>
+  $P_{ij} = 1$ if $\sigma (j) = i$.</span>
 </p>
 
 
 <p>
- <span class='run'>Let $A \in \R ^{n \times  n}$. </span>
+ <span class='run'>Let $A \in \R ^{n \times  n}$.</span>
 
  <span class='run'>Then pre-multipying $A$ by $P$ permutes the
-  rows of $A$. </span>
+  rows of $A$.</span>
 
  <span class='run'>In other words $PA$ has the same rows as $A$
-  but permuted according to $\sigma $. </span>
+  but permuted according to $\sigma $.</span>
 
  <span class='run'>Similarly, post-multiplying by $P$ permutes the
-  columns of $A$. </span>
+  columns of $A$.</span>
 
  <span class='run'>In other words, $AP$ has the same columns as
-  $A$ but permuted according to $\sigma $. </span>
+  $A$ but permuted according to $\sigma $.</span>
 
  <span class='run'>Clearly, we can also speak of permuting the
-  components of a vector. </span>
+  components of a vector.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Composition} </span>
+ <span class='run'>\ssection{Composition}</span>
 </p>
 
 
 <p>
  <span class='run'>Let $\pi , \sigma  \in S_n$ with corresponding
-  permutation matrices $P_\sigma $ and $P_\pi $. </span>
+  permutation matrices $P_\sigma $ and $P_\pi $.</span>
 
  <span class='run'>Then $P_{\pi }P_{\sigma }A$ has the same rows as
-  $A$ but permuted by $\pi \sigma $. </span>
+  $A$ but permuted by $\pi \sigma $.</span>
 
  <span class='run'>Likewise, $AP_{\pi }P_{\sigma }$ has the same
-  columns as $A$ but permuted by $\pi \sigma $. </span>
+  columns as $A$ but permuted by $\pi \sigma $.</span>
 
  <span class='run'>Clearly, the identity permutation on $\upto{n}$
-  is the identity $I \in \R ^{n \times  n}$. </span>
+  is the identity $I \in \R ^{n \times  n}$.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Inverses} </span>
+ <span class='run'>\ssection{Inverses}</span>
 </p>
 
 
@@ -1575,18 +1746,20 @@ Parse: {prototype: {
  <span class='run'>It is clear from the definition that
   $P_{\sigma }^{-1} = P_{\sigma ^{-1}}$ and so if
   $P$ is a permutation matrix then $P^{-1}$ is
-  $\transpose{P}$. </span>
+  $\transpose{P}$.</span>
 </p>
 
 
 <p>
- <span class='run'>\blankpage </span>
+ <span class='run'>\blankpage</span>
 
  <span class='run'></span>
 </p>
-<ol class='footnotes'></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
-  
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1638,7 +1811,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version eb18f3414.
+      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
     </span>
   </body>
 </html>

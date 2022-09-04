@@ -17,6 +17,7 @@ import (
 var (
 	sheetsDir = flag.String("sheets", ".", "the sheets directory")
 	startAt   = flag.String("start-at", "", "sheet to start compiling at (alphabetical)")
+	dry       = flag.Bool("dry", false, "whether to actually run") // use just to check lit status
 )
 
 func main() {
@@ -41,6 +42,20 @@ func main() {
 		names = append(names, n)
 	}
 	sort.Strings(names)
+
+	var missingLit int
+	for _, name := range names {
+		r := results[name]
+		if !r.HasLitFile {
+			log.Print(r.Name)
+			missingLit += 1
+		}
+	}
+	log.Printf("%d/%d missing lit files", missingLit, len(results))
+
+	if *dry {
+		return
+	}
 
 	/*
 		for _, name := range names {
