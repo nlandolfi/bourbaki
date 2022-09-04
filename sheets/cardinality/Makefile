@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make cardinality.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 cardinality.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cardinality.tex
 
