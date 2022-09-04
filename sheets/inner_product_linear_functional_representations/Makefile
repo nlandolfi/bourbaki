@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make inner_product_linear_functional_representations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 inner_product_linear_functional_representations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inner_product_linear_functional_representations.tex
 
