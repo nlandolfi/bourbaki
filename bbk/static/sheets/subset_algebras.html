@@ -124,6 +124,8 @@ MathJax.Hub.Config({
                   ran: ["\\mathword{range}"],
                   relcomplement: ["C_{#2}({#1})", 2],
                   complement: ["C({#1})", 1],
+                  re: ["\\mathword{Re}"],
+                  im: ["\\mathword{Im}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -284,7 +286,7 @@ Parse: {prototype: {
     </span>
 
     <span style="display:none">
-      <!-- 45 0 -->
+      <!-- 46 0 -->
 
 <!-- % objects macros -->
 
@@ -566,6 +568,14 @@ Parse: {prototype: {
 
 \newcommand{\ssuc}[1]{{#1}^{+}}
 
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
+
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
 <!-- \newcounter{caccounts} -->
 
 \newcounter{caccounts}
@@ -758,30 +768,6 @@ Parse: {prototype: {
 
 }
 
-<!-- \newcommand{\N}{\mathbfsf{N}} -->
-
-\newcommand{\N}{\mathbfsf{N}}
-
-<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
-
-\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
-
-<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
-
-\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
-
-<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
-
-\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
-
-<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
-
-\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
-
-<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
-
-\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
-
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -798,17 +784,21 @@ Parse: {prototype: {
 
 \newcommand{\bintersection}{\bigcap}
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
 
-<!--  -->
+<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
 
+\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
 
+<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
+
+\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -845,10 +835,6 @@ Parse: {prototype: {
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \renewcommand{\setminus}{-} -->
-
-\renewcommand{\setminus}{-}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -889,6 +875,22 @@ Parse: {prototype: {
 <!-- \newcommand{\eqc}[1]{[#1]} -->
 
 \newcommand{\eqc}[1]{[#1]}
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- \newcommand{\union}{\,\cup\,} -->
 
@@ -1025,6 +1027,14 @@ Parse: {prototype: {
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1196,7 +1206,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
+      Copyright 2022 The Bourbaki Authors. Version a3a094413.
     </span>
   </body>
 </html>

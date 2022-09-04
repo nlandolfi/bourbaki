@@ -107,6 +107,8 @@ MathJax.Hub.Config({
                   ran: ["\\mathword{range}"],
                   relcomplement: ["C_{#2}({#1})", 2],
                   complement: ["C({#1})", 1],
+                  re: ["\\mathword{Re}"],
+                  im: ["\\mathword{Im}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -152,7 +154,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> There is a natural probability measure on a measurable space to associate with a dataset from the base set of that space.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{empirical measure} for a dataset in some measurable space is the measure which associates to each event the proportion of the records which are elements of that event.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(a^1, \dots , a^n)$ be a dataset in a measurable space $(A, \CA)$. Let $P: \powerset{A} \to [0, 1]$ be the probability measure that assigns to each set $B \subset A$ the number $$ P(B) = \frac{1}{n} \card{\Set*{k \in \set{1, \dots , n}}{a^k \in B}}. $$ Then $P$ is the empirical measure.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> There is a natural probability measure on a measurable space to associate with a dataset from the base set of that space.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{empirical measure} for a dataset in some measurable space is the measure which associates to each event the proportion of the records which are elements of that event.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $(a^1, \dots , a^n)$ be a dataset in a measurable space $(A, \mathcal{A} )$. Let $P: \powerset{A} \to [0, 1]$ be the probability measure that assigns to each set $B \subset A$ the number $$ P(B) = \frac{1}{n} \card{\Set{k \in \set{1, \dots , n}}{a^k \in B}}. $$ Then $P$ is the empirical measure.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -781,6 +783,18 @@ Parse: {prototype: {
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- % use \powerset{A} for power set of A -->
 
 % use \powerset{A} for power set of A
@@ -889,6 +903,46 @@ Parse: {prototype: {
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- \newcommand{\bintersection}{\bigcap} -->
+
+\newcommand{\bintersection}{\bigcap}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\dom}{\mathword{dom}} -->
+
+\newcommand{\dom}{\mathword{dom}}
+
+<!-- \newcommand{\ran}{\mathword{range}} -->
+
+\newcommand{\ran}{\mathword{range}}
+
+<!-- \newcommand{\range}{\ran} -->
+
+\newcommand{\range}{\ran}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -900,10 +954,6 @@ Parse: {prototype: {
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\bintersection}{\bigcap} -->
-
-\newcommand{\bintersection}{\bigcap}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1033,53 +1083,33 @@ Parse: {prototype: {
 
 \newcommand{\intabs}[1]{\left|#1\right|}
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\comp}{\circ} -->
-
-\newcommand{\comp}{\circ}
-
-<!-- \newcommand{\composed}{\circ} -->
-
-\newcommand{\composed}{\circ}
+\newcommand{\idfn}[1]{\text{id}_{#1}}
 
 <!--  -->
 
 
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\inv}[1]{{#1}^{-1}}
 
-<!-- \newcommand{\dom}{\mathword{dom}} -->
+<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
 
-\newcommand{\dom}{\mathword{dom}}
+\newcommand{\inverse}[1]{\inv{#1}}
 
-<!-- \newcommand{\ran}{\mathword{range}} -->
+<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
 
-\newcommand{\ran}{\mathword{range}}
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
 
-<!-- \newcommand{\range}{\ran} -->
+<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
 
-\newcommand{\range}{\ran}
+\newcommand{\inversep}[1]{\invp{#1}}
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \newcommand{\eqc}[1]{[#1]} -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\eqc}[1]{[#1]}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1156,34 +1186,6 @@ Parse: {prototype: {
 <!-- \newcommand{\R}{\mathbfsf{R}} -->
 
 \newcommand{\R}{\mathbfsf{R}}
-
-<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
-
-\newcommand{\idfn}[1]{\text{id}_{#1}}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
-
-\newcommand{\inv}[1]{{#1}^{-1}}
-
-<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
-
-\newcommand{\inverse}[1]{\inv{#1}}
-
-<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
-
-\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
-
-<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
-
-\newcommand{\inversep}[1]{\invp{#1}}
-
-<!-- \newcommand{\eqc}[1]{[#1]} -->
-
-\newcommand{\eqc}[1]{[#1]}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1452,21 +1454,14 @@ Parse: {prototype: {
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Empirical Measure </h1> 
-      <p>
- <span class='run'>%!name:empirical_measure</span>
+      <!--
+!name:empirical_measure
+!need:cardinality
+!need:empirical_distribution
+!need:probability_measures
+-->
 
- <span class='run'>%!need:cardinality</span>
-
- <span class='run'>%!need:empirical_distribution</span>
-
- <span class='run'>%!need:probability_measures</span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}</span>
-</p>
-
+<h1>Why</h1>
 
 <p>
  <span class='run'>There is a natural probability measure on a
@@ -1474,11 +1469,7 @@ Parse: {prototype: {
   from the base set of that space.</span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Definition}</span>
-</p>
-
+<h1>Definition</h1>
 
 <p>
  <span class='run'>The <span class='term'>empirical measure</span> for
@@ -1488,33 +1479,21 @@ Parse: {prototype: {
   that event.</span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Notation}</span>
-</p>
-
+<h2>Notation</h2>
 
 <p>
  <span class='run'>Let $(a^1, \dots , a^n)$ be a dataset in a
-  measurable space $(A, \CA)$.</span>
+  measurable space $(A, \mathcal{A} )$.</span>
 
  <span class='run'>Let $P: \powerset{A} \to [0, 1]$ be the
   probability measure that assigns to each set $B
-  \subset A$ the number</span>
-
- <span class='run'>$$</span>
-
- <span class='run'>P(B) = \frac{1}{n} \card{\Set*{k ∈ \set{1, …,
-  n}}{a^k ∈ B}}.</span>
-
- <span class='run'>$$</span>
+  \subset A$ the number
+  <p>\[
+   P(B) = \frac{1}{n} \num{\Set{k \in \set{1, \dots , n}}{a^k \in
+    B}}.
+  \]</p></span>
 
  <span class='run'>Then $P$ is the empirical measure.</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
 </p>
 <hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
@@ -1572,7 +1551,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
+      Copyright 2022 The Bourbaki Authors. Version a3a094413.
     </span>
   </body>
 </html>

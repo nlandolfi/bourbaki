@@ -124,6 +124,8 @@ MathJax.Hub.Config({
                   ran: ["\\mathword{range}"],
                   relcomplement: ["C_{#2}({#1})", 2],
                   complement: ["C({#1})", 1],
+                  re: ["\\mathword{Re}"],
+                  im: ["\\mathword{Im}"],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -285,10 +287,6 @@ Parse: {prototype: {
 
     <span style="display:none">
       <!-- 85 0 -->
-
-<!-- \newcommand{\symdiff}{+} -->
-
-\newcommand{\symdiff}{+}
 
 <!-- \newcounter{caccounts} -->
 
@@ -482,6 +480,26 @@ Parse: {prototype: {
 
 }
 
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
+
+\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
+
+<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
+
+\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
+
+<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
+
+\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
+
+<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
+
+\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
+
 <!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
 
 \newcommand{\relcomplement}[2]{C_{#2}({#1})}
@@ -502,21 +520,17 @@ Parse: {prototype: {
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
+<!--  -->
 
-\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
 
-<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
 
-\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
-
-\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -553,34 +567,6 @@ Parse: {prototype: {
 <!-- \newcommand{\Q}{\mathbfsf{Q}} -->
 
 \newcommand{\Q}{\mathbfsf{Q}}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- % use \num{A} for |A| -->
-
-% use \num{A} for |A|
-
-<!-- \newcommand{\num}[1]{\left|#1\right|} -->
-
-\newcommand{\num}[1]{\left|#1\right|}
-
-<!-- \newcommand{\product}{\prod} -->
-
-\newcommand{\product}{\prod}
-
-<!-- \newcommand{\R}{\mathbfsf{R}} -->
-
-\newcommand{\R}{\mathbfsf{R}}
 
 <!-- % mnemonic for (s)et(suc)cesor -->
 
@@ -621,6 +607,78 @@ Parse: {prototype: {
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\product}{\prod} -->
+
+\newcommand{\product}{\prod}
+
+<!-- \newcommand{\R}{\mathbfsf{R}} -->
+
+\newcommand{\R}{\mathbfsf{R}}
+
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
+
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\cross}{\times} -->
+
+\newcommand{\cross}{\times}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\op}[1]{\left(#1\right)} -->
+
+\newcommand{\op}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
+
+\newcommand{\tuple}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
+
+\newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\intersect}{\cap} -->
+
+\newcommand{\intersect}{\cap}
+
+<!-- \newcommand{\intersection}{\cap} -->
+
+\newcommand{\intersection}{\cap}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -926,70 +984,6 @@ Parse: {prototype: {
 
 \newcommand{\intabs}[1]{\left|#1\right|}
 
-<!-- \newcommand{\N}{\mathbfsf{N}} -->
-
-\newcommand{\N}{\mathbfsf{N}}
-
-<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
-
-\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
-
-<!-- % use \powerset{A} for power set of A -->
-
-% use \powerset{A} for power set of A
-
-<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
-
-% \newcommand{\powerset}[1]{{#1}^*}
-
-<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
-
-\newcommand{\powerset}[1]{\CP(#1)}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\cross}{\times} -->
-
-\newcommand{\cross}{\times}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\op}[1]{\left(#1\right)} -->
-
-\newcommand{\op}[1]{\left(#1\right)}
-
-<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
-
-\newcommand{\tuple}[1]{\left(#1\right)}
-
-<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
-
-\newcommand{\tu}[1]{\left(#1\right)}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\intersect}{\cap} -->
-
-\newcommand{\intersect}{\cap}
-
-<!-- \newcommand{\intersection}{\cap} -->
-
-\newcommand{\intersection}{\cap}
-
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1033,38 +1027,6 @@ Parse: {prototype: {
 <!-- \newcommand{\bintersection}{\bigcap} -->
 
 \newcommand{\bintersection}{\bigcap}
-
-<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
-
-%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
-
-<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
-
-\def\oright#1{\right#1\mskip-10mu\circ}
-
-<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
-
-\def\oleft#1{\circ\mskip-10mu\left#1}
-
-<!-- \newcommand{\I}{\mathbfsf{I}} -->
-
-\newcommand{\I}{\mathbfsf{I}}
-
-<!-- \newcommand{\oi}[1]{(#1)} -->
-
-\newcommand{\oi}[1]{(#1)}
-
-<!-- \newcommand{\ci}[1]{[#1]} -->
-
-\newcommand{\ci}[1]{[#1]}
-
-<!-- \newcommand{\oci}[1]{(#1]} -->
-
-\newcommand{\oci}[1]{(#1]}
-
-<!-- \newcommand{\coi}[1]{[#1)} -->
-
-\newcommand{\coi}[1]{[#1)}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1114,17 +1076,37 @@ Parse: {prototype: {
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
 
-<!--  -->
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
 
+\def\oright#1{\right#1\mskip-10mu\circ}
 
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+\def\oleft#1{\circ\mskip-10mu\left#1}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
 
 <!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
 
@@ -1166,6 +1148,18 @@ Parse: {prototype: {
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
 
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
@@ -1181,6 +1175,14 @@ Parse: {prototype: {
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1441,7 +1443,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 7f07b8313.
+      Copyright 2022 The Bourbaki Authors. Version a3a094413.
     </span>
   </body>
 </html>
