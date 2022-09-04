@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make vertex_separators.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 vertex_separators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vertex_separators.tex
 

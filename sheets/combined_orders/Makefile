@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make combined_orders.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 combined_orders.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > combined_orders.tex
 

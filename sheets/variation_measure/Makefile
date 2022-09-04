@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make variation_measure.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 variation_measure.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > variation_measure.tex
 

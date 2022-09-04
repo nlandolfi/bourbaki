@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make function_restrictions_and_extensions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 function_restrictions_and_extensions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_restrictions_and_extensions.tex
 

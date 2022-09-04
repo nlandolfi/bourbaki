@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make vector_space_isomorphisms.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 vector_space_isomorphisms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vector_space_isomorphisms.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make trees.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > trees.tex
 

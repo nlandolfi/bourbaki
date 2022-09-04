@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make converse_relations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 converse_relations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > converse_relations.tex
 

@@ -5,28 +5,25 @@
 -->
 
 § Defining result ⦉
-¶ ⦊
-  ‖ \begin{proposition} ⦉
+<statement type='proposition'>
+  ¶ ⦊
+    ‖ Let $(X, 𝒜)$ be a measurable space. ⦉
 
-  ‖ Let $(X, \SA)$ be a measurable space. ⦉
+    ‖ Let $μ$ and $ν$ be finite measures with $ν ≪ μ$. ⦉
 
-  ‖ Let $μ$ and $ν$ be finite measures with $ν ≪ μ$. ⦉
-⦉
+    ‖ There exists $g: X → [0, ∞)$ such that
+      ◇ ⦊
+        ‖ ν(A) = ∫_A g \, dμ ⦉
+      ⦉
+      for all $A ∈ 𝒜$. ⦉
 
-¶ ⦊
-  ‖ There exists $g: X → [0, ∞)$ such that
-    ◇ ⦊
-      ‖ ν(A) = ∫_A g \, dμ ⦉
-    ⦉
-    for all $A ∈ \SA$. ⦉
-
-  ‖ The function $g$ is $μ$-almost everywhere unique. ⦉
-
-  ‖ \begin{proof} ⦉
-
+    ‖ The function $g$ is $μ$-almost everywhere unique. ⦉
+  ⦉
+</statement>
+<proof>
   ‖ Define
     ◇ ⦊
-      ‖ \SF = \Set*{ ⦉
+      ‖ ℱ = \Set*{ ⦉
 
       ‖ f: X → [0, ∞) ⦉
 
@@ -34,7 +31,7 @@
 
       ‖ f \text{ measurable and } ⦉
 
-      ‖ ∈t_A f dμ ≤ ν(A) ⦉
+      ‖ ∫_A f dμ ≤ ν(A) ⦉
 
       ‖ }. ⦉
     ⦉⦉
@@ -42,159 +39,153 @@
   ‖ The function $f ≡ 0$ is in $ℱ$, since it is a measurable
     simple function whose integral over every measureable set is
     zero. ⦉
-⦉
+  ¶ ⦊
+    ‖ If $f_1$ and $f_2$ are in $ℱ$, then $f_1 \vee f_2$ is
+      in $ℱ$. ⦉
 
-¶ ⦊
-  ‖ If $f_1$ and $f_2$ are in $\SF$, then $f_1 \vee f_2$ is
-    in $\SF$. ⦉
+    ‖ To check, let $A ∈ 𝒜$, and define the sets $A_1 =
+      \Set{x ∈ A}{f_1(x) > f_2(x)}$ and $A_2 = \Set{x ∈
+      A}{f_1(x) ≤ f_2(x)}$. ⦉
 
-  ‖ To check, let $A ∈ \SA$, and define the sets $A_1 =
-    \Set{x ∈ A}{f_1(x) > f_2(x)}$ and $A_2 = \Set{x ∈ A}{f_1(x)
-    ≤ f_2(x)}$. ⦉
+    ‖ $A_1$ and $A_2$ partition $A$, so ⦉
 
-  ‖ $A_1$ and $A_2$ partition $A$, so ⦉
+    ‖       ◇ ⦊
+        ‖ \begin{aligned} ⦉
 
-  ‖     ◇ ⦊
-      ‖ \begin{aligned} ⦉
+        ‖ ∫_A f_1 \vee f_2 ⦉
 
-      ‖ ∫_A f_1 \vee f_2 ⦉
+        ‖ ❲&❳= ∫_{A_1} f_1 \vee f_2 + ∫_{A_2} f_1 \vee f_2 ᜶ ⦉
 
-      ‖ ❲&❳= ∫_{A_1} f_1 \vee f_2 + ∫_{A_2} f_1 \vee f_2 ᜶ ⦉
+        ‖ ❲&❳= ∫_{A_1} f_1 + ∫_{A_2} f_2 ᜶ ⦉
 
-      ‖ ❲&❳= ∫_{A_1} f_1 + ∫_{A_2} f_2 ᜶ ⦉
+        ‖ ❲&❳≤ ν(A_1) + ν(A_2) ⦉
 
-      ‖ ❲&❳≤ ν(A_1) + ν(A_2) ⦉
+        ‖ \end{aligned} ⦉
+      ⦉
 
-      ‖ \end{aligned} ⦉
-    ⦉
+      ‖ Since $A_1$ and $A_2$ partition $A$,
+        ◇ ⦊
+          ‖ ν(A_1) + ν(A_2) = ⦉
 
-    ‖ Since $A_1$ and $A_2$ partition $A$,
-      ◇ ⦊
-        ‖ ν(A_1) + ν(A_2) = ⦉
+          ‖ ν(A_1 ∪ A_2) = ⦉
 
-        ‖ ν(A_1 ∪ A_2) = ⦉
-
-        ‖ ν(A). ⦉
-      ⦉⦉⦉
-⦉
-
-¶ ⦊
-  ‖ Select a sequence of ⦉
-
-  ‖ functions $\seq{f}$ in $\SF$ ⦉
-
-  ‖ so that ⦉
-  ◇ ⦊
-    ‖ \lim_{n} ∈t \seqt{f} = ⦉
-
-    ‖ \sup\Set*{∈t f}{f ∈ \SF}. ⦉
+          ‖ ν(A). ⦉
+        ⦉⦉⦉
   ⦉
 
-  ‖ Toward ensuring the sequence ⦉
+  ¶ ⦊
+    ‖ Select a sequence of ⦉
 
-  ‖ is increasing, define ⦉
+    ‖ functions $\seq{f}$ in $ℱ$ ⦉
 
-  ‖ $g_1 = f_1$, $g_2 = g_1 \vee f_2$, ⦉
-
-  ‖ and $g_n = g_{n-1} \vee f_n$ ⦉
-
-  ‖ for $n ≥ 3$. ⦉
-
-  ‖ Using the observation in the previous ⦉
-
-  ‖ paragraph, $g_n ∈ \SF$ for each $n$. ⦉
-⦉
-
-¶ ⦊
-  ‖ Let $g$ be the pointwise limit ⦉
-
-  ‖ of the $\seq{g}$. ⦉
-
-  ‖ The monotone convergence of integrals shows
+    ‖ so that ⦉
     ◇ ⦊
-      ‖ ∫_A g = \lim_n ∈t_A g_n. ⦉
+      ‖ \lim_{n} ∫ \seqt{f} = ⦉
+
+      ‖ \sup\Set*{∫ f}{f ∈ ℱ}. ⦉
     ⦉
-    for each $A ∈ \SA$. ⦉
 
-  ‖ Since $∈t_A g_n ≤ ν(A)$, ⦉
+    ‖ Toward ensuring the sequence ⦉
 
-  ‖ so too is the limit and thus ⦉
+    ‖ is increasing, define ⦉
 
-  ‖ so too is $∈t_A g$. ⦉
+    ‖ $g_1 = f_1$, $g_2 = g_1 \vee f_2$, ⦉
 
-  ‖ Thus, $g ∈ \SF$. ⦉
+    ‖ and $g_n = g_{n-1} \vee f_n$ ⦉
 
-  ‖ By construction, ⦉
+    ‖ for $n ≥ 3$. ⦉
 
-  ‖ for $A = X$, ⦉
+    ‖ Using the observation in the previous ⦉
 
-  ‖ $∈t g = \sup\Set*{∈t f}{f ∈ \SF}$. ⦉
+    ‖ paragraph, $g_n ∈ ℱ$ for each $n$. ⦉
+  ⦉
 
-  ‖ We have constructed an element of $\SF$ ⦉
+  ¶ ⦊
+    ‖ Let $g$ be the pointwise limit ⦉
 
-  ‖ attaining the supremum. ⦉
-⦉
+    ‖ of the $\seq{g}$. ⦉
 
-¶ ⦊
-  ‖ We know that the integral of ⦉
+    ‖ The monotone convergence of integrals shows
+      ◇ ⦊
+        ‖ ∫_A g = \lim_n ∫_A g_n. ⦉
+      ⦉
+      for each $A ∈ 𝒜$. ⦉
 
-  ‖ $g$ on $A$ with respect to $μ$ ⦉
+    ‖ Since $∫_A g_n ≤ ν(A)$, ⦉
 
-  ‖ is bounded above by $ν(A)$. ⦉
+    ‖ so too is the limit and thus ⦉
 
-  ‖ We want the gap to be zero. ⦉
+    ‖ so too is $∫_A g$. ⦉
 
-  ‖ Regardless of the gap, the function $ν_0: \SA → [0, ∞)$
-    defined by
-    ◇ ⦊
-      ‖ ν_0(A) = ν(A) - ∈t(g, A, μ), ⦉
-    ⦉
-    for each $A ∈ \SA$ is a positive measure. ⦉
+    ‖ Thus, $g ∈ ℱ$. ⦉
 
-  ‖ If $ν_0$ is identically zero, then there is no gap. ⦉
-⦉
+    ‖ By construction, ⦉
 
-¶ ⦊
-  ‖ Suppose there is a gap: then there exists a measurable set
-    with strictly positive measure under $ν_0$. ⦉
+    ‖ for $A = X$, ⦉
 
-  ‖ Since the base set contains this set, and measures are
-    monotone, the base set must have stricty positive measure. ⦉
+    ‖ $∫ g = \sup\Set*{∫ f}{f ∈ ℱ}$. ⦉
 
-  ‖ Since $μ$ is finite, there exists a natural number $n$ so
-    that
-    ◇ ⦊
-      ‖ ν_0(X) > \frac{1}{n}μ(X). ⦉
-    ⦉⦉
-⦉
+    ‖ We have constructed an element of $ℱ$ ⦉
 
-¶ ⦊
-  ‖ Define a new measure $ν_1 = ν_0 - \frac{1}{n}μ$. ⦉
+    ‖ attaining the supremum. ⦉
+  ⦉
 
-  ‖ Denote a signed-set decomposition of $ν_1$ ⦉
+  ¶ ⦊
+    ‖ We know that the integral of ⦉
 
-  ‖ by $(P, N)$. ⦉
+    ‖ $g$ on $A$ with respect to $μ$ ⦉
 
-  ‖ Then $ν_1(A ∩ P) ≥ 0$, or equivalently,
-    ◇ ⦊
-      ‖ ν_0(A ∩ P) - \frac{1}{n}μ(A ∩ P) ≥ 0, ⦉
-    ⦉
-    for all $A$, and so
-    ◇ ⦊
-      ‖ \begin{aligned} ⦉
+    ‖ is bounded above by $ν(A)$. ⦉
 
-      ‖ ν(A) ❲&❳= ν_0(A) + ∫(g, A, μ) ᜶ ⦉
+    ‖ We want the gap to be zero. ⦉
 
-      ‖ ❲&❳≥ ν_0(A ∩ P) + ∫ (g, A, μ). ⦉
+    ‖ Regardless of the gap, the function $ν_0: 𝒜 → [0, ∞)$
+      defined by
+      ◇ ⦊
+        ‖ ν_0(A) = ν(A) - ∫(g, A, μ), ⦉
+      ⦉
+      for each $A ∈ 𝒜$ is a positive measure. ⦉
 
-      ‖ \end{aligned} ⦉
-    ⦉⦉
+    ‖ If $ν_0$ is identically zero, then there is no gap. ⦉
+  ⦉
 
-  ‖ \end{proof} ⦉
+  ¶ ⦊
+    ‖ Suppose there is a gap: then there exists a measurable
+      set with strictly positive measure under $ν_0$. ⦉
 
-  ‖ \end{proposition} ⦉
-⦉
+    ‖ Since the base set contains this set, and measures are
+      monotone, the base set must have stricty positive measure. ⦉
 
+    ‖ Since $μ$ is finite, there exists a natural number $n$ so
+      that
+      ◇ ⦊
+        ‖ ν_0(X) > \frac{1}{n}μ(X). ⦉
+      ⦉⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ Define a new measure $ν_1 = ν_0 - \frac{1}{n}μ$. ⦉
+
+    ‖ Denote a signed-set decomposition of $ν_1$ ⦉
+
+    ‖ by $(P, N)$. ⦉
+
+    ‖ Then $ν_1(A ∩ P) ≥ 0$, or equivalently,
+      ◇ ⦊
+        ‖ ν_0(A ∩ P) - \frac{1}{n}μ(A ∩ P) ≥ 0, ⦉
+      ⦉
+      for all $A$, and so
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
+
+        ‖ ν(A) ＆= ν_0(A) + ∫(g, A, μ) ᜶ ⦉
+
+        ‖ ＆≥ ν_0(A ∩ P) + ∫ (g, A, μ). ⦉
+
+        ‖ \end{aligned} ⦉
+      ⦉⦉
+  ⦉
+</proof>
 ¶ ⦊
   ‖ Many authorities refer to this result as the ❬Radon-Nikodym
     theorem❭. ⦉

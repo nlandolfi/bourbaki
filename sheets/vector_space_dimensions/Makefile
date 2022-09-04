@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make vector_space_dimensions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 vector_space_dimensions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > vector_space_dimensions.tex
 

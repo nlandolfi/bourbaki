@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make uniform_densities.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 uniform_densities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > uniform_densities.tex
 
