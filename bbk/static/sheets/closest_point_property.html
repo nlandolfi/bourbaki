@@ -102,6 +102,8 @@ MathJax.Hub.Config({
                   complement: ["C({#1})", 1],
                   re: ["\\mathword{Re}"],
                   im: ["\\mathword{Im}"],
+                  dual: ["{#1}^*", 1],
+                  dnorm: ["\norm{#1}_*", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -147,7 +149,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section{Why} \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing"><p class="sheet"> \section{Result} \begin{proposition} Suppose $X$ is a complete inner product space, $A \subset X$ closed and convex, and $x \in X$. There exists a unique $z \in X$ satisfying \[ d(z, x) = \inf_{y \in A} d(y, x). \] \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Suppose $X$ is a complete inner product space, $A \subset X$ closed and convex, and $x \in X$. There exists a unique $z \in X$ satisfying \[ d(z, x) = \inf_{y \in A} d(y, x). \]\end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1349,6 +1351,8 @@ Parse: {prototype: {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
+
+
 <style>
 
 .body {
@@ -1412,14 +1416,6 @@ Parse: {prototype: {
 
 </style>
 
-<script>
-  var showingSidebar = true;
-
-
-
-</script>
-
-
 <div class="body" style="display: flex; flex-direction: column">
   <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
       <img style="width: 20px" src="../trademark.jpg">
@@ -1464,43 +1460,23 @@ Parse: {prototype: {
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Closest Point Property </h1> 
-      <p>
- <span class='run'>%!name:closest_point_property</span>
+      <!--
+!name:closest_point_property
+!need:complete_metric_spaces
+!need:complete_inner_product_spaces
+%!need:convex
+-->
 
- <span class='run'>%!need:complete_metric_spaces</span>
+<h1>Result</h1>
 
- <span class='run'>%!need:complete_inner_product_spaces</span>
-
- <span class='run'>%%!need:convex</span>
-</p>
-
-
-<p>
- <span class='run'>\section{Why}<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
-</p>
-
-
-<p>
- <span class='run'>\section{Result}</span>
-
- <span class='run'>\begin{proposition}</span>
-
+<div class='proposition'>
  <span class='run'>Suppose $X$ is a complete inner product space,
   $A \subset X$ closed and convex, and $x \in X$.</span>
 
  <span class='run'>There exists a unique $z \in X$ satisfying
   <p>\[
    d(z, x) = \inf_{y \in A} d(y, x).
-  \]</p></span>
-
- <span class='run'>\end{proposition}</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
-</p>
-<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+  \]</p></span></div><hr style='margin-top:0.5in'><ol class='footnotes'></ol>
     </div>
     </div>
       </div>
@@ -1556,7 +1532,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a3a094413.
+      Copyright 2022 The Bourbaki Authors. Version f6b210409.
     </span>
   </body>
 </html>

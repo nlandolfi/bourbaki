@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make continuous_linear_functionals.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 continuous_linear_functionals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > continuous_linear_functionals.tex
 

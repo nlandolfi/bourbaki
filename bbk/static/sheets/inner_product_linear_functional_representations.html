@@ -112,6 +112,8 @@ MathJax.Hub.Config({
                   complement: ["C({#1})", 1],
                   re: ["\\mathword{Re}"],
                   im: ["\\mathword{Im}"],
+                  dual: ["{#1}^*", 1],
+                  dnorm: ["\norm{#1}_*", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -157,7 +159,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can identify any linear functional $F: \R^n \to \R$ with a vector $y \in \R^n$ so that $F(x) = \ip{x,y}$. We generalize this result to complete inner product spaces.</p></div><div class="sheet-listing" id="motivating_result"><h1 class="sheet">2. Motivating result</h1></div><div class="sheet-listing"><p class="sheet"> The following is known as the \t{Riesz representation theorem} (or \t{Riesz-Fr\'echet representation theorem}, or \t{Riesz theorem},  or \t{Riesz-Fr\'echet theorem}).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $((V, k), \ip{\cdot,\cdot})$ be a complete inner product space and let $F: V \to k$ be a continuous linear functional on $V$. There exists a unique $y \in V$ so that \[ F(x) = \ip{x, y} \] for all $x \in V$. Moreover $\norm{y} = \dnorm{F}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> Clearly $\R^n$ is a complete inner product space, and so this this theorem says the expected. We can identify linear functionals on $\R^n$ with elements (vectors) in $\R^n$.\footnote{Future editions will expand further.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We can identify any linear functional $F: \R ^n \to \R $ with a vector $y \in \R ^n$ so that $F(x) = \ip{x,y}$. We generalize this result to complete inner product spaces.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Motivating result}</p></div><div class="sheet-listing"><p class="sheet"> The following is known as the \t{Riesz representation theorem} (or \t{Riesz-Fréchet representation theorem}, or \t{Riesz theorem}, or \t{Riesz-Fréchet theorem}).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $((V, k), \ip{\cdot ,\cdot })$ be a complete inner product space and let $F: V \to k$ be a continuous linear functional on $V$. There exists a unique $y \in V$ so that \[ F(x) = \ip{x, y} \] for all $x \in V$. Moreover $\norm{y} = \dnorm{F}$.\end{proposition} Clearly $\R ^n$ is a complete inner product space, and so this this theorem says the expected. We can identify linear functionals on $\R ^n$ with elements (vectors) in $\R ^n$.\footnote{Future editions will expand further.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1427,6 +1429,8 @@ Parse: {prototype: {
 \newcommand{\dnormm}[1]{\normm{#1}_*}
     </span>
 
+
+
 <style>
 
 .body {
@@ -1490,13 +1494,110 @@ Parse: {prototype: {
 
 </style>
 
-<script>
-  var showingSidebar = true;
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
 
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./complete_inner_product_spaces.html'" onkeypress="location.href='./complete_inner_product_spaces.html'">
+                <span>
+                  Complete Inner Product Spaces
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./dual_spaces.html'" onkeypress="location.href='./dual_spaces.html'">
+                <span>
+                  Dual Spaces
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./reproducing_kernels.html'" onkeypress="location.href='./reproducing_kernels.html'">
+            <span>
+            Reproducing Kernels
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./inner_product_linear_functional_representations.pdf#page=2'" onkeypress="location.href='./inner_product_linear_functional_representations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./inner_product_linear_functional_representations-graph.pdf'" onkeypress="location.href='./inner_product_linear_functional_representations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
 
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Inner Product Linear Functional Representations </h1> 
+      <!--
+!name:inner_product_linear_functional_representations
+!need:dual_spaces
+!need:complete_inner_product_spaces
+!refs:young1988an/06dualspaces
+-->
 
-</script>
+<h1>Why</h1>
 
+<p>
+ <span class='run'>We can identify any linear functional $F: \R ^n
+  \to \R $ with a vector $y \in \R ^n$ so that
+  $F(x) = \ip{x,y}$.</span>
+
+ <span class='run'>We generalize this result to complete inner
+  product spaces.</span>
+</p>
+
+<h1>Motivating result</h1>
+
+<p>
+ <span class='run'>The following is known as the
+  <span class='term'>Riesz representation
+  theorem</span> (or <span class='term'>Riesz-Fréchet
+  representation theorem</span>, or
+  <span class='term'>Riesz theorem</span>, or
+  <span class='term'>Riesz-Fréchet theorem</span>).</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>Let $((V, k), \ip{\cdot ,\cdot })$ be a complete
+  inner product space and let $F: V \to k$ be a
+  continuous linear functional on $V$.</span>
+
+ <span class='run'>There exists a unique $y \in V$ so that
+  <p>\[
+   F(x) = \ip{x, y}
+  \]</p>
+  <span class='run'>for all $x \in V$. Moreover $\norm{y} =
+   \dnorm{F}$.</span></span></div>
+<p>
+ <span class='run'>Clearly $\R ^n$ is a complete inner product
+  space, and so this this theorem says the
+  expected.</span>
+
+ <span class='run'>We can identify linear functionals on $\R ^n$
+  with elements (vectors) in $\R ^n$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand further.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1548,7 +1649,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a3a094413.
+      Copyright 2022 The Bourbaki Authors. Version f6b210409.
     </span>
   </body>
 </html>
