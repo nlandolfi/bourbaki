@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make tree_distributions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 tree_distributions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tree_distributions.tex
 

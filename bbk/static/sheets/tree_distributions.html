@@ -107,6 +107,10 @@ MathJax.Hub.Config({
                   im: ["\\mathword{Im}"],
                   dual: ["{#1}^*", 1],
                   dnorm: ["\norm{#1}_*", 1],
+                  Cmod: ["\\abs{#1}", 1],
+                  Cabs: ["\\Cmod{#1}", 1],
+                  vmeas: ["\\abs{#1}", 1],
+                  tvnorm: ["\\norm{#1}", 1],
           },
           packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
         },
@@ -152,7 +156,7 @@ Parse: {prototype: {
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> It happens that if a distribution factors according to a tree rooted at a particular vertex, it factors according to a tree rooted at any vertex. So the property of factoring according to a rooted tree is really property of factoring according to a tree.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> \subsection{Defining Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $A_1, \dots, A_n$ be finite non-empty sets and define $A = \prod_{i = 1}^{n} A_n$. Let $p: A \to [0, 1]$ be a distribution and let $T$ be a tree on $\set{1, \dots, n}$.</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> If a distribution factors according to a tree rooted at a vertex it factors according to that tree rooted at any vertex.</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><h2 class="sheet" id="undirected_definition">2.1 Undirected Definition</h2></div><div class="sheet-listing"><p class="sheet"> A distribution $p$ \t{factors according to the tree}{} $T$ if it factors according to the $T$ rooted at any vertex.</p></div><div class="sheet-listing" id="existence_and_uniqueness"><h1 class="sheet">3. Existence and Uniqueness</h1></div><div class="sheet-listing"><p class="sheet"> Trees are not a property of distributions, since there is no one-to-one correspondence, as demonstrated by the following propositions.</p></div><div class="sheet-listing"><h2 class="sheet" id="existence">3.1 Existence</h2></div><div class="sheet-listing"><p class="sheet"> A distribution $p$ need not factor according to a tree.</p></div><div class="sheet-listing"><h2 class="sheet" id="uniqueness">3.2 Uniqueness</h2></div><div class="sheet-listing"><p class="sheet"> A distribution $p$ may factor according to multiple trees.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> It happens that if a distribution factors according to a tree rooted at a particular vertex, it factors according to a tree rooted at any vertex. So the property of factoring according to a rooted tree is really property of factoring according to a tree.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Defining Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A_1, \dots , A_n$ be finite non-empty sets and define $A = \prod_{i = 1}^{n} A_n$. Let $p: A \to [0, 1]$ be a distribution and let $T$ be a tree on $\set{1, \dots , n}$.\end{proposition} \begin{proposition} If a distribution factors according to a tree rooted at a vertex it factors according to that tree rooted at any vertex.\end{proposition} \subsection*{Undirected definition}</p></div><div class="sheet-listing"><p class="sheet"> A distribution $p$ \t{factors according to the tree} $T$ if it factors according to the $T$ rooted at any vertex.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Existence and uniqueness}</p></div><div class="sheet-listing"><p class="sheet"> Trees are not a property of distributions, since there is no one-to-one correspondence, as demonstrated by the following propositions.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Existence}</p></div><div class="sheet-listing"><p class="sheet"> A distribution $p$ need not factor according to a tree.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Uniqueness}</p></div><div class="sheet-listing"><p class="sheet"> A distribution $p$ may factor according to multiple trees.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1180,6 +1184,182 @@ Parse: {prototype: {
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 auto 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0 0.75in 0 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="width: 20px" src="../trademark.jpg">
+  </div>
+      <div style="display: flex; flex-direction: row;">
+      <div style="padding: 20px">
+
+        <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./rooted_tree_distributions.html'" onkeypress="location.href='./rooted_tree_distributions.html'">
+                <span>
+                  Rooted Tree Distributions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./tree_distribution_approximators.html'" onkeypress="location.href='./tree_distribution_approximators.html'">
+            <span>
+            Tree Distribution Approximators
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./tree_distributions.pdf#page=2'" onkeypress="location.href='./tree_distributions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./tree_distributions-graph.pdf'" onkeypress="location.href='./tree_distributions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Tree Distributions </h1> 
+      <!--
+!name:tree_distributions
+!need:rooted_tree_distributions
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>It happens that if a distribution factors
+  according to a tree rooted at a particular
+  vertex, it factors according to a tree rooted
+  at any vertex.</span>
+
+ <span class='run'>So the property of factoring according to a
+  rooted tree is really property of factoring
+  according to a tree.</span>
+</p>
+
+<h1>Definition</h1>
+
+<h2>Defining Result</h2>
+
+<div class='proposition'>
+ <span class='run'>Let $A_1, \dots , A_n$ be finite non-empty sets
+  and define $A = \prod_{i = 1}^{n} A_n$.</span>
+
+ <span class='run'>Let $p: A \to [0, 1]$ be a distribution and
+  let $T$ be a tree on $\set{1, \dots , n}$.</span></div>
+<div class='proposition'>
+ <span class='run'>If a distribution factors according to a tree
+  rooted at a vertex it factors according to that
+  tree rooted at any vertex.</span></div>
+<h2>Undirected definition</h2>
+
+<p>
+ <span class='run'>A distribution $p$ <span class='term'>factors
+  according to the tree</span> $T$ if it factors
+  according to the $T$ rooted at any vertex.</span>
+</p>
+
+<h1>Existence and uniqueness</h1>
+
+<p>
+ <span class='run'>Trees are not a property of distributions,
+  since there is no one-to-one correspondence, as
+  demonstrated by the following propositions.</span>
+</p>
+
+<h2>Existence</h2>
+
+<p>
+ <span class='run'>A distribution $p$ need not factor according to
+  a tree.</span>
+</p>
+
+<h2>Uniqueness</h2>
+
+<p>
+ <span class='run'>A distribution $p$ may factor according to
+  multiple trees.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
+    </div>
+    </div>
+      </div>
+    
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1231,7 +1411,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version f6b210409.
+      Copyright 2022 The Bourbaki Authors. Version 8d2bf0568.
     </span>
   </body>
 </html>

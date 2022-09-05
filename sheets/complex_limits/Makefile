@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make complex_limits.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 complex_limits.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complex_limits.tex
 
