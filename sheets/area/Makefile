@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make area.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 area.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > area.tex
 

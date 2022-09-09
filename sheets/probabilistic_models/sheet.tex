@@ -1,15 +1,48 @@
+
 %!name:probabilistic_models
 %!need:probability_measures
-% %!need:families
+%!refs:diaconis/1988/sufficiency as symmetry
 
-\ssection{Why}\footnote{Will be included in future editions.}
+\section*{Why}
 
-\ssection{Definition}
+We have a space $X$ and a family of probability measures $\mathcal{P} $ on this space.
+Assume $x \in X$ drawn from a fixed, unknown measure $P \in \mathcal{P} $.
+Given $x$, how should we guess $P$?
 
-A \t{probabilistic model} (or \t{statistical model}) is a family of probability measures.
-We call the index set the \t{parameter set} or \t{set of parameters}.
+\section*{Definition}
 
-\ssubsection{Notation}
+A \t{probabilistic model} (or \t{statistical model}, \t{parametric statistical model}, \t{statistical experiment}) is a family of probability measures over the same measurable space $(X, \mathcal{F} )$.
+Call the index set the \t{parameter set} or \t{set of parameters}.
+The set $X$ is called the \t{sample space}.
+A \t{statistic} is any function on the sample space.
+
+\subsection*{Notation}
+
+Let $(X, \mathcal{F} )$ denote a measurable space.
+We usually denote the parameter by $\Theta $, and denote the family
+    \[
+\mathcal{P}  = \Set{\mathbfsf{P} _\theta : \mathcal{F}  \to [0,1]}{\mathbfsf{P} _\theta  \text{ a measure}, \theta  \in \Theta }.
+    \]
+Often $\Theta  \subset \R ^d$.
+% montanari has an additional stipulation on 𝒫 
 
 
+\subsection*{Example: coin flips}
+
+The usual model for $n$ flips of a coin takes $X = \set{0,1}^n$, the set of binary $n$-tuples.
+For $\theta  \in [0, 1]$, a distribution $p_\theta (x) = \theta ^t(1-\theta )^{n-t(x)}$ where $t(x) = x_1 + \cdots + x_n$ is defined on $X$.
+A probability measure $\mathbfsf{P} _\theta $ is defined on $\powerset{X}$ in the \sheetref{event_probabilities}{the usual way}.
+Thus, the probabilistic model is $\Set{\mathbfsf{P} _\theta }{\theta  \in [0,1]}$.
+Given $x$, we are asked to guess $\theta $.
+
+\subsection*{Example: gaussian}
+
+A common model for quantities takes $X = \R ^d$, the \sheetref{n-dimensional_space}{$d$-dimensional real space}.
+
+
+\section*{Decisions}
+
+A \t{decision procedure} (\t{estimator}, \t{statistical procedure}) is a measurable function that $A: \mathcal{X}  \to \mathcal{A} $ where $\mathcal{A} $ is a set of possible \t{decisions}, or \t{actions}.
+A \t{loss function} is
 \blankpage
+
