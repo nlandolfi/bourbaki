@@ -1,61 +1,60 @@
+
 %!name:negligible_sets
 %!need:measures
 %!need:real_limits
 
-\ssection{Why}
+\section*{Why}
 
 Some reasonable statements do not hold \textit{for all} elements of the base set of a measurable space.
-Even so, these statements often hold \say{broadly,} in the sense that the measure of the set on which they fail is small (i.e., zero).
-With this idea, we can often treat statements which fail on a set of measure zero as though they occur everywhere.
-We take this route especially often in discussions of convergence and integration.
+Even so, these statements often hold \textit{broadly}, in the sense that the measure of the set on which they fail is zero.
+This idea allows one to handle statements which fail on a set of measure zero as though they hold everywhere.
+This approach is useful in discussions of convergence and integration.
 
-\ssection{Definition}
+\section*{Definition}
 
-A subset of the base set of a measure space is \t{negligible} if there exists a measurable set with measure zero containing the subset.
-The qualification \say{if there exists a measurable set...} allows us to speak of nonmeasurable negligible sets.
-In other words, negligible sets need not be measurable.
+For this sheet, suppose $(X, \mathcal{A} , \mu )$ is a \sheetref{measures}{measure space}.
+Call a set $N \subset X$ \t{negligible} if there exists a measurable set $A \in \mathcal{A} $ with $\mu (A) = 0$ and $N \subset A$.
+In english, there is a measurable set containing $N$ that has measure zero.
 
+The qualification \say{if there exists a measurable set...} enables one to speak of \textit{nonmeasurable} negligible sets.
+Negligible sets need not be measurable.
 
-A property holds \t{almost everywhere} with respect to a measure on a measure space if the set of elements of the base set on which the property does not hold is negligible.
+Given the measure $\mu $, a \sheetref{set_specification}{statement}$s$ holds \t{almost everywhere} with respect to $\mu $ if the set of elements on which the statement fails is negligible.
+In symbols, there exists $A \in \mathcal{A} $ with $\mu (A) = 0$ and
+    \[
+\Set{x \in X}{\neg s(x)} \subset A
+    \]
 
-Naturally, if the property holds everywhere then it holds almost everywhere, too, though we always use the stronger statement that it holds everywhere.
+A statement which holds \say{everywhere} holds \say{almost everywhere} also.
 With this in mind, we call the almost everywhere sense \say{weaker} than the everywhere sense.
 
-\ssubsection{Notation}
-
-Let $(X, \mathcal{A}, \mu )$ be a measure space.
-A set $N \subset X$ is negligible if there exists $A \in \mathcal{A}$ with $N \subset A$ and $\mu (N) = 0$.
+\subsection*{Notation}
 
 We abbreviate almost everywhere as \say{a.e.,} read \say{almost everywhere}.
-We say that a property \say{holds a.e.}
+We say that a statement \say{holds a.e.}
 If the measure $\mu $ is not clear from context, we say that the property holds almost everywhere $[\mu ]$ or $\mu $-a.e., read \say{mu almost everywhere.}
 
-\ssection{Examples}
-
-Let $(X, \mathcal{A}, \mu )$ be a measure space.
-
-\ssubsection{Function Comparisons}
+\subsection*{Function comparisons}
 
 Let $f, g: X \to \R $, not necessarily measurable.
 Then $f = g$ almost everywhere if the set of points at which the functions disagree is
 $\mu $-negligible.
 Similarly, $f \geq g$ almost everywhere if the set of points where $f$ is less than $g$ is $\mu $-negligible.
 
-Now suppose $f$ and $g$ are $\mathcal{A}$-measurable, then the sets
-  \[
+If $f$ and $g$ were both in fact $\mathcal{A} $-measurable, then the sets
+    \[
 \Set*{x \in X}{f(x) \neq g(x)}
 \text{ and }
 \Set*{x \in X}{f(x) < g(x)}
-  \]
-are measurable.
-In general, these sets need not be measurable.
-This is one example justification for our including nonmeasurable sets in the definition, as mentioned above.
+    \]
+would be measurable also.
+But in general, these sets need not be measurable, and so this is one simple example to justify our including nonmeasurable sets in the definition of neglible sets, as mentioned above.
 
 \ssubsection{Function Limits}
 Let $\seqt{f}: X \to R$ for each natural number $n$ and let $f: X \to R$ be a function.
 The sequence $\seq{f}$ \t{converges to $f$ almost everywhere} if
-  \[
+    \[
 \Set*{x \in X}{\lim_{n} \seqt{f}(x) \text{ does not exist, or } f(x) \neq \lim_{n} \seqt{f}(x)}
-  \]
+    \]
 is $\mu $-negligible.
 In this case, we write \say{$f = \lim_n \seqt{f}$ a.e.}
