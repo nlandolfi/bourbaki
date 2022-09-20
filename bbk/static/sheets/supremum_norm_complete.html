@@ -6,255 +6,92 @@
     <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
-    <div class="header">
-      <span class="listing no-border" id="header-trademark-and-title">
-        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
-        <span id="header-title" onclick="location.href='./supremum_norm_complete.pdf#page=2'"> Supremum Norm Complete </span>
-      </span>
-    </div>
-    <div class="subheader">
-      <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./supremum_norm_complete.pdf#page=2'" onkeypress="location.href='./supremum_norm_complete.pdf#page=2'">
-        <span> Sheet PDF </span>
-        <span class="caret">›</span>
-      </div>
-      <div class="need" tabindex="0" onclick="location.href='./supremum_norm_complete-graph.pdf'" onkeypress="location.href='./supremum_norm_complete-graph.pdf'">
-        <span> Graph PDF </span>
-        <span class="caret">›</span>
-      </div>
-      
-        <div disabled class="need label"> Needs: </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./real_limits.html'" onkeypress="location.href='./real_limits.html'">
-              <span>
-                Real Limits
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./supremum_norm.html'" onkeypress="location.href='./supremum_norm.html'">
-              <span>
-                Supremum Norm
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-      
-      
-    </div>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {Augment: {
-    Definitions: {macros: {nicefrac: 'XFrac'}},
-    Parse: {prototype: {
-      XFrac: function (name) {
-        var num = this.ParseArg(name);
-        var den = this.ParseArg(name);
-        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-      }
-    }}
-  }}
-});
-</script>
-    <script>
-      MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
-        tex: {
-          inlineMath: [
-              ['\\(', '\\)'],
-              ['$', '$']
-            ],
-          displayMath: [
-              ['$$', '$$'],
-              ['\\[', '\\]']
-            ],
-          macros: {
-                  powerset: ["2^{#1}", 1],
-                  CV: "\\mathcal{V}",
-                  ceil: ["\\lceil #1 \\rceil", 1],
-                  num: ["\\abs{#1}",1],
-                  R: ["\\mathbfsf{R}"],
-                  C: ["\\mathbfsf{C}"],
-                  N: ["\\mathbfsf{N}"],
-                  Q: ["\\mathbfsf{Q}"],
-                  S: ["\\mathbfsf{S}"],
-                  Z: ["\\mathbfsf{Z}"],
-                  F: ["\\mathbfsf{F}"],
-                  E: ["\\mathbfsf{E}"],
-                  aff: ["\\mathsf{aff}"],
-                  upto: ["\\set{1,\\dots,#1}", 1],
-                  eqc: ["[#1]", 1],
-                  adj: ["\\mathword{adj}"],
-                  def: ["\\mathword{def}"],
-                  pa: ["\\mathword{pa}"],
-                  ch: ["\\mathword{ch}"],
-                  str: ["\\mathword{str}"],
-                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
-                  seq: ["(#1_n)_{n}", 1],
-                  seqt: ["#1_n", 1],
-                  union: ["\\cup"],
-                  intersection: ["\\cap"],
-                  dom: ["\\mathword{dom}"],
-                  range: ["\\mathword{range}"],
-                  ran: ["\\mathword{range}"],
-                  relcomplement: ["C_{#2}({#1})", 2],
-                  complement: ["C({#1})", 1],
-                  re: ["\\mathword{Re}"],
-                  im: ["\\mathword{Im}"],
-                  dual: ["{#1}^*", 1],
-                  dnorm: ["\norm{#1}_*", 1],
-                  Cmod: ["\\abs{#1}", 1],
-                  Cabs: ["\\Cmod{#1}", 1],
-                  vmeas: ["\\abs{#1}", 1],
-                  tvnorm: ["\\norm{#1}", 1],
-          },
-          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
-        },
-      };
-    </script>
-    <!--
-    <script>
-      console.log("here");
-MathJax.Hub.Config({
-TeX: {Augment: {
-Definitions: {macros: {nicefrac: 'NiceFrac'}},
-Parse: {prototype: {
-  NiceFrac: function (name) {
+  <!-- BEGIN MATHJAX -->
+  <script src="../mathjax/polyfill.min.js"></script>
+  <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {Augment: {
+      Definitions: {macros: {nicefrac: 'XFrac'}},
+      Parse: {prototype: {
+        XFrac: function (name) {
           var num = this.ParseArg(name);
-                  var den = this.ParseArg(name);
-                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-                                }
-                                    }}
-                                      }}
-                                      });
-    </script>
-    -->
-    <script src="../mathjax/polyfill.min.js"></script>
-    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
-    <!--
-      <link rel="stylesheet" href="../katex/katex.min.css">
-      <script src="../katex/katex.min.js"></script>
-      <script src="../katex/auto-render.min.js"></script>
-      <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(
-          document.body,
-          {
-            delimiters: [
-              {left: "$$", right: "$$", display: true},
-              {left: "$", right: "$", display: false},
-            ],
-          },
-        );
-      });
-    </script>
-    -->
-    <script src="../cytoscape/cytoscape.min.js"></script>
-
-    <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want a complete norm on the vector space of continuous functions.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The supremum norm is complete.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Let $R$ denote the real numbers. Let $\seq{f}$ be an egoprox sequence in $C[a, b]$.</p></div><div class="sheet-listing"><p class="sheet"> <b>Candidate.</b> $\seq{f}$ is egoprox means $\forall \epsilon > 0, \exists N$ so that \[ m, n > N \implies \supnorm{f_n - f_m} < \epsilon. \] Since $\supnorm{f_n - f_m} < \epsilon \implies \abs{f_n(x) - f_m(x)} < \epsilon$ for all $x \in [a, b]$, the sequence of real numbers $\set{f_n(x)}_n$ is egoprox for each $x \in [a, b]$. Since the metric space $(R, \abs{\cdot})$ is complete, there is a limit $l_x \in R$ such that $f_n(x) \goesto l_x$ as $n \goesto \infty$, for each $x \in [a, b]$. Define $f: [a, b] \to R$ by $f(x) = l_x$ for each $x \in [a, b]$.</p></div><div class="sheet-listing"><p class="sheet"> <b>Candidate is Limit.</b> First, we argue that $\supnorm{f_n - f} \goesto 0$ as $n \goesto \infty$. Since $\seq{f}$ is an egoprox sequence, there exists $n_0$ so that \[ n,m \geq n_0 \implies \supnorm{f_n - f_m} < \epsilon/2. \] So for all $x \in [a, b]$, \[ n,m \geq n_0 \implies \abs{f_n(x) - f_m(x)} < \epsilon/2. \] For all $x \in [a, b]$, and $n \geq n_0$, \[ \lim_{m \to \infty} \abs{f_n(x) - f_m(x)} \leq \epsilon/2 < \epsilon. \] The sequence $\set{f_k(x)}_{k = m}^{\infty}$ is a final part of $\set{f_k(x)}_{k = 1}^{\infty}$, and so has the same limit, $f(x)$. Therefore, using continuity of subtraction and the absolute value, \[ \lim_{m \to \infty} \abs{f_n(x) - f_m(x)} = \abs{f_n(x) - f(x)}. \] We conclude that for $n \geq n_0$, $x \in [a, b]$, $\abs{f_n(x) - f(x)} < \epsilon$, from which we deduce $\supnorm{f_n - f} < \epsilon$. Thus $f_n \goesto f$ as $n \goesto \infty$.</p></div><div class="sheet-listing"><p class="sheet"> <b>Limit is Continuous.</b> Next, we argue that $f$ is continuous. Let $x_0 \in [a, b]$. Let $\epsilon > 0$. Since $f_n \goesto f$ there exists $n_0$ so that \[ \supnorm{f_{n_0} - f} < \epsilon/3. \] By the triangle inequality, \[ \begin{aligned} \abs{f(x_0) - f(x)} \leq \abs{f(x_0) - f_{n_0}(x_0)} + \abs{f_{n_0}(x_0) - f(x)}, \end{aligned} \] for all $x \in [a, b]$. Using $\abs{f(x_0) - f_{n_0}(x_0)} < \epsilon/3$, \[ \begin{aligned} \abs{f(x_0) - f(x)} &< \epsilon/3 + \abs{f_{n_0}(x_0) - f(x)}, \end{aligned} \] for all $x \in [a, b]$. Using the triangle inequality, \[ \abs{f(x_0) - f(x)} < \epsilon/3 + \abs{f_{n_0}(x_0) - f_{n_0}(x)} + \abs{f_{n_0}(x) - f(x)} \\ \] for all $x \in [a, b]$. Using $\abs{f_{n_0}(x_0) - f(x)} < \epsilon/3$ \[ \begin{aligned} \abs{f(x_0) - f(x)} < \epsilon/3 + \abs{f_{n_0}(x_0) - f_{n_0}(x)} + \epsilon/3 \\ \end{aligned} \] for all $x \in [a, b]$. Since $f_{n_0}$ is continuous, there exists $\delta > 0$ so that \[ \abs{x_0 - x} < \delta \implies \abs{f_{n_0}(x_0) - f_{n_0}(x)} < \epsilon/3, \] for $x \in [a, b]$. In this case, \[ \begin{aligned} \abs{f(x_0) - f(x)} &< \epsilon/3 + \epsilon/3 + \epsilon/3 = \epsilon. \end{aligned} \] Since $\epsilon$ was arbitrary, $f$ is continuous at $x_0$. Since $x_0$ was arbitrary, $f$ is continuous everywhere. Some call the above the <i>three epsilon argument</i>. \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
-    </div>
-
-    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
-
-    <div id="wrapper1">
-      <canvas id="page1" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper2">
-      <canvas id="page2" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper3">
-    <canvas id="page3" style="direction: ltr;" onclick="location.href='./supremum_norm_complete-graph.pdf'"></canvas>
-    </div>
-      <script id="script">
-        // If absolute URL from the remote server is provided, configure the CORS
-        // header on that server.
-        var url = './supremum_norm_complete.pdf';
-
-        // The workerSrc property shall be specified.
-        pdfjsLib.GlobalWorkerOptions.workerSrc =
-          '../pdfjs/build/pdf.worker.js';
-
-        var PRINT_RESOLUTION = 300;
-
-        function render(page, wrapper, canvas) {
-          var scale = 7;
-          var viewport = page.getViewport({scale: scale});
-          var context = canvas.getContext('2d');
-
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-          canvas.style.width = "100%";
-          canvas.style.height = "100%";
-          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
-          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
-
-          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
-          // who knows if this works...
-          context.imageSmoothingEnabled = false;
-          context.webkitImageSmoothingEnabled = false;
-          context.mozImageSmoothingEnabled = false;
-          context.oImageSmoothingEnabled = false;
-
-          /*
-
-          if (window.devicePixelRatio > 1) {
-            var canvasWidth = canvas.width;
-            var canvasHeight = canvas.height;
-
-            canvas.width = canvasWidth * window.devicePixelRatio;
-            canvas.height = canvasHeight * window.devicePixelRatio;
-            canvas.style.width = canvasWidth + "px";
-            canvas.style.height = canvasHeight + "px";
-
-            context.scale(window.devicePixelRatio, window.devicePixelRatio);
-          }
-          //end see
-          */
-
-          var renderContext = {
-            canvasContext: context,
-            viewport: viewport
-          };
-          page.render(renderContext);
+          var den = this.ParseArg(name);
+          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
         }
-
-        // Asynchronous download PDF
-        var loadingTask = pdfjsLib.getDocument(url);
-        loadingTask.promise.then(function(pdf) {
-
-          // Fetch the first page
-          pdf.getPage(2).then(function(page) {
-              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
-          });
-
-          // Fetch the second page
-          pdf.getPage(3).then(function(page) {
-            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
-          });
-
-          // Fetch the third page
-          pdf.getPage(4).then(function(page) {
-            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
-          });
-        });
-      </script>
-
-    <!-- PAGES -->
-    <!--
-    <iframe id="sheet-pdf" src="./supremum_norm_complete.pdf#page=2">
-    </iframe>
-    <iframe id="sheet-pdf" src="./supremum_norm_complete.pdf#page=3">
-    </iframe>
-    -->
-    <!-- PAGES -->
-
-    </div>
-
-    <!-- <iframe id="graph-pdf" src="./supremum_norm_complete-graph.pdf">
-    </iframe>
-    -->
+      }}
+    }}
+  });
+  </script>
+  <script>
+    MathJax = {
+      loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
+      tex: {
+        inlineMath: [
+            ['\\(', '\\)'],
+            ['$', '$']
+          ],
+        displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]']
+          ],
+        macros: {
+                powerset: ["2^{#1}", 1],
+                CV: "\\mathcal{V}",
+                ceil: ["\\lceil #1 \\rceil", 1],
+                num: ["\\abs{#1}",1],
+                card: ["\\abs{#1}",1],
+                R: ["\\mathbfsf{R}"],
+                C: ["\\mathbfsf{C}"],
+                N: ["\\mathbfsf{N}"],
+                Q: ["\\mathbfsf{Q}"],
+                S: ["\\mathbfsf{S}"],
+                Z: ["\\mathbfsf{Z}"],
+                F: ["\\mathbfsf{F}"],
+                E: ["\\mathbfsf{E}"],
+                aff: ["\\mathsf{aff}"],
+                upto: ["\\set{1,\\dots,#1}", 1],
+                eqc: ["[#1]", 1],
+                adj: ["\\mathword{adj}"],
+                def: ["\\mathword{def}"],
+                pa: ["\\mathword{pa}"],
+                ch: ["\\mathword{ch}"],
+                str: ["\\mathword{str}"],
+                textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                seq: ["(#1_n)_{n}", 1],
+                seqt: ["#1_n", 1],
+                union: ["\\cup"],
+                intersection: ["\\cap"],
+                dom: ["\\mathword{dom}"],
+                range: ["\\mathword{range}"],
+                ran: ["\\mathword{range}"],
+                relcomplement: ["C_{#2}({#1})", 2],
+                complement: ["C({#1})", 1],
+                re: ["\\mathword{Re}"],
+                im: ["\\mathword{Im}"],
+                dual: ["{#1}^*", 1],
+                dnorm: ["\\norm{#1}_*", 1],
+                Cmod: ["\\abs{#1}", 1],
+                Cabs: ["\\Cmod{#1}", 1],
+                vmeas: ["\\abs{#1}", 1],
+                tvnorm: ["\\norm{#1}", 1],
+                nneri: ["\\nneri", 1],
+                nneri: ["[0,\\infty]"],
+                eri: ["[-\\infty,\\infty]"],
+                Rbar: ["\\bar{\\R}"],
+                pushforward: ["#1 \\circ #2^{-1}", 2],
+                rvlaw: ["{#1}_{#2}", 2],
+                var: ["\\mathword{var}"],
+                cov: ["\\mathword{cov}"],
+                std: ["\\mathword{std}"],
+                Cconj: ["#1^{*}", 1],
+                Cconjp: ["\\left(#1\\right))^{*}", 1],
+                            },
+        packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+      },
+    };
+  </script>
 
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
@@ -262,6 +99,7 @@ Parse: {prototype: {
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
+\(\newcommand{\barray}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
 \(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
@@ -1310,6 +1148,153 @@ Parse: {prototype: {
 
 
 
+
+
+    <!-- BEGIN OLD -->
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./supremum_norm_complete.pdf#page=2'"> Supremum Norm Complete </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./supremum_norm_complete.pdf#page=2'" onkeypress="location.href='./supremum_norm_complete.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./supremum_norm_complete-graph.pdf'" onkeypress="location.href='./supremum_norm_complete-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_limits.html'" onkeypress="location.href='./real_limits.html'">
+              <span>
+                Real Limits
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./supremum_norm.html'" onkeypress="location.href='./supremum_norm.html'">
+              <span>
+                Supremum Norm
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+    </div>
+
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want a complete norm on the vector space of continuous functions.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The supremum norm is complete.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Let $R$ denote the real numbers. Let $\seq{f}$ be an egoprox sequence in $C[a, b]$.</p></div><div class="sheet-listing"><p class="sheet"> <b>Candidate.</b> $\seq{f}$ is egoprox means $\forall \epsilon > 0, \exists N$ so that \[ m, n > N \implies \supnorm{f_n - f_m} < \epsilon. \] Since $\supnorm{f_n - f_m} < \epsilon \implies \abs{f_n(x) - f_m(x)} < \epsilon$ for all $x \in [a, b]$, the sequence of real numbers $\set{f_n(x)}_n$ is egoprox for each $x \in [a, b]$. Since the metric space $(R, \abs{\cdot})$ is complete, there is a limit $l_x \in R$ such that $f_n(x) \goesto l_x$ as $n \goesto \infty$, for each $x \in [a, b]$. Define $f: [a, b] \to R$ by $f(x) = l_x$ for each $x \in [a, b]$.</p></div><div class="sheet-listing"><p class="sheet"> <b>Candidate is Limit.</b> First, we argue that $\supnorm{f_n - f} \goesto 0$ as $n \goesto \infty$. Since $\seq{f}$ is an egoprox sequence, there exists $n_0$ so that \[ n,m \geq n_0 \implies \supnorm{f_n - f_m} < \epsilon/2. \] So for all $x \in [a, b]$, \[ n,m \geq n_0 \implies \abs{f_n(x) - f_m(x)} < \epsilon/2. \] For all $x \in [a, b]$, and $n \geq n_0$, \[ \lim_{m \to \infty} \abs{f_n(x) - f_m(x)} \leq \epsilon/2 < \epsilon. \] The sequence $\set{f_k(x)}_{k = m}^{\infty}$ is a final part of $\set{f_k(x)}_{k = 1}^{\infty}$, and so has the same limit, $f(x)$. Therefore, using continuity of subtraction and the absolute value, \[ \lim_{m \to \infty} \abs{f_n(x) - f_m(x)} = \abs{f_n(x) - f(x)}. \] We conclude that for $n \geq n_0$, $x \in [a, b]$, $\abs{f_n(x) - f(x)} < \epsilon$, from which we deduce $\supnorm{f_n - f} < \epsilon$. Thus $f_n \goesto f$ as $n \goesto \infty$.</p></div><div class="sheet-listing"><p class="sheet"> <b>Limit is Continuous.</b> Next, we argue that $f$ is continuous. Let $x_0 \in [a, b]$. Let $\epsilon > 0$. Since $f_n \goesto f$ there exists $n_0$ so that \[ \supnorm{f_{n_0} - f} < \epsilon/3. \] By the triangle inequality, \[ \begin{aligned} \abs{f(x_0) - f(x)} \leq \abs{f(x_0) - f_{n_0}(x_0)} + \abs{f_{n_0}(x_0) - f(x)}, \end{aligned} \] for all $x \in [a, b]$. Using $\abs{f(x_0) - f_{n_0}(x_0)} < \epsilon/3$, \[ \begin{aligned} \abs{f(x_0) - f(x)} &< \epsilon/3 + \abs{f_{n_0}(x_0) - f(x)}, \end{aligned} \] for all $x \in [a, b]$. Using the triangle inequality, \[ \abs{f(x_0) - f(x)} < \epsilon/3 + \abs{f_{n_0}(x_0) - f_{n_0}(x)} + \abs{f_{n_0}(x) - f(x)} \\ \] for all $x \in [a, b]$. Using $\abs{f_{n_0}(x_0) - f(x)} < \epsilon/3$ \[ \begin{aligned} \abs{f(x_0) - f(x)} < \epsilon/3 + \abs{f_{n_0}(x_0) - f_{n_0}(x)} + \epsilon/3 \\ \end{aligned} \] for all $x \in [a, b]$. Since $f_{n_0}$ is continuous, there exists $\delta > 0$ so that \[ \abs{x_0 - x} < \delta \implies \abs{f_{n_0}(x_0) - f_{n_0}(x)} < \epsilon/3, \] for $x \in [a, b]$. In this case, \[ \begin{aligned} \abs{f(x_0) - f(x)} &< \epsilon/3 + \epsilon/3 + \epsilon/3 = \epsilon. \end{aligned} \] Since $\epsilon$ was arbitrary, $f$ is continuous at $x_0$. Since $x_0$ was arbitrary, $f$ is continuous everywhere. Some call the above the <i>three epsilon argument</i>. \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./supremum_norm_complete-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './supremum_norm_complete.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./supremum_norm_complete.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./supremum_norm_complete.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./supremum_norm_complete-graph.pdf">
+    </iframe>
+    -->
+
+
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
   </div>
@@ -1360,7 +1345,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 8d2bf0568.
+      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
     </span>
   </body>
 </html>

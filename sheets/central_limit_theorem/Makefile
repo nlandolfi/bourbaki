@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make central_limit_theorem.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 central_limit_theorem.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > central_limit_theorem.tex
 

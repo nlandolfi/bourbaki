@@ -6,314 +6,92 @@
     <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
-    <div class="header">
-      <span class="listing no-border" id="header-trademark-and-title">
-        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
-        <span id="header-title" onclick="location.href='./chordal_graphs.pdf#page=2'"> Chordal Graphs </span>
-      </span>
-    </div>
-    <div class="subheader">
-      <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./chordal_graphs.pdf#page=2'" onkeypress="location.href='./chordal_graphs.pdf#page=2'">
-        <span> Sheet PDF </span>
-        <span class="caret">›</span>
-      </div>
-      <div class="need" tabindex="0" onclick="location.href='./chordal_graphs-graph.pdf'" onkeypress="location.href='./chordal_graphs-graph.pdf'">
-        <span> Graph PDF </span>
-        <span class="caret">›</span>
-      </div>
-      
-        <div disabled class="need label"> Needs: </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./integer_divisors.html'" onkeypress="location.href='./integer_divisors.html'">
-              <span>
-                Integer Divisors
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./integral_line.html'" onkeypress="location.href='./integral_line.html'">
-              <span>
-                Integral Line
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./trees.html'" onkeypress="location.href='./trees.html'">
-              <span>
-                Trees
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./undirected_subgraphs.html'" onkeypress="location.href='./undirected_subgraphs.html'">
-              <span>
-                Undirected Subgraphs
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-      
-      
-        <div disabled class="need label"> Needed by: </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./filled_graphs.html'" onkeypress="location.href='./filled_graphs.html'">
-            <span>
-            Filled Graphs
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./interval_graphs.html'" onkeypress="location.href='./interval_graphs.html'">
-            <span>
-            Interval Graphs
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./k-trees.html'" onkeypress="location.href='./k-trees.html'">
-            <span>
-            K-Trees
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./sparsity_patterns.html'" onkeypress="location.href='./sparsity_patterns.html'">
-            <span>
-            Sparsity Patterns
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./split_graphs.html'" onkeypress="location.href='./split_graphs.html'">
-            <span>
-            Split Graphs
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./vertex_separators.html'" onkeypress="location.href='./vertex_separators.html'">
-            <span>
-            Vertex Separators
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-      
-    </div>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {Augment: {
-    Definitions: {macros: {nicefrac: 'XFrac'}},
-    Parse: {prototype: {
-      XFrac: function (name) {
-        var num = this.ParseArg(name);
-        var den = this.ParseArg(name);
-        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-      }
-    }}
-  }}
-});
-</script>
-    <script>
-      MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
-        tex: {
-          inlineMath: [
-              ['\\(', '\\)'],
-              ['$', '$']
-            ],
-          displayMath: [
-              ['$$', '$$'],
-              ['\\[', '\\]']
-            ],
-          macros: {
-                  powerset: ["2^{#1}", 1],
-                  CV: "\\mathcal{V}",
-                  ceil: ["\\lceil #1 \\rceil", 1],
-                  num: ["\\abs{#1}",1],
-                  R: ["\\mathbfsf{R}"],
-                  C: ["\\mathbfsf{C}"],
-                  N: ["\\mathbfsf{N}"],
-                  Q: ["\\mathbfsf{Q}"],
-                  S: ["\\mathbfsf{S}"],
-                  Z: ["\\mathbfsf{Z}"],
-                  F: ["\\mathbfsf{F}"],
-                  E: ["\\mathbfsf{E}"],
-                  aff: ["\\mathsf{aff}"],
-                  upto: ["\\set{1,\\dots,#1}", 1],
-                  eqc: ["[#1]", 1],
-                  adj: ["\\mathword{adj}"],
-                  def: ["\\mathword{def}"],
-                  pa: ["\\mathword{pa}"],
-                  ch: ["\\mathword{ch}"],
-                  str: ["\\mathword{str}"],
-                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
-                  seq: ["(#1_n)_{n}", 1],
-                  seqt: ["#1_n", 1],
-                  union: ["\\cup"],
-                  intersection: ["\\cap"],
-                  dom: ["\\mathword{dom}"],
-                  range: ["\\mathword{range}"],
-                  ran: ["\\mathword{range}"],
-                  relcomplement: ["C_{#2}({#1})", 2],
-                  complement: ["C({#1})", 1],
-                  re: ["\\mathword{Re}"],
-                  im: ["\\mathword{Im}"],
-                  dual: ["{#1}^*", 1],
-                  dnorm: ["\norm{#1}_*", 1],
-                  Cmod: ["\\abs{#1}", 1],
-                  Cabs: ["\\Cmod{#1}", 1],
-                  vmeas: ["\\abs{#1}", 1],
-                  tvnorm: ["\\norm{#1}", 1],
-          },
-          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
-        },
-      };
-    </script>
-    <!--
-    <script>
-      console.log("here");
-MathJax.Hub.Config({
-TeX: {Augment: {
-Definitions: {macros: {nicefrac: 'NiceFrac'}},
-Parse: {prototype: {
-  NiceFrac: function (name) {
+  <!-- BEGIN MATHJAX -->
+  <script src="../mathjax/polyfill.min.js"></script>
+  <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {Augment: {
+      Definitions: {macros: {nicefrac: 'XFrac'}},
+      Parse: {prototype: {
+        XFrac: function (name) {
           var num = this.ParseArg(name);
-                  var den = this.ParseArg(name);
-                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-                                }
-                                    }}
-                                      }}
-                                      });
-    </script>
-    -->
-    <script src="../mathjax/polyfill.min.js"></script>
-    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
-    <!--
-      <link rel="stylesheet" href="../katex/katex.min.css">
-      <script src="../katex/katex.min.js"></script>
-      <script src="../katex/auto-render.min.js"></script>
-      <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(
-          document.body,
-          {
-            delimiters: [
-              {left: "$$", right: "$$", display: true},
-              {left: "$", right: "$", display: false},
-            ],
-          },
-        );
-      });
-    </script>
-    -->
-    <script src="../cytoscape/cytoscape.min.js"></script>
-
-    <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Many problems simplify if the graph involved is chordal.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="paths"><h1 class="sheet">2. Paths</h1></div><div class="sheet-listing"><p class="sheet"> Let $G$ be an undirected graph. A \t{chord} in a path $p$ of $G$ is an edge between two non-consecutive vertices of $p$. So a chord of the path $(v_1, v_1, \dots, v_{k})$ is an edge $\set{v_i, v_j}$ with $\intabs{j - i} > 1$.</p></div><div class="sheet-listing"><p class="sheet"> We interpret a chord as a "one-edge shortcut" between two vertices of a path. If a path $p$ has a chord, it can be reduced to a shorter path $p'$ by "skipping" vertices. In other words, the shortest path between two vertices is chordless. However, a chordless path need not be a shortest path. See Figure~\ref{figure:chordal_graphs:chords}.</p></div><div class="sheet-listing" id="graphs"><h1 class="sheet">3. Graphs</h1></div><div class="sheet-listing"><p class="sheet"> A chord of a cycle $(v_1, v_2, \dots, v_{k-1}, v_1)$ is an edge $\set{v_i, v_j}$ with $(j - i) \mod k > 1$. An undirected graph $G$ is \t{chordal} if every cycle with more than three edges has a chord.</p></div><div class="sheet-listing"><p class="sheet"> If $G$ is chordal, every cycle in $G$ can be reduced to a cycle of length three. We sometimes call a cycle of length three a \t{triangle}. For this reason, chordal graphs are also sometimes called \t{triangulated graphs}. Other terminology includes \t{rigid-circuit graphs}, \t{triangulated graphs}, \t{perfect elimination graphs}, \t{decomposable graphs}.\footnote{See Vanenberghe and Anderson, 2014.}</p></div><div class="sheet-listing"><p class="sheet"> The last graph in Figure~\ref{figure:chordal_graphs:chords} is not chordal because the cycle $(a, b, d, c, a)$ has length four and no chord. Adding the edge $\set{b, c}$ or $\set{a, d}$ would make the graph chordal An immediate consequence of the definition that $G$ be chordal is that any subgraph of $G$ is chordal.</p></div><div class="sheet-listing" id="simple_examples"><h1 class="sheet">4. Simple Examples</h1></div><div class="sheet-listing"><p class="sheet"> Since trees and forests have no cycles, they are chordal. Similarly, any graph with no cycles longer than three edges are trivially chordal. Such graphs are sometimes called \t{cactus graphs}. The complete graphs are also trivially chordal.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \includegraphics[width=0.9\textwidth]{graphics_included/chords} \caption{ The edge $\set{e, d}$ is a chord in the path $(a, e, c, d)$ of the first graph. The path $(a, v, d, c)$ is chordless. The edge $\set{a, e}$ is a chord in the cycle $(a, v, e, c, a)$ of the second graph. The cycle $(a, b, d, c, a)$ is chordless. } \label{figure:chordal_graphs:chords} \end{figure}</p></div>
-    </div>
-
-    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
-
-    <div id="wrapper1">
-      <canvas id="page1" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper2">
-      <canvas id="page2" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper3">
-    <canvas id="page3" style="direction: ltr;" onclick="location.href='./chordal_graphs-graph.pdf'"></canvas>
-    </div>
-      <script id="script">
-        // If absolute URL from the remote server is provided, configure the CORS
-        // header on that server.
-        var url = './chordal_graphs.pdf';
-
-        // The workerSrc property shall be specified.
-        pdfjsLib.GlobalWorkerOptions.workerSrc =
-          '../pdfjs/build/pdf.worker.js';
-
-        var PRINT_RESOLUTION = 300;
-
-        function render(page, wrapper, canvas) {
-          var scale = 7;
-          var viewport = page.getViewport({scale: scale});
-          var context = canvas.getContext('2d');
-
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-          canvas.style.width = "100%";
-          canvas.style.height = "100%";
-          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
-          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
-
-          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
-          // who knows if this works...
-          context.imageSmoothingEnabled = false;
-          context.webkitImageSmoothingEnabled = false;
-          context.mozImageSmoothingEnabled = false;
-          context.oImageSmoothingEnabled = false;
-
-          /*
-
-          if (window.devicePixelRatio > 1) {
-            var canvasWidth = canvas.width;
-            var canvasHeight = canvas.height;
-
-            canvas.width = canvasWidth * window.devicePixelRatio;
-            canvas.height = canvasHeight * window.devicePixelRatio;
-            canvas.style.width = canvasWidth + "px";
-            canvas.style.height = canvasHeight + "px";
-
-            context.scale(window.devicePixelRatio, window.devicePixelRatio);
-          }
-          //end see
-          */
-
-          var renderContext = {
-            canvasContext: context,
-            viewport: viewport
-          };
-          page.render(renderContext);
+          var den = this.ParseArg(name);
+          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
         }
-
-        // Asynchronous download PDF
-        var loadingTask = pdfjsLib.getDocument(url);
-        loadingTask.promise.then(function(pdf) {
-
-          // Fetch the first page
-          pdf.getPage(2).then(function(page) {
-              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
-          });
-
-          // Fetch the second page
-          pdf.getPage(3).then(function(page) {
-            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
-          });
-
-          // Fetch the third page
-          pdf.getPage(4).then(function(page) {
-            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
-          });
-        });
-      </script>
-
-    <!-- PAGES -->
-    <!--
-    <iframe id="sheet-pdf" src="./chordal_graphs.pdf#page=2">
-    </iframe>
-    <iframe id="sheet-pdf" src="./chordal_graphs.pdf#page=3">
-    </iframe>
-    -->
-    <!-- PAGES -->
-
-    </div>
-
-    <!-- <iframe id="graph-pdf" src="./chordal_graphs-graph.pdf">
-    </iframe>
-    -->
+      }}
+    }}
+  });
+  </script>
+  <script>
+    MathJax = {
+      loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
+      tex: {
+        inlineMath: [
+            ['\\(', '\\)'],
+            ['$', '$']
+          ],
+        displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]']
+          ],
+        macros: {
+                powerset: ["2^{#1}", 1],
+                CV: "\\mathcal{V}",
+                ceil: ["\\lceil #1 \\rceil", 1],
+                num: ["\\abs{#1}",1],
+                card: ["\\abs{#1}",1],
+                R: ["\\mathbfsf{R}"],
+                C: ["\\mathbfsf{C}"],
+                N: ["\\mathbfsf{N}"],
+                Q: ["\\mathbfsf{Q}"],
+                S: ["\\mathbfsf{S}"],
+                Z: ["\\mathbfsf{Z}"],
+                F: ["\\mathbfsf{F}"],
+                E: ["\\mathbfsf{E}"],
+                aff: ["\\mathsf{aff}"],
+                upto: ["\\set{1,\\dots,#1}", 1],
+                eqc: ["[#1]", 1],
+                adj: ["\\mathword{adj}"],
+                def: ["\\mathword{def}"],
+                pa: ["\\mathword{pa}"],
+                ch: ["\\mathword{ch}"],
+                str: ["\\mathword{str}"],
+                textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                seq: ["(#1_n)_{n}", 1],
+                seqt: ["#1_n", 1],
+                union: ["\\cup"],
+                intersection: ["\\cap"],
+                dom: ["\\mathword{dom}"],
+                range: ["\\mathword{range}"],
+                ran: ["\\mathword{range}"],
+                relcomplement: ["C_{#2}({#1})", 2],
+                complement: ["C({#1})", 1],
+                re: ["\\mathword{Re}"],
+                im: ["\\mathword{Im}"],
+                dual: ["{#1}^*", 1],
+                dnorm: ["\\norm{#1}_*", 1],
+                Cmod: ["\\abs{#1}", 1],
+                Cabs: ["\\Cmod{#1}", 1],
+                vmeas: ["\\abs{#1}", 1],
+                tvnorm: ["\\norm{#1}", 1],
+                nneri: ["\\nneri", 1],
+                nneri: ["[0,\\infty]"],
+                eri: ["[-\\infty,\\infty]"],
+                Rbar: ["\\bar{\\R}"],
+                pushforward: ["#1 \\circ #2^{-1}", 2],
+                rvlaw: ["{#1}_{#2}", 2],
+                var: ["\\mathword{var}"],
+                cov: ["\\mathword{cov}"],
+                std: ["\\mathword{std}"],
+                Cconj: ["#1^{*}", 1],
+                Cconjp: ["\\left(#1\\right))^{*}", 1],
+                            },
+        packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+      },
+    };
+  </script>
 
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
@@ -321,6 +99,7 @@ Parse: {prototype: {
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
+\(\newcommand{\barray}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
 \(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
@@ -1169,6 +948,212 @@ Parse: {prototype: {
 
 
 
+
+
+    <!-- BEGIN OLD -->
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./chordal_graphs.pdf#page=2'"> Chordal Graphs </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./chordal_graphs.pdf#page=2'" onkeypress="location.href='./chordal_graphs.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./chordal_graphs-graph.pdf'" onkeypress="location.href='./chordal_graphs-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./integer_divisors.html'" onkeypress="location.href='./integer_divisors.html'">
+              <span>
+                Integer Divisors
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./integral_line.html'" onkeypress="location.href='./integral_line.html'">
+              <span>
+                Integral Line
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./trees.html'" onkeypress="location.href='./trees.html'">
+              <span>
+                Trees
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./undirected_subgraphs.html'" onkeypress="location.href='./undirected_subgraphs.html'">
+              <span>
+                Undirected Subgraphs
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./filled_graphs.html'" onkeypress="location.href='./filled_graphs.html'">
+            <span>
+            Filled Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./interval_graphs.html'" onkeypress="location.href='./interval_graphs.html'">
+            <span>
+            Interval Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./k-trees.html'" onkeypress="location.href='./k-trees.html'">
+            <span>
+            K-Trees
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./sparsity_patterns.html'" onkeypress="location.href='./sparsity_patterns.html'">
+            <span>
+            Sparsity Patterns
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./split_graphs.html'" onkeypress="location.href='./split_graphs.html'">
+            <span>
+            Split Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./vertex_separators.html'" onkeypress="location.href='./vertex_separators.html'">
+            <span>
+            Vertex Separators
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Many problems simplify if the graph involved is chordal.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="paths"><h1 class="sheet">2. Paths</h1></div><div class="sheet-listing"><p class="sheet"> Let $G$ be an undirected graph. A \t{chord} in a path $p$ of $G$ is an edge between two non-consecutive vertices of $p$. So a chord of the path $(v_1, v_1, \dots, v_{k})$ is an edge $\set{v_i, v_j}$ with $\intabs{j - i} > 1$.</p></div><div class="sheet-listing"><p class="sheet"> We interpret a chord as a "one-edge shortcut" between two vertices of a path. If a path $p$ has a chord, it can be reduced to a shorter path $p'$ by "skipping" vertices. In other words, the shortest path between two vertices is chordless. However, a chordless path need not be a shortest path. See Figure~\ref{figure:chordal_graphs:chords}.</p></div><div class="sheet-listing" id="graphs"><h1 class="sheet">3. Graphs</h1></div><div class="sheet-listing"><p class="sheet"> A chord of a cycle $(v_1, v_2, \dots, v_{k-1}, v_1)$ is an edge $\set{v_i, v_j}$ with $(j - i) \mod k > 1$. An undirected graph $G$ is \t{chordal} if every cycle with more than three edges has a chord.</p></div><div class="sheet-listing"><p class="sheet"> If $G$ is chordal, every cycle in $G$ can be reduced to a cycle of length three. We sometimes call a cycle of length three a \t{triangle}. For this reason, chordal graphs are also sometimes called \t{triangulated graphs}. Other terminology includes \t{rigid-circuit graphs}, \t{triangulated graphs}, \t{perfect elimination graphs}, \t{decomposable graphs}.\footnote{See Vanenberghe and Anderson, 2014.}</p></div><div class="sheet-listing"><p class="sheet"> The last graph in Figure~\ref{figure:chordal_graphs:chords} is not chordal because the cycle $(a, b, d, c, a)$ has length four and no chord. Adding the edge $\set{b, c}$ or $\set{a, d}$ would make the graph chordal An immediate consequence of the definition that $G$ be chordal is that any subgraph of $G$ is chordal.</p></div><div class="sheet-listing" id="simple_examples"><h1 class="sheet">4. Simple Examples</h1></div><div class="sheet-listing"><p class="sheet"> Since trees and forests have no cycles, they are chordal. Similarly, any graph with no cycles longer than three edges are trivially chordal. Such graphs are sometimes called \t{cactus graphs}. The complete graphs are also trivially chordal.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \includegraphics[width=0.9\textwidth]{graphics_included/chords} \caption{ The edge $\set{e, d}$ is a chord in the path $(a, e, c, d)$ of the first graph. The path $(a, v, d, c)$ is chordless. The edge $\set{a, e}$ is a chord in the cycle $(a, v, e, c, a)$ of the second graph. The cycle $(a, b, d, c, a)$ is chordless. } \label{figure:chordal_graphs:chords} \end{figure}</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./chordal_graphs-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './chordal_graphs.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./chordal_graphs.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./chordal_graphs.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./chordal_graphs-graph.pdf">
+    </iframe>
+    -->
+
+
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
   </div>
@@ -1219,7 +1204,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 8d2bf0568.
+      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
     </span>
   </body>
 </html>

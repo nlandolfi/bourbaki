@@ -6,286 +6,92 @@
     <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
-    <div class="header">
-      <span class="listing no-border" id="header-trademark-and-title">
-        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
-        <span id="header-title" onclick="location.href='./random_vectors.pdf#page=2'"> Random Vectors </span>
-      </span>
-    </div>
-    <div class="subheader">
-      <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./random_vectors.pdf#page=2'" onkeypress="location.href='./random_vectors.pdf#page=2'">
-        <span> Sheet PDF </span>
-        <span class="caret">›</span>
-      </div>
-      <div class="need" tabindex="0" onclick="location.href='./random_vectors-graph.pdf'" onkeypress="location.href='./random_vectors-graph.pdf'">
-        <span> Graph PDF </span>
-        <span class="caret">›</span>
-      </div>
-      
-        <div disabled class="need label"> Needs: </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./matrices.html'" onkeypress="location.href='./matrices.html'">
-              <span>
-                Matrices
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./n-dimensional_space.html'" onkeypress="location.href='./n-dimensional_space.html'">
-              <span>
-                N-Dimensional Space
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./random_variables.html'" onkeypress="location.href='./random_variables.html'">
-              <span>
-                Random Variables
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-      
-      
-        <div disabled class="need label"> Needed by: </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./maximum_conditional_estimates.html'" onkeypress="location.href='./maximum_conditional_estimates.html'">
-            <span>
-            Maximum Conditional Estimates
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./random_functions.html'" onkeypress="location.href='./random_functions.html'">
-            <span>
-            Random Functions
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./rooted_tree_linear_cascades.html'" onkeypress="location.href='./rooted_tree_linear_cascades.html'">
-            <span>
-            Rooted Tree Linear Cascades
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-      
-    </div>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {Augment: {
-    Definitions: {macros: {nicefrac: 'XFrac'}},
-    Parse: {prototype: {
-      XFrac: function (name) {
-        var num = this.ParseArg(name);
-        var den = this.ParseArg(name);
-        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-      }
-    }}
-  }}
-});
-</script>
-    <script>
-      MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
-        tex: {
-          inlineMath: [
-              ['\\(', '\\)'],
-              ['$', '$']
-            ],
-          displayMath: [
-              ['$$', '$$'],
-              ['\\[', '\\]']
-            ],
-          macros: {
-                  powerset: ["2^{#1}", 1],
-                  CV: "\\mathcal{V}",
-                  ceil: ["\\lceil #1 \\rceil", 1],
-                  num: ["\\abs{#1}",1],
-                  R: ["\\mathbfsf{R}"],
-                  C: ["\\mathbfsf{C}"],
-                  N: ["\\mathbfsf{N}"],
-                  Q: ["\\mathbfsf{Q}"],
-                  S: ["\\mathbfsf{S}"],
-                  Z: ["\\mathbfsf{Z}"],
-                  F: ["\\mathbfsf{F}"],
-                  E: ["\\mathbfsf{E}"],
-                  aff: ["\\mathsf{aff}"],
-                  upto: ["\\set{1,\\dots,#1}", 1],
-                  eqc: ["[#1]", 1],
-                  adj: ["\\mathword{adj}"],
-                  def: ["\\mathword{def}"],
-                  pa: ["\\mathword{pa}"],
-                  ch: ["\\mathword{ch}"],
-                  str: ["\\mathword{str}"],
-                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
-                  seq: ["(#1_n)_{n}", 1],
-                  seqt: ["#1_n", 1],
-                  union: ["\\cup"],
-                  intersection: ["\\cap"],
-                  dom: ["\\mathword{dom}"],
-                  range: ["\\mathword{range}"],
-                  ran: ["\\mathword{range}"],
-                  relcomplement: ["C_{#2}({#1})", 2],
-                  complement: ["C({#1})", 1],
-                  re: ["\\mathword{Re}"],
-                  im: ["\\mathword{Im}"],
-                  dual: ["{#1}^*", 1],
-                  dnorm: ["\norm{#1}_*", 1],
-                  Cmod: ["\\abs{#1}", 1],
-                  Cabs: ["\\Cmod{#1}", 1],
-                  vmeas: ["\\abs{#1}", 1],
-                  tvnorm: ["\\norm{#1}", 1],
-          },
-          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
-        },
-      };
-    </script>
-    <!--
-    <script>
-      console.log("here");
-MathJax.Hub.Config({
-TeX: {Augment: {
-Definitions: {macros: {nicefrac: 'NiceFrac'}},
-Parse: {prototype: {
-  NiceFrac: function (name) {
+  <!-- BEGIN MATHJAX -->
+  <script src="../mathjax/polyfill.min.js"></script>
+  <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {Augment: {
+      Definitions: {macros: {nicefrac: 'XFrac'}},
+      Parse: {prototype: {
+        XFrac: function (name) {
           var num = this.ParseArg(name);
-                  var den = this.ParseArg(name);
-                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-                                }
-                                    }}
-                                      }}
-                                      });
-    </script>
-    -->
-    <script src="../mathjax/polyfill.min.js"></script>
-    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
-    <!--
-      <link rel="stylesheet" href="../katex/katex.min.css">
-      <script src="../katex/katex.min.js"></script>
-      <script src="../katex/auto-render.min.js"></script>
-      <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(
-          document.body,
-          {
-            delimiters: [
-              {left: "$$", right: "$$", display: true},
-              {left: "$", right: "$", display: false},
-            ],
-          },
-        );
-      });
-    </script>
-    -->
-    <script src="../cytoscape/cytoscape.min.js"></script>
-
-    <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{random vector} is a random variables whose values are vectors.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $x: \Omega  \to \R ^n$ be a random vector, so that \[ x(\omega ) = \bmat{x_1(\omega ) \\ x_2(\omega ) \\ \cdots \\ x_3(\omega )}. \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
-    </div>
-
-    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
-
-    <div id="wrapper1">
-      <canvas id="page1" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper2">
-      <canvas id="page2" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper3">
-    <canvas id="page3" style="direction: ltr;" onclick="location.href='./random_vectors-graph.pdf'"></canvas>
-    </div>
-      <script id="script">
-        // If absolute URL from the remote server is provided, configure the CORS
-        // header on that server.
-        var url = './random_vectors.pdf';
-
-        // The workerSrc property shall be specified.
-        pdfjsLib.GlobalWorkerOptions.workerSrc =
-          '../pdfjs/build/pdf.worker.js';
-
-        var PRINT_RESOLUTION = 300;
-
-        function render(page, wrapper, canvas) {
-          var scale = 7;
-          var viewport = page.getViewport({scale: scale});
-          var context = canvas.getContext('2d');
-
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-          canvas.style.width = "100%";
-          canvas.style.height = "100%";
-          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
-          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
-
-          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
-          // who knows if this works...
-          context.imageSmoothingEnabled = false;
-          context.webkitImageSmoothingEnabled = false;
-          context.mozImageSmoothingEnabled = false;
-          context.oImageSmoothingEnabled = false;
-
-          /*
-
-          if (window.devicePixelRatio > 1) {
-            var canvasWidth = canvas.width;
-            var canvasHeight = canvas.height;
-
-            canvas.width = canvasWidth * window.devicePixelRatio;
-            canvas.height = canvasHeight * window.devicePixelRatio;
-            canvas.style.width = canvasWidth + "px";
-            canvas.style.height = canvasHeight + "px";
-
-            context.scale(window.devicePixelRatio, window.devicePixelRatio);
-          }
-          //end see
-          */
-
-          var renderContext = {
-            canvasContext: context,
-            viewport: viewport
-          };
-          page.render(renderContext);
+          var den = this.ParseArg(name);
+          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
         }
-
-        // Asynchronous download PDF
-        var loadingTask = pdfjsLib.getDocument(url);
-        loadingTask.promise.then(function(pdf) {
-
-          // Fetch the first page
-          pdf.getPage(2).then(function(page) {
-              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
-          });
-
-          // Fetch the second page
-          pdf.getPage(3).then(function(page) {
-            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
-          });
-
-          // Fetch the third page
-          pdf.getPage(4).then(function(page) {
-            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
-          });
-        });
-      </script>
-
-    <!-- PAGES -->
-    <!--
-    <iframe id="sheet-pdf" src="./random_vectors.pdf#page=2">
-    </iframe>
-    <iframe id="sheet-pdf" src="./random_vectors.pdf#page=3">
-    </iframe>
-    -->
-    <!-- PAGES -->
-
-    </div>
-
-    <!-- <iframe id="graph-pdf" src="./random_vectors-graph.pdf">
-    </iframe>
-    -->
+      }}
+    }}
+  });
+  </script>
+  <script>
+    MathJax = {
+      loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
+      tex: {
+        inlineMath: [
+            ['\\(', '\\)'],
+            ['$', '$']
+          ],
+        displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]']
+          ],
+        macros: {
+                powerset: ["2^{#1}", 1],
+                CV: "\\mathcal{V}",
+                ceil: ["\\lceil #1 \\rceil", 1],
+                num: ["\\abs{#1}",1],
+                card: ["\\abs{#1}",1],
+                R: ["\\mathbfsf{R}"],
+                C: ["\\mathbfsf{C}"],
+                N: ["\\mathbfsf{N}"],
+                Q: ["\\mathbfsf{Q}"],
+                S: ["\\mathbfsf{S}"],
+                Z: ["\\mathbfsf{Z}"],
+                F: ["\\mathbfsf{F}"],
+                E: ["\\mathbfsf{E}"],
+                aff: ["\\mathsf{aff}"],
+                upto: ["\\set{1,\\dots,#1}", 1],
+                eqc: ["[#1]", 1],
+                adj: ["\\mathword{adj}"],
+                def: ["\\mathword{def}"],
+                pa: ["\\mathword{pa}"],
+                ch: ["\\mathword{ch}"],
+                str: ["\\mathword{str}"],
+                textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                seq: ["(#1_n)_{n}", 1],
+                seqt: ["#1_n", 1],
+                union: ["\\cup"],
+                intersection: ["\\cap"],
+                dom: ["\\mathword{dom}"],
+                range: ["\\mathword{range}"],
+                ran: ["\\mathword{range}"],
+                relcomplement: ["C_{#2}({#1})", 2],
+                complement: ["C({#1})", 1],
+                re: ["\\mathword{Re}"],
+                im: ["\\mathword{Im}"],
+                dual: ["{#1}^*", 1],
+                dnorm: ["\\norm{#1}_*", 1],
+                Cmod: ["\\abs{#1}", 1],
+                Cabs: ["\\Cmod{#1}", 1],
+                vmeas: ["\\abs{#1}", 1],
+                tvnorm: ["\\norm{#1}", 1],
+                nneri: ["\\nneri", 1],
+                nneri: ["[0,\\infty]"],
+                eri: ["[-\\infty,\\infty]"],
+                Rbar: ["\\bar{\\R}"],
+                pushforward: ["#1 \\circ #2^{-1}", 2],
+                rvlaw: ["{#1}_{#2}", 2],
+                var: ["\\mathword{var}"],
+                cov: ["\\mathword{cov}"],
+                std: ["\\mathword{std}"],
+                Cconj: ["#1^{*}", 1],
+                Cconjp: ["\\left(#1\\right))^{*}", 1],
+                            },
+        packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+      },
+    };
+  </script>
 
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
@@ -293,13 +99,46 @@ Parse: {prototype: {
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
+\(\newcommand{\barray}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
 \(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
     </span>
 
     <span style="display:none">
-      <!-- 119 0 -->
+      <!-- 136 0 -->
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
+
+\newcommand{\Z}{\mathbfsf{Z}}
+
+<!-- % objects macros -->
+
+% objects macros
 
 <!-- \newcounter{caccounts} -->
 
@@ -529,9 +368,17 @@ Parse: {prototype: {
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- % objects macros -->
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-% objects macros
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
 
@@ -576,6 +423,10 @@ Parse: {prototype: {
 <!-- \newcommand{\eqc}[1]{[#1]} -->
 
 \newcommand{\eqc}[1]{[#1]}
+
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
 
 <!-- % absolute_value macros -->
 
@@ -697,34 +548,6 @@ Parse: {prototype: {
 
 \renewcommand{\complement}[1]{C({#1})}
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
-
-\newcommand{\Z}{\mathbfsf{Z}}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 <!-- \newcommand{\dom}{\mathword{dom}} -->
 
 \newcommand{\dom}{\mathword{dom}}
@@ -736,34 +559,6 @@ Parse: {prototype: {
 <!-- \newcommand{\range}{\ran} -->
 
 \newcommand{\range}{\ran}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\symdiff}{+} -->
-
-\newcommand{\symdiff}{+}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1041,6 +836,38 @@ Parse: {prototype: {
 
 
 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\R}{\mathbfsf{R}} -->
+
+\newcommand{\R}{\mathbfsf{R}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
 <!-- \newcommand{\id}{\mathword{id}} -->
 
 \newcommand{\id}{\mathword{id}}
@@ -1052,10 +879,6 @@ Parse: {prototype: {
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\R}{\mathbfsf{R}} -->
-
-\newcommand{\R}{\mathbfsf{R}}
 
 <!-- \newcommand{\product}{\prod} -->
 
@@ -1076,10 +899,6 @@ Parse: {prototype: {
 <!-- \newcommand{\bintersection}{\bigcap} -->
 
 \newcommand{\bintersection}{\bigcap}
-
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
-
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
 
@@ -1148,6 +967,78 @@ Parse: {prototype: {
 <!-- \newcommand{\goesto}{\longrightarrow} -->
 
 \newcommand{\goesto}{\longrightarrow}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \norm{x} for |x| 11/05/2021 I changed this back to ||x||, since that is alsmost always what I want. -->
+
+% use \norm{x} for |x| 11/05/2021 I changed this back to ||x||, since that is alsmost always what I want.
+
+<!-- % use \norm* for autosizing delimiters -->
+
+% use \norm* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiter{\norm}{\lVert}{\rVert} -->
+
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+
+<!--  -->
+
+
+
+<!-- % use \normm{x} for ||x|| -->
+
+% use \normm{x} for ||x||
+
+<!-- % use \normm* for autosizing delimiters -->
+
+% use \normm* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiter{\normm}{\lVert}{\rVert} -->
+
+\DeclarePairedDelimiter{\normm}{\lVert}{\rVert}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
@@ -1289,33 +1180,9 @@ Parse: {prototype: {
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
-
-\newcommand{\Q}{\mathbfsf{Q}}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- \def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]} -->
 
@@ -1389,77 +1256,9 @@ Parse: {prototype: {
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\F}{\mathbfsf{F}} -->
-
-\newcommand{\F}{\mathbfsf{F}}
-
 <!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
 
 \newcommand{\RVec}[1]{\Vec{\R}{#1}}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\PM}{\mathbfsf{P}} -->
-
-\newcommand{\PM}{\mathbfsf{P}}
-
-<!-- \newcommand{\QM}{\mathbfsf{Q}} -->
-
-\newcommand{\QM}{\mathbfsf{Q}}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \renewcommand{\Vec}[2]{{#1}^{#2}} -->
-
-\renewcommand{\Vec}[2]{{#1}^{#2}}
 
 <!-- \newcommand{\RMat}[2]{\R^{#1 \cross #2}} -->
 
@@ -1573,17 +1372,109 @@ Parse: {prototype: {
 
 
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- % use \innerproduct{x} for ||x|| ;; 11/05/2021 I don't think this is true... -->
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% use \innerproduct{x} for ||x|| ;; 11/05/2021 I don't think this is true...
 
-<!-- \newcommand{\Mat}[3]{#1^{#2 \cross #3}} -->
+<!-- % use \innerproduct* for autosizing delimiters -->
 
-\newcommand{\Mat}[3]{#1^{#2 \cross #3}}
+% use \innerproduct* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1} -->
+
+\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}
+
+<!-- \newcommand{\ip}[1]{\innerproduct{#1}} -->
+
+\newcommand{\ip}[1]{\innerproduct{#1}}
 
 <!--  -->
 
 
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\PM}{\mathbfsf{P}} -->
+
+\newcommand{\PM}{\mathbfsf{P}}
+
+<!-- \newcommand{\QM}{\mathbfsf{Q}} -->
+
+\newcommand{\QM}{\mathbfsf{Q}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\tp}{\top} -->
+
+\newcommand{\tp}{\top}
+
+<!-- \newcommand{\transpose}[1]{{#1}^{\tp}} -->
+
+\newcommand{\transpose}[1]{{#1}^{\tp}}
+
+<!-- \newcommand{\transposep}[1]{\left({#1}\right)^{\tp}} -->
+
+\newcommand{\transposep}[1]{\left({#1}\right)^{\tp}}
+
+<!-- \newcommand{\tranpose}[1]{\transpose{#1}} -->
+
+\newcommand{\tranpose}[1]{\transpose{#1}}
+
+<!-- \newcommand{\tranposep}[1]{\transposep{#1}} -->
+
+\newcommand{\tranposep}[1]{\transposep{#1}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     </span>
 
 
@@ -1622,11 +1513,11 @@ Parse: {prototype: {
 }
 
 .lit {
-  margin: 0 auto 1in 0;
+  margin: 0 0 1in 0;
   font-family: Computer Modern Serif;
   max-width: 6in;
   text-align: justify;
-  padding: 0 0.75in 0 0;
+  padding: 0;
   min-height: 11in;
   background: white;
   line-height: 1.4em;
@@ -1637,6 +1528,13 @@ Parse: {prototype: {
   flex-direction: column; 
   margin-top: 0.3in;
   min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1650,38 +1548,38 @@ Parse: {prototype: {
   .lit {
     background: black;
   }
+  .search2 {
+    background: black;
+  }
 }
 
 </style>
 
 <div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
   <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
-      <img style="width: 20px" src="../trademark.jpg">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
   </div>
-      <div style="display: flex; flex-direction: row;">
-      <div style="padding: 20px">
-
-        <div class="sidebar2">
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
         <div class="needlabel2"> Needs: </div>
         
-          
-              <div class="need2" tabindex="0" onclick="location.href='./matrices.html'" onkeypress="location.href='./matrices.html'">
-                <span>
-                  Matrices
-                </span>
-                <span class="caret">›</span>
-              </div>
-          
-              <div class="need2" tabindex="0" onclick="location.href='./n-dimensional_space.html'" onkeypress="location.href='./n-dimensional_space.html'">
-                <span>
-                  N-Dimensional Space
-                </span>
-                <span class="caret">›</span>
-              </div>
           
               <div class="need2" tabindex="0" onclick="location.href='./random_variables.html'" onkeypress="location.href='./random_variables.html'">
                 <span>
                   Random Variables
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./vectors_as_matrices.html'" onkeypress="location.href='./vectors_as_matrices.html'">
+                <span>
+                  Vectors as Matrices
                 </span>
                 <span class="caret">›</span>
               </div>
@@ -1729,8 +1627,7 @@ Parse: {prototype: {
       <!--
 !name:random_vectors
 !need:random_variables
-!need:n-dimensional_space
-!need:matrices
+!need:vectors_as_matrices
 -->
 
 <h1>Definition</h1>
@@ -1750,11 +1647,182 @@ Parse: {prototype: {
     x_3(\omega )}.
   \]</p></span>
 </p>
-<hr style='margin-top:0.5in'><ol class='footnotes'></ol>
+
     </div>
-    </div>
-      </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
     
+
+
+
+    <!-- BEGIN OLD -->
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./random_vectors.pdf#page=2'"> Random Vectors </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./random_vectors.pdf#page=2'" onkeypress="location.href='./random_vectors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./random_vectors-graph.pdf'" onkeypress="location.href='./random_vectors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./random_variables.html'" onkeypress="location.href='./random_variables.html'">
+              <span>
+                Random Variables
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./vectors_as_matrices.html'" onkeypress="location.href='./vectors_as_matrices.html'">
+              <span>
+                Vectors as Matrices
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./maximum_conditional_estimates.html'" onkeypress="location.href='./maximum_conditional_estimates.html'">
+            <span>
+            Maximum Conditional Estimates
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./random_functions.html'" onkeypress="location.href='./random_functions.html'">
+            <span>
+            Random Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./rooted_tree_linear_cascades.html'" onkeypress="location.href='./rooted_tree_linear_cascades.html'">
+            <span>
+            Rooted Tree Linear Cascades
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{random vector} is a random variables whose values are vectors.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $x: \Omega  \to \R ^n$ be a random vector, so that \[ x(\omega ) = \bmat{x_1(\omega ) \\ x_2(\omega ) \\ \cdots \\ x_3(\omega )}. \]</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./random_vectors-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './random_vectors.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./random_vectors.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./random_vectors.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./random_vectors-graph.pdf">
+    </iframe>
+    -->
+
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1806,7 +1874,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 8d2bf0568.
+      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
     </span>
   </body>
 </html>

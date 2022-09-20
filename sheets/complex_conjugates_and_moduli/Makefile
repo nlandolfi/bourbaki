@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make complex_conjugates_and_moduli.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 complex_conjugates_and_moduli.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > complex_conjugates_and_moduli.tex
 

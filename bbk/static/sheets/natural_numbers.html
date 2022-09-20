@@ -6,300 +6,92 @@
     <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
-    <div class="header">
-      <span class="listing no-border" id="header-trademark-and-title">
-        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
-        <span id="header-title" onclick="location.href='./natural_numbers.pdf#page=2'"> Natural Numbers </span>
-      </span>
-    </div>
-    <div class="subheader">
-      <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./natural_numbers.pdf#page=2'" onkeypress="location.href='./natural_numbers.pdf#page=2'">
-        <span> Sheet PDF </span>
-        <span class="caret">›</span>
-      </div>
-      <div class="need" tabindex="0" onclick="location.href='./natural_numbers-graph.pdf'" onkeypress="location.href='./natural_numbers-graph.pdf'">
-        <span> Graph PDF </span>
-        <span class="caret">›</span>
-      </div>
-      
-        <div disabled class="need label"> Needs: </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./intersection_of_empty_set.html'" onkeypress="location.href='./intersection_of_empty_set.html'">
-              <span>
-                Intersection of Empty Set
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./set_differences.html'" onkeypress="location.href='./set_differences.html'">
-              <span>
-                Set Differences
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./successor_sets.html'" onkeypress="location.href='./successor_sets.html'">
-              <span>
-                Successor Sets
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-      
-      
-        <div disabled class="need label"> Needed by: </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./characteristic_functions.html'" onkeypress="location.href='./characteristic_functions.html'">
-            <span>
-            Characteristic Functions
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./integer_numbers.html'" onkeypress="location.href='./integer_numbers.html'">
-            <span>
-            Integer Numbers
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./natural_induction.html'" onkeypress="location.href='./natural_induction.html'">
-            <span>
-            Natural Induction
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./natural_numbers_exercises.html'" onkeypress="location.href='./natural_numbers_exercises.html'">
-            <span>
-            Natural Numbers Exercises
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
-            <span>
-            Uncertain Outcomes
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-      
-    </div>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {Augment: {
-    Definitions: {macros: {nicefrac: 'XFrac'}},
-    Parse: {prototype: {
-      XFrac: function (name) {
-        var num = this.ParseArg(name);
-        var den = this.ParseArg(name);
-        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-      }
-    }}
-  }}
-});
-</script>
-    <script>
-      MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
-        tex: {
-          inlineMath: [
-              ['\\(', '\\)'],
-              ['$', '$']
-            ],
-          displayMath: [
-              ['$$', '$$'],
-              ['\\[', '\\]']
-            ],
-          macros: {
-                  powerset: ["2^{#1}", 1],
-                  CV: "\\mathcal{V}",
-                  ceil: ["\\lceil #1 \\rceil", 1],
-                  num: ["\\abs{#1}",1],
-                  R: ["\\mathbfsf{R}"],
-                  C: ["\\mathbfsf{C}"],
-                  N: ["\\mathbfsf{N}"],
-                  Q: ["\\mathbfsf{Q}"],
-                  S: ["\\mathbfsf{S}"],
-                  Z: ["\\mathbfsf{Z}"],
-                  F: ["\\mathbfsf{F}"],
-                  E: ["\\mathbfsf{E}"],
-                  aff: ["\\mathsf{aff}"],
-                  upto: ["\\set{1,\\dots,#1}", 1],
-                  eqc: ["[#1]", 1],
-                  adj: ["\\mathword{adj}"],
-                  def: ["\\mathword{def}"],
-                  pa: ["\\mathword{pa}"],
-                  ch: ["\\mathword{ch}"],
-                  str: ["\\mathword{str}"],
-                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
-                  seq: ["(#1_n)_{n}", 1],
-                  seqt: ["#1_n", 1],
-                  union: ["\\cup"],
-                  intersection: ["\\cap"],
-                  dom: ["\\mathword{dom}"],
-                  range: ["\\mathword{range}"],
-                  ran: ["\\mathword{range}"],
-                  relcomplement: ["C_{#2}({#1})", 2],
-                  complement: ["C({#1})", 1],
-                  re: ["\\mathword{Re}"],
-                  im: ["\\mathword{Im}"],
-                  dual: ["{#1}^*", 1],
-                  dnorm: ["\norm{#1}_*", 1],
-                  Cmod: ["\\abs{#1}", 1],
-                  Cabs: ["\\Cmod{#1}", 1],
-                  vmeas: ["\\abs{#1}", 1],
-                  tvnorm: ["\\norm{#1}", 1],
-          },
-          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
-        },
-      };
-    </script>
-    <!--
-    <script>
-      console.log("here");
-MathJax.Hub.Config({
-TeX: {Augment: {
-Definitions: {macros: {nicefrac: 'NiceFrac'}},
-Parse: {prototype: {
-  NiceFrac: function (name) {
+  <!-- BEGIN MATHJAX -->
+  <script src="../mathjax/polyfill.min.js"></script>
+  <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {Augment: {
+      Definitions: {macros: {nicefrac: 'XFrac'}},
+      Parse: {prototype: {
+        XFrac: function (name) {
           var num = this.ParseArg(name);
-                  var den = this.ParseArg(name);
-                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-                                }
-                                    }}
-                                      }}
-                                      });
-    </script>
-    -->
-    <script src="../mathjax/polyfill.min.js"></script>
-    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
-    <!--
-      <link rel="stylesheet" href="../katex/katex.min.css">
-      <script src="../katex/katex.min.js"></script>
-      <script src="../katex/auto-render.min.js"></script>
-      <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(
-          document.body,
-          {
-            delimiters: [
-              {left: "$$", right: "$$", display: true},
-              {left: "$", right: "$", display: false},
-            ],
-          },
-        );
-      });
-    </script>
-    -->
-    <script src="../cytoscape/cytoscape.min.js"></script>
-
-    <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What are numbers? We want to count, forever. Does a set exist which contains zero, and one, and two, and three, and all the rest?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> In \sheetref{successor_sets}{Successor Sets}, we said "and we continue as usual using the English language..." in our definition of zero, and one and two and three. Can this really be carried on and on? We will say yes. We will say that there exists a set which contains zero and contains the successor of each of its elements.</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Natural Numbers]A set which contains 0 and contains the successor of each of its elements exists.\end{principle} This principle is sometimes called the \t{principle of infinity}.</p></div><div class="sheet-listing"><p class="sheet"> We want this set to be unique. The principle says one successor set exists, but not that it is unique. To see that it is unique, notice that the intersection of a nonempty family of successor sets is a successor set. \ifhmode\unskip\fi\footnote{ This account will be expanded in future editions. } Consider the intersection of the family of all successor sets. The intersection is nonempty by the principle of infinity (see \sheetref{intersection_of_empty_set}{Intersection of Empty Set} for this subtlety). The axiom of extension guarantees that this intersection, which is a successor set contained in every other successor set, is unique. We summarize:</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} \label{natural_numbers:proposition:omega}There exists a unique successor smallest successor set.\end{proposition} A \t{natural number} or \t{number} or \t{natural} is an element of this minimal successor set. The \t{set of natural numbers} or \t{natural numbers} or \t{naturals} or \t{numbers} is the minimal successor set.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the set which exists by Proposition~\ref{natural_numbers:proposition:omega} by $\omega $. \ifhmode\unskip\fi\footnote{ We use this notation to follow many authorities on the subject, and to meet the exigencies of time in producing this first edition. Future editions are likely to rework the treatment. } We denote the set of natural numbers without 0 by $\N $, a mnemonic for natural. In other words $\N  = \omega  - \set{0}$. We often denote elements of $\omega $ or $\N $ by $n$, a mnemonic for number, or $m$, a letter close to $n$.</p></div><div class="sheet-listing"><p class="sheet"> We denote the natural numbers up to $n$ by $\upto{n}$. We have defined $n$ so that $n - \set{0} = \upto{n}$.</p></div>
-    </div>
-
-    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
-
-    <div id="wrapper1">
-      <canvas id="page1" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper2">
-      <canvas id="page2" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper3">
-    <canvas id="page3" style="direction: ltr;" onclick="location.href='./natural_numbers-graph.pdf'"></canvas>
-    </div>
-      <script id="script">
-        // If absolute URL from the remote server is provided, configure the CORS
-        // header on that server.
-        var url = './natural_numbers.pdf';
-
-        // The workerSrc property shall be specified.
-        pdfjsLib.GlobalWorkerOptions.workerSrc =
-          '../pdfjs/build/pdf.worker.js';
-
-        var PRINT_RESOLUTION = 300;
-
-        function render(page, wrapper, canvas) {
-          var scale = 7;
-          var viewport = page.getViewport({scale: scale});
-          var context = canvas.getContext('2d');
-
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-          canvas.style.width = "100%";
-          canvas.style.height = "100%";
-          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
-          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
-
-          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
-          // who knows if this works...
-          context.imageSmoothingEnabled = false;
-          context.webkitImageSmoothingEnabled = false;
-          context.mozImageSmoothingEnabled = false;
-          context.oImageSmoothingEnabled = false;
-
-          /*
-
-          if (window.devicePixelRatio > 1) {
-            var canvasWidth = canvas.width;
-            var canvasHeight = canvas.height;
-
-            canvas.width = canvasWidth * window.devicePixelRatio;
-            canvas.height = canvasHeight * window.devicePixelRatio;
-            canvas.style.width = canvasWidth + "px";
-            canvas.style.height = canvasHeight + "px";
-
-            context.scale(window.devicePixelRatio, window.devicePixelRatio);
-          }
-          //end see
-          */
-
-          var renderContext = {
-            canvasContext: context,
-            viewport: viewport
-          };
-          page.render(renderContext);
+          var den = this.ParseArg(name);
+          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
         }
-
-        // Asynchronous download PDF
-        var loadingTask = pdfjsLib.getDocument(url);
-        loadingTask.promise.then(function(pdf) {
-
-          // Fetch the first page
-          pdf.getPage(2).then(function(page) {
-              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
-          });
-
-          // Fetch the second page
-          pdf.getPage(3).then(function(page) {
-            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
-          });
-
-          // Fetch the third page
-          pdf.getPage(4).then(function(page) {
-            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
-          });
-        });
-      </script>
-
-    <!-- PAGES -->
-    <!--
-    <iframe id="sheet-pdf" src="./natural_numbers.pdf#page=2">
-    </iframe>
-    <iframe id="sheet-pdf" src="./natural_numbers.pdf#page=3">
-    </iframe>
-    -->
-    <!-- PAGES -->
-
-    </div>
-
-    <!-- <iframe id="graph-pdf" src="./natural_numbers-graph.pdf">
-    </iframe>
-    -->
+      }}
+    }}
+  });
+  </script>
+  <script>
+    MathJax = {
+      loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
+      tex: {
+        inlineMath: [
+            ['\\(', '\\)'],
+            ['$', '$']
+          ],
+        displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]']
+          ],
+        macros: {
+                powerset: ["2^{#1}", 1],
+                CV: "\\mathcal{V}",
+                ceil: ["\\lceil #1 \\rceil", 1],
+                num: ["\\abs{#1}",1],
+                card: ["\\abs{#1}",1],
+                R: ["\\mathbfsf{R}"],
+                C: ["\\mathbfsf{C}"],
+                N: ["\\mathbfsf{N}"],
+                Q: ["\\mathbfsf{Q}"],
+                S: ["\\mathbfsf{S}"],
+                Z: ["\\mathbfsf{Z}"],
+                F: ["\\mathbfsf{F}"],
+                E: ["\\mathbfsf{E}"],
+                aff: ["\\mathsf{aff}"],
+                upto: ["\\set{1,\\dots,#1}", 1],
+                eqc: ["[#1]", 1],
+                adj: ["\\mathword{adj}"],
+                def: ["\\mathword{def}"],
+                pa: ["\\mathword{pa}"],
+                ch: ["\\mathword{ch}"],
+                str: ["\\mathword{str}"],
+                textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                seq: ["(#1_n)_{n}", 1],
+                seqt: ["#1_n", 1],
+                union: ["\\cup"],
+                intersection: ["\\cap"],
+                dom: ["\\mathword{dom}"],
+                range: ["\\mathword{range}"],
+                ran: ["\\mathword{range}"],
+                relcomplement: ["C_{#2}({#1})", 2],
+                complement: ["C({#1})", 1],
+                re: ["\\mathword{Re}"],
+                im: ["\\mathword{Im}"],
+                dual: ["{#1}^*", 1],
+                dnorm: ["\\norm{#1}_*", 1],
+                Cmod: ["\\abs{#1}", 1],
+                Cabs: ["\\Cmod{#1}", 1],
+                vmeas: ["\\abs{#1}", 1],
+                tvnorm: ["\\norm{#1}", 1],
+                nneri: ["\\nneri", 1],
+                nneri: ["[0,\\infty]"],
+                eri: ["[-\\infty,\\infty]"],
+                Rbar: ["\\bar{\\R}"],
+                pushforward: ["#1 \\circ #2^{-1}", 2],
+                rvlaw: ["{#1}_{#2}", 2],
+                var: ["\\mathword{var}"],
+                cov: ["\\mathword{cov}"],
+                std: ["\\mathword{std}"],
+                Cconj: ["#1^{*}", 1],
+                Cconjp: ["\\left(#1\\right))^{*}", 1],
+                            },
+        packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+      },
+    };
+  </script>
 
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
@@ -307,6 +99,7 @@ Parse: {prototype: {
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
+\(\newcommand{\barray}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
 \(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
@@ -916,11 +709,11 @@ Parse: {prototype: {
 }
 
 .lit {
-  margin: 0 auto 1in 0;
+  margin: 0 0 1in 0;
   font-family: Computer Modern Serif;
   max-width: 6in;
   text-align: justify;
-  padding: 0 0.75in 0 0;
+  padding: 0;
   min-height: 11in;
   background: white;
   line-height: 1.4em;
@@ -931,6 +724,13 @@ Parse: {prototype: {
   flex-direction: column; 
   margin-top: 0.3in;
   min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -944,18 +744,25 @@ Parse: {prototype: {
   .lit {
     background: black;
   }
+  .search2 {
+    background: black;
+  }
 }
 
 </style>
 
 <div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
   <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
-      <img style="width: 20px" src="../trademark.jpg">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
   </div>
-      <div style="display: flex; flex-direction: row;">
-      <div style="padding: 20px">
-
-        <div class="sidebar2">
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
         <div class="needlabel2"> Needs: </div>
         
           
@@ -1224,9 +1031,201 @@ and one and two and three.</span>
   time in producing this first edition. Future
   editions are likely to rework the treatment.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
-    </div>
-      </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
     
+
+
+
+    <!-- BEGIN OLD -->
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./natural_numbers.pdf#page=2'"> Natural Numbers </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./natural_numbers.pdf#page=2'" onkeypress="location.href='./natural_numbers.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./natural_numbers-graph.pdf'" onkeypress="location.href='./natural_numbers-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./intersection_of_empty_set.html'" onkeypress="location.href='./intersection_of_empty_set.html'">
+              <span>
+                Intersection of Empty Set
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./set_differences.html'" onkeypress="location.href='./set_differences.html'">
+              <span>
+                Set Differences
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./successor_sets.html'" onkeypress="location.href='./successor_sets.html'">
+              <span>
+                Successor Sets
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./characteristic_functions.html'" onkeypress="location.href='./characteristic_functions.html'">
+            <span>
+            Characteristic Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./integer_numbers.html'" onkeypress="location.href='./integer_numbers.html'">
+            <span>
+            Integer Numbers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./natural_induction.html'" onkeypress="location.href='./natural_induction.html'">
+            <span>
+            Natural Induction
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./natural_numbers_exercises.html'" onkeypress="location.href='./natural_numbers_exercises.html'">
+            <span>
+            Natural Numbers Exercises
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+            <span>
+            Uncertain Outcomes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What are numbers? We want to count, forever. Does a set exist which contains zero, and one, and two, and three, and all the rest?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> In \sheetref{successor_sets}{Successor Sets}, we said "and we continue as usual using the English language..." in our definition of zero, and one and two and three. Can this really be carried on and on? We will say yes. We will say that there exists a set which contains zero and contains the successor of each of its elements.</p></div><div class="sheet-listing"><p class="sheet"> \begin{principle}[Natural Numbers]A set which contains 0 and contains the successor of each of its elements exists.\end{principle} This principle is sometimes called the \t{principle of infinity}.</p></div><div class="sheet-listing"><p class="sheet"> We want this set to be unique. The principle says one successor set exists, but not that it is unique. To see that it is unique, notice that the intersection of a nonempty family of successor sets is a successor set. \ifhmode\unskip\fi\footnote{ This account will be expanded in future editions. } Consider the intersection of the family of all successor sets. The intersection is nonempty by the principle of infinity (see \sheetref{intersection_of_empty_set}{Intersection of Empty Set} for this subtlety). The axiom of extension guarantees that this intersection, which is a successor set contained in every other successor set, is unique. We summarize:</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} \label{natural_numbers:proposition:omega}There exists a unique successor smallest successor set.\end{proposition} A \t{natural number} or \t{number} or \t{natural} is an element of this minimal successor set. The \t{set of natural numbers} or \t{natural numbers} or \t{naturals} or \t{numbers} is the minimal successor set.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the set which exists by Proposition~\ref{natural_numbers:proposition:omega} by $\omega $. \ifhmode\unskip\fi\footnote{ We use this notation to follow many authorities on the subject, and to meet the exigencies of time in producing this first edition. Future editions are likely to rework the treatment. } We denote the set of natural numbers without 0 by $\N $, a mnemonic for natural. In other words $\N  = \omega  - \set{0}$. We often denote elements of $\omega $ or $\N $ by $n$, a mnemonic for number, or $m$, a letter close to $n$.</p></div><div class="sheet-listing"><p class="sheet"> We denote the natural numbers up to $n$ by $\upto{n}$. We have defined $n$ so that $n - \set{0} = \upto{n}$.</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./natural_numbers-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './natural_numbers.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./natural_numbers.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./natural_numbers.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./natural_numbers-graph.pdf">
+    </iframe>
+    -->
+
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -1278,7 +1277,7 @@ and one and two and three.</span>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 8d2bf0568.
+      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
     </span>
   </body>
 </html>

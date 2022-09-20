@@ -6,272 +6,92 @@
     <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
-    <div class="header">
-      <span class="listing no-border" id="header-trademark-and-title">
-        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
-        <span id="header-title" onclick="location.href='./tree_density_approximators.pdf#page=2'"> Tree Density Approximators </span>
-      </span>
-    </div>
-    <div class="subheader">
-      <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./tree_density_approximators.pdf#page=2'" onkeypress="location.href='./tree_density_approximators.pdf#page=2'">
-        <span> Sheet PDF </span>
-        <span class="caret">›</span>
-      </div>
-      <div class="need" tabindex="0" onclick="location.href='./tree_density_approximators-graph.pdf'" onkeypress="location.href='./tree_density_approximators-graph.pdf'">
-        <span> Graph PDF </span>
-        <span class="caret">›</span>
-      </div>
-      
-        <div disabled class="need label"> Needs: </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./differential_relative_entropy.html'" onkeypress="location.href='./differential_relative_entropy.html'">
-              <span>
-                Differential Relative Entropy
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./tree_densities.html'" onkeypress="location.href='./tree_densities.html'">
-              <span>
-                Tree Densities
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-            <div class="need" tabindex="0" onclick="location.href='./tree_distribution_approximators.html'" onkeypress="location.href='./tree_distribution_approximators.html'">
-              <span>
-                Tree Distribution Approximators
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
-      
-      
-        <div disabled class="need label"> Needed by: </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./optimal_tree_density_approximators.html'" onkeypress="location.href='./optimal_tree_density_approximators.html'">
-            <span>
-            Optimal Tree Density Approximators
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-      
-    </div>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {Augment: {
-    Definitions: {macros: {nicefrac: 'XFrac'}},
-    Parse: {prototype: {
-      XFrac: function (name) {
-        var num = this.ParseArg(name);
-        var den = this.ParseArg(name);
-        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-      }
-    }}
-  }}
-});
-</script>
-    <script>
-      MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
-        tex: {
-          inlineMath: [
-              ['\\(', '\\)'],
-              ['$', '$']
-            ],
-          displayMath: [
-              ['$$', '$$'],
-              ['\\[', '\\]']
-            ],
-          macros: {
-                  powerset: ["2^{#1}", 1],
-                  CV: "\\mathcal{V}",
-                  ceil: ["\\lceil #1 \\rceil", 1],
-                  num: ["\\abs{#1}",1],
-                  R: ["\\mathbfsf{R}"],
-                  C: ["\\mathbfsf{C}"],
-                  N: ["\\mathbfsf{N}"],
-                  Q: ["\\mathbfsf{Q}"],
-                  S: ["\\mathbfsf{S}"],
-                  Z: ["\\mathbfsf{Z}"],
-                  F: ["\\mathbfsf{F}"],
-                  E: ["\\mathbfsf{E}"],
-                  aff: ["\\mathsf{aff}"],
-                  upto: ["\\set{1,\\dots,#1}", 1],
-                  eqc: ["[#1]", 1],
-                  adj: ["\\mathword{adj}"],
-                  def: ["\\mathword{def}"],
-                  pa: ["\\mathword{pa}"],
-                  ch: ["\\mathword{ch}"],
-                  str: ["\\mathword{str}"],
-                  textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
-                  seq: ["(#1_n)_{n}", 1],
-                  seqt: ["#1_n", 1],
-                  union: ["\\cup"],
-                  intersection: ["\\cap"],
-                  dom: ["\\mathword{dom}"],
-                  range: ["\\mathword{range}"],
-                  ran: ["\\mathword{range}"],
-                  relcomplement: ["C_{#2}({#1})", 2],
-                  complement: ["C({#1})", 1],
-                  re: ["\\mathword{Re}"],
-                  im: ["\\mathword{Im}"],
-                  dual: ["{#1}^*", 1],
-                  dnorm: ["\norm{#1}_*", 1],
-                  Cmod: ["\\abs{#1}", 1],
-                  Cabs: ["\\Cmod{#1}", 1],
-                  vmeas: ["\\abs{#1}", 1],
-                  tvnorm: ["\\norm{#1}", 1],
-          },
-          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
-        },
-      };
-    </script>
-    <!--
-    <script>
-      console.log("here");
-MathJax.Hub.Config({
-TeX: {Augment: {
-Definitions: {macros: {nicefrac: 'NiceFrac'}},
-Parse: {prototype: {
-  NiceFrac: function (name) {
+  <!-- BEGIN MATHJAX -->
+  <script src="../mathjax/polyfill.min.js"></script>
+  <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {Augment: {
+      Definitions: {macros: {nicefrac: 'XFrac'}},
+      Parse: {prototype: {
+        XFrac: function (name) {
           var num = this.ParseArg(name);
-                  var den = this.ParseArg(name);
-                          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-                                }
-                                    }}
-                                      }}
-                                      });
-    </script>
-    -->
-    <script src="../mathjax/polyfill.min.js"></script>
-    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
-    <!--
-      <link rel="stylesheet" href="../katex/katex.min.css">
-      <script src="../katex/katex.min.js"></script>
-      <script src="../katex/auto-render.min.js"></script>
-      <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(
-          document.body,
-          {
-            delimiters: [
-              {left: "$$", right: "$$", display: true},
-              {left: "$", right: "$", display: false},
-            ],
-          },
-        );
-      });
-    </script>
-    -->
-    <script src="../cytoscape/cytoscape.min.js"></script>
-
-    <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can approximate a density with a tree density similar to how we can approximate a distribution with a tree distribution.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We use the differential relative entropy as a criterion of approximation. An \t{optimal tree approximator} of density for a tree is a density which factors according to a tree and minimizes its differential relative entropy with the given density.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $g: \R^n \to \R$ be a density and $T$ be a tree on $\set{1, \dots, n}$. An optimal tree approximator of $g$ for $T$ is a density $f$ that factors according to $T$ and minimizes $d(g, f)$. In other words, given $g$ and $T$ we want to find $f$ to \[ \begin{aligned} \text{minimize}   &\quad d(g, f) \\ \text{subject to} &\quad f \text{ factors according to } T. \end{aligned} \]</p></div><div class="sheet-listing" id="result"><h1 class="sheet">4. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $g: \R^n \to \R$ be a density and $T$ be a tree on $\set{1, \dots, n}$. The density $f^*_T: \R^d \to \R$ defined by $$ f^*_T = g_1 \prod_{i \neq 1} g_{i \mid \pa{i}} $$ minimizes the differential relative entropy with $g$ among all densities on $\R^n$ which factor according to $T$ ($\pa{i}$ is the parent of $i$ in $T$ rooted at vertex $1$, $i = 2, \dots, n$).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \R^d \to \R$ be a density factoring according to $T$. First, express $$ f = f_1 \prod_{i = 1} f_{i \mid \pa{i}}. $$</p></div><div class="sheet-listing"><p class="sheet"> Second, recall that $d(g, f) = h(g, f) - h(g)$. Since $h(g)$ does not depend on $f$, $f$ is a minimizer of $d(g, f)$ if and only if $f$ is a minimizer of $h(g, f)$.</p></div><div class="sheet-listing"><p class="sheet"> Third, express $$ \begin{aligned} h(g, f) &= - \int_{\R^d} g \log f \\ &= - \int_{\R^d} g(x) \parens*{ \log f_{i}(x_i) + \sum_{i \neq 1} \log f_{i \mid \pa{i}}(x_i, x_{\pa{i}})} dx \\ &= h(g_1, f_1) + \sum_{i \neq 1} \parens*{ \int_{\R} g_{\pa{i}}(\xi) h\parens*{g_{i \mid \pa{i}}(\cdot, \xi), f_{i\mid\pa{i}}(\cdot,\xi)}d\xi} \end{aligned} $$ which separates across $f_1$ and $f_{i \mid \pa{i}}(\cdot, \xi)$ for $i = 1, \dots, n$ and $\xi \in \R$. In particular, since $g_{pa{i}} \geq 0$, we can minimize the integrand pointwise.</p></div><div class="sheet-listing"><p class="sheet"> Fourth, recall $h(\phi, \psi) \geq 0$ for densities $\phi, \psi$ of any dimension, and zero if $\phi = \psi$. So $f_1 = g_1$ and $f_{i \mid \pa{i}} = g_{i \mid \pa{i}}$ are solutions.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
-    </div>
-
-    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
-
-    <div id="wrapper1">
-      <canvas id="page1" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper2">
-      <canvas id="page2" style="direction: ltr;"></canvas>
-    </div>
-    <div id="wrapper3">
-    <canvas id="page3" style="direction: ltr;" onclick="location.href='./tree_density_approximators-graph.pdf'"></canvas>
-    </div>
-      <script id="script">
-        // If absolute URL from the remote server is provided, configure the CORS
-        // header on that server.
-        var url = './tree_density_approximators.pdf';
-
-        // The workerSrc property shall be specified.
-        pdfjsLib.GlobalWorkerOptions.workerSrc =
-          '../pdfjs/build/pdf.worker.js';
-
-        var PRINT_RESOLUTION = 300;
-
-        function render(page, wrapper, canvas) {
-          var scale = 7;
-          var viewport = page.getViewport({scale: scale});
-          var context = canvas.getContext('2d');
-
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-          canvas.style.width = "100%";
-          canvas.style.height = "100%";
-          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
-          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
-
-          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
-          // who knows if this works...
-          context.imageSmoothingEnabled = false;
-          context.webkitImageSmoothingEnabled = false;
-          context.mozImageSmoothingEnabled = false;
-          context.oImageSmoothingEnabled = false;
-
-          /*
-
-          if (window.devicePixelRatio > 1) {
-            var canvasWidth = canvas.width;
-            var canvasHeight = canvas.height;
-
-            canvas.width = canvasWidth * window.devicePixelRatio;
-            canvas.height = canvasHeight * window.devicePixelRatio;
-            canvas.style.width = canvasWidth + "px";
-            canvas.style.height = canvasHeight + "px";
-
-            context.scale(window.devicePixelRatio, window.devicePixelRatio);
-          }
-          //end see
-          */
-
-          var renderContext = {
-            canvasContext: context,
-            viewport: viewport
-          };
-          page.render(renderContext);
+          var den = this.ParseArg(name);
+          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
         }
-
-        // Asynchronous download PDF
-        var loadingTask = pdfjsLib.getDocument(url);
-        loadingTask.promise.then(function(pdf) {
-
-          // Fetch the first page
-          pdf.getPage(2).then(function(page) {
-              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
-          });
-
-          // Fetch the second page
-          pdf.getPage(3).then(function(page) {
-            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
-          });
-
-          // Fetch the third page
-          pdf.getPage(4).then(function(page) {
-            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
-          });
-        });
-      </script>
-
-    <!-- PAGES -->
-    <!--
-    <iframe id="sheet-pdf" src="./tree_density_approximators.pdf#page=2">
-    </iframe>
-    <iframe id="sheet-pdf" src="./tree_density_approximators.pdf#page=3">
-    </iframe>
-    -->
-    <!-- PAGES -->
-
-    </div>
-
-    <!-- <iframe id="graph-pdf" src="./tree_density_approximators-graph.pdf">
-    </iframe>
-    -->
+      }}
+    }}
+  });
+  </script>
+  <script>
+    MathJax = {
+      loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
+      tex: {
+        inlineMath: [
+            ['\\(', '\\)'],
+            ['$', '$']
+          ],
+        displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]']
+          ],
+        macros: {
+                powerset: ["2^{#1}", 1],
+                CV: "\\mathcal{V}",
+                ceil: ["\\lceil #1 \\rceil", 1],
+                num: ["\\abs{#1}",1],
+                card: ["\\abs{#1}",1],
+                R: ["\\mathbfsf{R}"],
+                C: ["\\mathbfsf{C}"],
+                N: ["\\mathbfsf{N}"],
+                Q: ["\\mathbfsf{Q}"],
+                S: ["\\mathbfsf{S}"],
+                Z: ["\\mathbfsf{Z}"],
+                F: ["\\mathbfsf{F}"],
+                E: ["\\mathbfsf{E}"],
+                aff: ["\\mathsf{aff}"],
+                upto: ["\\set{1,\\dots,#1}", 1],
+                eqc: ["[#1]", 1],
+                adj: ["\\mathword{adj}"],
+                def: ["\\mathword{def}"],
+                pa: ["\\mathword{pa}"],
+                ch: ["\\mathword{ch}"],
+                str: ["\\mathword{str}"],
+                textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                seq: ["(#1_n)_{n}", 1],
+                seqt: ["#1_n", 1],
+                union: ["\\cup"],
+                intersection: ["\\cap"],
+                dom: ["\\mathword{dom}"],
+                range: ["\\mathword{range}"],
+                ran: ["\\mathword{range}"],
+                relcomplement: ["C_{#2}({#1})", 2],
+                complement: ["C({#1})", 1],
+                re: ["\\mathword{Re}"],
+                im: ["\\mathword{Im}"],
+                dual: ["{#1}^*", 1],
+                dnorm: ["\\norm{#1}_*", 1],
+                Cmod: ["\\abs{#1}", 1],
+                Cabs: ["\\Cmod{#1}", 1],
+                vmeas: ["\\abs{#1}", 1],
+                tvnorm: ["\\norm{#1}", 1],
+                nneri: ["\\nneri", 1],
+                nneri: ["[0,\\infty]"],
+                eri: ["[-\\infty,\\infty]"],
+                Rbar: ["\\bar{\\R}"],
+                pushforward: ["#1 \\circ #2^{-1}", 2],
+                rvlaw: ["{#1}_{#2}", 2],
+                var: ["\\mathword{var}"],
+                cov: ["\\mathword{cov}"],
+                std: ["\\mathword{std}"],
+                Cconj: ["#1^{*}", 1],
+                Cconjp: ["\\left(#1\\right))^{*}", 1],
+                            },
+        packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+      },
+    };
+  </script>
 
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
@@ -279,6 +99,7 @@ Parse: {prototype: {
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
+\(\newcommand{\barray}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
 \(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
 \(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
 \(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
@@ -1607,6 +1428,170 @@ Parse: {prototype: {
 
 
 
+
+
+    <!-- BEGIN OLD -->
+    <div class="header">
+      <span class="listing no-border" id="header-trademark-and-title">
+        <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
+        <span id="header-title" onclick="location.href='./tree_density_approximators.pdf#page=2'"> Tree Density Approximators </span>
+      </span>
+    </div>
+    <div class="subheader">
+      <div disabled class="need label"> Links: </div>
+      <div class="need" tabindex="0" onclick="location.href='./tree_density_approximators.pdf#page=2'" onkeypress="location.href='./tree_density_approximators.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need" tabindex="0" onclick="location.href='./tree_density_approximators-graph.pdf'" onkeypress="location.href='./tree_density_approximators-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        <div disabled class="need label"> Needs: </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./differential_relative_entropy.html'" onkeypress="location.href='./differential_relative_entropy.html'">
+              <span>
+                Differential Relative Entropy
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./tree_densities.html'" onkeypress="location.href='./tree_densities.html'">
+              <span>
+                Tree Densities
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./tree_distribution_approximators.html'" onkeypress="location.href='./tree_distribution_approximators.html'">
+              <span>
+                Tree Distribution Approximators
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+      
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./optimal_tree_density_approximators.html'" onkeypress="location.href='./optimal_tree_density_approximators.html'">
+            <span>
+            Optimal Tree Density Approximators
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+    </div>
+
+    <script src="../cytoscape/cytoscape.min.js"></script>
+
+    <div id="sheet-card" class="card">
+      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can approximate a density with a tree density similar to how we can approximate a distribution with a tree distribution.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We use the differential relative entropy as a criterion of approximation. An \t{optimal tree approximator} of density for a tree is a density which factors according to a tree and minimizes its differential relative entropy with the given density.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> Let $g: \R^n \to \R$ be a density and $T$ be a tree on $\set{1, \dots, n}$. An optimal tree approximator of $g$ for $T$ is a density $f$ that factors according to $T$ and minimizes $d(g, f)$. In other words, given $g$ and $T$ we want to find $f$ to \[ \begin{aligned} \text{minimize}   &\quad d(g, f) \\ \text{subject to} &\quad f \text{ factors according to } T. \end{aligned} \]</p></div><div class="sheet-listing" id="result"><h1 class="sheet">4. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $g: \R^n \to \R$ be a density and $T$ be a tree on $\set{1, \dots, n}$. The density $f^*_T: \R^d \to \R$ defined by $$ f^*_T = g_1 \prod_{i \neq 1} g_{i \mid \pa{i}} $$ minimizes the differential relative entropy with $g$ among all densities on $\R^n$ which factor according to $T$ ($\pa{i}$ is the parent of $i$ in $T$ rooted at vertex $1$, $i = 2, \dots, n$).</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \R^d \to \R$ be a density factoring according to $T$. First, express $$ f = f_1 \prod_{i = 1} f_{i \mid \pa{i}}. $$</p></div><div class="sheet-listing"><p class="sheet"> Second, recall that $d(g, f) = h(g, f) - h(g)$. Since $h(g)$ does not depend on $f$, $f$ is a minimizer of $d(g, f)$ if and only if $f$ is a minimizer of $h(g, f)$.</p></div><div class="sheet-listing"><p class="sheet"> Third, express $$ \begin{aligned} h(g, f) &= - \int_{\R^d} g \log f \\ &= - \int_{\R^d} g(x) \parens*{ \log f_{i}(x_i) + \sum_{i \neq 1} \log f_{i \mid \pa{i}}(x_i, x_{\pa{i}})} dx \\ &= h(g_1, f_1) + \sum_{i \neq 1} \parens*{ \int_{\R} g_{\pa{i}}(\xi) h\parens*{g_{i \mid \pa{i}}(\cdot, \xi), f_{i\mid\pa{i}}(\cdot,\xi)}d\xi} \end{aligned} $$ which separates across $f_1$ and $f_{i \mid \pa{i}}(\cdot, \xi)$ for $i = 1, \dots, n$ and $\xi \in \R$. In particular, since $g_{pa{i}} \geq 0$, we can minimize the integrand pointwise.</p></div><div class="sheet-listing"><p class="sheet"> Fourth, recall $h(\phi, \psi) \geq 0$ for densities $\phi, \psi$ of any dimension, and zero if $\phi = \psi$. So $f_1 = g_1$ and $f_{i \mid \pa{i}} = g_{i \mid \pa{i}}$ are solutions.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
+    </div>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
+
+    <div id="wrapper1">
+      <canvas id="page1" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper2">
+      <canvas id="page2" style="direction: ltr;"></canvas>
+    </div>
+    <div id="wrapper3">
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./tree_density_approximators-graph.pdf'"></canvas>
+    </div>
+      <script id="script">
+        // If absolute URL from the remote server is provided, configure the CORS
+        // header on that server.
+        var url = './tree_density_approximators.pdf';
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          '../pdfjs/build/pdf.worker.js';
+
+        var PRINT_RESOLUTION = 300;
+
+        function render(page, wrapper, canvas) {
+          var scale = 7;
+          var viewport = page.getViewport({scale: scale});
+          var context = canvas.getContext('2d');
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.width = "100%";
+          canvas.style.height = "100%";
+          wrapper.style.width = Math.floor(viewport.width/scale) + 'pt';
+          wrapper.style.height = Math.floor(viewport.height/scale) + 'pt';
+
+          // see https://stackoverflow.com/questions/37861686/pdfjs-blurry-pdf-on-ipad
+          // who knows if this works...
+          context.imageSmoothingEnabled = false;
+          context.webkitImageSmoothingEnabled = false;
+          context.mozImageSmoothingEnabled = false;
+          context.oImageSmoothingEnabled = false;
+
+          /*
+
+          if (window.devicePixelRatio > 1) {
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
+
+            canvas.width = canvasWidth * window.devicePixelRatio;
+            canvas.height = canvasHeight * window.devicePixelRatio;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+
+            context.scale(window.devicePixelRatio, window.devicePixelRatio);
+          }
+          //end see
+          */
+
+          var renderContext = {
+            canvasContext: context,
+            viewport: viewport
+          };
+          page.render(renderContext);
+        }
+
+        // Asynchronous download PDF
+        var loadingTask = pdfjsLib.getDocument(url);
+        loadingTask.promise.then(function(pdf) {
+
+          // Fetch the first page
+          pdf.getPage(2).then(function(page) {
+              render(page, document.getElementById('wrapper1'), document.getElementById('page1'));
+          });
+
+          // Fetch the second page
+          pdf.getPage(3).then(function(page) {
+            render(page, document.getElementById('wrapper2'), document.getElementById('page2'));
+          });
+
+          // Fetch the third page
+          pdf.getPage(4).then(function(page) {
+            render(page, document.getElementById('wrapper3'), document.getElementById('page3'));
+          });
+        });
+      </script>
+
+    <!-- PAGES -->
+    <!--
+    <iframe id="sheet-pdf" src="./tree_density_approximators.pdf#page=2">
+    </iframe>
+    <iframe id="sheet-pdf" src="./tree_density_approximators.pdf#page=3">
+    </iframe>
+    -->
+    <!-- PAGES -->
+
+    </div>
+
+    <!-- <iframe id="graph-pdf" src="./tree_density_approximators-graph.pdf">
+    </iframe>
+    -->
+
+
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
   </div>
@@ -1657,7 +1642,7 @@ Parse: {prototype: {
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 8d2bf0568.
+      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
     </span>
   </body>
 </html>
