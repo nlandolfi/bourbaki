@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make random_variable_laws.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 random_variable_laws.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > random_variable_laws.tex
 

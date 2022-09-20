@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make integrable_function_space.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 integrable_function_space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > integrable_function_space.tex
 
