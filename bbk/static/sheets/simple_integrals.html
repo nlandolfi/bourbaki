@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -1175,6 +1179,257 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./measurable_functions.html'" onkeypress="location.href='./measurable_functions.html'">
+                <span>
+                  Measurable Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./simple_functions.html'" onkeypress="location.href='./simple_functions.html'">
+                <span>
+                  Simple Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./nonnegative_integrals.html'" onkeypress="location.href='./nonnegative_integrals.html'">
+            <span>
+            Nonnegative Integrals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./simple_integral_additivity.html'" onkeypress="location.href='./simple_integral_additivity.html'">
+            <span>
+            Simple Integral Additivity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./simple_integral_homogeneity.html'" onkeypress="location.href='./simple_integral_homogeneity.html'">
+            <span>
+            Simple Integral Homogeneity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./simple_integral_monotonicity.html'" onkeypress="location.href='./simple_integral_monotonicity.html'">
+            <span>
+            Simple Integral Monotonicity
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./simple_integrals.pdf#page=2'" onkeypress="location.href='./simple_integrals.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./simple_integrals-graph.pdf'" onkeypress="location.href='./simple_integrals-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Simple Integrals </h1> 
+      <!--
+!name:simple_integrals
+!need:measurable_functions
+!need:simple_functions
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We want to define area under a real function.</span>
+
+ <span class='run'>We begin with functions whose area under the
+  curve is self-evident.</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>Consider a measure space.</span>
+
+ <span class='run'>The characteristic function of any measurable
+  set is measurable.</span>
+
+ <span class='run'>A simple function is measurable if and only if
+  each element of its simple partition is
+  measurable.</span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>integral</span> of a
+  measurable non-negative simple function is the
+  sum of the products of the measure of each
+  piece with the value of the function on that
+  piece.</span>
+
+ <span class='run'>For example, the integral of a measurable
+  characteristic function of a subset is the
+  measure of that subset.</span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>integral operator}</span> is
+  the real-valued function which associates each
+  measurable non-negative simple function with its
+  integral.</span>
+
+ <span class='run'>The simple integral is non-negative, so the
+  integral operator is a non-negative function.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>Let $(X, \mathcal{A} , \mu )$ be a measure
+  space.</span>
+</p>
+
+
+<!--
+%Let $A \in \mathcal{A}$.
+%We denote the integral
+%of $\chi_{A}$ with
+%respect to measure $\mu$ by
+%$\int \chi_{A} d \mu$.
+%We defined:
+%\[
+%  \int \chi_{A} = \mu(A).
+%\]
+-->
+
+<p>
+ <span class='run'>Let $f: X \to \R $ be a measurable simple
+  function.</span>
+
+ <span class='run'>So there exist $A_1, \dots , A_n \in
+  \mathcal{A} $ and $a_1, \dots , a_n \in \R $
+  with:
+  <p>\[
+   f = \sum_{i = 1}^{n} a_i \chi _{A_i}.
+  \]</p></span>
+</p>
+
+
+<p>
+ <span class='run'>We denote the integral of $f$ with respect to
+  measure $\mu $ by $\int  f d\mu $.</span>
+
+ <span class='run'>We defined:
+  <p>\[
+   \int  f d\mu  = \sum_{i = 1}^{n} a_i \mu (A_i).
+  \]</p></span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1250,7 +1505,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to define area under a real function. We begin with functions whose area under the curve is self-evident.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider a measure space. The characteristic function of any measurable set is measurable. A simple function is measurable if and only if each element of its simple partition is measurable.</p></div><div class="sheet-listing"><p class="sheet"> The <i>integral</i> of a measurable non-negative simple function is the sum of the products of the measure of each piece with the value of the function on that piece. For example, the integral of a measurable characteristic function of a subset is the measure of that subset.</p></div><div class="sheet-listing"><p class="sheet"> The <i>integral operator</i> is the real-valued function which associates each measurable non-negative simple function with its integral. The simple integral is non-negative, so the integral operator is a non-negative function.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A}, \mu)$ be a measure space.</p></div><div class="sheet-listing"><p class="sheet"> Let $f: X \to \R$ be a measurable simple function. So there exist $A_1, \dots, A_n \in \mathcal{A}$ and $a_1, \dots, a_n \in \R$ with: \[ f = \sum_{i = 1}^{n} a_i \chi_{A_i}. \]</p></div><div class="sheet-listing"><p class="sheet"> We denote the integral of $f$ with respect to measure $\mu$ by $\int f d\mu$. We defined: \[ \int f d\mu = \sum_{i = 1}^{n} a_i \mu(A_i). \]</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to define area under a real function. We begin with functions whose area under the curve is self-evident.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Consider a measure space. The characteristic function of any measurable set is measurable. A simple function is measurable if and only if each element of its simple partition is measurable.</p></div><div class="sheet-listing"><p class="sheet"> The \t{integral} of a measurable non-negative simple function is the sum of the products of the measure of each piece with the value of the function on that piece. For example, the integral of a measurable characteristic function of a subset is the measure of that subset.</p></div><div class="sheet-listing"><p class="sheet"> The <i>integral operator</i> is the real-valued function which associates each measurable non-negative simple function with its integral. The simple integral is non-negative, so the integral operator is a non-negative function.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A} , \mu )$ be a measure space.</p></div><div class="sheet-listing"><p class="sheet"> Let $f: X \to \R $ be a measurable simple function. So there exist $A_1, \dots , A_n \in \mathcal{A} $ and $a_1, \dots , a_n \in \R $ with: \[ f = \sum_{i = 1}^{n} a_i \chi _{A_i}. \]</p></div><div class="sheet-listing"><p class="sheet"> We denote the integral of $f$ with respect to measure $\mu $ by $\int  f d\mu $. We defined: \[ \int  f d\mu  = \sum_{i = 1}^{n} a_i \mu (A_i). \]</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1404,7 +1659,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

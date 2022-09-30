@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -106,7 +110,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 142 0 -->
+      <!-- 146 0 -->
 
 <!-- \newcounter{caccounts} -->
 
@@ -328,6 +332,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- % objects macros -->
 
 % objects macros
@@ -388,6 +404,34 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -416,9 +460,41 @@
 
 \renewcommand{\setminus}{-}
 
-<!-- \newcommand{\symdiff}{+} -->
+<!-- % absolute_value macros -->
 
-\newcommand{\symdiff}{+}
+% absolute_value macros
+
+<!-- % \ifdefined\abs -->
+
+% \ifdefined\abs
+
+<!-- % \else -->
+
+% \else
+
+<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
+
+%  \newcommand{\abs}[1]{\left|#1\right|}
+
+<!-- % \fi -->
+
+% \fi
+
+<!-- % the above was creating issues - NCL 2/24/2022 -->
+
+% the above was creating issues - NCL 2/24/2022
+
+<!--  -->
+
+
+
+<!-- % following (roughly) the example of set_numbers/macros -->
+
+% following (roughly) the example of set_numbers/macros
+
+<!-- \newcommand{\intabs}[1]{\left|#1\right|} -->
+
+\newcommand{\intabs}[1]{\left|#1\right|}
 
 <!-- \newcommand{\N}{\mathbfsf{N}} -->
 
@@ -427,6 +503,42 @@
 <!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
 
 \newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
+
+\newcommand{\idfn}[1]{\text{id}_{#1}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
+
+\newcommand{\inv}[1]{{#1}^{-1}}
+
+<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
+
+\newcommand{\inverse}[1]{\inv{#1}}
+
+<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
+
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
+
+<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
+
+\newcommand{\inversep}[1]{\invp{#1}}
 
 <!-- \newcommand{\eqc}[1]{[#1]} -->
 
@@ -479,42 +591,6 @@
 <!-- \newcommand{\bintersection}{\bigcap} -->
 
 \newcommand{\bintersection}{\bigcap}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\comp}{\circ} -->
-
-\newcommand{\comp}{\circ}
-
-<!-- \newcommand{\composed}{\circ} -->
-
-\newcommand{\composed}{\circ}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -832,77 +908,37 @@
 
 \newcommand{\intersection}{\cap}
 
-<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
 
-\newcommand{\idfn}[1]{\text{id}_{#1}}
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
 
-<!--  -->
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
 
+\def\oright#1{\right#1\mskip-10mu\circ}
 
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
 
-<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
+\def\oleft#1{\circ\mskip-10mu\left#1}
 
-\newcommand{\inv}[1]{{#1}^{-1}}
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
 
-<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
+\newcommand{\I}{\mathbfsf{I}}
 
-\newcommand{\inverse}[1]{\inv{#1}}
+<!-- \newcommand{\oi}[1]{(#1)} -->
 
-<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
+\newcommand{\oi}[1]{(#1)}
 
-\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
+<!-- \newcommand{\ci}[1]{[#1]} -->
 
-<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
+\newcommand{\ci}[1]{[#1]}
 
-\newcommand{\inversep}[1]{\invp{#1}}
+<!-- \newcommand{\oci}[1]{(#1]} -->
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+\newcommand{\oci}[1]{(#1]}
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<!-- \newcommand{\coi}[1]{[#1)} -->
 
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- % absolute_value macros -->
-
-% absolute_value macros
-
-<!-- % \ifdefined\abs -->
-
-% \ifdefined\abs
-
-<!-- % \else -->
-
-% \else
-
-<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
-
-%  \newcommand{\abs}[1]{\left|#1\right|}
-
-<!-- % \fi -->
-
-% \fi
-
-<!-- % the above was creating issues - NCL 2/24/2022 -->
-
-% the above was creating issues - NCL 2/24/2022
-
-<!--  -->
-
-
-
-<!-- % following (roughly) the example of set_numbers/macros -->
-
-% following (roughly) the example of set_numbers/macros
-
-<!-- \newcommand{\intabs}[1]{\left|#1\right|} -->
-
-\newcommand{\intabs}[1]{\left|#1\right|}
+\newcommand{\coi}[1]{[#1)}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1000,6 +1036,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- % use \num{A} for |A| -->
 
 % use \num{A} for |A|
@@ -1028,37 +1076,53 @@
 
 \newcommand{\Q}{\mathbfsf{Q}}
 
-<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+<!--  -->
 
-\def\oright#1{\right#1\mskip-10mu\circ}
 
-<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
 
-\def\oleft#1{\circ\mskip-10mu\left#1}
+<!-- \newcommand{\C}{\mathbf{C}} -->
 
-<!-- \newcommand{\I}{\mathbfsf{I}} -->
+\newcommand{\C}{\mathbf{C}}
 
-\newcommand{\I}{\mathbfsf{I}}
+<!-- \newcommand{\re}{\mathword{Re}} -->
 
-<!-- \newcommand{\oi}[1]{(#1)} -->
+\newcommand{\re}{\mathword{Re}}
 
-\newcommand{\oi}[1]{(#1)}
+<!-- \newcommand{\im}{\mathword{Im}} -->
 
-<!-- \newcommand{\ci}[1]{[#1]} -->
+\newcommand{\im}{\mathword{Im}}
 
-\newcommand{\ci}[1]{[#1]}
+<!-- \renewcommand{\Re}{\re} -->
 
-<!-- \newcommand{\oci}[1]{(#1]} -->
+\renewcommand{\Re}{\re}
 
-\newcommand{\oci}[1]{(#1]}
+<!-- \renewcommand{\Im}{\im} -->
 
-<!-- \newcommand{\coi}[1]{[#1)} -->
+\renewcommand{\Im}{\im}
 
-\newcommand{\coi}[1]{[#1)}
+<!-- \newcommand{\Cconj}[1]{#1^{*}} -->
+
+\newcommand{\Cconj}[1]{#1^{*}}
+
+<!-- \newcommand{\Cconjp}[1]{\parens{#1}^{*}} -->
+
+\newcommand{\Cconjp}[1]{\parens{#1}^{*}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1091,18 +1155,6 @@
 <!-- \newcommand{\F}{\mathbfsf{F}} -->
 
 \newcommand{\F}{\mathbfsf{F}}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1160,10 +1212,6 @@
 
 \renewcommand{\Vec}[2]{{#1}^{#2}}
 
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
-
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-
 <!-- \newcommand{\tp}{\top} -->
 
 \newcommand{\tp}{\top}
@@ -1183,6 +1231,14 @@
 <!-- \newcommand{\tranposep}[1]{\transposep{#1}} -->
 
 \newcommand{\tranposep}[1]{\transposep{#1}}
+
+<!-- % used instead for symmetric group of permutations -->
+
+% used instead for symmetric group of permutations
+
+<!-- % \newcommand{\Sym}[1]{\mathbfsf{S}^{#1}} -->
+
+% \newcommand{\Sym}[1]{\mathbfsf{S}^{#1}}
 
 <!-- \newcommand{\RMat}[2]{\R^{#1 \cross #2}} -->
 
@@ -1296,50 +1352,6 @@
 
 
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\C}{\mathbf{C}} -->
-
-\newcommand{\C}{\mathbf{C}}
-
-<!-- \newcommand{\re}{\mathword{Re}} -->
-
-\newcommand{\re}{\mathword{Re}}
-
-<!-- \newcommand{\im}{\mathword{Im}} -->
-
-\newcommand{\im}{\mathword{Im}}
-
-<!-- \renewcommand{\Re}{\re} -->
-
-\renewcommand{\Re}{\re}
-
-<!-- \renewcommand{\Im}{\im} -->
-
-\renewcommand{\Im}{\im}
-
-<!-- \newcommand{\Cconj}[1]{#1^{*}} -->
-
-\newcommand{\Cconj}[1]{#1^{*}}
-
-<!-- \newcommand{\Cconjp}[1]{\parens{#1}^{*}} -->
-
-\newcommand{\Cconjp}[1]{\parens{#1}^{*}}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 <!-- % added to vectors_as_matrices, around 4/23/22 -->
 
 % added to vectors_as_matrices, around 4/23/22
@@ -1371,6 +1383,188 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./antisymmetric_matrices.html'" onkeypress="location.href='./antisymmetric_matrices.html'">
+                <span>
+                  Antisymmetric Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./complex_matrices.html'" onkeypress="location.href='./complex_matrices.html'">
+                <span>
+                  Complex Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./eigenvalue_decomposition.html'" onkeypress="location.href='./eigenvalue_decomposition.html'">
+                <span>
+                  Eigenvalue Decomposition
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./orthogonal_matrices.html'" onkeypress="location.href='./orthogonal_matrices.html'">
+                <span>
+                  Orthogonal Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./symmetric_matrices.html'" onkeypress="location.href='./symmetric_matrices.html'">
+                <span>
+                  Symmetric Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./normal_matrices.pdf#page=2'" onkeypress="location.href='./normal_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./normal_matrices-graph.pdf'" onkeypress="location.href='./normal_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Normal Matrices </h1> 
+      <!--
+!name:normal_matrices
+!need:eigenvalue_decomposition
+!need:orthogonal_matrices
+!need:symmetric_matrices
+!need:antisymmetric_matrices
+!need:complex_matrices
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>Which matrices have orthogonal eigenvectors?</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>normal matrix</span> is a
+  matrix which has orthogonal eigenvectors.</span>
+
+ <span class='run'>It commutes with its (conjugate) transpose.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>If $A \in \C ^{d \times d}$ is normal then
+  there exists an orthonormal matrix $Q \in \C ^{d
+  \times d}$ and a diagonal matrix $\Lambda  \in
+  \C ^{d \times d}$ so that $A = Q\Lambda  Q^\top $.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1590,7 +1784,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

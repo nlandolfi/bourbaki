@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -1155,6 +1159,187 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./signed_measures.html'" onkeypress="location.href='./signed_measures.html'">
+                <span>
+                  Signed Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./signed_measure_examples.pdf#page=2'" onkeypress="location.href='./signed_measure_examples.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./signed_measure_examples-graph.pdf'" onkeypress="location.href='./signed_measure_examples-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Signed Measure Examples </h1> 
+      <!--
+!name:signed_measure_examples
+!need:signed_measures
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>Let us consider examples of signed measures.</span>
+</p>
+
+<h1>Examples</h1>
+
+<p>
+ <span class='run'>Consider an integrable</span>
+
+ <span class='run'>function defined on</span>
+
+ <span class='run'>some measurable space.</span>
+
+ <span class='run'>The extended-real-valued</span>
+
+ <span class='run'>funciton which assigns to</span>
+
+ <span class='run'>each distinguished set the</span>
+
+ <span class='run'>value of the integrating</span>
+
+ <span class='run'>the function over that set</span>
+
+ <span class='run'>is a signed measure.</span>
+</p>
+
+<div class='example'>
+ <span class='run'>Suppose $(X, \mathcal{A} , \mu )$ a measure
+  space and $f: X \to \R $ is an integrable
+  function.</span>
+
+ <span class='run'>Define $\nu : \mathcal{A}  \to R$ by
+  <p>\[
+   \nu (A) = \int_{A} f d\mu .
+  \]</p></span>
+
+ <span class='run'>Then $\nu $ is a signed measure.</span>
+ <!--
+  <proof>
+   <div data-littype='run'> First, </div>
+    <div data-littype='displaymath'>
+     <div data-littype='run'> ν(∅) = ∈t fχ_{∅} dμ = ∈t 0 dμ = 0. </div>
+    </div>
+
+   <div data-littype='run'> Next, let $\seq{A}$ disjoint. </div>
+
+   <div data-littype='run'> Notice that, </div>
+    <div data-littype='displaymath'>
+     <div data-littype='run'> χ_{∪_{i = 1}^{n} A_k} = ∑_{i = k}^{n} χ_{A_k} </div>
+    </div>
+  </proof>
+  -->
+</div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1346,7 +1531,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

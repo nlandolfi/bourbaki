@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -106,7 +110,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 50 0 -->
+      <!-- 56 0 -->
 
 <!-- % objects macros -->
 
@@ -612,6 +616,58 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
+
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
+
+\renewcommand{\complement}[1]{C({#1})}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \Set{a}{b} for {a | b} -->
+
+% use \Set{a}{b} for {a | b}
+
+<!-- % use \Set* for autosizing delimiters -->
+
+% use \Set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2} -->
+
+\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
 <!-- % use \powerset{A} for power set of A -->
 
 % use \powerset{A} for power set of A
@@ -660,70 +716,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
-
-\newcommand{\relcomplement}[2]{C_{#2}({#1})}
-
-<!-- \renewcommand{\complement}[1]{C({#1})} -->
-
-\renewcommand{\complement}[1]{C({#1})}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- % use \Set{a}{b} for {a | b} -->
-
-% use \Set{a}{b} for {a | b}
-
-<!-- % use \Set* for autosizing delimiters -->
-
-% use \Set* for autosizing delimiters
-
-<!-- \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2} -->
-
-\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\union}{\,\cup\,} -->
-
-\newcommand{\union}{\,\cup\,}
-
-<!-- \newcommand{\bunion}{\bigcup} -->
-
-\newcommand{\bunion}{\bigcup}
-
-<!-- \newcommand{\bintersection}{\bigcap} -->
-
-\newcommand{\bintersection}{\bigcap}
-
-<!-- \newcommand{\symdiff}{+} -->
-
-\newcommand{\symdiff}{+}
-
 <!-- \newcommand{\intersect}{\cap} -->
 
 \newcommand{\intersect}{\cap}
@@ -731,6 +723,38 @@
 <!-- \newcommand{\intersection}{\cap} -->
 
 \newcommand{\intersection}{\cap}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
+
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -752,17 +776,57 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- % mnemonic for (s)et(suc)cesor -->
+<!-- \newcommand{\union}{\,\cup\,} -->
 
-% mnemonic for (s)et(suc)cesor
+\newcommand{\union}{\,\cup\,}
 
-<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+<!-- \newcommand{\bunion}{\bigcup} -->
 
-\newcommand{\ssuc}[1]{{#1}^{+}}
+\newcommand{\bunion}{\bigcup}
 
-<!-- \renewcommand{\setminus}{-} -->
+<!-- \newcommand{\bintersection}{\bigcap} -->
 
-\renewcommand{\setminus}{-}
+\newcommand{\bintersection}{\bigcap}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
+
+\newcommand{\Z}{\mathbfsf{Z}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- \newcommand{\dom}{\mathword{dom}} -->
 
@@ -788,45 +852,33 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\idfn}[1]{\text{id}_{#1}}
 
 <!--  -->
 
 
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\inv}[1]{{#1}^{-1}}
 
-<!-- \newcommand{\N}{\mathbfsf{N}} -->
+<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
 
-\newcommand{\N}{\mathbfsf{N}}
+\newcommand{\inverse}[1]{\inv{#1}}
 
-<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
 
-\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
+
+<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
+
+\newcommand{\inversep}[1]{\invp{#1}}
 
 <!-- \newcommand{\eqc}[1]{[#1]} -->
 
 \newcommand{\eqc}[1]{[#1]}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
-
-\newcommand{\Z}{\mathbfsf{Z}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -934,6 +986,13 @@
         <div class="needlabel2"> Needs: </div>
         
           
+              <div class="need2" tabindex="0" onclick="location.href='./finite_sets.html'" onkeypress="location.href='./finite_sets.html'">
+                <span>
+                  Finite Sets
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
               <div class="need2" tabindex="0" onclick="location.href='./rings.html'" onkeypress="location.href='./rings.html'">
                 <span>
                   Rings
@@ -948,6 +1007,13 @@
           <div class="need2" tabindex="0" onclick="location.href='./homomorphisms.html'" onkeypress="location.href='./homomorphisms.html'">
             <span>
             Homomorphisms
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./linear_representations_of_groups.html'" onkeypress="location.href='./linear_representations_of_groups.html'">
+            <span>
+            Linear Representations of Groups
             </span>
             <span class="caret">›</span>
           </div>
@@ -984,6 +1050,7 @@
       <!--
 !name:groups
 !need:rings
+!need:finite_sets
 !refs:peter_cameron/introduction_to_algebra
 -->
 
@@ -1002,9 +1069,12 @@
 \to G$ is associative, has an identity element
 in $G$, and has inverse elements.</span>
 
- <span class='run'>It is a <span class='term'>commutative
+ <span class='run'>A group is a <span class='term'>commutative
   group</span> (or <span class='term'>abelian
   group</span>) if $\circ$ is commutative.</span>
+
+ <span class='run'>A group is a <span class='term'>finite
+  group</span> if $G$ is a finite set.</span>
 </p>
 
 <h1>Additive groups</h1>
@@ -1055,6 +1125,13 @@ in $G$, and has inverse elements.</span>
       
         <div disabled class="need label"> Needs: </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./finite_sets.html'" onkeypress="location.href='./finite_sets.html'">
+              <span>
+                Finite Sets
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
             <div class="need" tabindex="0" onclick="location.href='./rings.html'" onkeypress="location.href='./rings.html'">
               <span>
                 Rings
@@ -1069,6 +1146,13 @@ in $G$, and has inverse elements.</span>
           <div class="need" tabindex="0" onclick="location.href='./homomorphisms.html'" onkeypress="location.href='./homomorphisms.html'">
             <span>
             Homomorphisms
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./linear_representations_of_groups.html'" onkeypress="location.href='./linear_representations_of_groups.html'">
+            <span>
+            Linear Representations of Groups
             </span>
             <span class="caret">›</span>
           </div>
@@ -1093,7 +1177,7 @@ in $G$, and has inverse elements.</span>
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We further drop conditions on the structure of the binary operations, and study only the algebraic structure of addition over the integers.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{group} is an \t{algebra} $(G, \circ)$ for which $\circ: G \times  G \to G$ is associative, has an identity element in $G$, and has inverse elements. It is a \t{commutative group} (or \t{abelian group}) if $\circ$ is commutative.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Additive groups}</p></div><div class="sheet-listing"><p class="sheet"> Suppose that $(R, +, \cdot )$ is ring. Then $(R, +)$ is a commutative group. Conversely, suppose $(G, +)$ is a commutative group. Define multiplication on $S$ by $a\cdot b = 0$ for all $a, b \in R$. Then $(S, +, \cdot )$ is a ring, called the \t{zero ring} of $(G, +)$. For this reason, it is customary to write $+$ for the operations $\circ$ when handling commutative groups.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We further drop conditions on the structure of the binary operations, and study only the algebraic structure of addition over the integers.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{group} is an \sheetref{operations}{algebra}$(G, \circ)$ for which $\circ: G \times  G \to G$ is associative, has an identity element in $G$, and has inverse elements. A group is a \t{commutative group} (or \t{abelian group}) if $\circ$ is commutative. A group is a \t{finite group} if $G$ is a finite set.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Additive groups}</p></div><div class="sheet-listing"><p class="sheet"> Suppose that $(R, +, \cdot )$ is ring. Then $(R, +)$ is a commutative group. Conversely, suppose $(G, +)$ is a commutative group. Define multiplication on $S$ by $a\cdot b = 0$ for all $a, b \in R$. Then $(S, +, \cdot )$ is a ring, called the \t{zero ring} of $(G, +)$. For this reason, it is customary to write $+$ for the operations $\circ$ when handling commutative groups.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1247,7 +1331,7 @@ in $G$, and has inverse elements.</span>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

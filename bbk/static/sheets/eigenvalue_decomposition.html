@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -1323,6 +1327,248 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./eigenvalues_and_eigenvectors.html'" onkeypress="location.href='./eigenvalues_and_eigenvectors.html'">
+                <span>
+                  Eigenvalues and Eigenvectors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+                <span>
+                  Matrix Transpose
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./orthogonal_matrices.html'" onkeypress="location.href='./orthogonal_matrices.html'">
+                <span>
+                  Orthogonal Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./circulant_matrix_eigendecompositions.html'" onkeypress="location.href='./circulant_matrix_eigendecompositions.html'">
+            <span>
+            Circulant Matrix Eigendecompositions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./eigenvalues_and_definiteness.html'" onkeypress="location.href='./eigenvalues_and_definiteness.html'">
+            <span>
+            Eigenvalues and Definiteness
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_matrices.html'" onkeypress="location.href='./normal_matrices.html'">
+            <span>
+            Normal Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./eigenvalue_decomposition.pdf#page=2'" onkeypress="location.href='./eigenvalue_decomposition.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./eigenvalue_decomposition-graph.pdf'" onkeypress="location.href='./eigenvalue_decomposition-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Eigenvalue Decomposition </h1> 
+      <!--
+!name:eigenvalue_decomposition
+!need:eigenvalues_and_eigenvectors
+!need:matrix_transpose
+!need:orthogonal_matrices
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We discuss a decomposition using eigenvalues and
+  eigenvectors.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1>Defining result</h1>
+
+<p>
+ <span class='run'>An <span class='term'>eigenvalue
+  decomposition</span> of a matrix $A \in \R ^{n
+  \times n}$ is an ordered pair $(X, \Lambda  )$
+  in which $X$ is invertible, $\Lambda  $ is
+  diagonal, and $A = X\Lambda  X^{-1}$.</span>
+</p>
+
+
+<p>
+ <span class='run'>In this case, $AX = X\Lambda  $, in other
+  words,
+  <p>\[
+   \bmat{ && \\ & A & \\ && }
+
+   \bmat{x_1 & \cdots & x_m} =
+
+   \bmat{x_1 & \cdots & x_m}
+
+   \bmat{\lambda _1 && \\ & \ddots & \\&& \lambda _n}.
+
+   
+  \]</p>
+  <span class='run'>in which $x_i$ is the $i$th column of $X$
+   and $\lambda _i$ is the $i$th diagonal element
+   of $\Lambda  $.</span>
+
+  <span class='run'>We have $Ax_i = \lambda _ix_i$ for $i = 1,
+   \dots , n$.</span>
+
+  <span class='run'>In other words, the $i$th column of $X$ is
+   an eigenvector of $A$ and the $j$th entry of
+   $\Lambda  $ is the corresponding eigenvalue.</span></span>
+ <p>
+  <span class='run'>If $X$ is orthonormal, so that $X^{-1} =
+   X^\top $, then we can interpret such a
+   decomposition as a change of basis to
+   <span class='term'>eigenvector coordinates</span>.</span>
+
+  <span class='run'>If $Ax = b$, and $A = X\Lambda  X^{-1}$ then
+   $(X^{-1}b) = \Lambda  (X^{-1}x)$.</span>
+
+  <span class='run'>Here, $X^{-1}x$ expands $x$ is the basis of
+   columns of $X$.</span>
+
+  <span class='run'>So to compute $Ax$ , we first expand into
+   the basis of columns of $X$, scale by
+   $\Lambda  $, and then interpret the result as
+   the coefficients of a linear combination of the
+   columns of $X$.</span>
+ </p>
+
+</p>
+
+
+<p>
+ <span class='run'>In this case that $A = X\Lambda  X^\top $ for
+  an eigenvalue decomposition $(X, \Lambda  )$ of
+  $A$, we can also write
+  <p>\[
+   A = X\Lambda  X^\top  = \sum_{i = 1}^{n}
+    \Lambda  _{ii}x_ix_i^\top .
+  \]</p></span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>Every real symmetric matrix has an eigenvalue
+  decomposition $(X, \Lambda  )$ in which $X$ is
+  orthonormal.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>In future editions, this may be the motivating
+  result for the definition of eigenvalues.</span><a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1552,7 +1798,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

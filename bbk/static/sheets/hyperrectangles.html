@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -991,6 +995,178 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./cubes.html'" onkeypress="location.href='./cubes.html'">
+                <span>
+                  Cubes
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./n-dimensional_space.html'" onkeypress="location.href='./n-dimensional_space.html'">
+                <span>
+                  N-Dimensional Space
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./hyperrectangles.pdf#page=2'" onkeypress="location.href='./hyperrectangles.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./hyperrectangles-graph.pdf'" onkeypress="location.href='./hyperrectangles-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Hyperrectangles </h1> 
+      <!--
+!name:hyperrectangles
+!need:cubes
+!need:n-dimensional_space
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We want to generalize rectangles and cubes to
+  $n$-dimensional space.</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>Let $I: \upto{d} \to \R $ be a family of $d$
+  intervals.</span>
+
+ <span class='run'>A <span class='term'>hyperrectangle</span> is the
+  set $\prod_{i=1}^{d} I_i$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+
+<p>
+ <span class='run'>As a result of this definition, an interval, a
+  rectangle, and a cube are all hyperrectangles.</span>
+
+ <span class='run'>Of course, in our definition we include four,
+  five, and “dimensional” rectangles.</span>
+</p>
+
+
+<p>
+ <span class='run'>As with intervals, rectangles, and cubes, we
+  call a hyperrectangle open, closed, left-open,
+  right-open accordingly.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Some authors use the term rectangle or
+  <span class='term'>$n$-dimensional rectangle</span>.</span>
+
+ <span class='run'>Some authors use the term
+  <span class='term'>box</span> or
+  <span class='term'>$n$-box</span>.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1189,7 +1365,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

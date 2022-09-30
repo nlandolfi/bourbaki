@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -1634,7 +1638,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{covariance} between two random variables which are each integrable and whose product is integrable is the expectation of their product less the product of their expectation.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $f$ and $g$ be two integrable random variables with $fg$ integrable. Denote the covariance of $f$ with $g$ by $\cov(f, g)$. We defined it: \[ \cov(f, g) = \E (fg) - \E (f)\E (g). \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}Covariance is symmetric and billinear.\end{proposition} \begin{proposition}The covariance of a random variable with itself is its variance.\end{proposition} \begin{proof}Let $f$ be a square-integrable real-valued random variable, then \[ \cov(f, f) = \E (ff) - \E (f)\E (f) = \E (f^2) - (\E (f))^2 = \var(f). \]\end{proof} \begin{proposition}The variance of a sum of integrable real-valued random variables whose pairwise products are integrable is the double sum of the pairwise covariances.\end{proposition} \begin{proof}Let $f_1, \dots , f_n$ be integrable random variables with $f_if_j$ integrable for all $i,j = 1, \dots , n$. Using the billinearity, \[ \begin{aligned} \var\parens*{\sum_{i = 1}^{n} f_i} &= \cov\parens*{\sum_{i = 1}^{n} f_i, \sum_{i = 1}^{n}f_i} \\ &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} \cov(f_i, f_j) \end{aligned} \]\end{proof} \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{covariance} between two random variables which are each integrable and whose product is integrable is the expectation of their product less the product of their expectation.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $f$ and $g$ be two integrable random variables with $fg$ integrable. Denote the covariance of $f$ with $g$ by $\cov(f, g)$. We defined it: \[ \cov(f, g) = \E (fg) - \E (f)\E (g). \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Covariance is symmetric and billinear.\end{proposition} \begin{proposition} The covariance of a random variable with itself is its variance.\end{proposition} \begin{proof}Let $f$ be a square-integrable real-valued random variable, then \[ \cov(f, f) = \E (ff) - \E (f)\E (f) = \E (f^2) - (\E (f))^2 = \var(f). \]\end{proof} \begin{proposition} The variance of a sum of integrable real-valued random variables whose pairwise products are integrable is the double sum of the pairwise covariances.\end{proposition} \begin{proof}Let $f_1, \dots , f_n$ be integrable random variables with $f_if_j$ integrable for all $i,j = 1, \dots , n$. Using the billinearity, \[ \begin{aligned} \textstyle \var \sum_{i = 1}^{n} f_i &= \cov(\sum_{i = 1}^{n} f_i, \sum_{i = 1}^{n}f_i) \\ &= \sum_{i = 1}^{n} \sum_{j = 1}^{n} \cov(f_i, f_j) \end{aligned} \]\end{proof} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1788,7 +1792,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -1019,6 +1023,214 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_vectors_span.html'" onkeypress="location.href='./real_vectors_span.html'">
+                <span>
+                  Real Vectors Span
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./subspaces.html'" onkeypress="location.href='./subspaces.html'">
+                <span>
+                  Subspaces
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./subspace_distance.html'" onkeypress="location.href='./subspace_distance.html'">
+            <span>
+            Subspace Distance
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./subspace_sums.html'" onkeypress="location.href='./subspace_sums.html'">
+            <span>
+            Subspace Sums
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./vector_space_bases.html'" onkeypress="location.href='./vector_space_bases.html'">
+            <span>
+            Vector Space Bases
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./span.pdf#page=2'" onkeypress="location.href='./span.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./span-graph.pdf'" onkeypress="location.href='./span-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Span </h1> 
+      <!--
+!name:span
+!need:subspaces
+!need:real_vectors_span
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We want to convert a subset of a vector space
+  into a subspace.</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>The <span class='term'>span</span> of a subset of
+  a vector space is the intersection of all
+  subspaces which contain that subset.</span>
+
+ <span class='run'>Since the intersection of a family of subspaces
+  is a subspace, so too is the span.</span>
+
+ <span class='run'>Indeed, the span of a subset is contained in
+  every subspace containing the set.</span>
+</p>
+
+
+<p>
+ <span class='run'>A subset of a vector space
+  <span class='term'>spans</span> a subspace if its
+  span is that subspace.</span>
+
+ <span class='run'>For example, the subspace may be a vector
+  space, in which case the subset spans the
+  entire space.</span>
+
+ <span class='run'>In this case we say that the subset
+  <span class='term'>spans the space</span>.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>Let $V$ be a vector space and let $x_1,
+  \dots , x_n \in V$.</span>
+
+ <span class='run'>We denote the span of these vectors by
+  $\span\set{x_1, \dots , x_n}$</span>
+</p>
+
+<h1>Examples</h1>
+
+<p>
+ <span class='run'>The empty set is contained in every subspace,
+  so the span of the empty set is the zero
+  vector space.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1241,7 +1453,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

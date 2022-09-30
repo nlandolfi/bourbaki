@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -1390,27 +1394,22 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Matrix Rings </h1> 
-      <p>
- <span class='run'>%!name:matrix_rings</span>
+      <!--
+!name:matrix_determinant_of_product
+!need:matrix_determinants
+!need:real_matrix-matrix_products
+!need:real_matrices
+-->
 
- <span class='run'>%!need:real_matrix-matrix_products</span>
-
- <span class='run'>%!need:matrices</span>
-
- <span class='run'>%!need:rings</span>
-</p>
-
+<h1>Why</h1>
 
 <p>
- <span class='run'>\ssection{Why}</span>
-
  <span class='run'>Matrices with elements in a ring form a ring.</span>
 </p>
 
+<h1>Example</h1>
 
 <p>
- <span class='run'>\ssection{Example}</span>
-
  <span class='run'>Let $(R, +, \cdot )$ be a ring.</span>
 
  <span class='run'>Define $C = A \bar{+} B$ by $C_{ij} = A_{ij}
@@ -1443,21 +1442,9 @@
   even if $R$ is.</span>
 </p>
 
-
-<p>
- <span class='run'>\begin{exercise}</span>
-
+<div class='exercise'>
  <span class='run'>Show that $R^{n \times  n}$ is not a division
-  ring when $n &gt; 1$.</span>
-
- <span class='run'>\end{exercise}</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
-</p>
-
+  ring when $n &gt; 1$.</span></div>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1667,7 +1654,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

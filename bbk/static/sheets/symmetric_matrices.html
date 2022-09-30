@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -106,7 +110,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 122 0 -->
+      <!-- 123 0 -->
 
 <!-- \newcounter{caccounts} -->
 
@@ -1256,6 +1260,14 @@
 
 
 
+<!-- % used instead for symmetric group of permutations -->
+
+% used instead for symmetric group of permutations
+
+<!-- % \newcommand{\Sym}[1]{\mathbfsf{S}^{#1}} -->
+
+% \newcommand{\Sym}[1]{\mathbfsf{S}^{#1}}
+
 <!-- % added to vectors_as_matrices, around 4/23/22 -->
 
 % added to vectors_as_matrices, around 4/23/22
@@ -1283,6 +1295,213 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+                <span>
+                  Matrix Transpose
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./symmetric_real_matrices.html'" onkeypress="location.href='./symmetric_real_matrices.html'">
+                <span>
+                  Symmetric Real Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./antisymmetric_matrices.html'" onkeypress="location.href='./antisymmetric_matrices.html'">
+            <span>
+            Antisymmetric Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./lower_upper_triangular_factorizations.html'" onkeypress="location.href='./lower_upper_triangular_factorizations.html'">
+            <span>
+            Lower Upper Triangular Factorizations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matrix_space.html'" onkeypress="location.href='./matrix_space.html'">
+            <span>
+            Matrix Space
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_matrices.html'" onkeypress="location.href='./normal_matrices.html'">
+            <span>
+            Normal Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./sparsity_patterns.html'" onkeypress="location.href='./sparsity_patterns.html'">
+            <span>
+            Sparsity Patterns
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./symmetric_matrices.pdf#page=2'" onkeypress="location.href='./symmetric_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./symmetric_matrices-graph.pdf'" onkeypress="location.href='./symmetric_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Symmetric Matrices </h1> 
+      <!--
+!name:symmetric_matrices
+!need:matrix_transpose
+!need:symmetric_real_matrices
+-->
+
+<h2>Why</h2>
+
+<p>
+ <span class='run'>Matrices that have reflected values across their
+  diagonals arise often.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h2>Definition</h2>
+
+<p>
+ <span class='run'>A square matrix is
+  <span class='term'>symmetric</span> (we call it a
+  <span class='term'>symmetric matrix</span>) if its
+  values do not depend on the order of the
+  indices.</span>
+
+ <span class='run'>In other words, a matrix is symmetric if the
+  value above and below the diagonal are a mirror
+  image.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>Let $S$ be a nonempty set and $A \in S^{n
+  \times  n}$.</span>
+
+ <span class='run'>Then $A$ is symmetric if $A_{ij} = A_{ji}$.</span>
+
+ <span class='run'>We denote the set of real-valued $n$ by $n$
+  symmetric matrices by $\mathbfsf{S} ^n$.</span>
+
+ <span class='run'>A symmetric matrix is the same as its tranpose.</span>
+
+ <span class='run'>In other words, if $A$ is symmetric, $A =
+  A^\top $.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will clarify.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1309,6 +1528,13 @@
             <div class="need" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
               <span>
                 Matrix Transpose
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./symmetric_real_matrices.html'" onkeypress="location.href='./symmetric_real_matrices.html'">
+              <span>
+                Symmetric Real Matrices
               </span>
               <span class="caret">›</span>
             </div>
@@ -1358,7 +1584,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><h2 class="sheet" id="why">0.1 Why</h2></div><div class="sheet-listing"><p class="sheet"> Matrices that have reflected values across their diagonals arise often.\footnote{Future editions will clarify.}</p></div><div class="sheet-listing"><h2 class="sheet" id="definition">0.2 Definition</h2></div><div class="sheet-listing"><p class="sheet"> A square matrix is \t{symmetric} (we call it a \t{symmetric matrix}) if its values do not depend on the order of the indices. In other words, a matrix is symmetric if the value above and below the diagonal are a mirror image.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">0.3 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $S$ be a nonempty set and $A \in \Mat{S}{n}{n}$. Then $A$ is symmetric if $A_{ij} = A_{ji}$. We denote the set of real-valued $n$ by $n$ symmetric matrices by $\SymMat{n}$. A symmetric matrix is the same as its tranpose. In other words, if $A$ is symmetric, $A = \transpose{A}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \subsection*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Matrices that have reflected values across their diagonals arise often.\footnote{Future editions will clarify.}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A square matrix is \t{symmetric} (we call it a \t{symmetric matrix}) if its values do not depend on the order of the indices. In other words, a matrix is symmetric if the value above and below the diagonal are a mirror image.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $S$ be a nonempty set and $A \in S^{n \times  n}$. Then $A$ is symmetric if $A_{ij} = A_{ji}$. We denote the set of real-valued $n$ by $n$ symmetric matrices by $\mathbfsf{S} ^n$. A symmetric matrix is the same as its tranpose. In other words, if $A$ is symmetric, $A = A^\top $.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1512,7 +1738,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>

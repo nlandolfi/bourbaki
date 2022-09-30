@@ -71,6 +71,7 @@
                 re: ["\\mathword{Re}"],
                 im: ["\\mathword{Im}"],
                 dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
                 dnorm: ["\\norm{#1}_*", 1],
                 Cmod: ["\\abs{#1}", 1],
                 Cabs: ["\\Cmod{#1}", 1],
@@ -87,7 +88,10 @@
                 std: ["\\mathword{std}"],
                 Cconj: ["#1^{*}", 1],
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
-                            },
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                epi: ["\\mathword{epi}"],
+                      },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
     };
@@ -1098,19 +1102,13 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Joint Distributions </h1> 
-      <p>
- <span class='run'>%!name:joint_distributions</span>
+      <!--
+!name:joint_distributions
+!need:probability_distributions
+!need:lists
+-->
 
- <span class='run'>%!need:probability_distributions</span>
-
- <span class='run'>%!need:lists</span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}</span>
-</p>
-
+<h1>Why</h1>
 
 <p>
  <span class='run'>Suppose we flip a coin $n$ times.</span>
@@ -1124,11 +1122,7 @@
  <span class='run'>How now?</span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Discussion}</span>
-</p>
-
+<h1>Discussion</h1>
 
 <p>
  <span class='run'>If we model the outcome that coin $i$ lands
@@ -1151,11 +1145,7 @@
   the real world (c.f. numbers, etc.).</span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Definition}</span>
-</p>
-
+<h1>Definition</h1>
 
 <p>
  <span class='run'>Consider a distribution over a product of $n$
@@ -1165,11 +1155,6 @@
  <span class='run'>We call the distribution a
   <span class='term'>joint distribution</span> with
   $n$ components.</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
 </p>
 
     </div>
@@ -1230,7 +1215,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we flip a coin $n$ times. How should we define a probability distribution on $\set{0, 1}^n$. Suppose instead we flip $n$ different coins, each once. How now?</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> If we model the outcome that coin $i$ lands heads as $1$ and that it lands tails by $0$, then we are asking to treat of uncertain outcomes from the set $\set{0, 1}^n$ of length-2 sequences.</p></div><div class="sheet-listing"><p class="sheet"> Here $x \in \set{0, 1}^n$ could correspond to the outcome of flipping one coin $n$ times or the outcome of flipping $n$ different coins. This is a simple example of a frequent and obvious phenomenon in mathematics wherein the same mathematical model (here the outcome set) can be used to model different situations in the real world (c.f. numbers, etc.).</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider a distribution over a product of $n$ sets, where the product is indexed by the first $n$ natural numbers. We call the distribution a \t{joint distribution} with $n$ components.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we flip a coin $n$ times. How should we define a probability distribution on $\set{0, 1}^n$. Suppose instead we flip $n$ different coins, each once. How now?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> If we model the outcome that coin $i$ lands heads as $1$ and that it lands tails by $0$, then we are asking to treat of uncertain outcomes from the set $\set{0, 1}^n$ of length-2 sequences.</p></div><div class="sheet-listing"><p class="sheet"> Here $x \in \set{0, 1}^n$ could correspond to the outcome of flipping one coin $n$ times or the outcome of flipping $n$ different coins. This is a simple example of a frequent and obvious phenomenon in mathematics wherein the same mathematical model (here the outcome set) can be used to model different situations in the real world (c.f. numbers, etc.).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Consider a distribution over a product of $n$ sets, where the product is indexed by the first $n$ natural numbers. We call the distribution a \t{joint distribution} with $n$ components.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1384,7 +1369,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 235a69d1e.
+      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
     </span>
   </body>
 </html>
