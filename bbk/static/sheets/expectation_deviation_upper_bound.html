@@ -1160,9 +1160,13 @@
 
 % following (roughly) the example of set_numbers/macros
 
-<!-- \newcommand{\intabs}[1]{\left|#1\right|} -->
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
 
-\newcommand{\intabs}[1]{\left|#1\right|}
+% \newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1312,13 +1316,208 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+<!-- % it is declared in integral line! -->
 
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+% it is declared in integral line!
+
+<!-- % \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+% \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
     </span>
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./absolute_value.html'" onkeypress="location.href='./absolute_value.html'">
+                <span>
+                  Absolute Value
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./variance.html'" onkeypress="location.href='./variance.html'">
+                <span>
+                  Variance
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./expectation_deviation_upper_bound.pdf#page=2'" onkeypress="location.href='./expectation_deviation_upper_bound.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./expectation_deviation_upper_bound-graph.pdf'" onkeypress="location.href='./expectation_deviation_upper_bound-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Expectation Deviation Upper Bound </h1> 
+      <!--
+!name:expectation_deviation_upper_bound
+!need:variance
+!need:absolute_value
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We bound the probability</span>
+
+ <span class='run'>that a random variance</span>
+
+ <span class='run'>deviates from its mean</span>
+
+ <span class='run'>using its variance.</span>
+</p>
+
+<h1>Result</h1>
+
+<div class='proposition'>
+ <span class='run'>Let $f$ be a</span>
+
+ <span class='run'>square-integrable</span>
+
+ <span class='run'>real-valued</span>
+
+ <span class='run'>random variable</span>
+
+ <span class='run'>on the probability</span>
+
+ <span class='run'>space $(X, \mathcal{A} , \mu )$.</span>
+
+ <span class='run'>Then for $t &gt; 0$,
+  <p>\[
+   \mu (\abs{f - \E (f)} \geq t) \leq \frac{\var f}{t^2}.
+  \]</p></span>
+ <div class='proof'>  <span class='run'>The set</span>
+
+  <span class='run'>$\abs{f - \E (f)} \geq t$</span>
+
+  <span class='run'>is</span>
+
+  <span class='run'>$\Set*{x \in X}{ \abs{f(x) - \E (f)} \geq t}$.</span>
+
+  <span class='run'>This set is</span>
+
+  <span class='run'>$\Set*{x \in X}{({f(x) - \E (f)})^2 \geq t^2}$.</span>
+
+  <span class='run'>By using the non-negative inequality
+   <p>\[
+    \mu (\Set*{x \in X}{({f(x) - \E (f)})^2 \geq t^2}) \leq
+     \frac{\E (f - \E (f))}{t^2}.
+   \]</p></span>
+
+  <span class='run'>We recognize the numerator of the right</span>
+
+  <span class='run'>hand side as the variance.</span> </div></div>
+<p>
+ <span class='run'>The above is also called
+  <span class='term'>Chebychev&#39;s Inequality</span>.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1517,7 +1716,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version c5051bbb7.
+      Copyright 2022 The Bourbaki Authors. Version a1b4836e3.
     </span>
   </body>
 </html>

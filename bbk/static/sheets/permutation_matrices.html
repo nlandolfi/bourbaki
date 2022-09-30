@@ -428,9 +428,13 @@
 
 % following (roughly) the example of set_numbers/macros
 
-<!-- \newcommand{\intabs}[1]{\left|#1\right|} -->
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
 
-\newcommand{\intabs}[1]{\left|#1\right|}
+% \newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- \renewcommand{\setminus}{-} -->
 
@@ -1008,9 +1012,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+<!-- % it is declared in integral line! -->
 
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+% it is declared in integral line!
+
+<!-- % \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+% \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- \newcommand{\Q}{\mathbfsf{Q}} -->
 
@@ -1473,107 +1481,80 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Permutation Matrices </h1> 
-      <p>
- <span class='run'>%!name:permutation_matrices</span>
+      <!--
+!name:permutation_matrices
+!need:permutations
+!need:matrices
+!need:matrix_transpose
+!need:real_matrix_inverses
+-->
 
- <span class='run'>%!need:permutations</span>
-
- <span class='run'>%!need:matrices</span>
-
- <span class='run'>%!need:matrix_transpose</span>
-
- <span class='run'>%!need:real_matrix_inverses</span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}</span>
-</p>
-
+<h1>Why</h1>
 
 <p>
  <span class='run'>Can permuting the rows or columns of a matrix
   be represented by matrix multiplication?</span>
 </p>
 
+<h1>Definition</h1>
 
 <p>
- <span class='run'>\ssection{Definition}</span>
-</p>
-
-
-<p>
- <span class='run'>Let $\sigma : \upto{n} \to \upto{n}$ be a
+ <span class='run'>Let $\sigma  : \upto{n} \to \upto{n}$ be a
   permutation of $n$.</span>
 
  <span class='run'>The <span class='term'>permutation matrix</span> of
-  $\sigma $ is the matrix $P$ defined by $P_{ij}
-  = 1$ if $\sigma (i) = j$ and 0 otherwise.</span>
+  $\sigma  $ is the matrix $P$ defined by $P_{ij}
+  = 1$ if $\sigma  (i) = j$ and 0 otherwise.</span>
 
  <span class='run'>This is sometimes called the
   <span class='term'>column representation</span> (in
   contrast to the row representation, in which
-  $P_{ij} = 1$ if $\sigma (j) = i$.</span>
+  $P_{ij} = 1$ if $\sigma  (j) = i$.</span>
 </p>
 
 
 <p>
- <span class='run'>Let $A \in \R ^{n \times  n}$.</span>
+ <span class='run'>Let $A \in \R  ^{n \times  n}$.</span>
 
  <span class='run'>Then pre-multipying $A$ by $P$ permutes the
   rows of $A$.</span>
 
  <span class='run'>In other words $PA$ has the same rows as $A$
-  but permuted according to $\sigma $.</span>
+  but permuted according to $\sigma  $.</span>
 
  <span class='run'>Similarly, post-multiplying by $P$ permutes the
   columns of $A$.</span>
 
  <span class='run'>In other words, $AP$ has the same columns as
-  $A$ but permuted according to $\sigma $.</span>
+  $A$ but permuted according to $\sigma  $.</span>
 
  <span class='run'>Clearly, we can also speak of permuting the
   components of a vector.</span>
 </p>
 
+<h1>Composition</h1>
 
 <p>
- <span class='run'>\ssection{Composition}</span>
-</p>
+ <span class='run'>Let $\pi  , \sigma  \in S_n$ with corresponding
+  permutation matrices $P_\sigma  $ and $P_\pi  $.</span>
 
+ <span class='run'>Then $P_{\pi  }P_{\sigma  }A$ has the same rows
+  as $A$ but permuted by $\pi  \sigma  $.</span>
 
-<p>
- <span class='run'>Let $\pi , \sigma  \in S_n$ with corresponding
-  permutation matrices $P_\sigma $ and $P_\pi $.</span>
-
- <span class='run'>Then $P_{\pi }P_{\sigma }A$ has the same rows as
-  $A$ but permuted by $\pi \sigma $.</span>
-
- <span class='run'>Likewise, $AP_{\pi }P_{\sigma }$ has the same
-  columns as $A$ but permuted by $\pi \sigma $.</span>
+ <span class='run'>Likewise, $AP_{\pi  }P_{\sigma  }$ has the same
+  columns as $A$ but permuted by $\pi  \sigma  $.</span>
 
  <span class='run'>Clearly, the identity permutation on $\upto{n}$
-  is the identity $I \in \R ^{n \times  n}$.</span>
+  is the identity $I \in \R  ^{n \times  n}$.</span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Inverses}</span>
-</p>
-
+<h1>Inverses</h1>
 
 <p>
  <span class='run'>It is clear from the definition that
-  $P_{\sigma }^{-1} = P_{\sigma ^{-1}}$ and so if
-  $P$ is a permutation matrix then $P^{-1}$ is
-  $\transpose{P}$.</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
-
- <span class='run'></span>
+  $P_{\sigma  }^{-1} = P_{\sigma  ^{-1}}$ and so
+  if $P$ is a permutation matrix then $P^{-1}$ is
+  $P^\top $.</span>
 </p>
 
     </div>
@@ -1823,7 +1804,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version c5051bbb7.
+      Copyright 2022 The Bourbaki Authors. Version a1b4836e3.
     </span>
   </body>
 </html>

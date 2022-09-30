@@ -460,9 +460,13 @@
 
 % following (roughly) the example of set_numbers/macros
 
-<!-- \newcommand{\intabs}[1]{\left|#1\right|} -->
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
 
-\newcommand{\intabs}[1]{\left|#1\right|}
+% \newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- % use \powerset{A} for power set of A -->
 
@@ -932,9 +936,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+<!-- % it is declared in integral line! -->
 
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+% it is declared in integral line!
+
+<!-- % \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+% \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
 
@@ -1319,6 +1327,228 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./variance.html'" onkeypress="location.href='./variance.html'">
+                <span>
+                  Variance
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./tail_measure_lower_bound.pdf#page=2'" onkeypress="location.href='./tail_measure_lower_bound.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./tail_measure_lower_bound-graph.pdf'" onkeypress="location.href='./tail_measure_lower_bound-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Tail Measure Lower Bound </h1> 
+      <!--
+!name:tail_measure_lower_bound
+!need:variance
+-->
+
+<h1>Result</h1>
+
+<p>
+ <span class='run'>We bound below the measure</span>
+
+ <span class='run'>that a non-negative</span>
+
+ <span class='run'>measurable real-valued</span>
+
+ <span class='run'>function exceeds some</span>
+
+ <span class='run'>value by its integral.</span>
+</p>
+
+<div class='proposition'>
+ <p>
+  <span class='run'>Let $(X, \mathcal{A} , \mu )$</span>
+
+  <span class='run'>be a measure space.</span>
+
+  <span class='run'>Let $g: X \to [0, \infty]$</span>
+
+  <span class='run'>be measurable</span>
+
+  <span class='run'>and square-integrable.</span>
+
+  <span class='run'>Then for all $t$ such that</span>
+
+  <span class='run'>$\int  t d\mu  \in [0, \int  g d\mu )$,
+   <p>\[
+    \mu (\Set*{x \in X}{g(x) > t}) \geq \frac{(\int (g - t)
+     d\mu )^2}{\int g^2d\mu }.
+   \]</p></span>
+  <div class='proof'>   <span class='run'>Let $t$ such that $\int t d\mu  \in [0,
+    \int g)$.</span>
+
+   <span class='run'>We have selected $t$ so that $\int (g -
+    t)d\mu  \geq 0$.</span>
+
+   <span class='run'>Define $h = (g - t)^+$</span>
+
+   <span class='run'>and $A = \Set*{x \in X}{h(x) &gt; 0}$.</span>
+
+   <span class='run'>Then
+    <p>\[
+     \int  (g - t) d\mu
+
+     \leq \int  h d\mu
+
+     = \int  h \chi _{A} d\mu
+
+     \leq \sqrt{\int  h^2 d\mu  \int  \chi _{A}^2 \; d\mu }
+    \]</p></span>  </div>
+ </p>
+</div>
+<p>
+ <span class='run'>Now $g^2 &gt; h^2$, so $\int g^2 d\mu  \geq
+  \int h^2 d\mu $.</span>
+
+ <span class='run'>Also $\chi _A^2 = \chi _A$ so $\int \chi _A^2 =
+  \mu (A)$.</span>
+
+ <span class='run'>$h(x) &gt; 0$ if and only if $g(x) \geq t$
+  for all $x$.</span>
+
+ <span class='run'>So $A = \Set*{x \in X}{g(x) \geq t}$.</span>
+
+ <span class='run'>Combining we have:
+  <p>\[
+   \int  (g - t)d\mu  \leq \sqrt{(\int  g^2 d\mu ) \mu (A)}.
+  \]</p></span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>Let $X$ be a random variable with $\E (X^2)
+  \leq \infty$.</span>
+
+ <span class='run'>Then for all $t \in [0, \E (X))$, we have
+  <p>\[
+   P(X > t) \geq
+
+   \frac{
+
+   (\E (X) - t)^2
+
+   }{
+
+   \E {X^2}
+
+   }.
+  \]</p></span></div>
+<p>
+ <span class='run'>The above is also called the
+  <span class='term'>Paley-Zygmund Inequality</span>.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1510,7 +1740,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version c5051bbb7.
+      Copyright 2022 The Bourbaki Authors. Version a1b4836e3.
     </span>
   </body>
 </html>

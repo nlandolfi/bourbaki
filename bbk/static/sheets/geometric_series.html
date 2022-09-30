@@ -916,9 +916,13 @@
 
 % following (roughly) the example of set_numbers/macros
 
-<!-- \newcommand{\intabs}[1]{\left|#1\right|} -->
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
 
-\newcommand{\intabs}[1]{\left|#1\right|}
+% \newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- % use \num{A} for |A| -->
 
@@ -1012,9 +1016,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+<!-- % it is declared in integral line! -->
 
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+% it is declared in integral line!
+
+<!-- % \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+% \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1051,6 +1059,226 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_limit_algebra.html'" onkeypress="location.href='./real_limit_algebra.html'">
+                <span>
+                  Real Limit Algebra
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_series.html'" onkeypress="location.href='./real_series.html'">
+                <span>
+                  Real Series
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./geometric_series.pdf#page=2'" onkeypress="location.href='./geometric_series.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./geometric_series-graph.pdf'" onkeypress="location.href='./geometric_series-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Geometric Series </h1> 
+      <!--
+!name:geometric_series
+!need:real_series
+!need:real_limit_algebra
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>It is believable that $½, ¼, ⅛, \dots $ has a
+  convergent series.</span>
+
+ <span class='run'>And likewise with $1/3, 1/9, 1/27, \dots  $
+  <span class='run'>What of $a_k = x^k$ for $x \in \R $.</span></span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>Let $x \in \R $.</span>
+
+ <span class='run'>The <span class='term'>geometric series</span> of
+  $x$ is the series of the sequence $(a_k)$
+  defined by $a_k = x^k$.</span>
+</p>
+
+<h1>Characterization of convergence</h1>
+
+<p>
+ <span class='run'>Does the geometric series of $x$ converge?</span>
+
+ <span class='run'>In other words, does $(s_n)$ defined by $s_n =
+  \sum_{k = 1}^{n} x^k$ have a limit.</span>
+</p>
+
+
+<p>
+ <span class='run'>For $x = 1$ and $x = -1$, we have seen (see&nbsp;<a href='/sheets/real_series.html'/><span class='run'>Real Series</span></a>) that the series diverges.</span>
+
+ <span class='run'>However for the cases $x = ½$ and $x=1/3$ the
+  geometric series converges.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>If $\abs{x} &lt; 1$, then the geometric series
+  of $x$ converges and
+  <p>\[
+   \lim_{n \to \infty} \sum_{k = 1}^{n} x^k = \frac{x}{1-x}
+  \]</p>
+  <span class='run'>If $\abs{x} \geq 1$ then the geometric series
+   of $x$ diverges.</span></span></div>
+<div class='proof'> <p>
+  <span class='run'>Define $s_n = \sum_{k = 1}^{n} x^k$.</span>
+
+  <span class='run'>Then
+   <p>\[
+    \begin{aligned}
+
+    x \cdot  s_n &= x\cdot (x^1 + x^2 + \cdots + x^n) \\
+
+    &= x^2 + x^3 + \cdots + x^{n+1} \\
+
+    &= s_n - x + x^{n+1}.
+
+    \end{aligned}
+   \]</p>
+   <span class='run'>From which we deduce, $s_n(1-x) = x(1-x^n)$.
+    If $x \neq 1$, then
+    <p>\[
+     s_n = \frac{1}{1-x}(1 - x^n)
+    \]</p></span></span>
+ </p>
+
+
+ <p>
+  <span class='run'>If $\abs{x} &lt; 1$, then using the algebra
+   of limits (see &nbsp;<a href='/sheets/real_limit_algebra.html'/><span class='run'>Real Limit Algebra</span></a>) we deduce
+   <p>\[
+    \lim_{n \to \infty} \frac{1}{1-x} (1 - x^n) = \frac{1}{1 -
+     x} (1 - 0) = \frac{1}{1 - x},
+   \]</p>
+   since $\lim_{k \to \infty} x^k = 0$ for
+   $\abs{x} &lt; 1$.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>If $x = 1$ or $x = -1$, then we have seen
+   that $(s_n)$ diverges.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+ </p>
+</div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include the trivial account
+  about the case $\abs{x} &gt; 1$.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1249,7 +1477,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version c5051bbb7.
+      Copyright 2022 The Bourbaki Authors. Version a1b4836e3.
     </span>
   </body>
 </html>
