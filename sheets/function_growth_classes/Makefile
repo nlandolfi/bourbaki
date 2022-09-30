@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make function_growth_classes.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 function_growth_classes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_growth_classes.tex
 

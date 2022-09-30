@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make convex_sets_and_halfspaces.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 convex_sets_and_halfspaces.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_sets_and_halfspaces.tex
 

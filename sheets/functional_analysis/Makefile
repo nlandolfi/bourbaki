@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make functional_analysis.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 functional_analysis.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > functional_analysis.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make finite_sets.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 finite_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > finite_sets.tex
 

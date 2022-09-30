@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make intersection_of_empty_set.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 intersection_of_empty_set.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > intersection_of_empty_set.tex
 

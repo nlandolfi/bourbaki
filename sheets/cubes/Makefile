@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make cubes.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 cubes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cubes.tex
 

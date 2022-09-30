@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make equations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 equations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > equations.tex
 

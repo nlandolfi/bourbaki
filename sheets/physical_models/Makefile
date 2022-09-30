@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make physical_models.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 physical_models.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > physical_models.tex
 
