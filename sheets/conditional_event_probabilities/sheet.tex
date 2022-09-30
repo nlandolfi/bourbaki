@@ -1,68 +1,73 @@
+
 %!name:conditional_event_probabilities
 %!need:event_probabilities
 
-\ssection{Why}
+\section*{Why}
 
 How should we modify probabilities, given that we know some aspect of the outcomes (i.e., that some event has occurred).
 
-\ssection{Definition}
+\section*{Definition}
+
 Let $\mathbfsf{P} : \powerset{\Omega } \to \R $ be a finite probability measure.
 Let $A, B \subset \Omega $ and $\mathbfsf{P} (B) \neq 0$.
-The \t{conditional probability} of $A$ \t{given} $B$ is fraction of the probability of $A \cap B$ over the probability of $B$.
+The \t{conditional probability} of $A$ \t{given} $B$ is fraction of the probability of $A \cap  B$ over the probability of $B$.
 
-\ssubsection{Notation}
+\subsection*{Notation}
+
 In a slightly slippery but universally standard notation, we denote the conditional probability of $A$ given $B$ by $\mathbfsf{P} (A \mid  B)$.
 In other words, we define
-  \[
+    \[
 \mathbfsf{P} (A \mid  B) = \frac{\mathbfsf{P} (A \cap B)}{\mathbfsf{P} (B)},
-  \]
+    \]
 for all $A, B \subset \Omega $, whenever $\mathbfsf{P} (B) \neq 0$.
 
 For example, we can express the law of total probability (see \sheetref{event_probabilities}{Event Probabilities}) as
-  \[
+    \[
 \textstyle
 \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i)\mathbfsf{P} (B \mid  A_i),
-  \]
+    \]
 where $A_1, \dots , A_n$ partition $\Omega $ and $B \subset \Omega $ with $\mathbfsf{P} (B) > 0$.
 
-\ssection{Conditional probability measure}
-Suppose $B \subset \Omega $ and $\mathbfsf{P} (B) > 0$.
-Then (i) $\mathbfsf{P} (A \mid  B) \geq 0$ for all $A \subset \Omega $, since $\mathbfsf{P} (A \cap B) \geq 0$.
-Moreover, (ii)
-  \[
-\mathbfsf{P} (\Omega  \mid  B) = \mathbfsf{P} (\Omega  \cap B)/\mathbfsf{P} (B) = \mathbfsf{P} (B)/\mathbfsf{P} (B) = 1
-  \]
-Similarly, $\mathbfsf{P} (\varnothing \mid  B) = \mathbfsf{P} (\varnothing \cap B)/\mathbfsf{P} (B) = 0/\mathbfsf{P} (B) = 0$.
+\section*{Conditional probability measure}
 
-Finally, (iii) if $A \cap C = \varnothing$, then
-  \[
+Suppose $B \subset \Omega $ and $\mathbfsf{P} (B) > 0$.
+Then (i) $\mathbfsf{P} (A \mid  B) \geq 0$ for all $A \subset \Omega $, since $\mathbfsf{P} (A \cap  B) \geq 0$.
+Moreover, (ii)
+    \[
+\mathbfsf{P} (\Omega  \mid  B) = \mathbfsf{P} (\Omega  \cap B)/\mathbfsf{P} (B) = \mathbfsf{P} (B)/\mathbfsf{P} (B) = 1
+    \]
+Similarly, $\mathbfsf{P} (\varnothing \mid  B) = \mathbfsf{P} (\varnothing \cap  B)/\mathbfsf{P} (B) = 0/\mathbfsf{P} (B) = 0$.
+
+Finally, (iii) if $A \cap  C = \varnothing$, then
+    \[
 \begin{aligned}
-\mathbfsf{P} (A \cap C \mid  B)
+\mathbfsf{P} (A \cap  C \mid  B)
 &=
-\mathbfsf{P} ((A \cap C) \cap B)/\mathbfsf{P} (B) \\
+\mathbfsf{P} ((A \cap  C) \cap  B)/\mathbfsf{P} (B) \\
 &=
-\mathbfsf{P} ((A \cap B) \cap (C \cap B)/\mathbfsf{P} (B) \\
+\mathbfsf{P} ((A \cap  B) \cap  (C \cap  B)/\mathbfsf{P} (B) \\
 &\overset{(a)}{=}
-(\mathbfsf{P} (A \cap B) + \mathbfsf{P} (C \cap B))/\mathbfsf{P} (B) \\
+(\mathbfsf{P} (A \cap  B) + \mathbfsf{P} (C \cap B))/\mathbfsf{P} (B) \\
 &=
-\mathbfsf{P} (A \cap B)/\mathbfsf{P} (B) + P(C \cap B)/\mathbfsf{P} (B) \\
+\mathbfsf{P} (A \cap  B)/\mathbfsf{P} (B) + P(C \cap B)/\mathbfsf{P} (B) \\
 &=
 \mathbfsf{P} (A \mid  B) + P(C \mid  B).
 \end{aligned}
-  \]
-where (a) follows since $A \cap B$ and $C \cap B$ are disjoint.
+    \]
+where (a) follows since $A \cap  B$ and $C \cap  B$ are disjoint.
 
 Together, (i)-(iii) mean that $\mathbfsf{P} (\cdot \mid  B)$ is itself a probability measure on $\Omega $.
 We therefore refer to $\mathbfsf{P} (\cdot \mid  B)$ as a \t{conditional probability measure}.
 
-\ssubsection{Induced conditional distribution}
+\subsection*{Induced conditional distribution}
+
 Therefore, we expect there to also correspond a new distribution on the set of outcomes.
 For $\mathbfsf{P} _p$, define $q: \Omega  \to \R $ by
-  \[
+    \[
 q(\omega ) = \begin{cases}
 \frac{p(\omega )}{\mathbfsf{P} (B)} & \text{ if } \omega  \in B \\
 0 & \text{ otherwise. } \\
 \end{cases}
-  \]
+    \]
 In this case $\mathbfsf{P} _q(A) = \mathbfsf{P} _p(A \mid  B)$.
 We call $q$ the \t{conditional distribution} induced by \t{conditioning on} the event $B$.
