@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make convergence_in_measure.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 convergence_in_measure.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convergence_in_measure.tex
 

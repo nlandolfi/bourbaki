@@ -1,3 +1,4 @@
+
 %!name:chordal_graphs
 %!need:undirected_subgraphs
 %!need:integral_line
@@ -5,25 +6,25 @@
 %!need:trees
 %!refs:vandenberghe2014chordal
 
-\ssection{Why}
+\section*{Why}
 
 Many problems simplify if the graph involved is chordal.\footnote{Future editions will expand.}
 
-\ssection{Paths}
+\section*{Paths}
 
 Let $G$ be an undirected graph.
 A \t{chord} in a path $p$ of $G$ is an edge between two non-consecutive vertices of $p$.
-So a chord of the path $(v_1, v_1, \dots, v_{k})$ is an edge $\set{v_i, v_j}$ with $\intabs{j - i} > 1$.
+So a chord of the path $(v_1, v_1, \dots , v_{k})$ is an edge $\set{v_i, v_j}$ with $\abs{j - i} > 1$.
 
 We interpret a chord as a \say{one-edge shortcut} between two vertices of a path.
 If a path $p$ has a chord, it can be reduced to a shorter path $p'$ by \say{skipping} vertices.
 In other words, the shortest path between two vertices is chordless.
 However, a chordless path need not be a shortest path.
-See Figure~\ref{figure:chordal_graphs:chords}.
+See the figure below.
 
-\ssection{Graphs}
+\section*{Graphs}
 
-A chord of a cycle $(v_1, v_2, \dots, v_{k-1}, v_1)$ is an edge $\set{v_i, v_j}$ with $(j - i) \mod k > 1$.
+A chord of a cycle $(v_1, v_2, \dots , v_{k-1}, v_1)$ is an edge $\set{v_i, v_j}$ with $(j - i) \mod k > 1$.
 An undirected graph $G$ is \t{chordal} if every cycle with more than three edges has a chord.
 
 If $G$ is chordal, every cycle in $G$ can be reduced to a cycle of length three.
@@ -31,25 +32,37 @@ We sometimes call a cycle of length three a \t{triangle}.
 For this reason, chordal graphs are also sometimes called \t{triangulated graphs}.
 Other terminology includes \t{rigid-circuit graphs}, \t{triangulated graphs}, \t{perfect elimination graphs}, \t{decomposable graphs}.\footnote{See Vanenberghe and Anderson, 2014.}
 
-The last graph in Figure~\ref{figure:chordal_graphs:chords} is not chordal because the cycle $(a, b, d, c, a)$ has length four and no chord.
+The last graph in the figure below is not chordal because the cycle $(a, b, d, c, a)$ has length four and no chord.
 Adding the edge $\set{b, c}$ or $\set{a, d}$ would make the graph chordal
 An immediate consequence of the definition that $G$ be chordal is that any subgraph of $G$ is chordal.
 
-
-\ssection{Simple Examples}
+\section*{Simple examples}
 
 Since trees and forests have no cycles, they are chordal.
 Similarly, any graph with no cycles longer than three edges are trivially chordal.
 Such graphs are sometimes called \t{cactus graphs}.
 The complete graphs are also trivially chordal.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.9\textwidth]{graphics_included/chords}
-  \caption{
-  The edge $\set{e, d}$ is a chord in the path $(a, e, c, d)$ of the first graph. The path $(a, v, d, c)$ is chordless.
-  The edge $\set{a, e}$ is a chord in the cycle $(a, v, e, c, a)$ of the second graph.
-  The cycle $(a, b, d, c, a)$ is chordless.
-  }
-  \label{figure:chordal_graphs:chords}
-\end{figure}
+\subsection*{Specific example}
+
+\begin{center}\includegraphics[width=0.70\textwidth]{graphics/chords.png}\end{center}
+The edge $\set{e, d}$ is a chord in the path $(a, e, c, d)$ of the first graph. The path $(a, v, d, c)$ is chordless.
+The edge $\set{a, e}$ is a chord in the cycle $(a, v, e, c, a)$ of the second graph.
+The cycle $(a, b, d, c, a)$ is chordless.
+
+%<div data-littype='paragraph'>
+% <div data-littype='run'> \begin{figure} </div>
+% <div data-littype='run'> \centering </div>
+% <div data-littype='run'> ∈cludegraphics[width=0.9\textwidth]{graphics_included/chords} </div>
+% <div data-littype='run'> \caption{ </div>
+% <div data-littype='run'> The edge $\set{e, d}$ is a chord in the path $(a, e, c,
+%    d)$ of the first graph. The path $(a, v, d, c)$ is
+%    chordless. </div>
+% <div data-littype='run'> The edge $\set{a, e}$ is a chord in the cycle $(a, v, e,
+%    c, a)$ of the second graph. </div>
+% <div data-littype='run'> The cycle $(a, b, d, c, a)$ is chordless. </div>
+% <div data-littype='run'> } </div>
+% <div data-littype='run'> \label{figure:chordal_graphs:chords} </div>
+% <div data-littype='run'> \end{figure” </div>
+% <div data-littype='run'> </div>
+%</div>

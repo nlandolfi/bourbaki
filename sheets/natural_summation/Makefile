@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make natural_summation.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 natural_summation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_summation.tex
 
