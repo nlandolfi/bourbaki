@@ -1,0 +1,140 @@
+<!--
+!name:controlled_dynamical_systems
+!need:dynamical_systems
+!need:state_representations
+!need:directed_graphs
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to talk about influencing natural phenomena.
+    † ⦊
+      ‖ Future editions will modify, and may restore former
+        editions language: “We want to talk about making decisions
+        over time.
+
+        ‖ Though this language may also be used in a sheet on
+          ‹finite› controlled dynamical systems. ⦉⦉
+    ⦉⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $𝒳_0, 𝒳_1, …, 𝒳_{T}$ and $𝒰_0, 𝒰_1, …, 𝒰_{T-1}$ be
+    sets. ⦉
+
+  ‖ For $t = 0$, $…$, $T-1$, let $f_{t}: 𝒳_t × 𝒰_t → 𝒳_{t+1}$. ⦉
+
+  ‖ We call the sequence
+    ◇ ⦊
+      ‖ ((𝒳_t)_{t = 0}^{T}), (𝒰_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1}) ⦉
+    ⦉
+    a ❬controlled deterministic discrete-time dynamical system❭. ⦉
+
+  ‖ We call the index $t$ the ❬epoch❭, the ❬stage❭ or the
+    ❬period❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $x_0 ∈ 𝒳_0$. ⦉
+
+  ‖ Let $u_0 ∈ 𝒰_0, …, u_{T-1} ∈ 𝒰_{T-1}$. Define a state
+    sequence $x_1 ∈ 𝒳_1, …, x_T ∈ 𝒳_T$ by
+    ◇ ⦊
+      ‖ x_{t+1} = f_t(x_t, u_t). ⦉
+    ⦉⦉
+
+  ‖ In this case we call $x_0$ the ❬initial state❭. ⦉
+
+  ‖ We call the $x_t$ the ❬states❭. ⦉
+
+  ‖ We call the $u_t$ a sequence of ❬inputs❭ (or ❬actions❭,
+    ❬decisions❭, ❬choices❭, or ❬controls❭). ⦉
+
+  ‖ We call $f_t$ the ❬transition function❭ or ❬dynamics
+    function❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ We call $T$ the ❬horizon❭. ⦉
+
+  ‖ In the case that we have an infinite sequence of state
+    sets, input sets, and dynamics, then we refer to a
+    ❬infinite-horizon❭ dynamical system. ⦉
+
+  ‖ To use language in contrast with this case, we refer to
+    the dynamical system when $T$ is finite as a ❬finite-horizon❭
+    dynamical system. ⦉
+⦉
+
+§§ State ⦉
+¶ ⦊
+  ‖ The current action $u_t$ affects future states $x_{s}$ for
+    $s > t$, but not the current or past states. ⦉
+
+  ‖ The current state $x_t$ depends on the initial state $x_0$
+    and the sequence of past actions $u_0, …, u_{t-1}$. ⦉
+
+  ‖ So the state is a “link” between the past and the future. ⦉
+
+  ‖ Given $x_t$ and $u_t, …, u_{s-1}$, for $s > t$, we can
+    compute $x_s$. ⦉
+
+  ‖ In other words, the prior actions $u_0, …, u_{t-1}$ are not
+    relevant. ⦉
+⦉
+
+¶ ⦊
+  ‖ This nonrelevancy of prior actions and prior states
+    simplifies the sequential decision problem (see␣
+    <a href='/sheets/sequential_decisions.html'>
+      ‖ Sequential Decisions ⦉
+    </a>
+    ). ⦉
+⦉
+
+§§ Variations ⦉
+¶ ⦊
+  ‖ The dynamical system is called ❬time-invariant❭ if $𝒳_{t}$,
+    $𝒰_t$ and $f_t$ do not depend on $t$. ⦉
+
+  ‖ A simple variation is that $𝒰_t$ depends on $x_t$.
+    † ⦊
+      ‖ Future editions will say more here. ⦉
+    ⦉⦉
+⦉
+
+§ Examples ⦉
+
+§§ Finite dynamical system ⦉
+¶ ⦊
+  ‖ A dynamical system is finite if the state and action sets
+    are finite. ⦉
+
+  ‖ For example, $𝒳 = \set{1, …, n}$ and $𝒰 = \set{1, …, m}$. ⦉
+
+  ‖ Then $f_t: 𝒳 × 𝒰 → 𝒰$ is called a ❬transition map❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ Or else, let $(V, E)$ be a directed graph, then $𝒳 = V$,
+    $𝒰_{x_t} = \Set{(u, v) ∈ E}{u = x_t}$ and $f_t(x_t, u_t) =
+    v$ when $u_t = (x_t, v)$ is a dynamical system. ⦉
+
+  ‖ Roughly this system models \say{moving} on the graph. ⦉
+⦉
+
+§§ Discrete-time linear dynamical system ⦉
+¶ ⦊
+  ‖ Let $𝒳 = 𝗥^n$ and $𝒰 = 𝗥^m$. ⦉
+
+  ‖ Define $f_t: 𝒳 × 𝒰 → 𝒳$ by
+    ◇ ⦊
+      ‖ x_{t+1} = f_t(x_t, u_t) = A_t x_t + B_t u_t + c_t ⦉
+    ⦉
+    for $y = 1, …, T-1$.
+    † ⦊
+      ‖ This very special form of dynamics arises in many
+        applications. Future editions will say more. ⦉
+    ⦉⦉
+⦉

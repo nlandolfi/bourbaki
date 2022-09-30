@@ -947,6 +947,321 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./directed_graphs.html'" onkeypress="location.href='./directed_graphs.html'">
+                <span>
+                  Directed Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./dynamical_systems.html'" onkeypress="location.href='./dynamical_systems.html'">
+                <span>
+                  Dynamical Systems
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./state_representations.html'" onkeypress="location.href='./state_representations.html'">
+                <span>
+                  State Representations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./dynamic_optimization_problems.html'" onkeypress="location.href='./dynamic_optimization_problems.html'">
+            <span>
+            Dynamic Optimization Problems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./controlled_dynamical_systems.pdf#page=2'" onkeypress="location.href='./controlled_dynamical_systems.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./controlled_dynamical_systems-graph.pdf'" onkeypress="location.href='./controlled_dynamical_systems-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Controlled Dynamical Systems </h1> 
+      <!--
+!name:controlled_dynamical_systems
+!need:dynamical_systems
+!need:state_representations
+!need:directed_graphs
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We want to talk about influencing natural
+  phenomena.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>Let $\mathcal{X} _0, \mathcal{X} _1, \dots ,
+  \mathcal{X} _{T}$ and $\mathcal{U} _0,
+  \mathcal{U} _1, \dots , \mathcal{U} _{T-1}$ be sets.</span>
+
+ <span class='run'>For $t = 0$, $\dots $, $T-1$, let $f_{t}:
+  \mathcal{X} _t \times  \mathcal{U} _t \to
+  \mathcal{X} _{t+1}$.</span>
+
+ <span class='run'>We call the sequence
+  <p>\[
+   ((\mathcal{X} _t)_{t = 0}^{T}), (\mathcal{U} _t)_{t=0}^{T-1},
+    (f_t)_{t=1}^{T-1})
+  \]</p>
+  a <span class='term'>controlled deterministic
+  discrete-time dynamical system</span>.</span>
+
+ <span class='run'>We call the index $t$ the
+  <span class='term'>epoch</span>, the
+  <span class='term'>stage</span> or the
+  <span class='term'>period</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>Let $x_0 \in \mathcal{X} _0$.</span>
+
+ <span class='run'>Let $u_0 \in \mathcal{U} _0, \dots , u_{T-1} \in
+  \mathcal{U} _{T-1}$. Define a state sequence $x_1
+  \in \mathcal{X} _1, \dots , x_T \in
+  \mathcal{X} _T$ by
+  <p>\[
+   x_{t+1} = f_t(x_t, u_t).
+  \]</p></span>
+
+ <span class='run'>In this case we call $x_0$ the
+  <span class='term'>initial state</span>.</span>
+
+ <span class='run'>We call the $x_t$ the
+  <span class='term'>states</span>.</span>
+
+ <span class='run'>We call the $u_t$ a sequence of
+  <span class='term'>inputs</span> (or
+  <span class='term'>actions</span>,
+  <span class='term'>decisions</span>,
+  <span class='term'>choices</span>, or
+  <span class='term'>controls</span>).</span>
+
+ <span class='run'>We call $f_t$ the <span class='term'>transition
+  function</span> or <span class='term'>dynamics
+  function</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>We call $T$ the <span class='term'>horizon</span>.</span>
+
+ <span class='run'>In the case that we have an infinite sequence
+  of state sets, input sets, and dynamics, then
+  we refer to a
+  <span class='term'>infinite-horizon</span> dynamical
+  system.</span>
+
+ <span class='run'>To use language in contrast with this case, we
+  refer to the dynamical system when $T$ is
+  finite as a <span class='term'>finite-horizon</span>
+  dynamical system.</span>
+</p>
+
+<h2>State</h2>
+
+<p>
+ <span class='run'>The current action $u_t$ affects future states
+  $x_{s}$ for $s &gt; t$, but not the current or
+  past states.</span>
+
+ <span class='run'>The current state $x_t$ depends on the initial
+  state $x_0$ and the sequence of past actions
+  $u_0, \dots , u_{t-1}$.</span>
+
+ <span class='run'>So the state is a “link” between the past and
+  the future.</span>
+
+ <span class='run'>Given $x_t$ and $u_t, \dots , u_{s-1}$, for $s
+  &gt; t$, we can compute $x_s$.</span>
+
+ <span class='run'>In other words, the prior actions $u_0, \dots ,
+  u_{t-1}$ are not relevant.</span>
+</p>
+
+
+<p>
+ <span class='run'>This nonrelevancy of prior actions and prior
+  states simplifies the sequential decision problem
+  (see&nbsp;<a href='/sheets/sequential_decisions.html'/><span class='run'>Sequential Decisions</span></a>).</span>
+</p>
+
+<h2>Variations</h2>
+
+<p>
+ <span class='run'>The dynamical system is called
+  <span class='term'>time-invariant</span> if
+  $\mathcal{X} _{t}$, $\mathcal{U} _t$ and $f_t$ do
+  not depend on $t$.</span>
+
+ <span class='run'>A simple variation is that $\mathcal{U} _t$
+  depends on $x_t$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+</p>
+
+<h1>Examples</h1>
+
+<h2>Finite dynamical system</h2>
+
+<p>
+ <span class='run'>A dynamical system is finite if the state and
+  action sets are finite.</span>
+
+ <span class='run'>For example, $\mathcal{X}  = \set{1, \dots , n}$
+  and $\mathcal{U}  = \set{1, \dots , m}$.</span>
+
+ <span class='run'>Then $f_t: \mathcal{X}  \times  \mathcal{U}  \to
+  \mathcal{U} $ is called a
+  <span class='term'>transition map</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>Or else, let $(V, E)$ be a directed graph,
+  then $\mathcal{X}  = V$, $\mathcal{U} _{x_t} =
+  \Set{(u, v) \in E}{u = x_t}$ and $f_t(x_t, u_t)
+  = v$ when $u_t = (x_t, v)$ is a dynamical
+  system.</span>
+
+ <span class='run'>Roughly this system models \say{moving} on the
+  graph.</span>
+</p>
+
+<h2>Discrete-time linear dynamical system</h2>
+
+<p>
+ <span class='run'>Let $\mathcal{X}  = \R ^n$ and $\mathcal{U}  =
+  \R ^m$.</span>
+
+ <span class='run'>Define $f_t: \mathcal{X}  \times  \mathcal{U}
+  \to \mathcal{X} $ by
+  <p>\[
+   x_{t+1} = f_t(x_t, u_t) = A_t x_t + B_t u_t + c_t
+  \]</p>
+  for $y = 1, \dots , T-1$.<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify, and may restore
+  former editions language: “We want to talk about
+  making decisions over time.
+  <span class='run'>Though this language may also be used in a
+   sheet on <i>finite</i> controlled dynamical
+   systems.</span></span><a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will say more here.</span><a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>This very special form of dynamics arises in
+  many applications. Future editions will say more.</span><a href='#footnote-3-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1162,7 +1477,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 48ded2890.
+      Copyright 2022 The Bourbaki Authors. Version 2e54d8f56.
     </span>
   </body>
 </html>
