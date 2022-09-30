@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make state_representations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 state_representations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > state_representations.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make convex_set_dimensions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 convex_set_dimensions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > convex_set_dimensions.tex
 

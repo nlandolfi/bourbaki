@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make controlled_dynamical_systems.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 controlled_dynamical_systems.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > controlled_dynamical_systems.tex
 
