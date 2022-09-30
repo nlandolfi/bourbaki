@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make correlation.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 correlation.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > correlation.tex
 
