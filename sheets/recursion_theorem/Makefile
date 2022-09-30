@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make recursion_theorem.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 recursion_theorem.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > recursion_theorem.tex
 

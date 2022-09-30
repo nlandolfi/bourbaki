@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make natural_induction.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 natural_induction.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > natural_induction.tex
 

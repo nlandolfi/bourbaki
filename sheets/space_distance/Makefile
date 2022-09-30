@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make space_distance.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 space_distance.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > space_distance.tex
 

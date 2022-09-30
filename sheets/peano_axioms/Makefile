@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make peano_axioms.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 peano_axioms.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > peano_axioms.tex
 

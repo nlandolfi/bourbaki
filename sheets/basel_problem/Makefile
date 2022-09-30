@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make basel_problem.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 basel_problem.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > basel_problem.tex
 
