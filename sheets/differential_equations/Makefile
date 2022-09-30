@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make differential_equations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 differential_equations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differential_equations.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make interval_length.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 interval_length.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > interval_length.tex
 

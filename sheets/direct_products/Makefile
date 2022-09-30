@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make direct_products.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 direct_products.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > direct_products.tex
 

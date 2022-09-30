@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make distortion_functions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 distortion_functions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > distortion_functions.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make real_series.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 real_series.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_series.tex
 

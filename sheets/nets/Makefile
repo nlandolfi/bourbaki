@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make nets.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 nets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > nets.tex
 

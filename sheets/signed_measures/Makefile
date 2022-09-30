@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make signed_measures.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 signed_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > signed_measures.tex
 
