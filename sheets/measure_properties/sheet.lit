@@ -1,0 +1,215 @@
+<!--
+!name:measure_properties
+!need:measures
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We expect measure to have the common sense properties we
+    stated when trying to define a notion of length for the
+    real line. ⦉
+⦉
+
+§ Monotonicity ⦉
+¶ ⦊
+  ‖ An extended-real-valued function on an alebra is ❬monotone❭
+    if, given a first distinguished set contained in a
+    distinguished second set, the result of the first is no
+    greater than the result of the second. ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ All measures are monotone. ⦉
+</statement>
+<proof>
+  ‖ Let $(A, 𝒜, μ)$ be a measure space. ⦉
+
+  ‖ Let $A, B ∈ 𝒜$ and $A ⊂ B$. ⦉
+
+  ‖ Then $B = A ∪ (B - A)$, a disjoint union. ⦉
+
+  ‖ So
+    ◇ ⦊
+      ‖ μ(B) = μ(A ∪ (B - A))= μ(A) + μ(B - A), ⦉
+    ⦉
+
+    ‖ by the additivity of $μ$. ⦉
+
+    ‖ Since $μ(B - A) ≥ 0$, ⦉
+
+    ‖ we conclude $μ(A) ≤ μ(B)$. ⦉⦉
+</proof>
+<statement type='proposition'>
+  ‖ If $A ⊂ B$ and $B$ finite, then $μ(B - A) = μ(B) -
+    μ(A)$. ⦉
+</statement>
+
+§ Subadditivity ⦉
+¶ ⦊
+  ‖ Monotonicity along with additivity of measures give us one
+    other convenient property: subadditivity. ⦉
+⦉
+
+¶ ⦊
+  ‖ An extended-real-valued function on an algebra is
+    ❬subadditive❭ if, given a sequence of distinguished sets, the
+    result of union of the sequence is no greater than the
+    limit of the partial sums of the results on each element of
+    the sequence. ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ All measures are subadditive. ⦉
+</statement>
+<proof>
+  ‖ Let $(A, 𝒜, μ)$ be a measure space. ⦉
+  ¶ ⦊
+    ‖ Let $\set{A_n} ⊂ 𝒜$. ⦉
+
+    ‖ Define $\set{B_n} ⊂ 𝒜$ with $B_n := A_n - ∪_{i =
+      1}^{n-1} A_i$. ⦉
+
+    ‖ Then $∪_n A_n = ∪_n B_n$, $\set{B_n}$ is a disjoint
+      sequence, and $B_n ⊂ A_n$ for each $n$. ⦉
+
+    ‖ So
+      ◇ ⦊
+        ‖ μ(∪_{n} A_n) = μ(∪_{n} B_n) = ∑_{i = 1}^{∞} μ(B_n) ≤
+          ∑_{i = 1}^{∞} μ(A_n), ⦉
+      ⦉
+      by additivity and then montonicity of measure. ⦉
+  ⦉
+</proof>
+¶ ⦊
+  ‖ The inequality involved in subadditivity is sometimes called
+    ❬Boole's inequality❭ or ❬Bonferroni's inequalities❭ or the
+    ❬union bound❭; each of these terms is most common when
+    discussing␣
+    <a href='/sheets/probability_measures.html'>
+      ‖ Probability Measures ⦉
+    </a>
+    . ⦉
+⦉
+
+§ Limits ⦉
+¶ ⦊
+  ‖ Measures also behave well under limits. ⦉
+⦉
+
+¶ ⦊
+  ‖ An extended-real-valued function on an algebra ❬resolves under
+    increasing limits❭ if the result of the union of an
+    increasing sequence of distinguished sets coincides with the
+    limit of the sequence of results on the individual sets. ⦉
+
+  ‖ An extended-real-valued function on an algebra ❬resolves under
+    decreasing limits❭ if the result of the intersection of a
+    decreasing sequence of distinguished sets coincides with the
+    limit of the sequence of results on the individual sets. ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ All measures resolve under increasing limits. ⦉
+</statement>
+<proof>
+  ‖ Let $(A, 𝒜, μ)$ be a measure space. ⦉
+
+  ‖ Let $\set{A_n}$ be an increasing sequence in $𝒜$. ⦉
+
+  ‖ Then we want to show: ⦉
+
+  ‖ $μ(\union_{n} A_n) = \lim_{n → ∞} μ(A_n)$. ⦉
+  ¶ ⦊
+    ‖ Define $\set{B_n}$ such that ⦉
+
+    ‖ $B_n := A_n - \union_{i = 1}^{n-1} A_i$. ⦉
+
+    ‖ Then $\set{B_n}$ is disjoint, $A_n = ∪_{i = 1}^{n} B_i$
+      for each $n$, $∪_n A_n = ∪_n B_n$, and $μ(∪_{i = 1}^{n}
+      B_i) = ∑_{i = 1}^{n} μ(B_i)$, by additivity. ⦉
+
+    ‖ So
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
+
+        ‖ μ(∪_n A_n) ⦉
+
+        ‖ ＆= μ(∪_n B_n) ᜶ ⦉
+
+        ‖ ＆= \lim_{n → ∞} ∑_{i = 1}^{n} μ(B_i) ᜶ ⦉
+
+        ‖ ＆= \lim_{n → ∞} μ(∪_{i = 1}^{n} B_i) ᜶ ⦉
+
+        ‖ ＆= \lim_{n → ∞} μ(A_n). ⦉
+
+        ‖ \end{aligned} ⦉
+      ⦉⦉
+  ⦉
+</proof>
+<statement type='proposition'>
+  ‖ Measures resolve under decreasing ⦉
+
+  ‖ limits if there is a finite set in ⦉
+
+  ‖ the decreasing sequence. ⦉
+</statement>
+<proof>
+  ‖ Let $(A, 𝒜, μ)$ be a measure space. ⦉
+
+  ‖ Let $\set{A_n}$ be a decreasing sequence in $𝒜$ with one
+    element finite. ⦉
+
+  ‖ Then we want to show: ⦉
+
+  ‖ $μ(∩_n A_n) = \lim_{n → ∞} μ(A_n)$. ⦉
+  ¶ ⦊
+    ‖ On one hand, ⦉
+
+    ‖ let $n_0$ be the index of the first ⦉
+
+    ‖ finite element of the sequence. ⦉
+
+    ‖ Then for all $n ≥ n_0$, ⦉
+
+    ‖ the sequence is finite because ⦉
+
+    ‖ of the monotonicity of measure. ⦉
+
+    ‖ Denote this decreasing finite subsequence ⦉
+
+    ‖ of sets by $\set{B_n}$. ⦉
+
+    ‖ Then $∩_{n} A_n = ∩_n B_n$ ⦉
+
+    ‖ and $\lim_n A_n = \lim_n B_n$. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ On the other hand, ⦉
+
+    ‖ the sequence $\set{B_1 - B_n}$ is an ⦉
+
+    ‖ increasing sequence in $𝒜$. ⦉
+
+    ‖ Also $∩_n B_n = B_1 - ∪_n (B_1 - B_n)$. ⦉
+
+    ‖ So
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
+
+        ‖ μ(∩_n B_n) ⦉
+
+        ‖ ＆= μ(B_1 - ∪_n (B_1 - B_n)) ᜶ ⦉
+
+        ‖ ＆= μ(B_1) - μ(∪_n (B_1 - B_n)) ᜶ ⦉
+
+        ‖ ＆= μ(B_1) - \lim_{n} μ(B_1 - B_n) ᜶ ⦉
+
+        ‖ ＆= μ(B_1) - \left(\lim_{n} μ(B_1) - μ(B_n)\right) ᜶ ⦉
+
+        ‖ ＆= \lim_{n} B_n. ⦉
+
+        ‖ \end{aligned} ⦉
+      ⦉⦉
+  ⦉
+</proof>
