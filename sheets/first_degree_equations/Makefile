@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make first_degree_equations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 first_degree_equations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > first_degree_equations.tex
 
