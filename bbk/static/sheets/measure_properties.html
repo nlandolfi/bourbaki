@@ -1159,6 +1159,354 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./measures.html'" onkeypress="location.href='./measures.html'">
+                <span>
+                  Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measure_properties.pdf#page=2'" onkeypress="location.href='./measure_properties.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measure_properties-graph.pdf'" onkeypress="location.href='./measure_properties-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Measure Properties </h1> 
+      <!--
+!name:measure_properties
+!need:measures
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We expect measure to have the common sense
+  properties we stated when trying to define a
+  notion of length for the real line.</span>
+</p>
+
+<h1>Monotonicity</h1>
+
+<p>
+ <span class='run'>An extended-real-valued function on an alebra is
+  <span class='term'>monotone</span> if, given a
+  first distinguished set contained in a
+  distinguished second set, the result of the
+  first is no greater than the result of the
+  second.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>All measures are monotone.</span></div>
+<div class='proof'> <span class='run'>Let $(A, \mathcal{A} , \mu )$ be a measure
+  space.</span>
+
+ <span class='run'>Let $A, B \in \mathcal{A} $ and $A \subset B$.</span>
+
+ <span class='run'>Then $B = A \cup (B - A)$, a disjoint union.</span>
+
+ <span class='run'>So
+  <p>\[
+   \mu (B) = \mu (A \cup (B - A))= \mu (A) + \mu (B - A),
+  \]</p>
+  <span class='run'>by the additivity of $\mu $.</span>
+
+  <span class='run'>Since $\mu (B - A) \geq 0$,</span>
+
+  <span class='run'>we conclude $\mu (A) \leq \mu (B)$.</span></span></div>
+<div class='proposition'>
+ <span class='run'>If $A \subset B$ and $B$ finite, then $\mu (B
+  - A) = \mu (B) - \mu (A)$.</span></div>
+<h1>Subadditivity</h1>
+
+<p>
+ <span class='run'>Monotonicity along with additivity of measures
+  give us one other convenient property:
+  subadditivity.</span>
+</p>
+
+
+<p>
+ <span class='run'>An extended-real-valued function on an algebra
+  is <span class='term'>subadditive</span> if, given
+  a sequence of distinguished sets, the result of
+  union of the sequence is no greater than the
+  limit of the partial sums of the results on
+  each element of the sequence.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>All measures are subadditive.</span></div>
+<div class='proof'> <span class='run'>Let $(A, \mathcal{A} , \mu )$ be a measure
+  space.</span>
+ <p>
+  <span class='run'>Let $\set{A_n} \subset \mathcal{A} $.</span>
+
+  <span class='run'>Define $\set{B_n} \subset \mathcal{A} $ with
+   $B_n := A_n - \cup_{i = 1}^{n-1} A_i$.</span>
+
+  <span class='run'>Then $\cup_n A_n = \cup_n B_n$, $\set{B_n}$ is
+   a disjoint sequence, and $B_n \subset A_n$ for
+   each $n$.</span>
+
+  <span class='run'>So
+   <p>\[
+    \mu (\cup_{n} A_n) = \mu (\cup_{n} B_n) = \sum_{i =
+     1}^{\infty} \mu (B_n) \leq \sum_{i = 1}^{\infty} \mu (A_n),
+   \]</p>
+   by additivity and then montonicity of measure.</span>
+ </p>
+</div>
+<p>
+ <span class='run'>The inequality involved in subadditivity is
+  sometimes called <span class='term'>Boole&#39;s
+  inequality</span> or
+  <span class='term'>Bonferroni&#39;s
+  inequalities</span> or the <span class='term'>union
+  bound</span>; each of these terms is most common
+  when discussing&nbsp;<a href='/sheets/probability_measures.html'/><span class='run'>Probability Measures</span></a>.</span>
+</p>
+
+<h1>Limits</h1>
+
+<p>
+ <span class='run'>Measures also behave well under limits.</span>
+</p>
+
+
+<p>
+ <span class='run'>An extended-real-valued function on an algebra
+  <span class='term'>resolves under increasing
+  limits</span> if the result of the union of an
+  increasing sequence of distinguished sets
+  coincides with the limit of the sequence of
+  results on the individual sets.</span>
+
+ <span class='run'>An extended-real-valued function on an algebra
+  <span class='term'>resolves under decreasing
+  limits</span> if the result of the intersection
+  of a decreasing sequence of distinguished sets
+  coincides with the limit of the sequence of
+  results on the individual sets.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>All measures resolve under increasing limits.</span></div>
+<div class='proof'> <span class='run'>Let $(A, \mathcal{A} , \mu )$ be a measure
+  space.</span>
+
+ <span class='run'>Let $\set{A_n}$ be an increasing sequence in
+  $\mathcal{A} $.</span>
+
+ <span class='run'>Then we want to show:</span>
+
+ <span class='run'>$\mu (\union_{n} A_n) = \lim_{n \to \infty}
+  \mu (A_n)$.</span>
+ <p>
+  <span class='run'>Define $\set{B_n}$ such that</span>
+
+  <span class='run'>$B_n := A_n - \union_{i = 1}^{n-1} A_i$.</span>
+
+  <span class='run'>Then $\set{B_n}$ is disjoint, $A_n = \cup_{i =
+   1}^{n} B_i$ for each $n$, $\cup_n A_n = \cup_n
+   B_n$, and $\mu (\cup_{i = 1}^{n} B_i) = \sum_{i
+   = 1}^{n} \mu (B_i)$, by additivity.</span>
+
+  <span class='run'>So
+   <p>\[
+    \begin{aligned}
+
+    \mu (\cup_n A_n)
+
+    &= \mu (\cup_n B_n) \\
+
+    &= \lim_{n \to \infty} \sum_{i = 1}^{n} \mu (B_i) \\
+
+    &= \lim_{n \to \infty} \mu (\cup_{i = 1}^{n} B_i) \\
+
+    &= \lim_{n \to \infty} \mu (A_n).
+
+    \end{aligned}
+   \]</p></span>
+ </p>
+</div>
+<div class='proposition'>
+ <span class='run'>Measures resolve under decreasing</span>
+
+ <span class='run'>limits if there is a finite set in</span>
+
+ <span class='run'>the decreasing sequence.</span></div>
+<div class='proof'> <span class='run'>Let $(A, \mathcal{A} , \mu )$ be a measure
+  space.</span>
+
+ <span class='run'>Let $\set{A_n}$ be a decreasing sequence in
+  $\mathcal{A} $ with one element finite.</span>
+
+ <span class='run'>Then we want to show:</span>
+
+ <span class='run'>$\mu (\cap _n A_n) = \lim_{n \to \infty}
+  \mu (A_n)$.</span>
+ <p>
+  <span class='run'>On one hand,</span>
+
+  <span class='run'>let $n_0$ be the index of the first</span>
+
+  <span class='run'>finite element of the sequence.</span>
+
+  <span class='run'>Then for all $n \geq n_0$,</span>
+
+  <span class='run'>the sequence is finite because</span>
+
+  <span class='run'>of the monotonicity of measure.</span>
+
+  <span class='run'>Denote this decreasing finite subsequence</span>
+
+  <span class='run'>of sets by $\set{B_n}$.</span>
+
+  <span class='run'>Then $\cap _{n} A_n = \cap _n B_n$</span>
+
+  <span class='run'>and $\lim_n A_n = \lim_n B_n$.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>On the other hand,</span>
+
+  <span class='run'>the sequence $\set{B_1 - B_n}$ is an</span>
+
+  <span class='run'>increasing sequence in $\mathcal{A} $.</span>
+
+  <span class='run'>Also $\cap _n B_n = B_1 - \cup_n (B_1 -
+   B_n)$.</span>
+
+  <span class='run'>So
+   <p>\[
+    \begin{aligned}
+
+    \mu (\cap _n B_n)
+
+    &= \mu (B_1 - \cup_n (B_1 - B_n)) \\
+
+    &= \mu (B_1) - \mu (\cup_n (B_1 - B_n)) \\
+
+    &= \mu (B_1) - \lim_{n} \mu (B_1 - B_n) \\
+
+    &= \mu (B_1) - \left(\lim_{n} \mu (B_1) - \mu (B_n)\right) \\
+
+    &= \lim_{n} B_n.
+
+    \end{aligned}
+   \]</p></span>
+ </p>
+</div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1350,7 +1698,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a1b4836e3.
+      Copyright 2022 The Bourbaki Authors. Version 34c4e6c98.
     </span>
   </body>
 </html>
