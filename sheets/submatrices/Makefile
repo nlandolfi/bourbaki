@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make submatrices.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 submatrices.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > submatrices.tex
 

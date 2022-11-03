@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make correlation_and_independence.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 correlation_and_independence.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > correlation_and_independence.tex
 
