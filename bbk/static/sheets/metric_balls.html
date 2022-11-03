@@ -94,7 +94,8 @@
                 proj: ["\\mathword{proj}"],
                 argmin: ["\\mathword{argmin}"],
                 goesto: ["\\longrightarrow"],
-
+                normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
+                SimpleF: ["\\mathword{SF}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1023,6 +1024,184 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./metrics.html'" onkeypress="location.href='./metrics.html'">
+                <span>
+                  Metrics
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_balls.html'" onkeypress="location.href='./real_balls.html'">
+                <span>
+                  Real Balls
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./metric_balls.pdf#page=2'" onkeypress="location.href='./metric_balls.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./metric_balls-graph.pdf'" onkeypress="location.href='./metric_balls-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Metric Balls </h1> 
+      <!--
+!name:metric_balls
+!need:real_balls
+!need:metrics
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We speak of a set of elements of a metric
+  space which are all within some distance of a
+  fixed point.</span>
+</p>
+
+<h1>Definition</h1>
+
+<p>
+ <span class='run'>The inspiration is the notion of a&nbsp;<a href='/sheets/real_balls.html'/><span class='run'>solid ball</span></a>&nbsp;in three-dimensional space.</span>
+</p>
+
+
+<p>
+ <span class='run'>Consider a metric space and an element of the
+  base set.</span>
+
+ <span class='run'>The <span class='term'>metric ball</span> of
+  radius $r$ centered at the element is the set
+  of all elements which are less than $r$-distance
+  from the element.</span>
+</p>
+
+<h2>Notation</h2>
+
+<p>
+ <span class='run'>Let $(A, d)$ be a metric space.</span>
+
+ <span class='run'>Let $a \in A$.</span>
+
+ <span class='run'>Let $r$ be a real number.</span>
+
+ <span class='run'>Then the ball centered at $a$ of radius $r$
+  is
+  <p>\[
+   \Set*{b \in A}{d(a, b) < r}.
+  \]</p></span>
+
+ <span class='run'>We denote the ball centered at $a$ of radius
+  $r$ by $B(a, r)$.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1067,7 +1246,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We speak of a set of elements of a metric space which are all within some distance of a fixed point.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The inspiration is balls in space.</p></div><div class="sheet-listing"><p class="sheet"> Consider a metric space and an element of the base set. The \t{metric ball} of radius $r$ centered at the element is the set of all elements which are less than $r$-distance from the elemnt.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, d)$ be a metric space. Let $a \in A$. Let $r$ be a real number. Then the ball centered at $a$ of radius $r$ is \[ \Set*{b \in A}{d(a, b) < r}. \] We denote the ball centered at $a$ of radius $r$ by $B(a, r)$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We speak of a set of elements of a metric space which are all within some distance of a fixed point.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The inspiration is the notion of a \sheetref{real_balls}{solid ball}in three-dimensional space.</p></div><div class="sheet-listing"><p class="sheet"> Consider a metric space and an element of the base set. The \t{metric ball} of radius $r$ centered at the element is the set of all elements which are less than $r$-distance from the element.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $(A, d)$ be a metric space. Let $a \in A$. Let $r$ be a real number. Then the ball centered at $a$ of radius $r$ is \[ \Set*{b \in A}{d(a, b) < r}. \] We denote the ball centered at $a$ of radius $r$ by $B(a, r)$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1221,7 +1400,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 34c4e6c98.
+      Copyright 2022 The Bourbaki Authors. Version 73164ec9c.
     </span>
   </body>
 </html>

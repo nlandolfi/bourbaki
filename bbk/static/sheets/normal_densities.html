@@ -94,7 +94,8 @@
                 proj: ["\\mathword{proj}"],
                 argmin: ["\\mathword{argmin}"],
                 goesto: ["\\longrightarrow"],
-
+                normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
+                SimpleF: ["\\mathword{SF}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1251,6 +1252,211 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./exponential_function.html'" onkeypress="location.href='./exponential_function.html'">
+                <span>
+                  Exponential Function
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./probability_densities.html'" onkeypress="location.href='./probability_densities.html'">
+                <span>
+                  Probability Densities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_square_roots.html'" onkeypress="location.href='./real_square_roots.html'">
+                <span>
+                  Real Square Roots
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_normals.html'" onkeypress="location.href='./maximum_likelihood_normals.html'">
+            <span>
+            Maximum Likelihood Normals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./multivariate_normals.html'" onkeypress="location.href='./multivariate_normals.html'">
+            <span>
+            Multivariate Normals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./normal_densities.pdf#page=2'" onkeypress="location.href='./normal_densities.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./normal_densities-graph.pdf'" onkeypress="location.href='./normal_densities-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Normal Densities </h1> 
+      <!--
+!name:normal_densities
+!need:probability_densities
+!need:real_square_roots
+!need:exponential_function
+%!need:something about integration,exponentials,vectors,matrices
+-->
+
+<h1>Why</h1>
+
+<p>
+ <span class='run'>We want a density that is symmetric about some
+  center value with some spread.</span>
+</p>
+
+<h1>Definition</h1>
+
+<!-- A normal density is one which can be written as a normalized -->
+
+<p>
+ <span class='run'>Let $f: \R  \to \R $ be a density.</span>
+
+ <span class='run'>If there exists $\mu  \in \R $ and $\sigma
+  \in \R $ with $\sigma  &gt; 0$ so that for
+  each $x \in \R $
+  <p>\[
+   f(x) = \normaldensity{x}{\mu }{\sigma }
+  \]</p>
+  then $f$ is a <span class='term'>normal
+  density</span>.</span>
+
+ <span class='run'>A normal density is often called a
+  <span class='term'>Gaussian density</span>.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>We often drop the word density and use refer
+  to these as <span class='term'>normals</span> or
+  <span class='term'>Gaussians</span>, using these
+  words as substantives.</span>
+</p>
+
+
+<p>
+ <span class='run'>We call the special case when $\mu  = 0$ and
+  $\sigma  = 1$ the <span class='term'>standard
+  normal density</span> or <span class='term'>standard
+  gaussian density</span>.</span>
+</p>
+
+<h1>Maximum</h1>
+
+<p>
+ <span class='run'>The maximum of a normal density is $\mu $.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>We do not use this term in accordance with
+  the Bourbaki project&#39;s policy on historical
+  names.</span><a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1319,7 +1525,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want a density that is symmetric about some center value with some spread.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $f: \R \to \R$ be a density. If there exists $\mu \in \R$ and $\sigma \in \R$ with $\sigma > 0$ so that for each $x \in \R$ \[ f(x) = \normaldensity{x}{\mu}{\sigma} \] then $f$ is a \t{normal density}. A normal density is often called a \t{Gaussian density}.\footnote{We do not use this term in accordance with the Bourbaki project's policy on historical names.} We often drop the word density and use refer to these as \t{normals} or \t{Gaussians}, using these words as substantives.</p></div><div class="sheet-listing"><p class="sheet"> We call the special case when $\mu = 0$ and $\sigma = 1$ the \t{standard normal density} or \t{standard gaussian density}.</p></div><div class="sheet-listing" id="maximum"><h1 class="sheet">3. Maximum</h1></div><div class="sheet-listing"><p class="sheet"> The maximum of a normal density is $\mu$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want a density that is symmetric about some center value with some spread.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \R  \to \R $ be a density. If there exists $\mu  \in \R $ and $\sigma  \in \R $ with $\sigma  > 0$ so that for each $x \in \R $ \[ f(x) = \normaldensity{x}{\mu }{\sigma } \] then $f$ is a \t{normal density}. A normal density is often called a \t{Gaussian density}.\footnote{We do not use this term in accordance with the Bourbaki project's policy on historical names.} We often drop the word density and use refer to these as \t{normals} or \t{Gaussians}, using these words as substantives.</p></div><div class="sheet-listing"><p class="sheet"> We call the special case when $\mu  = 0$ and $\sigma  = 1$ the \t{standard normal density} or \t{standard gaussian density}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Maximum}</p></div><div class="sheet-listing"><p class="sheet"> The maximum of a normal density is $\mu $.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1473,7 +1679,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 34c4e6c98.
+      Copyright 2022 The Bourbaki Authors. Version 73164ec9c.
     </span>
   </body>
 </html>
