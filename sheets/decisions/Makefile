@@ -6,9 +6,6 @@ make:
 	make graph.pdf
 	make decisions.pdf
 
-sheet.tex: sheet.lit
-	lit -in sheet.lit -out sheet.tex
-
 decisions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > decisions.tex
 

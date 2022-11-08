@@ -1,0 +1,119 @@
+<!--
+!name:tree_approximators_of_a_normal
+!need:optimal_tree_density_approximators
+!need:tree_normals
+!need:normal_conditionals
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ What is the optimal tree approximator of a multivariate
+    normal density? ⦉
+⦉
+
+§ Result ⦉
+
+<!-- TODO: remove language of Chow-Liu tree. -->
+
+<!-- TODO: define precision matrix -->
+<statement type='proposition'>
+  ¶ ⦊
+    ‖ Let $g: 𝗥^n → 𝗥$ be a normal density with mean $μ ∈
+      𝗥^d$ and covariance $Σ ∈ 𝐒^d_{++}$. ⦉
+
+    ‖ The normal density $f^*_T: 𝗥^d → 𝗥$ with mean $μ$ and
+      precision matrix $P$ defined by
+      ⁝ ⦊
+        ‣ $P_{11} = Σ_{11}^{-1} + ∑_{\pa{j} = 1}
+          Σ_{j1}^2Σ_{11}^{-2}Σ_{j|1}^{-1}$ ⦉
+
+        ‣ for $i = 2, …, d$, $P_{ii} = Σ_{i\mid\pa{i}}^{-1} +
+          ∑_{\pa{j} = i} Σ_{ji}^2Σ_{ii}^{-2}Σ_{j|i}^{-1}$ ⦉
+
+        ‣ $i, j = 1, … d$ and $i = \pa{j}$, $P_{ij} = P_{ji}
+          = -Σ_{ji}Σ_{jj}^{-1}Σ_{j |i}^{-1}$ ⦉
+      ⦉
+      where $\pa{i}$ is the parent of $i$ in an optimal
+      approximator tree $T$ ($i = 2, …, n)$ is an optimal tree
+      approximator of $g$. ⦉
+  ⦉
+</statement>
+<proof>
+  ¶ ⦊
+    ‖ Using Proposition 1 of Best Tree Density Approximators,
+      express an optimal tree approximator of $g$ by
+      ◇ ⦊
+        ‖ (1/c) ⦉
+
+        ‖ \exp\left( ⦉
+
+        ‖ -\frac{1}{2} ⦉
+
+        ‖ \left( ⦉
+
+        ‖ Σ_{11}^{-1}\bar{x}_1^2 + ⦉
+
+        ‖ ∑_{i ≠ 1} ⦉
+
+        ‖ \left(\bar{x}_i -
+          Σ_{i,\pa{i}}Σ_{\pa{i},\pa{i}}^{-1}\bar{x}_{\pa{i}}\right)^2Σ_{i\mid\pa{i}}^{-1} ⦉
+
+        ‖ \right) ⦉
+
+        ‖ \right) ⦉
+      ⦉
+      where $\bar{x}_i = x_i - μ_i$ and $c = √{(2π)^dΣ_{11}
+      ∏_{i ≠ 1} Σ_{i |\pa{i}}}$. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ Second, express the quadratic in the exponential as
+      ◇ ⦊
+        ‖ Σ_{11}^{-1}\bar{x}_1^2 + ⦉
+
+        ‖ ∑_{i ≠ 1} ⦉
+
+        ‖ \left[ ⦉
+
+        ‖ Σ_{i\mid\pa{i}}^{-1} ⦉
+
+        ‖ \bar{x}_i^2 ⦉
+
+        ‖ - ⦉
+
+        ‖ 2 ⦉
+
+        ‖ Σ_{i,\pa{i}}Σ_{\pa{i},\pa{i}}^{-1}Σ_{i\mid\pa{i}}^{-1} ⦉
+
+        ‖ \bar{x}_i\bar{x}_{\pa{i}} ⦉
+
+        ‖ + ⦉
+
+        ‖ Σ_{i,\pa{i}}^2Σ_{\pa{i},\pa{i}}^{-2}Σ_{i\mid\pa{i}}^{-1} ⦉
+
+        ‖ \bar{x}_{\pa{i}}^2 ⦉
+
+        ‖ \right] ⦉
+      ⦉⦉
+
+    ‖ With $P$ defined as earlier, we can express the above as
+      $\bar{x}^{\tp} P \bar{x}$. ⦉
+  ⦉
+
+  ¶ ⦊
+    <!--TODO: proof for exponential of quadratic integrating to one -->
+
+    ‖ Third, note that $c$ is $√{(2π)^d\det P^{-1}}$ since
+      $f^*_T$ is a density and so integrates to one. ⦉
+  ⦉
+</proof>
+¶ ⦊
+  ‖ Notice that $f^*_T$ is a tree normal density. ⦉
+⦉
+
+§ Empirical normal ⦉
+¶ ⦊
+  ‖ In particular, notice that we can approximate the empirical
+    normal density of a dataset with a density that factors
+    according to a tree. ⦉
+⦉

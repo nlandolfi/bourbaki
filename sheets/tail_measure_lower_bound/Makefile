@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make tail_measure_lower_bound.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 tail_measure_lower_bound.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > tail_measure_lower_bound.tex
 

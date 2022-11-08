@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make expectation_deviation_upper_bound.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 expectation_deviation_upper_bound.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > expectation_deviation_upper_bound.tex
 

@@ -1,20 +1,9 @@
-¶ ⦊
-  ‖ ❲%!name:independent_event_sigma_algebras❳ ⦉
+<!--
+!name:independent_event_sigma_algebras
+!need:independent_sigma_algebras
+-->
 
-  ‖ ❲%!need:independent_sigma_algebras❳ ⦉
-⦉
-
-¶ ⦊
-  ‖ \ssection{Why}
-    † ⦊
-      ‖ Future editions will include ⦉
-    ⦉⦉
-⦉
-
-¶ ⦊
-  ‖ \ssection{Definition} ⦉
-⦉
-
+§ Definition ⦉
 ¶ ⦊
   ‖ The ❬event sigma algebra❭ of $A ∈ ℱ$ where $(Ω, ℱ)$ is a
     measurable space is the set sub-$σ$-algebra $\set{∅, A, A^c,
@@ -26,10 +15,7 @@
     sigma algebras are independent. ⦉
 ⦉
 
-¶ ⦊
-  ‖ \ssubsection{Notation} ⦉
-⦉
-
+§§ Notation ⦉
 ¶ ⦊
   ‖ Let $(X, 𝒜, μ)$ be a probability space. ⦉
 
@@ -47,99 +33,91 @@
   ‖ If $A$ is independent of $B$ we write $A ⟂ B$. ⦉
 ⦉
 
-¶ ⦊
-  ‖ \ssection{Equivalent Condition} ⦉
-⦉
-
-¶ ⦊
-  ‖ \begin{proposition} ⦉
-
+§ Equivalent condition ⦉
+<statement type='proposition'>
   ‖ Two events are independent if and only if the measure of
     their intersection is the product of their measures. ⦉
-⦉
+</statement>
+<proof>
+  ¶ ⦊
+    ‖ Let $(X, 𝒜, μ)$ be a probability space. ⦉
 
-¶ ⦊
-  ‖ \begin{proof} ⦉
+    ‖ Let $A, B ∈ 𝒜$. ⦉
+  ⦉
 
-  ‖ Let $(X, 𝒜, μ)$ be a probability space. ⦉
+  ¶ ⦊
+    ‖ $(⇒)$ If $A ⟂ B$, then by definition $A ∈ σ(A)$ and $B
+      ∈ σ(B)$ and so:
+      ◇ ⦊
+        ‖ μ(A ∩ B) = μ(A)μ(B). ⦉
+      ⦉⦉
+  ⦉
 
-  ‖ Let $A, B ∈ 𝒜$. ⦉
-⦉
+  ¶ ⦊
+    ‖ $(\Leftarrow)$ Conversely, let $a ∈ σ(A)$ and $b ∈ σ(B)$. ⦉
 
-¶ ⦊
-  ‖ $(⇒)$ If $A ⟂ B$, then by definition $A ∈ σ(A)$ and $B ∈
-    σ(B)$ and so:
-    ◇ ⦊
-      ‖ μ(A ∩ B) = μ(A)μ(B). ⦉
-    ⦉⦉
-⦉
+    ‖ If $a = ∅$ or $b = ∅$ then $a ∩ b = ∅$. ⦉
 
-¶ ⦊
-  ‖ $(\Leftarrow)$ Conversely, let $a ∈ σ(A)$ and $b ∈ σ(B)$. ⦉
+    ‖ So
+      ◇ ⦊
+        ‖ μ(a ∩ b) = μ(∅) = μ(a)μ(b), ⦉
+      ⦉
+      since one of the two measures on the right hand side is
+      zero. ⦉
 
-  ‖ If $a = ∅$ or $b = ∅$ then $a ∩ b = ∅$. ⦉
+    ‖ On the other hand, if $a = X$, then $a ∩ b = b$ and
+      so
+      ◇ ⦊
+        ‖ μ(a ∩ b) = μ(b) = μ(a)μ(b), ⦉
+      ⦉
+      since $μ(a) = μ(X) = 1$. ⦉
 
-  ‖ So
-    ◇ ⦊
-      ‖ μ(a ∩ b) = μ(∅) = μ(a)μ(b), ⦉
-    ⦉
-    since one of the two measures on the right hand side is
-    zero. ⦉
+    ‖ Likewise if $b = X$. ⦉
+  ⦉
 
-  ‖ On the other hand, if $a = X$, then $a ∩ b = b$ and so
-    ◇ ⦊
-      ‖ μ(a ∩ b) = μ(b) = μ(a)μ(b), ⦉
-    ⦉
-    since $μ(a) = μ(X) = 1$. ⦉
+  ¶ ⦊
+    ‖ So it remains to verify $μ(a ∩ b) = μ(a)μ(b)$ for the
+      cases $a ∈ \set{A,X -A}$ and $b ∈ \set{B, X-B}$. ⦉
 
-  ‖ Likewise if $b = X$. ⦉
-⦉
+    ‖ If $a = A$, and $b = B$, then the identity follows by
+      hypothesis. ⦉
 
-¶ ⦊
-  ‖ So it remains to verify $μ(a ∩ b) = μ(a)μ(b)$ for the
-    cases $a ∈ \set{A,X -A}$ and $b ∈ \set{B, X-B}$. ⦉
+    ‖ Next, observe that $A ∩ (X - B) = A - (A ∩ B)$ and
+      $(A ∩ B) ⊂ A$ so $μ(X) < ∞$ allows us to deduce:
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
 
-  ‖ If $a = A$, and $b = B$, then the identity follows by
-    hypothesis. ⦉
+        ‖ μ(A ∩ (X - B)) ❲&❳= μ(A - (A ∩ B)) ᜶ ⦉
 
-  ‖ Next, observe that $A ∩ (X - B) = A - (A ∩ B)$ and $(A
-    ∩ B) ⊂ A$ so $μ(X) < ∞$ allows us to deduce:
-    ◇ ⦊
-      ‖ \begin{aligned} ⦉
+        ‖ ❲&❳= μ(A) - μ(A ∩ B) ᜶ ⦉
 
-      ‖ μ(A ∩ (X - B)) ❲&❳= μ(A - (A ∩ B)) ᜶ ⦉
+        ‖ ❲&❳= μ(A)(1 - μ(B)) ᜶ ⦉
 
-      ‖ ❲&❳= μ(A) - μ(A ∩ B) ᜶ ⦉
+        ‖ ❲&❳= μ(A)μ(X - A). ⦉
 
-      ‖ ❲&❳= μ(A)(1 - μ(B)) ᜶ ⦉
+        ‖ \end{aligned} ⦉
+      ⦉⦉
 
-      ‖ ❲&❳= μ(A)μ(X - A). ⦉
+    ‖ Similar for $X-A$ and $B$. ⦉
 
-      ‖ \end{aligned} ⦉
-    ⦉⦉
+    ‖ Finally, recall that $μ(A ∪ B) = μ(A) + μ(B) - μ(A ∩
+      B)$. ⦉
 
-  ‖ Similar for $X-A$ and $B$. ⦉
+    ‖ So then,
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
 
-  ‖ Finally, recall that $μ(A ∪ B) = μ(A) + μ(B) - μ(A ∩ B)$. ⦉
+        ‖ μ((X - A) ∩ (X - B)) ❲&❳= 1 - μ(A ∪ B) ᜶ ⦉
 
-  ‖ So then,
-    ◇ ⦊
-      ‖ \begin{aligned} ⦉
+        ‖ ❲&❳= 1 - μ(A) - μ(B) + μ(A ∩ B) ᜶ ⦉
 
-      ‖ μ((X - A) ∩ (X - B)) ❲&❳= 1 - μ(A ∪ B) ᜶ ⦉
+        ‖ ❲&❳= 1 - μ(A) - μ(B) + μ(A)μ(B) ᜶ ⦉
 
-      ‖ ❲&❳= 1 - μ(A) - μ(B) + μ(A ∩ B) ᜶ ⦉
+        ‖ ❲&❳= (1 - μ(A))(1 - μ(B)) ᜶ ⦉
 
-      ‖ ❲&❳= 1 - μ(A) - μ(B) + μ(A)μ(B) ᜶ ⦉
+        ‖ ❲&❳= μ(X - A)μ(X - B). ⦉
 
-      ‖ ❲&❳= (1 - μ(A))(1 - μ(B)) ᜶ ⦉
-
-      ‖ ❲&❳= μ(X - A)μ(X - B). ⦉
-
-      ‖ \end{aligned} ⦉
-    ⦉⦉
-
-  ‖ \end{proof} ⦉
-
-  ‖ \end{proposition} ⦉
-⦉
+        ‖ \end{aligned} ⦉
+      ⦉⦉
+  ⦉
+</proof>

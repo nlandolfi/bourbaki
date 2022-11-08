@@ -1,46 +1,44 @@
+
 %!name:function_growth_classes
 %!need:real_functions
 %!need:absolute_value
 %!refs:see the two pdfs in this directory
 %!refs:trefethen1997numerical
 
-\ssection{Why}
+\section*{Why}
 
 We want to describe how fast a function grows or declines.\footnote{Future editions will expand this vague introduction.}
 
-\ssection{Definition}
+\section*{Definition}
 
-Let $f: \R \to \R$.
-The \t{lower growth class} of $f$ (\t{toward infinity}) is the set of all functions $g: \R \to \R$ for which there exists $C, M > 0$ so that $\abs{g(x)} \leq C\abs{f(x)}$ for all $x > M$.
-The intuition is that if $h: \R \to \R$ is in the lower growth class of $f$, $h$ does not grow faster than $f$.
+Let $f: \R  \to \R $.
+The \t{lower growth class} of $f$ (\t{toward infinity}) is the set of all functions $g: \R  \to \R $ for which there exists $C, M > 0$ so that $\abs{g(x)} \leq C\abs{f(x)}$ for all $x > M$.
+The intuition is that if $h: \R  \to \R $ is in the lower growth class of $f$, $h$ does not grow faster than $f$.
 In this case we say that $h$ \t{grows at order} $f$.
 
-The \t{lower limit class of $f$ at $x_0$} is the set of all functions $g: \R \to \R$ for which there exists $C, \varepsilon > 0$ so that $\abs{g(x)} \leq C \abs{f(x)}$ for all $\abs{x - x_0} < \varepsilon$.
+The \t{lower limit class of $f$ at $x_0$} is the set of all functions $g: \R  \to \R $ for which there exists $C, \varepsilon  > 0$ so that $\abs{g(x)} \leq C \abs{f(x)}$ for all $\abs{x - x_0} < \varepsilon $.
 The intuition is that for $x$ sufficiently close to $x_0$, the magnitude of $f$ is bounded by a constant times the magnitude of $g$.
 Often $x_0$ is $0$.
 
-The \t{upper growth class} of $f$ (\t{toward infinity}) is the set of all functions $g: \R \to \R$ for which there exists $C, M > 0$ so that $\abs{g(x)} \geq C\abs{f(x)}$ for all $x > M$.
+The \t{upper growth class} of $f$ (\t{toward infinity}) is the set of all functions $g: \R  \to \R $ for which there exists $C, M > 0$ so that $\abs{g(x)} \geq C\abs{f(x)}$ for all $x > M$.
 The intuition is that if $h$ is in the upper growth class of $f$, $h$ grows at least as fast as $f$.
 We similarly define the \t{upper growth class at a limit $x_0$}.
 
-
-The \t{(exact) growth class} of $f$ is the set of all functions $g: \R \to \R$ for which there exists $C_1, C_2, M$ so that $C_1\abs{f(x)} \leq \abs{g(x)} \leq C_2 \abs{f(x)}$ for all $x > M$.
+The \t{(exact) growth class} of $f$ is the set of all functions $g: \R  \to \R $ for which there exists $C_1, C_2, M$ so that $C_1\abs{f(x)} \leq \abs{g(x)} \leq C_2 \abs{f(x)}$ for all $x > M$.
 The intuition is that if $h$ is in the growth class of $f$, then $h$ and $f$ grow at the same rate.
 Again, we similarly define the \t{growth class at limit $x_0$}.
 
-\ssection{Notation}
+\section*{Notation}
 
-We denote the upper, lower and exact growth classes of a function $f: \R \to \R$ by  of $f$ by $O(f)$, $\Omega(f)$ and $\Theta(f)$, respectively.
-We read the notation $O(f)$ as \say{order at most f,} we read $\Omega(f)$ as \say{order at least $f$,} and $\Theta(f)$ as \say{order exactly $f$.}
+We denote the upper, lower and exact growth classes of a function $f: \R  \to \R $ by of $f$ by $O(f)$, $\Omega (f)$ and $\Theta (f)$, respectively.
+We read the notation $O(f)$ as \say{order at most f,} we read $\Omega (f)$ as \say{order at least $f$,} and $\Theta (f)$ as \say{order exactly $f$.}
 
-The letter $O$ is a mnemonic for order, and $\Omega$ and $\Theta$ build on this mnemonic.
+The letter $O$ is a mnemonic for order, and $\Omega $ and $\Theta $ build on this mnemonic.
 The term order appears to arise from the use of growth classes when discussing Taylor approximations.
-In this case of small $x$ (i.e.,  $\abs{x} < 1$), $\abs{x^p} < \abs{x^q}$ if $q < p$ and so higher order terms are \say{smaller} and \say{negligible.}
-This notation is sometimes called \t{Big O notation},\t{Landau's symbol}, \t{Landau notation} or \t{Landau's notation}.
+In this case of small $x$ (i.e., $\abs{x} < 1$), $\abs{x^p} < \abs{x^q}$ if $q < p$ and so higher order terms are \say{smaller} and \say{negligible.}
+This notation is sometimes called \t{Big O notation}, \t{Landau's symbol}, \t{Landau notation} or \t{Landau's notation}.
 
-Let $\phi, \psi: \R \to \R$.
-Many authors use $\phi = O(\psi)$ or $\phi(t) = O(\psi(t))$ to assert that $\phi$ is in the upper growth class of $\psi$ at some understood limit (e.g., $0$ or $\infty$).
-In other words, the equation asserts that there exists some positive constant $C > 0$ sot that, for all $t$ sufficiently close to the understood limit, $\abs{\phi(t)} \leq C \abs{\psi(t)}$.\footnote{Often also defined $\abs{\phi(t)} < C\psi(t)$, with no absolute value on $\psi$.}
-For example, the statement $\sin^2(t) = P(t^2)$ as $t \to 0$ (or for $t \to 0$) means that there exists constants $C, \varepsilon > 0$ so that, $\abs{t} < \varepsilon \implies \abs{\sin^2(t)} \leq Ct^2$.
-
-
+Let $\phi , \psi : \R  \to \R $.
+Many authors use $\phi  = O(\psi )$ or $\phi (t) = O(\psi (t))$ to assert that $\phi $ is in the upper growth class of $\psi $ at some understood limit (e.g., $0$ or $\infty$).
+In other words, the equation asserts that there exists some positive constant $C > 0$ sot that, for all $t$ sufficiently close to the understood limit, $\abs{\phi (t)} \leq C \abs{\psi (t)}$.\footnote{Often also defined $\abs{\phi (t)} < C\psi (t)$, with no absolute value on $\psi $.}
+For example, the statement $\sin^2(t) = P(t^2)$ as $t \to 0$ (or for $t \to 0$) means that there exists constants $C, \varepsilon  > 0$ so that, $\abs{t} < \varepsilon  \implies \abs{\sin^2(t)} \leq Ct^2$.

@@ -115,7 +115,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 192 0 -->
+      <!-- 193 0 -->
 
 <!-- \newcounter{caccounts} -->
 
@@ -356,18 +356,6 @@
 <!-- \newcommand{\Z}{\mathbfsf{Z}} -->
 
 \newcommand{\Z}{\mathbfsf{Z}}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -661,6 +649,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- \newcommand{\bintersection}{\bigcap} -->
 
 \newcommand{\bintersection}{\bigcap}
@@ -901,6 +901,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -948,10 +952,6 @@
 <!--  -->
 
 
-
-<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
-
-\newcommand{\Q}{\mathbfsf{Q}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1177,6 +1177,38 @@
 
 \newcommand{\F}{\mathbfsf{F}}
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \innerproduct{x} for ||x|| ;; 11/05/2021 I don't think this is true... -->
+
+% use \innerproduct{x} for ||x|| ;; 11/05/2021 I don't think this is true...
+
+<!-- % use \innerproduct* for autosizing delimiters -->
+
+% use \innerproduct* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1} -->
+
+\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}
+
+<!-- \newcommand{\ip}[1]{\innerproduct{#1}} -->
+
+\newcommand{\ip}[1]{\innerproduct{#1}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- % it is declared in integral line! -->
 
 % it is declared in integral line!
@@ -1389,18 +1421,6 @@
 
 \newcommand{\E}{\mathbfsf{E}}
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 <!-- \renewcommand{\Vec}[2]{{#1}^{#2}} -->
 
 \renewcommand{\Vec}[2]{{#1}^{#2}}
@@ -1408,26 +1428,6 @@
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- % use \innerproduct{x} for ||x|| ;; 11/05/2021 I don't think this is true... -->
-
-% use \innerproduct{x} for ||x|| ;; 11/05/2021 I don't think this is true...
-
-<!-- % use \innerproduct* for autosizing delimiters -->
-
-% use \innerproduct* for autosizing delimiters
-
-<!-- \DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1} -->
-
-\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}
-
-<!-- \newcommand{\ip}[1]{\innerproduct{#1}} -->
-
-\newcommand{\ip}[1]{\innerproduct{#1}}
 
 <!--  -->
 
@@ -1812,6 +1812,263 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./complete_real_inner_product_spaces.html'" onkeypress="location.href='./complete_real_inner_product_spaces.html'">
+                <span>
+                  Complete Real Inner Product Spaces
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./covariance.html'" onkeypress="location.href='./covariance.html'">
+                <span>
+                  Covariance
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./inner_product_linear_functional_representations.html'" onkeypress="location.href='./inner_product_linear_functional_representations.html'">
+                <span>
+                  Inner Product Linear Functional Representations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./multivariate_normals.html'" onkeypress="location.href='./multivariate_normals.html'">
+                <span>
+                  Multivariate Normals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./probability_measures.html'" onkeypress="location.href='./probability_measures.html'">
+                <span>
+                  Probability Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./reproducing_kernels.pdf#page=2'" onkeypress="location.href='./reproducing_kernels.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./reproducing_kernels-graph.pdf'" onkeypress="location.href='./reproducing_kernels-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Reproducing Kernels </h1> 
+      <!--
+!name:reproducing_kernels
+!need:complete_real_inner_product_spaces
+!need:probability_measures
+!refs:wahba1990spline/1
+!need:multivariate_normals
+!need:covariance
+!need:inner_product_linear_functional_representations
+!refs:aronszajn1950/theory
+-->
+
+<span class='run'> <h1 id='Definition'>Definition</h1>
+</span>
+<p>
+ <span class='run'>Let $X$ be a (nonempty) set and $k$ a field.</span>
+
+ <span class='run'>Let $F \subset (X \to k)$ and let $\ip{\cdot ,
+  \cdot }: F \times F \to k$ be an inner product
+  so that $(F, \ip{\cdot ,\cdot })$ is a complete
+  inner product space.</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>reproducing kernel</span> of
+  $(F, \ip{\cdot ,\cdot })$ is a map $R: X
+  \times X \to k$ satisfying (1) for every $y \in
+  X$ the function $R(\cdot , y): X \to k$ is an
+  element of $F$ and (2) for every $f \in F$,
+  at every $y \in X$, $f(y) = \ip{f, R(\cdot ,
+  y)}$ (the <span class='term'>reproducing
+  property</span>).</span>
+</p>
+
+
+<p>
+ <span class='run'>$R$ is called a “reproducing} kernel because of
+  the following implication of the reproducing
+  property.</span>
+
+ <span class='run'>Notice that $R(\cdot , y) \in F$.</span>
+
+ <span class='run'>For this reason,</span>
+</p>
+
+<h2 id='Properties'>Properties</h2>
+
+<p>
+ <span class='run'>If a reproducing kernel exists, it is unique.</span>
+</p>
+
+<h1 id='Separate_sheet'>Separate sheet</h1>
+
+<p>
+ <span class='run'>Let $X$ be nonempty (index) set.</span>
+
+ <span class='run'>For example, $X$ may be $\upto{N}$, $\Z $, $[0,
+  1]$, $\R ^d$, $\Set{x \in \R ^3}{\norm{x} \leq
+  1}$ (the unit sphere), or $\Set{x \in
+  \R ^3}{\alpha  \leq \norm{x} \leq \beta }$ (the
+  atmosphere, or volume between two concentric
+  spheres).</span>
+</p>
+
+
+<p>
+ <span class='run'>A symmetric, real-valued function $k: X \times X
+  \to \R $ of two variables is said to be
+  <span class='term'>positive semidefinite</span> if
+  for any $n \in \N $, for any real $a_1,
+  \dots , a_n \in \R $ and $x_1, \dots , x_n \in
+  X$, we have
+  <p>\[
+   \sum_{i, j = 1}^{n} a_ia_j k(x_i, x_j) \geq 0,
+  \]</p>
+  and <span class='term'>positive definite</span> if
+  the above holds with \say{$&gt;$}.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+
+<p>
+ <span class='run'>Positive semidefinite kernels are useful for the
+  following constructive reason:</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>Let $X \neq \varnothing$ be a set.</span>
+
+ <span class='run'>If $k: X \times X \to \R $ is positive
+  semidefinite, then there exists a probability
+  space $(\Omega , \C A, \mathbfsf{P} )$ and a
+  family of zero-mean normal real-valued random
+  variables $\set{f_x: \Omega  \to \R }_{x \in X}$
+  with covariance function $k$, that is,
+  <p>\[
+   \E  f(a)f(b) = k(a, b), \quad \text{ for all } a, b \in X.
+  \]</p></span></div>
+<span class='run'>This result is known by the names
+ <span class='term'>Kolmogorov extension
+ theorem</span>, <span class='term'>Kolmogorov
+ existence theorem</span>,
+ <span class='term'>Kolmogorov consistency
+ theorem</span> and
+ <span class='term'>Daniell-Kolmogorov theorem</span>.</span><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Some authors use the term “positive definite”
+  for our term positive semidefinite and the term
+  “<span class='term'>strictly positive
+  definite</span>” for our term “positive definite.”</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1835,9 +2092,9 @@
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./complete_inner_product_spaces.html'" onkeypress="location.href='./complete_inner_product_spaces.html'">
+            <div class="need" tabindex="0" onclick="location.href='./complete_real_inner_product_spaces.html'" onkeypress="location.href='./complete_real_inner_product_spaces.html'">
               <span>
-                Complete Inner Product Spaces
+                Complete Real Inner Product Spaces
               </span>
               <span class="caret">›</span>
             </div>
@@ -1877,7 +2134,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a (nonempty) set and $k$ a field. Let $F \subset (X \to k)$ and let $\ip{\cdot, \cdot}: F \times F \to k$ be an inner product so that $(F, \ip{\cdot,\cdot})$ is a complete inner product space.</p></div><div class="sheet-listing"><p class="sheet"> A \t{reproducing kernel} of $(F, \ip{\cdot,\cdot})$ is a map $R: X \times X \to k$ satisfying (1) for every $y \in X$ the function $R(\cdot, y): X \to k$ is an element of $F$ and (2) for every $f \in F$, at every $y \in X$, $f(y) = \ip{f, R(\cdot, y)}$ (the \t{reproducing property}).</p></div><div class="sheet-listing"><p class="sheet"> $R$ is called a "reproducing" kernel because of the following implication of the reproducing property. Notice that $R(\cdot, y) \in F$. For this reason,</p></div><div class="sheet-listing"><h2 class="sheet" id="properties">2.1 Properties</h2></div><div class="sheet-listing"><p class="sheet"> If a reproducing kernel exists, it is unique. \blankpage</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be nonempty (index) set. For example, $X$ may be $\upto{N}$, $\Z$, $[0, 1]$, $\R^d$, $\Set{x \in \R^3}{\normm{x} \leq 1}$ (the unit sphere), or $\Set{x \in \R^3}{\alpha \leq \normm{x} \leq \beta}$ (the atmosphere, or volume between two concentric spheres).</p></div><div class="sheet-listing"><p class="sheet"> A symmetric, real-valued function $k: X \times X \to \R$ of two variables is said to be \t{positive semidefinite} if for any $n \in \N$, for any real $a_1, \dots, a_n \in \R$ and $x_1, \dots, x_n \in X$, we have \[ \sum_{i, j = 1}^{n} a_ia_j k(x_i, x_j) \geq 0, \] and \t{positive definite} if the above holds with "$>$}.\footnote{Some authors use the term \say{positive definite} for our term positive semidefinite and the term \say{\t{strictly positive definite}} for our term positive definite."</p></div><div class="sheet-listing"><p class="sheet"> Positive semidefinite kernels are useful for the following constructive reason: \begin{proposition} Let $X \neq \emptyset$ be a set. If $k: X \times X \to \R$ is positive semidefinite, then there exists a probability space $(\Omega, \CA, \PM)$ and a family of zero-mean normal real-valued random variables $\set{f_x: \Omega \to \R}_{x \in X}$ with covariance function $k$, that is, \[ \E f(a)f(b) = k(a, b), \quad \text{ for all } a, b \in X.\footnote{Future editions will prove this result.} \] \end{proposition} This result is known by the names \t{Kolmogorov extension theorem},  \t{Kolmogorov existence theorem},  \t{Kolmogorov consistency theorem} and  \t{Daniell-Kolmogorov theorem}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be a (nonempty) set and $k$ a field. Let $F \subset (X \to k)$ and let $\ip{\cdot , \cdot }: F \times F \to k$ be an inner product so that $(F, \ip{\cdot ,\cdot })$ is a complete inner product space.</p></div><div class="sheet-listing"><p class="sheet"> A \t{reproducing kernel} of $(F, \ip{\cdot ,\cdot })$ is a map $R: X \times X \to k$ satisfying (1) for every $y \in X$ the function $R(\cdot , y): X \to k$ is an element of $F$ and (2) for every $f \in F$, at every $y \in X$, $f(y) = \ip{f, R(\cdot , y)}$ (the \t{reproducing property}).</p></div><div class="sheet-listing"><p class="sheet"> $R$ is called a "reproducing" kernel because of the following implication of the reproducing property. Notice that $R(\cdot , y) \in F$. For this reason,</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> If a reproducing kernel exists, it is unique.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Separate sheet}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be nonempty (index) set. For example, $X$ may be $\upto{N}$, $\Z $, $[0, 1]$, $\R ^d$, $\Set{x \in \R ^3}{\norm{x} \leq 1}$ (the unit sphere), or $\Set{x \in \R ^3}{\alpha  \leq \norm{x} \leq \beta }$ (the atmosphere, or volume between two concentric spheres).</p></div><div class="sheet-listing"><p class="sheet"> A symmetric, real-valued function $k: X \times X \to \R $ of two variables is said to be \t{positive semidefinite} if for any $n \in \N  $, for any real $a_1, \dots , a_n \in \R $ and $x_1, \dots , x_n \in X$, we have \[ \sum_{i, j = 1}^{n} a_ia_j k(x_i, x_j) \geq 0, \] and \t{positive definite} if the above holds with "$>$}.\footnote{Some authors use the term \say{positive definite} for our term positive semidefinite and the term \say{\t{strictly positive definite}} for our term \say{positive definite.}"</p></div><div class="sheet-listing"><p class="sheet"> Positive semidefinite kernels are useful for the following constructive reason:</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $X \neq \varnothing$ be a set. If $k: X \times X \to \R $ is positive semidefinite, then there exists a probability space $(\Omega , \C A, \mathbfsf{P} )$ and a family of zero-mean normal real-valued random variables $\set{f_x: \Omega  \to \R }_{x \in X}$ with covariance function $k$, that is, \[ \E  f(a)f(b) = k(a, b), \quad \text{ for all } a, b \in X. \]\end{proposition} This result is known by the names \t{Kolmogorov extension theorem}, \t{Kolmogorov existence theorem}, \t{Kolmogorov consistency theorem} and \t{Daniell-Kolmogorov theorem}. \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -2031,7 +2288,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 73164ec9c.
+      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
     </span>
   </body>
 </html>

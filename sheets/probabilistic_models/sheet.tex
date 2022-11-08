@@ -1,6 +1,7 @@
 
 %!name:probabilistic_models
 %!need:probability_measures
+%!need:expectation
 %!refs:diaconis/1988/sufficiency as symmetry
 
 \section*{Why}
@@ -30,19 +31,31 @@ Often $\Theta  \subset \R ^d$.
 \subsection*{Example: coin flips}
 
 The usual model for $n$ flips of a coin takes $X = \set{0,1}^n$, the set of binary $n$-tuples.
-For $\theta  \in [0, 1]$, a distribution $p_\theta (x) = \theta ^t(1-\theta )^{n-t(x)}$ where $t(x) = x_1 + \cdots + x_n$ is defined on $X$.
+For $\theta  \in [0, 1]$, a distribution $p_\theta (x) = \theta ^t(1-\theta )^{n-t}$ where $t = t(x) = x_1 + \cdots + x_n$ is defined on $X$.
 A probability measure $\mathbfsf{P} _\theta $ is defined on $\powerset{X}$ in the \sheetref{event_probabilities}{the usual way}.
 Thus, the probabilistic model is $\Set{\mathbfsf{P} _\theta }{\theta  \in [0,1]}$.
 Given $x$, we are asked to guess $\theta $.
 
-\subsection*{Example: gaussian}
-
-A common model for quantities takes $X = \R ^d$, the \sheetref{n-dimensional_space}{$d$-dimensional real space}.
+%<div data-littype='section' data-litsectionlevel='2' data-litsectionnumbered='false'> Example: gaussian </div>
+%<div data-littype='paragraph'>
+% <div data-littype='run'> A common model for quantities takes $X = 𝗥^d$, the␣
+%    <a href='/sheets/n-dimensional_space.html'>
+%     <div data-littype='run'> $d$-dimensional real space </div>
+%    </a>
+%    . </div>
+%</div>
 
 
 \section*{Decisions}
 
-A \t{decision procedure} (\t{estimator}, \t{statistical procedure}) is a measurable function that $A: \mathcal{X}  \to \mathcal{A} $ where $\mathcal{A} $ is a set of possible \t{decisions}, or \t{actions}.
-A \t{loss function} is
-\blankpage
+A \t{decision procedure} (\t{estimator}, \t{statistical procedure}) is a measurable function $A: \mathcal{X}  \to \mathcal{A} $ where $\mathcal{A} $ is a a set, called the \t{actions} or \t{decisions}.
+Often $\mathcal{A}  = \Theta $, in which case $A(x)$ givens an \t{estimate} of $\theta $, which we denote $\hat{\theta }(x)$.
 
+\section*{Judging decisions}
+
+Given a \t{loss function} $L: \mathcal{A}  \times  \Theta  \to \Rbar$, the \t{risk} of $A$ is
+    \[
+R(A, \theta ) = \E  L(A(x), \theta ).
+    \]
+
+\blankpage

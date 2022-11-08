@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make metric_limits.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 metric_limits.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_limits.tex
 
