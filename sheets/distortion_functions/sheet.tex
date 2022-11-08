@@ -1,3 +1,4 @@
+
 %!name:distortion_functions
 %!need:quantizations
 %!need:random_variables
@@ -5,35 +6,32 @@
 %!need:differential_relative_entropy
 %!refs:cover/chapter_10
 
-
-\ssection{Why}
+\section*{Why}
 
 We want to quantify the error of compressing a real-valued random variable.
 
-\ssection{Definition}
+\section*{Definition}
 
-Let $\CX$ be a finite set and $q: \R \to \CX$ a quantization (see \sheetref{quantizations}{Quantizations}) of $\R$.
-Also, fix a probability space $(\Omega, \CA, \PM)$ and a random variable $x: \Omega \to \R$.
+Let $\mathcal{X} $ be a finite set and $q: \R  \to \mathcal{X} $ a quantization (see \sheetref{quantizations}{Quantizations}) of $\R $.
+Also, fix a probability space $(\Omega , \mathcal{A} , \mathbfsf{P} )$ and a random variable $x: \Omega  \to \R $.
 
-
-The \t{compression} $\hat{x}: \Omega \to \CX$ of $x$ under $q$ is $q \composed x$.
+The \t{compression} $\hat{x}: \Omega  \to \mathcal{X} $ of $x$ under $q$ is $q \circ x$.
 A \t{distortion function} for $x$ and $\hat{x}$ is a function
-\[
-  d: (\Omega \to \R) \cross (\Omega \to \CX) \to \R.
-\]
+    \[
+d: (\Omega  \to \R ) \times  (\Omega  \to \mathcal{X} ) \to \R .
+    \]
 Roughly speaking, a distortion function is meant to quantify the error in using this compression.
 
-\ssubsection{Examples}
+\subsection*{Examples}
 
 The \t{expected mean-squared-error distortion} $d_{\text{mse}}$ between $x$ and $\hat{x}$ is
-\[
-  d_{\text{mse}}(x, \hat{x}) = \E[(x - \hat{x})^2]
-\]
+    \[
+d_{\text{mse}}(x, \hat{x}) = \E [(x - \hat{x})^2]
+    \]
 The \t{Kulback-Liebler distortion} $d_{\text{kld}}$ defined by
-\[
-    d_{\text{kld}}(x, \hat{x}) = \E[d_{\text{kl}}(\PM(y \in \cdot \mid x, \hat{x}) \mid \PM(y \in \cdot \mid \hat{x}))]
-\]
+    \[
+d_{\text{kld}}(x, \hat{x}) = \E [d_{\text{kl}}(\mathbfsf{P} (y \in \cdot  \mid x, \hat{x}) \mid \mathbfsf{P} (y \in \cdot \mid \hat{x}))]
+    \]
 where $y$ is some random variable that depends on $x$.\footnote{Future editions will clarify this sentence.}
-
 
 \blankpage

@@ -1,0 +1,129 @@
+<!--
+!name:tree_density_approximators
+!need:tree_densities
+!need:tree_distribution_approximators
+!need:differential_relative_entropy
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We can approximate a density with a tree density similar to
+    how we can approximate a distribution with a tree
+    distribution. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ We use the differential relative entropy as a criterion of
+    approximation. ⦉
+
+  ‖ An ❬optimal tree approximator❭ of density for a tree is a
+    density which factors according to a tree and minimizes its
+    differential relative entropy with the given density. ⦉
+⦉
+
+§ Notation ⦉
+¶ ⦊
+  ‖ Let $g: 𝗥^n → 𝗥$ be a density and $T$ be a tree on
+    $\set{1, …, n}$. ⦉
+
+  ‖ An optimal tree approximator of $g$ for $T$ is a density
+    $f$ that factors according to $T$ and minimizes $d(g, f)$. ⦉
+
+  ‖ In other words, given $g$ and $T$ we want to find $f$ to
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ \text{minimize} ＆\quad d(g, f) ᜶ ⦉
+
+      ‖ \text{subject to} ＆\quad f \text{ factors according to }
+        T. ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  § Result ⦉
+⦉
+
+<statement type='proposition'>
+  ¶ ⦊
+    ‖ Let $g: 𝗥^n → 𝗥$ be a density and $T$ be a tree on
+      $\set{1, …, n}$. ⦉
+
+    ‖ The density $f^*_T: 𝗥^d → 𝗥$ defined by ⦉
+
+    ‖ $$ ⦉
+
+    ‖ f^*_T = g_1 ∏_{i ≠ 1} g_{i |\pa{i}} ⦉
+
+    ‖ $$ ⦉
+
+    ‖ minimizes the differential relative entropy with $g$ among
+      all densities on $𝗥^n$ which factor according to $T$
+      ($\pa{i}$ is the parent of $i$ in $T$ rooted at vertex
+      $1$, $i = 2, …, n$). ⦉
+  ⦉
+</statement>
+<proof>
+  ¶ ⦊
+    ‖ Let $f: 𝗥^d → 𝗥$ be a density factoring according to $T$. ⦉
+
+    ‖ First, express
+      ◇ ⦊
+        ‖ f = f_1 ∏_{i = 1} f_{i |\pa{i}}. ⦉
+      ⦉⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ Second, recall that $d(g, f) = h(g, f) - h(g)$. ⦉
+
+    ‖ Since $h(g)$ does not depend on $f$, $f$ is a minimizer
+      of $d(g, f)$ if and only if $f$ is a minimizer of $h(g,
+      f)$. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ Third, express
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
+
+        ‖ h(g, f) &= - ∈t_{𝗥^d} g \log f ᜶ ⦉
+
+        ‖ &= - ∈t_{𝗥^d} g(x) \parens*{ \log f_{i}(x_i) + ∑_{i ≠
+          1} \log f_{i |\pa{i}}(x_i, x_{\pa{i}})} dx ᜶ ⦉
+
+        ‖ &= h(g_1, f_1) + ∑_{i ≠ 1} \parens*{ ∈t_{𝗥}
+          g_{\pa{i}}(ξ) h\parens*{g_{i |\pa{i}}(·, ξ),
+          f_{i\mid\pa{i}}(·,ξ)}dξ} ⦉
+
+        ‖ \end{aligned} ⦉
+      ⦉
+      which separates across $f_1$ and $f_{i |\pa{i}}(·, ξ)$ for
+      $i = 1, …, n$ and $ξ ∈ 𝗥$. ⦉
+
+    ‖ In particular, since $g_{pa{i}} ≥ 0$, we can minimize the
+      integrand pointwise. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ Fourth, recall $h(φ, ψ) ≥ 0$ for densities $φ, ψ$ of any
+      dimension, and zero if $φ = ψ$. ⦉
+
+    ‖ So $f_1 = g_1$ and $f_{i |\pa{i}} = g_{i |\pa{i}}$ are
+      solutions. ⦉
+  ⦉
+</proof>
+
+<!--
+% relative entropy.
+% We want to
+% \[
+%   \minimizationn{
+%     \text{ density } f \text{ and tree } T \text{ on } \set{1, \dots, n}
+%   }{
+%     d(g, f)
+%   }{
+%     f \text{ factors according to } T.
+%   }
+% \]
+-->

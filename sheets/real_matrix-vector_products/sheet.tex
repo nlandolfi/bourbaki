@@ -1,3 +1,4 @@
+
 %!name:real_matrix-vector_products
 %!need:vectors_as_matrices
 %!need:real_linear_combinations
@@ -10,9 +11,9 @@ We explore matrix-vector multiplication.
 \section*{Definition}
 
 Given a matrix $A \in \R ^{m \times  n}$ and a vector $x \in \R ^{n}$, the \t{product} of $A$ \t{with} $x$ is the vector $y \in \R ^{m}$ defined by
-  \[
+    \[
 y_i = \sum_{j = 1}^{n} A_{ij} x_j, \quad i = 1, \dots , m.
-  \]
+    \]
 
 \subsection*{Notation}
 
@@ -26,39 +27,34 @@ The geometric interpretation is that $A$ transforms the vector $x$.
 
 Conversely, we can view $x$ as transforming (acting on) $A$.
 Let $a^j \in \R ^m$ denote the $j$th column of $A$, then
-  \[
+    \[
 Ax = \sum_{j = 1}^{n} x_j a^j.
-  \]
+    \]
 In other words, $y$ is linear combination of the columns of $A$.
 
-\ssection{Properties}
+\section*{Properties}
+
 We call the function $f: \R ^n \to \R ^m$ defined by $f(x) = Ax$ the \t{matrix multiplication function} (or \t{matrix-vector product function}) associated with $A$.
 $f$ is satisfies the following two important properties:
-  \begin{enumerate}
-  \item $A(x + y) = Ax + Ay$
-  \item $A(\alpha x) = \alpha Ax$.
-  \end{enumerate}
+    \begin{enumerate}
+      \item $A(x + y) = Ax + Ay$
+      \item $A(\alpha x) = \alpha Ax$.
+    \end{enumerate}
 We call such a function $f$ \t{linear}.
 In other words, the matrix multiplication function is linear.
 Conversely, if $g: \R ^n \to \R ^m$ is linear, there exists a matrix inducing $g$.
 
 \begin{proposition}
 Let $f: \R ^n \to \R ^m$ be linear.
-Then there exists a unique $A \in \R ^{m \times  n}$ satisfying $f(x) = Ax$ for all $x \in \R ^n$.
-\end{proposition}
-\begin{proof}
-Evaluate $f$ at the standard unit vectors $e_i$.
-The $i$th component of $e_i$ is 1 and all other components are 0.
-\end{proof}
+Then there exists a unique $A \in \R ^{m \times  n}$ satisfying $f(x) = Ax$ for all $x \in \R ^n$.\end{proposition}
+\begin{proof}Evaluate $f$ at the standard unit vectors $e_i$.
+The $i$th component of $e_i$ is 1 and all other components are 0.\end{proof}
 Moreover, this matrix representation of $f$ is unique.
-\begin{proposition}
-If $A, B \in \R ^{m \times  n}$ are two matrices so that $f(x) = Ax = Bx$, then $A = B$.
-\end{proposition}
 
-\begin{proof}
-We have $Ax - Bx = 0$ so $(A - B)x = 0$ for every $x$.
+\begin{proposition}
+If $A, B \in \R ^{m \times  n}$ are two matrices so that $f(x) = Ax = Bx$, then $A = B$.\end{proposition}
+\begin{proof}We have $Ax - Bx = 0$ so $(A - B)x = 0$ for every $x$.
 In particular $y^\top (A - B)x = 0$ for every $x \in \R ^{n}, y \in \R ^m$.
 In particular, $e_{i}^\top (A - b)e_{j} = 0$. Conclusion: $A_{ij} - B_{ij} = 0$, and conclude that $A_{ij} = B_{ij}$. Thus, $A = B$.
 Evaluate $f$ at the standard unit vectors $e_i$.
-The $i$th component of $e_i$ is 1 and all other components are 0.
-\end{proof}
+The $i$th component of $e_i$ is 1 and all other components are 0.\end{proof}

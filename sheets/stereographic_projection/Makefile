@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make stereographic_projection.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 stereographic_projection.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > stereographic_projection.tex
 

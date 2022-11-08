@@ -21,6 +21,7 @@ const (
 	namePrefix = "%!name:"
 	needPrefix = "%!need:"
 	mcroPrefix = "%!mcro:"
+	wikiPrefix = "%!wiki:"
 )
 
 type ParseResult struct {
@@ -28,6 +29,7 @@ type ParseResult struct {
 	Needs       []string
 	Macros      []string
 	Lines       []string
+	Wiki        string
 	Body        string
 	NeedsParsed []*ParseResult
 	Terms       []string
@@ -127,6 +129,13 @@ func Parse(sheet io.Reader, macros io.Reader) *ParseResult {
 		}
 		if strings.HasPrefix(t, mcroPrefix) {
 			p.Macros = append(p.Macros, strings.TrimPrefix(t, mcroPrefix))
+			continue
+		}
+		if strings.HasPrefix(t, wikiPrefix) {
+			if p.Wiki != "" {
+				log.Fatalf("%s: multiple wiki directives", p.Name)
+			}
+			p.Wiki = strings.TrimPrefix(t, wikiPrefix)
 			continue
 		}
 		p.Lines = append(p.Lines, t)

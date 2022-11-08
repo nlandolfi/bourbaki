@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make functionals.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 functionals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > functionals.tex
 
