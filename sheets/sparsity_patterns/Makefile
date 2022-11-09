@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make sparsity_patterns.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 sparsity_patterns.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > sparsity_patterns.tex
 

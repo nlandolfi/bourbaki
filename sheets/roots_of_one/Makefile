@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make roots_of_one.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 roots_of_one.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > roots_of_one.tex
 
