@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make lower_upper_triangular_factorizations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 lower_upper_triangular_factorizations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > lower_upper_triangular_factorizations.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make rotate_scale_rotate_decomposition.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 rotate_scale_rotate_decomposition.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rotate_scale_rotate_decomposition.tex
 

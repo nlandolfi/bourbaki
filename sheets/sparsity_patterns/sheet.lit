@@ -1,0 +1,86 @@
+<!--
+!name:sparsity_patterns
+!need:symmetric_matrices
+!need:chordal_graphs
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ Certain sparse matrices are easier to work with, especially
+    those with chordal sparsity patterns.
+    † ⦊
+      ‖ Future editions will expand. ⦉
+    ⦉⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ A ❬sparsity pattern❭ $E$ of ❬order❭ $n$ is a set of
+    (unordered) pairs of $V = \set{1, …, n}$. ⦉
+
+  ‖ A sparsity pattern is ❬chordal❭ if the undirected graph $(V,
+    E)$ is chordal. ⦉
+⦉
+
+¶ ⦊
+  ‖ A symmetric matrix is said to ❬have a sparsity pattern❭ if
+    its $ij$th entry is zero whenever $\set{i, j}$ is not in
+    the sparsity pattern. The diagonal entries and off-diagonal
+    entries for pairs appearing in the sparsity pattern may or
+    may not be zero. ⦉
+⦉
+
+¶ ⦊
+  ‖ The graph whose vertices are one through $n$ and whose edge
+    set is the sparsity patter is called the ❬sparsity graph❭ ⦉
+⦉
+
+¶ ⦊
+  ‖ A sparsity pattern is not a property of a matrix because
+    it is not unique (unless all off-diagonal entries are
+    non-zero). If a matrix has a particular sparsity pattern it
+    has every sparsity pattern which is a superset of it. ⦉
+
+  ‖ In other words, every matrix has the sparsity pattern which
+    is the set of all pairs of integers. ⦉
+⦉
+
+§§ Notation ⦉
+¶ ⦊
+  ‖ Let $E ⊂ \Set*{\set{i, j}}{i, j ∈ \set{1, 2, …, n}}$. ⦉
+
+  ‖ A symmetric matrix $A ∈ 𝗦^n$ is said to have sparsity
+    pattern $E$ if $A_{ij} = A_{ji} = 0$ wheneer $i ≠ j$ and
+    $\set{i, j} ∉ E$. ⦉
+
+  ‖ The graph $G = (V, E)$ where $V = \set{1, 2, …, n}$ is
+    the sparsity graph associated with $E$. ⦉
+⦉
+
+¶ ⦊
+  ‖ We will denote the symmetric matrices of order $n$ with
+    sparsity pattern $E$ by $𝗦^n_{E}$. ⦉
+⦉
+
+§ Example ⦉
+<center>
+<img src='./graphics/sparsity_graph.pdf' width='50%'/>
+</center>
+¶ ⦊
+  ‖ The figure above shows a sparsity graph for the matrix
+    ◇ ⦊
+      ‖ A := \bmat{ ⦉
+
+      ‖ A_{11} ＆ A_{21} ＆ A_{31} ＆ 0 ＆ A_{51} ᜶ ⦉
+
+      ‖ A_{21} ＆ A_{22} ＆ 0 ＆ A_{42} ＆ 0 ᜶ ⦉
+
+      ‖ A_{31} ＆ 0 ＆ A_{33} ＆ 0 ＆ A_{54} ᜶ ⦉
+
+      ‖ 0 ＆ A_{42} ＆ 0 ＆ A_{44} ＆ A_{45} ᜶ ⦉
+
+      ‖ A_{51} ＆ 0 ＆ A_{53} ＆ A_{54} ＆ A_{55} ᜶ ⦉
+
+      ‖ }. ⦉
+    ⦉⦉
+⦉
