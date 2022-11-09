@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make circular_coordinates.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 circular_coordinates.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > circular_coordinates.tex
 

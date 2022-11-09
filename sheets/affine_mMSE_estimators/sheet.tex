@@ -1,3 +1,4 @@
+
 %!name:affine_mMSE_estimators
 %!need:norms
 %!need:matrix_trace
@@ -6,72 +7,67 @@
 %!need:real_matrix_inverses
 %!need:estimators
 
-\ssection{Why}
+\section*{Definition}
 
-\footnote{Future editions will include an account.}
-
-\ssection{Definition}
-
-We want to estimate a random variable $x: \Omega \to \R^n$ from a random variable $y: \Omega \to \R^n$ using an estimator $\phi: \R^m \to \R^n$ which is affine.\footnote{Actually, the development flips this. Future editions will correct.}
-In other words, $\phi(\xi) = A\xi + b$ for some $A \in \R^{n \times m}$ and $b \in \R^n$.
+We want to estimate a random variable $x: \Omega  \to \R ^n$ from a random variable $y: \Omega  \to \R ^n$ using an estimator $\phi : \R ^m \to \R ^n$ which is affine.\footnote{Actually, the development flips this. Future editions will correct.}
+In other words, $\phi (\xi ) = A\xi  + b$ for some $A \in \R ^{n \times m}$ and $b \in \R ^n$.
 We will use the mean squared error cost.
 
 We want to find $A$ and $b$ to minimize
-$$
-  \Expect{\normm{Ax + b - y}^2}.
-$$
-\begin{proof}
-Express $\Expect(\normm{Ax + b - y}^2)$ as $\Expect((Ax + b - y)^\tp(Ax + b - y))$
-$$
-  \mat{
-    & + & \tr(A \Expect(xx^\tp) A^\tp) & + & \Expect(x)^\tp A^\tp b & - & \tr(A^\tp \Expect(yx^\tp)) \\
-    & + & b^\tp A \Expect(x)   & + & b^\tp b                & - & b^\tp\Expect(y) \\
-    & - & \tr(A \Expect(xy^\tp) ) & - & \Expect(y)^\tp b & + & \Expect(yy^\tp)
-  }
-$$
+    \[
+\E {\norm{Ax + b - y}^2}.
+    \]
+
+\begin{proof}Express $\E (\norm{Ax + b - y}^2)$ as $\E ((Ax + b - y)^\top (Ax + b - y))$
+  \[
+\mat{
+& + & \tr(A \E (xx^\top ) A^\top ) & + & \E (x)^\top  A^\top b & - & \tr(A^\top  \E (yx^\top )) \\
+& + & b^\top  A \E (x) & + & b^\top  b & - & b^\top \E (y) \\
+& - & \tr(A \E (xy^\top ) ) & - & \E (y)^\top  b & + & \E (yy^\top )
+}
+  \]
 The gradients with respect to $b$ are
-$$
-  \mat{
-    & + & 0 & + & A \Expect(x) & - & 0 \\
-    & + & A \Expect(x) & + & 2 b  & - & \Expect(y) \\
-    & - & 0 & - & \Expect(y) & + & 0
-  }
-$$
-so $2A\Expect(x) + 2b - 2\Expect(y)$.
+  \[
+\mat{
+& + & 0 & + & A \E (x) & - & 0 \\
+& + & A \E (x) & + & 2 b & - & \E (y) \\
+& - & 0 & - & \E (y) & + & 0
+}
+  \]
+so $2A\E (x) + 2b - 2\E (y)$.
 The gradients with respect to $A$ are
-$$
-  \mat{
-    & + & \Expect(xx^\tp)A^\tp + \Expect(xx^\tp)^\tp A^\tp  & + & \Expect(x)b^\tp & - & \Expect(yx^\tp)^\tp \\
-    & + & \Expect(x)b^\tp  & + & 0                & - & 0 \\
-    & - & \Expect(xy^\tp) & - & 0 & + & 0
-  }
-$$
-  so $2\Expect(xx^\tp)A^\tp + 2\Expect(x)b^\tp - 2\Expect(xy^\tp)$.
-  We want $A$ and $b$ solutions to
-  $$
-  \begin{aligned}
-    A\Expect(x) + b - \Expect(y) &= 0 \\
-    \Expect(xx^\tp)A^\tp + \Expect(x)b^\tp - \Expect(xy^\tp) &= 0
-  \end{aligned}
-  $$
-  so first get $b = \Expect(y) - A\Expect(x)$.
-  Then express
-  $$
-  \begin{aligned}
-    \Expect(xx^\tp)A^\tp + \Expect(x)(\Expect(y) - A \Expect(x))^\tp - \Expect(xy^\tp) = 0.\\
-    \Expect(xx^\tp)A^\tp + \Expect(x)\Expect(y)^\tp - \Expect(x)\Expect(x)^\tp A^\tp - \Expect(xy^\tp) = 0. \\
-    (\Expect(xx^\tp) - \Expect(x)\Expect(x)^\tp)A^\tp = \Expect(xy^\tp) - \Expect(x)\Expect(y)^\tp. \\
-    \cov(x, x)A^\tp = \cov(x, y).
-  \end{aligned}
-  $$
-  So $A^\tp = \inv{\cov(x,x)}\cov(x, y)$ means $A = \cov(y, x)\inv{\cov(x, x)}$ is a solution.
-  Then $b = \Expect(y) - \cov(y, x)\inv{\cov(x,x)}\Expect(x)$.
-  So to summarize, the estimator $\phi(x) = Ax + b$ is
-  $$
-    \cov(y, x)\invp{\cov{x, x}} x + \Expect(y) - \cov(y, x)\inv{\cov(x,x)}\Expect(x)
-  $$
-  or
-  $$
-    \Expect(y) + \cov(y, x)\invp{\cov{x, x}}(x - \Expect(x))
-  $$
-\end{proof}
+  \[
+\mat{
+&& + & \E (xx^\top )A^\top  + \E (xx^\top )^\top  A^\top  & + & \E (x)b^\top  & - & \E (yx^\top )^\top  \\
+& + & \E (x)b^\top  & + & 0 & - & 0 \\
+& - & \E (xy^\top ) & - & 0 & + & 0
+}
+  \]
+so $2\E (xx^\top )A^\top  + 2\E (x)b^\top  - 2\E (xy^\top )$.
+We want $A$ and $b$ solutions to
+  \[
+\begin{aligned}
+A\E (x) + b - \E (y) &= 0 \\
+\E (xx^\top )A^\top  + \E (x)b^\top  - \E (xy^\top ) &= 0
+\end{aligned}
+  \]
+so first get $b = \E (y) - A\E (x)$.
+Then express
+  \[
+\begin{aligned}
+\E (xx^\top )A^\top  + \E (x)(\E (y) - A \E (x))^\top  - \E (xy^\top ) = 0.\\
+\E (xx^\top )A^\top  + \E (x)\E (y)^\top  - \E (x)\E (x)^\top A^\top  - \E (xy^\top ) = 0. \\
+(\E (xx^\top ) - \E (x)\E (x)^\top )A^\top  = \E (xy^\top ) - \E (x)\E (y)^\top . \\
+\cov(x, x)A^\top  = \cov(x, y).
+\end{aligned}
+  \]
+So $A^\top  = (\cov(x,x))^{-1}\cov(x, y)$ means $A = \cov(y, x)(\cov(x, x))^{-1}$ is a solution.
+Then $b = \E (y) - \cov(y, x)\cov(x,x)^{-1}\E (x)$.
+So to summarize, the estimator $\phi (x) = Ax + b$ is
+\[
+\cov(y, x)(\cov{x, x})^{-1} x + \E (y) - \cov(y, x)(\cov(x,x))^{-1}\E (x)
+\]
+or
+\[
+\E (y) + \cov(y, x) (\cov{x, x})^{-1} (x - \E (x))
+\]\end{proof}

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make supervised_probabilistic_data_models.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 supervised_probabilistic_data_models.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > supervised_probabilistic_data_models.tex
 
