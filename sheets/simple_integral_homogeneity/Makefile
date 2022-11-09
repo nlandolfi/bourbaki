@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make simple_integral_homogeneity.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 simple_integral_homogeneity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integral_homogeneity.tex
 

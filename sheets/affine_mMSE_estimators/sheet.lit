@@ -1,0 +1,122 @@
+<!--
+!name:affine_mMSE_estimators
+!need:norms
+!need:matrix_trace
+!need:matrix_transpose
+!need:covariance
+!need:real_matrix_inverses
+!need:estimators
+-->
+
+§ Definition ⦉
+¶ ⦊
+  ‖ We want to estimate a random variable $x: Ω → 𝗥^n$ from a
+    random variable $y: Ω → 𝗥^n$ using an estimator $φ: 𝗥^m →
+    𝗥^n$ which is affine.
+    † ⦊
+      ‖ Actually, the development flips this. Future editions will
+        correct. ⦉
+    ⦉⦉
+
+  ‖ In other words, $φ(ξ) = Aξ + b$ for some $A ∈ 𝗥^{n ×m}$
+    and $b ∈ 𝗥^n$. ⦉
+
+  ‖ We will use the mean squared error cost. ⦉
+⦉
+
+¶ ⦊
+  ‖ We want to find $A$ and $b$ to minimize
+    ◇ ⦊
+      ‖ 𝗘{\norm{Ax + b - y}^2}. ⦉
+    ⦉⦉
+⦉
+
+<proof>
+  ‖ Express $𝗘(\norm{Ax + b - y}^2)$ as $𝗘((Ax + b - y)^⊤(Ax
+    + b - y))$
+    ◇ ⦊
+      ‖ \mat{ ⦉
+
+      ‖ ＆ + ＆ \tr(A 𝗘(xx^⊤) A^⊤) ＆ + ＆ 𝗘(x)^⊤ A^⊤ b ＆ - ＆
+        \tr(A^⊤ 𝗘(yx^⊤)) ᜶ ⦉
+
+      ‖ ＆ + ＆ b^⊤ A 𝗘(x) ＆ + ＆ b^⊤ b ＆ - ＆ b^⊤𝗘(y) ᜶ ⦉
+
+      ‖ ＆ - ＆ \tr(A 𝗘(xy^⊤) ) ＆ - ＆ 𝗘(y)^⊤ b ＆ + ＆ 𝗘(yy^⊤) ⦉
+
+      ‖ } ⦉
+    ⦉⦉
+
+  ‖ The gradients with respect to $b$ are
+    ◇ ⦊
+      ‖ \mat{ ⦉
+
+      ‖ ＆ + ＆ 0 ＆ + ＆ A 𝗘(x) ＆ - ＆ 0 ᜶ ⦉
+
+      ‖ ＆ + ＆ A 𝗘(x) ＆ + ＆ 2 b ＆ - ＆ 𝗘(y) ᜶ ⦉
+
+      ‖ ＆ - ＆ 0 ＆ - ＆ 𝗘(y) ＆ + ＆ 0 ⦉
+
+      ‖ } ⦉
+    ⦉
+    so $2A𝗘(x) + 2b - 2𝗘(y)$. ⦉
+
+  ‖ The gradients with respect to $A$ are
+    ◇ ⦊
+      ‖ \mat{ ⦉
+
+      ‖ ＆＆ + ＆ 𝗘(xx^⊤)A^⊤ + 𝗘(xx^⊤)^⊤ A^⊤ ＆ + ＆ 𝗘(x)b^⊤ ＆ -
+        ＆ 𝗘(yx^⊤)^⊤ ᜶ ⦉
+
+      ‖ ＆ + ＆ 𝗘(x)b^⊤ ＆ + ＆ 0 ＆ - ＆ 0 ᜶ ⦉
+
+      ‖ ＆ - ＆ 𝗘(xy^⊤) ＆ - ＆ 0 ＆ + ＆ 0 ⦉
+
+      ‖ } ⦉
+    ⦉
+    so $2𝗘(xx^⊤)A^⊤ + 2𝗘(x)b^⊤ - 2𝗘(xy^⊤)$. ⦉
+
+  ‖ We want $A$ and $b$ solutions to
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ A𝗘(x) + b - 𝗘(y) ＆= 0 ᜶ ⦉
+
+      ‖ 𝗘(xx^⊤)A^⊤ + 𝗘(x)b^⊤ - 𝗘(xy^⊤) ＆= 0 ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉
+    so first get $b = 𝗘(y) - A𝗘(x)$. ⦉
+
+  ‖ Then express
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ 𝗘(xx^⊤)A^⊤ + 𝗘(x)(𝗘(y) - A 𝗘(x))^⊤ - 𝗘(xy^⊤) = 0.᜶ ⦉
+
+      ‖ 𝗘(xx^⊤)A^⊤ + 𝗘(x)𝗘(y)^⊤ - 𝗘(x)𝗘(x)^⊤ A^⊤ - 𝗘(xy^⊤) = 0.
+        ᜶ ⦉
+
+      ‖ (𝗘(xx^⊤) - 𝗘(x)𝗘(x)^⊤)A^⊤ = 𝗘(xy^⊤) - 𝗘(x)𝗘(y)^⊤. ᜶ ⦉
+
+      ‖ \cov(x, x)A^⊤ = \cov(x, y). ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ So $A^⊤ = (\cov(x,x))^{-1}\cov(x, y)$ means $A = \cov(y,
+    x)(\cov(x, x))^{-1}$ is a solution. ⦉
+
+  ‖ Then $b = 𝗘(y) - \cov(y, x)\cov(x,x)^{-1}𝗘(x)$. ⦉
+
+  ‖ So to summarize, the estimator $φ(x) = Ax + b$ is ⦉
+  ◇ ⦊
+    ‖ \cov(y, x)(\cov{x, x})^{-1} x + 𝗘(y) - \cov(y,
+      x)(\cov(x,x))^{-1}𝗘(x) ⦉
+  ⦉
+
+  ‖ or ⦉
+  ◇ ⦊
+    ‖ 𝗘(y) + \cov(y, x) (\cov{x, x})^{-1} (x - 𝗘(x)) ⦉
+  ⦉
+</proof>

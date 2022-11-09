@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make simple_integral_monotonicity.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 simple_integral_monotonicity.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integral_monotonicity.tex
 

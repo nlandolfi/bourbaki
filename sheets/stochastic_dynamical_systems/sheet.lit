@@ -1,0 +1,124 @@
+<!--
+!name:stochastic_dynamical_systems
+%!need:controlled_dynamical_systems (gets throough dynamic_optimization_problems)
+!need:dynamic_optimization_problems
+!need:expectation
+%!need:random_variables get it thru expectation
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to model uncertain outcomes in dynamical systems.
+    † ⦊
+      ‖ Future editions will expand. ⦉
+    ⦉⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $𝒳_0, 𝒳_1, …, 𝒳_{T}$ and $𝒰_0, 𝒰_1, …, 𝒰_{T-1}$ be
+    sets. ⦉
+
+  ‖ Let $(Ω, 𝒜, 𝗣)$ be a probability space. ⦉
+
+  ‖ Let $𝒲_{0}, …, 𝒲_{T}$. ⦉
+
+  ‖ Let $w_{t}: Ω → 𝒲_{t}$ for $t = 0, …, T$ be random
+    variables. ⦉
+
+  ‖ For $t = 0$, $…$, $T-1$, let $f_{t}: 𝒳_t × 𝒰_t × 𝒲_t →
+    𝒳_{t+1}$. ⦉
+⦉
+
+¶ ⦊
+  ‖ We call the sequence
+    ◇ ⦊
+      ‖ 𝒟 = ((𝒳_t)_{t = 0}^{T}), (𝒰_t)_{t=0}^{T-1},
+        (w_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1}) ⦉
+    ⦉
+    a ❬stochastic discrete-time dynamical system❭. ⦉
+
+  ‖ We call $w_t$ the ❬noise❭ variables. ⦉
+⦉
+
+§ Problem ⦉
+¶ ⦊
+  ‖ Let $x_0: Ω → 𝒳_0$ be a random variable. ⦉
+
+  ‖ Define $x_1: Ω → 𝒳_1$, $…$, $x_T: Ω → 𝒳_t$ by
+    ◇ ⦊
+      ‖ x_{t+1} = f_t(x_t, u_t, w_t) ⦉
+    ⦉
+    for $t = 0, …, T-1$. ⦉
+
+  ‖ Roughly speaking, the state transition functions are
+    nondeterministic. ⦉
+
+  ‖ In other words, it is uncertain which state we will arrive
+    in given our current state and action. ⦉
+
+  ‖ The choice $u_t$ only determines the distribution of
+    $x_{t+1}$. ⦉
+
+  ‖ Here $x_0$ is (still) called the ❬initial state❭ and is a
+    random variable, usually assumed independent of the $w_t$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $g_t: 𝒳_t × 𝒰_t × 𝒲_t → 𝗥 \union \set{∞}$ for $t =
+    0, …, T-1$ and $g_{T}: 𝒳_T × 𝒲_T → 𝗥 \union \set{∞}$. ⦉
+
+  ‖ We call $(x_0, 𝒟, (g_t)_{t = 0}^{T})$ a ❬stochastic dynamic
+    optimization problem❭. ⦉
+
+  ‖ As with dynamic optimization problems, we call $g_t$ the
+    ❬stage cost function❭ and $g_T$ the ❬terminal cost function❭. ⦉
+
+  ‖ It is common for these to not depend on $w_T$ (in other
+    words, to be deterministic). ⦉
+
+  ‖ It is also common for these to take infinite values to
+    encode constraints. ⦉
+⦉
+
+¶ ⦊
+  ‖ As before, a stochastic dynamic optimization problem is just
+    an optimization problem. ⦉
+
+  ‖ Define $U = 𝒰_0 × 𝒰_1 × ⋯ × 𝒰_{T-1}$ and let $u ∈ U$. ⦉
+
+  ‖ Define $C: Ω → 𝗥$ by
+    ◇ ⦊
+      ‖ C = ∑_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T). ⦉
+    ⦉⦉
+
+  ‖ We call $C$ the ❬total cost❭ for actions $u$. ⦉
+
+  ‖ It is a random variable. ⦉
+⦉
+
+¶ ⦊
+  ‖ Define $J: U → 𝗥 ∪ \set{∞}$ by
+    ◇ ⦊
+      ‖ J = 𝗘( ⦉
+
+      ‖ ∑_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T) ⦉
+
+      ‖ ). ⦉
+    ⦉
+
+    ‖ $J(u)$ is the ❬expected total cost❭ for inputs $u$. ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ The optimization problem is $(U, J)$. ⦉
+
+  ‖ In other words, the objective is the mean total stage cost
+    plus the terminal cost. ⦉
+⦉
+
+§§ Other terminology ⦉
+¶ ⦊
+  ‖ Stochastic dynamic optimization problems are frequently called
+    ❬stochastic control problems❭. ⦉
+⦉

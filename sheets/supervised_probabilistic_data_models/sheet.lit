@@ -1,0 +1,102 @@
+<!--
+!name:supervised_probabilistic_data_models
+!need:predictors
+!need:independent_and_identically_distributed_random_variables
+!need:approximators
+!refs:shai_shalev-schwartz2014understanding
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to discuss an inductor's performance on consistent
+    (but possibly incomplete) datasets. ⦉
+⦉
+
+¶ ⦊
+  ‖ We take two steps. First, put a measure on the set of
+    training sets and only consider high-measure subsets. ⦉
+
+  ‖ Second, consider predictors performing well in some tolerance. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $(X, 𝒳, μ)$ be a probability space and $(Y, 𝒴)$ a
+    measurable space. ⦉
+
+  ‖ Let $f: X → Y$ measurable. ⦉
+
+  ‖ We call the pair $((X, 𝒳, μ), f)$ a ❬(supervised)
+    probabilistic data model❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ We interpret $μ$ as the ❬data-generating distribution❭ or
+    ❬underlying distribution❭ and $f$ as the ❬correct labeling
+    function❭. ⦉
+
+  ‖ Many authors refer to a supervised probabilistic data model
+    as the ❬statistical learning (theory) framework❭. ⦉
+⦉
+
+§ Probable datasets ⦉
+¶ ⦊
+  ‖ We put a measure on the set of datasets by using the
+    product measure $(X^n, 𝒳^n, μ^n)$. ⦉
+
+  ‖ We interpret this as a model for a training set of
+    independent and identically distributed inputs. ⦉
+⦉
+
+¶ ⦊
+  ‖ ⦉
+
+  ‖ For $δ ∈ (0, 1)$, $𝒮 ⊂ X^n$ is ❬$1-δ$-representative❭ if
+    $μ^n(𝒮) ≥ 1 - δ$. ⦉
+
+  ‖ If $𝒮$ is $1-δ$-representative for small $δ$, we think of
+    $𝒮$ as a set of “probable” or “reasonable” datasets. ⦉
+
+  ‖ We call $δ$ the ❬confidence parameter❭. ⦉
+⦉
+
+§ Prediction error ⦉
+¶ ⦊
+  ‖ The ❬error❭ of (measurable) $h: X → Y$ (under $μ$ and $f$)
+    is
+    ◇ ⦊
+      ‖ \underset{μ, f}{\mathword{error}}(h) = μ(\Set*{x ∈ 𝒳}{h(x)
+        ≠ f(x)}). ⦉
+    ⦉⦉
+
+  ‖ We interpret this as the probability that the predictor
+    mislabels a point. ⦉
+
+  ‖ The ❬accuracy❭ of $h$ is $1 - \mathword{error}_{μ, f}(h)$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Since $(f, g) ↦ μ[f(x) ≠ g(x)]$ is a metric on $L^2(X, 𝒳,
+    μ, Y)$ we can talk about the error as the “distance” from
+    the correct label classifier. ⦉
+
+  ‖ Thus we will say that $ϵ ∈ (0, 1)$, (measurable) $h: 𝒳 →
+    𝒴$ ❬$ϵ$-approximates❭ the correct labeling function $f$ if
+    $\mathword{error}(h) ≤ ϵ$. ⦉
+
+  ‖ Roughly speaking, if $ϵ ≪ 1$, the the error of the
+    hypothesis is “fairly small.” ⦉
+
+  ‖ We call $ϵ$ the ❬accuracy parameter❭, since the accuracy of
+    such a predictor is $1 - ϵ$. ⦉
+⦉
+
+§ Other terminology ⦉
+¶ ⦊
+  ‖ A ❬hypothesis class❭ is a subset of the measurable functions
+    from $X → Y$. ⦉
+
+  ‖ Other names for the error of a classifier include the
+    ❬generalization error❭, the ❬risk❭ or the ❬true error❭ or
+    ❬loss❭. ⦉
+⦉
