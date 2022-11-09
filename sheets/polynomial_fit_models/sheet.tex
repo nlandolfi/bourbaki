@@ -21,10 +21,10 @@ Here the regression function generates a line segment embedded in the plane $\R 
 We call the parameters the \t{intercept parameter} and \t{slope parameter}.
 
 A \t{parabola fit model} has input space $\R $ and output space $\R $.
-We use a regression function $\phi : \R  \to \R ^3$ defined by $\phi (t) = \transpose{(1, t, t^2)}$.
+We use a regression function $\phi : \R  \to \R ^3$ defined by $\phi (t) = (1, t, t^2)^\top $.
 Here the regression space is a segment of a parabola embedded in space $\R ^3$ (since $t \in T$ an interval).
 
-These two are instance of \t{polynomial fit models} of degree $d \geq 1$, in which the regression function becomes $\phi : \R \to \R ^{d + 1}$ defined by $\phi (t) = \transpose{(1, t, t^2, \dots , t^d)}$.
+These two are instance of \t{polynomial fit models} of degree $d \geq 1$, in which the regression function becomes $\phi : \R \to \R ^{d + 1}$ defined by $\phi (t) = (1, t, t^2, \dots , t^d)^\top $.
 In this case, the regression range $\phi (T)$ is a one-dimensional curve embedded in $\R ^{d+1}$.
 In cases in which it is clear that the input space is a single real variable $t$, a linear model for a line fit (parabola fit, polynomial fit of degree $d$) is called a \t{first-degree model} (\t{second-degree model}, \t{$d$th degree model}).
 
@@ -34,15 +34,15 @@ We can generalize to \t{$m$-way $d$th degree polynomial fit models} in which the
 
 For example, a two-way third-degree model has a regression function
     \[
-\phi (t_1, t_2) = \transpose{\bmat{1 & t_1 & t_2 & t_1^2 & t_1t_2 & t_2^2 & t_1^3 & t_1^2t_2 & t_1t_2^2 & t_2^3}}.
+\phi (t_1, t_2) = \bmat{1 & t_1 & t_2 & t_1^2 & t_1t_2 & t_2^2 & t_1^3 & t_1^2t_2 & t_1t_2^2 & t_2^3}^\top .
     \]
 Or consider a three way second-degree model with regression function
     \[
-\phi (t_1, t_2, t_3) = \transpose{\bmat{1 & t_1 & t_2 & t_3 & t_1^2 & t_1t_2 & t_1t_3 & t_2^2 & t_2t_3 & t_3^2}}.
+\phi (t_1, t_2, t_3) = \bmat{1 & t_1 & t_2 & t_3 & t_1^2 & t_1t_2 & t_1t_3 & t_2^2 & t_2t_3 & t_3^2}^\top .
     \]
 Both models will result in parameter vectors of size ten.
 We call these models \t{saturated} because they have every possible $d$th degree power or cross product of variables.
 In generally, a $m$-way $d$th degree model has $d+m$ choose $d$ mean parameters.
 
 In contrast to saturated models we can talk about \t{nonsaturated} models.
-For example, a nonsaturated two-way second-degree model has $\phi : \R ^2 \to \R ^4$ where $\phi (t_1, t_2) = \transpose{(1 , t_1 , t_2 , t_1^2)}$.
+For example, a nonsaturated two-way second-degree model has $\phi : \R ^2 \to \R ^4$ where $\phi (t_1, t_2) = (1 , t_1 , t_2 , t_1^2)^\top $.

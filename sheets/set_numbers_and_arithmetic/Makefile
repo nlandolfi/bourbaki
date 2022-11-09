@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make set_numbers_and_arithmetic.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 set_numbers_and_arithmetic.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > set_numbers_and_arithmetic.tex
 

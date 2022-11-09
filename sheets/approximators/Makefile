@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make approximators.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > approximators.tex
 

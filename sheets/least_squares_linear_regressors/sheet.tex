@@ -1,3 +1,4 @@
+
 %!name:least_squares_linear_regressors
 %!need:matrix_transpose
 %!need:real_matrix_inverses
@@ -6,32 +7,29 @@
 %!need:linear_predictors
 %!need:regressors
 
-\ssection{Why}
+\section*{Why}
 
 What is the best linear regressor if we choose according to a squared loss function.
 
-\ssection{Definition}
+\section*{Definition}
 
-Let $X \in \R^{n \times d}$ and $y \in \R^d$.
-In other words, we have a paired dataset of records with inputs in $\R^d$ (the rows of $X$) and outputs in $\R$ (the elements of $y$).
+Let $X \in \R ^{n \times d}$ and $y \in \R ^d$.
+In other words, we have a paired dataset of records with inputs in $\R ^d$ (the rows of $X$) and outputs in $\R $ (the elements of $y$).
 
-A \t{least squares linear predictor} or \t{linear least squares predictor} is a linear transformation $f: \R^d \to \R$ (the field is $\R$) which minimizes
-\[
-  \frac{1}{n} \sum_{i = 1}^{n} (f(x^i) - y_i)^2.
-\]
-over the dataset of pairs $(x^1, y_1), \dots, (x^n, y_n) \in \R^d \times \R$ where $\transposep{x^i}$ is the $i$th row of $X$ for $i = 1, \dots, n$.
+A \t{least squares linear predictor} or \t{linear least squares predictor} is a linear transformation $f: \R ^d \to \R $ (the field is $\R $) which minimizes
+    \[
+\frac{1}{n} \sum_{i = 1}^{n} (f(x^i) - y_i)^2.
+    \]
+over the dataset of pairs $(x^1, y_1), \dots , (x^n, y_n) \in \R ^d \times \R $ where $(x^i)^\top $ is the $i$th row of $X$ for $i = 1, \dots , n$.
+The set of linear functions from $\R ^d$ to $\R $ is in one-to-one correspondence with $\R ^d$.
+So we want to find $\theta  \in \R ^d$ to minimize
+      \[
+\frac{1}{n} \norm{X\theta  - y}^2.
+      \]
 
-The set of linear functions from $\R^d$ to $\R$ is in one-to-one correspondence with $\R^d$.
-So we want to find $\theta \in \R^d$ to  minimize
-\[
-  \frac{1}{n} \normm{X\theta - y}^2.
-\]
 
-\ssection{Solution}
+\section*{Solution}
 
 \begin{proposition}
-  There exists a unique linear least squares predictor and its parameters are given by $\invp{\transpose{X}X}\transpose{X}y$.\footnote{Future editions will include an account.}
-\end{proposition}
-
-
+There exists a unique linear least squares predictor and its parameters are given by $(X^\top X)^{-1}X^\top y$.\footnote{Future editions will include an account.}\end{proposition}
 \blankpage

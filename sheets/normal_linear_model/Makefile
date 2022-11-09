@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make normal_linear_model.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 normal_linear_model.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_linear_model.tex
 
