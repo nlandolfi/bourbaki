@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make linear_predictors.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 linear_predictors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > linear_predictors.tex
 

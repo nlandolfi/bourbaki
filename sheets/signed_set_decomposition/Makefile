@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make signed_set_decomposition.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 signed_set_decomposition.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > signed_set_decomposition.tex
 

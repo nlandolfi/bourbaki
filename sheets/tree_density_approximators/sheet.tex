@@ -1,78 +1,71 @@
+
 %!name:tree_density_approximators
 %!need:tree_densities
 %!need:tree_distribution_approximators
 %!need:differential_relative_entropy
 
-\ssection{Why}
+\section*{Why}
 
 We can approximate a density with a tree density similar to how we can approximate a distribution with a tree distribution.
 
-\ssection{Definition}
+\section*{Definition}
 
 We use the differential relative entropy as a criterion of approximation.
 An \t{optimal tree approximator} of density for a tree is a density which factors according to a tree and minimizes its differential relative entropy with the given density.
 
-\ssection{Notation}
+\section*{Notation}
 
-Let $g: \R^n \to \R$ be a density and $T$ be a tree on $\set{1, \dots, n}$.
+Let $g: \R ^n \to \R $ be a density and $T$ be a tree on $\set{1, \dots , n}$.
 An optimal tree approximator of $g$ for $T$ is a density $f$ that factors according to $T$ and minimizes $d(g, f)$.
 In other words, given $g$ and $T$ we want to find $f$ to
-\[
-  \begin{aligned}
-    \text{minimize}   &\quad d(g, f) \\
-    \text{subject to} &\quad f \text{ factors according to } T.
-  \end{aligned}
-\]
+    \[
+\begin{aligned}
+\text{minimize} &\quad d(g, f) \\
+\text{subject to} &\quad f \text{ factors according to } T.
+\end{aligned}
+    \]
+  \section*{Result}
 
-\ssection{Result}
 
-\begin{prop}
-
-Let $g: \R^n \to \R$ be a density and $T$ be a tree on $\set{1, \dots, n}$.
-The density $f^*_T: \R^d \to \R$ defined by
+\begin{proposition}
+Let $g: \R ^n \to \R $ be a density and $T$ be a tree on $\set{1, \dots , n}$.
+The density $f^*_T: \R ^d \to \R $ defined by
 $$
-  f^*_T = g_1 \prod_{i \neq 1} g_{i \mid \pa{i}}
+f^*\_T = g\_1 \prod\_{i \neq 1} g\_{i \mid \pa{i}}
 $$
-minimizes the differential relative entropy with $g$ among all densities on $\R^n$ which factor according to $T$ ($\pa{i}$ is the parent of $i$ in $T$ rooted at vertex $1$, $i = 2, \dots, n$).
-
-\begin{proof}
-
-Let $f: \R^d \to \R$ be a density factoring according to $T$.
+minimizes the differential relative entropy with $g$ among all densities on $\R ^n$ which factor according to $T$ ($\pa{i}$ is the parent of $i$ in $T$ rooted at vertex $1$, $i = 2, \dots , n$).
+\end{proposition}
+\begin{proof}Let $f: \R ^d \to \R $ be a density factoring according to $T$.
 First, express
-$$
-  f = f_1 \prod_{i = 1} f_{i \mid \pa{i}}.
-$$
+    \[
+f = f_1 \prod_{i = 1} f_{i \mid \pa{i}}.
+    \]
 
 Second, recall that $d(g, f) = h(g, f) - h(g)$.
 Since $h(g)$ does not depend on $f$, $f$ is a minimizer of $d(g, f)$ if and only if $f$ is a minimizer of $h(g, f)$.
 
 Third, express
-$$
+    \[
 \begin{aligned}
-  h(g, f) &= - \int_{\R^d} g \log f \\
-          &= - \int_{\R^d} g(x) \parens*{ \log f_{i}(x_i) + \sum_{i \neq 1} \log f_{i \mid \pa{i}}(x_i, x_{\pa{i}})} dx \\
-          &= h(g_1, f_1) + \sum_{i \neq 1} \parens*{ \int_{\R} g_{\pa{i}}(\xi) h\parens*{g_{i \mid \pa{i}}(\cdot, \xi), f_{i\mid\pa{i}}(\cdot,\xi)}d\xi}
+h(g, f) \&= - \int_{\R ^d} g \log f \\
+\&= - \int_{\R ^d} g(x) \parens*{ \log f_{i}(x_i) + \sum_{i \neq 1} \log f_{i \mid \pa{i}}(x_i, x_{\pa{i}})} dx \\
+\&= h(g_1, f_1) + \sum_{i \neq 1} \parens*{ \int_{\R } g_{\pa{i}}(\xi ) h\parens*{g_{i \mid \pa{i}}(\cdot , \xi ), f_{i\mid\pa{i}}(\cdot ,\xi )}d\xi }
 \end{aligned}
-$$
-which separates across $f_1$ and $f_{i \mid \pa{i}}(\cdot, \xi)$ for $i = 1, \dots, n$ and $\xi \in \R$.
-In particular, since $g_{pa{i}} \geq 0$,
-we can minimize the integrand pointwise.
+    \]
+which separates across $f_1$ and $f_{i \mid \pa{i}}(\cdot , \xi )$ for $i = 1, \dots , n$ and $\xi  \in \R $.
+In particular, since $g_{pa{i}} \geq 0$, we can minimize the integrand pointwise.
 
-Fourth, recall $h(\phi, \psi) \geq 0$ for densities $\phi, \psi$ of any dimension, and zero if $\phi = \psi$.
+Fourth, recall $h(\phi , \psi ) \geq 0$ for densities $\phi , \psi $ of any dimension, and zero if $\phi  = \psi $.
 So $f_1 = g_1$ and $f_{i \mid \pa{i}} = g_{i \mid \pa{i}}$ are solutions.
-
 \end{proof}
-
-\end{prop}
-
-% relative entropy.
-% We want to
-% \[
-%   \minimizationn{
-%     \text{ density } f \text{ and tree } T \text{ on } \set{1, \dots, n}
-%   }{
-%     d(g, f)
-%   }{
-%     f \text{ factors according to } T.
-%   }
-% \]
+%% relative entropy.
+%% We want to
+%% \[
+%%   \minimizationn{
+%%     \text{ density } f \text{ and tree } T \text{ on } \set{1, \dots, n}
+%%   }{
+%%     d(g, f)
+%%   }{
+%%     f \text{ factors according to } T.
+%%   }
+%% \]

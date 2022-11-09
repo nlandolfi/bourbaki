@@ -1,0 +1,106 @@
+<!--
+!name:normal_linear_model
+!need:probabilistic_linear_model
+!need:normal_conditionals
+!need:maximum_conditional_estimates
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We consider the probabilistic linear model in which all
+    random variables are normal. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ A ❬normal linear model❭ is a probabilistic linear model in
+    which the parameter and noise vectors have normal (Gaussian)
+    densities. ⦉
+
+  ‖ The model is also called the ❬Gaussian linear model❭ or the
+    ❬linear model with Gaussian noise❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $(x: Ω → 𝗥^d, A ∈ 𝗥^{n ×d}, e: Ω → 𝗥^n)$ be a
+    probabilistic linear model over the probability space $(Ω, 𝒜,
+    𝗣)$ in which $x$ and $e$ have normal densities. ⦉
+
+  ‖ Recall that a probabilistic linear model has observation
+    vector $y: Ω → 𝗥^n$ defined by
+    ◇ ⦊
+      ‖ y = Ax + e. ⦉
+    ⦉⦉
+⦉
+
+§ Conditional density of $x$ on $y$ ⦉
+¶ ⦊
+  ‖ Since $x$ and $e$ are normal and independent, $y$ is
+    normal.
+    † ⦊
+      ‖ Future editions will include an account. ⦉
+    ⦉⦉
+
+  ‖ Moreover, the random vector $(x, y)$ is normal with
+    covariance
+    ◇ ⦊
+      ‖ \pmat{ ⦉
+
+      ‖ Σ_x ＆ Σ_{x}A^⊤ ᜶ ⦉
+
+      ‖ A Σ_{x} ＆ AΣ_{x}A^⊤ + Σ_{e} ⦉
+
+      ‖ }. ⦉
+    ⦉⦉
+
+  ‖ So the conditional density (see␣
+    <a href='/sheets/normal_conditionals.html'>
+      ‖ Normal Conditionals ⦉
+    </a>
+    ) of $g_{x |y}(·, γ)$ is normal with mean
+    ◇ ⦊
+      ‖ Σ_{x}A^⊤(AΣ_{x}A^⊤ + Σ_e)^{-1}γ ⦉
+    ⦉
+    and covariance
+    ◇ ⦊
+      ‖ Σ_{x} - Σ_{x}A^⊤(AΣ_{x}A^⊤ + Σ_e)^{-1}AΣ_{x}. ⦉
+    ⦉
+
+    ‖ This density is sometimes called the posterior for the
+      parameters given the observations. ⦉
+
+    ‖ So the parameter posterior of the normal linear model is
+      normal. ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ We can write the conditional mean as
+    ◇ ⦊
+      ‖ (Σ_{x}^{-1} + A^⊤Σ_{e}^{-1}A)^{-1} A^⊤ Σ_{e}^{-1} ⦉
+    ⦉
+    and the conditional covariance as
+    † ⦊
+      ‖ A proof will appear in future editions. Use the matrix
+        inversion lemma or facts about inverses. ⦉
+    ⦉
+    ◇ ⦊
+      ‖ (Σ_x^{-1} + A^⊤ Σ_{e}^{-1} A)^{-1}. ⦉
+    ⦉
+
+    ‖ Very frequently we use these forms when $d < n$. ⦉
+
+    ‖ In other words, in the case that we have fewer unknowns
+      than measurements. ⦉
+
+    ‖ In that case $Σ_{x}$ is smaller than $AΣ_{x}A^⊤$. ⦉⦉
+⦉
+
+§§ Maximum conditional estimate of $x$ ⦉
+<statement type='proposition'>
+  ‖ The maximum conditional estimate of $x: Ω → 𝗥^d$ given
+    observed value $γ ∈ 𝗥^n$ of $y: Ω → 𝗥^n$ is the
+    conditional mean
+    ◇ ⦊
+      ‖ Σ_{x} A^⊤(AΣ_{x}A^⊤ + Σ_{e})^{-1}γ. ⦉
+    ⦉⦉
+</statement>
