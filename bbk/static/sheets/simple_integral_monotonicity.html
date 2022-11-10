@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1216,6 +1217,207 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./area.html'" onkeypress="location.href='./area.html'">
+                <span>
+                  Area
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./simple_integrals.html'" onkeypress="location.href='./simple_integrals.html'">
+                <span>
+                  Simple Integrals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./simple_integral_monotonicity.pdf#page=2'" onkeypress="location.href='./simple_integral_monotonicity.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./simple_integral_monotonicity-graph.pdf'" onkeypress="location.href='./simple_integral_monotonicity-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Simple Integral Monotonicity </h1> 
+      <!--
+!name:simple_integral_monotonicity
+!need:simple_integrals
+!need:area
+-->
+
+<p>
+ <span class='run'>  <h1 id='Why'>Why</h1>
+</span>
+</p>
+
+
+<p>
+ <span class='run'>If one rectangle contains another rectangle, the
+  area of the first should be larger than the
+  area of the second.</span>
+
+ <span class='run'>Our definition of integral for simple functions
+  carries this property.</span>
+</p>
+
+
+<p>
+ <span class='run'>  <h1 id='Result'>Result</h1>
+</span>
+</p>
+
+<div class='proposition'>
+ <p>
+  <span class='run'>The simple non-negative</span>
+
+  <span class='run'>integral operator</span>
+
+  <span class='run'>is monotone.</span>
+ </p>
+</div>
+<div class='proof'> <p>
+  <span class='run'>Let $(X, \mathcal{A} , \mu )$</span>
+
+  <span class='run'>be a measure space.</span>
+
+  <span class='run'>Let $f, g \in \SimpleF_+(X)$</span>
+
+  <span class='run'>with $f \leq g$.</span>
+
+  <span class='run'>Then $f - g \in \SimpleF_+(X)$,</span>
+
+  <span class='run'>so</span>
+  <p>\[
+   \begin{aligned}
+
+   \int  g d\mu  &= \int (f + (g - f)) d\mu  \\
+
+   &\overset{(a)}{=} \int  f d\mu  + \int  (g - f) d\mu  \\
+
+   &\overset{(b)}{\geq} \int  f d \mu
+
+   \end{aligned}
+  \]</p>
+  <span class='run'>where (a) follows from</span>
+
+  <span class='run'>linearity</span>
+
+  <span class='run'>and (b) follows from</span>
+
+  <span class='run'>non-negativity; properties</span>
+
+  <span class='run'>of the non-negative simple</span>
+
+  <span class='run'>integral operator.</span>
+ </p>
+</div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1260,7 +1462,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If one rectangle contains another rectangle, the area of the first should be larger than the area of the second. Our definition of integral for simple functions carries this property.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> The simple non-negative integral operator is monotone.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A}, \mu)$ be a measure space. Let $f, g \in \SimpleF_+(X)$ with $f \leq g$. Then $f - g \in \SimpleF_+(X)$, so \[ \begin{aligned} \int g d\mu &= \int (f + (g - f)) d\mu \\ &\overset{(a)}{=} \int f d\mu + \int (g - f) d\mu \\ &\overset{(b)}{\geq} \int f d \mu \end{aligned} \] where (a) follows from linearity and (b) follows from non-negativity; properties of the non-negative simple integral operator.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> If one rectangle contains another rectangle, the area of the first should be larger than the area of the second. Our definition of integral for simple functions carries this property.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The simple non-negative integral operator is monotone. \end{proposition} \begin{proof}Let $(X, \mathcal{A} , \mu )$ be a measure space. Let $f, g \in \SimpleF_+(X)$ with $f \leq g$. Then $f - g \in \SimpleF_+(X)$, so \[ \begin{aligned} \int  g d\mu  &= \int (f + (g - f)) d\mu  \\ &\overset{(a)}{=} \int  f d\mu  + \int  (g - f) d\mu  \\ &\overset{(b)}{\geq} \int  f d \mu \end{aligned} \] where (a) follows from linearity and (b) follows from non-negativity; properties of the non-negative simple integral operator. \end{proof} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1414,7 +1616,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

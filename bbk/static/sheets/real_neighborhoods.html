@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1004,6 +1005,177 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_balls.html'" onkeypress="location.href='./real_balls.html'">
+                <span>
+                  Real Balls
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./smooth_manifolds.html'" onkeypress="location.href='./smooth_manifolds.html'">
+            <span>
+            Smooth Manifolds
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_neighborhoods.pdf#page=2'" onkeypress="location.href='./real_neighborhoods.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./real_neighborhoods-graph.pdf'" onkeypress="location.href='./real_neighborhoods-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Neighborhoods </h1> 
+      <!--
+!name:real_neighborhoods
+!need:real_balls
+!refs:mendelson/4.4
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Often when speaking of a set, we are
+  interested in speaking of those elements which
+  are close to it.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $x \in \R ^d$</span>
+
+ <span class='run'>A subset $N \subset \R ^d$ is a
+  <span class='term'>neighborhood of $x$</span> if
+  there is a $\delta  &gt; 0$ such that $B(x,
+  \delta ) \subset N$.</span>
+
+ <span class='run'>The set $\mathcal{N} _a$ of neighboords of $x$
+  is called the <span class='term'>complete system
+  of neighborhoods</span> of the point $a$.</span>
+</p>
+
+
+<p>
+ <span class='run'>We interpret a neighborhood of a point $x \in
+  X$ as a set containing all the points of $X$
+  that are sufficiently close to $a$.</span>
+
+ <span class='run'>A neighborhood of $x$ “encloses” $x$ by virtue
+  of it containing an open ball about $a$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will continue to treatment,
+  including pointing out that an open ball at $x$
+  is a neighborhood of $x$ <i>and</i> of all
+  elements in the ball.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1051,7 +1223,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Often when speaking of a set, we are interested in speaking of those elements which are close to it.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $x \in \R^d$ A subset $N \subset \R^d$ is a \t{neighborhood of $x$} if there is a $\delta > 0$ such that $B(x, \delta) \subset N$. The set $\CN_a$ of neighboords of $x$ is called the \t{complete system of neighborhoods} of the point $a$.</p></div><div class="sheet-listing"><p class="sheet"> We interpret a neighborhood of a point $x \in X$ as a set containing all the points of $X$ that are sufficiently close to $a$. A neighborhood of $x$ "encloses} $x$ by virtue of it containing an open ball about $a$.\footnote{Future editions will continue to treatment, including pointing out that an open ball at $x$ is a neighborhood of $x$ <i>and" of all elements in the ball.</i></p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Often when speaking of a set, we are interested in speaking of those elements which are close to it.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $x \in \R ^d$ A subset $N \subset \R ^d$ is a \t{neighborhood of $x$} if there is a $\delta  > 0$ such that $B(x, \delta ) \subset N$. The set $\mathcal{N} _a$ of neighboords of $x$ is called the \t{complete system of neighborhoods} of the point $a$.</p></div><div class="sheet-listing"><p class="sheet"> We interpret a neighborhood of a point $x \in X$ as a set containing all the points of $X$ that are sufficiently close to $a$. A neighborhood of $x$ "encloses} $x$ by virtue of it containing an open ball about $a$.\footnote{Future editions will continue to treatment, including pointing out that an open ball at $x$ is a neighborhood of $x$ <i>and" of all elements in the ball.</i></p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1205,7 +1377,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

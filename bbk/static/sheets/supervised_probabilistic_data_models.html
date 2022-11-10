@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1432,6 +1433,296 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./approximators.html'" onkeypress="location.href='./approximators.html'">
+                <span>
+                  Approximators
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./independent_and_identically_distributed_random_variables.html'" onkeypress="location.href='./independent_and_identically_distributed_random_variables.html'">
+                <span>
+                  Independent and Identically Distributed Random Variables
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./predictors.html'" onkeypress="location.href='./predictors.html'">
+                <span>
+                  Predictors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./empirical_error_minimizers.html'" onkeypress="location.href='./empirical_error_minimizers.html'">
+            <span>
+            Empirical Error Minimizers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./hypothesis_classes.html'" onkeypress="location.href='./hypothesis_classes.html'">
+            <span>
+            Hypothesis Classes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./probably_approximately_correct_inductors.html'" onkeypress="location.href='./probably_approximately_correct_inductors.html'">
+            <span>
+            Probably Approximately Correct Inductors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./supervised_probabilistic_data_models.pdf#page=2'" onkeypress="location.href='./supervised_probabilistic_data_models.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./supervised_probabilistic_data_models-graph.pdf'" onkeypress="location.href='./supervised_probabilistic_data_models-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Supervised Probabilistic Data Models </h1> 
+      <!--
+!name:supervised_probabilistic_data_models
+!need:predictors
+!need:independent_and_identically_distributed_random_variables
+!need:approximators
+!refs:shai_shalev-schwartz2014understanding
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to discuss an inductor&#39;s performance
+  on consistent (but possibly incomplete) datasets.</span>
+</p>
+
+
+<p>
+ <span class='run'>We take two steps. First, put a measure on
+  the set of training sets and only consider
+  high-measure subsets.</span>
+
+ <span class='run'>Second, consider predictors performing well in
+  some tolerance.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $(X, \mathcal{X} , \mu )$ be a probability
+  space and $(Y, 𝒴)$ a measurable space.</span>
+
+ <span class='run'>Let $f: X \to Y$ measurable.</span>
+
+ <span class='run'>We call the pair $((X, \mathcal{X} , \mu ), f)$
+  a <span class='term'>(supervised) probabilistic data
+  model</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>We interpret $\mu $ as the
+  <span class='term'>data-generating distribution</span>
+  or <span class='term'>underlying distribution</span>
+  and $f$ as the <span class='term'>correct labeling
+  function</span>.</span>
+
+ <span class='run'>Many authors refer to a supervised probabilistic
+  data model as the <span class='term'>statistical
+  learning (theory) framework</span>.</span>
+</p>
+
+<h1 id='Probable_datasets'>Probable datasets</h1>
+
+<p>
+ <span class='run'>We put a measure on the set of datasets by
+  using the product measure $(X^n, \mathcal{X} ^n,
+  \mu ^n)$.</span>
+
+ <span class='run'>We interpret this as a model for a training
+  set of independent and identically distributed
+  inputs.</span>
+</p>
+
+
+<p>
+ <span class='run'></span>
+
+ <span class='run'>For $\delta  \in (0, 1)$, $\mathcal{S}  \subset
+  X^n$ is
+  <span class='term'>$1-\delta $-representative</span>
+  if $\mu ^n(\mathcal{S} ) \geq 1 - \delta $.</span>
+
+ <span class='run'>If $\mathcal{S} $ is $1-\delta $-representative
+  for small $\delta $, we think of $\mathcal{S} $
+  as a set of “probable” or “reasonable” datasets.</span>
+
+ <span class='run'>We call $\delta $ the
+  <span class='term'>confidence parameter</span>.</span>
+</p>
+
+<h1 id='Prediction_error'>Prediction error</h1>
+
+<p>
+ <span class='run'>The <span class='term'>error</span> of (measurable)
+  $h: X \to Y$ (under $\mu $ and $f$) is
+  <p>\[
+   \underset{\mu , f}{\mathword{error}}(h) = \mu (\Set*{x \in
+    \mathcal{X} }{h(x) \neq f(x)}).
+  \]</p></span>
+
+ <span class='run'>We interpret this as the probability that the
+  predictor mislabels a point.</span>
+
+ <span class='run'>The <span class='term'>accuracy</span> of $h$ is
+  $1 - \mathword{error}_{\mu , f}(h)$.</span>
+</p>
+
+
+<p>
+ <span class='run'>Since $(f, g) \mapsto \mu [f(x) \neq g(x)]$ is
+  a metric on $L^2(X, \mathcal{X} , \mu , Y)$ we
+  can talk about the error as the “distance” from
+  the correct label classifier.</span>
+
+ <span class='run'>Thus we will say that $\epsilon  \in (0, 1)$,
+  (measurable) $h: \mathcal{X}  \to 𝒴$
+  <span class='term'>$\epsilon $-approximates</span> the
+  correct labeling function $f$ if
+  $\mathword{error}(h) \leq \epsilon $.</span>
+
+ <span class='run'>Roughly speaking, if $\epsilon  \ll 1$, the the
+  error of the hypothesis is “fairly small.”</span>
+
+ <span class='run'>We call $\epsilon $ the
+  <span class='term'>accuracy parameter</span>, since
+  the accuracy of such a predictor is $1 -
+  \epsilon $.</span>
+</p>
+
+<h1 id='Other_terminology'>Other terminology</h1>
+
+<p>
+ <span class='run'>A <span class='term'>hypothesis class</span> is a
+  subset of the measurable functions from $X \to
+  Y$.</span>
+
+ <span class='run'>Other names for the error of a classifier
+  include the <span class='term'>generalization
+  error</span>, the <span class='term'>risk</span> or
+  the <span class='term'>true error</span> or
+  <span class='term'>loss</span>.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1507,7 +1798,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to discuss an inductor's performance on consistent (but possibly incomplete) datasets.</p></div><div class="sheet-listing"><p class="sheet"> We take two steps. First, put a measure on the set of training sets and only consider high-measure subsets. Second, consider predictors performing well in some tolerance.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX, \mu)$ be a probability space and $(Y, \CY)$ a measurable space. Let $f: X \to Y$ measurable. We call the pair $((X, \CX, \mu), f)$ a \t{(supervised) probabilistic data model}.</p></div><div class="sheet-listing"><p class="sheet"> We interpret $\mu$ as the \t{data-generating distribution} or \t{underlying distribution} and $f$ as the \t{correct labeling function}. Many authors refer to a supervised probabilistic data model as the \t{statistical learning (theory) framework}.</p></div><div class="sheet-listing" id="probable_datasets"><h1 class="sheet">3. Probable datasets</h1></div><div class="sheet-listing"><p class="sheet"> We put a measure on the set of datasets by using the product measure $(X^n, \CX^n, \mu^n)$. We interpret this as a model for a training set of independent and identically distributed inputs.</p></div><div class="sheet-listing"><p class="sheet"> For $\delta \in (0, 1)$, $\CS \subset X^n$ is \t{$1-\delta$-representative} if $\mu^n(\CS) \geq 1 - \delta$. If $\CS$ is $1-\delta$-representative for small $\delta$, we think of $\CS$ as a set of "probable} or \say{reasonable" datasets. We call $\delta$ the \t{confidence parameter}.</p></div><div class="sheet-listing" id="predictor_error"><h1 class="sheet">4. Predictor error</h1></div><div class="sheet-listing"><p class="sheet"> The \t{error} of (measurable) $h: X \to Y$ (under $\mu$ and $f$) is \[ \underset{\mu, f}{\mathword{error}}(h) = \mu(\Set*{x \in \CX}{h(x) \neq f(x)}). \] We interpret this as the probability that the predictor mislabels a point. The \t{accuracy} of $h$ is $1 - \mathword{error}_{\mu, f}(h)$.</p></div><div class="sheet-listing"><p class="sheet"> Since $(f, g) \mapsto \mu[f(x) \neq g(x)]$ is a metric on $L^2(X, \CX, \mu, Y)$ we can talk about the error as the "distance" from the correct label classifier. Thus we will say that $\epsilon \in (0, 1)$, (measurable) $h: \CX \to \CY$ \t{$\epsilon$-approximates} the correct labeling function $f$ if $\mathword{error}(h) \leq \epsilon$. Roughly speaking, if $\epsilon \ll 1$, the the error of the hypothesis is "fairly small." We call $\epsilon$ the \t{accuracy parameter}, since the accuracy of such a predictor is $1 - \epsilon$.</p></div><div class="sheet-listing" id="other_terminology"><h1 class="sheet">5. Other terminology</h1></div><div class="sheet-listing"><p class="sheet"> A \t{hypothesis class} is a subset of the measurable functions from $X \to Y$. Other names for the error of a classifier include the \t{generalization error}, the \t{risk} or the \t{true error} or \t{loss}.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to discuss an inductor's performance on consistent (but possibly incomplete) datasets.</p></div><div class="sheet-listing"><p class="sheet"> We take two steps. First, put a measure on the set of training sets and only consider high-measure subsets. Second, consider predictors performing well in some tolerance.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{X} , \mu )$ be a probability space and $(Y, \mathcal{Y} )$ a measurable space. Let $f: X \to Y$ measurable. We call the pair $((X, \mathcal{X} , \mu ), f)$ a \t{(supervised) probabilistic data model}.</p></div><div class="sheet-listing"><p class="sheet"> We interpret $\mu $ as the \t{data-generating distribution} or \t{underlying distribution} and $f$ as the \t{correct labeling function}. Many authors refer to a supervised probabilistic data model as the \t{statistical learning (theory) framework}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Probable datasets}</p></div><div class="sheet-listing"><p class="sheet"> We put a measure on the set of datasets by using the product measure $(X^n, \mathcal{X} ^n, \mu ^n)$. We interpret this as a model for a training set of independent and identically distributed inputs.</p></div><div class="sheet-listing"><p class="sheet"> For $\delta  \in (0, 1)$, $\mathcal{S}  \subset X^n$ is \t{$1-\delta $-representative} if $\mu ^n(\mathcal{S} ) \geq 1 - \delta $. If $\mathcal{S} $ is $1-\delta $-representative for small $\delta $, we think of $\mathcal{S} $ as a set of "probable} or \say{reasonable" datasets. We call $\delta $ the \t{confidence parameter}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Prediction error}</p></div><div class="sheet-listing"><p class="sheet"> The \t{error} of (measurable) $h: X \to Y$ (under $\mu $ and $f$) is \[ \underset{\mu , f}{\mathword{error}}(h) = \mu (\Set*{x \in \mathcal{X} }{h(x) \neq f(x)}). \] We interpret this as the probability that the predictor mislabels a point. The \t{accuracy} of $h$ is $1 - \mathword{error}_{\mu , f}(h)$.</p></div><div class="sheet-listing"><p class="sheet"> Since $(f, g) \mapsto \mu [f(x) \neq g(x)]$ is a metric on $L^2(X, \mathcal{X} , \mu , Y)$ we can talk about the error as the "distance" from the correct label classifier. Thus we will say that $\epsilon  \in (0, 1)$, (measurable) $h: \mathcal{X}  \to \mathcal{Y} $ \t{$\epsilon $-approximates} the correct labeling function $f$ if $\mathword{error}(h) \leq \epsilon $. Roughly speaking, if $\epsilon  \ll 1$, the the error of the hypothesis is "fairly small." We call $\epsilon $ the \t{accuracy parameter}, since the accuracy of such a predictor is $1 - \epsilon $.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Other terminology}</p></div><div class="sheet-listing"><p class="sheet"> A \t{hypothesis class} is a subset of the measurable functions from $X \to Y$. Other names for the error of a classifier include the \t{generalization error}, the \t{risk} or the \t{true error} or \t{loss}.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1661,7 +1952,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

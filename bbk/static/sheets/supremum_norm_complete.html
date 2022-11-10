@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1164,6 +1165,351 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_limits.html'" onkeypress="location.href='./real_limits.html'">
+                <span>
+                  Real Limits
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./supremum_norm.html'" onkeypress="location.href='./supremum_norm.html'">
+                <span>
+                  Supremum Norm
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./supremum_norm_complete.pdf#page=2'" onkeypress="location.href='./supremum_norm_complete.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./supremum_norm_complete-graph.pdf'" onkeypress="location.href='./supremum_norm_complete-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Supremum Norm Complete </h1> 
+      <!--
+!name:supremum_norm_complete
+!need:supremum_norm
+!need:real_limits
+!!need:complete_norms?
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want a complete norm on the vector space
+  of continuous functions.</span>
+</p>
+
+<h1 id='Result'>Result</h1>
+
+<div class='proposition'>
+ <span class='run'>The supremum norm is complete.</span></div>
+<div class='proof'> <p>
+  <span class='run'>Let $R$ denote the real numbers.</span>
+
+  <span class='run'>Let $\seq{f}$ be an egoprox sequence</span>
+
+  <span class='run'>in $C[a, b]$.</span>
+ </p>
+
+
+ <p>
+  <span class='run'><b>Candidate.</b> $\seq{f}$ is egoprox means
+   $\forall \epsilon  &gt; 0, \exists N$ so that
+   <p>\[
+    m, n > N \implies \supnorm{f_n - f_m} < \epsilon .
+   \]</p></span>
+
+  <span class='run'>Since $\supnorm{f_n - f_m} &lt; \epsilon
+   \implies \abs{f_n(x) - f_m(x)} &lt; \epsilon $
+   for all $x \in [a, b]$, the sequence of real
+   numbers $\set{f_n(x)}_n$ is egoprox for each $x
+   \in [a, b]$.</span>
+
+  <span class='run'>Since the metric space $(R, \abs{\cdot })$ is
+   complete, there is a limit $l_x \in R$ such
+   that $f_n(x) \goesto l_x$ as $n \goesto
+   \infty$, for each $x \in [a, b]$.</span>
+
+  <span class='run'>Define $f: [a, b] \to R$ by $f(x) = l_x$
+   for each $x \in [a, b]$.</span>
+ </p>
+
+
+ <p>
+  <span class='run'><b>Candidate is Limit.</b></span>
+
+  <span class='run'>First, we argue that</span>
+
+  <span class='run'>$\supnorm{f_n - f} \goesto 0$</span>
+
+  <span class='run'>as $n \goesto \infty$.</span>
+
+  <span class='run'>Since $\seq{f}$ is an egoprox sequence, there
+   exists $n_0$ so that
+   <p>\[
+    n,m \geq n_0
+
+    \implies
+
+    \supnorm{f_n - f_m} < \epsilon /2.
+   \]</p>
+   <span class='run'>So for all $x \in [a, b]$,
+    <p>\[
+     n,m \geq n_0
+
+     \implies
+
+     \abs{f_n(x) - f_m(x)} < \epsilon /2.
+    \]</p></span>
+
+   <span class='run'>For all $x \in [a, b]$, and $n \geq n_0$,
+    <p>\[
+     \lim_{m \to \infty} \abs{f_n(x) - f_m(x)}
+
+     \leq \epsilon /2 < \epsilon .
+    \]</p></span>
+
+   <span class='run'>The sequence</span>
+
+   <span class='run'>$\set{f_k(x)}_{k = m}^{\infty}$</span>
+
+   <span class='run'>is a final part of</span>
+
+   <span class='run'>$\set{f_k(x)}_{k = 1}^{\infty}$,</span>
+
+   <span class='run'>and so has the same limit, $f(x)$.</span>
+
+   <span class='run'>Therefore, using continuity</span>
+
+   <span class='run'>of subtraction and the absolute</span>
+
+   <span class='run'>value,
+    <p>\[
+     \lim_{m \to \infty}
+
+     \abs{f_n(x) - f_m(x)}
+
+     =
+
+     \abs{f_n(x) - f(x)}.
+    \]</p></span>
+
+   <span class='run'>We conclude that for</span>
+
+   <span class='run'>$n \geq n_0$,</span>
+
+   <span class='run'>$x \in [a, b]$,</span>
+
+   <span class='run'>$\abs{f_n(x) - f(x)} &lt; \epsilon $,</span>
+
+   <span class='run'>from which we deduce</span>
+
+   <span class='run'>$\supnorm{f_n - f} &lt; \epsilon $.</span>
+
+   <span class='run'>Thus $f_n \goesto f$</span>
+
+   <span class='run'>as $n \goesto \infty$.</span></span>
+ </p>
+
+
+ <p>
+  <span class='run'><b>Limit is Continuous.</b></span>
+
+  <span class='run'>Next, we argue that $f$ is continuous.</span>
+
+  <span class='run'>Let $x_0 \in [a, b]$.</span>
+
+  <span class='run'>Let $\epsilon  &gt; 0$.</span>
+
+  <span class='run'>Since $f_n \goesto f$ there exists</span>
+
+  <span class='run'>$n_0$ so that
+   <p>\[
+    \supnorm{f_{n_0} - f} < \epsilon /3.
+   \]</p></span>
+
+  <span class='run'>By the triangle inequality,
+   <p>\[
+    \begin{aligned}
+
+    \abs{f(x_0) - f(x)} \leq \abs{f(x_0) - f_{n_0}(x_0)} +
+     \abs{f_{n_0}(x_0) - f(x)},
+
+    \end{aligned}
+   \]</p>
+   for all $x \in [a, b]$.</span>
+
+  <span class='run'>Using $\abs{f(x_0) - f_{n_0}(x_0)} &lt;
+   \epsilon /3$,
+   <p>\[
+    \begin{aligned}
+
+    \abs{f(x_0) - f(x)} \&< \epsilon /3 + \abs{f_{n_0}(x_0) -
+     f(x)},
+
+    \end{aligned}
+   \]</p>
+   for all $x \in [a, b]$.</span>
+
+  <span class='run'>Using the triangle inequality,
+   <p>\[
+    \abs{f(x_0) - f(x)} < \epsilon /3 + \abs{f_{n_0}(x_0) -
+     f_{n_0}(x)} + \abs{f_{n_0}(x) - f(x)} \\
+   \]</p>
+   for all $x \in [a, b]$.</span>
+
+  <span class='run'>Using $\abs{f_{n_0}(x_0) - f(x)} &lt;
+   \epsilon /3$
+   <p>\[
+    \begin{aligned}
+
+    \abs{f(x_0) - f(x)} < \epsilon /3 + \abs{f_{n_0}(x_0) -
+     f_{n_0}(x)} + \epsilon /3 \\
+
+    \end{aligned}
+   \]</p>
+   for all $x \in [a, b]$.</span>
+
+  <span class='run'>Since $f_{n_0}$ is continuous, there exists
+   $\delta  &gt; 0$ so that
+   <p>\[
+    \abs{x_0 - x} < \delta
+
+    \implies
+
+    \abs{f_{n_0}(x_0) - f_{n_0}(x)} < \epsilon /3,
+   \]</p>
+   for $x \in [a, b]$.</span>
+
+  <span class='run'>In this case,
+   <p>\[
+    \begin{aligned}
+
+    \abs{f(x_0) - f(x)} \&< \epsilon /3 + \epsilon /3 +
+     \epsilon /3 = \epsilon .
+
+    \end{aligned}
+   \]</p></span>
+
+  <span class='run'>Since $\epsilon $ was arbitrary, $f$ is
+   continuous at $x_0$.</span>
+
+  <span class='run'>Since $x_0$ was arbitrary, $f$ is continuous
+   everywhere.</span>
+
+  <span class='run'>Some call the above the <span class='term'>three
+   epsilon argument</span>.</span>
+ </p>
+</div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1362,7 +1708,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

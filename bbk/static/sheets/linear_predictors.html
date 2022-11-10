@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1452,6 +1453,235 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./input_designs.html'" onkeypress="location.href='./input_designs.html'">
+                <span>
+                  Input Designs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./linear_transformations.html'" onkeypress="location.href='./linear_transformations.html'">
+                <span>
+                  Linear Transformations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+                <span>
+                  Matrix Transpose
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_function_approximators.html'" onkeypress="location.href='./real_function_approximators.html'">
+                <span>
+                  Real Function Approximators
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./least_squares_linear_regressors.html'" onkeypress="location.href='./least_squares_linear_regressors.html'">
+            <span>
+            Least Squares Linear Regressors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linear_predictors.pdf#page=2'" onkeypress="location.href='./linear_predictors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linear_predictors-graph.pdf'" onkeypress="location.href='./linear_predictors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Linear Predictors </h1> 
+      <!--
+%!name:linear_predictors
+%!need:input_designs
+%!need:linear_transformations
+%!need:matrix_transpose
+%!need:real_function_approximators
+%!refs:pukelsheim2006optimal/01_experimental_designs_in_linear_models
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>A simple class of predictors when the input
+  and output sets are vector spaces is the class
+  of linear predictors.</span>
+</p>
+
+
+<!--
+% A simplification of finding a predictor from $\R^d$ to $\R$ is to only consider linear predictors.
+% The linear functions on $\R^d$ are in one-to-one correspondence with $\R^d$.
+% So these predictors are \say{simple} (and perhaps \say{interpretable}) and may also be flexible.
+%
+% In other words, if we suppose a dataset is parametrically consistent linear functions parameterized by $R^d$.
+%
+% Let $X = \R$ and $Y = \R$.
+% A
+% A real-valued function
+% Let $X = \R^d$ be a set of inputs and $Y = \R$ a set of outputs.
+% %For example, let $(x^1, y^1), \dots, (x^{10}, y^{10})$ be a dataset in which we have recorded the number of rainy days, and the number of sunshine days, and the crop yield of a field.
+% Such a model is simple to implement and interpretable, at the cost of flexibility.
+%
+-->
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>linear predictor</span> (or
+  <span class='term'>linear model</span> or
+  <span class='term'>deterministic linear model</span>)
+  is a predictor which is a linear function of
+  its inputs.</span>
+</p>
+
+
+<p>
+ <span class='run'>Such a model is simple to implement and
+  interpretable, at the cost of flexibility.</span>
+</p>
+
+<h1 id='$\R_^d$_Example'>$\R ^d$ Example</h1>
+
+<p>
+ <span class='run'>Let $X = \R ^d$ be a set of inputs and $Y =
+  \R $ a set of outputs.</span>
+
+ <span class='run'>The linear functions on $\R ^d$ are in
+  one-to-one correspondence with vectors in $\R ^d$.</span>
+</p>
+
+
+<p>
+ <span class='run'></span>
+
+ <span class='run'>A linear function $f: \R ^d \to \R $ over the
+  vector space $(\R ^d, \R )$ has a set of
+  parameters $w \in \R ^d$ so that
+  <p>\[
+   
+
+   f(x) = \sum_{i} w_i x_i = w^\top  x.
+
+   
+  \]</p>
+  <span class='run'>The parameters of a linear predictor on
+   $\R ^d$ are often called
+   <span class='term'>weights</span>.</span></span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1674,7 +1904,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

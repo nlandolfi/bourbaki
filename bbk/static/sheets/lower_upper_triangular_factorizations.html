@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1360,6 +1361,244 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./index_matrices.html'" onkeypress="location.href='./index_matrices.html'">
+                <span>
+                  Index Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_squares.html'" onkeypress="location.href='./matrix_squares.html'">
+                <span>
+                  Matrix Squares
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./ordinary_reducer_factorization.html'" onkeypress="location.href='./ordinary_reducer_factorization.html'">
+                <span>
+                  Ordinary Reducer Factorization
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./permutation_matrices.html'" onkeypress="location.href='./permutation_matrices.html'">
+                <span>
+                  Permutation Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./positive_definite_matrices.html'" onkeypress="location.href='./positive_definite_matrices.html'">
+                <span>
+                  Positive Definite Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./symmetric_matrices.html'" onkeypress="location.href='./symmetric_matrices.html'">
+                <span>
+                  Symmetric Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./symmetric_lower_upper_triangular_factorizations.html'" onkeypress="location.href='./symmetric_lower_upper_triangular_factorizations.html'">
+            <span>
+            Symmetric Lower Upper Triangular Factorizations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./lower_upper_triangular_factorizations.pdf#page=2'" onkeypress="location.href='./lower_upper_triangular_factorizations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./lower_upper_triangular_factorizations-graph.pdf'" onkeypress="location.href='./lower_upper_triangular_factorizations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Lower Upper Triangular Factorizations </h1> 
+      <!--
+!name:lower_upper_triangular_factorizations
+!need:ordinary_reducer_factorization
+!need:symmetric_matrices
+!need:permutation_matrices
+!need:matrix_squares
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>If a system $(A, b)$ is ordinarily reducible,
+  then there exists $L$ unit lower triangular and
+  $U$ upper triangular so that $A = LU$.</span>
+
+ <span class='run'>When does such a factorization exist?</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $A \in \R ^{m \times m}$.</span>
+
+ <span class='run'>A <span class='term'>lower upper triangular
+  factorization</span> of $A$ is a pair of
+  matrices $(L \in \R ^{m \times m}, U \in \R ^{m
+  \times m})$ where $L$ is unit lower triangular,
+  $U$ is upper triangular and $A = LU$.</span>
+
+ <span class='run'>Other terminology includes <span class='term'>lower
+  upper triangular decomposition</span>,
+  <span class='term'>LU factorization</span>, and
+  <span class='term'>LU decomposition</span>.</span>
+</p>
+
+<div class='proposition' id='proposition:lower_upper_triangular_factorizations:ordinary'>
+ <span class='run'>If $(A, b)$ is ordinarily reducible, a $LU$
+  factorization exists.</span></div>
+<p>
+ <span class='run'>What about an $LU$-factorization when $(A, b)$
+  is not ordinarily reducible?</span>
+
+ <span class='run'>The main issue is that we may encounter a
+  diagonal entry of some reduction of $A$ which
+  is zero.</span>
+</p>
+
+
+<!--
+!need:positive_definite_matrices
+!need:index_matrices
+
+ A \t{LDU factorization} of a $n \times n$ positive definite matrix permuted by $\upto{n}$ is an ordered pair whose first coordinate is a unit lower triangular matrix and whose second coordinate is a positive diagonal matrix, with the property that the given matrix permuted according to the permutation is equal to the product of the unit lower triangular matrix, the diagonal matrix, and the transpose of the unit lower triangular matrix.
+
+ \ssection{Notation}
+
+ Let $(L, D)$ be an LDU factorization of $A \in \SymPDMat{n}$ permuted by the permutation $\sigma: \upto{n} \to \upto{n}$. Then
+ $$
+   \IdxMat{\sigma}A\IdxMat{\sigma}^{\tp}
+   =
+   LDL^{\tp}.
+ $$
+ Alternatively,
+ $$
+   A = \IdxMat{\sigma}^\tp L D L^{\tp} \IdxMat{\sigma}.
+ $$
+
+ \ssection{Existence}
+
+ \begin{prop}
+   For every positive definite matrix $A \in \SymPDMat{n}$ and permutation $\sigma: \upto{n} \to \upto{n}$ there exists a unique LDU factorization of $A$ permuted by $\sigma$.
+ \end{prop}
+-->
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1442,7 +1681,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If a system $(A, b)$ is ordinarily reducible, then there exists $L$ unit lower triangular and $U$ upper triangular so that $A = LU$. When does such a factorization exist?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R^{m \times m}$. A \t{lower upper triangular factorization} of $A$ is a pair of matrices $(L \in \R^{m \times m}, U \in \R^{m \times m})$ where $L$ is unit lower triangular, $U$ is upper triangular and $A = LU$. Other terminology includes \t{lower upper triangular decomposition}, \t{LU factorization}, and \t{LU decomposition}.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If $(A, b)$ is ordinarily reducible, a $LU$ factorization exists. \label{proposition:lower_upper_triangular_factorizations:ordinary} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> What about an $LU$-factorization when $(A, b)$ is not ordinarily reducible? The main issue is that we may encounter a diagonal entry of some reduction of $A$ which is zero. Proposition~\ref{proposition:lower_upper_triangular_factorizations:ordinary}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> If a system $(A, b)$ is ordinarily reducible, then there exists $L$ unit lower triangular and $U$ upper triangular so that $A = LU$. When does such a factorization exist?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R ^{m \times m}$. A \t{lower upper triangular factorization} of $A$ is a pair of matrices $(L \in \R ^{m \times m}, U \in \R ^{m \times m})$ where $L$ is unit lower triangular, $U$ is upper triangular and $A = LU$. Other terminology includes \t{lower upper triangular decomposition}, \t{LU factorization}, and \t{LU decomposition}.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \label{proposition:lower_upper_triangular_factorizations:ordinary}If $(A, b)$ is ordinarily reducible, a $LU$ factorization exists.\end{proposition} What about an $LU$-factorization when $(A, b)$ is not ordinarily reducible? The main issue is that we may encounter a diagonal entry of some reduction of $A$ which is zero.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1596,7 +1835,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

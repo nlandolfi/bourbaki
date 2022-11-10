@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1024,6 +1025,196 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./absolute_value.html'" onkeypress="location.href='./absolute_value.html'">
+                <span>
+                  Absolute Value
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./metrics.html'" onkeypress="location.href='./metrics.html'">
+                <span>
+                  Metrics
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./metric_space_examples.pdf#page=2'" onkeypress="location.href='./metric_space_examples.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./metric_space_examples-graph.pdf'" onkeypress="location.href='./metric_space_examples-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Metric Space Examples </h1> 
+      <!--
+!name:metric_space_examples
+!need:metrics
+!need:absolute_value
+ will need other things like planes, functions etc
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We give examples of metric spaces.</span>
+</p>
+
+<h1 id='Example'>Example</h1>
+
+<div class='example'>
+ <p>
+  <span class='run'>Let $n$ be a natural number.</span>
+
+  <span class='run'>Let $A$ be $\R ^n$ and define $d: \R ^n
+   \times  \R ^n \to \R $ by
+   <p>\[
+    d(a, b) = \sqrt{(a_1 - b_1)^2 + \cdot s + (x_n - y_n)^2}.
+   \]</p>
+   <span class='run'>$(A, d)$ is a metric space.</span></span>
+ </p>
+</div>
+<div class='example'>
+ <p>
+  <span class='run'>Let $A$ be the unit circle in $\R ^2$.</span>
+
+  <span class='run'>So $A = \Set{x \in R^2}{x_1^2 + b^2 = 1}$.</span>
+
+  <span class='run'>Let $d_1: A \times A \to \R $ defined by
+   <p>\[
+    d(a, b) = \sqrt{(a_1 - b_1)^2 + (a_2 - b_2)^2}.
+   \]</p></span>
+
+  <span class='run'>Let $d_2: A \times A \to \R $ defined as the
+   arc length between the two points.</span>
+
+  <span class='run'>Both $(A, d_1)$ and $(A, d_2)$ are metric
+   spaces.</span>
+ </p>
+</div>
+<div class='example'>
+ <span class='run'>Let $A = C([0, 1], \R )$.</span>
+
+ <span class='run'>Let $d_1: A \times A \to \R $ be such that
+  <p>\[
+   d_1(a, b) = \underset{x \in [0, 1]}{\max} \abs{a(x) - b(x)}.
+  \]</p></span>
+
+ <span class='run'>Let $\lambda $ be the outer cover measure.</span>
+
+ <span class='run'>Let $d_2: A \times A \to R$ be such that
+  <p>\[
+   d_2(a, b) = \int_{[0, 1]} \abs{f - g} d\lambda .
+  \]</p></span>
+
+ <span class='run'>Both $(A, d_1)$ and $(A, d_2)$ metric spaces.</span></div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1068,7 +1259,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We give examples of metric spaces.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">2. Example</h1></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $n$ be a natural number. Let $A$ be $\R^n$ and define $d: \R^n \times \R^n \to \R$ by \[ d(a, b) = \sqrt{(a_1 - b_1)^2 + \cdots + (x_n - y_n)^2}. \] $(A, d)$ is a metric space. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A$ be the unit circle in $\R^2$. So $A = \Set{x \in R^2}{x_1^2 + b^2 = 1}$. Let $d_1: A \times A \to \R$ defined by \[ d(a, b) = \sqrt{(a_1 - b_1)^2 + (a_2 - b_2)^2}. \] Let $d_2: A \times A \to \R$ defined as the arc length between the two points. Both $(A, d_1)$ and $(A, d_2)$ are metric spaces. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $A = C([0, 1], \R)$. Let $d_1: A \times A \to \R$ be such that \[ d_1(a, b) = \underset{x \in [0, 1]}{\max} \abs{a(x) - b(x)}. \] Let $\lambda$ be the outer cover measure. Let $d_2: A \times A \to R$ be such that \[ d_2(a, b) = \int_{[0, 1]} \abs{f - g} d\lambda. \] Both $(A, d_1)$ and $(A, d_2)$ metric spaces. \end{expl}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We give examples of metric spaces.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example}</p></div><div class="sheet-listing"><p class="sheet"> \begin{example} Let $n$ be a natural number. Let $A$ be $\R ^n$ and define $d: \R ^n \times  \R ^n \to \R $ by \[ d(a, b) = \sqrt{(a_1 - b_1)^2 + \cdot s + (x_n - y_n)^2}. \] $(A, d)$ is a metric space. \end{example} \begin{example} Let $A$ be the unit circle in $\R ^2$. So $A = \Set{x \in R^2}{x_1^2 + b^2 = 1}$. Let $d_1: A \times A \to \R $ defined by \[ d(a, b) = \sqrt{(a_1 - b_1)^2 + (a_2 - b_2)^2}. \] Let $d_2: A \times A \to \R $ defined as the arc length between the two points. Both $(A, d_1)$ and $(A, d_2)$ are metric spaces. \end{example} \begin{example} Let $A = C([0, 1], \R )$. Let $d_1: A \times A \to \R $ be such that \[ d_1(a, b) = \underset{x \in [0, 1]}{\max} \abs{a(x) - b(x)}. \] Let $\lambda $ be the outer cover measure. Let $d_2: A \times A \to R$ be such that \[ d_2(a, b) = \int_{[0, 1]} \abs{f - g} d\lambda . \] Both $(A, d_1)$ and $(A, d_2)$ metric spaces.\end{example}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1222,7 +1413,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

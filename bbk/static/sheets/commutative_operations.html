@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -776,6 +777,198 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./operations.html'" onkeypress="location.href='./operations.html'">
+                <span>
+                  Operations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./commutative_operations.pdf#page=2'" onkeypress="location.href='./commutative_operations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./commutative_operations-graph.pdf'" onkeypress="location.href='./commutative_operations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Commutative Operations </h1> 
+      <!--
+!name:commutative_operations
+!need:operations
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We introduce language for the case in which an
+  operation does not depend on the order in which
+  it operates.</span>
+</p>
+
+
+<!--
+%Does  depend on order?
+%What of two distinct operations?
+-->
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>An operation <span class='term'>commutes</span> if
+  the result of two elements is the same
+  regardless of their order.</span>
+</p>
+
+
+<!--
+%An operation \ct{associates}{associates}
+%if given any three elements in order it
+%doesn't matter whether we first operate
+%on the first two and then with the result
+%of the first two the third, or the second
+%two and with the result of the second two
+%the first.
+
+%A first operation over a set
+%\ct{distributes}{distributes}
+%over a second operation over the same set
+%if the result of applying the first
+%operation to an element and a result of
+%the second operation is the same as
+%applying the second operation to the results
+%of the first operation with the arguments
+%of the second operation.
+-->
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>Let $A$ be a non-empty set and let $+: A
+  \times  A \to A$ be an operation.</span>
+
+ <span class='run'>If $+$ commutes, then
+  <p>\[
+   a + b = b + a
+  \]</p>
+  for all $a, b \in A$.</span>
+</p>
+
+
+<!--
+%If $+$ associates, then
+%$$
+%  (a + b) + c = (a + b) + c
+%$$
+%for all $a, b, c \in A$.
+-->
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -813,7 +1006,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We introduce language for the case in which an operation does not depend on the order in which it operates.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> An operation <i>commutes</i> if the result of two elements is the same regardless of their order.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a non-empty set and let $+: A \times A \to A$ be an operation. If $+$ commutes, then $$ a + b = b + a $$ for all $a, b \in A$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We introduce language for the case in which an operation does not depend on the order in which it operates.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> An operation \t{commutes} if the result of two elements is the same regardless of their order.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a non-empty set and let $+: A \times  A \to A$ be an operation. If $+$ commutes, then \[ a + b = b + a \] for all $a, b \in A$.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -967,7 +1160,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

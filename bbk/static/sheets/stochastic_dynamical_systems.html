@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1308,6 +1309,286 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./dynamic_optimization_problems.html'" onkeypress="location.href='./dynamic_optimization_problems.html'">
+                <span>
+                  Dynamic Optimization Problems
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./expectation.html'" onkeypress="location.href='./expectation.html'">
+                <span>
+                  Expectation
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./stochastic_dynamical_systems.pdf#page=2'" onkeypress="location.href='./stochastic_dynamical_systems.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./stochastic_dynamical_systems-graph.pdf'" onkeypress="location.href='./stochastic_dynamical_systems-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Stochastic Dynamical Systems </h1> 
+      <!--
+!name:stochastic_dynamical_systems
+%!need:controlled_dynamical_systems (gets throough dynamic_optimization_problems)
+!need:dynamic_optimization_problems
+!need:expectation
+%!need:random_variables get it thru expectation
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to model uncertain outcomes in
+  dynamical systems.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $\mathcal{X} _0, \mathcal{X} _1, \dots ,
+  \mathcal{X} _{T}$ and $\mathcal{U} _0,
+  \mathcal{U} _1, \dots , \mathcal{U} _{T-1}$ be sets.</span>
+
+ <span class='run'>Let $(\Omega , \mathcal{A} , \mathbfsf{P} )$ be a
+  probability space.</span>
+
+ <span class='run'>Let $𝒲_{0}, \dots , 𝒲_{T}$.</span>
+
+ <span class='run'>Let $w_{t}: \Omega  \to 𝒲_{t}$ for $t = 0,
+  \dots , T$ be random variables.</span>
+
+ <span class='run'>For $t = 0$, $\dots $, $T-1$, let $f_{t}:
+  \mathcal{X} _t \times  \mathcal{U} _t \times  𝒲_t
+  \to \mathcal{X} _{t+1}$.</span>
+</p>
+
+
+<p>
+ <span class='run'>We call the sequence
+  <p>\[
+   \mathcal{D}  = ((\mathcal{X} _t)_{t = 0}^{T}),
+    (\mathcal{U} _t)_{t=0}^{T-1}, (w_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1})
+  \]</p>
+  a <span class='term'>stochastic discrete-time
+  dynamical system</span>.</span>
+
+ <span class='run'>We call $w_t$ the <span class='term'>noise</span>
+  variables.</span>
+</p>
+
+<h1 id='Problem'>Problem</h1>
+
+<p>
+ <span class='run'>Let $x_0: \Omega  \to \mathcal{X} _0$ be a
+  random variable.</span>
+
+ <span class='run'>Define $x_1: \Omega  \to \mathcal{X} _1$,
+  $\dots $, $x_T: \Omega  \to \mathcal{X} _t$ by
+  <p>\[
+   x_{t+1} = f_t(x_t, u_t, w_t)
+  \]</p>
+  for $t = 0, \dots , T-1$.</span>
+
+ <span class='run'>Roughly speaking, the state transition functions
+  are nondeterministic.</span>
+
+ <span class='run'>In other words, it is uncertain which state we
+  will arrive in given our current state and
+  action.</span>
+
+ <span class='run'>The choice $u_t$ only determines the
+  distribution of $x_{t+1}$.</span>
+
+ <span class='run'>Here $x_0$ is (still) called the
+  <span class='term'>initial state</span> and is a
+  random variable, usually assumed independent of
+  the $w_t$.</span>
+</p>
+
+
+<p>
+ <span class='run'>Let $g_t: \mathcal{X} _t \times  \mathcal{U} _t
+  \times  𝒲_t \to \R  \union \set{\infty}$ for $t
+  = 0, \dots , T-1$ and $g_{T}: \mathcal{X} _T
+  \times  𝒲_T \to \R  \union \set{\infty}$.</span>
+
+ <span class='run'>We call $(x_0, \mathcal{D} , (g_t)_{t = 0}^{T})$
+  a <span class='term'>stochastic dynamic optimization
+  problem</span>.</span>
+
+ <span class='run'>As with dynamic optimization problems, we call
+  $g_t$ the <span class='term'>stage cost
+  function</span> and $g_T$ the
+  <span class='term'>terminal cost function</span>.</span>
+
+ <span class='run'>It is common for these to not depend on $w_T$
+  (in other words, to be deterministic).</span>
+
+ <span class='run'>It is also common for these to take infinite
+  values to encode constraints.</span>
+</p>
+
+
+<p>
+ <span class='run'>As before, a stochastic dynamic optimization
+  problem is just an optimization problem.</span>
+
+ <span class='run'>Define $U = \mathcal{U} _0 \times  \mathcal{U} _1
+  \times  \cdots \times  \mathcal{U} _{T-1}$ and let
+  $u \in U$.</span>
+
+ <span class='run'>Define $C: \Omega  \to \R $ by
+  <p>\[
+   C = \sum_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T).
+  \]</p></span>
+
+ <span class='run'>We call $C$ the <span class='term'>total
+  cost</span> for actions $u$.</span>
+
+ <span class='run'>It is a random variable.</span>
+</p>
+
+
+<p>
+ <span class='run'>Define $J: U \to \R  \cup \set{\infty}$ by
+  <p>\[
+   J = \E (
+
+   \sum_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T)
+
+   ).
+  \]</p>
+  <span class='run'>$J(u)$ is the <span class='term'>expected total
+   cost</span> for inputs $u$.</span></span>
+</p>
+
+
+<p>
+ <span class='run'>The optimization problem is $(U, J)$.</span>
+
+ <span class='run'>In other words, the objective is the mean
+  total stage cost plus the terminal cost.</span>
+</p>
+
+<h2 id='Other_terminology'>Other terminology</h2>
+
+<p>
+ <span class='run'>Stochastic dynamic optimization problems are
+  frequently called <span class='term'>stochastic
+  control problems</span>.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1352,7 +1633,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to model uncertain outcomes in dynamical systems.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CX_0, \CX_1, \dots, \CX_{T}$ and $\CU_0, \CU_1, \dots, \CU_{T-1}$ be sets. Let $(\Omega, \CA, \PM)$ be a probability space. Let $\CW_{0}, \dots, \CW_{T}$. Let $w_{t}: \Omega \to \CW_{t}$ for $t = 0, \dots, T$ be random variables. For $t = 0$, $\dots$, $T-1$, let $f_{t}: \CX_t \times \CU_t \times \CW_t \to \CX_{t+1}$.</p></div><div class="sheet-listing"><p class="sheet"> We call the sequence \[ \CD = ((\CX_t)_{t = 0}^{T}), (\CU_t)_{t=0}^{T-1}, (w_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1}) \] a \t{stochastic discrete-time dynamical system}. We call $w_t$ the \t{noise} variables.</p></div><div class="sheet-listing" id="problem"><h1 class="sheet">3. Problem</h1></div><div class="sheet-listing"><p class="sheet"> Let $x_0: \Omega \to \CX_0$ be a random variable. Define $x_1: \Omega \to \CX_1$, $\dots$, $x_T: \Omega \to \CX_t$ by \[ x_{t+1} = f_t(x_t, u_t, w_t) \] for $t = 0, \dots, T-1$. Roughly speaking, the state transition functions are nondeterministic. In other words, it is uncertain which state we will arrive in given our current state and action. The choice $u_t$ only determines the distribution of $x_{t+1}$. Here $x_0$ is (still) called the \t{initial state} and is a random variable, usually assumed independent of the $w_t$.</p></div><div class="sheet-listing"><p class="sheet"> Let $g_t: \CX_t \times \CU_t \times \CW_t \to \R \union \set{\infty}$ for $t =0, \dots, T-1$ and $g_{T}: \CX_T \times \CW_T \to \R \union \set{\infty}$. We call $(x_0, \CD, (g_t)_{t = 0}^{T})$ a \t{stochastic dynamic optimization problem}. As with dynamic optimization problems, we call $g_t$ the \t{stage cost function} and $g_T$ the \t{terminal cost function}. It is common for these to not depend on $w_T$ (in other words, to be deterministic). It is also common for these to take infinite values to encode constraints.</p></div><div class="sheet-listing"><p class="sheet"> As before, a stochastic dynamic optimization problem is just an optimization problem. Define $U = \CU_0 \times \CU_1 \times \cdots \times \CU_{T-1}$ and let $u \in U$. Define $C: \Omega \to \R$ by \[ C = \sum_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T). \] We call $C$ the \t{total cost} for actions $u$. It is a random variable.</p></div><div class="sheet-listing"><p class="sheet"> Define $J: U \to \R \union \set{\infty}$ by \[ J = \Expect \parens*{ \sum_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T) }. \] $J(u)$ is the \t{expected total cost} for inputs $u$.</p></div><div class="sheet-listing"><p class="sheet"> The optimization problem is $(U, J)$. In other words, the objective is the mean total stage cost plus the terminal cost.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">3.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Stochastic dynamic optimization problems are frequently called \t{stochastic control problems}.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to model uncertain outcomes in dynamical systems.\footnote{Future editions will expand.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathcal{X} _0, \mathcal{X} _1, \dots , \mathcal{X} _{T}$ and $\mathcal{U} _0, \mathcal{U} _1, \dots , \mathcal{U} _{T-1}$ be sets. Let $(\Omega , \mathcal{A} , \mathbfsf{P} )$ be a probability space. Let $\mathcal{W} _{0}, \dots , \mathcal{W} _{T}$. Let $w_{t}: \Omega  \to \mathcal{W} _{t}$ for $t = 0, \dots , T$ be random variables. For $t = 0$, $\dots $, $T-1$, let $f_{t}: \mathcal{X} _t \times \mathcal{U} _t \times  \mathcal{W} _t \to \mathcal{X} _{t+1}$.</p></div><div class="sheet-listing"><p class="sheet"> We call the sequence \[ \mathcal{D}  = ((\mathcal{X} _t)_{t = 0}^{T}), (\mathcal{U} _t)_{t=0}^{T-1}, (w_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1}) \] a \t{stochastic discrete-time dynamical system}. We call $w_t$ the \t{noise} variables.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Problem}</p></div><div class="sheet-listing"><p class="sheet"> Let $x_0: \Omega  \to \mathcal{X} _0$ be a random variable. Define $x_1: \Omega  \to \mathcal{X} _1$, $\dots $, $x_T: \Omega \to \mathcal{X} _t$ by \[ x_{t+1} = f_t(x_t, u_t, w_t) \] for $t = 0, \dots , T-1$. Roughly speaking, the state transition functions are nondeterministic. In other words, it is uncertain which state we will arrive in given our current state and action. The choice $u_t$ only determines the distribution of $x_{t+1}$. Here $x_0$ is (still) called the \t{initial state} and is a random variable, usually assumed independent of the $w_t$.</p></div><div class="sheet-listing"><p class="sheet"> Let $g_t: \mathcal{X} _t \times  \mathcal{U} _t \times \mathcal{W} _t \to \R  \union \set{\infty}$ for $t = 0, \dots , T-1$ and $g_{T}: \mathcal{X} _T \times  \mathcal{W} _T \to \R \union \set{\infty}$. We call $(x_0, \mathcal{D} , (g_t)_{t = 0}^{T})$ a \t{stochastic dynamic optimization problem}. As with dynamic optimization problems, we call $g_t$ the \t{stage cost function} and $g_T$ the \t{terminal cost function}. It is common for these to not depend on $w_T$ (in other words, to be deterministic). It is also common for these to take infinite values to encode constraints.</p></div><div class="sheet-listing"><p class="sheet"> As before, a stochastic dynamic optimization problem is just an optimization problem. Define $U = \mathcal{U} _0 \times  \mathcal{U} _1 \times  \cdots \times  \mathcal{U} _{T-1}$ and let $u \in U$. Define $C: \Omega  \to \R $ by \[ C = \sum_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T). \] We call $C$ the \t{total cost} for actions $u$. It is a random variable.</p></div><div class="sheet-listing"><p class="sheet"> Define $J: U \to \R  \cup \set{\infty}$ by \[ J = \E ( \sum_{t = 0}^{T-1} g_t(x_t, u_t, w_t) + g_T(x_T, w_T) ). \] $J(u)$ is the \t{expected total cost} for inputs $u$.</p></div><div class="sheet-listing"><p class="sheet"> The optimization problem is $(U, J)$. In other words, the objective is the mean total stage cost plus the terminal cost.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Other terminology}</p></div><div class="sheet-listing"><p class="sheet"> Stochastic dynamic optimization problems are frequently called \t{stochastic control problems}.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1506,7 +1787,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

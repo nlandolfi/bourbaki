@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1912,6 +1913,261 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./maximum_conditional_estimates.html'" onkeypress="location.href='./maximum_conditional_estimates.html'">
+                <span>
+                  Maximum Conditional Estimates
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./normal_conditionals.html'" onkeypress="location.href='./normal_conditionals.html'">
+                <span>
+                  Normal Conditionals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./probabilistic_linear_model.html'" onkeypress="location.href='./probabilistic_linear_model.html'">
+                <span>
+                  Probabilistic Linear Model
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_linear_model_regressors.html'" onkeypress="location.href='./normal_linear_model_regressors.html'">
+            <span>
+            Normal Linear Model Regressors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./normal_linear_model.pdf#page=2'" onkeypress="location.href='./normal_linear_model.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./normal_linear_model-graph.pdf'" onkeypress="location.href='./normal_linear_model-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Normal Linear Model </h1> 
+      <!--
+!name:normal_linear_model
+!need:probabilistic_linear_model
+!need:normal_conditionals
+!need:maximum_conditional_estimates
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We consider the probabilistic linear model in
+  which all random variables are normal.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>normal linear model</span> is
+  a probabilistic linear model in which the
+  parameter and noise vectors have normal
+  (Gaussian) densities.</span>
+
+ <span class='run'>The model is also called the
+  <span class='term'>Gaussian linear model</span> or
+  the <span class='term'>linear model with Gaussian
+  noise</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>Let $(x: \Omega  \to \R ^d, A \in \R ^{n
+  \times d}, e: \Omega  \to \R ^n)$ be a
+  probabilistic linear model over the probability
+  space $(\Omega , \mathcal{A} , \mathbfsf{P} )$ in
+  which $x$ and $e$ have normal densities.</span>
+
+ <span class='run'>Recall that a probabilistic linear model has
+  observation vector $y: \Omega  \to \R ^n$ defined
+  by
+  <p>\[
+   y = Ax + e.
+  \]</p></span>
+</p>
+
+<h1 id='Conditional_density_of_$x$_on_$y$'>Conditional density of $x$ on $y$</h1>
+
+<p>
+ <span class='run'>Since $x$ and $e$ are normal and independent,
+  $y$ is normal.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>Moreover, the random vector $(x, y)$ is normal
+  with covariance
+  <p>\[
+   \pmat{
+
+   \Sigma _x & \Sigma _{x}A^\top  \\
+
+   A \Sigma _{x} & A\Sigma _{x}A^\top  + \Sigma _{e}
+
+   }.
+  \]</p></span>
+
+ <span class='run'>So the conditional density (see&nbsp;<a href='/sheets/normal_conditionals.html'/><span class='run'>Normal Conditionals</span></a>) of $g_{x \mid y}(\cdot , \gamma )$ is normal
+with mean
+  <p>\[
+   \Sigma _{x}A^\top (A\Sigma _{x}A^\top  + \Sigma _e)^{-1}\gamma
+  \]</p>
+  and covariance
+  <p>\[
+   \Sigma _{x} - \Sigma _{x}A^\top (A\Sigma _{x}A^\top  +
+    \Sigma _e)^{-1}A\Sigma _{x}.
+  \]</p>
+  <span class='run'>This density is sometimes called the posterior
+   for the parameters given the observations.</span>
+
+  <span class='run'>So the parameter posterior of the normal
+   linear model is normal.</span></span>
+</p>
+
+
+<p>
+ <span class='run'>We can write the conditional mean as
+  <p>\[
+   (\Sigma _{x}^{-1} + A^\top \Sigma _{e}^{-1}A)^{-1} A^\top
+    \Sigma _{e}^{-1}
+  \]</p>
+  and the conditional covariance as<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup>
+  <p>\[
+   (\Sigma _x^{-1} + A^\top  \Sigma _{e}^{-1} A)^{-1}.
+  \]</p>
+  <span class='run'>Very frequently we use these forms when $d
+   &lt; n$.</span>
+
+  <span class='run'>In other words, in the case that we have
+   fewer unknowns than measurements.</span>
+
+  <span class='run'>In that case $\Sigma _{x}$ is smaller than
+   $A\Sigma _{x}A^\top $.</span></span>
+</p>
+
+<h2 id='Maximum_conditional_estimate_of_$x$'>Maximum conditional estimate of $x$</h2>
+
+<div class='proposition'>
+ <span class='run'>The maximum conditional estimate of $x: \Omega
+  \to \R ^d$ given observed value $\gamma  \in
+  \R ^n$ of $y: \Omega  \to \R ^n$ is the
+  conditional mean
+  <p>\[
+   \Sigma _{x} A^\top (A\Sigma _{x}A^\top  + \Sigma _{e})^{-1}\gamma .
+  \]</p></span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include an account.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>A proof will appear in future editions. Use
+  the matrix inversion lemma or facts about
+  inverses.</span> <a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1973,7 +2229,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We consider the probabilistic linear model in which all random variables are normal.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{normal linear model} is a probabilistic linear model in which the parameter and noise vectors have normal (Gaussian) densities. The model is also called the \t{Gaussian linear model} or the \t{linear model with Gaussian noise}.</p></div><div class="sheet-listing"><p class="sheet"> Let $(x: \Omega \to \R^d, A \in \R^{n \times d}, e: \Omega \to \R^n)$ be a probabilistic linear model over the probability space $(\Omega, \CA, \PM)$ in which $x$ and $e$ have normal densities. Recall that a probabilistic linear model has observation vector $y: \Omega \to \R^n$ defined by \[ y = Ax + e. \]</p></div><div class="sheet-listing" id="conditional_density_of_$x$_on_$y$"><h1 class="sheet">3. Conditional density of $x$ on $y$</h1></div><div class="sheet-listing"><p class="sheet"> Since $x$ and $e$ are normal and independent, $y$ is normal.\footnote{Future editions will include an account.} Moreover, the random vector $(x, y)$ is normal with covariance \[ \pmat{ \Sigma_x & \Sigma_{x}\transpose{A} \\ A \Sigma_{x} & A\Sigma_{x}\transpose{A} + \Sigma_{e} }. \] So the conditional density (see \sheetref{normal_conditionals}{Normal Conditionals}) of $g_{x \mid y}(\cdot, \gamma)$ is normal with mean \[ \Sigma_{x}\transpose{A}\invp{A\Sigma_{x}\transpose{A} + \Sigma_e}\gamma \] and covariance \[ \Sigma_{x} - \Sigma_{x}\transpose{A}\invp{A\Sigma_{x}\transpose{A} + \Sigma_e}A\Sigma_{x}. \] This density is sometimes called the posterior for the parameters given the observations. So the parameter posterior of the normal linear model is normal.</p></div><div class="sheet-listing"><p class="sheet"> We can write the conditional mean as \[ \invp{\inv{\Sigma_{x}} + \transpose{A}\inv{\Sigma_{e}}A}\transpose{A}\inv{\Sigma_{e}} \] and the conditional covariance as \[ \invp{\inv{\Sigma_x} + \transpose{A}\inv{\Sigma_{e}}A}.\footnote{A proof will appear in future editions. Use the matrix inversion lemma or facts about inverses.} \] Very frequently we use these forms when $d < n$. In other words, in the case that we have fewer unknowns than measurements. In that case $\Sigma_{x}$ is smaller than $A\Sigma_{x}\transpose{A}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="maximum_conditional_estimate_of_$x$">3.1 Maximum conditional estimate of $x$</h2></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The maximum conditional estimate of $x: \Omega \to \R^d$ given observed value $\gamma \in \R^n$ of $y: \Omega \to \R^n$ is the conditional mean \[ \Sigma_{x}\transpose{A}\invp{A\Sigma_{x}\transpose{A} + \Sigma_{e}}\gamma. \] \end{proposition}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We consider the probabilistic linear model in which all random variables are normal.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{normal linear model} is a probabilistic linear model in which the parameter and noise vectors have normal (Gaussian) densities. The model is also called the \t{Gaussian linear model} or the \t{linear model with Gaussian noise}.</p></div><div class="sheet-listing"><p class="sheet"> Let $(x: \Omega  \to \R ^d, A \in \R ^{n \times d}, e: \Omega \to \R ^n)$ be a probabilistic linear model over the probability space $(\Omega , \mathcal{A} , \mathbfsf{P} )$ in which $x$ and $e$ have normal densities. Recall that a probabilistic linear model has observation vector $y: \Omega  \to \R ^n$ defined by \[ y = Ax + e. \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Conditional density of $x$ on $y$}</p></div><div class="sheet-listing"><p class="sheet"> Since $x$ and $e$ are normal and independent, $y$ is normal.\footnote{Future editions will include an account.} Moreover, the random vector $(x, y)$ is normal with covariance \[ \pmat{ \Sigma _x & \Sigma _{x}A^\top  \\ A \Sigma _{x} & A\Sigma _{x}A^\top  + \Sigma _{e} }. \] So the conditional density (see \sheetref{normal_conditionals}{Normal Conditionals}) of $g_{x \mid y}(\cdot , \gamma )$ is normal with mean \[ \Sigma _{x}A^\top (A\Sigma _{x}A^\top  + \Sigma _e)^{-1}\gamma \] and covariance \[ \Sigma _{x} - \Sigma _{x}A^\top (A\Sigma _{x}A^\top  + \Sigma _e)^{-1}A\Sigma _{x}. \] This density is sometimes called the posterior for the parameters given the observations. So the parameter posterior of the normal linear model is normal.</p></div><div class="sheet-listing"><p class="sheet"> We can write the conditional mean as \[ (\Sigma _{x}^{-1} + A^\top \Sigma _{e}^{-1}A)^{-1} A^\top \Sigma _{e}^{-1} \] and the conditional covariance as\footnote{A proof will appear in future editions. Use the matrix inversion lemma or facts about inverses.} \[ (\Sigma _x^{-1} + A^\top  \Sigma _{e}^{-1} A)^{-1}. \] Very frequently we use these forms when $d < n$. In other words, in the case that we have fewer unknowns than measurements. In that case $\Sigma _{x}$ is smaller than $A\Sigma _{x}A^\top $.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Maximum conditional estimate of $x$}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The maximum conditional estimate of $x: \Omega  \to \R ^d$ given observed value $\gamma  \in \R ^n$ of $y: \Omega  \to \R ^n$ is the conditional mean \[ \Sigma _{x} A^\top (A\Sigma _{x}A^\top  + \Sigma _{e})^{-1}\gamma . \]\end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -2127,7 +2383,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

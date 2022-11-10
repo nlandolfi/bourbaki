@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1008,6 +1009,205 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_neighborhoods.html'" onkeypress="location.href='./real_neighborhoods.html'">
+                <span>
+                  Real Neighborhoods
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./smooth_functions.html'" onkeypress="location.href='./smooth_functions.html'">
+                <span>
+                  Smooth Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./product_manifolds.html'" onkeypress="location.href='./product_manifolds.html'">
+            <span>
+            Product Manifolds
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./stereographic_projection.html'" onkeypress="location.href='./stereographic_projection.html'">
+            <span>
+            Stereographic Projection
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./smooth_manifolds.pdf#page=2'" onkeypress="location.href='./smooth_manifolds.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./smooth_manifolds-graph.pdf'" onkeypress="location.href='./smooth_manifolds-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Smooth Manifolds </h1> 
+      <!--
+!name:smooth_manifolds
+!need:smooth_functions
+!need:real_neighborhoods
+!refs:milnor/1
+!refs:guillemon/1
+-->
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A subset $M \subset \R ^n$ is a
+  <span class='term'>smooth manifold</span> of
+  dimension $d$ if for every $x \in M$, there
+  exists a neighborhood $V$ of $x$ in $X$ that
+  is diffeomorphic to an open subset $U$ of
+  $\R ^d$.</span>
+
+ <span class='run'>In this case we say that the set is
+  <span class='term'>locally diffeomorphic</span> to
+  $\R ^d$.</span>
+</p>
+
+
+<p>
+ <span class='run'>A diffeomorphism $\phi : U \to V$ is called a
+  <span class='term'>parameterization</span> of the
+  neighborhood of $V$.</span>
+ <!-- Recall $V ⊂ X$ a neighborhood of $x$ means that there exists an open set in $V$ around $x$. -->
+
+ <span class='run'>Its inverse diffeomorphism $\phi ^{-1}$ is called
+  a <span class='term'>coordinate system</span> (or
+  system of <span class='term'>coordinates</span>) on
+  $V$.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>We denote the dimension of a manifold $M$ by
+  $\dim M$.</span>
+</p>
+
+<h2 id='Submanifolds'>Submanifolds</h2>
+
+<p>
+ <span class='run'>If $X$ and $Z$ are both manifolds in $R^n$
+  and $Z \subset X$, then we call $Z$ a
+  <span class='term'>submanifold</span> of $X$.</span>
+
+ <span class='run'>In particular, $X$ is a submanifold of $R^n$.</span>
+
+ <span class='run'>Any open set of a manifold $X$ is a
+  submanifold $X$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1069,7 +1269,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A subset $M \subset \R^n$ is a \t{smooth manifold} of dimension $d$ if for every $x \in M$, there exists a neighborhood $V$ of $x$ in $X$ that is diffeomorphic to an open subset $U$ of $\R^d$. In this case we say that the set is \t{locally diffeomorphic} to $\R^d$.</p></div><div class="sheet-listing"><p class="sheet"> A diffeomorphism $\phi: U \to V$ is called a \t{parameterization} of the neighborhood of $V$. Its inverse diffeomorphism $\phi^{-1}$ is called a \t{coordinate system} (or system of \t{coordinates}) on $V$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the dimension of a manifold $M$ by $\dim M$.</p></div><div class="sheet-listing"><h2 class="sheet" id="submanifolds">2.2 Submanifolds</h2></div><div class="sheet-listing"><p class="sheet"> If $X$ and $Z$ are both manifolds in $R^n$ and $Z \subset X$, then we call $Z$ a \t{submanifold} of $X$. In particular, $X$ is a submanifold of $R^n$. Any open set of a manifold $X$ is a submanifold $X$.\footnote{Future editions will expand.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A subset $M \subset \R ^n$ is a \t{smooth manifold} of dimension $d$ if for every $x \in M$, there exists a neighborhood $V$ of $x$ in $X$ that is diffeomorphic to an open subset $U$ of $\R ^d$. In this case we say that the set is \t{locally diffeomorphic} to $\R ^d$.</p></div><div class="sheet-listing"><p class="sheet"> A diffeomorphism $\phi : U \to V$ is called a \t{parameterization} of the neighborhood of $V$.</p></div><div class="sheet-listing"><p class="sheet"> Its inverse diffeomorphism $\phi ^{-1}$ is called a \t{coordinate system} (or system of \t{coordinates}) on $V$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the dimension of a manifold $M$ by $\dim M$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Submanifolds}</p></div><div class="sheet-listing"><p class="sheet"> If $X$ and $Z$ are both manifolds in $R^n$ and $Z \subset X$, then we call $Z$ a \t{submanifold} of $X$. In particular, $X$ is a submanifold of $R^n$. Any open set of a manifold $X$ is a submanifold $X$.\footnote{Future editions will expand.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1223,7 +1423,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

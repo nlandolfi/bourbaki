@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1700,6 +1701,294 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./multivariate_normals.html'" onkeypress="location.href='./multivariate_normals.html'">
+                <span>
+                  Multivariate Normals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./random_functions.html'" onkeypress="location.href='./random_functions.html'">
+                <span>
+                  Random Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./distance_covariance_functions.html'" onkeypress="location.href='./distance_covariance_functions.html'">
+            <span>
+            Distance Covariance Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_random_function_predictive_densities.html'" onkeypress="location.href='./normal_random_function_predictive_densities.html'">
+            <span>
+            Normal Random Function Predictive Densities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./normal_random_functions.pdf#page=2'" onkeypress="location.href='./normal_random_functions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./normal_random_functions-graph.pdf'" onkeypress="location.href='./normal_random_functions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Normal Random Functions </h1> 
+      <!--
+!name:normal_random_functions
+!need:random_functions
+!need:multivariate_normals
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to discuss real-valued random functions
+  whose family of random variables have simple
+  densities.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>normal random function</span>
+  is a real-valued random function whose family of
+  real-valued random variables has the property
+  that any subfamily is jointly normal.</span>
+</p>
+
+
+<p>
+ <span class='run'>For this reason, we call the family of random
+  variables (or stochastic process) corresponding to
+  the random function a <span class='term'>gaussian
+  process</span> or <span class='term'>normal
+  process</span>.</span>
+ <!--
+\footnote{As usual, The choice of \say{normal} is a result of the Bourbaki project's convention to eschew historical names. Though here, as in \sheetref{multivariate_normals}{Multivariate Normals} the language of the project is nonstandard.}
+-->
+
+ <h2 id='Notation'>Notation</h2>
+
+ <p>
+  <span class='run'>Let $(\Omega , \mathcal{A} , \mathbfsf{P} )$ be
+   a probability space and $A$ a set.</span>
+
+  <span class='run'>Let $x: \Omega  \to (A \to \R )$ be a random
+   function with family $y: A \to (\Omega  \to
+   \R )$.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>The random function $x$ is a normal if, for
+   all $a^1, \dots , a^m \in A$, $(y(a^1), \dots ,
+   y(a^m))$ is jointly normal.</span>
+ </p>
+
+ <h1 id='Mean_and_covariance_function'>Mean and covariance function</h1>
+
+ <div class='proposition'>
+  <span class='run'>Let $x: \Omega  \to (A \to \R )$ be a normal
+   random function with family $X: A \to (\Omega
+   \to \R )$.</span>
+
+  <span class='run'>There exists unique functions $m: A \to \R $
+   and $k: A \times A \to \R $ so that the mean
+   of the random variable $X_a$ is $m(a)$ for all
+   $A$ and the covariance of the random variables
+   $X_a$ and $X_{a&#39;}$ is $k(a, a&#39;)$ for
+   all $a, a&#39; \in A$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span> </div>
+ <p>
+  <span class='run'>For this reason, we call $m$ the
+   <span class='term'>mean function</span> and $k$
+   the <span class='term'>covariance function</span>
+   of the random function.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>Conversely, let $m: A \to \R $ and $k: A
+   \times A \to \R $.</span>
+
+  <span class='run'>Then if $k$ satisfies the property that for
+   all $a^1, \dots , a^m$, the $m \times m$ matrix
+   <p>\[
+    \pmat{
+
+    k(a^1, a^1) & \cdots & k(a^1, a^m) \\
+
+    \vdots & \ddots & \vdots \\
+
+    k(a^m, a^1) & \cdots & k(a^m, a^m) \\
+
+    }
+   \]</p>
+   is positive semidefinite, then we can construct
+   a Gaussian process with mean function $m$ and
+   covariance function $k$.<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup></span>
+
+  <span class='run'>For this reason, we call $k$ with such a
+   property <span class='term'>positive
+   semidefinite</span> or a
+   <span class='term'>covariance function</span>.</span>
+
+  <span class='run'>Notice, of course, that $k$ is symmetric.</span>
+
+  <span class='run'>The matrix above is sometimes called the
+   <span class='term'>Gram matrix</span> for $k$ and
+   $a^1, \dots , a^m$.</span>
+ </p>
+
+ <h2 id='Example'>Example</h2>
+
+ <p>
+  <span class='run'>Let $A = \set{1, \dots , n}$ and let $K \in
+   \R ^{n \times n}$ be symmetric positive
+   semidefinite.</span>
+
+  <span class='run'>Define $m: A \to \R $ to be $m \equiv 0$
+   (the constant zero function) and $k(i, j) =
+   K_{ij}$.</span>
+
+  <span class='run'>Then the normal random function $x: \Omega
+   \to (A \to \R )$ with mean $m$ and covariance
+   $k$ is in one to one correspondence with the
+   gaussian random vectors with mean zero.</span>
+ </p>
+
+
+ <!--
+% \ssubsection{Random function interpretation}
+%
+% Many authorities discuss a normal random function as \say{putting a prior} on a \say{space} (see, for example, \sheetref{real_function_space}{Real Function Space}) of functions.
+% One samples functions by drawing an outcome $\omega \in \Omega$, and then defining the sample $f: I \to \R$ by $f(i) = x(i)(\omega)$.
+
+% \ssubsection{Multivariate normal special case}
+%
+% If the index set is finite, and can be ordered, then the normal random function is in one-to-one correspondence with the multivariate normal random vectors.
+%
+%\blankpage
+-->
+
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions may include an account.</span> <a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>Some authors belabor this point because of the
+  natural inclination to want to specify an
+  <i>inverse</i> covariance function, which need not
+  satisfy the consistency property. The consistency
+  property ensures that any marginal of a
+  subfamilys density is the density of that
+  further subfamily. Future editions may expand.</span> <a href='#footnote-3-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1761,7 +2050,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to discuss real-valued random functions whose family of random variables have simple densities.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{normal random function} is a real-valued random function whose family of real-valued random variables has the property that any subfamily is jointly normal.</p></div><div class="sheet-listing"><p class="sheet"> For this reason, we call the family of random variables (or stochastic process) corresponding to the random function a \t{gaussian process} or \t{normal process}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(\Omega, \CA, \PM)$ be a probability space and $A$ a set. Let $x: \Omega \to (A \to \R)$ be a random function with family $y: A \to (\Omega \to \R)$.</p></div><div class="sheet-listing"><p class="sheet"> The random function $x$ is a normal if, for all $a^1, \dots, a^m \in A$, $(y(a^1), \dots, y(a^m))$ is jointly normal.</p></div><div class="sheet-listing" id="mean_and_covariance_function"><h1 class="sheet">3. Mean and covariance function</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $x: \Omega \to (A \to \R)$ be a normal random function with family $X: A \to (\Omega \to \R)$. There exists unique functions $m: A \to \R$ and $k: A \times A \to \R$ so that the mean of the random variable $X_a$ is $m(a)$ for all $A$ and the covariance of the random variables $X_a$ and $X_{a'}$ is $k(a, a')$ for all $a, a' \in A$.\footnote{Future editions may include an account.} \end{proposition} For this reason, we call $m$ the \t{mean function} and $k$ the \t{covariance function} of the random function.</p></div><div class="sheet-listing"><p class="sheet"> Conversely, let $m: A \to \R$ and $k: A \times A \to \R$. Then if $k$ satisfies the property that for all $a^1, \dots, a^m$, the $m \times m$ matrix \[ \pmat{ k(a^1, a^1) & \cdots & k(a^1, a^m) \\ \vdots & \ddots & \vdots \\ k(a^m, a^1) & \cdots & k(a^m, a^m) \\ } \] is positive semidefinite, then we can construct a Gaussian process with mean function $m$ and covariance function $k$.\footnote{Some authors belabor this point because of the natural inclination to want to specify an <i>inverse} covariance function, which need not satisfy the consistency property.  The consistency property ensures that any marginal of a subfamilys density is the density of that further subfamily. Future editions may expand.</i> For this reason, we call $k$ with such a property \t{positive semidefinite} or a \t{covariance function}. Notice, of course, that $k$ is symmetric. The matrix above is sometimes called the \t{Gram matrix} for $k$ and $a^1, \dots, a^m$.</p></div><div class="sheet-listing"><h2 class="sheet" id="example">3.1 Example</h2></div><div class="sheet-listing"><p class="sheet"> Let $A = \set{1, \dots, n}$ and let $K \in \R^{n \times n}$ be symmetric positive semidefinite. Define $m: A \to \R$ to be $m \equiv 0$ (the constant zero function) and $k(i, j) = K_{ij}$. Then the normal random function $x: \Omega \to (A \to \R)$ with mean $m$ and covariance $k$ is in one to one correspondence with the gaussian random vectors with mean zero.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to discuss real-valued random functions whose family of random variables have simple densities.\footnote{Future editions will expand.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{normal random function} is a real-valued random function whose family of real-valued random variables has the property that any subfamily is jointly normal.</p></div><div class="sheet-listing"><p class="sheet"> For this reason, we call the family of random variables (or stochastic process) corresponding to the random function a \t{gaussian process} or \t{normal process}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $(\Omega , \C A, \PM)$ be a probability space and $A$ a set. Let $x: \Omega  \to (A \to \R )$ be a random function with family $y: A \to (\Omega  \to \R )$.</p></div><div class="sheet-listing"><p class="sheet"> The random function $x$ is a normal if, for all $a^1, \dots , a^m \in A$, $(y(a^1), \dots , y(a^m))$ is jointly normal.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Mean and covariance function}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $x: \Omega  \to (A \to \R )$ be a normal random function with family $X: A \to (\Omega  \to \R )$. There exists unique functions $m: A \to \R $ and $k: A \times A \to \R $ so that the mean of the random variable $X_a$ is $m(a)$ for all $A$ and the covariance of the random variables $X_a$ and $X_{a'}$ is $k(a, a')$ for all $a, a' \in A$.\footnote{Future editions may include an account.}\end{proposition} For this reason, we call $m$ the \t{mean function} and $k$ the \t{covariance function} of the random function.</p></div><div class="sheet-listing"><p class="sheet"> Conversely, let $m: A \to \R $ and $k: A \times A \to \R $. Then if $k$ satisfies the property that for all $a^1, \dots , a^m$, the $m \times m$ matrix \[ \pmat{ k(a^1, a^1) \& \cdots \& k(a^1, a^m) \\ \vdots \& \ddots \& \vdots \\ k(a^m, a^1) \& \cdots \& k(a^m, a^m) \\ } \] is positive semidefinite, then we can construct a Gaussian process with mean function $m$ and covariance function $k$.\footnote{Some authors belabor this point because of the natural inclination to want to specify an <i>inverse} covariance function, which need not satisfy the consistency property. The consistency property ensures that any marginal of a subfamilys density is the density of that further subfamily. Future editions may expand.</i> For this reason, we call $k$ with such a property \t{positive semidefinite} or a \t{covariance function}. Notice, of course, that $k$ is symmetric. The matrix above is sometimes called the \t{Gram matrix} for $k$ and $a^1, \dots , a^m$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Example}</p></div><div class="sheet-listing"><p class="sheet"> Let $A = \set{1, \dots , n}$ and let $K \in \R ^{n \times n}$ be symmetric positive semidefinite. Define $m: A \to \R $ to be $m \equiv 0$ (the constant zero function) and $k(i, j) = K_{ij}$. Then the normal random function $x: \Omega  \to (A \to \R )$ with mean $m$ and covariance $k$ is in one to one correspondence with the gaussian random vectors with mean zero.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1915,7 +2204,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

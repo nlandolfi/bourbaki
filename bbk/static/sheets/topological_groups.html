@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -115,11 +116,299 @@
     </span>
 
     <span style="display:none">
-      <!-- 57 0 -->
+      <!-- 86 0 -->
+
+<!-- \newcounter{caccounts} -->
+
+\newcounter{caccounts}
+
+<!-- \newcounter{caccountlineno}[caccounts] -->
+
+\newcounter{caccountlineno}[caccounts]
+
+<!-- \newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1} -->
+
+\newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1}
+
+<!-- \newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2} -->
+
+\newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2}
+
+<!-- \newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3} -->
+
+\newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3}
+
+<!-- \newcommand{\lref}[1]{\texttt{(\ref{#1})}} -->
+
+\newcommand{\lref}[1]{\texttt{(\ref{#1})}}
+
+<!--  -->
+
+
+
+<!-- \newenvironment{caccount}{ -->
+
+\newenvironment{caccount}{
+
+<!--   \refstepcounter{caccounts} -->
+
+  \refstepcounter{caccounts}
+
+<!-- }{ -->
+
+}{
+
+<!-- } -->
+
+}
+
+<!-- \newenvironment{blankaccount}[1][]{ -->
+
+\newenvironment{blankaccount}[1][]{
+
+<!--    \hspace{-1.6cm} -->
+
+   \hspace{-1.6cm}
+
+<!--    \begin{tabular}{r|rlcc} -->
+
+   \begin{tabular}{r|rlcc}
+
+<!-- }{ -->
+
+}{
+
+<!--   \end{tabular} -->
+
+  \end{tabular}
+
+<!--   \medskip -->
+
+  \medskip
+
+<!-- } -->
+
+}
+
+<!-- \newcounter{accounts} -->
+
+\newcounter{accounts}
+
+<!-- \newcounter{accountlineno}[accounts] -->
+
+\newcounter{accountlineno}[accounts]
+
+<!-- \newenvironment{account}[1][]{ -->
+
+\newenvironment{account}[1][]{
+
+<!-- \refstepcounter{accounts} -->
+
+\refstepcounter{accounts}
+
+<!-- \noindent\textbf{Account~\theaccounts. #1} \rmfamily \\ -->
+
+\noindent\textbf{Account~\theaccounts. #1} \rmfamily \\
+
+<!--  -->
+
+
+
+<!--     \vspace*{-0.4cm} -->
+
+    \vspace*{-0.4cm}
+
+<!--    \hspace{-1.6cm} -->
+
+   \hspace{-1.6cm}
+
+<!--    \begin{tabular}{r|rlcc} -->
+
+   \begin{tabular}{r|rlcc}
+
+<!-- }{ -->
+
+}{
+
+<!--   \end{tabular} -->
+
+  \end{tabular}
+
+<!--   \medskip -->
+
+  \medskip
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\} -->
+
+\newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\}
+
+<!-- \newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\} -->
+
+\newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\thus}[3]{ -->
+
+\newcommand{\thus}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\idet}[3]{ -->
+
+\newcommand{\idet}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\same}[3]{ -->
+
+\newcommand{\same}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\ie}[3]{ -->
+
+\newcommand{\ie}[3]{
+
+<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\ -->
+
+  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\
+
+<!-- } -->
+
+}
+
+<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
+
+\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
+
+<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
+
+\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
+
+<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
+
+\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
+
+<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
+
+\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- % objects macros -->
 
 % objects macros
+
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
+
+<!-- \newcommand{\product}{\prod} -->
+
+\newcommand{\product}{\prod}
+
+<!-- \newcommand{\R}{\mathbfsf{R}} -->
+
+\newcommand{\R}{\mathbfsf{R}}
+
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
+
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
+
+\renewcommand{\complement}[1]{C({#1})}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \Set{a}{b} for {a | b} -->
+
+% use \Set{a}{b} for {a | b}
+
+<!-- % use \Set* for autosizing delimiters -->
+
+% use \Set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2} -->
+
+\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -389,273 +678,45 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcounter{caccounts} -->
+<!-- % absolute_value macros -->
 
-\newcounter{caccounts}
+% absolute_value macros
 
-<!-- \newcounter{caccountlineno}[caccounts] -->
+<!-- % \ifdefined\abs -->
 
-\newcounter{caccountlineno}[caccounts]
+% \ifdefined\abs
 
-<!-- \newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1} -->
+<!-- % \else -->
 
-\newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1}
+% \else
 
-<!-- \newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2} -->
+<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
 
-\newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2}
+%  \newcommand{\abs}[1]{\left|#1\right|}
 
-<!-- \newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3} -->
+<!-- % \fi -->
 
-\newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3}
+% \fi
 
-<!-- \newcommand{\lref}[1]{\texttt{(\ref{#1})}} -->
+<!-- % the above was creating issues - NCL 2/24/2022 -->
 
-\newcommand{\lref}[1]{\texttt{(\ref{#1})}}
-
-<!--  -->
-
-
-
-<!-- \newenvironment{caccount}{ -->
-
-\newenvironment{caccount}{
-
-<!--   \refstepcounter{caccounts} -->
-
-  \refstepcounter{caccounts}
-
-<!-- }{ -->
-
-}{
-
-<!-- } -->
-
-}
-
-<!-- \newenvironment{blankaccount}[1][]{ -->
-
-\newenvironment{blankaccount}[1][]{
-
-<!--    \hspace{-1.6cm} -->
-
-   \hspace{-1.6cm}
-
-<!--    \begin{tabular}{r|rlcc} -->
-
-   \begin{tabular}{r|rlcc}
-
-<!-- }{ -->
-
-}{
-
-<!--   \end{tabular} -->
-
-  \end{tabular}
-
-<!--   \medskip -->
-
-  \medskip
-
-<!-- } -->
-
-}
-
-<!-- \newcounter{accounts} -->
-
-\newcounter{accounts}
-
-<!-- \newcounter{accountlineno}[accounts] -->
-
-\newcounter{accountlineno}[accounts]
-
-<!-- \newenvironment{account}[1][]{ -->
-
-\newenvironment{account}[1][]{
-
-<!-- \refstepcounter{accounts} -->
-
-\refstepcounter{accounts}
-
-<!-- \noindent\textbf{Account~\theaccounts. #1} \rmfamily \\ -->
-
-\noindent\textbf{Account~\theaccounts. #1} \rmfamily \\
+% the above was creating issues - NCL 2/24/2022
 
 <!--  -->
 
 
 
-<!--     \vspace*{-0.4cm} -->
+<!-- % following (roughly) the example of set_numbers/macros -->
 
-    \vspace*{-0.4cm}
+% following (roughly) the example of set_numbers/macros
 
-<!--    \hspace{-1.6cm} -->
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
 
-   \hspace{-1.6cm}
+% \newcommand{\intabs}[1]{\left|#1\right|}
 
-<!--    \begin{tabular}{r|rlcc} -->
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
 
-   \begin{tabular}{r|rlcc}
-
-<!-- }{ -->
-
-}{
-
-<!--   \end{tabular} -->
-
-  \end{tabular}
-
-<!--   \medskip -->
-
-  \medskip
-
-<!-- } -->
-
-}
-
-<!-- \newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\} -->
-
-\newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\}
-
-<!-- \newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\} -->
-
-\newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\thus}[3]{ -->
-
-\newcommand{\thus}[3]{
-
-<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\ -->
-
-  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\
-
-<!-- } -->
-
-}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\idet}[3]{ -->
-
-\newcommand{\idet}[3]{
-
-<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\ -->
-
-  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\
-
-<!-- } -->
-
-}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\same}[3]{ -->
-
-\newcommand{\same}[3]{
-
-<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\ -->
-
-  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\
-
-<!-- } -->
-
-}
-
-<!-- \newcommand{\ie}[3]{ -->
-
-\newcommand{\ie}[3]{
-
-<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\ -->
-
-  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\
-
-<!-- } -->
-
-}
-
-<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
-
-\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
-
-<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
-
-\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
-
-<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
-
-\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
-
-<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
-
-\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
-
-\newcommand{\relcomplement}[2]{C_{#2}({#1})}
-
-<!-- \renewcommand{\complement}[1]{C({#1})} -->
-
-\renewcommand{\complement}[1]{C({#1})}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- % use \Set{a}{b} for {a | b} -->
-
-% use \Set{a}{b} for {a | b}
-
-<!-- % use \Set* for autosizing delimiters -->
-
-% use \Set* for autosizing delimiters
-
-<!-- \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2} -->
-
-\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- \newcommand{\symdiff}{+} -->
 
@@ -793,6 +854,38 @@
 
 \newcommand{\bintersection}{\bigcap}
 
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+
+\def\oright#1{\right#1\mskip-10mu\circ}
+
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
+
+\def\oleft#1{\circ\mskip-10mu\left#1}
+
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -857,6 +950,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
 
 \newcommand{\idfn}[1]{\text{id}_{#1}}
@@ -884,6 +989,50 @@
 <!-- \newcommand{\eqc}[1]{[#1]} -->
 
 \newcommand{\eqc}[1]{[#1]}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % it is declared in integral line! -->
+
+% it is declared in integral line!
+
+<!-- % \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+% \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1010,6 +1159,13 @@
                 <span class="caret">›</span>
               </div>
           
+              <div class="need2" tabindex="0" onclick="location.href='./topologies.html'" onkeypress="location.href='./topologies.html'">
+                <span>
+                  Topologies
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
         
         <div class="needlabel2"> Needed by: </div>
         
@@ -1087,6 +1243,13 @@
               <span class="caret">›</span>
             </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./topologies.html'" onkeypress="location.href='./topologies.html'">
+              <span>
+                Topologies
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
       
       
     </div>
@@ -1094,7 +1257,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $(G, \circ)$ is a \sheetref{groups}{group}. \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $\mathcal{G}  = (G, \circ)$ is a \sheetref{groups}{group}. A \t{topological group} is a tuple $(\mathcal{G} , \mathcal{T} )$ where $(G, \mathcal{T} )$ is a topological space and the group operations are continuous.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1248,7 +1411,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

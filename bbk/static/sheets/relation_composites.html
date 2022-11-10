@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -720,6 +721,191 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./relations.html'" onkeypress="location.href='./relations.html'">
+                <span>
+                  Relations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./inverses_of_composite_relations.html'" onkeypress="location.href='./inverses_of_composite_relations.html'">
+            <span>
+            Inverses of Composite Relations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./relation_composites.pdf#page=2'" onkeypress="location.href='./relation_composites.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./relation_composites-graph.pdf'" onkeypress="location.href='./relation_composites-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Relation Composites </h1> 
+      <!--
+!name:relation_composites
+!need:relations
+!refs:paul_halmos/naive_set_theory/section_10
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>If $x$ is related to $y$ and $y$ to $z$,
+  then $x$ and $z$ are related.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $R$ be a relation from $X$ to $Y$ and
+  $S$ a relation from $Y$ to $Z$.</span>
+
+ <span class='run'>The <span class='term'>composite relation</span>
+  from $X$ to $Z$ contains the pair $(x, z) \in
+  (X \times  Z)$ if and only if there exists a
+  $y \in Y$ such that $(x, y) \in R$ and $(y,z)
+  \in S$.</span>
+
+ <span class='run'>This composite relation is sometimes called the
+  <span class='term'>relative product</span>.</span>
+</p>
+
+<h1 id='Notation'>Notation</h1>
+
+<p>
+ <span class='run'>We denote the composite relation of $R$ and
+  $S$ by $R \circ S$ or $RS$.</span>
+</p>
+
+<h1 id='Example'>Example</h1>
+
+<p>
+ <span class='run'>Let $X$ be the set of people and let $R$ be
+  the relation in $X$ “is a brother of} and $S$
+  be the relation in $X$ “is a father of”.</span>
+
+ <span class='run'>Then $RS$ is the relation “is an uncle of”.</span>
+</p>
+
+<h1 id='Properties'>Properties</h1>
+
+<p>
+ <span class='run'>Composition of relation is associative but not
+  commutative.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+
+<!-- %TODO: next edition: include $(SR)^{-1} = R^{-1}S^{-1}$ -->
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>A fuller account will appear in future editions.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -767,7 +953,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> If $x$ is related to $y$ and $y$ to $z$, then $x$ and $z$ are related.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $R$ be a relation from $X$ to $Y$ and $S$ a relation from $Y$ to $Z$. The \t{composite relation} from $X$ to $Z$ contains the pair $(x, z) \in (X \times Z)$ if and only if there exists a $y \in Y$ such that $(x, y) \in R$ and $(y,z) \in S$. This composite relation is sometimes called the \t{relative product}.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the composite relation of $R$ and $S$ by $R \circ S$ or $RS$.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">4. Example</h1></div><div class="sheet-listing"><p class="sheet"> Let $X$ be the set of people and let $R$ be the relation in $X$ "is a brother of} and $S$ be the relation in $X$ \say{is a father of". Then $RS$ is the relation "is an uncle of".</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">5. Properties</h1></div><div class="sheet-listing"><p class="sheet"> Composition of relation is associative but not commutative.\footnote{A fuler account will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> If $x$ is related to $y$ and $y$ to $z$, then $x$ and $z$ are related.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $R$ be a relation from $X$ to $Y$ and $S$ a relation from $Y$ to $Z$. The \t{composite relation} from $X$ to $Z$ contains the pair $(x, z) \in (X \times  Z)$ if and only if there exists a $y \in Y$ such that $(x, y) \in R$ and $(y,z) \in S$. This composite relation is sometimes called the \t{relative product}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the composite relation of $R$ and $S$ by $R \circ S$ or $RS$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ be the set of people and let $R$ be the relation in $X$ "is a brother of} and $S$ be the relation in $X$ \say{is a father of". Then $RS$ is the relation "is an uncle of".</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> Composition of relation is associative but not commutative.\footnote{A fuller account will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -921,7 +1107,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

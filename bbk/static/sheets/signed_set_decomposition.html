@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1172,6 +1173,309 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./signed_measures.html'" onkeypress="location.href='./signed_measures.html'">
+                <span>
+                  Signed Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./signed_set_decomposition_existence.html'" onkeypress="location.href='./signed_set_decomposition_existence.html'">
+            <span>
+            Signed Set Decomposition Existence
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./signed_set_decomposition.pdf#page=2'" onkeypress="location.href='./signed_set_decomposition.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./signed_set_decomposition-graph.pdf'" onkeypress="location.href='./signed_set_decomposition-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Signed Set Decomposition </h1> 
+      <!--
+!name:signed_set_decomposition
+!need:signed_measures
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Are all signed measures</span>
+
+ <span class='run'>the difference of two</span>
+
+ <span class='run'>positive measures?</span>
+</p>
+
+
+<p>
+ <span class='run'>Suppose we could partition</span>
+
+ <span class='run'>the base set into two</span>
+
+ <span class='run'>sets, one containing</span>
+
+ <span class='run'>all the sets with positive</span>
+
+ <span class='run'>measure and one containing</span>
+
+ <span class='run'>all sets with negative measure.</span>
+
+ <span class='run'>We could restrict the measure to the former
+  and it would be positive, and we could restrict
+  it to the latter and it would be negative.</span>
+</p>
+
+
+<p>
+ <span class='run'>Any measurable set could be partitioned</span>
+
+ <span class='run'>into a piece in the former and a</span>
+
+ <span class='run'>piece in the latter, and so</span>
+
+ <span class='run'>its signed measure could be</span>
+
+ <span class='run'>written as a sum of measures</span>
+
+ <span class='run'>of these pieces.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>By “positive” and “negative” we mean
+  “non-negative” and “non-positive.”</span>
+
+ <span class='run'>Let $(X, \mathcal{A} )$ be a measurable space.</span>
+
+ <span class='run'>Let $\mu : \mathcal{A}  \to \eri$</span>
+
+ <span class='run'>be a signed measure.</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>positive set</span></span>
+
+ <span class='run'>is a measurable set</span>
+
+ <span class='run'>with the property that</span>
+
+ <span class='run'>each of its subsets have</span>
+
+ <span class='run'>non-negative measure</span>
+
+ <span class='run'>under $\mu $.</span>
+
+ <span class='run'>A <span class='term'>negative set</span></span>
+
+ <span class='run'>is a measurable set</span>
+
+ <span class='run'>with the property that</span>
+
+ <span class='run'>each of its subsets have</span>
+
+ <span class='run'>non-positive measure</span>
+
+ <span class='run'>under $\mu $.</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>signed-set decomposition</span></span>
+
+ <span class='run'>of $X$ under $\mu $</span>
+
+ <span class='run'>is a partition of $X$</span>
+
+ <span class='run'>into a positive and a negative set.</span>
+
+ <span class='run'>Some authors call it a</span>
+
+ <span class='run'><span class='term'>Hahn decomposition</span>.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>Denote by $P$ a positive</span>
+
+ <span class='run'>and by $N$ a negative set.</span>
+
+ <span class='run'>When we say “let $(P, N)$</span>
+
+ <span class='run'>be a signed-set decomposition</span>
+
+ <span class='run'>of $X$ under $\mu $”,</span>
+
+ <span class='run'>we mean that $P$ is</span>
+
+ <span class='run'>the positive set and $N$</span>
+
+ <span class='run'>is the negative set.</span>
+</p>
+
+<h1 id='Motivating_implication'>Motivating implication</h1>
+
+<p>
+ <span class='run'>Does such a decomposition</span>
+
+ <span class='run'>always exist? Is it unique?</span>
+
+ <span class='run'>We are motivated to find</span>
+
+ <span class='run'>answers</span>
+
+ <span class='run'>by the following observation.</span>
+</p>
+
+
+<p>
+ <span class='run'>Suppose there was a signed-set</span>
+
+ <span class='run'>decomposition of $(X, \mathcal{A} )$</span>
+
+ <span class='run'>under $\mu $; denote it by $(P, N)$.</span>
+
+ <span class='run'>Then</span>
+
+ <span class='run'>$\mu (A \cap  P) \geq 0$</span>
+
+ <span class='run'>and $\mu (A \cap  N) \leq 0$</span>
+
+ <span class='run'>for all $A \in \mathcal{A} $.</span>
+</p>
+
+
+<p>
+ <span class='run'>Define</span>
+
+ <span class='run'>$\mu _1 = \mu (A \cap  P)$</span>
+
+ <span class='run'>and $\mu _2 = -\mu (A \cap  P)$,</span>
+
+ <span class='run'>then $\mu _1$ and $\mu _2$ are finite measures.</span>
+
+ <span class='run'>Moreover, $\mu  = \mu _1 - \mu _2$.</span>
+
+ <span class='run'>Thus, if we had a signed-set decomposition</span>
+
+ <span class='run'>we could write $\mu $ as the difference</span>
+
+ <span class='run'>of two measures.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1219,7 +1523,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Are all signed measures the difference of two positive measures?</p></div><div class="sheet-listing"><p class="sheet"> Suppose we could partition the base set into two sets, one containing all the sets with positive measure and one containing all sets with negative measure. We could "restrict" the measure to the former and it would be positive, and we could "restrict" it to the latter and it would be negative.</p></div><div class="sheet-listing"><p class="sheet"> Any measurable set could be partitioned into a piece in the former and a piece in the latter, and so its signed measure could be written as a sum of measures of these pieces.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> By "positive" and "negative" we mean "non-negative" and "non-positive." Let $(X, \SA)$ be a measurable space. Let $\mu: \SA \to \eri$ be a signed measure.</p></div><div class="sheet-listing"><p class="sheet"> A <i>positive set</i> is a measurable set with the property that each of its subsets have non-negative measure under $\mu$. A <i>negative set</i> is a measurable set with the property that each of its subsets have non-positive measure under $\mu$.</p></div><div class="sheet-listing"><p class="sheet"> A <i>signed-set decomposition</i> of $X$ under $\mu$ is a partition of $X$ into a positive and a negative set. Some authors call it a <i>Hahn decomposition</i>.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Denote by $P$ a positive and by $N$ a negative set. When we say \say{let $(P, N)$ be a signed-set decomposition of $X$ under $\mu$}, we mean that $P$ is the positive set and $N$ is the negative set.</p></div><div class="sheet-listing" id="motivating_implication"><h1 class="sheet">3. Motivating Implication</h1></div><div class="sheet-listing"><p class="sheet"> Does such a decomposition always exist? Is it unique? We are motivated to find answers by the following observation.</p></div><div class="sheet-listing"><p class="sheet"> Suppose there was a signed-set decomposition of $(X, \SA)$ under $\mu$; denote it by $(P, N)$. Then $\mu(A \intersect P) \geq 0$ and $\mu(A \intersect N) \leq 0$ for all $A \in \SA$.</p></div><div class="sheet-listing"><p class="sheet"> Define $\mu_1 = \mu(A \intersect P)$ and $\mu_2 = -\mu(A \intersect P)$, then $\mu_1$ and $\mu_2$ are finite measures. Moreover, $\mu = \mu_1 - \mu_2$. Thus, if we had a signed-set decomposition we could write $\mu$ as the difference of two measures.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Are all signed measures the difference of two positive measures?</p></div><div class="sheet-listing"><p class="sheet"> Suppose we could partition the base set into two sets, one containing all the sets with positive measure and one containing all sets with negative measure. We could restrict the measure to the former and it would be positive, and we could restrict it to the latter and it would be negative.</p></div><div class="sheet-listing"><p class="sheet"> Any measurable set could be partitioned into a piece in the former and a piece in the latter, and so its signed measure could be written as a sum of measures of these pieces.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> By "positive} and \say{negative} we mean \say{non-negative} and \say{non-positive." Let $(X, \mathcal{A} )$ be a measurable space. Let $\mu : \mathcal{A}  \to \eri$ be a signed measure.</p></div><div class="sheet-listing"><p class="sheet"> A \t{positive set} is a measurable set with the property that each of its subsets have non-negative measure under $\mu $. A \t{negative set} is a measurable set with the property that each of its subsets have non-positive measure under $\mu $.</p></div><div class="sheet-listing"><p class="sheet"> A \t{signed-set decomposition} of $X$ under $\mu $ is a partition of $X$ into a positive and a negative set. Some authors call it a \t{Hahn decomposition}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Denote by $P$ a positive and by $N$ a negative set. When we say \say{let $(P, N)$ be a signed-set decomposition of $X$ under $\mu $}, we mean that $P$ is the positive set and $N$ is the negative set.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Motivating implication}</p></div><div class="sheet-listing"><p class="sheet"> Does such a decomposition always exist? Is it unique? We are motivated to find answers by the following observation.</p></div><div class="sheet-listing"><p class="sheet"> Suppose there was a signed-set decomposition of $(X, \mathcal{A} )$ under $\mu $; denote it by $(P, N)$. Then $\mu (A \cap  P) \geq 0$ and $\mu (A \cap  N) \leq 0$ for all $A \in \mathcal{A} $.</p></div><div class="sheet-listing"><p class="sheet"> Define $\mu _1 = \mu (A \cap  P)$ and $\mu _2 = -\mu (A \cap  P)$, then $\mu _1$ and $\mu _2$ are finite measures. Moreover, $\mu  = \mu _1 - \mu _2$. Thus, if we had a signed-set decomposition we could write $\mu $ as the difference of two measures.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1373,7 +1677,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>

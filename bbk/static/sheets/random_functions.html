@@ -96,6 +96,7 @@
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1496,6 +1497,228 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./random_vectors.html'" onkeypress="location.href='./random_vectors.html'">
+                <span>
+                  Random Vectors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_random_functions.html'" onkeypress="location.href='./normal_random_functions.html'">
+            <span>
+            Normal Random Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./random_functions.pdf#page=2'" onkeypress="location.href='./random_functions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./random_functions-graph.pdf'" onkeypress="location.href='./random_functions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Random Functions </h1> 
+      <!--
+!name:random_functions
+!need:random_vectors
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We generalize random variables and random
+  vectors to a map from the outcome space to a
+  space of functions.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>random function</span> is a
+  map from the set of outcomes of a probability
+  space to a set of functions.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>Let $(\Omega , \mathcal{A} , \mathbfsf{P} )$ be a
+  probability space.</span>
+
+ <span class='run'>Let $A$ and $B$ be sets and let $x: \Omega
+  \to (A \to B)$ be a random function.</span>
+
+ <span class='run'>For each outcome $\omega  \in \Omega $,
+  $x_{\omega }: A \to B$ is a function from $A$
+  to $B$.</span>
+</p>
+
+<h1 id='A_family_of_random_variables'>A family of random variables</h1>
+
+<p>
+ <span class='run'>A <span class='term'>stochastic process</span> (or
+  <span class='term'>random process</span> or
+  <span class='term'>random field</span>) is a family
+  of random variables.</span>
+
+ <span class='run'>The term process is often used when the index
+  set is associated with time and the term field
+  is often used when the index set is associated
+  with space.</span>
+</p>
+
+
+<p>
+ <span class='run'>We can associate to the random function $x:
+  \Omega  \to (A \to B)$ a family of random
+  variables $y: A \to (\Omega  \to B)$ defined by
+  <p>\[
+   y(a)(\omega ) = x(\omega )(a).
+  \]</p></span>
+
+ <span class='run'>The index set of the family is the domain of
+  the set of functions.</span>
+
+ <span class='run'>The codomain of each random variable is the
+  codomain of the set of functions.</span>
+</p>
+
+
+<p>
+ <span class='run'>The converse is also naturally true.</span>
+
+ <span class='run'>Any family of random variables can be
+  associated with a random function.</span>
+
+ <span class='run'>In this way, a random function corresponds to
+  a family of random variables, and any family of
+  random variables corresponds to a random function.</span>
+</p>
+
+
+<p>
+ <span class='run'>For this reason many authors use the term
+  random function or stochastic function and random
+  process or stochastic process interchangeably.</span>
+
+ <span class='run'>In these sheets, we will be specific.</span>
+</p>
+
+
+<!--
+Notice that our definition of random function has required nothing about the measurability of the map.
+
+ \blankpage
+-->
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will make measurability precise.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1697,7 +1920,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version ff50731a9.
     </span>
   </body>
 </html>
