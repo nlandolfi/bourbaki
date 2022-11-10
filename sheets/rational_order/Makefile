@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make rational_order.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 rational_order.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rational_order.tex
 

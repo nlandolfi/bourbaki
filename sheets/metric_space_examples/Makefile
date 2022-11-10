@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make metric_space_examples.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 metric_space_examples.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > metric_space_examples.tex
 

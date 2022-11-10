@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make section_measures.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 section_measures.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > section_measures.tex
 
