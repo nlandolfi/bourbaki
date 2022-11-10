@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make real_limiting_bounds.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 real_limiting_bounds.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > real_limiting_bounds.tex
 

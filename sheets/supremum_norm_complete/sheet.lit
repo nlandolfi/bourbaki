@@ -1,0 +1,203 @@
+<!--
+!name:supremum_norm_complete
+!need:supremum_norm
+!need:real_limits
+!!need:complete_norms?
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want a complete norm on the vector space of continuous
+    functions. ⦉
+⦉
+
+§ Result ⦉
+<statement type='proposition'>
+  ‖ The supremum norm is complete. ⦉
+</statement>
+<proof>
+  ¶ ⦊
+    ‖ Let $R$ denote the real numbers. ⦉
+
+    ‖ Let $\seq{f}$ be an egoprox sequence ⦉
+
+    ‖ in $C[a, b]$. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ «Candidate.» $\seq{f}$ is egoprox means $∀ ϵ > 0, ∃N$ so
+      that
+      ◇ ⦊
+        ‖ m, n > N ⟹ \supnorm{f_n - f_m} < ϵ. ⦉
+      ⦉⦉
+
+    ‖ Since $\supnorm{f_n - f_m} < ϵ ⟹ \abs{f_n(x) - f_m(x)} <
+      ϵ$ for all $x ∈ [a, b]$, the sequence of real numbers
+      $\set{f_n(x)}_n$ is egoprox for each $x ∈ [a, b]$. ⦉
+
+    ‖ Since the metric space $(R, \abs{·})$ is complete, there
+      is a limit $l_x ∈ R$ such that $f_n(x) \goesto l_x$ as
+      $n \goesto ∞$, for each $x ∈ [a, b]$. ⦉
+
+    ‖ Define $f: [a, b] → R$ by $f(x) = l_x$ for each $x ∈
+      [a, b]$. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ «Candidate is Limit.» ⦉
+
+    ‖ First, we argue that ⦉
+
+    ‖ $\supnorm{f_n - f} \goesto 0$ ⦉
+
+    ‖ as $n \goesto ∞$. ⦉
+
+    ‖ Since $\seq{f}$ is an egoprox sequence, there exists $n_0$
+      so that
+      ◇ ⦊
+        ‖ n,m ≥ n_0 ⦉
+
+        ‖ ⟹ ⦉
+
+        ‖ \supnorm{f_n - f_m} < ϵ/2. ⦉
+      ⦉
+
+      ‖ So for all $x ∈ [a, b]$,
+        ◇ ⦊
+          ‖ n,m ≥ n_0 ⦉
+
+          ‖ ⟹ ⦉
+
+          ‖ \abs{f_n(x) - f_m(x)} < ϵ/2. ⦉
+        ⦉⦉
+
+      ‖ For all $x ∈ [a, b]$, and $n ≥ n_0$,
+        ◇ ⦊
+          ‖ \lim_{m → ∞} \abs{f_n(x) - f_m(x)} ⦉
+
+          ‖ ≤ ϵ/2 < ϵ. ⦉
+        ⦉⦉
+
+      ‖ The sequence ⦉
+
+      ‖ $\set{f_k(x)}_{k = m}^{∞}$ ⦉
+
+      ‖ is a final part of ⦉
+
+      ‖ $\set{f_k(x)}_{k = 1}^{∞}$, ⦉
+
+      ‖ and so has the same limit, $f(x)$. ⦉
+
+      ‖ Therefore, using continuity ⦉
+
+      ‖ of subtraction and the absolute ⦉
+
+      ‖ value,
+        ◇ ⦊
+          ‖ \lim_{m → ∞} ⦉
+
+          ‖ \abs{f_n(x) - f_m(x)} ⦉
+
+          ‖ = ⦉
+
+          ‖ \abs{f_n(x) - f(x)}. ⦉
+        ⦉⦉
+
+      ‖ We conclude that for ⦉
+
+      ‖ $n ≥ n_0$, ⦉
+
+      ‖ $x ∈ [a, b]$, ⦉
+
+      ‖ $\abs{f_n(x) - f(x)} < ϵ$, ⦉
+
+      ‖ from which we deduce ⦉
+
+      ‖ $\supnorm{f_n - f} < ϵ$. ⦉
+
+      ‖ Thus $f_n \goesto f$ ⦉
+
+      ‖ as $n \goesto ∞$. ⦉⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ «Limit is Continuous.» ⦉
+
+    ‖ Next, we argue that $f$ is continuous. ⦉
+
+    ‖ Let $x_0 ∈ [a, b]$. ⦉
+
+    ‖ Let $ϵ > 0$. ⦉
+
+    ‖ Since $f_n \goesto f$ there exists ⦉
+
+    ‖ $n_0$ so that
+      ◇ ⦊
+        ‖ \supnorm{f_{n_0} - f} < ϵ/3. ⦉
+      ⦉⦉
+
+    ‖ By the triangle inequality,
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
+
+        ‖ \abs{f(x_0) - f(x)} ≤ \abs{f(x_0) - f_{n_0}(x_0)} +
+          \abs{f_{n_0}(x_0) - f(x)}, ⦉
+
+        ‖ \end{aligned} ⦉
+      ⦉
+      for all $x ∈ [a, b]$. ⦉
+
+    ‖ Using $\abs{f(x_0) - f_{n_0}(x_0)} < ϵ/3$,
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
+
+        ‖ \abs{f(x_0) - f(x)} &< ϵ/3 + \abs{f_{n_0}(x_0) - f(x)}, ⦉
+
+        ‖ \end{aligned} ⦉
+      ⦉
+      for all $x ∈ [a, b]$. ⦉
+
+    ‖ Using the triangle inequality,
+      ◇ ⦊
+        ‖ \abs{f(x_0) - f(x)} < ϵ/3 + \abs{f_{n_0}(x_0) -
+          f_{n_0}(x)} + \abs{f_{n_0}(x) - f(x)} ᜶ ⦉
+      ⦉
+      for all $x ∈ [a, b]$. ⦉
+
+    ‖ Using $\abs{f_{n_0}(x_0) - f(x)} < ϵ/3$
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
+
+        ‖ \abs{f(x_0) - f(x)} < ϵ/3 + \abs{f_{n_0}(x_0) -
+          f_{n_0}(x)} + ϵ/3 ᜶ ⦉
+
+        ‖ \end{aligned} ⦉
+      ⦉
+      for all $x ∈ [a, b]$. ⦉
+
+    ‖ Since $f_{n_0}$ is continuous, there exists $δ > 0$ so
+      that
+      ◇ ⦊
+        ‖ \abs{x_0 - x} < δ ⦉
+
+        ‖ ⟹ ⦉
+
+        ‖ \abs{f_{n_0}(x_0) - f_{n_0}(x)} < ϵ/3, ⦉
+      ⦉
+      for $x ∈ [a, b]$. ⦉
+
+    ‖ In this case,
+      ◇ ⦊
+        ‖ \begin{aligned} ⦉
+
+        ‖ \abs{f(x_0) - f(x)} &< ϵ/3 + ϵ/3 + ϵ/3 = ϵ. ⦉
+
+        ‖ \end{aligned} ⦉
+      ⦉⦉
+
+  ‖ Since $ϵ$ was arbitrary, $f$ is continuous at $x_0$. ⦉
+
+  ‖ Since $x_0$ was arbitrary, $f$ is continuous everywhere. ⦉
+
+  ‖ Some call the above the ❬three epsilon argument❭. ⦉
+</proof>

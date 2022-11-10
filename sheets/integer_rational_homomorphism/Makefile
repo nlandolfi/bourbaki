@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make integer_rational_homomorphism.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 integer_rational_homomorphism.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > integer_rational_homomorphism.tex
 

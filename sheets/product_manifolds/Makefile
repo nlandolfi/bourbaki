@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make product_manifolds.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 product_manifolds.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > product_manifolds.tex
 
