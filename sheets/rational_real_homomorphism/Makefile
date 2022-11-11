@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make rational_real_homomorphism.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 rational_real_homomorphism.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rational_real_homomorphism.tex
 

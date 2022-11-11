@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make monotone_sequences.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 monotone_sequences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_sequences.tex
 
