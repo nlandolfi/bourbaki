@@ -1,0 +1,208 @@
+<!--
+!name:pointwise_and_measure_limits
+!need:real_limits
+!need:absolute_value
+!need:operations
+!need:convergence_in_measure
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ How does convergence pointwise (or almost everywhere
+    pointwise) relate to convergence in measure? ⦉
+⦉
+
+§ Results ⦉
+<statement type='proposition'>
+  ‖ There exists ⦉
+
+  ‖ a measure space ⦉
+
+  ‖ and a sequence of ⦉
+
+  ‖ measurable ⦉
+
+  ‖ real-valued functions ⦉
+
+  ‖ on that space ⦉
+
+  ‖ converging everywhere ⦉
+
+  ‖ (and so almost everywhere) ⦉
+
+  ‖ but not converging ⦉
+
+  ‖ in measure. ⦉
+</statement>
+<statement type='proposition'>
+  ‖ There exists ⦉
+
+  ‖ a measure space ⦉
+
+  ‖ and a sequence of ⦉
+
+  ‖ measurable ⦉
+
+  ‖ real-valued functions ⦉
+
+  ‖ on that space ⦉
+
+  ‖ converging in measure ⦉
+
+  ‖ but not converging almost ⦉
+
+  ‖ everywhere (nor everywhere). ⦉
+</statement>
+<statement type='proposition'>
+  ‖ On finite measure spaces, all sequences of measurable
+    real-valued functions converging almost everywhere converge in
+    measure. ⦉
+</statement>
+<proof>
+  ¶ ⦊
+    ‖ Let $(X, 𝒜, μ)$ be a measure space. ⦉
+
+    ‖ Let $\seq{f}$ be a sequence of measurable functions on $X$
+      such that $\seqt{f} \goesto f$ almost everywhere. ⦉
+
+    ‖ Let $ϵ > 0$. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ For each $x ∈ X$, if $\abs{f_n(x) - f(x)} > ϵ$ for
+      infinitely many $n$, then $f_n(x) \not\goesto f(x)$. ⦉
+
+    ‖ Let $A$ be the set of such $x$ and let $B = \Set*{ x
+      ∈ X }{ f_n(x) \not\goesto f(x) }$. ⦉
+
+    ‖ $A$ is a subset of $B$. ⦉
+
+    ‖ The measure of $B$ is zero since $f_n \goesto f$. ⦉
+
+    ‖ Use the the monotonicity of measure to conclude. ⦉
+
+    ‖ $μ(A) ≤ μ(B) = 0$. ⦉
+
+    ‖ Since $μ(A) ≥ 0$, ⦉
+
+    ‖ $μ(A) = 0$. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ For natural $k$, let $E_k$ be the $\Set*{x ∈ X}
+      {\abs{f_k(x) - f(x)} > ϵ}$. ⦉
+
+    ‖ Then $x ∈ A$ means that for every natural $n$, there
+      exists a $k ≥ n$ such that $x ∈ E_k$. ⦉
+
+    ‖ In particular, for every $n$, $x$ is in $∪_{k =
+      n}^{∞}E_k$; ⦉
+
+    ‖ denote this set by $B_n$. ⦉
+
+    ‖ If $x$ is in $B_n$ for every ⦉
+
+    ‖ $n$, then ⦉
+
+    ‖ $x ∈ ∩_{n = 1}^{∞} B_n$. ⦉
+
+    ‖ So we can write
+      ◇ ⦊
+        ‖ A = ⋂_{n = 1}^{∈fty} ⦉
+
+        ‖ ⋃_{k = n}^{∈fty} ⦉
+
+        ‖ E_k ⦉
+
+        ‖ = ⋂_{n = 1}^{∈fty} ⦉
+
+        ‖ B_n ⦉
+
+        ‖ . ⦉
+      ⦉⦉
+
+    ‖ The sequence of sets $\seq{B}$ is decreasing. So since $μ$
+      is finite,
+      ◇ ⦊
+        ‖ \lim_{n → ∈fty} μ(B_n) = μ(A) = 0. ⦉
+      ⦉⦉
+
+    ‖ For every $n$, the set $B_n$ contains $\Set*{x ∈
+      X}{\abs{f_n(x) - f(x)} > ϵ}$, namely $E_n$, the first set
+      in the union. ⦉
+
+    ‖ So then $μ(E_n) ≤ μ(B_n)$ by monotonicity and so
+      ◇ ⦊
+        ‖ 0 ⦉
+
+        ‖ ≤ \lim_{n → ∈fty} μ(E_n) ⦉
+
+        ‖ ≤ \lim_{n → ∈fty} μ(B_n) ⦉
+
+        ‖ = 0, ⦉
+      ⦉⦉
+
+    ‖ and we conclude $\lim_{n} E_n = 0$. ⦉
+
+    ‖ Since $ϵ$ was arbitrary, ⦉
+
+    ‖ we conclude $f_n \goesto f$ in ⦉
+
+    ‖ measure. ⦉
+  ⦉
+</proof>
+<statement type='proposition'>
+  ‖ On any measure space, ⦉
+
+  ‖ for a sequence ⦉
+
+  ‖ of measurable real-valued ⦉
+
+  ‖ functions converging ⦉
+
+  ‖ in measure to a measurable ⦉
+
+  ‖ real-valued limit function, ⦉
+
+  ‖ there exists a subsequence ⦉
+
+  ‖ convergeng to the limit ⦉
+
+  ‖ function almost everywhere. ⦉
+</statement>
+<proof>
+  ¶ ⦊
+    ‖ Let $(X, 𝒜, μ)$ be a measure space. ⦉
+
+    ‖ Let $\seq{f}$ be a sequence of measurable functions on $X$
+      such that $\seqt{f} \goesto f$ in measure. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ There exists $n_1$ so that
+      ◇ ⦊
+        ‖ μ(\Set*{x ∈ X}{\abs{f_{n_1}(x) - f(x)} > 1}) <
+          \frac{1}{2}. ⦉
+      ⦉
+
+      ‖ Can find $n_2 > n_1$ so that ⦉
+      ◇ ⦊
+        ‖ μ(\Set*{x ∈ X}{\abs{f_{n_2}(x) - f(x)} > \frac{1}{2}}) <
+          \frac{1}{4}. ⦉
+      ⦉
+
+      ‖ We can inductively find a sequence $\set{n_k}_k$ ⦉
+      so that:
+      ◇ ⦊
+        ‖ μ(\Set*{ ⦉
+
+        ‖ x ∈ x ⦉
+
+        ‖ }{ ⦉
+
+        ‖ \abs{f_{n_k}(x) - f(x)} > \frac{1}{k} ⦉
+
+        ‖ }) ≤ \frac{1}{2^k}. ⦉
+      ⦉⦉
+  ⦉
+</proof>
