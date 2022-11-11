@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make product_sigma_algebras.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 product_sigma_algebras.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > product_sigma_algebras.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make pointwise_and_measure_limits.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 pointwise_and_measure_limits.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > pointwise_and_measure_limits.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make probability_density_function.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 probability_density_function.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > probability_density_function.tex
 
