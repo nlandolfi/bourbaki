@@ -1,0 +1,99 @@
+<!--
+!name:pAC_learnable_hypotheses
+!need:probably_approximately_correct_inductors
+!need:hypothesis_classes
+!refs:shai_shalev-schwartz2014understanding/3
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to talk about an algorithm which can learn from a
+    hypothesis class, regardless of the underlying distribution. ⦉
+⦉
+
+‖   § Definition ⦉⦉
+¶ ⦊
+  ‖ Let $(X, 𝒳)$ and $(Y, 𝒴)$ be measurable input and output
+    spaces. ⦉
+⦉
+
+¶ ⦊
+  ‖ A hypothesis class $ℋ$ of measurable functions from $X$ to
+    $Y$ is ❬probably approximately correct learnable❭ (or ❬PAC
+    learnable❭) if ⦉
+
+  ‖ (a) there exists an inductor $𝒜: (X × Y)^n → ℋ$, so that
+    (b) for every underlying measure $μ$ and labeling function
+    $f: X → Y$ (c) for every $ϵ, δ ∈ (0, 1)$ (d) there
+    exists $m_0 ∈ 𝗡$ so that (e) for all $m ≥ m_0$
+    ◇ ⦊
+      ‖ μ^m\left[ ⦉
+
+      ‖ μ\left[ ⦉
+
+      ‖ 𝒜((x_i, f(x_i))_{i = 1}^{n})(ξ) ≠ f(ξ) ⦉
+
+      ‖ \right] ⦉
+
+      ‖ ≤ ϵ \right] ≥ 1-δ ⦉
+    ⦉
+    where $x ∈ X^m$ and $ξ ∈ X$. ⦉
+
+  ‖ In this case we say that the inductor (or learning
+    algorithm) $𝒜$ ❬PAC learns❭ $ℋ$. ⦉
+⦉
+
+¶ ⦊
+  ‖ We interpret this as follows: “no matter the underlying
+    distribution and correct labeling function, if someone
+    specifies an accuracy and confidence we can tell them the
+    number of samples they need so that the inductor outputs a
+    hypothesis which is probably approximately correct.”⦉
+⦉
+
+¶ ⦊
+  ‖ Some authors require that the hypothesis class be realizable
+    with respect to the underlying distribution and correct
+    labeling function. ⦉
+
+  ‖ This is natural, because if the hypothesis class includes
+    the correct labeling function $f$, then it is realizable. ⦉
+
+  ‖ In this case they refer to the above definition as the
+    ❬agnostic PAC model❭. ⦉
+
+  ‖ We emphasize here that there this definition includes the
+    notion of realizability. ⦉
+
+  ‖ In other words. ⦉
+
+  ‖ We emphasize again that this definition contains to
+    “approximation parameters.” ⦉
+
+  ‖ The accuracy parameter $ϵ$ corresponds to the “approximately
+    correct” piece and the confidence parameters $δ$ corresponds
+    to the “probably” piece. ⦉
+⦉
+
+§§ Sample complexity ⦉
+¶ ⦊
+  ‖ Note that the existence of an $m_0$ above for each $ϵ$ and
+    $δ$ is equivalent to requiring that there exists $m_0: (0,
+    1)^2 → \N$ so that for all $m ≥ m_0(ϵ,δ)$ the condition in
+    the above equation holds. ⦉
+
+  ‖ There may exist multiple such $m_0$, so we define
+    $\tilde{m}: (0, 1)^2 → 𝗡$ so that $\tilde{m}(ϵ,δ)$ is the
+    smallest integer so that the above equation holds. ⦉
+
+  ‖ We call $\tilde{m}$ the ❬sample complexity❭. ⦉
+
+  ‖ Clearly it is a function of $ϵ$ and $δ$. ⦉
+
+  ‖ It also depends on the hypothesis class $ℋ$ and the
+    learning algorithm $𝒜$. ⦉
+⦉
+
+<tex>
+  ‖ \blankpage ⦉
+</tex>

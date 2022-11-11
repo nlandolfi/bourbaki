@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make plane_distance.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 plane_distance.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > plane_distance.tex
 

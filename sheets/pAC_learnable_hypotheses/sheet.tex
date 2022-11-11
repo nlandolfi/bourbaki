@@ -1,28 +1,28 @@
+
 %!name:pAC_learnable_hypotheses
 %!need:probably_approximately_correct_inductors
 %!need:hypothesis_classes
 %!refs:shai_shalev-schwartz2014understanding/3
 
-\ssection{Why}
+\section*{Why}
 
 We want to talk about an algorithm which can learn from a hypothesis class, regardless of the underlying distribution.
 
-\ssection{Definition}
+  \section*{Definition}
 
-Let $(X, \CX)$ and $(Y, \CY)$ be measurable input and output spaces.
+Let $(X, \mathcal{X} )$ and $(Y, \mathcal{Y} )$ be measurable input and output spaces.
 
-A hypothesis class $\CH$ of measurable functions from $X$ to $Y$ is \t{probably approximately correct learnable} (or \t{PAC learnable}) if
-(a) there exists an inductor $\CA: (X \times Y)^n \to \CH$, so that (b) for every underlying measure $\mu$ and labeling function $f: X \to Y$ (c) for every $\epsilon, \delta \in (0, 1)$ (d) there exists $m_0 \in \N$ so that (e) for all $m \geq m_0$
-\begin{equation}
-  \mu^m\left[
-  	\mu\left[
-  		\CA((x_i, f(x_i))_{i = 1}^{n})(\xi) \neq f(\xi)
-  		\right]
-  	\leq \epsilon \right] \geq 1-\delta
-  	\label{equation:pAC_learnable_hypotheses:condition}
-\end{equation}
-where $x \in X^m$ and $\xi \in X$.
-In this case we say that the inductor (or learning algorithm) $\CA$ \t{PAC learns} $\CH$.
+A hypothesis class $\mathcal{H} $ of measurable functions from $X$ to $Y$ is \t{probably approximately correct learnable} (or \t{PAC learnable}) if
+(a) there exists an inductor $\mathcal{A} : (X \times  Y)^n \to \mathcal{H} $, so that (b) for every underlying measure $\mu $ and labeling function $f: X \to Y$ (c) for every $\epsilon , \delta  \in (0, 1)$ (d) there exists $m_0 \in \N  $ so that (e) for all $m \geq m_0$
+    \[
+\mu ^m\left[
+\mu \left[
+\mathcal{A} ((x_i, f(x_i))_{i = 1}^{n})(\xi ) \neq f(\xi )
+\right]
+\leq \epsilon  \right] \geq 1-\delta
+    \]
+where $x \in X^m$ and $\xi  \in X$.
+In this case we say that the inductor (or learning algorithm) $\mathcal{A} $ \t{PAC learns} $\mathcal{H} $.
 
 We interpret this as follows: \say{no matter the underlying distribution and correct labeling function, if someone specifies an accuracy and confidence we can tell them the number of samples they need so that the inductor outputs a hypothesis which is probably approximately correct.}
 
@@ -32,14 +32,14 @@ In this case they refer to the above definition as the \t{agnostic PAC model}.
 We emphasize here that there this definition includes the notion of realizability.
 In other words.
 We emphasize again that this definition contains to \say{approximation parameters.}
-The accuracy parameter $\epsilon$ corresponds to the \say{approximately correct} piece and the confidence parameters $\delta$ corresponds to the \say{probably} piece.
+The accuracy parameter $\epsilon $ corresponds to the \say{approximately correct} piece and the confidence parameters $\delta $ corresponds to the \say{probably} piece.
 
-\ssubsection{Sample complexity}
+\subsection*{Sample complexity}
 
-Note that the existence of an $m_0$ above for each $\epsilon$ and $\delta$ is equivalent to requiring that there exists  $m_0: (0, 1)^2 \to \N$ so that for all $m \geq m_0(\epsilon,\delta)$ the condition in Equation~\ref{equation:pAC_learnable_hypotheses:condition} holds.
-There may exist multiple such $m_0$, so we define $\tilde{m}: (0, 1)^2 \to \N$ so that $\tilde{m}(\epsilon,\delta)$ is the smallest integer so that Equation~\eqref{equation:pAC_learnable_hypotheses:condition} holds.
+Note that the existence of an $m_0$ above for each $\epsilon $ and $\delta $ is equivalent to requiring that there exists $m_0: (0, 1)^2 \to \N$ so that for all $m \geq m_0(\epsilon ,\delta )$ the condition in the above equation holds.
+There may exist multiple such $m_0$, so we define $\tilde{m}: (0, 1)^2 \to \N  $ so that $\tilde{m}(\epsilon ,\delta )$ is the smallest integer so that the above equation holds.
 We call $\tilde{m}$ the \t{sample complexity}.
-Clearly it is a function of $\epsilon$ and $\delta$.
-It also depends on the hypothesis class $\CH$ and the learning algorithm $\CA$.
+Clearly it is a function of $\epsilon $ and $\delta $.
+It also depends on the hypothesis class $\mathcal{H} $ and the learning algorithm $\mathcal{A} $.
 
 \blankpage
