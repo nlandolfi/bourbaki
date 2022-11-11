@@ -50,7 +50,7 @@
                 Z: ["\\mathbfsf{Z}"],
                 F: ["\\mathbfsf{F}"],
                 E: ["\\mathbfsf{E}"],
-                aff: ["\\mathsf{aff}"],
+                aff: ["\\mathword{aff}"],
                 upto: ["\\set{1,\\dots,#1}", 1],
                 eqc: ["[#1]", 1],
                 adj: ["\\mathword{adj}"],
@@ -93,10 +93,13 @@
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 argmin: ["\\mathword{argmin}"],
+                argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
+                inv: ["{#1}^{-1}", 1],
+                conv: ["\\mathword{conv}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1189,6 +1192,174 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./probability_measures.html'" onkeypress="location.href='./probability_measures.html'">
+                <span>
+                  Probability Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./probability_density_function.pdf#page=2'" onkeypress="location.href='./probability_density_function.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./probability_density_function-graph.pdf'" onkeypress="location.href='./probability_density_function-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Probability Density Function </h1> 
+      <!--
+!name:probability_density_function
+!need:probability_measures
+-->
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>probability density
+  function</span> of a real-valued random variable
+  is a measurable function from the real numbers
+  to real numbers which is (a) non-negative and
+  (b) the integral of the function over a
+  cover-length-measurable set with respect to the
+  cover measure to the cover length is the
+  probability that the random variable takes value
+  in that set.</span>
+
+ <span class='run'>We often abbreviate probability density function
+  as <span class='term'>p.d.f</span>, read aloud as
+  “pdf”.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>Let $(X, \mathcal{A} , \mu )$ be a probability
+  space.</span>
+
+ <span class='run'>Let $f$ be a real-valued random variable on
+  $X$.</span>
+
+ <span class='run'>Let $\lambda $ denote the cover length.</span>
+
+ <span class='run'>A function $g: \R  \to \R $ is a probability
+  density of $f$ if $g \geq 0$ and of $f$ if
+  <p>\[
+   \mu (\Set*{x \in X}{f(x) \in A}) = \int _{A} g d\lambda .
+  \]</p></span>
+</p>
+
+<h2 id='Uniqueness'>Uniqueness</h2>
+
+<div class='proposition'>
+ <span class='run'>If a probability density function exists, it is
+  unique (up to almost everywhere).</span></div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1226,7 +1397,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> TODO</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A <i>probability density function</i> of a real-valued random variable is a measurable function from the real numbers to real numbers which is (a) non-negative and (b) the integral of the function over a cover-length-measurable set with respect to the cover measure to the cover length is the probability that the random variable takes value in that set. We often abbreviate probability density function as <i>p.d.f</i>, read aloud as "pdf".</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(X, \SA, \mu)$ be a probability space. Let $f$ be a real-valued random variable on $X$. Let $\lambda$ denote the cover length. A function $g: R \to R$ is a probability density of $f$ if $g \geq 0$ and of $f$ if \[ \mu(\Set*{x \in X}{f(x) \in A}) = \int_{A} g d\lambda. \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection{Uniqueness}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} If a probability density function exists, it is unique (up to almost everywhere). \begin{proof} \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{probability density function} of a real-valued random variable is a measurable function from the real numbers to real numbers which is (a) non-negative and (b) the integral of the function over a cover-length-measurable set with respect to the cover measure to the cover length is the probability that the random variable takes value in that set. We often abbreviate probability density function as \t{p.d.f}, read aloud as "pdf".</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{A} , \mu )$ be a probability space. Let $f$ be a real-valued random variable on $X$. Let $\lambda $ denote the cover length. A function $g: \R  \to \R $ is a probability density of $f$ if $g \geq 0$ and of $f$ if \[ \mu (\Set*{x \in X}{f(x) \in A}) = \int _{A} g d\lambda . \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Uniqueness}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If a probability density function exists, it is unique (up to almost everywhere).\end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1380,7 +1551,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 87f4779cd.
+      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
     </span>
   </body>
 </html>

@@ -50,7 +50,7 @@
                 Z: ["\\mathbfsf{Z}"],
                 F: ["\\mathbfsf{F}"],
                 E: ["\\mathbfsf{E}"],
-                aff: ["\\mathsf{aff}"],
+                aff: ["\\mathword{aff}"],
                 upto: ["\\set{1,\\dots,#1}", 1],
                 eqc: ["[#1]", 1],
                 adj: ["\\mathword{adj}"],
@@ -93,10 +93,13 @@
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 argmin: ["\\mathword{argmin}"],
+                argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
+                inv: ["{#1}^{-1}", 1],
+                conv: ["\\mathword{conv}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -845,6 +848,215 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./integer_arithmetic.html'" onkeypress="location.href='./integer_arithmetic.html'">
+                <span>
+                  Integer Arithmetic
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./rational_products.html'" onkeypress="location.href='./rational_products.html'">
+                <span>
+                  Rational Products
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./rational_sums.html'" onkeypress="location.href='./rational_sums.html'">
+                <span>
+                  Rational Sums
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./integer_rational_homomorphism.html'" onkeypress="location.href='./integer_rational_homomorphism.html'">
+            <span>
+            Integer Rational Homomorphism
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_products.html'" onkeypress="location.href='./real_products.html'">
+            <span>
+            Real Products
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./rational_arithmetic.pdf#page=2'" onkeypress="location.href='./rational_arithmetic.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./rational_arithmetic-graph.pdf'" onkeypress="location.href='./rational_arithmetic-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Rational Arithmetic </h1> 
+      <!--
+!name:rational_arithmetic
+!need:rational_products
+!need:rational_sums
+!need:integer_arithmetic
+$!need:arithmetic (implicit)
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>What are addition and multiplication for
+  rationals?</span>
+
+ <span class='run'>What are the identity elements?</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>We call the operation of forming rationals sums
+  <span class='term'>rational addition</span>.</span>
+
+ <span class='run'>We call the operation of forming rational
+  products <span class='term'>rational
+  multiplication</span>.</span>
+</p>
+
+<h1 id='Results'>Results</h1>
+
+<p>
+ <span class='run'>It is easy to see the following.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>The additive identity for $\Q $ is
+  $\eqc{(0_{\Z }, 1_{\Z })}$.</span></div>
+<div class='proposition'>
+ <span class='run'>The multiplicative identity for $\Z $ is
+  $\eqc{(1_{\Z }, 1_{\Z })}$.</span></div>
+<h1 id='Notation'>Notation</h1>
+
+<p>
+ <span class='run'>We denote the additive identity of $\Q $ by
+  $0_{\Q }$ and the multiplicative identity by
+  $1_{\Q }$.</span>
+
+ <span class='run'>We denote the set $\Set{q \in \Q }{q \geq
+  0_{Q}}$ by $\Q _{+}$.</span>
+</p>
+
+<h1 id='Distributive'>Distributive</h1>
+
+<div class='proposition'>
+ <span class='run'>For rationals $x, y, z \in \Z $, $x \cdot  (y
+  + z) = x\cdot  y + x\cdot  z$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+
+ <span class='run'></span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Nonetheless, the full accounts will appear in
+  future editions.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>An account will appear in future editions.</span> <a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -913,7 +1125,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What are addition and multiplication for rationals? What are the identity elements?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We call the operation of forming rationals sums \t{rational addition}. We call the operation of forming rational products \t{rational multiplication}.</p></div><div class="sheet-listing" id="results"><h1 class="sheet">3. Results</h1></div><div class="sheet-listing"><p class="sheet"> It is easy to see the following.\footnote{Nonetheless, the full accounts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The additive identity for $\Q$ is $\eqc{(0_{\Z}, 1_{\Z})}$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The multiplicative identity for $\Z$ is $\eqc{(1_{\Z}, 1_{\Z})}$. \end{proposition}</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">4. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the additive identity of $\Q$ by $0_{\Q}$ and the multiplicative identity by $1_{\Q}$. We denote the set $\Set{q \in \Q}{q \geq 0_{Q}}$ by $\Q_{+}$.</p></div><div class="sheet-listing" id="distributive"><h1 class="sheet">5. Distributive</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For rationals $x, y, z \in \Z$, $x \cdot (y + z) = x\cdot y + x\cdot z$.\footnote{An account will appear in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What are addition and multiplication for rationals? What are the identity elements?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We call the operation of forming rationals sums \t{rational addition}. We call the operation of forming rational products \t{rational multiplication}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Results}</p></div><div class="sheet-listing"><p class="sheet"> It is easy to see the following.\footnote{Nonetheless, the full accounts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The additive identity for $\Q $ is $\eqc{(0_{\Z }, 1_{\Z })}$.\end{proposition} \begin{proposition} The multiplicative identity for $\Z $ is $\eqc{(1_{\Z }, 1_{\Z })}$.\end{proposition} \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the additive identity of $\Q $ by $0_{\Q }$ and the multiplicative identity by $1_{\Q }$. We denote the set $\Set{q \in \Q }{q \geq 0_{Q}}$ by $\Q _{+}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Distributive}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} For rationals $x, y, z \in \Z $, $x \cdot  (y + z) = x\cdot y + x\cdot  z$.\footnote{An account will appear in future editions.} \end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1067,7 +1279,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 87f4779cd.
+      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
     </span>
   </body>
 </html>

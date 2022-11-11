@@ -50,7 +50,7 @@
                 Z: ["\\mathbfsf{Z}"],
                 F: ["\\mathbfsf{F}"],
                 E: ["\\mathbfsf{E}"],
-                aff: ["\\mathsf{aff}"],
+                aff: ["\\mathword{aff}"],
                 upto: ["\\set{1,\\dots,#1}", 1],
                 eqc: ["[#1]", 1],
                 adj: ["\\mathword{adj}"],
@@ -93,10 +93,13 @@
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 argmin: ["\\mathword{argmin}"],
+                argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
+                inv: ["{#1}^{-1}", 1],
+                conv: ["\\mathword{conv}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1005,6 +1008,239 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./differentiable_functions.html'" onkeypress="location.href='./differentiable_functions.html'">
+                <span>
+                  Differentiable Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./multivariate_functions.html'" onkeypress="location.href='./multivariate_functions.html'">
+                <span>
+                  Multivariate Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./smooth_multivariate_functions.html'" onkeypress="location.href='./smooth_multivariate_functions.html'">
+            <span>
+            Smooth Multivariate Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./partial_derivatives.pdf#page=2'" onkeypress="location.href='./partial_derivatives.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./partial_derivatives-graph.pdf'" onkeypress="location.href='./partial_derivatives-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Partial Derivatives </h1> 
+      <!--
+!name:partial_derivatives
+!need:differentiable_functions
+!need:multivariate_functions
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to talk about how a function</span>
+
+ <span class='run'>of multiple real-valued arguments</span>
+
+ <span class='run'>changes with respect to changes</span>
+
+ <span class='run'>in its arguments.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $f: \R ^d \to \R $</span>
+
+ <span class='run'>For $i = 1,\dots ,d$, the
+  <span class='term'>$i$th partial derivative</span>
+  of $f$ is the function $g_i: \R ^d \to \R $
+  defined by
+  <p>\[
+   g_i(x) = \lim_{h \to 0} \frac{f(x + he_i) - f(x)}{h}
+  \]</p>
+  for each $x \in \R ^d$.</span>
+</p>
+
+<h1 id='Gradient'>Gradient</h1>
+
+<p>
+ <span class='run'>The <span class='term'>gradient</span> of a
+  multivariate function is the vector-valued
+  function whose $i$th component is the the
+  partial derivative of the function with respect
+  to its $i$th argument.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>Let $f: \R ^n \to \R $.</span>
+
+ <span class='run'>The gradient of $f$ is frequently denoted
+  $\nabla f$.</span>
+
+ <span class='run'>It is understood that $(\nabla f) \in \R ^d \to
+  \R ^d$.</span>
+
+ <span class='run'>An alternative notation is to use that similar
+  for single derivatives and to denote the
+  gradient (sometimes called derivative) of $f$ by
+  $f&#39;$ (assuming it exists).</span>
+
+ <span class='run'>It is important to here note that although
+  when $g: \R  \to \R $, $g&#39; \in (\R  \to
+  \R )$, (and so is another function from and to
+  reals) when $f: \R ^d \to \R $, $f&#39; \in
+  \R ^d \to \R ^d$, and so is a vector-valued
+  (not a real-valued) function.</span>
+</p>
+
+
+<p>
+ <span class='run'>There is (unfortunately) much notation for the
+  individual partial derivatives; most of which we
+  shall not (fortunately) have occasion to use in
+  these sheets.</span>
+
+ <span class='run'>One popular usage is the use of the
+  $\partial $ symbol, read aloud as “partial.}</span>
+
+ <span class='run'>For example, if $f: \R ^2 \to \R $ is a
+  function of two arguments, each being referred
+  to as $x$ and $y$, then $\partial _x f$ denotes
+  the partial derivative of $f$ with respect to
+  $x$ and $\partial _y f$ denotes the partial
+  derivative of $f$ with respect to $y$.</span>
+
+ <span class='run'>It is understood that $(\partial _x f) \in
+  \R ^d \to \R $. and likewise for $\partial _y f$.</span>
+
+ <span class='run'>Another popular usage is $\partial f/\partial x$
+  for $\partial _x f$ and $\partial f/\partial y$
+  for $\partial _y f$.</span>
+
+ <span class='run'>We will almost exclusively prefer the gradient
+  notation.</span>
+
+ <span class='run'></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify this sheet.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1059,7 +1295,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk about how a function of multiple real-valued arguments changes with respect to changes in its arguments.\footnote{Future editions will modify this sheet.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $f: \R^d \to \R$ For $i = 1,\dots,d$, The \t{$i$th partial derivative} of $f$ is the function $g_i: \R^d \to \R$ defined by \[ g_i(x) = \lim_{h \to 0} \frac{f(x + he_i) - f(x)}{h} \] for each $x \in \R^d$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing" id="gradient"><h1 class="sheet">3. Gradient</h1></div><div class="sheet-listing"><p class="sheet"> The \t{gradient} of a multivariate function is the vector-valued function whose $i$th component is the the partial derivative of the function with respect to its $i$th argument.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">3.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $f: \R^n \to \R$. The gradient of $f$ is frequently denoted $\nabla f$. It is understood that $(\nabla f) \in \R^d \to \R^d$. An alternative notation is to use that similar for single derivatives and to denote the gradient (sometimes called derivative) of $f$ by $f'$ (assuming it exists). It is important to here note that although when $g: \R \to \R$, $g' \in (\R \to \R)$, (and so is another function from and to reals) when $f: \R^d \to \R$, $f' \in \R^d \to \R^d$, and so is a vector-valued (not a real-valued) function.</p></div><div class="sheet-listing"><p class="sheet"> There is (unfortunately) much notation for the individual partial derivatives; most of which we shall not (fortunately) have occasion to use in these sheets. One popular usage is the use of the $\partial$ symbol, read aloud as "partial." For example, if $f: \R^2 \to \R$ is a function of two arguments, each being referred to as $x$ and $y$, then $\partial_x f$ denotes the partial derivative of $f$ with respect to $x$ and $\partial_y f$ denotes the partial derivative of $f$ with respect to $y$. It is understood that $(\partial_x f) \in \R^d \to \R$. and likewise for $\partial_y f$. Another popular usage is $\nicefrac{\partial f}{\partial x}$ for $\partial_x f$ and $\nicefrac{\partial f}{\partial y}$ for $\partial_y f$. We will almost exclusively prefer the gradient notation.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to talk about how a function of multiple real-valued arguments changes with respect to changes in its arguments.\footnote{Future editions will modify this sheet.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \R ^d \to \R $ For $i = 1,\dots ,d$, the \t{$i$th partial derivative} of $f$ is the function $g_i: \R ^d \to \R $ defined by \[ g_i(x) = \lim_{h \to 0} \frac{f(x + he_i) - f(x)}{h} \] for each $x \in \R ^d$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Gradient}</p></div><div class="sheet-listing"><p class="sheet"> The \t{gradient} of a multivariate function is the vector-valued function whose $i$th component is the the partial derivative of the function with respect to its $i$th argument.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \R ^n \to \R $. The gradient of $f$ is frequently denoted $\nabla f$. It is understood that $(\nabla f) \in \R ^d \to \R ^d$. An alternative notation is to use that similar for single derivatives and to denote the gradient (sometimes called derivative) of $f$ by $f'$ (assuming it exists). It is important to here note that although when $g: \R  \to \R $, $g' \in (\R  \to \R )$, (and so is another function from and to reals) when $f: \R ^d \to \R $, $f' \in \R ^d \to \R ^d$, and so is a vector-valued (not a real-valued) function.</p></div><div class="sheet-listing"><p class="sheet"> There is (unfortunately) much notation for the individual partial derivatives; most of which we shall not (fortunately) have occasion to use in these sheets. One popular usage is the use of the $\partial $ symbol, read aloud as "partial." For example, if $f: \R ^2 \to \R $ is a function of two arguments, each being referred to as $x$ and $y$, then $\partial _x f$ denotes the partial derivative of $f$ with respect to $x$ and $\partial _y f$ denotes the partial derivative of $f$ with respect to $y$. It is understood that $(\partial _x f) \in \R ^d \to \R $. and likewise for $\partial _y f$. Another popular usage is $\partial f/\partial x$ for $\partial _x f$ and $\partial f/\partial y$ for $\partial _y f$. We will almost exclusively prefer the gradient notation.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1213,7 +1449,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 87f4779cd.
+      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
     </span>
   </body>
 </html>

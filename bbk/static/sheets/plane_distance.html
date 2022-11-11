@@ -50,7 +50,7 @@
                 Z: ["\\mathbfsf{Z}"],
                 F: ["\\mathbfsf{F}"],
                 E: ["\\mathbfsf{E}"],
-                aff: ["\\mathsf{aff}"],
+                aff: ["\\mathword{aff}"],
                 upto: ["\\set{1,\\dots,#1}", 1],
                 eqc: ["[#1]", 1],
                 adj: ["\\mathword{adj}"],
@@ -93,10 +93,13 @@
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 argmin: ["\\mathword{argmin}"],
+                argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
+                inv: ["{#1}^{-1}", 1],
+                conv: ["\\mathword{conv}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -993,6 +996,199 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  max-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./interval_length.html'" onkeypress="location.href='./interval_length.html'">
+                <span>
+                  Interval Length
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_plane.html'" onkeypress="location.href='./real_plane.html'">
+                <span>
+                  Real Plane
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./complex_distance.html'" onkeypress="location.href='./complex_distance.html'">
+            <span>
+            Complex Distance
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./plane_inner_product.html'" onkeypress="location.href='./plane_inner_product.html'">
+            <span>
+            Plane Inner Product
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./plane_norm.html'" onkeypress="location.href='./plane_norm.html'">
+            <span>
+            Plane Norm
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./space_distance.html'" onkeypress="location.href='./space_distance.html'">
+            <span>
+            Space Distance
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./plane_distance.pdf#page=2'" onkeypress="location.href='./plane_distance.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./plane_distance-graph.pdf'" onkeypress="location.href='./plane_distance-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Plane Distance </h1> 
+      <!--
+!name:plane_distance
+!need:interval_length
+!need:real_plane
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>What is the distance between two points in a
+  plane?</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>We define the distance between two points in
+  the plane as the length of the line segment
+  connecting them.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>In terms of their coordinates $(x_1, x_2),
+  (y_1, y_2) \in \R ^2$, the
+  <span class='term'>plane distance</span> of two
+  points is
+  <p>\[
+   \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2}.
+  \]</p></span>
+
+ <span class='run'>This is sometimes referred to as the
+  <span class='term'>Euclidean distance</span>.</span>
+
+ <span class='run'>We have thus defined a function mapping $\R ^2
+  \times \R ^2$ into $\R $.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This intuition will be expanded in future
+  editions.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1068,7 +1264,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What is the distance between two points in a plane?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We define the distance between two points in the plane as the length of the line segment connecting them.\footnote{This intuition will be expanded in future editions.} In terms of their coordinates $(x_1, x_2), (y_1, y_2) \in \R^2$, the \t{plane distance} of two points is \[ \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2}. \] This is sometimes referred to as the \t{Euclidean distance}. We have thus defined a function mapping $\R^2 \times \R^2$ into $\R$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What is the distance between two points in a plane?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We define the distance between two points in the plane as the length of the line segment connecting them.\footnote{This intuition will be expanded in future editions.} In terms of their coordinates $(x_1, x_2), (y_1, y_2) \in \R ^2$, the \t{plane distance} of two points is \[ \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2}. \] This is sometimes referred to as the \t{Euclidean distance}. We have thus defined a function mapping $\R ^2 \times \R ^2$ into $\R $.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1222,7 +1418,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 87f4779cd.
+      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
     </span>
   </body>
 </html>
