@@ -1,19 +1,20 @@
+
 %!name:rooted_trees
 %!need:trees
 %!refs:vandenberghe2014chordal
 % below needed for parent and child functions, maybe change
 %!need:directed_graphs
 
-\ssection{Why}
+\section*{Why}
 
 We want to talk rooting a tree at a given vertex.\footnote{Future editions will expand this intuition.}
 
-\ssection{Definition}
+\section*{Definition}
 
 A \t{rooted tree} is an ordered pair $((V, T), r)$ where $(V, T)$ is a tree and $r \in V$ is a distinguished vertex which we call the \t{root}.
-We visualize rooted trees with the root at the top (see Figure~\ref{figure:rooted_trees:rooted_tree}).
+We visualize rooted trees with the root at the top (see the figure below).
 
-\ssubsection{Parents and Children}
+\subsection*{Parents and children}
 
 Suppose $w$ is the first vertex on the path from the root to a non-root vertex $v$.
 Since there is only one such path, $w$ is unique and we call it \t{the parent} of $v$.
@@ -26,7 +27,7 @@ We define the \t{parent function} $\pa: V \to V$ with the convention that the \t
 The \t{parent of degree $k$} where $k > 0$ is $\pa^k(x)$ where $\pa^k$ is the composite of $\pa$ with itself $k$ times.
 So, in particular, $\pa^{k+1}(v) = \pa(\pa^k(v))$.
 We define the \t{parent of degree $0$} of $v$ to be $v$, and denote it by $\pa^0(v) = v$.
-For the tree visualized in Figure~\ref{figure:rooted_trees:rooted_tree}, $\pa(i) = g$, $\pa^2(i) = d$, $\pa^3(i) = a$.
+For the tree visualized in the figure below, $\pa(i) = g$, $\pa^2(i) = d$, $\pa^3(i) = a$.
 
 If $w = \pa^k(v)$ for some $k \geq 0$, then $w$ is a \t{ancestor} of $v$ and $v$ is a \t{descendent} of $w$.
 We use the term \t{proper ancestor} and \t{proper descendent} if $k > 0$ (i.e., $w \neq v$).
@@ -37,9 +38,4 @@ The level of the root is $0$.
 If $\lev(v) = k > 0$, then $\pa^{k}(v)$ is the root.
 The level function $\lev$ satisfies $\lev(v) = \lev(\pa(v)) + 1$.
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.5\textwidth]{\figpath{rooted_trees}{rooted_tree}}
-  \caption{A rooted tree with root $a$.}
-  \label{figure:rooted_trees:rooted_tree}
-\end{figure}
+\begin{center}\includegraphics[width=0.50\textwidth]{./graphics/rootedtree.png}\end{center}

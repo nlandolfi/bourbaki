@@ -1,0 +1,89 @@
+<!--
+!name:optimal_tree_density_approximators
+!need:tree_density_approximators
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ Which is the optimal tree to use for tree density
+    approximation? ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ We want to choose the tree whose corresponding approximator
+    for the given density achieves minimum relative entropy with
+    the given density among all tree density approximators. ⦉
+
+  ‖ We call such a density an ❬optimal tree approximator❭ of
+    the given density. ⦉
+
+  ‖ We call a tree according to which an optimal tree
+    approximator factors and optimal approximator tree. ⦉
+⦉
+
+§ Result ⦉
+<statement type='proposition'>
+  ¶ ⦊
+    ‖ Let $g: 𝗥^n → [0, 1]$ be a density. ⦉
+
+    ‖ A tree $T$ on $\set{1, …, n}$ is an optimal approximator
+      tree if and only if it is a maximal spanning tree of the
+      differential mutual information graph of $q$. ⦉
+  ⦉
+
+  <proof>
+    ¶ ⦊
+      ‖ First, denote the optimal approximator of $g$ for tree
+        $T$ by $f^*_T$. Recall
+        ◇ ⦊
+          ‖ f^*_T = f_1 ∏_{i ≠ 1} f_{i | \pa{i}} ⦉
+        ⦉⦉
+    ⦉
+
+    ¶ ⦊
+      ‖ Second, recall $d(g, f) = H(g, f) - H(g)$. ⦉
+
+      ‖ Since $H(g)$ does not depend on $f$, $f$ is a minimizer
+        of $d(g, f)$ if and only if it is a minimizer of $H(g,
+        f)$. ⦉
+    ⦉
+
+    ¶ ⦊
+      ‖ Third, express the cross entropy of $f^*_T$ relative to
+        $g$ as
+        ◇ ⦊
+          ‖ \begin{aligned} ⦉
+
+          ‖ H(q, p^*_T) ＆= h(q_1) - ∑_{j ≠ i} ( \int_{𝗥^d} g(x)
+            \log g_{i | \pa_i}(x_i, x_{\pa_i}) dx ) ᜶ ⦉
+
+          ‖ ＆= H(q_1) - ∑_{i ≠ 1} ∑_{a ∈ A} q(a) (\log
+            q_{i,\pa_i}(a_i, a_{\pa_i}) - \log q_{\pa{i}}(a_{\pa_i}))
+            ᜶ ⦉
+
+          ‖ ＆= H(q_1) - ∑_{i ≠ 1} ∑_{a ∈ A} q(a) (\log
+            q_{i,\pa_i}(a_i, a_{\pa_i}) - \log q_{\pa_i}(a_{\pa_i}) -
+            \log q_i(a_i) + \log q_{i}(a_i) ) ᜶ ⦉
+
+          ‖ ＆= ∑_{i = 1}^{n} H(q_i) - ∑_{i ≠ 1} I(q_i,
+            q_{\pa_i}) ᜶ ⦉
+
+          ‖ ＆= ∑_{i = 1}^{n} H(q_i) - ∑_{\set{i,j} ∈ T} I(q_i,
+            q_{j}) ᜶ ⦉
+
+          ‖ \end{aligned} ⦉
+        ⦉
+        where $\pa_i$ denotes the parent of vertex $i$ in $T$
+        ($i = 2, …, n$). ⦉
+
+      ‖ $H(g_i)$ does not depend on the choice of tree. ⦉
+
+      ‖ Choosing a tree to minimize the second term in the
+        final expression above is equivalent to choosing a maximal
+        spanning tree from the weighted graph with differential
+        mutual information edge weights; namely, the mutual
+        information graph of $g$. ⦉
+    ⦉
+  </proof>
+</statement>

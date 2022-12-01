@@ -1,0 +1,132 @@
+<!--
+!name:ordering_sets
+!need:unordered_triples
+!refs:paul_halmos/naive_set_theory/section_06
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to arrange the elements of a set in an order
+    using only the concept of sets.
+    † ⦊
+      ‖ This sheet needs revision. ⦉
+    ⦉⦉
+⦉
+
+§ Discussion ⦉
+¶ ⦊
+  ‖ What does this mean? Well, we often arrange objects in
+    orders. ⦉
+
+  ‖ For example, the letters of this page are arranged into
+    words. ⦉
+
+  ‖ Take two such words: ‘note’ and ‘tone’. ⦉
+
+  ‖ If letters are objects, what are words? ⦉
+⦉
+
+¶ ⦊
+  ‖ A first guess is that words seem like groups of letters,
+    and sets seem like groups, and so a word is a set of
+    letters. ⦉
+
+  ‖ So, the word ‘note’ is the set {'n', ‘o’, ‘t’, ‘e’}, and
+    then word ‘tone’ is the set {‘t’, ‘o’, ‘n’, ‘e’}. ⦉
+
+  ‖ The rub, of course, is that these are the same set. ⦉
+⦉
+
+¶ ⦊
+  ‖ The trick is that a word is not just the set of letters,
+    it is that set in some order. ⦉
+
+  ‖ Since ‘tone’ and ‘note’ have the same letters, they have
+    the same set of letters. ⦉
+
+  <!-- Since $\set{\text{‘n}}, \text{‘o}}, \text{‘t}}, \text{‘e}}}$ denotes the same set as $\set{\text{‘t}}, \text{‘o}}, \text{‘n}}, \text{‘e}}}$ and both these denote the same set as $\set{\text{‘e}}, \text{‘t}}, \text{‘o}}, \text{‘n}}}$. -->
+
+  ‖ The question is whether there is a way of saying what a
+    word is in terms of letters by using sets in such a way
+    that the set corresponding to ‘tone’ is distinguishable from
+    the set corresponding to ‘note’. ⦉
+⦉
+
+<!-- %TODO(next edition): single quotes represent words and letters -->
+¶ ⦊
+  ‖ The way we read English offers a hint. ⦉
+
+  ‖ When reading ‘tone’ we scan from left to right seeing ‘t’,
+    then ‘to’, then ‘ton’ then ‘tone’. ⦉
+
+  ‖ Suppose that for each spot in the ordering of the letters,
+    we consider those letters that appear at or before the spot. ⦉
+
+  ‖ In other words, we can consider the sets {‘t’}, {‘t’, ‘o’},
+    {‘t’, ‘o’, ‘n’}, {‘t’, ‘o’, ‘n’, ‘e’}. ⦉
+
+  ‖ Let us say that ‘tone’ corresponds to the set of these
+    sets, denoted by $𝒞$,
+    ◇ ⦊
+      ‖ 𝒞 = \set{\set{n, o, t}, \set{n, o, t, e}, \set{t},
+        \set{o, t}}. ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ Given $𝒞$, can we recover ‘tone’ (instead of ‘note’)? ⦉
+
+  ‖ Sure. ⦉
+
+  ‖ First, look for a set contained in all the others. ⦉
+
+  ‖ The singleton {‘t’} is the only one. ⦉
+
+  ‖ So the first letter is ‘t’. ⦉
+
+  ‖ Next look for a set distinct from ‘t’ which is contained
+    in all the rest. ⦉
+
+  ‖ The pair {‘o’, ‘t’} is the only one. ⦉
+
+  ‖ Since we already have ‘t’, the next letter is ‘o’. ⦉
+
+  ‖ We do the same twice more, getting ‘n’ and ‘e’, in that
+    order. ⦉
+⦉
+
+¶ ⦊
+  ‖ There is a certain peculiarity in all these considerations. ⦉
+
+  ‖ Every time we write down a set, we write the names (see
+    \sheetref{names}{Names}) of the elements in some order. ⦉
+
+  ‖ Indeed, whenever we speak of objects, we must say their
+    names in some order. ⦉
+
+  ‖ But of course, no matter how we denote or speak of the
+    set, the concept of set has no concept of ordering. ⦉
+⦉
+
+§ Generally ⦉
+¶ ⦊
+  ‖ Let $a$, $b$, $c$ and $d$ denote objects, no two of which
+    are the same (i.e., $a ≠ b$, $b ≠ c$, etc.). ⦉
+
+  ‖ Suppose we want to consider the elements of the quadruple
+    $\set{a, b, c, d}$ in the order $c$, $b$, $d$, $a$. ⦉
+
+  ‖ We include in the set all objects that that occur at or
+    before that position. ⦉
+
+  ‖ For the order $c$, $b$, $d$, $a$ of the objects in the
+    set $\set{a, b, c, d}$ we use $\set{c}$, $\set{c, b}$,
+    $\set{c, b, d}$ and $\set{c, b, d, a}$. ⦉
+⦉
+
+<!--
+% Then we can recover the ordering from
+% \[
+%   \CC = \set{\set{a, b, c, d}, \set{b, c}, \set{b, c, d}, \set{c}}.
+% \]
+-->

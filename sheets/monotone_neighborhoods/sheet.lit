@@ -1,0 +1,163 @@
+<!--
+!name:monotone_neighborhoods
+!need:ordered_undirected_graphs
+!need:arrays
+-->
+
+§ Why ⦉
+† ⦊
+  ‖ Future editions will include. This sheet is needed, for
+    example, in discussing perfect elimination orderings. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ The ❬higher adjacency set❭ or ❬higher neighborhood❭ of a
+    vertex $v$ in an ordered undirected graph is all vertices in
+    the neighborhood of $v$ whose index is greater the $v$. ⦉
+
+  ‖ Similarly, the ❬lower adjacency set❭ or ❬lower neighborhood❭
+    of $v$ is all vertices in the neighborhood of $v$ whose
+    index is less the $v$. ⦉
+
+  ‖ We call these ❬monotone neighborhoods❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ The ❬higher degree❭ of a vertex is the size of the higher
+    adjacency set and the ❬lower degree❭ of a vertex is the
+    size of its lower adjacency set. ⦉
+⦉
+
+¶ ⦊
+  ‖ The ❬closed monotone neighborhoods❭ are the ❬closed higher
+    adjacency set❭, the higher adjacency set of $v$ union with
+    the singleton $\set{v}$ and the ❬closed lower adjacency set❭,
+    the lower adjacency set of $v$ union with the singleton
+    $\set{v}$. ⦉
+⦉
+
+§§ Notation ⦉
+¶ ⦊
+  ‖ We denote the higher neighborhood of $v$ by $\adjh(v)$ and
+    the lower neighborhood by $\adjl(v)$. ⦉
+⦉
+
+§ Visualization ⦉
+
+<!--
+% \begin{figure}
+%   \centering
+%   \begin{subfigure}{0.4\textwidth}
+%   \includegraphics[width=1\textwidth]{graphics_included/ordered_undirected_graph}
+%   \caption{Ordered undirected graph.}
+%   \end{subfigure}
+%   \begin{subfigure}{0.4\textwidth}
+% \[
+% \barray{
+%   a     ＆   ＆ ＆ ＆ \\
+%   \bullet ＆ c ＆ ＆ ＆ \\
+%    ＆ \bullet ＆ d ＆ ＆ \\
+%    \bullet ＆ ＆ \bullet ＆ b ＆ \\
+%    \bullet ＆ \bullet ＆ \bullet ＆ \bullet ＆ e
+% }
+% \]
+%     \caption{Tabular representation.}
+%   \end{subfigure}
+% \end{figure}
+-->
+<center>
+  <img src='./graphics/orderedundirectedgraph.pdf' width='50%'/>
+</center>
+
+<!--
+    <div data-littype='paragraph'>
+     <div data-littype='run'> \begin{figure} </div>
+
+     <div data-littype='run'> \centering </div>
+
+     <div data-littype='run'> ∈cludegraphics[width=0.3\textwidth]{graphics_included/ordered_undirected_graph} </div>
+
+     <div data-littype='run'> \caption{Ordered undirected graph.} </div>
+
+     <div data-littype='run'> \end{figure} </div>
+    </div>
+    -->
+¶ ⦊
+  ‖ ⦉
+
+  ‖ To help think about the monotone neighborhoods of the graph
+    we visualize ordered graphs as triangular arrays with vertices
+    along the diagonal and a bullet in row $i$ and column $j$
+    of the array if $i > j$ and the vertices $σ(i)$ and $σ(j)$
+    are adjacent. ⦉
+⦉
+
+¶ ⦊
+  ‖ An example is shown below for the ordered undirected graph
+    in the figure (to understand this visualization, see␣
+    <a href='/sheets/ordered_undirected_graphs.html'>
+      ‖ Ordered Undirected Graphs ⦉
+    </a>
+    ) we use the ⦉
+
+  <!--
+% Let $(V, E)$ be an undirected graph with $V = \set{a,b,c,d,e}$ and
+%   $E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d}, \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}$.
+% Let $\sigma: \set{1, \dots, 5} \to V$ be an ordering with
+% \[
+%   \sigma(1) = a \quad  \sigma(2) = c \quad \sigma(3) = d \quad \sigma(4) = b \quad \sigma(e) = 5.
+% \]
+% An example is show below.
+-->
+  ◇ ⦊
+    ‖ \barray{ ⦉
+
+    ‖ a ＆ ＆ ＆ ＆ ᜶ ⦉
+
+    ‖ \bullet ＆ c ＆ ＆ ＆ ᜶ ⦉
+
+    ‖ ＆ \bullet ＆ d ＆ ＆ ᜶ ⦉
+
+    ‖ \bullet ＆ ＆ \bullet ＆ b ＆ ᜶ ⦉
+
+    ‖ \bullet ＆ \bullet ＆ \bullet ＆ \bullet ＆ e ⦉
+
+    ‖ } ⦉
+  ⦉
+⦉
+
+¶ ⦊
+  ‖ In this array representation the higher and lower
+    neighborhoods are easily identified. ⦉
+
+  ‖ The indices of the elements of $\adjh(v)$ are the column
+    indices of the entries in row $∈v{σ}(v)$ of the array. ⦉
+
+  ‖ For example, $∈v{σ}(d) = 3$, and the only bullet entry in
+    row three is $c$ so $\adjn(d) = \set{c}$. ⦉
+
+  ‖ Likewise, $\adjn(c) = \set{a}$. ⦉
+
+  ‖ And so on. ⦉
+
+  ‖ Similalry, the indices of $\adjp(v)$ are the row indices of
+    the entries in column $∈v{σ}(v)$. ⦉
+
+  ‖ For example, $∈v{σ}(d)$ is $3$, and there are indices 4 and
+    5 corresponding to $b$ and $e$ so $\adjp(d) = \set{b, e}$. ⦉
+
+  ‖ Likewise, $\adjp(c) = \set{d, e}$. ⦉
+⦉
+
+¶ ⦊
+  ‖ For this reason, we use the notation $\col(v)$ and $\row(v)$
+    for the closed upper and lower neighborhoods. ⦉
+
+  ‖ So $\col(v) = \adjp(v) \union \set{v}$ and $\row(v) =
+    \adjn(v) \union \set{v}$. ⦉
+⦉
+
+<tex>
+  ‖ \blankpage ⦉
+</tex>

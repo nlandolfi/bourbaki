@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make measure_vector_space.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 measure_vector_space.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > measure_vector_space.tex
 

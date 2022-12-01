@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make observation_sequences.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 observation_sequences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > observation_sequences.tex
 

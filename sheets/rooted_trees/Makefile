@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make rooted_trees.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 rooted_trees.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > rooted_trees.tex
 
