@@ -1,0 +1,130 @@
+<!--
+!name:row_reducer_matrices
+!need:real_matrices
+!need:linear_system_row_reductions
+!need:triangular_matrices
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ Can we represent the function associating a linear system
+    with its row reduction by matrix multiplication? ⦉
+⦉
+
+§ Main observation ⦉
+¶ ⦊
+  ‖ The following proposition affirmatively answers the question. ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ Let $(A ∈ 𝗥^{m ×m}, b ∈ 𝗥^{m})$ be a linear system with
+    $A_{kk} ≠ 0$ and $(C, d)$ the $k$th reduction of $(A, b)$. ⦉
+
+  ‖ Then there exists a matrix $L ∈ 𝗥^{m ×m}$ so that $C =
+    LA$ and $d = Lb$. ⦉
+</statement>
+<proof>
+  ‖ Define $L ∈ 𝗥^{m ×m}$ by $L_{st} = 1$ if $s = t$,
+    $-A_{sj}/A_{ij}$ if $k < s ≤ m$ and zero otherwise. ⦉
+</proof>
+¶ ⦊
+  ‖ For this reason, we call $L$ in the above proposition a
+    ❬row reducer matrix❭ or ❬row reducing matrix❭ or ❬row
+    reducer❭. ⦉
+
+  ‖ The row reducer matrix for the $k$th reduction of $(A, b)$
+    has the form
+    ◇ ⦊
+      ‖ L_k = \barray{ ⦉
+
+      ‖ 1 ＆ ＆ ＆ ＆ ＆ ᜶ ⦉
+
+      ‖ ＆ ⋱ ＆ ＆ ＆ ＆ ᜶ ⦉
+
+      ‖ ＆ ＆ 1 ＆ ＆ ＆ ᜶ ⦉
+
+      ‖ ＆ ＆ A_{ik}/A_{kk} ＆ 1 ＆ ＆᜶ ⦉
+
+      ‖ ＆ ＆ ⋮ ＆ ＆ ⋱ ＆ ＆ ᜶ ⦉
+
+      ‖ ＆ ＆ A_{mk}/A_{kk} ＆ ＆ ＆ 1 ⦉
+
+      ‖ } ⦉
+    ⦉⦉
+
+  ‖ So the following is immediate ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ Row reducing matrices are unit lower triangular. ⦉
+</statement>
+
+§ Example ⦉
+¶ ⦊
+  ‖ For example, the $(1,1)$-reduction of $(A, b)$ in which
+    ◇ ⦊
+      ‖ A = \barray{ ⦉
+
+      ‖ 2 ＆ 1 ＆ 1 ＆ 0 ᜶ ⦉
+
+      ‖ 4 ＆ 3 ＆ 3 ＆ 1 ᜶ ⦉
+
+      ‖ 6 ＆ 7 ＆ 9 ＆ 5 ᜶ ⦉
+
+      ‖ 8 ＆ 7 ＆ 9 ＆ 8 ᜶ ⦉
+
+      ‖ } \text{ and } b = \barray{ ⦉
+
+      ‖ 1 ᜶ ⦉
+
+      ‖ 2 ᜶ ⦉
+
+      ‖ 3 ᜶ ⦉
+
+      ‖ 4 ᜶ ⦉
+
+      ‖ }. ⦉
+    ⦉
+    is the linear system
+    ◇ ⦊
+      ‖ A' = \barray{ ⦉
+
+      ‖ 2 ＆ 1 ＆ 1 ＆ 0 ᜶ ⦉
+
+      ‖ 0 ＆ 1 ＆ 1 ＆ 1 ᜶ ⦉
+
+      ‖ 0 ＆ 3 ＆ 5 ＆ 5 ᜶ ⦉
+
+      ‖ 0 ＆ 4 ＆ 6 ＆ 8 ᜶ ⦉
+
+      ‖ } \text{ and } b' = \barray{ ⦉
+
+      ‖ 1 ᜶ ⦉
+
+      ‖ 0 ᜶ ⦉
+
+      ‖ -1 ᜶ ⦉
+
+      ‖ 1᜶ ⦉
+
+      ‖ }. ⦉
+    ⦉⦉
+
+  ‖ The row reducer is $L ∈ R^{4 ×4}$ defined by
+    ◇ ⦊
+      ‖ L = \barray{ ⦉
+
+      ‖ 1 ＆ 0 ＆ 0 ＆ 0 ᜶ ⦉
+
+      ‖ -2 ＆ 1 ＆ 0 ＆ 0 ᜶ ⦉
+
+      ‖ -4 ＆ 0 ＆ 1 ＆ 0 ᜶ ⦉
+
+      ‖ -3 ＆ 0 ＆ 0 ＆ 1 ⦉
+
+      ‖ }. ⦉
+    ⦉⦉
+
+  ‖ One can check that $A' = LA$ and $b' = Lb$, and clearly
+    $L$ is unit lower triangular. ⦉
+⦉

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make ordered_pair_projections.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 ordered_pair_projections.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > ordered_pair_projections.tex
 

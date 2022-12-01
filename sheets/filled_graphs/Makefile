@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make filled_graphs.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 filled_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > filled_graphs.tex
 

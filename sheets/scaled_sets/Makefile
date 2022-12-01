@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make scaled_sets.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 scaled_sets.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > scaled_sets.tex
 

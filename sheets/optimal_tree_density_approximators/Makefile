@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make optimal_tree_density_approximators.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 optimal_tree_density_approximators.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > optimal_tree_density_approximators.tex
 
