@@ -1,0 +1,96 @@
+<!--
+!name:ordinary_row_reductions
+!need:linear_system_row_reductions
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ When does the technique of row reductions prevail? ⦉
+⦉
+
+§§ Multivariable row reductions ⦉
+¶ ⦊
+  ‖ Let $S = (A ∈ 𝗥^{m ×m}, b ∈ 𝗥^{m})$ be a linear system
+    with $A_{kk} ≠ 0$. ⦉
+
+  ‖ The ❬$k$th row reduction❭ of $S$ is the linear system $(C,
+    d)$ with $C_{st} = A_{st} - (A_{sk}/A_{kk})A_{kt}$ if $i < s
+    ≤ m$ and $C_{st} = A_{st}$ otherwise. ⦉
+⦉
+
+¶ ⦊
+  ‖ The idea, as in the example in␣
+    <a href='/sheets/linear_system_row_reductions.html'>
+      ‖ Linear System Row Reductions ⦉
+    </a>
+    , is to eliminate variable $k$ from equations $k+1, …, m$. ⦉
+
+  ‖ We are taking the $k$th column of $A$ from
+    ◇ ⦊
+      ‖ \barray{A_{1k} ᜶ ⋮ ᜶ A_{kk} ᜶ A_{k+1,k} ᜶ ⋮ ᜶ A_{mk}}
+        \quad \text{to} \quad \barray{A_{1k} ᜶ ⋮ ᜶ A_{kk} ᜶ 0 ᜶
+        ⋮ ᜶ 0}. ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ We interpret the $i$th row reduction as ❬subtracting
+    equations❭ of the system or ❬reducing rows❭ of the array $A$. ⦉
+
+  ‖ If $a^i, c^i ∈ 𝗥^{n}$ denote the $i$th rows of $A$ and
+    $C$, $c^i = a^i - (A_{ik}/A_{kk})a^k$ for $k < i ≤ m$, ⦉
+
+  ‖ In other words, we obtain the $i$th row of matrix $C$ by
+    subtracting a multiple of the $k$th row of matrix $A$ from
+    the $i$th row of matrix $A$, for $k < i ≤ m$. ⦉
+
+  ‖ The following is an immediate consequence of real arithmetic. ⦉
+⦉
+
+<statement id='proposition:ordinaryrowreductions:basic' type='proposition'>
+  ‖ Let $(A ∈ 𝗥^{m × n}, b ∈ 𝗥^{n})$ be a linear system
+    which row reduces to $(C, d)$. ⦉
+
+  ‖ Then $x ∈ 𝗥^{n}$ is a solution of $(A, b)$ if and only
+    if it is a solution of $(C, d)$. ⦉
+</statement>
+
+§ Ordinary reductions ⦉
+¶ ⦊
+  ‖ We call the system $S$ ❬ordinarily reducible❭ if there
+    exists a sequence of systems $S_1, …, S_{m-1}$ so that $S_1$
+    is the $11$-reduction of $S$ and $S_{i}$ is the
+    $ii$-reduction of $S_{i-1}$ for $i = 1, …, n-1$. ⦉
+
+  ‖ In this case, we call $S_{n-1}$ the ❬final ordinary
+    reduction❭ (or just ❬ordinary reduction❭) of $S$. ⦉
+
+  ‖ The following is an immediate consequence of
+    Proposition~\ref{proposition:ordinaryrowreductions:basic}. ⦉
+  <statement id='proposition:ordinary_row_reductions:main' type='proposition'>
+    ‖ Let $S'$ be the (final) ordinary reduction of $S$. Then
+      $S$ and $S'$ have equivalent solution sets. ⦉
+  </statement>
+⦉
+
+‖ This process of constructing the ordinary reduction is called
+  ❬Gauss elimination❭ or ❬Gaussian elimination❭. ⦉
+
+‖ We call the $kk$th entry of system $S_{k-1}$ the ❬pivot❭. ⦉
+
+‖ In an ordinarily reducible system, the pivots are nonzero. ⦉
+¶ ⦊
+  ‖ The idea is that a system is ordinarily reducible if we
+    can take row reductions in sequence and end up with a
+    system that is easy to back-substitute and solve. ⦉
+
+  ‖ The difficulty is that this need not be the case. ⦉
+
+  ‖ For example, consider the following obvious difficulty. ⦉
+
+  ‖ The system $(A, b)$ in which
+    ◇ ⦊
+      ‖ A = \barray{0 ＆ 1᜶1 ＆ 2} \text{ and } \barray{1 ᜶ 2} ⦉
+    ⦉
+    is not ordinarily reducible, but clearly solvable. ⦉
+⦉

@@ -1,0 +1,148 @@
+<!--
+!name:ordinary_reducer_factorization
+!need:ordinary_row_reductions
+!need:row_reducer_matrices
+!need:matrix_transpose
+!refs:trefethen1997numerical
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ In ordinary reduction, we obtain a sequence of row reducers. ⦉
+⦉
+
+§§ Factorization of $A$ from a sequence of reducers ⦉
+¶ ⦊
+  ‖ Let $(A ∈ 𝗥^{m ×m}, b ∈ 𝗥^{m})$ be an ordinarily reducible
+    linear system. ⦉
+
+  ‖ The ❬ordinary reducer sequence❭ is a sequence of reducer
+    matrices $L_{1}, … L_{m-1}$ with $A_1 = L_1A$ and $A_i =
+    L_iA_{i-1}$ for $2 ≤ i ≤ m-1$. ⦉
+
+  ‖ In other words, $U ∈ 𝗥^{m ×m}$ defined by
+    <equation id='equation:ordinaryreducerfactorization:main'>
+      ‖ U = L_{m-1} ⋯ L_2 L_1 A ⦉
+    </equation>
+    is the ordinary row reduction of $A$. ⦉
+
+  ‖ $U$ is upper triangular. ⦉
+⦉
+
+¶ ⦊
+  ‖ If $L_{m-1}·s L_2 L_1$ in
+    Equation~\eqref{equation:ordinaryreducerfactorization:main} is
+    invertible, then we have
+    ◇ ⦊
+      ‖ A = \inv{(L_{m-1}·s L_2 L_1)}U, ⦉
+    ⦉
+    which is a factorization of $A$. ⦉
+
+  ‖ Each $L_i$ is invertible, so
+    ◇ ⦊
+      ‖ \inv{(L_{m-1} ⋯ L_2 L_1)} = \inv{L}_1\inv{L}_2⋯\inv{L}_{m-1}. ⦉
+    ⦉⦉
+
+  ‖ So we are interested in the inverse of $L_i$ for $i ≤
+    m-1$. ⦉
+
+  ‖ Recall that if $x_1$ is the first column of $A$, and $x_2$
+    is the second column of $L_1A$ and $x_k$ is the $k$th
+    column of $L_{k-1}·s L_{1}A$ for $k = 2, …, m-1$, then
+    ◇ ⦊
+      <tex>
+        ‖ {\tiny ⦉
+      </tex>
+
+      ‖ L_k = \barray{ ⦉
+
+      ‖ 1 ＆ ＆ ＆ ＆ ＆ ᜶ ⦉
+
+      ‖ ＆ ⋱ ＆ ＆ ＆ ＆ ᜶ ⦉
+
+      ‖ ＆ ＆ 1 ＆ ＆ ＆ ᜶ ⦉
+
+      ‖ ＆ ＆ -ℓ_{k+1,k} ＆ 1 ＆ ＆᜶ ⦉
+
+      ‖ ＆ ＆ ⋮ ＆ ＆ ⋱ ＆ ＆ ᜶ ⦉
+
+      ‖ ＆ ＆ -ℓ_{mk} ＆ ＆ ＆ 1 ⦉
+
+      ‖ } ⦉
+      <tex>
+        ‖ } ⦉
+      </tex>
+    ⦉⦉
+⦉
+
+‖ where $ℓ_{jk} = x_{jk}/x_{kk}$ for $k < j ≤ m$. ⦉
+
+§ Properties ⦉
+¶ ⦊
+  ‖ The two important properties of the $L_i$ is that they have
+    simple inverses and a simple product. ⦉
+
+  ‖ Define
+    ◇ ⦊
+      ‖ ℓ_k = (0,·s, 0,ℓ_{k+1,k}, ·s, ℓ_{m,k}) ⦉
+    ⦉
+    so that $L_k = L_k - ℓ_k\transpose{e}_k$ where $(e_k)_i$ is
+    1 if $k = i$ and 0 otherwise. ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ $\inv{L}_i$ is $L_i$ with the subdiagonal entries negated. ⦉
+  <proof>
+    ‖ From the sparsity pattern of $ℓ_k$, we have $e_k^\tp ℓ_k
+      = 0$. ⦉
+
+    ‖ So
+      ◇ ⦊
+        ‖ (I - ℓ_k e_k^\tp)(I + ℓ_k e_k^\tp) = I -
+          ℓ_ke^\tp_kℓ_ke^\tp_k = I. ⦉
+      ⦉⦉
+  </proof>
+</statement>
+<statement type='proposition'>
+  ¶ ⦊
+    ‖ $\inv{L}_{k}∈v{L}_{k+1}$ is the unit lower-triangular matrix
+      with the entries of both $∈v{L}_k$ and $∈v{L}_{k+1}$ in
+      their usual places. ⦉
+    <proof>
+      ‖ From the sparsity pattern of $ℓ_{k+1}$ we have $e_k^\tp
+        ℓ_{k+1} = 0$ so that
+        ◇ ⦊
+          ‖ \inv{L}_k ∈v{L}_{k+1} = (I + ℓ_ke^\tp_{k})(I +
+            ℓ_{k+1}e^\tp_{k+1}) = I + ℓ_ke^*_k + ℓ_{k+1}e^*_{k+1}. ⦉
+        ⦉⦉
+    </proof>
+  ⦉
+</statement>
+
+‖ Combining these two results, we deduce that
+  ◇ ⦊
+    ‖ \inv{L}_1\inv{L}_2⋯\inv{L}_{m-1} = \barray{ ⦉
+
+    ‖ 1 ＆ ＆ ＆ ＆ ᜶ ⦉
+
+    ‖ ℓ_{21} ＆ 1 ＆＆＆ ᜶ ⦉
+
+    ‖ ℓ_{31} ＆ ℓ_{32} ＆ 1 ＆ ＆ ᜶ ⦉
+
+    ‖ ⋮ ＆ ⋮ ＆ ⋱ ＆⋱ ＆ ᜶ ⦉
+
+    ‖ ℓ_{m1} ＆ ℓ_{m2} ＆ ·s ＆ ℓ_{m,m-1} ＆ 1 ᜶ ⦉
+
+    ‖ } ⦉
+  ⦉⦉
+¶ ⦊
+  ‖ If we define $L = L_{1}^{-1} ⋯ L_{m-1}^{-1}$ we obtain $A
+    = LU$. ⦉
+
+  ‖ In other words, we have a factorization (the ❬ordinary
+    reducer factorization❭) of $A$ in terms of two matrices. ⦉
+
+  ‖ The first, $L$ is unit lower triangular. ⦉
+
+  ‖ The second, $U$, is upper triangular. ⦉
+⦉
