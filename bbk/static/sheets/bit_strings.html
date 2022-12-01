@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -916,7 +933,9 @@
 .lit {
   margin: 0 0 1in 0;
   font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
   max-width: 6in;
+  min-width: 6in;
   text-align: justify;
   padding: 0;
   min-height: 11in;
@@ -1019,32 +1038,21 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Bit Strings </h1> 
-      <p>
- <span class='run'>%!name:bit_strings</span>
+      <!--
+!name:bit_strings
+thru codes %!need:lists
+!need:natural_powers
+!need:codes
+-->
 
- <span class='run'>%thru codes %!need:lists</span>
-
- <span class='run'>%!need:natural_powers</span>
-
- <span class='run'>%!need:codes</span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}</span>
-</p>
-
+<h1 id='Why'>Why</h1>
 
 <p>
  <span class='run'>We name sequences in $\set{0, 1}$ to easily
   discuss codes in this set.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Definition}</span>
-</p>
-
+<h1 id='Definition'>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>bit string</span>
@@ -1090,11 +1098,7 @@
   bytes.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Notation}</span>
-</p>
-
+<h2 id='Notation'>Notation</h2>
 
 <p>
  <span class='run'>We often denote the set $\set{0,1}$ by $\B$.</span>
@@ -1112,11 +1116,6 @@
  <span class='run'>In this context, \bool is another name for the
   set $\set{\true, \false}$<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup>
   .</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
 </p>
 <hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Why we want to name these requires more
   explanation, to be included in future editions.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Warning: some authors use these monikers with
@@ -1188,7 +1187,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We name sequences in $\set{0, 1}$ to easily discuss codes in this set. \ifhmode\unskip\fi\footnote{ Why we want to name these requires more explanation, to be included in future editions. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{bit string} (\t{binary string}) is a finite sequence in the set $\set{0, 1}$.</p></div><div class="sheet-listing"><p class="sheet"> If a bit string has length one, we refer to it as a \t{bit}. Using this terminology, it is natural to call the sequence terms \t{bits}. Other terminology for bit strings includes \t{binary sring}, \t{bit sequence} and \t{digital datum}.</p></div><div class="sheet-listing"><p class="sheet"> If the bit string has length eight, we refer to it as a \t{byte}. Using this terminology, a \t{kilobyte} is a length $8 \cdot 2^{10}$ bit string. In other words, a kilobyte is $2^{10} = 1024$ bytes, or roughly one thousand bytes. Likewise a \t{megabyte} is a length $8 \cdot 2^{20}$ bit string. A megabyte is $2^{20} = 1048576$ bytes, or roughly one million bytes. Similarly a \t{gigabyte} is $2^{30}$ bytes and a \t{terabyte} is $2^{40}$ bytes. \ifhmode\unskip\fi\footnote{ Warning: some authors use these monikers with powers of ten. For example, a kilobyte is exactly one thousand bytes. etc. }</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We often denote the set $\set{0,1}$ by $\B$. Using this notation, we denote the length $n$ bit strings by $\B^n$.</p></div><div class="sheet-listing"><p class="sheet"> We occasionally use \false to denote the length-1 bit string $(0,)$ and \true to denote the length-1 bit string $(1,)$. In this context, \bool is another name for the set $\set{\true, \false}$ \ifhmode\unskip\fi\footnote{ Future editions might break this out into its own sheet. } .</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We name sequences in $\set{0, 1}$ to easily discuss codes in this set.\footnote{Why we want to name these requires more explanation, to be included in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{bit string} (\t{binary string}) is a finite sequence in the set $\set{0, 1}$.</p></div><div class="sheet-listing"><p class="sheet"> If a bit string has length one, we refer to it as a \t{bit}. Using this terminology, it is natural to call the sequence terms \t{bits}. Other terminology for bit strings includes \t{binary sring}, \t{bit sequence} and \t{digital datum}.</p></div><div class="sheet-listing"><p class="sheet"> If the bit string has length eight, we refer to it as a \t{byte}. Using this terminology, a \t{kilobyte} is a length $8 \cdot 2^{10}$ bit string. In other words, a kilobyte is $2^{10} = 1024$ bytes, or roughly one thousand bytes. Likewise a \t{megabyte} is a length $8 \cdot 2^{20}$ bit string. A megabyte is $2^{20} = 1048576$ bytes, or roughly one million bytes. Similarly a \t{gigabyte} is $2^{30}$ bytes and a \t{terabyte} is $2^{40}$ bytes.\footnote{Warning: some authors use these monikers with powers of ten. For example, a kilobyte is exactly one thousand bytes. etc.}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We often denote the set $\set{0,1}$ by $\B$. Using this notation, we denote the length $n$ bit strings by $\B^n$.</p></div><div class="sheet-listing"><p class="sheet"> We occasionally use \false to denote the length-1 bit string $(0,)$ and \true to denote the length-1 bit string $(1,)$. In this context, \bool is another name for the set $\set{\true, \false}$\footnote{Future editions might break this out into its own sheet.} .</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1342,7 +1341,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

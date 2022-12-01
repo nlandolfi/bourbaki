@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -824,7 +841,9 @@
 .lit {
   margin: 0 0 1in 0;
   font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
   max-width: 6in;
+  min-width: 6in;
   text-align: justify;
   padding: 0;
   min-height: 11in;
@@ -927,30 +946,20 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Integer Sums </h1> 
-      <p>
- <span class='run'>%!name:integer_sums</span>
+      <!--
+!name:integer_sums
+!need:integer_numbers
+!need:natural_sums
+-->
 
- <span class='run'>%!need:integer_numbers</span>
-
- <span class='run'>%!need:natural_sums</span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}</span>
-</p>
-
+<h1 id='Why'>Why</h1>
 
 <p>
  <span class='run'>We want sums to follow those of natural
   numbers.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Definition}</span>
-</p>
-
+<h1 id='Definition'>Definition</h1>
 
 <p>
  <span class='run'>Consider $\eqc{(a, b)}, \eqc{(c, d)} \in \Z $.</span>
@@ -960,11 +969,7 @@
   as $\eqc{(a + c, b + d)}$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Notation}</span>
-</p>
-
+<h1 id='Notation'>Notation</h1>
 
 <p>
  <span class='run'>We denote the sum of $\eqc{(a, b)}$ and
@@ -972,11 +977,6 @@
 
  <span class='run'>So if $x, y \in \Z $ then the sum of $x$
   and $y$ is $x + y$.</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
 </p>
 <hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify this.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>One needs to show that this is well-defined.
   The account will appear in future editions.</span> <a href='#footnote-2-reference'>↩︎</a></li></ol>
@@ -1045,7 +1045,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want sums to follow those of natural numbers. \ifhmode\unskip\fi\footnote{ Future editions will modify this. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Consider $\eqc{(a, b)}, \eqc{(c, d)} \in \Z $. We define the \t{integer sum} of $\eqc{(a, b)}$ with $\eqc{(c, d)}$ as $\eqc{(a + c, b + d)}$. \ifhmode\unskip\fi\footnote{ One needs to show that this is well-defined. The account will appear in future editions. }</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the sum of $\eqc{(a, b)}$ and $\eqc{(c, d)}$ by $\eqc{(a, b)} + \eqc{(b, c)}$ So if $x, y \in \Z $ then the sum of $x$ and $y$ is $x + y$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want sums to follow those of natural numbers.\footnote{Future editions will modify this.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Consider $\eqc{(a, b)}, \eqc{(c, d)} \in \Z $. We define the \t{integer sum} of $\eqc{(a, b)}$ with $\eqc{(c, d)}$ as $\eqc{(a + c, b + d)}$.\footnote{One needs to show that this is well-defined. The account will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the sum of $\eqc{(a, b)}$ and $\eqc{(c, d)}$ by $\eqc{(a, b)} + \eqc{(b, c)}$ So if $x, y \in \Z $ then the sum of $x$ and $y$ is $x + y$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1199,7 +1199,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

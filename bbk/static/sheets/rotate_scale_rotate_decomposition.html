@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -977,6 +994,22 @@
 
 
 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
 <!-- % use \norm{x} for |x| 11/05/2021 I changed this back to ||x||, since that is alsmost always what I want. -->
 
 % use \norm{x} for |x| 11/05/2021 I changed this back to ||x||, since that is alsmost always what I want.
@@ -1041,21 +1074,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+<!-- \newcommand{\F}{\mathbfsf{F}} -->
 
-\newcommand{\Q}{\mathbfsf{Q}}
+\newcommand{\F}{\mathbfsf{F}}
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]} -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1088,14 +1113,6 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\F}{\mathbfsf{F}} -->
-
-\newcommand{\F}{\mathbfsf{F}}
-
-<!-- \def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]} -->
-
-\def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
 
 <!-- \newcommand{\tr}{\mathword{tr}} -->
 
@@ -1137,13 +1154,13 @@
 
 \newcommand{\coi}[1]{[#1)}
 
-<!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
-
-\newcommand{\RVec}[1]{\Vec{\R}{#1}}
-
 <!-- \renewcommand{\Vec}[2]{{#1}^{#2}} -->
 
 \renewcommand{\Vec}[2]{{#1}^{#2}}
+
+<!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
+
+\newcommand{\RVec}[1]{\Vec{\R}{#1}}
 
 <!-- \newcommand{\RMat}[2]{\R^{#1 \cross #2}} -->
 
@@ -1269,6 +1286,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- \newcommand{\Mat}[3]{#1^{#2 \cross #3}} -->
+
+\newcommand{\Mat}[3]{#1^{#2 \cross #3}}
+
+<!--  -->
+
+
+
 <!-- \newcommand{\tp}{\top} -->
 
 \newcommand{\tp}{\top}
@@ -1288,14 +1313,6 @@
 <!-- \newcommand{\tranposep}[1]{\transposep{#1}} -->
 
 \newcommand{\tranposep}[1]{\transposep{#1}}
-
-<!-- \newcommand{\Mat}[3]{#1^{#2 \cross #3}} -->
-
-\newcommand{\Mat}[3]{#1^{#2 \cross #3}}
-
-<!--  -->
-
-
 
 <!-- % \newcommand{\SymPDMat}[1]{\SymMat{#1}_{++}} -->
 
@@ -1420,7 +1437,9 @@
 .lit {
   margin: 0 0 1in 0;
   font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
   max-width: 6in;
+  min-width: 6in;
   text-align: justify;
   padding: 0;
   min-height: 11in;
@@ -1793,7 +1812,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

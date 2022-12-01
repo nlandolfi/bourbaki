@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -876,6 +893,200 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./directed_graphs.html'" onkeypress="location.href='./directed_graphs.html'">
+                <span>
+                  Directed Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./directed_acyclic_graphs.html'" onkeypress="location.href='./directed_acyclic_graphs.html'">
+            <span>
+            Directed Acyclic Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./directed_shortest_path_problems.html'" onkeypress="location.href='./directed_shortest_path_problems.html'">
+            <span>
+            Directed Shortest Path Problems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./directed_paths.pdf#page=2'" onkeypress="location.href='./directed_paths.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./directed_paths-graph.pdf'" onkeypress="location.href='./directed_paths-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Directed Paths </h1> 
+      <!--
+!name:directed_paths
+!need:directed_graphs
+-->
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $(V, E)$ be a directed graph.</span>
+
+ <span class='run'>A <span class='term'>directed path</span> between
+  vertex $v$ and vertex $w \neq v$ is a finite
+  sequence of distinct vertices, whose first
+  coordinate is $v$ and whose last coordinate is
+  $w$, and whose consecutive coordinates (as
+  ordered pairs) are edges in the graph.</span>
+
+ <span class='run'>We say that a path between $v$ and $w$ is
+  from $v$ to $w$.</span>
+
+ <span class='run'>The <span class='term'>length</span> of the path
+  is one less than the number of vertices:
+  namely, the number of edges.</span>
+</p>
+
+
+<p>
+ <span class='run'>Two vertices are
+  <span class='term'>connected</span> in a graph if
+  there exists at least one path between them.</span>
+
+ <span class='run'>A directed graph is
+  <span class='term'>connected</span> if there is a
+  path between every pair of vertices.</span>
+
+ <span class='run'>A graph is <span class='term'>acyclic</span> if
+  none of its paths cycle.</span>
+</p>
+
+<h2 id='Other_terminology'>Other terminology</h2>
+
+<p>
+ <span class='run'>Some authors allow paths to contain repeated
+  vertices, and call a path with distinct vertices
+  a <span class='term'>simple path</span>.</span>
+
+ <span class='run'>Similarly, some authors allow a cycle to
+  contain repeated vertices, and call a path with
+  distinct vertices a <span class='term'>simple
+  cycle</span> or <span class='term'>circuit</span>.</span>
+
+ <span class='run'>Some authors use the term
+  <span class='term'>loop</span> instead of
+  <span class='term'>cycle</span>.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -930,7 +1141,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(V, E)$ be a directed graph. A \t{directed path} between vertex $v$ and vertex $w \neq v$ is a finite sequence of distinct vertices, whose first coordinate is $v$ and whose last coordinate is $w$, and whose consecutive coordinates (as ordered pairs) are edges in the graph. We say that a path between $v$ and $w$ is from $v$ to $w$. The \t{length} of the path is one less than the number of vertices: namely, the number of edges.</p></div><div class="sheet-listing"><p class="sheet"> Two vertices are \t{connected} in a graph if there exists at least one path between them. A directed graph is \t{connected} if there is a path between every pair of vertices. A graph is \t{acyclic} if none of its paths cycle.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">2.1 Other Terminology</h2></div><div class="sheet-listing"><p class="sheet"> Some authors allow paths to contain repeated vertices, and call a path with distinct vertices a \t{simple path}. Similarly, some authors allow a cycle to contain repeated vertices, and call a path with distinct vertices a \t{simple cycle} or \t{circuit}. Some authors use the term \t{loop} instead of \t{cycle}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $(V, E)$ be a directed graph. A \t{directed path} between vertex $v$ and vertex $w \neq v$ is a finite sequence of distinct vertices, whose first coordinate is $v$ and whose last coordinate is $w$, and whose consecutive coordinates (as ordered pairs) are edges in the graph. We say that a path between $v$ and $w$ is from $v$ to $w$. The \t{length} of the path is one less than the number of vertices: namely, the number of edges.</p></div><div class="sheet-listing"><p class="sheet"> Two vertices are \t{connected} in a graph if there exists at least one path between them. A directed graph is \t{connected} if there is a path between every pair of vertices. A graph is \t{acyclic} if none of its paths cycle.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Other terminology}</p></div><div class="sheet-listing"><p class="sheet"> Some authors allow paths to contain repeated vertices, and call a path with distinct vertices a \t{simple path}. Similarly, some authors allow a cycle to contain repeated vertices, and call a path with distinct vertices a \t{simple cycle} or \t{circuit}. Some authors use the term \t{loop} instead of \t{cycle}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1084,7 +1295,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

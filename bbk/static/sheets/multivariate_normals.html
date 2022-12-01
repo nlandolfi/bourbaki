@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -897,6 +914,10 @@
 
 \newcommand{\range}{\ran}
 
+<!-- \newcommand{\F}{\mathbfsf{F}} -->
+
+\newcommand{\F}{\mathbfsf{F}}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -977,6 +998,10 @@
 
 \renewcommand{\setminus}{-}
 
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
+
 <!-- % absolute_value macros -->
 
 % absolute_value macros
@@ -1044,6 +1069,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \renewcommand{\Vec}[2]{{#1}^{#2}} -->
+
+\renewcommand{\Vec}[2]{{#1}^{#2}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1137,10 +1166,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
-
-\newcommand{\Q}{\mathbfsf{Q}}
-
 <!-- \newcommand{\product}{\prod} -->
 
 \newcommand{\product}{\prod}
@@ -1180,6 +1205,14 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\Mat}[3]{#1^{#2 \cross #3}} -->
+
+\newcommand{\Mat}[3]{#1^{#2 \cross #3}}
+
+<!--  -->
+
+
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1264,10 +1297,6 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\F}{\mathbfsf{F}} -->
-
-\newcommand{\F}{\mathbfsf{F}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1361,10 +1390,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \renewcommand{\Vec}[2]{{#1}^{#2}} -->
-
-\renewcommand{\Vec}[2]{{#1}^{#2}}
-
 <!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
 
 \newcommand{\RVec}[1]{\Vec{\R}{#1}}
@@ -1420,14 +1445,6 @@
 <!-- \newcommand{\tranposep}[1]{\transposep{#1}} -->
 
 \newcommand{\tranposep}[1]{\transposep{#1}}
-
-<!-- \newcommand{\Mat}[3]{#1^{#2 \cross #3}} -->
-
-\newcommand{\Mat}[3]{#1^{#2 \cross #3}}
-
-<!--  -->
-
-
 
 <!-- \newcommand{\RMat}[2]{\R^{#1 \cross #2}} -->
 
@@ -1648,7 +1665,9 @@
 .lit {
   margin: 0 0 1in 0;
   font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
   max-width: 6in;
+  min-width: 6in;
   text-align: justify;
   padding: 0;
   min-height: 11in;
@@ -1835,9 +1854,11 @@
 
 <p>
  <span class='run'>Let $f: \R ^d \to \R $ be a density such that
-  $$f(x) = \mgaussiandensity{x}{μ}{Σ}$$ where $\mu
-  \in \R ^d$, $\Sigma  \in \mathbfsf{S} ^d$, and
-  $\Sigma  \succ 0$.</span>
+  <p>\[
+   f(x) = \mgaussiandensity{x}{\mu }{\Sigma }
+  \]</p>
+  where $\mu  \in \R ^d$, $\Sigma  \in
+  \mathbfsf{S} ^d$, and $\Sigma  \succ 0$.</span>
 
  <span class='run'>We call $f$ a <span class='term'>multivariate
   normal density</span>.</span>
@@ -1869,22 +1890,11 @@
   <span class='term'>precision matrix</span>.</span>
 </p>
 
-
-<p>
- <span class='run'>\ssection{Maximum}</span>
-</p>
-
+<h1 id='Maximum'>Maximum</h1>
 
 <p>
  <span class='run'>The maximum of a normal density is its mean,
   $\mu  \in \R ^d$.</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
-
- <span class='run'></span>
 </p>
 <hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>We avoid this usage in accordance with the
   project’s policy on historical names.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
@@ -2016,7 +2026,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We generalize the normal density to $d$-dimensional space.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \R ^d \to \R $ be a density such that $$f(x) = \mgaussiandensity{x}{\mu }{\Sigma }$$ where $\mu  \in \R ^d$, $\Sigma  \in \mathbfsf{S} ^d$, and $\Sigma  \succ 0$. We call $f$ a \t{multivariate normal density}. A multivariate normal density with $d = 1$ is a normal density, so we refer to multivariate normal densities as \t{normal densities} without ambiguity. We frequently use the word normal as a substantive, and refer to \t{normals} when we mean multivariate normal densities. Many people call a multivariate normal distribution a \t{multivariate gaussian distribution} and speak of \t{gaussians} instead of normals. \ifhmode\unskip\fi\footnote{ We avoid this usage in accordance with the project's policy on historical names. }</p></div><div class="sheet-listing"><p class="sheet"> We call $\mu $ the \t{mean} and $\Sigma $ the \t{covariance matrix}. We call $\Sigma ^{-1}$ the \t{precision matrix}.</p></div><div class="sheet-listing" id="maximum"><h1 class="sheet">1. Maximum</h1></div><div class="sheet-listing"><p class="sheet"> The maximum of a normal density is its mean, $\mu  \in \R ^d$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We generalize the normal density to $d$-dimensional space.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \R ^d \to \R $ be a density such that \[ f(x) = \mgaussiandensity{x}{\mu }{\Sigma } \] where $\mu  \in \R ^d$, $\Sigma  \in \mathbfsf{S} ^d$, and $\Sigma  \succ 0$. We call $f$ a \t{multivariate normal density}. A multivariate normal density with $d = 1$ is a normal density, so we refer to multivariate normal densities as \t{normal densities} without ambiguity. We frequently use the word normal as a substantive, and refer to \t{normals} when we mean multivariate normal densities. Many people call a multivariate normal distribution a \t{multivariate gaussian distribution} and speak of \t{gaussians} instead of normals.\footnote{We avoid this usage in accordance with the project's policy on historical names.}</p></div><div class="sheet-listing"><p class="sheet"> We call $\mu $ the \t{mean} and $\Sigma $ the \t{covariance matrix}. We call $\Sigma ^{-1}$ the \t{precision matrix}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Maximum}</p></div><div class="sheet-listing"><p class="sheet"> The maximum of a normal density is its mean, $\mu  \in \R ^d$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -2170,7 +2180,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

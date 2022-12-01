@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -900,6 +917,268 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./directed_graphs.html'" onkeypress="location.href='./directed_graphs.html'">
+                <span>
+                  Directed Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./trees.html'" onkeypress="location.href='./trees.html'">
+                <span>
+                  Trees
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./prefix_trees.html'" onkeypress="location.href='./prefix_trees.html'">
+            <span>
+            Prefix Trees
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./rooted_tree_distributions.html'" onkeypress="location.href='./rooted_tree_distributions.html'">
+            <span>
+            Rooted Tree Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./rooted_tree_linear_cascades.html'" onkeypress="location.href='./rooted_tree_linear_cascades.html'">
+            <span>
+            Rooted Tree Linear Cascades
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./rooted_tree_orderings.html'" onkeypress="location.href='./rooted_tree_orderings.html'">
+            <span>
+            Rooted Tree Orderings
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./rooted_trees.pdf#page=2'" onkeypress="location.href='./rooted_trees.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./rooted_trees-graph.pdf'" onkeypress="location.href='./rooted_trees-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Rooted Trees </h1> 
+      <!--
+!name:rooted_trees
+!need:trees
+!refs:vandenberghe2014chordal
+ below needed for parent and child functions, maybe change
+!need:directed_graphs
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to talk rooting a tree at a given
+  vertex.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>rooted tree</span> is an
+  ordered pair $((V, T), r)$ where $(V, T)$ is a
+  tree and $r \in V$ is a distinguished vertex
+  which we call the <span class='term'>root</span>.</span>
+
+ <span class='run'>We visualize rooted trees with the root at the
+  top (see the figure below).</span>
+</p>
+
+<h2 id='Parents_and_children'>Parents and children</h2>
+
+<p>
+ <span class='run'>Suppose $w$ is the first vertex on the path
+  from the root to a non-root vertex $v$.</span>
+
+ <span class='run'>Since there is only one such path, $w$ is
+  unique and we call it <span class='term'>the
+  parent</span> of $v$.</span>
+
+ <span class='run'>Conversely, we call $v$ <span class='term'>a
+  child</span> of $w$.</span>
+
+ <span class='run'>We denote the set of children of $v$ by
+  $\ch(v)$.</span>
+
+ <span class='run'>A vertex may have no children or it may have
+  many children.</span>
+
+ <span class='run'>If it has no children we call it a
+  <span class='term'>leaf</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>We define the <span class='term'>parent
+  function</span> $\pa: V \to V$ with the
+  convention that the <span class='term'>parent of
+  the root</span> is the root.</span>
+
+ <span class='run'>The <span class='term'>parent of degree $k$</span>
+  where $k &gt; 0$ is $\pa^k(x)$ where $\pa^k$ is
+  the composite of $\pa$ with itself $k$ times.</span>
+
+ <span class='run'>So, in particular, $\pa^{k+1}(v) = \pa(\pa^k(v))$.</span>
+
+ <span class='run'>We define the <span class='term'>parent of degree
+  $0$</span> of $v$ to be $v$, and denote it by
+  $\pa^0(v) = v$.</span>
+
+ <span class='run'>For the tree visualized in the figure below,
+  $\pa(i) = g$, $\pa^2(i) = d$, $\pa^3(i) = a$.</span>
+</p>
+
+
+<p>
+ <span class='run'>If $w = \pa^k(v)$ for some $k \geq 0$, then
+  $w$ is a <span class='term'>ancestor</span> of $v$
+  and $v$ is a <span class='term'>descendent</span>
+  of $w$.</span>
+
+ <span class='run'>We use the term <span class='term'>proper
+  ancestor</span> and <span class='term'>proper
+  descendent</span> if $k &gt; 0$ (i.e., $w \neq
+  v$).</span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>depth</span> or
+  <span class='term'>level</span> of a vertex $v$ is
+  its distance (see<a href='/sheets/trees.html'/><span class='run'>Trees</span></a>) to the root.</span>
+
+ <span class='run'>We denote the level of a vertex $v$ by
+  $\lev(v)$.</span>
+
+ <span class='run'>The level of the root is $0$.</span>
+
+ <span class='run'>If $\lev(v) = k &gt; 0$, then $\pa^{k}(v)$ is
+  the root.</span>
+
+ <span class='run'>The level function $\lev$ satisfies $\lev(v) =
+  \lev(\pa(v)) + 1$.</span>
+</p>
+
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div><img src="./graphics/rootedtree.png" width="50%"/></div></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand this intuition.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -975,7 +1254,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to talk rooting a tree at a given vertex.\footnote{Future editions will expand this intuition.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{rooted tree} is an ordered pair $((V, T), r)$ where $(V, T)$ is a tree and $r \in V$ is a distinguished vertex which we call the \t{root}. We visualize rooted trees with the root at the top (see Figure~\ref{figure:rooted_trees:rooted_tree}).</p></div><div class="sheet-listing"><h2 class="sheet" id="parents_and_children">2.1 Parents and Children</h2></div><div class="sheet-listing"><p class="sheet"> Suppose $w$ is the first vertex on the path from the root to a non-root vertex $v$. Since there is only one such path, $w$ is unique and we call it \t{the parent} of $v$. Conversely, we call $v$ \t{a child} of $w$. We denote the set of children of $v$ by $\ch(v)$. A vertex may have no children or it may have many children. If it has no children we call it a \t{leaf}.</p></div><div class="sheet-listing"><p class="sheet"> We define the \t{parent function} $\pa: V \to V$ with the convention that the \t{parent of the root} is the root. The \t{parent of degree $k$} where $k > 0$ is $\pa^k(x)$ where $\pa^k$ is the composite of $\pa$ with itself $k$ times. So, in particular, $\pa^{k+1}(v) = \pa(\pa^k(v))$. We define the \t{parent of degree $0$} of $v$ to be $v$, and denote it by $\pa^0(v) = v$. For the tree visualized in Figure~\ref{figure:rooted_trees:rooted_tree}, $\pa(i) = g$, $\pa^2(i) = d$, $\pa^3(i) = a$.</p></div><div class="sheet-listing"><p class="sheet"> If $w = \pa^k(v)$ for some $k \geq 0$, then $w$ is a \t{ancestor} of $v$ and $v$ is a \t{descendent} of $w$. We use the term \t{proper ancestor} and \t{proper descendent} if $k > 0$ (i.e., $w \neq v$).</p></div><div class="sheet-listing"><p class="sheet"> The \t{depth} or \t{level} of a vertex $v$ is its distance (see \sheetref{trees}{Trees}) to the root. We denote the level of a vertex $v$ by $\lev(v)$. The level of the root is $0$. If $\lev(v) = k > 0$, then $\pa^{k}(v)$ is the root. The level function $\lev$ satisfies $\lev(v) = \lev(\pa(v)) + 1$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \includegraphics[width=0.5\textwidth]{\figpath{rooted_trees}{rooted_tree}} \caption{A rooted tree with root $a$.} \label{figure:rooted_trees:rooted_tree} \end{figure}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to talk rooting a tree at a given vertex.\footnote{Future editions will expand this intuition.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{rooted tree} is an ordered pair $((V, T), r)$ where $(V, T)$ is a tree and $r \in V$ is a distinguished vertex which we call the \t{root}. We visualize rooted trees with the root at the top (see the figure below).</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Parents and children}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $w$ is the first vertex on the path from the root to a non-root vertex $v$. Since there is only one such path, $w$ is unique and we call it \t{the parent} of $v$. Conversely, we call $v$ \t{a child} of $w$. We denote the set of children of $v$ by $\ch(v)$. A vertex may have no children or it may have many children. If it has no children we call it a \t{leaf}.</p></div><div class="sheet-listing"><p class="sheet"> We define the \t{parent function} $\pa: V \to V$ with the convention that the \t{parent of the root} is the root. The \t{parent of degree $k$} where $k > 0$ is $\pa^k(x)$ where $\pa^k$ is the composite of $\pa$ with itself $k$ times. So, in particular, $\pa^{k+1}(v) = \pa(\pa^k(v))$. We define the \t{parent of degree $0$} of $v$ to be $v$, and denote it by $\pa^0(v) = v$. For the tree visualized in the figure below, $\pa(i) = g$, $\pa^2(i) = d$, $\pa^3(i) = a$.</p></div><div class="sheet-listing"><p class="sheet"> If $w = \pa^k(v)$ for some $k \geq 0$, then $w$ is a \t{ancestor} of $v$ and $v$ is a \t{descendent} of $w$. We use the term \t{proper ancestor} and \t{proper descendent} if $k > 0$ (i.e., $w \neq v$).</p></div><div class="sheet-listing"><p class="sheet"> The \t{depth} or \t{level} of a vertex $v$ is its distance (see \sheetref{trees}{Trees}) to the root. We denote the level of a vertex $v$ by $\lev(v)$. The level of the root is $0$. If $\lev(v) = k > 0$, then $\pa^{k}(v)$ is the root. The level function $\lev$ satisfies $\lev(v) = \lev(\pa(v)) + 1$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{center}\includegraphics[width=0.50\textwidth]{./graphics/rootedtree.png}\end{center}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1129,7 +1408,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

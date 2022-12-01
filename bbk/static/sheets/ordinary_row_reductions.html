@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1024,6 +1041,263 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./linear_system_row_reductions.html'" onkeypress="location.href='./linear_system_row_reductions.html'">
+                <span>
+                  Linear System Row Reductions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./ordinary_reducer_factorization.html'" onkeypress="location.href='./ordinary_reducer_factorization.html'">
+            <span>
+            Ordinary Reducer Factorization
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./pivoted_row_reductions.html'" onkeypress="location.href='./pivoted_row_reductions.html'">
+            <span>
+            Pivoted Row Reductions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./ordinary_row_reductions.pdf#page=2'" onkeypress="location.href='./ordinary_row_reductions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./ordinary_row_reductions-graph.pdf'" onkeypress="location.href='./ordinary_row_reductions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Ordinary Row Reductions </h1> 
+      <!--
+!name:ordinary_row_reductions
+!need:linear_system_row_reductions
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>When does the technique of row reductions
+  prevail?</span>
+</p>
+
+<h2 id='Multivariable_row_reductions'>Multivariable row reductions</h2>
+
+<p>
+ <span class='run'>Let $S = (A \in \R ^{m \times m}, b \in
+  \R ^{m})$ be a linear system with $A_{kk} \neq
+  0$.</span>
+
+ <span class='run'>The <span class='term'>$k$th row reduction</span>
+  of $S$ is the linear system $(C, d)$ with
+  $C_{st} = A_{st} - (A_{sk}/A_{kk})A_{kt}$ if $i
+  &lt; s \leq m$ and $C_{st} = A_{st}$ otherwise.</span>
+</p>
+
+
+<p>
+ <span class='run'>The idea, as in the example in&nbsp;<a href='/sheets/linear_system_row_reductions.html'/><span class='run'>Linear System Row Reductions</span></a>, is to eliminate variable $k$ from equations
+$k+1, \dots , m$.</span>
+
+ <span class='run'>We are taking the $k$th column of $A$ from
+  <p>\[
+   \barray{A_{1k} \\ \vdots \\ A_{kk} \\ A_{k+1,k} \\ \vdots \\
+    A_{mk}} \quad \text{to} \quad \barray{A_{1k} \\ \vdots \\
+    A_{kk} \\ 0 \\ \vdots \\ 0}.
+  \]</p></span>
+</p>
+
+
+<p>
+ <span class='run'>We interpret the $i$th row reduction as
+  <span class='term'>subtracting equations</span> of
+  the system or <span class='term'>reducing
+  rows</span> of the array $A$.</span>
+
+ <span class='run'>If $a^i, c^i \in \R ^{n}$ denote the $i$th
+  rows of $A$ and $C$, $c^i = a^i -
+  (A_{ik}/A_{kk})a^k$ for $k &lt; i \leq m$,</span>
+
+ <span class='run'>In other words, we obtain the $i$th row of
+  matrix $C$ by subtracting a multiple of the
+  $k$th row of matrix $A$ from the $i$th row of
+  matrix $A$, for $k &lt; i \leq m$.</span>
+
+ <span class='run'>The following is an immediate consequence of
+  real arithmetic.</span>
+</p>
+
+<div class='proposition' id='proposition:ordinaryrowreductions:basic'>
+ <span class='run'>Let $(A \in \R ^{m \times  n}, b \in \R ^{n})$
+  be a linear system which row reduces to $(C,
+  d)$.</span>
+
+ <span class='run'>Then $x \in \R ^{n}$ is a solution of $(A,
+  b)$ if and only if it is a solution of $(C,
+  d)$.</span></div>
+<h1 id='Ordinary_reductions'>Ordinary reductions</h1>
+
+<p>
+ <span class='run'>We call the system $S$
+  <span class='term'>ordinarily reducible</span> if
+  there exists a sequence of systems $S_1, \dots ,
+  S_{m-1}$ so that $S_1$ is the $11$-reduction of
+  $S$ and $S_{i}$ is the $ii$-reduction of
+  $S_{i-1}$ for $i = 1, \dots , n-1$.</span>
+
+ <span class='run'>In this case, we call $S_{n-1}$ the
+  <span class='term'>final ordinary reduction</span>
+  (or just <span class='term'>ordinary
+  reduction</span>) of $S$.</span>
+
+ <span class='run'>The following is an immediate consequence of
+  Proposition~\ref{proposition:ordinaryrowreductions:basic}.</span>
+ <div class='proposition' id='proposition:ordinary_row_reductions:main'>
+  <span class='run'>Let $S&#39;$ be the (final) ordinary reduction
+   of $S$. Then $S$ and $S&#39;$ have equivalent
+   solution sets.</span> </div>
+</p>
+
+<span class='run'>This process of constructing the ordinary
+ reduction is called <span class='term'>Gauss
+ elimination</span> or <span class='term'>Gaussian
+ elimination</span>.</span>
+
+<span class='run'>We call the $kk$th entry of system $S_{k-1}$
+ the <span class='term'>pivot</span>.</span>
+
+<span class='run'>In an ordinarily reducible system, the pivots
+ are nonzero.</span>
+<p>
+ <span class='run'>The idea is that a system is ordinarily
+  reducible if we can take row reductions in
+  sequence and end up with a system that is easy
+  to back-substitute and solve.</span>
+
+ <span class='run'>The difficulty is that this need not be the
+  case.</span>
+
+ <span class='run'>For example, consider the following obvious
+  difficulty.</span>
+
+ <span class='run'>The system $(A, b)$ in which
+  <p>\[
+   A = \barray{0 & 1\\1 & 2} \text{ and } \barray{1 \\ 2}
+  \]</p>
+  is not ordinarily reducible, but clearly
+  solvable.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1078,7 +1352,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> When does the technique of row reductions prevail?</p></div><div class="sheet-listing" id="multivariable_row_reductions"><h1 class="sheet">2. Multivariable row reductions</h1></div><div class="sheet-listing"><p class="sheet"> Let $S = (A \in \R^{m \times m}, b \in \R^{m})$ be a linear system with $A_{kk} \neq 0$. The \t{$k$th row reduction} of $S$ is the linear system $(C, d)$ with $C_{st} = A_{st} - (A_{sk}/A_{kk})A_{kt}$ if $i < s \leq m$ and $C_{st} = A_{st}$ otherwise.</p></div><div class="sheet-listing"><p class="sheet"> The idea, as in the example in \sheetref{linear_system_row_reductions}{Linear System Row Reductions}, is to eliminate variable $k$ from equations $k+1, \dots, m$. We are taking the $k$th column of $A$ from \[ \barray{A_{1k} \\ \vdots \\ A_{kk} \\ A_{k+1,k} \\ \vdots \\ A_{mk}} \quad \text{to} \quad \barray{A_{1k} \\ \vdots \\ A_{kk} \\ 0 \\ \vdots \\ 0}. \]</p></div><div class="sheet-listing"><p class="sheet"> We interpret the $i$th row reduction as \t{subtracting equations} of the system or \t{reducing rows} of the array $A$. If $a^i, c^i \in \R^{n}$ denote the $i$th rows of $A$ and $C$, $c^i = a^i - (A_{ik}/A_{kk})a^k$ for $k < i \leq m$, In other words, we obtain the $i$th row of matrix $C$ by subtracting a multiple of the $k$th row of matrix $A$ from the $i$th row of matrix $A$, for $k < i \leq m$. The following is an immediate consequence of real arithmetic. \begin{proposition} Let $(A \in \R^{m \times n}, b \in \R^{n})$ be a linear system which row reduces to $(C, d)$. Then $x \in \R^{n}$ is a solution of $(A, b)$ if and only if it is a solution of $(C, d)$.  \label{proposition:ordinary_row_reductions:basic} \end{proposition}</p></div><div class="sheet-listing" id="ordinary_reductions"><h1 class="sheet">3. Ordinary reductions</h1></div><div class="sheet-listing"><p class="sheet"> We call the system $S$ \t{ordinarily reducible} if there exists a sequence of systems $S_1, \dots, S_{m-1}$ so that $S_1$ is the $11$-reduction of $S$ and $S_{i}$ is the $ii$-reduction of $S_{i-1}$ for $i = 1, \dots, n-1$. In this case, we call $S_{n-1}$ the \t{final ordinary reduction} (or just \t{ordinary reduction}) of $S$. The following is an immediate consequence of Proposition~\ref{proposition:ordinary_row_reductions:basic}. \begin{proposition} Let $S'$ be the (final) ordinary reduction of $S$. Then $S$ and $S'$ have equivalent solution sets. \label{proposition:ordinary_row_reductions:main} \end{proposition} This process of constructing the ordinary reduction is called \t{Gauss elimination} or \t{Gaussian elimination}. We call the $kk$th entry of system $S_{k-1}$ the \t{pivot}. In an ordinarily reducible system, the pivots are nonzero.</p></div><div class="sheet-listing"><p class="sheet"> The idea is that a system is ordinarily reducible if we can take row reductions in sequence an end up with a system that is easy to back-substitute and solve. The difficulty is that this need not be the case. For example, consider the following obvious difficulty. The system $(A, b)$ in which \[ A = \barray{0 & 1\\1 & 2} \text{ and } \barray{1 \\ 2} \] is not ordinarily reducible, but clearly solvable.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> When does the technique of row reductions prevail?</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Multivariable row reductions}</p></div><div class="sheet-listing"><p class="sheet"> Let $S = (A \in \R ^{m \times m}, b \in \R ^{m})$ be a linear system with $A_{kk} \neq 0$. The \t{$k$th row reduction} of $S$ is the linear system $(C, d)$ with $C_{st} = A_{st} - (A_{sk}/A_{kk})A_{kt}$ if $i < s \leq m$ and $C_{st} = A_{st}$ otherwise.</p></div><div class="sheet-listing"><p class="sheet"> The idea, as in the example in \sheetref{linear_system_row_reductions}{Linear System Row Reductions}, is to eliminate variable $k$ from equations $k+1, \dots , m$. We are taking the $k$th column of $A$ from \[ \barray{A_{1k} \\ \vdots \\ A_{kk} \\ A_{k+1,k} \\ \vdots \\ A_{mk}} \quad \text{to} \quad \barray{A_{1k} \\ \vdots \\ A_{kk} \\ 0 \\ \vdots \\ 0}. \]</p></div><div class="sheet-listing"><p class="sheet"> We interpret the $i$th row reduction as \t{subtracting equations} of the system or \t{reducing rows} of the array $A$. If $a^i, c^i \in \R ^{n}$ denote the $i$th rows of $A$ and $C$, $c^i = a^i - (A_{ik}/A_{kk})a^k$ for $k < i \leq m$, In other words, we obtain the $i$th row of matrix $C$ by subtracting a multiple of the $k$th row of matrix $A$ from the $i$th row of matrix $A$, for $k < i \leq m$. The following is an immediate consequence of real arithmetic.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \label{proposition:ordinaryrowreductions:basic}Let $(A \in \R ^{m \times  n}, b \in \R ^{n})$ be a linear system which row reduces to $(C, d)$. Then $x \in \R ^{n}$ is a solution of $(A, b)$ if and only if it is a solution of $(C, d)$.\end{proposition} \section*{Ordinary reductions}</p></div><div class="sheet-listing"><p class="sheet"> We call the system $S$ \t{ordinarily reducible} if there exists a sequence of systems $S_1, \dots , S_{m-1}$ so that $S_1$ is the $11$-reduction of $S$ and $S_{i}$ is the $ii$-reduction of $S_{i-1}$ for $i = 1, \dots , n-1$. In this case, we call $S_{n-1}$ the \t{final ordinary reduction} (or just \t{ordinary reduction}) of $S$. The following is an immediate consequence of Proposition~\ref{proposition:ordinaryrowreductions:basic}. \begin{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \label{proposition:ordinary_row_reductions:main}Let $S'$ be the (final) ordinary reduction of $S$. Then $S$ and $S'$ have equivalent solution sets.\end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> This process of constructing the ordinary reduction is called \t{Gauss elimination} or \t{Gaussian elimination}. We call the $kk$th entry of system $S_{k-1}$ the \t{pivot}. In an ordinarily reducible system, the pivots are nonzero. The idea is that a system is ordinarily reducible if we can take row reductions in sequence and end up with a system that is easy to back-substitute and solve. The difficulty is that this need not be the case. For example, consider the following obvious difficulty. The system $(A, b)$ in which \[ A = \barray{0 & 1\\1 & 2} \text{ and } \barray{1 \\ 2} \] is not ordinarily reducible, but clearly solvable.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1232,7 +1506,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

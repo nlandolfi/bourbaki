@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -664,6 +681,283 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./unordered_triples.html'" onkeypress="location.href='./unordered_triples.html'">
+                <span>
+                  Unordered Triples
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./ordering_sets.pdf#page=2'" onkeypress="location.href='./ordering_sets.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./ordering_sets-graph.pdf'" onkeypress="location.href='./ordering_sets-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Ordering Sets </h1> 
+      <!--
+!name:ordering_sets
+!need:unordered_triples
+!refs:paul_halmos/naive_set_theory/section_06
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to arrange the elements of a set in
+  an order using only the concept of sets.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1 id='Discussion'>Discussion</h1>
+
+<p>
+ <span class='run'>What does this mean? Well, we often arrange
+  objects in orders.</span>
+
+ <span class='run'>For example, the letters of this page are
+  arranged into words.</span>
+
+ <span class='run'>Take two such words: ‘note’ and ‘tone’.</span>
+
+ <span class='run'>If letters are objects, what are words?</span>
+</p>
+
+
+<p>
+ <span class='run'>A first guess is that words seem like groups
+  of letters, and sets seem like groups, and so
+  a word is a set of letters.</span>
+
+ <span class='run'>So, the word ‘note’ is the set {&#39;n&#39;,
+  ‘o’, ‘t’, ‘e’}, and then word ‘tone’ is the
+  set {‘t’, ‘o’, ‘n’, ‘e’}.</span>
+
+ <span class='run'>The rub, of course, is that these are the
+  same set.</span>
+</p>
+
+
+<p>
+ <span class='run'>The trick is that a word is not just the set
+  of letters, it is that set in some order.</span>
+
+ <span class='run'>Since ‘tone’ and ‘note’ have the same letters,
+  they have the same set of letters.</span>
+ <!-- Since $\set{\text{‘n}}, \text{‘o}}, \text{‘t}}, \text{‘e}}}$ denotes the same set as $\set{\text{‘t}}, \text{‘o}}, \text{‘n}}, \text{‘e}}}$ and both these denote the same set as $\set{\text{‘e}}, \text{‘t}}, \text{‘o}}, \text{‘n}}}$. -->
+
+ <span class='run'>The question is whether there is a way of
+  saying what a word is in terms of letters by
+  using sets in such a way that the set
+  corresponding to ‘tone’ is distinguishable from
+  the set corresponding to ‘note’.</span>
+</p>
+
+
+<!-- %TODO(next edition): single quotes represent words and letters -->
+
+<p>
+ <span class='run'>The way we read English offers a hint.</span>
+
+ <span class='run'>When reading ‘tone’ we scan from left to right
+  seeing ‘t’, then ‘to’, then ‘ton’ then ‘tone’.</span>
+
+ <span class='run'>Suppose that for each spot in the ordering of
+  the letters, we consider those letters that
+  appear at or before the spot.</span>
+
+ <span class='run'>In other words, we can consider the sets
+  {‘t’}, {‘t’, ‘o’}, {‘t’, ‘o’, ‘n’}, {‘t’, ‘o’,
+  ‘n’, ‘e’}.</span>
+
+ <span class='run'>Let us say that ‘tone’ corresponds to the set
+  of these sets, denoted by $\mathcal{C} $,
+  <p>\[
+   \mathcal{C}  = \set{\set{n, o, t}, \set{n, o, t, e}, \set{t},
+    \set{o, t}}.
+  \]</p></span>
+</p>
+
+
+<p>
+ <span class='run'>Given $\mathcal{C} $, can we recover ‘tone’
+  (instead of ‘note’)?</span>
+
+ <span class='run'>Sure.</span>
+
+ <span class='run'>First, look for a set contained in all the
+  others.</span>
+
+ <span class='run'>The singleton {‘t’} is the only one.</span>
+
+ <span class='run'>So the first letter is ‘t’.</span>
+
+ <span class='run'>Next look for a set distinct from ‘t’ which
+  is contained in all the rest.</span>
+
+ <span class='run'>The pair {‘o’, ‘t’} is the only one.</span>
+
+ <span class='run'>Since we already have ‘t’, the next letter is
+  ‘o’.</span>
+
+ <span class='run'>We do the same twice more, getting ‘n’ and
+  ‘e’, in that order.</span>
+</p>
+
+
+<p>
+ <span class='run'>There is a certain peculiarity in all these
+  considerations.</span>
+
+ <span class='run'>Every time we write down a set, we write the
+  names (see \sheetref{names}{Names}) of the
+  elements in some order.</span>
+
+ <span class='run'>Indeed, whenever we speak of objects, we must
+  say their names in some order.</span>
+
+ <span class='run'>But of course, no matter how we denote or
+  speak of the set, the concept of set has no
+  concept of ordering.</span>
+</p>
+
+<h1 id='Generally'>Generally</h1>
+
+<p>
+ <span class='run'>Let $a$, $b$, $c$ and $d$ denote objects, no
+  two of which are the same (i.e., $a \neq b$,
+  $b \neq c$, etc.).</span>
+
+ <span class='run'>Suppose we want to consider the elements of
+  the quadruple $\set{a, b, c, d}$ in the order
+  $c$, $b$, $d$, $a$.</span>
+
+ <span class='run'>We include in the set all objects that that
+  occur at or before that position.</span>
+
+ <span class='run'>For the order $c$, $b$, $d$, $a$ of the
+  objects in the set $\set{a, b, c, d}$ we use
+  $\set{c}$, $\set{c, b}$, $\set{c, b, d}$ and
+  $\set{c, b, d, a}$.</span>
+</p>
+
+
+<!--
+% Then we can recover the ordering from
+% \[
+%   \CC = \set{\set{a, b, c, d}, \set{b, c}, \set{b, c, d}, \set{c}}.
+% \]
+-->
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This sheet needs revision.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -701,7 +995,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to arrange the elements of a set in an order using only the concept of sets.\footnote{This sheet needs revision.}</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> What does this mean?  Well, we often arrange objects in orders. For example, the letters of this page are arranged into words. Take two such words: \sayy{note} and \sayy{tone}. If letters are objects, what are words?</p></div><div class="sheet-listing"><p class="sheet"> A first guess is that words seem like groups of letters, and sets seem like groups, and so a word is a set of letters. So, the word \sayy{note} is the set $\set{\text{\sayy{n}}, \text{\sayy{o}}, \text{\sayy{t}}, \text{\sayy{e}}}$, and then word \sayy{tone} is the set $\set{\text{\sayy{t}}, \text{\sayy{o}}, \text{\sayy{n}}, \text{\sayy{e}}}$. The rub, of course, is that these are the same set.</p></div><div class="sheet-listing"><p class="sheet"> The trick is that a word is not just the set of letters, it is that set in some order. Since \sayy{tone} and \sayy{note} have the same letters, they have the same set of letters. The question is whether there is a way of saying what a word is in terms of letters by using sets in such a way that the set corresponding to \sayy{tone} is distinguishable from the set corresponding to \sayy{note}.</p></div><div class="sheet-listing"><p class="sheet"> The way we read English offers a hint. When reading \sayy{tone} we scan from left to right seeing \sayy{t}, then \sayy{to}, then \sayy{ton} then \sayy{tone}. Suppose that for each spot in the ordering of the letters, we consider those letters that appear at or before the spot. In other words, we can consider the sets $\set{\text{\sayy{t}}}$, $\set{\text{\sayy{t}}, \text{\sayy{o}}}$, $\set{\text{\sayy{t}}, \text{\sayy{o}}, \text{\sayy{n}}}$, $\set{\text{\sayy{t}}, \text{\sayy{o}}, \text{\sayy{n}}, \text{\sayy{e}}}$. Let us say that \sayy{tone} corresponds to the set of these sets, denoted by $\CC$, \[ \CC = \set{\set{\text{\sayy{n}}, o, t}, \set{n, o, t, e}, \set{t}, \set{o, t}}. \]</p></div><div class="sheet-listing"><p class="sheet"> Given $\CC$, can we recover \sayy{tone} (instead of \sayy{note})? Sure. First, look for a set contained in all the others. The singleton $\set{\text{\sayy{t}}}$ is the only one. So the first letter is \sayy{t}. Next look for a set distinct from $"t"$ which is contained in all the rest. The pair $\set{\text{\sayy{o}}, \text{\sayy{t}}}$ is the only one. Since we already have \sayy{t}, the next letter is \sayy{o}. We do the same twice more, getting \sayy{n} and \sayy{e}, in that order.</p></div><div class="sheet-listing"><p class="sheet"> There is a certain peculiarity in all these considerations. Every time we write down a set, we write the names (see \sheetref{names}{Names}) of the elements in some order. Indeed, whenever we speak of objects, we must say their names in some order. But of course, no matter how we denote or speak of the set, the concept of set has no concept of ordering.</p></div><div class="sheet-listing"><p class="sheet"> \s{Generally}</p></div><div class="sheet-listing"><p class="sheet"> Let $a$, $b$, $c$ and $d$ denote objects, no two of which are the same (i.e., $a \neq b$, $b \neq c$, etc.). Suppose we want to consider the elements of the quadruple $\set{a, b, c, d}$ in the order $c$, $b$, $d$, $a$. We include in the set all objects that that occur at or before that position. For the order $c$, $b$, $d$, $a$ of the objects in the set $\set{a, b, c, d}$ we use $\set{c}$, $\set{c, b}$, $\set{c, b, d}$ and $\set{c, b, d, a}$.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to arrange the elements of a set in an order using only the concept of sets.\footnote{This sheet needs revision.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> What does this mean? Well, we often arrange objects in orders. For example, the letters of this page are arranged into words. Take two such words: `note' and `tone'. If letters are objects, what are words?</p></div><div class="sheet-listing"><p class="sheet"> A first guess is that words seem like groups of letters, and sets seem like groups, and so a word is a set of letters. So, the word `note' is the set {'n', `o', `t', `e'}, and then word `tone' is the set {`t', `o', `n', `e'}. The rub, of course, is that these are the same set.</p></div><div class="sheet-listing"><p class="sheet"> The trick is that a word is not just the set of letters, it is that set in some order. Since `tone' and `note' have the same letters, they have the same set of letters.</p></div><div class="sheet-listing"><p class="sheet"> The question is whether there is a way of saying what a word is in terms of letters by using sets in such a way that the set corresponding to `tone' is distinguishable from the set corresponding to `note'.</p></div><div class="sheet-listing"><p class="sheet"> The way we read English offers a hint. When reading `tone' we scan from left to right seeing `t', then `to', then `ton' then `tone'. Suppose that for each spot in the ordering of the letters, we consider those letters that appear at or before the spot. In other words, we can consider the sets {`t'}, {`t', `o'}, {`t', `o', `n'}, {`t', `o', `n', `e'}. Let us say that `tone' corresponds to the set of these sets, denoted by $\mathcal{C} $, \[ \mathcal{C}  = \set{\set{n, o, t}, \set{n, o, t, e}, \set{t}, \set{o, t}}. \]</p></div><div class="sheet-listing"><p class="sheet"> Given $\mathcal{C} $, can we recover `tone' (instead of `note')? Sure. First, look for a set contained in all the others. The singleton {`t'} is the only one. So the first letter is `t'. Next look for a set distinct from `t' which is contained in all the rest. The pair {`o', `t'} is the only one. Since we already have `t', the next letter is `o'. We do the same twice more, getting `n' and `e', in that order.</p></div><div class="sheet-listing"><p class="sheet"> There is a certain peculiarity in all these considerations. Every time we write down a set, we write the names (see \sheetref{names}{Names}) of the elements in some order. Indeed, whenever we speak of objects, we must say their names in some order. But of course, no matter how we denote or speak of the set, the concept of set has no concept of ordering.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Generally}</p></div><div class="sheet-listing"><p class="sheet"> Let $a$, $b$, $c$ and $d$ denote objects, no two of which are the same (i.e., $a \neq b$, $b \neq c$, etc.). Suppose we want to consider the elements of the quadruple $\set{a, b, c, d}$ in the order $c$, $b$, $d$, $a$. We include in the set all objects that that occur at or before that position. For the order $c$, $b$, $d$, $a$ of the objects in the set $\set{a, b, c, d}$ we use $\set{c}$, $\set{c, b}$, $\set{c, b, d}$ and $\set{c, b, d, a}$.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -855,7 +1149,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

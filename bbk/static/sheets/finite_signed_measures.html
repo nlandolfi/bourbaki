@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1176,6 +1193,211 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./signed_measures.html'" onkeypress="location.href='./signed_measures.html'">
+                <span>
+                  Signed Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./measure_vector_space.html'" onkeypress="location.href='./measure_vector_space.html'">
+            <span>
+            Measure Vector Space
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./finite_signed_measures.pdf#page=2'" onkeypress="location.href='./finite_signed_measures.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./finite_signed_measures-graph.pdf'" onkeypress="location.href='./finite_signed_measures-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Finite Signed Measures </h1> 
+      <!--
+!name:finite_signed_measures
+!need:signed_measures
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>For the difference of two (signed) measures to
+  be well-defined, we need one of the two to be
+  finite.</span>
+
+ <span class='run'>Otherwise, the measure of the difference on the
+  base set involves subtracting $\infty$ from
+  $\infty$.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>finite</span> signed measure
+  is one for which the measure of every set is
+  finite.</span>
+
+ <span class='run'>This condition is equivalent to the base set
+  having finite measure (see below).</span>
+</p>
+
+<h1 id='Result'>Result</h1>
+
+<div class='proposition' id='prop:finitesignedmeasures'>
+ <p>
+  <span class='run'>A signed measure is finite if and only if it
+   is finite on the base set.</span>
+ </p>
+</div>
+<div class='proof'> <p>
+  <span class='run'>Let $(X, \mathcal{A} )$ be a measurable space.</span>
+
+  <span class='run'>Let $\mu : \mathcal{A}  \to \eri$ be a signed
+   measure.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>($\Rightarrow$) If $\mu $ is finite, then
+   $\mu (X)$</span>
+
+  <span class='run'>is finite since $X \in \mathcal{A} $.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>($\Leftarrow)$</span>
+
+  <span class='run'>Next, suppose $\mu (X)$ is finite.</span>
+
+  <span class='run'>Let $A \in \mathcal{A} $.</span>
+
+  <span class='run'>Then $X = A \union (X - A)$,</span>
+
+  <span class='run'>with these sets disjoint,</span>
+
+  <span class='run'>so by countable additivity</span>
+
+  <span class='run'>of $\mu $,</span>
+
+  <span class='run'>$\mu (X) = \mu (A) + \mu (X - A)$.</span>
+
+  <span class='run'>Since $\mu (X)$ finite, $\mu (A)$</span>
+
+  <span class='run'>and $\mu (X - A)$ are both finite.</span>
+ </p>
+</div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1223,7 +1445,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> For the difference of two (signed) measures to be well-defined, we need one of the two to be finite. Otherwise, the measure of the difference on the base set involves subtracting $\infty$ from $\infty$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A <i>finite</i> signed measure is one for which the measure of every set is finite. This condition is equivalent to the base set having finite measure (see below).</p></div><div class="sheet-listing" id="result"><h1 class="sheet">3. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} \label{prop:finitesignedmeasures} A signed measure is finite if and only if it is finite on the base set.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} Let $(X,\SA)$ be a measurable space. Let $\mu: \SA \to \eri$ be a signed measure. ($\Rightarrow$) If $\mu$ is finite, then $\mu(X)$ is finite since $X \in \mathcal{A}$. ($\Leftarrow)$ Next, suppose $\mu(X)$ is finite. Let $A \in \SA$. Then $X = A \union (X - A)$, with these sets disjoint, so by countable additivity of $\mu$, $\mu(X) = \mu(A) + \mu(X - A)$. Since $\mu(X)$ finite, $\mu(A)$ and $\mu(X - A)$ are both finite. \end{proof} \end{prop}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> For the difference of two (signed) measures to be well-defined, we need one of the two to be finite. Otherwise, the measure of the difference on the base set involves subtracting $\infty$ from $\infty$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{finite} signed measure is one for which the measure of every set is finite. This condition is equivalent to the base set having finite measure (see below).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \label{prop:finitesignedmeasures}A signed measure is finite if and only if it is finite on the base set. \end{proposition} \begin{proof}Let $(X, \mathcal{A} )$ be a measurable space. Let $\mu : \mathcal{A}  \to \eri$ be a signed measure.</p></div><div class="sheet-listing"><p class="sheet"> ($\Rightarrow$) If $\mu $ is finite, then $\mu (X)$ is finite since $X \in \mathcal{A} $.</p></div><div class="sheet-listing"><p class="sheet"> ($\Leftarrow)$ Next, suppose $\mu (X)$ is finite. Let $A \in \mathcal{A} $. Then $X = A \union (X - A)$, with these sets disjoint, so by countable additivity of $\mu $, $\mu (X) = \mu (A) + \mu (X - A)$. Since $\mu (X)$ finite, $\mu (A)$ and $\mu (X - A)$ are both finite. \end{proof}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1377,7 +1599,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

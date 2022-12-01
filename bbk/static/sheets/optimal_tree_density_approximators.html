@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1448,6 +1465,234 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./tree_density_approximators.html'" onkeypress="location.href='./tree_density_approximators.html'">
+                <span>
+                  Tree Density Approximators
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./tree_approximators_of_a_normal.html'" onkeypress="location.href='./tree_approximators_of_a_normal.html'">
+            <span>
+            Tree Approximators of a Normal
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./optimal_tree_density_approximators.pdf#page=2'" onkeypress="location.href='./optimal_tree_density_approximators.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./optimal_tree_density_approximators-graph.pdf'" onkeypress="location.href='./optimal_tree_density_approximators-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Optimal Tree Density Approximators </h1> 
+      <!--
+!name:optimal_tree_density_approximators
+!need:tree_density_approximators
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Which is the optimal tree to use for tree
+  density approximation?</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>We want to choose the tree whose corresponding
+  approximator for the given density achieves
+  minimum relative entropy with the given density
+  among all tree density approximators.</span>
+
+ <span class='run'>We call such a density an
+  <span class='term'>optimal tree approximator</span>
+  of the given density.</span>
+
+ <span class='run'>We call a tree according to which an optimal
+  tree approximator factors and optimal approximator
+  tree.</span>
+</p>
+
+<h1 id='Result'>Result</h1>
+
+<div class='proposition'>
+ <p>
+  <span class='run'>Let $g: \R ^n \to [0, 1]$ be a density.</span>
+
+  <span class='run'>A tree $T$ on $\set{1, \dots , n}$ is an
+   optimal approximator tree if and only if it is
+   a maximal spanning tree of the differential
+   mutual information graph of $q$.</span>
+ </p>
+
+ <div class='proof'>  <p>
+   <span class='run'>First, denote the optimal approximator of $g$
+    for tree $T$ by $f^*_T$. Recall
+    <p>\[
+     f^*_T = f_1 \prod_{i \neq 1} f_{i \mid  \pa{i}}
+    \]</p></span>
+  </p>
+
+
+  <p>
+   <span class='run'>Second, recall $d(g, f) = H(g, f) - H(g)$.</span>
+
+   <span class='run'>Since $H(g)$ does not depend on $f$, $f$ is
+    a minimizer of $d(g, f)$ if and only if it
+    is a minimizer of $H(g, f)$.</span>
+  </p>
+
+
+  <p>
+   <span class='run'>Third, express the cross entropy of $f^*_T$
+    relative to $g$ as
+    <p>\[
+     \begin{aligned}
+
+     H(q, p^*_T) &= h(q_1) - \sum_{j \neq i} ( \int_{\R ^d}
+      g(x) \log g_{i \mid  \pa_i}(x_i, x_{\pa_i}) dx ) \\
+
+     &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a) (\log
+      q_{i,\pa_i}(a_i, a_{\pa_i}) - \log q_{\pa{i}}(a_{\pa_i})) \\
+
+     &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a) (\log
+      q_{i,\pa_i}(a_i, a_{\pa_i}) - \log q_{\pa_i}(a_{\pa_i}) - \log
+      q_i(a_i) + \log q_{i}(a_i) ) \\
+
+     &= \sum_{i = 1}^{n} H(q_i) - \sum_{i \neq 1} I(q_i,
+      q_{\pa_i}) \\
+
+     &= \sum_{i = 1}^{n} H(q_i) - \sum_{\set{i,j} \in T} I(q_i,
+      q_{j}) \\
+
+     \end{aligned}
+    \]</p>
+    where $\pa_i$ denotes the parent of vertex
+    $i$ in $T$ ($i = 2, \dots , n$).</span>
+
+   <span class='run'>$H(g_i)$ does not depend on the choice of
+    tree.</span>
+
+   <span class='run'>Choosing a tree to minimize the second term
+    in the final expression above is equivalent to
+    choosing a maximal spanning tree from the
+    weighted graph with differential mutual
+    information edge weights; namely, the mutual
+    information graph of $g$.</span>
+  </p>
+ </div></div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1495,7 +1740,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Which is the optimal tree to use for tree density approximation?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> We want to choose the tree whose corresponding approximator for the given density achieves minimum relative entropy with the given density among all tree density approximators. We call such a density an \t{optimal tree approximator} of the given density. We call a tree according to which an optimal tree approximator factors and optimal approximator tree.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">3. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $g: \R^n \to [0, 1]$ be a density. A tree $T$ on $\set{1, \dots, n}$ is an optimal approximator tree if and only if it is a maximal spanning tree of the differential mutual information graph of $q$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} First, denote the optimal approximator of $g$ for tree $T$ by $f^*_T$. Recall $$ f^*_T = f_1 \prod_{i \neq 1} f_{i \mid \pa{i}} $$</p></div><div class="sheet-listing"><p class="sheet"> Second, recall $d(g, f) = H(g, f) - H(g)$. Since $H(g)$ does not depend on $f$, $f$ is a minimizer of $d(g, f)$ if and only if it is a minimizer of $H(g, f)$.</p></div><div class="sheet-listing"><p class="sheet"> Third, express the cross entropy of $f^*_T$ relative to $g$ as $$ \begin{aligned} H(q, p^*_T) &= h(q_1) - \sum_{j \neq i} \parens*{ \int_{\R^d} g(x) \log g_{i \mid pa{i}}(x_i, x_{\pa{i}}) dx } \\ &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\parens{\log q_{i,\pa{i}}(a_i, a_{\pa{i}}) - \log q_{\pa{i}}(a_{\pa{i}})} \\ &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\parens{\log q_{i,\pa{i}}(a_i, a_{\pa{i}}) - \log q_{\pa{i}}(a_{\pa{i}}) - \log q_i(a_i)  + \log q_{i}(a_i)} \\ &= \sum_{i = 1}^{n} H(q_i) - \sum_{i \neq 1} I(q_i, q_{\pa{i}}) \\ &= \sum_{i = 1}^{n} H(q_i) - \sum_{\set{i,j} \in T} I(q_i, q_{j}) \\ \end{aligned} $$ where $\pa{i}$ denotes the parent of vertex $i$ in $T$ ($i = 2, \dots, n$). $H(g_i)$ does not depend on the choice of tree. Choosing a tree to minimize the second term in the final expression above is equivalent to choosing a maximal spanning tree from the weighted graph with differential mutual information edge weights; namely, the mutual information graph of $g$.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Which is the optimal tree to use for tree density approximation?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We want to choose the tree whose corresponding approximator for the given density achieves minimum relative entropy with the given density among all tree density approximators. We call such a density an \t{optimal tree approximator} of the given density. We call a tree according to which an optimal tree approximator factors and optimal approximator tree.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $g: \R ^n \to [0, 1]$ be a density. A tree $T$ on $\set{1, \dots , n}$ is an optimal approximator tree if and only if it is a maximal spanning tree of the differential mutual information graph of $q$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}First, denote the optimal approximator of $g$ for tree $T$ by $f^*_T$. Recall \[ f^*_T = f_1 \prod_{i \neq 1} f_{i \mid  \pa{i}} \]</p></div><div class="sheet-listing"><p class="sheet"> Second, recall $d(g, f) = H(g, f) - H(g)$. Since $H(g)$ does not depend on $f$, $f$ is a minimizer of $d(g, f)$ if and only if it is a minimizer of $H(g, f)$.</p></div><div class="sheet-listing"><p class="sheet"> Third, express the cross entropy of $f^*_T$ relative to $g$ as \[ \begin{aligned} H(q, p^*_T) &= h(q_1) - \sum_{j \neq i} ( \int_{\R ^d} g(x) \log g_{i \mid  \pa_i}(x_i, x_{\pa_i}) dx ) \\ &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a) (\log q_{i,\pa_i}(a_i, a_{\pa_i}) - \log q_{\pa{i}}(a_{\pa_i})) \\ &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a) (\log q_{i,\pa_i}(a_i, a_{\pa_i}) - \log q_{\pa_i}(a_{\pa_i}) - \log q_i(a_i) + \log q_{i}(a_i) ) \\ &= \sum_{i = 1}^{n} H(q_i) - \sum_{i \neq 1} I(q_i, q_{\pa_i}) \\ &= \sum_{i = 1}^{n} H(q_i) - \sum_{\set{i,j} \in T} I(q_i, q_{j}) \\ \end{aligned} \] where $\pa_i$ denotes the parent of vertex $i$ in $T$ ($i = 2, \dots , n$). $H(g_i)$ does not depend on the choice of tree. Choosing a tree to minimize the second term in the final expression above is equivalent to choosing a maximal spanning tree from the weighted graph with differential mutual information edge weights; namely, the mutual information graph of $g$. \end{proof}\end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1649,7 +1894,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

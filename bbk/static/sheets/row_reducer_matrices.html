@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1160,6 +1177,288 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./linear_system_row_reductions.html'" onkeypress="location.href='./linear_system_row_reductions.html'">
+                <span>
+                  Linear System Row Reductions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+                <span>
+                  Real Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./triangular_matrices.html'" onkeypress="location.href='./triangular_matrices.html'">
+                <span>
+                  Triangular Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./ordinary_reducer_factorization.html'" onkeypress="location.href='./ordinary_reducer_factorization.html'">
+            <span>
+            Ordinary Reducer Factorization
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./row_reducer_matrices.pdf#page=2'" onkeypress="location.href='./row_reducer_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./row_reducer_matrices-graph.pdf'" onkeypress="location.href='./row_reducer_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Row Reducer Matrices </h1> 
+      <!--
+!name:row_reducer_matrices
+!need:real_matrices
+!need:linear_system_row_reductions
+!need:triangular_matrices
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Can we represent the function associating a
+  linear system with its row reduction by matrix
+  multiplication?</span>
+</p>
+
+<h1 id='Main_observation'>Main observation</h1>
+
+<p>
+ <span class='run'>The following proposition affirmatively answers
+  the question.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>Let $(A \in \R ^{m \times m}, b \in \R ^{m})$
+  be a linear system with $A_{kk} \neq 0$ and
+  $(C, d)$ the $k$th reduction of $(A, b)$.</span>
+
+ <span class='run'>Then there exists a matrix $L \in \R ^{m
+  \times m}$ so that $C = LA$ and $d = Lb$.</span></div>
+<div class='proof'> <span class='run'>Define $L \in \R ^{m \times m}$ by $L_{st} =
+  1$ if $s = t$, $-A_{sj}/A_{ij}$ if $k &lt; s
+  \leq m$ and zero otherwise.</span></div>
+<p>
+ <span class='run'>For this reason, we call $L$ in the above
+  proposition a <span class='term'>row reducer
+  matrix</span> or <span class='term'>row reducing
+  matrix</span> or <span class='term'>row
+  reducer</span>.</span>
+
+ <span class='run'>The row reducer matrix for the $k$th reduction
+  of $(A, b)$ has the form
+  <p>\[
+   L_k = \barray{
+
+   1 & & & & & \\
+
+   & \ddots & & & & \\
+
+   & & 1 & & & \\
+
+   & & A_{ik}/A_{kk} & 1 & &\\
+
+   & & \vdots & & \ddots & & \\
+
+   & & A_{mk}/A_{kk} & & & 1
+
+   }
+  \]</p></span>
+
+ <span class='run'>So the following is immediate</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>Row reducing matrices are unit lower triangular.</span></div>
+<h1 id='Example'>Example</h1>
+
+<p>
+ <span class='run'>For example, the $(1,1)$-reduction of $(A, b)$
+  in which
+  <p>\[
+   A = \barray{
+
+   2 & 1 & 1 & 0 \\
+
+   4 & 3 & 3 & 1 \\
+
+   6 & 7 & 9 & 5 \\
+
+   8 & 7 & 9 & 8 \\
+
+   } \text{ and } b = \barray{
+
+   1 \\
+
+   2 \\
+
+   3 \\
+
+   4 \\
+
+   }.
+  \]</p>
+  is the linear system
+  <p>\[
+   A' = \barray{
+
+   2 & 1 & 1 & 0 \\
+
+   0 & 1 & 1 & 1 \\
+
+   0 & 3 & 5 & 5 \\
+
+   0 & 4 & 6 & 8 \\
+
+   } \text{ and } b' = \barray{
+
+   1 \\
+
+   0 \\
+
+   -1 \\
+
+   1\\
+
+   }.
+  \]</p></span>
+
+ <span class='run'>The row reducer is $L \in R^{4 \times 4}$
+  defined by
+  <p>\[
+   L = \barray{
+
+   1 & 0 & 0 & 0 \\
+
+   -2 & 1 & 0 & 0 \\
+
+   -4 & 0 & 1 & 0 \\
+
+   -3 & 0 & 0 & 1
+
+   }.
+  \]</p></span>
+
+ <span class='run'>One can check that $A&#39; = LA$ and $b&#39;
+  = Lb$, and clearly $L$ is unit lower triangular.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1221,7 +1520,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Can we represent the function associating a linear system with its row reduction by matrix multiplication?</p></div><div class="sheet-listing" id="main_observation"><h1 class="sheet">2. Main observation</h1></div><div class="sheet-listing"><p class="sheet"> The following proposition affirmatively answers the question.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(A \in \R^{m \times m}, b \in \R^{m})$ be a linear system with $A_{kk} \neq 0$ and $(C, d)$ the $k$th reduction of $(A, b)$. Then there exists a matrix $L \in \R^{m \times m}$ so that $C = LA$ and  $d = Lb$. \begin{proof} Define $L \in \R^{m \times m}$ by $L_{st} = 1$ if $s = t$, $-A_{sj}/A_{ij}$ if $k < s \leq m$ and zero otherwise. \end{proof} \label{proposition:row_reducer_matrices:defining} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> For this reason, we call $L$ in Proposition~\ref{proposition:row_reducer_matrices:defining} a \t{row reducer matrix} or \t{row reducing matrix} or \t{row reducer}. The row reducer matrix for the $k$th reduction of $(A, b)$ has the form \[ L_k = \barray{ 1 & & & &  & \\ & \ddots & & & & \\ & & 1 & & & \\ & & \nicefrac{A_{ik}}{A_{kk}} & 1 & &\\ & & \vdots & & \ddots & & \\ & & \nicefrac{A_{mk}}{A_{kk}} & & & 1 } \] So the following is immediate \begin{prop} Row reducing matrices are unit lower triangular. \end{prop}</p></div><div class="sheet-listing" id="example"><h1 class="sheet">3. Example</h1></div><div class="sheet-listing"><p class="sheet"> For example, the $(1,1)$-reduction of $(A, b)$ in which \[ A = \barray{ 2 & 1 & 1 & 0 \\ 4 & 3 & 3 & 1 \\ 6 & 7 & 9 & 5 \\ 8 & 7 & 9 & 8 \\ } \text{ and } b = \barray{ 1 \\ 2 \\ 3 \\ 4 \\ }. \] is the linear system \[ A' = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 3 & 5 & 5 \\ 0 & 4 & 6 & 8 \\ } \text{ and } b' = \barray{ 1 \\ 0 \\ -1 \\ 1\\ }. \] The row reducer is $L \in R^{4 \times 4}$ defined by \[ L = \barray{ 1 & 0 & 0 & 0 \\ -2 & 1 & 0 & 0 \\ -4 & 0 & 1 & 0 \\ -3 & 0 & 0 & 1 }. \] One can check that $A' = LA$ and $b' = Lb$, and clearly $L$ is unit lower triangular.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Can we represent the function associating a linear system with its row reduction by matrix multiplication?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Main observation}</p></div><div class="sheet-listing"><p class="sheet"> The following proposition affirmatively answers the question.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(A \in \R ^{m \times m}, b \in \R ^{m})$ be a linear system with $A_{kk} \neq 0$ and $(C, d)$ the $k$th reduction of $(A, b)$. Then there exists a matrix $L \in \R ^{m \times m}$ so that $C = LA$ and $d = Lb$.\end{proposition} \begin{proof}Define $L \in \R ^{m \times m}$ by $L_{st} = 1$ if $s = t$, $-A_{sj}/A_{ij}$ if $k < s \leq m$ and zero otherwise.\end{proof} For this reason, we call $L$ in the above proposition a \t{row reducer matrix} or \t{row reducing matrix} or \t{row reducer}. The row reducer matrix for the $k$th reduction of $(A, b)$ has the form \[ L_k = \barray{ 1 & & & & & \\ & \ddots & & & & \\ & & 1 & & & \\ & & A_{ik}/A_{kk} & 1 & &\\ & & \vdots & & \ddots & & \\ & & A_{mk}/A_{kk} & & & 1 } \] So the following is immediate</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Row reducing matrices are unit lower triangular.\end{proposition} \section*{Example}</p></div><div class="sheet-listing"><p class="sheet"> For example, the $(1,1)$-reduction of $(A, b)$ in which \[ A = \barray{ 2 & 1 & 1 & 0 \\ 4 & 3 & 3 & 1 \\ 6 & 7 & 9 & 5 \\ 8 & 7 & 9 & 8 \\ } \text{ and } b = \barray{ 1 \\ 2 \\ 3 \\ 4 \\ }. \] is the linear system \[ A' = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 3 & 5 & 5 \\ 0 & 4 & 6 & 8 \\ } \text{ and } b' = \barray{ 1 \\ 0 \\ -1 \\ 1\\ }. \] The row reducer is $L \in R^{4 \times 4}$ defined by \[ L = \barray{ 1 & 0 & 0 & 0 \\ -2 & 1 & 0 & 0 \\ -4 & 0 & 1 & 0 \\ -3 & 0 & 0 & 1 }. \] One can check that $A' = LA$ and $b' = Lb$, and clearly $L$ is unit lower triangular.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1375,7 +1674,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

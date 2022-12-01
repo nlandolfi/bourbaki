@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -900,6 +917,316 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./arrays.html'" onkeypress="location.href='./arrays.html'">
+                <span>
+                  Arrays
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./ordered_undirected_graphs.html'" onkeypress="location.href='./ordered_undirected_graphs.html'">
+                <span>
+                  Ordered Undirected Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./monotone_neighborhoods.pdf#page=2'" onkeypress="location.href='./monotone_neighborhoods.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./monotone_neighborhoods-graph.pdf'" onkeypress="location.href='./monotone_neighborhoods-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Monotone Neighborhoods </h1> 
+      <!--
+!name:monotone_neighborhoods
+!need:ordered_undirected_graphs
+!need:arrays
+-->
+
+<h1 id='Why'>Why</h1>
+<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup>
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>The <span class='term'>higher adjacency set</span>
+  or <span class='term'>higher neighborhood</span> of
+  a vertex $v$ in an ordered undirected graph is
+  all vertices in the neighborhood of $v$ whose
+  index is greater the $v$.</span>
+
+ <span class='run'>Similarly, the <span class='term'>lower adjacency
+  set</span> or <span class='term'>lower
+  neighborhood</span> of $v$ is all vertices in
+  the neighborhood of $v$ whose index is less the
+  $v$.</span>
+
+ <span class='run'>We call these <span class='term'>monotone
+  neighborhoods</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>higher degree</span> of a
+  vertex is the size of the higher adjacency set
+  and the <span class='term'>lower degree</span> of
+  a vertex is the size of its lower adjacency
+  set.</span>
+</p>
+
+
+<p>
+ <span class='run'>The <span class='term'>closed monotone
+  neighborhoods</span> are the
+  <span class='term'>closed higher adjacency
+  set</span>, the higher adjacency set of $v$
+  union with the singleton $\set{v}$ and the
+  <span class='term'>closed lower adjacency
+  set</span>, the lower adjacency set of $v$ union
+  with the singleton $\set{v}$.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>We denote the higher neighborhood of $v$ by
+  $\adjh(v)$ and the lower neighborhood by
+  $\adjl(v)$.</span>
+</p>
+
+<h1 id='Visualization'>Visualization</h1>
+
+<!--
+% \begin{figure}
+%   \centering
+%   \begin{subfigure}{0.4\textwidth}
+%   \includegraphics[width=1\textwidth]{graphics_included/ordered_undirected_graph}
+%   \caption{Ordered undirected graph.}
+%   \end{subfigure}
+%   \begin{subfigure}{0.4\textwidth}
+% \[
+% \barray{
+%   a     ＆   ＆ ＆ ＆ \\
+%   \bullet ＆ c ＆ ＆ ＆ \\
+%    ＆ \bullet ＆ d ＆ ＆ \\
+%    \bullet ＆ ＆ \bullet ＆ b ＆ \\
+%    \bullet ＆ \bullet ＆ \bullet ＆ \bullet ＆ e
+% }
+% \]
+%     \caption{Tabular representation.}
+%   \end{subfigure}
+% \end{figure}
+-->
+
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div><img src="./graphics/orderedundirectedgraph.pdf" width="50%"/></div></div>
+<!--
+    <div data-littype='paragraph'>
+     <div data-littype='run'> \begin{figure} </div>
+
+     <div data-littype='run'> \centering </div>
+
+     <div data-littype='run'> ∈cludegraphics[width=0.3\textwidth]{graphics_included/ordered_undirected_graph} </div>
+
+     <div data-littype='run'> \caption{Ordered undirected graph.} </div>
+
+     <div data-littype='run'> \end{figure} </div>
+    </div>
+    -->
+
+<p>
+ <span class='run'></span>
+
+ <span class='run'>To help think about the monotone neighborhoods
+  of the graph we visualize ordered graphs as
+  triangular arrays with vertices along the
+  diagonal and a bullet in row $i$ and column
+  $j$ of the array if $i &gt; j$ and the
+  vertices $\sigma (i)$ and $\sigma (j)$ are
+  adjacent.</span>
+</p>
+
+
+<p>
+ <span class='run'>An example is shown below for the ordered
+  undirected graph in the figure (to understand
+  this visualization, see&nbsp;<a href='/sheets/ordered_undirected_graphs.html'/><span class='run'>Ordered Undirected Graphs</span></a>) we use the</span>
+ <!--
+% Let $(V, E)$ be an undirected graph with $V = \set{a,b,c,d,e}$ and
+%   $E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d}, \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}$.
+% Let $\sigma: \set{1, \dots, 5} \to V$ be an ordering with
+% \[
+%   \sigma(1) = a \quad  \sigma(2) = c \quad \sigma(3) = d \quad \sigma(4) = b \quad \sigma(e) = 5.
+% \]
+% An example is show below.
+-->
+
+ <p>\[
+  \barray{
+
+  a & & & & \\
+
+  \bullet & c & & & \\
+
+  & \bullet & d & & \\
+
+  \bullet & & \bullet & b & \\
+
+  \bullet & \bullet & \bullet & \bullet & e
+
+  }
+ \]</p>
+</p>
+
+
+<p>
+ <span class='run'>In this array representation the higher and
+  lower neighborhoods are easily identified.</span>
+
+ <span class='run'>The indices of the elements of $\adjh(v)$ are
+  the column indices of the entries in row
+  $\inv{\sigma }(v)$ of the array.</span>
+
+ <span class='run'>For example, $\inv{\sigma }(d) = 3$, and the
+  only bullet entry in row three is $c$ so
+  $\adjn(d) = \set{c}$.</span>
+
+ <span class='run'>Likewise, $\adjn(c) = \set{a}$.</span>
+
+ <span class='run'>And so on.</span>
+
+ <span class='run'>Similalry, the indices of $\adjp(v)$ are the
+  row indices of the entries in column
+  $\inv{\sigma }(v)$.</span>
+
+ <span class='run'>For example, $\inv{\sigma }(d)$ is $3$, and
+  there are indices 4 and 5 corresponding to $b$
+  and $e$ so $\adjp(d) = \set{b, e}$.</span>
+
+ <span class='run'>Likewise, $\adjp(c) = \set{d, e}$.</span>
+</p>
+
+
+<p>
+ <span class='run'>For this reason, we use the notation $\col(v)$
+  and $\row(v)$ for the closed upper and lower
+  neighborhoods.</span>
+
+ <span class='run'>So $\col(v) = \adjp(v) \union \set{v}$ and
+  $\row(v) = \adjn(v) \union \set{v}$.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include. This sheet is
+  needed, for example, in discussing perfect
+  elimination orderings.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -944,7 +1271,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include._this_sheet_is_needed,_for_example,_in_discussing_perfect_elimination_orderings."><h1 class="sheet">1. Why}\footnote{Future editions will include. This sheet is needed, for example, in discussing perfect elimination orderings.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{higher adjacency set} or \t{higher neighborhood} of a vertex $v$ in an ordered undirected graph is all vertices in the neighborhood of $v$ whose index is greater the $v$. Similarly, the \t{lower adjacency set} or \t{lower neighborhood} of $v$ is all vertices in the neighborhood of $v$ whose index is less the $v$. We call these \t{monotone neighborhoods}.</p></div><div class="sheet-listing"><p class="sheet"> The \t{higher degree} of a vertex is the size of the higher adjacency set and the \t{lower degree} of a vertex is the size of its lower adjacency set.</p></div><div class="sheet-listing"><p class="sheet"> The \t{closed monotone neighborhoods} are the \t{closed higher adjacency set}, the higher adjacency set of $v$ union with the singleton $\set{v}$ and the \t{closed lower adjacency set}, the lower adjacency set of $v$ union with the singleton $\set{v}$.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote the higher neighborhood of $v$ by $\adjh(v)$ and the lower neighborhood by $\adjl(v)$.</p></div><div class="sheet-listing" id="visualization"><h1 class="sheet">3. Visualization</h1></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \includegraphics[width=0.3\textwidth]{graphics_included/ordered_undirected_graph} \caption{Ordered undirected graph.} \end{figure}</p></div><div class="sheet-listing"><p class="sheet"> To help think about the monotone neighborhoods of the graph we visualize ordered graphs as triangular arrays with vertices along the diagonal and a bullet in row $i$ and column $j$ of the array if $i > j$ and the  vertices $\sigma(i)$ and $\sigma(j)$ are adjacent.</p></div><div class="sheet-listing"><p class="sheet"> An example is shown below for the ordered undirected graph in the figure (to understand this visualization, see \sheetref{ordered_undirected_graphs}{Ordered Undirected Graphs}) we use the \[ \barray{ a     &   & & & \\ \bullet & c & & & \\ & \bullet & d & & \\ \bullet & & \bullet & b & \\ \bullet & \bullet & \bullet & \bullet & e } \]</p></div><div class="sheet-listing"><p class="sheet"> In this array representation the higher and lower neighborhoods are easily identified. The indices of the elements of $\adjh(v)$ are the column indices of the entries in row $\inv{\sigma}(v)$ of the array. For example, $\inv{\sigma}(d) = 3$, and the only bullet entry in row three is $c$ so $\adjn(d) = \set{c}$. Likewise, $\adjn(c) = \set{a}$. And so on. Similalry, the indices of $\adjp(v)$ are the row indices of the entries in column $\inv{\sigma}(v)$. For example, $\inv{\sigma}(d)$ is $3$, and there are indices 4 and 5 corresponding to $b$ and $e$ so $\adjp(d) = \set{b, e}$. Likewise, $\adjp(c) = \set{d, e}$.</p></div><div class="sheet-listing"><p class="sheet"> For this reason, we use the notation $\col(v)$ and $\row(v)$ for the closed upper and lower neighborhoods. So $\col(v) = \adjp(v) \union \set{v}$ and $\row(v) = \adjn(v) \union \set{v}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why} \footnote{Future editions will include. This sheet is needed, for example, in discussing perfect elimination orderings.} \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{higher adjacency set} or \t{higher neighborhood} of a vertex $v$ in an ordered undirected graph is all vertices in the neighborhood of $v$ whose index is greater the $v$. Similarly, the \t{lower adjacency set} or \t{lower neighborhood} of $v$ is all vertices in the neighborhood of $v$ whose index is less the $v$. We call these \t{monotone neighborhoods}.</p></div><div class="sheet-listing"><p class="sheet"> The \t{higher degree} of a vertex is the size of the higher adjacency set and the \t{lower degree} of a vertex is the size of its lower adjacency set.</p></div><div class="sheet-listing"><p class="sheet"> The \t{closed monotone neighborhoods} are the \t{closed higher adjacency set}, the higher adjacency set of $v$ union with the singleton $\set{v}$ and the \t{closed lower adjacency set}, the lower adjacency set of $v$ union with the singleton $\set{v}$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the higher neighborhood of $v$ by $\adjh(v)$ and the lower neighborhood by $\adjl(v)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Visualization}</p></div><div class="sheet-listing"><p class="sheet"> \begin{center}\includegraphics[width=0.50\textwidth]{./graphics/orderedundirectedgraph.pdf}\end{center}</p></div><div class="sheet-listing"><p class="sheet"> To help think about the monotone neighborhoods of the graph we visualize ordered graphs as triangular arrays with vertices along the diagonal and a bullet in row $i$ and column $j$ of the array if $i > j$ and the vertices $\sigma (i)$ and $\sigma (j)$ are adjacent.</p></div><div class="sheet-listing"><p class="sheet"> An example is shown below for the ordered undirected graph in the figure (to understand this visualization, see \sheetref{ordered_undirected_graphs}{Ordered Undirected Graphs}) we use the</p></div><div class="sheet-listing"><p class="sheet"> \[ \barray{ a & & & & \\ \bullet & c & & & \\ & \bullet & d & & \\ \bullet & & \bullet & b & \\ \bullet & \bullet & \bullet & \bullet & e } \]</p></div><div class="sheet-listing"><p class="sheet"> In this array representation the higher and lower neighborhoods are easily identified. The indices of the elements of $\adjh(v)$ are the column indices of the entries in row $\inv{\sigma }(v)$ of the array. For example, $\inv{\sigma }(d) = 3$, and the only bullet entry in row three is $c$ so $\adjn(d) = \set{c}$. Likewise, $\adjn(c) = \set{a}$. And so on. Similalry, the indices of $\adjp(v)$ are the row indices of the entries in column $\inv{\sigma }(v)$. For example, $\inv{\sigma }(d)$ is $3$, and there are indices 4 and 5 corresponding to $b$ and $e$ so $\adjp(d) = \set{b, e}$. Likewise, $\adjp(c) = \set{d, e}$.</p></div><div class="sheet-listing"><p class="sheet"> For this reason, we use the notation $\col(v)$ and $\row(v)$ for the closed upper and lower neighborhoods. So $\col(v) = \adjp(v) \union \set{v}$ and $\row(v) = \adjn(v) \union \set{v}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1098,7 +1425,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

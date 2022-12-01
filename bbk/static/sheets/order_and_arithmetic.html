@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -708,6 +725,170 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./natural_order.html'" onkeypress="location.href='./natural_order.html'">
+                <span>
+                  Natural Order
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./natural_products.html'" onkeypress="location.href='./natural_products.html'">
+                <span>
+                  Natural Products
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./order_and_arithmetic.pdf#page=2'" onkeypress="location.href='./order_and_arithmetic.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./order_and_arithmetic-graph.pdf'" onkeypress="location.href='./order_and_arithmetic-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Order and Arithmetic </h1> 
+      <!--
+!name:order_and_arithmetic
+!need:natural_order
+!need:natural_products
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>How does arithmetic preserve order?</span>
+</p>
+
+<h1 id='Results'>Results</h1>
+
+<p>
+ <span class='run'>The following are standard useful results.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>If $m &lt; n$, then $m + k &lt; n + k$ for
+  all $k$.</span></div>
+<div class='proposition'>
+ <span class='run'>If $m &lt; n$ and $k \neq 0$, then $m \cdot
+  k &lt; n \cdot  k$.</span></div>
+<div class='proposition' text='Least Element'>
+ <span class='run'>If $E$ is a nonempty set of natural numbers,
+  there exists $k \in E$ such that $k \leq m$
+  for all $m \in E$.</span></div>
+<div class='proposition' text='Greatest Element'>
+ <span class='run'>If $E$ is a nonempty set of natural numbers,
+  there exists $k \in E$ such that $m \leq k$
+  for all $m \in E$.</span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>The accounts of which will appear in future
+  editions.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -752,7 +933,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How does arithmetic preserve order?</p></div><div class="sheet-listing" id="results"><h1 class="sheet">2. Results</h1></div><div class="sheet-listing"><p class="sheet"> The following are standard useful results.\footnote{The accounts of which will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If $m < n$, then $m + k < n + k$ for all $k$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If $m < n$ and $k \neq 0$, then $m \cdot k < n \cdot k$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Least Element] If $E$ is a nonempty set of natural numbers, there exists $k \in E$ such that $k \leq m$ for all $m \in E$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Greatest Element] If $E$ is a nonempty set of natural numbers, there exists $k \in E$ such that $m \leq k$ for all $m \in E$. \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How does arithmetic preserve order?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Results}</p></div><div class="sheet-listing"><p class="sheet"> The following are standard useful results.\footnote{The accounts of which will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If $m < n$, then $m + k < n + k$ for all $k$.\end{proposition} \begin{proposition} If $m < n$ and $k \neq 0$, then $m \cdot  k < n \cdot  k$.\end{proposition} \begin{proposition}[Least Element] If $E$ is a nonempty set of natural numbers, there exists $k \in E$ such that $k \leq m$ for all $m \in E$.\end{proposition} \begin{proposition}[Greatest Element] If $E$ is a nonempty set of natural numbers, there exists $k \in E$ such that $m \leq k$ for all $m \in E$.\end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -906,7 +1087,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

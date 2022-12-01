@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1176,6 +1193,284 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./measurable_functions.html'" onkeypress="location.href='./measurable_functions.html'">
+                <span>
+                  Measurable Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measurable_function_operations.pdf#page=2'" onkeypress="location.href='./measurable_function_operations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measurable_function_operations-graph.pdf'" onkeypress="location.href='./measurable_function_operations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Measurable Function Operations </h1> 
+      <!--
+!name:measurable_function_operations
+!need:measurable_functions
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Under which operations is the set of measurable
+  functions closed?</span>
+</p>
+
+<h1 id='Overview'>Overview</h1>
+
+<p>
+ <span class='run'>Measurable functions are closed under composition
+  and concatenation.</span>
+
+ <span class='run'>Taking these facts together with the observation
+  that continuous functions are measurable, we
+  conclude that measurable functions are closed
+  under addition, multiplication, and (with suitable
+  nonzero assumptions) division.</span>
+</p>
+
+<h1 id='Results'>Results</h1>
+
+<div class='proposition'>
+ <p>
+  <span class='run'>The composition of two</span>
+
+  <span class='run'>measurable functions</span>
+
+  <span class='run'>is measurable.</span>
+ </p>
+</div>
+<div class='proof'> <p>
+  <span class='run'>Let</span>
+
+  <span class='run'>$(X, \mathcal{A} )$,</span>
+
+  <span class='run'>$(Y, \mathcal{B} )$,</span>
+
+  <span class='run'>$(Z, \mathcal{C} )$</span>
+
+  <span class='run'>be measurable spaces.</span>
+
+  <span class='run'>Let $f: X \to Y$</span>
+
+  <span class='run'>and $g: Y \to Z$ be</span>
+
+  <span class='run'>measurable functions.</span>
+
+  <span class='run'>Define $h = g \circ f$.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>Let $C \in \mathcal{C} $.</span>
+
+  <span class='run'>Measurability of $g$</span>
+
+  <span class='run'>implies</span>
+
+  <span class='run'>$g^{-1}(C) \in \mathcal{B} $.</span>
+
+  <span class='run'>This fact, together with</span>
+
+  <span class='run'>measurability of $f$,</span>
+
+  <span class='run'>implies</span>
+
+  <span class='run'>$f^{-1}(g^{-1}(C)) \in \mathcal{A} $.</span>
+
+  <span class='run'>Since $h^{-1} = f^{-1} \circ g^{-1}$,</span>
+
+  <span class='run'>we conclude that</span>
+
+  <span class='run'>$h$ is measurable.</span>
+ </p>
+</div>
+<div class='proposition'>
+ <p>
+  <span class='run'>A continuous function</span>
+
+  <span class='run'>between topological</span>
+
+  <span class='run'>spaces</span>
+
+  <span class='run'>is measurable with</span>
+
+  <span class='run'>respect to the</span>
+
+  <span class='run'>topological sigma algebras.</span>
+ </p>
+</div>
+<div class='proposition'>
+ <p>
+  <span class='run'>The concatentation of</span>
+
+  <span class='run'>two measurable functions</span>
+
+  <span class='run'>is measurable.</span>
+ </p>
+</div>
+<div class='proof'> <span class='run'>Let</span>
+
+ <span class='run'>$(X, \mathcal{A} )$,</span>
+
+ <span class='run'>$(Y, \mathcal{B} )$</span>
+
+ <span class='run'>and</span>
+
+ <span class='run'>$(Z, \mathcal{C} )$</span>
+
+ <span class='run'>be measurable spaces.</span>
+
+ <span class='run'>Let</span>
+
+ <span class='run'>$f: X \to Y$</span>
+
+ <span class='run'>and</span>
+
+ <span class='run'>$g: X \to Z$</span>
+
+ <span class='run'>be measurable.</span>
+
+ <span class='run'>Define</span>
+
+ <span class='run'>$h: X \to Y \cross Z$</span>
+
+ <span class='run'>by $h(x) = (f(x), g(x))$.</span></div>
+<div class='proposition'>
+ <p>
+  <span class='run'>Let $(X, \mathcal{A} )$</span>
+
+  <span class='run'>be a measurable space</span>
+
+  <span class='run'>and let $R$ denote the</span>
+
+  <span class='run'>real numbers.</span>
+
+  <span class='run'>Let</span>
+
+  <span class='run'>$f,g: X \to R$</span>
+
+  <span class='run'>be measurable.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>Then, $f+g$ and $fg$ are measurable.</span>
+ </p>
+</div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1213,7 +1508,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Under which operations is the set of measurable functions closed?</p></div><div class="sheet-listing" id="overview"><h1 class="sheet">2. Overview</h1></div><div class="sheet-listing"><p class="sheet"> Measurable functions are closed under composition and concatenation. Taking these facts together with the observation that continuous functions are measurable, we conclude that measurable functions are closed under addition, multiplication, and (with suitable nonzero assumptions) division.</p></div><div class="sheet-listing" id="results"><h1 class="sheet">3. Results</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The composition of two measurable functions is measurable. \begin{proof} Let $(X, \mathcal{A})$, $(Y, \mathcal{B})$, $(Z, \mathcal{C})$ be measurable spaces. Let $f: X \to Y$ and $g: Y \to Z$ be measurable functions. Define $h = g \circ f$.</p></div><div class="sheet-listing"><p class="sheet"> Let $C \in \mathcal{C}$. Measurability of $g$ implies $g^{-1}(C) \in \mathcal{B}$. This fact, together with measurability of $f$, implies $f^{-1}(g^{-1}(C)) \in \mathcal{A}$. Since $h^{-1} = f^{-1} \circ g^{-1}$, we conclude that $h$ is measurable. \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} A continuous function between topological spaces is measurable with respect to the topological sigma algebras. \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} The concatentation of two measurable functions is measurable. \begin{proof} Let $(X, \mathcal{A})$, $(Y, \mathcal{B})$ and $(Z, \mathcal{C})$ be measurable spaces. Let $f: X \to Y$ and $g: X \to Z$ be measurable. Define $h: X \to Y \cross Z$ by $h(x) = (f(x), g(x))$. \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $(X, \mathcal{A})$ be a measurable space and let $R$ denote the real numbers. Let $f,g: X \to R$ be measurable.</p></div><div class="sheet-listing"><p class="sheet"> Then, $f+g$ and $fg$ are measurable. \end{prop}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Under which operations is the set of measurable functions closed?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Overview}</p></div><div class="sheet-listing"><p class="sheet"> Measurable functions are closed under composition and concatenation. Taking these facts together with the observation that continuous functions are measurable, we conclude that measurable functions are closed under addition, multiplication, and (with suitable nonzero assumptions) division.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Results}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The composition of two measurable functions is measurable. \end{proposition} \begin{proof}Let $(X, \mathcal{A} )$, $(Y, \mathcal{B} )$, $(Z, \mathcal{C} )$ be measurable spaces. Let $f: X \to Y$ and $g: Y \to Z$ be measurable functions. Define $h = g \circ f$.</p></div><div class="sheet-listing"><p class="sheet"> Let $C \in \mathcal{C} $. Measurability of $g$ implies $g^{-1}(C) \in \mathcal{B} $. This fact, together with measurability of $f$, implies $f^{-1}(g^{-1}(C)) \in \mathcal{A} $. Since $h^{-1} = f^{-1} \circ g^{-1}$, we conclude that $h$ is measurable. \end{proof} \begin{proposition} A continuous function between topological spaces is measurable with respect to the topological sigma algebras. \end{proposition} \begin{proposition} The concatentation of two measurable functions is measurable. \end{proposition} \begin{proof}Let $(X, \mathcal{A} )$, $(Y, \mathcal{B} )$ and $(Z, \mathcal{C} )$ be measurable spaces. Let $f: X \to Y$ and $g: X \to Z$ be measurable. Define $h: X \to Y \cross Z$ by $h(x) = (f(x), g(x))$.\end{proof} \begin{proposition} Let $(X, \mathcal{A} )$ be a measurable space and let $R$ denote the real numbers. Let $f,g: X \to R$ be measurable.</p></div><div class="sheet-listing"><p class="sheet"> Then, $f+g$ and $fg$ are measurable. \end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1367,7 +1662,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>

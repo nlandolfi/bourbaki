@@ -100,6 +100,23 @@
                 supnorm: ["\\norm{#1}_{\\sup}", 1],
                 inv: ["{#1}^{-1}", 1],
                 conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -904,6 +921,227 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./directed_acyclic_graphs.html'" onkeypress="location.href='./directed_acyclic_graphs.html'">
+                <span>
+                  Directed Acyclic Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./ordered_undirected_graphs.html'" onkeypress="location.href='./ordered_undirected_graphs.html'">
+                <span>
+                  Ordered Undirected Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./ordered_undirected_graph_orientations.pdf#page=2'" onkeypress="location.href='./ordered_undirected_graph_orientations.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./ordered_undirected_graph_orientations-graph.pdf'" onkeypress="location.href='./ordered_undirected_graph_orientations-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Ordered Undirected Graph Orientations </h1> 
+      <!--
+!name:ordered_undirected_graph_orientations
+!need:ordered_undirected_graphs
+!need:directed_acyclic_graphs
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>There is a natural orientation of an ordered
+  undirected graph.</span>
+</p>
+
+<h1 id='Motivating_result'>Motivating result</h1>
+
+<p>
+ <span class='run'>An ordered undirected graph can be converted
+  into a directed graph by orienting the eges
+  from lower to higher index.</span>
+
+ <span class='run'>The <span class='term'>orientation</span> of an
+  ordered undirected graph $((V, E),\sigma )$ is
+  the directed graph $(V, F)$ where
+  <p>\[
+   \set{v, w} \in V \implies (v, w) \in F \text{ and }
+    \inv{\sigma }(v) < \inv{\sigma }(w).
+  \]</p></span>
+
+ <span class='run'>In other words, we can “convert” the ordered
+  undirected graph by “orienting” the edges from
+  lower to higher index.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>Let $G = ((V, E), \sigma )$ be an ordered
+  undirected graph.</span>
+
+ <span class='run'>The orientation of $G$ is acyclic.</span>
+ <div class='proof'>  <span class='run'>Contradiction on the existence of a cycle.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span> </div></div>
+<p>
+ <span class='run'>Conversely, let $(V, F)$ be directed acyclic.</span>
+
+ <span class='run'>To each topological numbering $\sigma $ of $(V,
+  F)$ (see \sheetref{directed_path}{Directed Paths})
+  there exists an ordered undirected graph $((V,
+  E), \sigma )$ where $(V, E)$ is the skeleton of
+  $(V, F)$.</span>
+</p>
+
+<h1 id='Example'>Example</h1>
+
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div><img src="./graphics/figuresidebyside.png" width="70%"/></div></div>
+<!--
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+  \includegraphics[width=0.9\textwidth]{graphics_included/ordered_undirected_graph}
+    \label{figure:ordered_undirected_graph_orientations:ordered_undirected_graph}
+  \end{subfigure}
+  \begin{subfigure}{0.4\textwidth}
+    \includegraphics[width=0.9\textwidth]{graphics_included/directed_ordered_undirected_graph}
+    	\label{figure:ordered_undirected_graph_orientations:directed_ordered_undirected_graph}
+  \end{subfigure}
+  \caption{$G$ and its (directed acyclic) orientation.}
+  \label{figure:ordered_undirected_graph_orientations:main}
+\end{figure}
+-->
+
+<p>
+ <span class='run'></span>
+
+ <span class='run'>Let $G = ((V, E), \sigma )$ be an undirected
+  graph with
+  <p>\[
+   V = \set{a,b,c,d,e},
+  \]</p>
+  <p>\[
+   E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d},
+    \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}},
+  \]</p>
+  and
+  <p>\[
+   \sigma (1) = a \quad \sigma (2) = c \quad \sigma (3) = d
+    \quad \sigma (4) = b \quad \sigma (e) = 5.
+  \]</p></span>
+
+ <span class='run'>We visualize $G$ and its (directed acyclic)
+  orientation above.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -948,7 +1186,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> There is a natural orientation of an ordered undirected graph.</p></div><div class="sheet-listing" id="motivating_result"><h1 class="sheet">2. Motivating Result</h1></div><div class="sheet-listing"><p class="sheet"> An ordered undirected graph can be converted into a directed graph by orienting the eges from lower to higher index. The \t{orientation} of an ordered undirected graph $((V, E),\sigma)$ is the directed graph $(V, F)$ where \[ \set{v, w} \in V \implies (v, w) \in F \text{ and } \inv{\sigma}(v) < \inv{\sigma}(w). \] In other words, we can "convert} the ordered undirected graph by \say{orienting" the edges from lower to higher index.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $G = ((V, E), \sigma)$ be an ordered undirected graph. The orientation of $G$ is acyclic. \begin{proof} Contradiction on the existence of a cycle.\footnote{Future editions will expand.} \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> Conversely, let $(V, F)$ be directed acyclic. To each topological numbering $\sigma$ of $(V, F)$ (see \sheetref{directed_path}{Directed Paths}) there exists an ordered undirected graph $((V, E), \sigma)$ where $(V, E)$ is the skeleton of $(V, F)$.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">3. Example</h1></div><div class="sheet-listing"><p class="sheet"> \begin{figure} \centering \begin{subfigure}{0.4\textwidth} \includegraphics[width=0.9\textwidth]{graphics_included/ordered_undirected_graph} \label{figure:ordered_undirected_graph_orientations:ordered_undirected_graph} \end{subfigure} \begin{subfigure}{0.4\textwidth} \includegraphics[width=0.9\textwidth]{graphics_included/directed_ordered_undirected_graph} \label{figure:ordered_undirected_graph_orientations:directed_ordered_undirected_graph} \end{subfigure} \caption{$G$ and its (directed acyclic) orientation.} \label{figure:ordered_undirected_graph_orientations:main} \end{figure}</p></div><div class="sheet-listing"><p class="sheet"> Let $G = ((V, E), \sigma)$ be an undirected graph with \[ V = \set{a,b,c,d,e}, \] \[ E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d}, \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}, \] and \[ \sigma(1) = a \quad  \sigma(2) = c \quad \sigma(3) = d \quad \sigma(4) = b \quad \sigma(e) = 5. \] We visualize the ordered graph in Figure~\ref{figure:ordered_undirected_graph_orientations:main}.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> There is a natural orientation of an ordered undirected graph.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Motivating result}</p></div><div class="sheet-listing"><p class="sheet"> An ordered undirected graph can be converted into a directed graph by orienting the eges from lower to higher index. The \t{orientation} of an ordered undirected graph $((V, E),\sigma )$ is the directed graph $(V, F)$ where \[ \set{v, w} \in V \implies (v, w) \in F \text{ and } \inv{\sigma }(v) < \inv{\sigma }(w). \] In other words, we can "convert} the ordered undirected graph by \say{orienting" the edges from lower to higher index.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $G = ((V, E), \sigma )$ be an ordered undirected graph. The orientation of $G$ is acyclic. \begin{proof}Contradiction on the existence of a cycle.\footnote{Future editions will expand.}\end{proof}\end{proposition} Conversely, let $(V, F)$ be directed acyclic. To each topological numbering $\sigma $ of $(V, F)$ (see \sheetref{directed\_path}{Directed Paths}) there exists an ordered undirected graph $((V, E), \sigma )$ where $(V, E)$ is the skeleton of $(V, F)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example}</p></div><div class="sheet-listing"><p class="sheet"> \begin{center}\includegraphics[width=0.70\textwidth]{./graphics/figuresidebyside.png}\end{center}</p></div><div class="sheet-listing"><p class="sheet"> Let $G = ((V, E), \sigma )$ be an undirected graph with \[ V = \set{a,b,c,d,e}, \] \[ E = \set*{\set{a, b}, \set{a, c}, \set{a, e}, \set{b, d}, \set{b, e}, \set{c, d}, \set{c, e}, \set{d,e}}, \] and \[ \sigma (1) = a \quad \sigma (2) = c \quad \sigma (3) = d \quad \sigma (4) = b \quad \sigma (e) = 5. \] We visualize $G$ and its (directed acyclic) orientation above.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1102,7 +1340,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ff300bc21.
+      Copyright 2022 The Bourbaki Authors. Version 15ab13e7c.
     </span>
   </body>
 </html>
