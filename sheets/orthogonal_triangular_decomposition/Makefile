@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make orthogonal_triangular_decomposition.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 orthogonal_triangular_decomposition.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > orthogonal_triangular_decomposition.tex
 

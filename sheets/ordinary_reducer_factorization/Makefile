@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make ordinary_reducer_factorization.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 ordinary_reducer_factorization.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > ordinary_reducer_factorization.tex
 
