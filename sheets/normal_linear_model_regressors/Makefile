@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make normal_linear_model_regressors.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 normal_linear_model_regressors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > normal_linear_model_regressors.tex
 

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make preferences.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 preferences.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > preferences.tex
 

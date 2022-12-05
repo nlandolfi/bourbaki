@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make dot-dash_code.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 dot-dash_code.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > dot-dash_code.tex
 

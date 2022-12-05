@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make pivoted_row_reductions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 pivoted_row_reductions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > pivoted_row_reductions.tex
 
