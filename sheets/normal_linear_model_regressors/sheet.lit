@@ -1,0 +1,93 @@
+<!--
+!name:normal_linear_model_regressors
+!need:normal_linear_model
+!need:regressors
+!need:interpolators
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ There is a natural predictor corresponding to a normal
+    linear model. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $(x: Ω → 𝗥^d, A ∈ 𝗥^{n ×d}, e: Ω → 𝗥^n)$ be a
+    normal linear model over the probability space $(Ω, 𝒜, 𝗣)$. ⦉
+⦉
+
+§ Predictive density ⦉
+¶ ⦊
+  ‖ We are modeling $h_ω: 𝗥^d → 𝗥$ by $h_w(a) =
+    \transpose{x(ω)}a$. ⦉
+
+  ‖ The ❬predictive density❭ for a dataset $c^1, …, c^m ∈ 𝗥^d$
+    is the conditional density of the random vector
+    $(h_{(·)}(c^1), …, h_{(·)}(c^m))$ given $y$. ⦉
+  <statement type='proposition'>
+    ‖ The predictive density for $c^1, …, c^m ∈ 𝗥^d$ (with data
+      matrix $C ∈ 𝗥^{m ×d}$) is normal with mean
+      ◇ ⦊
+        ‖ g(a) = (CΣ_{x}\transpose{A})\inv{(AΣ_{x}\transpose{A} +
+          Σ_e)}γ. ⦉
+      ⦉
+      and covariance
+      ◇ ⦊
+        ‖ CΣ_{x}\transpose{C} -
+          CΣ_{x}\transpose{A}\inv{(AΣ_{x}\transpose{A} +
+          Σ_e)}AΣ_{x}\transpose{C}. ⦉
+      ⦉
+      <proof>
+        ‖ Define (as usual) $y: Ω → 𝗥^n$ and $z : Ω → 𝗥^m$
+          by
+          ◇ ⦊
+            ‖ \begin{aligned} ⦉
+
+            ‖ y ＆= Ax + e ᜶ ⦉
+
+            ‖ z ＆= Cx. ⦉
+
+            ‖ \end{aligned} ⦉
+          ⦉
+
+          ‖ Recognize $(x, y, z)$ as jointly normal, and use
+            \sheetref{normal_conditional}{Normal Conditionals}). ⦉
+
+          ‖ \end{proof} ⦉⦉
+      </proof>⦉
+  </statement>
+⦉
+
+§§ Predictor ⦉
+¶ ⦊
+  ‖ The ❬normal linear model predictor❭ or ❬normal linear model
+    regressor❭ for the normal linear model $(x, A, e)$ is the
+    predictor which assigns to a new point $a ∈ 𝗥^d$ the mean
+    of the predictive density at $a$. ⦉
+
+  ‖ That is, the predictor $g: 𝗥^d → 𝗥$ defined by
+    ◇ ⦊
+      ‖ g(a) = \transpose{a}Σ_{x}\transpose{A}\inv{(AΣ_{x}\transpose{A}
+        + Σ_e)}γ. ⦉
+    ⦉⦉
+
+  ‖ In the above we have substituted $\transpose{a}$ for $C$. ⦉
+
+  ‖ In the case of normal random vectors this corresponds with
+    the MAP estimate and the MMSE estimate.
+    † ⦊
+      ‖ Future editions will have discussed this and include a
+        reference to the sheet. ⦉
+    ⦉⦉
+
+  ‖ Notice that $g$ is ‹linear› in its argument, $a$. ⦉
+⦉
+
+¶ ⦊
+  ‖ The use of a normal linear model predictor is often called
+    ❬Bayesian linear regression❭. ⦉
+
+  ‖ The word Bayesian is used in reference to treating the
+    parameters of the function, $x$, as a random variable. ⦉
+⦉
