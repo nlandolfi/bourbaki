@@ -1,0 +1,163 @@
+<!--
+!name:sequential_decisions
+!need:decisions
+!need:sequences
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to discuss making several decisions over time. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $A^{1}$ be a set of actions and $\mathcal{O}^1 =
+    \set{O^{1}_a}$ a family of outcome sets. ⦉
+
+  ‖ Define $H^1 = \Set*{(a, o)}{a ∈ A^1, o ∈ O^{1}_a}$. ⦉
+
+  ‖ Let $𝒜^2 = \set{A^{2}_{h^1}}_{h^1 ∈ H^1}$ be a family of
+    action sets. ⦉
+
+  ‖ Define
+    ◇ ⦊
+      ‖ \tilde{H}^{2} = \Set*{(a_1, o_1, a_2)}{(a_1, o_1) ∈ H^1,
+        a_2 ∈ A^{2}_{a_1o_1}}. ⦉
+    ⦉⦉
+
+  ‖ Let $\mathcal{C}^2 = \set{O^{2}_{h}}_{h ∈ \tilde{H}^2}$ be a
+    family of outcome sets. ⦉
+
+  ‖ Define
+    ◇ ⦊
+      ‖ H^2 = \Set{(a_1, o_1, a_2, o_2)}{h = (a_1, o_1, a_2) ∈
+        \tilde{H}^2, o_2 ∈ O_{h}}. ⦉
+    ⦉⦉
+
+  ‖ Let $≼$ be a total order on $H^2$. ⦉
+
+  ‖ Then we call the sequence $((A^1, 𝒜^2), (\mathcal{O}^1,
+    \mathcal{O}^2), ≼)$ a ❬two-stage decision problem❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ In general, let $𝒜^{i} = \set{A^i_{h}}_{h ∈ H^{i-1}}$ be a
+    family of action sets, define $\tilde{H}^i$ by
+    ◇ ⦊
+      ‖ \Set*{(a_1, …, o_{i-1}, a_i)}{h = (a_1, …, o_{i-1}) ∈
+        H^{i-1}, a_i ∈ A^i_{h}}. ⦉
+    ⦉⦉
+
+  ‖ Let $\mathcal{O}^{i+1} = \set{O^{i+1}_{h}}_{h ∈ \tilde{H}^{i}}$
+    be a family of outcome sets. Define $H^{i}$ by
+    ◇ ⦊
+      ‖ \Set*{(a_1, …, a_i, o_i)}{h = (a_1, …, a_i) ∈
+        \tilde{H}^{i}, o_i ∈ O^i_{h}}. ⦉
+    ⦉⦉
+
+  ‖ For $i = 3, …, n$. ⦉
+
+  ‖ Let $≼$ be a total order on $H^{n}$. ⦉
+
+  ‖ We call $H^i$ the ❬histories until time $i$❭. ⦉
+
+  ‖ In this case we identify $𝒜^1 = A^1$ and call $((𝒜^i)_{i =
+    1}^{n}, (\mathcal{O}^i)_{i = 1}^{n}, ≼)$ an ❬$n$-stage decision
+    problem❭ (or ❬multi-stage decision problem❭ or ❬sequential
+    decision problem❭).
+    † ⦊
+      ‖ Future editions will clarify these definitions. ⦉
+    ⦉⦉
+⦉
+
+§§ Simplifications ⦉
+¶ ⦊
+  ‖ Discussing $n$-stage decision problems is complicated, as the
+    notation indicates. ⦉
+
+  ‖ How can we simplify thinking about them? ⦉
+⦉
+
+¶ ⦊
+  ‖ One simplification occurs when the outcome sets at stage $i$
+    do not depend on the action taken, or on the history of
+    actions. ⦉
+
+  ‖ In this case, we may discuss outcome sets $O^i$ for $i =
+    1, …, n$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Another simplification occurs when the decisions to be made
+    at each stage do not depend on the action taken or on the
+    history of actions. ⦉
+
+  ‖ In this case, we may discuss action sets $A^i$ for $i =
+    1, …, n$. ⦉
+⦉
+
+¶ ⦊
+  ‖ An even greater simplification occurs when the outcome and
+    actions sets do not depend on the stage $i$. ⦉
+
+  ‖ In this case, we speak of ‹the› action set and ‹the›
+    outcome set. ⦉
+⦉
+
+§ State
+  † ⦊
+    ‖ Future editions will move this to
+      <a href='/sheets/state_representations.html'>
+        ‖ State Representations ⦉
+      </a>
+      . ⦉
+  ⦉⦉
+¶ ⦊
+  ‖ Often we can summarize the history $H^i$ with a set $𝒳_i$. ⦉
+
+  ‖ In this case, we speak of the set of states $S_i$ for $i
+    = 1, …, n$. ⦉
+
+  ‖ In this case, we can associate the history $H^1$ with an
+    element of $S^1$. ⦉
+
+  ‖ We can associate the history $H^2$ with an element of $S^2$. ⦉
+
+  ‖ And so on. ⦉
+⦉
+
+¶ ⦊
+  ‖ Naturally, the current action affects the future states, but
+    not the current or past states, since the state is a
+    “summary} of the history, of the “past”.
+    † ⦊
+      ‖ Other language includes “sufficient statistic , but we
+        will avoid this for now. Future sheets may modify.” ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ In this way, the state is a “link” between the “past” and
+    the “future.” ⦉
+
+  ‖ The idea is that the current action affects the future
+    state, but not current or past states. ⦉
+⦉
+
+<!--
+%We call the sequence $(A, O, \set{A'_{a,o}}, \set{O'_{a,o}}, \set{\preceq_{a,o}})$ a \t{two-stage decision problem}.
+%The intuition is that we will select an action $a \in A$ prior to observing an outcome $o \in O$.
+%We will then face the simple decision problem $(A'_{s,a}, O'_{s,a}, \preceq_{s,a})$.
+%
+%A \t{preference} for the two stage decision problem is a total order on the set
+%\[
+%	X = \Set*{(a, o, a', o')}{a \in A, o \in O, a' \in A_{a, o}', o' \in O_{a, o}'}.
+%\]
+%
+%
+%Let $\CA^{1}, \dots, \CA^{n-1}$ be a finite sequence of families of actions and $\CO^1, \dots, \CO^{n}$ be a finite sequence of families of outcomes with $\CO^{1}$ and $\CO^{indexed by $(A \times O)$
+%\[
+%
+%\].
+%In general, a \t{$n$-stage decision problem} is a sequence $(A, O,
+-->
