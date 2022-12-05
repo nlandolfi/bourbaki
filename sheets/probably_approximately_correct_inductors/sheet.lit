@@ -1,0 +1,95 @@
+<!--
+!name:probably_approximately_correct_inductors
+!need:supervised_probabilistic_data_models
+!refs:shai_shalev-schwartz2014understanding/2
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to talk about an inductor's error under a
+    probabilistic supervised data model. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $(X, 𝒳, μ)$ and $f: X → Y$ be a probabilistic
+    supervised data model. ⦉
+
+  ‖ Let $ℋ ⊂ (X → Y)$ be a hypothesis class. ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $ϵ,δ ∈ (0, 1)$. ⦉
+
+  ‖ An inductor $A: (X × Y)^n → ℋ$ is ❬$(ϵ,δ)$-probably
+    approximately correct❭ for $μ$ and $f$ if
+    ◇ ⦊
+      ‖ μ^{n}\left[ ⦉
+
+      ‖ \underset{μ, f}{\mathword{error}}\left( ⦉
+
+      ‖ A((x_i, f(x_i))_{i = 1}^{n}) ⦉
+
+      ‖ \right) ≤ ϵ ⦉
+
+      ‖ \right] ≥ 1 - δ. ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ To show that an algorithm is probably approximately correct,
+    we bound by $δ$ the probability of the inductor producing a
+    predictor which exceeds $ϵ$ error. ⦉
+⦉
+
+¶ ⦊
+  ‖ A hypothesis class $ℋ$ is ❬probably approximately correct
+    learnable❭ (or ❬PAC learnable❭) if ⦉
+
+  ‖ (a) for every underlying measure $μ$, labeling function $f:
+    X → Y$, error $1-ϵ$ and confidence $1-δ$, (b) there exists
+    $m_0 ∈ 𝗡$ and a sequence of inductors $(A^m: (X ×Y)^{m} →
+    ℋ)_{m = m_0}^{∞}$ so that (c) $A^m$ is $(ϵ, δ)$-probably
+    approximately correct for all $m ≥ m_0$ . ⦉
+
+  ‖ If the inductors are subfamilies of a family of inductors
+    $(A^n)_{n ∈ 𝗡}$ then we say that this family of inductors
+    ❬PAC learns❭ $ℋ$. ⦉
+⦉
+
+¶ ⦊
+  ‖ We interpret these conditions as follows. ⦉
+
+  ‖ No matter the underlying distribution and labeling function,
+    given an accuracy and confidence, we can specify the number
+    of samples required to make the algorithm “succeed.} ⦉
+
+  ‖ By which we mean that (“with high probability”) the
+    predictor's error will be “small.” ⦉
+⦉
+
+§§ Sample complexity ⦉
+¶ ⦊
+  ‖ If a family of inductors $𝒜 = (A_n)_n$ PAC learns $ℋ$,
+    then condition (b) above is equivalent to the existence
+    function mapping $(ϵ, δ)$ to $𝗡$. ⦉
+
+  ‖ Let $m_0^★$ be the smallest integer such that condition (b)
+    holds. ⦉
+
+  ‖ We call the function $(ϵ, δ) ↦ m_0^★(ϵ,δ)$ the ❬sample
+    complexity❭ of the family $𝒜$ on the hypothesis class $ℋ$. ⦉
+⦉
+
+§§ Other terminology ⦉
+¶ ⦊
+  ‖ For (what seem to be) historical reasons, some authors refer
+    to the definition above as ❬agnostic PAC learning❭ since it
+    drops a common condition (developed further in these sheets)
+    relating the hypothesis class to the correct labeling function
+    $f$. ⦉
+⦉
+
+<tex>
+  ‖ \blankpage ⦉
+</tex>

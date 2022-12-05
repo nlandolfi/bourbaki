@@ -1,43 +1,44 @@
+
 %!name:probably_approximately_correct_inductors
 %!need:supervised_probabilistic_data_models
 %!refs:shai_shalev-schwartz2014understanding/2
 
-\ssection{Why}
+\section*{Why}
 
 We want to talk about an inductor's error under a probabilistic supervised data model.
 
-\ssection{Definition}
+\section*{Definition}
 
-Let $(X, \CX, \mu)$ and $f: X \to Y$ be a probabilistic supervised data model.
-Let $\CH \subset (X \to Y)$ be a hypothesis class.
+Let $(X, \mathcal{X} , \mu )$ and $f: X \to Y$ be a probabilistic supervised data model.
+Let $\mathcal{H}  \subset (X \to Y)$ be a hypothesis class.
 
-Let $\epsilon,\delta \in (0, 1)$.
-An inductor $A: (X \times Y)^n \to \CH$ is \t{$(\epsilon,\delta)$-probably approximately correct} for $\mu$ and $f$ if
-\begin{equation}
-	\mu^{n}\left[
-		\underset{\mu, f}{\mathword{error}}\left(
-				A((x_i, f(x_i))_{i = 1}^{n})
-			\right) \leq \epsilon
-		\right] \geq 1 - \delta.
-\end{equation}
+Let $\epsilon ,\delta  \in (0, 1)$.
+An inductor $A: (X \times  Y)^n \to \mathcal{H} $ is \t{$(\epsilon ,\delta )$-probably approximately correct} for $\mu $ and $f$ if
+    \[
+\mu ^{n}\left[
+\underset{\mu , f}{\mathword{error}}\left(
+A((x_i, f(x_i))_{i = 1}^{n})
+\right) \leq \epsilon
+\right] \geq 1 - \delta .
+    \]
 
-To show that an algorithm is probably approximately correct, we bound by $\delta$ the probability of the inductor producing a predictor which exceeds $\epsilon$ error.
+To show that an algorithm is probably approximately correct, we bound by $\delta $ the probability of the inductor producing a predictor which exceeds $\epsilon $ error.
 
-A hypothesis class $\CH$ is \t{probably approximately correct learnable} (or \t{PAC learnable}) if
-(a) for every underlying measure $\mu$, labeling function $f: X \to Y$,  error $1-\epsilon$ and confidence $1-\delta$, (b) there exists $m_0 \in \N$ and a sequence of inductors $(A^m: (X \times Y)^{m} \to \CH)_{m = m_0}^{\infty}$ so that (c) $A^m$ is $(\epsilon, \delta)$-probably approximately correct for all $m \geq m_0$ .
-If the inductors are subfamilies of a family of inductors $(A^n)_{n \in \N}$ then we say that this family of inductors \t{PAC learns} $\CH$.
+A hypothesis class $\mathcal{H} $ is \t{probably approximately correct learnable} (or \t{PAC learnable}) if
+(a) for every underlying measure $\mu $, labeling function $f: X \to Y$, error $1-\epsilon $ and confidence $1-\delta $, (b) there exists $m_0 \in \N  $ and a sequence of inductors $(A^m: (X \times Y)^{m} \to \mathcal{H} )_{m = m_0}^{\infty}$ so that (c) $A^m$ is $(\epsilon , \delta )$-probably approximately correct for all $m \geq m_0$ .
+If the inductors are subfamilies of a family of inductors $(A^n)_{n \in \N  }$ then we say that this family of inductors \t{PAC learns} $\mathcal{H} $.
 
 We interpret these conditions as follows.
-No matter the underlying distribution and labeling function, given an accuracy and confidence, we can specify the number of samples required to make the algorithm \say{succeed.} 
+No matter the underlying distribution and labeling function, given an accuracy and confidence, we can specify the number of samples required to make the algorithm \say{succeed.}
 By which we mean that (\say{with high probability}) the predictor's error will be \say{small.}
 
-\ssubsection{Sample complexity}
+\subsection*{Sample complexity}
 
-If a family of inductors $\CA = (A_n)_n$ PAC learns $\CH$, then condition (b) above is equivalent to the existence function mapping $(\epsilon, \delta)$ to $\N$.
+If a family of inductors $\mathcal{A}  = (A_n)_n$ PAC learns $\mathcal{H} $, then condition (b) above is equivalent to the existence function mapping $(\epsilon , \delta )$ to $\N  $.
 Let $m_0^\star$ be the smallest integer such that condition (b) holds.
-We call the function $(\epsilon, \delta) \mapsto m_0^\star(\epsilon,\delta)$ the \t{sample complexity} of the family  $\CA$ on the hypothesis class $\CH$.
+We call the function $(\epsilon , \delta ) \mapsto m_0^\star(\epsilon ,\delta )$ the \t{sample complexity} of the family $\mathcal{A} $ on the hypothesis class $\mathcal{H} $.
 
-\ssubsection{Other terminology}
+\subsection*{Other terminology}
 
 For (what seem to be) historical reasons, some authors refer to the definition above as \t{agnostic PAC learning} since it drops a common condition (developed further in these sheets) relating the hypothesis class to the correct labeling function $f$.
 

@@ -1,0 +1,110 @@
+<!--
+!name:probabilistic_errors_linear_model
+!need:probability_measures
+!need:feature_maps
+!need:data_matrix
+!need:real_matrix_inverses
+!need:covariance
+!need:probabilistic_predictors
+!need:random_variable_moments
+!refs:pukelsheim2004optimal
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We model a real-valued output as corrupted by small random
+    errors. ⦉
+
+  ‖ Thus, we can talk about a dataset which is “close} to
+    being consistent with a linear predictor. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $(Ω, 𝒜, 𝗣)$ be a probability space. ⦉
+
+  ‖ Let $x ∈ 𝗥^d$ and $e: Ω → 𝗥^n$. ⦉
+
+  ‖ For $A ∈ 𝗥^{n ×d}$, define $y: Ω → 𝗥^n$ by $y = Ax +
+    e$. ⦉
+
+  ‖ We call $(x, A, e)$ a ❬probabilistic errors linear model❭. ⦉
+
+  ‖ We call $y$ the ❬response vector❭, $A$ the ❬model matrix❭
+    and $e$ the ❬error vector❭. ⦉
+⦉
+
+§ Moment assumptions ⦉
+¶ ⦊
+  ‖ The most basic distributional assumption for a probabilistic
+    errors linear model pertain to the expectation and variance. ⦉
+
+  ‖ Since $𝗘(y) = Ax + 𝗘(e)$ and $\var(y) = \var(e)$, these
+    assumptions can be given for $e$ or for $y$. ⦉
+⦉
+
+¶ ⦊
+  ‖ If $𝗘(x) = 0$ and $\var(y) = σ^2I$ then we call $(x, A,
+    e)$ a ❬classical linear model with moment assumptions❭. ⦉
+
+  ‖ Notice that the components of $e$ are assumed uncorrelated. ⦉
+
+  ‖ We have $d + 1$ unknowns (the $d ×1$ entires of $θ$ and
+    scalar parameter $σ^2$. ⦉
+⦉
+
+¶ ⦊
+  ‖ In this case $𝗘(y_i) = \transpose{a^i}θ$ and so $θ$ is
+    called the ❬mean parameter vector❭ and $σ^2$ is called the
+    ❬model variance❭. ⦉
+
+  ‖ The model variance indicates the variability inherent in the
+    observations. ⦉
+
+  ‖ Neither the mean nor variance of the error depends on the
+    regression vector $x$ nor on the parameter vector $θ$. ⦉
+⦉
+
+§ Examples ⦉
+¶ ⦊
+  ‖ Consider the ❬two-sample problem❭ in which we have two
+    populations with (unknown) mean responses $α_1, α_2 ∈ 𝗥$. ⦉
+
+  ‖ We observe these responses with (perhaps unknown) common
+    variance $σ^2$, and assume that errors are uncorrelated. ⦉
+⦉
+
+¶ ⦊
+  ‖ We define $y^1 = α_1𝟏 + e^1$ and $y^2 = α_2𝟏 + e^2$ so
+    that we can stack these and obtain
+    ◇ ⦊
+      ‖ y = \bmat{y^1 ᜶ y^2} = \bmat{α_1𝟏 ᜶ α_2𝟏} + \bmat{e^1
+        ᜶ e^2}. ⦉
+    ⦉⦉
+
+  ‖ To cast this in our standard form we define
+    ◇ ⦊
+      ‖ A = \transpose{ ⦉
+
+      ‖ \bmat{\bmat{1᜶0} ＆ ⋯ ＆\bmat{1᜶0} ＆ \bmat{0 ᜶ 1} ＆⋯ ＆
+        \bmat{0 ᜶ 1} ⦉
+
+      ‖ } ⦉
+
+      ‖ }, \quad x = \bmat{α_1 ᜶ α_2}. ⦉
+    ⦉
+    with regression vectors $a_1 = (1, 0)$ and $x_2 = (0, 1)$
+    repeated $n_1$ and $n_2$ times, respectively. ⦉
+
+  ‖ An input design for this model involves specifying a
+    sequence of these two vectors, which (with the uncorrelated
+    assumption) reduces to dictating how many responses should be
+    collected from each population. ⦉
+
+  ‖ The inputs here is really the set $𝗖X = \set{1, 2}$. ⦉
+
+  ‖ The feature function is $φ: 𝗖X → 𝗥^2$ defined by $φ(1) =
+    (1, 0)$ and $φ(2) = (0, 1)$. ⦉
+
+  ‖ And so the regression range is $\set{(1, 0), (0, 1)”$. ⦉
+⦉
