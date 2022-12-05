@@ -1,0 +1,95 @@
+<!--
+!name:probabilistic_dataset_models
+!need:predictors
+!need:probability_measures
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ Let $X = \set{a, b}$ and $Y = \set{0, 1}$. Define $f: X
+    → Y$ by $f ≡ 0$. ⦉
+⦉
+
+¶ ⦊
+  ‖ The dataset $(a, 0)$ is consistent with $f$. ⦉
+
+  ‖ So are the datasets $((a, 0), (a, 0))$ and $((a, 0), (a,
+    0), (a, 0))$. ⦉
+
+  ‖ Unfortunately, these datasets are “bad} in the sense that we
+    do not see the value associated with $b$. ⦉
+
+  ‖ Each dataset is consistent with the (functional) relations
+    $\set{(a, 0), (b, 0)}$ and $\set{(a, 0), (b, 1)}$. ⦉
+⦉
+
+¶ ⦊
+  ‖ In other words, a dataset may be incomplete. ⦉
+
+  ‖ In spite of this limitation, we want to discuss an
+    inductor's performance on consistent datasets. ⦉
+
+  ‖ One route is to put a measure on the set of training sets
+    and only consider high-measure subsets. ⦉
+⦉
+
+<!--
+We take two steps.
+First, we put a measure on the set of training sets and only consider high-measure subsets.
+Second, we consider inductors which perform well in some tolerance.
+-->
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $(X, 𝗖X)$ and $(Y, 𝗖Y)$ be measurable spaces and $R$
+    be a relation on $X ×Y$. ⦉
+
+  ‖ Let $μ: 𝗖X ×𝗖Y → [0, 1]$ be a probability measure so that
+    $𝗖D = (X ×Y, 𝗖X ×𝗖Y, μ)$ is a probability space. ⦉
+⦉
+
+¶ ⦊
+  ‖ If $μ(B) = 0$ for all $B ⊂ \relcomplement{R}{X ×Y}$, then
+    we call $𝗖D$ a ❬probabilistic dataset model❭ for $R$. ⦉
+
+  ‖ In other words, $μ$ gives zero measure to any set of
+    points not in the relation. ⦉
+
+  ‖ Equivalently, $μ(R) = 1$; or we observe a pair in $R$
+    almost surely. ⦉
+⦉
+
+¶ ⦊
+  ‖ If $R$ is functional, then we call $𝗖D$ a ❬supervised
+    probabilistic dataset model❭. ⦉
+
+  ‖ In this case, since there is a functional relation between
+    $X$ and $Y$, we call the marginal measure $μ_X: 𝗖X → [0,
+    1]$ the ❬data-generating distribution❭ or ❬underlying
+    distribution❭ since $μ(A) = μ_X(\Set*{x ∈ X}{(x, y) ∈ A)})$. ⦉
+
+  ‖ In this case we call the (functional) relation $R$ the
+    ❬correct labeling function❭. ⦉
+
+  ‖ Many authors refer to a supervised probabilistic data model
+    as the ❬statistical learning (theory) framework❭. ⦉
+⦉
+
+§ Probable datasets ⦉
+¶ ⦊
+  ‖ For datasets of size $n$, we use the product measure $((X
+    × Y)^n, (𝒳 × 𝒴)^n, μ^n)$. ⦉
+
+  ‖ We interpret this measure as modeling independent and
+    identically distributed elements of $R$. ⦉
+⦉
+
+¶ ⦊
+  ‖ For $δ ∈ (0, 1)$, $𝗖S ⊂ (X ×Y)^n$ is ❬$1 - δ$-probable❭
+    if $μ^n(S) ≥ 1 - δ$. ⦉
+
+  ‖ We call $δ$ the ❬confidence parameter❭. ⦉
+
+  ‖ If $δ$ is small, we interpret $𝗖S$ as a set of
+    “reasonable” datasets. ⦉
+⦉

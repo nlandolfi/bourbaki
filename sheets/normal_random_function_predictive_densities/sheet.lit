@@ -1,0 +1,98 @@
+<!--
+!name:normal_random_function_predictive_densities
+!need:normal_random_functions
+!need:affine_transformations
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We use a normal random function model to make a regressor. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $F: Ω → (A → 𝗥)$ be a normal random function with
+    mean function $m: A → 𝗥$ and covariance function $k: A ×A
+    → 𝗥$ over the probability space $(Ω, 𝒜, 𝗣)$. ⦉
+
+  ‖ Let the family of random variables (or stochastic process)
+    of $F$ be $f: A → (Ω → 𝗥)$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $e$ be a normal random vector with mean zero and
+    covariance $Σ_{e}$. ⦉
+
+  ‖ Let $a^1, …, a^n ∈ A$. ⦉
+
+  ‖ We sometimes call the sequence $a^1, …, a^n$ the ❬design❭. ⦉
+
+  ‖ Define $y: Ω → 𝗥^d$ by
+    ◇ ⦊
+      ‖ y_i = f(a^i) + e_i ⦉
+    ⦉⦉
+
+  ‖ We call $y$ the ❬observation vector❭ or ❬observation random
+    vector❭. ⦉
+
+  ‖ We call $e$ the ❬error vector❭ or ❬noise vector❭. ⦉
+
+  ‖ In this context, $f(a^i)$ is sometimes called the ❬signal❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $b^1, …, b^m ∈ A$. ⦉
+
+  ‖ Define $z: Ω → 𝗥^d$ by $z_i = f(b^i)$ for $i = 1, …, n$. ⦉
+
+  ‖ So $z_i$ is the random variable corresponding to the family
+    at index $b^i ∈ A$. ⦉
+
+  ‖ Then $(y, z)$ is normal. ⦉
+
+  ‖ We call the conditional density of $z$ given $y$ the
+    ❬predictive density❭ for $b$ given $a$. ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ Define $m_{a} ∈ 𝗥^{n}$ by $\transpose{(m(a^1),⋯,m(a^n))}$ and
+    define $m_{b}$ by $\transpose{(m(b^1), ⋯, m(b^m))}$.
+    † ⦊
+      ‖ Future editions will fix the re-use of the symbol $m$. ⦉
+    ⦉⦉
+
+  ‖ Define $Σ_a ∈ 𝗥^{n ×n}$ by
+    ◇ ⦊
+      ‖ \pmat{ ⦉
+
+      ‖ k(a^1, a^1) ＆ ⋯ ＆ k(a^1, a^n) ᜶ ⦉
+
+      ‖ ⋮ ＆ ⋱ ＆ ⋮ ᜶ ⦉
+
+      ‖ k(a^n, a^1) ＆ ⋯ ＆ k(a^n, a^n) ᜶ ⦉
+
+      ‖ } ⦉
+    ⦉
+    and define $Σ_{ba} ∈ 𝗥^{m ×n}$ by
+    ◇ ⦊
+      ‖ \pmat{ ⦉
+
+      ‖ k(b^1, a^1) ＆ ⋯ ＆ k(b^1, a^n) ᜶ ⦉
+
+      ‖ ⋮ ＆ ⋱ ＆ ⋮ ᜶ ⦉
+
+      ‖ k(b^m, a^1) ＆ ⋯ ＆ k(b^m, a^n) ᜶ ⦉
+
+      ‖ }. ⦉
+    ⦉
+
+    ‖ The predictive density $g_{z |y}(·, γ): 𝗥^m → 𝗥$ of $b ∈
+      A$ for design $a^1, …, a^n$ is normal with mean.
+      ◇ ⦊
+        ‖ m_b + K_{ba}\inv{(K_{a} + Σ_{e})}(γ - m_a) ⦉
+      ⦉
+      and covariance
+      ◇ ⦊
+        ‖ Σ_{b} - Σ_{ba}\inv{(Σ_{a} + Σ_{e})}Σ_{ab}. ⦉
+      ⦉⦉⦉
+</statement>

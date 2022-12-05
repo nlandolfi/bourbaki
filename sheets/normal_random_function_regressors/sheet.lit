@@ -1,0 +1,98 @@
+<!--
+!name:normal_random_function_regressors
+!need:normal_random_function_predictive_densities
+!need:loss_functions
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We use a loss function and a predictive density to
+    construct a regressor on the domain of the random process. ⦉
+⦉
+
+§ Setup ⦉
+¶ ⦊
+  ‖ Let $ℓ: 𝗥 ×𝗥 → 𝗥$ be a loss function. ⦉
+
+  ‖ We choose a predictor to minimize the expected loss under
+    the predictive density. ⦉
+⦉
+
+§§ Squared error case ⦉
+¶ ⦊
+  ‖ Consider $ℓ(α, β) = (α - β)^2$. ⦉
+
+  ‖ The ❬minimum squared error normal random function predictor❭
+    or ❬minimum squared error gaussian process predictor❭ for
+    dataset $(a^1, γ_1), …, (a^n, γ_n)$ in $A ×𝗥$ is the
+    predictor which minimizes the squared error loss. ⦉
+
+  ‖ Since the predictive density is normal, the minimizer is the
+    conditional mean. ⦉
+⦉
+
+§§ Absolute error case ⦉
+¶ ⦊
+  ‖ Consider $ℓ(α, β) = \abs{α - β}$. ⦉
+
+  ‖ The ❬minimum absolute deviation normal random function
+    predictor❭ or ❬minimum absolute deviation gaussian process
+    predictor❭ for dataset $(a^1, γ_1), …, (a^n, γ_n)$ in $A ×𝗥$
+    is the predictor which minimizes the absolute deviation loss. ⦉
+
+  ‖ For any density, the solution is the median. ⦉
+
+  ‖ Since the predictive density is normal, and so symmetric,
+    the median is the conditional mean. ⦉
+
+  ‖ In other words, the minimum absolute deviation normal random
+    function predictor coinicides with the minimium squared error
+    normal random function predictor. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ For this reason, the ❬normal random function predictor❭ or
+    ❬gaussian process predictor❭ for dataset $(a^1, γ_1), …, (a^n,
+    γ_n)$ in $A ×𝗥$ is $h: A → 𝗥$ defined by
+    ◇ ⦊
+      ‖ h(x) = m(x) + \pmat{k(x,a^1) ⋯ k(x, a^n)}\invp{Σ_{a} +
+        Σ_{e}}(γ - m_{a}). ⦉
+    ⦉⦉
+
+  ‖ In other words, the regressor which assigns to each point
+    its conditional mean. ⦉
+⦉
+
+¶ ⦊
+  ‖ Notice that $h$ is an affine function of $γ$. ⦉
+
+  ‖ If the mean function $m ≡ 0$ then $h$ is linear in $γ$. ⦉
+
+  ‖ This is sometimes called a ❬linear estimator❭.
+    † ⦊
+      ‖ We avoid the other terminology we have seen used—linear
+        predictor—because the predictor $h$ is not linear in its
+        input $x$. ⦉
+    ⦉⦉
+
+  ‖ Alternatively, notice (in the zero mean setting) that $h$ is
+    a linear combination of $n$ kernel function $k(x, a^i)$ for
+    $i = 1, …, n$. ⦉
+
+  ‖ Specifically, $h$ is a linear combination of ⦉
+⦉
+
+¶ ⦊
+  ‖ The process of using a normal random function predictor is
+    often called ❬Gaussian process regression❭ or (especially in
+    spatial statistics) ❬kriging❭. ⦉
+
+  ‖ The upside is that a gaussian process predicor interpolates
+    the data, is smooth, and the so-called variance increases
+    with the distance from the data.
+    † ⦊
+      ‖ This last piece is true for certain covariance kernels
+        and will be clarified in future editions. ⦉
+    ⦉⦉
+⦉
