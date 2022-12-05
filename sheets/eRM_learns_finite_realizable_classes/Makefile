@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make eRM_learns_finite_realizable_classes.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 eRM_learns_finite_realizable_classes.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > eRM_learns_finite_realizable_classes.tex
 

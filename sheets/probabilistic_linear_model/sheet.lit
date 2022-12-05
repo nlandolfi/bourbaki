@@ -1,0 +1,104 @@
+<!--
+!name:probabilistic_linear_model
+!need:estimators
+!need:probabilistic_errors_linear_model
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ If we treat the parameters of a linear function as a
+    random variable, an inductor for the predictor is equivalent
+    to an estimator for the parameters.
+    † ⦊
+      ‖ Future editions will offer further discussion. ⦉
+    ⦉⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $(Ω, 𝒜, 𝗣)$ be a probability space. ⦉
+
+  ‖ Let $x: Ω → 𝗥^d$. ⦉
+
+  ‖ Define $g: Ω → (𝗥^d → 𝗥)$ by $g(ω)(a) = \transpose{a}x(ω)$,
+    for $a ∈ 𝗥^d$. ⦉
+
+  ‖ In other words, for each outcome $ω ∈ Ω$, $g_ω: 𝗥^d → 𝗥$
+    is a linear function with parameters $x(ω)$. ⦉
+
+  ‖ $g_ω$ is the function of interest. ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $a^1, …, a^n ∈ 𝗥^d$ a dataset with data matrix $A ∈
+    𝗥^{n ×d}$. ⦉
+
+  ‖ Let $e: Ω → 𝗥^n$ independent of $x$, and define $y: Ω →
+    𝗥^n$ by
+    ◇ ⦊
+      ‖ y = Ax + e. ⦉
+    ⦉⦉
+
+  ‖ In other words, $y_i = \transpose{x}a^i + e_i$. ⦉
+⦉
+
+¶ ⦊
+  ‖ We call $(x, A, e)$ a ❬probabilistic linear model❭. ⦉
+
+  ‖ Other terms include ❬linear model❭, ❬statistical linear
+    model❭, ❬linear regression model❭, ❬bayesian linear regression❭,
+    and ❬bayesian analysis of the linear model❭.
+    † ⦊
+      ‖ The word bayesian is in reference to treating the object
+        of interest—$x$—as a random variable. ⦉
+    ⦉⦉
+
+  ‖ We call $x$ the parameters, $A$ a ❬design❭, $e$ the ❬error❭
+    or ❬noise❭ vector, and $y$ the ❬observation❭ vector. ⦉
+⦉
+
+¶ ⦊
+  ‖ One may want an estimator for the parameters $x$ in terms
+    of $y$ or one may be modeling the function $g$ and want to
+    predict $g(a)$ for $a ∈ A$ not in the dataset. ⦉
+⦉
+
+§ Inconsistency ⦉
+¶ ⦊
+  ‖ In this model, the dataset is assumed to be inconsistent as
+    a result of the random errors. ⦉
+
+  ‖ In these cases, the error vector $e$ may model a variety
+    of sources of error ranging from inaccuracies in the
+    measurements (or measurement devices) to systematic errors from
+    the “inapproriateness} of the use of a linear predictor.
+    † ⦊
+      ‖ Future editions will clarify and may excise this sentence. ⦉
+    ⦉⦉
+
+  ‖ In this case the linear part is sometimes called the
+    ❬deterministic effect❭ of the response on the input $a ∈ A$. ⦉
+⦉
+
+§ Moment assumptions ⦉
+¶ ⦊
+  ‖ One route to be more specific about the underlying
+    distribution of the random vector is give its mean and
+    variance. ⦉
+
+  ‖ It is common to give the mean of $𝗘(w)$ ⦉
+⦉
+
+§ Mean and variance ⦉
+<statement type='proposition'>
+  ‖ $𝗘(y) = A𝗘(x) + 𝗘(w)$
+    † ⦊
+      ‖ By linearity. Full account in future editions. ⦉
+    ⦉⦉
+</statement>
+<statement type='proposition'>
+  ‖ $\cov((x, y)) = A\cov(x)\transpose{A} + \cov{e}$
+    † ⦊
+      ‖ Full account in future editions. ⦉
+    ⦉⦉
+</statement>
