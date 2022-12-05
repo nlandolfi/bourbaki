@@ -1,0 +1,96 @@
+<!--
+!name:prefix-free_codes
+!need:codes
+!refs:david_huffman/a_method_for_the_construction_of_minimum_redundancy_codes
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ Let $X$ and $A$ be finite sets. ⦉
+
+  ‖ Here are two practical considerations for constructing a code
+    $C: X → \strings(A)$. ⦉
+⦉
+
+¶ ⦊
+  ‖ First, the code should be nonsingular (injective). ⦉
+
+  ‖ In other words, no two objects in the base set have the
+    same codewords. ⦉
+⦉
+
+¶ ⦊
+  ‖ Second, no additional information should be required to
+    indicate where codewords start and end. ⦉
+
+  ‖ This second restriction indicates that no codeword should
+    appear as the first part of another codeword of greater
+    length. ⦉
+
+  ‖ This second implication motivates this sheet. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ We call a string $s ∈ \strings(A)$ of length $m$ a
+    ❬prefix❭ of a string $t ∈ \strings(A)$ of length $n$ if $m
+    ≤ n$ and $s_i = t_i$ for all $i ∈ \upto{m}$. ⦉
+⦉
+
+¶ ⦊
+  ‖ We call a code $c: X → \strings(A)$ ❬prefix-free❭ if, for
+    all $x ∈ X$, $c(x)$ is ‹not› a prefix of $c(x')$ for all
+    $x' ≠ x$, $x' ∈ X$. ⦉
+
+  ‖ Otherwise, we call the code ❬prefixed❭. ⦉
+
+  ‖ All prefix-free codes are uniquely decodable, but the
+    converse is false. ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ There exists a set $X$, alphabet $A$, and prefixed code $C:
+    X → 𝒜$ such that $C$ is uniquely decodable. ⦉
+</statement>
+<proof>
+  ‖ Let $α$ and $β$ be objects. ⦉
+
+  ‖ Try $X = \set{α, β}$, $A = \set{0, 1}$ and $c: X →
+    \strings(A)$ defined by $c(α) = (0,)$ , $c(β) = (0,1)$. ⦉
+
+  ‖ We proceed by induction on the length of encodings. ⦉
+
+  ‖ Consider a length one encoding. ⦉
+
+  ‖ It must be $(0,)$, which decodes as $(A,)$. ⦉
+
+  ‖ Consider a length two encoding. ⦉
+
+  ‖ It is either $(0,0)$, which decodes as $(A,A)$, or it is
+    $(0,1)$ which decodes as $(B,)$. ⦉
+
+  ‖ Now assume the cases $k-1$ and $k-2$. ⦉
+
+  ‖ Now consider a length $k$ code $a ∈ \strings(A)$. ⦉
+
+  ‖ It consists of $(a_{1:k-1},a_k)$. ⦉
+
+  ‖ If $a_k = 0$, then the the code must be $(y, α)$ where
+    $y$ is the decoding of $a_{1:k-1}$. ⦉
+
+  ‖ By the induction hypothesis, $a_{1:k-1}$ is of length $k-1$
+    and so uniquely decodable. ⦉
+
+  ‖ Otherwise, $(a_{k-1}, a_k) = (0,1)$ and so the code must be
+    $(y', β)$ where $y'$ is the decoding of $a_{a:k-2}$. ⦉
+
+  ‖ By the induction hypothesis, $a_{1:k-2}$ is of length $k-2$
+    and so uniquely decodable. ⦉
+</proof>
+¶ ⦊
+  ‖ In other words, the prefix-free codes are a ‹strict› subset
+    of the uniquely decodable codes. ⦉
+
+  ‖ However, our second consideration mentioned above indicates
+    that the “practical” codes are prefix-free. ⦉
+⦉
