@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make featurized_probabilistic_linear_models.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 featurized_probabilistic_linear_models.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > featurized_probabilistic_linear_models.tex
 
