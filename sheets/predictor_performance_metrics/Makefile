@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make predictor_performance_metrics.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 predictor_performance_metrics.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > predictor_performance_metrics.tex
 

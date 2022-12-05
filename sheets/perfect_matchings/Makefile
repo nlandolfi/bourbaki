@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make perfect_matchings.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 perfect_matchings.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > perfect_matchings.tex
 

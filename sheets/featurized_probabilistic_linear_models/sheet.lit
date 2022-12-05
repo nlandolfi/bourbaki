@@ -1,0 +1,83 @@
+<!--
+!name:featurized_probabilistic_linear_models
+!need:normal_linear_model_regressors
+!need:feature_maps
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ It is natural to embed a dataset. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $(x: Ω → 𝗥^d, A ∈ 𝗥^{n ×d}, e: Ω → 𝗥^n)$ be a
+    probabilistic linear model over the probability space $(Ω, 𝒜,
+    𝗣)$. ⦉
+
+  ‖ Let $φ: 𝗥^d → 𝗥^{d'}$ be a feature map. ⦉
+⦉
+
+¶ ⦊
+  ‖ We call the sequence $(x, A, e, φ)$ a ❬featurized
+    probabilistic linear model❭ (also ❬embedded probabilistic linear
+    model❭). ⦉
+
+  ‖ We interpret the model as a random field $h: Ω → (𝗥^d →
+    𝗥)$ which is a linear function of the features
+    ◇ ⦊
+      ‖ h_{ω}(a) = \transpose{φ(a)}x(ω). ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ Denote the data matrix of the embedded feature vectors by
+    $φ(A)$. ⦉
+
+  ‖ In other words, $φ(A) ∈ 𝗥^{n ×d'}$ is a matrix whose rows
+    are feature vectors. ⦉
+
+  ‖ Then $(x, A, e, φ)$ corresponds to the probabilistic linear
+    model $(x, φ(A), e)$. ⦉
+⦉
+
+§ Normal case ⦉
+¶ ⦊
+  ‖ In the normal (Gaussian) case, the parameter posterior $g_{x
+    |y}(·, γ)$ is a normal density with mean
+    ◇ ⦊
+      ‖ Σ_{x}\transpose{φ(A)}\inv{(φ(A)Σ_{x}\transpose{φ(A)} + Σ_{e})}
+        γ ⦉
+    ⦉
+    and covariance
+    ◇ ⦊
+      ‖ \inv{(\inv{Σ_{x}} + \transpose{φ(A)}\inv{Σ_{e}}φ(A))}. ⦉
+    ⦉⦉
+  ¶ ⦊
+    ‖ The predictive density for $a ∈ 𝗥^d$ is normal with mean
+      ◇ ⦊
+        ‖ \transpose{φ(a)}Σ_{x}\transpose{φ(A)}\inv{(φ(A)Σ_{x}\transpose{φ(A)}
+          + Σ_{e})}γ. ⦉
+      ⦉
+      and covariance
+      ◇ ⦊
+        ‖ \transpose{φ_a}Σ_{x}φ_a -
+          \transpose{φ_a}Σ_{x}\transpose{φ(A)}\inv{(φ(A)Σ_{x}\transpose{φ(A)}
+          + Σ_e)}φ(A)Σ_{x}φ_a. ⦉
+      ⦉⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ So the ❬featurized linear regressor❭ is the predictor $h:
+      𝗥^d → 𝗥$ defined by
+      ◇ ⦊
+        ‖ h(a) =
+          \transpose{φ(a)}Σ_{x}\transpose{φ(A)}\inv{(φ(A)Σ_{x}\transpose{φ(A)}
+          + Σ_{e})}γ. ⦉
+      ⦉⦉
+  ⦉
+⦉
+
+<tex>
+  ‖ \blankpage ⦉
+</tex>

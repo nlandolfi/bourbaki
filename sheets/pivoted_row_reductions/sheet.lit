@@ -1,0 +1,198 @@
+<!--
+!name:pivoted_row_reductions
+!need:ordinary_row_reductions
+!refs:trefethen1997numerical
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to modify ordinary row reduction to handle the case
+    in which a pivot is zero by selecting another suitable pivot. ⦉
+⦉
+
+§ Example ⦉
+¶ ⦊
+  ‖ Let $A ∈ 𝗥^{5 ×5}$. ⦉
+
+  ‖ If $A_{11} ≠ 0$, we may subtract multiples of row $1$ from
+    row $2, …, 5$ to eliminate variable $x_1$ from those
+    equations. ⦉
+
+  ‖ If $A$ reduces to $C ∈ 𝗥^{5 ×5}$ and $C_{22} ≠ 0$, then
+    step 2 moves from
+    ◇ ⦊
+      ‖ {\tiny ⦉
+
+      ‖ \barray{ ⦉
+
+      ‖ ×＆ \cross ＆ \cross ＆ \cross ＆ \cross ᜶ ⦉
+
+      ‖ ＆ C_{22} ＆ ×＆ ×＆ ×᜶ ⦉
+
+      ‖ ＆ ×＆ ×＆ ×＆ ×᜶ ⦉
+
+      ‖ ＆ ×＆ ×＆ ×＆ ×᜶ ⦉
+
+      ‖ ＆ ×＆ ×＆ ×＆ ×᜶ ⦉
+
+      ‖ } \text{ to } ⦉
+
+      ‖ \barray{ ⦉
+
+      ‖ ×＆ \cross ＆ \cross ＆ \cross ＆ \cross ᜶ ⦉
+
+      ‖ ＆ C_{22} ＆ ×＆ ×＆ ×᜶ ⦉
+
+      ‖ ＆ {\bf 0} ＆ \boldsymbol{\times} ＆ \boldsymbol{\times} ＆
+        \boldsymbol{\times} ᜶ ⦉
+
+      ‖ ＆ {\bf 0} ＆ \boldsymbol{\times} ＆ \boldsymbol{\times} ＆
+        \boldsymbol{\times} ᜶ ⦉
+
+      ‖ ＆ {\bf 0} ＆ \boldsymbol{\times} ＆ \boldsymbol{\times} ＆
+        \boldsymbol{\times} ᜶ ⦉
+
+      ‖ }.} ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ What if $C_{22} = 0$? ⦉
+
+  ‖ In this case suppose we pick a different row. ⦉
+
+  ‖ For example, if $C_{42} ≠ 0$ we can move from ⦉
+  ◇ ⦊
+    ‖ \tiny{ ⦉
+
+    ‖ \barray{ ⦉
+
+    ‖ ×＆ \cross ＆ \cross ＆ \cross ＆ \cross ᜶ ⦉
+
+    ‖ ＆ ×＆ ×＆ ×＆ ×᜶ ⦉
+
+    ‖ ＆ ×＆ ×＆ ×＆ ×᜶ ⦉
+
+    ‖ ＆ C_{42} ＆ ×＆ ×＆ ×᜶ ⦉
+
+    ‖ ＆ ×＆ ×＆ ×＆ ×᜶ ⦉
+
+    ‖ } \text{ to } ⦉
+
+    ‖ \barray{ ⦉
+
+    ‖ ×＆ \cross ＆ \cross ＆ \cross ＆ \cross ᜶ ⦉
+
+    ‖ ＆ {\bf 0} ＆ \boldsymbol{\times} ＆ \boldsymbol{\times} ＆
+      \boldsymbol{\times} ᜶ ⦉
+
+    ‖ ＆ {\bf 0} ＆ \boldsymbol{\times} ＆ \boldsymbol{\times} ＆
+      \boldsymbol{\times} ᜶ ⦉
+
+    ‖ ＆ C_{42} ＆ ×＆ ×＆ ×᜶ ⦉
+
+    ‖ ＆ {\bf 0} ＆ \boldsymbol{\times} ＆ \boldsymbol{\times} ＆
+      \boldsymbol{\times} ᜶ ⦉
+
+    ‖ }.} ⦉
+  ⦉
+
+  ‖ Alternatively, we could introduce zeros in column 3 rather
+    than column 2. ⦉
+
+  ‖ For example, if we pick the pivot $C_{43}$ we move from ⦉
+  ◇ ⦊
+    ‖ \tiny{ ⦉
+
+    ‖ \barray{ ⦉
+
+    ‖ ×＆ \cross ＆ \cross ＆ \cross ＆ \cross ᜶ ⦉
+
+    ‖ ＆ ×＆ ×＆ ×＆ ×᜶ ⦉
+
+    ‖ ＆ ×＆ ×＆ ×＆ ×᜶ ⦉
+
+    ‖ ＆ ×＆ C_{43} ＆ ×＆ ×᜶ ⦉
+
+    ‖ ＆ ×＆ ×＆ ×＆ ×᜶ ⦉
+
+    ‖ } \text{\normalfont to } ⦉
+
+    ‖ \barray{ ⦉
+
+    ‖ ×＆ \cross ＆ \cross ＆ \cross ＆ \cross ᜶ ⦉
+
+    ‖ ＆ \boldsymbol{\times} ＆ {\bf 0} ＆ \boldsymbol{\times} ＆
+      \boldsymbol{\times} ᜶ ⦉
+
+    ‖ ＆ \boldsymbol{\times} ＆ {\bf 0} ＆ \boldsymbol{\times} ＆
+      \boldsymbol{\times} ᜶ ⦉
+
+    ‖ ＆ ×＆ C_{43} ＆ ×＆ ×᜶ ⦉
+
+    ‖ ＆ \boldsymbol{\times} ＆ {\bf 0} ＆ \boldsymbol{\times} ＆
+      \boldsymbol{\times} ᜶ ⦉
+
+    ‖ }.} ⦉
+  ⦉
+
+  ‖ We can choose any nonzero entry in $C_{k:m,k:m}$ as the
+    pivot. ⦉
+  ¶ ⦊
+    ‖ Suppose we pick pivot $C_{st} ≠ 0$ for $k ≤ s, t ≤ m$. ⦉
+
+    ‖ Define $\tilde{C}$ by swapping row $s$ of $C$ with row
+      $k$ of $C$ and column $t$ of $C$ with column $k$ of $C$. ⦉
+
+    ‖ Then $\tilde{C}_{kk} = C_{st} ≠ 0$ and there exists an
+      ordinary row reduction for $\tilde{C}$. ⦉
+
+    ‖ We call this reduction of $(\tilde{C}, \tilde{d})$ a
+      ❬pivoted row reduction❭ of $C$ or the ❬$st$-reduction❭ of C. ⦉
+  ⦉
+
+  ¶ ⦊
+    ‖ If all remaining pivots are zero, then there is no viable
+      pivot. ⦉
+
+    ‖ In this case, at least one variable is free and we do
+      not have a unique solution. ⦉
+
+    ‖ For convenience, in this case, we still call the system
+      an $st$-reduction of itself. ⦉
+  ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ At step $k$ of ordinary elimination, multiples of row $k$
+    are subtracted from rows $k+1, …, m$ to introduce zeros in
+    entry $k$ of the rows. ⦉
+
+  ‖ If we denote the matrix at the beginning of that step by
+    $X$, then row $k$ of $X$, column $k$ of $X$ and especially
+    the pivot $X_{kk}$ play a role. ⦉
+
+  ‖ Ordinarily, we subtract from every entry in the submatrix
+    $X_{k+1:m,k:m}$ the product of a number in row $k$ and a
+    number in column $k$, divided by the pivot $X_{kk}$. ⦉
+
+  ‖ Generally, however, we can choose as pivot any nonzero entry
+    of $X_{k:m,k:m}$. ⦉
+⦉
+
+¶ ⦊
+  ‖ An $m$-variable system $(A, b)$ is ❬pivot reducible❭ (or
+    ❬reducible❭) if there exists a sequence of systems $S_1, …,
+    S_{m-1}$ so that $S_1$ is a reduction of $(A, b)$ and
+    $S_{i}$ is a reduction of $S_{i-1}$ for $i = 1, …, m-1$. ⦉
+
+  ‖ We call $S_{m-1}$ the ❬final reduction❭ (or ❬reduction❭) of
+    $(A, b)$. ⦉
+
+  ‖ An immediate consequence of our definition is ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ All systems are reducible. ⦉
+</statement>
