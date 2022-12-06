@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make nonnegative_integrals.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 nonnegative_integrals.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > nonnegative_integrals.tex
 

@@ -121,6 +121,7 @@
                 pause: ["\\square"],
                 fdesc: ["\\mathword{fdesc}"],
                 loss: ["\\ell"],
+                maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -140,7 +141,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 121 0 -->
+      <!-- 130 0 -->
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -161,18 +162,6 @@
 <!-- \newcommand{\seqt}[1]{#1_n} -->
 
 \newcommand{\seqt}[1]{#1_n}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
@@ -373,6 +362,18 @@
 <!-- \newcommand{\composed}{\circ} -->
 
 \newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
@@ -1010,6 +1011,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
 
 %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
@@ -1202,6 +1215,10 @@
 
 \newcommand{\argmax}{\mathword{argmax}}
 
+<!-- \newcommand{\pd}[2]{\frac{\partial_#1}{\partial #2}} -->
+
+\newcommand{\pd}[2]{\frac{\partial_#1}{\partial #2}}
+
 <!-- \newcommand{\normaldensity}[3]{ -->
 
 \newcommand{\normaldensity}[3]{
@@ -1233,6 +1250,271 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_densities.html'" onkeypress="location.href='./maximum_likelihood_densities.html'">
+                <span>
+                  Maximum Likelihood Densities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./normal_densities.html'" onkeypress="location.href='./normal_densities.html'">
+                <span>
+                  Normal Densities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./partial_derivatives.html'" onkeypress="location.href='./partial_derivatives.html'">
+                <span>
+                  Partial Derivatives
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_multivariate_normals.html'" onkeypress="location.href='./maximum_likelihood_multivariate_normals.html'">
+            <span>
+            Maximum Likelihood Multivariate Normals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_normals.pdf#page=2'" onkeypress="location.href='./maximum_likelihood_normals.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_normals-graph.pdf'" onkeypress="location.href='./maximum_likelihood_normals-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Maximum Likelihood Normals </h1> 
+      <!--
+!name:maximum_likelihood_normals
+!need:normal_densities
+!need:maximum_likelihood_densities
+!need:partial_derivatives
+!!need:calculus ;) multivariate, too...
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to select a normal density which
+  summarizes well a dataset.</span>
+</p>
+
+<h1 id='Formulation'>Formulation</h1>
+
+<p>
+ <span class='run'>Let $D = (x^1, \dots , x^n)$ be a dataset in
+  $\R $.</span>
+
+ <span class='run'>We want to select a density from among normal
+  densities, which require specifying a mean and
+  covariance.</span>
+</p>
+
+
+<p>
+ <span class='run'>Following the principle of maximum likelihood,
+  we want to solve
+  <p>\[
+   \maximizationn{\mu ,\sigma  \in \R }{
+
+   \prod_{k = 1}^{n} \normaldensity{x^k}{\mu }{\sigma }
+
+   }{
+
+   \sigma  > 0 \\
+
+   }
+  \]</p></span>
+
+ <span class='run'>We call a solution to the above problem a
+  <span class='term'>maximum likelihood normal
+  density</span> with respect to the dataset.</span>
+</p>
+
+<h1 id='Solution'>Solution</h1>
+
+<div class='proposition'>
+ <span class='run'>Let $(x^1, \dots , x^n)$ be a dataset in $\R $.</span>
+
+ <span class='run'>Let $f$ be a normal density with mean
+  <p>\[
+   \frac{1}{n} \sum_{k = 1}^{n} x^k
+  \]</p>
+  and covariance
+  <p>\[
+   \frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k =
+    1}^{n} x^k\right)^2.
+  \]</p></span>
+
+ <span class='run'>Then $f$ is a maximum likelihood normal density.</span></div>
+<div class='proof'> <span class='run'>Every normal density has two parameters: the
+  mean and the covariance.</span>
+
+ <span class='run'>If the likelihood of one normal is less than
+  or equal to the likelihood of another, then so
+  also with their log likelihoods.</span>
+
+ <span class='run'>Let $f$ be a normal density with parameter
+  $\mu $ and $\sigma ^2$.</span>
+
+ <span class='run'>We express the log likelihood of $f$ by
+  <p>\[
+   \sum_{k = 1}^{n} \left( \frac{1}{2\sigma ^2}(x^k - \mu )^2 -
+    \frac{1}{2}\log2\pi \sigma ^2\right)
+  \]</p></span>
+
+ <span class='run'>The partial derivative of the log likelihood
+  with respect to the mean $(\partial_{\mu }
+  \ell ): \R ^2 \to \R $ is
+  <p>\[
+   (\partial_\mu  \ell )(\mu , \sigma ^2) = - \sum_{k = 1}^{n}
+    \frac{1}{\sigma ^2}(x - \mu )
+  \]</p>
+  and with respect to the covariance
+  $(\partial_{\sigma ^2} \ell ): \R ^2 \to \R $ is
+  <p>\[
+   (\partial_{\sigma ^2} \ell )(\mu , \sigma ^2) =
+
+   \left(\frac{-1}{2(\sigma ^2)^{2}}\sum_{k = 1}^{n}(x^k -
+    \mu )^2\right)- \frac{1}{2\sigma ^2}
+  \]</p></span>
+
+ <span class='run'>We are interested in finding $\mu _0 \in \R $
+  and $\sigma ^2_0 &gt; 0$, at which $\partial_\mu
+  \ell (\mu _0, \sigma ^2_0) = 0$ and
+  $\partial_{\sigma ^2} \ell (\mu _0, \sigma ^2_0) =
+  0$.</span>
+
+ <span class='run'>So we have two equations.</span>
+
+ <span class='run'>First, notice that $\partial_\mu  \ell $ is zero
+  if an only if its first argument (the mean) is
+  $\frac{1}{n} \sum_{k = 1}^{n} x^k$.</span>
+
+ <span class='run'>Second, notice that for all $\mu , \sigma ^2$,
+  $\partial_{\sigma ^2}\ell $ is zero if and only
+  if
+  <p>\[
+   \sigma ^2 = \sum_{k = 1}^{n} (x^k - \mu )^2.
+  \]</p></span>
+
+ <span class='run'>So the pair
+  <p>\[
+   \left(\frac{1}{n}\sum_{k = 1}^{k} x^k, \frac{1}{n} \sum_{k =
+    1}^{n} (x_k - \frac{1}{n} \sum_{k = 1}^{n} x^k)^2\right)
+  \]</p>
+  is a stationary point of $\ell $.</span></div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1270,6 +1552,13 @@
               <span class="caret">›</span>
             </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./partial_derivatives.html'" onkeypress="location.href='./partial_derivatives.html'">
+              <span>
+                Partial Derivatives
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
       
       
         <div disabled class="need label"> Needed by: </div>
@@ -1287,7 +1576,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to select a normal density which summarizes well a dataset.</p></div><div class="sheet-listing" id="formulation"><h1 class="sheet">2. Formulation</h1></div><div class="sheet-listing"><p class="sheet"> Let $D = (x^1, \dots, x^n)$ be a dataset in $\R$. We want to select a density from among normal densities, which require specifying a mean and covariance.</p></div><div class="sheet-listing"><p class="sheet"> Following the principle of maximum likelihood, we want to solve \[ \maximizationn{\mu,\sigma \in \R}{ \prod_{k = 1}^{n}  \normaldensity{x^k}{\mu}{\sigma} }{ \sigma > 0 \\ } \] We call a solution to the above problem a \t{maximum likelihood normal density} with respect to the dataset.</p></div><div class="sheet-listing" id="solution"><h1 class="sheet">3. Solution</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $(x^1, \dots, x^n)$ be a dataset in $\R$. Let $f$ be a normal density with mean $$\frac{1}{n} \sum_{k = 1}^{n} x^k$$ and covariance $$\frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^2.$$ Then $f$ is a maximum likelihood normal density. \begin{proof} Every normal density has two parameters: the mean and the covariance. If the likelihood of one normal is less than or equal to the likelihood of another, then so is are their log likelihoods. Let $f$ be a normal density with parameter $\mu$ and $\sigma^2$. We express the log likelihood of $f$ by \[ \sum_{k = 1}^{n} \left( \frac{1}{2\sigma^2}(x^k - \mu)^2 - \frac{1}{2}\log2\pi\sigma^2\right) \] The partial derivative of the log likelihood with respect to the mean $(\partial_{\mu} \ell): \R^2 \to \R$ is \[ (\partial_\mu \ell)(\mu, \sigma^2) = - \sum_{k = 1}^{n} \frac{1}{\sigma^2}(x - \mu) \] and with respect to the covariance $(\partial_{\sigma^2} \ell): \R^2 \to \R$ is \[ (\partial_{\sigma^2} \ell)(\mu, \sigma^2) = \left(\frac{-1}{2(\sigma^2)^{2}}\sum_{k = 1}^{n}(x^k - \mu)^2\right)- \frac{1}{2\sigma^2} \] We are interested in finding $\mu_0 \in \R$ and $\sigma^2_0 > 0$, at which $\partial_\mu \ell(\mu_0, \sigma^2_0) = 0$ and $\partial_{\sigma^2} \ell(\mu_0, \sigma^2_0) = 0$. So we have two equations. First, notice that $\partial_\mu \ell$ is zero if an only if its first argument (the mean) is $\frac{1}{n} \sum_{k = 1}^{n} x^k$. Second, notice that for all $\mu, \sigma^2$, $\partial_{\sigma^2}\ell$ is zero if and only if \[ \sigma^2 = \sum_{k = 1}^{n} (x^k - \mu)^2. \] So the pair \[ \left(\frac{1}{n}\sum_{k = 1}^{k} x^k, \frac{1}{n} \sum_{k = 1}^{n} (x_k - \frac{1}{n} \sum_{k = 1}^{n}  x^k)^2\right) \] is a stationary point of $\ell$. \end{proof} \end{prop}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to select a normal density which summarizes well a dataset.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Formulation}</p></div><div class="sheet-listing"><p class="sheet"> Let $D = (x^1, \dots , x^n)$ be a dataset in $\R $. We want to select a density from among normal densities, which require specifying a mean and covariance.</p></div><div class="sheet-listing"><p class="sheet"> Following the principle of maximum likelihood, we want to solve \[ \maximizationn{\mu ,\sigma  \in \R }{ \prod_{k = 1}^{n} \normaldensity{x^k}{\mu }{\sigma } }{ \sigma  > 0 \\ } \] We call a solution to the above problem a \t{maximum likelihood normal density} with respect to the dataset.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Solution}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(x^1, \dots , x^n)$ be a dataset in $\R $. Let $f$ be a normal density with mean \[ \frac{1}{n} \sum_{k = 1}^{n} x^k \] and covariance \[ \frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^2. \] Then $f$ is a maximum likelihood normal density.\end{proposition} \begin{proof}Every normal density has two parameters: the mean and the covariance. If the likelihood of one normal is less than or equal to the likelihood of another, then so also with their log likelihoods. Let $f$ be a normal density with parameter $\mu $ and $\sigma ^2$. We express the log likelihood of $f$ by \[ \sum_{k = 1}^{n} \left( \frac{1}{2\sigma ^2}(x^k - \mu )^2 - \frac{1}{2}\log2\pi \sigma ^2\right) \] The partial derivative of the log likelihood with respect to the mean $(\partial_{\mu } \ell ): \R ^2 \to \R $ is \[ (\partial_\mu  \ell )(\mu , \sigma ^2) = - \sum_{k = 1}^{n} \frac{1}{\sigma ^2}(x - \mu ) \] and with respect to the covariance $(\partial_{\sigma ^2} \ell ): \R ^2 \to \R $ is \[ (\partial_{\sigma ^2} \ell )(\mu , \sigma ^2) = \left(\frac{-1}{2(\sigma ^2)^{2}}\sum_{k = 1}^{n}(x^k - \mu )^2\right)- \frac{1}{2\sigma ^2} \] We are interested in finding $\mu _0 \in \R $ and $\sigma ^2_0 > 0$, at which $\partial_\mu  \ell (\mu _0, \sigma ^2_0) = 0$ and $\partial_{\sigma ^2} \ell (\mu _0, \sigma ^2_0) = 0$. So we have two equations. First, notice that $\partial_\mu  \ell $ is zero if an only if its first argument (the mean) is $\frac{1}{n} \sum_{k = 1}^{n} x^k$. Second, notice that for all $\mu , \sigma ^2$, $\partial_{\sigma ^2}\ell $ is zero if and only if \[ \sigma ^2 = \sum_{k = 1}^{n} (x^k - \mu )^2. \] So the pair \[ \left(\frac{1}{n}\sum_{k = 1}^{k} x^k, \frac{1}{n} \sum_{k = 1}^{n} (x_k - \frac{1}{n} \sum_{k = 1}^{n} x^k)^2\right) \] is a stationary point of $\ell $.\end{proof}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1441,7 +1730,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 4e890c22f.
+      Copyright 2022 The Bourbaki Authors. Version a278bdd86.
     </span>
   </body>
 </html>

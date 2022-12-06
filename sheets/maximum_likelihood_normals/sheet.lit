@@ -1,0 +1,111 @@
+<!--
+!name:maximum_likelihood_normals
+!need:normal_densities
+!need:maximum_likelihood_densities
+!need:partial_derivatives
+!!need:calculus ;) multivariate, too...
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to select a normal density which summarizes well a
+    dataset. ⦉
+⦉
+
+§ Formulation ⦉
+¶ ⦊
+  ‖ Let $D = (x^1, …, x^n)$ be a dataset in $𝗥$. ⦉
+
+  ‖ We want to select a density from among normal densities,
+    which require specifying a mean and covariance. ⦉
+⦉
+
+¶ ⦊
+  ‖ Following the principle of maximum likelihood, we want to
+    solve
+    ◇ ⦊
+      ‖ \maximizationn{μ,σ ∈ 𝗥}{ ⦉
+
+      ‖ ∏_{k = 1}^{n} \normaldensity{x^k}{μ}{σ} ⦉
+
+      ‖ }{ ⦉
+
+      ‖ σ > 0 ᜶ ⦉
+
+      ‖ } ⦉
+    ⦉⦉
+
+  ‖ We call a solution to the above problem a ❬maximum
+    likelihood normal density❭ with respect to the dataset. ⦉
+⦉
+
+§ Solution ⦉
+<statement type='proposition'>
+  ‖ Let $(x^1, …, x^n)$ be a dataset in $𝗥$. ⦉
+
+  ‖ Let $f$ be a normal density with mean
+    ◇ ⦊
+      ‖ \frac{1}{n} ∑_{k = 1}^{n} x^k ⦉
+    ⦉
+    and covariance
+    ◇ ⦊
+      ‖ \frac{1}{n} ∑_{k = 1}^{n} \left(x^k - \frac{1}{n} ∑_{k =
+        1}^{n} x^k\right)^2. ⦉
+    ⦉⦉
+
+  ‖ Then $f$ is a maximum likelihood normal density. ⦉
+</statement>
+<proof>
+  ‖ Every normal density has two parameters: the mean and the
+    covariance. ⦉
+
+  ‖ If the likelihood of one normal is less than or equal to
+    the likelihood of another, then so also with their log
+    likelihoods. ⦉
+
+  ‖ Let $f$ be a normal density with parameter $μ$ and $σ^2$. ⦉
+
+  ‖ We express the log likelihood of $f$ by
+    ◇ ⦊
+      ‖ ∑_{k = 1}^{n} \left( \frac{1}{2σ^2}(x^k - μ)^2 -
+        \frac{1}{2}\log2πσ^2\right) ⦉
+    ⦉⦉
+
+  ‖ The partial derivative of the log likelihood with respect to
+    the mean $(\partial_{μ} ℓ): 𝗥^2 → 𝗥$ is
+    ◇ ⦊
+      ‖ (\partial_μ ℓ)(μ, σ^2) = - ∑_{k = 1}^{n} \frac{1}{σ^2}(x
+        - μ) ⦉
+    ⦉
+    and with respect to the covariance $(\partial_{σ^2} ℓ): 𝗥^2
+    → 𝗥$ is
+    ◇ ⦊
+      ‖ (\partial_{σ^2} ℓ)(μ, σ^2) = ⦉
+
+      ‖ \left(\frac{-1}{2(σ^2)^{2}}∑_{k = 1}^{n}(x^k - μ)^2\right)-
+        \frac{1}{2σ^2} ⦉
+    ⦉⦉
+
+  ‖ We are interested in finding $μ_0 ∈ 𝗥$ and $σ^2_0 > 0$,
+    at which $\partial_μ ℓ(μ_0, σ^2_0) = 0$ and $\partial_{σ^2}
+    ℓ(μ_0, σ^2_0) = 0$. ⦉
+
+  ‖ So we have two equations. ⦉
+
+  ‖ First, notice that $\partial_μ ℓ$ is zero if an only if
+    its first argument (the mean) is $\frac{1}{n} ∑_{k = 1}^{n}
+    x^k$. ⦉
+
+  ‖ Second, notice that for all $μ, σ^2$, $\partial_{σ^2}ℓ$ is
+    zero if and only if
+    ◇ ⦊
+      ‖ σ^2 = ∑_{k = 1}^{n} (x^k - μ)^2. ⦉
+    ⦉⦉
+
+  ‖ So the pair
+    ◇ ⦊
+      ‖ \left(\frac{1}{n}∑_{k = 1}^{k} x^k, \frac{1}{n} ∑_{k =
+        1}^{n} (x_k - \frac{1}{n} ∑_{k = 1}^{n} x^k)^2\right) ⦉
+    ⦉
+    is a stationary point of $ℓ$. ⦉
+</proof>
