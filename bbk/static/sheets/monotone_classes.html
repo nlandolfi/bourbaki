@@ -109,7 +109,7 @@
                 transpose: ["{#1}^\\top", 1],
                 Msqrt: ["#1^{1/2}", 1],
                 Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
-                tp: ["\top"],
+                tp: ["\\top"],
                 mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
                 row: ["\\mathword{row}"],
                 col: ["\\mathword{col}"],
@@ -122,6 +122,7 @@
                 fdesc: ["\\mathword{fdesc}"],
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -867,139 +868,80 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Monotone Classes </h1> 
-      <p>
- <span class='run'>%!name:monotone_classes</span>
+      <!--
+!name:monotone_classes
+!need:sequences
+!need:subset_systems
+-->
 
- <span class='run'>%!need:sequences</span>
+<h1 id='Definition'>Definition</h1>
 
- <span class='run'>%!need:subset_systems</span>
+<p>
+ <span class='run'>The <span class='term'>limit</span> of an
+  increasing sequence of sets is the family union
+  of the sequence.</span>
+
+ <span class='run'>The <span class='term'>limit</span> of a
+  decreasing sequence of sets is the family
+  intersection of the sequence.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Why}<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+ <span class='run'>A <span class='term'>monotone limit</span> of an
+  sequence of sets is the limit of a monotone
+  sequence.</span>
 </p>
 
 
 <p>
- <span class='run'>\ssection{Definition}</span>
+ <span class='run'>A <span class='term'>monotone class</span> is a
+  subset system in which monotone limits of
+  monotone sequences of distinguished sets are
+  distinguished.</span>
+
+ <span class='run'>We call the distinguished sets a
+  <span class='term'>monotone class</span>.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>Let $A$ a non-empty set with partial order
+  $\preceq$.</span>
+
+ <span class='run'>Let $(A, \mathcal{A} )$ be a subset space on
+  $A$.</span>
 </p>
 
 
 <p>
- <span class='run'></span>
+ <span class='run'>Let $\seq{A}$ be an increasing or decreasing
+  sequence in $\mathcal{A}$.</span>
 
- <span class='run'>The</span>
-
- <span class='run'><span class='term'>limit</span></span>
-
- <span class='run'>of an increasing sequence</span>
-
- <span class='run'>of sets is the family</span>
-
- <span class='run'>union of the sequence.</span>
-
- <span class='run'>The</span>
-
- <span class='run'><span class='term'>limit</span></span>
-
- <span class='run'>of a decreasing sequence</span>
-
- <span class='run'>of sets is the family</span>
-
- <span class='run'>intersection of the sequence.</span>
+ <span class='run'>We denote the limit of $\seq{A}$ by $\lim_{n}
+  \seqt{A}$.</span>
 </p>
 
 
 <p>
- <span class='run'>A</span>
+ <span class='run'>If $\seq{A}$ is increasing, $\lim_n \seqt{A} =
+  \cup_{n} \seqt{A}$.</span>
 
- <span class='run'><span class='term'>monotone limit</span></span>
-
- <span class='run'>of an sequence of sets</span>
-
- <span class='run'>is the limit of a</span>
-
- <span class='run'>monotone sequence.</span>
+ <span class='run'>If $\seq{A}$ is decreasing, $\lim_n \seqt{A} =
+  \cap _{n} \seqt{A}$.</span>
 </p>
 
 
 <p>
- <span class='run'>A</span>
+ <span class='run'>If $(A, \mathcal{A} )$ is a monotone space,
+  then for all monotone $\seq{A}$ in
+  $\mathcal{A} $, $\lim_{n} \seqt{A} \in
+  \mathcal{A} $.</span>
 
- <span class='run'><span class='term'>monotone class</span></span>
-
- <span class='run'>is a</span>
-
- <span class='run'>subset system in which</span>
-
- <span class='run'>monotone limits of</span>
-
- <span class='run'>monotone sequences</span>
-
- <span class='run'>of distinguished sets are distinguished.</span>
-
- <span class='run'>We call the distinguished sets a</span>
-
- <span class='run'><span class='term'>monotone class</span>.</span>
+ <span class='run'>In this case, $\mathcal{A} $ is a montone class.</span>
 </p>
 
-
-<p>
- <span class='run'>\ssubsection{Notation}</span>
-</p>
-
-
-<p>
- <span class='run'>Let $A$ a non-empty set with</span>
-
- <span class='run'>partial order $\preceq$.</span>
-
- <span class='run'>Let $(A, \mathcal{A})$ be a</span>
-
- <span class='run'>subset space on $A$.</span>
-</p>
-
-
-<p>
- <span class='run'>Let $\seq{A}$ be an increasing</span>
-
- <span class='run'>or decreasing sequence in $\mathcal{A}$.</span>
-
- <span class='run'>We denote the limit of $\seq{A}$</span>
-
- <span class='run'>by $\lim_{n} \seqt{A}$.</span>
-</p>
-
-
-<p>
- <span class='run'>If $\seq{A}$ is increasing,</span>
-
- <span class='run'>$\lim_n \seqt{A} = \union_{n} \seqt{A}$.</span>
-
- <span class='run'>If $\seq{A}$ is decreasing,</span>
-
- <span class='run'>$\lim_n \seqt{A} = \intersection_{n} \seqt{A}$.</span>
-</p>
-
-
-<p>
- <span class='run'>If $(A, \mathcal{A})$ is a monotone space,</span>
-
- <span class='run'>then for all monotone</span>
-
- <span class='run'>$\seq{A}$ in $\mathcal{A}$,</span>
-
- <span class='run'>$\lim_{n} \seqt{A} \in \mathcal{A}$.</span>
-
- <span class='run'>In this case, $\mathcal{A}$ is a montone class.</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
-</p>
-<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1065,7 +1007,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> \ifhmode\unskip\fi\footnote{ Future editions will include. }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{limit} of an increasing sequence of sets is the family union of the sequence. The \t{limit} of a decreasing sequence of sets is the family intersection of the sequence.</p></div><div class="sheet-listing"><p class="sheet"> A \t{monotone limit} of an sequence of sets is the limit of a monotone sequence.</p></div><div class="sheet-listing"><p class="sheet"> A \t{monotone class} is a subset system in which monotone limits of monotone sequences of distinguished sets are distinguished. We call the distinguished sets a \t{monotone class}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $A$ a non-empty set with partial order $\preceq$. Let $(A, \mathcal{A})$ be a subset space on $A$.</p></div><div class="sheet-listing"><p class="sheet"> Let $\seq{A}$ be an increasing or decreasing sequence in $\mathcal{A}$. We denote the limit of $\seq{A}$ by $\lim_{n} \seqt{A}$.</p></div><div class="sheet-listing"><p class="sheet"> If $\seq{A}$ is increasing, $\lim_n \seqt{A} = \union_{n} \seqt{A}$. If $\seq{A}$ is decreasing, $\lim_n \seqt{A} = \intersection_{n} \seqt{A}$.</p></div><div class="sheet-listing"><p class="sheet"> If $(A, \mathcal{A})$ is a monotone space, then for all monotone $\seq{A}$ in $\mathcal{A}$, $\lim_{n} \seqt{A} \in \mathcal{A}$. In this case, $\mathcal{A}$ is a montone class.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{limit} of an increasing sequence of sets is the family union of the sequence. The \t{limit} of a decreasing sequence of sets is the family intersection of the sequence.</p></div><div class="sheet-listing"><p class="sheet"> A \t{monotone limit} of an sequence of sets is the limit of a monotone sequence.</p></div><div class="sheet-listing"><p class="sheet"> A \t{monotone class} is a subset system in which monotone limits of monotone sequences of distinguished sets are distinguished. We call the distinguished sets a \t{monotone class}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ a non-empty set with partial order $\preceq$. Let $(A, \mathcal{A} )$ be a subset space on $A$.</p></div><div class="sheet-listing"><p class="sheet"> Let $\seq{A}$ be an increasing or decreasing sequence in $\mathcal{A}$. We denote the limit of $\seq{A}$ by $\lim_{n} \seqt{A}$.</p></div><div class="sheet-listing"><p class="sheet"> If $\seq{A}$ is increasing, $\lim_n \seqt{A} = \cup_{n} \seqt{A}$. If $\seq{A}$ is decreasing, $\lim_n \seqt{A} = \cap _{n} \seqt{A}$.</p></div><div class="sheet-listing"><p class="sheet"> If $(A, \mathcal{A} )$ is a monotone space, then for all monotone $\seq{A}$ in $\mathcal{A} $, $\lim_{n} \seqt{A} \in \mathcal{A} $. In this case, $\mathcal{A} $ is a montone class.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1219,7 +1161,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a278bdd86.
+      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
     </span>
   </body>
 </html>

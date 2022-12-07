@@ -109,7 +109,7 @@
                 transpose: ["{#1}^\\top", 1],
                 Msqrt: ["#1^{1/2}", 1],
                 Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
-                tp: ["\top"],
+                tp: ["\\top"],
                 mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
                 row: ["\\mathword{row}"],
                 col: ["\\mathword{col}"],
@@ -122,6 +122,7 @@
                 fdesc: ["\\mathword{fdesc}"],
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1046,6 +1047,189 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_integrals.html'" onkeypress="location.href='./real_integrals.html'">
+                <span>
+                  Real Integrals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measurable_sections.pdf#page=2'" onkeypress="location.href='./measurable_sections.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./measurable_sections-graph.pdf'" onkeypress="location.href='./measurable_sections-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Measurable Sections </h1> 
+      <!--
+!name:measurable_sections
+!need:real_integrals
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Toward a theory</span>
+
+ <span class='run'>of iterated integrals,</span>
+
+ <span class='run'>we need to know that</span>
+
+ <span class='run'>set and function sections</span>
+
+ <span class='run'>are measurable.</span>
+</p>
+
+<h1 id='Results'>Results</h1>
+
+<div class='proposition'>
+ <p>
+  <span class='run'>Let $(X, \mathcal{A} )$ and $(Y, \mathcal{B} )$
+   be measurable spaces.</span>
+
+  <span class='run'>For any $E \in \mathcal{A}  \times
+   \mathcal{B} $, the sections $E_x$ and $E^y$ are
+   measurable for any $x \in X$ and $y \in Y$.</span>
+ </p>
+</div>
+<div class='proposition'>
+ <p>
+  <span class='run'>Let $(X, \mathcal{A} )$ and $(Y, \mathcal{B} )$
+   be measurable spaces.</span>
+
+  <span class='run'>Let $f: X \times  Y \to F$,</span>
+
+  <span class='run'>where $F$ is the extended real</span>
+
+  <span class='run'>numnbers or the complex numbers,</span>
+
+  <span class='run'>and $f$ is measurable (using</span>
+
+  <span class='run'>the appropriate sigma algebra of</span>
+
+  <span class='run'>the codomain).</span>
+
+  <span class='run'>The sections</span>
+
+  <span class='run'>$f_x: Y \to F$</span>
+
+  <span class='run'>and</span>
+
+  <span class='run'>$f^y: X \to F$ are measurable</span>
+
+  <span class='run'>for each $x \in X$ and $y \in Y$.</span>
+ </p>
+</div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1083,7 +1267,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Toward a theory of iterated integrals, we need to know that set and function sections are measurable.</p></div><div class="sheet-listing" id="results"><h1 class="sheet">2. Results</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $(X, \SA)$ and $(Y, \SB)$ be measurable spaces. For any $E \in \SA \cross \SB$, the sections $E_x$ and $E^y$ are measurable for any $x \in X$ and $y \in Y$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} TODO \end{proof} \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop} Let $(X, \SA)$ and $(Y, \SB)$ be measurable spaces. Let $f: X \cross Y \to F$, where $F$ is the extended real numnbers or the complex numbers, and $f$ is measurable (using the appropriate sigma algebra of the codomain). The sections $f_x: Y \to F$ and $f^y: X \to F$ are measurable for each $x \in X$ and $y \in Y$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof} TODO \end{proof} \end{prop}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Toward a theory of iterated integrals, we need to know that set and function sections are measurable.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Results}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(X, \mathcal{A} )$ and $(Y, \mathcal{B} )$ be measurable spaces. For any $E \in \mathcal{A}  \times  \mathcal{B} $, the sections $E_x$ and $E^y$ are measurable for any $x \in X$ and $y \in Y$. \end{proposition} \begin{proposition} Let $(X, \mathcal{A} )$ and $(Y, \mathcal{B} )$ be measurable spaces. Let $f: X \times  Y \to F$, where $F$ is the extended real numnbers or the complex numbers, and $f$ is measurable (using the appropriate sigma algebra of the codomain). The sections $f_x: Y \to F$ and $f^y: X \to F$ are measurable for each $x \in X$ and $y \in Y$. \end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1237,7 +1421,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a278bdd86.
+      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
     </span>
   </body>
 </html>

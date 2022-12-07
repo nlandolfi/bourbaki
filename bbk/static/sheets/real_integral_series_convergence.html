@@ -109,7 +109,7 @@
                 transpose: ["{#1}^\\top", 1],
                 Msqrt: ["#1^{1/2}", 1],
                 Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
-                tp: ["\top"],
+                tp: ["\\top"],
                 mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
                 row: ["\\mathword{row}"],
                 col: ["\\mathword{col}"],
@@ -122,6 +122,7 @@
                 fdesc: ["\\mathword{fdesc}"],
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1173,19 +1174,13 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Integral Series Convergence </h1> 
-      <p>
- <span class='run'>%!name:real_integral_series_convergence</span>
+      <!--
+!name:real_integral_series_convergence
+!need:real_integrals
+!need:extended_real_numbers
+-->
 
- <span class='run'>%!need:real_integrals</span>
-
- <span class='run'>%!need:extended_real_numbers</span>
-</p>
-
-
-<p>
- <span class='run'>\ssection{Why}</span>
-</p>
-
+<h1 id='Why'>Why</h1>
 
 <p>
  <span class='run'>Sums of non-negative functions are increasing,
@@ -1193,52 +1188,32 @@
   theorem.</span>
 </p>
 
+<h1 id='Result'>Result</h1>
 
-<p>
- <span class='run'>\ssection{Result}</span>
-</p>
-
-
-<p>
- <span class='run'>\begin{proposition}</span>
-
+<div class='proposition'>
  <span class='run'>The integral of the limit of the partial sums
   of a sequence of measurable, nonnegative,
   extended-real-valued functions is the limit of
   the partial sums of the integrals.</span>
+ <div class='proof'>  <span class='run'>Let $(X, \mathcal{A}, \mu )$ be a measure
+   space, and let $\seqt{f}: \to \nneri$ a
+   $\mathcal{A}$-measurable function for every
+   natural number $n$.</span>
 
- <span class='run'>\begin{proof}</span>
+  <span class='run'>We want to show that:
+   <p>\[
+    \int  \sum_{k = 1}^{\infty} f_k d\mu
 
- <span class='run'>Let $(X, \mathcal{A}, \mu )$ be a measure
-  space, and let $\seqt{f}: \to \nneri$ a
-  $\mathcal{A}$-measurable function for every natural
-  number $n$.</span>
+    =
 
- <span class='run'>We want to show that:
-  <p>\[
-   \int  \sum_{k = 1}^{\infty} f_k d\mu
+    \sum_{k = 1}^{\infty} \int  f_k d\mu.
+   \]</p></span>
 
-   =
+  <span class='run'>We apply the monotone convergence theorem to
+   the sequence $\set{\sum_{i = 1}^{n}f_i}_n$.</span>
 
-   \sum_{k = 1}^{\infty} \int  f_k d\mu.
-  \]</p></span>
-
- <span class='run'>We apply the monotone convergence theorem to
-  the sequence $\set{\sum_{i = 1}^{n}f_i}_n$.</span>
-
- <span class='run'>This sequence is nondecreasing because $f_n \geq
-  0$ for all $n$.</span>
-
- <span class='run'>\end{proof}</span>
-
- <span class='run'>\end{proposition}</span>
-</p>
-
-
-<p>
- <span class='run'>\blankpage</span>
-</p>
-
+  <span class='run'>This sequence is nondecreasing because $f_n
+   \geq 0$ for all $n$.</span> </div></div>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1287,7 +1262,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Sums of non-negative functions are increasing, and workable with the monotone convergence theorem.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The integral of the limit of the partial sums of a sequence of measurable, nonnegative, extended-real-valued functions is the limit of the partial sums of the integrals. \begin{proof} Let $(X, \mathcal{A}, \mu )$ be a measure space, and let $\seqt{f}: \to \nneri$ a $\mathcal{A}$-measurable function for every natural number $n$. We want to show that: \[ \int \sum_{k = 1}^{\infty} f_k d\mu = \sum_{k = 1}^{\infty} \int f_k d\mu. \] We apply the monotone convergence theorem to the sequence $\set{\sum_{i = 1}^{n}f_i}_n$. This sequence is nondecreasing because $f_n \geq 0$ for all $n$. \end{proof} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Sums of non-negative functions are increasing, and workable with the monotone convergence theorem.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} The integral of the limit of the partial sums of a sequence of measurable, nonnegative, extended-real-valued functions is the limit of the partial sums of the integrals. \begin{proof}Let $(X, \mathcal{A}, \mu )$ be a measure space, and let $\seqt{f}: \to \nneri$ a $\mathcal{A}$-measurable function for every natural number $n$. We want to show that: \[ \int  \sum_{k = 1}^{\infty} f_k d\mu = \sum_{k = 1}^{\infty} \int  f_k d\mu. \] We apply the monotone convergence theorem to the sequence $\set{\sum_{i = 1}^{n}f_i}_n$. This sequence is nondecreasing because $f_n \geq 0$ for all $n$.\end{proof}\end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1441,7 +1416,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a278bdd86.
+      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
     </span>
   </body>
 </html>

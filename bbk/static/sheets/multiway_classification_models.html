@@ -109,7 +109,7 @@
                 transpose: ["{#1}^\\top", 1],
                 Msqrt: ["#1^{1/2}", 1],
                 Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
-                tp: ["\top"],
+                tp: ["\\top"],
                 mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
                 row: ["\\mathword{row}"],
                 col: ["\\mathword{col}"],
@@ -122,6 +122,7 @@
                 fdesc: ["\\mathword{fdesc}"],
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1570,6 +1571,187 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./probabilistic_errors_linear_model.html'" onkeypress="location.href='./probabilistic_errors_linear_model.html'">
+                <span>
+                  Probabilistic Errors Linear Model
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./multiway_classification_models.pdf#page=2'" onkeypress="location.href='./multiway_classification_models.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./multiway_classification_models-graph.pdf'" onkeypress="location.href='./multiway_classification_models-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Multiway Classification Models </h1> 
+      <!--
+!name:multiway_classification_models
+!need:probabilistic_errors_linear_model
+-->
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>The <span class='term'>two-sample model</span> (or
+  the <span class='term'>two-sample problem</span>)
+  has input space $\set{1, 2}$ and regression
+  function $\phi : \set{1, 2} \to \R ^2$ where
+  $\phi (1) = \transpose{(1, 0)}$ and $\phi (2) =
+  \transpose{(0, 1)}$.</span>
+
+ <span class='run'>In this case, we model two populations
+  (corresponding to 1 and 2) with different means
+  but a common variance.</span>
+
+ <span class='run'>The regression range is the set $\set{(1, 0),
+  (0, 1)}$.</span>
+</p>
+
+
+<p>
+ <span class='run'>Generalizing from two to $a$ populations gives
+  the <span class='term'>one-way classification
+  model</span>.</span>
+
+ <span class='run'>In that case the input space is $\set{1,
+  \dots , a}$ and the regression function is
+  $\phi : \set{1, \dots , a} \to \R ^a$ defined by
+  $\phi (i) = e_i$ where $e_i$ is the standard
+  unit vector in $\R ^a$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>The regression range is $\set{e_1, \dots , e_a}$.</span>
+
+ <span class='run'>In this case we say that the
+  <span class='term'>factor</span> population takes
+  <span class='term'>levels</span> $1, \dots , a$.</span>
+</p>
+
+
+<p>
+ <span class='run'>If there are more than one factors, then we
+  have a <span class='term'>multiway classification
+  model</span>.</span>
+
+ <span class='run'>For example, the <span class='term'>two-way
+  classification model with no interaction</span>
+  has input domain $X = \set{1, \dots , a}
+  \times \set{1, \dots , b}$ and the regression
+  function $\phi : X \to \R ^{a + b}$ is defined
+  by $\phi (i, j) = \transpose{(e_i, e_j)}$.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will define the standard unit
+  vector.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1607,7 +1789,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The \t{two-sample model} (or the \t{two-sample problem}) has input space $\set{1, 2}$ and regression function $\phi: \set{1, 2} \to \R^2$ where $\phi(1) = \transpose{(1, 0)}$ and $\phi(2) = \transpose{(0, 1)}$. In this case, we model two populations (corresponding to 1 and 2) with different means but a common variance. The regression range is the set $\set{(1, 0), (0, 1)}$.</p></div><div class="sheet-listing"><p class="sheet"> Generalizing from two to $a$ populations gives the \t{one-way classification model}. In that case the input space is $\set{1, \dots, a}$ and the regression function is $\phi: \set{1, \dots, a} \to \R^a$ defined by $\phi(i) = e_i$ where $e_i$ is the standard unit vector in $\R^a$.\footnote{Future editions will define the standard unit vector.} The regression range is $\set{e_1, \dots, e_a}$. In this case we say that the \t{factor} population takes \t{levels} $1, \dots, a$.</p></div><div class="sheet-listing"><p class="sheet"> If there are more than one factors, then we have a \t{multiway classification model}. For example, the \t{two-way classification model with no interaction} has input domain $X = \set{1, \dots, a} \times \set{1, \dots, b}$ and the regression function $\phi: X \to \R^{a + b}$ is defined by $\phi(i, j) = \transpose{(e_i, e_j)}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{two-sample model} (or the \t{two-sample problem}) has input space $\set{1, 2}$ and regression function $\phi : \set{1, 2} \to \R ^2$ where $\phi (1) = \transpose{(1, 0)}$ and $\phi (2) = \transpose{(0, 1)}$. In this case, we model two populations (corresponding to 1 and 2) with different means but a common variance. The regression range is the set $\set{(1, 0), (0, 1)}$.</p></div><div class="sheet-listing"><p class="sheet"> Generalizing from two to $a$ populations gives the \t{one-way classification model}. In that case the input space is $\set{1, \dots , a}$ and the regression function is $\phi : \set{1, \dots , a} \to \R ^a$ defined by $\phi (i) = e_i$ where $e_i$ is the standard unit vector in $\R ^a$.\footnote{Future editions will define the standard unit vector.} The regression range is $\set{e_1, \dots , e_a}$. In this case we say that the \t{factor} population takes \t{levels} $1, \dots , a$.</p></div><div class="sheet-listing"><p class="sheet"> If there are more than one factors, then we have a \t{multiway classification model}. For example, the \t{two-way classification model with no interaction} has input domain $X = \set{1, \dots , a} \times \set{1, \dots , b}$ and the regression function $\phi : X \to \R ^{a + b}$ is defined by $\phi (i, j) = \transpose{(e_i, e_j)}$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1761,7 +1943,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a278bdd86.
+      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
     </span>
   </body>
 </html>

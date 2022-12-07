@@ -109,7 +109,7 @@
                 transpose: ["{#1}^\\top", 1],
                 Msqrt: ["#1^{1/2}", 1],
                 Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
-                tp: ["\top"],
+                tp: ["\\top"],
                 mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
                 row: ["\\mathword{row}"],
                 col: ["\\mathword{col}"],
@@ -122,6 +122,7 @@
                 fdesc: ["\\mathword{fdesc}"],
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1650,6 +1651,327 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_trace.html'" onkeypress="location.href='./matrix_trace.html'">
+                <span>
+                  Matrix Trace
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_multivariate_normals.html'" onkeypress="location.href='./maximum_likelihood_multivariate_normals.html'">
+                <span>
+                  Maximum Likelihood Multivariate Normals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./tree_approximators_of_a_normal.html'" onkeypress="location.href='./tree_approximators_of_a_normal.html'">
+                <span>
+                  Tree Approximators of a Normal
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_tree_normals.pdf#page=2'" onkeypress="location.href='./maximum_likelihood_tree_normals.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_tree_normals-graph.pdf'" onkeypress="location.href='./maximum_likelihood_tree_normals-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Maximum Likelihood Tree Normals </h1> 
+      <!--
+!name:maximum_likelihood_tree_normals
+!need:maximum_likelihood_multivariate_normals
+!need:matrix_trace
+!need:tree_approximators_of_a_normal
+ bring back if drop tree_normal_approximators
+%!need:optimal_tree_density_approximators
+%!need:tree_normals
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>What if we use the principle of maximum
+  likelihood to select the maximum likelihood
+  normal density which factors according to a tree?</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>maximum likelihood tree
+  normal</span> of a dataset in $\R ^d$ is a
+  multivariate normal density that factors according
+  to a tree and maximizes the likelihood of the
+  dataset.</span>
+</p>
+
+<h1 id='Results'>Results</h1>
+
+<div class='proposition'>
+ <p>
+  <span class='run'>Let $D = (x^1, \dots , x^n)$ be a dataset in
+   $\R ^d$.</span>
+
+  <span class='run'>A normal density is a maximum likelihood tree
+   normal of $D$ if and only if it is an
+   optimal tree approximator of the empirical
+   normal density of $D$.</span>
+ </p>
+
+ <div class='proof'>  <p>
+   <span class='run'>First, let $f: \R ^d \to \R $ be a normal
+    density.</span>
+  </p>
+
+
+  <p>
+   <span class='run'>First, express the log likelihood of $f$ on
+    a record $x^k$ by
+    <p>\[
+     \log f(x^k) = - \frac{1}{2} (x^k - \mu )^{\tp} \inv{\Sigma }
+      (x^k - \mu ) - \frac{1}{2} \log \det \Sigma  -
+      \frac{d}{2}\log 2\pi .
+    \]</p></span>
+   <p>
+    <span class='run'>Second, use the trace to rewrite the
+     quadratic form</span>
+    <p>\[
+     -\frac{1}{2}\tr{(\Sigma ^{-1} (x^k - \mu ) (x^k -
+      \mu )^{\tp})}.
+    \]</p>
+   </p>
+
+
+   <p>
+    <span class='run'>Third, use these two, and the linearity of
+     trace to express the average negative log
+     likelihood by</span>
+   </p>
+
+
+   <p>
+    <p>\[
+     \begin{aligned}
+
+     - \frac{1}{n} \sum_{k = 1}^{n} \log f(x^k) &= \frac{1}{2}
+      \tr{(\Sigma ^{-1}(\frac{1}{n}\sum_{i = 1}^{n} (x^k - \mu )(x^k
+      - \mu )^{\tp}))} + \frac{1}{2}\log\det\Sigma  + \frac{d}{2}\log
+      2\pi .
+
+     \end{aligned}
+    \]</p>
+   </p>
+
+
+   <p>
+    <span class='run'>Fourth, use matrix calculus (or the
+     derivation in Proposition 1 of Multivariate
+     Normal Maximum Likelihood) to see that, for a
+     minimizer of the negative average log
+     likelihood, the mean must be $\frac{1}{n}
+     \sum_{i = 1}^{n} x^k$.</span>
+   </p>
+
+
+   <p>
+    <span class='run'>Fifth, recognize the empirical covariance
+     matrix $\frac{1}{n}\sum_{k = 1}^{n} (x^k -
+     \mu )(x^k - \mu )^{\tp}$; denote it by $S$.</span>
+   </p>
+
+
+   <p>
+    <span class='run'>Sixth, change variables with $P =
+     \Sigma ^{-1}$ and express</span>
+    <p>\[
+     \log{(\det{(\Sigma )})} = \log{(\det{(\inv{P})})} =
+      \log{(\inv{(\det P)})} = -\log{(\det{(P)})}
+    \]</p>
+   </p>
+
+
+   <p>
+    <span class='run'>Seventh, write the likelihood in simplified
+     form (using circulant property of trace)</span>
+    <p>\[
+     \frac{1}{2} \tr{(SP)} - \frac{1}{2} \log \det P -
+      \frac{d}{2}\log 2\pi
+    \]</p>
+   </p>
+
+
+   <p>
+    <span class='run'>Eighth, drop the constant and prefactors:</span>
+    <p>\[
+     \tr{(SP)} - \log \det P
+    \]</p>
+   </p>
+
+
+   <p>
+    <span class='run'>Ninth, if $g$ is a normal with then the
+     tree density approximation objective is the
+     same equivalent to</span>
+    <p>\[
+     d(g, f) = h(g, f) - h(f) \sim h(g, f) = - \int_{\R ^d}
+      g\log f.
+    \]</p>
+   </p>
+
+
+   <p>
+    <span class='run'>TODO:</span>
+
+    <span class='run'>Extra, the let $g$ be normal and $f$ be
+     normal. The tree normal approximation problem</span>
+    <p>\[
+     d(g, f) \sim h(g, f) = - \int_{R^d} g \log f.
+    \]</p>
+    <span class='run'>The log of $f$ is
+     <p>\[
+      - \frac{1}{2} \tr{( \Sigma _f \int_{\R ^d} (x - \mu _f)(x -
+       \mu _f)^{\tp} dx )} - \frac{1}{2} \log \det \Sigma _f^{-1} -
+       \frac{d}{2} \log 2\pi
+     \]</p></span>
+    <p>
+     <span class='run'>Since the set of optimal solutions for both
+      optimization is contained in the set of
+      normal densities which match on the mean we
+      can assume that $\mu _f = \mu _g$.</span>
+
+     <span class='run'>So the approximation objective is equivalent
+      to</span>
+     <p>\[
+      \tr{P_f \Sigma _g} - \log \det P_f,
+     \]</p>
+     <span class='run'>which is exactly the maximum likelihood
+      objective.</span>
+    </p>
+
+
+    <p>
+     <span class='run'>Thus, a solution is a maximum likelihood
+      tree normal of a dataset if and only if it
+      is an optimal tree approximator of the
+      empirical normal density of the dataset.</span>
+    </p>
+
+   </p>
+
+  </p>
+ </div></div>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1701,7 +2023,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What if we use the principle of maximum likelihood to select the maximum likelihood normal density which factors according to a tree?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{maximum likelihood tree normal} of a dataset in $\R^d$ is a multivariate normal density that factors according to a tree and maximizes the likelihood of the dataset.</p></div><div class="sheet-listing" id="results"><h1 class="sheet">3. Results</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $D = (x^1, \dots, x^n)$ be a dataset in $\R^d$. A normal density is a maximum likelihood tree normal of $D$ if and only if it is an optimal tree approximator of the empirical normal density of $D$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> First, let $f: \R^d \to \R$ be a normal density.</p></div><div class="sheet-listing"><p class="sheet"> First, express the log likelihood of $f$ on a record $x^k$ by $$ \log f(x^k) = - \frac{1}{2} (x^k - \mu)^{\tp} \inv{\Sigma} (x^k - \mu) - \frac{1}{2} \log \det \Sigma - \frac{d}{2}\log 2\pi. $$</p></div><div class="sheet-listing"><p class="sheet"> Second, use the trace to rewrite the quadratic form $$ -\frac{1}{2}\trp{\Sigma^{-1} (x^k - \mu) (x^k - \mu)^{\tp}}. $$</p></div><div class="sheet-listing"><p class="sheet"> Third, use these two, and the linearity of trace to express the average negative log likelihood by</p></div><div class="sheet-listing"><p class="sheet"> $$ \begin{aligned} - \frac{1}{n} \sum_{k = 1}^{n} \log f(x^k) &= \frac{1}{2} \trp{\Sigma^{-1}\parens*{\frac{1}{n}\sum_{i = 1}^{n} (x^k - \mu)(x^k - \mu)^{\tp}}} + \frac{1}{2}\log\det\Sigma + \frac{d}{2}\log 2\pi. \end{aligned} $$</p></div><div class="sheet-listing"><p class="sheet"> Fourth, use matrix calculus (or the derivation in Proposition 1 of Multivariate Normal Maximum Likelihood) to see that, for a minimizer of the negative average log likelihood, the mean must be $\frac{1}{n} \sum_{i = 1}^{n} x^k$.</p></div><div class="sheet-listing"><p class="sheet"> Fifth, recognize the empirical covariance matrix $\frac{1}{n}\sum_{k = 1}^{n} (x^k - \mu)(x^k - \mu)^{\tp}$; denote it by $S$.</p></div><div class="sheet-listing"><p class="sheet"> Sixth, change variables with $P = \Sigma^{-1}$ and express $$ \logp{\detp{\Sigma}} = \logp{\detp{\inv{P}}} = \logp{\invp{\det P}} = -\logp{\detp{P}} $$</p></div><div class="sheet-listing"><p class="sheet"> Seventh, write the likelihood in simplified form (using circulant property of trace) $$ \frac{1}{2} \trp{SP} - \frac{1}{2} \log \det P - \frac{d}{2}\log 2\pi $$</p></div><div class="sheet-listing"><p class="sheet"> Eighth, drop the constant and prefactors: $$ \trp{SP} - \log \det P $$</p></div><div class="sheet-listing"><p class="sheet"> Ninth, if $g$ is a normal with then the tree density approximation objective is the same equivalent to $$ d(g, f) = h(g, f) - h(f) \sim h(g, f) = - \int_{\R^d} g\log f. $$</p></div><div class="sheet-listing"><p class="sheet"> TODO: Extra, the let $g$ be normal and $f$ be normal. The tree normal approximation problem $$ d(g, f) \sim h(g, f) = - \int_{R^d} g \log f. $$ The log of $f$ is $$ - \frac{1}{2} \trp{ \Sigma_f \int_{\R^d} (x - \mu_f)(x - \mu_f)^{\tp} dx } - \frac{1}{2} \log \det \Sigma_f^{-1} - \frac{d}{2} \log 2\pi $$</p></div><div class="sheet-listing"><p class="sheet"> Since the set of optimal solutions for both optimization is contained in the set of normal densities which match on the mean we can assume that $\mu_f = \mu_g$. So the approximation objective is equivalent to $$ \tr{P_f \Sigma_g} - \log \det P_f, $$ which is exactly the maximum likelihood objective.</p></div><div class="sheet-listing"><p class="sheet"> Thus, a solution is a maximum likelihood tree normal of a dataset if and only if it is an optimal tree approximator of the empirical normal density of the dataset.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What if we use the principle of maximum likelihood to select the maximum likelihood normal density which factors according to a tree?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{maximum likelihood tree normal} of a dataset in $\R ^d$ is a multivariate normal density that factors according to a tree and maximizes the likelihood of the dataset.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Results}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $D = (x^1, \dots , x^n)$ be a dataset in $\R ^d$. A normal density is a maximum likelihood tree normal of $D$ if and only if it is an optimal tree approximator of the empirical normal density of $D$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}First, let $f: \R ^d \to \R $ be a normal density.</p></div><div class="sheet-listing"><p class="sheet"> First, express the log likelihood of $f$ on a record $x^k$ by \[ \log f(x^k) = - \frac{1}{2} (x^k - \mu )^{\tp} \inv{\Sigma } (x^k - \mu ) - \frac{1}{2} \log \det \Sigma  - \frac{d}{2}\log 2\pi . \] Second, use the trace to rewrite the quadratic form \[ -\frac{1}{2}\tr{(\Sigma ^{-1} (x^k - \mu ) (x^k - \mu )^{\tp})}. \]</p></div><div class="sheet-listing"><p class="sheet"> Third, use these two, and the linearity of trace to express the average negative log likelihood by</p></div><div class="sheet-listing"><p class="sheet"> \[ \begin{aligned} - \frac{1}{n} \sum_{k = 1}^{n} \log f(x^k) &= \frac{1}{2} \tr{(\Sigma ^{-1}(\frac{1}{n}\sum_{i = 1}^{n} (x^k - \mu )(x^k - \mu )^{\tp}))} + \frac{1}{2}\log\det\Sigma  + \frac{d}{2}\log 2\pi . \end{aligned} \]</p></div><div class="sheet-listing"><p class="sheet"> Fourth, use matrix calculus (or the derivation in Proposition 1 of Multivariate Normal Maximum Likelihood) to see that, for a minimizer of the negative average log likelihood, the mean must be $\frac{1}{n} \sum_{i = 1}^{n} x^k$.</p></div><div class="sheet-listing"><p class="sheet"> Fifth, recognize the empirical covariance matrix $\frac{1}{n}\sum_{k = 1}^{n} (x^k - \mu )(x^k - \mu )^{\tp}$; denote it by $S$.</p></div><div class="sheet-listing"><p class="sheet"> Sixth, change variables with $P = \Sigma ^{-1}$ and express \[ \log{(\det{(\Sigma )})} = \log{(\det{(\inv{P})})} = \log{(\inv{(\det P)})} = -\log{(\det{(P)})} \]</p></div><div class="sheet-listing"><p class="sheet"> Seventh, write the likelihood in simplified form (using circulant property of trace) \[ \frac{1}{2} \tr{(SP)} - \frac{1}{2} \log \det P - \frac{d}{2}\log 2\pi \]</p></div><div class="sheet-listing"><p class="sheet"> Eighth, drop the constant and prefactors: \[ \tr{(SP)} - \log \det P \]</p></div><div class="sheet-listing"><p class="sheet"> Ninth, if $g$ is a normal with then the tree density approximation objective is the same equivalent to \[ d(g, f) = h(g, f) - h(f) \sim h(g, f) = - \int_{\R ^d} g\log f. \]</p></div><div class="sheet-listing"><p class="sheet"> TODO: Extra, the let $g$ be normal and $f$ be normal. The tree normal approximation problem \[ d(g, f) \sim h(g, f) = - \int_{R^d} g \log f. \] The log of $f$ is \[ - \frac{1}{2} \tr{( \Sigma _f \int_{\R ^d} (x - \mu _f)(x - \mu _f)^{\tp} dx )} - \frac{1}{2} \log \det \Sigma _f^{-1} - \frac{d}{2} \log 2\pi \] Since the set of optimal solutions for both optimization is contained in the set of normal densities which match on the mean we can assume that $\mu _f = \mu _g$. So the approximation objective is equivalent to \[ \tr{P_f \Sigma _g} - \log \det P_f, \] which is exactly the maximum likelihood objective.</p></div><div class="sheet-listing"><p class="sheet"> Thus, a solution is a maximum likelihood tree normal of a dataset if and only if it is an optimal tree approximator of the empirical normal density of the dataset.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}\end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1855,7 +2177,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a278bdd86.
+      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
     </span>
   </body>
 </html>

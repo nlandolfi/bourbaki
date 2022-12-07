@@ -109,7 +109,7 @@
                 transpose: ["{#1}^\\top", 1],
                 Msqrt: ["#1^{1/2}", 1],
                 Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
-                tp: ["\top"],
+                tp: ["\\top"],
                 mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
                 row: ["\\mathword{row}"],
                 col: ["\\mathword{col}"],
@@ -122,6 +122,7 @@
                 fdesc: ["\\mathword{fdesc}"],
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -646,6 +647,169 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./function_restrictions_and_extensions.html'" onkeypress="location.href='./function_restrictions_and_extensions.html'">
+                <span>
+                  Function Restrictions and Extensions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./integer_order.html'" onkeypress="location.href='./integer_order.html'">
+                <span>
+                  Integer Order
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./isomorphisms.html'" onkeypress="location.href='./isomorphisms.html'">
+                <span>
+                  Isomorphisms
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./natural_integer_isomorphism.pdf#page=2'" onkeypress="location.href='./natural_integer_isomorphism.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./natural_integer_isomorphism-graph.pdf'" onkeypress="location.href='./natural_integer_isomorphism-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Natural Integer Isomorphism </h1> 
+      <!--
+!name:natural_integer_isomorphism
+!need:isomorphisms
+!need:integer_order
+!need:function_restrictions_and_extensions
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Do the natural numbers correspond (in the sense
+  of&nbsp;<a href='/sheets/isomorphisms.html'/><span class='run'>Isomorphisms</span></a>) to elements of integers.</span>
+</p>
+
+<h1 id='Main_result'>Main result</h1>
+
+<p>
+ <span class='run'>Indeed, the natural numbers correspond to the
+  $Z_+$.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>$(\Z _{++}, + \mid  \Z _{++})$ and $(\omega ,
+  +)$ are isomorphic.</span></div>
+<div class='proof'> <span class='run'>The function is $f(n) = \eqc{(n, 0)}$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>The full account will appear in future editions.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -697,7 +861,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Do the natural numbers correspond (in the sense \sheetref{isomorphisms}{Isomorphisms}) to elements of integers.</p></div><div class="sheet-listing" id="main_result"><h1 class="sheet">2. Main Result</h1></div><div class="sheet-listing"><p class="sheet"> Indeed, the natural numbers correspond to the $Z_+$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\Z_{++}, + \mid \Z_{++})$ and $(\omega, +)$ are isomorphic. \end{proposition} \begin{proof} The function is $f(n) = \eqc{(n, 0)}$.\footnote{The full account will appear in future editions.} \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Do the natural numbers correspond (in the sense of \sheetref{isomorphisms}{Isomorphisms}) to elements of integers.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Main result}</p></div><div class="sheet-listing"><p class="sheet"> Indeed, the natural numbers correspond to the $Z_+$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\Z _{++}, + \mid  \Z _{++})$ and $(\omega , +)$ are isomorphic.\end{proposition} \begin{proof}The function is $f(n) = \eqc{(n, 0)}$.\footnote{The full account will appear in future editions.}\end{proof} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -851,7 +1015,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a278bdd86.
+      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
     </span>
   </body>
 </html>

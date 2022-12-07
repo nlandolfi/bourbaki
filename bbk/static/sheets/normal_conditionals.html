@@ -109,7 +109,7 @@
                 transpose: ["{#1}^\\top", 1],
                 Msqrt: ["#1^{1/2}", 1],
                 Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
-                tp: ["\top"],
+                tp: ["\\top"],
                 mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
                 row: ["\\mathword{row}"],
                 col: ["\\mathword{col}"],
@@ -122,6 +122,7 @@
                 fdesc: ["\\mathword{fdesc}"],
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1602,43 +1603,37 @@
 
 <h1 id='Result'>Result</h1>
 
-<p>
- <span class='run'>\begin{prop}</span>
-</p>
+<div class='proposition'>
+ <p>
+  <span class='run'>Let $f: \R ^d \to \R $ be a normal density
+   with mean $\mu  \in \R ^d$ and covariance
+   $\Sigma  \in \mathbfsf{S} ^d$.
+   <p>\[
+    \mu  = \bmat{\mu _x \\ \mu _y} \quad \text{ and } \quad
+
+    \Sigma  = \bmat{
+
+    \Sigma _{xx} \& \Sigma _{xy} \\
+
+    \Sigma _{yx} \& \Sigma _{yy}
+
+    }
+   \]</p></span>
+ </p>
 
 
-<p>
- <span class='run'>Let $f: \R ^d \to \R $ be a normal density
-  with mean $\mu  \in \R ^d$ and covariance
-  $\Sigma  \in \mathbfsf{S} ^d$.
-  <p>\[
-   \mu  = \bmat{\mu _x \\ \mu _y} \quad \text{ and } \quad
-
-   \Sigma  = \bmat{
-
-   \Sigma _{xx} \& \Sigma _{xy} \\
-
-   \Sigma _{yx} \& \Sigma _{yy}
-
-   }
-  \]</p></span>
-</p>
-
-
-<p>
- <span class='run'>The conditional density $f_{x \mid y}(\xi ,
-  \gamma )$ is
-  $\normal{\bar{\mu }(\gamma )}{\bar{\Sigma }}$ where
-  <p>\[
-   \bar{\mu }(\gamma ) = \mu _1 +
-    \Sigma _{xy}\Sigma _{yy}^{-1}(\gamma  - \mu _y) \text{ and }
-    \bar{\Sigma } = \Sigma _{xx} -
-    \Sigma _{xy}\Sigma _{yy}^{-1}\Sigma _{yx}.
-  \]</p></span>
-
- <span class='run'>\end{prop}</span>
-</p>
-
+ <p>
+  <span class='run'>The conditional density $f_{x \mid y}(\xi ,
+   \gamma )$ is
+   $\normal{\bar{\mu }(\gamma )}{\bar{\Sigma }}$ where
+   <p>\[
+    \bar{\mu }(\gamma ) = \mu _1 +
+     \Sigma _{xy}\Sigma _{yy}^{-1}(\gamma  - \mu _y) \text{ and }
+     \bar{\Sigma } = \Sigma _{xx} -
+     \Sigma _{xy}\Sigma _{yy}^{-1}\Sigma _{yx}.
+   \]</p></span>
+ </p>
+</div>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1704,7 +1699,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What of the conditional densities of a multivariate normal density.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \R ^d \to \R $ be a normal density with mean $\mu \in \R ^d$ and covariance $\Sigma  \in \mathbfsf{S} ^d$. \[ \mu  = \bmat{\mu _x \\ \mu _y} \quad \text{ and } \quad \Sigma  = \bmat{ \Sigma _{xx} \& \Sigma _{xy} \\ \Sigma _{yx} \& \Sigma _{yy} } \]</p></div><div class="sheet-listing"><p class="sheet"> The conditional density $f_{x \mid y}(\xi , \gamma )$ is $\normal{\bar{\mu }(\gamma )}{\bar{\Sigma }}$ where \[ \bar{\mu }(\gamma ) = \mu _1 + \Sigma _{xy}\Sigma _{yy}^{-1}(\gamma - \mu _y) \text{ and } \bar{\Sigma } = \Sigma _{xx} - \Sigma _{xy}\Sigma _{yy}^{-1}\Sigma _{yx}. \] \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What of the conditional densities of a multivariate normal density.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $f: \R ^d \to \R $ be a normal density with mean $\mu \in \R ^d$ and covariance $\Sigma  \in \mathbfsf{S} ^d$. \[ \mu  = \bmat{\mu _x \\ \mu _y} \quad \text{ and } \quad \Sigma  = \bmat{ \Sigma _{xx} \& \Sigma _{xy} \\ \Sigma _{yx} \& \Sigma _{yy} } \]</p></div><div class="sheet-listing"><p class="sheet"> The conditional density $f_{x \mid y}(\xi , \gamma )$ is $\normal{\bar{\mu }(\gamma )}{\bar{\Sigma }}$ where \[ \bar{\mu }(\gamma ) = \mu _1 + \Sigma _{xy}\Sigma _{yy}^{-1}(\gamma - \mu _y) \text{ and } \bar{\Sigma } = \Sigma _{xx} - \Sigma _{xy}\Sigma _{yy}^{-1}\Sigma _{yx}. \] \end{proposition} \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1858,7 +1853,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a278bdd86.
+      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
     </span>
   </body>
 </html>

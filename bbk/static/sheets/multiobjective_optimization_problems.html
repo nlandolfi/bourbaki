@@ -109,7 +109,7 @@
                 transpose: ["{#1}^\\top", 1],
                 Msqrt: ["#1^{1/2}", 1],
                 Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
-                tp: ["\top"],
+                tp: ["\\top"],
                 mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
                 row: ["\\mathword{row}"],
                 col: ["\\mathword{col}"],
@@ -122,6 +122,7 @@
                 fdesc: ["\\mathword{fdesc}"],
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1302,6 +1303,202 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./combined_orders.html'" onkeypress="location.href='./combined_orders.html'">
+                <span>
+                  Combined Orders
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+                <span>
+                  Matrix Transpose
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./multivariate_functions.html'" onkeypress="location.href='./multivariate_functions.html'">
+                <span>
+                  Multivariate Functions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./optimization_problems.html'" onkeypress="location.href='./optimization_problems.html'">
+                <span>
+                  Optimization Problems
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./optimal_classifiers.html'" onkeypress="location.href='./optimal_classifiers.html'">
+            <span>
+            Optimal Classifiers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./multiobjective_optimization_problems.pdf#page=2'" onkeypress="location.href='./multiobjective_optimization_problems.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./multiobjective_optimization_problems-graph.pdf'" onkeypress="location.href='./multiobjective_optimization_problems-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Multiobjective Optimization Problems </h1> 
+      <!--
+!name:multiobjective_optimization_problems
+!need:optimization_problems
+!need:combined_orders
+!need:matrix_transpose
+!need:multivariate_functions
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Often we care about multiple criteria at once.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>multiobjective optimization
+  problem</span> is a pair $(X, f: X \to \R ^d)$.</span>
+
+ <span class='run'>As before, $X$ is the
+  <span class='term'>constraint set</span> and $f$ is
+  called the <span class='term'>objective
+  function</span>.</span>
+
+ <span class='run'>Since $f$ is vector valued, and there is no
+  natural order on $\R ^d$, there may exist $x
+  \in X$ with non-comparable images under $f$.</span>
+</p>
+
+<h1 id='Scalarization'>Scalarization</h1>
+
+<p>
+ <span class='run'>The $\alpha  \in \R ^d$
+  <span class='term'>scalarization</span> of a
+  multiobjective optimization problem $(X, f)$ is
+  the optimization problem $(X, g)$ where $g: X
+  \to \R $ is defined by $g(x) = \alpha ^\tp
+  f(x)$.</span>
+
+ <span class='run'>We call $g$ the <span class='term'>scalarized
+  objective</span>.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will modify.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1370,7 +1567,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Often we care about multiple criteria at once.\footnote{Future editions will modify.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{multiobjective optimization problem} is a pair $(X, f: X \to \R^d)$. As before, $X$ is the \t{constraint set} and $f$ is called the \t{objective function}. Since $f$ is vector valued, and there is no natural order on $\R^d$, there may exist $x \in X$ with non-comparable images under $f$.</p></div><div class="sheet-listing" id="scalarization"><h1 class="sheet">3. Scalarization</h1></div><div class="sheet-listing"><p class="sheet"> The $\alpha \in \R^d$ \t{scalarization} of a multiobjective optimization problem $(X, f)$ is the optimization problem $(X, g)$ where $g: X \to \R$ is defined by $g(x) = \alpha^\tp f(x)$. We call $g$ the \t{scalarized objective}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Often we care about multiple criteria at once.\footnote{Future editions will modify.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{multiobjective optimization problem} is a pair $(X, f: X \to \R ^d)$. As before, $X$ is the \t{constraint set} and $f$ is called the \t{objective function}. Since $f$ is vector valued, and there is no natural order on $\R ^d$, there may exist $x \in X$ with non-comparable images under $f$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Scalarization}</p></div><div class="sheet-listing"><p class="sheet"> The $\alpha  \in \R ^d$ \t{scalarization} of a multiobjective optimization problem $(X, f)$ is the optimization problem $(X, g)$ where $g: X \to \R $ is defined by $g(x) = \alpha ^\tp f(x)$. We call $g$ the \t{scalarized objective}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1524,7 +1721,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version a278bdd86.
+      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
     </span>
   </body>
 </html>
