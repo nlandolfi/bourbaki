@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make monotone_class_theorem.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 monotone_class_theorem.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_class_theorem.tex
 
