@@ -123,6 +123,9 @@
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
                 normal: ["\\mathcal{N}(#1, #2)", 2],
+                perm: ["\\mathword{perm}"],
+                sgn: ["\\mathword{sgn}"],
+                rvcdf: ["F_{#1}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -132,6 +135,7 @@
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
 \( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\( \DeclarePairedDelimiter{\parens}{\left(}{\right)}\)
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
@@ -843,6 +847,201 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./function_inverses.html'" onkeypress="location.href='./function_inverses.html'">
+                <span>
+                  Function Inverses
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./metrics.html'" onkeypress="location.href='./metrics.html'">
+                <span>
+                  Metrics
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./isometries.pdf#page=2'" onkeypress="location.href='./isometries.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./isometries-graph.pdf'" onkeypress="location.href='./isometries-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Isometries </h1> 
+      <!--
+!name:isometries
+!need:metrics
+!need:function_inverses
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>A metric space is a set with a prescribed
+  notion of distance.</span>
+
+ <span class='run'>Though the sets may be distinct, if elements
+  can be made to correspond to each other with
+  distances preserved then one space is as good a
+  model as the other space.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Two metric spaces are
+  <span class='term'>isometric</span> if there exists
+  an invertible function such that the distance of
+  two elements in one space is the same as the
+  distance of their result (under the function) in
+  the second space (and vice versa).</span>
+</p>
+
+
+<p>
+ <span class='run'>We call either of the inverse functions an
+  <span class='term'>isometry</span>.</span>
+
+ <span class='run'>An isometry maps each element of one space to
+  an element of the second space and preserves
+  distances.</span>
+
+ <span class='run'>Since inverse functions exist and are unique,
+  either isometry is sufficient for demonstrating
+  two spaces are isometric.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>Let $(A, d)$ and $(B, d&#39;)$ be metric
+  spaces.</span>
+
+ <span class='run'>Let $f: A \to B$ and $g: B \to A$ such that
+  <p>\[
+   d(a, b) = d'(f(a), f(b))
+  \]</p>
+  for all $a, b \in A$ and
+  <p>\[
+   d'(c, d) = d(g(c), g(d))
+  \]</p>
+  for all $c, d \in B$.</span>
+
+ <span class='run'>Then $(A, d)$ and $(B, d&#39;)$ are isometric.</span>
+
+ <span class='run'>We call either of $f$ or $g$ an isometry.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -887,7 +1086,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> A metric space is a set with a prescribed notion of distance. Though the sets may be distinct, if elements can be made to correspond to each other with distances preserved then one space is as good a model as the other space.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Two metric spaces are \t{isometric} if there exists an invertible function such that the distance of two elements in one space is the same as the distance of their result (under the function) in the second space (and vice versa).</p></div><div class="sheet-listing"><p class="sheet"> We call either of the  inverse functions an \t{isometry}. An isometry maps each element of one space to an element of the second space and preserves distances. Since inverse functions exist and are unique, either isometry is sufficient for demonstrating two spaces are isometric.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, d)$ and $(B, d')$ be metric spaces. Let $f: A \to B$ and $g: B \to A$ such that $$ d(a, b) = d'(f(a), f(b)) $$ for all $a, b \in A$ and $$ d'(c, d) = d(g(c), g(d)) $$ for all $c, d \in B$. Then $(A, d)$ and $(B, d')$ are isometric. We call either of $f$ or $g$ an isometry.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> A metric space is a set with a prescribed notion of distance. Though the sets may be distinct, if elements can be made to correspond to each other with distances preserved then one space is as good a model as the other space.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Two metric spaces are \t{isometric} if there exists an invertible function such that the distance of two elements in one space is the same as the distance of their result (under the function) in the second space (and vice versa).</p></div><div class="sheet-listing"><p class="sheet"> We call either of the inverse functions an \t{isometry}. An isometry maps each element of one space to an element of the second space and preserves distances. Since inverse functions exist and are unique, either isometry is sufficient for demonstrating two spaces are isometric.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $(A, d)$ and $(B, d')$ be metric spaces. Let $f: A \to B$ and $g: B \to A$ such that \[ d(a, b) = d'(f(a), f(b)) \] for all $a, b \in A$ and \[ d'(c, d) = d(g(c), g(d)) \] for all $c, d \in B$. Then $(A, d)$ and $(B, d')$ are isometric. We call either of $f$ or $g$ an isometry.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1041,7 +1240,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
+      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
     </span>
   </body>
 </html>

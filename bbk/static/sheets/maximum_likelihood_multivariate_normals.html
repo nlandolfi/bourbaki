@@ -123,6 +123,9 @@
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
                 normal: ["\\mathcal{N}(#1, #2)", 2],
+                perm: ["\\mathword{perm}"],
+                sgn: ["\\mathword{sgn}"],
+                rvcdf: ["F_{#1}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -132,6 +135,7 @@
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
 \( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\( \DeclarePairedDelimiter{\parens}{\left(}{\right)}\)
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
@@ -1583,6 +1587,228 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_transpose.html'" onkeypress="location.href='./matrix_transpose.html'">
+                <span>
+                  Matrix Transpose
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_normals.html'" onkeypress="location.href='./maximum_likelihood_normals.html'">
+                <span>
+                  Maximum Likelihood Normals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./multivariate_normals.html'" onkeypress="location.href='./multivariate_normals.html'">
+                <span>
+                  Multivariate Normals
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_tree_normals.html'" onkeypress="location.href='./maximum_likelihood_tree_normals.html'">
+            <span>
+            Maximum Likelihood Tree Normals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_multivariate_normals.pdf#page=2'" onkeypress="location.href='./maximum_likelihood_multivariate_normals.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_multivariate_normals-graph.pdf'" onkeypress="location.href='./maximum_likelihood_multivariate_normals-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Maximum Likelihood Multivariate Normals </h1> 
+      <!--
+!name:maximum_likelihood_multivariate_normals
+!need:maximum_likelihood_normals
+!need:multivariate_normals
+!need:matrix_transpose
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>What of the generalization to a multivariate
+  normal.</span>
+</p>
+
+<h1 id='Result'>Result</h1>
+
+<div class='proposition'>
+ <p>
+  <span class='run'>Let $(x^1, \dots , x^n)$ be a dataset in
+   $\R ^d$.</span>
+
+  <span class='run'>Let $f$ be a multivariate normal density with
+   mean
+   <p>\[
+    \frac{1}{n} \sum_{k = 1}^{d} x^k
+   \]</p>
+   and covariance
+   <p>\[
+    \frac{1}{n}
+
+    \sum_{k = 1}^{n}
+
+    \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)
+
+    \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^\tp
+
+    .
+   \]</p></span>
+
+  <span class='run'>Then $f$ is a maximum likelihood multivariate
+   normal density.</span>
+ </p>
+
+ <div class='proof'>  <p>
+   <span class='run'>We express the log likelihood
+    <p>\[
+     \sum_{k = 1}^{n} -\frac{1}{2}(x - \mu )^\tp \Sigma ^{-1}
+      (x-\mu ) - \frac{1}{2}\log (2\pi )^d - \frac{1}{2} \log \det
+      \Sigma
+    \]</p>
+    <span class='run'>Let $P = \Sigma ^{-1}$. The $\log\det
+     \Sigma $ is $\log\det P^{-1}$ is $\log
+     \left(\det P\right)^{-1}$ is $- \log\det P$.</span>
+
+    <span class='run'>Use matrix calculus to get
+     <p>\[
+      \frac{\partial \ell }{\partial P} = \sum_{k = 1}^{n} (x^k -
+       \mu )(x^k - \mu )^\tp - P^{-1}.
+     \]</p></span></span>
+  </p>
+ </div></div>
+<p>
+ <span class='run'>We call these two objects the
+  <span class='term'>maximum likelihood mean</span> or
+  <span class='term'>empirical mean</span> and
+  <span class='term'>maximum likelihood
+  covariance</span> or <span class='term'>empirical
+  covariance</span> of the dataset.</span>
+
+ <span class='run'>We call the normal density with the empirical
+  mean and empirical covariance the
+  <span class='term'>empirical normal</span> of the
+  dataset.</span>
+
+ <span class='run'></span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1644,7 +1870,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What of the generalization to a multivariate normal.</p></div><div class="sheet-listing" id="result"><h1 class="sheet">2. Result</h1></div><div class="sheet-listing"><p class="sheet"> \begin{prop}</p></div><div class="sheet-listing"><p class="sheet"> Let $(x^1, \dots, x^n)$ be a dataset in $\R^d$. Let $f$ be a multivariate normal density with mean \[ \frac{1}{n} \sum_{k = 1}^{d} x^k \] and covariance \[ \frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right) \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^\tp . \] Then $f$ is a maximum likelihood multivariate normal density.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> We express the log likelihood \[ \sum_{k = 1}^{n} -\frac{1}{2}(x - \mu)^\tp \Sigma^{-1} (x-\mu) - \frac{1}{2}\log (2\pi)^d - \frac{1}{2} \log \det \Sigma \] Let $P = \Sigma^{-1}$. The $\log\det \Sigma$ is $\log\det P^{-1}$ is $\log \left(\det P\right)^{-1}$ is $- \log\det P$. Use matrix calculus to get \[ \frac{\partial \ell}{\partial P} = \sum_{k = 1}^{n} (x^k - \mu)(x^k - \mu)^\tp - P^{-1}. \]</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop}</p></div><div class="sheet-listing"><p class="sheet"> We call these two objects the \t{maximum likelihood mean} or \t{empirical mean} and \t{maximum likelihood covariance} or \t{empirical covariance} of the dataset. We call the normal density with the empirical mean and empirical covariance the \t{empirical normal} of the dataset.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What of the generalization to a multivariate normal.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(x^1, \dots , x^n)$ be a dataset in $\R ^d$. Let $f$ be a multivariate normal density with mean \[ \frac{1}{n} \sum_{k = 1}^{d} x^k \] and covariance \[ \frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right) \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^\tp . \] Then $f$ is a maximum likelihood multivariate normal density.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}We express the log likelihood \[ \sum_{k = 1}^{n} -\frac{1}{2}(x - \mu )^\tp \Sigma ^{-1} (x-\mu ) - \frac{1}{2}\log (2\pi )^d - \frac{1}{2} \log \det \Sigma \] Let $P = \Sigma ^{-1}$. The $\log\det \Sigma $ is $\log\det P^{-1}$ is $\log \left(\det P\right)^{-1}$ is $- \log\det P$. Use matrix calculus to get \[ \frac{\partial \ell }{\partial P} = \sum_{k = 1}^{n} (x^k - \mu )(x^k - \mu )^\tp - P^{-1}. \] \end{proof}\end{proposition} We call these two objects the \t{maximum likelihood mean} or \t{empirical mean} and \t{maximum likelihood covariance} or \t{empirical covariance} of the dataset. We call the normal density with the empirical mean and empirical covariance the \t{empirical normal} of the dataset.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1798,7 +2024,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
+      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
     </span>
   </body>
 </html>

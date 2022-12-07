@@ -123,6 +123,9 @@
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
                 normal: ["\\mathcal{N}(#1, #2)", 2],
+                perm: ["\\mathword{perm}"],
+                sgn: ["\\mathword{sgn}"],
+                rvcdf: ["F_{#1}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -132,6 +135,7 @@
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
 \( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\( \DeclarePairedDelimiter{\parens}{\left(}{\right)}\)
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
@@ -1235,6 +1239,211 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_distributions.html'" onkeypress="location.href='./maximum_likelihood_distributions.html'">
+                <span>
+                  Maximum Likelihood Distributions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./parameterized_distribution_graphs.html'" onkeypress="location.href='./parameterized_distribution_graphs.html'">
+                <span>
+                  Parameterized Distribution Graphs
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./maximum_likelihood_distribution_graphs.html'" onkeypress="location.href='./maximum_likelihood_distribution_graphs.html'">
+            <span>
+            Maximum Likelihood Distribution Graphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./distribution_graph_selectors.pdf#page=2'" onkeypress="location.href='./distribution_graph_selectors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./distribution_graph_selectors-graph.pdf'" onkeypress="location.href='./distribution_graph_selectors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Distribution Graph Selectors </h1> 
+      <!--
+!name:distribution_graph_selectors
+!need:parameterized_distribution_graphs
+!need:maximum_likelihood_distributions
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to select a distribution graph to
+  summarize some data.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $(G, A)$ be a typed graph on $\set{1,
+  \dots , n}$.</span>
+
+ <span class='run'>Let $S \subset \set{1, \dots , n}$.</span>
+
+ <span class='run'>Let $x^1, \dots , x^n$ be a dataset in $A_S =
+  \prod_{j \in S} A_j$ (see
+  \sheetref{function_graphs}{Function Graphs}).</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>distribution graph
+  selector</span> for typed graph $(G, A)$, dataset
+  of size $n$, and indices $S \subset\set{1,
+  \dots , n}$ is a function from datasets of size
+  $n$ in $A_S$ to distribution graphs on $(G, A)$.</span>
+</p>
+
+
+<p>
+ <span class='run'>In the case that $S \neq\set{1, \dots , n}$ we
+  call $S$ the <span class='term'>observable</span>
+  (or <span class='term'>data</span>) indices and $T
+  = \set{1,\dots ,n} \setminus S$ the
+  <span class='term'>hidden</span> (or
+  <span class='term'>latent</span>,
+  <span class='term'>nonobservable</span>) indices.</span>
+
+ <span class='run'>It is common for many authorities to use the
+  notational convention $Z$ for $A_T$ and $X$ for
+  $A_S$.</span>
+</p>
+
+
+<p>
+ <span class='run'>Let $p: \prod_{i} A_i \to [0, 1]$ denote the
+  full joint distribution of a distribution graph.</span>
+
+ <span class='run'>In this case, we call $p_{S}: A_S \to [0, 1]$
+  the <span class='term'>observable distribution</span>
+  (or <span class='term'>evidence distribution</span>).</span>
+</p>
+
+
+<!--
+Let $(\bar{G}, \set{g_i^{(\theta)}})$ be a family o distribution
+
+Let $\set{G, \set{g_i^{(\theta)}}_{i=1}^{n}}_{\theta \in \Theta}$ be a parametric distribution network family.
+-->
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1289,7 +1498,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to select a distribution graph to summarize some data.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(G, A)$ be a typed graph on $\set{1, \dots, n}$. Let $S \subset \set{1, \dots, n}$. Let $x^1, \dots, x^n$ be a dataset in $A_S = \prod_{j \in S} A_j$ (see \sheetref{function_graphs}{Function Graphs}).</p></div><div class="sheet-listing"><p class="sheet"> A \t{distribution graph selector} for typed graph $(G, A)$, dataset of size $n$, and indices $S \subset\set{1, \dots, n}$ is a function from datasets of size $n$ in $A_S$ to distribution graphs on $(G, A)$.</p></div><div class="sheet-listing"><p class="sheet"> In the case that $S \neq\set{1, \dots, n}$ we call $S$ the \t{observable} (or \t{data}) indices and $T = \set{1,\dots,n} \setminus S$ the \t{hidden} (or \t{latent}, \t{nonobservable}) indices. It is common for many authorities to use the notational convention $Z$ for $A_T$ and $X$ for $A_S$.</p></div><div class="sheet-listing"><p class="sheet"> Let $p: \prod_{i} A_i \to [0, 1]$ denote the full joint distribution of a distribution graph. In this case, we call $p_{S}: A_S \to [0, 1]$ the \t{observable distribution} (or \t{evidence distribution}).</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to select a distribution graph to summarize some data.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $(G, A)$ be a typed graph on $\set{1, \dots , n}$. Let $S \subset \set{1, \dots , n}$. Let $x^1, \dots , x^n$ be a dataset in $A_S = \prod_{j \in S} A_j$ (see \sheetref{function\_graphs}{Function Graphs}).</p></div><div class="sheet-listing"><p class="sheet"> A \t{distribution graph selector} for typed graph $(G, A)$, dataset of size $n$, and indices $S \subset\set{1, \dots , n}$ is a function from datasets of size $n$ in $A_S$ to distribution graphs on $(G, A)$.</p></div><div class="sheet-listing"><p class="sheet"> In the case that $S \neq\set{1, \dots , n}$ we call $S$ the \t{observable} (or \t{data}) indices and $T = \set{1,\dots ,n} \setminus S$ the \t{hidden} (or \t{latent}, \t{nonobservable}) indices. It is common for many authorities to use the notational convention $Z$ for $A_T$ and $X$ for $A_S$.</p></div><div class="sheet-listing"><p class="sheet"> Let $p: \prod_{i} A_i \to [0, 1]$ denote the full joint distribution of a distribution graph. In this case, we call $p_{S}: A_S \to [0, 1]$ the \t{observable distribution} (or \t{evidence distribution}).</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1443,7 +1652,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
+      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
     </span>
   </body>
 </html>

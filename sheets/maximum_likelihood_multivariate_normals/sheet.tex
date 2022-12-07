@@ -1,50 +1,41 @@
+
 %!name:maximum_likelihood_multivariate_normals
 %!need:maximum_likelihood_normals
 %!need:multivariate_normals
 %!need:matrix_transpose
 
-\ssection{Why}
+\section*{Why}
 
 What of the generalization to a multivariate normal.
 
-\ssection{Result}
+\section*{Result}
 
-\begin{prop}
-
-Let $(x^1, \dots, x^n)$ be a dataset in $\R^d$.
-Let $f$ be a multivariate normal density with
-mean
-\[
-  \frac{1}{n} \sum_{k = 1}^{d} x^k
-\]
+\begin{proposition}
+Let $(x^1, \dots , x^n)$ be a dataset in $\R ^d$.
+Let $f$ be a multivariate normal density with mean
+    \[
+\frac{1}{n} \sum_{k = 1}^{d} x^k
+    \]
 and covariance
-\[
-  \frac{1}{n}
-  \sum_{k = 1}^{n}
-  %\left(
-  \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)
-  \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^\tp
-  %\right)
-  .
-\]
-Then $f$ is a maximum likelihood multivariate normal
-density.
+    \[
+\frac{1}{n}
+\sum_{k = 1}^{n}
+\left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)
+\left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^\tp
+.
+    \]
+Then $f$ is a maximum likelihood multivariate normal density.
 
-\begin{proof}
-
-  We express the log likelihood
-  \[
-    \sum_{k = 1}^{n} -\frac{1}{2}(x - \mu)^\tp \Sigma^{-1} (x-\mu) - \frac{1}{2}\log (2\pi)^d - \frac{1}{2} \log \det \Sigma
-  \]
-  Let $P = \Sigma^{-1}$. The $\log\det \Sigma$ is $\log\det P^{-1}$ is $\log \left(\det P\right)^{-1}$ is $- \log\det P$.
-  Use matrix calculus to get
-  \[
-    \frac{\partial \ell}{\partial P} = \sum_{k = 1}^{n} (x^k - \mu)(x^k - \mu)^\tp - P^{-1}.
-  \]
-
-\end{proof}
-
-\end{prop}
-
+\begin{proof}We express the log likelihood
+    \[
+\sum_{k = 1}^{n} -\frac{1}{2}(x - \mu )^\tp \Sigma ^{-1} (x-\mu ) - \frac{1}{2}\log (2\pi )^d - \frac{1}{2} \log \det \Sigma
+    \]
+Let $P = \Sigma ^{-1}$. The $\log\det \Sigma $ is $\log\det P^{-1}$ is $\log \left(\det P\right)^{-1}$ is $- \log\det P$.
+Use matrix calculus to get
+      \[
+\frac{\partial \ell }{\partial P} = \sum_{k = 1}^{n} (x^k - \mu )(x^k - \mu )^\tp - P^{-1}.
+      \]
+\end{proof}\end{proposition}
 We call these two objects the \t{maximum likelihood mean} or \t{empirical mean} and \t{maximum likelihood covariance} or \t{empirical covariance} of the dataset.
 We call the normal density with the empirical mean and empirical covariance the \t{empirical normal} of the dataset.
+

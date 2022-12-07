@@ -123,6 +123,9 @@
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
                 normal: ["\\mathcal{N}(#1, #2)", 2],
+                perm: ["\\mathword{perm}"],
+                sgn: ["\\mathword{sgn}"],
+                rvcdf: ["F_{#1}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -132,6 +135,7 @@
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
 \( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\( \DeclarePairedDelimiter{\parens}{\left(}{\right)}\)
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
@@ -847,6 +851,286 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./linear_combinations.html'" onkeypress="location.href='./linear_combinations.html'">
+                <span>
+                  Linear Combinations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./matroids.html'" onkeypress="location.href='./matroids.html'">
+            <span>
+            Matroids
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./vector_space_bases.html'" onkeypress="location.href='./vector_space_bases.html'">
+            <span>
+            Vector Space Bases
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linearly_dependent_vectors.pdf#page=2'" onkeypress="location.href='./linearly_dependent_vectors.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linearly_dependent_vectors-graph.pdf'" onkeypress="location.href='./linearly_dependent_vectors-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Linearly Dependent Vectors </h1> 
+      <!--
+!name:linearly_dependent_vectors
+!need:linear_combinations
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to find a set of vectors so that
+  there exists a unique linear combination of
+  these vectors corresponding to each vector in
+  the space.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>First, we introduce terminology for when it is
+  possible to write a vector as a linear
+  combination of a set of vectors.</span>
+
+ <span class='run'>A vector $x$ is <span class='term'>linearly
+  dependent on a set of vectors</span> if $x$ the
+  result of some linear combination of them.</span>
+
+ <span class='run'>For example, $x$ is linearly dependent on
+  $\set{x}$.</span>
+ <!--  the linear combination consisting of that vector and the scalar $1$ gives the vector. -->
+
+</p>
+
+
+<p>
+ <span class='run'>Naturally, the interesting case is when the
+  vector is not contained in the set it is
+  dependent on.</span>
+
+ <span class='run'>In this case, we imagine constructing it from
+  those vectors in the set.</span>
+
+ <span class='run'>For example, the vector $y = 2x$ is linearly
+  dependent on the set $\set{x}$.</span>
+</p>
+
+
+<p>
+ <span class='run'>A set of vectors is a
+  <span class='term'>linearly dependent set</span> if
+  one element is linearly dependent on the set
+  excluding it.</span>
+
+ <span class='run'>The idea is that if a set is linearly
+  dependent, we can drop one of its elements, but
+  still “build} that vector out of the rest.</span>
+
+ <span class='run'>The idea is the following: suppose that a
+  vector is linearly dependent on this set.</span>
+
+ <span class='run'>Then that vector can be written as a linear
+  combination of the set.</span>
+
+ <span class='run'>Now suppose that the set is linearly dependent;
+  then we can express one of the vectors as a
+  linear combination of the others.</span>
+
+ <span class='run'>The conclusion is that we can actually express
+  the original vector as a linear combination of
+  the set of vectors without the dependent vector.</span>
+
+ <span class='run'>The upshot is that we can shrink the set of
+  vectors, and still represent that vector.</span>
+</p>
+
+
+<p>
+ <span class='run'>We feel that the above definitions better
+  capture the intuition.</span>
+
+ <span class='run'>The usual definition of linear dependence is
+  given in the following proposition.</span>
+ <div class='proposition'>
+  <span class='run'>A sequence of vectors is linearly dependent if
+   and only if then there exists a nontrivial
+   linear combination of sequence whose result is
+   the zero vector.</span> </div>
+</p>
+
+
+<p>
+ <span class='run'>A finite sequence of vectors is
+  <span class='term'>linearly dependent</span> if one
+  is identical to a nontrivial linear combination
+  of the others.</span>
+
+ <span class='run'>If one can be written as a linearly combination</span>
+</p>
+
+
+<p>
+ <span class='run'>Two vectors, then are linearly dependent if one
+  is a scalar multiple of the other.</span>
+
+ <span class='run'>The sequence $(\mathbfsf{0})$ is linearly
+  dependent since $a_1 \mathbfsf{0} = \mathbfsf{0}$
+  for any scalar $a_1$.</span>
+</p>
+
+
+<p>
+ <span class='run'>An infinite sequence of vectors is
+  <span class='term'>linearly dependent</span> if some
+  finite subsequence is dependent.</span>
+
+ <span class='run'>It is <span class='term'>linearly
+  independent</span> if every finite subsequence is
+  linearly independent.</span>
+</p>
+
+
+<p>
+ <span class='run'>Any sequence (finite or infinite) which contains
+  the zero vector is linearly dependent.</span>
+</p>
+
+
+<p>
+ <span class='run'>If a finite sequence of vectors is linearly
+  independent, then each of its coordinates is
+  distinct.</span>
+</p>
+
+
+<p>
+ <span class='run'>A set of vectors is <span class='term'>linearly
+  independent</span> if every sequence of distinct
+  vectors in the set is linearly independent.</span>
+
+ <span class='run'>The set is <span class='term'>linearly
+  dependent</span> if somem finite sequence of
+  distinct vectors is dependent.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -901,7 +1185,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to find a set of vectors so that there exists a unique linear combination of these vectors corresponding to each vector in the space.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> First, we introduce terminology for when it is possible to write a vector as a linear combination of a set of vectors. A vector $x$ is \t{linearly dependent on a set of vectors} if $x$ the result of some linear combination of them. For example, $x$ is linearly dependent on $\set{x}$.</p></div><div class="sheet-listing"><p class="sheet"> Naturally, the interesting case is when the vector is not contained in the set it is dependent on. In this case, we imagine constructing it from those vectors in the set. For example, the vector $y = 2x$ is linearly dependent on the set $\set{x}$.</p></div><div class="sheet-listing"><p class="sheet"> A set of vectors is a \t{linearly dependent set} if one element is linearly dependent on the set excluding it. The idea is that if a set is linearly dependent, we can drop one of its elements, but still "build" that vector out of the rest. The idea is the following: suppose that a vector is linearly dependent on this set. Then that vector can be written as a linear combination of the set. Now suppose that the set is linearly dependent; then we can express one of the vectors as a linear combination of the others. The conclusion is that we can actually express the original vector as a linear combination of the set of vectors without the dependent vector. The upshot is that we can shrink the set of vectors, and still represent that vector.</p></div><div class="sheet-listing"><p class="sheet"> We feel that the above definitions better capture the intuition. The usual definition of linear dependence is given in the following proposition. \begin{prop} A sequence of vectors is linearly dependent if and only if then there exists a nontrivial linear combination of sequence whose result is the zero vector. \begin{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}</p></div><div class="sheet-listing"><p class="sheet"> \end{prop} A finite sequence of vectors is \t{linearly dependent} if one is identical to a nontrivial linear combination of the others. If one can be written as a linearly combination</p></div><div class="sheet-listing"><p class="sheet"> Two vectors, then are linearly dependent if one is a scalar multiple of the other. The sequence $(\mathbfsf{0})$ is linearly dependent since $a_1 \mathbfsf{0} = \mathbfsf{0}$ for any scalar $a_1$.</p></div><div class="sheet-listing"><p class="sheet"> An infinite sequence of vectors is \t{linearly dependent} if some finite subsequence is dependent. It is \t{linearly independent} if every finite subsequence is linearly independent.</p></div><div class="sheet-listing"><p class="sheet"> Any sequence (finite or infinite) which contains the zero vector is linearly dependent.</p></div><div class="sheet-listing"><p class="sheet"> If a finite sequence of vectors is linearly independent, then each of its coordinates is distinct.</p></div><div class="sheet-listing"><p class="sheet"> A set of vectors is \t{linearly independent} if every sequence of distinct vectors in the set is linearly independent. The set is \t{linearly dependent} if somem finite sequence of distinct vectors is dependent.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to find a set of vectors so that there exists a unique linear combination of these vectors corresponding to each vector in the space.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> First, we introduce terminology for when it is possible to write a vector as a linear combination of a set of vectors. A vector $x$ is \t{linearly dependent on a set of vectors} if $x$ the result of some linear combination of them. For example, $x$ is linearly dependent on $\set{x}$.</p></div><div class="sheet-listing"><p class="sheet"> Naturally, the interesting case is when the vector is not contained in the set it is dependent on. In this case, we imagine constructing it from those vectors in the set. For example, the vector $y = 2x$ is linearly dependent on the set $\set{x}$.</p></div><div class="sheet-listing"><p class="sheet"> A set of vectors is a \t{linearly dependent set} if one element is linearly dependent on the set excluding it. The idea is that if a set is linearly dependent, we can drop one of its elements, but still "build" that vector out of the rest. The idea is the following: suppose that a vector is linearly dependent on this set. Then that vector can be written as a linear combination of the set. Now suppose that the set is linearly dependent; then we can express one of the vectors as a linear combination of the others. The conclusion is that we can actually express the original vector as a linear combination of the set of vectors without the dependent vector. The upshot is that we can shrink the set of vectors, and still represent that vector.</p></div><div class="sheet-listing"><p class="sheet"> We feel that the above definitions better capture the intuition. The usual definition of linear dependence is given in the following proposition. \begin{proposition} A sequence of vectors is linearly dependent if and only if then there exists a nontrivial linear combination of sequence whose result is the zero vector.\end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> A finite sequence of vectors is \t{linearly dependent} if one is identical to a nontrivial linear combination of the others. If one can be written as a linearly combination</p></div><div class="sheet-listing"><p class="sheet"> Two vectors, then are linearly dependent if one is a scalar multiple of the other. The sequence $(\mathbfsf{0})$ is linearly dependent since $a_1 \mathbfsf{0} = \mathbfsf{0}$ for any scalar $a_1$.</p></div><div class="sheet-listing"><p class="sheet"> An infinite sequence of vectors is \t{linearly dependent} if some finite subsequence is dependent. It is \t{linearly independent} if every finite subsequence is linearly independent.</p></div><div class="sheet-listing"><p class="sheet"> Any sequence (finite or infinite) which contains the zero vector is linearly dependent.</p></div><div class="sheet-listing"><p class="sheet"> If a finite sequence of vectors is linearly independent, then each of its coordinates is distinct.</p></div><div class="sheet-listing"><p class="sheet"> A set of vectors is \t{linearly independent} if every sequence of distinct vectors in the set is linearly independent. The set is \t{linearly dependent} if somem finite sequence of distinct vectors is dependent.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1055,7 +1339,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
+      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
     </span>
   </body>
 </html>

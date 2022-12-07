@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make matrices_and_linear_transformations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 matrices_and_linear_transformations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > matrices_and_linear_transformations.tex
 

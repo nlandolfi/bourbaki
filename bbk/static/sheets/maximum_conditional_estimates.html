@@ -123,6 +123,9 @@
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
                 normal: ["\\mathcal{N}(#1, #2)", 2],
+                perm: ["\\mathword{perm}"],
+                sgn: ["\\mathword{sgn}"],
+                rvcdf: ["F_{#1}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -132,6 +135,7 @@
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
 \( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\( \DeclarePairedDelimiter{\parens}{\left(}{\right)}\)
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
@@ -1371,6 +1375,215 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./conditional_densities.html'" onkeypress="location.href='./conditional_densities.html'">
+                <span>
+                  Conditional Densities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./estimators.html'" onkeypress="location.href='./estimators.html'">
+                <span>
+                  Estimators
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./random_vectors.html'" onkeypress="location.href='./random_vectors.html'">
+                <span>
+                  Random Vectors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./normal_linear_model.html'" onkeypress="location.href='./normal_linear_model.html'">
+            <span>
+            Normal Linear Model
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./maximum_conditional_estimates.pdf#page=2'" onkeypress="location.href='./maximum_conditional_estimates.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./maximum_conditional_estimates-graph.pdf'" onkeypress="location.href='./maximum_conditional_estimates-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Maximum Conditional Estimates </h1> 
+      <!--
+!name:maximum_conditional_estimates
+!need:random_vectors
+!need:estimators
+!need:conditional_densities
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to estimate a random vector $x:
+  \Omega  \to \R ^d$ from a random vector $y:
+  \Omega  \to \R ^n$.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Denote by $g: \R ^d \times \R ^n \to \R $ the
+  joint density for $(x, y)$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>Denote the conditional density for $x$ given
+  $y$ by $g_{x \mid y}: \R ^d \times \R ^n \to
+  \R $.</span>
+
+ <span class='run'>In this setting, $g_{x \mid y}$ is called the
+  <span class='term'>posterior density</span>, $g_{x}$
+  is called the <span class='term'>prior
+  density</span>, and $g_{y \mid x}$ is called the
+  <span class='term'>likelihood density</span> and
+  $g_{y}$ is called the <span class='term'>marginal
+  likelihood density</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>As usual (and assuming $g_{y} &gt; 0$), the
+  posterior is related to the likelihood, prior
+  and marginal likelihood by
+  <p>\[
+   g_{x \mid y} \equiv \frac{g_x g_{y \mid x}}{g_{y}}.
+  \]</p></span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>maximum conditional
+  estimate</span> for $x: \Omega  \to \R ^n$ given
+  that $y$ has taken the value $\gamma  \in
+  \R ^n$ is a maximizer $\xi  \in \R ^d$ of $g_{x
+  \mid y}(\xi , \gamma )$.</span>
+
+ <span class='run'>It is also called the <span class='term'>maximum
+  a posteriori estimate</span> or
+  <span class='term'>MAP estimate</span>.</span>
+
+ <span class='run'>The maximum conditional estimate is natural, in
+  part, because it also maximizes the joint
+  density, since $g(\xi , \gamma ) = g_y(\gamma )
+  g_{x \mid y}(\xi , \gamma )$ for all $\xi  \in
+  \R ^d$ and $\gamma  \in \R ^n$.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will comment on the existence
+  of such a density.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1432,7 +1645,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to estimate a random vector $x: \Omega \to \R^d$ from a random vector $y: \Omega \to \R^n$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Denote by $g: \R^d \times \R^n \to \R$ the joint density for $(x, y)$.\footnote{Future editions will comment on the existence of such a density.} Denote the conditional density for $x$ given $y$ by $g_{x \mid y}: \R^d \times \R^n \to \R$. In this setting, $g_{x \mid y}$ is called the \t{posterior density}, $g_{x}$ is called the \t{prior density}, and $g_{y \mid x}$ is called the \t{likelihood density} and $g_{y}$ is called the \t{marginal likelihood density}.</p></div><div class="sheet-listing"><p class="sheet"> As usual (and assuming $g_{y} > 0$), the posterior is related to the likelihood, prior and marginal likelihood by \[ g_{x \mid y} \equiv \frac{g_x g_{y \mid x}}{g_{y}}. \]</p></div><div class="sheet-listing"><p class="sheet"> A \t{maximum conditional estimate} for $x: \Omega \to \R^n$ given that $y$ has taken the value $\gamma \in \R^n$ is a maximizer $\xi \in \R^d$ of $g_{x \mid y}(\xi, \gamma)$. It is also called the \t{maximum a posteriori estimate} or \t{MAP estimate}. The maximum conditional estimate is natural, in part, because it also maximizes the joint density, since $g(\xi, \gamma) = g_y(\gamma) g_{x \mid y}(\xi, \gamma)$ for all $\xi \in \R^d$ and $\gamma \in \R^n$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to estimate a random vector $x: \Omega  \to \R ^d$ from a random vector $y: \Omega  \to \R ^n$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Denote by $g: \R ^d \times \R ^n \to \R $ the joint density for $(x, y)$.\footnote{Future editions will comment on the existence of such a density.} Denote the conditional density for $x$ given $y$ by $g_{x \mid y}: \R ^d \times \R ^n \to \R $. In this setting, $g_{x \mid y}$ is called the \t{posterior density}, $g_{x}$ is called the \t{prior density}, and $g_{y \mid x}$ is called the \t{likelihood density} and $g_{y}$ is called the \t{marginal likelihood density}.</p></div><div class="sheet-listing"><p class="sheet"> As usual (and assuming $g_{y} > 0$), the posterior is related to the likelihood, prior and marginal likelihood by \[ g_{x \mid y} \equiv \frac{g_x g_{y \mid x}}{g_{y}}. \]</p></div><div class="sheet-listing"><p class="sheet"> A \t{maximum conditional estimate} for $x: \Omega  \to \R ^n$ given that $y$ has taken the value $\gamma  \in \R ^n$ is a maximizer $\xi  \in \R ^d$ of $g_{x \mid y}(\xi , \gamma )$. It is also called the \t{maximum a posteriori estimate} or \t{MAP estimate}. The maximum conditional estimate is natural, in part, because it also maximizes the joint density, since $g(\xi , \gamma ) = g_y(\gamma ) g_{x \mid y}(\xi , \gamma )$ for all $\xi  \in \R ^d$ and $\gamma  \in \R ^n$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1586,7 +1799,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
+      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
     </span>
   </body>
 </html>

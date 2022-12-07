@@ -123,6 +123,9 @@
                 loss: ["\\ell"],
                 maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
                 normal: ["\\mathcal{N}(#1, #2)", 2],
+                perm: ["\\mathword{perm}"],
+                sgn: ["\\mathword{sgn}"],
+                rvcdf: ["F_{#1}", 1],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -132,6 +135,7 @@
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
 \( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\( \DeclarePairedDelimiter{\parens}{\left(}{\right)}\)
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
@@ -839,6 +843,430 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./linear_equation_solutions.html'" onkeypress="location.href='./linear_equation_solutions.html'">
+                <span>
+                  Linear Equation Solutions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./ordinary_row_reductions.html'" onkeypress="location.href='./ordinary_row_reductions.html'">
+            <span>
+            Ordinary Row Reductions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./row_reducer_matrices.html'" onkeypress="location.href='./row_reducer_matrices.html'">
+            <span>
+            Row Reducer Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linear_system_row_reductions.pdf#page=2'" onkeypress="location.href='./linear_system_row_reductions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./linear_system_row_reductions-graph.pdf'" onkeypress="location.href='./linear_system_row_reductions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Linear System Row Reductions </h1> 
+      <!--
+!name:linear_system_row_reductions
+!need:linear_equation_solutions
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to solve linear equations.</span>
+
+ <span class='run'>Our approach is to “eliminate} variables from
+  equations in our system.</span>
+
+ <span class='run'>Once we reach an equation in one variable, we
+  will back-substitute to solve.</span>
+</p>
+
+<h1 id='Two-variable_example'>Two-variable example</h1>
+
+<p>
+ <span class='run'>Suppose we want to find $x_1, x_2 \in \R $ to
+  satisfy
+  <p>\[
+   \begin{aligned}
+
+   3x_1 + 2x_2 &= 10, \text{ and} \\
+
+   6x_1 + 5x_2 &= 20. \\
+
+   \end{aligned}
+  \]</p></span>
+
+ <span class='run'>We can list the coefficients in a
+  two-dimensional array $A = (3, 2; 6, 5)$ and
+  $b = (10,20)$.</span>
+
+ <span class='run'>We can eliminate $x_1$ from the second equation
+  by subtracting twice the first equation from the
+  second.</span>
+
+ <span class='run'>In doing so we obtain the system of equations
+  <p>\[
+   \begin{aligned}
+
+   3x_1 + 2x_2 &= 10 \text{ and } \\
+
+   x_2 &= 0.
+
+   \end{aligned}
+  \]</p></span>
+
+ <span class='run'>The key insight is that this system has the
+  <i>same solution set</i>.</span>
+
+ <span class='run'>We call the process of moving between these
+  two systems a <span class='term'>row
+  reduction</span>.</span>
+</p>
+
+<h1 id='Four-variable_example'>Four-variable example</h1>
+
+<p>
+ <span class='run'>What if instead we have four unknowns?</span>
+
+ <span class='run'>Suppose
+  <p>\[
+   A = \barray{2 & 1 & 1 & 0 \\ 4 & 3 & 3 & 1 \\ 8 &
+    7 & 9 & 5 \\ 6 & 7 & 9 & 8} \text{ and } b = \barray{
+    1 \\ 2 \\ 3 \\ 4}.
+  \]</p></span>
+
+ <span class='run'>We might first eliminate $x_1$ (the variable
+  associated with the first column of coefficients)
+  from the remaining three equations to obtain the
+  linear system $S_1 = (A^1, b^1)$ in which
+  <p>\[
+   A^1 = \barray{
+
+   2 & 1 & 1 & 0 \\
+
+   0 & 1 & 1 & 1 \\
+
+   0 & 3 & 5 & 5 \\
+
+   0 & 4 & 6 & 8 \\
+
+   } \text{ and } b^1 = \barray{
+
+   1 \\
+
+   0 \\
+
+   -1 \\
+
+   1 \\
+
+   }
+  \]</p></span>
+
+ <span class='run'>The trick is that, since $A_{22}&#39; \neq 0$,
+  we can take the same route to eliminate $x_2$,
+  to obtain the system $S_2 = (A^2, b^2)$ in
+  which
+  <p>\[
+   A_2 = \barray{
+
+   2 & 1 & 1 & 0 \\
+
+   0 & 1 & 1 & 1 \\
+
+   0 & 0 & 2 & 2 \\
+
+   0 & 0 & 2 & 4 \\
+
+   } \text{ and } b^2 = \barray{
+
+   1 \\
+
+   0 \\
+
+   -1 \\
+
+   1 \\
+
+   }
+  \]</p>
+  <span class='run'>Likewise for $x_3$, we obtain $S_3 = (A^3,
+   b^3)$ in which
+   <p>\[
+    A^3 = \barray{
+
+    2 & 1 & 1 & 0 \\
+
+    0 & 1 & 1 & 1 \\
+
+    0 & 0 & 2 & 2 \\
+
+    0 & 0 & 0 & 2 \\
+
+    } \text{ and } b^3 = \barray{
+
+    1 \\
+
+    0 \\
+
+    -1 \\
+
+    3 \\
+
+    }.
+   \]</p></span>
+
+  <span class='run'>Here, as in the two-variable case, the key
+   insight is that all these systems have the
+   same solution set and the last one, $(A^3,
+   b^3)$, is easy to solve.</span>
+
+  <span class='run'>We solve it by <span class='term'>back
+   substitution</span>.</span>
+
+  <span class='run'>First, since $2x_4 = 3$, we find $x_4 = 3/2$.</span>
+
+  <span class='run'>Second, since $2x_3 + 2x_4 = -1$, we find
+   $x_3 = -2$.</span>
+
+  <span class='run'>Similarly we find $x_2 = 1/2$ and $x_3 =
+   5/4$.</span></span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $S = (A \in \R ^{m \times n}, b \in
+  \R ^{n})$ be a linear system.</span>
+
+ <span class='run'>The lower <span class='term'>row reduction</span>
+  of $S$ for index $i$ with $A_{ii} \neq 0$ (or
+  the $i$-row reduction) is the linear system
+  $\tilde{A}_{st} = A_{st} - (A_{sj}/A_{ij})A_{it}$
+  if $i &lt; s \leq m$ and $A_{st}$ otherwise.</span>
+
+ <span class='run'>We say that the system $(A, b)$ is
+  <span class='term'>ordinarily reducible</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>Let $a^k, \tilde{a}^k \in \R ^{n}$ denote the
+  $k$th row of $A$ and $\tilde{A}$, respectively.</span>
+
+ <span class='run'>Then if $k \neq i$, $\tilde{a}^k = a^k -
+  \alpha _k a^i$ where $\alpha _k = A_{kj}/A_{ij}$.</span>
+
+ <span class='run'>In other words, a row $k$ of the matrix
+  $\tilde{A}$ is obtained by subtracting a multiple
+  of the $i$th row of matrix $A$ from row $k$
+  of matrix $A$.</span>
+
+ <span class='run'>We are “reducing” the rows of $A$.</span>
+</p>
+
+<div class='proposition' id='propostion:linear_system_reductions:solution_equivalence'>
+ <span class='run'>Let $(A \in \R ^{m \times n}, b \in \R ^{n})$
+  be a linear system which row reduces to $(C,
+  d)$.</span>
+
+ <span class='run'>Then $x \in \R ^{n}$ is a solution of $(A,
+  b)$ if and only if it is a solution of $(C,
+  d)$.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span></div>
+<p>
+ <span class='run'>First we reduce by subtracting twice row 1
+  from row 2, four times row 1 from row 3, and
+  three times row 1 from row 4.
+  <p>\[
+   S_1 = \parens{\barray{
+
+   2 & 1 & 1 & 0 \\
+
+   0 & 1 & 1 & 1 \\
+
+   0 & 3 & 5 & 5 \\
+
+   0 & 4 & 6 & 8 \\
+
+   }, \barray{
+
+   1 \\
+
+   0 \\
+
+   -1 \\
+
+   1 \\
+
+   }}.
+  \]</p></span>
+
+ <span class='run'>We then subtract three times row 2 from row 3
+  and four times row 2 from row 4 to obtain
+  <p>\[
+   S_2 = \left(\barray{
+
+   2 & 1 & 1 & 0 \\
+
+   0 & 1 & 1 & 1 \\
+
+   0 & 0 & 2 & 2 \\
+
+   0 & 0 & 2 & 4 \\
+
+   }, \barray{
+
+   1 \\
+
+   0 \\
+
+   -1 \\
+
+   1 \\
+
+   }\right).
+  \]</p></span>
+
+ <span class='run'>Finally, we subtract two times row 3 from row
+  4 to obtain $S_4$, which we can write as
+  <p>\[
+   \begin{aligned}
+
+   2x_1 + x_2 + x_3 &= 1,& \\
+
+   x_2 + x_3 + x_4 &= 0,& \\
+
+   2x_3 + 2x_4 &= -1,& \text{ and } \\
+
+   2x_4 &= 3.&
+
+   \end{aligned}
+  \]</p></span>
+
+ <span class='run'>We can now back-substitute to find $x_4 =
+  3/2$, $x_3 = -2$, $x_2 = 1/2$ and $x_1 = 5/4$.</span>
+
+ <span class='run'>The above proposition says that this is the
+  only solution of $S$, as well.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include an account.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -893,7 +1321,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to solve linear equations. Our approach is to "eliminate" variables from equations in our system. Once we reach an equation in one variable, we will back-substitute to solve.</p></div><div class="sheet-listing" id="two-variable_example"><h1 class="sheet">2. Two-variable example</h1></div><div class="sheet-listing"><p class="sheet"> Suppose we want to find $x_1, x_2 \in \R$ to satisfy \[ \begin{aligned} 3x_1 + 2x_2 &= 10, \text{ and} \\ 6x_1 + 5x_2 &= 20. \\ \end{aligned} \] We can list the coefficients in a two-dimensional array $A = (3, 2; 6, 5)$ and $b  = (10,20)$. We can eliminate $x_1$ from the second equation by subtracting twice the first equation from the second. In doing so we obtain the system of equations \[ \begin{aligned} 3x_1 + 2x_2 &= 10 \text{ and } \\ x_2 &= 0. \end{aligned} \] The key insight is that this system has the <i>same solution set</i>. We call the process of moving between these two systems a \t{row reduction}.</p></div><div class="sheet-listing" id="four-variable_example"><h1 class="sheet">3. Four-variable example</h1></div><div class="sheet-listing"><p class="sheet"> What if instead we have four unknowns? Suppose \[ A = \barray{2 & 1 & 1 & 0 \\ 4 & 3 & 3 & 1 \\ 8 & 7 & 9 & 5 \\ 6 & 7 & 9 & 8} \text{ and } b = \barray{ 1 \\ 2 \\ 3 \\ 4}. \] We might first eliminate $x_1$ (the variable associated with the first column of coefficients) from the remaining three equations to obtain the linear system $S_1 = (A^1, b^1)$ in which \[ A^1 = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 3 & 5 & 5 \\ 0 & 4 & 6 & 8 \\ } \text{ and } b^1 = \barray{ 1 \\ 0 \\ -1 \\ 1 \\ } \] The trick is that, since $A_{22}' \neq 0$, we can take the same route to eliminate $x_2$, to obtain the system $S_2 = (A^2, b^2)$ in which \[ A_2 = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 2 & 2 \\ 0 & 0 & 2 & 4 \\ } \text{ and } b^2 = \barray{ 1 \\ 0 \\ -1 \\ 1 \\ } \] Likewise for $x_3$, we obtain $S_3 = (A^3, b^3)$ in which \[ A^3 = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 2 & 2 \\ 0 & 0 & 0 & 2 \\ } \text{ and } b^3 = \barray{ 1 \\ 0 \\ -1 \\ 3 \\ }. \] Here, as in the two-variable case, the key insight is that all these systems have the same solution set and the last one, $(A^3, b^3)$, is easy to solve. We solve it by \t{back substitution}. First, since $2x_4 = 3$, we find $x_4 = \nicefrac{3}{2}$. Second, since $2x_3 + 2x_4 = -1$, we find $x_3 = -2$. Similarly we find $x_2 = \nicefrac{1}{2}$ and $x_3 = \nicefrac{5}{4}$.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">4. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $S = (A \in \R^{m \times n}, b \in \R^{n})$ be a linear system. The lower \t{row reduction} of $S$ for index $i$ with $A_{ii} \neq 0$ (or the $i$-row reduction) is the linear system $\tilde{A}_{st} = A_{st} - (A_{sj}/A_{ij})A_{it}$ if $i < s \leq m$ and $A_{st}$ otherwise. We say that the system $(A, b)$ is \t{ordinarily reducible}.</p></div><div class="sheet-listing"><p class="sheet"> Let $a^k, \tilde{a}^k \in \R^{n}$ denote the $k$th row of $A$ and $\tilde{A}$, respectively. Then if $k \neq i$, $\tilde{a}^k = a^k - \alpha_k a^i$ where $\alpha_k = A_{kj}/A_{ij}$. In other words, a row $k$ of the matrix $\tilde{A}$ is obtained by subtracting a multiple of the $i$th row of matrix $A$ from row $k$ of matrix $A$. We are "reducing" the rows of $A$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(A \in \R^{m \times n}, b \in \R^{n})$ be a linear system which row reduces to $(C, d)$. Then $x \in \R^{n}$ is a solution of $(A, b)$ if and only if it is a solution of $(C, d)$.\footnote{Future editions will include an account.} \label{propostion:linear_system_reductions:solution_equivalence} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> First we reduce by subtracting twice row 1 from row 2, four times row 1 from row 3, and three times row 1 from row 4. \[ S_1 = \parens{\barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 3 & 5 & 5 \\ 0 & 4 & 6 & 8 \\ }, \barray{ 1 \\ 0 \\ -1 \\ 1 \\ }}. \] We then subtract three times row 2 from row 3 and four times row 2 from row 4 to obtain \[ S_2 = \parens{\barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 2 & 2 \\ 0 & 0 & 2 & 4 \\ }, \barray{ 1 \\ 0 \\ -1 \\ 1 \\ }}. \] Finally, we subtract two times row 3 from row 4 to obtain $S_4$, which we can write as \[ \begin{aligned} 2x_1 + x_2 + x_3         &= 1,& \\ x_2 + x_3 + x_4  &= 0,& \\ 2x_3 + 2x_4  &= -1,& \text{ and } \\ 2x_4  &= 3.& \end{aligned} \] We can now back-substitute to find $x_4 = \nicefrac{3}{2}$, $x_3 = -2$, $x_2 = \nicefrac{1}{2}$ and $x_1 = \nicefrac{5}{4}$. Proposition~\ref{proposition:ordinary_row_reductions:main} says that this is the only solution of $S$, as well.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to solve linear equations. Our approach is to "eliminate" variables from equations in our system. Once we reach an equation in one variable, we will back-substitute to solve.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Two-variable example}</p></div><div class="sheet-listing"><p class="sheet"> Suppose we want to find $x_1, x_2 \in \R $ to satisfy \[ \begin{aligned} 3x_1 + 2x_2 &= 10, \text{ and} \\ 6x_1 + 5x_2 &= 20. \\ \end{aligned} \] We can list the coefficients in a two-dimensional array $A = (3, 2; 6, 5)$ and $b = (10,20)$. We can eliminate $x_1$ from the second equation by subtracting twice the first equation from the second. In doing so we obtain the system of equations \[ \begin{aligned} 3x_1 + 2x_2 &= 10 \text{ and } \\ x_2 &= 0. \end{aligned} \] The key insight is that this system has the <i>same solution set</i>. We call the process of moving between these two systems a \t{row reduction}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Four-variable example}</p></div><div class="sheet-listing"><p class="sheet"> What if instead we have four unknowns? Suppose \[ A = \barray{2 & 1 & 1 & 0 \\ 4 & 3 & 3 & 1 \\ 8 & 7 & 9 & 5 \\ 6 & 7 & 9 & 8} \text{ and } b = \barray{ 1 \\ 2 \\ 3 \\ 4}. \] We might first eliminate $x_1$ (the variable associated with the first column of coefficients) from the remaining three equations to obtain the linear system $S_1 = (A^1, b^1)$ in which \[ A^1 = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 3 & 5 & 5 \\ 0 & 4 & 6 & 8 \\ } \text{ and } b^1 = \barray{ 1 \\ 0 \\ -1 \\ 1 \\ } \] The trick is that, since $A_{22}' \neq 0$, we can take the same route to eliminate $x_2$, to obtain the system $S_2 = (A^2, b^2)$ in which \[ A_2 = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 2 & 2 \\ 0 & 0 & 2 & 4 \\ } \text{ and } b^2 = \barray{ 1 \\ 0 \\ -1 \\ 1 \\ } \] Likewise for $x_3$, we obtain $S_3 = (A^3, b^3)$ in which \[ A^3 = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 2 & 2 \\ 0 & 0 & 0 & 2 \\ } \text{ and } b^3 = \barray{ 1 \\ 0 \\ -1 \\ 3 \\ }. \] Here, as in the two-variable case, the key insight is that all these systems have the same solution set and the last one, $(A^3, b^3)$, is easy to solve. We solve it by \t{back substitution}. First, since $2x_4 = 3$, we find $x_4 = 3/2$. Second, since $2x_3 + 2x_4 = -1$, we find $x_3 = -2$. Similarly we find $x_2 = 1/2$ and $x_3 = 5/4$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $S = (A \in \R ^{m \times n}, b \in \R ^{n})$ be a linear system. The lower \t{row reduction} of $S$ for index $i$ with $A_{ii} \neq 0$ (or the $i$-row reduction) is the linear system $\tilde{A}_{st} = A_{st} - (A_{sj}/A_{ij})A_{it}$ if $i < s \leq m$ and $A_{st}$ otherwise. We say that the system $(A, b)$ is \t{ordinarily reducible}.</p></div><div class="sheet-listing"><p class="sheet"> Let $a^k, \tilde{a}^k \in \R ^{n}$ denote the $k$th row of $A$ and $\tilde{A}$, respectively. Then if $k \neq i$, $\tilde{a}^k = a^k - \alpha _k a^i$ where $\alpha _k = A_{kj}/A_{ij}$. In other words, a row $k$ of the matrix $\tilde{A}$ is obtained by subtracting a multiple of the $i$th row of matrix $A$ from row $k$ of matrix $A$. We are "reducing" the rows of $A$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \label{propostion:linear_system_reductions:solution_equivalence}Let $(A \in \R ^{m \times n}, b \in \R ^{n})$ be a linear system which row reduces to $(C, d)$. Then $x \in \R ^{n}$ is a solution of $(A, b)$ if and only if it is a solution of $(C, d)$.\footnote{Future editions will include an account.}\end{proposition} First we reduce by subtracting twice row 1 from row 2, four times row 1 from row 3, and three times row 1 from row 4. \[ S_1 = \parens{\barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 3 & 5 & 5 \\ 0 & 4 & 6 & 8 \\ }, \barray{ 1 \\ 0 \\ -1 \\ 1 \\ }}. \] We then subtract three times row 2 from row 3 and four times row 2 from row 4 to obtain \[ S_2 = \left(\barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 2 & 2 \\ 0 & 0 & 2 & 4 \\ }, \barray{ 1 \\ 0 \\ -1 \\ 1 \\ }\right). \] Finally, we subtract two times row 3 from row 4 to obtain $S_4$, which we can write as \[ \begin{aligned} 2x_1 + x_2 + x_3 &= 1,& \\ x_2 + x_3 + x_4 &= 0,& \\ 2x_3 + 2x_4 &= -1,& \text{ and } \\ 2x_4 &= 3.& \end{aligned} \] We can now back-substitute to find $x_4 = 3/2$, $x_3 = -2$, $x_2 = 1/2$ and $x_1 = 5/4$. The above proposition says that this is the only solution of $S$, as well.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1047,7 +1475,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version ac840b9c1.
+      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
     </span>
   </body>
 </html>
