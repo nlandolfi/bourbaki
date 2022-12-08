@@ -1,0 +1,110 @@
+<!--
+!name:feature_maps
+!need:least_squares_linear_regressors
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ Linear predictors are simple and we know how to select the
+    parameters. ⦉
+
+  ‖ The main downside is that there may not be a linear
+    relationship between inputs and outputs. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ A ❬feature map❭ (or ❬regression function❭) for outputs $A$
+    is a mapping $φ: A → 𝗥^d$. ⦉
+
+  ‖ In this setting, we call $a ∈ A$ the ❬raw input record❭
+    and we call $φ(a)$ an ❬embedding❭, ❬feature embedding❭ or
+    ❬feature vector❭. ⦉
+
+  ‖ We call the components of a feature vector the ❬features❭. ⦉
+
+  ‖ We call $φ(A)$ the ❬regression range❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ A feature map is ❬faithful❭ if, whenever records $a_i$ and
+    $a_j$ are in some sense “similar} in the set $A$, the
+    embeddings $φ(a_i)$ and $φ(a_j)$ are close in the vector
+    space $𝗥^d$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Since it is common for raw input records $a ∈ A$ to
+    consist of many fields, it is regular to have several
+    feature maps $φ_i$ which operate component-wise on the fields
+    of $a$. ⦉
+
+  ‖ These are sometimes called ❬basis functions❭, by analogy with
+    real function approximators (see␣
+    <a href='/sheets/real_function_approximators.html'>
+      ‖ Real Function Approximators ⦉
+    </a>
+    ). ⦉
+
+  ‖ We concatenate these field feature maps and commonly add a
+    constant feature $1$. ⦉
+
+  ‖ Since $𝗥^d$ is a vector space, it is common to refer to
+    it in this case as the ❬feature space❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ Given a dataset $a = (a^1, …, a^n)$ in $A$ and a feature
+    map $φ: A → 𝗥^d$, the ❬embedded dataset❭ of $a$ with
+    respect to $φ$ is the dataset $(φ(a^1), …, φ(a^n)$ in $𝗥^d$. ⦉
+⦉
+
+§§ Featurized consistency: a route around $X ≠ 𝗥^d$ ⦉
+¶ ⦊
+  ‖ Recall that a dataset is parametrically consistent with the
+    family $\set{h_{θ}: X → Y}_{θ}$ if there exists $θ^★$ so
+    that the dataset is consistent with $θ^{★}$. ⦉
+
+  ‖ We saw how to pick $θ$ if we use a linear model with a
+    squared loss (see␣
+    <a href='/sheets/least_squares_linear_regressors.html'>
+      ‖ Least Squares Linear Regressors ⦉
+    </a>
+    ). ⦉
+⦉
+
+¶ ⦊
+  ‖ Let $𝒢 = \set{g_{θ}: 𝗥^d → 𝗥}_{θ}$. ⦉
+
+  ‖ A dataset is ❬featurized parametrically consistent❭ with
+    respect to the family $𝒢$ and the feature map $φ: X → 𝗥^d$
+    if it is parametrically consistent with respect to $𝒢 ∘ φ =
+    \Set*{g ∘ φ}{g ∈ 𝒢}$. ⦉
+⦉
+
+¶ ⦊
+  ‖ The interpretation is that we have transformed the problem
+    of selecting a predictor on an arbitrary space $X$ to the
+    problem of selecting a predictor on the space $𝗥^d$. ⦉
+
+  ‖ In so doing, we can continue to use simple predictors, such
+    as those that are linear and minimize the squared error on
+    the dataset.
+    † ⦊
+      ‖ Future editions are likely to modify this section. ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ In other words, we have “shifted emphasis” from the model
+    function $h: X → 𝗥$ to the ❬regression function❭ from $𝗥^d
+    → 𝗥$. ⦉
+
+  ‖ If we know the features and the input $x$, then we know
+    the ❬regression vector❭ $φ(x)$. ⦉
+
+  ‖ The ❬regression range❭ is the set $\Set*{φ(x)}{x ∈ X”$. ⦉
+
+  ‖ In this case linearity pertains to the parameters $θ ∈ 𝗥^d$
+    instead of the inputs (or experimental conditions) $x ∈ X$. ⦉
+⦉

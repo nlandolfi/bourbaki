@@ -1,0 +1,207 @@
+<!--
+!name:function_inverses
+!need:function_composites
+!need:function_images
+!refs:paul_halmos/naive_set_theory/section_10
+!refs:bert_mendelson/introduction_to_topology/theory_of_sets/inverse_functions_extensions_and_restrictions
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want a notion of reversing functions. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Reversing functions does not make sense if the function is
+    not one-to-one. ⦉
+
+  ‖ Let $f: X → Y$. ⦉
+
+  ‖ If $x_1$ goes to $y$ and $x_2$ goes to $y$ (i.e., $f(x_1)
+    = f(x_2) = y$), then what should $y$ go to. ⦉
+
+  ‖ One answer is that we should have a function which gives
+    all the domain values which could lead to $y$. ⦉
+
+  ‖ This is the inverse image (see␣
+    <a href='/sheets/function_images.html'>
+      ‖ Function Images ⦉
+    </a>
+    ) $f^{-1}(\set{y})$. ⦉
+
+  ‖ Nor does reversing funcitons make sense if $f$ is not onto. ⦉
+
+  ‖ If there does not exist $x ∈ X$ so that $y = f(x)$, then
+    $f^{-1}(\set{y}) = ∅$. ⦉
+⦉
+
+¶ ⦊
+  ‖ In the case, however, that the function is one-to-one and
+    onto, then each element of the domain corresponds to one and
+    only one element of the codomain and vice versa. ⦉
+
+  ‖ In this case, for all $y ∈ Y$, $f^{-1}(\set{y})$ is a
+    singleton $\set{x}$ where $f(x) = y$. ⦉
+
+  ‖ In this case, we define a fucntion $g: Y → X$ so that
+    $g(y) = x$ if and only if $f(x) = y$. ⦉
+⦉
+
+<!--
+
+<div data-littype='paragraph'>
+ <div data-littype='run'> ❲% An❳ </div>
+
+ <div data-littype='run'> ❲% \casdft{identity function}{identityfunction}❳ </div>
+
+ <div data-littype='run'> ❲% is❳ </div>
+
+ <div data-littype='run'> ❲% a relation on a set❳ </div>
+
+ <div data-littype='run'> ❲% which is functional and❳ </div>
+
+ <div data-littype='run'> ❲% reflexive.❳ </div>
+
+ <div data-littype='run'> ❲% It associates❳ </div>
+
+ <div data-littype='run'> ❲% each element in the❳ </div>
+
+ <div data-littype='run'> ❲% set with itself.❳ </div>
+
+ <div data-littype='run'> ❲% There is only one❳ </div>
+
+ <div data-littype='run'> ❲% identity function❳ </div>
+
+ <div data-littype='run'> ❲% associated to each set.❳ </div>
+</div>
+
+<div data-littype='paragraph'>
+ <div data-littype='run'> In general, if we have two functions, where the codomain of
+    the first is the domain of the second, and the codomain of
+    the second is the domain of the first, we call them
+    ❬inverse functions❭ if the composition of the second with the
+    first is the identity function on the first's domain and the
+    composition of the first with the second is the identity
+    function on the second's domain (see
+    \sheetref{functions}{Functions} and
+    \sheetref{function_composites}{Function Composites}). </div>
+</div>
+
+<div data-littype='paragraph'>
+ <div data-littype='run'> In this case we say that the second function is an
+    ❬inverse❭ of the second, and vice versa. </div>
+
+ <div data-littype='run'> When an inverse exists, it is unique,
+    <div data-littype='footnote'>
+     <div data-littype='run'> Future editions will prove this assertion and all
+        unproven propositions herein. </div>
+    </div>
+    so we refer to ❬the inverse❭ of a function. </div>
+
+ <div data-littype='run'> We call the first function ❬invertible❭. </div>
+
+ <div data-littype='run'> Other names for an invertible function include ❬bijection❭. </div>
+</div>
+
+<div data-littype='paragraph'>
+ <div data-littype='run'>     <div data-littype='section' data-litsectionlevel='2' data-litsectionnumbered='false'> Notation </div></div>
+</div>
+
+<div data-littype='paragraph'>
+ <div data-littype='run'> Let $A$ a non-empty set. </div>
+
+ <div data-littype='run'> We denote the identity </div>
+
+ <div data-littype='run'> function on $A$ by $\idfn{A}$, </div>
+
+ <div data-littype='run'> read aloud as </div>
+
+ <div data-littype='run'> “identity on $A$.} </div>
+
+ <div data-littype='run'> $\idfn{A}$ maps $A$ onto $A$. </div>
+
+ <div data-littype='run'> Let $A, B$ be non-empty sets. </div>
+
+ <div data-littype='run'> Let $f: A → B$ and $g: B → A$ </div>
+
+ <div data-littype='run'> be functions. </div>
+
+ <div data-littype='run'> $f$ and $g$ are inverse functions </div>
+
+ <div data-littype='run'> if $g \comp f = \idfn{A}$ </div>
+
+ <div data-littype='run'> and $f \comp g = \idfn{B}$. </div>
+</div>
+
+<div data-littype='section' data-litsectionlevel='1' data-litsectionnumbered='false'> The inverse </div>
+
+<!--
+ We discuss existence and
+ uniqueness of an inverse.
+-->
+<statement type='proposition' text='Uniqueness'>
+  ‖ Let $f: A → B$, ⦉
+
+  ‖ $g: B → A$, ⦉
+
+  ‖ and $h: B → A$. ⦉
+
+  ‖ If $g$ and $h$ ⦉
+
+  ‖ are both inverse ⦉
+
+  ‖ functions of $f$, ⦉
+
+  ‖ then $g = h$. ⦉
+
+  ‖ ⦉
+</statement>
+<statement type='proposition' text='Existence'>
+  ‖ If a function is one-to-one and onto, it has an inverse;
+    and conversely.
+    † ⦊
+      ‖ A proof will appear in future editions. ⦉
+    ⦉⦉
+
+  ‖ ⦉
+</statement>
+
+§§ Composites and inverses ⦉
+¶ ⦊
+  ‖ Let $f: X → Y$ and $g: Y → Z$. ⦉
+
+  ‖ Then $g^{-1}$ maps $\powerset{Z}$ to $\powerset{Y}$ and
+    $f^{-1}$ maps $\powerset{Y}$ to $\powerset{X}$. ⦉
+
+  ‖ Then the following is immediate ⦉
+  <tex>
+    ‖ {\small ⦉
+  </tex>
+  <statement type='proposition'>
+    ‖ $(gf)^{-1} = f^{-1}g^{-1}$ ⦉
+  </statement>
+  <tex>
+    ‖ } ⦉
+  </tex>
+⦉
+
+<!--
+%%!name:composites_and_inverses
+%%!need:function_composites
+%%!need:function_composites
+%%!refs:paul_halmos/naive_set_theory/section_10
+
+% \ssection{Why}
+%
+% How does inverses relation to com
+
+%! I moved this to funciton images
+% \ssection{Inverse Images}
+%
+% The \casdft{inverse image}{} of a codomain
+% set under a function is the set of
+% elements which map to elements of
+% the codomain set under the function.
+% We denote the inverse image of $D \subset B$ by $f^{-1}(D)$, read aloud as \say{f inverse D.}
+-->

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make function_images.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 function_images.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > function_images.tex
 

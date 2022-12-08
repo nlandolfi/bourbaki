@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make differential_cross_entropy.pdf
+	make interchangeable_measures.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-differential_cross_entropy.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > differential_cross_entropy.tex
+interchangeable_measures.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > interchangeable_measures.tex
 
-differential_cross_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex differential_cross_entropy.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode differential_cross_entropy.tex
-	../../latexrun differential_cross_entropy.tex
+interchangeable_measures.pdf: ../../*.tex ../../trademark.pdf *.tex interchangeable_measures.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode interchangeable_measures.tex
+	../../latexrun interchangeable_measures.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: differential_cross_entropy.pdf
-	open differential_cross_entropy.pdf
+open: interchangeable_measures.pdf
+	open interchangeable_measures.pdf
 
 o:
 	make open
 
-terms: differential_cross_entropy.tex
-	bbk_sheet -mode ts differential_cross_entropy.tex
+terms: interchangeable_measures.tex
+	bbk_sheet -mode ts interchangeable_measures.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f differential_cross_entropy.*
+	rm -f interchangeable_measures.*
 	make reset
 	bbk_sheet -mode mk > Makefile

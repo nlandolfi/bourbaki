@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make consistent_inductors.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 consistent_inductors.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > consistent_inductors.tex
 

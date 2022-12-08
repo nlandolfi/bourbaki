@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make feature_maps.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 feature_maps.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > feature_maps.tex
 
