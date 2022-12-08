@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make floating_point_representations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 floating_point_representations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > floating_point_representations.tex
 

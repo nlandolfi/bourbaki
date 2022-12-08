@@ -126,6 +126,9 @@
                 perm: ["\\mathword{perm}"],
                 sgn: ["\\mathword{sgn}"],
                 rvcdf: ["F_{#1}", 1],
+                idfn: ["\\mathword{id}_{#1}", 1],
+                floatsingle: ["{\\tt float32}"],
+                floatdouble: ["{\\tt float64}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1283,6 +1286,284 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./least_squares_linear_regressors.html'" onkeypress="location.href='./least_squares_linear_regressors.html'">
+                <span>
+                  Least Squares Linear Regressors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./featurized_probabilistic_linear_models.html'" onkeypress="location.href='./featurized_probabilistic_linear_models.html'">
+            <span>
+            Featurized Probabilistic Linear Models
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./polynomial_regressors.html'" onkeypress="location.href='./polynomial_regressors.html'">
+            <span>
+            Polynomial Regressors
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./probabilistic_errors_linear_model.html'" onkeypress="location.href='./probabilistic_errors_linear_model.html'">
+            <span>
+            Probabilistic Errors Linear Model
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./feature_maps.pdf#page=2'" onkeypress="location.href='./feature_maps.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./feature_maps-graph.pdf'" onkeypress="location.href='./feature_maps-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Feature Maps </h1> 
+      <!--
+!name:feature_maps
+!need:least_squares_linear_regressors
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Linear predictors are simple and we know how
+  to select the parameters.</span>
+
+ <span class='run'>The main downside is that there may not be a
+  linear relationship between inputs and outputs.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A <span class='term'>feature map</span> (or
+  <span class='term'>regression function</span>) for
+  outputs $A$ is a mapping $\phi : A \to \R ^d$.</span>
+
+ <span class='run'>In this setting, we call $a \in A$ the
+  <span class='term'>raw input record</span> and we
+  call $\phi (a)$ an
+  <span class='term'>embedding</span>,
+  <span class='term'>feature embedding</span> or
+  <span class='term'>feature vector</span>.</span>
+
+ <span class='run'>We call the components of a feature vector the
+  <span class='term'>features</span>.</span>
+
+ <span class='run'>We call $\phi (A)$ the
+  <span class='term'>regression range</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>A feature map is
+  <span class='term'>faithful</span> if, whenever
+  records $a_i$ and $a_j$ are in some sense
+  “similar} in the set $A$, the embeddings
+  $\phi (a_i)$ and $\phi (a_j)$ are close in the
+  vector space $\R ^d$.</span>
+</p>
+
+
+<p>
+ <span class='run'>Since it is common for raw input records $a
+  \in A$ to consist of many fields, it is
+  regular to have several feature maps $\phi _i$
+  which operate component-wise on the fields of
+  $a$.</span>
+
+ <span class='run'>These are sometimes called
+  <span class='term'>basis functions</span>, by
+  analogy with real function approximators (see&nbsp;<a href='/sheets/real_function_approximators.html'/><span class='run'>Real Function Approximators</span></a>).</span>
+
+ <span class='run'>We concatenate these field feature maps and
+  commonly add a constant feature $1$.</span>
+
+ <span class='run'>Since $\R ^d$ is a vector space, it is common
+  to refer to it in this case as the
+  <span class='term'>feature space</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>Given a dataset $a = (a^1, \dots , a^n)$ in
+  $A$ and a feature map $\phi : A \to \R ^d$,
+  the <span class='term'>embedded dataset</span> of
+  $a$ with respect to $\phi $ is the dataset
+  $(\phi (a^1), \dots , \phi (a^n)$ in $\R ^d$.</span>
+</p>
+
+<h2 id='Featurized_consistency:_a_route_around_$X_\neq_\R_^d$'>Featurized consistency: a route around $X \neq \R ^d$</h2>
+
+<p>
+ <span class='run'>Recall that a dataset is parametrically
+  consistent with the family $\set{h_{\theta }: X
+  \to Y}_{\theta }$ if there exists $\theta ^\star$
+  so that the dataset is consistent with
+  $\theta ^{\star}$.</span>
+
+ <span class='run'>We saw how to pick $\theta $ if we use a
+  linear model with a squared loss (see&nbsp;<a href='/sheets/least_squares_linear_regressors.html'/><span class='run'>Least Squares Linear Regressors</span></a>).</span>
+</p>
+
+
+<p>
+ <span class='run'>Let $\mathcal{G}  = \set{g_{\theta }: \R ^d \to
+  \R }_{\theta }$.</span>
+
+ <span class='run'>A dataset is <span class='term'>featurized
+  parametrically consistent</span> with respect to
+  the family $\mathcal{G} $ and the feature map
+  $\phi : X \to \R ^d$ if it is parametrically
+  consistent with respect to $\mathcal{G}  \circ
+  \phi  = \Set*{g \circ \phi }{g \in \mathcal{G} }$.</span>
+</p>
+
+
+<p>
+ <span class='run'>The interpretation is that we have transformed
+  the problem of selecting a predictor on an
+  arbitrary space $X$ to the problem of selecting
+  a predictor on the space $\R ^d$.</span>
+
+ <span class='run'>In so doing, we can continue to use simple
+  predictors, such as those that are linear and
+  minimize the squared error on the dataset.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+
+<p>
+ <span class='run'>In other words, we have “shifted emphasis” from
+  the model function $h: X \to \R $ to the
+  <span class='term'>regression function</span> from
+  $\R ^d \to \R $.</span>
+
+ <span class='run'>If we know the features and the input $x$,
+  then we know the <span class='term'>regression
+  vector</span> $\phi (x)$.</span>
+
+ <span class='run'>The <span class='term'>regression range</span> is
+  the set $\Set*{\phi (x)}{x \in X}$.</span>
+
+ <span class='run'>In this case linearity pertains to the
+  parameters $\theta  \in \R ^d$ instead of the
+  inputs (or experimental conditions) $x \in X$.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions are likely to modify this
+  section.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1344,7 +1625,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Linear predictors are simple and we know how to select the parameters. The main downside is that there may not be a linear relationship between inputs and outputs.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A \t{feature map} (or \t{regression function}) for outputs $A$ is a mapping $\phi: A \to \R^d$. In this setting, we call $a \in A$ the \t{raw input record} and we call $\phi(a)$ an \t{embedding}, \t{feature embedding} or \t{feature vector}. We call the components of a feature vector the \t{features}. We call $\phi(A)$ the \t{regression range}.</p></div><div class="sheet-listing"><p class="sheet"> A feature map is \t{faithful} if, whenever records $a_i$ and $a_j$ are in some sense "similar" in the set $A$, the embeddings $\phi(a_i)$ and $\phi(a_j)$ are close in the vector space $\R^d$.</p></div><div class="sheet-listing"><p class="sheet"> Since it is common for raw input records $a \in A$ to consist of many fields, it is regular to have several feature maps $\phi_i$ which operate component-wise on the fields of $a$. These are sometimes called \t{basis functions}, by analogy with real function approximators (see \sheetref{real_function_approximators}{Real Function Apppoximators}). We concatenate these field feature maps and commonly add a constant feature $1$. Since $\R^d$ is a vector space, it is common to refer to it in this case as the \t{feature space}.</p></div><div class="sheet-listing"><p class="sheet"> Given a dataset $a = (a^1, \dots, a^n)$ in $A$ and a feature map $\phi: A \to \R^d$, the \t{embedded dataset} of $a$ with respect to $\phi$ is the dataset $(\phi(a^1), \dots, \phi(a^n)$ in $\R^d$.</p></div><div class="sheet-listing"><h2 class="sheet" id="featurized_consistency:_a_route_around_$x_\neq_\r^d$">2.1 Featurized consistency: a route around $X \neq \R^d$</h2></div><div class="sheet-listing"><p class="sheet"> Recall that a dataset is parametrically consistent with the family $\set{h_{\theta}: X \to Y}_{\theta}$ if there exists $\theta^\star$ so that the dataset is consistent with $\theta^{\star}$. We saw how to pick $\theta$ if we use a linear model with a squared loss (see \sheetref{least_squares_linear_regressors}{Least Squares Linear Regressors}).</p></div><div class="sheet-listing"><p class="sheet"> Let $\CG = \set{g_{\theta}: \R^d \to \R}_{\theta}$. A dataset is \t{featurized parametrically consistent} with respect to the family $\CG$ and the feature map $\phi: X \to \R^d$ if it is parametrically consistent with respect to $\CG \composed \phi = \Set*{g \composed \phi}{g \in \CG}$.</p></div><div class="sheet-listing"><p class="sheet"> The interpretation is that we have transformed the problem of selecting a predictor on an arbitrary space $X$ to the problem of selecting a predictor on the space $\R^d$. In so doing, we can continue to use simple predictors, such as those that are linear and minimize the squared error on the dataset.\footnote{Future editions are likely to modify this section.}</p></div><div class="sheet-listing"><p class="sheet"> In other words, we have "shifted emphasis} from the model function $h: X \to \R$ to the \t{regression function" from $\R^d \to \R$. If we know the features and the input $x$, then we know the \t{regression vector} $\phi(x)$. The \t{regression range} is the set $\Set*{\phi(x)}{x \in X}$. In this case linearity pertains to the parameters $\theta \in \R^d$ instead of the inputs (or experimental conditions) $x \in X$.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Linear predictors are simple and we know how to select the parameters. The main downside is that there may not be a linear relationship between inputs and outputs.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{feature map} (or \t{regression function}) for outputs $A$ is a mapping $\phi : A \to \R ^d$. In this setting, we call $a \in A$ the \t{raw input record} and we call $\phi (a)$ an \t{embedding}, \t{feature embedding} or \t{feature vector}. We call the components of a feature vector the \t{features}. We call $\phi (A)$ the \t{regression range}.</p></div><div class="sheet-listing"><p class="sheet"> A feature map is \t{faithful} if, whenever records $a_i$ and $a_j$ are in some sense "similar" in the set $A$, the embeddings $\phi (a_i)$ and $\phi (a_j)$ are close in the vector space $\R ^d$.</p></div><div class="sheet-listing"><p class="sheet"> Since it is common for raw input records $a \in A$ to consist of many fields, it is regular to have several feature maps $\phi _i$ which operate component-wise on the fields of $a$. These are sometimes called \t{basis functions}, by analogy with real function approximators (see \sheetref{real_function_approximators}{Real Function Approximators}). We concatenate these field feature maps and commonly add a constant feature $1$. Since $\R ^d$ is a vector space, it is common to refer to it in this case as the \t{feature space}.</p></div><div class="sheet-listing"><p class="sheet"> Given a dataset $a = (a^1, \dots , a^n)$ in $A$ and a feature map $\phi : A \to \R ^d$, the \t{embedded dataset} of $a$ with respect to $\phi $ is the dataset $(\phi (a^1), \dots , \phi (a^n)$ in $\R ^d$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Featurized consistency: a route around $X \neq \R ^d$}</p></div><div class="sheet-listing"><p class="sheet"> Recall that a dataset is parametrically consistent with the family $\set{h_{\theta }: X \to Y}_{\theta }$ if there exists $\theta ^\star$ so that the dataset is consistent with $\theta ^{\star}$. We saw how to pick $\theta $ if we use a linear model with a squared loss (see \sheetref{least_squares_linear_regressors}{Least Squares Linear Regressors}).</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathcal{G}  = \set{g_{\theta }: \R ^d \to \R }_{\theta }$. A dataset is \t{featurized parametrically consistent} with respect to the family $\mathcal{G} $ and the feature map $\phi : X \to \R ^d$ if it is parametrically consistent with respect to $\mathcal{G}  \circ \phi  = \Set*{g \circ \phi }{g \in \mathcal{G} }$.</p></div><div class="sheet-listing"><p class="sheet"> The interpretation is that we have transformed the problem of selecting a predictor on an arbitrary space $X$ to the problem of selecting a predictor on the space $\R ^d$. In so doing, we can continue to use simple predictors, such as those that are linear and minimize the squared error on the dataset.\footnote{Future editions are likely to modify this section.}</p></div><div class="sheet-listing"><p class="sheet"> In other words, we have "shifted emphasis} from the model function $h: X \to \R $ to the \t{regression function" from $\R ^d \to \R $. If we know the features and the input $x$, then we know the \t{regression vector} $\phi (x)$. The \t{regression range} is the set $\Set*{\phi (x)}{x \in X}$. In this case linearity pertains to the parameters $\theta  \in \R ^d$ instead of the inputs (or experimental conditions) $x \in X$.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1498,7 +1779,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
+      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
     </span>
   </body>
 </html>

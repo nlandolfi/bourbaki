@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make inverse_elements.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 inverse_elements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inverse_elements.tex
 

@@ -126,6 +126,9 @@
                 perm: ["\\mathword{perm}"],
                 sgn: ["\\mathword{sgn}"],
                 rvcdf: ["F_{#1}", 1],
+                idfn: ["\\mathword{id}_{#1}", 1],
+                floatsingle: ["{\\tt float32}"],
+                floatdouble: ["{\\tt float64}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -719,6 +722,209 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./natural_products.html'" onkeypress="location.href='./natural_products.html'">
+                <span>
+                  Natural Products
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./sequences.html'" onkeypress="location.href='./sequences.html'">
+                <span>
+                  Sequences
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./classifiers.html'" onkeypress="location.href='./classifiers.html'">
+            <span>
+            Classifiers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./factorials.pdf#page=2'" onkeypress="location.href='./factorials.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./factorials-graph.pdf'" onkeypress="location.href='./factorials-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Factorials </h1> 
+      <!--
+!name:factorials
+!need:natural_products
+!need:sequences
+ get the below from natural products
+ %!need:recursion_theorem
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>How many ways are there to arrange $n$ people
+  at a table with $n$ seats?</span>
+
+ <span class='run'>In other words, how many ways can we order
+  $n$ objects?</span>
+</p>
+
+<h1 id='Discussion'>Discussion</h1>
+
+<p>
+ <span class='run'>There is one way to arrange a single person
+  and there are two ways to arrange two people.</span>
+
+ <span class='run'>What of three?</span>
+
+ <span class='run'>First, we can pick a seat, and decide which
+  person to put in that chair.</span>
+
+ <span class='run'>We have three choices of people.</span>
+
+ <span class='run'>Then, whomever we choose, there are only two
+  ways to seat the other two people in the other
+  two chairs.</span>
+
+ <span class='run'>Since there were three ways of picking whom to
+  sit in the firs seat, there are $3\times 2 =
+  6$ ways to order the three people.</span>
+
+ <span class='run'>We reason similarly for four people.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $f: \N   \to \N  $ be defined recursively
+  by $f(1) = 1$ and $f(2) = 2f(1)$, and $f(n) =
+  nf(n-1)$ for $n \in \N  $.</span>
+
+ <span class='run'>$f$ exists by the recursion theorem (see&nbsp;<a href='/sheets/recursion_theorem.html'/><span class='run'>Recursion Theorem</span></a>).</span>
+
+ <span class='run'>We call the result $f(n)$ of $n$ the
+  <span class='term'>factorial</span> of $n$.</span>
+
+ <span class='run'>We call $f$ the <span class='term'>factorial
+  function</span>.</span>
+</p>
+
+<h1 id='Notation'>Notation</h1>
+
+<p>
+ <span class='run'>We denote the factorial of $n$ by $n!$, read
+  aloud “n factorial”.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -773,7 +979,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> How many ways are there to arrange $n$ people at a table with $n$ seats? In other words, how many ways can we order $n$ objects?</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> There is one way to arrange a single person and there are two ways to arrange two people. What of three? First, we can pick a seat, and decide which person to put in that chair. We have three choices of people. Then, whomever we choose, there are only two ways to seat the other two people in the other two chairs. Since there were three ways of picking whom to sit in the firs seat, there are $3\times 2 = 6$ ways to order the three people. We reason similarly for four people.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $f: \N \to \N$ be defined recursively by $f(1) = 1$ and $f(2) = 2f(1)$, and $f(n) = nf(n-1)$ for $n \in \N$. $f$ exists by the recursion theorem (see \sheetref{recursion_theorem}{Recursion Theorem}). We call the result $f(n)$ of $n$ the \t{factorial} of $n$. We call $f$ the \t{factorial function}.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">4. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the factorial of $n$ by $n!$, read aloud "n factorial".</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How many ways are there to arrange $n$ people at a table with $n$ seats? In other words, how many ways can we order $n$ objects?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> There is one way to arrange a single person and there are two ways to arrange two people. What of three? First, we can pick a seat, and decide which person to put in that chair. We have three choices of people. Then, whomever we choose, there are only two ways to seat the other two people in the other two chairs. Since there were three ways of picking whom to sit in the firs seat, there are $3\times 2 = 6$ ways to order the three people. We reason similarly for four people.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \N   \to \N  $ be defined recursively by $f(1) = 1$ and $f(2) = 2f(1)$, and $f(n) = nf(n-1)$ for $n \in \N  $. $f$ exists by the recursion theorem (see \sheetref{recursion_theorem}{Recursion Theorem}). We call the result $f(n)$ of $n$ the \t{factorial} of $n$. We call $f$ the \t{factorial function}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the factorial of $n$ by $n!$, read aloud "n factorial".</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -927,7 +1133,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
+      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
     </span>
   </body>
 </html>

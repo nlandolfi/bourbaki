@@ -126,6 +126,9 @@
                 perm: ["\\mathword{perm}"],
                 sgn: ["\\mathword{sgn}"],
                 rvcdf: ["F_{#1}", 1],
+                idfn: ["\\mathword{id}_{#1}", 1],
+                floatsingle: ["{\\tt float32}"],
+                floatdouble: ["{\\tt float64}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -599,6 +602,185 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./operations.html'" onkeypress="location.href='./operations.html'">
+                <span>
+                  Operations
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./inverse_elements.html'" onkeypress="location.href='./inverse_elements.html'">
+            <span>
+            Inverse Elements
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./element_functions.pdf#page=2'" onkeypress="location.href='./element_functions.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./element_functions-graph.pdf'" onkeypress="location.href='./element_functions-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Element Functions </h1> 
+      <!--
+!name:element_functions
+!need:operations
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Take an element of an algebra, and consider
+  the function defined on the ground set which
+  maps elements to the result of the operation
+  applied to the fixed element and the given
+  element.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $(A, +)$ be an algebra.</span>
+
+ <span class='run'>For each $a \in A$, denote by $+_a: A \to A$
+  the function defined by
+  <p>\[
+   +_a(b) = a + b.
+  \]</p></span>
+
+ <span class='run'>We call $+_a$ the <span class='term'>left element
+  function</span> of $a$.</span>
+</p>
+
+
+<p>
+ <span class='run'>Similarly, denote by $+^a: A \to A$ the
+  function defined by
+  <p>\[
+   +^{a}(b) = b + a.
+  \]</p></span>
+
+ <span class='run'>We call $+^a$ the <span class='term'>right
+  element function</span> of $a$</span>
+</p>
+
+
+<p>
+ <span class='run'>The idea is that elements of an algebra can
+  always be associated with functions.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -646,7 +828,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Take an element of an algebra, and consider the function defined on the ground set which maps elements to the result of the operation applied to the fixed element and the given element.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(A, +)$ be an algebra. For each $a \in A$, denote by $+_a: A \to A$ the function defined by \[ +_a(b) = a + b. \] We call $+_a$ the \ct{left element function} of $a$.</p></div><div class="sheet-listing"><p class="sheet"> Similarly, denote by $+^a: A \to A$ the function defined by \[ +^{a}(b) = b + a. \] We call $+^a$ the \t{right element function} of $a$</p></div><div class="sheet-listing"><p class="sheet"> The idea is that elements of an algebra can always be associated with functions.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Take an element of an algebra, and consider the function defined on the ground set which maps elements to the result of the operation applied to the fixed element and the given element.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $(A, +)$ be an algebra. For each $a \in A$, denote by $+_a: A \to A$ the function defined by \[ +_a(b) = a + b. \] We call $+_a$ the \t{left element function} of $a$.</p></div><div class="sheet-listing"><p class="sheet"> Similarly, denote by $+^a: A \to A$ the function defined by \[ +^{a}(b) = b + a. \] We call $+^a$ the \t{right element function} of $a$</p></div><div class="sheet-listing"><p class="sheet"> The idea is that elements of an algebra can always be associated with functions.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -800,7 +982,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
+      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
     </span>
   </body>
 </html>

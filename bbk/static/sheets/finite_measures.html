@@ -126,6 +126,9 @@
                 perm: ["\\mathword{perm}"],
                 sgn: ["\\mathword{sgn}"],
                 rvcdf: ["F_{#1}", 1],
+                idfn: ["\\mathword{id}_{#1}", 1],
+                floatsingle: ["{\\tt float32}"],
+                floatdouble: ["{\\tt float64}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -983,6 +986,214 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./measures.html'" onkeypress="location.href='./measures.html'">
+                <span>
+                  Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./finite_measures.pdf#page=2'" onkeypress="location.href='./finite_measures.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./finite_measures-graph.pdf'" onkeypress="location.href='./finite_measures-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Finite Measures </h1> 
+      <!--
+!name:finite_measures
+!need:measures
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want finite measures.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A measurable set is
+  <span class='term'>measure-finite</span> (or when
+  clear that we do not mean finite in the sense
+  of&nbsp;<a href='/sheets/finite_sets.html'/><span class='run'>Finite sets</span></a>), a set is <span class='term'>finite</span>) if
+its measure is a real number (as opposed to
+the only alternative, $+\infty$).</span>
+
+ <span class='run'>The measure space itself is
+  <span class='term'>measure-finite</span> if the base
+  set is finite.</span>
+</p>
+
+
+<p>
+ <span class='run'>A measurable set is
+  <span class='term'>sigma-finite</span> if there
+  exists a sequence of finite measurable sets
+  whose union is the set.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+
+ <span class='run'>The measure space itself is
+  <span class='term'>sigma-finite</span> if the base
+  set is sigma finite.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>Let $(A, \mathcal{A} , \mu )$ be a measure
+  space.</span>
+
+ <span class='run'>It is finite if $\mu (A) &lt; +\infty$.</span>
+</p>
+
+<div class='example'>
+ <span class='run'>Let $(A, \mathcal{A} )$ be a measurable space.</span>
+ <p>
+  <span class='run'>The counting measure on $(A, \mathcal{A} )$ is</span>
+
+  <span class='run'>finite if and only if the base set is finite.</span>
+
+  <span class='run'>It is sigma finite if and only if the base</span>
+
+  <span class='run'>set is a union of a sequence of finite sets.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>If $\mathcal{A}  = 2^A$, then the counting</span>
+
+  <span class='run'>measure is sigma finite if and only if</span>
+
+  <span class='run'>$A$ is countable.</span>
+ </p>
+</div>
+<div class='example'>
+ <span class='run'>A point mass measure is finite.</span></div>
+<div class='example'>
+ <span class='run'>Let $R$ be the set of real numbers.</span>
+
+ <span class='run'>The Lebesgue measure on</span>
+
+ <span class='run'>$(R, \mathcal{B} (R))$ is sigma finite.</span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This why is likely to be expanded on in
+  future editions. It may be that we need to
+  reference probability theory. It may suffice to
+  note that the Lebesgue measure on $[0, 1]$ is
+  finite, and so such measures exist.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>The justification of this seems distinct from
+  the previous paragraph, and therefore may need
+  its own sheet. The reason for these seems to
+  me to be that the Lebesgue measure is
+  sigma-finite.</span> <a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1020,7 +1231,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want finite measures.\footnote{This why is likely to be expanded on in future editions. It may be that we need to reference probability theory. It may suffice to note that the Lebesgue measure on $[0, 1]$ is finite, and so such measures exist.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A measurable set is \t{measure-finite} (or when clear that we do not mean finite in the sense of \sheetref{finite_sets}{Finite sets}), a set is \t{finite}) if its measure is a real number (as opposed to the only alternative, $+\infty$). The measure space itself is \t{measure-finite} if the base set is finite.</p></div><div class="sheet-listing"><p class="sheet"> A measurable set is \t{sigma-finite} if there exists a sequence of finite measurable sets whose union is the set.\footnote{The justification of this seems distinct from the previous paragraph, and therefore may need its own sheet. The reason for these seems to me to be that the Lebesgue measure is sigma-finite.} The measure space itself is \t{sigma-finite} if the base set is sigma finite.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> Let $(A, \CA, \mu)$ be a measure space. It is finite if $\mu(A) < +\infty$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $(A, \mathcal{A})$ be a measurable space.</p></div><div class="sheet-listing"><p class="sheet"> The counting measure on $(A, \mathcal{A})$ is finite if and only if the base set is finite. It is sigma finite if and only if the base set is a union of a sequence of finite sets.</p></div><div class="sheet-listing"><p class="sheet"> If $\mathcal{A} = 2^A$, then the counting measure is sigma finite if and only if $A$ is countable. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} A point mass measure is finite. \end{expl}</p></div><div class="sheet-listing"><p class="sheet"> \begin{expl} Let $R$ be the set of real numbers. The Lebesgue measure on $(R, \mathcal{B}(R))$ is sigma finite. \end{expl}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want finite measures.\footnote{This why is likely to be expanded on in future editions. It may be that we need to reference probability theory. It may suffice to note that the Lebesgue measure on $[0, 1]$ is finite, and so such measures exist.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A measurable set is \t{measure-finite} (or when clear that we do not mean finite in the sense of \sheetref{finite_sets}{Finite sets}), a set is \t{finite}) if its measure is a real number (as opposed to the only alternative, $+\infty$). The measure space itself is \t{measure-finite} if the base set is finite.</p></div><div class="sheet-listing"><p class="sheet"> A measurable set is \t{sigma-finite} if there exists a sequence of finite measurable sets whose union is the set.\footnote{The justification of this seems distinct from the previous paragraph, and therefore may need its own sheet. The reason for these seems to me to be that the Lebesgue measure is sigma-finite.} The measure space itself is \t{sigma-finite} if the base set is sigma finite.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $(A, \mathcal{A} , \mu )$ be a measure space. It is finite if $\mu (A) < +\infty$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{example} Let $(A, \mathcal{A} )$ be a measurable space. The counting measure on $(A, \mathcal{A} )$ is finite if and only if the base set is finite. It is sigma finite if and only if the base set is a union of a sequence of finite sets.</p></div><div class="sheet-listing"><p class="sheet"> If $\mathcal{A}  = 2^A$, then the counting measure is sigma finite if and only if $A$ is countable. \end{example} \begin{example} A point mass measure is finite.\end{example} \begin{example} Let $R$ be the set of real numbers. The Lebesgue measure on $(R, \mathcal{B} (R))$ is sigma finite.\end{example}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1174,7 +1385,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version b14da2a62.
+      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
     </span>
   </body>
 </html>
