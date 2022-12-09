@@ -1258,6 +1258,254 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./supervised_probabilistic_data_models.html'" onkeypress="location.href='./supervised_probabilistic_data_models.html'">
+                <span>
+                  Supervised Probabilistic Data Models
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./pAC_learnable_hypotheses.html'" onkeypress="location.href='./pAC_learnable_hypotheses.html'">
+            <span>
+            PAC Learnable Hypotheses
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./hypothesis_classes.pdf#page=2'" onkeypress="location.href='./hypothesis_classes.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./hypothesis_classes-graph.pdf'" onkeypress="location.href='./hypothesis_classes-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Hypothesis Classes </h1> 
+      <!--
+!name:hypothesis_classes
+!need:supervised_probabilistic_data_models
+!refs:shai_shalev-schwartz2014understanding
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We consider the set of predictors from which
+  we select.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $(X, \mathcal{X} , \mu )$ and $f: X \to Y$
+  be probabilistic data-generation model.</span>
+
+ <span class='run'>A <span class='term'>hypothesis class</span>
+  $\mathcal{H}  \subset (X \to Y)$ is a subset of
+  measurable functions.</span>
+
+ <span class='run'>For a dataset $D \in (X \times  Y)^n$, a
+  <span class='term'>restricted empirical error
+  minimizer</span> of $\mathcal{H} $ is a hypothesis
+  $h \in \mathcal{H} $ with minimal (among elements
+  of $\mathcal{H} $) empirical error on $D$.</span>
+</p>
+
+<h2 id='Inductive_bias'>Inductive bias</h2>
+
+<p>
+ <span class='run'>Many authorities call the hypothesis class a
+  <span class='term'>inductive bias</span> and speak
+  of “biasing” the “learning algorithm”.</span>
+
+ <span class='run'>Since one specifies the hypothesis class prior
+  to the data it often said to “encode prior
+  knowledge about the problem to be learned.”</span>
+</p>
+
+<h1 id='Realizable_classes'>Realizable classes</h1>
+
+<p>
+ <span class='run'>Some hypothesis classes are better than others.</span>
+
+ <span class='run'>For example, a hypothesis class that includes
+  the correct labeling function seems preferable to
+  a class that does not.</span>
+</p>
+
+
+<p>
+ <span class='run'>We formulate a weaker condition that captures
+  the case when $f \in \mathcal{H} $.</span>
+
+ <span class='run'>A hypothesis class $\mathcal{H} $ is
+  <span class='term'>realizable</span> if there exists
+  $h^{\star} \in \mathcal{H} $ with
+  <p>\[
+   \mu (\Set{x \in X}{h^\star(x) \neq f(x)}) = 0.\%
+  \]</p></span>
+
+ <span class='run'>This condition is natural because if $f \in
+  \mathcal{H} $, then $\mathcal{H} $ is realizable.</span>
+
+ <span class='run'>Moreover, the condition has two natural
+  corollaries</span>
+</p>
+
+
+<p>
+ <span class='run'>First, there exists $h^\star$ so that
+  <p>\[
+   \mu ^n(\Set*{x \in X^n}{\num{\Set*{i \in [n]}{h^\star(x_i) \neq
+    f(x_i)}} \neq 0}) = 0.
+  \]</p></span>
+
+ <span class='run'>We interpret this as follows: “there exists a
+  hypothesis whose probability of achieving nonzero
+  empirical risk is zero.”</span>
+</p>
+
+
+<p>
+ <span class='run'>Second, denote by $M_x$ the empirical risk
+  minimizers of $x \in X^n$.</span>
+
+ <span class='run'>Then,
+  <p>\[
+   \mu ^n(\Set*{x \in X^n}{\forall h \in M_x, \forall i, h(x_i)
+    = f(x_i)}) = 1.
+  \]</p></span>
+
+ <span class='run'>We interpret this as follows: “all empirical
+  risk minimizers will achieve zero empirical risk
+  on the dataset, with probability 1.”</span>
+</p>
+
+
+<p>
+ <span class='run'>Roughly speaking, there exists a hypothesis for
+  which the event that it achieves zero empirical
+  risk has probability one.</span>
+
+ <span class='run'>In this event, every hypothesis in the set of
+  empirical risk minimizers must achieve zero
+  empirical risk.</span>
+
+ <span class='run'>This is a consequence of the hypothesis class
+  being realizable.</span>
+</p>
+
+
+<!--  see page 17 of shai_shalev-schwartz2014understanding for this. -->
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1305,7 +1553,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We consider the set of predictors from which we select.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX, \mu)$ and $f: X \to Y$ be probabilistic data-generation model. A \t{hypothesis class} $\CH \subset (X \to Y)$ is a subset of measurable functions. For a dataset $D \in (X \times Y)^n$, a \t{restricted empirical error minimizer} of $\CH$ is a hypothesis $h \in \CH$ with minimal (among elements of $\CH$) empirical error on $D$.</p></div><div class="sheet-listing"><h2 class="sheet" id="inductive_bias">2.1 Inductive Bias</h2></div><div class="sheet-listing"><p class="sheet"> Many authorities call the hypothesis class a \t{inductive bias} and speak of "biasing} the \say{learning algorithm". Since one specifies the hypothesis class prior to the data it often said to "encode prior knowledge about the problem to be learned."</p></div><div class="sheet-listing" id="realizable_classes"><h1 class="sheet">3. Realizable classes</h1></div><div class="sheet-listing"><p class="sheet"> Some hypothesis classes are better than others. For example, a hypothesis class that includes the correct labeling function seems preferable to a class that does not.</p></div><div class="sheet-listing"><p class="sheet"> We formulate a weaker condition that captures the case when $f \in \CH$. A hypothesis class $\CH$ is \t{realizable} if there exists $h^{\star} \in \CH$ with \[ \mu(\Set{x \in X}{h^\star(x) \neq f(x)}) = 0.%\footnote{Future editions will comment on the measurability of this set. It is no object for finite $\CX$.} In fact, it is no object for any measurable $h$ and $f$. \] This condition is natural because if $f \in \CH$, then $\CH$ is realizable. Moreover, the condition has two natural corollaries</p></div><div class="sheet-listing"><p class="sheet"> First, there exists $h^\star$ so that \[ \mu^n(\Set*{x \in X^n}{\num{\Set*{i \in [n]}{h^\star(x_i) \neq f(x_i)}} \neq 0}) = 0. \] We interpret this as follows: "there exists a hypothesis whose probability of achieving nonzero empirical risk is zero."</p></div><div class="sheet-listing"><p class="sheet"> Second, denote by $M_x$ the empirical risk minimizers of $x \in X^n$. Then, \[ \mu^n(\Set*{x \in X^n}{\forall h \in M_x, \forall i, h(x_i) = f(x_i)}) = 1. \] We interpret this as follows: "all empirical risk minimizers will achieve zero empirical risk on the dataset, with probability 1."</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, there exists a hypothesis for which the event that it achieves zero empirical risk has probability one. In this event, every hypothesis in the set of empirical risk minimizers must achieve zero empirical risk. This is a consequence of the hypothesis class being realizable.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We consider the set of predictors from which we select.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{X} , \mu )$ and $f: X \to Y$ be probabilistic data-generation model. A \t{hypothesis class} $\mathcal{H}  \subset (X \to Y)$ is a subset of measurable functions. For a dataset $D \in (X \times  Y)^n$, a \t{restricted empirical error minimizer} of $\mathcal{H} $ is a hypothesis $h \in \mathcal{H} $ with minimal (among elements of $\mathcal{H} $) empirical error on $D$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Inductive bias}</p></div><div class="sheet-listing"><p class="sheet"> Many authorities call the hypothesis class a \t{inductive bias} and speak of "biasing} the \say{learning algorithm". Since one specifies the hypothesis class prior to the data it often said to "encode prior knowledge about the problem to be learned."</p></div><div class="sheet-listing"><p class="sheet"> \section*{Realizable classes}</p></div><div class="sheet-listing"><p class="sheet"> Some hypothesis classes are better than others. For example, a hypothesis class that includes the correct labeling function seems preferable to a class that does not.</p></div><div class="sheet-listing"><p class="sheet"> We formulate a weaker condition that captures the case when $f \in \mathcal{H} $. A hypothesis class $\mathcal{H} $ is \t{realizable} if there exists $h^{\star} \in \mathcal{H} $ with \[ \mu (\Set{x \in X}{h^\star(x) \neq f(x)}) = 0.\% \] This condition is natural because if $f \in \mathcal{H} $, then $\mathcal{H} $ is realizable. Moreover, the condition has two natural corollaries</p></div><div class="sheet-listing"><p class="sheet"> First, there exists $h^\star$ so that \[ \mu ^n(\Set*{x \in X^n}{\num{\Set*{i \in [n]}{h^\star(x_i) \neq f(x_i)}} \neq 0}) = 0. \] We interpret this as follows: "there exists a hypothesis whose probability of achieving nonzero empirical risk is zero."</p></div><div class="sheet-listing"><p class="sheet"> Second, denote by $M_x$ the empirical risk minimizers of $x \in X^n$. Then, \[ \mu ^n(\Set*{x \in X^n}{\forall h \in M_x, \forall i, h(x_i) = f(x_i)}) = 1. \] We interpret this as follows: "all empirical risk minimizers will achieve zero empirical risk on the dataset, with probability 1."</p></div><div class="sheet-listing"><p class="sheet"> Roughly speaking, there exists a hypothesis for which the event that it achieves zero empirical risk has probability one. In this event, every hypothesis in the set of empirical risk minimizers must achieve zero empirical risk. This is a consequence of the hypothesis class being realizable.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1459,7 +1707,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
+      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
     </span>
   </body>
 </html>

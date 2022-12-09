@@ -982,6 +982,206 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./matrices.html'" onkeypress="location.href='./matrices.html'">
+                <span>
+                  Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./triangular_matrices.html'" onkeypress="location.href='./triangular_matrices.html'">
+            <span>
+            Triangular Matrices
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./diagonal_matrices.pdf#page=2'" onkeypress="location.href='./diagonal_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./diagonal_matrices-graph.pdf'" onkeypress="location.href='./diagonal_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Diagonal Matrices </h1> 
+      <!--
+!name:diagonal_matrices
+!need:matrices
+-->
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $m, n$ be natural numbers.</span>
+
+ <span class='run'>Then $(i, i)$ is a <span class='term'>diagonal
+  index</span>, if $i \in \upto{1, \dots ,
+  \min\set{m, n}}$.</span>
+
+ <span class='run'>A <span class='term'>diagonal entry</span> of a
+  $m \times n$ matrix is an entry corresponding to
+  a diagonal index; we say that such entries are
+  <span class='term'>on the diagonal</span>.</span>
+
+ <span class='run'>An entry that is not on the diagonal is
+  <span class='term'>off the diagonal</span>; we call
+  these the <span class='term'>off diagonal
+  entries</span>.</span>
+
+ <span class='run'>The entries $(i, j)$ for $i &gt; j$ are
+  <span class='term'>below the diagonal</span> and $j
+  &lt; i$ are <span class='term'>above the
+  diagonal</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>A $m \times n$ <span class='term'>diagonal</span>
+  matrix is one whose entries off the diagonal
+  are zero.</span>
+
+ <span class='run'>In other words, its only nonzero entries are
+  on the diagonal.</span>
+
+ <span class='run'>Though the diagonal entries need not be
+  nonzero, they may be zero.</span>
+</p>
+
+
+<p>
+ <span class='run'>If all the values of a diagonal matrix are
+  positive or nonnegative we call it a
+  <span class='term'>positive diagonal</span> or
+  <span class='term'>nonnegative diagonal</span> matrix.</span>
+
+ <span class='run'>We emphasize the following subtlety: A positive
+  diagonal matrix is diagonal and has positive
+  entries; it has positive diagonal entries, yes,
+  but it may not have arbitrary off-diagonal
+  entries.</span>
+
+ <span class='run'>In other words, the modifier “diagonal} takes
+  precedence over the modifiers “positive” and
+  “nonnegative.”</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>scalar matrix</span> is a
+  square diagonal matrix whose diagonal entries are
+  identical.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will also define block diagonal
+  matrices.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1029,7 +1229,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $m, n$ be natural numbers. Then $(i, i)$ is a \t{diagonal index}, if $i \in \upto{1, \dots, \min\set{m, n}}$. A \t{diagonal entry} of a $m \times n$ matrix is an entry corresponding to a diagonal index; we say that such entries are \t{on the diagonal}. An entry that is not on the diagonal is \t{off the diagonal}; we call these the \t{off diagonal entries}. The entries $(i, j)$ for $i > j$ are \t{below the diagonal} and $j < i$ are \t{above the diagonal}.</p></div><div class="sheet-listing"><p class="sheet"> A $m \times n$ \t{diagonal} matrix is one whose entries off the diagonal are zero. In other words, its only nonzero entries are on the diagonal. Though the diagonal entries need not be nonzero, they may be zero.</p></div><div class="sheet-listing"><p class="sheet"> If all the values of a diagonal matrix are positive or nonnegative we call it a \t{positive diagonal} or \t{nonnegative diagonal} matrix. We emphasize the following subtlety: A positive diagonal matrix is diagonal and has positive entries; it has positive diagonal entries, yes, but it may not have arbitrary off-diagonal entries. In other words, the modifier "diagonal} takes precedence over the modifiers \say{positive} and \say{nonnegative."</p></div><div class="sheet-listing"><p class="sheet"> A \t{scalar matrix} is a square diagonal matrix whose diagonal entries are identical.\footnote{Future editions will also define block diagonal matrices.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $m, n$ be natural numbers. Then $(i, i)$ is a \t{diagonal index}, if $i \in \upto{1, \dots , \min\set{m, n}}$. A \t{diagonal entry} of a $m \times n$ matrix is an entry corresponding to a diagonal index; we say that such entries are \t{on the diagonal}. An entry that is not on the diagonal is \t{off the diagonal}; we call these the \t{off diagonal entries}. The entries $(i, j)$ for $i > j$ are \t{below the diagonal} and $j < i$ are \t{above the diagonal}.</p></div><div class="sheet-listing"><p class="sheet"> A $m \times n$ \t{diagonal} matrix is one whose entries off the diagonal are zero. In other words, its only nonzero entries are on the diagonal. Though the diagonal entries need not be nonzero, they may be zero.</p></div><div class="sheet-listing"><p class="sheet"> If all the values of a diagonal matrix are positive or nonnegative we call it a \t{positive diagonal} or \t{nonnegative diagonal} matrix. We emphasize the following subtlety: A positive diagonal matrix is diagonal and has positive entries; it has positive diagonal entries, yes, but it may not have arbitrary off-diagonal entries. In other words, the modifier "diagonal} takes precedence over the modifiers \say{positive} and \say{nonnegative."</p></div><div class="sheet-listing"><p class="sheet"> A \t{scalar matrix} is a square diagonal matrix whose diagonal entries are identical.\footnote{Future editions will also define block diagonal matrices.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1183,7 +1383,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
+      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
     </span>
   </body>
 </html>

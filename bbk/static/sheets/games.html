@@ -698,6 +698,263 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./arrays.html'" onkeypress="location.href='./arrays.html'">
+                <span>
+                  Arrays
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./decisions.html'" onkeypress="location.href='./decisions.html'">
+                <span>
+                  Decisions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_numbers.html'" onkeypress="location.href='./set_numbers.html'">
+                <span>
+                  Set Numbers
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./dynamic_games.html'" onkeypress="location.href='./dynamic_games.html'">
+            <span>
+            Dynamic Games
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./games.pdf#page=2'" onkeypress="location.href='./games.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./games-graph.pdf'" onkeypress="location.href='./games-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Games </h1> 
+      <!--
+!name:games
+!need:set_numbers
+!need:arrays
+!need:decisions
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We want to discuss interactive decision making.</span>
+</p>
+
+<h1 id='Discussion'>Discussion</h1>
+
+<p>
+ <span class='run'>We are interested in talking about situations
+  in which there are several
+  <span class='term'>decision makers</span>,
+  <span class='term'>agents</span> or
+  <span class='term'>players</span>, each of which
+  are making decisions that will affect the
+  outcome for all involved.</span>
+</p>
+
+<h2 id='Example:_rock_paper_scissors'>Example: rock paper scissors</h2>
+
+<p>
+ <span class='run'>Consider the game “rock-paper-scissors} in which
+  there are two players $A$ and $B$.</span>
+
+ <span class='run'>Each player may choose one of the three
+  actions <span class='smallcaps'>Rock</span>,
+  <span class='smallcaps'>Paper</span>,
+  <span class='smallcaps'>Scissors</span>.</span>
+
+ <span class='run'>To play, each player simultaneously selects an
+  action, and these are compared.</span>
+
+ <span class='run'>% So far we have a set of ❬players❭ or ❬agents❭ $P = \set{A, B}$ and a set of actions $\set{⸤Rock⸥, ⸤Paper⸥, ⸤Scissors⸥}$.</span>
+
+ <span class='run'>Here, both agents have the same actions.</span>
+
+ <span class='run'>% In this case, both agents have the same set of actions, but they need not.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>There is a finite set of
+  <span class='term'>players</span>, or
+  <span class='term'>agents</span>, or
+  <span class='term'>controllers</span>.</span>
+
+ <span class='run'>Let $\mathcal{I} $ be a finite set with
+  $\num{\mathcal{I} } = n$, the players.</span>
+</p>
+
+
+<p>
+ <span class='run'>In rock-paper-scissors, for example, $\mathcal{I}
+  = \set{A, B}$.</span>
+
+ <span class='run'>There, each player could pick one of the three
+  actions.</span>
+
+ <span class='run'>Define $\mathcal{A} _A = \mathcal{A} _B =
+  \{$<span class='smallcaps'>Rock</span>,
+  <span class='smallcaps'>Paper</span>,
+  <span class='smallcaps'>Scissors</span>$\}$.</span>
+
+ <span class='run'>We call $\mathcal{A} _A$ the actions of $A$ and
+  $\mathcal{A} _B$ the actions of $B$.</span>
+</p>
+
+
+<p>
+ <span class='run'>We have a set of outcomes $\mathcal{O} =
+  \{$<span class='smallcaps'>A Wins</span>,
+  <span class='smallcaps'>B Wins</span>,
+  <span class='smallcaps'>Tie</span>$\}$.</span>
+
+ <span class='run'>Let $f: \mathcal{A} _A \times C_B \to
+  \mathcal{O}$ defined by
+  $f($<span class='smallcaps'>Rock</span>,
+  <span class='smallcaps'>Scissors</span>$) =
+  $<span class='smallcaps'>A Wins</span></span>
+</p>
+
+
+<p>
+ <span class='run'>The set of <span class='term'>players</span>.</span>
+
+ <span class='run'>Let $S$ be a finite set, the set of
+  <span class='term'>states</span>.</span>
+
+ <span class='run'>For $i = 1, \dots , n$, let $\set{A^p_s}_{s
+  \in S}$ be a family of sets, the
+  <span class='term'>action sets by state</span>.</span>
+
+ <span class='run'>Define $\mathcal{A} ^i = \cup_s A^p_s$ the set
+  of <span class='term'>actions</span> for player $i
+  = 1, \dots , n$.</span>
+</p>
+
+
+<p>
+ <span class='run'>Let $f: S \times  \prod_{i} \mathcal{A} ^i \to
+  S$, the <span class='term'>game dynamics</span> or
+  <span class='term'>transition function</span>.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -759,7 +1016,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We want to discuss interactive decision making.</p></div><div class="sheet-listing" id="discussion"><h1 class="sheet">2. Discussion</h1></div><div class="sheet-listing"><p class="sheet"> We are interested in talking about situations in which there are several \t{decision makers}, \t{agents} or \t{players}, each of which are making decisions that will affect the outcome for all involved.</p></div><div class="sheet-listing"><h2 class="sheet" id="example:_rock_paper_scissors">2.1 Example: rock paper scissors</h2></div><div class="sheet-listing"><p class="sheet"> Consider the game "rock-paper-scissors" in which there are two players $A$ and $B$. Each player may choose one of the three actions \textsc{Rock}, \textsc{Paper}, \textsc{Scissors}. To play, each player simultaneously selects an action, and these are compared. Here, both agents have the same actions.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">3. Definition</h1></div><div class="sheet-listing"><p class="sheet"> In both these games there is a finite set of \t{players}, or \t{agents}, or \t{controllers}. Let $\CI$ be a finite set with $\num{\CI} = n$, the players.</p></div><div class="sheet-listing"><p class="sheet"> In rock-paper-scissors, for example, $\CI = \set{A, B}$. There, each player could pick one of the three actions. Define $\CA_A = \CA_B = \set{\textsc{Rock}, \textsc{Paper}, \textsc{Scissors}}$. We call $\CA_A$ the actions of $A$ and $\CA_B$ the actions of $B$.</p></div><div class="sheet-listing"><p class="sheet"> We have a set of outcomes $\CO = \set{\textsc{A Wins}, \textsc{B Wins}, \textsc{Tie}}$. Let $f: \CA_A \times C_B \to \CO$ defined by $f(\textsc{Rock}, \textsc{Scissors}) = \textsc{A Wins}$</p></div><div class="sheet-listing"><p class="sheet"> the set of \t{players}. Let $S$ be a finite set, the set of \t{states}. For $i = 1, \dots, n$, let $\set{A^p_s}_{s \in S}$ be a family of sets, the \t{action sets by state}. Define $\CA^i = \union_s A^p_s$ the set of \t{actions} for player $i = 1, \dots, n$.</p></div><div class="sheet-listing"><p class="sheet"> Let $f: S \times \prod_{i} \CA^i \to S$, the \t{game dynamics} or \t{transition function}.</p></div><div class="sheet-listing"><p class="sheet"> {\tiny \begin{tabular}{c|c|c} & $\;\,$ & $\;\,$ \\ \hline & & \\ \hline & & \end{tabular} }</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">4. Definition</h1></div><div class="sheet-listing"><p class="sheet"> The first thing to discuss is the set of players. Let $P$ be a finite set with $\num{P} = n$. The set $P$ is the set of players, and we</p></div><div class="sheet-listing"><p class="sheet"> We begin with a single-player game.</p></div><div class="sheet-listing"><p class="sheet"> Let $S$ be a set.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to discuss interactive decision making.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> We are interested in talking about situations in which there are several \t{decision makers}, \t{agents} or \t{players}, each of which are making decisions that will affect the outcome for all involved.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Example: rock paper scissors}</p></div><div class="sheet-listing"><p class="sheet"> Consider the game "rock-paper-scissors" in which there are two players $A$ and $B$. Each player may choose one of the three actions \textsc{Rock}, \textsc{Paper}, \textsc{Scissors}. To play, each player simultaneously selects an action, and these are compared. Here, both agents have the same actions.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> There is a finite set of \t{players}, or \t{agents}, or \t{controllers}. Let $\mathcal{I} $ be a finite set with $\num{\mathcal{I} } = n$, the players.</p></div><div class="sheet-listing"><p class="sheet"> In rock-paper-scissors, for example, $\mathcal{I}  = \set{A, B}$. There, each player could pick one of the three actions. Define $\mathcal{A} _A = \mathcal{A} _B = \{$\textsc{Rock}, \textsc{Paper}, \textsc{Scissors}$\}$. We call $\mathcal{A} _A$ the actions of $A$ and $\mathcal{A} _B$ the actions of $B$.</p></div><div class="sheet-listing"><p class="sheet"> We have a set of outcomes $\mathcal{O} = \{$\textsc{A Wins}, \textsc{B Wins}, \textsc{Tie}$\}$. Let $f: \mathcal{A} _A \times C_B \to \mathcal{O}$ defined by $f($\textsc{Rock}, \textsc{Scissors}$) = $\textsc{A Wins}</p></div><div class="sheet-listing"><p class="sheet"> The set of \t{players}. Let $S$ be a finite set, the set of \t{states}. For $i = 1, \dots , n$, let $\set{A^p_s}_{s \in S}$ be a family of sets, the \t{action sets by state}. Define $\mathcal{A} ^i = \cup_s A^p_s$ the set of \t{actions} for player $i = 1, \dots , n$.</p></div><div class="sheet-listing"><p class="sheet"> Let $f: S \times  \prod_{i} \mathcal{A} ^i \to S$, the \t{game dynamics} or \t{transition function}.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -913,7 +1170,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
+      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
     </span>
   </body>
 </html>

@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make cumulative_distribution_function_inverse_transform.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 cumulative_distribution_function_inverse_transform.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > cumulative_distribution_function_inverse_transform.tex
 

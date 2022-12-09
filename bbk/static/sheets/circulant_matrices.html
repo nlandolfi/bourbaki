@@ -954,6 +954,219 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+                <span>
+                  Real Matrices
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./circulant_matrix_eigendecompositions.html'" onkeypress="location.href='./circulant_matrix_eigendecompositions.html'">
+            <span>
+            Circulant Matrix Eigendecompositions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./circulant_matrices.pdf#page=2'" onkeypress="location.href='./circulant_matrices.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./circulant_matrices-graph.pdf'" onkeypress="location.href='./circulant_matrices-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Circulant Matrices </h1> 
+      <!--
+!name:circulant_matrices
+!need:real_matrices
+-->
+
+<h1 id='Why'>Why</h1>
+<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup>
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Define $S \in \R ^{d \times d}$ by</span>
+ <p>\[
+  S = \bmat{
+
+  0 & 0 & \dots  & 0 & 1 \\
+
+  0 & 1 & \cdots & 0 & 0 \\
+
+  0 & 0 & \ddots & 0 & 0 \\
+
+  0 & 0 & \cdots & 1 & 0
+
+  }
+ \]</p>
+ <span class='run'>For a vector $x \in \R ^d$ the
+  <span class='term'>down shift</span> of $x$ is
+  $Sx$.</span>
+</p>
+
+
+<p>
+ <span class='run'>Let $A \in \R ^{d \times d}$ be a matrix with
+  columsn $a_1, \dots , a_d$.</span>
+
+ <span class='run'>$A$ is a <span class='term'>circulant
+  matrix</span> if $a_1 = Sa_d$, $a2 = Sa_2$, and
+  $a_i = A_{i -1}$ for $i = 2, \dots , d$.</span>
+</p>
+
+<h2 id='Example'>Example</h2>
+
+<p>
+ <span class='run'>For example, the matrix
+  <p>\[
+   \bmat{
+
+   1 & 4 & 3 & 2 \\
+
+   2 & 1 & 4 & 3 \\
+
+   3 & 2 & 1 & 4 \\
+
+   4 & 3 & 2 & 1 \\
+
+   }
+  \]</p>
+  is a circulant matrix.</span>
+</p>
+
+<h1 id='Characterization'>Characterization</h1>
+
+<p>
+ <span class='run'>A matrix $C \in \R ^{d \times d}$ is circulant
+  if and only if there exists $c_0, \dots ,
+  c_{d-1}$ so that
+  <p>\[
+   C = c_0I + c_1 S + c_2S^2 + \cdot s + c_{n-1}S^{n-1}.
+  \]</p></span>
+</p>
+
+<h1 id='Properties'>Properties</h1>
+
+<p>
+ <span class='run'>The sum and product of any two circulant
+  matrix is circulant.</span>
+
+ <span class='run'>In other words, the circulant matrices with the
+  usual matrix addition and multiplication form a
+  commutative ring.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future sheets will include. These matrices arise
+  in practice and each has the same eigenvectors.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1001,7 +1214,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_sheets_will_include._these_matrices_arise_in_practice_and_each_has_the_same_eigenvectors."><h1 class="sheet">1. Why}\footnote{Future sheets will include. These matrices arise in practice and each has the same eigenvectors.</h1></div><div class="sheet-listing"><p class="sheet"> \section{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Define $S \in \R^{d \times d}$ by</p></div><div class="sheet-listing"><p class="sheet"> \[ S = \bmat{ 0 & 0 & \dots & 0 & 1 \\ 0 & 1 & \cdots & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 \\ 0 & 0 & \cdots & 1 & 0 } \] For a vector $x \in \R^d$ the \t{down shift} of $x$ is $Sx$.</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R^{d \times d}$ be a matrix with columsn $a_1, \dots, a_d$. $A$ is a \t{circulant matrix} if $a_1 = Sa_d$, $a2 = Sa_2$, and $a_i = A_{i -1}$ for $i = 2, \dots, d$.</p></div><div class="sheet-listing"><h2 class="sheet" id="example">1.1 Example</h2></div><div class="sheet-listing"><p class="sheet"> For example, the matrix \[ \bmat{ 1 & 4 & 3 & 2 \\ 2 & 1 & 4 & 3 \\ 3 & 2 & 1 & 4 \\ 4 & 3 & 2 & 1 \\ } \] is a circulant matrix.</p></div><div class="sheet-listing" id="characterization"><h1 class="sheet">2. Characterization</h1></div><div class="sheet-listing"><p class="sheet"> A matrix $C \in \R^{d \times d}$ is circulant if and only if there exists $c_0, \dots, c_{d-1}$ so that \[ C = c_0I + c_1 S + c_2S^2 + \cdots + c_{n-1}S^{n-1}. \]</p></div><div class="sheet-listing" id="properties"><h1 class="sheet">3. Properties</h1></div><div class="sheet-listing"><p class="sheet"> The sum and product of any two circulant matrix is circulant. In other words, the circulant matrices with the usual matrix addition and multiplication form a commutative ring.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why} \footnote{Future sheets will include. These matrices arise in practice and each has the same eigenvectors.} \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Define $S \in \R ^{d \times d}$ by \[ S = \bmat{ 0 & 0 & \dots  & 0 & 1 \\ 0 & 1 & \cdots & 0 & 0 \\ 0 & 0 & \ddots & 0 & 0 \\ 0 & 0 & \cdots & 1 & 0 } \] For a vector $x \in \R ^d$ the \t{down shift} of $x$ is $Sx$.</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R ^{d \times d}$ be a matrix with columsn $a_1, \dots , a_d$. $A$ is a \t{circulant matrix} if $a_1 = Sa_d$, $a2 = Sa_2$, and $a_i = A_{i -1}$ for $i = 2, \dots , d$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Example}</p></div><div class="sheet-listing"><p class="sheet"> For example, the matrix \[ \bmat{ 1 & 4 & 3 & 2 \\ 2 & 1 & 4 & 3 \\ 3 & 2 & 1 & 4 \\ 4 & 3 & 2 & 1 \\ } \] is a circulant matrix.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Characterization}</p></div><div class="sheet-listing"><p class="sheet"> A matrix $C \in \R ^{d \times d}$ is circulant if and only if there exists $c_0, \dots , c_{d-1}$ so that \[ C = c_0I + c_1 S + c_2S^2 + \cdot s + c_{n-1}S^{n-1}. \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> The sum and product of any two circulant matrix is circulant. In other words, the circulant matrices with the usual matrix addition and multiplication form a commutative ring.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1155,7 +1368,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
+      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
     </span>
   </body>
 </html>

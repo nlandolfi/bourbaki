@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make generalized_set_dualities.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 generalized_set_dualities.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > generalized_set_dualities.tex
 

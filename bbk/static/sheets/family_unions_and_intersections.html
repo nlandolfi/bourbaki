@@ -590,6 +590,338 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./families.html'" onkeypress="location.href='./families.html'">
+                <span>
+                  Families
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./generalized_set_dualities.html'" onkeypress="location.href='./generalized_set_dualities.html'">
+                <span>
+                  Generalized Set Dualities
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_unions_and_intersections.html'" onkeypress="location.href='./set_unions_and_intersections.html'">
+                <span>
+                  Set Unions and Intersections
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./family_products_and_unions.html'" onkeypress="location.href='./family_products_and_unions.html'">
+            <span>
+            Family Products and Unions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./inverses_unions_intersections_and_complements.html'" onkeypress="location.href='./inverses_unions_intersections_and_complements.html'">
+            <span>
+            Inverses Unions Intersections and Complements
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./lists.html'" onkeypress="location.href='./lists.html'">
+            <span>
+            Lists
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./family_unions_and_intersections.pdf#page=2'" onkeypress="location.href='./family_unions_and_intersections.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./family_unions_and_intersections-graph.pdf'" onkeypress="location.href='./family_unions_and_intersections-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Family Unions and Intersections </h1> 
+      <!--
+!name:family_unions_and_intersections
+!need:families
+!need:set_unions_and_intersections
+!need:generalized_set_dualities
+!refs:paul_halmos/naive_set_theory/section_09
+!refs:bert_mendelson/introduction_to_topology/theory_of_sets/indexed_families_of_sets
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We can use families to think about unions and
+  intersections.</span>
+</p>
+
+<h1 id='Family_unions'>Family unions</h1>
+
+<p>
+ <span class='run'>Let $A: I \to \powerset{X}$ be a family of
+  subsets.</span>
+
+ <span class='run'>We refer to the union (see&nbsp;<a href='/sheets/set_unions.html'/><span class='run'>Set Unions</span></a>) of the range (see&nbsp;<a href='/sheets/relations.html'/><span class='run'>Relations</span></a>) of the family the <span class='term'>family
+union</span>.</span>
+
+ <span class='run'>We denote it $\cup_{i \in I} A_i$.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>$(x \in \cup_{i \in I} A_i) \iff (\exists i)(x
+  \in A_i)$</span></div>
+<p>
+ <span class='run'>If $I = \set{a, b}$ is a pair with $a \neq
+  b$, then $\cup_{i \in I} = A_a \cup A_b$.</span>
+</p>
+
+
+<p>
+ <span class='run'>There is no loss of generality in considering
+  family unions.</span>
+
+ <span class='run'>Every set of sets is a family: consider the
+  identity function from the set of sets to
+  itself.</span>
+</p>
+
+
+<p>
+ <span class='run'>We can also show generalized associative and
+  commutative law<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup>
+  for unions.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>Let $\set{I_j}$ be a family of sets and define
+  $K = \union_{j} I_j$. Then $\union_{k \in K}
+  A_k = \union_{j \in J}(\union_{i \in I_j} A_i)$.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span></div>
+<h1 id='Family_intersection'>Family intersection</h1>
+
+<p>
+ <span class='run'>If we have a nonempty family of subsets $A: I
+  \to \powerset{X}$, we call the intersection (see&nbsp;<a href='/sheets/set_intersections.html'/><span class='run'>Set Intersections</span></a>) of the range of the family the
+<span class='term'>family intersection</span>.</span>
+
+ <span class='run'>We denote it $\cap _{i \in I} A_i$.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>$x \in \cap _{i \in I} A_i \iff (\forall i)(x
+  \in A_i)$</span></div>
+<p>
+ <span class='run'>Similarly we can derive associative and
+  commutative laws for intersection<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup>
+  .</span>
+
+ <span class='run'>They can be derived as for unions, or from
+  the facts of unions using generalized
+  DeMorgan&#39;s laws (see &nbsp;<a href='/sheets/generalized_set_dualities.html'/><span class='run'>Generalized Set Dualities</span></a>).</span>
+</p>
+
+<h2 id='Connections'>Connections</h2>
+
+<p>
+ <span class='run'>The following are easy<sup id='footnote-4-reference'><a href='#footnote-4'>4</a></sup></span>
+</p>
+
+
+<p>
+ <span class='run'>Let $\set{A_i}$ be a family of subsets of $X$
+  and let $B \subset X$.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>$B \cap \bigcup_{i} A_i = \bigcup_{i} (B
+  \cap A_i)$</span></div>
+<div class='proposition'>
+ <span class='run'>$B \cup \bigcap_{i} A_i = \bigcap_{i} (B \cup
+  A_i)$</span></div>
+<p>
+ <span class='run'>Let $\set{A_i}$ and $\set{B_j}$ be families of
+  sets.<sup id='footnote-5-reference'><a href='#footnote-5'>5</a></sup></span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>$(\bigcup_{i} A_i) \cap (\bigcup_{j} B_j) =
+  \bigcup_{i,j}(A_i \cap B_j)$</span></div>
+<div class='proposition'>
+ <span class='run'>$(\bigcap_{i} A_u) \cup (\bigcap_{j} B_j) =
+  \bigcap_{i,j}(A_i \cup B_j).$</span></div>
+<div class='proposition'>
+ <span class='run'>$\cap _i X_i \subset X_j \subset \cup_i X_i$
+  for each $j$.</span></div>
+<!--
+%% TODO(next edition): characetrization of union and intersection as extreme of the previous propositon
+%!see exercise at end of paul_halmos/naive_set_theory/section_09
+
+% old family set operatiosn
+
+%%!name:family_set_operations
+%%!need:family_operations
+%%!need:set_operations
+
+% \ssection{Why}
+%
+% Family set operations
+% are common.
+% TODO: this works
+% for infinite stuff too
+%
+% \ssection{Definition}
+%
+% We define the set whose elements are the objects
+% which are contained in at least one family member
+% the \casdft{family union}{familyunion}.
+% We define the set whose elements are the objects
+% which are contained in all of the family members
+% the \casdft{family intersection}{familyintersection}.
+%
+% \ssubsection{Notation}
+%
+% We denote the family union by $\union_{\alpha \in I} A_{\alpha}$.
+% We read this notation as \say{union over alpha in I of A sub-alpha.}
+% We denote family intersection by $\intersect_{\alpha \in I} A_{\alpha}$.
+% We read this notation as \say{intersection over alpha in I of A sub-alpha.}
+%
+% \ssubsection{Results}
+%
+% \begin{proposition}
+%   For an indexed family $\set{A_{\alpha}}_{\alpha \in I}$ in $S$, if $I = \set{i, j}$ then
+%   \[
+%     \union_{\alpha \in I} A_{\alpha} = A_i \union A_j
+%   \]
+%   and
+%   \[
+%     \intersect_{\alpha \in I} A_{\alpha} = A_i \intersect A_j.
+%   \]
+% \end{proposition}
+%
+% \begin{proposition}
+%   For an indexed family $\set{A_{\alpha}}_{\alpha \in I}$ in $S$, if $I = \emptyset$, then
+%   \[
+%     \union_{\alpha \in I} A_{\alpha} = \emptyset
+%   \]
+%   and
+%   \[
+%     \intersect_{\alpha \in I} A_{\alpha} = S.
+%   \]
+% \end{proposition}
+-->
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>The commutative law will appear in future
+  editions.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>An account will appear in future editions.</span> <a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>Statements of these will be given in future
+  editions.</span> <a href='#footnote-3-reference'>↩︎</a></li><li id='footnote-4'> <span class='run'>Accounts will appear in future editions.</span> <a href='#footnote-4-reference'>↩︎</a></li><li id='footnote-5'> <span class='run'>An account of the notation used and the proofs
+  will appear in future editions.</span> <a href='#footnote-5-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -665,7 +997,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \s{Why}</p></div><div class="sheet-listing"><p class="sheet"> We can use families to think about unions and intersections.</p></div><div class="sheet-listing"><p class="sheet"> \s{Family Unions}</p></div><div class="sheet-listing"><p class="sheet"> Let $A: I \to \powerset{X}$ be a family of subsets. We refer to the union (see \sheetref{set_unions}{Set Unions}) of the range (see \sheetref{relations}{Relations}) of the family the \t{family union}. We denote it $\union_{i \in I} A_i$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(x \in \union_{i \in I} A_i) \iff (\exists i)(x \in A_i)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> If $I = \set{a, b}$ is a pair with $a \neq b$, then $\union_{i \in I} = A_a \union A_b$.</p></div><div class="sheet-listing"><p class="sheet"> There is no loss of generality in considering family unions. Every set of sets is a family: consider the identity function from the set of sets to itself.</p></div><div class="sheet-listing"><p class="sheet"> We can also show generalized associative and commutative law\footnote{The commutative law will appear in future editions.} for unions.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\set{I_j}$ be a family of sets and define $K = \union_{j} I_j$. Then $\union_{k \in K} A_k = \union_{j \in J}(\union_{i \in I_j} A_i)$.\footnote{An account will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \s{Family Intersection}</p></div><div class="sheet-listing"><p class="sheet"> If we have a nonempty family of subsets $A: I \to \powerset{X}$, we call the intersection (see \sheetref{set_intersections}{Set Intersections}) of the range of the family the \t{family intersection}. We denote it $\intersection_{i \in I} A_i$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $x \in \intersection_{i \in I} A_i \iff (\forall i)(x \in A_i)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> Similarly we can derive associative and commutative laws for intersection\footnote{Statements of these will be given in future editions.}. They can be derived as for unions, or from the facts of unions using generalized DeMorgan's laws (see \sheetref{generalized_set_dualities}{Generalized SSet Dualities}.</p></div><div class="sheet-listing"><p class="sheet"> \ss{Connections}</p></div><div class="sheet-listing"><p class="sheet"> The following are easy\footnote{Accounts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> Let $\set{A_i}$ be a family of subsets of $X$ and let $B \subset X$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $B \cap \bigcup_{i} A_i = \bigcup_{i} (B \cap A_i)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $B \cup \bigcap_{i} A_i = \bigcap_{i} (B \cup A_i)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\set{A_i}$ and $\set{B_j}$ be families of sets.\footnote{An account of the notation used and the proofs will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\bigcup_{i} A_i) \cap (\bigcup_{j} B_j) = \bigcup_{i,j}(A_i \cap B_j)$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\bigcap_{i} A_u) \cup (\bigcap_{j} B_j) = \bigcap_{i,j}(A_i \cup B_j).$ \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $\cap_i X_i \subset X_j \subset \union_i X_i$ for each $j$. \end{proposition}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We can use families to think about unions and intersections.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Family unions}</p></div><div class="sheet-listing"><p class="sheet"> Let $A: I \to \powerset{X}$ be a family of subsets. We refer to the union (see \sheetref{set_unions}{Set Unions}) of the range (see \sheetref{relations}{Relations}) of the family the \t{family union}. We denote it $\cup_{i \in I} A_i$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(x \in \cup_{i \in I} A_i) \iff (\exists i)(x \in A_i)$\end{proposition} If $I = \set{a, b}$ is a pair with $a \neq b$, then $\cup_{i \in I} = A_a \cup A_b$.</p></div><div class="sheet-listing"><p class="sheet"> There is no loss of generality in considering family unions. Every set of sets is a family: consider the identity function from the set of sets to itself.</p></div><div class="sheet-listing"><p class="sheet"> We can also show generalized associative and commutative law\footnote{The commutative law will appear in future editions.} for unions.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $\set{I_j}$ be a family of sets and define $K = \union_{j} I_j$. Then $\union_{k \in K} A_k = \union_{j \in J}(\union_{i \in I_j} A_i)$.\footnote{An account will appear in future editions.}\end{proposition} \section*{Family intersection}</p></div><div class="sheet-listing"><p class="sheet"> If we have a nonempty family of subsets $A: I \to \powerset{X}$, we call the intersection (see \sheetref{set_intersections}{Set Intersections}) of the range of the family the \t{family intersection}. We denote it $\cap _{i \in I} A_i$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $x \in \cap _{i \in I} A_i \iff (\forall i)(x \in A_i)$\end{proposition} Similarly we can derive associative and commutative laws for intersection\footnote{Statements of these will be given in future editions.} . They can be derived as for unions, or from the facts of unions using generalized DeMorgan's laws (see \sheetref{generalized_set_dualities}{Generalized Set Dualities}).</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Connections}</p></div><div class="sheet-listing"><p class="sheet"> The following are easy\footnote{Accounts will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> Let $\set{A_i}$ be a family of subsets of $X$ and let $B \subset X$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $B \cap \bigcup_{i} A_i = \bigcup_{i} (B \cap A_i)$\end{proposition} \begin{proposition} $B \cup \bigcap_{i} A_i = \bigcap_{i} (B \cup A_i)$\end{proposition} Let $\set{A_i}$ and $\set{B_j}$ be families of sets.\footnote{An account of the notation used and the proofs will appear in future editions.}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} $(\bigcup_{i} A_i) \cap (\bigcup_{j} B_j) = \bigcup_{i,j}(A_i \cap B_j)$\end{proposition} \begin{proposition} $(\bigcap_{i} A_u) \cup (\bigcap_{j} B_j) = \bigcap_{i,j}(A_i \cup B_j).$\end{proposition} \begin{proposition} $\cap _i X_i \subset X_j \subset \cup_i X_i$ for each $j$.\end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -819,7 +1151,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
+      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
     </span>
   </body>
 </html>

@@ -778,6 +778,237 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./controlled_dynamical_systems.html'" onkeypress="location.href='./controlled_dynamical_systems.html'">
+                <span>
+                  Controlled Dynamical Systems
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./stochastic_dynamical_systems.html'" onkeypress="location.href='./stochastic_dynamical_systems.html'">
+            <span>
+            Stochastic Dynamical Systems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./dynamic_optimization_problems.pdf#page=2'" onkeypress="location.href='./dynamic_optimization_problems.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./dynamic_optimization_problems-graph.pdf'" onkeypress="location.href='./dynamic_optimization_problems-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Dynamic Optimization Problems </h1> 
+      <!--
+!name:dynamic_optimization_problems
+!need:controlled_dynamical_systems
+ below is no longer needed, moved to stochastic dynamical systems
+%!need:uncertain_outcomes
+-->
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $\mathcal{D}  = ((\mathcal{X} _t)_{t =
+  0}^{T}), (\mathcal{U} _t)_{t=0}^{T-1},
+  (f_t)_{t=1}^{T-1})$ be a dynamical system.</span>
+
+ <span class='run'>Let $g_t: \mathcal{X} _t \times  \mathcal{U} _t
+  \to \R  \cup \set{\infty}$ for $t = 1$,
+  $\dots $, $T-1$ and let $g_{T}: \mathcal{X} _T
+  \to \R  \cup \set{\infty}$.</span>
+
+ <span class='run'>Let $x_0 \in \mathcal{X} _0$.</span>
+</p>
+
+
+<p>
+ <span class='run'>We call the sequence $(x_0, \mathcal{D} ,
+  (g_t)_{t = 1}^{T})$ a
+  <span class='term'>deterministic dynamic optimization
+  problem</span>.</span>
+
+ <span class='run'>We call $x_0$ the <span class='term'>initial
+  state</span>.</span>
+
+ <span class='run'>We call $g_t$ the <span class='term'>stage cost
+  function</span> for stage $t$ and call $g_T$ the
+  <span class='term'>terminal cost function</span>.</span>
+</p>
+
+
+<p>
+ <span class='run'>A deterministic dynamic optimization problem
+  corresponds to an optimization problem with
+  variables $u_0 \in \mathcal{U} _0, \dots , u_{T-1}
+  \in \mathcal{U} _{T-1}$.</span>
+
+ <span class='run'>Define $U = \mathcal{U} _0 \times  \mathcal{U} _1
+  \times  \mathcal{U} _{T-1}$.</span>
+
+ <span class='run'>Define $J: U \to \R  \cup \set{\infty}$ by
+  <p>\[
+   J(u) = \sum_{t = 0}^{T-1} g_t(x_t, u_t) + g_T(x_T)
+  \]</p>
+  in which $x_{t+1} = f_t(x_t, u_t)$ for $t =
+  0, \dots , T-1$.</span>
+
+ <span class='run'>The optimization problem is $(U, J)$.</span>
+
+ <span class='run'>And so a dynamic optimization problem is just
+  a (possibly big) optimization problem.</span>
+
+ <span class='run'>We call $\sum_{t = 0}^{T-1} g_t(x_t, u_t)$ the
+  <span class='term'>total stage cost</span> and we
+  call $g_T(x_T)$ the <span class='term'>terminal
+  stage cost</span>.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>We often write this problem as
+  <p>\[
+   \begin{aligned}
+
+   \text{minimize}\quad & \sum_{t = 1}^{T-1} g_t(x_t, u_t) +
+    g_T(x_T) \\
+
+   \text{subject to}\quad & x_{t+1} = f_t(x_t, u_t), \quad t =
+    0, \dots , T-1.
+
+   \end{aligned}
+  \]</p></span>
+</p>
+
+<h1 id='Other_terminology_and_comments'>Other terminology and comments</h1>
+
+<p>
+ <span class='run'>Dynamic optimization problems are frequently
+  called <span class='term'>deterministic optimal
+  control</span> problems or
+  <span class='term'>classical</span> or
+  <span class='term'>open-loop control</span> problems.</span>
+
+ <span class='run'>These problems are said to address the dynamic
+  effect of actions across time.</span>
+
+ <span class='run'>Although these models include no notion of
+  “uncertainty” (or “uncertain outcomes”, see&nbsp;<a href='/sheets/uncertain_outcomes.html'/><span class='run'>Uncertain Outcomes</span></a>), they are frequently applied in situations
+with uncertain outcomes by ignoring the
+uncertainty in the application.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -825,7 +1056,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{future_editions_will_include."><h1 class="sheet">1. Why}\footnote{Future editions will include.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $\CD = ((\CX_t)_{t = 0}^{T}), (\CU_t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1})$ be a dynamical system. Let $g_t: \CX_t \times \CU_t \to \R \union \set{\infty}$ for $t = 1$, $\dots$, $T-1$ and let $g_{T}: \CX_T \to \R \cup \set{\infty}$. Let $x_0 \in \CX_0$.</p></div><div class="sheet-listing"><p class="sheet"> We call the sequence $(x_0, \CD, (g_t)_{t = 1}^{T})$ a \t{deterministic dynamic optimization problem}. We call $x_0$ the \t{initial state}. We call $g_t$ the \t{stage cost function} for stage $t$ and call $g_T$ the \t{terminal cost function}.</p></div><div class="sheet-listing"><p class="sheet"> A deterministic dynamic optimization problem corresponds to an optimization problem with variables $u_0 \in \CU_0, \dots, u_{T-1} \in \CU_{T-1}$. Define $U = \CU_0 \times \CU_1 \times \CU_{T-1}$. Define $J: U \to \R \union \set{\infty}$ by \[ J(u) = \sum_{t = 0}^{T-1} g_t(x_t, u_t) + g_T(x_T) \] in which $x_{t+1} = f_t(x_t, u_t)$ for $t = 0, \dots, T-1$. The optimization problem is $(U, J)$. And so a dynamic optimization problem is just a (possibly big) optimization problem. We call $\sum_{t = 0}^{T-1} g_t(x_t, u_t)$ the \t{total stage cost} and we call $g_T(x_T)$ the \t{terminal stage cost}.</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We often write this problem as \[ \begin{aligned} \text{minimize}\quad & \sum_{t = 1}^{T-1} g_t(x_t, u_t) + g_T(x_T) \\ \text{subject to}\quad & x_{t+1} = f_t(x_t, u_t), \quad t = 0, \dots, T-1. \end{aligned} \]</p></div><div class="sheet-listing" id="other_terminology_and_comments"><h1 class="sheet">3. Other terminology and comments</h1></div><div class="sheet-listing"><p class="sheet"> Dynamic optimization problems are frequently called \t{deterministic optimal control} problems or \t{classical} or \t{open-loop control} problems. These problems are said to address the dynamic effect of actions across time. Although these models include no notion of "uncertainty} (or \say{uncertain outcomes}, see \sheetref{uncertain_outcomes}{Uncertain Outcomes"), they are frequently applied in situations with uncertain outcomes by ignoring the uncertainty in the application.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathcal{D}  = ((\mathcal{X} _t)_{t = 0}^{T}), (\mathcal{U} _t)_{t=0}^{T-1}, (f_t)_{t=1}^{T-1})$ be a dynamical system. Let $g_t: \mathcal{X} _t \times  \mathcal{U} _t \to \R  \cup \set{\infty}$ for $t = 1$, $\dots $, $T-1$ and let $g_{T}: \mathcal{X} _T \to \R  \cup \set{\infty}$. Let $x_0 \in \mathcal{X} _0$.</p></div><div class="sheet-listing"><p class="sheet"> We call the sequence $(x_0, \mathcal{D} , (g_t)_{t = 1}^{T})$ a \t{deterministic dynamic optimization problem}. We call $x_0$ the \t{initial state}. We call $g_t$ the \t{stage cost function} for stage $t$ and call $g_T$ the \t{terminal cost function}.</p></div><div class="sheet-listing"><p class="sheet"> A deterministic dynamic optimization problem corresponds to an optimization problem with variables $u_0 \in \mathcal{U} _0, \dots , u_{T-1} \in \mathcal{U} _{T-1}$. Define $U = \mathcal{U} _0 \times  \mathcal{U} _1 \times \mathcal{U} _{T-1}$. Define $J: U \to \R  \cup \set{\infty}$ by \[ J(u) = \sum_{t = 0}^{T-1} g_t(x_t, u_t) + g_T(x_T) \] in which $x_{t+1} = f_t(x_t, u_t)$ for $t = 0, \dots , T-1$. The optimization problem is $(U, J)$. And so a dynamic optimization problem is just a (possibly big) optimization problem. We call $\sum_{t = 0}^{T-1} g_t(x_t, u_t)$ the \t{total stage cost} and we call $g_T(x_T)$ the \t{terminal stage cost}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We often write this problem as \[ \begin{aligned} \text{minimize}\quad & \sum_{t = 1}^{T-1} g_t(x_t, u_t) + g_T(x_T) \\ \text{subject to}\quad & x_{t+1} = f_t(x_t, u_t), \quad t = 0, \dots , T-1. \end{aligned} \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Other terminology and comments}</p></div><div class="sheet-listing"><p class="sheet"> Dynamic optimization problems are frequently called \t{deterministic optimal control} problems or \t{classical} or \t{open-loop control} problems. These problems are said to address the dynamic effect of actions across time. Although these models include no notion of "uncertainty} (or \say{uncertain outcomes}, see \sheetref{uncertain_outcomes}{Uncertain Outcomes"), they are frequently applied in situations with uncertain outcomes by ignoring the uncertainty in the application.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -979,7 +1210,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
+      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
     </span>
   </body>
 </html>

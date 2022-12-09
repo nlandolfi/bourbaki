@@ -1258,6 +1258,233 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./supervised_probabilistic_data_models.html'" onkeypress="location.href='./supervised_probabilistic_data_models.html'">
+                <span>
+                  Supervised Probabilistic Data Models
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./empirical_error_minimizers.pdf#page=2'" onkeypress="location.href='./empirical_error_minimizers.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./empirical_error_minimizers-graph.pdf'" onkeypress="location.href='./empirical_error_minimizers-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Empirical Error Minimizers </h1> 
+      <!--
+!name:empirical_error_minimizers
+!need:supervised_probabilistic_data_models
+!refs:shai_shalev-schwartz2014understanding
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>A natural and (conceptually) simple inductor is
+  to select a predictor which achieves zero error
+  on the training dataset.</span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $(X, \mathcal{X} , \mu )$ and $f: X \to Y$
+  be a probabilistic supervised data model.</span>
+
+ <span class='run'>For a dataset $(x_1, y_1), \dots , (x_n, y_n)$
+  in $X \times Y$, the <span class='term'>empirical
+  error</span> of a predictor $h: X \to Y$ is
+  <p>\[
+   (1/n)\num{\Set*{i \in \upto{n}}{h(x_i) \neq y_i}},
+  \]</p></span>
+
+ <span class='run'>An <span class='term'>empirical error
+  minimizer</span> is a predictor whose empirical
+  error is minimal.</span>
+
+ <span class='run'>Since we assume that the dataset is consistent,
+  the correct labeling function is always an
+  empirical error minimizer, and achieves zero.</span>
+
+ <span class='run'>If the dataset is incomplete, however, there
+  may be other empirical error minimizers.</span>
+</p>
+
+
+<p>
+ <span class='run'>A family of inductors $(A^n)_n$ is an
+  <span class='term'>empirical error minimizer</span>
+  if, for each $n \in N$, and each dataset $D =
+  ((x_i, y_i))_{i = 1}^{n}$, $A^n(D)$ is an
+  empirical risk minimizer of $D$.</span>
+</p>
+
+<h1 id='Overfitting_and_incutive_bias'>Overfitting and incutive bias</h1>
+
+<p>
+ <span class='run'>Since a dataset may be incomplete, an empirical
+  risk minimizer may be a “poor} predictor.</span>
+
+ <span class='run'>For example, let $A \subset X \subset \R ^2$
+  and $Y = \set{0, 1}$.</span>
+
+ <span class='run'>Define $f: X \to Y$ by $f(x) = 1$ if $x \in
+  A$ and $f(x) = 0$ otherwise.</span>
+
+ <span class='run'>Suppose $A \in \mathcal{X} $ and $\mu (A) =
+  1/2$.</span>
+</p>
+
+
+<p>
+ <span class='run'>For any training set $(x_1, y_1), \dots , (x_n,
+  y_n)$ in $X \times Y$, the hypothesis $h: X \to
+  Y$ defined by $h(x) = y_i$ if $x = x_i$ and
+  $h(x) = 0$ otherwise achieves zero empirical
+  error but has “actual” error $1/2$.</span>
+
+ <span class='run'>The predictor is said to be
+  <span class='term'>overfit</span> or to exhibit
+  <span class='term'>overfitting</span>.</span>
+
+ <span class='run'>It is said to fit the training dataset “too
+  well.”</span>
+</p>
+
+
+<p>
+ <span class='run'>By adjusting the hypothesis class one may
+  “guard against” overfitting.</span>
+
+ <span class='run'>In this context, the constrained hypothesis
+  class is called an <span class='term'>inductive
+  bias</span>.</span>
+</p>
+
+<h2 id='Other_terminology'>Other terminology</h2>
+
+<p>
+ <span class='run'>Other terminology for the empirical error
+  includes <span class='term'>empirical risk</span>.</span>
+
+ <span class='run'>For these reasons, the learning paradigm of
+  selecting a predictor $h$ to minimizer the
+  empirical risk is called
+  <span class='term'>empirical risk minimization</span>
+  or <span class='term'>ERM</span>.</span>
+</p>
+
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1295,7 +1522,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> A natural and (conceptually) simple inductor is to select a predictor which achieves zero error on the training dataset.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(X, \CX, \mu)$ and $f: X \to Y$ be a probabilistic supervised data model. For a dataset $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the \t{empirical error} of a predictor $h: X \to Y$ is \[ (\nicefrac{1}{n})\num{\Set*{i \in \upto{n}}{h(x_i) \neq y_i}}, \] An \t{empirical error minimizer} is a predictor whose empirical error is minimal. Since we assume that the dataset is consistent, the correct labeling function is always an empirical error minimizer, and achieves zero. If the dataset is incomplete, however, there may be other empirical error minimizers.</p></div><div class="sheet-listing"><p class="sheet"> A family of inductors $(A^n)_n$ is an \t{empirical error minimizer} if, for each $n \in N$, and each dataset $D = ((x_i, y_i))_{i = 1}^{n}$, $A^n(D)$ is an empirical risk minimizer of $D$.</p></div><div class="sheet-listing" id="overfitting_and_incutive_bias"><h1 class="sheet">3. Overfitting and incutive bias</h1></div><div class="sheet-listing"><p class="sheet"> Since a dataset may be incomplete, an empirical risk minimizer may be a "poor" predictor. For example, let $A \subset X \subset \R^2$ and $Y = \set{0, 1}$. Define $f: X \to Y$ by $f(x) = 1$ if $x \in A$ and $f(x) = 0$ otherwise. Suppose $A \in \CX$ and $\mu(A) = \nicefrac{1}{2}$.</p></div><div class="sheet-listing"><p class="sheet"> For any training set $(x_1, y_1), \dots, (x_n, y_n)$ in $X \times Y$, the hypothesis $h: X \to Y$ defined by $h(x) = y_i$ if $x = x_i$ and $h(x) = 0$ otherwise achieves zero empirical error but has "actual} error $\nicefrac{1}{2"$. The predictor is said to be \t{overfit} or to exhibit \t{overfitting}. It is said to fit the training dataset "too well."</p></div><div class="sheet-listing"><p class="sheet"> By adjusting the hypothesis class one may "guard against" overfitting. In this context, the constrained hypothesis class is called an \t{inductive bias}.</p></div><div class="sheet-listing"><h2 class="sheet" id="other_terminology">3.1 Other terminology</h2></div><div class="sheet-listing"><p class="sheet"> Other terminology for the empirical error includes \t{empirical risk}. For these reasons, the learning paradigm of selecting a predictor $h$ to minimizer the empirical risk is called \t{empirical risk minimization} or \t{ERM}.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> A natural and (conceptually) simple inductor is to select a predictor which achieves zero error on the training dataset.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $(X, \mathcal{X} , \mu )$ and $f: X \to Y$ be a probabilistic supervised data model. For a dataset $(x_1, y_1), \dots , (x_n, y_n)$ in $X \times Y$, the \t{empirical error} of a predictor $h: X \to Y$ is \[ (1/n)\num{\Set*{i \in \upto{n}}{h(x_i) \neq y_i}}, \] An \t{empirical error minimizer} is a predictor whose empirical error is minimal. Since we assume that the dataset is consistent, the correct labeling function is always an empirical error minimizer, and achieves zero. If the dataset is incomplete, however, there may be other empirical error minimizers.</p></div><div class="sheet-listing"><p class="sheet"> A family of inductors $(A^n)_n$ is an \t{empirical error minimizer} if, for each $n \in N$, and each dataset $D = ((x_i, y_i))_{i = 1}^{n}$, $A^n(D)$ is an empirical risk minimizer of $D$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Overfitting and incutive bias}</p></div><div class="sheet-listing"><p class="sheet"> Since a dataset may be incomplete, an empirical risk minimizer may be a "poor" predictor. For example, let $A \subset X \subset \R ^2$ and $Y = \set{0, 1}$. Define $f: X \to Y$ by $f(x) = 1$ if $x \in A$ and $f(x) = 0$ otherwise. Suppose $A \in \mathcal{X} $ and $\mu (A) = 1/2$.</p></div><div class="sheet-listing"><p class="sheet"> For any training set $(x_1, y_1), \dots , (x_n, y_n)$ in $X \times Y$, the hypothesis $h: X \to Y$ defined by $h(x) = y_i$ if $x = x_i$ and $h(x) = 0$ otherwise achieves zero empirical error but has "actual" error $1/2$. The predictor is said to be \t{overfit} or to exhibit \t{overfitting}. It is said to fit the training dataset "too well."</p></div><div class="sheet-listing"><p class="sheet"> By adjusting the hypothesis class one may "guard against" overfitting. In this context, the constrained hypothesis class is called an \t{inductive bias}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Other terminology}</p></div><div class="sheet-listing"><p class="sheet"> Other terminology for the empirical error includes \t{empirical risk}. For these reasons, the learning paradigm of selecting a predictor $h$ to minimizer the empirical risk is called \t{empirical risk minimization} or \t{ERM}.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1449,7 +1676,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
+      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
     </span>
   </body>
 </html>

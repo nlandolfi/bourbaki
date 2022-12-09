@@ -674,6 +674,187 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./orders.html'" onkeypress="location.href='./orders.html'">
+                <span>
+                  Orders
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_order.html'" onkeypress="location.href='./real_order.html'">
+                <span>
+                  Real Order
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./optimization_problems.html'" onkeypress="location.href='./optimization_problems.html'">
+            <span>
+            Optimization Problems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./greatest_lower_bounds.pdf#page=2'" onkeypress="location.href='./greatest_lower_bounds.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./greatest_lower_bounds-graph.pdf'" onkeypress="location.href='./greatest_lower_bounds-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Greatest Lower Bounds </h1> 
+      <!--
+!name:greatest_lower_bounds
+!need:real_order
+!need:orders
+-->
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>Let $(A, \leq)$ be a chain.</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>lower bound</span> for $B
+  \subset A$ is an element $a \in A$ so that $a
+  \leq b$ for all $b \in B$.</span>
+
+ <span class='run'>A set is <span class='term'>bounded from
+  below</span> if it has a least upper bound.</span>
+
+ <span class='run'>A <span class='term'>greatest lower bound</span>
+  for $B$ is an element $c \in A$ so that $c$
+  is a lower bound and $c &lt; a$ for all other
+  lower bounds $a$.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>If there is a greatest lower bound it is
+  unique.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span></div>
+<p>
+ <span class='run'>We call the unique greatest lower bound of a
+  set (if it exists) the
+  <span class='term'>infimum</span>.</span>
+</p>
+
+<h1 id='Notation'>Notation</h1>
+
+<p>
+ <span class='run'>We denote the infimum of a set $B \subset A$
+  by $\inf A$.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Proof in future editions.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -728,7 +909,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why}\footnote{to_be_given_in_future_editions."><h1 class="sheet">1. Why}\footnote{To be given in future editions.</h1></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $(A, \leq)$ be a chain.</p></div><div class="sheet-listing"><p class="sheet"> A \t{lower bound} for $B \subset A$ is an element $a \in A$ so that $a \leq b$ for all $b \in B$. A set is \t{bounded from below} if it has a least upper bound. A \t{greatest lower bound} for $B$ is an element $c \in A$ so that $c$ is a lower bound and $c < a$ for all other lower bounds $a$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If there is a greatest lower bound it is unique.\footnote{Proof in future editions.} \end{proposition}</p></div><div class="sheet-listing"><p class="sheet"> We call the unique greatest lower bound of a set (if it exists) the \t{infimum}.</p></div><div class="sheet-listing" id="notation"><h1 class="sheet">3. Notation</h1></div><div class="sheet-listing"><p class="sheet"> We denote the infimum of a set $B \subset A$ by $\inf A$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $(A, \leq)$ be a chain.</p></div><div class="sheet-listing"><p class="sheet"> A \t{lower bound} for $B \subset A$ is an element $a \in A$ so that $a \leq b$ for all $b \in B$. A set is \t{bounded from below} if it has a least upper bound. A \t{greatest lower bound} for $B$ is an element $c \in A$ so that $c$ is a lower bound and $c < a$ for all other lower bounds $a$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} If there is a greatest lower bound it is unique.\footnote{Proof in future editions.}\end{proposition} We call the unique greatest lower bound of a set (if it exists) the \t{infimum}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the infimum of a set $B \subset A$ by $\inf A$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -882,7 +1063,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
+      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
     </span>
   </body>
 </html>

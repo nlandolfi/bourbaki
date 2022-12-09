@@ -986,6 +986,221 @@
 
 
 
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.4em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./measures.html'" onkeypress="location.href='./measures.html'">
+                <span>
+                  Measures
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        <div class="neednone2">None.</div>
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./complex_measures.pdf#page=2'" onkeypress="location.href='./complex_measures.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./complex_measures-graph.pdf'" onkeypress="location.href='./complex_measures-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Complex Measures </h1> 
+      <!--
+!name:complex_measures
+!need:measures
+-->
+
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>We allow measures to take complex values.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+</p>
+
+<h1 id='Definition'>Definition</h1>
+
+<p>
+ <span class='run'>A complex-valued</span>
+
+ <span class='run'>function on a</span>
+
+ <span class='run'>sigma algebra is</span>
+
+ <span class='run'><span class='term'>countably additive</span></span>
+
+ <span class='run'>if the result of the function applied to</span>
+
+ <span class='run'>the union of a disjoint countable family of</span>
+
+ <span class='run'>distinguished sets is the limit of the partial</span>
+
+ <span class='run'>sums of the results of the function applied</span>
+
+ <span class='run'>to each of the sets individually.</span>
+
+ <span class='run'>The limit of the partial sums must</span>
+
+ <span class='run'>exist irregardless of the summand order.</span>
+</p>
+
+
+<p>
+ <span class='run'>A <span class='term'>complex measure</span> is an
+  complex-valued function on a sigma algebra that
+  is</span>
+
+ <span class='run'>(1) zero on the empty set and</span>
+
+ <span class='run'>(2) countably additive.</span>
+
+ <span class='run'>We call the result of the function applied to
+  a set in the sigma algebra the
+  <span class='term'>complex measure</span> (or when
+  no ambiguity arises, the
+  <span class='term'>measure</span>) of the set.</span>
+</p>
+
+
+<p>
+ <span class='run'>Since the codomain of</span>
+
+ <span class='run'>a complex measures is</span>
+
+ <span class='run'>the complex numbers,</span>
+
+ <span class='run'>the sum corresponding</span>
+
+ <span class='run'>to every countable union</span>
+
+ <span class='run'>must be absolutely convergent (?).<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>We denote complex measures by $\mu $ a mnemonic
+  for “measure.”</span>
+
+ <span class='run'>Let $C$ denote the set of complex numbers.</span>
+
+ <span class='run'>Let $(X, \mathcal{A} )$ be a measurable space
+  and let $\mu : \mathcal{A}  \to C$.</span>
+
+ <span class='run'>Then $\mu $ is a complex measure if
+  <ol>
+   <li>$\mu (\varnothing) = 0$ and</li>
+
+   <li>$\mu (\cup_{i} A_i) = \lim_{n \to \infty} \sum_{k = 1}^{n}
+    \mu (A_k)$</li>
+
+   <span class='run'>for all disjoint families $\seq{A}$.</span>  </ol>
+</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will expand.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will define.</span> <a href='#footnote-2-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
 
 
 
@@ -1023,7 +1238,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We allow measures to take complex values.\footnote{Future editions will expand.}</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> A complex-valued function on a sigma algebra is \t{countably additive} if the result of the function applied to the union of a disjoint countable family of distinguished sets is the limit of the partial sums of the results of the function applied to each of the sets individually. The limit of the partial sums must exist irregardless of the summand order.</p></div><div class="sheet-listing"><p class="sheet"> A \t{complex measure} is an complex-valued function on a sigma algebra that is (1) zero on the empty set and (2) countably additive. We call the result of the function applied to a set in the sigma algebra the \t{complex measure} (or when no ambiguity arises, the \t{measure}) of the set.</p></div><div class="sheet-listing"><p class="sheet"> Since the codomain of a complex measures is the complex numbers, the sum corresponding to every countable union must be absolutely convergent (?) .\footnote{Future editions will define.}</p></div><div class="sheet-listing"><h2 class="sheet" id="notation">2.1 Notation</h2></div><div class="sheet-listing"><p class="sheet"> We denote complex measures by $\mu$ a mnemonic for "measure." Let $C$ denote the set of complex numbers. Let $(X, \mathcal{A})$ be a measurable space and let $\mu: \mathcal{A} \to C$. Then $\mu$ is a complex measure if \begin{enumerate} \item $\mu(\emptyset) = 0$ and \item $\mu(\union_{i} A_i) = \lim_{n \to \infty} \sum_{k = 1}^{n} \mu(A_k)$ for all disjoint families $\seq{A}$. \end{enumerate}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We allow measures to take complex values.\footnote{Future editions will expand.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A complex-valued function on a sigma algebra is \t{countably additive} if the result of the function applied to the union of a disjoint countable family of distinguished sets is the limit of the partial sums of the results of the function applied to each of the sets individually. The limit of the partial sums must exist irregardless of the summand order.</p></div><div class="sheet-listing"><p class="sheet"> A \t{complex measure} is an complex-valued function on a sigma algebra that is (1) zero on the empty set and (2) countably additive. We call the result of the function applied to a set in the sigma algebra the \t{complex measure} (or when no ambiguity arises, the \t{measure}) of the set.</p></div><div class="sheet-listing"><p class="sheet"> Since the codomain of a complex measures is the complex numbers, the sum corresponding to every countable union must be absolutely convergent (?).\footnote{Future editions will define.}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote complex measures by $\mu $ a mnemonic for "measure." Let $C$ denote the set of complex numbers. Let $(X, \mathcal{A} )$ be a measurable space and let $\mu : \mathcal{A}  \to C$. Then $\mu $ is a complex measure if \begin{enumerate} \item $\mu (\varnothing) = 0$ and \item $\mu (\cup_{i} A_i) = \lim_{n \to \infty} \sum_{k = 1}^{n} \mu (A_k)$ for all disjoint families $\seq{A}$. \end{enumerate}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1177,7 +1392,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 335682ebd.
+      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
     </span>
   </body>
 </html>

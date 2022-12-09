@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make directed_shortest_path_problems.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 directed_shortest_path_problems.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > directed_shortest_path_problems.tex
 
