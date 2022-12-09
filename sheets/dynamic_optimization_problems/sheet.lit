@@ -1,0 +1,83 @@
+<!--
+!name:dynamic_optimization_problems
+!need:controlled_dynamical_systems
+ below is no longer needed, moved to stochastic dynamical systems
+%!need:uncertain_outcomes
+-->
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $𝒟 = ((𝒳_t)_{t = 0}^{T}), (𝒰_t)_{t=0}^{T-1},
+    (f_t)_{t=1}^{T-1})$ be a dynamical system. ⦉
+
+  ‖ Let $g_t: 𝒳_t × 𝒰_t → 𝗥 ∪ \set{∞}$ for $t = 1$, $…$,
+    $T-1$ and let $g_{T}: 𝒳_T → 𝗥 ∪ \set{∞}$. ⦉
+
+  ‖ Let $x_0 ∈ 𝒳_0$. ⦉
+⦉
+
+¶ ⦊
+  ‖ We call the sequence $(x_0, 𝒟, (g_t)_{t = 1}^{T})$ a
+    ❬deterministic dynamic optimization problem❭. ⦉
+
+  ‖ We call $x_0$ the ❬initial state❭. ⦉
+
+  ‖ We call $g_t$ the ❬stage cost function❭ for stage $t$ and
+    call $g_T$ the ❬terminal cost function❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ A deterministic dynamic optimization problem corresponds to an
+    optimization problem with variables $u_0 ∈ 𝒰_0, …, u_{T-1} ∈
+    𝒰_{T-1}$. ⦉
+
+  ‖ Define $U = 𝒰_0 × 𝒰_1 × 𝒰_{T-1}$. ⦉
+
+  ‖ Define $J: U → 𝗥 ∪ \set{∞}$ by
+    ◇ ⦊
+      ‖ J(u) = ∑_{t = 0}^{T-1} g_t(x_t, u_t) + g_T(x_T) ⦉
+    ⦉
+    in which $x_{t+1} = f_t(x_t, u_t)$ for $t = 0, …, T-1$. ⦉
+
+  ‖ The optimization problem is $(U, J)$. ⦉
+
+  ‖ And so a dynamic optimization problem is just a (possibly
+    big) optimization problem. ⦉
+
+  ‖ We call $∑_{t = 0}^{T-1} g_t(x_t, u_t)$ the ❬total stage
+    cost❭ and we call $g_T(x_T)$ the ❬terminal stage cost❭. ⦉
+⦉
+
+§§ Notation ⦉
+¶ ⦊
+  ‖ We often write this problem as
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ \text{minimize}\quad ＆ ∑_{t = 1}^{T-1} g_t(x_t, u_t) +
+        g_T(x_T) ᜶ ⦉
+
+      ‖ \text{subject to}\quad ＆ x_{t+1} = f_t(x_t, u_t), \quad t
+        = 0, …, T-1. ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+⦉
+
+§ Other terminology and comments ⦉
+¶ ⦊
+  ‖ Dynamic optimization problems are frequently called
+    ❬deterministic optimal control❭ problems or ❬classical❭ or
+    ❬open-loop control❭ problems. ⦉
+
+  ‖ These problems are said to address the dynamic effect of
+    actions across time. ⦉
+
+  ‖ Although these models include no notion of “uncertainty” (or
+    “uncertain outcomes”, see␣
+    <a href='/sheets/uncertain_outcomes.html'>
+      ‖ Uncertain Outcomes ⦉
+    </a>
+    ), they are frequently applied in situations with uncertain
+    outcomes by ignoring the uncertainty in the application. ⦉
+⦉

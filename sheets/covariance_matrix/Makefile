@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make covariance_matrix.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 covariance_matrix.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > covariance_matrix.tex
 
