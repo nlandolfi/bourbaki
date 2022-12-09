@@ -1,0 +1,97 @@
+<!--
+!name:hypothesis_classes
+!need:supervised_probabilistic_data_models
+!refs:shai_shalev-schwartz2014understanding
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We consider the set of predictors from which we select. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Let $(X, 𝒳, μ)$ and $f: X → Y$ be probabilistic
+    data-generation model. ⦉
+
+  ‖ A ❬hypothesis class❭ $ℋ ⊂ (X → Y)$ is a subset of
+    measurable functions. ⦉
+
+  ‖ For a dataset $D ∈ (X × Y)^n$, a ❬restricted empirical
+    error minimizer❭ of $ℋ$ is a hypothesis $h ∈ ℋ$ with
+    minimal (among elements of $ℋ$) empirical error on $D$. ⦉
+⦉
+
+§§ Inductive bias ⦉
+¶ ⦊
+  ‖ Many authorities call the hypothesis class a ❬inductive bias❭
+    and speak of “biasing” the “learning algorithm”. ⦉
+
+  ‖ Since one specifies the hypothesis class prior to the data
+    it often said to “encode prior knowledge about the problem
+    to be learned.” ⦉
+⦉
+
+§ Realizable classes ⦉
+¶ ⦊
+  ‖ Some hypothesis classes are better than others. ⦉
+
+  ‖ For example, a hypothesis class that includes the correct
+    labeling function seems preferable to a class that does not. ⦉
+⦉
+
+¶ ⦊
+  ‖ We formulate a weaker condition that captures the case when
+    $f ∈ ℋ$. ⦉
+
+  ‖ A hypothesis class $ℋ$ is ❬realizable❭ if there exists
+    $h^{★} ∈ ℋ$ with
+    ◇ ⦊
+      ‖ μ(\Set{x ∈ X}{h^★(x) ≠ f(x)}) = 0.% ⦉
+    ⦉⦉
+
+  ‖ This condition is natural because if $f ∈ ℋ$, then $ℋ$ is
+    realizable. ⦉
+
+  ‖ Moreover, the condition has two natural corollaries ⦉
+⦉
+
+¶ ⦊
+  ‖ First, there exists $h^★$ so that
+    ◇ ⦊
+      ‖ μ^n(\Set*{x ∈ X^n}{\num{\Set*{i ∈ [n]}{h^★(x_i) ≠ f(x_i)}}
+        ≠ 0}) = 0. ⦉
+    ⦉⦉
+
+  ‖ We interpret this as follows: “there exists a hypothesis
+    whose probability of achieving nonzero empirical risk is zero.” ⦉
+⦉
+
+¶ ⦊
+  ‖ Second, denote by $M_x$ the empirical risk minimizers of $x
+    ∈ X^n$. ⦉
+
+  ‖ Then,
+    ◇ ⦊
+      ‖ μ^n(\Set*{x ∈ X^n}{∀ h ∈ M_x, ∀ i, h(x_i) = f(x_i)}) =
+        1. ⦉
+    ⦉⦉
+
+  ‖ We interpret this as follows: “all empirical risk minimizers
+    will achieve zero empirical risk on the dataset, with
+    probability 1.” ⦉
+⦉
+
+¶ ⦊
+  ‖ Roughly speaking, there exists a hypothesis for which the
+    event that it achieves zero empirical risk has probability
+    one. ⦉
+
+  ‖ In this event, every hypothesis in the set of empirical
+    risk minimizers must achieve zero empirical risk. ⦉
+
+  ‖ This is a consequence of the hypothesis class being
+    realizable. ⦉
+⦉
+
+<!--  see page 17 of shai_shalev-schwartz2014understanding for this. -->

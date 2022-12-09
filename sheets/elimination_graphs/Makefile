@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make elimination_graphs.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 elimination_graphs.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > elimination_graphs.tex
 

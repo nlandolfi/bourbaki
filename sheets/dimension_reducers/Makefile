@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make dimension_reducers.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 dimension_reducers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > dimension_reducers.tex
 

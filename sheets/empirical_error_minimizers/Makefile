@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make empirical_error_minimizers.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 empirical_error_minimizers.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > empirical_error_minimizers.tex
 

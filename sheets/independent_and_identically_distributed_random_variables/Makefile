@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make independent_and_identically_distributed_random_variables.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 independent_and_identically_distributed_random_variables.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > independent_and_identically_distributed_random_variables.tex
 

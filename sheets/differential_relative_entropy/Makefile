@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make differential_relative_entropy.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 differential_relative_entropy.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > differential_relative_entropy.tex
 

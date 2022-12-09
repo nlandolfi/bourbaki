@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make inverses_of_composite_relations.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 inverses_of_composite_relations.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inverses_of_composite_relations.tex
 
