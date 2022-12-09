@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make family_products_and_unions.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 family_products_and_unions.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > family_products_and_unions.tex
 

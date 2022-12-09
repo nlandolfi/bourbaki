@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make family_unions_and_intersections.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 family_unions_and_intersections.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > family_unions_and_intersections.tex
 

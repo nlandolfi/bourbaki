@@ -6,6 +6,9 @@ make:
 	make graph.pdf
 	make inverses_unions_intersections_and_complements.pdf
 
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
 inverses_unions_intersections_and_complements.tex: sheet.tex
 	bbk_sheet -mode c -in sheet.tex > inverses_unions_intersections_and_complements.tex
 
