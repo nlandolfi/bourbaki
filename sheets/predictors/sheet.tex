@@ -1,3 +1,4 @@
+
 %!name:predictors
 %!need:lists
 
@@ -7,27 +8,29 @@ We discuss inferring (or learning) functions from examples.
 
 \section*{Definitions}
 
-A \t{predictor} $f: \mathcal{U}  \to \mathcal{V} $ is a function from $\mathcal{U} $ to $\mathcal{V} $.
-An \t{inducer} is a function from finite datasets in $\mathcal{U}  \times  \mathcal{V} $ to predictors from $\mathcal{U} $ to $\mathcal{V} $.
-A \t{learner} is a function family of inducers, indexed by $n$, each defined for datasets of size $n$.
+Suppose $\mathcal{U} $ and $\mathcal{V} $ are two sets.
+A \t{predictor} from $\mathcal{U} $ to $\mathcal{V} $ is a function $f: \mathcal{U}  \to \mathcal{V} $.
 We call $\mathcal{U} $ the \t{inputs}, $\mathcal{V} $ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \mathcal{U} $.
+
+An \t{inductor} is a function from datasets in $\mathcal{U} \times  \mathcal{V} $ to predictors from $\mathcal{U} $ to $\mathcal{V} $.
+A \t{learner} (or \t{learning algorithm}) is a family of inductors whose index set is $\N  $, and whose $n$th term is is an inductor for a dataset of size $n$.
 
 \section*{Predicting relations}
 
-A \t{relation inducer} is a function from finite datasets in $\mathcal{U}  \times  \mathcal{V} $ to \textit{relations} on $\mathcal{U}  \times  \mathcal{V} $.
-Since we can associate any relation $R$ between $\mathcal{U} $ and $\mathcal{V} $ with a function $f: \mathcal{U}  \times \mathcal{V}  \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.
+A \t{relation inductor} is a function from finite datasets in $\mathcal{U}  \times  \mathcal{V} $ to \textit{relations} on $\mathcal{U}  \times  \mathcal{V} $.
+Since we can associate any relation $R$ between $\mathcal{U} $ and $\mathcal{V} $ with a function $f: \mathcal{U}  \times \mathcal{V}  \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case accomodates general relations, beyond functions.
 
 \subsection*{Notation}
 
 Let $D$ be a dataset of size $n$ in $\mathcal{U}  \times \mathcal{V} $.
 Let $g: \mathcal{U}  \to \mathcal{V} $, a predictor, which makes prediction $g(u)$ on input $u \in \mathcal{U} $.
-Let $G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to (\mathcal{U} \times  \mathcal{V} )$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$.
-Then $\set{G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to \powerset{(\mathcal{U}  \times  \mathcal{V} )}}_{n \in \N }$ is a learner.
+Let $G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to (\mathcal{U} \times  \mathcal{V} )$ be an inductor, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$.
+Then $\set{G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to \powerset{(\mathcal{U}  \times  \mathcal{V} )}}_{n \in \N  }$ is a learner.
 
 \section*{Consistent and complete datasets}
 
 Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R \subset X \times  Y$ a relation.
-$D$ is \t{consistent with $R$} if each $(u_i, v_i) \in R$.
+$D$ is \t{consistent with} $R$ if $(u_i, v_i) \in R$ for all $i = 1, \dots , n$.
 $D$ is \t{consistent} if there exists a relation with which it is consistent.
 A dataset is always consistent (take $R = \mathcal{U}  \times \mathcal{V} $).
 $D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \Rightarrow y_i = y_j$.
@@ -38,7 +41,7 @@ In this case, the dataset includes every element of the relation.
 
 Other terms for the inputs include \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns}, \t{instances}, or \t{observations}.
 Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}.
-An input, output pair is sometimes called a \t{record pair}.
+An input-output pair is sometimes called a \t{record pair}.
 
 Other terms for a learner include \t{learning algorithm}, or \t{supervised learning algorithm}.
-Other terms for a predictor include \t{input-output} mapping, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.
+Other terms for a predictor include \t{input-output mapping}, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.

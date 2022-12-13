@@ -1,5 +1,7 @@
+
 %!name:relations
 %!need:set_products
+%!need:ordered_pair_projections
 %refs:paul_halmos∕naive_set_theory∕section_07
 %!refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕relations
 
@@ -9,17 +11,16 @@ How can we relate the elements of two sets?
 
 \section*{Definition}
 
-A \t{relation} is a set of ordered pairs (see \sheetref{ordered_pairs}{Ordered Pairs}
-).
-So if an object $z$ is an element of a relation, there exists two other objects $x, y$ so that $z = (x, y)$.
+A \t{relation} is a set of ordered pairs (see \sheetref{ordered_pairs}{Ordered Pairs}).
+So if an object $z$ is an element of a relation, there exist two other objects $x$ and $y$ so that $z = (x, y)$.
 
-The \t{domain} of a relation is the set of all elements which appear as the first coordinate of some ordered pair of the relation (the projection onto the first coordinate, see \sheetref{ordered_pair_projections}{Ordered Pair Projections}
-)
+\subsection*{Domain and range}
+
+The \t{domain} of a relation is the set of all elements which appear as the first coordinate of some ordered pair of the relation (the projection onto the first coordinate, see \sheetref{ordered_pair_projections}{Ordered Pair Projections}).
 The \t{range} of a relation is the set of all elements which appear as the second coordinate of some ordered pair of the relation (the projection onto the second coordinate).
 
-When the domain of a relation $R$ is a subset of $X$ and the range is a subset of $Y$, we say $R$ is \t{from $X$ to $Y$} or \t{between} $X$ and $Y$.
-If $X = Y$, then $R$ speak of a relation \t{in} or \t{on} $X$.
-
+When the domain of a relation $R$ is a subset of $X$ and the range is a subset of $Y$, we say $R$ is a relation \t{between} $X$ and $Y$ or (\t{from} $X$ \t{to} $Y$).
+If $X = Y$, then we speak of $R$ as a relation \t{on} (or \t{in}) $X$.
 
 %<div data-littype='paragraph'>
 %  <div data-littype='run'> ❲% Let $A$ and $B$ be two nonempty sets.❳ </div>
@@ -35,35 +36,43 @@ If $X = Y$, then $R$ speak of a relation \t{in} or \t{on} $X$.
 
 \subsection*{Notation}
 
-If $R$ is a relation, we express that $(x, y) \in R$ by writing $x\,R\,y$, which we read as \say{$x$ is in relation $R$ to $y$}.
+If $R$ is a relation, we express that $(x, y) \in R$ by writing $x\,R\,y$, which we read aloud as \say{$x$ is in relation $R$ to $y$}.
 We denote the domain of $R$ by $\dom R$ and the range of $R$ by $\ran R$.
 
 \section*{Examples}
 
+\subsection*{Empty relation}
+
 For an uninteresting relation, consider the empty set.
+We call the empty set the \t{empty relation}.
 In the empty (set) relation, no object is related to any other.
 Both the domain and range of $\varnothing$ are $\varnothing$.
-For another simple relation, consider the product of any two sets $X$ and $Y$.
+
+\subsection*{Total relation}
+
+Next, consider the product of any two sets $X$ and $Y$.
 In $X \times  Y$, all objects are related.
 The domain is $X$ and the range is $Y$.
+
+\subsection*{Equality}
 
 For a more interesting example, define $R \subset X \times  X$ by
     \[
 R = \Set{(x, y) \in X \times  X}{x = y}.
     \]
-This relation is the relation of equality (see \sheetref{identities}{Identities}
-) between two objects.
+This relation is the \t{relation of equality} (see \sheetref{identities}{Identities}) between two objects.
 Here $x\,R\,y \iff x = y$.
 $\dom R = \ran R = X$.
+
+\subsection*{Belonging}
+
 Another similar example is if we consider the set $X$ and $\powerset{X}$, and the relation
     \[
 R := \Set{(x, y) \in X \times  \powerset{X}}{x \in y}.
     \]
-This relation is the relation of belonging (see \sheetref{sets}{Sets}
-).
+This relation is the \t{relation of belonging} (see \sheetref{sets}{Sets}).
 Here $x\,R\,y \iff x \in y$.
 Here $\dom R = X$ and $\ran R = \powerset{X}$.
-
 
 %<div data-littype='paragraph'>
 %  <div data-littype='run'> ❲% \ssubsection{Notation}❳ </div>
@@ -85,15 +94,18 @@ Here $\dom R = X$ and $\ran R = \powerset{X}$.
 \section*{Properties}
 
 Often relations are defined over a single set, and there are a few useful properties to distinguish.
+  \begin{itemize}
+    \item A relation is \t{reflexive} if every element is related to itself.
+    \item A relation is \t{symmetric} if two objects are related regardless of their order.
+    \item A relation is \t{transitive} if a first element is related to a second element and the second element is related to the third element, then the first and third element are related.
+  \end{itemize}
 
-A relation is \t{reflexive} if every element is related to itself.
-A relation is \t{symmetric} if two objects are related regardless of their order.
-  %  <div data-littype='run'> ❲% A relation is ❬antisymmetric❭{antisymmetric} if two different objects are related only in one order, and never both.❳ </div>
 
-A relation is \t{transitive} if a first element is related to a second element and the second element is related to the third element, then the first and third element are related.
+%  <div data-littype='run'> ❲% A relation is ❬antisymmetric❭{antisymmetric} if two different objects are related only in one order, and never both.❳ </div>
+%  
+
 Equality is reflexive, symmetric and transitive whereas belonging is neither.
 Exercise: what is inclusion?
-
 
 %<div data-littype='paragraph'>
 %  <div data-littype='run'> </div>

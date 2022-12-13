@@ -1,6 +1,7 @@
 <!--
 !name:relations
 !need:set_products
+!need:ordered_pair_projections
 refs:paul_halmos∕naive_set_theory∕section_07
 !refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕relations
 -->
@@ -12,24 +13,25 @@ refs:paul_halmos∕naive_set_theory∕section_07
 
 § Definition ⦉
 ¶ ⦊
-  ‖ A ❬relation❭ is a set of ordered pairs (see
+  ‖ A ❬relation❭ is a set of ordered pairs (see␣
     <a href='/sheets/ordered_pairs.html'>
       ‖ Ordered Pairs ⦉
     </a>
     ). ⦉
 
   ‖ So if an object $z$ is an element of a relation, there
-    exists two other objects $x, y$ so that $z = (x, y)$. ⦉
+    exist two other objects $x$ and $y$ so that $z = (x, y)$. ⦉
 ⦉
 
+§§ Domain and range ⦉
 ¶ ⦊
   ‖ The ❬domain❭ of a relation is the set of all elements
     which appear as the first coordinate of some ordered pair of
-    the relation (the projection onto the first coordinate, see
+    the relation (the projection onto the first coordinate, see␣
     <a href='/sheets/ordered_pair_projections.html'>
       ‖ Ordered Pair Projections ⦉
     </a>
-    ) ⦉
+    ). ⦉
 
   ‖ The ❬range❭ of a relation is the set of all elements which
     appear as the second coordinate of some ordered pair of the
@@ -38,11 +40,11 @@ refs:paul_halmos∕naive_set_theory∕section_07
 
 ¶ ⦊
   ‖ When the domain of a relation $R$ is a subset of $X$ and
-    the range is a subset of $Y$, we say $R$ is ❬from $X$ to
-    $Y$❭ or ❬between❭ $X$ and $Y$. ⦉
+    the range is a subset of $Y$, we say $R$ is a relation
+    ❬between❭ $X$ and $Y$ or (❬from❭ $X$ ❬to❭ $Y$). ⦉
 
-  ‖ If $X = Y$, then $R$ speak of a relation ❬in❭ or ❬on❭
-    $X$. ⦉
+  ‖ If $X = Y$, then we speak of $R$ as a relation ❬on❭ (or
+    ❬in❭) $X$. ⦉
 ⦉
 
 <!--
@@ -70,37 +72,44 @@ refs:paul_halmos∕naive_set_theory∕section_07
 §§ Notation ⦉
 ¶ ⦊
   ‖ If $R$ is a relation, we express that $(x, y) ∈ R$ by
-    writing $x\,R\,y$, which we read as “$x$ is in relation $R$
-    to $y$}. ⦉
+    writing $x\,R\,y$, which we read aloud as “$x$ is in
+    relation $R$ to $y$”. ⦉
 
   ‖ We denote the domain of $R$ by $\dom R$ and the range of
     $R$ by $\ran R$. ⦉
 ⦉
 
 § Examples ⦉
+
+§§ Empty relation ⦉
 ¶ ⦊
   ‖ For an uninteresting relation, consider the empty set. ⦉
+
+  ‖ We call the empty set the ❬empty relation❭. ⦉
 
   ‖ In the empty (set) relation, no object is related to any
     other. ⦉
 
   ‖ Both the domain and range of $∅$ are $∅$. ⦉
+⦉
 
-  ‖ For another simple relation, consider the product of any two
-    sets $X$ and $Y$. ⦉
+§§ Total relation ⦉
+¶ ⦊
+  ‖ Next, consider the product of any two sets $X$ and $Y$. ⦉
 
   ‖ In $X × Y$, all objects are related. ⦉
 
   ‖ The domain is $X$ and the range is $Y$. ⦉
 ⦉
 
+§§ Equality ⦉
 ¶ ⦊
   ‖ For a more interesting example, define $R ⊂ X × X$ by
     ◇ ⦊
       ‖ R = \Set{(x, y) ∈ X × X}{x = y}. ⦉
     ⦉⦉
 
-  ‖ This relation is the relation of equality (see
+  ‖ This relation is the ❬relation of equality❭ (see␣
     <a href='/sheets/identities.html'>
       ‖ Identities ⦉
     </a>
@@ -109,14 +118,17 @@ refs:paul_halmos∕naive_set_theory∕section_07
   ‖ Here $x\,R\,y \iff x = y$. ⦉
 
   ‖ $\dom R = \ran R = X$. ⦉
+⦉
 
+§§ Belonging ⦉
+¶ ⦊
   ‖ Another similar example is if we consider the set $X$ and
     $\powerset{X}$, and the relation
     ◇ ⦊
       ‖ R := \Set{(x, y) ∈ X × \powerset{X}}{x ∈ y}. ⦉
     ⦉⦉
 
-  ‖ This relation is the relation of belonging (see
+  ‖ This relation is the ❬relation of belonging❭ (see␣
     <a href='/sheets/sets.html'>
       ‖ Sets ⦉
     </a>
@@ -163,22 +175,24 @@ refs:paul_halmos∕naive_set_theory∕section_07
 ¶ ⦊
   ‖ Often relations are defined over a single set, and there
     are a few useful properties to distinguish. ⦉
+  ⁝ ⦊
+    ‣ A relation is ❬reflexive❭ if every element is related to
+      itself. ⦉
+
+    ‣ A relation is ❬symmetric❭ if two objects are related
+      regardless of their order. ⦉
+
+    ‣ A relation is ❬transitive❭ if a first element is related
+      to a second element and the second element is related to
+      the third element, then the first and third element are
+      related. ⦉
+  ⦉
 ⦉
 
 ¶ ⦊
-  ‖ A relation is ❬reflexive❭ if every element is related to
-    itself. ⦉
-
-  ‖ A relation is ❬symmetric❭ if two objects are related
-    regardless of their order. ⦉
-
   <!--
   <div data-littype='run'> ❲% A relation is ❬antisymmetric❭{antisymmetric} if two different objects are related only in one order, and never both.❳ </div>
   -->
-
-  ‖ A relation is ❬transitive❭ if a first element is related to
-    a second element and the second element is related to the
-    third element, then the first and third element are related. ⦉
 
   ‖ Equality is reflexive, symmetric and transitive whereas
     belonging is neither. ⦉

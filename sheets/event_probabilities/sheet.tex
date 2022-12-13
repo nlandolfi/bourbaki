@@ -11,11 +11,16 @@ Since one and only one outcome occurs, given a distribution on outcomes, we defi
 Suppose $p$ is a distribution on $\Omega $.
 For any event $A \subset \Omega $, we call the value $\sum_{a \in A} p(a)$ the \t{event probability}.
 We refer to the probability \textit{of} $A$.
-The probability $A$ is the sum of the probabilities of its outcomes.
+The probability of $A$ is the sum of the probabilities of its outcomes.
+
+\subsection*{Notation}
 
 We can define a function $\mathbfsf{P} : \powerset{\Omega } \to \R $ by $\mathbfsf{P} (A) = \sum_{a \in A} p(a)$.
 We call $\mathbfsf{P} $ \t{the event probability function} (or \t{the probability measure}) induced by $p$.
 Since $\mathbfsf{P} $ depends on the sample space $\Omega $ and the distribution $p$, we ocassionally denote this dependence by $\mathbfsf{P} _{\Omega , p}$ or $\mathbfsf{P} _p$.
+
+Many authors associate an event $A \subset \Omega $ with a function $\pi : \Omega  \to \set{0, 1}$ so that $A = \Set*{\omega  \in \Omega }{\pi (\omega ) = 1}$.
+In this context, it is common to write $\mathbfsf{P} [\pi (\omega )]$ for $\mathbfsf{P} (A)$.
 
 \section*{Example: die}
 
@@ -38,18 +43,20 @@ This statement follows from the more general identity
           \[
 \mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap  B)
           \]
-for $A, B \subset \Omega $, by using $P(\varnothing) = 0$ of (2) above.
+for $A, B \subset \Omega $, by using $\mathbfsf{P} (\varnothing) = 0$ of (2) above.
     \end{enumerate}
 
-Do all such $\mathbfsf{P} $ satisfying (1)-(3) have a corresponding underlying probability distribution?
-In other words, suppose $f: \powerset{\Omega } \to \R $ satifies (1)-(3).
 These three conditions are sometimes called the \t{axioms of probability for finite sets}.
+Do all such $\mathbfsf{P} $ satisfying (1)-(3) have a corresponding underlying probability distribution?
 
+In other words, suppose $f: \powerset{\Omega } \to \R $ satifies (1)-(3).
 Define $q: \Omega  \to \R $ by $q(\omega ) = f(\set{\omega })$.
 If $f$ satisfies the axioms, then $q$ is a probability distribution.
-For this reason we call any function satisfying (i)-(iii) an \t{event probability function} (or a \t{probability measure}).
+For this reason we call any function satisfying (i)-(iii) an \t{event probability function} (or a \t{(finite) probability measure}).
 
-\section*{Probability by cases}
+\section*{Other basic consequences}
+
+\subsection*{Probability by cases}
 
 Let $\mathbfsf{P} $ be a probability event function.
 Suppose $A_1, \dots , A_n$ partition $\Omega $.
@@ -59,3 +66,14 @@ Then for any $B \subset \Omega $,
 \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i \cap  B).
     \]
 Some authors call this the \t{law of total probability}.
+
+\subsection*{Monotonicity}
+
+If $A \subseteq B$, then $\mathbfsf{P} (A) \leq P(B)$.
+This is easy to see by splitting $B$ into $A \cap  B$ and $B \setminus A$, and applying (1) and (3).
+
+\subsection*{Subadditivity}
+
+For $A, B \subset \Omega $, $\mathbfsf{P} (A \cup B) \leq \mathbfsf{P} (A) + \mathbfsf{P} (B)$.
+This is easy to see from the more general identity in (3) above.
+This is sometimes referred to as a \t{union bound}, in reference to \textit{bounding} the quantity $\mathbfsf{P} (A \cup B)$.
