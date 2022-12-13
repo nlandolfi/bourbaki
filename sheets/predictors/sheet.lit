@@ -10,27 +10,32 @@
 
 § Definitions ⦉
 ¶ ⦊
-  ‖ A ❬predictor❭ $f: 𝒰 → 𝒱$ is a function from $𝒰$ to $𝒱$. ⦉
+  ‖ Suppose $𝒰$ and $𝒱$ are two sets. ⦉
 
-  ‖ An ❬inducer❭ is a function from finite datasets in $𝒰 × 𝒱$
-    to predictors from $𝒰$ to $𝒱$. ⦉
-
-  ‖ A ❬learner❭ is a function family of inducers, indexed by
-    $n$, each defined for datasets of size $n$. ⦉
+  ‖ A ❬predictor❭ from $𝒰$ to $𝒱$ is a function $f: 𝒰 → 𝒱$. ⦉
 
   ‖ We call $𝒰$ the ❬inputs❭, $𝒱$ the ❬outputs❭, and $f(u)$ the
     ❬prediction❭ of $f$ on $u ∈ 𝒰$. ⦉
 ⦉
 
+¶ ⦊
+  ‖ An ❬inductor❭ is a function from datasets in $𝒰 × 𝒱$ to
+    predictors from $𝒰$ to $𝒱$. ⦉
+
+  ‖ A ❬learner❭ (or ❬learning algorithm❭) is a family of
+    inductors whose index set is $𝗡$, and whose $n$th term is
+    is an inductor for a dataset of size $n$. ⦉
+⦉
+
 § Predicting relations ⦉
 ¶ ⦊
-  ‖ A ❬relation inducer❭ is a function from finite datasets in
+  ‖ A ❬relation inductor❭ is a function from finite datasets in
     $𝒰 × 𝒱$ to ‹relations› on $𝒰 × 𝒱$. ⦉
 
   ‖ Since we can associate any relation $R$ between $𝒰$ and $𝒱$
     with a function $f: 𝒰 × 𝒱 → \set{0, 1}$, $f(u, v) = 1$
-    if and only if $(u, v) ∈ R$, the predictor case can
-    accomodate learning general relations, beyond functions. ⦉
+    if and only if $(u, v) ∈ R$, the predictor case accomodates
+    general relations, beyond functions. ⦉
 ⦉
 
 §§ Notation ⦉
@@ -40,7 +45,7 @@
   ‖ Let $g: 𝒰 → 𝒱$, a predictor, which makes prediction $g(u)$
     on input $u ∈ 𝒰$. ⦉
 
-  ‖ Let $G_n: (𝒰 × 𝒱)^n → (𝒰 × 𝒱)$ be an inducer, so that
+  ‖ Let $G_n: (𝒰 × 𝒱)^n → (𝒰 × 𝒱)$ be an inductor, so that
     $G_n(D)$ is the predictor which the inductor associates with
     dataset $D$. ⦉
 
@@ -53,7 +58,8 @@
   ‖ Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R ⊂
     X × Y$ a relation. ⦉
 
-  ‖ $D$ is ❬consistent with $R$❭ if each $(u_i, v_i) ∈ R$. ⦉
+  ‖ $D$ is ❬consistent with❭ $R$ if $(u_i, v_i) ∈ R$ for all
+    $i = 1, …, n$. ⦉
 
   ‖ $D$ is ❬consistent❭ if there exists a relation with which
     it is consistent. ⦉
@@ -79,13 +85,13 @@
     ❬explained variables❭, ❬postcepts❭, ❬targets❭, ❬outcomes❭,
     ❬labels❭ or ❬observational outcomes❭. ⦉
 
-  ‖ An input, output pair is sometimes called a ❬record pair❭. ⦉
+  ‖ An input-output pair is sometimes called a ❬record pair❭. ⦉
 ⦉
 
 ¶ ⦊
   ‖ Other terms for a learner include ❬learning algorithm❭, or
     ❬supervised learning algorithm❭. ⦉
 
-  ‖ Other terms for a predictor include ❬input-output❭ mapping,
+  ‖ Other terms for a predictor include ❬input-output mapping❭,
     ❬prediction rule❭, ❬hypothesis❭, ❬concept❭, or ❬classifier❭. ⦉
 ⦉

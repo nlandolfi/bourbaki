@@ -37,7 +37,7 @@
             ['\\[', '\\]']
           ],
         macros: {
-                powerset: ["2^{#1}", 1],
+                powerset: ["\\mathcal{P}(#1)", 1],
                 CV: "\\mathcal{V}",
                 ceil: ["\\lceil #1 \\rceil", 1],
                 num: ["\\abs{#1}",1],
@@ -149,7 +149,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 20 0 -->
+      <!-- 21 0 -->
 
 <!-- % objects macros -->
 
@@ -435,14 +435,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\union}{\,\cup\,} -->
-
-\newcommand{\union}{\,\cup\,}
-
-<!-- \newcommand{\bunion}{\bigcup} -->
-
-\newcommand{\bunion}{\bigcup}
-
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -530,6 +522,14 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\union}{\,\cup\,} -->
+
+\newcommand{\union}{\,\cup\,}
+
+<!-- \newcommand{\bunion}{\bigcup} -->
+
+\newcommand{\bunion}{\bigcup}
     </span>
 
 
@@ -627,6 +627,13 @@
         <div class="needlabel2"> Needs: </div>
         
           
+              <div class="need2" tabindex="0" onclick="location.href='./ordered_pair_projections.html'" onkeypress="location.href='./ordered_pair_projections.html'">
+                <span>
+                  Ordered Pair Projections
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
               <div class="need2" tabindex="0" onclick="location.href='./set_products.html'" onkeypress="location.href='./set_products.html'">
                 <span>
                   Set Products
@@ -692,6 +699,7 @@
       <!--
 !name:relations
 !need:set_products
+!need:ordered_pair_projections
 refs:paul_halmos∕naive_set_theory∕section_07
 !refs:bert_mendelson∕introduction_to_topology∕theory_of_sets∕relations
 -->
@@ -706,20 +714,21 @@ refs:paul_halmos∕naive_set_theory∕section_07
 
 <p>
  <span class='run'>A <span class='term'>relation</span> is a set of
-  ordered pairs (see<a href='/sheets/ordered_pairs.html'/><span class='run'>Ordered Pairs</span></a>).</span>
+  ordered pairs (see&nbsp;<a href='/sheets/ordered_pairs.html'/><span class='run'>Ordered Pairs</span></a>).</span>
 
  <span class='run'>So if an object $z$ is an element of a
-  relation, there exists two other objects $x, y$
-  so that $z = (x, y)$.</span>
+  relation, there exist two other objects $x$ and
+  $y$ so that $z = (x, y)$.</span>
 </p>
 
+<h2 id='Domain_and_range'>Domain and range</h2>
 
 <p>
  <span class='run'>The <span class='term'>domain</span> of a relation
   is the set of all elements which appear as the
   first coordinate of some ordered pair of the
   relation (the projection onto the first
-  coordinate, see<a href='/sheets/ordered_pair_projections.html'/><span class='run'>Ordered Pair Projections</span></a>)</span>
+  coordinate, see&nbsp;<a href='/sheets/ordered_pair_projections.html'/><span class='run'>Ordered Pair Projections</span></a>).</span>
 
  <span class='run'>The <span class='term'>range</span> of a relation
   is the set of all elements which appear as the
@@ -732,13 +741,14 @@ refs:paul_halmos∕naive_set_theory∕section_07
 <p>
  <span class='run'>When the domain of a relation $R$ is a subset
   of $X$ and the range is a subset of $Y$, we
-  say $R$ is <span class='term'>from $X$ to
-  $Y$</span> or <span class='term'>between</span> $X$
-  and $Y$.</span>
+  say $R$ is a relation
+  <span class='term'>between</span> $X$ and $Y$ or
+  (<span class='term'>from</span> $X$
+  <span class='term'>to</span> $Y$).</span>
 
- <span class='run'>If $X = Y$, then $R$ speak of a relation
-  <span class='term'>in</span> or
-  <span class='term'>on</span> $X$.</span>
+ <span class='run'>If $X = Y$, then we speak of $R$ as a
+  relation <span class='term'>on</span> (or
+  <span class='term'>in</span>) $X$.</span>
 </p>
 
 
@@ -768,8 +778,8 @@ refs:paul_halmos∕naive_set_theory∕section_07
 
 <p>
  <span class='run'>If $R$ is a relation, we express that $(x, y)
-  \in R$ by writing $x\,R\,y$, which we read as
-  “$x$ is in relation $R$ to $y$}.</span>
+  \in R$ by writing $x\,R\,y$, which we read
+  aloud as “$x$ is in relation $R$ to $y$”.</span>
 
  <span class='run'>We denote the domain of $R$ by $\dom R$ and
   the range of $R$ by $\ran R$.</span>
@@ -777,24 +787,34 @@ refs:paul_halmos∕naive_set_theory∕section_07
 
 <h1 id='Examples'>Examples</h1>
 
+<h2 id='Empty_relation'>Empty relation</h2>
+
 <p>
  <span class='run'>For an uninteresting relation, consider the
   empty set.</span>
+
+ <span class='run'>We call the empty set the
+  <span class='term'>empty relation</span>.</span>
 
  <span class='run'>In the empty (set) relation, no object is
   related to any other.</span>
 
  <span class='run'>Both the domain and range of $\varnothing$ are
   $\varnothing$.</span>
+</p>
 
- <span class='run'>For another simple relation, consider the
-  product of any two sets $X$ and $Y$.</span>
+<h2 id='Total_relation'>Total relation</h2>
+
+<p>
+ <span class='run'>Next, consider the product of any two sets $X$
+  and $Y$.</span>
 
  <span class='run'>In $X \times  Y$, all objects are related.</span>
 
  <span class='run'>The domain is $X$ and the range is $Y$.</span>
 </p>
 
+<h2 id='Equality'>Equality</h2>
 
 <p>
  <span class='run'>For a more interesting example, define $R
@@ -803,19 +823,25 @@ refs:paul_halmos∕naive_set_theory∕section_07
    R = \Set{(x, y) \in X \times  X}{x = y}.
   \]</p></span>
 
- <span class='run'>This relation is the relation of equality (see<a href='/sheets/identities.html'/><span class='run'>Identities</span></a>) between two objects.</span>
+ <span class='run'>This relation is the <span class='term'>relation
+  of equality</span> (see&nbsp;<a href='/sheets/identities.html'/><span class='run'>Identities</span></a>) between two objects.</span>
 
  <span class='run'>Here $x\,R\,y \iff x = y$.</span>
 
  <span class='run'>$\dom R = \ran R = X$.</span>
+</p>
 
+<h2 id='Belonging'>Belonging</h2>
+
+<p>
  <span class='run'>Another similar example is if we consider the
   set $X$ and $\powerset{X}$, and the relation
   <p>\[
    R := \Set{(x, y) \in X \times  \powerset{X}}{x \in y}.
   \]</p></span>
 
- <span class='run'>This relation is the relation of belonging (see<a href='/sheets/sets.html'/><span class='run'>Sets</span></a>).</span>
+ <span class='run'>This relation is the <span class='term'>relation
+  of belonging</span> (see&nbsp;<a href='/sheets/sets.html'/><span class='run'>Sets</span></a>).</span>
 
  <span class='run'>Here $x\,R\,y \iff x \in y$.</span>
 
@@ -861,25 +887,25 @@ refs:paul_halmos∕naive_set_theory∕section_07
  <span class='run'>Often relations are defined over a single set,
   and there are a few useful properties to
   distinguish.</span>
+ <ul>
+  <li>A relation is <span class='term'>reflexive</span> if every
+   element is related to itself.</li>
+
+  <li>A relation is <span class='term'>symmetric</span> if two
+   objects are related regardless of their order.</li>
+
+  <li>A relation is <span class='term'>transitive</span> if a first
+   element is related to a second element and the second
+   element is related to the third element, then the first
+   and third element are related.</li> </ul>
+
 </p>
 
 
 <p>
- <span class='run'>A relation is <span class='term'>reflexive</span>
-  if every element is related to itself.</span>
-
- <span class='run'>A relation is <span class='term'>symmetric</span>
-  if two objects are related regardless of their
-  order.</span>
  <!--
   <div data-littype='run'> ❲% A relation is ❬antisymmetric❭{antisymmetric} if two different objects are related only in one order, and never both.❳ </div>
   -->
-
- <span class='run'>A relation is <span class='term'>transitive</span>
-  if a first element is related to a second
-  element and the second element is related to
-  the third element, then the first and third
-  element are related.</span>
 
  <span class='run'>Equality is reflexive, symmetric and transitive
   whereas belonging is neither.</span>
@@ -959,6 +985,13 @@ refs:paul_halmos∕naive_set_theory∕section_07
       
         <div disabled class="need label"> Needs: </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./ordered_pair_projections.html'" onkeypress="location.href='./ordered_pair_projections.html'">
+              <span>
+                Ordered Pair Projections
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
             <div class="need" tabindex="0" onclick="location.href='./set_products.html'" onkeypress="location.href='./set_products.html'">
               <span>
                 Set Products
@@ -1011,7 +1044,7 @@ refs:paul_halmos∕naive_set_theory∕section_07
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How can we relate the elements of two sets?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{relation} is a set of ordered pairs (see \sheetref{ordered_pairs}{Ordered Pairs} ). So if an object $z$ is an element of a relation, there exists two other objects $x, y$ so that $z = (x, y)$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{domain} of a relation is the set of all elements which appear as the first coordinate of some ordered pair of the relation (the projection onto the first coordinate, see \sheetref{ordered_pair_projections}{Ordered Pair Projections} ) The \t{range} of a relation is the set of all elements which appear as the second coordinate of some ordered pair of the relation (the projection onto the second coordinate).</p></div><div class="sheet-listing"><p class="sheet"> When the domain of a relation $R$ is a subset of $X$ and the range is a subset of $Y$, we say $R$ is \t{from $X$ to $Y$} or \t{between} $X$ and $Y$. If $X = Y$, then $R$ speak of a relation \t{in} or \t{on} $X$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> If $R$ is a relation, we express that $(x, y) \in R$ by writing $x\,R\,y$, which we read as "$x$ is in relation $R$ to $y$". We denote the domain of $R$ by $\dom R$ and the range of $R$ by $\ran R$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> For an uninteresting relation, consider the empty set. In the empty (set) relation, no object is related to any other. Both the domain and range of $\varnothing$ are $\varnothing$. For another simple relation, consider the product of any two sets $X$ and $Y$. In $X \times  Y$, all objects are related. The domain is $X$ and the range is $Y$.</p></div><div class="sheet-listing"><p class="sheet"> For a more interesting example, define $R \subset X \times  X$ by \[ R = \Set{(x, y) \in X \times  X}{x = y}. \] This relation is the relation of equality (see \sheetref{identities}{Identities} ) between two objects. Here $x\,R\,y \iff x = y$. $\dom R = \ran R = X$. Another similar example is if we consider the set $X$ and $\powerset{X}$, and the relation \[ R := \Set{(x, y) \in X \times  \powerset{X}}{x \in y}. \] This relation is the relation of belonging (see \sheetref{sets}{Sets} ). Here $x\,R\,y \iff x \in y$. Here $\dom R = X$ and $\ran R = \powerset{X}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> Often relations are defined over a single set, and there are a few useful properties to distinguish.</p></div><div class="sheet-listing"><p class="sheet"> A relation is \t{reflexive} if every element is related to itself. A relation is \t{symmetric} if two objects are related regardless of their order.</p></div><div class="sheet-listing"><p class="sheet"> A relation is \t{transitive} if a first element is related to a second element and the second element is related to the third element, then the first and third element are related. Equality is reflexive, symmetric and transitive whereas belonging is neither. Exercise: what is inclusion?</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How can we relate the elements of two sets?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{relation} is a set of ordered pairs (see \sheetref{ordered_pairs}{Ordered Pairs}). So if an object $z$ is an element of a relation, there exist two other objects $x$ and $y$ so that $z = (x, y)$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Domain and range}</p></div><div class="sheet-listing"><p class="sheet"> The \t{domain} of a relation is the set of all elements which appear as the first coordinate of some ordered pair of the relation (the projection onto the first coordinate, see \sheetref{ordered_pair_projections}{Ordered Pair Projections}). The \t{range} of a relation is the set of all elements which appear as the second coordinate of some ordered pair of the relation (the projection onto the second coordinate).</p></div><div class="sheet-listing"><p class="sheet"> When the domain of a relation $R$ is a subset of $X$ and the range is a subset of $Y$, we say $R$ is a relation \t{between} $X$ and $Y$ or (\t{from} $X$ \t{to} $Y$). If $X = Y$, then we speak of $R$ as a relation \t{on} (or \t{in}) $X$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> If $R$ is a relation, we express that $(x, y) \in R$ by writing $x\,R\,y$, which we read aloud as "$x$ is in relation $R$ to $y$". We denote the domain of $R$ by $\dom R$ and the range of $R$ by $\ran R$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Empty relation}</p></div><div class="sheet-listing"><p class="sheet"> For an uninteresting relation, consider the empty set. We call the empty set the \t{empty relation}. In the empty (set) relation, no object is related to any other. Both the domain and range of $\varnothing$ are $\varnothing$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Total relation}</p></div><div class="sheet-listing"><p class="sheet"> Next, consider the product of any two sets $X$ and $Y$. In $X \times  Y$, all objects are related. The domain is $X$ and the range is $Y$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Equality}</p></div><div class="sheet-listing"><p class="sheet"> For a more interesting example, define $R \subset X \times  X$ by \[ R = \Set{(x, y) \in X \times  X}{x = y}. \] This relation is the \t{relation of equality} (see \sheetref{identities}{Identities}) between two objects. Here $x\,R\,y \iff x = y$. $\dom R = \ran R = X$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Belonging}</p></div><div class="sheet-listing"><p class="sheet"> Another similar example is if we consider the set $X$ and $\powerset{X}$, and the relation \[ R := \Set{(x, y) \in X \times  \powerset{X}}{x \in y}. \] This relation is the \t{relation of belonging} (see \sheetref{sets}{Sets}). Here $x\,R\,y \iff x \in y$. Here $\dom R = X$ and $\ran R = \powerset{X}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties}</p></div><div class="sheet-listing"><p class="sheet"> Often relations are defined over a single set, and there are a few useful properties to distinguish. \begin{itemize} \item A relation is \t{reflexive} if every element is related to itself. \item A relation is \t{symmetric} if two objects are related regardless of their order. \item A relation is \t{transitive} if a first element is related to a second element and the second element is related to the third element, then the first and third element are related. \end{itemize}</p></div><div class="sheet-listing"><p class="sheet"> Equality is reflexive, symmetric and transitive whereas belonging is neither. Exercise: what is inclusion?</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1165,7 +1198,7 @@ refs:paul_halmos∕naive_set_theory∕section_07
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
+      Copyright 2022 The Bourbaki Authors. Version 6e185d1c9.
     </span>
   </body>
 </html>

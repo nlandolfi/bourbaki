@@ -37,7 +37,7 @@
             ['\\[', '\\]']
           ],
         macros: {
-                powerset: ["2^{#1}", 1],
+                powerset: ["\\mathcal{P}(#1)", 1],
                 CV: "\\mathcal{V}",
                 ceil: ["\\lceil #1 \\rceil", 1],
                 num: ["\\abs{#1}",1],
@@ -149,7 +149,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 47 0 -->
+      <!-- 48 0 -->
 
 <!-- % objects macros -->
 
@@ -906,18 +906,12 @@
 <h1 id='Definitions'>Definitions</h1>
 
 <p>
- <span class='run'>A <span class='term'>predictor</span> $f:
-  \mathcal{U}  \to \mathcal{V} $ is a function from
-  $\mathcal{U} $ to $\mathcal{V} $.</span>
+ <span class='run'>Suppose $\mathcal{U} $ and $\mathcal{V} $ are two
+  sets.</span>
 
- <span class='run'>An <span class='term'>inducer</span> is a function
-  from finite datasets in $\mathcal{U}  \times
-  \mathcal{V} $ to predictors from $\mathcal{U} $ to
-  $\mathcal{V} $.</span>
-
- <span class='run'>A <span class='term'>learner</span> is a function
-  family of inducers, indexed by $n$, each defined
-  for datasets of size $n$.</span>
+ <span class='run'>A <span class='term'>predictor</span> from
+  $\mathcal{U} $ to $\mathcal{V} $ is a function
+  $f: \mathcal{U}  \to \mathcal{V} $.</span>
 
  <span class='run'>We call $\mathcal{U} $ the
   <span class='term'>inputs</span>, $\mathcal{V} $ the
@@ -926,10 +920,24 @@
   \in \mathcal{U} $.</span>
 </p>
 
+
+<p>
+ <span class='run'>An <span class='term'>inductor</span> is a
+  function from datasets in $\mathcal{U}  \times
+  \mathcal{V} $ to predictors from $\mathcal{U} $ to
+  $\mathcal{V} $.</span>
+
+ <span class='run'>A <span class='term'>learner</span> (or
+  <span class='term'>learning algorithm</span>) is a
+  family of inductors whose index set is $\N  $,
+  and whose $n$th term is is an inductor for a
+  dataset of size $n$.</span>
+</p>
+
 <h1 id='Predicting_relations'>Predicting relations</h1>
 
 <p>
- <span class='run'>A <span class='term'>relation inducer</span> is a
+ <span class='run'>A <span class='term'>relation inductor</span> is a
   function from finite datasets in $\mathcal{U}
   \times  \mathcal{V} $ to <i>relations</i> on
   $\mathcal{U}  \times  \mathcal{V} $.</span>
@@ -938,8 +946,8 @@
   $\mathcal{U} $ and $\mathcal{V} $ with a function
   $f: \mathcal{U}  \times  \mathcal{V}  \to \set{0,
   1}$, $f(u, v) = 1$ if and only if $(u, v)
-  \in R$, the predictor case can accomodate
-  learning general relations, beyond functions.</span>
+  \in R$, the predictor case accomodates general
+  relations, beyond functions.</span>
 </p>
 
 <h2 id='Notation'>Notation</h2>
@@ -954,8 +962,8 @@
 
  <span class='run'>Let $G_n: (\mathcal{U}  \times  \mathcal{V} )^n
   \to (\mathcal{U}  \times  \mathcal{V} )$ be an
-  inducer, so that $G_n(D)$ is the predictor which
-  the inductor associates with dataset $D$.</span>
+  inductor, so that $G_n(D)$ is the predictor
+  which the inductor associates with dataset $D$.</span>
 
  <span class='run'>Then $\set{G_n: (\mathcal{U}  \times
   \mathcal{V} )^n \to \powerset{(\mathcal{U}  \times
@@ -968,8 +976,9 @@
  <span class='run'>Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a
   dataset and $R \subset X \times  Y$ a relation.</span>
 
- <span class='run'>$D$ is <span class='term'>consistent with
-  $R$</span> if each $(u_i, v_i) \in R$.</span>
+ <span class='run'>$D$ is <span class='term'>consistent with</span>
+  $R$ if $(u_i, v_i) \in R$ for all $i = 1,
+  \dots , n$.</span>
 
  <span class='run'>$D$ is <span class='term'>consistent</span> if
   there exists a relation with which it is
@@ -1011,7 +1020,7 @@
   <span class='term'>labels</span> or
   <span class='term'>observational outcomes</span>.</span>
 
- <span class='run'>An input, output pair is sometimes called a
+ <span class='run'>An input-output pair is sometimes called a
   <span class='term'>record pair</span>.</span>
 </p>
 
@@ -1023,7 +1032,7 @@
   algorithm</span>.</span>
 
  <span class='run'>Other terms for a predictor include
-  <span class='term'>input-output</span> mapping,
+  <span class='term'>input-output mapping</span>,
   <span class='term'>prediction rule</span>,
   <span class='term'>hypothesis</span>,
   <span class='term'>concept</span>, or
@@ -1151,7 +1160,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We discuss inferring (or learning) functions from examples.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definitions}</p></div><div class="sheet-listing"><p class="sheet"> A \t{predictor} $f: \mathcal{U}  \to \mathcal{V} $ is a function from $\mathcal{U} $ to $\mathcal{V} $. An \t{inducer} is a function from finite datasets in $\mathcal{U}  \times  \mathcal{V} $ to predictors from $\mathcal{U} $ to $\mathcal{V} $. A \t{learner} is a function family of inducers, indexed by $n$, each defined for datasets of size $n$. We call $\mathcal{U} $ the \t{inputs}, $\mathcal{V} $ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \mathcal{U} $.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Predicting relations}</p></div><div class="sheet-listing"><p class="sheet"> A \t{relation inducer} is a function from finite datasets in $\mathcal{U}  \times  \mathcal{V} $ to <i>relations} on $\mathcal{U}  \times  \mathcal{V</i> $. Since we can associate any relation $R$ between $\mathcal{U} $ and $\mathcal{V} $ with a function $f: \mathcal{U}  \times \mathcal{V}  \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case can accomodate learning general relations, beyond functions.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $D$ be a dataset of size $n$ in $\mathcal{U}  \times \mathcal{V} $. Let $g: \mathcal{U}  \to \mathcal{V} $, a predictor, which makes prediction $g(u)$ on input $u \in \mathcal{U} $. Let $G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to (\mathcal{U} \times  \mathcal{V} )$ be an inducer, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$. Then $\set{G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to \powerset{(\mathcal{U}  \times  \mathcal{V} )}}_{n \in \N }$ is a learner.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Consistent and complete datasets}</p></div><div class="sheet-listing"><p class="sheet"> Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R \subset X \times  Y$ a relation. $D$ is \t{consistent with $R$} if each $(u_i, v_i) \in R$. $D$ is \t{consistent} if there exists a relation with which it is consistent. A dataset is always consistent (take $R = \mathcal{U}  \times \mathcal{V} $). $D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \Rightarrow y_i = y_j$. $D$ is \t{functionally complete} if $\cup_i\set{x_i} = X$. In this case, the dataset includes every element of the relation.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Other terminology}</p></div><div class="sheet-listing"><p class="sheet"> Other terms for the inputs include \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns}, \t{instances}, or \t{observations}. Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}. An input, output pair is sometimes called a \t{record pair}.</p></div><div class="sheet-listing"><p class="sheet"> Other terms for a learner include \t{learning algorithm}, or \t{supervised learning algorithm}. Other terms for a predictor include \t{input-output} mapping, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We discuss inferring (or learning) functions from examples.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definitions}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $\mathcal{U} $ and $\mathcal{V} $ are two sets. A \t{predictor} from $\mathcal{U} $ to $\mathcal{V} $ is a function $f: \mathcal{U}  \to \mathcal{V} $. We call $\mathcal{U} $ the \t{inputs}, $\mathcal{V} $ the \t{outputs}, and $f(u)$ the \t{prediction} of $f$ on $u \in \mathcal{U} $.</p></div><div class="sheet-listing"><p class="sheet"> An \t{inductor} is a function from datasets in $\mathcal{U} \times  \mathcal{V} $ to predictors from $\mathcal{U} $ to $\mathcal{V} $. A \t{learner} (or \t{learning algorithm}) is a family of inductors whose index set is $\N  $, and whose $n$th term is is an inductor for a dataset of size $n$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Predicting relations}</p></div><div class="sheet-listing"><p class="sheet"> A \t{relation inductor} is a function from finite datasets in $\mathcal{U}  \times  \mathcal{V} $ to <i>relations} on $\mathcal{U}  \times  \mathcal{V</i> $. Since we can associate any relation $R$ between $\mathcal{U} $ and $\mathcal{V} $ with a function $f: \mathcal{U}  \times \mathcal{V}  \to \set{0, 1}$, $f(u, v) = 1$ if and only if $(u, v) \in R$, the predictor case accomodates general relations, beyond functions.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $D$ be a dataset of size $n$ in $\mathcal{U}  \times \mathcal{V} $. Let $g: \mathcal{U}  \to \mathcal{V} $, a predictor, which makes prediction $g(u)$ on input $u \in \mathcal{U} $. Let $G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to (\mathcal{U} \times  \mathcal{V} )$ be an inductor, so that $G_n(D)$ is the predictor which the inductor associates with dataset $D$. Then $\set{G_n: (\mathcal{U}  \times  \mathcal{V} )^n \to \powerset{(\mathcal{U}  \times  \mathcal{V} )}}_{n \in \N  }$ is a learner.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Consistent and complete datasets}</p></div><div class="sheet-listing"><p class="sheet"> Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R \subset X \times  Y$ a relation. $D$ is \t{consistent with} $R$ if $(u_i, v_i) \in R$ for all $i = 1, \dots , n$. $D$ is \t{consistent} if there exists a relation with which it is consistent. A dataset is always consistent (take $R = \mathcal{U}  \times \mathcal{V} $). $D$ is \t{functionally consistent} if it is consistent with a function; in this case, $x_i = x_j \Rightarrow y_i = y_j$. $D$ is \t{functionally complete} if $\cup_i\set{x_i} = X$. In this case, the dataset includes every element of the relation.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Other terminology}</p></div><div class="sheet-listing"><p class="sheet"> Other terms for the inputs include \t{independent variables}, \t{explanatory variables}, \t{precepts}, \t{covariates}, \t{patterns}, \t{instances}, or \t{observations}. Other terms for the outputs include \t{dependent variables}, \t{explained variables}, \t{postcepts}, \t{targets}, \t{outcomes}, \t{labels} or \t{observational outcomes}. An input-output pair is sometimes called a \t{record pair}.</p></div><div class="sheet-listing"><p class="sheet"> Other terms for a learner include \t{learning algorithm}, or \t{supervised learning algorithm}. Other terms for a predictor include \t{input-output mapping}, \t{prediction rule}, \t{hypothesis}, \t{concept}, or \t{classifier}.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1305,7 +1314,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
+      Copyright 2022 The Bourbaki Authors. Version 6e185d1c9.
     </span>
   </body>
 </html>

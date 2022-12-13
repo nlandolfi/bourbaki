@@ -37,7 +37,7 @@
             ['\\[', '\\]']
           ],
         macros: {
-                powerset: ["2^{#1}", 1],
+                powerset: ["\\mathcal{P}(#1)", 1],
                 CV: "\\mathcal{V}",
                 ceil: ["\\lceil #1 \\rceil", 1],
                 num: ["\\abs{#1}",1],
@@ -149,7 +149,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 102 0 -->
+      <!-- 103 0 -->
 
 <!-- % objects macros -->
 
@@ -1093,27 +1093,23 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Joint Probability Matrices </h1> 
-      <p>
- <span class='run'>%!name:joint_probability_matrices</span>
+      <!--
+!name:joint_probability_matrices
+!need:real_matrix_rank
+!need:dependent_events
+-->
 
- <span class='run'>%!need:real_matrix_rank</span>
-
- <span class='run'>%!need:dependent_events</span>
-</p>
-
+<h1 id='Why'>Why</h1>
 
 <p>
- <span class='run'>\ssection{Why}</span>
-
  <span class='run'>We can characterize the dependence of two
   events in terms of the rank of a particular
   matrix.</span>
 </p>
 
+<h1 id='Definition'>Definition</h1>
 
 <p>
- <span class='run'>\ssection{Definition}</span>
-
  <span class='run'>Given a probability measure $\mathbfsf{P} :
   \powerset{\Omega } \to \R $ on the finite set
   $\Omega $ and two events $A, B \subset \Omega $,
@@ -1133,10 +1129,9 @@
   \]</p></span>
 </p>
 
+<h2 id='Characterization_of_independence'>Characterization of independence</h2>
 
 <p>
- <span class='run'>\ssubsection{Characterization of independence}</span>
-
  <span class='run'>If $A$ and $B$ are independent, then so are
   $A$ and $\relcomplement{B}{\Omega }$, $B$ and
   $\relcomplement{A}{\Omega }$, and
@@ -1187,11 +1182,6 @@
   if and only if $\rank(M) = 1$.</span>
 </p>
 
-
-<p>
- <span class='run'>\blankpage</span>
-</p>
-
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1240,7 +1230,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> We can characterize the dependence of two events in terms of the rank of a particular matrix.</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Given a probability measure $\mathbfsf{P} : \powerset{\Omega } \to \R $ on the finite set $\Omega $ and two events $A, B \subset \Omega $, the \t{joint probability matrix} of $A$ and $B$ is the matrix \[ M = \bmat{ \mathbfsf{P} (A \cap B) & \mathbfsf{P} (A \cap \relcomplement{B}{\Omega }) \\ \mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) & \mathbfsf{P} (\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) \\ }. \]</p></div><div class="sheet-listing"><h2 class="sheet" id="characterization_of_independence">2.1 Characterization of independence</h2></div><div class="sheet-listing"><p class="sheet"> If $A$ and $B$ are independent, then so are $A$ and $\relcomplement{B}{\Omega }$, $B$ and $\relcomplement{A}{\Omega }$, and $\relcomplement{A}{\Omega }$ and$\relcomplement{B}{\Omega }$. In other words, \[ M = \bmat{\mathbfsf{P} (A) \\ \mathbfsf{P} (\relcomplement{A}{\Omega }) }\bmat{\mathbfsf{P} (B) & \mathbfsf{P} (\relcomplement{B}{\Omega }}. \] In this case, we see that $\rank(M) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> Conversely, suppose $\rank(M) = 1$. Then, using the law of total probabiliy, each row is a multiple of \[ M1 = \bmat{\mathbfsf{P} (A) \\ \mathbfsf{P} (\relcomplement{A}{\Omega })} . \] In particular, we have $\mathbfsf{P} (A \cap B) = \alpha \mathbfsf{P} (A)$ and $\mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) = \alpha P(\relcomplement{A}{\Omega })$. So \[ \mathbfsf{P} (A \cap B) + \mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) = \alpha (\mathbfsf{P} (B) + \mathbfsf{P} (\relcomplement{A}{\Omega })), \] from which we deduce $\alpha  = \mathbfsf{P} (B)$ Likewise, the multiplier for the second column of $M$ is $\mathbfsf{P} (\relcomplement{B}{\Omega })$. In other words, $A$ and $B$ are independent. We conclude that $A$ and $B$ are independent if and only if $\rank(M) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We can characterize the dependence of two events in terms of the rank of a particular matrix.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Given a probability measure $\mathbfsf{P} : \powerset{\Omega } \to \R $ on the finite set $\Omega $ and two events $A, B \subset \Omega $, the \t{joint probability matrix} of $A$ and $B$ is the matrix \[ M = \bmat{ \mathbfsf{P} (A \cap  B) & \mathbfsf{P} (A \cap \relcomplement{B}{\Omega }) \\ \mathbfsf{P} (\relcomplement{A}{\Omega } \cap  B) & \mathbfsf{P} (\relcomplement{A}{\Omega } \cap \relcomplement{B}{\Omega }) \\ }. \]</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Characterization of independence}</p></div><div class="sheet-listing"><p class="sheet"> If $A$ and $B$ are independent, then so are $A$ and $\relcomplement{B}{\Omega }$, $B$ and $\relcomplement{A}{\Omega }$, and $\relcomplement{A}{\Omega }$ and$\relcomplement{B}{\Omega }$. In other words, \[ M = \bmat{\mathbfsf{P} (A) \\ \mathbfsf{P} (\relcomplement{A}{\Omega }) }\bmat{\mathbfsf{P} (B) & \mathbfsf{P} (\relcomplement{B}{\Omega }}. \] In this case, we see that $\rank(M) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> Conversely, suppose $\rank(M) = 1$. Then, using the law of total probabiliy, each row is a multiple of \[ M1 = \bmat{\mathbfsf{P} (A) \\ \mathbfsf{P} (\relcomplement{A}{\Omega })} . \] In particular, we have $\mathbfsf{P} (A \cap  B) = \alpha \mathbfsf{P} (A)$ and $\mathbfsf{P} (\relcomplement{A}{\Omega } \cap B) = \alpha P(\relcomplement{A}{\Omega })$. So \[ \mathbfsf{P} (A \cap  B) + \mathbfsf{P} (\relcomplement{A}{\Omega } \cap  B) = \alpha (\mathbfsf{P} (B) + \mathbfsf{P} (\relcomplement{A}{\Omega })), \] from which we deduce $\alpha  = \mathbfsf{P} (B)$ Likewise, the multiplier for the second column of $M$ is $\mathbfsf{P} (\relcomplement{B}{\Omega })$. In other words, $A$ and $B$ are independent. We conclude that $A$ and $B$ are independent if and only if $\rank(M) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1394,7 +1384,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 3bd743473.
+      Copyright 2022 The Bourbaki Authors. Version 6e185d1c9.
     </span>
   </body>
 </html>
