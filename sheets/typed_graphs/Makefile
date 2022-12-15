@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make function_graphs.pdf
+	make typed_graphs.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-function_graphs.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > function_graphs.tex
+typed_graphs.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > typed_graphs.tex
 
-function_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex function_graphs.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode function_graphs.tex
-	../../latexrun function_graphs.tex
+typed_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex typed_graphs.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode typed_graphs.tex
+	../../latexrun typed_graphs.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: function_graphs.pdf
-	open function_graphs.pdf
+open: typed_graphs.pdf
+	open typed_graphs.pdf
 
 o:
 	make open
 
-terms: function_graphs.tex
-	bbk_sheet -mode ts function_graphs.tex
+terms: typed_graphs.tex
+	bbk_sheet -mode ts typed_graphs.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f function_graphs.*
+	rm -f typed_graphs.*
 	make reset
 	bbk_sheet -mode mk > Makefile

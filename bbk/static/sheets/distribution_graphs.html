@@ -958,9 +958,9 @@
                 <span class="caret">›</span>
               </div>
           
-              <div class="need2" tabindex="0" onclick="location.href='./function_graphs.html'" onkeypress="location.href='./function_graphs.html'">
+              <div class="need2" tabindex="0" onclick="location.href='./typed_graphs.html'" onkeypress="location.href='./typed_graphs.html'">
                 <span>
-                  Function Graphs
+                  Typed Graphs
                 </span>
                 <span class="caret">›</span>
               </div>
@@ -994,7 +994,7 @@
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Distribution Graphs </h1> 
       <!--
 !name:distribution_graphs
-!need:function_graphs
+!need:typed_graphs
 !need:directed_graph_distributions
 -->
 
@@ -1008,13 +1008,13 @@
 <h1 id='Definition'>Definition</h1>
 
 <p>
- <span class='run'>Let $\bar{G} = (G, A)$ be a typed graph (see&nbsp;<a href='/sheets/function_graphs.html'/><span class='run'>Function Graphs</span></a>) with directed and acyclic $G$.</span>
+ <span class='run'>Let $\bar{G} = (G, A)$ be a typed graph (see&nbsp;<a href='/sheets/typed_graphs.html'/><span class='run'>Typed Graphs</span></a>) with directed and acyclic $G$.</span>
 
  <span class='run'>For source vertices $i$, let $g_i: A_i \to [0,
   1]$ be a distribution and otherwise let $g_{i}:
-  A_{\pa_i} \to [0, 1]$ denote a conditional
-  distribution so that $g$ is a sequence of
-  functions.</span>
+  A \times  A_{\pa_i} \to [0, 1]$ denote a
+  function satisfying $g_i(\cdot , x)$ is a
+  distribution for every $x \in X_{\pa_i}$.</span>
 </p>
 
 
@@ -1027,6 +1027,7 @@
   distribution graph</span>,
   <span class='term'>bayesian network</span>,<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup>
   <span class='term'>directed probabilistic graphical
+  model</span>, <span class='term'>directed graphical
   model</span>).</span>
 </p>
 
@@ -1036,14 +1037,22 @@
   $(\bar{G}, g)$ is the function $p: \prod_{i} A_i
   \to [0, 1]$ defined by
   <p>\[
-   p(a) \prod_{\pa_i = \varnothing} g_i(a_i) \prod_{\pa_i \neq
-    \varnothing} g_{i \mid \pa_i} g_i(a_i, a_{\pa_i}).
+   p(a)
+
+   =
+
+   \prod_{\pa_i = \varnothing} g_i(a_i)
+
+   \prod_{\pa_i \neq \varnothing} g_i(a_i, a_{\pa_i}).
   \]</p></span>
 
  <span class='run'>It is, of course, a distribution.</span>
 
  <span class='run'>And it factors according to the directed and
   acyclic graph $G$.</span>
+
+ <span class='run'>Also, the $g_i$, $i = 1, \dots , n$, are the
+  conditionals.<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup></span>
 </p>
 <hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions might flip the order of this
   sheet with that of directed graph distributions
@@ -1054,8 +1063,8 @@
   here, which restricts the graphs according to
   which a distribution can factor.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Indeed, this term is near universal in certain
   literatures. We avoid it in these sheets as a
-  result of the Bourbaki project&#39;s policy on
-  naming.</span> <a href='#footnote-2-reference'>↩︎</a></li></ol>
+  result of the Bourbaki project’s policy on
+  naming.</span> <a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>Future editions will elaborate and give a proof.</span> <a href='#footnote-3-reference'>↩︎</a></li></ol>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1090,9 +1099,9 @@
               <span class="caret">›</span>
             </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./function_graphs.html'" onkeypress="location.href='./function_graphs.html'">
+            <div class="need" tabindex="0" onclick="location.href='./typed_graphs.html'" onkeypress="location.href='./typed_graphs.html'">
               <span>
-                Function Graphs
+                Typed Graphs
               </span>
               <span class="caret">›</span>
             </div>
@@ -1114,7 +1123,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How can we construct distributions which factor according to a directed graph.\footnote{Future editions might flip the order of this sheet with that of directed graph distributions since, in the genetic approach, in may be more natural to think of constructing such distributions before analyzing them. This is partially motivated by the acyclic constraint here, which restricts the graphs according to which a distribution can factor.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\bar{G} = (G, A)$ be a typed graph (see \sheetref{function_graphs}{Function Graphs}) with directed and acyclic $G$. For source vertices $i$, let $g_i: A_i \to [0, 1]$ be a distribution and otherwise let $g_{i}: A_{\pa_i} \to [0, 1]$ denote a conditional distribution so that $g$ is a sequence of functions.</p></div><div class="sheet-listing"><p class="sheet"> We call the ordered pair $(\bar{G}, g)$ a \t{distribution graph} (or \t{distribution network}, \t{conditional distribution network}, \t{conditional distribution graph}, \t{bayesian network},\footnote{Indeed, this term is near universal in certain literatures. We avoid it in these sheets as a result of the Bourbaki project's policy on naming.} \t{directed probabilistic graphical model}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{distribution} of $(\bar{G}, g)$ is the function $p: \prod_{i} A_i \to [0, 1]$ defined by \[ p(a) \prod_{\pa_i = \varnothing} g_i(a_i) \prod_{\pa_i \neq \varnothing} g_{i \mid \pa_i} g_i(a_i, a_{\pa_i}). \] It is, of course, a distribution. And it factors according to the directed and acyclic graph $G$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How can we construct distributions which factor according to a directed graph.\footnote{Future editions might flip the order of this sheet with that of directed graph distributions since, in the genetic approach, in may be more natural to think of constructing such distributions before analyzing them. This is partially motivated by the acyclic constraint here, which restricts the graphs according to which a distribution can factor.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\bar{G} = (G, A)$ be a typed graph (see \sheetref{typed_graphs}{Typed Graphs}) with directed and acyclic $G$. For source vertices $i$, let $g_i: A_i \to [0, 1]$ be a distribution and otherwise let $g_{i}: A \times  A_{\pa_i} \to [0, 1]$ denote a function satisfying $g_i(\cdot , x)$ is a distribution for every $x \in X_{\pa_i}$.</p></div><div class="sheet-listing"><p class="sheet"> We call the ordered pair $(\bar{G}, g)$ a \t{distribution graph} (or \t{distribution network}, \t{conditional distribution network}, \t{conditional distribution graph}, \t{bayesian network},\footnote{Indeed, this term is near universal in certain literatures. We avoid it in these sheets as a result of the Bourbaki project's policy on naming.} \t{directed probabilistic graphical model}, \t{directed graphical model}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{distribution} of $(\bar{G}, g)$ is the function $p: \prod_{i} A_i \to [0, 1]$ defined by \[ p(a) = \prod_{\pa_i = \varnothing} g_i(a_i) \prod_{\pa_i \neq \varnothing} g_i(a_i, a_{\pa_i}). \] It is, of course, a distribution. And it factors according to the directed and acyclic graph $G$. Also, the $g_i$, $i = 1, \dots , n$, are the conditionals.\footnote{Future editions will elaborate and give a proof.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1268,7 +1277,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 6e185d1c9.
+      Copyright 2022 The Bourbaki Authors. Version 3a4ac2fc6.
     </span>
   </body>
 </html>
