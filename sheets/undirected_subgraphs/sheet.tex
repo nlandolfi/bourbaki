@@ -1,3 +1,4 @@
+
 %!name:undirected_subgraphs
 %!need:undirected_paths
 
@@ -7,21 +8,30 @@ We look at a particular subset of vertices and the edges involved between them.
 
 \section*{Definition}
 
-The \t{subgraph} of an undirected graph $(V, E)$ \t{induced by} a subset of vertices $W \subset V$ is the undirected graph with vertices $W$ and all edges between vertices in $W$.
+Suppose $\mathcal{G}  = (V, E)$ is an undirected graph.
+An undirected graph $(V', E')$ is a \t{subgraph} of $\mathcal{G} $ if $V' \subset V$ and $E \subset E'$.
+The \t{vertex-induced subgraph} of an undirected graph $(V, E)$ \t{induced by} a subset of vertices $W \subset V$ is the undirected graph with vertices $W$ and all edges between vertices in $W$.
+The \t{edge-induced subgraph} of an undirected graph $(V, E)$ induced by vertices $F \subset E$ whose edge set is $F$ and whose vertices are those vertices adjacent to the edges of $F$.
 
 \subsection*{Notation}
 
-Let $G = (V, E)$ be an undirected graph.
 Let $W \subset V$ and define $F$ by
     \[
 F = \Set*{\set{v, w} \in E}{v, w \in W}.
     \]
 The subgraph induced by $W$ is the undirected graph $(W, F)$.
 
-Some authors denote the subgraph induced by $W$ by $G(W)$ or $(W, E(W))$.
+Some authors denote the subgraph induced by $W$ by $G(W)$ or $(W, E(W))$ or $G[W]$.
 We avoid this notation, as it abuses $G$, which is no longer an ordered pair, but (in our standard function notation) now indicates a function on subsets of $V$ with a complicated codomain.
 Other authors occasionally refer to the \say{subgraph $W$}, instead of \say{the subgraph $G(W)$}.
 Again, we avoid this practice.
+
+For $D \subset E$, the subgraph induced by $D$ is the undirected graph $(U, D)$ where
+    \[
+U = \Set{v \in V}{\exists e \in D: x \in e}
+    \]
+Simiarly, people write $G(D)$ or $(V(D), D)$.
+We avoid this.
 
 \subsection*{Connected components}
 
@@ -39,7 +49,6 @@ In other words, there is no other vertex which we can add to $W$ so that the ind
 
 We call a \t{maximally complete} set of vertes a \t{clique}.
 Some authors define a clique in the way we have defined a complete set of vertices, without reference to the maximality.
-
 
 %% FROM THE OLD graph_cliques
 %% %%%!name:graph_cliques
@@ -97,3 +106,4 @@ Some authors define a clique in the way we have defined a complete set of vertic
 %% We denote a clique
 %% by $C \subset V$,
 %% a mnemonic for clique.
+%  

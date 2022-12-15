@@ -1,6 +1,6 @@
 <!--
 !name:distribution_graphs
-!need:function_graphs
+!need:typed_graphs
 !need:directed_graph_distributions
 -->
 
@@ -21,15 +21,15 @@
 § Definition ⦉
 ¶ ⦊
   ‖ Let $\bar{G} = (G, A)$ be a typed graph (see␣
-    <a href='/sheets/function_graphs.html'>
-      ‖ Function Graphs ⦉
+    <a href='/sheets/typed_graphs.html'>
+      ‖ Typed Graphs ⦉
     </a>
     ) with directed and acyclic $G$. ⦉
 
   ‖ For source vertices $i$, let $g_i: A_i → [0, 1]$ be a
-    distribution and otherwise let $g_{i}: A_{\pa_i} → [0, 1]$
-    denote a conditional distribution so that $g$ is a sequence
-    of functions. ⦉
+    distribution and otherwise let $g_{i}: A × A_{\pa_i} → [0,
+    1]$ denote a function satisfying $g_i(·, x)$ is a
+    distribution for every $x ∈ X_{\pa_i}$. ⦉
 ⦉
 
 ¶ ⦊
@@ -39,23 +39,34 @@
     † ⦊
       ‖ Indeed, this term is near universal in certain
         literatures. We avoid it in these sheets as a result of
-        the Bourbaki project's policy on naming. ⦉
+        the Bourbaki project’s policy on naming. ⦉
     ⦉
-    ❬directed probabilistic graphical model❭). ⦉
+    ❬directed probabilistic graphical model❭, ❬directed graphical
+    model❭). ⦉
 ⦉
 
 ¶ ⦊
   ‖ The ❬distribution❭ of $(\bar{G}, g)$ is the function $p:
     ∏_{i} A_i → [0, 1]$ defined by
     ◇ ⦊
-      ‖ p(a) ∏_{\pa_i = ∅} g_i(a_i) ∏_{\pa_i ≠ ∅} g_{i |\pa_i}
-        g_i(a_i, a_{\pa_i}). ⦉
+      ‖ p(a) ⦉
+
+      ‖ = ⦉
+
+      ‖ ∏_{\pa_i = ∅} g_i(a_i) ⦉
+
+      ‖ ∏_{\pa_i ≠ ∅} g_i(a_i, a_{\pa_i}). ⦉
     ⦉⦉
 
   ‖ It is, of course, a distribution. ⦉
 
   ‖ And it factors according to the directed and acyclic graph
     $G$. ⦉
+
+  ‖ Also, the $g_i$, $i = 1, …, n$, are the conditionals.
+    † ⦊
+      ‖ Future editions will elaborate and give a proof. ⦉
+    ⦉⦉
 ⦉
 
 <tex>
