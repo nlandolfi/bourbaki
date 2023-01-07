@@ -149,7 +149,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 94 0 -->
+      <!-- 95 0 -->
 
 <!-- % objects macros -->
 
@@ -901,7 +901,7 @@
   padding: 0;
   min-height: 11in;
   background: white;
-  line-height: 1.4em;
+  line-height: 1.5em;
 }
 
 .sidebar2 {
@@ -996,13 +996,17 @@
 !name:distribution_graphs
 !need:typed_graphs
 !need:directed_graph_distributions
+!refs:
 -->
 
 <h1 id='Why'>Why</h1>
 
 <p>
  <span class='run'>How can we construct distributions which factor
-  according to a directed graph.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+  according to a directed graph?<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+
+ <span class='run'>Related: how can we compactly represent complex
+  distributions over high-dimensional spaces?</span>
 </p>
 
 <h1 id='Definition'>Definition</h1>
@@ -1020,15 +1024,7 @@
 
 <p>
  <span class='run'>We call the ordered pair $(\bar{G}, g)$ a
-  <span class='term'>distribution graph</span> (or
-  <span class='term'>distribution network</span>,
-  <span class='term'>conditional distribution
-  network</span>, <span class='term'>conditional
-  distribution graph</span>,
-  <span class='term'>bayesian network</span>,<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup>
-  <span class='term'>directed probabilistic graphical
-  model</span>, <span class='term'>directed graphical
-  model</span>).</span>
+  <span class='term'>distribution graph</span> .</span>
 </p>
 
 
@@ -1052,7 +1048,39 @@
   acyclic graph $G$.</span>
 
  <span class='run'>Also, the $g_i$, $i = 1, \dots , n$, are the
-  conditionals.<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup></span>
+  conditionals.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+</p>
+
+
+<p>
+ <span class='run'>In other words, a distribution graph represents
+  a probability distributions via products of
+  smaller, “local”, conditional probability
+  distributions.</span>
+</p>
+
+<h2 id='Other_terminology'>Other terminology</h2>
+
+<p>
+ <span class='run'>Other terminology includes
+  <span class='term'>distribution network</span>,
+  <span class='term'>conditional distribution
+  network</span>, <span class='term'>conditional
+  distribution graph</span>,
+  <span class='term'>bayesian network</span>,<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup>
+  <span class='term'>bayes net</span>,
+  <span class='term'>directed probabilistic graphical
+  model</span>, <span class='term'>directed graphical
+  model</span>.</span>
+</p>
+
+<h2 id='Necessity_of_acyclicity'>Necessity of acyclicity</h2>
+
+<p>
+ <span class='run'>If $G$ above is not taken to be acyclic, then
+  the “distribution” of the distribution graph need
+  not be a proper probability distribution (the
+  condition which will fail is normalization).</span>
 </p>
 <hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions might flip the order of this
   sheet with that of directed graph distributions
@@ -1061,10 +1089,10 @@
   distributions before analyzing them. This is
   partially motivated by the acyclic constraint
   here, which restricts the graphs according to
-  which a distribution can factor.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Indeed, this term is near universal in certain
+  which a distribution can factor.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will elaborate and give a proof.</span> <a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>Indeed, this term is near universal in certain
   literatures. We avoid it in these sheets as a
   result of the Bourbaki project’s policy on
-  naming.</span> <a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>Future editions will elaborate and give a proof.</span> <a href='#footnote-3-reference'>↩︎</a></li></ol>
+  naming.</span> <a href='#footnote-3-reference'>↩︎</a></li></ol>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1123,7 +1151,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How can we construct distributions which factor according to a directed graph.\footnote{Future editions might flip the order of this sheet with that of directed graph distributions since, in the genetic approach, in may be more natural to think of constructing such distributions before analyzing them. This is partially motivated by the acyclic constraint here, which restricts the graphs according to which a distribution can factor.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\bar{G} = (G, A)$ be a typed graph (see \sheetref{typed_graphs}{Typed Graphs}) with directed and acyclic $G$. For source vertices $i$, let $g_i: A_i \to [0, 1]$ be a distribution and otherwise let $g_{i}: A \times  A_{\pa_i} \to [0, 1]$ denote a function satisfying $g_i(\cdot , x)$ is a distribution for every $x \in X_{\pa_i}$.</p></div><div class="sheet-listing"><p class="sheet"> We call the ordered pair $(\bar{G}, g)$ a \t{distribution graph} (or \t{distribution network}, \t{conditional distribution network}, \t{conditional distribution graph}, \t{bayesian network},\footnote{Indeed, this term is near universal in certain literatures. We avoid it in these sheets as a result of the Bourbaki project's policy on naming.} \t{directed probabilistic graphical model}, \t{directed graphical model}).</p></div><div class="sheet-listing"><p class="sheet"> The \t{distribution} of $(\bar{G}, g)$ is the function $p: \prod_{i} A_i \to [0, 1]$ defined by \[ p(a) = \prod_{\pa_i = \varnothing} g_i(a_i) \prod_{\pa_i \neq \varnothing} g_i(a_i, a_{\pa_i}). \] It is, of course, a distribution. And it factors according to the directed and acyclic graph $G$. Also, the $g_i$, $i = 1, \dots , n$, are the conditionals.\footnote{Future editions will elaborate and give a proof.}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How can we construct distributions which factor according to a directed graph?\footnote{Future editions might flip the order of this sheet with that of directed graph distributions since, in the genetic approach, in may be more natural to think of constructing such distributions before analyzing them. This is partially motivated by the acyclic constraint here, which restricts the graphs according to which a distribution can factor.} Related: how can we compactly represent complex distributions over high-dimensional spaces?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $\bar{G} = (G, A)$ be a typed graph (see \sheetref{typed_graphs}{Typed Graphs}) with directed and acyclic $G$. For source vertices $i$, let $g_i: A_i \to [0, 1]$ be a distribution and otherwise let $g_{i}: A \times  A_{\pa_i} \to [0, 1]$ denote a function satisfying $g_i(\cdot , x)$ is a distribution for every $x \in X_{\pa_i}$.</p></div><div class="sheet-listing"><p class="sheet"> We call the ordered pair $(\bar{G}, g)$ a \t{distribution graph} .</p></div><div class="sheet-listing"><p class="sheet"> The \t{distribution} of $(\bar{G}, g)$ is the function $p: \prod_{i} A_i \to [0, 1]$ defined by \[ p(a) = \prod_{\pa_i = \varnothing} g_i(a_i) \prod_{\pa_i \neq \varnothing} g_i(a_i, a_{\pa_i}). \] It is, of course, a distribution. And it factors according to the directed and acyclic graph $G$. Also, the $g_i$, $i = 1, \dots , n$, are the conditionals.\footnote{Future editions will elaborate and give a proof.}</p></div><div class="sheet-listing"><p class="sheet"> In other words, a distribution graph represents a probability distributions via products of smaller, ``local'', conditional probability distributions.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Other terminology}</p></div><div class="sheet-listing"><p class="sheet"> Other terminology includes \t{distribution network}, \t{conditional distribution network}, \t{conditional distribution graph}, \t{bayesian network},\footnote{Indeed, this term is near universal in certain literatures. We avoid it in these sheets as a result of the Bourbaki project's policy on naming.} \t{bayes net}, \t{directed probabilistic graphical model}, \t{directed graphical model}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Necessity of acyclicity}</p></div><div class="sheet-listing"><p class="sheet"> If $G$ above is not taken to be acyclic, then the ``distribution'' of the distribution graph need not be a proper probability distribution (the condition which will fail is normalization).</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1277,7 +1305,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 3a4ac2fc6.
+      Copyright 2022 The Bourbaki Authors. Version 74ea22e52.
     </span>
   </body>
 </html>

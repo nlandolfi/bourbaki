@@ -23,19 +23,8 @@
     predictors from $𝒰$ to $𝒱$. ⦉
 
   ‖ A ❬learner❭ (or ❬learning algorithm❭) is a family of
-    inductors whose index set is $𝗡$, and whose $n$th term is
+    inductors whose index set is $𝗡$, and whose ‹$n$th› term is
     is an inductor for a dataset of size $n$. ⦉
-⦉
-
-§ Predicting relations ⦉
-¶ ⦊
-  ‖ A ❬relation inductor❭ is a function from finite datasets in
-    $𝒰 × 𝒱$ to ‹relations› on $𝒰 × 𝒱$. ⦉
-
-  ‖ Since we can associate any relation $R$ between $𝒰$ and $𝒱$
-    with a function $f: 𝒰 × 𝒱 → \set{0, 1}$, $f(u, v) = 1$
-    if and only if $(u, v) ∈ R$, the predictor case accomodates
-    general relations, beyond functions. ⦉
 ⦉
 
 §§ Notation ⦉
@@ -49,14 +38,54 @@
     $G_n(D)$ is the predictor which the inductor associates with
     dataset $D$. ⦉
 
-  ‖ Then $\set{G_n: (𝒰 × 𝒱)^n → \powerset{(𝒰 × 𝒱)}}_{n ∈ 𝗡}$
-    is a learner. ⦉
+  ‖ Then $\set{G_n: (𝒰 × 𝒱)^n → 𝒱^𝒰}_{n ∈ 𝗡}$ is a learner. ⦉
+⦉
+
+§§ Relations ⦉
+¶ ⦊
+  ‖     <a href='/sheets/functions.html'>
+      ‖ Functions ⦉
+    </a>
+    ␣are␣
+    <a href='/sheets/relations.html'>
+      ‖ relations ⦉
+    </a>
+    , so we might ask if ‹inferring› relations may be a more
+    general and difficult problem than inferring functions. ⦉
+
+  ‖ The following consideration shows that this is ‹not› the
+    case. ⦉
+⦉
+
+¶ ⦊
+  ‖ A ❬relation inductor❭ is a function from finite datasets in
+    $𝒰 × 𝒱$ to ‹relations› on $𝒰 × 𝒱$. ⦉
+
+  ‖ Suppose $R$ is a relation between $𝒰$ and $𝒱$. ⦉
+
+  ‖ Suppose the function $f: 𝒰 × 𝒱 → \set{0, 1}$ is such that
+    ◇ ⦊
+      ‖ f(u,v) = 1 \quad \text{ if and only if } \quad (u, v)
+        ∈ R ⦉
+    ⦉⦉
+
+  ‖ Given $f$ we can find $R$, and given $R$ we can find $f$. ⦉
+
+  ‖ Thus, instead of learning the ‹relation› $R$ we can think
+    of learning the ‹function› $f$. ⦉
+
+  ‖ In other words, if we have an inductor for $f$, we have a
+    ‹relation› inductor for $R$. ⦉
 ⦉
 
 § Consistent and complete datasets ⦉
 ¶ ⦊
-  ‖ Let $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R ⊂
-    X × Y$ a relation. ⦉
+  ‖ What can a dataset tell us? ⦉
+⦉
+
+¶ ⦊
+  ‖ Suppose $D = ((u_i, v_i))_{i = 1}^{n}$ be a dataset and $R
+    ⊂ X × Y$ a relation. ⦉
 
   ‖ $D$ is ❬consistent with❭ $R$ if $(u_i, v_i) ∈ R$ for all
     $i = 1, …, n$. ⦉
@@ -89,9 +118,9 @@
 ⦉
 
 ¶ ⦊
-  ‖ Other terms for a learner include ❬learning algorithm❭, or
-    ❬supervised learning algorithm❭. ⦉
+  ‖ Other terms for a learner include ❬supervised learning
+    algorithm❭. ⦉
 
   ‖ Other terms for a predictor include ❬input-output mapping❭,
-    ❬prediction rule❭, ❬hypothesis❭, ❬concept❭, or ❬classifier❭. ⦉
+    ❬prediction rule❭, ❬hypothesis❭, ❬concept❭, and ❬classifier❭. ⦉
 ⦉

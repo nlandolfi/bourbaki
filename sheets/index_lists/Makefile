@@ -1,0 +1,55 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make index_lists.pdf
+
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
+index_lists.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > index_lists.tex
+
+index_lists.pdf: ../../*.tex ../../trademark.pdf *.tex index_lists.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode index_lists.tex
+	../../latexrun index_lists.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: index_lists.pdf
+	open index_lists.pdf
+
+o:
+	make open
+
+terms: index_lists.tex
+	bbk_sheet -mode ts index_lists.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f index_lists.*
+	make reset
+	bbk_sheet -mode mk > Makefile
