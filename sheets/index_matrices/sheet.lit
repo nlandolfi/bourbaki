@@ -1,42 +1,138 @@
 <!--
 !name:index_matrices
+!need:index_lists
 !need:matrices
 !need:permutation_matrices
 !need:matrix_transpose
 -->
 
+§ Why ⦉
+¶ ⦊
+  ‖ The (surprising fact) is that the operation of going from
+    an index list to its induced sublist is ‹linear›, if the
+    elements of the list are over a␣
+    <a href='/sheets/fields.html'>
+      ‖ field ⦉
+    </a>
+    , and thus may be viewed as a␣
+    <a href='/sheets/vectors.html'>
+      ‖ vector space ⦉
+    </a>
+    . ⦉
+⦉
+
 § Definition ⦉
 ¶ ⦊
-  ‖ An ❬index sequence❭ of ❬order❭ $n$ is a finite sequence of
-    distinct elements of $\upto{n}$ whose length is less than or
-    equal to $n$. ⦉
+  ‖ The ❬index matrix❭ associated with the index sequence $α$ of
+    length $r$ and order $n$ (recall, $r ≤ n$) is the $r × n$
+    matrix whose ‹$i,j$th› entry is 1 if the sequence’s ‹$i$th›
+    coordinate is $j$, and $0$ otherwise. ⦉
+⦉
 
-  ‖ We call the $i$th coordinate of an index sequence the
-    ❬$i$-index❭ of the sequence. ⦉
-
-  ‖ The ❬index matrix❭ associated with an index sequence is the
-    $r ×n$ matrix whose $i,j$th entry is 1 if the index
-    sequences’s $i$th coordinate is $j$, and $0$ otherwise. ⦉
-
-  ‖ If $r = n$ then the index matrix is a permutation matrix. ⦉
+§§ Examples ⦉
+¶ ⦊
+  ‖ Here are some order-5 index lists: $(1,2,3)$, $(3,2,1)$,
+    $(4,5,1)$, $(5,4,3,2,1)$, $(3,)$. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ Multiplying a vector by an index matrix produces a permuted
-    subvector. ⦉
+  ‖ The matrices corresponding to these examples are:
+    ◇ ⦊
+      ‖ \bmat{ ⦉
 
-  ‖ The ❬subvector❭ of an $n$-vector {associated with} a
-    length-$r$ index sequence is the product of the $r × n$
-    index matrix with the $n$-dimensional vector. ⦉
+      ‖ 1 & 0 & 0 & 0 & 0 ᜶ ⦉
 
-  ‖ Its $i$th entry is the $i$-index entry of the vector. ⦉
+      ‖ 0 & 1 & 0 & 0 & 0 ᜶ ⦉
+
+      ‖ 0 & 0 & 1 & 0 & 0 ᜶ ⦉
+
+      ‖ }, ⦉
+
+      ‖ \bmat{ ⦉
+
+      ‖ 0 & 0 & 1 & 0 & 0 ᜶ ⦉
+
+      ‖ 0 & 1 & 0 & 0 & 0 ᜶ ⦉
+
+      ‖ 1 & 0 & 0 & 0 & 0 ᜶ ⦉
+
+      ‖ }, ⦉
+    ⦉
+    for the first two examples, and
+    ◇ ⦊
+      ‖ \bmat{ ⦉
+
+      ‖ 0 & 0 & 0 & 1 & 0 ᜶ ⦉
+
+      ‖ 0 & 0 & 0 & 0 & 1 ᜶ ⦉
+
+      ‖ 1 & 0 & 0 & 0 & 0 ᜶ ⦉
+
+      ‖ }, ⦉
+
+      ‖ \bmat{ ⦉
+
+      ‖ 0 & 0 & 0 & 0 & 1 ᜶ ⦉
+
+      ‖ 0 & 0 & 0 & 1 & 0 ᜶ ⦉
+
+      ‖ 0 & 0 & 1 & 0 & 0 ᜶ ⦉
+
+      ‖ 0 & 1 & 0 & 0 & 0 ᜶ ⦉
+
+      ‖ 1 & 0 & 0 & 0 & 0 ᜶ ⦉
+
+      ‖ }, ⦉
+
+      ‖ \bmat{ ⦉
+
+      ‖ 0 & 0 & 1 & 0 & 0 ᜶ ⦉
+
+      ‖ } ⦉
+    ⦉
+    for the last three. ⦉
 ⦉
 
-§§ Other terminology ⦉
 ¶ ⦊
-  ‖ Some authors use the term ❬index set❭ for index sequences;
-    but since these are sequences (which are functions), they are
-    not sets of indices, so we avoid this usage. ⦉
+  ‖ In this case, we refer to the induced sublist as an
+    induced ❬subvector❭. ⦉
+
+  ‖ The value of index matrices is that they give induced
+    subvectors via the usual and familiar operation of matrix
+    multiplication. ⦉
+
+  ‖ The ❬subvector❭ of an $n$-vector associated with a length-$r$
+    index sequence is the product of the sequence’s $r × n$
+    corresponding index matrix with the $n$-dimensional vector. ⦉
+⦉
+
+¶ ⦊
+  ‖ For example, define $x = \bmat{6 & 4 & 5 & 3 & 9}^⊤$. ⦉
+
+  ‖ Then the subvector of $x$ associated with the index sequence
+    $(3, 2, 1)$ is the vector $\bmat{3 & 9 & 6}^⊤ ∈ 𝗥^3$,
+    because
+    ◇ ⦊
+      ‖ \bmat{3 & 9 & 6 } = ⦉
+
+      ‖ \bmat{ ⦉
+
+      ‖ 0 & 0 & 0 & 1 & 0 ᜶ ⦉
+
+      ‖ 0 & 0 & 0 & 0 & 1 ᜶ ⦉
+
+      ‖ 1 & 0 & 0 & 0 & 0 ᜶ ⦉
+
+      ‖ }\bmat{6 ᜶ 4 ᜶ 5 ᜶ 3 ᜶ 9} ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ If $r = n$ then the index matrix is a␣
+    <a href='/sheets/permutation_matrices.html'>
+      ‖ permutation matrix ⦉
+    </a>
+    . ⦉
 ⦉
 
 §§ Notation ⦉
@@ -52,9 +148,9 @@
     ◇ ⦊
       ‖ (P_a)_{ij} = \begin{cases} ⦉
 
-      ‖ 1 ＆ j = α(i) ᜶ ⦉
+      ‖ 1 & j = α(i) ᜶ ⦉
 
-      ‖ 0 ＆ \text{otherwise} ⦉
+      ‖ 0 & \text{otherwise} ⦉
 
       ‖ \end{cases} ⦉
     ⦉⦉
@@ -63,38 +159,15 @@
 ¶ ⦊
   ‖ Let $A$ be a nonempty set and let $x ∈ A^n$. ⦉
 
-  ‖ then the subvector of $x$ associated with $P_α$ (and
-    so with $α$) is
+  ‖ then the subvector of $x$ associated with $P_α$ (and so
+    with $α$) is
     ◇ ⦊
-      ‖ P_α x = ±at{x_{α(1)}, …, x_{α(r)}} ⦉
+      ‖ P_α x = \pmat{x_{α(1)}, …, x_{α(r)}} ⦉
     ⦉⦉
 
   ‖ We denote the product $P_αx$ by $x_{α}$. ⦉
 
+  <!--— TODO: call the below: principal submatrix ---->
+
   ‖ We denote the product $P_α X P_α^⊤$ by $X_{αα}$. ⦉
 ⦉
-
-<!--
-
-<div data-littype='section' data-litsectionlevel='1' data-litsectionnumbered='false'> Multiplication </div>
-<div data-littype='paragraph'>
-  <div data-littype='run'> </div>
-
-  <div data-littype='run'> The product of the $n ×r$ transpose of an index matrix
-    with an $r$ vector is the $n$ vector with </div>
-
-    <!--
-  <div data-littype='run'> The </div>
-
-  <div data-littype='run'> ❲%❳ </div>
-
-  <div data-littype='run'> ❲% A ❬principal submatrix❭ of a matrix is any matrix which can be formed by forming Multiplying an $n ×n$ matrix with an index matrix on the left and the transpose of the index matrix on the right extracts the❳ </div>
-
-  <div data-littype='run'> ❲%❳ </div>
-
-  <div data-littype='run'> </div>
-</div>
--->
-<tex>
-  ‖ \blankpage ⦉
-</tex>
