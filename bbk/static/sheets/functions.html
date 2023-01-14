@@ -126,9 +126,11 @@
                 perm: ["\\mathword{perm}"],
                 sgn: ["\\mathword{sgn}"],
                 rvcdf: ["F_{#1}", 1],
+                id: ["\\mathword{id}"],
                 idfn: ["\\mathword{id}_{#1}", 1],
                 floatsingle: ["{\\tt float32}"],
                 floatdouble: ["{\\tt float64}"],
+                Sym: ["\\mathword{Sym}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -759,27 +761,37 @@ for inclusion mappings:
   <span class='term'>mapping</span>,
   <span class='term'>map</span>)
   <span class='term'>from</span> a set $X$
-  <span class='term'>to</span> a set $Y$ is a
-  relation (see&nbsp;<a href='/sheets/relations.html'/><span class='run'>Relations</span></a>) whose domain is $X$ and whose range is a
+  <span class='term'>to</span> a set $Y$ is a&nbsp;<a href='/sheets/relations.html'/><span class='run'>relation</span></a>&nbsp;whose domain is $X$ and whose range is a
 subset of $Y$, such that for each $x \in X$,
-there exists a <i>unique</i> $y \in Y$ so that
-$(x, y) \in f$.</span>
+  <ol>
+   <li>there exists $y \in Y$ so that $(x, y) \in f$</li>
+
+   <li>if $(x,y) \in f$ and $(x,z) \in f$, then $y = z$; here
+    $y$ and $z$ are in $Y$</li>  </ol>
+</span>
+
+ <span class='run'>We often summarize these two conditions by
+  saying: to every element $x \in X$ there
+  corresponds a <span class='term'>unique</span>
+  element $y \in Y$ so that $(x, y) \in f$.</span>
 </p>
 
 
 <p>
- <span class='run'>We call the unique $y \in Y$ the
+ <span class='run'>We call this unique element $y \in Y$ the
   <span class='term'>result</span> of the function
   <span class='term'>at</span> the
   <span class='term'>argument</span> $x$.</span>
 
- <span class='run'>We call $Y$ the <span class='term'>codomain</span>.</span>
+ <span class='run'>We call $Y$ <i>a</i>
+  <span class='term'>codomain</span>—notice our use of
+  the word “a”, since the codomain is not a
+  property of the function.</span>
 
  <span class='run'>If the range is $Y$ we say that $f$ is a
   function from $X$ <span class='term'>onto</span>
-  $Y$ (or call $f$
-  <span class='term'>surjective</span>,
-  <span class='term'>onto</span>).</span>
+  $Y$ (or call $f$ <span class='term'>onto</span>,
+  <span class='term'>surjective</span>).</span>
 
  <span class='run'>If distinct elements of $X$ are mapped to
   distinct elements of $Y$, we say that the
@@ -802,30 +814,28 @@ $(x, y) \in f$.</span>
   <span class='term'>graph</span> of a function and
   avoid defining the term “function” as we have,
   in terms of sets.</span>
- <!--
-  <div data-littype='run'> ❲% ill-define.❳ </div>
 
-  <div data-littype='run'> ❲% —namely, the set of ordered pairs which that function produces—and leave the concept of function undefined.❳ </div>
-
-  <div data-littype='run'> ❲% They do not define functions in terms of sets.❳ </div>
-  -->
-
+ <span class='run'>Our use of the term here is in agreement with
+  standard contemporary mathematical practice.</span>
 </p>
 
 <h2 id='Notation'>Notation</h2>
 
 <p>
- <span class='run'>Let $X$ and $Y$ denote sets.</span>
-
- <span class='run'>We abbreviate that the object denoted by $f$
-  is a function whose domain is a set $X$ and
-  whose codomain is a set $Y$ by
+ <span class='run'>Given sets $X$ and $Y$, we abbreviate the
+  statement that the object denoted by $f$ is a
+  function whose domain is a $X$ and whose
+  codomain is a set $Y$ by
   <p>\[
    f: X \to Y
   \]</p></span>
 
  <span class='run'>We read the notation aloud as “$f$ from $X$
   to $Y$.”</span>
+
+ <span class='run'>We emphasize again that the <i>range</i> of $f$
+  need not be $Y$, but must necessarily be a
+  subset.</span>
 </p>
 
 
@@ -836,8 +846,8 @@ $(x, y) \in f$.</span>
  <span class='run'>This set is contained in the power set
   $\powerset{(X \times  Y)}$.</span>
 
- <span class='run'>A nonstandard notation is $X \to Y$, read as
-  “$A$ to $B$.”</span>
+ <span class='run'>A reasonable but nonstandard notation is $X \to
+  Y$, read as “$A$ to $B$.”</span>
 
  <span class='run'>All the following three statements have the
   same meaning:
@@ -857,7 +867,7 @@ $(x, y) \in f$.</span>
 
 
 <p>
- <span class='run'>Let $f: A \to B$.</span>
+ <span class='run'>Suppose $f: A \to B$.</span>
 
  <span class='run'>For each element $a \in A$, we denote the
   result of applying $f$ to $a$ by $f(a)$, read
@@ -1217,7 +1227,7 @@ $(x, y) \in f$.</span>
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want a notion for a correspondence between two sets.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{function} $f$ (or \t{correspondence}, \t{mapping}, \t{map}) \t{from} a set $X$ \t{to} a set $Y$ is a relation (see \sheetref{relations}{Relations}) whose domain is $X$ and whose range is a subset of $Y$, such that for each $x \in X$, there exists a <i>unique</i> $y \in Y$ so that $(x, y) \in f$.</p></div><div class="sheet-listing"><p class="sheet"> We call the unique $y \in Y$ the \t{result} of the function \t{at} the \t{argument} $x$. We call $Y$ the \t{codomain}. If the range is $Y$ we say that $f$ is a function from $X$ \t{onto} $Y$ (or call $f$ \t{surjective}, \t{onto}). If distinct elements of $X$ are mapped to distinct elements of $Y$, we say that the function is \t{one-to-one} (or \t{injective}).</p></div><div class="sheet-listing"><p class="sheet"> We say that the function \t{maps} (or \t{takes}) elements from the domain to the codomain. Since the word ``function'' and the verb ``maps'' connote activity, some authors refer to the set of ordered pairs as the \t{graph} of a function and avoid defining the term ``function'' as we have, in terms of sets.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ and $Y$ denote sets. We abbreviate that the object denoted by $f$ is a function whose domain is a set $X$ and whose codomain is a set $Y$ by \[ f: X \to Y \] We read the notation aloud as ``$f$ from $X$ to $Y$.''</p></div><div class="sheet-listing"><p class="sheet"> We denote by $Y^X$ the set of functions from $X$ to $Y$. This set is contained in the power set $\powerset{(X \times Y)}$. A nonstandard notation is $X \to Y$, read as ``$A$ to $B$.'' All the following three statements have the same meaning: \[ f: X \to Y, \quad f \in Y^X, \quad f \in (X \to Y). \]</p></div><div class="sheet-listing"><p class="sheet"> We tend to denote functions by lower case latin letters; especially $f$, $g$, and $h$. $f$ is a mnemonic for function and $g$ and $h$ are nearby in the usual ordering of the \sheetref{letters}{Latin letters}.</p></div><div class="sheet-listing"><p class="sheet"> Let $f: A \to B$. For each element $a \in A$, we denote the result of applying $f$ to $a$ by $f(a)$, read aloud ``f of a.'' We sometimes drop the parentheses, and write the result as $f_a$, read aloud as ``f sub a.'' Let $g: A \times  B \to C$. We often write $g(a,b)$ or $g_{ab}$ instead of $g((a,b))$. We read $g(a, b)$ aloud as ``g of a and b''. We read $g_{ab}$ aloud as ``g sub a b.''</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> If $X \subset Y$, the function $\Set{(x, y) \in X \times  Y}{x = y}$ is the \t{inclusion function} of $X$ into $Y$. We often introduce such a function as ``the function from $X$ to $Y$ defined by $f(x) = y$''. We mean by this that $f$ is a function and that we are specifying the appropraite ordered pairs using the statement, called \t{argument-value notation}. The inclusion function of $X$ into $X$ is called the \t{identity function} of $X$. If we view the identity function as a relation on $X$, it is the relation of equality on $X$.</p></div><div class="sheet-listing"><p class="sheet"> The functions $f: (X \times  Y) \to X$ defined by $f(x, y) = x$ is the \t{pair projection} of $X \times  Y$ ono $X$. Similarly $g: (X \times  Y) \to Y$ defined by $g(x, y) = y$ is the pair projection of $X \times  Y$ onto $Y$.</p></div><div class="sheet-listing"><p class="sheet"> The identity function is one-to-one and onto, the inclusion functions are one-to-one but not always onto, and the pair projections are usually not one-to-one.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want a notion for a correspondence between two sets.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{function} $f$ (or \t{correspondence}, \t{mapping}, \t{map}) \t{from} a set $X$ \t{to} a set $Y$ is a \sheetref{relations}{relation}whose domain is $X$ and whose range is a subset of $Y$, such that for each $x \in X$, \begin{enumerate} \item there exists $y \in Y$ so that $(x, y) \in f$ \item if $(x,y) \in f$ and $(x,z) \in f$, then $y = z$; here $y, z \in Y$ \end{enumerate} We often say, to each $x \in X$ there corresponds a \t{unique} $y \in Y$ so that $(x, y) \in f$.</p></div><div class="sheet-listing"><p class="sheet"> We call the unique $y \in Y$ the \t{result} of the function \t{at} the \t{argument} $x$. We call $Y$ the \t{codomain}. If the range is $Y$ we say that $f$ is a function from $X$ \t{onto} $Y$ (or call $f$ \t{surjective}, \t{onto}). If distinct elements of $X$ are mapped to distinct elements of $Y$, we say that the function is \t{one-to-one} (or \t{injective}).</p></div><div class="sheet-listing"><p class="sheet"> We say that the function \t{maps} (or \t{takes}) elements from the domain to the codomain. Since the word ``function'' and the verb ``maps'' connote activity, some authors refer to the set of ordered pairs as the \t{graph} of a function and avoid defining the term ``function'' as we have, in terms of sets.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $X$ and $Y$ denote sets. We abbreviate that the object denoted by $f$ is a function whose domain is a set $X$ and whose codomain is a set $Y$ by \[ f: X \to Y \] We read the notation aloud as ``$f$ from $X$ to $Y$.''</p></div><div class="sheet-listing"><p class="sheet"> We denote by $Y^X$ the set of functions from $X$ to $Y$. This set is contained in the power set $\powerset{(X \times Y)}$. A nonstandard notation is $X \to Y$, read as ``$A$ to $B$.'' All the following three statements have the same meaning: \[ f: X \to Y, \quad f \in Y^X, \quad f \in (X \to Y). \]</p></div><div class="sheet-listing"><p class="sheet"> We tend to denote functions by lower case latin letters; especially $f$, $g$, and $h$. $f$ is a mnemonic for function and $g$ and $h$ are nearby in the usual ordering of the \sheetref{letters}{Latin letters}.</p></div><div class="sheet-listing"><p class="sheet"> Let $f: A \to B$. For each element $a \in A$, we denote the result of applying $f$ to $a$ by $f(a)$, read aloud ``f of a.'' We sometimes drop the parentheses, and write the result as $f_a$, read aloud as ``f sub a.'' Let $g: A \times  B \to C$. We often write $g(a,b)$ or $g_{ab}$ instead of $g((a,b))$. We read $g(a, b)$ aloud as ``g of a and b''. We read $g_{ab}$ aloud as ``g sub a b.''</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Examples}</p></div><div class="sheet-listing"><p class="sheet"> If $X \subset Y$, the function $\Set{(x, y) \in X \times  Y}{x = y}$ is the \t{inclusion function} of $X$ into $Y$. We often introduce such a function as ``the function from $X$ to $Y$ defined by $f(x) = y$''. We mean by this that $f$ is a function and that we are specifying the appropraite ordered pairs using the statement, called \t{argument-value notation}. The inclusion function of $X$ into $X$ is called the \t{identity function} of $X$. If we view the identity function as a relation on $X$, it is the relation of equality on $X$.</p></div><div class="sheet-listing"><p class="sheet"> The functions $f: (X \times  Y) \to X$ defined by $f(x, y) = x$ is the \t{pair projection} of $X \times  Y$ ono $X$. Similarly $g: (X \times  Y) \to Y$ defined by $g(x, y) = y$ is the pair projection of $X \times  Y$ onto $Y$.</p></div><div class="sheet-listing"><p class="sheet"> The identity function is one-to-one and onto, the inclusion functions are one-to-one but not always onto, and the pair projections are usually not one-to-one.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1371,7 +1381,7 @@ $(x, y) \in f$.</span>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 74ea22e52.
+      Copyright 2022 The Bourbaki Authors. Version 5cbc1cd85.
     </span>
   </body>
 </html>

@@ -126,9 +126,11 @@
                 perm: ["\\mathword{perm}"],
                 sgn: ["\\mathword{sgn}"],
                 rvcdf: ["F_{#1}", 1],
+                id: ["\\mathword{id}"],
                 idfn: ["\\mathword{id}_{#1}", 1],
                 floatsingle: ["{\\tt float32}"],
                 floatdouble: ["{\\tt float64}"],
+                Sym: ["\\mathword{Sym}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -1282,35 +1284,24 @@
 <h1 id='Result'>Result</h1>
 
 <p>
- <span class='run'>We bound below the measure</span>
-
- <span class='run'>that a non-negative</span>
-
- <span class='run'>measurable real-valued</span>
-
- <span class='run'>function exceeds some</span>
-
- <span class='run'>value by its integral.</span>
+ <span class='run'>We bound below the measure that a nonnegative
+  measurable real-valued function exceeds some value
+  by its integral.</span>
 </p>
 
 <div class='proposition'>
  <p>
-  <span class='run'>Let $(X, \mathcal{A} , \mu )$</span>
+  <span class='run'>Let $(X, \mathcal{A} , \mu )$ be a measure
+   space.</span>
 
-  <span class='run'>be a measure space.</span>
+  <span class='run'>Let $g: X \to [0, \infty]$ be measurable and
+   square-integrable.</span>
 
-  <span class='run'>Let $g: X \to [0, \infty]$</span>
-
-  <span class='run'>be measurable</span>
-
-  <span class='run'>and square-integrable.</span>
-
-  <span class='run'>Then for all $t$ such that</span>
-
-  <span class='run'>$\int  t d\mu  \in [0, \int  g d\mu )$,
+  <span class='run'>Then for all $t$ such that $\int  t d\mu
+   \in [0, \int  g d\mu )$,
    <p>\[
-    \mu (\Set*{x \in X}{g(x) > t}) \geq \frac{(\int (g - t)
-     d\mu )^2}{\int g^2d\mu }.
+    \mu (\Set*{x \in X}{g(x) > t}) \geq \frac{(\int  (g - t)
+     d\mu )^2}{\int  g^2d\mu }.
    \]</p></span>
   <div class='proof'>   <span class='run'>Let $t$ such that $\int t d\mu  \in [0,
     \int g)$.</span>
@@ -1333,48 +1324,49 @@
      \leq \sqrt{\int  h^2 d\mu  \int  \chi _{A}^2 \; d\mu }
     \]</p></span>  </div>
  </p>
+
+
+ <p>
+  <span class='run'>Now $g^2 &gt; h^2$, so $\int g^2 d\mu  \geq
+   \int h^2 d\mu $.</span>
+
+  <span class='run'>Also $\chi _A^2 = \chi _A$ so $\int \chi _A^2
+   = \mu (A)$.</span>
+
+  <span class='run'>$h(x) &gt; 0$ if and only if $g(x) \geq t$
+   for all $x$.</span>
+
+  <span class='run'>So $A = \Set*{x \in X}{g(x) \geq t}$.</span>
+
+  <span class='run'>Combining we have:
+   <p>\[
+    \int  (g - t)d\mu  \leq \sqrt{(\int  g^2 d\mu ) \mu (A)}.
+   \]</p></span>
+ </p>
+
+ <div class='proposition'>
+  <span class='run'>Let $X$ be a random variable with $\E (X^2)
+   \leq \infty$.</span>
+
+  <span class='run'>Then for all $t \in [0, \E (X))$, we have
+   <p>\[
+    P(X > t) \geq
+
+    \frac{
+
+    (\E (X) - t)^2
+
+    }{
+
+    \E {X^2}
+
+    }.
+   \]</p></span> </div>
+ <p>
+  <span class='run'>The above is also called the
+   <span class='term'>Paley-Zygmund Inequality</span>.</span>
+ </p>
 </div>
-<p>
- <span class='run'>Now $g^2 &gt; h^2$, so $\int g^2 d\mu  \geq
-  \int h^2 d\mu $.</span>
-
- <span class='run'>Also $\chi _A^2 = \chi _A$ so $\int \chi _A^2 =
-  \mu (A)$.</span>
-
- <span class='run'>$h(x) &gt; 0$ if and only if $g(x) \geq t$
-  for all $x$.</span>
-
- <span class='run'>So $A = \Set*{x \in X}{g(x) \geq t}$.</span>
-
- <span class='run'>Combining we have:
-  <p>\[
-   \int  (g - t)d\mu  \leq \sqrt{(\int  g^2 d\mu ) \mu (A)}.
-  \]</p></span>
-</p>
-
-<div class='proposition'>
- <span class='run'>Let $X$ be a random variable with $\E (X^2)
-  \leq \infty$.</span>
-
- <span class='run'>Then for all $t \in [0, \E (X))$, we have
-  <p>\[
-   P(X > t) \geq
-
-   \frac{
-
-   (\E (X) - t)^2
-
-   }{
-
-   \E {X^2}
-
-   }.
-  \]</p></span></div>
-<p>
- <span class='run'>The above is also called the
-  <span class='term'>Paley-Zygmund Inequality</span>.</span>
-</p>
-
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1570,7 +1562,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 74ea22e52.
+      Copyright 2022 The Bourbaki Authors. Version 5cbc1cd85.
     </span>
   </body>
 </html>

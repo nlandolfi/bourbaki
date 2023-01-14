@@ -126,9 +126,11 @@
                 perm: ["\\mathword{perm}"],
                 sgn: ["\\mathword{sgn}"],
                 rvcdf: ["F_{#1}", 1],
+                id: ["\\mathword{id}"],
                 idfn: ["\\mathword{id}_{#1}", 1],
                 floatsingle: ["{\\tt float32}"],
                 floatdouble: ["{\\tt float64}"],
+                Sym: ["\\mathword{Sym}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -930,19 +932,20 @@
 
  <span class='run'>Since $\mathbfsf{P} $ depends on the sample
   space $\Omega $ and the distribution $p$, we
-  ocassionally denote this dependence by
+  occasionally denote this dependence by
   $\mathbfsf{P} _{\Omega , p}$ or $\mathbfsf{P} _p$.</span>
 </p>
 
 
 <p>
- <span class='run'>Many authors associate an event $A \subset
-  \Omega $ with a function $\pi : \Omega  \to
-  \set{0, 1}$ so that $A = \Set*{\omega  \in
-  \Omega }{\pi (\omega ) = 1}$.</span>
+ <span class='run'>Given an <i>event</i> $A \subset \Omega $, many
+  authors <i>define</i> a function $\pi : \Omega
+  \to \set{0, 1}$ so that $\pi (\omega ) = 1$ if
+  and only if $\omega  \in A$.</span>
 
  <span class='run'>In this context, it is common to write
-  $\mathbfsf{P} [\pi (\omega )]$ for $\mathbfsf{P} (A)$.</span>
+  $P[\pi ]$ for $\mathbfsf{P} [\pi ^{-1}(1)]$ which
+  is $\mathbfsf{P} (A)$.</span>
 </p>
 
 <h1 id='Example:_die'>Example: die</h1>
@@ -1001,7 +1004,7 @@
 
 <p>
  <span class='run'>In other words, suppose $f: \powerset{\Omega }
-  \to \R $ satifies (1)-(3).</span>
+  \to \R $ satisfies (1)-(3).</span>
 
  <span class='run'>Define $q: \Omega  \to \R $ by $q(\omega ) =
   f(\set{\omega })$.</span>
@@ -1043,8 +1046,8 @@
   P(B)$.</span>
 
  <span class='run'>This is easy to see by splitting $B$ into $A
-  \cap  B$ and $B \setminus A$, and applying (1)
-  and (3).</span>
+  \cap  B$ and $B - A$, and applying (1) and
+  (3).</span>
 </p>
 
 <h2 id='Subadditivity'>Subadditivity</h2>
@@ -1127,7 +1130,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Since one and only one outcome occurs, given a distribution on outcomes, we define the probability of a set of outcomes as the sum of their probabilities.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $p$ is a distribution on $\Omega $. For any event $A \subset \Omega $, we call the value $\sum_{a \in A} p(a)$ the \t{event probability}. We refer to the probability <i>of</i> $A$. The probability of $A$ is the sum of the probabilities of its outcomes.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We can define a function $\mathbfsf{P} : \powerset{\Omega } \to \R $ by $\mathbfsf{P} (A) = \sum_{a \in A} p(a)$. We call $\mathbfsf{P} $ \t{the event probability function} (or \t{the probability measure}) induced by $p$. Since $\mathbfsf{P} $ depends on the sample space $\Omega $ and the distribution $p$, we ocassionally denote this dependence by $\mathbfsf{P} _{\Omega , p}$ or $\mathbfsf{P} _p$.</p></div><div class="sheet-listing"><p class="sheet"> Many authors associate an event $A \subset \Omega $ with a function $\pi : \Omega  \to \set{0, 1}$ so that $A = \Set*{\omega  \in \Omega }{\pi (\omega ) = 1}$. In this context, it is common to write $\mathbfsf{P} [\pi (\omega )]$ for $\mathbfsf{P} (A)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example: die}</p></div><div class="sheet-listing"><p class="sheet"> Define $p: \set{1, \dots , 6} \to \R $ by $p(\omega ) = 1/6$ for $\omega  = 1, \dots , 6$. Define the event $E = \set{2, 4, 6}$. Then \[ \textstyle \mathbfsf{P} (E) = \sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = 1/2. \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties of $\mathbfsf{P} $}</p></div><div class="sheet-listing"><p class="sheet"> As a result of the conditions on $p$, $\mathbfsf{P} $ satisfies \begin{enumerate} \item $\mathbfsf{P} (A) \geq 0$ for all $A \subset \Omega $; \item $\mathbfsf{P} (\Omega ) = 1$ (and $\mathbfsf{P} (\varnothing) = 0$); \item $\mathbfsf{P} (A) + \mathbfsf{P} (B)$ for all $A, B \subset \Omega $ and $A \cap  B = \varnothing$. This statement follows from the more general identity \[ \mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap  B) \] for $A, B \subset \Omega $, by using $\mathbfsf{P} (\varnothing) = 0$ of (2) above. \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> These three conditions are sometimes called the \t{axioms of probability for finite sets}. Do all such $\mathbfsf{P} $ satisfying (1)-(3) have a corresponding underlying probability distribution?</p></div><div class="sheet-listing"><p class="sheet"> In other words, suppose $f: \powerset{\Omega } \to \R $ satifies (1)-(3). Define $q: \Omega  \to \R $ by $q(\omega ) = f(\set{\omega })$. If $f$ satisfies the axioms, then $q$ is a probability distribution. For this reason we call any function satisfying (i)-(iii) an \t{event probability function} (or a \t{(finite) probability measure}).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Other basic consequences}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Probability by cases}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathbfsf{P} $ be a probability event function. Suppose $A_1, \dots , A_n$ partition $\Omega $. Then for any $B \subset \Omega $, \[ \textstyle \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i \cap  B). \] Some authors call this the \t{law of total probability}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Monotonicity}</p></div><div class="sheet-listing"><p class="sheet"> If $A \subseteq B$, then $\mathbfsf{P} (A) \leq P(B)$. This is easy to see by splitting $B$ into $A \cap  B$ and $B \setminus A$, and applying (1) and (3).</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Subadditivity}</p></div><div class="sheet-listing"><p class="sheet"> For $A, B \subset \Omega $, $\mathbfsf{P} (A \cup B) \leq \mathbfsf{P} (A) + \mathbfsf{P} (B)$. This is easy to see from the more general identity in (3) above. This is sometimes referred to as a \t{union bound}, in reference to <i>bounding} the quantity $\mathbfsf{P</i> (A \cup B)$.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Since one and only one outcome occurs, given a distribution on outcomes, we define the probability of a set of outcomes as the sum of their probabilities.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $p$ is a distribution on $\Omega $. For any event $A \subset \Omega $, we call the value $\sum_{a \in A} p(a)$ the \t{event probability}. We refer to the probability <i>of</i> $A$. The probability of $A$ is the sum of the probabilities of its outcomes.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We can define a function $\mathbfsf{P} : \powerset{\Omega } \to \R $ by $\mathbfsf{P} (A) = \sum_{a \in A} p(a)$. We call $\mathbfsf{P} $ \t{the event probability function} (or \t{the probability measure}) induced by $p$. Since $\mathbfsf{P} $ depends on the sample space $\Omega $ and the distribution $p$, we occasionally denote this dependence by $\mathbfsf{P} _{\Omega , p}$ or $\mathbfsf{P} _p$.</p></div><div class="sheet-listing"><p class="sheet"> Many authors associate an event $A \subset \Omega $ with a function $\pi : \Omega  \to \set{0, 1}$ so that $A = \Set*{\omega  \in \Omega }{\pi (\omega ) = 1}$. In this context, it is common to write $P[\pi ]$ for $\mathbfsf{P} [\pi ^{-1}(1)]$ which is $\mathbfsf{P} (A)$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example: die}</p></div><div class="sheet-listing"><p class="sheet"> Define $p: \set{1, \dots , 6} \to \R $ by $p(\omega ) = 1/6$ for $\omega  = 1, \dots , 6$. Define the event $E = \set{2, 4, 6}$. Then \[ \textstyle \mathbfsf{P} (E) = \sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = 1/2. \]</p></div><div class="sheet-listing"><p class="sheet"> \section*{Properties of $\mathbfsf{P} $}</p></div><div class="sheet-listing"><p class="sheet"> As a result of the conditions on $p$, $\mathbfsf{P} $ satisfies \begin{enumerate} \item $\mathbfsf{P} (A) \geq 0$ for all $A \subset \Omega $; \item $\mathbfsf{P} (\Omega ) = 1$ (and $\mathbfsf{P} (\varnothing) = 0$); \item $\mathbfsf{P} (A) + \mathbfsf{P} (B)$ for all $A, B \subset \Omega $ and $A \cap  B = \varnothing$. This statement follows from the more general identity \[ \mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap  B) \] for $A, B \subset \Omega $, by using $\mathbfsf{P} (\varnothing) = 0$ of (2) above. \end{enumerate}</p></div><div class="sheet-listing"><p class="sheet"> These three conditions are sometimes called the \t{axioms of probability for finite sets}. Do all such $\mathbfsf{P} $ satisfying (1)-(3) have a corresponding underlying probability distribution?</p></div><div class="sheet-listing"><p class="sheet"> In other words, suppose $f: \powerset{\Omega } \to \R $ satisfies (1)-(3). Define $q: \Omega  \to \R $ by $q(\omega ) = f(\set{\omega })$. If $f$ satisfies the axioms, then $q$ is a probability distribution. For this reason we call any function satisfying (i)-(iii) an \t{event probability function} (or a \t{(finite) probability measure}).</p></div><div class="sheet-listing"><p class="sheet"> \section*{Other basic consequences}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Probability by cases}</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathbfsf{P} $ be a probability event function. Suppose $A_1, \dots , A_n$ partition $\Omega $. Then for any $B \subset \Omega $, \[ \textstyle \mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i \cap  B). \] Some authors call this the \t{law of total probability}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Monotonicity}</p></div><div class="sheet-listing"><p class="sheet"> If $A \subseteq B$, then $\mathbfsf{P} (A) \leq P(B)$. This is easy to see by splitting $B$ into $A \cap  B$ and $B - A$, and applying (1) and (3).</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Subadditivity}</p></div><div class="sheet-listing"><p class="sheet"> For $A, B \subset \Omega $, $\mathbfsf{P} (A \cup B) \leq \mathbfsf{P} (A) + \mathbfsf{P} (B)$. This is easy to see from the more general identity in (3) above. This is sometimes referred to as a \t{union bound}, in reference to <i>bounding} the quantity $\mathbfsf{P</i> (A \cup B)$.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1281,7 +1284,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 74ea22e52.
+      Copyright 2022 The Bourbaki Authors. Version 5cbc1cd85.
     </span>
   </body>
 </html>

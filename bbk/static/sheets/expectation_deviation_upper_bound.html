@@ -126,9 +126,11 @@
                 perm: ["\\mathword{perm}"],
                 sgn: ["\\mathword{sgn}"],
                 rvcdf: ["F_{#1}", 1],
+                id: ["\\mathword{id}"],
                 idfn: ["\\mathword{id}_{#1}", 1],
                 floatsingle: ["{\\tt float32}"],
                 floatdouble: ["{\\tt float64}"],
+                Sym: ["\\mathword{Sym}"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -149,7 +151,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 127 0 -->
+      <!-- 128 0 -->
 
 <!-- \newcommand{\product}{\prod} -->
 
@@ -1143,6 +1145,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- % it is declared in integral line! -->
 
 % it is declared in integral line!
@@ -1254,6 +1268,13 @@
                 <span class="caret">›</span>
               </div>
           
+              <div class="need2" tabindex="0" onclick="location.href='./tail_measure_upper_bound.html'" onkeypress="location.href='./tail_measure_upper_bound.html'">
+                <span>
+                  Tail Measure Upper Bound
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
               <div class="need2" tabindex="0" onclick="location.href='./variance.html'" onkeypress="location.href='./variance.html'">
                 <span>
                   Variance
@@ -1284,64 +1305,48 @@
       <!--
 !name:expectation_deviation_upper_bound
 !need:variance
+!need:tail_measure_upper_bound
 !need:absolute_value
 -->
 
 <h1 id='Why'>Why</h1>
 
 <p>
- <span class='run'>We bound the probability</span>
-
- <span class='run'>that a random variance</span>
-
- <span class='run'>deviates from its mean</span>
-
- <span class='run'>using its variance.</span>
+ <span class='run'>We bound the probability that a random variance
+  deviates from its mean using its variance.</span>
 </p>
 
 <h1 id='Result'>Result</h1>
 
 <div class='proposition'>
- <span class='run'>Let $f$ be a</span>
-
- <span class='run'>square-integrable</span>
-
- <span class='run'>real-valued</span>
-
- <span class='run'>random variable</span>
-
- <span class='run'>on the probability</span>
-
- <span class='run'>space $(X, \mathcal{A} , \mu )$.</span>
+ <span class='run'>Let $f$ be a square-integrable real-valued
+  random variable on the probability space $(X,
+  \mathcal{A} , \mu )$.</span>
 
  <span class='run'>Then for $t &gt; 0$,
   <p>\[
-   \mu (\abs{f - \E (f)} \geq t) \leq \frac{\var f}{t^2}.
+   \mu [\abs{f - \E (f)} \geq t] \leq \frac{\var f}{t^2}.
   \]</p></span>
- <div class='proof'>  <span class='run'>The set</span>
+ <div class='proof'>  <span class='run'>The symbols $\abs{f - \E (f)} \geq t$ denote
+   the set $\Set*{x \in X}{ \abs{f(x) - \E (f)}
+   \geq t}$.</span>
 
-  <span class='run'>$\abs{f - \E (f)} \geq t$</span>
-
-  <span class='run'>is</span>
-
-  <span class='run'>$\Set*{x \in X}{ \abs{f(x) - \E (f)} \geq t}$.</span>
-
-  <span class='run'>This set is</span>
-
-  <span class='run'>$\Set*{x \in X}{({f(x) - \E (f)})^2 \geq t^2}$.</span>
-
-  <span class='run'>By using the non-negative inequality
+  <span class='run'>This set is the same as the set
    <p>\[
-    \mu (\Set*{x \in X}{({f(x) - \E (f)})^2 \geq t^2}) \leq
-     \frac{\E (f - \E (f))}{t^2}.
+    \Set*{x \in X}{({f(x) - \E (f)})^2 \geq t^2}.
    \]</p></span>
 
-  <span class='run'>We recognize the numerator of the right</span>
+  <span class='run'>By using the&nbsp;<a href='/sheets/tail_measure_upper_bound.html'/><span class='run'>tail measure upper bound</span></a>,
+   <p>\[
+    \mu (\Set*{x \in X}{({f(x) - \E (f)})^2 \geq t^2}) \leq
+     \frac{\E (f - \E (f))^2}{t^2}.
+   \]</p></span>
 
-  <span class='run'>hand side as the variance.</span> </div></div>
+  <span class='run'>We recognize the numerator of the right hand
+   side as the&nbsp;<a href='/sheets/variance.html'/><span class='run'>variance</span></a>&nbsp;of $f$.</span> </div></div>
 <p>
  <span class='run'>The above is also called
-  <span class='term'>Chebychev&#39;s Inequality</span>.</span>
+  <span class='term'>Chebychev’s Inequality</span>.</span>
 </p>
 
     </div>
@@ -1374,6 +1379,13 @@
             <div class="need" tabindex="0" onclick="location.href='./absolute_value.html'" onkeypress="location.href='./absolute_value.html'">
               <span>
                 Absolute Value
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./tail_measure_upper_bound.html'" onkeypress="location.href='./tail_measure_upper_bound.html'">
+              <span>
+                Tail Measure Upper Bound
               </span>
               <span class="caret">›</span>
             </div>
@@ -1546,7 +1558,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 74ea22e52.
+      Copyright 2022 The Bourbaki Authors. Version 5cbc1cd85.
     </span>
   </body>
 </html>
