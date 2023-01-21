@@ -1,6 +1,8 @@
 
 %!name:event_probabilities
+%!need:uncertain_events
 %!need:probability_distributions
+%!need:real_summation
 
 \section*{Why}
 
@@ -8,31 +10,39 @@ Since one and only one outcome occurs, given a distribution on outcomes, we defi
 
 \section*{Definition}
 
-Suppose $p$ is a distribution on $\Omega $.
-For any event $A \subset \Omega $, we call the value $\sum_{a \in A} p(a)$ the \t{event probability}.
-We refer to the probability \textit{of} $A$.
-The probability of $A$ is the sum of the probabilities of its outcomes.
+Suppose $p$ is a distribution on a \textit{finite} set of outcomes $\Omega $.
+Given an event $E \subset \Omega $, we define the \t{event probability} of $E$ \textit{under} $p$ as the sum of the probabilities of the outcomes in $E$.
 
 \subsection*{Notation}
 
-We can define a function $\mathbfsf{P} : \powerset{\Omega } \to \R $ by $\mathbfsf{P} (A) = \sum_{a \in A} p(a)$.
-We call $\mathbfsf{P} $ \t{the event probability function} (or \t{the probability measure}) induced by $p$.
-Since $\mathbfsf{P} $ depends on the sample space $\Omega $ and the distribution $p$, we occasionally denote this dependence by $\mathbfsf{P} _{\Omega , p}$ or $\mathbfsf{P} _p$.
+It is common to define a function $P: \powerset{\Omega } \to \R $ by
+    \[
+P(A) = \sum_{a \in A} p(a) \quad \text{for all } A \subset \Omega
+    \]
+We call this function $P$ \t{the event probability function} (or \t{the probability measure}) associated with $p$.
+Since it depends on the sample space $\Omega $ and the distribution $p$, we occasionally denote this dependence by $P_{\Omega , p}$ or $P_p$.
 
-Many authors associate an event $A \subset \Omega $ with a function $\pi : \Omega  \to \set{0, 1}$ so that $A = \Set*{\omega  \in \Omega }{\pi (\omega ) = 1}$.
-In this context, it is common to write $P[\pi ]$ for $\mathbfsf{P} [\pi ^{-1}(1)]$ which is $\mathbfsf{P} (A)$.
+%<div data-littype='paragraph'>
+% <div data-littype='run'> Given an ‹event› $A ⊂ Ω$, many authors ‹define› a function
+%    $π: Ω → \set{0, 1}$ so that $π(ω) = 1$ if and only if $ω
+%    ∈ A$. </div>
+% <div data-littype='run'> In this context, it is common to write $P[π]$ for
+%    $𝗣[π^{-1}(1)]$ which is $𝗣(A)$. </div>
+%</div>
 
-\section*{Example: die}
+\subsection*{Example: a single six-sided die}
 
-Define $p: \set{1, \dots , 6} \to \R $ by $p(\omega ) = 1/6$ for $\omega  = 1, \dots , 6$.
-Define the event $E = \set{2, 4, 6}$.
-Then
+We model rolling a single die with the set of outcomes $\Omega  = \set{1, \dots , 6}$ as usual.
+We $p: \Omega  \to \R $ by $p(\omega ) = 1/6$ for $\omega  = 1, \dots , 6$.
+In other words, $p$ is the constant function at value $1/6$ on $\Omega $.
+Now, we model the event that the number of pips showing is an even number by the set $E$ defined by $E = \set{2, 4, 6}$.
+Given all this modeling, the probability of the event $E$ is
     \[
 \textstyle
-\mathbfsf{P} (E) = \sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = 1/2.
+\sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = 1/2.
     \]
 
-\section*{Properties of $\mathbfsf{P} $}
+\section*{Properties of event probabilities}
 
 As a result of the conditions on $p$, $\mathbfsf{P} $ satisfies
     \begin{enumerate}

@@ -1,6 +1,8 @@
 <!--
 !name:event_probabilities
+!need:uncertain_events
 !need:probability_distributions
+!need:real_summation
 -->
 
 § Why ⦉
@@ -12,55 +14,53 @@
 
 § Definition ⦉
 ¶ ⦊
-  ‖ Suppose $p$ is a distribution on $Ω$. ⦉
+  ‖ Suppose $p$ is a distribution on a ‹finite› set of outcomes
+    $Ω$. ⦉
 
-  ‖ For any event $A ⊂ Ω$, we call the value $∑_{a ∈ A}
-    p(a)$ the ❬event probability❭. ⦉
-
-  ‖ We refer to the probability ‹of› $A$. ⦉
-
-  ‖ The probability of $A$ is the sum of the probabilities of
-    its outcomes. ⦉
+  ‖ Given an event $E ⊂ Ω$, the ❬event probability❭ of $E$
+    ‹under› $p$ as the sum of the probabilities of the outcomes
+    in $E$. ⦉
 ⦉
 
 §§ Notation ⦉
 ¶ ⦊
-  ‖ We can define a function $𝗣: \powerset{Ω} → 𝗥$ by $𝗣(A) =
-    ∑_{a ∈ A} p(a)$. ⦉
+  ‖ It is common to define a function $P: \powerset{Ω} → 𝗥$ by
+    ◇ ⦊
+      ‖ P(A) = ∑_{a ∈ A} p(a) \quad \text{for all } A ⊂ Ω ⦉
+    ⦉⦉
 
-  ‖ We call $𝗣$ ❬the event probability function❭ (or ❬the
-    probability measure❭) induced by $p$. ⦉
+  ‖ We call this function $P$ ❬the event probability function❭
+    (or ❬the probability measure❭) associated with $p$. ⦉
 
-  ‖ Since $𝗣$ depends on the sample space $Ω$ and the
+  ‖ Since it depends on the sample space $Ω$ and the
     distribution $p$, we occasionally denote this dependence by
-    $𝗣_{Ω, p}$ or $𝗣_p$. ⦉
+    $P_{Ω, p}$ or $P_p$. ⦉
 ⦉
 
+§§ Example: a single six-sided die ⦉
 ¶ ⦊
-  ‖ Given an ‹event› $A ⊂ Ω$, many authors ‹define› a function
-    $π: Ω → \set{0, 1}$ so that $π(ω) = 1$ if and only if $ω
-    ∈ A$. ⦉
+  ‖ We model rolling a single die with the set of outcomes $Ω
+    = \set{1, …, 6}$ as usual. ⦉
 
-  ‖ In this context, it is common to write $P[π]$ for
-    $𝗣[π^{-1}(1)]$ which is $𝗣(A)$. ⦉
-⦉
+  ‖ We $p: Ω → 𝗥$ by $p(ω) = 1/6$ for $ω = 1, …, 6$. ⦉
 
-§ Example: die ⦉
-¶ ⦊
-  ‖ Define $p: \set{1, …, 6} → 𝗥$ by $p(ω) = 1/6$ for $ω =
-    1, …, 6$. ⦉
+  ‖ In other words, $p$ is the constant function at value $1/6$
+    on $Ω$. ⦉
 
-  ‖ Define the event $E = \set{2, 4, 6}$. ⦉
+  ‖ Now, we model the event that the number of pips showing is
+    an even number by the set $E$ defined by $E = \set{2, 4,
+    6}$. ⦉
 
-  ‖ Then
+  ‖ Given all this modeling, the probability of the event $E$
+    is
     ◇ ⦊
       ‖ \textstyle ⦉
 
-      ‖ 𝗣(E) = ∑_{ω ∈ E} p(ω) = p(2) + p(4) + p(6) = 1/2. ⦉
+      ‖ ∑_{ω ∈ E} p(ω) = p(2) + p(4) + p(6) = 1/2. ⦉
     ⦉⦉
 ⦉
 
-§ Properties of $𝗣$ ⦉
+§ Properties of event probabilities ⦉
 ¶ ⦊
   ‖ As a result of the conditions on $p$, $𝗣$ satisfies
     𝍫 ⦊

@@ -3,6 +3,7 @@
 %!need:natural_numbers
 %!need:pair_intersections
 %!need:pair_unions
+%!need:set_products
 
 \section*{Why}
 
@@ -11,46 +12,39 @@ Such language would be especially useful in discussing games of chance.
 
 \section*{Definition}
 
-We have a set $\Omega $ which includes all possible objects.
-We call it the \t{set of outcomes} (or \t{sample space}).
-We call an element of the set of outcomes an \t{outcome} (or \t{possibility}, \t{sample}, \t{elementary event}, \t{simple event}, \t{sample point}).
+Suppose $\Omega $ is a set which includes all possible objects.
+We call it the \t{sample space}.
+We call an element of this set an \t{outcome}.
+Other terms for outcome include \t{possibility}, \t{sample}, \t{elementary event}, \t{simple event}, \t{sample point}.
 
-An \t{event} (\t{compound event}, \t{random event}) is a subset of outcomes.
-For events $A, B \subset \Omega $, we interpret $A \cup B$ as the event that either $A$ \textit{or} $B$ occurs.
-Similarly we interpret $A \cap  B$ as the event that \textit{both} $A$ \textit{and} $B$ occur.
-We interpret $\Omega  - A$, the \textit{complement} of $A$ in $\Omega $, as the event that $A$ \textit{does not} occur.
+One often uses a set of outcomes when thinking about running an experiment or in a given situation.
+We leave these terms undefined.
 
-An \t{outcome variable} (or \t{random variable}) is a function from $\Omega $ to $V$, where $V$ is a set.
-In this context, $V$ is called the set of \t{values} of the random variable.
+\section*{Examples of modeling}
 
-\section*{Example: coin}
-
+\textit{A model for flipping a coin}.
 We want to talk about the result of flipping a coin.
 The coin has two sides.
 When we flip the coin, it lands heads or tails.
-We model these outcomes with the set $\set{0, 1}$.
+We may model these outcomes with the set $\set{0, 1}$.
 If the coin lands tails, we say that outcome 0 has occurred.
 If the coin lands heads, we say that outcome 1 has occurred.
 
-\section*{Example: die}
-
+\textit{A model for rolling a die}.
 We want to talk about the result of rolling a die.
 The die has six sides.
-When we roll the die, one of the six sides is facing up.
-We model this uncertain outcome with $\set{1, 2, 3, 4, 5, 6}$, whose elements represent the number of pips facing up.
+When we roll the die, it lands with one of its six sides facing up.
+We may model this uncertain outcome as an element of the set $\set{1, 2, 3, 4, 5, 6}$.
+Here we have used the first six natural numbers.
+We say that event 1 occurs if there is one pip showing, that event 2 occurs if there are two pips showing, and so on.
 
-Define $O = \set{1, 3, 5}$ and $E = \set{2, 4, 6}$.
-We interpret $O$ as the event that the number of pips is odd, and $E$ as the event that the number of pips is even.
+\textit{A model for rolling two dice at once}.
+We want to talk about the result of a simultaneous throw of two dice.
+We may model this uncertain outcome as an element of the set $\Omega  = \set{1, \dots , 6}^2$.
+Given a numbering on the die, $(\omega _1, \omega _2) \in \Omega $, $\omega _1$ is the number of pips showing on the first die---the die numbered 1---and $\omega _2$ is the number of pips showing on the second die---the die labeled two.
 
-\section*{Example: two dice}
-
-We want to talk about the sum of the pips shown facing up after rolling two dice.
-We may take as our set of outcome $\set{1, \dots , 12}$, whose elements correspond to the sum.
-We interpret $\Set{x \in \Omega }{x \geq 10}$ as the event that the sum of the two dice is greater than or equal to 10.
-
-Alternatively, we may take the outcomes $\set{1, \dots , 6}^2$ and define an outcome variable $s: \set{1, \dots , 6}^2 \to \set{1, \dots , 12}$ by
-    \[
-s((d_1, d_2)) = d_1 + d_2.
-    \]
-We interpret this natural-number-valued outcome variable $s$ as sum of the two dice.
-The event that the sum of the two dice is greater than or equal to to 10 corresponds to the set $\Set{(d_1, d_2) \in \set{1, \dots , 6}}{s((d_1, d_2)) \geq 10}$.
+\textit{A model for rolling one die twice}.
+We may model this uncertain outcome as an element of the set $\Omega  = \set{1, \dots , 6}^2$.
+We interpret $(\omega _1, \omega _2) \in \Omega $ so that $\omega _1$ is the number of pips showing on the die after the first roll and $\omega _2$ is the number of pips showing on the second die after the second roll.
+We emphasize that we have used the same set of outcomes as in the previous case.
+In other words, we can use the same set of outcomes to model two different situations.
