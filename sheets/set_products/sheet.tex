@@ -7,32 +7,49 @@
 
 \section*{Why}
 
-Does a set exist of all the ordered pairs of elements from an ordered pair of sets?
+Does a set exist which contains all ordered pairs of elements from two sets?
+
+\section*{Discussion}
+
+The answer is easily seen to be yes.
+Ordered pairs are just sets, containing two sets.
+One set has one object, and so is a singleton.
+The other has two objects, and so is a pair.
+So to construct the set of all ordered pairs, we need only specify certain members of some set containing all singletons and pairs.
+The power set of the union of the two sets will suffice.
+
+To see this, suppose $A$ and $B$ are two sets.
+If $a \in A$, then $a \in A \cup B$.
+Likewise if $b \in B$, then $b \in A \cup B$.
+Hence $\set{a} \subset A$ and $\set{b} \subset B$, so that $\set{a}, \set{b} \in \powerset{A \cup B}$.
+In other words, the singletons are members of the power set.
+Similarly, $\set{a, b} \in \powerset{A \cup B}$.
+In other words, the pairs are elements of the power set.
+Thus the set of sets containing singletons and pairs is a power set of the power set of $A \cup B$.
+In symbols, $\set{\set{a}, \set{a, b}} \in \powerset{\powerset{A \cup B}}$.
 
 \section*{Definition}
 
-Let $A$ and $B$ denote sets.
-Ordered pairs are sets of singletons and pairs.
-So to construct the set of all ordered pairs taken from two sets, we want to specify the elements of a set which contains all singletons $\set{a}$ and pairs $\set{a, b}$ for $a \in A$, $b \in B$.
-
-Notice that $a \in A$ and $b \in A$ mean $a, b \in (A \cup B)$.
-In other words, $\set{a} \subset A$ and $\set{b} \subset B$ and $\set{a}, \set{b} \subset (A \cup B)$.
-In particular, $\set{a} \in \powerset{(A \cup B)}$.
-Similarly, $\set{a, b} \in \powerset{(A \cup B)}$.
-And so $\set{\set{a}, \set{a, b}} \in \powerset{\powerset{(A \cup B)}}$.
-
-We define the set of \say{all ordered pairs} from $A$ and $B$ by specifying the appropriate pairs of this set.\footnote{The specific statement used here requires some translation. A discussion of this and the full statement will appear in a future edition.}
+We define the set of ``all ordered pairs'' from $A$ and $B$ by specifying the appropriate pairs of this set.\footnote{The specific statement used here requires some translation. A discussion of this and the full statement will appear in a future edition.}
   \[
-\Set{(a, b) \in \powerset{\powerset{(A \cup B)}}}{a \in A \land b \in B}
+\Set{(a, b) \in \powerset{\powerset{A \cup B}}}{a \in A \land b \in B}
   \]
 We name this set the \t{product} of the set denoted by $A$ and the set denoted by $B$ is the set of all ordered pairs.
 This set is also called the \t{set product} (or \t{cartesian product}\footnote{This second term is universal, but avoided in accordance with the project policy on naming.}
 ).
-If $A \neq B$, the ordering causes the product of $A$ and $B$ to differ from the product of
-$B$ with $A$.
+If $A \neq B$, the ordering causes the product of $A$ and $B$ to differ from the product of $B$ with $A$.
 If $A = B$, however, the symmetry holds.
 
 \subsection*{Notation}
 
-We denote the product of $A$ with $B$ by $A \times  B$, read aloud as \say{A cross B.}
+We denote the product of $A$ with $B$ by $A \times  B$, read aloud as ``A cross B.''
 In this notation, if $A \neq B$, then $A \times  B \neq B \times  A$.\footnote{Future editions may include a table figure visualizing the product.}
+
+\subsection*{Empty set}
+
+It turns out the product of the empty set with any other set is always empty.
+
+\begin{proposition}
+Suppose $A$ is a set.
+Then $A \times  \varnothing = \varnothing \times  A = \varnothing$.
+\begin{proof}This follows from the definition of the set product, since there is no element in the emepty set, and so the statement used in the specification always evaluates to false.\end{proof}\end{proposition}
