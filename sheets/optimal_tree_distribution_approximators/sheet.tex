@@ -22,18 +22,20 @@ We call a tree according to which an optimal tree approximator factors and \t{op
 Define $A = \prod_{i = 1}^{n} A_i$.
 Let $q: A \to [0, 1]$ a distribution.
 A tree $T$ on $\set{1, \dots , n}$ is an optimal approximator tree if and only if it is a maximal spanning tree of the mutual information graph of $q$.
+
 \end{proposition}
+
 \begin{proof}First, denote the optimal tree distribution approximator of $q$ for tree $T$ by $p^*_T$.
 Express
-    \[
+\[
 p^*_T = q_1 \prod_{i \neq 1} q_{i \mid \pa_i}
-    \]
+\]
 
 Second, express $d(q, p) = H(q, p) - H(q)$.
 Since $H(q)$ does not depend on $T$, $p^*_T$ is a minimizer (w.r.t. $T$) of $d(q, p^*_T)$ if and only if it is a minimizer of $H(q, p^*_T)$.
 
 Third, express the cross entropy of $p^*_T$ relative to $q$ as
-    \[
+\[
 \begin{aligned}
 H(q, p^*_T) &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\log q_{i \mid pa{i}}(a_i, a_{\pa_i}) \\
 &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)(\log q_{i,\pa{i}}(a_i, a_{\pa_i}) - \log q_{\pa{i}}(a_{\pa{i}})) \\
@@ -41,7 +43,7 @@ H(q, p^*_T) &= H(q_1) - \sum_{i \neq 1} \sum_{a \in A} q(a)\log q_{i \mid pa{i}}
 &= \sum_{i = 1}^{n} H(q_i) - \sum_{i \neq 1} I(q_i, q_{\pa_i}) \\
 &= \sum_{i = 1}^{n} H(q_i) - \sum_{\set{i,j} \in T} I(q_i, q_{j}) \\
 \end{aligned}
-    \]
+\]
 where $\pa_i$ denotes the parent of vertex $i$ in $T$ rooted at vertex 1 ($i = 2, \dots , n$).
 For $i = 1, \dots , n$, $H(q_i)$ does not depend on the choice of tree.
 Therefore selecting a tree to minimize the second term in the final expression above is equivalent to choosing a maximal spanning tree from the weighted graph with mutual information edge weights; namely, the mutual information graph of $q$.
