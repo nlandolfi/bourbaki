@@ -3,24 +3,26 @@ package bbk
 import (
 	"bufio"
 	"bytes"
-	"encoding/gob"
 	"fmt"
 	"io"
+	"io/fs"
 	"io/ioutil"
 	"log"
 	"os"
+	"path"
 	"path/filepath"
-	"regexp"
 	"sort"
 	"strings"
 
 	"github.com/nlandolfi/lit"
+	"gopkg.in/yaml.v3"
 )
 
 const (
 	namePrefix = "%!name:"
 	needPrefix = "%!need:"
 	mcroPrefix = "%!mcro:"
+	refsPrefix = "%!refs:"
 	wikiPrefix = "%!wiki:"
 )
 
@@ -28,12 +30,12 @@ type ParseResult struct {
 	Name        string
 	Needs       []string
 	Macros      []string
+	Refs        []string
 	Lines       []string
 	Wiki        string
 	Body        string
 	NeedsParsed []*ParseResult
 	Terms       []string
-	AST         *SheetAST
 	MacrosLines []string
 	AllNeeds    []string
 
@@ -43,6 +45,7 @@ type ParseResult struct {
 
 	HasLitFile bool
 	litNode    *lit.Node
+	Config     SheetConfig
 
 	globalResultsMap map[string]*ParseResult
 }
@@ -138,6 +141,10 @@ func Parse(sheet io.Reader, macros io.Reader) *ParseResult {
 			p.Wiki = strings.TrimPrefix(t, wikiPrefix)
 			continue
 		}
+		if strings.HasPrefix(t, refsPrefix) {
+			p.Refs = append(p.Refs, strings.TrimPrefix(t, refsPrefix))
+			continue
+		}
 		p.Lines = append(p.Lines, t)
 	}
 	if err := scanner.Err(); err != nil {
@@ -145,8 +152,114 @@ func Parse(sheet io.Reader, macros io.Reader) *ParseResult {
 	}
 	p.Body = strings.Join(p.Lines, " ")
 	p.Terms = Terms(p.Body)
-	p.AST = ParseSheetAST(p.Lines)
 	return p
+}
+
+func configFromPR(pr *ParseResult) *SheetConfig {
+	return &SheetConfig{
+		Name:      pr.Name,
+		Needs:     pr.Needs,
+		Refs:      pr.Refs,
+		Wikipedia: pr.Wiki,
+	}
+}
+
+type SheetConfig struct {
+	Name      string   `yaml:"name",omitempty`
+	Needs     []string `yaml:"needs,omitempty"`
+	Refs      []string `yaml:"refs,omitempty"`
+	Wikipedia string   `yaml:"wikipedia,omitempty"`
+}
+
+type Sheet struct {
+	ConfigFromComment *lit.Node
+	Config            SheetConfig
+	LitNode           *lit.Node
+}
+
+// Use ParseSheet to parse a sheet.lit file
+func ParseSheet(r io.Reader) (*Sheet, error) {
+	bs, err := io.ReadAll(r)
+	if err != nil {
+		return nil, err
+	}
+	n, err := lit.ParseLit(string(bs))
+	if err != nil {
+		return nil, err
+	}
+	s := &Sheet{
+		LitNode: n,
+	}
+
+	// now the config.
+	// there are two possibilities as of 1/25/2023
+	// first, the FIRST child is a comment, and that has the usual stuff
+	// e.g.
+	// !name:asdf
+	// !need:asdf etc
+	// OR there is a yaml block SOMEWHERE (anywhere for now) and
+	// that has a yaml config
+	if n.FirstChild.Type == lit.CommentNode {
+		// fake that it is commented
+		lines := strings.Split(n.FirstChild.Data, "\n")
+		for i, l := range lines {
+			lines[i] = "%" + l
+		}
+		r := strings.NewReader(strings.Join(lines, "\n"))
+		br := strings.NewReader("")
+		pr := Parse(r, br)
+		s.Config = *configFromPR(pr)
+		s.ConfigFromComment = n.FirstChild
+	}
+	if n.FirstChild.Type == lit.YAMLNode {
+		if err := yaml.Unmarshal([]byte(n.FirstChild.Data), &s.Config); err != nil {
+			return nil, err
+		}
+	}
+
+	return s, nil
+}
+
+type SheetSet struct {
+	Sheets map[string]*Sheet
+}
+
+// Use ParseSheetSet to parse all the sheet directories in dir.
+func ParseSheetSet(dir fs.FS) (*SheetSet, error) {
+	var ss SheetSet
+	ss.Sheets = make(map[string]*Sheet)
+
+	entries, err := fs.ReadDir(dir, ".")
+	if err != nil {
+		return nil, err
+	}
+
+	for _, e := range entries {
+		if !e.IsDir() {
+			continue
+		}
+
+		sf, err := dir.Open(path.Join(e.Name(), "sheet.lit"))
+		if err != nil {
+			return nil, err
+		}
+		s, err := ParseSheet(sf)
+		if err != nil {
+			return nil, err
+		}
+		if err := sf.Close(); err != nil {
+			return nil, err
+		}
+		if s.Config.Name != e.Name() {
+			return nil, fmt.Errorf("sheet name: %q doesn't match dir name: %q", s.Config.Name, e.Name())
+
+		}
+		if _, ok := ss.Sheets[s.Config.Name]; ok {
+			return nil, fmt.Errorf("duplicate sheet name: %q on dir: %q", s.Config.Name, e.Name())
+		}
+		ss.Sheets[s.Config.Name] = s
+	}
+	return &ss, nil
 }
 
 func ParseAll(sheetsdir string) ([]*ParseResult, error) {
@@ -197,6 +310,14 @@ func ParseAll(sheetsdir string) ([]*ParseResult, error) {
 				log.Fatal(err)
 			}
 			p.litNode = n
+			if p.litNode.FirstChild.Type == lit.YAMLNode {
+				if err := yaml.Unmarshal([]byte(n.FirstChild.Data), &p.Config); err != nil {
+					log.Fatal(err)
+				}
+			}
+		}
+		if err := lf.Close(); err != nil {
+			log.Fatal(err)
 		}
 	}
 
@@ -248,120 +369,3 @@ func Terms(s string) []string {
 	}
 	return ts
 }
-
-func ParseSheetAST(lines []string) *SheetAST {
-	var p parser
-	var t SheetAST
-	for _, l := range lines {
-		l = strings.TrimSpace(l)
-
-		if strings.HasPrefix(l, namePrefix) {
-			t.Name = strings.TrimPrefix(l, namePrefix)
-			continue
-		}
-
-		if strings.HasPrefix(l, "%") {
-			continue
-		}
-
-		if strings.HasPrefix(l, "\\ssection{") {
-			// s has "}"
-			s := strings.TrimPrefix(l, "\\ssection{")
-			// drop "}"
-			s = s[:len(s)-1]
-			t.Nodes = append(t.Nodes, SheetSection(s))
-			continue
-		}
-		if strings.HasPrefix(l, "\\ssubsection{") {
-			// s has "}"
-			s := strings.TrimPrefix(l, "\\ssubsection{")
-			// drop "}"
-			s = s[:len(s)-1]
-			t.Nodes = append(t.Nodes, SheetSubSection(s))
-			continue
-		}
-
-		if l == "" {
-			p.paragraph = nil
-			continue
-		}
-
-		if p.paragraph == nil {
-			p.paragraph = new(SheetParagraph)
-			t.Nodes = append(t.Nodes, p.paragraph)
-		}
-
-		p.paragraph.Sentences = append(p.paragraph.Sentences, l)
-	}
-	return &t
-}
-
-type parser struct {
-	paragraph *SheetParagraph
-}
-
-type SheetAST struct {
-	Name  string
-	Nodes []SheetNode
-}
-
-var emphregex = regexp.MustCompile(`\\emph\{(.+)\}`)
-var textbfregex = regexp.MustCompile(`\\textbf\{(.+)\}`)
-var textitregex = regexp.MustCompile(`\\textit\{(.+)\}`)
-var ctregex = regexp.MustCompile(`\\ct\{(.+)\}\{.*\}`)
-var sayregex = regexp.MustCompile(`\\say\{(.+)\}`)
-
-func (a *SheetAST) String() string {
-	var numSection = 1
-	var numSubSection = 1
-	var b strings.Builder
-	for _, n := range a.Nodes {
-		switch v := n.(type) {
-		case SheetSection:
-			fmt.Fprintf(&b, `<div class="sheet-listing" id="%s"><h1 class="sheet">%d. %s</h1></div>`, DirName(string(v)), numSection, v)
-			numSubSection = 1
-			numSection += 1
-		case SheetSubSection:
-			fmt.Fprintf(&b, `<div class="sheet-listing"><h2 class="sheet" id="%s">%d.%d %s</h2></div>`, DirName(string(v)), numSection-1, numSubSection, v)
-			numSubSection += 1
-		case *SheetParagraph:
-			fmt.Fprint(&b, `<div class="sheet-listing"><p class="sheet">`)
-			for _, s := range v.Sentences {
-				s = emphregex.ReplaceAllString(s, "<i>$1</i>")
-				s = textitregex.ReplaceAllString(s, "<i>$1</i>")
-				s = textbfregex.ReplaceAllString(s, "<b>$1</b>")
-				s = ctregex.ReplaceAllString(s, "<i>$1</i>")
-				s = sayregex.ReplaceAllString(s, "\"$1\"")
-				fmt.Fprintf(&b, " %s", s)
-			}
-			fmt.Fprint(&b, `</p></div>`)
-		}
-	}
-	return b.String()
-}
-
-type SheetNode interface{ IsSheetNode() bool }
-
-type SheetSection string
-
-func (s SheetSection) IsSheetNode() bool { return true }
-
-type SheetSubSection string
-
-func (s SheetSubSection) IsSheetNode() bool { return true }
-
-type SheetParagraph struct {
-	Sentences []string
-}
-
-func (p *SheetParagraph) IsSheetNode() bool { return true }
-
-func init() {
-	gob.Register(SheetSection(""))
-	gob.Register(SheetSubSection(""))
-	gob.Register(&SheetParagraph{})
-}
-
-type SheetSentence string
-
-func (s SheetSentence) IsSheetNode() bool { return true }
