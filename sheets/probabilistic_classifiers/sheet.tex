@@ -1,16 +1,14 @@
+
 %!name:probabilistic_classifiers
 %!need:classifiers
 %!need:probability_distributions
 %!need:list_classifiers
 
-\ssection{Why}
+\section*{Why}
 
-Since our predictions are often uncertain, we can use the language of probability distributions to characterize them.
-  \ifhmode\unskip\fi\footnote{
-Future editions will improve this.
-  }
+Since our predictions are often uncertain, we can use the language of probability distributions to characterize them.\footnote{Future editions will improve this.}
 
-\ssection{Definition}
+\section*{Definition}
 
 Denote the set of probability distributions on a set $X$ by $\Delta(X)$.
 
@@ -18,29 +16,27 @@ A \t{probabilistic classifier} $G: A \to \Delta(B)$ is a function from inputs $A
 
 Given an input $a$, the \t{prediction} of $G$ on $a$ is a probability distribution $\hat{p}_a = G(a)$ on $B$.
 
-\ssubsection{Point classifier as probabilistic classifier}
+\subsection*{Point classifier as probabilistic classifier}
 
 Given a point classifier $f: A \to B$, we can define a probabilistic classifier $G: A \to \Delta(B)$ corresponding to $f$ by
-  \[
+\[
 \hat{p}_a(b) =
 \begin{cases}
 1 & \text{ if } f(a) = b \\
 0 & \text{ otherwise.} \\
 \end{cases}
-  \]
+\]
 where $\hat{p}_a = G(a).$
 
-\ssubsection{Probabilistic classifier from point classifier}
+\subsection*{Probabilistic classifier from point classifier}
 
 On the other hand, given probabilistic classifier $G: A \to \Delta(B)$, we can define a point classifier $f: A \to B$ by
-  \[
+\[
 f(a) = \underset{b \in B}{\text{argmax}} \; \hat{p}_a(v)
-  \]
+\]
 We call $f$ the \t{maximum likelihood classifier} corresponding to $G$.
 If there are ties, we can order the (finite) set $B$ arbitrarily, and break ties accordingly.
 
 We can extend this idea, and define a list classifier by sorting the outputs by their probability, from largest to smallest.
-
-\ssection{Judging probabilistic classifiers}
 
 \blankpage

@@ -1,16 +1,15 @@
+
 %!name:optimization_problems
 %!need:optimizers
 %!need:real_functions
 %!need:extended_real_numbers
 %!need:greatest_lower_bounds
 %!need:n-dimensional_space
+%!wiki:https://en.wikipedia.org/wiki/Optimization_problem
 
 \section*{Why}
 
-We are frequently interested in finding minimizers of real functions.
-  \ifhmode\unskip\fi\footnote{
-Future editions will modify and expand.
-  }
+We are frequently interested in finding minimizers of real functions.\footnote{Future editions will modify and expand.}
 
 \section*{Definition}
 
@@ -29,12 +28,12 @@ In this case, these objects are often called \t{parameters} or \t{problem data}.
 \subsection*{Notation}
 
 We often write optimization problems as
-  \[
+\[
 \begin{aligned}
 \text{minimize}\quad & f(x) \\
 \text{subject to}\quad & x \in \mathcal{X} .
 \end{aligned}
-  \]
+\]
 In this case we call $x$ the \t{decision variable}.
 
 \subsection*{Extended reals}
@@ -45,13 +44,12 @@ For example, we interpret $f(x) = +\infty$ to mean $x$ is \textit{infeasible}.
 
 \subsection*{Maximization}
 
-If we have some function $g: \CX \to \Rbar$ that we wish to maximize, we can always convert it to an optimization problem by defining $f: \CX \to \Rbar$ by $f(x) = -g(x)$.
-In this case $g$ is often called a \t{reward} (\t{utility}, \t{profit}).
+If we have some function $g: \mathcal{X}  \to \Rbar$ that we wish to maximize, we can always convert it to an optimization problem by defining $f: \mathcal{X}  \to \Rbar$ by $f(x) = -g(x)$.
+In this case $g$ is often called a \t{reward} (or \t{utility}, \t{profit}).
 
 \section*{Solvers}
 
-Let $\CP = \set{(X_a, f_a: X_a \to \Rbar)}_{a \in A}$ be a family of optimization problems.
-A \t{solver} (or \t{solution method}, \t{solution algorithm}) for $\CP$ is a function $S: A \to \CS$ such that $S_a$ is a solution of the problem $(X_a, f_a)$.
+A \t{solver} (or \t{solution method}, \t{solution algorithm}) for a family of optimization problems is a function $S$ mapping optimization problems to solutions.
 
-Loosely speaking, the difficulty of \say{solving} the optimization problem $(\CX, f)$ depends on the properties of $\CX$ and $f$ and the problem \say{size}.
-For example, when $\mathcal{X}  \subset \R ^d$ the difficulty is related to the \say{dimension} $d$ of $x \in \mathcal{X} $.
+Loosely speaking, the difficulty of ``solving'' the optimization problem $(\mathcal{X} , f)$ depends on the properties of $\mathcal{X} $ and $f$ and the problem ``size''.
+For example, when $\mathcal{X}  \subset \R ^d$ the difficulty is related to the ``dimension'' $d$ of $x \in \mathcal{X} $.
