@@ -37,7 +37,7 @@
             ['\\[', '\\]']
           ],
         macros: {
-                powerset: ["2^{#1}", 1],
+                powerset: ["\\mathcal{P}(#1)", 1],
                 CV: "\\mathcal{V}",
                 ceil: ["\\lceil #1 \\rceil", 1],
                 num: ["\\abs{#1}",1],
@@ -50,7 +50,7 @@
                 Z: ["\\mathbfsf{Z}"],
                 F: ["\\mathbfsf{F}"],
                 E: ["\\mathbfsf{E}"],
-                aff: ["\\mathsf{aff}"],
+                aff: ["\\mathword{aff}"],
                 upto: ["\\set{1,\\dots,#1}", 1],
                 eqc: ["[#1]", 1],
                 adj: ["\\mathword{adj}"],
@@ -93,9 +93,45 @@
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 argmin: ["\\mathword{argmin}"],
+                argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
                 normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
                 SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
+                inv: ["{#1}^{-1}", 1],
+                conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
+                blink: ["\\star"],
+                pause: ["\\square"],
+                fdesc: ["\\mathword{fdesc}"],
+                loss: ["\\ell"],
+                maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
+                perm: ["\\mathword{perm}"],
+                sgn: ["\\mathword{sgn}"],
+                rvcdf: ["F_{#1}", 1],
+                id: ["\\mathword{id}"],
+                idfn: ["\\mathword{id}_{#1}", 1],
+                floatsingle: ["{\\tt float32}"],
+                floatdouble: ["{\\tt float64}"],
+                Sym: ["\\mathword{Sym}"],
+                symdiff: ["+"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -105,6 +141,7 @@
     <span style="display:none">
 \(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
 \( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\( \DeclarePairedDelimiter{\parens}{\left(}{\right)}\)
 \(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
 \(\newcommand{\ip}[1]{\innerproduct{#1}}\)
 \(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
@@ -115,231 +152,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 125 0 -->
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcounter{caccounts} -->
-
-\newcounter{caccounts}
-
-<!-- \newcounter{caccountlineno}[caccounts] -->
-
-\newcounter{caccountlineno}[caccounts]
-
-<!-- \newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1} -->
-
-\newcommand{\cname}[1]{\refstepcounter{caccountlineno}\texttt{(\thecaccountlineno)} \texttt{name} #1}
-
-<!-- \newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2} -->
-
-\newcommand{\chave}[2]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{have} #2}
-
-<!-- \newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3} -->
-
-\newcommand{\cthus}[3]{\refstepcounter{caccountlineno}\label{#1}\texttt{(\thecaccountlineno)} \texttt{thus} #2 \texttt{by} #3}
-
-<!-- \newcommand{\lref}[1]{\texttt{(\ref{#1})}} -->
-
-\newcommand{\lref}[1]{\texttt{(\ref{#1})}}
-
-<!--  -->
-
-
-
-<!-- \newenvironment{caccount}{ -->
-
-\newenvironment{caccount}{
-
-<!--   \refstepcounter{caccounts} -->
-
-  \refstepcounter{caccounts}
-
-<!-- }{ -->
-
-}{
-
-<!-- } -->
-
-}
-
-<!-- \newenvironment{blankaccount}[1][]{ -->
-
-\newenvironment{blankaccount}[1][]{
-
-<!--    \hspace{-1.6cm} -->
-
-   \hspace{-1.6cm}
-
-<!--    \begin{tabular}{r|rlcc} -->
-
-   \begin{tabular}{r|rlcc}
-
-<!-- }{ -->
-
-}{
-
-<!--   \end{tabular} -->
-
-  \end{tabular}
-
-<!--   \medskip -->
-
-  \medskip
-
-<!-- } -->
-
-}
-
-<!-- \newcounter{accounts} -->
-
-\newcounter{accounts}
-
-<!-- \newcounter{accountlineno}[accounts] -->
-
-\newcounter{accountlineno}[accounts]
-
-<!-- \newenvironment{account}[1][]{ -->
-
-\newenvironment{account}[1][]{
-
-<!-- \refstepcounter{accounts} -->
-
-\refstepcounter{accounts}
-
-<!-- \noindent\textbf{Account~\theaccounts. #1} \rmfamily \\ -->
-
-\noindent\textbf{Account~\theaccounts. #1} \rmfamily \\
-
-<!--  -->
-
-
-
-<!--     \vspace*{-0.4cm} -->
-
-    \vspace*{-0.4cm}
-
-<!--    \hspace{-1.6cm} -->
-
-   \hspace{-1.6cm}
-
-<!--    \begin{tabular}{r|rlcc} -->
-
-   \begin{tabular}{r|rlcc}
-
-<!-- }{ -->
-
-}{
-
-<!--   \end{tabular} -->
-
-  \end{tabular}
-
-<!--   \medskip -->
-
-  \medskip
-
-<!-- } -->
-
-}
-
-<!-- \newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\} -->
-
-\newcommand{\name}[1]{\refstepcounter{accountlineno}\texttt{\theaccountlineno} & \texttt{name} & #1 & & \\}
-
-<!-- \newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\} -->
-
-\newcommand{\have}[2]{\refstepcounter{accountlineno}\label{#1}\texttt{\theaccountlineno} & \texttt{have} & #2 & &  \\}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\thus}[3]{ -->
-
-\newcommand{\thus}[3]{
-
-<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\ -->
-
-  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{thus} & #2 & \texttt{by} & \texttt{#3} \\
-
-<!-- } -->
-
-}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\idet}[3]{ -->
-
-\newcommand{\idet}[3]{
-
-<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\ -->
-
-  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{idet} & #2 & \texttt{of} & \texttt{#3} \\
-
-<!-- } -->
-
-}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\same}[3]{ -->
-
-\newcommand{\same}[3]{
-
-<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\ -->
-
-  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{same} & #2 & \texttt{as} & \texttt{#3} \\
-
-<!-- } -->
-
-}
-
-<!-- \newcommand{\ie}[3]{ -->
-
-\newcommand{\ie}[3]{
-
-<!--   \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\ -->
-
-  \refstepcounter{accountlineno} \label{#1} \texttt{\theaccountlineno} & \texttt{i.e.} & #2 & \texttt{by} & \texttt{#3} \\
-
-<!-- } -->
-
-}
-
-<!-- \newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\} -->
-
-\newcommand{\namee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2 & & \\}
-
-<!-- \newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\} -->
-
-\newcommand{\nameee}[3]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{name} & #1, #2, #3& &  \\}
-
-<!-- \newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\} -->
-
-\newcommand{\havee}[2]{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2 & & \\}
-
-<!-- \newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}} -->
-
-\newcommand{\haveee}[3]{{\refstepcounter{accountlineno}\texttt{\theaccountlineno-\refstepcounter{accountlineno}\refstepcounter{accountlineno}\theaccountlineno} & \texttt{have} & #1, #2, #3 & & \\}}
-
-<!-- % objects macros -->
-
-% objects macros
+      <!-- 124 0 -->
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -393,29 +206,9 @@
 
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- % objects macros -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\comp}{\circ} -->
-
-\newcommand{\comp}{\circ}
-
-<!-- \newcommand{\composed}{\circ} -->
-
-\newcommand{\composed}{\circ}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% objects macros
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -428,6 +221,14 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
 
 <!-- % use \powerset{A} for power set of A -->
 
@@ -476,6 +277,58 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+
+\def\oright#1{\right#1\mskip-10mu\circ}
+
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
+
+\def\oleft#1{\circ\mskip-10mu\left#1}
+
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -745,37 +598,33 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
 
-\newcommand{\idfn}[1]{\text{id}_{#1}}
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
 
 
-<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\newcommand{\inv}[1]{{#1}^{-1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
+<!-- \newcommand{\union}{\,\cup\,} -->
 
-\newcommand{\inverse}[1]{\inv{#1}}
+\newcommand{\union}{\,\cup\,}
 
-<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
+<!-- \newcommand{\bunion}{\bigcup} -->
 
-\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
-
-<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
-
-\newcommand{\inversep}[1]{\invp{#1}}
-
-<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
-
-\newcommand{\relcomplement}[2]{C_{#2}({#1})}
-
-<!-- \renewcommand{\complement}[1]{C({#1})} -->
-
-\renewcommand{\complement}[1]{C({#1})}
+\newcommand{\bunion}{\bigcup}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -805,49 +654,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\union}{\,\cup\,} -->
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
 
-\newcommand{\union}{\,\cup\,}
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
 
-<!-- \newcommand{\bunion}{\bigcup} -->
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
 
-\newcommand{\bunion}{\bigcup}
+\renewcommand{\complement}[1]{C({#1})}
 
 <!-- \newcommand{\bintersection}{\bigcap} -->
 
 \newcommand{\bintersection}{\bigcap}
-
-<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
-
-%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
-
-<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
-
-\def\oright#1{\right#1\mskip-10mu\circ}
-
-<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
-
-\def\oleft#1{\circ\mskip-10mu\left#1}
-
-<!-- \newcommand{\I}{\mathbfsf{I}} -->
-
-\newcommand{\I}{\mathbfsf{I}}
-
-<!-- \newcommand{\oi}[1]{(#1)} -->
-
-\newcommand{\oi}[1]{(#1)}
-
-<!-- \newcommand{\ci}[1]{[#1]} -->
-
-\newcommand{\ci}[1]{[#1]}
-
-<!-- \newcommand{\oci}[1]{(#1]} -->
-
-\newcommand{\oci}[1]{(#1]}
-
-<!-- \newcommand{\coi}[1]{[#1)} -->
-
-\newcommand{\coi}[1]{[#1)}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -861,41 +678,33 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\symdiff}{+} -->
+<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
 
-\newcommand{\symdiff}{+}
+\newcommand{\Z}{\mathbfsf{Z}}
 
-<!-- \newcommand{\intersect}{\cap} -->
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\newcommand{\intersect}{\cap}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\intersection}{\cap} -->
+<!--  -->
 
-\newcommand{\intersection}{\cap}
 
-<!-- % mnemonic for (s)et(suc)cesor -->
 
-% mnemonic for (s)et(suc)cesor
+<!-- \newcommand{\comp}{\circ} -->
 
-<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+\newcommand{\comp}{\circ}
 
-\newcommand{\ssuc}[1]{{#1}^{+}}
+<!-- \newcommand{\composed}{\circ} -->
 
-<!-- \renewcommand{\setminus}{-} -->
+\newcommand{\composed}{\circ}
 
-\renewcommand{\setminus}{-}
+<!--  -->
 
-<!-- \newcommand{\dom}{\mathword{dom}} -->
 
-\newcommand{\dom}{\mathword{dom}}
 
-<!-- \newcommand{\ran}{\mathword{range}} -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\newcommand{\ran}{\mathword{range}}
-
-<!-- \newcommand{\range}{\ran} -->
-
-\newcommand{\range}{\ran}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -977,41 +786,57 @@
 
 
 
-<!-- \newcommand{\id}{\mathword{id}} -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\newcommand{\id}{\mathword{id}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\dom}{\mathword{dom}} -->
+
+\newcommand{\dom}{\mathword{dom}}
+
+<!-- \newcommand{\ran}{\mathword{range}} -->
+
+\newcommand{\ran}{\mathword{range}}
+
+<!-- \newcommand{\range}{\ran} -->
+
+\newcommand{\range}{\ran}
+
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
+
+<!-- \newcommand{\intersect}{\cap} -->
+
+\newcommand{\intersect}{\cap}
+
+<!-- \newcommand{\intersection}{\cap} -->
+
+\newcommand{\intersection}{\cap}
+
+<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
+
+\newcommand{\idfn}[1]{\text{id}_{#1}}
 
 <!--  -->
 
 
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\inv}[1]{{#1}^{-1}}
 
-<!-- \newcommand{\R}{\mathbfsf{R}} -->
+<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
 
-\newcommand{\R}{\mathbfsf{R}}
+\newcommand{\inverse}[1]{\inv{#1}}
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
 
-<!--  -->
+<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
 
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\N}{\mathbfsf{N}} -->
-
-\newcommand{\N}{\mathbfsf{N}}
-
-<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
-
-\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+\newcommand{\inversep}[1]{\invp{#1}}
 
 <!-- \newcommand{\eqc}[1]{[#1]} -->
 
@@ -1065,21 +890,21 @@
 
 
 
+<!-- \newcommand{\id}{\mathword{id}} -->
+
+\newcommand{\id}{\mathword{id}}
+
+<!--  -->
+
+
+
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- % use \num{A} for |A| -->
+<!-- \newcommand{\R}{\mathbfsf{R}} -->
 
-% use \num{A} for |A|
-
-<!-- \newcommand{\num}[1]{\left|#1\right|} -->
-
-\newcommand{\num}[1]{\left|#1\right|}
-
-<!-- \newcommand{\product}{\prod} -->
-
-\newcommand{\product}{\prod}
+\newcommand{\R}{\mathbfsf{R}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1093,13 +918,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
+<!-- \newcommand{\product}{\prod} -->
 
-\newcommand{\Z}{\mathbfsf{Z}}
-
-<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
-
-\newcommand{\Q}{\mathbfsf{Q}}
+\newcommand{\product}{\prod}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1133,9 +954,37 @@
 
 \newcommand{\tranposep}[1]{\transposep{#1}}
 
-<!-- \newcommand{\F}{\mathbfsf{F}} -->
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\newcommand{\F}{\mathbfsf{F}}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
 
@@ -1145,9 +994,9 @@
 
 \def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
 
-<!-- \renewcommand{\Vec}[2]{{#1}^{#2}} -->
+<!-- \newcommand{\Sym}{\mathword{Sym}} -->
 
-\renewcommand{\Vec}[2]{{#1}^{#2}}
+\newcommand{\Sym}{\mathword{Sym}}
 
 <!-- \newcommand{\RMat}[2]{\R^{#1 \cross #2}} -->
 
@@ -1253,25 +1102,17 @@
 
 
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \renewcommand{\det}{\mathword{det}} -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\det}{\mathword{det}}
 
-<!--  -->
+<!-- \newcommand{\detp}[1]{\det\left(#1\right)} -->
 
+\newcommand{\detp}[1]{\det\left(#1\right)}
 
+<!-- \newcommand{\sgn}{\mathword{sgn}} -->
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\Mat}[3]{#1^{#2 \cross #3}} -->
-
-\newcommand{\Mat}[3]{#1^{#2 \cross #3}}
-
-<!--  -->
-
-
+\newcommand{\sgn}{\mathword{sgn}}
     </span>
 
 
@@ -1312,12 +1153,14 @@
 .lit {
   margin: 0 0 1in 0;
   font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
   max-width: 6in;
+  min-width: 6in;
   text-align: justify;
   padding: 0;
   min-height: 11in;
   background: white;
-  line-height: 1.4em;
+  line-height: 1.5em;
 }
 
 .sidebar2 {
@@ -1367,9 +1210,16 @@
         <div class="needlabel2"> Needs: </div>
         
           
-              <div class="need2" tabindex="0" onclick="location.href='./matrices.html'" onkeypress="location.href='./matrices.html'">
+              <div class="need2" tabindex="0" onclick="location.href='./matrix_determinants.html'" onkeypress="location.href='./matrix_determinants.html'">
                 <span>
-                  Matrices
+                  Matrix Determinants
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+                <span>
+                  Real Matrices
                 </span>
                 <span class="caret">›</span>
               </div>
@@ -1377,13 +1227,6 @@
               <div class="need2" tabindex="0" onclick="location.href='./real_matrix-matrix_products.html'" onkeypress="location.href='./real_matrix-matrix_products.html'">
                 <span>
                   Real Matrix-Matrix Products
-                </span>
-                <span class="caret">›</span>
-              </div>
-          
-              <div class="need2" tabindex="0" onclick="location.href='./rings.html'" onkeypress="location.href='./rings.html'">
-                <span>
-                  Rings
                 </span>
                 <span class="caret">›</span>
               </div>
@@ -1409,7 +1252,7 @@
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Matrix Rings </h1> 
       <!--
-!name:matrix_determinant_of_product
+!name:matrix_rings
 !need:matrix_determinants
 !need:real_matrix-matrix_products
 !need:real_matrices
@@ -1486,9 +1329,16 @@
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./matrices.html'" onkeypress="location.href='./matrices.html'">
+            <div class="need" tabindex="0" onclick="location.href='./matrix_determinants.html'" onkeypress="location.href='./matrix_determinants.html'">
               <span>
-                Matrices
+                Matrix Determinants
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./real_matrices.html'" onkeypress="location.href='./real_matrices.html'">
+              <span>
+                Real Matrices
               </span>
               <span class="caret">›</span>
             </div>
@@ -1500,13 +1350,6 @@
               <span class="caret">›</span>
             </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./rings.html'" onkeypress="location.href='./rings.html'">
-              <span>
-                Rings
-              </span>
-              <span class="caret">›</span>
-            </div>
-        
       
       
     </div>
@@ -1514,7 +1357,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> Matrices with elements in a ring form a ring.</p></div><div class="sheet-listing" id="example"><h1 class="sheet">2. Example</h1></div><div class="sheet-listing"><p class="sheet"> Let $(R, +, \cdot )$ be a ring. Define $C = A \bar{+} B$ by $C_{ij} = A_{ij} + B_{ij}$ and define $C = A \bar{\cdot } B$ by $C_{ij} = \sum_{k = 1}^{n} A_{ik}B_{kj}$, as with real matrices, for $A, B \in R^{n \times n}$. Then $(R^{n \times  n}, \bar{+}, \bar{\cdot })$ is a ring. In other words, the set of $n \times  n$ matrices with elements in $R$ is a ring, with the usual addition and multiplication of matrices.</p></div><div class="sheet-listing"><p class="sheet"> The additive identity of the ring is the matrix $0 \in R^{n \times  n}$ for which $0_{ij} = 0 \in R$. The multiplicative identity the matrix $I$ for which $I_{ii} = 1 \in R$ for $i = 1, \dots , n$ and $I_{ij} = 0 \in R$ for $i \neq j = 1, \dots , n$. As seen with real-valued matrices, multiplication on $R^{n \times  n}$ need not be commutative even if $R$ is.</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Show that $R^{n \times  n}$ is not a division ring when $n > 1$. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Matrices with elements in a ring form a ring.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example}</p></div><div class="sheet-listing"><p class="sheet"> Let $(R, +, \cdot )$ be a ring. Define $C = A \bar{+} B$ by $C_{ij} = A_{ij} + B_{ij}$ and define $C = A \bar{\cdot } B$ by $C_{ij} = \sum_{k = 1}^{n} A_{ik}B_{kj}$, as with real matrices, for $A, B \in R^{n \times n}$. Then $(R^{n \times  n}, \bar{+}, \bar{\cdot })$ is a ring. In other words, the set of $n \times  n$ matrices with elements in $R$ is a ring, with the usual addition and multiplication of matrices.</p></div><div class="sheet-listing"><p class="sheet"> The additive identity of the ring is the matrix $0 \in R^{n \times  n}$ for which $0_{ij} = 0 \in R$. The multiplicative identity the matrix $I$ for which $I_{ii} = 1 \in R$ for $i = 1, \dots , n$ and $I_{ij} = 0 \in R$ for $i \neq j = 1, \dots , n$. As seen with real-valued matrices, multiplication on $R^{n \times  n}$ need not be commutative even if $R$ is.</p></div><div class="sheet-listing"><p class="sheet"> \begin{exercise} Show that $R^{n \times  n}$ is not a division ring when $n > 1$. \end{exercise}</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1668,7 +1511,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 97ae38ceb.
+      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
     </span>
   </body>
 </html>

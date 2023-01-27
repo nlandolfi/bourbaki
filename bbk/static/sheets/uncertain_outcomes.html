@@ -131,6 +131,7 @@
                 floatsingle: ["{\\tt float32}"],
                 floatdouble: ["{\\tt float64}"],
                 Sym: ["\\mathword{Sym}"],
+                symdiff: ["+"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -151,7 +152,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 22 0 -->
+      <!-- 26 0 -->
 
 <!-- % objects macros -->
 
@@ -453,6 +454,54 @@
 
 \newcommand{\bintersection}{\bigcap}
 
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\cross}{\times} -->
+
+\newcommand{\cross}{\times}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\op}[1]{\left(#1\right)} -->
+
+\newcommand{\op}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
+
+\newcommand{\tuple}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
+
+\newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- \newcommand{\union}{\,\cup\,} -->
 
 \newcommand{\union}{\,\cup\,}
@@ -634,20 +683,34 @@
                 <span class="caret">›</span>
               </div>
           
+              <div class="need2" tabindex="0" onclick="location.href='./set_products.html'" onkeypress="location.href='./set_products.html'">
+                <span>
+                  Set Products
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
         
         <div class="needlabel2"> Needed by: </div>
         
         
-          <div class="need2" tabindex="0" onclick="location.href='./categorical_outcome_variables.html'" onkeypress="location.href='./categorical_outcome_variables.html'">
+          <div class="need2" tabindex="0" onclick="location.href='./decisions.html'" onkeypress="location.href='./decisions.html'">
             <span>
-            Categorical Outcome Variables
+            Decisions
             </span>
             <span class="caret">›</span>
           </div>
         
-          <div class="need2" tabindex="0" onclick="location.href='./decisions.html'" onkeypress="location.href='./decisions.html'">
+          <div class="need2" tabindex="0" onclick="location.href='./outcome_probabilities.html'" onkeypress="location.href='./outcome_probabilities.html'">
             <span>
-            Decisions
+            Outcome Probabilities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./outcome_variables.html'" onkeypress="location.href='./outcome_variables.html'">
+            <span>
+            Outcome Variables
             </span>
             <span class="caret">›</span>
           </div>
@@ -659,9 +722,9 @@
             <span class="caret">›</span>
           </div>
         
-          <div class="need2" tabindex="0" onclick="location.href='./probability_distributions.html'" onkeypress="location.href='./probability_distributions.html'">
+          <div class="need2" tabindex="0" onclick="location.href='./uncertain_events.html'" onkeypress="location.href='./uncertain_events.html'">
             <span>
-            Probability Distributions
+            Uncertain Events
             </span>
             <span class="caret">›</span>
           </div>
@@ -687,6 +750,7 @@
 !need:natural_numbers
 !need:pair_intersections
 !need:pair_unions
+!need:set_products
 -->
 
 <h1 id='Why'>Why</h1>
@@ -704,56 +768,37 @@
 <h1 id='Definition'>Definition</h1>
 
 <p>
- <span class='run'>We have a set $\Omega $ which includes all
+ <span class='run'>Suppose $\Omega $ is a set which includes all
   possible objects.</span>
 
- <span class='run'>We call it the <span class='term'>set of
-  outcomes</span> (or <span class='term'>sample
-  space</span>).</span>
+ <span class='run'>We call it the <span class='term'>sample
+  space</span>.</span>
 
- <span class='run'>We call an element of the set of outcomes an
-  <span class='term'>outcome</span> (or
+ <span class='run'>We call an element of this set an
+  <span class='term'>outcome</span>.</span>
+
+ <span class='run'>Other terms for outcome include
   <span class='term'>possibility</span>,
   <span class='term'>sample</span>,
   <span class='term'>elementary event</span>,
   <span class='term'>simple event</span>,
-  <span class='term'>sample point</span>).</span>
+  <span class='term'>sample point</span>.</span>
 </p>
 
 
 <p>
- <span class='run'>An <span class='term'>event</span>
-  (<span class='term'>compound event</span>,
-  <span class='term'>random event</span>) is a subset
-  of outcomes.</span>
+ <span class='run'>One often uses a set of outcomes when thinking
+  about running an experiment or in a given
+  situation.</span>
 
- <span class='run'>For events $A, B \subset \Omega $, we interpret
-  $A \cup B$ as the event that either $A$
-  <i>or</i> $B$ occurs.</span>
-
- <span class='run'>Similarly we interpret $A \cap  B$ as the
-  event that <i>both</i> $A$ <i>and</i> $B$ occur.</span>
-
- <span class='run'>We interpret $\Omega  - A$, the
-  <i>complement</i> of $A$ in $\Omega $, as the
-  event that $A$ <i>does not</i> occur.</span>
+ <span class='run'>We leave these terms undefined.</span>
 </p>
 
+<h1 id='Examples_of_modeling'>Examples of modeling</h1>
 
 <p>
- <span class='run'>An <span class='term'>outcome variable</span> (or
-  <span class='term'>random variable</span>) is a
-  function from $\Omega $ to $V$, where $V$ is a
-  set.</span>
+ <span class='run'><i>A model for flipping a coin</i>.</span>
 
- <span class='run'>In this context, $V$ is called the set of
-  <span class='term'>values</span> of the random
-  variable.</span>
-</p>
-
-<h1 id='Example:_coin'>Example: coin</h1>
-
-<p>
  <span class='run'>We want to talk about the result of flipping
   a coin.</span>
 
@@ -762,8 +807,8 @@
  <span class='run'>When we flip the coin, it lands heads or
   tails.</span>
 
- <span class='run'>We model these outcomes with the set $\set{0,
-  1}$.</span>
+ <span class='run'>We may model these outcomes with the set
+  $\set{0, 1}$.</span>
 
  <span class='run'>If the coin lands tails, we say that outcome
   0 has occurred.</span>
@@ -772,63 +817,66 @@
   1 has occurred.</span>
 </p>
 
-<h1 id='Example:_die'>Example: die</h1>
 
 <p>
+ <span class='run'><i>A model for rolling a die</i>.</span>
+
  <span class='run'>We want to talk about the result of rolling a
   die.</span>
 
  <span class='run'>The die has six sides.</span>
 
- <span class='run'>When we roll the die, one of the six sides
-  is facing up.</span>
+ <span class='run'>When we roll the die, it lands with one of
+  its six sides facing up.</span>
 
- <span class='run'>We model this uncertain outcome with $\set{1,
-  2, 3, 4, 5, 6}$, whose elements represent the
-  number of pips facing up.</span>
+ <span class='run'>We may model this uncertain outcome as an
+  element of the set $\set{1, 2, 3, 4, 5, 6}$.</span>
+
+ <span class='run'>Here we have used the first six natural
+  numbers.</span>
+
+ <span class='run'>We say that event 1 occurs if there is one
+  pip showing, that event 2 occurs if there are
+  two pips showing, and so on.</span>
 </p>
 
 
 <p>
- <span class='run'>Define $O = \set{1, 3, 5}$ and $E = \set{2,
-  4, 6}$.</span>
+ <span class='run'><i>A model for rolling two dice at once</i>.</span>
 
- <span class='run'>We interpret $O$ as the event that the number
-  of pips is odd, and $E$ as the event that the
-  number of pips is even.</span>
-</p>
+ <span class='run'>We want to talk about the result of a
+  simultaneous throw of two dice.</span>
 
-<h1 id='Example:_two_dice'>Example: two dice</h1>
+ <span class='run'>We may model this uncertain outcome as an
+  element of the set $\Omega  = \set{1, \dots ,
+  6}^2$.</span>
 
-<p>
- <span class='run'>We want to talk about the sum of the pips
-  shown facing up after rolling two dice.</span>
-
- <span class='run'>We may take as our set of outcome $\set{1,
-  \dots , 12}$, whose elements correspond to the
-  sum.</span>
-
- <span class='run'>We interpret $\Set{x \in \Omega }{x \geq 10}$
-  as the event that the sum of the two dice is
-  greater than or equal to 10.</span>
+ <span class='run'>Given a numbering on the die, $(\omega _1,
+  \omega _2) \in \Omega $, $\omega _1$ is the
+  number of pips showing on the first die—the die
+  numbered 1—and $\omega _2$ is the number of pips
+  showing on the second die—the die labeled two.</span>
 </p>
 
 
 <p>
- <span class='run'>Alternatively, we may take the outcomes $\set{1,
-  \dots , 6}^2$ and define an outcome variable $s:
-  \set{1, \dots , 6}^2 \to \set{1, \dots , 12}$ by
-  <p>\[
-   s((d_1, d_2)) = d_1 + d_2.
-  \]</p></span>
+ <span class='run'><i>A model for rolling one die twice</i>.</span>
 
- <span class='run'>We interpret this natural-number-valued outcome
-  variable $s$ as sum of the two dice.</span>
+ <span class='run'>We may model this uncertain outcome as an
+  element of the set $\Omega  = \set{1, \dots ,
+  6}^2$.</span>
 
- <span class='run'>The event that the sum of the two dice is
-  greater than or equal to to 10 corresponds to
-  the set $\Set{(d_1, d_2) \in \set{1, \dots ,
-  6}}{s((d_1, d_2)) \geq 10}$.</span>
+ <span class='run'>We interpret $(\omega _1, \omega _2) \in \Omega $
+  so that $\omega _1$ is the number of pips
+  showing on the die after the first roll and
+  $\omega _2$ is the number of pips showing on
+  the second die after the second roll.</span>
+
+ <span class='run'>We emphasize that we have used the same set
+  of outcomes as in the previous case.</span>
+
+ <span class='run'>In other words, we can use the same set of
+  outcomes to model two different situations.</span>
 </p>
 
     </div>
@@ -879,20 +927,34 @@
               <span class="caret">›</span>
             </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./set_products.html'" onkeypress="location.href='./set_products.html'">
+              <span>
+                Set Products
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
       
       
         <div disabled class="need label"> Needed by: </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./categorical_outcome_variables.html'" onkeypress="location.href='./categorical_outcome_variables.html'">
+          <div class="need" tabindex="0" onclick="location.href='./decisions.html'" onkeypress="location.href='./decisions.html'">
             <span>
-            Categorical Outcome Variables
+            Decisions
             </span>
             <span class="caret">›</span>
           </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./decisions.html'" onkeypress="location.href='./decisions.html'">
+          <div class="need" tabindex="0" onclick="location.href='./outcome_probabilities.html'" onkeypress="location.href='./outcome_probabilities.html'">
             <span>
-            Decisions
+            Outcome Probabilities
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./outcome_variables.html'" onkeypress="location.href='./outcome_variables.html'">
+            <span>
+            Outcome Variables
             </span>
             <span class="caret">›</span>
           </div>
@@ -904,9 +966,9 @@
             <span class="caret">›</span>
           </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./probability_distributions.html'" onkeypress="location.href='./probability_distributions.html'">
+          <div class="need" tabindex="0" onclick="location.href='./uncertain_events.html'" onkeypress="location.href='./uncertain_events.html'">
             <span>
-            Probability Distributions
+            Uncertain Events
             </span>
             <span class="caret">›</span>
           </div>
@@ -917,7 +979,7 @@
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We would like to speak about an object, which is a member of some set, and some attributes of this objects---without knowing the precise identity of the object. Such language would be especially useful in discussing games of chance.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We have a set $\Omega $ which includes all possible objects. We call it the \t{set of outcomes} (or \t{sample space}). We call an element of the set of outcomes an \t{outcome} (or \t{possibility}, \t{sample}, \t{elementary event}, \t{simple event}, \t{sample point}).</p></div><div class="sheet-listing"><p class="sheet"> An \t{event} (\t{compound event}, \t{random event}) is a subset of outcomes. For events $A, B \subset \Omega $, we interpret $A \cup B$ as the event that either $A$ <i>or</i> $B$ occurs. Similarly we interpret $A \cap  B$ as the event that <i>both} $A$ \textit{and</i> $B$ occur. We interpret $\Omega  - A$, the <i>complement} of $A$ in $\Omega $, as the event that $A$ \textit{does not</i> occur.</p></div><div class="sheet-listing"><p class="sheet"> An \t{outcome variable} (or \t{random variable}) is a function from $\Omega $ to $V$, where $V$ is a set. In this context, $V$ is called the set of \t{values} of the random variable.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example: coin}</p></div><div class="sheet-listing"><p class="sheet"> We want to talk about the result of flipping a coin. The coin has two sides. When we flip the coin, it lands heads or tails. We model these outcomes with the set $\set{0, 1}$. If the coin lands tails, we say that outcome 0 has occurred. If the coin lands heads, we say that outcome 1 has occurred.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example: die}</p></div><div class="sheet-listing"><p class="sheet"> We want to talk about the result of rolling a die. The die has six sides. When we roll the die, one of the six sides is facing up. We model this uncertain outcome with $\set{1, 2, 3, 4, 5, 6}$, whose elements represent the number of pips facing up.</p></div><div class="sheet-listing"><p class="sheet"> Define $O = \set{1, 3, 5}$ and $E = \set{2, 4, 6}$. We interpret $O$ as the event that the number of pips is odd, and $E$ as the event that the number of pips is even.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Example: two dice}</p></div><div class="sheet-listing"><p class="sheet"> We want to talk about the sum of the pips shown facing up after rolling two dice. We may take as our set of outcome $\set{1, \dots , 12}$, whose elements correspond to the sum. We interpret $\Set{x \in \Omega }{x \geq 10}$ as the event that the sum of the two dice is greater than or equal to 10.</p></div><div class="sheet-listing"><p class="sheet"> Alternatively, we may take the outcomes $\set{1, \dots , 6}^2$ and define an outcome variable $s: \set{1, \dots , 6}^2 \to \set{1, \dots , 12}$ by \[ s((d_1, d_2)) = d_1 + d_2. \] We interpret this natural-number-valued outcome variable $s$ as sum of the two dice. The event that the sum of the two dice is greater than or equal to to 10 corresponds to the set $\Set{(d_1, d_2) \in \set{1, \dots , 6}}{s((d_1, d_2)) \geq 10}$.</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We would like to speak about an object, which is a member of some set, and some attributes of this objects---without knowing the precise identity of the object. Such language would be especially useful in discussing games of chance.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $\Omega $ is a set which includes all possible objects. We call it the \t{sample space}. We call an element of this set an \t{outcome}. Other terms for outcome include \t{possibility}, \t{sample}, \t{elementary event}, \t{simple event}, \t{sample point}.</p></div><div class="sheet-listing"><p class="sheet"> One often uses a set of outcomes when thinking about running an experiment or in a given situation. We leave these terms undefined.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Examples of modeling}</p></div><div class="sheet-listing"><p class="sheet"> <i>A model for flipping a coin</i>. We want to talk about the result of flipping a coin. The coin has two sides. When we flip the coin, it lands heads or tails. We may model these outcomes with the set $\set{0, 1}$. If the coin lands tails, we say that outcome 0 has occurred. If the coin lands heads, we say that outcome 1 has occurred.</p></div><div class="sheet-listing"><p class="sheet"> <i>A model for rolling a die</i>. We want to talk about the result of rolling a die. The die has six sides. When we roll the die, it lands with one of its six sides facing up. We may model this uncertain outcome as an element of the set $\set{1, 2, 3, 4, 5, 6}$. Here we have used the first six natural numbers. We say that event 1 occurs if there is one pip showing, that event 2 occurs if there are two pips showing, and so on.</p></div><div class="sheet-listing"><p class="sheet"> <i>A model for rolling two dice at once</i>. We want to talk about the result of a simultaneous throw of two dice. We may model this uncertain outcome as an element of the set $\Omega  = \set{1, \dots , 6}^2$. Given a numbering on the die, $(\omega _1, \omega _2) \in \Omega $, $\omega _1$ is the number of pips showing on the first die---the die numbered 1---and $\omega _2$ is the number of pips showing on the second die---the die labeled two.</p></div><div class="sheet-listing"><p class="sheet"> <i>A model for rolling one die twice</i>. We may model this uncertain outcome as an element of the set $\Omega  = \set{1, \dots , 6}^2$. We interpret $(\omega _1, \omega _2) \in \Omega $ so that $\omega _1$ is the number of pips showing on the die after the first roll and $\omega _2$ is the number of pips showing on the second die after the second roll. We emphasize that we have used the same set of outcomes as in the previous case. In other words, we can use the same set of outcomes to model two different situations.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -1071,7 +1133,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 38482bd17.
+      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
     </span>
   </body>
 </html>

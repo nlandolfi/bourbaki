@@ -131,6 +131,7 @@
                 floatsingle: ["{\\tt float32}"],
                 floatdouble: ["{\\tt float64}"],
                 Sym: ["\\mathword{Sym}"],
+                symdiff: ["+"],
                       },
         packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
       },
@@ -668,6 +669,13 @@
             <span class="caret">›</span>
           </div>
         
+          <div class="need2" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+            <span>
+            Uncertain Outcomes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
       
         <div class="needlabel2"> Links: </div>
       <div class="need2" tabindex="0" onclick="location.href='./set_products.pdf#page=2'" onkeypress="location.href='./set_products.pdf#page=2'">
@@ -695,50 +703,66 @@
 <h1 id='Why'>Why</h1>
 
 <p>
- <span class='run'>Does a set exist of all the ordered pairs of
-  elements from an ordered pair of sets?</span>
+ <span class='run'>Does a set exist which contains all ordered
+  pairs of elements from two sets?</span>
+</p>
+
+<h1 id='Discussion'>Discussion</h1>
+
+<p>
+ <span class='run'>The answer is easily seen to be yes.</span>
+
+ <span class='run'>Ordered pairs are just sets, containing two
+  sets.</span>
+
+ <span class='run'>One set has one object, and so is a singleton.</span>
+
+ <span class='run'>The other has two objects, and so is a pair.</span>
+
+ <span class='run'>So to construct the set of all ordered pairs,
+  we need only specify certain members of some
+  set containing all singletons and pairs.</span>
+
+ <span class='run'>The power set of the union of the two sets
+  will suffice.</span>
+</p>
+
+
+<p>
+ <span class='run'>To see this, suppose $A$ and $B$ are two sets.</span>
+
+ <span class='run'>If $a \in A$, then $a \in A \cup B$.</span>
+
+ <span class='run'>Likewise if $b \in B$, then $b \in A \cup B$.</span>
+
+ <span class='run'>Hence $\set{a} \subset A$ and $\set{b} \subset
+  B$, so that $\set{a}, \set{b} \in \powerset{A
+  \cup B}$.</span>
+
+ <span class='run'>In other words, the singletons are members of
+  the power set.</span>
+
+ <span class='run'>Similarly, $\set{a, b} \in \powerset{A \cup B}$.</span>
+
+ <span class='run'>In other words, the pairs are elements of the
+  power set.</span>
+
+ <span class='run'>Thus the set of sets containing singletons and
+  pairs is a power set of the power set of $A
+  \cup B$.</span>
+
+ <span class='run'>In symbols, $\set{\set{a}, \set{a, b}} \in
+  \powerset{\powerset{A \cup B}}$.</span>
 </p>
 
 <h1 id='Definition'>Definition</h1>
-
-<p>
- <span class='run'>Let $A$ and $B$ denote sets.</span>
-
- <span class='run'>Ordered pairs are sets of singletons and pairs.</span>
-
- <span class='run'>So to construct the set of all ordered pairs
-  taken from two sets, we want to specify the
-  elements of a set which contains all singletons
-  $\set{a}$ and pairs $\set{a, b}$ for $a \in A$,
-  $b \in B$.</span>
-</p>
-
-
-<p>
- <span class='run'>Notice that $a \in A$ and $b \in A$ mean $a,
-  b \in (A \cup B)$.</span>
-
- <span class='run'>In other words, $\set{a} \subset A$ and
-  $\set{b} \subset B$ and $\set{a}, \set{b} \subset
-  (A \cup B)$.</span>
-
- <span class='run'>In particular, $\set{a} \in \powerset{(A \cup
-  B)}$.</span>
-
- <span class='run'>Similarly, $\set{a, b} \in \powerset{(A \cup
-  B)}$.</span>
-
- <span class='run'>And so $\set{\set{a}, \set{a, b}} \in
-  \powerset{\powerset{(A \cup B)}}$.</span>
-</p>
-
 
 <p>
  <span class='run'>We define the set of “all ordered pairs” from
   $A$ and $B$ by specifying the appropriate pairs
   of this set.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
  <p>\[
-  \Set{(a, b) \in \powerset{\powerset{(A \cup B)}}}{a \in A \land
+  \Set{(a, b) \in \powerset{\powerset{A \cup B}}}{a \in A \land
    b \in B}
  \]</p>
  <span class='run'>We name this set the
@@ -752,9 +776,8 @@
   ).</span>
 
  <span class='run'>If $A \neq B$, the ordering causes the product
-  of $A$ and $B$ to differ from the product of</span>
-
- <span class='run'>$B$ with $A$.</span>
+  of $A$ and $B$ to differ from the product of
+  $B$ with $A$.</span>
 
  <span class='run'>If $A = B$, however, the symmetry holds.</span>
 </p>
@@ -768,7 +791,23 @@
  <span class='run'>In this notation, if $A \neq B$, then $A
   \times  B \neq B \times  A$.<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup></span>
 </p>
-<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>The specific statement used here requires some
+
+<h2 id='Empty_set'>Empty set</h2>
+
+<p>
+ <span class='run'>It turns out the product of the empty set
+  with any other set is always empty.</span>
+</p>
+
+<div class='proposition'>
+ <span class='run'>Suppose $A$ is a set.</span>
+
+ <span class='run'>Then $A \times  \varnothing = \varnothing
+  \times  A = \varnothing$.</span>
+ <div class='proof'>  <span class='run'>This follows from the definition of the set
+   product, since there is no element in the
+   emepty set, and so the statement used in the
+   specification always evaluates to false.</span> </div></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>The specific statement used here requires some
   translation. A discussion of this and the full
   statement will appear in a future edition.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>This second term is universal, but avoided in
   accordance with the project policy on naming.</span> <a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>Future editions may include a table figure
@@ -839,13 +878,20 @@
             <span class="caret">›</span>
           </div>
         
+          <div class="need" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+            <span>
+            Uncertain Outcomes
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
       
     </div>
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Does a set exist of all the ordered pairs of elements from an ordered pair of sets?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ and $B$ denote sets. Ordered pairs are sets of singletons and pairs. So to construct the set of all ordered pairs taken from two sets, we want to specify the elements of a set which contains all singletons $\set{a}$ and pairs $\set{a, b}$ for $a \in A$, $b \in B$.</p></div><div class="sheet-listing"><p class="sheet"> Notice that $a \in A$ and $b \in A$ mean $a, b \in (A \cup B)$. In other words, $\set{a} \subset A$ and $\set{b} \subset B$ and $\set{a}, \set{b} \subset (A \cup B)$. In particular, $\set{a} \in \powerset{(A \cup B)}$. Similarly, $\set{a, b} \in \powerset{(A \cup B)}$. And so $\set{\set{a}, \set{a, b}} \in \powerset{\powerset{(A \cup B)}}$.</p></div><div class="sheet-listing"><p class="sheet"> We define the set of "all ordered pairs} from $A$ and $B$ by specifying the appropriate pairs of this set.\footnote{The specific statement used here requires some translation. A discussion of this and the full statement will appear in a future edition." \[ \Set{(a, b) \in \powerset{\powerset{(A \cup B)}}}{a \in A \land b \in B} \] We name this set the \t{product} of the set denoted by $A$ and the set denoted by $B$ is the set of all ordered pairs. This set is also called the \t{set product} (or \t{cartesian product}\footnote{This second term is universal, but avoided in accordance with the project policy on naming.} ). If $A \neq B$, the ordering causes the product of $A$ and $B$ to differ from the product of $B$ with $A$. If $A = B$, however, the symmetry holds.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the product of $A$ with $B$ by $A \times  B$, read aloud as "A cross B." In this notation, if $A \neq B$, then $A \times  B \neq B \times  A$.\footnote{Future editions may include a table figure visualizing the product.}</p></div>
+      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Does a set exist which contains all ordered pairs of elements from two sets?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> The answer is easily seen to be yes. Ordered pairs are just sets, containing two sets. One set has one object, and so is a singleton. The other has two objects, and so is a pair. So to construct the set of all ordered pairs, we need only specify certain members of some set containing all singletons and pairs. The power set of the union of the two sets will suffice.</p></div><div class="sheet-listing"><p class="sheet"> To see this, suppose $A$ and $B$ are two sets. If $a \in A$, then $a \in A \cup B$. Likewise if $b \in B$, then $b \in A \cup B$. Hence $\set{a} \subset A$ and $\set{b} \subset B$, so that $\set{a}, \set{b} \in \powerset{A \cup B}$. In other words, the singletons are members of the power set. Similarly, $\set{a, b} \in \powerset{A \cup B}$. In other words, the pairs are elements of the power set. Thus the set of sets containing singletons and pairs is a power set of the power set of $A \cup B$. In symbols, $\set{\set{a}, \set{a, b}} \in \powerset{\powerset{A \cup B}}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We define the set of ``all ordered pairs'' from $A$ and $B$ by specifying the appropriate pairs of this set.\footnote{The specific statement used here requires some translation. A discussion of this and the full statement will appear in a future edition.} \[ \Set{(a, b) \in \powerset{\powerset{A \cup B}}}{a \in A \land b \in B} \] We name this set the \t{product} of the set denoted by $A$ and the set denoted by $B$ is the set of all ordered pairs. This set is also called the \t{set product} (or \t{cartesian product}\footnote{This second term is universal, but avoided in accordance with the project policy on naming.} ). If $A \neq B$, the ordering causes the product of $A$ and $B$ to differ from the product of $B$ with $A$. If $A = B$, however, the symmetry holds.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the product of $A$ with $B$ by $A \times  B$, read aloud as ``A cross B.'' In this notation, if $A \neq B$, then $A \times  B \neq B \times  A$.\footnote{Future editions may include a table figure visualizing the product.}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Empty set}</p></div><div class="sheet-listing"><p class="sheet"> It turns out the product of the empty set with any other set is always empty.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Suppose $A$ is a set. Then $A \times  \varnothing = \varnothing \times  A = \varnothing$. \begin{proof}This follows from the definition of the set product, since there is no element in the emepty set, and so the statement used in the specification always evaluates to false.\end{proof}\end{proposition}</p></div>
     </div>
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
@@ -999,7 +1045,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 38482bd17.
+      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
     </span>
   </body>
 </html>
