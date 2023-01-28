@@ -1,9 +1,4 @@
 
-%!name:event_probabilities
-%!need:uncertain_events
-%!need:probability_distributions
-%!need:real_summation
-
 \section*{Why}
 
 Since one and only one outcome occurs, given a distribution on outcomes, we define the probability of a set of outcomes as the sum of their probabilities.
@@ -11,7 +6,7 @@ Since one and only one outcome occurs, given a distribution on outcomes, we defi
 \section*{Definition}
 
 Suppose $p$ is a distribution on a \textit{finite} set of outcomes $\Omega $.
-Given an event $E \subset \Omega $, the \t{event probability} of $E$ \textit{under} $p$ as the sum of the probabilities of the outcomes in $E$.
+Given an event $E \subset \Omega $, the \t{probability} \textit{of} $E$ \textit{under} $p$ as the sum of the probabilities of the outcomes in $E$.
 
 \subsection*{Notation}
 
@@ -22,60 +17,63 @@ P(A) = \sum_{a \in A} p(a) \quad \text{for all } A \subset \Omega
 We call this function $P$ \t{the event probability function} (or \t{the probability measure}) associated with $p$.
 Since it depends on the sample space $\Omega $ and the distribution $p$, we occasionally denote this dependence by $P_{\Omega , p}$ or $P_p$.
 
-\subsection*{Example: a single six-sided die}
+It is tempting, and therefore common to write $P(\omega )$ when $\omega  \in \Omega $ and one intends to denote $P(\set{\omega })$.
+Of course, this corresponds with $p(\omega )$.
+It is therefore easy to see that from $P$ we can compute $p$, and vice versa.
 
-We model rolling a single die with the set of outcomes $\Omega  = \set{1, \dots , 6}$ as usual.
-We $p: \Omega  \to \R $ by $p(\omega ) = 1/6$ for $\omega  = 1, \dots , 6$.
-In other words, $p$ is the constant function at value $1/6$ on $\Omega $.
-Now, we model the event that the number of pips showing is an even number by the set $E$ defined by $E = \set{2, 4, 6}$.
-Given all this modeling, the probability of the event $E$ is
+\section*{Examples}
+
+\textit{Rolling a die.}
+We consider the usual fair die model (see \sheetref{outcome_probabilities}{Outcome Probabilities}).
+Here we have $\Omega  = \set{1, \dots , 6}$ and a distribution $p: \Omega  \to [0,1]$ defined by
+\[
+p(\omega ) = 1/6 \quad \text{for all } \omega  \in \Omega
+\]
+Given the model, the probability of the event $E = \set{2, 4, 6}$ is
 \[
 \textstyle
-\sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = 1/2.
+P(E) = \sum_{\omega  \in E} p(\omega ) = p(2) + p(4) + p(6) = 1/2.
 \]
 
 \section*{Properties of event probabilities}
 
-As a result of the conditions on $p$, $\mathbfsf{P} $ satisfies
+The properties of $p$ ensure that $P$ satisfies
     \begin{enumerate}
-      \item $\mathbfsf{P} (A) \geq 0$ for all $A \subset \Omega $;
-      \item $\mathbfsf{P} (\Omega ) = 1$ (and $\mathbfsf{P} (\varnothing) = 0$);
-      \item $\mathbfsf{P} (A) + \mathbfsf{P} (B)$ for all $A, B \subset \Omega $ and $A \cap  B = \varnothing$.
-This statement follows from the more general identity
+      \item $P(A) \geq 0$ for all $A \subset \Omega $;
+      \item $P(\Omega ) = 1$ (and $P(\varnothing) = 0$);
+      \item $P(A) + P(B)$ for all $A, B \subset \Omega $ and $A \cap  B = \varnothing$.
+    \end{enumerate}
+The last statement (3) follows from the more general identity
 \[
-\mathbfsf{P} (A \cup B) = \mathbfsf{P} (A) + \mathbfsf{P} (B) - \mathbfsf{P} (A \cap  B)
+P(A \cup B) = P(A) + P(B) - P(A \cap  B)
 \]
 for $A, B \subset \Omega $, by using $\mathbfsf{P} (\varnothing) = 0$ of (2) above.
-    \end{enumerate}
-
 These three conditions are sometimes called the \t{axioms of probability for finite sets}.
-Do all such $\mathbfsf{P} $ satisfying (1)-(3) have a corresponding underlying probability distribution?
 
-In other words, suppose $f: \powerset{\Omega } \to \R $ satisfies (1)-(3).
+Do all such $P$ satisfying (1)-(3) have a corresponding underlying probability distribution?
+The answer is easily seen to be yes.
+Suppose $f: \powerset{\Omega } \to \R $ satisfies (1)-(3).
 Define $q: \Omega  \to \R $ by $q(\omega ) = f(\set{\omega })$.
 If $f$ satisfies the axioms, then $q$ is a probability distribution.
 For this reason we call any function satisfying (i)-(iii) an \t{event probability function} (or a \t{(finite) probability measure}).
 
 \section*{Other basic consequences}
 
-\subsection*{Probability by cases}
-
-Let $\mathbfsf{P} $ be a probability event function.
+\textit{Probability by cases.}
 Suppose $A_1, \dots , A_n$ partition $\Omega $.
 Then for any $B \subset \Omega $,
 \[
 \textstyle
-\mathbfsf{P} (B) = \sum_{i = 1}^{n} \mathbfsf{P} (A_i \cap  B).
+P(B) = \sum_{i = 1}^{n} P(A_i \cap  B).
 \]
 Some authors call this the \t{law of total probability}.
+This is easy to see by using the distributive laws of set algebra (see \sheetref{set_unions_and_intersections}{Set Unions and Intersections}).
 
-\subsection*{Monotonicity}
-
-If $A \subseteq B$, then $\mathbfsf{P} (A) \leq P(B)$.
+\textit{Monotonicity.}
+If $A \subseteq B$, then $P(A) \leq P(B)$.
 This is easy to see by splitting $B$ into $A \cap  B$ and $B - A$, and applying (1) and (3).
 
-\subsection*{Subadditivity}
-
-For $A, B \subset \Omega $, $\mathbfsf{P} (A \cup B) \leq \mathbfsf{P} (A) + \mathbfsf{P} (B)$.
+\textit{Subadditivity.}
+For $A, B \subset \Omega $, $P(A \cup B) \leq P(A) + P(B)$.
 This is easy to see from the more general identity in (3) above.
-This is sometimes referred to as a \t{union bound}, in reference to \textit{bounding} the quantity $\mathbfsf{P} (A \cup B)$.
+This is sometimes referred to as a \t{union bound}, in reference to \textit{bounding} the quantity $P(A \cup B)$.
