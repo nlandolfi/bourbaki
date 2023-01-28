@@ -1,36 +1,58 @@
 
-%!name:outcome_probabilities
-%!need:real_summation
-%!need:uncertain_outcomes
-%!need:intervals
-
 \section*{Why}
 
-To talk about uncertain outcomes, we assign credibility to each outcome according to our intuition of proportion.\footnote{Future editions may drop the dependence on real numbers, and use intuition of repeated trials to introduce \textit{rational} probability distributions.}
+A set of outcomes may be finite or infinite.
+For now, we consider finite samples spaces.
+To talk about the uncertain outcomes, we assign credibility to each outcome according to our intuition of proportion.\footnote{Future editions may drop the dependence on real numbers, and use intuition of repeated trials to introduce \textit{rational} probability distributions.}
 
 \section*{Definition}
 
-A \t{probability distribution} (or \t{distribution}, \t{probability mass function}, \t{pmf}, \t{proportion distribution}) is a real-valued function from a finite set of outcomes which is non-negative and normalized.
-A real-valued function on a finite set is \t{normalized} if the sum of its results is 1.
+Suppose $\Omega $ is a finite set.
+A $p: \Omega  \to \R $ \textit{on} $\Omega $ is a \t{probability distribution} \textit{on} $\Omega $ if it is nonnegative (i.e., $p(\omega ) \geq 0$ for every $\omega  \in \Omega $) and
+\[
+\textstyle
+\sum_{\omega  \in \Omega } p(\omega ) = 1
+\]
+The \t{probability} \textit{of} an outcome $\omega  \in \Omega $ \textit{under} the distribution $p$ is the result $p(\omega )$.
 
-The \t{probability of an outcome} is the result of the outcome under the distribution.
-The probability of an outcome is meant to indicate the credibility of an outcome.
-The word probabiliy has its roots in the English word probable, which has the Middle English sense ``worthy of belief''.
+\subsection*{Interpretations}
+
+There are two usual meanings of the word ``probability''.
+The first, is its intuitive interpretation as frequency---the fraction of times that an outcome $\omega $ will occur if we are able to repeat the scenario producing the outcomes many times.
+This is the so-called \t{frequentist} viewpoint.
+
+The trouble is that some scenarios are not ``repeatable'' (e.g., whether it will rain or not \textit{tomorrow}).
+Thus, it is sometimes natural to think of probabilities as \t{beliefs} or \t{degrees of belief} which are updated according to particular rules.
+This is the so-called \t{Bayesian viewpoint}.
+
+This second interpretation matches the English etymology: the word probabiliy has its roots in the English word probable, which has the Middle English sense ``worthy of belief''.
 The probability of an outcome models how worthy of belief it is, relative to other outcomes.
 In the case of flipping a coin, or rolling a die, we may assert that all outcomes are equally worthy of belief.
 
-When an outcome has a higher probability than a second outcome we say that the first is \t{more probable} than the second.
-Similarly we say that the first outcome is \t{less probable} than the second outcome if it has higher probability than the second.
+If a first outcome has a larger probability than a second outcome, we call the first \t{more probable} than the second.
+Similarly, we call the second outcome \t{less probable} than the first outcome.
 
-\subsection*{Notation}
+\section*{Examples}
 
-Let $A$ be a set and let $p: A \to \R $ be a distribution.
-Then
-\[
-\textstyle
-p(a) \geq 0 \text{ for all } a \in A \text{ and } \sum_{a \in A} p(a) = 1.
-\]
+\textit{Probabilities for flipping a coin}.
+Suppose we model flipping a coin, \sheetref{uncertain_outcomes}{as before}, with the sample space $\set{0,1}$.
+We may model both heads and tails as equally worthy of belief.
+Thus we would like to pick two nonnegative numbers $p(1)$ and $p(2)$ so that they are non-negative and $p(1) + p(2) = 1$.
+Consequently, we model outcome $p(0) = p(1) = 1/2 $.
+We often refer to this particular model as a \t{fair coin}.
+Neither heads nor tails is \textit{more} or \textit{less} probable.
 
+\section*{Example: die}
+
+When \sheetref{uncertain_outcomes}{rolling a die}, all six sides are equally worthy of belief.
+Thus we say that the outcomes $1, 2, 3, 4, 5, 6$ each have probability $1/6 $.
+Prior to the roll, each is equally credible.
+We speak of modeling a \t{fair die}.
+No outcome is \textit{more} or \textit{less} probable than any other.
+
+\subsection*{Other terminology}
+
+Other terminology for probability distribution includes \t{distribution}, \t{probability mass function}, \t{pmf}, \t{proportion distribution}, and \t{probabilities}.
 \subsection*{Simple consequences of definition}
 
 \begin{proposition}
@@ -43,19 +65,3 @@ Second, since $p$ is normalized, $p(a) \leq \sum_{b \in A} p(b) = 1$.\end{proof}
 
 Consequently, the \sheetref{relations}{range}of $p$ is contained in $[0,1]$.
 For this reason, we often introduce a distribution with the notation $p: A \to [0,1]$; notice the codomain here is the interval $[0,1]$ and \textit{not} the real numbers $\R $.
-
-\section*{Example: coin}
-
-When \sheetref{uncertain_outcomes}{flipping a coin}, both a heads and a tails are equally worthy of belief.
-Thus we say that the outcome $0$ (tails) has probability $1/2 $ and likewise for the outcome $1$ (heads).
-(Recall that we associate the outcome tails to the number 0 and heads to the number 1.)
-We speak of modeling a \t{fair coin}.
-Neither heads nor tails is \textit{more} or \textit{less} probable.
-
-\section*{Example: die}
-
-When \sheetref{uncertain_outcomes}{rolling a die}, all six sides are equally worthy of belief.
-Thus we say that the outcomes $1, 2, 3, 4, 5, 6$ each have probability $1/6 $.
-Prior to the roll, each is equally credible.
-We speak of modeling a \t{fair die}.
-No outcome is \textit{more} or \textit{less} probable than any other.
