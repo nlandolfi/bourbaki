@@ -1,0 +1,137 @@
+<!--yaml
+name: size_of_direct_product
+needs:
+    - number_of_set_products
+    - direct_products
+    - lists
+    - finite_set_examples
+-->
+
+§ Size of a direct product of sets ⦉
+<statement type='proposition'>
+  ‖ Suppose $A_1, …, A_n$ is a list of finite sets. ⦉
+
+  ‖ Then
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ \num{∏_{i = 1}^{n}} A_i = ∏_{i = 1}^{n} \num{A_i} ⦉
+    ⦉⦉
+</statement>
+<proof>
+  ‖ As before, the proof will be by induction. Future editions
+    will include. ⦉
+</proof>
+
+‖ We highlight one simple consequence: if $\num{A}$ is finite,
+  then $\num{A^n} = \num{A}^n$. ⦉
+
+§ Principle of counting ⦉
+<statement type='proposition'>
+  ‖ Suppose $X_1, …, X_k$ is a list of nonempty sets and $f_2,
+    …, f_k$ are functions mapping $X_1, X_1 × X_2, …, X_1 × ⋯
+    X_{k-1}$ to $\powerset{X_2}, \powerset{X_3}, ⋯, \powerset{X_k}$
+    such that there exists natural numbers $n_1$, $n_2$, …,
+    $n_k$,
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ n_1 &= \num{X_1} ᜶ ⦉
+
+      ‖ n_2 &= \num{f(x_1)} \quad \text{for all } x_1 ∈ X_1 ᜶ ⦉
+
+      ‖ n_3 &= \num{f(x_1, x_2)} = n_3 \quad \text{for all }
+        (x_1, x_2) ∈ X_1 × f(x_1) ᜶ ⦉
+
+      ‖ n_4 &= \num{f(x_1, x_2, x_3)} = n_3 \quad \text{for all
+        } (x_1, x_2, x_3) ∈ X_1 × f_2(x_1) × f_3(x_1, x_2) ᜶ ⦉
+
+      ‖ &⋮&᜶ ⦉
+
+      ‖ n_k &= \num{f(x_1, x_2, …, x_{k-1})} \quad ᜶& \quad\quad
+        \text{for all } (x_1, x_2, …, x_{k-1}) ∈ X_1 × f_2(x_1)
+        × ⋯ × f_k(x_1, …, x_{k-1}) ᜶ ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ Then ⦉
+  ◇ ⦊
+    ‖ \num{\Set{x: \set{1, …, k} → ∪_{i = 1}^{k}}{x_1 ∈ X_1,
+      x_2 ∈ f_2(x_1), …, x_k ∈ f_k(x_1, …, x_{k-1}}} ⦉
+  ⦉
+
+  ‖ is $∏_{i = 1}^{k} n_i$ ⦉
+</statement>
+<proof>
+  ‖ Future editions will include the proof. ⦉
+</proof>
+¶ ⦊
+  ‖ The English is much clearer. ⦉
+
+  ‖ Suppose we have to do $k$ ‹tasks› (here, the term task is
+    left undefined). ⦉
+
+  ‖ The first task can be done in $n_1$ ways, and after it
+    has been completed, no matter how, the second task can be
+    done in $n_2$ ways. ⦉
+
+  ‖ Further, after the first two tasks have been completed, in
+    whatever manner, there are $n_3$ ways of doing the third
+    task. ⦉
+
+  ‖ And so on. ⦉
+
+  ‖ Then the number of ways to complete all tasks is $n_1 n_2
+    ⋯ n_k$. ⦉
+
+  ‖ This conclusion, often taken as a principle, or axiom, is
+    called the ❬fundamental principle of counting❭. ⦉
+⦉
+
+§§ Example ⦉
+¶ ⦊
+  ‖ Consider the␣
+    <a href='/sheets/set_examples.html'>
+      ‖ usual ⦉
+    </a>
+    ␣52 playing cards cards. ⦉
+
+  ‖ How many ways are there to stack them as a deck? ⦉
+
+  ‖ First the bottom card, we have 52 choices. ⦉
+
+  ‖ For the next to bottom card, we have 51 choices—we can
+    pick any card except the bottom one. ⦉
+
+  ‖ For the third to bottom card, we have 50 choices—and so on. ⦉
+
+  ‖ By applying the above proposition, we can deduce that there
+    are $52·51·50⋯1$ ways of arranging the deck. ⦉
+⦉
+
+¶ ⦊
+  ‖ Denote the set of cards by $C$. ⦉
+
+  ‖ For the above proposition, $k = 52$ and $X_1, …, X_k$ are
+    so that $X_i = C$ for all $i = 1, …, 52$. ⦉
+
+  ‖ The function $f_2(c_1) = C - \set{c_1}$. ⦉
+
+  ‖ The function $f_3(c_1, c_2) = C - \set{c_1, c_2}$. ⦉
+
+  ‖ And so on, so that the function $f_k(c_1, …, c_{k-1}) = C
+    - \set{c_1, …, c_{k-1}}$. ⦉
+
+  ‖ Notice that given distinct arguments to these functions, the
+    size of the sets $f_1(c_1)$ is always 51. ⦉
+
+  ‖ Likewise, the size of $f_2(c_1, c_2)$ is 50, $f_3(c_1, c_2,
+    c_3)$ is $49$ and so on, so that the size of $f_k(c_1, …,
+    c_k)$ is $1$, regardless of the choice of $c_i$, $i = 1,
+    …, 51$. ⦉
+⦉
+
+<tex>
+  ‖ \blankpage ⦉
+</tex>

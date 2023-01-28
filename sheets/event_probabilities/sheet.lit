@@ -3,6 +3,7 @@ name: event_probabilities
 needs:
     - uncertain_events
     - outcome_probabilities
+    - size_of_direct_product
 wikipedia: https://en.wikipedia.org/wiki/Event_(probability_theory)
 -->
 
@@ -18,8 +19,9 @@ wikipedia: https://en.wikipedia.org/wiki/Event_(probability_theory)
   ‖ Suppose $p$ is a distribution on a ‹finite› set of outcomes
     $Ω$. ⦉
 
-  ‖ Given an event $E ⊂ Ω$, the ❬probability❭ ‹of› $E$ ‹under›
-    $p$ as the sum of the probabilities of the outcomes in $E$. ⦉
+  ‖ Given an event $E ⊂ Ω$, the ❬probability❭ (or ❬chance❭)
+    ‹of› $E$ ‹under› $p$ as the sum of the probabilities of the
+    outcomes in $E$. ⦉
 
   ‖ The frequentist interpretation is clear—the probability of an
     event is the proportion of times any of its outcomes will
@@ -141,6 +143,36 @@ wikipedia: https://en.wikipedia.org/wiki/Event_(probability_theory)
   ‖ Under our chosen distribution, $P(A) = 1/2$. ⦉
 ⦉
 
+¶ ⦊
+  ‖ ‹Flipping a coin $n$ times.› ⦉
+
+  ‖ We model flipping a coin $n$ times with a sample space $Ω
+    = \{0,1\}^n$. ⦉
+
+  ‖ Here, we agree to interpret $(ω_1, …, ω_n) ∈ Ω$ so that
+    $ω_i$ is 1 if the coin lands heads on the $i$th toss and
+    $0$ if it lands tails; $i = 1, …, n$. ⦉
+
+  ‖ The size of $Ω$ is $2^n$, since $\num{\{0,1\}} = 2$. ⦉
+
+  ‖ Suppose we choose a distribution $p: Ω → [0,1]$ so that
+    ◇ ⦊
+      ‖ p(ω) = \frac{1}{2^n} ⦉
+    ⦉⦉
+
+  ‖ Now consider the event $H_k$ defined by
+    ◇ ⦊
+      ‖ H_k = \Set{ω ∈ Ω}{\num{\Set{i}{ω_i = 1} = 1} = k}. ⦉
+    ⦉
+    so that it contains all outcomes having a total of $k$
+    heads. ⦉
+
+  ‖ Then
+    ◇ ⦊
+      ‖ P(H_k) = \frac{\num{H_k}}{2^n} = \frac{{n \choose k}}{2^n} ⦉
+    ⦉⦉
+⦉
+
 § Properties of event probabilities ⦉
 ¶ ⦊
   ‖ The properties of $p$ ensure that $P$ satisfies
@@ -153,7 +185,7 @@ wikipedia: https://en.wikipedia.org/wiki/Event_(probability_theory)
     ⦉⦉
 
   ‖ The last statement (3) follows from the more general
-    identity
+    identity—known as the ❬inclusion-exclusion formula❭—
     ◇ ⦊
       ‖ P(A ∪ B) = P(A) + P(B) - P(A ∩ B) ⦉
     ⦉
@@ -182,6 +214,24 @@ wikipedia: https://en.wikipedia.org/wiki/Event_(probability_theory)
 ⦉
 
 § Other basic consequences ⦉
+¶ ⦊
+  ‖ ‹Disjoint events.› ⦉
+
+  ‖ Two events $A$ and $B$ are ❬disjoint❭ or ❬mutually
+    exclusive❭ if $A ∩ B = ∅$. ⦉
+
+  ‖ Likwise, a list of events $A_1, …, A_n$ are ❬disjoint❭ or
+    ❬mutually exclusive❭ if $A_i ∩ A_j = ∅$ for all $i ≠ j$,
+    $i,j ∈ \set{1, …, n}$. ⦉
+
+  ‖ A direct consequence of (3) above is
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ P(∪_{i =1 }^{n} A_i) = ∑_{i = 1}^{n} P(A_i) ⦉
+    ⦉⦉
+⦉
+
 ¶ ⦊
   ‖ ‹Probability by cases.› ⦉
 
