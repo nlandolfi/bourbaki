@@ -22,7 +22,7 @@ The first, is its intuitive interpretation as frequency---the fraction of times 
 This is the so-called \t{frequentist} viewpoint.
 
 The trouble is that some scenarios are not ``repeatable'' (e.g., whether it will rain or not \textit{tomorrow}).
-Thus, it is sometimes natural to think of probabilities as \t{beliefs} or \t{degrees of belief} which are updated according to particular rules.
+Thus, it is sometimes natural to think of probabilities as \t{beliefs} or \t{degrees of belief} which are updated according to particular rules.\footnote{Future editions may elaborate on the justification for these rules, according to Keynes and Jaynes.}
 This is the so-called \t{Bayesian viewpoint}.
 
 This second interpretation matches the English etymology: the word probabiliy has its roots in the English word probable, which has the Middle English sense ``worthy of belief''.
@@ -34,7 +34,7 @@ Similarly, we call the second outcome \t{less probable} than the first outcome.
 
 \section*{Examples}
 
-\textit{Probabilities for flipping a coin}.
+\textit{Probabilities for flipping a coin.}
 Suppose we model flipping a coin, \sheetref{uncertain_outcomes}{as before}, with the sample space $\set{0,1}$.
 We may model both heads and tails as equally worthy of belief.
 Thus we would like to pick two nonnegative numbers $p(1)$ and $p(2)$ so that they are non-negative and $p(1) + p(2) = 1$.
@@ -42,26 +42,35 @@ Consequently, we model outcome $p(0) = p(1) = 1/2 $.
 We often refer to this particular model as a \t{fair coin}.
 Neither heads nor tails is \textit{more} or \textit{less} probable.
 
-\section*{Example: die}
-
-When \sheetref{uncertain_outcomes}{rolling a die}, all six sides are equally worthy of belief.
-Thus we say that the outcomes $1, 2, 3, 4, 5, 6$ each have probability $1/6 $.
-Prior to the roll, each is equally credible.
-We speak of modeling a \t{fair die}.
-No outcome is \textit{more} or \textit{less} probable than any other.
+\textit{Probabilities for rolling a die.}
+Suppose we model rolling a die, \sheetref{uncertain_outcomes}{as before}, with the sample space $\set{1, 2, 3, 4, 5, 6}$.
+We may model each side of the die as equally likely to face up.
+Thus we want numbers $p(1), p(2), p(3), p(4), p(5), p(6)$ so that
+\[
+p(1) = p(2) = p(3) = p(4) = p(5) = p(6)
+\]
+Consequently, we choose $p(\omega ) = 1/6$ for each $\omega  \in \Omega $.
+A Bayesian interpretation is that, prior to the roll, each outcome is \textit{equally credible}.
+A frequentist interpretation is that, after rolling the die several (hundreds, say) of times, the ratio of times the die lands with six pips facing up to the number of rolls is a rational number close to $1/6$---and likewise with the other number of pips.
+We often speak of this particular model as \t{fair die}.
+As with the fair coin, no outcome is \textit{more} or \textit{less} probable than any other.
 
 \subsection*{Other terminology}
 
 Other terminology for probability distribution includes \t{distribution}, \t{probability mass function}, \t{pmf}, \t{proportion distribution}, and \t{probabilities}.
-\subsection*{Simple consequences of definition}
+\subsection*{Simple consequences on the range of a distribution}
 
 \begin{proposition}
-Suppose $p: A \to \R $ is a distribution.
-For all $a \in A$, $p(a) \leq 1$.
-\begin{proof}Let $a \in A$.
-By definition, $p(a) \geq 0$.
-Second, since $p$ is normalized, $p(a) \leq \sum_{b \in A} p(b) = 1$.\end{proof}
+Suppose $p: \Omega  \to \R $ is a distribution.
+Then $p(\omega ) \leq 1$ for all $\omega  \in \Omega $.
+\begin{proof}Let $\omega  \in \Omega $.
+We claim
+\[
+\textstyle
+p(\omega ) \leq \sum_{t \in \Omega } p(t) = 1
+\]
+This holds because $p(t) \geq 0$ for every $t \in \Omega $.\end{proof}
 \end{proposition}
 
 Consequently, the \sheetref{relations}{range}of $p$ is contained in $[0,1]$.
-For this reason, we often introduce a distribution with the notation $p: A \to [0,1]$; notice the codomain here is the interval $[0,1]$ and \textit{not} the real numbers $\R $.
+For this reason, we often introduce a distribution on the finite sample space $\Omega $ with the notation $p: \Omega  \to [0,1]$, to remind ourselves that $\range(p) \subset [0,1]$.
