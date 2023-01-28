@@ -1,0 +1,61 @@
+
+\section*{Size of a direct product of sets}
+
+\begin{proposition}
+Suppose $A_1, \dots , A_n$ is a list of finite sets.
+Then
+\[
+\textstyle
+\num{\prod_{i =1 }^{n}} A_i = \prod_{i =1 } \num{A_i}
+\]
+\end{proposition}
+
+\begin{proof}As before, the proof will be by induction. Future editions will include.\end{proof}
+\section*{Principle of counting}
+
+\begin{proposition}
+Suppose $X_1, \dots , X_k$ is a list of nonempty sets and $f_2, \dots , f_k$ are functions mapping $X_1, X_1 \times  X_2, \dots , X_1 \times  \cdots X_{k-1}$ to $\powerset{X_2}, \powerset{X_3}, \cdots, \powerset{X_k}$ such that there exists natural numbers $n_1$, $n_2$, \dots , $n_k$,
+\[
+\begin{aligned}
+n_1 &= \num{X_1} \\
+n_2 &= \num{f(x_1)} \quad \text{for all } x_1 \in X_1 \\
+n_3 &= \num{f(x_1, x_2)} = n_3 \quad \text{for all } (x_1, x_2) \in X_1 \times  f(x_1) \\
+n_4 &= \num{f(x_1, x_2, x_3)} = n_3 \quad \text{for all } (x_1, x_2, x_3) \in X_1 \times  f_2(x_1) \times  f_3(x_1, x_2) \\
+&\vdots&\\
+n_k &= \num{f(x_1, x_2, \dots , x_{k-1})} \quad \\& \quad\quad \text{for all } (x_1, x_2, \dots , x_{k-1}) \in X_1 \times f_2(x_1) \times  \cdots \times  f_k(x_1, \dots , x_{k-1}) \\
+\end{aligned}
+\]
+Then
+\[
+\num{\Set{x: \set{1, \dots , k} \to \cup_{i = 1}^{k}}{x_1 \in X_1, x_2 \in f_2(x_1), \dots , x_k \in f_k(x_1, \dots , x_{k-1}}}
+\]
+is $\prod_{i = 1}^{k} n_i$
+\end{proposition}
+
+\begin{proof}Future editions will include the proof.\end{proof}
+The English is much clearer.
+Suppose we have to do $k$ \textit{tasks} (here, the term task is left undefined).
+The first task can be done in $n_1$ ways, and after it has been completed, no matter how, the second task can be done in $n_2$ ways.
+Further, after the first two tasks have been completed, in whatever manner, there are $n_3$ ways of doing the third task.
+And so on.
+Then the number of ways to complete all tasks is $n_1 n_2 \cdots n_k$.
+This conclusion, often taken as a principle, or axiom, is called the \t{fundamental principle of counting}.
+
+\subsection*{Example}
+
+Consider the \sheetref{set_examples}{usual}52 playing cards cards.
+How many ways are there to stack them as a deck?
+First the bottom card, we have 52 choices.
+For the next to bottom card, we have 51 choices---we can pick any card except the bottom one.
+For the third to bottom card, we have 50 choices---and so on.
+By applying the above proposition, we can deduce that there are $52\cdot 51\cdot 50\cdots1$ ways of arranging the deck.
+
+Denote the set of cards by $C$.
+For the above proposition, $k = 52$ and $X_1, \dots , X_k$ are so that $X_i = C$ for all $i = 1, \dots , 52$.
+The function $f_2(c_1) = C - \set{c_1}$.
+The function $f_3(c_1, c_2) = C - \set{c_1, c_2}$.
+And so on, so that the function $f_k(c_1, \dots , c_{k-1}) = C - \set{c_1, \dots , c_{k-1}}$.
+Notice that given distinct arguments to these functions, the size of the sets $f_1(c_1)$ is always 51.
+Likewise, the size of $f_2(c_1, c_2)$ is 50, $f_3(c_1, c_2, c_3)$ is $49$ and so on, so that the size of $f_k(c_1, \dots , c_k)$ is $1$, regardless of the choice of $c_i$, $i = 1, \dots , 51$.
+
+\blankpage

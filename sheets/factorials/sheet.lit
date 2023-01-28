@@ -3,56 +3,75 @@ name: factorials
 needs:
     - natural_products
     - sequences
+    - size_of_direct_product
 wikipedia: https://en.wikipedia.org/wiki/Factorial
 -->
 
 § Why ⦉
 ¶ ⦊
-  ‖ How many ways are there to arrange $n$ people at a table
-    with $n$ seats? ⦉
+  ‖ We have considered the number of ways we can arrange 52
+    cards into a deck. ⦉
 
-  ‖ In other words, how many ways can we order $n$ objects? ⦉
-⦉
+  ‖ What of $n$ cards? ⦉
 
-§ Discussion ⦉
-¶ ⦊
-  ‖ There is one way to arrange a single person and there are
-    two ways to arrange two people. ⦉
-
-  ‖ What of three? ⦉
-
-  ‖ First, we can pick a seat, and decide which person to put
-    in that chair. ⦉
-
-  ‖ We have three choices of people. ⦉
-
-  ‖ Then, whomever we choose, there are only two ways to seat
-    the other two people in the other two chairs. ⦉
-
-  ‖ Since there were three ways of picking whom to sit in the
-    firs seat, there are $3×2 = 6$ ways to order the three
-    people. ⦉
-
-  ‖ We reason similarly for four people. ⦉
+  ‖ A moment’s reflection indicates this will also be the number
+    of ways to arrange $n$ objects in order (where the objects
+    need not be cards). ⦉
 ⦉
 
 § Definition ⦉
 ¶ ⦊
-  ‖ Let $f: 𝗡 → 𝗡$ be defined recursively by $f(1) = 1$ and
-    $f(2) = 2f(1)$, and $f(n) = nf(n-1)$ for $n ∈ 𝗡$. ⦉
+  ‖ By the fundamental principle of counting, there are $n$ ways
+    to select the first card, $n-1$ ways to select the second,
+    and so on. ⦉
 
-  ‖ $f$ exists by the recursion theorem (see␣
+  ‖ Thus, the number of ways of stacking $n$ cards in a deck
+    is
+    ◇ ⦊
+      ‖ n(n-1)(n-2)⋯1 ⦉
+    ⦉⦉
+
+  ‖ We call this number the ❬factorial❭ of $n$, or
+    ❬$n$-factorial❭. ⦉
+⦉
+
+<!--
+<div data-littype='section' data-litsectionlevel='1' data-litsectionnumbered='false'> Discussion </div>
+<div data-littype='paragraph'>
+ <div data-littype='run'> There is one way to arrange a single person and there are
+    two ways to arrange two people. </div>
+
+ <div data-littype='run'> What of three? </div>
+
+ <div data-littype='run'> First, we can pick a seat, and decide which person to put
+    in that chair. </div>
+
+ <div data-littype='run'> We have three choices of people. </div>
+
+ <div data-littype='run'> Then, whomever we choose, there are only two ways to seat
+    the other two people in the other two chairs. </div>
+
+ <div data-littype='run'> Since there were three ways of picking whom to sit in the
+    firs seat, there are $3×2 = 6$ ways to order the three
+    people. </div>
+
+ <div data-littype='run'> We reason similarly for four people. </div>
+</div>
+-->
+¶ ⦊
+  ‖ ‹Factorial function.› ⦉
+
+  ‖ Define $f: 𝗡 → 𝗡$ recursively by $f(1) = 1$ and $f(2) =
+    2f(1)$, and $f(n) = nf(n-1)$ for $n ∈ 𝗡$ ($f$ exists by
+    the the recursion theorem—see␣
     <a href='/sheets/recursion_theorem.html'>
       ‖ Recursion Theorem ⦉
     </a>
     ). ⦉
 
-  ‖ We call the result $f(n)$ of $n$ the ❬factorial❭ of $n$. ⦉
+  ‖ $f$ is defined such that $f(n)$ is $n$ factorial, for which
+    reason we call $f$ the ❬factorial function❭. ⦉
 
-  ‖ We call $f$ the ❬factorial function❭. ⦉
-⦉
-
-¶ ⦊
   ‖ For convenience, we extend $f$ to $ω$
     † ⦊
       ‖ See␣
@@ -64,10 +83,12 @@ wikipedia: https://en.wikipedia.org/wiki/Factorial
     by defining $f(0) = 1$. ⦉
 ⦉
 
-§ Notation ⦉
+§§ Notation ⦉
 ¶ ⦊
   ‖ We denote the factorial of $n$ by $n!$, read aloud “n
     factorial”. ⦉
+
+  ‖ So for example, $5! = 5·4·3·2·1$ and $0! = 1$. ⦉
 ⦉
 
 <tex>
