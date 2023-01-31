@@ -152,19 +152,11 @@
     </span>
 
     <span style="display:none">
-      <!-- 80 0 -->
+      <!-- 81 0 -->
 
 <!-- % objects macros -->
 
 % objects macros
-
-<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
-
-\newcommand{\relcomplement}[2]{C_{#2}({#1})}
-
-<!-- \renewcommand{\complement}[1]{C({#1})} -->
-
-\renewcommand{\complement}[1]{C({#1})}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -182,21 +174,13 @@
 
 \newcommand{\Z}{\mathbfsf{Z}}
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
 
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
 
-<!--  -->
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
 
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\symdiff}{+} -->
-
-\newcommand{\symdiff}{+}
+\renewcommand{\complement}[1]{C({#1})}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -478,6 +462,22 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -529,6 +529,46 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % absolute_value macros -->
+
+% absolute_value macros
+
+<!-- % \ifdefined\abs -->
+
+% \ifdefined\abs
+
+<!-- % \else -->
+
+% \else
+
+<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
+
+%  \newcommand{\abs}[1]{\left|#1\right|}
+
+<!-- % \fi -->
+
+% \fi
+
+<!-- % the above was creating issues - NCL 2/24/2022 -->
+
+% the above was creating issues - NCL 2/24/2022
+
+<!--  -->
+
+
+
+<!-- % following (roughly) the example of set_numbers/macros -->
+
+% following (roughly) the example of set_numbers/macros
+
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
+
+% \newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -677,46 +717,6 @@
 <!-- \newcommand{\Q}{\mathbfsf{Q}} -->
 
 \newcommand{\Q}{\mathbfsf{Q}}
-
-<!-- % absolute_value macros -->
-
-% absolute_value macros
-
-<!-- % \ifdefined\abs -->
-
-% \ifdefined\abs
-
-<!-- % \else -->
-
-% \else
-
-<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
-
-%  \newcommand{\abs}[1]{\left|#1\right|}
-
-<!-- % \fi -->
-
-% \fi
-
-<!-- % the above was creating issues - NCL 2/24/2022 -->
-
-% the above was creating issues - NCL 2/24/2022
-
-<!--  -->
-
-
-
-<!-- % following (roughly) the example of set_numbers/macros -->
-
-% following (roughly) the example of set_numbers/macros
-
-<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
-
-% \newcommand{\intabs}[1]{\left|#1\right|}
-
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
-
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
 
@@ -950,12 +950,12 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Empirical Distribution </h1> 
-      <!--
-!name:empirical_distribution
-!need:probability_distributions
-!need:set_numbers
+      <!--yaml>
+name: empirical_distribution
+needs:
+    - probability_distributions
+    - set_numbers
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -1061,9 +1061,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> A natural distribution to associate with a dataset is to assign to each outcome a probability which reflects the number of times it appears in the dataset.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The \t{empirical distribution} of a dataset is the function which associates to each outcome the proportion times it appears in the dataset. Since the proporitions are nonnegative and sum to one, the function is a probability distribution.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> Let $A$ be a non-empty set and $(a^1, \dots , a^n)$ be a dataset in $A$. The empirical distribution $q: A \to \R $ of $(a^1, \dots , a^n)$ is \[ q(a) = \frac{1}{n} \num{\Set*{k \in \set{1, \dots , n}}{a^k = a}}. \] In other words, to give the probability of outcome $a \in A$, we count the number of times it appeared in the dataset of size $n$, and then divide by $n$.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1216,7 +1218,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

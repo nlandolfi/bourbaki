@@ -152,7 +152,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 203 0 -->
+      <!-- 207 0 -->
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -346,14 +346,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- % mnemonic for (s)et(suc)cesor -->
-
-% mnemonic for (s)et(suc)cesor
-
-<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
-
-\newcommand{\ssuc}[1]{{#1}^{+}}
-
 <!-- % use \powerset{A} for power set of A -->
 
 % use \powerset{A} for power set of A
@@ -402,6 +394,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -437,6 +437,18 @@
 <!-- \renewcommand{\deg}{\mathword{deg}} -->
 
 \renewcommand{\deg}{\mathword{deg}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- % absolute_value macros -->
 
@@ -1779,16 +1791,13 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Maximum Likelihood Tree Normals </h1> 
-      <!--
-!name:maximum_likelihood_tree_normals
-!need:maximum_likelihood_multivariate_normals
-!need:matrix_trace
-!need:tree_approximators_of_a_normal
- bring back if drop tree_normal_approximators
-%!need:optimal_tree_density_approximators
-%!need:tree_normals
+      <!--yaml>
+name: maximum_likelihood_tree_normals
+needs:
+    - maximum_likelihood_multivariate_normals
+    - matrix_trace
+    - tree_approximators_of_a_normal
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -2016,9 +2025,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> What if we use the principle of maximum likelihood to select the maximum likelihood normal density which factors according to a tree?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{maximum likelihood tree normal} of a dataset in $\R ^d$ is a multivariate normal density that factors according to a tree and maximizes the likelihood of the dataset.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Results}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $D = (x^1, \dots , x^n)$ be a dataset in $\R ^d$. A normal density is a maximum likelihood tree normal of $D$ if and only if it is an optimal tree approximator of the empirical normal density of $D$.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}First, let $f: \R ^d \to \R $ be a normal density.</p></div><div class="sheet-listing"><p class="sheet"> First, express the log likelihood of $f$ on a record $x^k$ by \[ \log f(x^k) = - \frac{1}{2} (x^k - \mu )^{\tp} \inv{\Sigma } (x^k - \mu ) - \frac{1}{2} \log \det \Sigma  - \frac{d}{2}\log 2\pi . \] Second, use the trace to rewrite the quadratic form \[ -\frac{1}{2}\tr{(\Sigma ^{-1} (x^k - \mu ) (x^k - \mu )^{\tp})}. \]</p></div><div class="sheet-listing"><p class="sheet"> Third, use these two, and the linearity of trace to express the average negative log likelihood by</p></div><div class="sheet-listing"><p class="sheet"> \[ \begin{aligned} - \frac{1}{n} \sum_{k = 1}^{n} \log f(x^k) &= \frac{1}{2} \tr{(\Sigma ^{-1}(\frac{1}{n}\sum_{i = 1}^{n} (x^k - \mu )(x^k - \mu )^{\tp}))} + \frac{1}{2}\log\det\Sigma  + \frac{d}{2}\log 2\pi . \end{aligned} \]</p></div><div class="sheet-listing"><p class="sheet"> Fourth, use matrix calculus (or the derivation in Proposition 1 of Multivariate Normal Maximum Likelihood) to see that, for a minimizer of the negative average log likelihood, the mean must be $\frac{1}{n} \sum_{i = 1}^{n} x^k$.</p></div><div class="sheet-listing"><p class="sheet"> Fifth, recognize the empirical covariance matrix $\frac{1}{n}\sum_{k = 1}^{n} (x^k - \mu )(x^k - \mu )^{\tp}$; denote it by $S$.</p></div><div class="sheet-listing"><p class="sheet"> Sixth, change variables with $P = \Sigma ^{-1}$ and express \[ \log{(\det{(\Sigma )})} = \log{(\det{(\inv{P})})} = \log{(\inv{(\det P)})} = -\log{(\det{(P)})} \]</p></div><div class="sheet-listing"><p class="sheet"> Seventh, write the likelihood in simplified form (using circulant property of trace) \[ \frac{1}{2} \tr{(SP)} - \frac{1}{2} \log \det P - \frac{d}{2}\log 2\pi \]</p></div><div class="sheet-listing"><p class="sheet"> Eighth, drop the constant and prefactors: \[ \tr{(SP)} - \log \det P \]</p></div><div class="sheet-listing"><p class="sheet"> Ninth, if $g$ is a normal with then the tree density approximation objective is the same equivalent to \[ d(g, f) = h(g, f) - h(f) \sim h(g, f) = - \int_{\R ^d} g\log f. \]</p></div><div class="sheet-listing"><p class="sheet"> TODO: Extra, the let $g$ be normal and $f$ be normal. The tree normal approximation problem \[ d(g, f) \sim h(g, f) = - \int_{R^d} g \log f. \] The log of $f$ is \[ - \frac{1}{2} \tr{( \Sigma _f \int_{\R ^d} (x - \mu _f)(x - \mu _f)^{\tp} dx )} - \frac{1}{2} \log \det \Sigma _f^{-1} - \frac{d}{2} \log 2\pi \] Since the set of optimal solutions for both optimization is contained in the set of normal densities which match on the mean we can assume that $\mu _f = \mu _g$. So the approximation objective is equivalent to \[ \tr{P_f \Sigma _g} - \log \det P_f, \] which is exactly the maximum likelihood objective.</p></div><div class="sheet-listing"><p class="sheet"> Thus, a solution is a maximum likelihood tree normal of a dataset if and only if it is an optimal tree approximator of the empirical normal density of the dataset.</p></div><div class="sheet-listing"><p class="sheet"> \end{proof}\end{proposition}</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -2171,7 +2182,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

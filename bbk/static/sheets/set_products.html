@@ -648,23 +648,9 @@
         <div class="needlabel2"> Needed by: </div>
         
         
-          <div class="need2" tabindex="0" onclick="location.href='./number_of_set_products.html'" onkeypress="location.href='./number_of_set_products.html'">
-            <span>
-            Number of Set Products
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
           <div class="need2" tabindex="0" onclick="location.href='./ordered_pair_projections.html'" onkeypress="location.href='./ordered_pair_projections.html'">
             <span>
             Ordered Pair Projections
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need2" tabindex="0" onclick="location.href='./relations.html'" onkeypress="location.href='./relations.html'">
-            <span>
-            Relations
             </span>
             <span class="caret">›</span>
           </div>
@@ -692,14 +678,15 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Set Products </h1> 
-      <!--
-!name:set_products
-!need:ordered_pairs
-!need:set_powers
-!refs:paul_halmos/naive_set_theory/section_06
-!refs:bert_mendelson/introduction_to_topology/theory_of_sets/products_of_sets
+      <!--yaml>
+name: set_products
+needs:
+    - ordered_pairs
+    - set_powers
+refs:
+    - paul_halmos/naive_set_theory/section_06
+    - bert_mendelson/introduction_to_topology/theory_of_sets/products_of_sets
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -760,7 +747,7 @@
 <p>
  <span class='run'>We define the set of “all ordered pairs” from
   $A$ and $B$ by specifying the appropriate pairs
-  of this set.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+  of this set.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
  <p>\[
   \Set{(a, b) \in \powerset{\powerset{A \cup B}}}{a \in A \land
    b \in B}
@@ -772,7 +759,7 @@
 
  <span class='run'>This set is also called the
   <span class='term'>set product</span> (or
-  <span class='term'>cartesian product</span><sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup>
+  <span class='term'>cartesian product</span><sup id='footnote-2-reference' class='lit-footnote-sup'><a href='#footnote-2' class='lit-footnote-a'>2</a></sup>
   ).</span>
 
  <span class='run'>If $A \neq B$, the ordering causes the product
@@ -789,7 +776,7 @@
   \times  B$, read aloud as “A cross B.”</span>
 
  <span class='run'>In this notation, if $A \neq B$, then $A
-  \times  B \neq B \times  A$.<sup id='footnote-3-reference'><a href='#footnote-3'>3</a></sup></span>
+  \times  B \neq B \times  A$.<sup id='footnote-3-reference' class='lit-footnote-sup'><a href='#footnote-3' class='lit-footnote-a'>3</a></sup></span>
 </p>
 
 <h2 id='Empty_set'>Empty set</h2>
@@ -857,23 +844,9 @@
       
         <div disabled class="need label"> Needed by: </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./number_of_set_products.html'" onkeypress="location.href='./number_of_set_products.html'">
-            <span>
-            Number of Set Products
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
           <div class="need" tabindex="0" onclick="location.href='./ordered_pair_projections.html'" onkeypress="location.href='./ordered_pair_projections.html'">
             <span>
             Ordered Pair Projections
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./relations.html'" onkeypress="location.href='./relations.html'">
-            <span>
-            Relations
             </span>
             <span class="caret">›</span>
           </div>
@@ -890,9 +863,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Does a set exist which contains all ordered pairs of elements from two sets?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> The answer is easily seen to be yes. Ordered pairs are just sets, containing two sets. One set has one object, and so is a singleton. The other has two objects, and so is a pair. So to construct the set of all ordered pairs, we need only specify certain members of some set containing all singletons and pairs. The power set of the union of the two sets will suffice.</p></div><div class="sheet-listing"><p class="sheet"> To see this, suppose $A$ and $B$ are two sets. If $a \in A$, then $a \in A \cup B$. Likewise if $b \in B$, then $b \in A \cup B$. Hence $\set{a} \subset A$ and $\set{b} \subset B$, so that $\set{a}, \set{b} \in \powerset{A \cup B}$. In other words, the singletons are members of the power set. Similarly, $\set{a, b} \in \powerset{A \cup B}$. In other words, the pairs are elements of the power set. Thus the set of sets containing singletons and pairs is a power set of the power set of $A \cup B$. In symbols, $\set{\set{a}, \set{a, b}} \in \powerset{\powerset{A \cup B}}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We define the set of ``all ordered pairs'' from $A$ and $B$ by specifying the appropriate pairs of this set.\footnote{The specific statement used here requires some translation. A discussion of this and the full statement will appear in a future edition.} \[ \Set{(a, b) \in \powerset{\powerset{A \cup B}}}{a \in A \land b \in B} \] We name this set the \t{product} of the set denoted by $A$ and the set denoted by $B$ is the set of all ordered pairs. This set is also called the \t{set product} (or \t{cartesian product}\footnote{This second term is universal, but avoided in accordance with the project policy on naming.} ). If $A \neq B$, the ordering causes the product of $A$ and $B$ to differ from the product of $B$ with $A$. If $A = B$, however, the symmetry holds.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the product of $A$ with $B$ by $A \times  B$, read aloud as ``A cross B.'' In this notation, if $A \neq B$, then $A \times  B \neq B \times  A$.\footnote{Future editions may include a table figure visualizing the product.}</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Empty set}</p></div><div class="sheet-listing"><p class="sheet"> It turns out the product of the empty set with any other set is always empty.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Suppose $A$ is a set. Then $A \times  \varnothing = \varnothing \times  A = \varnothing$. \begin{proof}This follows from the definition of the set product, since there is no element in the emepty set, and so the statement used in the specification always evaluates to false.\end{proof}\end{proposition}</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1045,7 +1020,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

@@ -248,8 +248,8 @@
     <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
       <div class="sidebar2">
         <div class="needlabel2"> Needs: </div>
-        {{ if .Needs }}
-          {{ range $k, $v := .Needs }}
+        {{ if .Config.Needs }}
+          {{ range $k, $v := .Config.Needs }}
               <div class="need2" tabindex="0" onclick="location.href='./{{ $v }}.html'" onkeypress="location.href='./{{ $v }}.html'">
                 <span>
                   {{ title $v }}
@@ -274,16 +274,16 @@
         <div class="neednone2">None.</div>
       {{end}}
         <div class="needlabel2"> Links: </div>
-      <div class="need2" tabindex="0" onclick="location.href='./{{ .Name }}.pdf#page=2'" onkeypress="location.href='./{{ .Name }}.pdf#page=2'">
+      <div class="need2" tabindex="0" onclick="location.href='./{{ .Config.Name }}.pdf#page=2'" onkeypress="location.href='./{{ .Config.Name }}.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
-      <div class="need2" tabindex="0" onclick="location.href='./{{ .Name }}-graph.pdf'" onkeypress="location.href='./{{ .Name }}-graph.pdf'">
+      <div class="need2" tabindex="0" onclick="location.href='./{{ .Config.Name }}-graph.pdf'" onkeypress="location.href='./{{ .Config.Name }}-graph.pdf'">
         <span> Graph PDF </span>
         <span class="caret">›</span>
       </div>
-      {{ if .Wiki }}
-      <div class="need2" tabindex="0" onclick="location.href='{{ .Wiki }}'" onkeypress="location.href='{{ .Wiki }}'">
+      {{ if .Config.Wikipedia }}
+      <div class="need2" tabindex="0" onclick="location.href='{{ .Config.Wikipedia }}'" onkeypress="location.href='{{ .Config.Wikipedia }}'">
         <span> Wikipedia </span>
         <span class="caret">›</span>
       </div>
@@ -292,7 +292,7 @@
 
       </div>
     <div class="lit">
-      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> {{ title .Name }} </h1> 
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> {{ title .Config.Name }} </h1> 
       {{ .LitHTML }}
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
@@ -305,22 +305,22 @@
     <div class="header">
       <span class="listing no-border" id="header-trademark-and-title">
         <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
-        <span id="header-title" onclick="location.href='./{{ .Name }}.pdf#page=2'"> {{ title .Name }} </span>
+        <span id="header-title" onclick="location.href='./{{ .Config.Name }}.pdf#page=2'"> {{ title .Config.Name }} </span>
       </span>
     </div>
     <div class="subheader">
       <div disabled class="need label"> Links: </div>
-      <div class="need" tabindex="0" onclick="location.href='./{{ .Name }}.pdf#page=2'" onkeypress="location.href='./{{ .Name }}.pdf#page=2'">
+      <div class="need" tabindex="0" onclick="location.href='./{{ .Config.Name }}.pdf#page=2'" onkeypress="location.href='./{{ .Config.Name }}.pdf#page=2'">
         <span> Sheet PDF </span>
         <span class="caret">›</span>
       </div>
-      <div class="need" tabindex="0" onclick="location.href='./{{ .Name }}-graph.pdf'" onkeypress="location.href='./{{ .Name }}-graph.pdf'">
+      <div class="need" tabindex="0" onclick="location.href='./{{ .Config.Name }}-graph.pdf'" onkeypress="location.href='./{{ .Config.Name }}-graph.pdf'">
         <span> Graph PDF </span>
         <span class="caret">›</span>
       </div>
-      {{ if .Needs }}
+      {{ if .Config.Needs }}
         <div disabled class="need label"> Needs: </div>
-        {{ range $k, $v := .Needs }}
+        {{ range $k, $v := .Config.Needs }}
             <div class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'" onkeypress="location.href='./{{ $v }}.html'">
               <span>
                 {{ title $v }}
@@ -346,9 +346,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      {{ $.AST | printf "%s" }}
+      {{/* $.AST | printf "%s" */}}
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -359,12 +361,12 @@
       <canvas id="page2" style="direction: ltr;"></canvas>
     </div>
     <div id="wrapper3">
-    <canvas id="page3" style="direction: ltr;" onclick="location.href='./{{ .Name }}-graph.pdf'"></canvas>
+    <canvas id="page3" style="direction: ltr;" onclick="location.href='./{{ .Config.Name }}-graph.pdf'"></canvas>
     </div>
       <script id="script">
         // If absolute URL from the remote server is provided, configure the CORS
         // header on that server.
-        var url = './{{ .Name }}.pdf';
+        var url = './{{ .Config.Name }}.pdf';
 
         // The workerSrc property shall be specified.
         pdfjsLib.GlobalWorkerOptions.workerSrc =
@@ -437,16 +439,16 @@
 
     <!-- PAGES -->
     <!--
-    <iframe id="sheet-pdf" src="./{{ .Name }}.pdf#page=2">
+    <iframe id="sheet-pdf" src="./{{ .Config.Name }}.pdf#page=2">
     </iframe>
-    <iframe id="sheet-pdf" src="./{{ .Name }}.pdf#page=3">
+    <iframe id="sheet-pdf" src="./{{ .Config.Name }}.pdf#page=3">
     </iframe>
     -->
     <!-- PAGES -->
 
     </div>
 
-    <!-- <iframe id="graph-pdf" src="./{{ .Name }}-graph.pdf">
+    <!-- <iframe id="graph-pdf" src="./{{ .Config.Name }}-graph.pdf">
     </iframe>
     -->
 

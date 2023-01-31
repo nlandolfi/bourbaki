@@ -745,20 +745,20 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Uncertain Outcomes </h1> 
-      <!--
-!name:uncertain_outcomes
-!need:natural_numbers
-!need:pair_intersections
-!need:pair_unions
-!need:set_products
+      <!--yaml>
+name: uncertain_outcomes
+needs:
+    - natural_numbers
+    - pair_intersections
+    - pair_unions
+    - set_products
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
  <span class='run'>We would like to speak about an object, which
   is a member of some set, and some attributes
-  of this objects—without knowing the precise
+  of this object—without knowing the precise
   identity of the object.</span>
 
  <span class='run'>Such language would be especially useful in
@@ -781,17 +781,17 @@
   <span class='term'>possibility</span>,
   <span class='term'>sample</span>,
   <span class='term'>elementary event</span>,
-  <span class='term'>simple event</span>,
+  <span class='term'>simple event</span>, and
   <span class='term'>sample point</span>.</span>
 </p>
 
 
 <p>
- <span class='run'>One often uses a set of outcomes when thinking
-  about running an experiment or in a given
-  situation.</span>
+ <span class='run'>Often, one imagines an
+  <span class='term'>experiment</span> as having many
+  possible outcomes.</span>
 
- <span class='run'>We leave these terms undefined.</span>
+ <span class='run'>We leave this term undefined.</span>
 </p>
 
 <h1 id='Examples_of_modeling'>Examples of modeling</h1>
@@ -847,36 +847,63 @@
  <span class='run'>We want to talk about the result of a
   simultaneous throw of two dice.</span>
 
- <span class='run'>We may model this uncertain outcome as an
-  element of the set $\Omega  = \set{1, \dots ,
-  6}^2$.</span>
+ <span class='run'>When we throw the dice, each one lands with
+  one of six sides facing up.</span>
 
- <span class='run'>Given a numbering on the die, $(\omega _1,
-  \omega _2) \in \Omega $, $\omega _1$ is the
-  number of pips showing on the first die—the die
-  numbered 1—and $\omega _2$ is the number of pips
-  showing on the second die—the die labeled two.</span>
+ <span class='run'>To model this uncertain outcome, we first
+  number the dice: 1 and 2.</span>
+
+ <span class='run'>We may model the sample space with the set
+  $\Omega  = \set{1, \dots , 6}^2$.</span>
+
+ <span class='run'>We interpret $(\omega _1, \omega _2) \in \Omega $
+  as follows: $\omega _1$ is the number of pips
+  showing on the first die—the die numbered 1—and
+  $\omega _2$ is the number of pips showing on
+  the second die—the die labeled 2.</span>
 </p>
 
 
 <p>
  <span class='run'><i>A model for rolling one die twice</i>.</span>
 
- <span class='run'>We may model this uncertain outcome as an
-  element of the set $\Omega  = \set{1, \dots ,
-  6}^2$.</span>
+ <span class='run'>We want to talk about the result of rolling
+  one die twice.</span>
+
+ <span class='run'>To model this uncertain outcome, we agree to
+  speak of the <i>first</i> and <i>second</i> rolls.</span>
+
+ <span class='run'>We are interested in the number of pips
+  showing face up on the first and second rolls.</span>
+</p>
+
+
+<p>
+ <span class='run'>As before, we may model this uncertain outcome
+  as an element of the set $\Omega  = \set{1,
+  \dots , 6}^2$.</span>
 
  <span class='run'>We interpret $(\omega _1, \omega _2) \in \Omega $
   so that $\omega _1$ is the number of pips
-  showing on the die after the first roll and
-  $\omega _2$ is the number of pips showing on
-  the second die after the second roll.</span>
+  showing on the first roll and $\omega _2$ is
+  the number of pips showing on the second roll.</span>
 
+ <span class='run'>It would be natural to refer to $\omega _1$ as
+  the <i>first</i> outcome, and $\omega _2$ as the
+  <i>second</i> outcome.</span>
+</p>
+
+
+<p>
  <span class='run'>We emphasize that we have used the same set
   of outcomes as in the previous case.</span>
 
  <span class='run'>In other words, we can use the same set of
   outcomes to model two different situations.</span>
+ <!--
+ <div data-littype='run'> It is natural here to speak of ‹outcomes›, plural. </div>
+  -->
+
 </p>
 
     </div>
@@ -978,9 +1005,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We would like to speak about an object, which is a member of some set, and some attributes of this objects---without knowing the precise identity of the object. Such language would be especially useful in discussing games of chance.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Suppose $\Omega $ is a set which includes all possible objects. We call it the \t{sample space}. We call an element of this set an \t{outcome}. Other terms for outcome include \t{possibility}, \t{sample}, \t{elementary event}, \t{simple event}, \t{sample point}.</p></div><div class="sheet-listing"><p class="sheet"> One often uses a set of outcomes when thinking about running an experiment or in a given situation. We leave these terms undefined.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Examples of modeling}</p></div><div class="sheet-listing"><p class="sheet"> <i>A model for flipping a coin</i>. We want to talk about the result of flipping a coin. The coin has two sides. When we flip the coin, it lands heads or tails. We may model these outcomes with the set $\set{0, 1}$. If the coin lands tails, we say that outcome 0 has occurred. If the coin lands heads, we say that outcome 1 has occurred.</p></div><div class="sheet-listing"><p class="sheet"> <i>A model for rolling a die</i>. We want to talk about the result of rolling a die. The die has six sides. When we roll the die, it lands with one of its six sides facing up. We may model this uncertain outcome as an element of the set $\set{1, 2, 3, 4, 5, 6}$. Here we have used the first six natural numbers. We say that event 1 occurs if there is one pip showing, that event 2 occurs if there are two pips showing, and so on.</p></div><div class="sheet-listing"><p class="sheet"> <i>A model for rolling two dice at once</i>. We want to talk about the result of a simultaneous throw of two dice. We may model this uncertain outcome as an element of the set $\Omega  = \set{1, \dots , 6}^2$. Given a numbering on the die, $(\omega _1, \omega _2) \in \Omega $, $\omega _1$ is the number of pips showing on the first die---the die numbered 1---and $\omega _2$ is the number of pips showing on the second die---the die labeled two.</p></div><div class="sheet-listing"><p class="sheet"> <i>A model for rolling one die twice</i>. We may model this uncertain outcome as an element of the set $\Omega  = \set{1, \dots , 6}^2$. We interpret $(\omega _1, \omega _2) \in \Omega $ so that $\omega _1$ is the number of pips showing on the die after the first roll and $\omega _2$ is the number of pips showing on the second die after the second roll. We emphasize that we have used the same set of outcomes as in the previous case. In other words, we can use the same set of outcomes to model two different situations.</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1133,7 +1162,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

@@ -152,7 +152,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 179 0 -->
+      <!-- 183 0 -->
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -173,42 +173,6 @@
 <!-- \newcommand{\seqt}[1]{#1_n} -->
 
 \newcommand{\seqt}[1]{#1_n}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- % mnemonic for (s)et(suc)cesor -->
-
-% mnemonic for (s)et(suc)cesor
-
-<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
-
-\newcommand{\ssuc}[1]{{#1}^{+}}
-
-<!-- % objects macros -->
-
-% objects macros
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
@@ -269,6 +233,54 @@
 <!-- \newcommand{\tu}[1]{\left(#1\right)} -->
 
 \newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- % objects macros -->
+
+% objects macros
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
@@ -1652,12 +1664,12 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Normal Random Function Regressors </h1> 
-      <!--
-!name:normal_random_function_regressors
-!need:normal_random_function_predictive_densities
-!need:loss_functions
+      <!--yaml>
+name: normal_random_function_regressors
+needs:
+    - normal_random_function_predictive_densities
+    - loss_functions
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -1746,7 +1758,7 @@
   linear in $\gamma $.</span>
 
  <span class='run'>This is sometimes called a
-  <span class='term'>linear estimator</span>.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+  <span class='term'>linear estimator</span>.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
 
  <span class='run'>Alternatively, notice (in the zero mean setting)
   that $h$ is a linear combination of $n$ kernel
@@ -1766,7 +1778,7 @@
  <span class='run'>The upside is that a gaussian process predicor
   interpolates the data, is smooth, and the
   so-called variance increases with the distance
-  from the data.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+  from the data.<sup id='footnote-2-reference' class='lit-footnote-sup'><a href='#footnote-2' class='lit-footnote-a'>2</a></sup></span>
 </p>
 <hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>We avoid the other terminology we have seen
   used—linear predictor—because the predictor $h$ is
@@ -1819,9 +1831,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We use a loss function and a predictive density to construct a regressor on the domain of the random process.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Setup}</p></div><div class="sheet-listing"><p class="sheet"> Let $\ell : \R  \times \R  \to \R $ be a loss function. We choose a predictor to minimize the expected loss under the predictive density.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Squared error case}</p></div><div class="sheet-listing"><p class="sheet"> Consider $\ell (\alpha , \beta ) = (\alpha  - \beta )^2$. The \t{minimum squared error normal random function predictor} or \t{minimum squared error gaussian process predictor} for dataset $(a^1, \gamma _1), \dots , (a^n, \gamma _n)$ in $A \times \R $ is the predictor which minimizes the squared error loss. Since the predictive density is normal, the minimizer is the conditional mean.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Absolute error case}</p></div><div class="sheet-listing"><p class="sheet"> Consider $\ell (\alpha , \beta ) = \abs{\alpha  - \beta }$. The \t{minimum absolute deviation normal random function predictor} or \t{minimum absolute deviation gaussian process predictor} for dataset $(a^1, \gamma _1), \dots , (a^n, \gamma _n)$ in $A \times \R $ is the predictor which minimizes the absolute deviation loss. For any density, the solution is the median. Since the predictive density is normal, and so symmetric, the median is the conditional mean. In other words, the minimum absolute deviation normal random function predictor coinicides with the minimium squared error normal random function predictor.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> For this reason, the \t{normal random function predictor} or \t{gaussian process predictor} for dataset $(a^1, \gamma _1), \dots , (a^n, \gamma _n)$ in $A \times \R $ is $h: A \to \R $ defined by \[ h(x) = m(x) + \pmat{k(x,a^1) \cdots k(x, a^n)}\invp{\Sigma _{a} + \Sigma _{e}}(\gamma  - m_{a}). \] In other words, the regressor which assigns to each point its conditional mean.</p></div><div class="sheet-listing"><p class="sheet"> Notice that $h$ is an affine function of $\gamma $. If the mean function $m \equiv 0$ then $h$ is linear in $\gamma $. This is sometimes called a \t{linear estimator}.\footnote{We avoid the other terminology we have seen used---linear predictor---because the predictor $h$ is not linear in its input $x$.} Alternatively, notice (in the zero mean setting) that $h$ is a linear combination of $n$ kernel function $k(x, a^i)$ for $i = 1, \dots , n$. Specifically, $h$ is a linear combination of</p></div><div class="sheet-listing"><p class="sheet"> The process of using a normal random function predictor is often called \t{Gaussian process regression} or (especially in spatial statistics) \t{kriging}. The upside is that a gaussian process predicor interpolates the data, is smooth, and the so-called variance increases with the distance from the data.\footnote{This last piece is true for certain covariance kernels and will be clarified in future editions.}</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1974,7 +1988,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

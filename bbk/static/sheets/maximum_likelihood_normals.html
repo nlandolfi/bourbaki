@@ -710,22 +710,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- % mnemonic for (s)et(suc)cesor -->
-
-% mnemonic for (s)et(suc)cesor
-
-<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
-
-\newcommand{\ssuc}[1]{{#1}^{+}}
-
-<!-- \renewcommand{\setminus}{-} -->
-
-\renewcommand{\setminus}{-}
-
-<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
-
-\newcommand{\Q}{\mathbfsf{Q}}
-
 <!-- % use \powerset{A} for power set of A -->
 
 % use \powerset{A} for power set of A
@@ -773,6 +757,22 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1402,14 +1402,13 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Maximum Likelihood Normals </h1> 
-      <!--
-!name:maximum_likelihood_normals
-!need:normal_densities
-!need:maximum_likelihood_densities
-!need:partial_derivatives
-!!need:calculus ;) multivariate, too...
+      <!--yaml>
+name: maximum_likelihood_normals
+needs:
+    - normal_densities
+    - maximum_likelihood_densities
+    - partial_derivatives
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -1586,9 +1585,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We want to select a normal density which summarizes well a dataset.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Formulation}</p></div><div class="sheet-listing"><p class="sheet"> Let $D = (x^1, \dots , x^n)$ be a dataset in $\R $. We want to select a density from among normal densities, which require specifying a mean and covariance.</p></div><div class="sheet-listing"><p class="sheet"> Following the principle of maximum likelihood, we want to solve \[ \maximizationn{\mu ,\sigma  \in \R }{ \prod_{k = 1}^{n} \normaldensity{x^k}{\mu }{\sigma } }{ \sigma  > 0 \\ } \] We call a solution to the above problem a \t{maximum likelihood normal density} with respect to the dataset.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Solution}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(x^1, \dots , x^n)$ be a dataset in $\R $. Let $f$ be a normal density with mean \[ \frac{1}{n} \sum_{k = 1}^{n} x^k \] and covariance \[ \frac{1}{n} \sum_{k = 1}^{n} \left(x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k\right)^2. \] Then $f$ is a maximum likelihood normal density.\end{proposition} \begin{proof}Every normal density has two parameters: the mean and the covariance. If the likelihood of one normal is less than or equal to the likelihood of another, then so also with their log likelihoods. Let $f$ be a normal density with parameter $\mu $ and $\sigma ^2$. We express the log likelihood of $f$ by \[ \sum_{k = 1}^{n} \left( \frac{1}{2\sigma ^2}(x^k - \mu )^2 - \frac{1}{2}\log2\pi \sigma ^2\right) \] The partial derivative of the log likelihood with respect to the mean $(\partial_{\mu } \ell ): \R ^2 \to \R $ is \[ (\partial_\mu  \ell )(\mu , \sigma ^2) = - \sum_{k = 1}^{n} \frac{1}{\sigma ^2}(x - \mu ) \] and with respect to the covariance $(\partial_{\sigma ^2} \ell ): \R ^2 \to \R $ is \[ (\partial_{\sigma ^2} \ell )(\mu , \sigma ^2) = \left(\frac{-1}{2(\sigma ^2)^{2}}\sum_{k = 1}^{n}(x^k - \mu )^2\right)- \frac{1}{2\sigma ^2} \] We are interested in finding $\mu _0 \in \R $ and $\sigma ^2_0 > 0$, at which $\partial_\mu  \ell (\mu _0, \sigma ^2_0) = 0$ and $\partial_{\sigma ^2} \ell (\mu _0, \sigma ^2_0) = 0$. So we have two equations. First, notice that $\partial_\mu  \ell $ is zero if an only if its first argument (the mean) is $\frac{1}{n} \sum_{k = 1}^{n} x^k$. Second, notice that for all $\mu , \sigma ^2$, $\partial_{\sigma ^2}\ell $ is zero if and only if \[ \sigma ^2 = \sum_{k = 1}^{n} (x^k - \mu )^2. \] So the pair \[ \left(\frac{1}{n}\sum_{k = 1}^{k} x^k, \frac{1}{n} \sum_{k = 1}^{n} (x_k - \frac{1}{n} \sum_{k = 1}^{n} x^k)^2\right) \] is a stationary point of $\ell $.\end{proof}</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1741,7 +1742,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

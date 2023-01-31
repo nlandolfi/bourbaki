@@ -1,2 +1,75 @@
 
+\section*{Why}
+
+Here's a nice (surprising) example of computing an event probability.
+Consider the following question:
+We have $n$ letters to put into $n$ addressed envelopes, but we \textit{randomly} put them into envelopes.
+What's the chance that no letter is in the correct envelope?
+
+\section*{Example}
+
+Let us first number the envelopes and letters.
+Next, suppose we model this uncertain outcome with the sample space $\Omega  = S_n$.
+Here $S_n$ denotes the symmetric group of degree $n$, as usual (see \sheetref{permutations}{Permutations}).
+We agree to interpret $\omega  \in \Omega $ so that $\omega (i)$ is the number of the \textit{letter} in the \textit{envelope} numbered $i$, where $i = 1,\dots , n$.
+Suppose we put a distribution $p: \Omega  \to [0,1]$ on $\Omega $ so that every permutation is equally likely:
+\[
+p(\omega ) = \frac{1}{n!}
+\]
+We are interested in the event $W$ defined by
+\[
+W = \Set{\omega  \in \Omega }{\omega (s) \neq s \text{ for all } s = 1, \dots , n}
+\]
+which we interpret as the event that no letter is in the correct envelope.
+To get a handle on this event, we express it as smaller events.
+
+Define $A_i$ by
+\[
+A_i = \Set{\omega  \in \Omega }{\omega (i) = i}
+\]
+so that $A_i$ is the set of outcomes in which letter $i$ is in envelope $i$.
+The even that at least one letter goes into the correct envelope is given
+\[
+\cup_{i = 1}^{n} A_i
+\]
+We can compute this probability using the genrealized inclusion-exclusion formula.
+
+First, notice that the event
+\[
+\cap _{i = 1}^{n} A_i
+\]
+contains the single outcome in which all letters go into the correct envelope.
+More generally, for any $r$ between $1$ and $n$, $\cap _{i = 1}^{n} A_i$ contains all outcomes in which the letters $1, \dots , r$ go into the correct envelope.
+What is the size of $A_1 \cap  \cdots \cap  A_r$?
+Given that the $\omega (1) = 1, \omega (2) = 2, \dots , \omega (r) = r$, there are $n-r$ envelopes and $n-r$ ways of assigning letters to them.
+Thus, by the fundamental principle of counting
+\[
+\num{\cap _{i = 1}^{r} A_i} = (n-r)!
+\]
+Thus the probability of the event is
+\[
+P(\cap _{i = 1}^{r} A_i) = \sum_{\omega  \in \cap _{i = 1}^{r} A_i} p(\omega ) = \frac{(n-r)!}{n!}.
+\]
+where we have used the fact that $p(\omega ) = 1/n!$ for every $\omega  \in \Omega $.
+A similar argument holds for any distinct $i_1, \dots , i_r$ indices, where $i_j$ are distinct integers between $1$ and $n$.
+So $P(A_{i-1} \cap  \cdots \cap  A_{i_r}) = (n-r)!/n!$
+Thus, each probability in the $r$th sum of the inclusion-exclusion formula is $(n-r)!/n!$, since the $r$th sum as ${n \choose r}$ terms, the $r$th sum is
+\[
+{n \choose r} \frac{(n-r)!}{n!} = \frac{n!}{r!(n-r)!}\frac{(n-r)!}{n!} = \frac{1}{r!}
+\]
+
+Finally, we apply the generalized inclusion-exclusian formula to obtain
+\[
+P(A_1 \cup \cdots \cup A_n) = \frac{1}{1!} - \frac{1}{2!} + \frac{1}{3!} + \cdots + (-1)^{n-1} \frac{1}{n!}.
+\]
+Hence, the probablty that no letter goes into the correct envelope $W = \Omega  - \cup_{i = 1}^{n} A_i$ is
+\[
+1 - P(A_1 \cup \cdots \cup A_n) = 1 + \frac{1}{2!} - \frac{1}{3!} + \cdots + (-1)^n\frac{1}{n!}
+\]
+If we take $n \to \infty$, the above series series converges to $1/e \approx 0.37$.\footnote{Future editions will define $e$.}
+
+This is sometimes called the \t{secretary problem}.
+
+% TODO: finish 
+
 \blankpage

@@ -1,0 +1,47 @@
+
+\section*{Why}
+
+We can extend the notion of independnence beyond pairs of uncertain events, to sets of events.
+
+\section*{Definition}
+
+Suppose $P$ is a event probability function on a finite sample space $\Omega $.
+The events $A_1, \dots , A_n$ are \t{independent} (or \t{mutually independent}), if for all $k$ between 1 and $n$, and distinct indicies $i_1, \dots , i_k$ between $1$ and $n$,
+\[
+P(A_{i_1} \cap  A_{i_2} \cap  \cdots \cap  A_{i_k})
+=
+P(A_{i_1}) P(A_{i_2}) \cdots P(A_{i_k}) .
+\]
+Similar to the case of pairs of events, one can show that this condition is equivalent to the statement that for any \textit{distinct} indices $i_1, \dots , i_k, j_1, \dots , j_l$,
+\[
+P(A_{j_1} \cap  \cdots \cap  A_{j_l} \mid  A_{i_1} \cap  \cdots \cap  A_{i_k}) = P(A_{j_1} \cap  \cdots \cap  A_{j_l})
+\]
+
+\section*{Examples}
+
+\textit{$n$ tosses of a coin}.
+As usual, model $n$ tosses of a coin with $\set{0,1}^n$ and put a distribution $p: \Omega  \to [0,1]$ so that
+\[
+p(\omega ) = 1/2^n \quad \text{for all } \omega  \in \Omega
+\]
+Now, for $i = 1, \dots , n$, define the event $A_i$ by
+\[
+A_i = \Set{\omega  \in \Omega }{\omega (i) = 1}
+\]
+We claim that the set $\set{A_1,. \dots , A_n}$ is mutually independent.
+To see this, notice that for any distinct indices $i_1, \dots , i_k$,
+\[
+\num{A_{i_1} \cap  \cdots \cap  A_{i_k}} = 2^{n-k}
+\]
+This holds because, once $k$ of the coin flips, there are $2^{n-k}$ ways for the remaining coins to land (using the fundamental principle of counting).
+Consequently,
+\[
+P(A_{i_1} \cap  \cdots \cap  A_{i_k}) = \frac{2^{n-k}}{2^n} = 2^{-k}
+\]
+We can use this result with one set $P(A_i) = 1/2$, and so we obtain
+\[
+P(A_{i_1} \cap  \cdots A_{i_k}) = P(A_{i_1}) \cdots P(A_{i_k}),
+\]
+as desired.
+
+\blankpage

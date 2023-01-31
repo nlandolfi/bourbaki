@@ -154,42 +154,6 @@
     <span style="display:none">
       <!-- 152 0 -->
 
-<!-- % objects macros -->
-
-% objects macros
-
-<!-- % mnemonic for (s)et(suc)cesor -->
-
-% mnemonic for (s)et(suc)cesor
-
-<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
-
-\newcommand{\ssuc}[1]{{#1}^{+}}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 <!-- % use \powerset{A} for power set of A -->
 
 % use \powerset{A} for power set of A
@@ -229,6 +193,42 @@
 <!-- \newcommand{\tu}[1]{\left(#1\right)} -->
 
 \newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % objects macros -->
+
+% objects macros
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
@@ -1430,11 +1430,11 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Feature Maps </h1> 
-      <!--
-!name:feature_maps
-!need:least_squares_linear_regressors
+      <!--yaml>
+name: feature_maps
+needs:
+    - least_squares_linear_regressors
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -1471,7 +1471,7 @@
  <span class='run'>A feature map is
   <span class='term'>faithful</span> if, whenever
   records $a_i$ and $a_j$ are in some sense
-  “similar} in the set $A$, the embeddings
+  “similar” in the set $A$, the embeddings
   $\phi (a_i)$ and $\phi (a_j)$ are close in the
   vector space $\R ^d$.</span>
 </p>
@@ -1540,7 +1540,7 @@
 
  <span class='run'>In so doing, we can continue to use simple
   predictors, such as those that are linear and
-  minimize the squared error on the dataset.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+  minimize the squared error on the dataset.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
 </p>
 
 
@@ -1555,7 +1555,7 @@
   vector</span> $\phi (x)$.</span>
 
  <span class='run'>The <span class='term'>regression range</span> is
-  the set $\Set*{\phi (x)}{x \in X&#39;&#39;$.</span>
+  the set $\Set*{\phi (x)}{x \in X}$.</span>
 
  <span class='run'>In this case linearity pertains to the
   parameters $\theta  \in \R ^d$ instead of the
@@ -1627,9 +1627,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Linear predictors are simple and we know how to select the parameters. The main downside is that there may not be a linear relationship between inputs and outputs.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{feature map} (or \t{regression function}) for outputs $A$ is a mapping $\phi : A \to \R ^d$. In this setting, we call $a \in A$ the \t{raw input record} and we call $\phi (a)$ an \t{embedding}, \t{feature embedding} or \t{feature vector}. We call the components of a feature vector the \t{features}. We call $\phi (A)$ the \t{regression range}.</p></div><div class="sheet-listing"><p class="sheet"> A feature map is \t{faithful} if, whenever records $a_i$ and $a_j$ are in some sense "similar" in the set $A$, the embeddings $\phi (a_i)$ and $\phi (a_j)$ are close in the vector space $\R ^d$.</p></div><div class="sheet-listing"><p class="sheet"> Since it is common for raw input records $a \in A$ to consist of many fields, it is regular to have several feature maps $\phi _i$ which operate component-wise on the fields of $a$. These are sometimes called \t{basis functions}, by analogy with real function approximators (see \sheetref{real_function_approximators}{Real Function Approximators}). We concatenate these field feature maps and commonly add a constant feature $1$. Since $\R ^d$ is a vector space, it is common to refer to it in this case as the \t{feature space}.</p></div><div class="sheet-listing"><p class="sheet"> Given a dataset $a = (a^1, \dots , a^n)$ in $A$ and a feature map $\phi : A \to \R ^d$, the \t{embedded dataset} of $a$ with respect to $\phi $ is the dataset $(\phi (a^1), \dots , \phi (a^n)$ in $\R ^d$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Featurized consistency: a route around $X \neq \R ^d$}</p></div><div class="sheet-listing"><p class="sheet"> Recall that a dataset is parametrically consistent with the family $\set{h_{\theta }: X \to Y}_{\theta }$ if there exists $\theta ^\star$ so that the dataset is consistent with $\theta ^{\star}$. We saw how to pick $\theta $ if we use a linear model with a squared loss (see \sheetref{least_squares_linear_regressors}{Least Squares Linear Regressors}).</p></div><div class="sheet-listing"><p class="sheet"> Let $\mathcal{G}  = \set{g_{\theta }: \R ^d \to \R }_{\theta }$. A dataset is \t{featurized parametrically consistent} with respect to the family $\mathcal{G} $ and the feature map $\phi : X \to \R ^d$ if it is parametrically consistent with respect to $\mathcal{G}  \circ \phi  = \Set*{g \circ \phi }{g \in \mathcal{G} }$.</p></div><div class="sheet-listing"><p class="sheet"> The interpretation is that we have transformed the problem of selecting a predictor on an arbitrary space $X$ to the problem of selecting a predictor on the space $\R ^d$. In so doing, we can continue to use simple predictors, such as those that are linear and minimize the squared error on the dataset.\footnote{Future editions are likely to modify this section.}</p></div><div class="sheet-listing"><p class="sheet"> In other words, we have "shifted emphasis} from the model function $h: X \to \R $ to the \t{regression function" from $\R ^d \to \R $. If we know the features and the input $x$, then we know the \t{regression vector} $\phi (x)$. The \t{regression range} is the set $\Set*{\phi (x)}{x \in X}$. In this case linearity pertains to the parameters $\theta  \in \R ^d$ instead of the inputs (or experimental conditions) $x \in X$.</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1782,7 +1784,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

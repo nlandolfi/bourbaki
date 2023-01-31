@@ -166,42 +166,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\comp}{\circ} -->
-
-\newcommand{\comp}{\circ}
-
-<!-- \newcommand{\composed}{\circ} -->
-
-\newcommand{\composed}{\circ}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 <!-- % use \powerset{A} for power set of A -->
 
 % use \powerset{A} for power set of A
@@ -241,6 +205,42 @@
 <!-- \newcommand{\tu}[1]{\left(#1\right)} -->
 
 \newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
@@ -972,20 +972,21 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Chordal Graphs </h1> 
-      <!--
-!name:chordal_graphs
-!need:undirected_subgraphs
-!need:integral_line
-!need:integer_divisors
-!need:trees
-!refs:vandenberghe2014chordal
+      <!--yaml>
+name: chordal_graphs
+needs:
+    - undirected_subgraphs
+    - integral_line
+    - integer_divisors
+    - trees
+refs:
+    - vandenberghe2014chordal
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
  <span class='run'>Many problems simplify if the graph involved is
-  chordal.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+  chordal.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
 </p>
 
 <h1 id='Paths'>Paths</h1>
@@ -1004,7 +1005,7 @@
 
 
 <p>
- <span class='run'>We interpret a chord as a “one-edge shortcut}
+ <span class='run'>We interpret a chord as a “one-edge shortcut”
   between two vertices of a path.</span>
 
  <span class='run'>If a path $p$ has a chord, it can be reduced
@@ -1048,7 +1049,7 @@
   <span class='term'>rigid-circuit graphs</span>,
   <span class='term'>triangulated graphs</span>,
   <span class='term'>perfect elimination graphs</span>,
-  <span class='term'>decomposable graphs</span>.<sup id='footnote-2-reference'><a href='#footnote-2'>2</a></sup></span>
+  <span class='term'>decomposable graphs</span>.<sup id='footnote-2-reference' class='lit-footnote-sup'><a href='#footnote-2' class='lit-footnote-a'>2</a></sup></span>
 </p>
 
 
@@ -1230,9 +1231,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Many problems simplify if the graph involved is chordal.\footnote{Future editions will expand.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Paths}</p></div><div class="sheet-listing"><p class="sheet"> Let $G$ be an undirected graph. A \t{chord} in a path $p$ of $G$ is an edge between two non-consecutive vertices of $p$. So a chord of the path $(v_1, v_1, \dots , v_{k})$ is an edge $\set{v_i, v_j}$ with $\abs{j - i} > 1$.</p></div><div class="sheet-listing"><p class="sheet"> We interpret a chord as a "one-edge shortcut" between two vertices of a path. If a path $p$ has a chord, it can be reduced to a shorter path $p'$ by "skipping" vertices. In other words, the shortest path between two vertices is chordless. However, a chordless path need not be a shortest path. See the figure below.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Graphs}</p></div><div class="sheet-listing"><p class="sheet"> A chord of a cycle $(v_1, v_2, \dots , v_{k-1}, v_1)$ is an edge $\set{v_i, v_j}$ with $(j - i) \mod k > 1$. An undirected graph $G$ is \t{chordal} if every cycle with more than three edges has a chord.</p></div><div class="sheet-listing"><p class="sheet"> If $G$ is chordal, every cycle in $G$ can be reduced to a cycle of length three. We sometimes call a cycle of length three a \t{triangle}. For this reason, chordal graphs are also sometimes called \t{triangulated graphs}. Other terminology includes \t{rigid-circuit graphs}, \t{triangulated graphs}, \t{perfect elimination graphs}, \t{decomposable graphs}.\footnote{See Vanenberghe and Anderson, 2014.}</p></div><div class="sheet-listing"><p class="sheet"> The last graph in the figure below is not chordal because the cycle $(a, b, d, c, a)$ has length four and no chord. Adding the edge $\set{b, c}$ or $\set{a, d}$ would make the graph chordal An immediate consequence of the definition that $G$ be chordal is that any subgraph of $G$ is chordal.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Simple examples}</p></div><div class="sheet-listing"><p class="sheet"> Since trees and forests have no cycles, they are chordal. Similarly, any graph with no cycles longer than three edges are trivially chordal. Such graphs are sometimes called \t{cactus graphs}. The complete graphs are also trivially chordal.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Specific example}</p></div><div class="sheet-listing"><p class="sheet"> \begin{center}\includegraphics[width=0.70\textwidth]{graphics/chords.png}\end{center} The edge $\set{e, d}$ is a chord in the path $(a, e, c, d)$ of the first graph. The path $(a, v, d, c)$ is chordless. The edge $\set{a, e}$ is a chord in the cycle $(a, v, e, c, a)$ of the second graph. The cycle $(a, b, d, c, a)$ is chordless.</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1385,7 +1388,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

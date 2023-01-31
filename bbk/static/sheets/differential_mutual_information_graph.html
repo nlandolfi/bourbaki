@@ -330,6 +330,46 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- % absolute_value macros -->
+
+% absolute_value macros
+
+<!-- % \ifdefined\abs -->
+
+% \ifdefined\abs
+
+<!-- % \else -->
+
+% \else
+
+<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
+
+%  \newcommand{\abs}[1]{\left|#1\right|}
+
+<!-- % \fi -->
+
+% \fi
+
+<!-- % the above was creating issues - NCL 2/24/2022 -->
+
+% the above was creating issues - NCL 2/24/2022
+
+<!--  -->
+
+
+
+<!-- % following (roughly) the example of set_numbers/macros -->
+
+% following (roughly) the example of set_numbers/macros
+
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
+
+% \newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -718,46 +758,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- % absolute_value macros -->
-
-% absolute_value macros
-
-<!-- % \ifdefined\abs -->
-
-% \ifdefined\abs
-
-<!-- % \else -->
-
-% \else
-
-<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
-
-%  \newcommand{\abs}[1]{\left|#1\right|}
-
-<!-- % \fi -->
-
-% \fi
-
-<!-- % the above was creating issues - NCL 2/24/2022 -->
-
-% the above was creating issues - NCL 2/24/2022
-
-<!--  -->
-
-
-
-<!-- % following (roughly) the example of set_numbers/macros -->
-
-% following (roughly) the example of set_numbers/macros
-
-<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
-
-% \newcommand{\intabs}[1]{\left|#1\right|}
-
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
-
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-
 <!-- \newcommand{\symdiff}{+} -->
 
 \newcommand{\symdiff}{+}
@@ -882,6 +882,38 @@
 
 \newcommand{\intersection}{\cap}
 
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+
+\def\oright#1{\right#1\mskip-10mu\circ}
+
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
+
+\def\oleft#1{\circ\mskip-10mu\left#1}
+
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -953,38 +985,6 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
-
-%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
-
-<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
-
-\def\oright#1{\right#1\mskip-10mu\circ}
-
-<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
-
-\def\oleft#1{\circ\mskip-10mu\left#1}
-
-<!-- \newcommand{\I}{\mathbfsf{I}} -->
-
-\newcommand{\I}{\mathbfsf{I}}
-
-<!-- \newcommand{\oi}[1]{(#1)} -->
-
-\newcommand{\oi}[1]{(#1)}
-
-<!-- \newcommand{\ci}[1]{[#1]} -->
-
-\newcommand{\ci}[1]{[#1]}
-
-<!-- \newcommand{\oci}[1]{(#1]} -->
-
-\newcommand{\oci}[1]{(#1]}
-
-<!-- \newcommand{\coi}[1]{[#1)} -->
-
-\newcommand{\coi}[1]{[#1)}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1228,12 +1228,12 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Differential Mutual Information Graph </h1> 
-      <!--
-!name:differential_mutual_information_graph
-!need:weighted_graphs
-!need:differential_mutual_information
+      <!--yaml>
+name: differential_mutual_information_graph
+needs:
+    - weighted_graphs
+    - differential_mutual_information
 -->
-
 <h1 id='Definition'>Definition</h1>
 
 <p>
@@ -1291,9 +1291,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> The differential mutual information graph of a density on $\R ^d$ graph on $\set{1, \dots , d}$ which is complete and whose edge weights are given by the mutual information between the marginals over pairs of components.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1446,7 +1448,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

@@ -6,7 +6,7 @@ Since one and only one outcome occurs, given a distribution on outcomes, we defi
 \section*{Definition}
 
 Suppose $p$ is a distribution on a \textit{finite} set of outcomes $\Omega $.
-Given an event $E \subset \Omega $, the \t{probability} \textit{of} $E$ \textit{under} $p$ as the sum of the probabilities of the outcomes in $E$.
+Given an event $E \subset \Omega $, the \t{probability} (or \t{chance}) \textit{of} $E$ \textit{under} $p$ as the sum of the probabilities of the outcomes in $E$.
 The frequentist interpretation is clear---the probability of an event is the proportion of times any of its outcomes will occur in the long run.
 
 \subsection*{Notation}
@@ -65,6 +65,24 @@ A = \set{(1,1,1), (1,1,0), (1,0,1), (0,1,1)}
 \]
 Under our chosen distribution, $P(A) = 1/2$.
 
+\textit{Flipping a coin $n$ times.}
+We model flipping a coin $n$ times with a sample space $\Omega  = \{0,1\}^n$.
+Here, we agree to interpret $(\omega _1, \dots , \omega _n) \in \Omega $ so that $\omega _i$ is 1 if the coin lands heads on the $i$th toss and $0$ if it lands tails; $i = 1, \dots , n$.
+The size of $\Omega $ is $2^n$, since $\num{\{0,1\}} = 2$.
+Suppose we choose a distribution $p: \Omega  \to [0,1]$ so that
+\[
+p(\omega ) = \frac{1}{2^n}
+\]
+Now consider the event $H_k$ defined by
+\[
+H_k = \Set{\omega  \in \Omega }{\num{\Set{i}{\omega _i = 1} = 1} = k}.
+\]
+so that it contains all outcomes having a total of $k$ heads.
+Then
+\[
+P(H_k) = \frac{\num{H_k}}{2^n} = \frac{{n \choose k}}{2^n}
+\]
+
 \section*{Properties of event probabilities}
 
 The properties of $p$ ensure that $P$ satisfies
@@ -73,7 +91,7 @@ The properties of $p$ ensure that $P$ satisfies
       \item $P(\Omega ) = 1$ (and $P(\varnothing) = 0$);
       \item $P(A) + P(B)$ for all $A, B \subset \Omega $ and $A \cap  B = \varnothing$.
     \end{enumerate}
-The last statement (3) follows from the more general identity
+The last statement (3) follows from the more general identity---known as the \t{inclusion-exclusion formula}---
 \[
 P(A \cup B) = P(A) + P(B) - P(A \cap  B)
 \]
@@ -88,6 +106,15 @@ If $f$ satisfies the axioms, then $q$ is a probability distribution.
 For this reason we call any function satisfying (i)-(iii) an \t{event probability function} (or a \t{(finite) probability measure}).
 
 \section*{Other basic consequences}
+
+\textit{Disjoint events.}
+Two events $A$ and $B$ are \t{disjoint} or \t{mutually exclusive} if $A \cap  B = \varnothing$.
+Likwise, a list of events $A_1, \dots , A_n$ are \t{disjoint} or \t{mutually exclusive} if $A_i \cap  A_j = \varnothing$ for all $i \neq j$, $i,j \in \set{1, \dots , n}$.
+A direct consequence of (3) above is
+\[
+\textstyle
+P(\cup_{i =1 }^{n} A_i) = \sum_{i = 1}^{n} P(A_i)
+\]
 
 \textit{Probability by cases.}
 Suppose $A_1, \dots , A_n$ partition $\Omega $.

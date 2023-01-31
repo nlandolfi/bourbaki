@@ -45,24 +45,31 @@ func main() {
 		} else if err != nil {
 			log.Fatalf("opening macros.tex: %v", err)
 		}
+		litfile, err := os.Open(fmt.Sprintf("../sheets/%s/sheet.lit", f.Name()))
+		if os.IsNotExist(err) {
+			continue
+		} else if err != nil {
+			log.Fatalf("opening sheet.lit: %v", err)
+		}
 
-		p := bbk.Parse(sheetfile, macrosfile)
-		if p.Name == "" {
+		p := bbk.Parse(sheetfile, macrosfile, litfile)
+		if p.Config.Name == "" {
 			log.Fatalf("no name for file %v", f)
 		}
-		for _, n := range p.Needs {
+		for _, n := range p.Config.Needs {
 			entries = append(entries,
 				[]string{
-					bbk.Title(p.Name), bbk.Title(n),
+					bbk.Title(p.Config.Name), bbk.Title(n),
 				})
 		}
 		// add leaf entries
-		if len(p.Needs) == 0 {
-			entries = append(entries, []string{bbk.Title(p.Name), ""})
+		if len(p.Config.Needs) == 0 {
+			entries = append(entries, []string{bbk.Title(p.Config.Name), ""})
 		}
 
 		sheetfile.Close()
 		macrosfile.Close()
+		litfile.Close()
 	}
 
 	w := csv.NewWriter(os.Stdout)

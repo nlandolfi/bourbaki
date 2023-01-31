@@ -1,2 +1,68 @@
 
+% TODO: this can (and probably should) be better motivated by 
+%using subsets, then permutations can come up as motivated need 
+
+\section*{Why}
+
+How many ways can we select $k$ chairs from a set of size $n$?
+Here, and throughout this sheet, $1 \leq k \leq n$.
+
+\section*{Seating $k$ guests in $n$ chairs}
+
+First, we ask: how many ways are there to seat $k$ guests in $n$ chairs?
+We start by numbering the guests.
+Then, the first guest can be seated in any of the $n$ chairs---or in $n$ ways.
+Having seated this first guest, the next guest can be seated in any of the $n-1$ remaining chairs.
+Having seated these first two guests, the third can be seated in any of the remaining $n -2$ chairs.
+And so on.
+We conclude that the number of ways of seating $k$ guests in $n$ chairs is
+\[
+n(n-1)(n-2)\cdots(n-k+1)
+\]
+
+\textit{Factorial notation.}
+We can express this number can be expressed as
+\[
+\frac{n!}{(n-k)!}
+\]
+For example, with $n = 7$ and $k = 3$,
+\[
+7\cdot 6\cdot 5\cdot 4 = \frac{7\cdot 6\cdot 5\cdot 4\cdot 3\cdot 2\cdot 1}{4\cdot 3\cdot 2\cdot 1}
+\]
+If we agree that the number of ways to seat no people in $n$ chairs is 1, then the ration of fraction on the right also makes sense for $k = 0$.
+In other words $n!/n! = 1$.
+
+\section*{Selecting $k$ chairs out of $n$}
+
+Now we ask our original question: How many ways are there to select $k$ chairs out of $n$?
+Observe that our previous discussion involved seating $k$ guests in $n$ chairs.
+We could break this down in a different way---first we select the $k$ chairs, and \textit{then} we select how to place people in the chairs.
+Denote the number of ways to do the first task by $x$.
+We have seen that there are $k!$ ways to do the second task.
+So by the fundmental principle the number of ways to do this task is $x\cdot k!$, which must be the same as our expression above
+\[
+x\cdot k! = \frac{n!}{(n-k)!}
+\]
+We conclude that
+\[
+x = \frac{n!}{k!(n-k)!} = \frac{(n)(n-1)\cdots(n-k+1)}{k!}
+\]
+
+\subsection*{Notation}
+
+We denote this number by
+\[
+{n \choose k}
+\]
+read aloud as ``$n$ \t{choose} $k$''.
+Another notation is $C(n,k)$, where $C$ is meant to stand for \textit{combination} or \textit{choice}.
+
+\section*{Number of subsets}
+
+The number of subsets of size $k$ from a finite set of $n$ elements is ${n \choose k}$.
+Since there is one subset of size 0 from a set of size $n$ (the empty set) and one subset of size $n$ (the whole set), it is a pleasant validation of our convention that $0! = 1$ that
+\[
+{n \choose 0} = {n \choose n} = 1.
+\]
+
 \blankpage

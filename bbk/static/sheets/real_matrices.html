@@ -198,6 +198,54 @@
 
 % objects macros
 
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\cross}{\times} -->
+
+\newcommand{\cross}{\times}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\op}[1]{\left(#1\right)} -->
+
+\newcommand{\op}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
+
+\newcommand{\tuple}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
+
+\newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -265,54 +313,6 @@
 <!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
 
 \newcommand{\ssuc}[1]{{#1}^{+}}
-
-<!-- % use \powerset{A} for power set of A -->
-
-% use \powerset{A} for power set of A
-
-<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
-
-% \newcommand{\powerset}[1]{{#1}^*}
-
-<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
-
-\newcommand{\powerset}[1]{\CP(#1)}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\cross}{\times} -->
-
-\newcommand{\cross}{\times}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\op}[1]{\left(#1\right)} -->
-
-\newcommand{\op}[1]{\left(#1\right)}
-
-<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
-
-\newcommand{\tuple}[1]{\left(#1\right)}
-
-<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
-
-\newcommand{\tu}[1]{\left(#1\right)}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- \newcommand{\symdiff}{+} -->
 
@@ -1162,13 +1162,13 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Real Matrices </h1> 
-      <!--
-!name:real_matrices
-!need:linear_equations
-!need:real_vectors
-!need:arrays
+      <!--yaml>
+name: real_matrices
+needs:
+    - linear_equations
+    - real_vectors
+    - arrays
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -1520,9 +1520,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We compress the notation for linear equations.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> A \t{real matrix} (\t{matrix}, \t{rectangular array}) is a two-dimensional array of real numbers. We denote the elements of a matrix in a grid between two rectangular braces, as in \[ A = \bmat{ A_{11} & A_{12} & \cdots & A_{1n} \\ A_{21} & A_{22} & \cdots & A_{2n} \\ \vdots & & \ddots & \vdots \\ A_{m1} & A_{m2} & \cdots & A_{mn} \\ }. \]</p></div><div class="sheet-listing"><p class="sheet"> We call $m$ and $n$ the \t{dimensions} of the matrix. We call $m$ the \t{height} and $n$ the \t{width}. If the height of the matrix is the same as the width of the matrix then we call the matrix \t{square}. If the height is larger than the width, we call the matrix \t{tall}. If the width is larger than the height, we call the matrix \t{wide}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Linear equations}</p></div><div class="sheet-listing"><p class="sheet"> Recall that we are interested in solutions of the linear equations \[ \begin{aligned} y_1 &= A_{11}x_1 + A_{12}x_2 + \cdots + A_{1n}x_n, \\ y_2 &= A_{21}x_1 + A_{22}x_2 + \cdots + A_{2n}x_n, \\ &\vdots \\ y_n &= A_{m1}x_1 + A_{m2}x_2 + \cdots + A_{mn}x_n. \\ \end{aligned} \] We have suggestively used the notation $A_{ij}$ for the coefficients of the equations, so they are the entries of $A \in \R ^{m \times  n}$.</p></div><div class="sheet-listing"><p class="sheet"> \section*{A primer on matrix-vector products}</p></div><div class="sheet-listing"><p class="sheet"> Using the notation $A \in \R ^{m \times  n}$ and $x \in \R ^n$ we want a compressed way to write the above system of linear equations. Define the \t{real matrix-vector product} $z \in \R ^m$ of $A$ with $x$ by \[ z_{i} = \sum_{j = 1}^{n} A_{ij}x_j, \quad i = 1, \dots , m. \] We denote the matrix vector product $z$ by $Ax$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We express the above system of linear equations as \[ y = Ax, \] where $y = (y_1, \dots , y_n) \in \R ^{n}$ and $x = (x_1, \dots , x_n) \in \R ^n$. The compact notation $y = Ax$ is sometimes called the \t{matrix form} of the $m$ linear equations and $A$ the \t{coefficient matrix}.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Note on terminology}</p></div><div class="sheet-listing"><p class="sheet"> The word "matrix} is from the Latin \say{mater,} meaning mother, and has an old sense in English similar \say{womb." The matrix is source of many determinants (discussed elsewhere).</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1675,7 +1677,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

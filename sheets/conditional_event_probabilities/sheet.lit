@@ -9,32 +9,64 @@ wikipedia: https://en.wikipedia.org/wiki/Conditional_probability
 ¶ ⦊
   ‖ How should we modify probabilities, given that we know some
     aspect of the outcome (i.e., that some event has occurred)? ⦉
+
+  ‖ In other words, and roughly speaking, how does knowledge
+    abot one aspect of an outcome give us knowledge about
+    another aspect. ⦉
 ⦉
 
 § Definition ⦉
 ¶ ⦊
-  ‖ Suppose $Ω$ is a set of outcomes and $𝗣: \powerset{Ω} → 𝗥$
-    is a finite probability measure. ⦉
+  ‖ Suppose $Ω$ is a finite set of outcomes with a probability
+    even function $P$. ⦉
 
-  ‖ Suppose $A, B ⊂ Ω$ with $𝗣(B) ≠ 0$. ⦉
+  ‖ Suppose $A, B ⊂ Ω$ are two events and $P(B) ≠ 0$. ⦉
 
   ‖ The ❬conditional probability❭ of $A$ ❬given❭ $B$ is the
     ratio of the probability of $A ∩ B$ to the probability of
     $B$. ⦉
+
+  ‖ Other language includes the ‹conditional probability› of $A$
+    ❬given that❭ $B$ ❬has happened❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ The frequentist interpretation is straightforward. ⦉
+
+  ‖ We collect many outcomes, and $P(B)$ is the fraction of
+    times that the event $B$ occurs. ⦉
+
+  ‖ $P(A ∩ B)$ is the fraction of times both $A$ and $B$
+    occurs. ⦉
+
+  ‖ The conditional probability of $A$ given $B$ is the fraction
+    of times that $A$ happened ‹among the outcomes in which $B$
+    happened›. ⦉
 ⦉
 
 §§ Notation ⦉
 ¶ ⦊
   ‖ In a slightly slippery but universally standard notation, we
-    denote the conditional probability of $A$ given $B$ by $𝗣(A
+    denote the conditional probability of $A$ given $B$ by $P(A
     | B)$. ⦉
 
   ‖ In other words, we define
     ◇ ⦊
-      ‖ 𝗣(A | B) = \frac{𝗣(A ∩ B)}{𝗣(B)}, ⦉
+      ‖ P(A | B) = \frac{P(A ∩ B)}{P(B)}, ⦉
     ⦉⦉
 
-  ‖ for all $A, B ⊂ Ω$, whenever $𝗣(B) ≠ 0$. ⦉
+  ‖ for all $A, B ⊂ Ω$, whenever $P(B) ≠ 0$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Notice that for any two events, $P(A ∩ B) = P(A) P(B|A)$. ⦉
+
+  ‖ Pleasantly, this equation makes sense even if $P(A) = 0$,
+    since then $P(A ∩ B) ≤ P(A) = 0$ means $P(A ∩ B)$ is
+    also 0—irrespecitve of our definition of $P(B | A)$ in this
+    case. ⦉
+
+  ‖ (Here we have swapped the order of $A$ and $B$). ⦉
 ⦉
 
 ¶ ⦊
@@ -47,33 +79,60 @@ wikipedia: https://en.wikipedia.org/wiki/Conditional_probability
     ◇ ⦊
       ‖ \textstyle ⦉
 
-      ‖ 𝗣(B) = ∑_{i = 1}^{n} 𝗣(A_i)𝗣(B | A_i), ⦉
+      ‖ P(B) = ∑_{i = 1}^{n} P(A_i)P(B | A_i), ⦉
     ⦉
-    where $A_1, …, A_n$ partition $Ω$ and $B ⊂ Ω$ with $𝗣(B)
+    where $A_1, …, A_n$ partition $Ω$ and $B ⊂ Ω$ with $P(B)
     > 0$. ⦉
+
+  ‖ A particular nice example,
+    ◇ ⦊
+      ‖ P(B) = P(B | A)P(A) + P(B | Ω - A)P(Ω - A) ⦉
+    ⦉⦉
+⦉
+
+§ Examples ⦉
+¶ ⦊
+  ‖ ‹Rolling a die.› ⦉
+
+  ‖ As usual, model rolling a die with the sample space $Ω =
+    \set{1, …, 6}$ and distribution $p: Ω → [0,1]$ defined by
+    $p(ω) = 1/6$ for all $ω ∈ Ω$. ⦉
+
+  ‖ Take the two events, $A = \set{6}$ and $B = \set{4, 5,
+    6}$, which we interpret as “the number of pips is 6” and
+    “the number of pips is at least 4”, respectively. ⦉
+
+  ‖ Then
+    ◇ ⦊
+      ‖ P(A | B) = \frac{1/6}{1/2} = \frac{1}{3} ⦉
+    ⦉⦉
+
+  ‖ This has a nice interpretation, given that we know the
+    number of pips face up is either 4 or 5 or 6, the chance
+    that it is 6 is $1$ in $3$. ⦉
 ⦉
 
 § Conditional probability measure ⦉
 ¶ ⦊
-  ‖ It happens that $𝗣(\cdot | B)$ is itself a probability
-    measure on $Ω$. ⦉
+  ‖ It happens that $P(\cdot | B)$ is itself a probability
+    event function on $Ω$. ⦉
 
-  ‖ We therefore refer to $𝗣(\cdot | B)$ as a ❬conditional
-    probability measure❭. ⦉
+  ‖ We therefore refer to $P(\cdot | B)$ as a ❬conditional
+    probability function❭ or ❬conditional probability measure❭. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ To see this, suppose $B ⊂ Ω$ and $𝗣(B) > 0$. ⦉
+  ‖ To see this, suppose $B ⊂ Ω$ and $P(B) > 0$. ⦉
 
-  ‖ Then (i) $𝗣(A | B) ≥ 0$ for all $A ⊂ Ω$, since $𝗣(A ∩
+  ‖ Then (i) $P(A | B) ≥ 0$ for all $A ⊂ Ω$, since $P(A ∩
     B) ≥ 0$. ⦉
 
   ‖ Moreover, (ii)
     ◇ ⦊
-      ‖ 𝗣(Ω | B) = 𝗣(Ω ∩ B)/𝗣(B) = 𝗣(B)/𝗣(B) = 1 ⦉
+      ‖ P(Ω | B) = P(Ω ∩ B)/P(B) = P(B)/P(B) = 1 ⦉
     ⦉⦉
 
-  ‖ Similarly, $𝗣(∅ | B) = 𝗣(∅ ∩ B)/𝗣(B) = 0/𝗣(B) = 0$. ⦉
+  ‖ Similarly, $P(∅ | B) = P(∅ ∩ B)/P(B) = 0/P(B) = 0$. ⦉
 ⦉
 
 ¶ ⦊
@@ -81,50 +140,42 @@ wikipedia: https://en.wikipedia.org/wiki/Conditional_probability
     ◇ ⦊
       ‖ \begin{aligned} ⦉
 
-      ‖ 𝗣(A ∩ C | B) ⦉
+      ‖ P(A ∩ C | B) ⦉
 
-      ‖ ❲&❳= ⦉
+      ‖ &= \frac{P((A ∩ C) ∩ B)}{P(B)} ᜶ ⦉
 
-      ‖ 𝗣((A ∩ C) ∩ B)/𝗣(B) ᜶ ⦉
+      ‖ &\overset{(a)}{=} \frac{P(A ∩ B) + P(C ∩ B)}{P(B)} ᜶ ⦉
 
-      ‖ ❲&❳= ⦉
-
-      ‖ 𝗣((A ∩ B) ∩ (C ∩ B)/𝗣(B) ᜶ ⦉
-
-      ‖ ❲&❳\overset{(a)}{=} ⦉
-
-      ‖ (𝗣(A ∩ B) + 𝗣(C ∩ B))/𝗣(B) ᜶ ⦉
-
-      ‖ ❲&❳= ⦉
-
-      ‖ 𝗣(A ∩ B)/𝗣(B) + P(C ∩ B)/𝗣(B) ᜶ ⦉
-
-      ‖ ❲&❳= ⦉
-
-      ‖ 𝗣(A | B) + P(C | B). ⦉
+      ‖ &= P(A | B) + P(C | B). ⦉
 
       ‖ \end{aligned} ⦉
     ⦉
-    where (a) follows since $A ∩ B$ and $C ∩ B$ are disjoint. ⦉
+    where (a) follows since $(A ∩ C) ∩ B = (A ∩ B) ∪ (C ∩
+    B)$ and the sets $A ∩ B$, $C ∩ B$ are disjoint. ⦉
 ⦉
 
 §§ Induced conditional distribution ⦉
 ¶ ⦊
-  ‖ Therefore, we expect there to also correspond a new
-    distribution on the set of outcomes. ⦉
+  ‖ Since $P(·|B)$ is a probability event function, we expect it
+    to have a corresponding distribution. ⦉
 
-  ‖ For $𝗣_p$, define $q: Ω → 𝗥$ by
+  ‖ Denote the distribution of $P$ by $p: Ω → [0,1]$. ⦉
+
+  ‖ In other words, $p$ satisfies $p(ω) = P(\set{ω})$ as usual. ⦉
+
+  ‖ Now define $q: Ω → 𝗥$ by
     ◇ ⦊
       ‖ q(ω) = \begin{cases} ⦉
 
-      ‖ \frac{p(ω)}{𝗣(B)} ❲&❳ \text{ if } ω ∈ B ᜶ ⦉
+      ‖ \frac{p(ω)}{P(B)} ❲&❳ \text{ if } ω ∈ B ᜶ ⦉
 
       ‖ 0 ❲&❳ \text{ otherwise. } ᜶ ⦉
 
       ‖ \end{cases} ⦉
     ⦉⦉
 
-  ‖ In this case $𝗣_q(A) = 𝗣_p(A | B)$. ⦉
+  ‖ In this case the event probability function induced by $A$
+    is $P(·|B)$. ⦉
 
   ‖ We call $q$ the ❬conditional distribution❭ induced by
     ❬conditioning on❭ the event $B$. ⦉
@@ -137,7 +188,7 @@ wikipedia: https://en.wikipedia.org/wiki/Conditional_probability
 
   ‖ Then
     ◇ ⦊
-      ‖ 𝗣(A_1 ∩ A_2 ∩ ⋯ ∩ A_n) = 𝗣(A_1) 𝗣(A_2 | A_1) ⋯ 𝗣(A_n
+      ‖ P(A_1 ∩ A_2 ∩ ⋯ ∩ A_n) = P(A_1) P(A_2 | A_1) ⋯ P(A_n
         | A_1 ∩ ⋯ ∩ A_{n-1}) ⦉
     ⦉⦉
 

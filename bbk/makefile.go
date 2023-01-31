@@ -6,17 +6,17 @@ const MakefileTemplate = `# generated automatically by bbk_sheet
 
 make:
 	make graph.pdf
-	make {{ .Name }}.pdf
+	make {{ .Config.Name }}.pdf
 {{ if .HasLitFile }}
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 {{ end }}
-{{ .Name }}.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > {{ .Name }}.tex
+{{ .Config.Name }}.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > {{ .Config.Name }}.tex
 
-{{ .Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Name }}.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode {{ .Name }}.tex
-	../../latexrun {{ .Name }}.tex
+{{ .Config.Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Config.Name }}.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode {{ .Config.Name }}.tex
+	../../latexrun {{ .Config.Name }}.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -28,14 +28,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: {{ .Name }}.pdf
-	open {{ .Name }}.pdf
+open: {{ .Config.Name }}.pdf
+	open {{ .Config.Name }}.pdf
 
 o:
 	make open
 
-terms: {{ .Name }}.tex
-	bbk_sheet -mode ts {{ .Name }}.tex
+terms: {{ .Config.Name }}.tex
+	bbk_sheet -mode ts {{ .Config.Name }}.tex
 
 spell:
 	aspell -c sheet.tex
@@ -52,6 +52,6 @@ clean:
 	make reset
 
 remake:
-	rm -f {{.Name}}.*
+	rm -f {{.Config.Name}}.*
 	make reset
 	bbk_sheet -mode mk > Makefile`

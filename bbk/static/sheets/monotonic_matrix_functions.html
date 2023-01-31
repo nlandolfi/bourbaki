@@ -530,6 +530,54 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\cross}{\times} -->
+
+\newcommand{\cross}{\times}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\op}[1]{\left(#1\right)} -->
+
+\newcommand{\op}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
+
+\newcommand{\tuple}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
+
+\newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- \newcommand{\N}{\mathbfsf{N}} -->
 
 \newcommand{\N}{\mathbfsf{N}}
@@ -689,54 +737,6 @@
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- % use \powerset{A} for power set of A -->
-
-% use \powerset{A} for power set of A
-
-<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
-
-% \newcommand{\powerset}[1]{{#1}^*}
-
-<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
-
-\newcommand{\powerset}[1]{\CP(#1)}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\cross}{\times} -->
-
-\newcommand{\cross}{\times}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\op}[1]{\left(#1\right)} -->
-
-\newcommand{\op}[1]{\left(#1\right)}
-
-<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
-
-\newcommand{\tuple}[1]{\left(#1\right)}
-
-<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
-
-\newcommand{\tu}[1]{\left(#1\right)}
 
 <!--  -->
 
@@ -1313,16 +1313,17 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Monotonic Matrix Functions </h1> 
-      <!--
-!name:monotonic_matrix_functions
-!need:monotonic_functions
-!need:positive_semidefinite_matrix_order
-!need:matrix_scalar_product
-!need:real_inner_product_norms
-!need:real_matrix_inverses
-!refs:pukelsheim2004optimal∕1.11
+      <!--yaml>
+name: monotonic_matrix_functions
+needs:
+    - monotonic_functions
+    - positive_semidefinite_matrix_order
+    - matrix_scalar_product
+    - real_inner_product_norms
+    - real_matrix_inverses
+refs:
+    - pukelsheim2004optimal∕1.11
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -1373,7 +1374,7 @@
  <span class='run'>Then the map $f: \mathbfsf{S} _{++}^d \to
   \mathbfsf{S} _{++}^d$ satisfying $f(A) =A^{-1}$ is
   an isotonic function mapping the (open) positive
-  definite cone into itself.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include a proof.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+  definite cone into itself.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span></div><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include a proof.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1442,9 +1443,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Since we have a partial order on the set of positive semidefinite matrices, we can study which familiar functions are have order-preserving or order-reversing properties.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Norms}</p></div><div class="sheet-listing"><p class="sheet"> It would be nice if the matrix norm induced by the matrix scalar produce (see \sheetref{matrix_scalar_product}{Matrix Scalar Product}) was an isotonic function. In other words, if $A, B \in \mathbfsf{S} ^d$ satisfy $A \geq B$, does $\norm{A} \geq \norm{B}$?</p></div><div class="sheet-listing"><p class="sheet"> Since $\norm{A}^2 = \tr A^2$, we should study the trace first..</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Trace}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $f: \mathbfsf{S} ^d \to \R $ defined by $f(A) = \tr A$.\end{proposition} In other words, the function $f$ is the restriction of the trace function onto the set of symmetric matrices.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $B \in \mathbfsf{S} ^d$ Let $f_B: \mathbfsf{S} ^d \to \R $ defined by $f(A) = \tr AB$.\end{proposition} \section*{Inversion}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $A \in \mathbfsf{S} _{++}^d$. Then the map $f: \mathbfsf{S} _{++}^d \to \mathbfsf{S} _{++}^d$ satisfying $f(A) =A^{-1}$ is an isotonic function mapping the (open) positive definite cone into itself.\footnote{Future editions will include a proof.}\end{proposition} \blankpage</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1597,7 +1600,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

@@ -6,11 +6,11 @@ needs:
 
 § Result ⦉
 <statement type='proposition'>
-  ‖ Suppose $𝗣$ is a␣
+  ‖ Suppose $P$ is a␣
     <a href='/sheets/event_probabilities.html'>
-      ‖ finite probability measure ⦉
+      ‖ probability measure ⦉
     </a>
-    ␣on a set of␣
+    ␣on a finite set of␣
     <a href='/sheets/uncertain_outcomes.html'>
       ‖ outcomes ⦉
     </a>
@@ -20,23 +20,23 @@ needs:
     <a href='/sheets/uncertain_outcomes.html'>
       ‖ events ⦉
     </a>
-    ␣$A, B$ with $𝗣(A), 𝗣(B) > 0$, we have
+    ␣$A, B$ with $P(A), P(B) > 0$, we have
     ◇ ⦊
-      ‖ 𝗣(A | B) = \frac{ 𝗣(B | A)𝗣(A) }{ 𝗣(B) }. ⦉
+      ‖ P(A | B) = \frac{ P(B | A)P(A) }{ P(B) }. ⦉
     ⦉⦉
   <proof>
     ‖ By definition, we have
       ◇ ⦊
-        ‖ 𝗣(A | B) = \frac{ 𝗣(A ∩ B) }{ 𝗣(B) }. ⦉
+        ‖ P(A | B) = \frac{ P(A ∩ B) }{ P(B) }. ⦉
       ⦉⦉
 
     ‖ And also symmetrically,
       ◇ ⦊
-        ‖ P(B | A) = \frac{ 𝗣(A ∩ B) }{ 𝗣(A) }. ⦉
+        ‖ P(B | A) = \frac{ P(A ∩ B) }{ P(A) }. ⦉
       ⦉⦉
 
-    ‖ From this second equation we have $𝗣(A ∩ B) = 𝗣(B | A)
-      𝗣(A)$, which we can substitute into the numerator of the
+    ‖ From this second equation we have $P(A ∩ B) = P(B | A)
+      P(A)$, which we can substitute into the numerator of the
       first expression to obtain the result. ⦉
   </proof>
 </statement>
@@ -53,13 +53,86 @@ needs:
     the right hand side of the above equation. ⦉
 ⦉
 
+§ Examples ⦉
+
+§§ Diagnostic test ⦉
+¶ ⦊
+  ‖ Suppose we want to model the situation in which a rare
+    disease afflicts 0.5% of a population and we have a
+    diagnostic test that is 99% accurate. ⦉
+⦉
+
+¶ ⦊
+  ‖ We consider the population $Ω$ of people. ⦉
+
+  ‖ We agree to partition the population into $D$ and $H$ so
+    that
+    ◇ ⦊
+      ‖ D ∪ H = Ω \quad \text{ and } \quad D ∩ H = ∅ ⦉
+    ⦉⦉
+
+  ‖ $D$ is the set of people with the disease, and $H$ is the
+    set of ‹healthy› people without the disease. ⦉
+
+  ‖ Similarly, we agree to partition the population into $R$ and
+    $N$ so that
+    ◇ ⦊
+      ‖ R ∪ N = Ω \quad \text{ and } \quad P ∩ N = ∅ ⦉
+    ⦉⦉
+
+  ‖ $R$ is the set of people who test positive, and $N$ is
+    the set of people who test negative. ⦉
+⦉
+
+¶ ⦊
+  ‖ We agree that 0.5% of the the population being afflicted
+    means, $P(D) = 0.005$. ⦉
+
+  ‖ We agree that having a 99% accurate test means ‹means› ⦉
+  ◇ ⦊
+    ‖ P(D | R) = 0.99 \quad \text{ and } P(H | N) = 0.99 ⦉
+  ⦉
+
+  ‖ Now, what is the conditional probability of having the
+    disease given that the test is positive? ⦉
+
+  ‖ Using Bayes rule,
+    ◇ ⦊
+      ‖ P(D | R) = \frac{P(R | D)P(D)}{P(R|D)P(D) + P(R|H)P(H)} ⦉
+    ⦉⦉
+
+  ‖ Using our supposed values,
+    ◇ ⦊
+      ‖ P(D | R) = \frac{0.99 · 0.005}{0.99 · 0.005 + 0.01 ·
+        0.995} ≈ 0.33 ⦉
+    ⦉⦉
+
+  ‖ This may be viewed as suprising, since the test is
+    perceived to be accurate. ⦉
+⦉
+
+¶ ⦊
+  ‖ The frequentist interpretation is clear: if have many
+    outcomes, say a thousand individuals, we may expect that
+    about five of these thousand have the disease. ⦉
+
+  ‖ The test is likely to diagnose these correctly. ⦉
+
+  ‖ However, of the other 995 people, about 1% of them—say 10
+    people—will be misdiagnosed. ⦉
+
+  ‖ Thus we may expect to see about 15 positive test results,
+    but only five of which correspond to individuals with the
+    disease. ⦉
+⦉
+
 §§ Compound form ⦉
 ¶ ⦊
   ‖ More is true. ⦉
 ⦉
 
 <statement type='proposition'>
-  ‖ Suppose $𝗣$ is a␣
+  ‖ Suppose $P$ is a␣
     <a href='/sheets/event_probabilities.html'>
       ‖ finite probability measure ⦉
     </a>
@@ -73,9 +146,9 @@ needs:
     <a href='/sheets/uncertain_outcomes.html'>
       ‖ events ⦉
     </a>
-    ␣$A, B, C$ with $𝗣(A), 𝗣(B), 𝗣(C) > 0$, we have
+    ␣$A, B, C$ with $P(A), P(B), P(C) > 0$, we have
     ◇ ⦊
-      ‖ 𝗣(A | B ∩ C) = \frac{ 𝗣(B | A ∩ C)𝗣(A | C) }{ 𝗣(B
+      ‖ P(A | B ∩ C) = \frac{ P(B | A ∩ C)P(A | C) }{ P(B
         | C) }. ⦉
     ⦉⦉
   <proof>

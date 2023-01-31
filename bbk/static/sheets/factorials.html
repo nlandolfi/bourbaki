@@ -152,7 +152,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 52 0 -->
+      <!-- 56 0 -->
 
 <!-- % objects macros -->
 
@@ -426,18 +426,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 <!-- % use \powerset{A} for power set of A -->
 
 % use \powerset{A} for power set of A
@@ -477,6 +465,18 @@
 <!-- \newcommand{\tu}[1]{\left(#1\right)} -->
 
 \newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
@@ -622,6 +622,14 @@
 
 \newcommand{\bintersection}{\bigcap}
 
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
+
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
 <!-- \newcommand{\dom}{\mathword{dom}} -->
 
 \newcommand{\dom}{\mathword{dom}}
@@ -634,14 +642,6 @@
 
 \newcommand{\range}{\ran}
 
-<!-- \newcommand{\N}{\mathbfsf{N}} -->
-
-\newcommand{\N}{\mathbfsf{N}}
-
-<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
-
-\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
-
 <!-- \newcommand{\intersect}{\cap} -->
 
 \newcommand{\intersect}{\cap}
@@ -649,6 +649,18 @@
 <!-- \newcommand{\intersection}{\cap} -->
 
 \newcommand{\intersection}{\cap}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -670,6 +682,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -681,14 +701,6 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- % use \num{A} for |A| -->
-
-% use \num{A} for |A|
-
-<!-- \newcommand{\num}[1]{\left|#1\right|} -->
-
-\newcommand{\num}[1]{\left|#1\right|}
 
 <!-- \newcommand{\product}{\prod} -->
 
@@ -832,6 +844,13 @@
                 <span class="caret">›</span>
               </div>
           
+              <div class="need2" tabindex="0" onclick="location.href='./size_of_direct_product.html'" onkeypress="location.href='./size_of_direct_product.html'">
+                <span>
+                  Size of Direct Product
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
         
         <div class="needlabel2"> Needed by: </div>
         
@@ -839,6 +858,13 @@
           <div class="need2" tabindex="0" onclick="location.href='./classifiers.html'" onkeypress="location.href='./classifiers.html'">
             <span>
             Classifiers
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./combinations.html'" onkeypress="location.href='./combinations.html'">
+            <span>
+            Combinations
             </span>
             <span class="caret">›</span>
           </div>
@@ -864,76 +890,94 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Factorials </h1> 
-      <!--
-!name:factorials
-!need:natural_products
-!need:sequences
- get the below from natural products
- %!need:recursion_theorem
-!wiki:https://en.wikipedia.org/wiki/Factorial
+      <!--yaml>
+name: factorials
+needs:
+    - natural_products
+    - sequences
+    - size_of_direct_product
+wikipedia: https://en.wikipedia.org/wiki/Factorial
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
- <span class='run'>How many ways are there to arrange $n$ people
-  at a table with $n$ seats?</span>
+ <span class='run'>We have considered the number of ways we can
+  arrange 52 cards into a deck.</span>
 
- <span class='run'>In other words, how many ways can we order
-  $n$ objects?</span>
-</p>
+ <span class='run'>What of $n$ cards?</span>
 
-<h1 id='Discussion'>Discussion</h1>
-
-<p>
- <span class='run'>There is one way to arrange a single person
-  and there are two ways to arrange two people.</span>
-
- <span class='run'>What of three?</span>
-
- <span class='run'>First, we can pick a seat, and decide which
-  person to put in that chair.</span>
-
- <span class='run'>We have three choices of people.</span>
-
- <span class='run'>Then, whomever we choose, there are only two
-  ways to seat the other two people in the other
-  two chairs.</span>
-
- <span class='run'>Since there were three ways of picking whom to
-  sit in the firs seat, there are $3\times 2 =
-  6$ ways to order the three people.</span>
-
- <span class='run'>We reason similarly for four people.</span>
+ <span class='run'>A moment’s reflection indicates this will also
+  be the number of ways to arrange $n$ objects
+  in order (where the objects need not be cards).</span>
 </p>
 
 <h1 id='Definition'>Definition</h1>
 
 <p>
- <span class='run'>Let $f: \N   \to \N  $ be defined recursively
-  by $f(1) = 1$ and $f(2) = 2f(1)$, and $f(n) =
-  nf(n-1)$ for $n \in \N  $.</span>
+ <span class='run'>By the fundamental principle of counting, there
+  are $n$ ways to select the first card, $n-1$
+  ways to select the second, and so on.</span>
 
- <span class='run'>$f$ exists by the recursion theorem (see&nbsp;<a href='/sheets/recursion_theorem.html'/><span class='run'>Recursion Theorem</span></a>).</span>
+ <span class='run'>Thus, the number of ways of stacking $n$ cards
+  in a deck is
+  <p>\[
+   n(n-1)(n-2)\cdots1
+  \]</p></span>
 
- <span class='run'>We call the result $f(n)$ of $n$ the
-  <span class='term'>factorial</span> of $n$.</span>
-
- <span class='run'>We call $f$ the <span class='term'>factorial
-  function</span>.</span>
+ <span class='run'>We call this number the
+  <span class='term'>factorial</span> of $n$, or
+  <span class='term'>$n$-factorial</span>.</span>
 </p>
 
 
+<!--
+<div data-littype='section' data-litsectionlevel='1' data-litsectionnumbered='false'> Discussion </div>
+<div data-littype='paragraph'>
+ <div data-littype='run'> There is one way to arrange a single person and there are
+    two ways to arrange two people. </div>
+
+ <div data-littype='run'> What of three? </div>
+
+ <div data-littype='run'> First, we can pick a seat, and decide which person to put
+    in that chair. </div>
+
+ <div data-littype='run'> We have three choices of people. </div>
+
+ <div data-littype='run'> Then, whomever we choose, there are only two ways to seat
+    the other two people in the other two chairs. </div>
+
+ <div data-littype='run'> Since there were three ways of picking whom to sit in the
+    firs seat, there are $3×2 = 6$ ways to order the three
+    people. </div>
+
+ <div data-littype='run'> We reason similarly for four people. </div>
+</div>
+-->
+
 <p>
- <span class='run'>For convenience, we extend $f$ to $\omega $<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup>
+ <span class='run'><i>Factorial function.</i></span>
+
+ <span class='run'>Define $f: \N   \to \N  $ recursively by $f(1)
+  = 1$ and $f(2) = 2f(1)$, and $f(n) = nf(n-1)$
+  for $n \in \N  $ ($f$ exists by the the
+  recursion theorem—see&nbsp;<a href='/sheets/recursion_theorem.html'/><span class='run'>Recursion Theorem</span></a>).</span>
+
+ <span class='run'>$f$ is defined such that $f(n)$ is $n$
+  factorial, for which reason we call $f$ the
+  <span class='term'>factorial function</span>.</span>
+
+ <span class='run'>For convenience, we extend $f$ to $\omega $<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup>
   by defining $f(0) = 1$.</span>
 </p>
 
-<h1 id='Notation'>Notation</h1>
+<h2 id='Notation'>Notation</h2>
 
 <p>
  <span class='run'>We denote the factorial of $n$ by $n!$, read
   aloud “n factorial”.</span>
+
+ <span class='run'>So for example, $5! =
+  5\cdot 4\cdot 3\cdot 2\cdot 1$ and $0! = 1$.</span>
 </p>
 <hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>See&nbsp;<a href='/sheets/natural_numbers.html#Notation'/><span class='run'>Natural Numbers</span></a>.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
@@ -977,6 +1021,13 @@
               <span class="caret">›</span>
             </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./size_of_direct_product.html'" onkeypress="location.href='./size_of_direct_product.html'">
+              <span>
+                Size of Direct Product
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
       
       
         <div disabled class="need label"> Needed by: </div>
@@ -988,14 +1039,23 @@
             <span class="caret">›</span>
           </div>
         
+          <div class="need" tabindex="0" onclick="location.href='./combinations.html'" onkeypress="location.href='./combinations.html'">
+            <span>
+            Combinations
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
       
     </div>
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> How many ways are there to arrange $n$ people at a table with $n$ seats? In other words, how many ways can we order $n$ objects?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Discussion}</p></div><div class="sheet-listing"><p class="sheet"> There is one way to arrange a single person and there are two ways to arrange two people. What of three? First, we can pick a seat, and decide which person to put in that chair. We have three choices of people. Then, whomever we choose, there are only two ways to seat the other two people in the other two chairs. Since there were three ways of picking whom to sit in the firs seat, there are $3\times 2 = 6$ ways to order the three people. We reason similarly for four people.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $f: \N   \to \N  $ be defined recursively by $f(1) = 1$ and $f(2) = 2f(1)$, and $f(n) = nf(n-1)$ for $n \in \N  $. $f$ exists by the recursion theorem (see \sheetref{recursion_theorem}{Recursion Theorem}). We call the result $f(n)$ of $n$ the \t{factorial} of $n$. We call $f$ the \t{factorial function}.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the factorial of $n$ by $n!$, read aloud ``n factorial''.</p></div><div class="sheet-listing"><p class="sheet"> \blankpage</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1148,7 +1208,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

@@ -626,34 +626,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- % mnemonic for (s)et(suc)cesor -->
-
-% mnemonic for (s)et(suc)cesor
-
-<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
-
-\newcommand{\ssuc}[1]{{#1}^{+}}
-
-<!-- \renewcommand{\setminus}{-} -->
-
-\renewcommand{\setminus}{-}
-
-<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
-
-\newcommand{\Q}{\mathbfsf{Q}}
-
 <!-- % absolute_value macros -->
 
 % absolute_value macros
@@ -693,6 +665,18 @@
 <!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
 
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- % use \powerset{A} for power set of A -->
 
@@ -741,6 +725,22 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -978,6 +978,38 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+
+\def\oright#1{\right#1\mskip-10mu\circ}
+
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
+
+\def\oleft#1{\circ\mskip-10mu\left#1}
+
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
+
 <!-- % it is declared in integral line! -->
 
 % it is declared in integral line!
@@ -1053,38 +1085,6 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
-
-%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
-
-<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
-
-\def\oright#1{\right#1\mskip-10mu\circ}
-
-<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
-
-\def\oleft#1{\circ\mskip-10mu\left#1}
-
-<!-- \newcommand{\I}{\mathbfsf{I}} -->
-
-\newcommand{\I}{\mathbfsf{I}}
-
-<!-- \newcommand{\oi}[1]{(#1)} -->
-
-\newcommand{\oi}[1]{(#1)}
-
-<!-- \newcommand{\ci}[1]{[#1]} -->
-
-\newcommand{\ci}[1]{[#1]}
-
-<!-- \newcommand{\oci}[1]{(#1]} -->
-
-\newcommand{\oci}[1]{(#1]}
-
-<!-- \newcommand{\coi}[1]{[#1)} -->
-
-\newcommand{\coi}[1]{[#1)}
 
 <!-- \newcommand{\dom}{\mathword{dom}} -->
 
@@ -1700,12 +1700,12 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Empirical Normal </h1> 
-      <!--
-!name:empirical_normal
-!need:multivariate_normals
-!need:maximum_likelihood_densities
+      <!--yaml>
+name: empirical_normal
+needs:
+    - multivariate_normals
+    - maximum_likelihood_densities
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -1788,9 +1788,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing" id="why"><h1 class="sheet">1. Why</h1></div><div class="sheet-listing"><p class="sheet"> What is a reasonable normal density to associate with some data?</p></div><div class="sheet-listing" id="definition"><h1 class="sheet">2. Definition</h1></div><div class="sheet-listing"><p class="sheet"> Let $x^1, \dots , x^n$ be a dataset in $\R ^d$. The \t{empirical mean} of the dataset is \[ \frac{1}{n} \sum_{k = 1}^{n} x^k. \] The \t{empirical covariance} of the dataset is \[ \frac{1}{n} \sum_{i = 1}^{n} (x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k) (x^k - \frac{1}{n} \sum_{k = 1}^{n} x^k)^{\tp}. \] The \t{empirical normal} associated with the dataset is the normal density whose mean is the empirical mean and whose covariance is the empirical covariance.</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1943,7 +1945,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

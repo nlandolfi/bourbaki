@@ -154,30 +154,6 @@
     <span style="display:none">
       <!-- 71 0 -->
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\comp}{\circ} -->
-
-\newcommand{\comp}{\circ}
-
-<!-- \newcommand{\composed}{\circ} -->
-
-\newcommand{\composed}{\circ}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 <!-- % use \powerset{A} for power set of A -->
 
 % use \powerset{A} for power set of A
@@ -217,6 +193,30 @@
 <!-- \newcommand{\tu}[1]{\left(#1\right)} -->
 
 \newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
 
 <!--  -->
 
@@ -909,16 +909,16 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Chordal Graphs and Vertex Separators </h1> 
-      <!--
-!name:chordal_graphs_and_vertex_separators
-!need:vertex_separators
+      <!--yaml>
+name: chordal_graphs_and_vertex_separators
+needs:
+    - vertex_separators
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
  <span class='run'>We characterize chordal graphs using vertex
-  separators, and vice versa.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+  separators, and vice versa.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
 </p>
 
 <h1 id='Main_Result'>Main Result</h1>
@@ -1096,9 +1096,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We characterize chordal graphs using vertex separators, and vice versa.\footnote{Future editions will expand and may include graphics.}</p></div><div class="sheet-listing"><p class="sheet"> \section*{Main Result}</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition}[Chordal Graphs and Vertex Separators] An undirected graph is chordal if and only if all minimal vertex separators are complete.\end{proposition} \begin{proof}Let $G = (V, E)$ be an undirected graph. First, suppose that all minimal vertex separators of $G$ are complete. Let $c$ be a cycle of length greater than 3. Let $v, w$ be nonconsecutive vertices in $c$. If $v$ and $w$ are adjacent in $G$, then $\set{v, w} \in E$ is a chord. If $v$ and $w$ are nonadjacent, then $vw$-separator exists.</p></div><div class="sheet-listing"><p class="sheet"> The key insight is that there exists two non-consecutive vertices in the cycle that are also included in any $vw$-separator $T$. Split the cycle into the path from $v$ to $w$, call it $p_1$ and the path from $w$ to $v$, call it $p_2$. $T$ must include an interior point of $p_1$, call it $u_1$, otherwise $v$ and $w$ are connected. Similarly, $T$ must include an interior point of $p_2$, call it $u_2$. $u_1$ and $u_2$ are not consecutive in $c$, since they are distinct from $x$ and $y$.</p></div><div class="sheet-listing"><p class="sheet"> Let $S$ be a minimal $vw$-separator. Let $s, t \in S$ be two non-consecutive vertices in the cycle different from $v$ and $w$ By assumption $S$ is complete, so $s$ and $t$ are adjacent in $G$.</p></div><div class="sheet-listing"><p class="sheet"> Second, let $G = (V, E)$ be a chordal graph. Let $S$ be a minimal $vw$-separator. Let $C_v$ and $C_w$ be the connected components containing $v$ and $w$ of the subgraph induced by $V \setminus S$.</p></div><div class="sheet-listing"><p class="sheet"> If $\nu m{S} = 1$, then $S$ is complete. Otherwise, let $x, y \in S$ by distinct. We want to show $\set{x, y} \in E$. The key insight is that $x$ is adjacent to vertices in $C_v$ and $C_w$. If there were no such vertex, $S \setminus \set{x}$ would be a $vw$-separator and $S$ would not be minimal. Similarly with $y$. Also, $\nu m{C_v}, \nu m{C_w} \geq 1$.</p></div><div class="sheet-listing"><p class="sheet"> With these observations, there exists a path from $x$ to $y$ through $C_v$. Let $p_v = (x, v_1, \dots , v_k, y)$ be a path of shortest length with at least one interior vertex (so $k \geq 1$) from $x$ to $y$ using interior vertices in $v_1, \dots , v_k \in C_v$. Let $p_w = (y, w_1, \dots , w_l, x)$ be a path of shortest length with at least one interior vertex (so $l \geq 1$) from $y$ to $x$ using interior vertices $w_1, \dots , w_k \in C_w$. Use $p_v$ and $p_w$ to define the cycle $c = (x, v_1, \dots , v_k, y, w_1, \dots , w_l, x)$ which has length at least four. $G$ is chordal, so $c$ has a chord.</p></div><div class="sheet-listing"><p class="sheet"> We argue that the chord of $c$ is $\set{x, y}$. Since $C_w$ and $C_V$ are different connected components (whose vertices are not included in $S$), there are no edges $\set{v_i, w_j}$ for $i = 1, \dots , k$ and $j = 1, \dots , l$. Since $p_v$ and $p_w$ are paths of shortest length, they have no chords. In particular, there is no edge $\set{v_i, v_j}$ for $\abs{i - j} > 1$ or $\set{v_i, x}$ for $i = 1, \dots , l$. Similarly, there is no edge $\set{w_i, w_j}$ for $\abs{i - j} > 1$ or $\set{w_i, y}$ for $i = 1, \dots , l$. The only remaining pair is $\set{x, y}$, and so it must be the chord. \end{proof}</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1251,7 +1253,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

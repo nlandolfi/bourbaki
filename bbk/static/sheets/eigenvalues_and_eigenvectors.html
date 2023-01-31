@@ -152,23 +152,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 108 0 -->
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- % objects macros -->
-
-% objects macros
+      <!-- 120 0 -->
 
 <!-- % use \powerset{A} for power set of A -->
 
@@ -218,6 +202,22 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % objects macros -->
+
+% objects macros
+
 <!-- \newcommand{\symdiff}{+} -->
 
 \newcommand{\symdiff}{+}
@@ -229,6 +229,18 @@
 <!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
 
 \newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1235,20 +1247,20 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Eigenvalues and Eigenvectors </h1> 
-      <!--
-!name:eigenvalues_and_eigenvectors
-!need:real_matrices
-!need:real_vectors
-!need:norms
-!need:matrix_determinants
-!need:monic_polynomials
+      <!--yaml>
+name: eigenvalues_and_eigenvectors
+needs:
+    - real_matrices
+    - real_vectors
+    - norms
+    - matrix_determinants
+    - monic_polynomials
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
  <span class='run'>We discuss vectors for which the action of a
-  matrix is scalar multiplication.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+  matrix is scalar multiplication.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
 </p>
 
 <h1 id='Definition'>Definition</h1>
@@ -1353,7 +1365,7 @@
   \]</p>
   <span class='run'>$p$ is monic: the coefficient of the degree
    $n$ term is 1.</span>
-  <div class='proposition' id='proposition:eigenvalues_and_eigenvectors:characteristic_polynomial'>
+  <div class='proposition'>
    <span class='run'>$\lambda $ is an eigenvalue of $A$ if and
     only if $p(\lambda ) = 0$.</span>
    <div class='proof'>    <span class='run'>Since $\lambda $ is an eigenvalue if and
@@ -1361,8 +1373,7 @@
      that $\lambda  x - Ax = 0$, if and only if
      $\lambda  I - A$ is singular, if and only
      if $\det(\lambda  I - A) = 0$.</span>   </div>  </div>
-  <span class='run'>A simple consequence of
-   Proposition~\ref{proposition:eigenvalues_and_eigenvectors:characteristic_polynomial}
+  <span class='run'>A simple consequence of the above proposition
    is that a (real) matrix may have complex
    eigenvalues.</span></span>
 </p>
@@ -1479,9 +1490,11 @@ So eigenvectors and eigenvalues come in pairs.
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> We discuss vectors for which the action of a matrix is scalar multiplication. \ifhmode\unskip\fi\footnote{ Future editions will expand. }</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $A \in \R ^{n \times  n}$ be a square matrix. A nonzero vector $x \in \R ^{n}$ is an \t{eigenvector} of $A$, and $\lambda  \in \R $ is its corresponding \t{eigenvalue}, if $A x = \lambda  x$. In other words, $x \neq 0$ is an eigenvector if the action of $A$ on $x$ is to mimic scalar multiplication.</p></div><div class="sheet-listing"><p class="sheet"> Speaking of eigenvalues is sensible only when the matrix involved is square. In other words, when the domain and codomain are the same. We often care about eigenvalue computations when a matrix is compounded iteratively.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Eigenspaces}</p></div><div class="sheet-listing"><p class="sheet"> If $x$ is an eigenvector with eigenvalue $\lambda $, then for any $\alpha  \in \R $, $\alpha  x$ is an eigenvector with eigenvalue $\alpha \lambda $, since $A (\alpha  x) = \alpha  (Ax) = (\alpha \lambda ) x$. In other words, if $A$ has an eigenvector then the action of $A$ on some subspace $S \subset \R ^n$ is to mimic scalar multiplication. In this case, we call the subspace $S$ an \t{eigenspace}, and any nonzero $x \in S$ an eigenvector.</p></div><div class="sheet-listing"><p class="sheet"> An eigenspace is an \t{invariant subspace} of $A$. In other words, if $E$ is an eigenspace corresponding to eigenvalue $\lambda $ then $AE \subset E$.</p></div><div class="sheet-listing"><p class="sheet"> The dimension of $E$ is the maximum number of linear independent eigenvectors which have the same eigenvalue $\lambda $. We call this number the \t{geometric multiplicity} of $\lambda $.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Characteristic polynomial}</p></div><div class="sheet-listing"><p class="sheet"> If $x$ is an eigenvector for $A$ associated with $\lambda $ then $Ax = \lambda  x$ so $Ax - \lambda  x = 0$ and $(A - \lambda  I)x = 0$. In other words, $x$ is an element of the nullspace of $A - \lambda  I$. Or equivalently, $\lambda  I - A$.</p></div><div class="sheet-listing"><p class="sheet"> The \t{characteristic polynomial} of $A \in \R ^{n \times  n}$ is the polynomial $p: \R  \to \R $ in defined by \[ p(x) = \det (zI - A). \] $p$ is monic: the coefficient of the degree $n$ term is 1. \begin{proposition} $\lambda $ is an eigenvalue of $A$ if and only if $p(\lambda ) = 0$. \begin{proof} Since $\lambda $ is an eigenvalue if and only if there is a nonzero vector $x$ such that $\lambda  x - Ax = 0$, if and only if $\lambda  I - A$ is singular, if and only if $\det(\lambda  I - A) = 0$. \end{proof} \label{proposition:eigenvalues_and_eigenvectors:characteristic_polynomial} \end{proposition} A simple consequence of Proposition~\ref{proposition:eigenvalues_and_eigenvectors:characteristic_polynomial} is that a (real) matrix may have complex eigenvalues.</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1634,7 +1647,7 @@ So eigenvectors and eigenvalues come in pairs.
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

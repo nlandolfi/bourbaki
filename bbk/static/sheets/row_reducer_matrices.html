@@ -198,6 +198,54 @@
 
 % objects macros
 
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\cross}{\times} -->
+
+\newcommand{\cross}{\times}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\op}[1]{\left(#1\right)} -->
+
+\newcommand{\op}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
+
+\newcommand{\tuple}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
+
+\newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -265,54 +313,6 @@
 <!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
 
 \newcommand{\ssuc}[1]{{#1}^{+}}
-
-<!-- % use \powerset{A} for power set of A -->
-
-% use \powerset{A} for power set of A
-
-<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
-
-% \newcommand{\powerset}[1]{{#1}^*}
-
-<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
-
-\newcommand{\powerset}[1]{\CP(#1)}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\cross}{\times} -->
-
-\newcommand{\cross}{\times}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\op}[1]{\left(#1\right)} -->
-
-\newcommand{\op}[1]{\left(#1\right)}
-
-<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
-
-\newcommand{\tuple}[1]{\left(#1\right)}
-
-<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
-
-\newcommand{\tu}[1]{\left(#1\right)}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- \newcommand{\symdiff}{+} -->
 
@@ -1126,13 +1126,13 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Row Reducer Matrices </h1> 
-      <!--
-!name:row_reducer_matrices
-!need:real_matrices
-!need:linear_system_row_reductions
-!need:triangular_matrices
+      <!--yaml>
+name: row_reducer_matrices
+needs:
+    - real_matrices
+    - linear_system_row_reductions
+    - triangular_matrices
 -->
-
 <h1 id='Why'>Why</h1>
 
 <p>
@@ -1327,9 +1327,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Can we represent the function associating a linear system with its row reduction by matrix multiplication?</p></div><div class="sheet-listing"><p class="sheet"> \section*{Main observation}</p></div><div class="sheet-listing"><p class="sheet"> The following proposition affirmatively answers the question.</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Let $(A \in \R ^{m \times m}, b \in \R ^{m})$ be a linear system with $A_{kk} \neq 0$ and $(C, d)$ the $k$th reduction of $(A, b)$. Then there exists a matrix $L \in \R ^{m \times m}$ so that $C = LA$ and $d = Lb$.\end{proposition} \begin{proof}Define $L \in \R ^{m \times m}$ by $L_{st} = 1$ if $s = t$, $-A_{sj}/A_{ij}$ if $k < s \leq m$ and zero otherwise.\end{proof} For this reason, we call $L$ in the above proposition a \t{row reducer matrix} or \t{row reducing matrix} or \t{row reducer}. The row reducer matrix for the $k$th reduction of $(A, b)$ has the form \[ L_k = \barray{ 1 & & & & & \\ & \ddots & & & & \\ & & 1 & & & \\ & & A_{ik}/A_{kk} & 1 & &\\ & & \vdots & & \ddots & & \\ & & A_{mk}/A_{kk} & & & 1 } \] So the following is immediate</p></div><div class="sheet-listing"><p class="sheet"> \begin{proposition} Row reducing matrices are unit lower triangular.\end{proposition} \section*{Example}</p></div><div class="sheet-listing"><p class="sheet"> For example, the $(1,1)$-reduction of $(A, b)$ in which \[ A = \barray{ 2 & 1 & 1 & 0 \\ 4 & 3 & 3 & 1 \\ 6 & 7 & 9 & 5 \\ 8 & 7 & 9 & 8 \\ } \text{ and } b = \barray{ 1 \\ 2 \\ 3 \\ 4 \\ }. \] is the linear system \[ A' = \barray{ 2 & 1 & 1 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 3 & 5 & 5 \\ 0 & 4 & 6 & 8 \\ } \text{ and } b' = \barray{ 1 \\ 0 \\ -1 \\ 1\\ }. \] The row reducer is $L \in R^{4 \times 4}$ defined by \[ L = \barray{ 1 & 0 & 0 & 0 \\ -2 & 1 & 0 & 0 \\ -4 & 0 & 1 & 0 \\ -3 & 0 & 0 & 1 }. \] One can check that $A' = LA$ and $b' = Lb$, and clearly $L$ is unit lower triangular.</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1482,7 +1484,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>

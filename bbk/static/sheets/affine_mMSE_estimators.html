@@ -152,7 +152,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 160 0 -->
+      <!-- 164 0 -->
 
 <!-- % objects macros -->
 
@@ -177,46 +177,6 @@
 <!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
 
 \newcommand{\ssuc}[1]{{#1}^{+}}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- % TODO: why renew -->
-
-% TODO: why renew
-
-<!-- \newcommand{\seq}[1]{(#1_n)_{n}} -->
-
-\newcommand{\seq}[1]{(#1_n)_{n}}
-
-<!-- \newcommand{\seqt}[1]{#1_n} -->
-
-\newcommand{\seqt}[1]{#1_n}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- % use \powerset{A} for power set of A -->
 
@@ -257,6 +217,46 @@
 <!-- \newcommand{\tu}[1]{\left(#1\right)} -->
 
 \newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % TODO: why renew -->
+
+% TODO: why renew
+
+<!-- \newcommand{\seq}[1]{(#1_n)_{n}} -->
+
+\newcommand{\seq}[1]{(#1_n)_{n}}
+
+<!-- \newcommand{\seqt}[1]{#1_n} -->
+
+\newcommand{\seqt}[1]{#1_n}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!--  -->
 
@@ -633,6 +633,18 @@
 <!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
 
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1588,23 +1600,23 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Affine MMSE Estimators </h1> 
-      <!--
-!name:affine_mMSE_estimators
-!need:norms
-!need:matrix_trace
-!need:matrix_transpose
-!need:covariance
-!need:real_matrix_inverses
-!need:estimators
+      <!--yaml>
+name: affine_mMSE_estimators
+needs:
+    - norms
+    - matrix_trace
+    - matrix_transpose
+    - covariance
+    - real_matrix_inverses
+    - estimators
 -->
-
 <h1 id='Definition'>Definition</h1>
 
 <p>
  <span class='run'>We want to estimate a random variable $x:
   \Omega  \to \R ^n$ from a random variable $y:
   \Omega  \to \R ^n$ using an estimator $\phi :
-  \R ^m \to \R ^n$ which is affine.<sup id='footnote-1-reference'><a href='#footnote-1'>1</a></sup></span>
+  \R ^m \to \R ^n$ which is affine.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
 
  <span class='run'>In other words, $\phi (\xi ) = A\xi  + b$ for
   some $A \in \R ^{n \times m}$ and $b \in \R ^n$.</span>
@@ -1789,9 +1801,11 @@
 
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> We want to estimate a random variable $x: \Omega  \to \R ^n$ from a random variable $y: \Omega  \to \R ^n$ using an estimator $\phi : \R ^m \to \R ^n$ which is affine.\footnote{Actually, the development flips this. Future editions will correct.} In other words, $\phi (\xi ) = A\xi  + b$ for some $A \in \R ^{n \times m}$ and $b \in \R ^n$. We will use the mean squared error cost.</p></div><div class="sheet-listing"><p class="sheet"> We want to find $A$ and $b$ to minimize \[ \E {\norm{Ax + b - y}^2}. \]</p></div><div class="sheet-listing"><p class="sheet"> \begin{proof}Express $\E (\norm{Ax + b - y}^2)$ as $\E ((Ax + b - y)^\top (Ax + b - y))$ \[ \mat{ & + & \tr(A \E (xx^\top ) A^\top ) & + & \E (x)^\top  A^\top b & - & \tr(A^\top  \E (yx^\top )) \\ & + & b^\top  A \E (x) & + & b^\top  b & - & b^\top \E (y) \\ & - & \tr(A \E (xy^\top ) ) & - & \E (y)^\top  b & + & \E (yy^\top ) } \] The gradients with respect to $b$ are \[ \mat{ & + & 0 & + & A \E (x) & - & 0 \\ & + & A \E (x) & + & 2 b & - & \E (y) \\ & - & 0 & - & \E (y) & + & 0 } \] so $2A\E (x) + 2b - 2\E (y)$. The gradients with respect to $A$ are \[ \mat{ && + & \E (xx^\top )A^\top  + \E (xx^\top )^\top  A^\top  & + & \E (x)b^\top  & - & \E (yx^\top )^\top  \\ & + & \E (x)b^\top  & + & 0 & - & 0 \\ & - & \E (xy^\top ) & - & 0 & + & 0 } \] so $2\E (xx^\top )A^\top  + 2\E (x)b^\top  - 2\E (xy^\top )$. We want $A$ and $b$ solutions to \[ \begin{aligned} A\E (x) + b - \E (y) &= 0 \\ \E (xx^\top )A^\top  + \E (x)b^\top  - \E (xy^\top ) &= 0 \end{aligned} \] so first get $b = \E (y) - A\E (x)$. Then express \[ \begin{aligned} \E (xx^\top )A^\top  + \E (x)(\E (y) - A \E (x))^\top  - \E (xy^\top ) = 0.\\ \E (xx^\top )A^\top  + \E (x)\E (y)^\top  - \E (x)\E (x)^\top A^\top  - \E (xy^\top ) = 0. \\ (\E (xx^\top ) - \E (x)\E (x)^\top )A^\top  = \E (xy^\top ) - \E (x)\E (y)^\top . \\ \cov(x, x)A^\top  = \cov(x, y). \end{aligned} \] So $A^\top  = (\cov(x,x))^{-1}\cov(x, y)$ means $A = \cov(y, x)(\cov(x, x))^{-1}$ is a solution. Then $b = \E (y) - \cov(y, x)\cov(x,x)^{-1}\E (x)$. So to summarize, the estimator $\phi (x) = Ax + b$ is \[ \cov(y, x)(\cov{x, x})^{-1} x + \E (y) - \cov(y, x)(\cov(x,x))^{-1}\E (x) \] or \[ \E (y) + \cov(y, x) (\cov{x, x})^{-1} (x - \E (x)) \]\end{proof}</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -1944,7 +1958,7 @@
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 79cc0f3c5.
+      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
     </span>
   </body>
 </html>
