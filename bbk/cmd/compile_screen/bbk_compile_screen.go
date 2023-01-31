@@ -56,7 +56,7 @@ func main() {
 	}
 
 	for _, p := range results {
-		name := p.Name
+		name := p.Config.Name
 		out, err := os.Create(filepath.Join(*staticDir, "sheets", fmt.Sprintf("%s.html", name)))
 		if err != nil {
 			log.Fatalf("os.Create: %v", err)

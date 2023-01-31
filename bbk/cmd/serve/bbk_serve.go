@@ -54,7 +54,7 @@ func main() {
 	}
 	var results = make(map[string]*bbk.ParseResult, len(sd.Results))
 	for _, r := range sd.Results {
-		results[r.Name] = r
+		results[r.Config.Name] = r
 	}
 	s := &searcher{sd.Version, bbk.NewSearcher(results), as}
 

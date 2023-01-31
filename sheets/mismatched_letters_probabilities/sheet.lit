@@ -2,6 +2,8 @@
 name: mismatched_letters_probabilities
 needs:
     - generalized_inclusion-exclusion_formula
+    - permutations
+    - real_series
 -->
 
 § Why ⦉
@@ -15,6 +17,132 @@ needs:
     but we ‹randomly› put them into envelopes. ⦉
 
   ‖ What’s the chance that no letter is in the correct envelope? ⦉
+⦉
+
+§ Example ⦉
+¶ ⦊
+  ‖ Let us first number the envelopes and letters. ⦉
+
+  ‖ Next, suppose we model this uncertain outcome with the
+    sample space $Ω = S_n$. ⦉
+
+  ‖ Here $S_n$ denotes the symmetric group of degree $n$, as
+    usual (see␣
+    <a href='/sheets/permutations.html'>
+      ‖ Permutations ⦉
+    </a>
+    ). ⦉
+
+  ‖ We agree to interpret $ω ∈ Ω$ so that $ω(i)$ is the
+    number of the ‹letter› in the ‹envelope› numbered $i$, where
+    $i = 1,…, n$. ⦉
+
+  ‖ Suppose we put a distribution $p: Ω → [0,1]$ on $Ω$ so
+    that every permutation is equally likely:
+    ◇ ⦊
+      ‖ p(ω) = \frac{1}{n!} ⦉
+    ⦉⦉
+
+  ‖ We are interested in the event $W$ defined by
+    ◇ ⦊
+      ‖ W = \Set{ω ∈ Ω}{ω(s) ≠ s \text{ for all } s = 1, …,
+        n} ⦉
+    ⦉
+    which we interpret as the event that no letter is in the
+    correct envelope. ⦉
+
+  ‖ To get a handle on this event, we express it as smaller
+    events. ⦉
+⦉
+
+¶ ⦊
+  ‖ Define $A_i$ by
+    ◇ ⦊
+      ‖ A_i = \Set{ω ∈ Ω}{ω(i) = i} ⦉
+    ⦉
+    so that $A_i$ is the set of outcomes in which letter $i$
+    is in envelope $i$. ⦉
+
+  ‖ The even that at least one letter goes into the correct
+    envelope is given
+    ◇ ⦊
+      ‖ ∪_{i = 1}^{n} A_i ⦉
+    ⦉⦉
+
+  ‖ We can compute this probability using the genrealized
+    inclusion-exclusion formula. ⦉
+⦉
+
+¶ ⦊
+  ‖ First, notice that the event
+    ◇ ⦊
+      ‖ ∩_{i = 1}^{n} A_i ⦉
+    ⦉
+    contains the single outcome in which all letters go into
+    the correct envelope. ⦉
+
+  ‖ More generally, for any $r$ between $1$ and $n$, $∩_{i =
+    1}^{n} A_i$ contains all outcomes in which the letters $1,
+    …, r$ go into the correct envelope. ⦉
+
+  ‖ What is the size of $A_1 ∩ ⋯ ∩ A_r$? ⦉
+
+  ‖ Given that the $ω(1) = 1, ω(2) = 2, …, ω(r) = r$, there
+    are $n-r$ envelopes and $n-r$ ways of assigning letters to
+    them. ⦉
+
+  ‖ Thus, by the fundamental principle of counting
+    ◇ ⦊
+      ‖ \num{∩_{i = 1}^{r} A_i} = (n-r)! ⦉
+    ⦉⦉
+
+  ‖ Thus the probability of the event is
+    ◇ ⦊
+      ‖ P(∩_{i = 1}^{r} A_i) = ∑_{ω ∈ ∩_{i = 1}^{r} A_i} p(ω)
+        = \frac{(n-r)!}{n!}. ⦉
+    ⦉
+    where we have used the fact that $p(ω) = 1/n!$ for every
+    $ω ∈ Ω$. ⦉
+
+  ‖ A similar argument holds for any distinct $i_1, …, i_r$
+    indices, where $i_j$ are distinct integers between $1$ and
+    $n$. ⦉
+
+  ‖ So $P(A_{i-1} ∩ ⋯ ∩ A_{i_r}) = (n-r)!/n!$ ⦉
+
+  ‖ Thus, each probability in the $r$th sum of the
+    inclusion-exclusion formula is $(n-r)!/n!$, since the $r$th sum
+    as ${n \choose r}$ terms, the $r$th sum is
+    ◇ ⦊
+      ‖ {n \choose r} \frac{(n-r)!}{n!} =
+        \frac{n!}{r!(n-r)!}\frac{(n-r)!}{n!} = \frac{1}{r!} ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ Finally, we apply the generalized inclusion-exclusian formula
+    to obtain
+    ◇ ⦊
+      ‖ P(A_1 ∪ ⋯ ∪ A_n) = \frac{1}{1!} - \frac{1}{2!} +
+        \frac{1}{3!} + ⋯ + (-1)^{n-1} \frac{1}{n!}. ⦉
+    ⦉⦉
+
+  ‖ Hence, the probablty that no letter goes into the correct
+    envelope $W = Ω - ∪_{i = 1}^{n} A_i$ is
+    ◇ ⦊
+      ‖ 1 - P(A_1 ∪ ⋯ ∪ A_n) = 1 + \frac{1}{2!} -
+        \frac{1}{3!} + ⋯ + (-1)^n\frac{1}{n!} ⦉
+    ⦉⦉
+
+  ‖ If we take $n → ∞$, the above series series converges to
+    $1/e ≈ 0.37$.
+    † ⦊
+      ‖ Future editions will define $e$. ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ This is sometimes called the ❬secretary problem❭. ⦉
 ⦉
 
 <!-- TODO: finish -->

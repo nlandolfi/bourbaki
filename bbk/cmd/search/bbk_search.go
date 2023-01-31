@@ -27,7 +27,7 @@ func main() {
 
 	rs := make(map[string]*bbk.ParseResult, len(results))
 	for _, p := range results {
-		rs[p.Name] = p
+		rs[p.Config.Name] = p
 	}
 
 	s := bbk.NewSearcher(rs)
@@ -56,7 +56,7 @@ func main() {
 		fmt.Printf("  %% %q -> %q; showing %d/%d results\n", rq, rrq, int(math.Min(float64(len(rs)), float64(c.MaxResults))), len(rs))
 		for i := 0; i < len(rs) && i < c.MaxResults; i++ {
 			r := rs[i]
-			fmt.Printf("  %d @ (%.2f) %s: %s\n", i+1, r.Rank, r.Name, strings.Join(r.Reasons, ", "))
+			fmt.Printf("  %d @ (%.2f) %s: %s\n", i+1, r.Rank, r.Config.Name, strings.Join(r.Reasons, ", "))
 		}
 		fmt.Printf("> ")
 	}

@@ -18,21 +18,8 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-const (
-	namePrefix = "%!name:"
-	needPrefix = "%!need:"
-	mcroPrefix = "%!mcro:"
-	refsPrefix = "%!refs:"
-	wikiPrefix = "%!wiki:"
-)
-
 type ParseResult struct {
-	Name        string
-	Needs       []string
-	Macros      []string
-	Refs        []string
 	Lines       []string
-	Wiki        string
 	Body        string
 	NeedsParsed []*ParseResult
 	Terms       []string
@@ -73,9 +60,9 @@ func (p *ParseResult) MacrosHTML() string {
 
 func allNeeds(p *ParseResult, all map[string]*ParseResult) []string {
 	an := make([]string, 0)
-	needs := make([]string, len(p.Needs))
+	needs := make([]string, len(p.Config.Needs))
 	seen := map[string]bool{}
-	copy(needs, p.Needs)
+	copy(needs, p.Config.Needs)
 	for len(needs) > 0 {
 		n := needs[0]
 		needs = needs[1:]
@@ -84,7 +71,7 @@ func allNeeds(p *ParseResult, all map[string]*ParseResult) []string {
 		}
 		seen[n] = true
 		an = append(an, n)
-		for _, nn := range all[n].Needs {
+		for _, nn := range all[n].Config.Needs {
 			needs = append(needs, nn)
 		}
 	}
@@ -100,10 +87,10 @@ func allNeeds(p *ParseResult, all map[string]*ParseResult) []string {
 type ByName []*ParseResult
 
 func (s ByName) Len() int           { return len(s) }
-func (s ByName) Less(i, j int) bool { return s[i].Name < s[j].Name }
+func (s ByName) Less(i, j int) bool { return s[i].Config.Name < s[j].Config.Name }
 func (s ByName) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 
-func Parse(sheet io.Reader, macros io.Reader) *ParseResult {
+func Parse(sheet, macros, lf io.Reader) *ParseResult {
 	p := new(ParseResult)
 
 	scanner := bufio.NewScanner(macros)
@@ -119,32 +106,6 @@ func Parse(sheet io.Reader, macros io.Reader) *ParseResult {
 
 	for scanner.Scan() {
 		t := scanner.Text()
-		if strings.HasPrefix(t, namePrefix) {
-			if p.Name != "" {
-				log.Fatalf("%s: multiple name directives", p.Name)
-			}
-			p.Name = strings.TrimPrefix(t, namePrefix)
-			continue
-		}
-		if strings.HasPrefix(t, needPrefix) {
-			p.Needs = append(p.Needs, strings.TrimPrefix(t, needPrefix))
-			continue
-		}
-		if strings.HasPrefix(t, mcroPrefix) {
-			p.Macros = append(p.Macros, strings.TrimPrefix(t, mcroPrefix))
-			continue
-		}
-		if strings.HasPrefix(t, wikiPrefix) {
-			if p.Wiki != "" {
-				log.Fatalf("%s: multiple wiki directives", p.Name)
-			}
-			p.Wiki = strings.TrimPrefix(t, wikiPrefix)
-			continue
-		}
-		if strings.HasPrefix(t, refsPrefix) {
-			p.Refs = append(p.Refs, strings.TrimPrefix(t, refsPrefix))
-			continue
-		}
 		p.Lines = append(p.Lines, t)
 	}
 	if err := scanner.Err(); err != nil {
@@ -152,16 +113,22 @@ func Parse(sheet io.Reader, macros io.Reader) *ParseResult {
 	}
 	p.Body = strings.Join(p.Lines, " ")
 	p.Terms = Terms(p.Body)
-	return p
-}
-
-func configFromPR(pr *ParseResult) *SheetConfig {
-	return &SheetConfig{
-		Name:      pr.Name,
-		Needs:     pr.Needs,
-		Refs:      pr.Refs,
-		Wikipedia: pr.Wiki,
+	p.HasLitFile = true
+	bs, err := ioutil.ReadAll(lf)
+	if err != nil {
+		log.Fatal(err)
 	}
+	n, err := lit.ParseLit(string(bs))
+	if err != nil {
+		log.Fatal(err)
+	}
+	p.litNode = n
+	if p.litNode.FirstChild.Type == lit.YAMLNode {
+		if err := yaml.Unmarshal([]byte(n.FirstChild.Data), &p.Config); err != nil {
+			log.Fatal(err)
+		}
+	}
+	return p
 }
 
 type SheetConfig struct {
@@ -191,30 +158,11 @@ func ParseSheet(r io.Reader) (*Sheet, error) {
 		LitNode: n,
 	}
 
-	// now the config.
-	// there are two possibilities as of 1/25/2023
-	// first, the FIRST child is a comment, and that has the usual stuff
-	// e.g.
-	// !name:asdf
-	// !need:asdf etc
-	// OR there is a yaml block SOMEWHERE (anywhere for now) and
-	// that has a yaml config
-	if n.FirstChild.Type == lit.CommentNode {
-		// fake that it is commented
-		lines := strings.Split(n.FirstChild.Data, "\n")
-		for i, l := range lines {
-			lines[i] = "%" + l
-		}
-		r := strings.NewReader(strings.Join(lines, "\n"))
-		br := strings.NewReader("")
-		pr := Parse(r, br)
-		s.Config = *configFromPR(pr)
-		s.ConfigFromComment = n.FirstChild
+	if n.FirstChild.Type != lit.YAMLNode {
+		return nil, fmt.Errorf("first node should be yaml")
 	}
-	if n.FirstChild.Type == lit.YAMLNode {
-		if err := yaml.Unmarshal([]byte(n.FirstChild.Data), &s.Config); err != nil {
-			return nil, err
-		}
+	if err := yaml.Unmarshal([]byte(n.FirstChild.Data), &s.Config); err != nil {
+		return nil, err
 	}
 
 	return s, nil
@@ -288,54 +236,48 @@ func ParseAll(sheetsdir string) ([]*ParseResult, error) {
 		} else if err != nil {
 			log.Fatalf("bbk.ParseAll: opening macros.tex %v", err)
 		}
-
-		p := Parse(sheetfile, macrosfile)
-		if p.Name == "" {
-			log.Fatalf("no name for file %v", f)
+		litfile, err := os.Open(filepath.Join(sheetsdir, f.Name(), "sheet.lit"))
+		if os.IsNotExist(err) {
+			log.Printf("bbk.ParseAll: directory %q lacks sheet.lit", f.Name())
+			continue
+		} else if err != nil {
+			log.Fatalf("bbk.ParseAll: opening sheet.lit %v", err)
 		}
-		results = append(results, p)
-		m[p.Name] = p
-		sheetfile.Close()
-		macrosfile.Close()
 
-		lf, err := os.Open(filepath.Join(sheetsdir, f.Name(), "sheet.lit"))
-		if err == nil {
-			p.HasLitFile = true
-			bs, err := ioutil.ReadAll(lf)
-			if err != nil {
-				log.Fatal(err)
-			}
-			n, err := lit.ParseLit(string(bs))
-			if err != nil {
-				log.Fatal(err)
-			}
-			p.litNode = n
-			if p.litNode.FirstChild.Type == lit.YAMLNode {
-				if err := yaml.Unmarshal([]byte(n.FirstChild.Data), &p.Config); err != nil {
-					log.Fatal(err)
-				}
-			}
-		}
-		if err := lf.Close(); err != nil {
+		p := Parse(sheetfile, macrosfile, litfile)
+		if err := sheetfile.Close(); err != nil {
 			log.Fatal(err)
 		}
+		if err := macrosfile.Close(); err != nil {
+			log.Fatal(err)
+		}
+		if err := litfile.Close(); err != nil {
+			log.Fatal(err)
+		}
+
+		if p.Config.Name == "" {
+			log.Fatalf("no name for file %v", f)
+		}
+		m[p.Config.Name] = p
+		results = append(results, p)
+
 	}
 
 	for _, p := range results {
-		for _, n := range p.Needs {
+		for _, n := range p.Config.Needs {
 			o, ok := m[n]
 			if !ok {
-				log.Fatalf("bbk.ParseAll: %q references missing %q", p.Name, n)
+				log.Fatalf("bbk.ParseAll: %q references missing %q", p.Config.Name, n)
 			}
 
-			o.NeededBy = append(o.NeededBy, p.Name)
+			o.NeededBy = append(o.NeededBy, p.Config.Name)
 		}
 	}
 
 	sort.Sort(ByName(results))
 
 	for _, p := range results {
-		sort.Strings(p.Needs)
+		sort.Strings(p.Config.Needs)
 		sort.Strings(p.NeededBy)
 	}
 	for _, p := range results {

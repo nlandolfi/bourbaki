@@ -1,0 +1,212 @@
+<!--yaml
+name: independent_events
+needs:
+    - conditional_event_probabilities
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ We want to talk about how knowledge of one aspect of an
+    outcome can give us knowledge about another aspect. ⦉
+⦉
+
+§§ Dependent events ⦉
+¶ ⦊
+  ‖ Suppose $Ω$ is a finite set of outcomes with event
+    probability function $P$. ⦉
+
+  ‖ Two uncertain events $A$ and $B$ with $P(A), P(B) > 0$ are
+    ❬dependent❭ under $P$ if
+    ◇ ⦊
+      ‖ P(A | B) ≠ P(A) \quad \text{ or } \quad P(B | A) ≠
+        P(B) ⦉
+    ⦉⦉
+
+  ‖ In other words, if conditioning on one will change the
+    probability of the other. ⦉
+
+  ‖ We can rewrite the condition as,
+    ◇ ⦊
+      ‖ \frac{P(A ∩ B)}{P(B)} ≠ P(A) \quad \text{ or } \quad
+        \frac{P(A ∩ B)}{P(A)} ≠ P(B) ⦉
+    ⦉⦉
+
+  ‖ We see that in either case, $P(A ∩ B) ≠ P(A)P(B)$. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Two events $A$ and $B$ are ❬independent❭ under $P$ if
+    ◇ ⦊
+      ‖ P(A ∩ B) = P(A)P(B). ⦉
+    ⦉⦉
+
+  ‖ In other words, they are independent if the probability of
+    their intersection is the product of their respective
+    probabilities. ⦉
+
+  ‖ This definition clearly shows that independence (and
+    dependence) is a ‹symmetric› relation on the set of events. ⦉
+
+  ‖ Moreover, the expression $P(A ∩ B) = P(A)P(B)$ is
+    well-defined even when $P(A)$ or $P(B)$ is 0. ⦉
+⦉
+
+¶ ⦊
+  ‖ As we have seen, in the case that $P(B) ≠ 0$, $P(A ∩ B)
+    = P(A)P(B)$ is equivalent to $P(A \mid B) = P(A)$. ⦉
+
+  ‖ Roughly speaking, we interpret this second expression as
+    encoding the fact that the occurence of event $B$ does not
+    change the probability—intuitively, the “credibility”—of the
+    event $A$. ⦉
+⦉
+
+§ Examples ⦉
+¶ ⦊
+  ‖ ‹Two coin tosses.› ⦉
+
+  ‖ As usual, model flipping a coin twice with the sample space
+    $Ω = \set{0,1}^2$. ⦉
+
+  ‖ Define $A = \set{(1,0), (1, 1)}$, the event that the first
+    tops is heads, and $B = \set{(0,1), (1,1)}$, the event that
+    the second toss turns up head. ⦉
+
+  ‖ Then $A ∩ B$ is $\set{(1,1)}$, the event both tosses turn
+    up heads. ⦉
+
+  ‖ Suppose we put a distribution on $Ω$ as usual with $p(ω) =
+    1/4$ for all $ω ∈ Ω$. ⦉
+
+  ‖ Then $P(A) 1/2$, $P(B) = 1/2$, and $P(A ∩ B) = 1/4$. ⦉
+
+  ‖ Thus:
+    ◇ ⦊
+      ‖ P(A ∩ B) = P(A)P(B) ⦉
+    ⦉
+    and so the events are independent events under the
+    distribution. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Three tosses.› ⦉
+
+  ‖ As usual, model flipping a coin three times with the sample
+    space $Ω = \set{0,1}^3$ and define $p: Ω → [0,1]$ by $p(ω)
+    = 1/8$ for all $ω ∈ Ω$. ⦉
+
+  ‖ Let $A$ be the event $\set{(1, 1, 0), (1,1,1)}$, the event
+    that the first two tosses turn up heads, and $B = \set{(1,
+    0, 0), (0, 0, 0)}$, the event the second two tosses are
+    tails. ⦉
+
+  ‖ Then $P(A) = P(B) = 2/8 = 1/4$, but $A ∩ B = ∅$. ⦉
+
+  ‖ So $P(A)P(B) = 1/16 ≠ 0 P(A ∩ B)$. ⦉
+
+  ‖ These are dependent events under the model. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Rolling two dice.› ⦉
+
+  ‖ As usual, model rolling two dice with the sample space $Ω
+    = \Set{(ω_1, ω_2)}{ ω_i ∈ \set{1, …, 6}}$. ⦉
+
+  ‖ Define a distribution $p: Ω → 𝗥$ by $p(ω) = 1/36$. ⦉
+
+  ‖ Two events are $A = \Set{ω ∈ Ω}{ ω_1 + ω_2 > 5}$, “the
+    sum is greater than 5”, and $B = \Set{ω ∈ Ω}{ω_1 > 3}$,
+    “the number of pips on the first die is greater than 3”. ⦉
+
+  ‖ Then $P(A) = 26/36$. ⦉
+
+  ‖ Also, $P(A | B) = 17/16$. ⦉
+
+  ‖ So, these events are dependent. ⦉
+
+  ‖ Roughly speaking, we say that knowing $B$ tells us something
+    about $A$. ⦉
+
+  ‖ In this case, we say that it “makes $A$ more probable.” ⦉
+
+  ‖ In the language used to describe the events, we say that
+    knowledge that the number of pips on the first die is
+    greater than three makes its more probable that the sum of
+    the number of pips on each die is greater than 5. ⦉
+⦉
+
+§§ Basic implications ⦉
+¶ ⦊
+  ‖ Suppose $P$ is a probability measure on a finite sample
+    space $Ω$. ⦉
+
+  ‖ It happens that $A$ and $B$’s independence under $P$ is
+    sufficient for the independence of $A^c$ and $B$, $A^c$ and
+    $B^c$ and $A$ and $B^c$. ⦉
+
+  ‖ Here $A^c$ and $B^c$ denote the relative complement of $A$
+    and $B$ in $Ω$, respectively. ⦉
+⦉
+
+¶ ⦊
+  ‖ There are a few ways to see these—here’s one
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ P(A^c ∩ B) ⦉
+
+      ‖ &= P(B) - P(A ∩ B)᜶ ⦉
+
+      ‖ &= P(B) - P(A)P(B)᜶ ⦉
+
+      ‖ &= (1- P(A))P(B) = P(A^c)P(B). ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ The first equality here holds since $P(B) = P(A ∩ B) +
+    P(A^c ∩ B)$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Here are alternative routes, using the more explicit notation
+    of relative complements. ⦉
+
+  ‖ To this, we note that since $P(·|B)$ is a probability
+    measure, and the events $A$ and $\relcomplement{A}{Ω}$
+    partition $Ω$, we have
+    ◇ ⦊
+      ‖ P(A | B) + P(\relcomplement{A}{Ω} | B) = 1. ⦉
+    ⦉⦉
+
+  ‖ From which we deduce $P(\relcomplement{A}{Ω} | B) = 1 -
+    P(A) = P(\relcomplement{A}{Ω})$. ⦉
+
+  ‖ Which is equivalent to $P(\relcomplement{A}{Ω} ∩ B) =
+    P(\relcomplement{A}{Ω})P(B)$. ⦉
+
+  ‖ In other words, $B$ and $\relcomplement{A}{Ω}$ are independent
+    events. ⦉
+
+  ‖ Similarly, $A$ and $\relcomplement{B}{Ω}$ are independent
+    events. ⦉
+
+  ‖ Since $(Ω - A) ∩ (Ω - B) = Ω - (A ∪ B)$, we have
+    ◇ ⦊
+      ‖ P(A ∪ B) + P(\relcomplement{A}{Ω} ∩ \relcomplement{B}{Ω})
+        = 1. ⦉
+    ⦉
+    Since $P(A ∪ B) = P(A) + P(B) - P(A ∩ B)$, we obtain
+    ◇ ⦊
+      ‖ P(\relcomplement{A}{Ω} ∩ \relcomplement{B}{Ω}) = 1 - P(A)
+        - P(B) - P(A)P(B). ⦉
+    ⦉⦉
+
+  ‖ We can express the right hand side as $(1 - P(A))(1 -
+    P(B))$ or $P(\relcomplement{A}{Ω})P(\relcomplement{B}{Ω})$. ⦉
+
+  ‖ In other words, $\relcomplement{A}{Ω}$ and
+    $\relcomplement{B}{Ω}$ are independent. ⦉
+⦉

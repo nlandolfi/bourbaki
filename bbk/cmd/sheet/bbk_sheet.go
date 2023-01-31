@@ -28,7 +28,7 @@ func main() {
 
 	rs := make(map[string]*bbk.ParseResult, len(results))
 	for _, p := range results {
-		rs[p.Name] = p
+		rs[p.Config.Name] = p
 	}
 
 	// just want to get the name
@@ -43,10 +43,15 @@ func main() {
 		log.Fatal(err)
 	}
 	defer g.Close()
-	partialp := bbk.Parse(f, g)
-	p, ok := rs[partialp.Name]
+	h, err := os.Open("sheet.lit")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer h.Close()
+	partialp := bbk.Parse(f, g, h)
+	p, ok := rs[partialp.Config.Name]
 	if !ok {
-		log.Fatalf("name %q not found among sheets", partialp.Name)
+		log.Fatalf("name %q not found among sheets", partialp.Config.Name)
 	}
 
 	switch *mode {
@@ -80,7 +85,7 @@ func writeFile(all map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 	fmt.Fprintln(os.Stdout, "\\input{./macros.tex}")
 	fmt.Fprintln(os.Stdout, "\\sstart")
 	fmt.Fprintln(os.Stdout, "\\bpage\\clearpage")
-	fmt.Fprintf(os.Stdout, "\\stitle{%s}{%s}\n", bbk.Title(p.Name), p.Name)
+	fmt.Fprintf(os.Stdout, "\\stitle{%s}{%s}\n", bbk.Title(p.Config.Name), p.Config.Name)
 	//fmt.Fprintf(os.Stdout, "{\\small Needs: %s}\n", strings.Join(p.Needs, ", "))
 	/*
 		for _, l := range p.Lines {
@@ -108,9 +113,9 @@ func writeGraph(rs map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 
 		seen[next] = true
 
-		for _, n := range next.Needs {
+		for _, n := range next.Config.Needs {
 			q = append(q, rs[n])
-			rows = append(rows, []string{bbk.NodeName(next.Name), bbk.NodeName(n)})
+			rows = append(rows, []string{bbk.NodeName(next.Config.Name), bbk.NodeName(n)})
 		}
 	}
 
@@ -118,7 +123,7 @@ func writeGraph(rs map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 	if len(rows) == 1 {
 		// add a single entry for the node
 		rows = append(rows,
-			[]string{bbk.NodeName(p.Name), ""},
+			[]string{bbk.NodeName(p.Config.Name), ""},
 		)
 	}
 	f, err := os.Create("graph.csv")

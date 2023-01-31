@@ -30,7 +30,7 @@ func main() {
 	}
 	results := make(map[string]*bbk.ParseResult, len(rs))
 	for _, p := range rs {
-		results[p.Name] = p
+		results[p.Config.Name] = p
 	}
 
 	if len(results) == 0 {
@@ -47,7 +47,7 @@ func main() {
 	for _, name := range names {
 		r := results[name]
 		if !r.HasLitFile {
-			log.Print(r.Name)
+			log.Print(r.Config.Name)
 			missingLit += 1
 		}
 	}

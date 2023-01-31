@@ -27,7 +27,7 @@ func main() {
 
 	rs := make(map[string]*bbk.ParseResult, len(results))
 	for _, p := range results {
-		rs[p.Name] = p
+		rs[p.Config.Name] = p
 	}
 
 	// get the template
