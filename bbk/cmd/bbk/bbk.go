@@ -3,6 +3,7 @@ package main
 import (
 	"bbk"
 	"bufio"
+	"encoding/csv"
 	"flag"
 	"fmt"
 	"io"
@@ -31,6 +32,9 @@ var (
 const basicHelp = `bbk <command>
     - check
     - terms 
+		- mv <from> <to>
+		- sheets
+		- all
     - help <command>
     - version`
 
@@ -60,6 +64,8 @@ func main() {
 		mvMain(s)
 	case "sheets":
 		sheetsMain(s)
+	case "all":
+		allMain(s)
 	case "version", "v":
 		s.info("bbk version %s \n  SHA %s \n  Built at %s", Version, GitSHA, BuildDate)
 	default:
@@ -117,6 +123,10 @@ func helpMain(s *state) {
 		s.info(mvHelp)
 	case "check":
 		s.info(checkHelp)
+	case "sheets":
+		s.info(sheetsHelp)
+	case "all":
+		s.info(allHelp)
 	default:
 		s.info("no detailed help for %q", v)
 	}
@@ -187,11 +197,41 @@ func termsMain(s *state) {
 	log.Print("not implemented")
 }
 
-const graphHelp = `bbk terms
+const graphHelp = `bbk graph <-csv graph.csv> <-tmpl graph.tmpl>
+
+This is the old bbk_graph command.
 `
 
 func graphMain(s *state) {
+	fs := flag.NewFlagSet("graph", flag.ContinueOnError)
 	log.Print("not implemented")
+	var (
+		inputFileFlag    = fs.String("csv", "graph.csv", "csv file")
+		templateFileFlag = fs.String("tmpl", "graph.tmpl", "which template")
+	)
+	if err := fs.Parse(s.Args[2:]); err != nil {
+		s.error("parsing arguments: %v", err)
+		return
+	}
+
+	tmpl := template.Must(
+		template.ParseFiles(*templateFileFlag),
+	)
+
+	f, err := os.Open(*inputFileFlag)
+	if err != nil {
+		log.Fatalf("os.Open: %v", err)
+	}
+	defer f.Close()
+
+	entries, err := bbk.ParseGraph(f)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err := tmpl.Execute(os.Stdout, entries); err != nil {
+		log.Fatal(err)
+	}
 }
 
 const mvHelp = `bbk mv <from> <to>
@@ -368,4 +408,90 @@ func sheetsMain(s *state) {
 	close(ch)
 
 	wg.Wait()
+}
+
+const allHelp = `bbk all
+
+This is the old bbk_all command.
+
+Examples
+  - bbk all
+`
+
+func allMain(s *state) {
+	fs := flag.NewFlagSet("all", flag.ContinueOnError)
+
+	var (
+		sheetsDir = fs.String("sheets", "../", "where to find other sheets")
+	)
+
+	if err := fs.Parse(s.Args[2:]); err != nil {
+		s.error("parsing flags: %v", err)
+		return
+	}
+	results, err := bbk.ParseAll(*sheetsDir)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	rs := make(map[string]*bbk.ParseResult, len(results))
+	for _, p := range results {
+		rs[p.Config.Name] = p
+	}
+
+	// get the template
+	order := mustGetAllSheetsOrder("sheets.csv")
+	orderedResults := make([]*bbk.ParseResult, len(order))
+	for i, n := range order {
+		r, ok := rs[n]
+		if !ok {
+			panic(fmt.Sprintf("unknown sheet: %v", n))
+		}
+		orderedResults[i] = r
+	}
+
+	inputsTemplate := template.Must(
+		template.New("inputs.tmpl").Funcs(
+			template.FuncMap{
+				"title": bbk.Title,
+				"join": func(ss []string) string {
+					return strings.Join(ss, ", ")
+				},
+			},
+		).ParseFiles("inputs.tmpl"))
+
+	if err := inputsTemplate.Execute(os.Stdout, orderedResults); err != nil {
+		log.Fatal(err)
+	}
+}
+
+func mustGetAllSheetsOrder(filename string) []string {
+	// get the order
+	f, err := os.Open(filename)
+	if err != nil {
+		log.Fatal("os.Open: %v", err)
+	}
+	defer f.Close()
+
+	r := csv.NewReader(f)
+	var order []string
+	// var entries []Entry
+	var header = true
+	for {
+		record, err := r.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if header {
+			header = false
+			continue
+		}
+
+		order = append(order, record[0])
+	}
+	return order
 }
