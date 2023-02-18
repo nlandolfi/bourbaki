@@ -2,7 +2,8 @@ package main
 
 import (
 	"bytes"
-	"encoding/gob"
+	"compress/gzip"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -131,12 +132,18 @@ func main() {
 	}
 	f.Close()
 
-	f, err = os.Create(filepath.Join(*staticDir, "results.gob"))
+	f, err = os.Create(filepath.Join(*staticDir, "results.json.gzip"))
 	if err != nil {
-		log.Fatalf("os.Create results.gob: %v", err)
+		log.Fatalf("os.Create results.json.gzip: %v", err)
 	}
-	if err := gob.NewEncoder(f).Encode(&bbk.SearchData{results, gitCommit[:9]}); err != nil {
-		log.Fatalf("gob encoding results: %v", err)
+	w := gzip.NewWriter(f)
+	if err := json.NewEncoder(w).Encode(&bbk.SearchData{results, gitCommit[:9]}); err != nil {
+		log.Fatalf("json encoding results: %v", err)
 	}
-	f.Close()
+	if err := w.Close(); err != nil {
+		log.Fatalf("gzip writer close: %v", err)
+	}
+	if err := f.Close(); err != nil {
+		log.Fatalf("results.json.gzip close: %v", err)
+	}
 }

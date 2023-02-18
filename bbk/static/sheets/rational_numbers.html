@@ -90,8 +90,12 @@
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
                 ssuc: ["{#1}^{+}", 1],
                 span: ["\\mathword{span}"],
+                lin: ["\\mathword{lin}"],
+                Int: ["\\mathword{Int}"],
+                Bdry: ["\\mathword{Bdry}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
+                codim: ["\\mathword{codim}"],
                 argmin: ["\\mathword{argmin}"],
                 argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
@@ -152,7 +156,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 48 0 -->
+      <!-- 49 0 -->
 
 <!-- % objects macros -->
 
@@ -426,18 +430,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 <!-- % use \powerset{A} for power set of A -->
 
 % use \powerset{A} for power set of A
@@ -498,13 +490,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \renewcommand{\complement}[1]{C({#1})} -->
+<!--  -->
 
-\renewcommand{\complement}[1]{C({#1})}
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -517,6 +513,26 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\bintersection}{\bigcap} -->
+
+\newcommand{\bintersection}{\bigcap}
+
+<!-- \newcommand{\union}{\,\cup\,} -->
+
+\newcommand{\union}{\,\cup\,}
+
+<!-- \newcommand{\bunion}{\bigcup} -->
+
+\newcommand{\bunion}{\bigcup}
+
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
+
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
+
+\renewcommand{\complement}[1]{C({#1})}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -537,50 +553,6 @@
 <!-- \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2} -->
 
 \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
-
-<!--  -->
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\union}{\,\cup\,} -->
-
-\newcommand{\union}{\,\cup\,}
-
-<!-- \newcommand{\bunion}{\bigcup} -->
-
-\newcommand{\bunion}{\bigcup}
-
-<!-- \newcommand{\bintersection}{\bigcap} -->
-
-\newcommand{\bintersection}{\bigcap}
-
-<!-- \newcommand{\symdiff}{+} -->
-
-\newcommand{\symdiff}{+}
-
-<!-- \newcommand{\intersect}{\cap} -->
-
-\newcommand{\intersect}{\cap}
-
-<!-- \newcommand{\intersection}{\cap} -->
-
-\newcommand{\intersection}{\cap}
-
-<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\id}{\mathword{id}} -->
-
-\newcommand{\id}{\mathword{id}}
 
 <!--  -->
 
@@ -626,9 +598,29 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- \newcommand{\intersect}{\cap} -->
+
+\newcommand{\intersect}{\cap}
+
+<!-- \newcommand{\intersection}{\cap} -->
+
+\newcommand{\intersection}{\cap}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\id}{\mathword{id}} -->
+
+\newcommand{\id}{\mathword{id}}
 
 <!--  -->
 
@@ -649,6 +641,18 @@
 <!-- \newcommand{\eqc}[1]{[#1]} -->
 
 \newcommand{\eqc}[1]{[#1]}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -769,6 +773,13 @@
                 <span class="caret">›</span>
               </div>
           
+              <div class="need2" tabindex="0" onclick="location.href='./natural_fractions.html'" onkeypress="location.href='./natural_fractions.html'">
+                <span>
+                  Natural Fractions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
         
         <div class="needlabel2"> Needed by: </div>
         
@@ -828,17 +839,14 @@
 name: rational_numbers
 needs:
     - integer_arithmetic
+    - natural_fractions
 -->
-<h1 id='Why'>Why</h1>
-
-<p>
- <span class='run'>We want fractions.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
-</p>
+<!-- WHy? probably fractions.. -->
 
 <h1 id='Rational_equivalence'>Rational equivalence</h1>
 
 <p>
- <span class='run'>Consider $\Z  \times (\Z  - \set{0_{\Z }})$.</span>
+ <span class='run'>Consider $\Z  \times  (\Z  - \set{0_{\Z }})$.</span>
 
  <span class='run'>We say that the elements $(a, b)$ and $(c,
   d)$ of this set are <span class='term'>rational
@@ -856,7 +864,7 @@ needs:
 
 <div class='proposition'>
  <span class='run'>Rational equivalence is an equivalence relation
-  on $\Z  \times (\Z  - \set{0_{\Z }})$.<sup id='footnote-2-reference' class='lit-footnote-sup'><a href='#footnote-2' class='lit-footnote-a'>2</a></sup></span>
+  on $\Z  \times (\Z  - \set{0_{\Z }})$.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
 
  <span class='run'></span></div>
 <h1 id='Definition'>Definition</h1>
@@ -879,14 +887,16 @@ ratioanl equivalence.</span>
 <h1 id='Notation'>Notation</h1>
 
 <p>
- <span class='run'>We denote the set of rationals by $\Q $.<sup id='footnote-3-reference' class='lit-footnote-sup'><a href='#footnote-3' class='lit-footnote-a'>3</a></sup></span>
+ <span class='run'>We denote the set of rationals by $\Q $.<sup id='footnote-2-reference' class='lit-footnote-sup'><a href='#footnote-2' class='lit-footnote-a'>2</a></sup></span>
 
  <span class='run'>If we denote rational equivalence by $\sim$
   then $\Q  = (\Z  \times (\Z  -
   \set{0_{\Z }}))/\sim$.</span>
 </p>
-<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This why will be expanded in future editions.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>Future editions will include an account.</span> <a href='#footnote-2-reference'>↩︎</a></li><li id='footnote-3'> <span class='run'>From what we can tell, $\Q $ is a mnemonic
-  for “quantity”, from the latin “quantitas.”</span> <a href='#footnote-3-reference'>↩︎</a></li></ol>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will include an account.</span> <a href='#footnote-1-reference'>↩︎</a></li><li id='footnote-2'> <span class='run'>From what we can tell, $\Q $ is a mnemonic
+  for “quantity”, from the latin “quantitas.”</span>
+
+ <span class='run'>It may also be a mnemonic for quotient.</span> <a href='#footnote-2-reference'>↩︎</a></li></ol>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -917,6 +927,13 @@ ratioanl equivalence.</span>
             <div class="need" tabindex="0" onclick="location.href='./integer_arithmetic.html'" onkeypress="location.href='./integer_arithmetic.html'">
               <span>
                 Integer Arithmetic
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./natural_fractions.html'" onkeypress="location.href='./natural_fractions.html'">
+              <span>
+                Natural Fractions
               </span>
               <span class="caret">›</span>
             </div>
@@ -1122,7 +1139,7 @@ ratioanl equivalence.</span>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
+      Copyright 2022 The Bourbaki Authors. Version bcf9f0abb.
     </span>
   </body>
 </html>

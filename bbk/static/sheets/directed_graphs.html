@@ -90,8 +90,12 @@
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
                 ssuc: ["{#1}^{+}", 1],
                 span: ["\\mathword{span}"],
+                lin: ["\\mathword{lin}"],
+                Int: ["\\mathword{Int}"],
+                Bdry: ["\\mathword{Bdry}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
+                codim: ["\\mathword{codim}"],
                 argmin: ["\\mathword{argmin}"],
                 argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
@@ -152,7 +156,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 41 0 -->
+      <!-- 40 0 -->
 
 <!-- % objects macros -->
 
@@ -681,14 +685,6 @@
 <!-- \newcommand{\num}[1]{\left|#1\right|} -->
 
 \newcommand{\num}[1]{\left|#1\right|}
-
-<!-- \newcommand{\adj}{\mathword{adj}} -->
-
-\newcommand{\adj}{\mathword{adj}}
-
-<!-- \renewcommand{\deg}{\mathword{deg}} -->
-
-\renewcommand{\deg}{\mathword{deg}}
     </span>
 
 
@@ -786,9 +782,9 @@
         <div class="needlabel2"> Needs: </div>
         
           
-              <div class="need2" tabindex="0" onclick="location.href='./undirected_graphs.html'" onkeypress="location.href='./undirected_graphs.html'">
+              <div class="need2" tabindex="0" onclick="location.href='./set_numbers.html'" onkeypress="location.href='./set_numbers.html'">
                 <span>
-                  Undirected Graphs
+                  Set Numbers
                 </span>
                 <span class="caret">›</span>
               </div>
@@ -814,6 +810,13 @@
           <div class="need2" tabindex="0" onclick="location.href='./directed_graph_distributions.html'" onkeypress="location.href='./directed_graph_distributions.html'">
             <span>
             Directed Graph Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./directed_graph_skeletons.html'" onkeypress="location.href='./directed_graph_skeletons.html'">
+            <span>
+            Directed Graph Skeletons
             </span>
             <span class="caret">›</span>
           </div>
@@ -870,7 +873,7 @@
       <!--yaml>
 name: directed_graphs
 needs:
-    - undirected_graphs
+    - set_numbers
 refs:
     - bélla_bollobàs/modern_graph_theory/chapter_01/section_01
 wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_graph
@@ -878,16 +881,16 @@ wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_g
 <h1 id='Why'>Why</h1>
 
 <p>
- <span class='run'>We want to visualize (nonsymmetric) relations.</span>
+ <span class='run'>We want to visualize relations.</span>
 </p>
 
 <h1 id='Definition'>Definition</h1>
 
 <p>
- <span class='run'>A <span class='term'>directed graph</span> is a
-  pair $(V, E)$ in which $V$ is a finite
-  nonempty set and $E$ is a subset of $V \times
-  V$.</span>
+ <span class='run'>A <span class='term'>directed graph</span> (or
+  <span class='term'>digraph</span>) is a pair $(V,
+  E)$ in which $V$ is a nonempty set and $E$ is
+  a subset of $V \times  V$.</span>
 
  <span class='run'>In other words, $E$ is a relation on $V$.</span>
 
@@ -896,6 +899,7 @@ wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_g
   of $E$ <span class='term'>edges</span>.</span>
 </p>
 
+<h2 id='Example'>Example</h2>
 
 <p>
  <span class='run'>For example, define $V$ and $E$ by
@@ -942,7 +946,7 @@ wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_g
  <span class='run'>The <span class='term'>indegree</span> of a vertex
   is number parents it has and the
   <span class='term'>outdegree</span> is the number
-  of children it has; c.f.&nbsp;<a href='/sheets/undirected_graphs.html#Definition'/><span class='run'>Undirected Graphs</span></a>.</span>
+  of children it has.</span>
 </p>
 
 
@@ -967,10 +971,10 @@ wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_g
 <h2 id='Notation'>Notation</h2>
 
 <p>
- <span class='run'>Let $\pa: V \to \powerset{V}$ and $\ch: V \to
-  \powerset{V}$ be the functions associating to
-  each vertex its set of parents and set of
-  children, respectively.</span>
+ <span class='run'>We denote by $\pa: V \to \powerset{V}$ and
+  $\ch: V \to \powerset{V}$ the functions
+  associating to each vertex its set of parents
+  and set of children, respectively.</span>
 
  <span class='run'>As usual, we denote the parents of vertex $v$
   by $\pa_v$ and the children by $\ch_v$.</span>
@@ -981,53 +985,16 @@ wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_g
 <p>
  <span class='run'>If $x$ is a vertex, and $(x,x)$ is an edge,
   we call such an edge a
-  <span class='term'>self-loop</span>.</span>
+  <span class='term'>self-loop</span> (or just
+  <span class='term'>loop</span>).</span>
 
- <span class='run'>Many authors exclude self-loops in their
-  definition of directed graphs, in order to make
-  the situation correspond more closely to that of
-  undirected graphs.</span>
-</p>
+ <span class='run'>Many authorities exclude self-loops in their
+  definition of directed graphs, but we allow them.</span>
 
-<h2 id='Skeletons'>Skeletons</h2>
-
-<p>
- <span class='run'>The <span class='term'>skeleton</span> of the
-  directed graph $(V, E)$ is the undirected graph
-  $(V, F)$ where
-  <p>\[
-   F = \Set*{\set{v, w} \subset V}{(v, w) \in E \text{ or }
-    (w, v) \in E}.
-  \]</p>
-  <span class='run'>In other words, the skeleton is an undirected
-   graph whose vertex set is $V$ and whose edges
-   are all (unordered) pairs which appear as an
-   ordered pair in the directed graph.</span></span>
-</p>
-
-
-<p>
- <span class='run'>In the case that $(V, E)$ is a directed graph
-  and $E$ is a symmetric relation, the skeleton
-  of $(V, E)$ is a natural undirected graph to
-  associate with $(V, E)$.</span>
-
- <span class='run'>An <span class='term'>orientation</span> of an
-  undirected graph $G$ is a directed graph whose
-  skeleton is $G$.</span>
-</p>
-
-
-<p>
- <span class='run'>An <span class='term'>oriented graph</span> is a
-  directed graph without self-loops satisfying the
-  property for any two vertices $x$ and $y$,
-  either $(x,y)$ or $(y,x)$ is an edge, but not
-  both.</span>
-
- <span class='run'>An oriented graph can be obtained from an
-  undirected graph by selecting an “orientation” of
-  the undirected edges.</span>
+ <span class='run'>To make the distinction, we call a graph with
+  no <span class='term'>loops</span>
+  <span class='term'>simple</span> (a
+  <span class='term'>simple graph</span>).</span>
 </p>
 
 
@@ -1072,9 +1039,9 @@ wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_g
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./undirected_graphs.html'" onkeypress="location.href='./undirected_graphs.html'">
+            <div class="need" tabindex="0" onclick="location.href='./set_numbers.html'" onkeypress="location.href='./set_numbers.html'">
               <span>
-                Undirected Graphs
+                Set Numbers
               </span>
               <span class="caret">›</span>
             </div>
@@ -1100,6 +1067,13 @@ wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_g
           <div class="need" tabindex="0" onclick="location.href='./directed_graph_distributions.html'" onkeypress="location.href='./directed_graph_distributions.html'">
             <span>
             Directed Graph Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./directed_graph_skeletons.html'" onkeypress="location.href='./directed_graph_skeletons.html'">
+            <span>
+            Directed Graph Skeletons
             </span>
             <span class="caret">›</span>
           </div>
@@ -1294,7 +1268,7 @@ wikipedia: https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_g
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
+      Copyright 2022 The Bourbaki Authors. Version bcf9f0abb.
     </span>
   </body>
 </html>

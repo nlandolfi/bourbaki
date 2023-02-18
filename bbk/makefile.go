@@ -23,7 +23,7 @@ graph.csv: sheet.tex
 	bbk_sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk_graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf

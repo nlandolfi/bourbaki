@@ -90,8 +90,12 @@
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
                 ssuc: ["{#1}^{+}", 1],
                 span: ["\\mathword{span}"],
+                lin: ["\\mathword{lin}"],
+                Int: ["\\mathword{Int}"],
+                Bdry: ["\\mathword{Bdry}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
+                codim: ["\\mathword{codim}"],
                 argmin: ["\\mathword{argmin}"],
                 argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
@@ -152,7 +156,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 81 0 -->
+      <!-- 82 0 -->
 
 <!-- \newcommand{\symdiff}{+} -->
 
@@ -937,9 +941,9 @@
         <div class="needlabel2"> Needed by: </div>
         
         
-          <div class="need2" tabindex="0" onclick="location.href='./affine_sets_and_subspaces.html'" onkeypress="location.href='./affine_sets_and_subspaces.html'">
+          <div class="need2" tabindex="0" onclick="location.href='./real_affine_sets_and_subspaces.html'" onkeypress="location.href='./real_affine_sets_and_subspaces.html'">
             <span>
-            Affine Sets and Subspaces
+            Real Affine Sets and Subspaces
             </span>
             <span class="caret">›</span>
           </div>
@@ -976,8 +980,8 @@ needs:
 
 <p>
  <span class='run'>The <span class='term'>translate</span> of $S
-  \subset \R ^n$ <span class='term'>by</span> $a \in
-  \R ^n$ is the set
+  \subset \R ^n$ <span class='term'>by</span> the
+  vector $a \in \R ^n$ is the set
   <p>\[
    \Set*{z \in \R ^n}{\exists x \in S \text{ such that } z = x
     + a}.
@@ -1003,14 +1007,16 @@ needs:
 <h1 id='Sums_and_differences'>Sums and differences</h1>
 
 <p>
- <span class='run'>The <span class='term'>sum</span> of two sets $S,
-  T \subset \R ^n$ is the set
+ <span class='run'>The <span class='term'>sum</span> (or
+  <span class='term'>Minkowski sum</span>) of two
+  sets $S, T \subset \R ^n$ is the set
   <p>\[
    \Set{z \in \R ^n}{(\exists x \in S)(\exists y \in T)(z = x +
     y)}.
   \]</p></span>
 
  <span class='run'>Likewise, the <span class='term'>difference</span>
+  (or <span class='term'>Minkowski difference</span>)
   of two sets $S, T \subset \R ^n$ is the set
   <p>\[
    \Set{z \in \R ^n}{(\exists x \in S)(\exists y \in T)(z = x -
@@ -1022,7 +1028,7 @@ needs:
 
 <p>
  <span class='run'>We denote the sum of $S$ and $T$ by $S +
-  T$, and the difference by $S - T$.</span>
+  T$, and the difference by $S - T$.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
 
  <span class='run'>We often use the slick notation
   <p>\[
@@ -1030,8 +1036,52 @@ needs:
     \in S, y \in T},
   \]</p>
   for these two sets.</span>
+
+ <span class='run'>Notice that in this notation
+  <p>\[
+   \set{a} + B = a + B
+  \]</p></span>
 </p>
 
+<h1 id='Scaled_sets'>Scaled sets</h1>
+
+<p>
+ <span class='run'>Given a set $A \subset \R ^n$ and a $\lambda
+  \in \R $, the set which is $A$
+  <span class='term'>scaled by</span> (the
+  <span class='term'>scaled set</span>) is
+  <p>\[
+   \Set{z \in \R ^n}{(\exists x \in A)(z = \lambda x)}
+  \]</p></span>
+
+ <span class='run'>We often denote this set by $\lambda A$.</span>
+
+ <span class='run'>As before, we often use the slick notation
+  <p>\[
+   \lambda A = \Set{\lambda a}{a \in A}
+  \]</p></span>
+
+ <span class='run'>The set $(-1)A$ is denoted $-A$</span>
+</p>
+
+<h2 id='Homothetic_sets'>Homothetic sets</h2>
+
+<p>
+ <span class='run'>A set $A$ is <span class='term'>homothetic</span>
+  to a set $B$ if there is $x \in \R ^n$ and
+  $\lambda  \neq 0$ so taht
+  <p>\[
+   A = x + \lambda B
+  \]</p></span>
+
+ <span class='run'>If $\lambda  &gt; 0$, $A$ is
+  <span class='term'>positively homothetic</span> to
+  $B$.</span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>This second notation unfortunately conflicts with
+  our notation for set differences.</span>
+
+ <span class='run'>Future editions will correct.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1070,9 +1120,9 @@ needs:
       
         <div disabled class="need label"> Needed by: </div>
         
-          <div class="need" tabindex="0" onclick="location.href='./affine_sets_and_subspaces.html'" onkeypress="location.href='./affine_sets_and_subspaces.html'">
+          <div class="need" tabindex="0" onclick="location.href='./real_affine_sets_and_subspaces.html'" onkeypress="location.href='./real_affine_sets_and_subspaces.html'">
             <span>
-            Affine Sets and Subspaces
+            Real Affine Sets and Subspaces
             </span>
             <span class="caret">›</span>
           </div>
@@ -1246,7 +1296,7 @@ needs:
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
+      Copyright 2022 The Bourbaki Authors. Version bcf9f0abb.
     </span>
   </body>
 </html>

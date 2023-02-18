@@ -90,8 +90,12 @@
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
                 ssuc: ["{#1}^{+}", 1],
                 span: ["\\mathword{span}"],
+                lin: ["\\mathword{lin}"],
+                Int: ["\\mathword{Int}"],
+                Bdry: ["\\mathword{Bdry}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
+                codim: ["\\mathword{codim}"],
                 argmin: ["\\mathword{argmin}"],
                 argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
@@ -152,11 +156,23 @@
     </span>
 
     <span style="display:none">
-      <!-- 132 0 -->
+      <!-- 162 0 -->
 
 <!-- \newcommand{\symdiff}{+} -->
 
 \newcommand{\symdiff}{+}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -210,9 +226,21 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
+<!-- \newcommand{\eqc}[1]{[#1]} -->
 
-\newcommand{\Z}{\mathbfsf{Z}}
+\newcommand{\eqc}[1]{[#1]}
+
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
+
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
+
+\renewcommand{\complement}[1]{C({#1})}
+
+<!-- \newcommand{\F}{\mathbfsf{F}} -->
+
+\newcommand{\F}{\mathbfsf{F}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -226,57 +254,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\eqc}[1]{[#1]} -->
+<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
 
-\newcommand{\eqc}[1]{[#1]}
-
-<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
-
-\newcommand{\relcomplement}[2]{C_{#2}({#1})}
-
-<!-- \renewcommand{\complement}[1]{C({#1})} -->
-
-\renewcommand{\complement}[1]{C({#1})}
-
-<!-- % absolute_value macros -->
-
-% absolute_value macros
-
-<!-- % \ifdefined\abs -->
-
-% \ifdefined\abs
-
-<!-- % \else -->
-
-% \else
-
-<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
-
-%  \newcommand{\abs}[1]{\left|#1\right|}
-
-<!-- % \fi -->
-
-% \fi
-
-<!-- % the above was creating issues - NCL 2/24/2022 -->
-
-% the above was creating issues - NCL 2/24/2022
-
-<!--  -->
-
-
-
-<!-- % following (roughly) the example of set_numbers/macros -->
-
-% following (roughly) the example of set_numbers/macros
-
-<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
-
-% \newcommand{\intabs}[1]{\left|#1\right|}
-
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
-
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcommand{\Z}{\mathbfsf{Z}}
 
 <!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
 
@@ -313,6 +293,10 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \renewcommand{\Vec}[2]{{#1}^{#2}} -->
+
+\renewcommand{\Vec}[2]{{#1}^{#2}}
 
 <!-- \newcommand{\Q}{\mathbfsf{Q}} -->
 
@@ -610,38 +594,6 @@
 
 \newcommand{\R}{\mathbfsf{R}}
 
-<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
-
-%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
-
-<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
-
-\def\oright#1{\right#1\mskip-10mu\circ}
-
-<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
-
-\def\oleft#1{\circ\mskip-10mu\left#1}
-
-<!-- \newcommand{\I}{\mathbfsf{I}} -->
-
-\newcommand{\I}{\mathbfsf{I}}
-
-<!-- \newcommand{\oi}[1]{(#1)} -->
-
-\newcommand{\oi}[1]{(#1)}
-
-<!-- \newcommand{\ci}[1]{[#1]} -->
-
-\newcommand{\ci}[1]{[#1]}
-
-<!-- \newcommand{\oci}[1]{(#1]} -->
-
-\newcommand{\oci}[1]{(#1]}
-
-<!-- \newcommand{\coi}[1]{[#1)} -->
-
-\newcommand{\coi}[1]{[#1)}
-
 <!-- % use \num{A} for |A| -->
 
 % use \num{A} for |A|
@@ -673,6 +625,54 @@
 <!-- \newcommand{\intersection}{\cap} -->
 
 \newcommand{\intersection}{\cap}
+
+<!-- \renewcommand{\dim}{\mathword{dim}} -->
+
+\renewcommand{\dim}{\mathword{dim}}
+
+<!-- \newcommand{\aff}{\mathword{aff}} -->
+
+\newcommand{\aff}{\mathword{aff}}
+
+<!-- % absolute_value macros -->
+
+% absolute_value macros
+
+<!-- % \ifdefined\abs -->
+
+% \ifdefined\abs
+
+<!-- % \else -->
+
+% \else
+
+<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
+
+%  \newcommand{\abs}[1]{\left|#1\right|}
+
+<!-- % \fi -->
+
+% \fi
+
+<!-- % the above was creating issues - NCL 2/24/2022 -->
+
+% the above was creating issues - NCL 2/24/2022
+
+<!--  -->
+
+
+
+<!-- % following (roughly) the example of set_numbers/macros -->
+
+% following (roughly) the example of set_numbers/macros
+
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
+
+% \newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -845,6 +845,46 @@
 <!-- \renewcommand{\setminus}{-} -->
 
 \renewcommand{\setminus}{-}
+
+<!-- \renewcommand{\span}{\mathword{span}} -->
+
+\renewcommand{\span}{\mathword{span}}
+
+<!-- \newcommand{\lin}{\mathword{lin}} -->
+
+\newcommand{\lin}{\mathword{lin}}
+
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+
+\def\oright#1{\right#1\mskip-10mu\circ}
+
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
+
+\def\oleft#1{\circ\mskip-10mu\left#1}
+
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1616,7 +1656,7 @@ refs:
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
+      Copyright 2022 The Bourbaki Authors. Version bcf9f0abb.
     </span>
   </body>
 </html>

@@ -90,8 +90,12 @@
                 Cconjp: ["\\left(#1\\right))^{*}", 1],
                 ssuc: ["{#1}^{+}", 1],
                 span: ["\\mathword{span}"],
+                lin: ["\\mathword{lin}"],
+                Int: ["\\mathword{Int}"],
+                Bdry: ["\\mathword{Bdry}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
+                codim: ["\\mathword{codim}"],
                 argmin: ["\\mathword{argmin}"],
                 argmax: ["\\mathword{argmax}"],
                 goesto: ["\\longrightarrow"],
@@ -152,23 +156,11 @@
     </span>
 
     <span style="display:none">
-      <!-- 88 0 -->
+      <!-- 131 0 -->
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!--  -->
-
-
-
-<!-- \newcommand{\comp}{\circ} -->
-
-\newcommand{\comp}{\circ}
-
-<!-- \newcommand{\composed}{\circ} -->
-
-\newcommand{\composed}{\circ}
 
 <!--  -->
 
@@ -190,17 +182,21 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- % use \powerset{A} for power set of A -->
+<!-- % objects macros -->
 
-% use \powerset{A} for power set of A
+% objects macros
 
-<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-% \newcommand{\powerset}[1]{{#1}^*}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+<!--  -->
 
-\newcommand{\powerset}[1]{\CP(#1)}
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -238,73 +234,25 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
-
-\newcommand{\idfn}[1]{\text{id}_{#1}}
-
-<!--  -->
-
-
-
-<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
-
-\newcommand{\inv}[1]{{#1}^{-1}}
-
-<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
-
-\newcommand{\inverse}[1]{\inv{#1}}
-
-<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
-
-\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
-
-<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
-
-\newcommand{\inversep}[1]{\invp{#1}}
-
-<!-- % absolute_value macros -->
-
-% absolute_value macros
-
-<!-- % \ifdefined\abs -->
-
-% \ifdefined\abs
-
-<!-- % \else -->
-
-% \else
-
-<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
-
-%  \newcommand{\abs}[1]{\left|#1\right|}
-
-<!-- % \fi -->
-
-% \fi
-
-<!-- % the above was creating issues - NCL 2/24/2022 -->
-
-% the above was creating issues - NCL 2/24/2022
-
-<!--  -->
-
-
-
-<!-- % following (roughly) the example of set_numbers/macros -->
-
-% following (roughly) the example of set_numbers/macros
-
-<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
-
-% \newcommand{\intabs}[1]{\left|#1\right|}
-
-<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
-
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % TODO: why renew -->
+
+% TODO: why renew
+
+<!-- \newcommand{\seq}[1]{(#1_n)_{n}} -->
+
+\newcommand{\seq}[1]{(#1_n)_{n}}
+
+<!-- \newcommand{\seqt}[1]{#1_n} -->
+
+\newcommand{\seqt}[1]{#1_n}
 
 <!--  -->
 
@@ -314,9 +262,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- % objects macros -->
+<!-- \newcommand{\union}{\,\cup\,} -->
 
-% objects macros
+\newcommand{\union}{\,\cup\,}
+
+<!-- \newcommand{\bunion}{\bigcup} -->
+
+\newcommand{\bunion}{\bigcup}
 
 <!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
 
@@ -346,6 +298,42 @@
 
 
 
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\dom}{\mathword{dom}} -->
+
+\newcommand{\dom}{\mathword{dom}}
+
+<!-- \newcommand{\ran}{\mathword{range}} -->
+
+\newcommand{\ran}{\mathword{range}}
+
+<!-- \newcommand{\range}{\ran} -->
+
+\newcommand{\range}{\ran}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
 <!-- % use \Set{a}{b} for {a | b} -->
 
 % use \Set{a}{b} for {a | b}
@@ -366,49 +354,77 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\union}{\,\cup\,} -->
-
-\newcommand{\union}{\,\cup\,}
-
-<!-- \newcommand{\bunion}{\bigcup} -->
-
-\newcommand{\bunion}{\bigcup}
-
 <!-- \newcommand{\bintersection}{\bigcap} -->
 
 \newcommand{\bintersection}{\bigcap}
 
-<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+<!--  -->
 
-\def\oright#1{\right#1\mskip-10mu\circ}
 
-<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
 
-\def\oleft#1{\circ\mskip-10mu\left#1}
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-<!-- \newcommand{\I}{\mathbfsf{I}} -->
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\I}{\mathbfsf{I}}
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-<!-- \newcommand{\oi}[1]{(#1)} -->
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\oi}[1]{(#1)}
+<!--  -->
 
-<!-- \newcommand{\ci}[1]{[#1]} -->
 
-\newcommand{\ci}[1]{[#1]}
 
-<!-- \newcommand{\oci}[1]{(#1]} -->
+<!-- % use \card{A} for |A| -->
 
-\newcommand{\oci}[1]{(#1]}
+% use \card{A} for |A|
 
-<!-- \newcommand{\coi}[1]{[#1)} -->
+<!-- \newcommand{\card}[1]{\left|#1\right|} -->
 
-\newcommand{\coi}[1]{[#1)}
+\newcommand{\card}[1]{\left|#1\right|}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % it is declared in integral line! -->
+
+% it is declared in integral line!
+
+<!-- % \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+% \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
+
+<!-- \newcommand{\product}{\prod} -->
+
+\newcommand{\product}{\prod}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- \newcommand{\symdiff}{+} -->
 
@@ -442,29 +458,33 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- % mnemonic for (s)et(suc)cesor -->
+<!-- \newcommand{\eqc}[1]{[#1]} -->
 
-% mnemonic for (s)et(suc)cesor
+\newcommand{\eqc}[1]{[#1]}
 
-<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
 
-\newcommand{\ssuc}[1]{{#1}^{+}}
+\newcommand{\idfn}[1]{\text{id}_{#1}}
 
-<!-- \renewcommand{\setminus}{-} -->
+<!--  -->
 
-\renewcommand{\setminus}{-}
 
-<!-- \newcommand{\dom}{\mathword{dom}} -->
 
-\newcommand{\dom}{\mathword{dom}}
+<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
 
-<!-- \newcommand{\ran}{\mathword{range}} -->
+\newcommand{\inv}[1]{{#1}^{-1}}
 
-\newcommand{\ran}{\mathword{range}}
+<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
 
-<!-- \newcommand{\range}{\ran} -->
+\newcommand{\inverse}[1]{\inv{#1}}
 
-\newcommand{\range}{\ran}
+<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
+
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
+
+<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
+
+\newcommand{\inversep}[1]{\invp{#1}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -477,22 +497,6 @@
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-<!-- \newcommand{\R}{\mathbfsf{R}} -->
-
-\newcommand{\R}{\mathbfsf{R}}
-
-<!-- % use \num{A} for |A| -->
-
-% use \num{A} for |A|
-
-<!-- \newcommand{\num}[1]{\left|#1\right|} -->
-
-\newcommand{\num}[1]{\left|#1\right|}
-
-<!-- \newcommand{\product}{\prod} -->
-
-\newcommand{\product}{\prod}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -762,6 +766,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -786,17 +802,37 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\N}{\mathbfsf{N}} -->
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-\newcommand{\N}{\mathbfsf{N}}
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+<!--  -->
 
-\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
 
-<!-- \newcommand{\eqc}[1]{[#1]} -->
 
-\newcommand{\eqc}[1]{[#1]}
+<!-- \newcommand{\goesto}{\longrightarrow} -->
+
+\newcommand{\goesto}{\longrightarrow}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -813,6 +849,154 @@
 <!-- \newcommand{\Z}{\mathbfsf{Z}} -->
 
 \newcommand{\Z}{\mathbfsf{Z}}
+
+<!-- \newcommand{\R}{\mathbfsf{R}} -->
+
+\newcommand{\R}{\mathbfsf{R}}
+
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
+
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\nneri}{[0,\infty]} -->
+
+\newcommand{\nneri}{[0,\infty]}
+
+<!-- \newcommand{\eri}{[-\infty,\infty]} -->
+
+\newcommand{\eri}{[-\infty,\infty]}
+
+<!-- \newcommand{\Rbar}{\bar{\R}} -->
+
+\newcommand{\Rbar}{\bar{\R}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % absolute_value macros -->
+
+% absolute_value macros
+
+<!-- % \ifdefined\abs -->
+
+% \ifdefined\abs
+
+<!-- % \else -->
+
+% \else
+
+<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
+
+%  \newcommand{\abs}[1]{\left|#1\right|}
+
+<!-- % \fi -->
+
+% \fi
+
+<!-- % the above was creating issues - NCL 2/24/2022 -->
+
+% the above was creating issues - NCL 2/24/2022
+
+<!--  -->
+
+
+
+<!-- % following (roughly) the example of set_numbers/macros -->
+
+% following (roughly) the example of set_numbers/macros
+
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
+
+% \newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\SimpleF}{\mathword{SF}} -->
+
+\newcommand{\SimpleF}{\mathword{SF}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -842,6 +1026,50 @@
 
 \newcommand{\Q}{\mathbfsf{Q}}
 
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+
+\def\oright#1{\right#1\mskip-10mu\circ}
+
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
+
+\def\oleft#1{\circ\mskip-10mu\left#1}
+
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
 
 \newcommand{\RVec}[1]{\Vec{\R}{#1}}
@@ -849,6 +1077,30 @@
 <!-- \newcommand{\F}{\mathbfsf{F}} -->
 
 \newcommand{\F}{\mathbfsf{F}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- \renewcommand{\Vec}[2]{{#1}^{#2}} -->
 
@@ -950,9 +1202,9 @@
         <div class="needlabel2"> Needs: </div>
         
           
-              <div class="need2" tabindex="0" onclick="location.href='./vectors.html'" onkeypress="location.href='./vectors.html'">
+              <div class="need2" tabindex="0" onclick="location.href='./linear_transformations.html'" onkeypress="location.href='./linear_transformations.html'">
                 <span>
-                  Vectors
+                  Linear Transformations
                 </span>
                 <span class="caret">›</span>
               </div>
@@ -972,6 +1224,11 @@
         <span class="caret">›</span>
       </div>
       
+      <div class="need2" tabindex="0" onclick="location.href='https://en.wikipedia.org/wiki/Operator_(mathematics)'" onkeypress="location.href='https://en.wikipedia.org/wiki/Operator_(mathematics)'">
+        <span> Wikipedia </span>
+        <span class="caret">›</span>
+      </div>
+    
         </div>
 
       </div>
@@ -980,28 +1237,32 @@
       <!--yaml>
 name: operators
 needs:
-    - vectors
+    - linear_transformations
+refs:
+    - axler/p86
+wikipedia: https://en.wikipedia.org/wiki/Operator_(mathematics)
 -->
 <h1 id='Definition'>Definition</h1>
 
 <p>
- <span class='run'>(provisional)</span>
-</p>
-
-
-<p>
  <span class='run'>An <span class='term'>operator</span> is a
-  tranformation where the codomain is the domain.</span>
+  <i>linear</i> tranformation where the codomain is
+  the domain.</span>
 
- <span class='run'>An operator is just a transformation with a
-  particular domain and codomain, just as a
-  transformation is is just a function on and to
-  vector spaces.</span>
+ <span class='run'>An operator is just a linear transformation
+  with a particular domain and codomain, just as
+  a transformation is is just a function on and
+  to vector spaces.</span>
 </p>
 
+<h2 id='Notation'>Notation</h2>
 
 <p>
- <span class='run'>\blankpage</span>
+ <span class='run'>Suppose $V$ is a vector space.</span>
+
+ <span class='run'>We usually abbreviate the notation for the set
+  of operators to $\mathcal{L} (V)$ from
+  $\mathcal{L} (V, V)$.</span>
 </p>
 
     </div>
@@ -1031,9 +1292,9 @@ needs:
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./vectors.html'" onkeypress="location.href='./vectors.html'">
+            <div class="need" tabindex="0" onclick="location.href='./linear_transformations.html'" onkeypress="location.href='./linear_transformations.html'">
               <span>
-                Vectors
+                Linear Transformations
               </span>
               <span class="caret">›</span>
             </div>
@@ -1201,7 +1462,7 @@ needs:
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 3ee7589e7.
+      Copyright 2022 The Bourbaki Authors. Version bcf9f0abb.
     </span>
   </body>
 </html>
