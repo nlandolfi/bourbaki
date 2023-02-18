@@ -1,7 +1,7 @@
 package main
 
 import (
-	"encoding/gob"
+	"compress/gzip"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -44,12 +44,16 @@ func main() {
 		Logger: auditLogger,
 	}
 
-	f, err := os.Open(path.Join(*staticDir, "results.gob"))
+	f, err := os.Open(path.Join(*staticDir, "results.json.gzip"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	r, err := gzip.NewReader(f)
 	if err != nil {
 		log.Fatal(err)
 	}
 	var sd bbk.SearchData
-	if err := gob.NewDecoder(f).Decode(&sd); err != nil {
+	if err := json.NewDecoder(r).Decode(&sd); err != nil {
 		log.Fatal(err)
 	}
 	var results = make(map[string]*bbk.ParseResult, len(sd.Results))
