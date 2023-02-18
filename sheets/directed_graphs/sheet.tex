@@ -1,13 +1,15 @@
 
 \section*{Why}
 
-We want to visualize (nonsymmetric) relations.
+We want to visualize relations.
 
 \section*{Definition}
 
-A \t{directed graph} is a pair $(V, E)$ in which $V$ is a finite nonempty set and $E$ is a subset of $V \times  V$.
+A \t{directed graph} (or \t{digraph}) is a pair $(V, E)$ in which $V$ is a nonempty set and $E$ is a subset of $V \times V$.
 In other words, $E$ is a relation on $V$.
 We call the elements of $V$ \t{vertices} and the elements of $E$ \t{edges}.
+
+\subsection*{Example}
 
 For example, define $V$ and $E$ by
 \[
@@ -25,7 +27,7 @@ We call $v$ a \t{parent} of $w$ and we call $w$ a child of $v$.
 We say that the edge $(v, w)$ is \t{incident} to $v$ and $w$.
 
 The \t{child set} of a vertex is the set of its child vertices and similarly for the \t{parent set}; we refer to these sets as the \t{children} and \t{parents} of the vertex, respectively.
-The \t{indegree} of a vertex is number parents it has and the \t{outdegree} is the number of children it has; c.f. \sheetref{undirected_graphs}{Undirected Graphs}.
+The \t{indegree} of a vertex is number parents it has and the \t{outdegree} is the number of children it has.
 
 A vertex is a \t{source} vertex if it only has outgoing edges (i.e., is the child of no vertex its parent set is empty) and a vertex is a \t{sink} if it only has incoming edges (i.e., is the parent of no vertex).
 
@@ -33,27 +35,14 @@ A directed graph is \t{complete} if every vertex is both a child and parent of e
 
 \subsection*{Notation}
 
-Let $\pa: V \to \powerset{V}$ and $\ch: V \to \powerset{V}$ be the functions associating to each vertex its set of parents and set of children, respectively.
+We denote by $\pa: V \to \powerset{V}$ and $\ch: V \to \powerset{V}$ the functions associating to each vertex its set of parents and set of children, respectively.
 As usual, we denote the parents of vertex $v$ by $\pa_v$ and the children by $\ch_v$.
 
 \subsection*{Self-loops}
 
-If $x$ is a vertex, and $(x,x)$ is an edge, we call such an edge a \t{self-loop}.
-Many authors exclude self-loops in their definition of directed graphs, in order to make the situation correspond more closely to that of undirected graphs.
-
-\subsection*{Skeletons}
-
-The \t{skeleton} of the directed graph $(V, E)$ is the undirected graph $(V, F)$ where
-\[
-F = \Set*{\set{v, w} \subset V}{(v, w) \in E \text{ or } (w, v) \in E}.
-\]
-In other words, the skeleton is an undirected graph whose vertex set is $V$ and whose edges are all (unordered) pairs which appear as an ordered pair in the directed graph.
-
-In the case that $(V, E)$ is a directed graph and $E$ is a symmetric relation, the skeleton of $(V, E)$ is a natural undirected graph to associate with $(V, E)$.
-An \t{orientation} of an undirected graph $G$ is a directed graph whose skeleton is $G$.
-
-An \t{oriented graph} is a directed graph without self-loops satisfying the property for any two vertices $x$ and $y$, either $(x,y)$ or $(y,x)$ is an edge, but not both.
-An oriented graph can be obtained from an undirected graph by selecting an ``orientation'' of the undirected edges.
+If $x$ is a vertex, and $(x,x)$ is an edge, we call such an edge a \t{self-loop} (or just \t{loop}).
+Many authorities exclude self-loops in their definition of directed graphs, but we allow them.
+To make the distinction, we call a graph with no \t{loops} \t{simple} (a \t{simple graph}).
 
 %<div data-littype='paragraph'>
 %  <div data-littype='run'> \ssection{Visualization} </div>

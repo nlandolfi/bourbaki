@@ -1,0 +1,59 @@
+
+\section*{Why}
+
+What are the affine sets in terms of subspaces?
+
+\section*{Affine sets which are subspaces}
+
+The subspaces of $\R ^n$ are the affine sets which contain the origin.
+
+\begin{proposition}
+$M \subset \R ^n$ is a subspace if and only if $M$ is affine and $0 \in M$.
+\begin{proof}
+($\Rightarrow$)
+Suppose $M$ is a subspace.
+Then $0 \in M$.
+Also $\alpha x + \beta y \in M$ for all $\alpha , \beta  \in \R $ and $x, y \in \R ^n$
+In particular, $(1- \lambda )x + \lambda y \in M$ for all $\lambda  \in \R $, $x, y \in \R ^n$.
+In other words, $M$ contains the line through $x$ and $y$.
+
+($\Leftarrow$) Suppose $M$ is affine and $0 \in M$.
+$M$ is closed under scalar multiplication since
+\[
+\alpha x = (1 - \alpha )0 + \alpha x
+\]
+is in the line through $0$ and $x$.
+$M$ is closed under vector addition since
+\[
+(1/2)(x + y) = (1-1/2)x + (1/2)y
+\]
+is in the line through $x$ and $y$.
+Thus, $x+y = 2(1/2)(x+y) \in M$.\end{proof}
+\end{proposition}
+
+\section*{Affine sets as translated subspaces}
+
+\begin{proposition}
+Suppose $M \neq \varnothing$ is affine.
+Then there exists a unique subspace $L$ and vector $a \in \R ^n$ for which $M = L + a$.
+Moreover,
+\[
+L = M - M = \Set{x - y}{x,y \in M}.
+\]
+\end{proposition}
+
+\begin{proof}First, uniqueness.
+Suppose $L_1$ and $L_2$ are subspaces parallel to $M$.
+We will show that $L_2 \supset L_1$ (and similarly, $L_1 \supset L_2$).
+
+Since $L_1$ and $L_2$ are both parallel to $M$, they are also parallel to each other.
+Consequently, there exists $a \in \R ^n$ with $L_2 = L_1 + a$.
+Since $0 \in L_2$ (it is a subspace, after all), $-a \in L_1$.
+Since $L_1$ is a subspace, $a \in L_1$.
+So $x + a \in L_1$ for every $a \in L_1$, and so $L_2 = L_1 + a \subset L_1$.
+A similar argument gives $L_1 \supset L_2$.
+
+If $y \in M$, then $M + (-y) = M - y$ is a translate of $M$ containing zero (since $y - y = 0$).
+In other words, the affine set $M - y$ is a subspace.
+This, then, is the unique subspace parallel to $M$.
+Since $y$ was arbitrary, the subspace parallel to $M$ is $L = \cup_{y \in M} M - y = \Set{x - y}{x,y \in M}$.\end{proof}

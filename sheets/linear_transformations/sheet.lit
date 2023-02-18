@@ -3,29 +3,37 @@ name: linear_transformations
 needs:
     - transformations
     - linear_combinations
+    - real_linear_functions
+    - vector_space_of_polynomials
+    - real_polynomial_derivatives
+    - derivatives_of_sums
+    - derivatives_of_scalar_multiples
+    - real_polynomial_derivatives
+    - real_integral_additivity
+    - real_integral_homogeneity
+refs:
+    - axler/3a
+wikipedia: https://en.wikipedia.org/wiki/Linear_map
 -->
 
 § Why ⦉
 ¶ ⦊
-  ‖ Lots of things are (approximately) linear.
-    † ⦊
-      ‖ Future editions will expand on this why. In particular,
-        the intuition of proportionality. ⦉
-    ⦉⦉
+  ‖ Many functions of interest are additive and homogenous. ⦉
 ⦉
 
 § Definition ⦉
 ¶ ⦊
-  ‖ A transformation is ❬linear❭ if the result of a linear
-    combination of the two vectors is the linear combination of
-    the results of the vectors (using the same coefficients). ⦉
+  ‖ A transformation is ❬linear❭ (a ❬linear transformation❭,
+    ❬linear map❭) if the result of a linear combination of the
+    two vectors is the linear combination of the results of the
+    vectors (using the same coefficients). ⦉
 
   ‖ The transformation is linear ❬with respect to❭ the field of
     the two vector spaces. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ We use the term transformation (
+  ‖ We use the term transformation (see␣
     <a href='/sheets/transformations.html'>
       ‖ Transformations ⦉
     </a>
@@ -35,7 +43,12 @@ needs:
   ‖ Of course, $𝗥$ is a vector space and so a function $f: 𝗥
     → 𝗥$ may be linear. ⦉
 
-  ‖ It is, therefore, common to speak of ❬linear functions❭. ⦉
+  ‖ The linear maps from $𝗥$ to $𝗥$ are the the ❬linear
+    functions❭ (see␣
+    <a href='/sheets/real_linear_functions.html'>
+      ‖ Real Linear Functions ⦉
+    </a>
+    ) . ⦉
 ⦉
 
 ¶ ⦊
@@ -49,14 +62,211 @@ needs:
 
 §§ Notation ⦉
 ¶ ⦊
-  ‖ Let $(V_1, F)$ and $(V_2, F)$ be two vector spaces over
-    the same field. ⦉
+  ‖ Let $(V, 𝗙)$ and $(W, 𝗙)$ be two vector spaces over the
+    same field. ⦉
 
-  ‖ Let $f: V_1 → V_2$. $f$ is linear means
+  ‖ Suppose $T: V → W$. ⦉
+
+  ‖ $T$ is linear means
     ◇ ⦊
-      ‖ f(au + bv) = af(u) + bf(v) ⦉
+      ‖ T(αu + βv) = βT(u) + αT(v) \quad \text{for all } α, β
+        ∈ F \text{ and } u, v ∈ V. ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ As usual, the condition that $T$ is linear condition is
+    equivalent to the two conditions:
+    𝍫 ⦊
+      ‣ $T(u + v) = f(u) + T(v)$ for all $u, v ∈ V$, and ⦉
+
+      ‣ $f(λu) = λf(u)$ for all $λ ∈ 𝗙$ and $u ∈ V$. ⦉
+    ⦉⦉
+
+  ‖ If $T$ satisfies (1), we call $T$ ❬additive❭ (has the
+    property of ❬additivity❭) and if it satisfies (2) we call
+    $T$ $T$ ❬homogeneous❭ (has the property of ❬homogeneity❭). ⦉
+⦉
+
+¶ ⦊
+  ‖ For linear maps, it is common to denote $T(v)$ by $Tv$;
+    notice that we have dropped the usual parentheses. ⦉
+⦉
+
+¶ ⦊
+  ‖ We denote the set of all linear maps by $ℒ(V, W)$. ⦉
+
+  ‖ It is understood when using this notation that $V$ and $W$
+    are vector spaces with respect to the same field $𝗙$. ⦉
+⦉
+
+§§ Examples ⦉
+¶ ⦊
+  ‖ Throughout, we consider vector spaces $V$ and $W$ over some
+    fixed field $𝗙$. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Constant zero map›. ⦉
+
+  ‖ The map $T ∈ ℒ(V, W)$ defined by
+    ◇ ⦊
+      ‖ T(v) = 0 ∈ W \quad \text{for all } v ∈ V ⦉
     ⦉
-    for all $a, b ∈ F$ and $u, v ∈ V_1$. ⦉
+    is called the ❬zero map❭ (or ❬zero transformation❭). ⦉
+
+  ‖ It is common to overload the symbol 0 so that $0 ∈ ℒ(V,
+    W)$ denotes the map zero map. ⦉
+
+  ‖ In other words, the map $0$ is defined by
+    ◇ ⦊
+      ‖ 0v = 0 ⦉
+    ⦉⦉
+
+  ‖ Some care is required to interpret this equation. ⦉
+
+  ‖ The 0 on the left hand side refers to a function, from
+    $V$ to $W$. ⦉
+
+  ‖ The 0 on the right hand side is the additive identity in
+    $W$. ⦉
+
+  ‖ Usually context disambiguates the overloaded notation. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹The identity map›. ⦉
+
+  ‖ The map $T ∈ ℒ(V, V)$ defined by
+    ◇ ⦊
+      ‖ Tv = v \quad \text{for all } v ∈ V ⦉
+    ⦉
+    is called the ❬identity map❭ (or ❬identity transformation❭) ⦉
+
+  ‖ It is common to denote this map by $I$. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Differentiation of polynomials› ⦉
+
+  ‖ Suppose $P$ is the set of all polynomials with coefficients
+    in $𝗥$. ⦉
+
+  ‖ (Some authors denote this set by $𝒫(𝗥)$. ⦉
+
+  ‖ Recall that every $p ∈ 𝒫(𝗥)$ is differentiable and $p' ∈
+    𝒫(𝗥)$. ⦉
+
+  ‖ The map $T ∈ ℒ(𝒫(𝗥), 𝒫(𝗥))$ defined by
+    ◇ ⦊
+      ‖ Tp = p' ⦉
+    ⦉
+    is linear. ⦉
+
+  ‖ To see this, recall $(f + g)' = f' + g'$ and $(λf)' =
+    λf'$ whenever $f, g$ are differentiable and $λ ∈ 𝗥$ (see␣
+    <a href='/sheets/derivatives_of_sums.html'>
+      ‖ Derivative of Sums ⦉
+    </a>
+    ␣and␣
+    <a href='/sheets/derivatives_of_scalar_multiples.html'>
+      ‖ Derivatives of Scalar Multiples ⦉
+    </a>
+    ) . ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Integration of polynomials› ⦉
+
+  ‖ As in the previous paragraph, $𝒫(𝗥)$ denotes the vector
+    space of polynomials with coefficients in $𝗥$. ⦉
+
+  ‖ The map $T ∈ ℒ(𝒫(𝗥), 𝗥)$ defined by
+    ◇ ⦊
+      ‖ Tp = ∫_{[0,1]} p ⦉
+    ⦉
+    is linear ⦉
+
+  ‖ To see this, recall that $∫(f + g) = ∫f + ∫g$ and $∫λf
+    = λ∫f$ whenever $f, g$ are differentiable and $λ ∈ 𝗥$ (see␣
+    <a href='/sheets/real_integral_additivity.html'>
+      ‖ Real Integral Additivity ⦉
+    </a>
+    ␣and␣
+    <a href='/sheets/real_integral_homogeneity.html'>
+      ‖ Real Integral Homogeneity ⦉
+    </a>
+    . ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Multipliciation by a quadratic›. ⦉
+
+  ‖ As in the previous paragraph, $𝒫(𝗥)$ denotes the vector
+    space of polynomials with coefficients in $𝗥$. ⦉
+
+  ‖ The map $T ∈ ℒ(𝒫(𝗥), 𝒫(𝗥))$ defined by
+    ◇ ⦊
+      ‖ (Tp)(x) = x^2p(x) \quad \text{for all } x ∈ 𝗥, p ∈
+        𝒫(𝗥) ⦉
+    ⦉⦉
+
+  ‖ is linear. ⦉
+
+  ‖ (Prove this). ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Sequence backward shift›. ⦉
+
+  ‖ Denote the space of infinite sequences in a field $𝗙$ by
+    $𝗙^𝗡$ as usual. ⦉
+
+  ‖ Define $T ∈ ℒ(𝗙^𝗡, 𝗙^𝗡)$ by
+    ◇ ⦊
+      ‖ T(x_1, x_2, x_3, …) = (x_2, x_3, …) ⦉
+    ⦉⦉
+
+  ‖ $T$ is called the ❬backward shift operator❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹From real space the the real plane›. ⦉
+
+  ‖ Define $T ∈ ℒ(𝗥^3, 𝗥^2)$ by
+    ◇ ⦊
+      ‖ T(x, y, z) = (2x - y + 3z, 7x+5y - 6z) ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ ‹From $𝗙^n$ to $𝗙^m$›. ⦉
+
+  ‖ Generalizing the previous example, suppose $m$ and $n$ are
+    natuarl numbers, and let $A_{i, j} ∈ 𝗙$ for $i = 1, …, m$
+    and $j = 1, …, m$. ⦉
+
+  ‖ Define $T ∈ ℒ(𝗙^3, 𝗙^2)$ by
+    ◇ ⦊
+      ‖ T(x_1, ⋯, x_n) = (A_{1,1}x + ⋯ + A_{1,n} x_n, …,
+        A_{m,1}x_1 + ⋯ + A_{m,n}x_n) ⦉
+    ⦉⦉
+
+  ‖ (It happens that every linear map from $𝗙^n$ to $𝗙^m$ has
+    this form.) ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹A counterexample: $\cos$›
+    † ⦊
+      ‖ Need to add a sheet for trigonometric functions. ⦉
+    ⦉⦉
+
+  ‖ Notice $\cos(x + y) = \cos(x) + \cos(y)$. ⦉
+
+  ‖ True, $\cos$ is not homogenous. that $\cos2x = 2\cos(x)$ and ⦉
+
+  ‖ But this does not hold for all reals: $\cos λx ≠ λ\cos(x)$. ⦉
 ⦉
 
 <tex>
