@@ -1,27 +1,123 @@
 
 \section*{Why}
 
-Lots of things are (approximately) linear.\footnote{Future editions will expand on this why. In particular, the intuition of proportionality.}
+Many functions of interest are additive and homogenous.
 
 \section*{Definition}
 
-A transformation is \t{linear} if the result of a linear combination of the two vectors is the linear combination of the results of the vectors (using the same coefficients).
+A transformation is \t{linear} (a \t{linear transformation}, \t{linear map}) if the result of a linear combination of the two vectors is the linear combination of the results of the vectors (using the same coefficients).
 The transformation is linear \t{with respect to} the field of the two vector spaces.
 
-We use the term transformation ( \sheetref{transformations}{Transformations}) for emphasis and reminder that the function is defined on a vector space.
+We use the term transformation (see \sheetref{transformations}{Transformations}) for emphasis and reminder that the function is defined on a vector space.
 Of course, $\R $ is a vector space and so a function $f: \R \to \R $ may be linear.
-It is, therefore, common to speak of \t{linear functions}.
+The linear maps from $\R $ to $\R $ are the the \t{linear functions} (see \sheetref{real_linear_functions}{Real Linear Functions}) .
 
 Often authors will use the word \t{operator} for linear functions.
 It seems, generally, that this term is commonly reserved for the case in which the vector space discussed is a function space (or, at least, infinite dimensional).
 
 \subsection*{Notation}
 
-Let $(V_1, F)$ and $(V_2, F)$ be two vector spaces over the same field.
-Let $f: V_1 \to V_2$. $f$ is linear means
+Let $(V, \F )$ and $(W, \F )$ be two vector spaces over the same field.
+Suppose $T: V \to W$.
+$T$ is linear means
 \[
-f(au + bv) = af(u) + bf(v)
+T(\alpha u + \beta v) = \beta T(u) + \alpha T(v) \quad \text{for all } \alpha , \beta  \in F \text{ and } u, v \in V.
 \]
-for all $a, b \in F$ and $u, v \in V_1$.
+
+As usual, the condition that $T$ is linear condition is equivalent to the two conditions:
+    \begin{enumerate}
+      \item $T(u + v) = f(u) + T(v)$ for all $u, v \in V$, and
+      \item $f(\lambda u) = \lambda f(u)$ for all $\lambda  \in \F $ and $u \in V$.
+    \end{enumerate}
+If $T$ satisfies (1), we call $T$ \t{additive} (has the property of \t{additivity}) and if it satisfies (2) we call $T$ $T$ \t{homogeneous} (has the property of \t{homogeneity}).
+
+For linear maps, it is common to denote $T(v)$ by $Tv$; notice that we have dropped the usual parentheses.
+
+We denote the set of all linear maps by $\mathcal{L} (V, W)$.
+It is understood when using this notation that $V$ and $W$ are vector spaces with respect to the same field $\F $.
+
+\subsection*{Examples}
+
+Throughout, we consider vector spaces $V$ and $W$ over some fixed field $\F $.
+
+\textit{Constant zero map}.
+The map $T \in \mathcal{L} (V, W)$ defined by
+\[
+T(v) = 0 \in W \quad \text{for all } v \in V
+\]
+is called the \t{zero map} (or \t{zero transformation}).
+It is common to overload the symbol 0 so that $0 \in \mathcal{L} (V, W)$ denotes the map zero map.
+In other words, the map $0$ is defined by
+\[
+0v = 0
+\]
+Some care is required to interpret this equation.
+The 0 on the left hand side refers to a function, from $V$ to $W$.
+The 0 on the right hand side is the additive identity in $W$.
+Usually context disambiguates the overloaded notation.
+
+\textit{The identity map}.
+The map $T \in \mathcal{L} (V, V)$ defined by
+\[
+Tv = v \quad \text{for all } v \in V
+\]
+is called the \t{identity map} (or \t{identity transformation})
+It is common to denote this map by $I$.
+
+\textit{Differentiation of polynomials}
+Suppose $P$ is the set of all polynomials with coefficients in $\R $.
+(Some authors denote this set by $\mathcal{P} (\R )$.
+Recall that every $p \in \mathcal{P} (\R )$ is differentiable and $p' \in \mathcal{P} (\R )$.
+The map $T \in \mathcal{L} (\mathcal{P} (\R ), \mathcal{P} (\R ))$ defined by
+\[
+Tp = p'
+\]
+is linear.
+To see this, recall $(f + g)' = f' + g'$ and $(\lambda f)' = \lambda f'$ whenever $f, g$ are differentiable and $\lambda  \in \R $ (see \sheetref{derivatives_of_sums}{Derivative of Sums}and \sheetref{derivatives_of_scalar_multiples}{Derivatives of Scalar Multiples}) .
+
+\textit{Integration of polynomials}
+As in the previous paragraph, $\mathcal{P} (\R )$ denotes the vector space of polynomials with coefficients in $\R $.
+The map $T \in \mathcal{L} (\mathcal{P} (\R ), \R )$ defined by
+\[
+Tp = \int _{[0,1]} p
+\]
+is linear
+To see this, recall that $\int (f + g) = \int f + \int g$ and $\int \lambda f = \lambda \int f$ whenever $f, g$ are differentiable and $\lambda  \in \R $ (see \sheetref{real_integral_additivity}{Real Integral Additivity}and \sheetref{real_integral_homogeneity}{Real Integral Homogeneity}.
+
+\textit{Multipliciation by a quadratic}.
+As in the previous paragraph, $\mathcal{P} (\R )$ denotes the vector space of polynomials with coefficients in $\R $.
+The map $T \in \mathcal{L} (\mathcal{P} (\R ), \mathcal{P} (\R ))$ defined by
+\[
+(Tp)(x) = x^2p(x) \quad \text{for all } x \in \R , p \in \mathcal{P} (\R )
+\]
+is linear.
+(Prove this).
+
+\textit{Sequence backward shift}.
+Denote the space of infinite sequences in a field $\F $ by $\F ^\N  $ as usual.
+Define $T \in \mathcal{L} (\F ^\N  , \F ^\N  )$ by
+\[
+T(x_1, x_2, x_3, \dots ) = (x_2, x_3, \dots )
+\]
+$T$ is called the \t{backward shift operator}.
+
+\textit{From real space the the real plane}.
+Define $T \in \mathcal{L} (\R ^3, \R ^2)$ by
+\[
+T(x, y, z) = (2x - y + 3z, 7x+5y - 6z)
+\]
+
+\textit{From $\F ^n$ to $\F ^m$}.
+Generalizing the previous example, suppose $m$ and $n$ are natuarl numbers, and let $A_{i, j} \in \F $ for $i = 1, \dots , m$ and $j = 1, \dots , m$.
+Define $T \in \mathcal{L} (\F ^3, \F ^2)$ by
+\[
+T(x_1, \cdots, x_n) = (A_{1,1}x + \cdots + A_{1,n} x_n, \dots , A_{m,1}x_1 + \cdots + A_{m,n}x_n)
+\]
+(It happens that every linear map from $\F ^n$ to $\F ^m$ has this form.)
+
+\textit{A counterexample: $\cos$}\footnote{Need to add a sheet for trigonometric functions.}
+Notice $\cos(x + y) = \cos(x) + \cos(y)$.
+True, $\cos$ is not homogenous. that $\cos2x = 2\cos(x)$ and
+But this does not hold for all reals: $\cos \lambda x \neq \lambda \cos(x)$.
 
 \blankpage
