@@ -1,37 +1,37 @@
 {{ range . }}
 \newpage
-\label{{ "{" }}{{.Name}}{{ "}" }}
+\label{{ "{" }}{{.Config.Name}}{{ "}" }}
 \refstepcounter{sheets}
-\label{{ "{" }}sheets:{{.Name}}{{ "}" }}
-\hypertarget{{ "{" }}{{ .Name }}{{ "}" }}{}
-\stitle{{ "{" }}{{ title .Name }}{{ "}" }}{{ "{" }}{{.Name}}{{ "}" }}
-\input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/macros.tex{{ "}" }}
-\input{{ "{" }}../sheets/{{ .Name | printf "%s" }}/sheet.tex{{ "}" }}
+\label{{ "{" }}sheets:{{.Config.Name}}{{ "}" }}
+\hypertarget{{ "{" }}{{ .Config.Name }}{{ "}" }}{}
+\stitle{{ "{" }}{{ title .Config.Name }}{{ "}" }}{{ "{" }}{{.Config.Name}}{{ "}" }}
+\input{{ "{" }}../sheets/{{ .Config.Name | printf "%s" }}/macros.tex{{ "}" }}
+\input{{ "{" }}../sheets/{{ .Config.Name | printf "%s" }}/sheet.tex{{ "}" }}
 \clearpage
 
-{{ if .Needs }}
-\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
-(\ref{{ "{" }}sheets:{{.Name}}{{ "}" }})
+{{ if .Config.Needs }}
+\sheetref{{ "{" }}{{ .Config.Name }}{{ "}" }}{{ "{" }}{{ title .Config.Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{.Config.Name}}{{ "}" }})
 immediately needs:
 
 \begin{tabular}{l}
-{{ range .Needs }}
+{{ range .Config.Needs }}
 \sheetref{{ "{" }}{{ . }}{{ "}" }}{{ "{" }}{{ title . }}{{ "}" }}
 (\ref{{ "{" }}sheets:{{.}}{{ "}" }})
 \\
 {{ end }}
 \end{tabular}
 {{else}}
-\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
-(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
+\sheetref{{ "{" }}{{ .Config.Name }}{{ "}" }}{{ "{" }}{{ title .Config.Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{ .Config.Name }}{{ "}" }})
 does not immediately need any sheet.
 {{end}}
 
 \vspace{{ "{" }}0.5cm{{ "}"}}
 
 {{ if .NeededBy }}
-\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
-(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
+\sheetref{{ "{" }}{{ .Config.Name }}{{ "}" }}{{ "{" }}{{ title .Config.Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{ .Config.Name }}{{ "}" }})
 is immediately needed by:
 
 \begin{tabular}{l}
@@ -42,25 +42,25 @@ is immediately needed by:
 {{ end }}
 \end{tabular}
 {{else}}
-\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
-(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
+\sheetref{{ "{" }}{{ .Config.Name }}{{ "}" }}{{ "{" }}{{ title .Config.Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{ .Config.Name }}{{ "}" }})
 is not immediately needed by any sheet.
 {{end}}
 
 \vspace{{ "{" }}0.5cm{{ "}"}}
 
 {{ if .Terms }}
-\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
-(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
+\sheetref{{ "{" }}{{ .Config.Name }}{{ "}" }}{{ "{" }}{{ title .Config.Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{ .Config.Name }}{{ "}" }})
 gives the following terms.
 
 \textit{{ "{"}} {{ join .Terms }}.{{ "}" }}
 
 {{else}}
-\sheetref{{ "{" }}{{ .Name }}{{ "}" }}{{ "{" }}{{ title .Name }}{{ "}" }}
-(\ref{{ "{" }}sheets:{{ .Name }}{{ "}" }})
+\sheetref{{ "{" }}{{ .Config.Name }}{{ "}" }}{{ "{" }}{{ title .Config.Name }}{{ "}" }}
+(\ref{{ "{" }}sheets:{{ .Config.Name }}{{ "}" }})
 gives no terms.
 {{end}}
 
-\clearpage\gpage{{ "{" }}../sheets/{{ .Name }}/graph.pdf{{ "}" }}
+\clearpage\gpage{{ "{" }}../sheets/{{ .Config.Name }}/graph.pdf{{ "}" }}
 {{ end }}

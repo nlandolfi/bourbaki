@@ -1,5 +1,5 @@
 inputs.tex: sheets.csv inputs.tmpl ../sheets/*/*.tex # inputs.go
-	bbk_all -sheets ../sheets/ > inputs.tex
+	bbk all -sheets ../sheets/ > inputs.tex
 
 all.pdf: inputs.tex *.tex ../*.tex ../trademark.pdf ../sheets/*/*.tex
 # doesn't work?!
