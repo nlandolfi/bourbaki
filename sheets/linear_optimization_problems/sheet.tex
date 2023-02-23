@@ -1,0 +1,73 @@
+
+\section*{Definition}
+
+An optimization problem $(\mathcal{X} , f)$ is called \t{linear} (a \t{linear optimization problem}) if $\mathcal{X}  \subset \R ^n$ is a polyhedron and $f: \R ^n \to \Rbar$ is a linear function.
+
+\subsection*{Problem data}
+
+Recall that $f$ is linear means there exists $c \in \R ^n$ such that
+\[
+f(x) = c^\top x \quad \text{for all } x \in \R ^n
+\]
+Also, $\mathcal{X} $ polyhedral means there exists $A \in \R ^{m \times  n}$ and $b \in \R ^{d}$ such that
+\[
+\mathcal{X}  = \Set{x \in \R ^n}{Ax \leq b}
+\]
+For this reason, the \t{problem data} $(A, b, c)$ is sufficient to specify a linear optimization problem.
+Recall that $Ax \leq b$ means element-wise inequality (i.e., that the inequality holds in each component).
+
+\subsection*{Task}
+
+Given data $A \in \R ^{m \times  n}$, $b \in \R ^n$, $c \in \R ^n$, we want to find $x \in \R ^d$ to
+\[
+\begin{aligned}
+\text{minimize} &\quad c^\top x \\
+\text{subject to} &\quad Ax \leq b
+\end{aligned}
+\]
+We either want $x^\star \in \R ^n$ so that $Ax^\star \leq b$ and $c^\top x^\star \leq c^\top  x$ for all $x \in \R ^n$, or we want to know that $\Set{x}{Ax \leq b} = \varnothing$, or we want to know that for all $\alpha  \in \R $, there is an $x \in \R ^n$ satisfying $Ax \leq b$ and $c^\top x \leq \alpha $.
+This problem is regularly called \t{linear programming} (a \t{linear program}).
+Many authors define this problem with the goal as maximization: of course, minimizing $c^\top x$ is equivalent to (has the same set of optimal solutions) maximizing $-c^\top x$.
+
+\subsection*{Notation}
+
+In the context of linear optimization, $c^\top x$ is often abbreviated $cx$.
+A linear program is sometimes abbreviated $\min\Set{cx}{Ax \leq b}$ (here the matrices and vectors are assumed to be conforming).
+As usual, $x \in \R ^n$ is called \t{feasible} (a \t{feasible solution}) if $Ax \leq b$.
+$x^\star \in \R ^n$ is called \t{optimal} (an \t{optimal solution}, \t{optimum solution}) if $c^\top x^\star \leq c^\top x$ for all $x \in \R ^n$.
+We sometimes denote the rows of $a$ by $\bar{a}_i^\top  \in \R ^n$ for $i = 1, \dots , m$, i.e.,
+\[
+A = \bmat{- & \bar{a}_1^\top  & - \\ &\vdots& \\ - & \bar{a}_m^\top  & - } \in \R ^{m \times  n}
+\]
+and refer to the inequality $\bar{a}_i^\top  x \leq b_i$ as an \t{inequality constraint} for $i = 1, \dots , m$.
+The set or the expression $Ax \leq b$ are both sometimes called the \t{inequality constraints} of the problem.
+
+The problem $(A, b, c)$ is \t{infeasible} if the polyhedron
+\[
+P = \Set{x \in \R ^n}{Ax \leq b}
+\]
+is empty.
+In symbols, if $P = \varnothing$.
+The problem is \t{unbounded} if for all $\alpha  \in \R $, there exists $x \in P$ with $c^\top x < \alpha $.
+
+Here's an infeasible instance. Define
+\[
+A = \bmat{1 \\ -1} \quad b = \bmat{-1 \\ -1} \quad c = \bmat{1}
+\]
+We want $x \in \R ^1$ so that $x \leq -1$ and $x \geq 1$.
+There is no such $x$.
+
+Here's an unbounded instance: drop the second inequality constraint.
+Then we are interested in finding $x_1$ to minimize $x_1$ subject to $x_1 \leq -1$.
+Given $\alpha  \in \R $, if $\alpha  > 0$ pick $x_1 = -1$, else pick $2\alpha $.
+This problem is unbounded.
+
+Here's a simple example with an optimal solution.
+Modify $b = \bmat{1 & 0}^\top $.
+Now we want to find $x_1$ so that
+\[
+x_1 \leq 1 \quad \text{ and } x_1 \geq 0
+\]
+and we minimize $x_1$
+Clearly $x_1 = 0$ is an optimal solution.
+Indeed, it is the unique optimal solution in this case.

@@ -2,6 +2,13 @@
 name: convex_multivariate_functions
 needs:
     - real_convex_functions
+    - n-dimensional_space
+    - real_function_epigraphs
+    - extended_real_numbers
+    - affine_transformations_of_real_convex_sets
+    - function_restrictions_and_extensions
+refs:
+    - rockafeller/section_4 (p23)
 -->
 
 § Why ⦉
@@ -11,17 +18,164 @@ needs:
 
 § Definition ⦉
 ¶ ⦊
-  ‖ Let $A$ be a convex subset of $𝗥^n$. ⦉
-
-  ‖ The function $f: A → 𝗥$ is ❬convex❭ if for any $a, b ∈
-    A$ and $t ∈ [0, 1]$,
+  ‖ Given a set $S ⊂ 𝗥^n$ and a function $f: S → \Rbar$, the
+    set
     ◇ ⦊
-      ‖ f(ta + (1-t)b) ≤ tf(a) + (1-t)f(b). ⦉
-    ⦉⦉
+      ‖ \Set{(x, α) ∈ S × 𝗥}{f(x) ≤ α} ⊂ 𝗥^{n+1} ⦉
+    ⦉
+    is called the ❬epigraph❭ of $f$ and is denoted by $\epi f$. ⦉
 
-  ‖ It is ❬concave❭ if $-f$ is convex. ⦉
+  ‖ The epigraph is a subset of $𝗥^{n+1}$. ⦉
+
+  ‖ Recall that $\Rbar = 𝗥 ∪ \set{-∞, +∞}$ denotes the extended
+    real numbers. ⦉
 ⦉
 
-<tex>
-  ‖ \blankpage ⦉
-</tex>
+¶ ⦊
+  ‖ The function $f$ is ❬convex❭ if $\epi f$ is a convex
+    subset of $𝗥^{n+1}$. ⦉
+
+  ‖ $f$ is ❬concave❭ if $-f$ is convex. ⦉
+
+  ‖ $f$ is ❬affine❭ if it is finite, convex and concave. ⦉
+⦉
+
+§§ Visualization of epigraph ⦉
+<center>
+  <img src='./graphics/cvxepi.pdf' width='80%'/>
+</center>
+
+§§ Effective Domains ⦉
+¶ ⦊
+  ‖ Suppose $f: S → 𝗥$ is convex. ⦉
+
+  ‖ Since our definition of epigraph restricts the last
+    coordinate to be real, no points $x ∈ S$ for which $f(x) =
+    +∞$ are “included” in the epigraph. ⦉
+
+  ‖ The ❬effective domain❭ (or just ❬domain❭) of a convex
+    function $f: S → \Rbar$ is the linear projection of the
+    first $n$ coordinates of $\epi f$. ⦉
+
+  ‖ In other words,
+    ◇ ⦊
+      ‖ \dom f = \Set{x ∈ S}{∃ α ∈ 𝗥, (x, α) ∈ \epi f} =
+        \Set{x ∈ S}{f(x) < +∞} ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ If we define the linear projection (canonical projection) $π:
+    𝗥^{n +1} → 𝗥$ by $π(x,α) = x$ where $x ∈ 𝗥^{n+1}$ and $α
+    ∈ 𝗥^n$, then
+    ◇ ⦊
+      ‖ \dom f = π(\epi f) ⦉
+    ⦉⦉
+
+  ‖ Since $π$ is linear and $\epi f$ is convex by assumption,
+    $\dom f$ is ‹convex›. ⦉
+
+  ‖ To say this again, the effective domain of a convex
+    function is convex. ⦉
+
+  <!-- todo: prove earlier in sheets -->
+
+  <!-- see rockafeller 23 for more on why we have effective domains -->
+⦉
+
+¶ ⦊
+  ‖ Notice that the restriction $f_{|\dom f}$ has the same
+    epigraph as $f$. ⦉
+
+  ‖ For this reason, $f$ is convex if and only if $f_{|\dom
+    f}$ is convex. ⦉
+
+  ‖ Clearly then $f$ restricted to its domain is the principal
+    object of interest. ⦉
+
+  ‖ The usefulness of these technicalities is that any convex
+    $f: S → \Rbar$ can be extended to a convex function
+    $\bar{f}: 𝗥^n → \Rbar$ with the same effective domain. ⦉
+
+  ‖ Define $\bar{f}$ so that
+    ◇ ⦊
+      ‖ \bar{f}(x) = ⦉
+
+      ‖ \begin{cases} ⦉
+
+      ‖ f(x) & x ∈ S ᜶ ⦉
+
+      ‖ +∞ & \text{otherwise} ⦉
+
+      ‖ \end{cases} ⦉
+    ⦉⦉
+
+  ‖ Henceforth, by ❬convex function❭ will be understood an
+    extended real value function, possibly taking value $+∞$,
+    defined on all of $𝗥^n$ whose epigraph is convex. ⦉
+
+  ‖ The upshot is that in constructing a convex function from
+    other convex functions, the effective domains are specified
+    implicitly. ⦉
+
+  <!--
+ <div data-littype='run'> Let $A$ be a convex subset of $𝗥^n$. </div>
+ <div data-littype='run'> The function $f: A → 𝗥$ is ❬convex❭ if for any $a, b ∈
+    A$ and $t ∈ [0, 1]$,
+    <div data-littype='displaymath'>
+     <div data-littype='run'> f(ta + (1-t)b) ≤ tf(a) + (1-t)f(b). </div>
+    </div></div>
+
+ <div data-littype='run'> It is ❬concave❭ if $-f$ is convex. </div>
+</div>
+-->
+⦉
+
+§§ Proper convex functions ⦉
+¶ ⦊
+  ‖ A convex function $f$ is ❬proper❭ if there exists $x$ such
+    that $f(x) < ∞$ and $f(x) > ∞$ for all $x ∈ 𝗥^n$. ⦉
+
+  ‖ Roughly speaking, $f$ is proper if its epigraph is nonempty
+    and contains no vertical lines. ⦉
+
+  ‖ $f$ is proper if and only if $\dom f$ is nonempty and
+    $f_{|\dom f}$ is finite. ⦉
+⦉
+
+¶ ⦊
+  ‖ The proper convex functions arise naturally by taking a
+    function $f: C → 𝗥$ defined on a convex subset $C ⊂ 𝗥^n$
+    and extending it to have value $+∞$ outside of $C$. ⦉
+
+  ‖ A convex function which is not proper is ❬improper❭. ⦉
+⦉
+
+¶ ⦊
+  ‖ Of course, proper convex functions are our main object of
+    study, but improper ones arise from time to time and it is
+    more convenient to admit them than exclude them. ⦉
+⦉
+
+¶ ⦊
+  ‖ For an example of an improper convex function, define $f:
+    𝗥^n → 𝗥$ by
+    ◇ ⦊
+      ‖ f(x) = \begin{cases} ⦉
+
+      ‖ -∞ & \text{ if } \norm{x} < 1, ᜶ ⦉
+
+      ‖ 0 & \text{ if } \norm{x} = 1, ᜶ ⦉
+
+      ‖ +∞ & \text{ if } \norm{x} > 1, ᜶ ⦉
+
+      ‖ \end{cases} ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ ⦉
+  <tex>
+    ‖ \blankpage ⦉
+  </tex>
+⦉
