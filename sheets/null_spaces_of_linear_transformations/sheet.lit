@@ -1,0 +1,166 @@
+<!--yaml
+name: null_spaces_of_linear_transformations
+needs:
+    - linear_transformations
+    - complex_numbers
+refs:
+    - axler/p59
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ When is a linear transformation between $V$ and $W$
+    one-to-one? ⦉
+
+  ‖ In other words, when does
+    ◇ ⦊
+      ‖ Tx = Ty ⇒ x = y ⦉
+    ⦉⦉
+
+  ‖ Rearranging, and using additivity, we ask when
+    ◇ ⦊
+      ‖ T(x - y) = 0 ⇒ x - y = 0 ⦉
+    ⦉⦉
+
+  ‖ Clearly we are interested in vectors $z$ for which $Tz =
+    0$. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Suppose $T ∈ ℒ(V, W)$. ⦉
+
+  ‖ The ❬null space❭ (or ❬kernel❭) of $T$ is the set of
+    vectors in $V$ which are mapped to $0$ under $T$. ⦉
+
+  ‖ In symbols, the null space of $T$ is the set
+    ◇ ⦊
+      ‖ \null T = \Set{v ∈ V}{Tv = 0} ⦉
+    ⦉⦉
+
+  ‖ The word “null” means “zero” in German. ⦉
+⦉
+
+§§ A subspace ⦉
+¶ ⦊
+  ‖ Why use the term ‹space›? ⦉
+
+  ‖ Well, $\null T$ is a ‹subspace› of $V$. ⦉
+⦉
+
+<statement type='proposition'>
+  ‖ Suppose $T ∈ ℒ(V, W)$. ⦉
+
+  ‖ Then $\null(T)$ is a subspace of $V$. ⦉
+</statement>
+<proof>
+  ‖ We verify that $\null(T)$ contains $0$ and is closed under
+    vector addition and scalar multiplication. ⦉
+
+  ‖ First, $0 ∈ \null T$ since $T0 = 0$ by homogeneity. ⦉
+
+  ‖ Second, by additivity, if $x, y ∈ \null T$, then
+    ◇ ⦊
+      ‖ T(x + y) = Tx + Ty = 0 + 0 = 0 ⦉
+    ⦉⦉
+
+  ‖ Third, if $u ∈ \null T$ and $α ∈ 𝗙$, then
+    ◇ ⦊
+      ‖ T(λu) = λ(Tu) = λ0 = 0 ⦉
+    ⦉⦉
+</proof>
+
+§§ Characterization of injectivity ⦉
+<statement type='proposition'>
+  ‖ Suppose $T ∈ ℒ(V, W)$. ⦉
+
+  ‖ Then
+    ◇ ⦊
+      ‖ \null T = \set{0} \iff T \text{ is one-to-one} ⦉
+    ⦉⦉
+</statement>
+¶ ⦊
+  ‖ If $\null T = \set{0}$ we say that $T$ has ❬zero
+    nullspace❭ or ❬trivial nullspace❭. ⦉
+⦉
+
+§§ Examples ⦉
+¶ ⦊
+  ‖ ‹Zero map.›
+
+    ‖ Suppose $T$ is the zero map from $V$ to $W$. ⦉
+
+    ‖ In other words,
+      ◇ ⦊
+        ‖ Tv = 0 \quad \text{for all } v ∈ V ⦉
+      ⦉⦉⦉
+
+  ‖ Then $\null T = V$. ⦉
+
+  ‖ I.e., the null space is the whole space. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Simple function on $𝗖^3$.› ⦉
+
+  ‖ Define $φ ∈ ℒ(𝗖^3, 𝗖)$ by
+    ◇ ⦊
+      ‖ φ(z_1, z_2, z_3) = z_1 + 2z_2 + 3z_3 ⦉
+    ⦉⦉
+
+  ‖ Then $\null φ$ is
+    ◇ ⦊
+      ‖ \Set{(z_1,z_2,z_3) ∈ 𝗖^3}{z_1 + 2z_2 + 3z_3 = 0} ⦉
+    ⦉⦉
+
+  ‖ This is the ‹solution set› of a linear equation. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Polynomial differentiation.› ⦉
+
+  ‖ Suppose $D ∈ ℒ(𝒫(𝗥), 𝒫(𝗥))$ is the linear map defined by
+    ◇ ⦊
+      ‖ Dp = p' \quad \text{for all } p ∈ 𝒫(𝗥) ⦉
+    ⦉⦉
+
+  ‖ In other words, $Dp$ is the derivative of the polynomial
+    $p$. ⦉
+
+  ‖ Then $\null(D)$ is the set of constant functions. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Multiplication by $x^2$.› ⦉
+
+  ‖ Define $T ∈ ℒ(𝒫(𝗥), 𝒫(𝗥))$ by
+    ◇ ⦊
+      ‖ (Tp)(x) = x^2p(x) \quad \text{for all } x ∈ 𝗥 \text{
+        and } p ∈ 𝒫(𝗥) ⦉
+    ⦉⦉
+
+  ‖ Then $\null(T) = \set{0}$, since no other polynomial
+    satisfies $x^2p(x) = 0$ for all $x ∈ 𝗥$. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Backward shift.› ⦉
+
+  ‖ Define $T ∈ ℒ(𝗙^𝗡, 𝗙^𝗡)$ by
+    ◇ ⦊
+      ‖ T(x_1, x_2, x_3, …, ) = (x_2, x_3, …, ) ⦉
+    ⦉
+    so that $T$ is the backward shift ⦉
+
+  ‖ Then $T(x_1, x_2, x_3, …) = 0$ if and only $x_2 = x_3 =
+    ⋯ = 0$. ⦉
+
+  ‖ So
+    ◇ ⦊
+      ‖ \null T = \Set{(α, 0, 0, …,)}{α ∈ 𝗙} ⦉
+    ⦉⦉
+⦉
+
+<tex>
+  ‖ \blankpage ⦉
+</tex>

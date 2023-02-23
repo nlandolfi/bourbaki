@@ -1,0 +1,148 @@
+<!--yaml
+name: linear_optimization_problems
+needs:
+    - optimization_problems
+    - real_polyhedra
+    - inner_product_linear_functional_representations
+refs:
+    - combinkert/3
+-->
+
+§ Definition ⦉
+¶ ⦊
+  ‖ An optimization problem $(𝒳, f)$ is called ❬linear❭ (a
+    ❬linear optimization problem❭) if $𝒳 ⊂ 𝗥^n$ is a polyhedron
+    and $f: 𝗥^n → \Rbar$ is a linear function. ⦉
+⦉
+
+§§ Problem data ⦉
+¶ ⦊
+  ‖ Recall that $f$ is linear means there exists $c ∈ 𝗥^n$
+    such that
+    ◇ ⦊
+      ‖ f(x) = c^⊤x \quad \text{for all } x ∈ 𝗥^n ⦉
+    ⦉⦉
+
+  ‖ Also, $𝒳$ polyhedral means there exists $A ∈ 𝗥^{m × n}$
+    and $b ∈ 𝗥^{d}$ such that
+    ◇ ⦊
+      ‖ 𝒳 = \Set{x ∈ 𝗥^n}{Ax ≤ b} ⦉
+    ⦉⦉
+
+  ‖ For this reason, the ❬problem data❭ $(A, b, c)$ is
+    sufficient to specify a linear optimization problem. ⦉
+
+  ‖ Recall that $Ax ≤ b$ means element-wise inequality (i.e.,
+    that the inequality holds in each component). ⦉
+⦉
+
+§§ Task ⦉
+¶ ⦊
+  ‖ Given data $A ∈ 𝗥^{m × n}$, $b ∈ 𝗥^n$, $c ∈ 𝗥^n$, we
+    want to find $x ∈ 𝗥^d$ to
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ \text{minimize} &\quad c^⊤x ᜶ ⦉
+
+      ‖ \text{subject to} &\quad Ax ≤ b ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ We either want $x^★ ∈ 𝗥^n$ so that $Ax^★ ≤ b$ and $c^⊤x^★
+    ≤ c^⊤ x$ for all $x ∈ 𝗥^n$, or we want to know that
+    $\Set{x}{Ax ≤ b} = ∅$, or we want to know that for all $α
+    ∈ 𝗥$, there is an $x ∈ 𝗥^n$ satisfying $Ax ≤ b$ and $c^⊤x
+    ≤ α$. ⦉
+
+  ‖ This problem is regularly called ❬linear programming❭ (a
+    ❬linear program❭). ⦉
+
+  ‖ Many authors define this problem with the goal as
+    maximization: of course, minimizing $c^⊤x$ is equivalent to
+    (has the same set of optimal solutions) maximizing $-c^⊤x$. ⦉
+⦉
+
+§§ Notation ⦉
+¶ ⦊
+  ‖ In the context of linear optimization, $c^⊤x$ is often
+    abbreviated $cx$. ⦉
+
+  ‖ As usual, $x ∈ 𝗥^n$ is called ❬feasible❭ (a ❬feasible
+    solution❭) if $Ax ≤ b$. ⦉
+
+  ‖ $x^★ ∈ 𝗥^n$ is called ❬optimal❭ (an ❬optimal solution❭,
+    ❬optimum solution❭) if $c^⊤x^★ ≤ c^⊤x$ for all $x ∈ 𝗥^n$. ⦉
+
+  ‖ We sometimes denote the rows of $a$ by $\bar{a}_i^⊤ ∈ 𝗥^n$
+    for $i = 1, …, m$, i.e.,
+    ◇ ⦊
+      ‖ A = \bmat{- & \bar{a}_1^⊤ & - ᜶ &⋮& ᜶ - & \bar{a}_m^⊤
+        & - } ∈ 𝗥^{m × n} ⦉
+    ⦉
+    and refer to the inequality $\bar{a}_i^⊤ x ≤ b_i$ as an
+    ❬inequality constraint❭ for $i = 1, …, m$. ⦉
+
+  ‖ The set or the expression $Ax ≤ b$ are both sometimes
+    called the ❬inequality constraints❭ of the problem. ⦉
+
+  ‖ For this reason, we can say in English that linear
+    optimization deals with maximizing or minimizing a linear
+    objective function of ‹finitely› many variables subject to
+    finitely many linear inequalities. ⦉
+⦉
+
+¶ ⦊
+  ‖ The problem $(A, b, c)$ is ❬infeasible❭ if the polyhedron
+    ◇ ⦊
+      ‖ P = \Set{x ∈ 𝗥^n}{Ax ≤ b} ⦉
+    ⦉
+    is empty. ⦉
+
+  ‖ In symbols, if $P = ∅$. ⦉
+
+  ‖ The problem is ❬unbounded❭ if for all $α ∈ 𝗥$, there
+    exists $x ∈ P$ with $c^⊤x < α$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Here’s an infeasible instance. Define
+    ◇ ⦊
+      ‖ A = \bmat{1 ᜶ -1} \quad b = \bmat{-1 ᜶ -1} \quad c =
+        \bmat{1} ⦉
+    ⦉⦉
+
+  ‖ We want $x ∈ 𝗥^1$ so that $x ≤ -1$ and $x ≥ 1$. ⦉
+
+  ‖ There is no such $x$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Here’s an unbounded instance: drop the second inequality
+    constraint. ⦉
+
+  ‖ Then we are interested in finding $x_1$ to minimize $x_1$
+    subject to $x_1 ≤ -1$. ⦉
+
+  ‖ Given $α ∈ 𝗥$, if $α > 0$ pick $x_1 = -1$, else pick
+    $2α$. ⦉
+
+  ‖ This problem is unbounded. ⦉
+⦉
+
+¶ ⦊
+  ‖ Here’s a simple example with an optimal solution. ⦉
+
+  ‖ Modify $b = \bmat{1 & 0}^⊤$. ⦉
+
+  ‖ Now we want to find $x_1$ so that
+    ◇ ⦊
+      ‖ x_1 ≤ 1 \quad \text{ and } x_1 ≥ 0 ⦉
+    ⦉
+    and we minimize $x_1$ ⦉
+
+  ‖ Clearly $x_1 = 0$ is an optimal solution. ⦉
+
+  ‖ Indeed, it is the unique optimal solution in this case. ⦉
+⦉
