@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make linear_equations.pdf
+	make real_spectrahedra.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-linear_equations.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > linear_equations.tex
+real_spectrahedra.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > real_spectrahedra.tex
 
-linear_equations.pdf: ../../*.tex ../../trademark.pdf *.tex linear_equations.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode linear_equations.tex
-	../../latexrun linear_equations.tex
+real_spectrahedra.pdf: ../../*.tex ../../trademark.pdf *.tex real_spectrahedra.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode real_spectrahedra.tex
+	../../latexrun real_spectrahedra.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: linear_equations.pdf
-	open linear_equations.pdf
+open: real_spectrahedra.pdf
+	open real_spectrahedra.pdf
 
 o:
 	make open
 
-terms: linear_equations.tex
-	bbk_sheet -mode ts linear_equations.tex
+terms: real_spectrahedra.tex
+	bbk_sheet -mode ts real_spectrahedra.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f linear_equations.*
+	rm -f real_spectrahedra.*
 	make reset
 	bbk_sheet -mode mk > Makefile

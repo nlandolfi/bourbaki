@@ -4,17 +4,17 @@
 
 make:
 	make graph.pdf
-	make linear_equation_solutions.pdf
+	make polyhedra.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-linear_equation_solutions.tex: sheet.tex
-	bbk_sheet -mode c -in sheet.tex > linear_equation_solutions.tex
+polyhedra.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > polyhedra.tex
 
-linear_equation_solutions.pdf: ../../*.tex ../../trademark.pdf *.tex linear_equation_solutions.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode linear_equation_solutions.tex
-	../../latexrun linear_equation_solutions.tex
+polyhedra.pdf: ../../*.tex ../../trademark.pdf *.tex polyhedra.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode polyhedra.tex
+	../../latexrun polyhedra.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -26,14 +26,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: linear_equation_solutions.pdf
-	open linear_equation_solutions.pdf
+open: polyhedra.pdf
+	open polyhedra.pdf
 
 o:
 	make open
 
-terms: linear_equation_solutions.tex
-	bbk_sheet -mode ts linear_equation_solutions.tex
+terms: polyhedra.tex
+	bbk_sheet -mode ts polyhedra.tex
 
 spell:
 	aspell -c sheet.tex
@@ -50,6 +50,6 @@ clean:
 	make reset
 
 remake:
-	rm -f linear_equation_solutions.*
+	rm -f polyhedra.*
 	make reset
 	bbk_sheet -mode mk > Makefile
