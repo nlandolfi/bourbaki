@@ -3,6 +3,7 @@ package main
 import (
 	"bbk"
 	"bufio"
+	"bytes"
 	"encoding/csv"
 	"flag"
 	"fmt"
@@ -29,6 +30,7 @@ var (
 const basicHelp = `bbk <command>
     - check
     - terms 
+		- rm <from> <to>
     - mv <from> <to>
     - sheets
     - all
@@ -55,6 +57,8 @@ func main() {
 		termsMain(s)
 	case "graph":
 		graphMain(s)
+	case "rm":
+		rmMain(s)
 	case "mv":
 		mvMain(s)
 	case "sheets":
@@ -190,7 +194,24 @@ func graphMain(s *state) {
 	}
 }
 
-const mvHelp = `bbk mv <from> <to>
+const rmHelp = `bbk rm <from> <to> {-dry} {-sheets <path>}
+
+Like bbk mv, except doesn't overwrite the changed directory.
+In other words, this EXPECTS to be a sheet.
+
+Examples
+  - bbk mr probability_distributions outcome_probabilities
+
+	  All sheets will now point to outcome_probabilties that 
+    used to point to probability_distributions, but the
+		outcome_probabilities sheet will remain unchanged.
+`
+
+func rmMain(s *state) {
+	mv_rm_Main(s, false)
+}
+
+const mvHelp = `bbk mv <from> <to> {-dry} {-sheets <path>}
 
 Change the name of a sheet. Useful because it will find and 
 replace the name in all other sheets as well.
@@ -200,6 +221,17 @@ Examples
 `
 
 func mvMain(s *state) {
+	mv_rm_Main(s, true)
+}
+
+func mv_rm_Main(s *state, overwriteTo bool) {
+	fs := flag.NewFlagSet("mv", flag.ContinueOnError)
+
+	var (
+		sheetsDir = fs.String("sheets", ".", "the sheets directory")
+		dry       = fs.Bool("dry", false, "whether to actually run")
+	)
+
 	if len(s.Args) < 4 {
 		s.info(mvHelp[:strings.Index(mvHelp, "\n")])
 		return
@@ -207,7 +239,12 @@ func mvMain(s *state) {
 
 	from, to := s.Args[2], s.Args[3]
 
-	ss, err := bbk.ParseSheetSet(os.DirFS("."))
+	if err := fs.Parse(s.Args[4:]); err != nil {
+		s.error("parsing flags: %v", err)
+		return
+	}
+
+	ss, err := bbk.ParseSheets(os.DirFS(*sheetsDir))
 	if err != nil {
 		s.error("parsing sheet set: %v", err)
 		return
@@ -218,9 +255,95 @@ func mvMain(s *state) {
 		s.error("sheet %s not found", from)
 		return
 	}
+	if overwriteTo {
+		if _, ok := ss.Sheets[to]; ok {
+			s.error("sheet %s already exists; will not overwrite", to)
+			return
+		}
+	} else {
+		if _, ok := ss.Sheets[to]; !ok {
+			s.error("sheet %s does not exists; will not perform rm", to)
+			return
+		}
+	}
 
-	log.Printf("not implemented: %s -> %s", from, to)
-	log.Print(fromSheet)
+	// ok, the gameplan is, loop through all sheets
+	//    - update needs
+
+	touched := map[string]bool{}
+
+	//var buf bytes.Buffer
+	for name, sd := range ss.Sheets {
+		if name == from {
+			continue
+		}
+
+		for i, need := range sd.Sheet.Config.Needs {
+			if need == from {
+				sd.Sheet.Config.Needs[i] = to
+				touched[name] = true
+			}
+		}
+
+		/*TODO: handle links and other references -- NCL 2/25/23
+		buf.Reset()
+
+		// shouldn't this possibly return an error??
+		if err := lit.WriteLit(&b1, s.LitNode, lit.DefaultWriteOpts); err != nil {
+			c.error("%v", err)
+			return
+		}
+
+		s := buf.String()
+		if strings.Index(s, from) < 0 {
+			continue
+		}
+		out = strings.ReplaceAll(s, from, to)
+		nNode, err := lit.ParseLit(out)
+		if err != nil {
+			c.error("parsing replaced lit: %v", err)
+			return
+		}
+		touched[name] = true
+		*/
+	}
+
+	if *dry {
+		var b bytes.Buffer
+		fmt.Fprintf(&b, "would touch:\n")
+		tn := make([]string, 0, len(touched))
+		for n := range touched {
+			tn = append(tn, n)
+		}
+		sort.Strings(tn)
+		for _, n := range tn {
+			fmt.Fprintf(&b, " - %s\n", n)
+		}
+		fmt.Fprintf(&b, "to move %s -> %s", from, to)
+		s.info(b.String())
+		return
+	}
+	//s.error("not implemented: %s -> %s", from, to)
+	//return
+
+	fromSheet.Sheet.Config.Name = to
+
+	if err := os.RemoveAll(from); err != nil {
+		s.error("os.RemoveAll: %v", err)
+		return
+	}
+	if overwriteTo {
+		if err := bbk.OverwriteSheetDir(to, fromSheet); err != nil {
+			s.error("os.OverwriteSheetDir: %v", err)
+			return
+		}
+	}
+	for n := range touched {
+		if err := bbk.OverwriteSheetDir(n, ss.Sheets[n]); err != nil {
+			s.error("os.OverwriteSheetDir: %v", err)
+			return
+		}
+	}
 }
 
 const sheetsHelp = `bbk sheets
