@@ -3,6 +3,8 @@ name: measures
 needs:
     - sigma_algebras
     - extended_real_numbers
+    - length_measure
+wikipedia: https://en.wikipedia.org/wiki/Measure_(mathematics)
 -->
 
 § Why ⦉
@@ -13,81 +15,53 @@ needs:
 
 § Definition ⦉
 ¶ ⦊
-  ‖ An extended-real-valued non-negative function on an ‹algebra›
-    is ❬finitely additive❭ if the result of the function applied
-    to the union of a disjoint finite family of distinguished
-    sets is the sum of the results of the function applied to
-    each of the sets individually. ⦉
+  ‖ Suppose $𝒜$ is an algebra of sets. ⦉
+
+  ‖ A function $f: 𝒜 → \Rbar_+$ is ❬finitely additive❭ if
+    ◇ ⦊
+      ‖ f(∪_{i = 1}^{n} A_i) = ∑_{i = 1}^{n} f(A_i) \quad
+        \text{for all } A_1, …, A_n ∈ 𝒜 ⦉
+    ⦉⦉
 ⦉
 
 ¶ ⦊
-  ‖ An extended-real-valued non-negative function on a ‹sigma
-    algebra› is ❬countably additive❭ if the result of the
-    function applied to the union of a disjoint countable family
-    of distinguished sets is the limit of the partial sums of
-    the results of the function applied to each of the sets
-    individually. ⦉
+  ‖ Similarly, suppose $ℱ$ is a $σ$-algebra. ⦉
+
+  ‖ Then $f$ is ❬countably additive❭ if
+    ◇ ⦊
+      ‖ f(∪_{i = 1}^{∞} F_i) = ∑_{i =1 }^{∞} f(F_i) \quad
+        \text{for all sequences } \set{F_i}_{i ∈ 𝗡} \text{ in } ℱ ⦉
+    ⦉⦉
 ⦉
 
 ¶ ⦊
-  ‖ A ❬finitely additive measure❭ is an extended-real-valued
-    non-negative finitely additive function which associates the
-    empty set with the real number $0$. ⦉
+  ‖ If, in addition, $f(∅) = 0$, then $f$ is called a
+    ❬finitely additive measure❭ or ❬countably additive measure❭
+    respectively. ⦉
 
-  ‖ A ❬countably additive measure❭ is an extended-real-valued
-    non-negative countably additive function which associates the
-    empty set with the real number $0$. ⦉
-
-  ‖ We call countably additive measures ❬measures❭, for short. ⦉
+  ‖ Since a countably additive measure is finitely additive (the
+    converse is false!), when we speak of a ❬measure❭ we mean a
+    countable additive one. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ Every countably additive measure is finitely additive. ⦉
+  ‖ When $(X, ℱ)$ is a countably unitable subset algebra and
+    $μ: ℱ → \Rbar_+$, then we call $(X, ℱ)$ a ❬measurable
+    space❭ and call $(X, ℱ, μ)$ a ❬measure space❭. ⦉
 
-  ‖ On the other hand, there exist finitely additive measures
-    which are not countably additive. ⦉
-⦉
+  ‖ We often call $ℱ$ the ❬measurable sets❭. ⦉
 
-¶ ⦊
-  ‖ In the context of measure, we call a countably unitable
-    subset algebra a ❬measurable space❭. ⦉
-
-  ‖ We call the distinguished sets ❬measurable❭ sets. ⦉
-
-  ‖ A ❬measure space❭ is triple. ⦉
-
-  ‖ As a pair, the first two objects are a measurable space. ⦉
-
-  ‖ The third object is a measure defined on the sigma algebra
-    of the measurable space. ⦉
+  ‖ In other words, a measure space is a triple: a base set,
+    a sigma algebra, and a measure. ⦉
 ⦉
 
 §§ Notation ⦉
 ¶ ⦊
-  ‖ Suppose $A$ a nonempty set and $𝒜$ is a sigma algebra on
-    $A$ so that the pair $(A, 𝒜)$ is a measurable space. ⦉
-⦉
+  ‖ We often use $μ$ for a measure since it is a mnemonic for
+    “measure”. ⦉
 
-¶ ⦊
-  ‖ Let $μ: 𝒜 → [0, ∈fty]$ a measure; ⦉
-
-  ‖ thus: ⦉
-
-  ‖ (a) $μ(∅) = 0$ and ⦉
-
-  ‖ (b) for disjoint $\set{A_n} ⊂ 𝒜$, ⦉
-
-  ‖ $μ(∪_{n = 1}^{∞} A_n) = ∑_{n = 1}^{∞} μ(A_n)$ ⦉
-
-  ‖ The triple $(A, 𝒜, μ)$ is a measure space. ⦉
-⦉
-
-¶ ⦊
-  ‖ We use $μ$ since it is a mnemonic for “measure”. ⦉
-
-  ‖ We often also us $ν$ to denote measures, since it is after
-    $μ$ in the Greek alphabet, and $λ$, since it is before $μ$
-    in the Greek alphabet. ⦉
+  ‖ We often also us $ν$ and $λ$ since these letters are near
+    $μ$ in the Greek alphabet. ⦉
 ⦉
 
 §§ Examples ⦉
@@ -113,18 +87,11 @@ needs:
 
   ‖ We call $μ$ the ❬point mass❭ concentrated at $a$. ⦉
 </statement>
-¶ ⦊
-  ‖ \begin{expl} ⦉
-
+<statement type='example'>
   ‖ The Lebesgue measure on the measurable space $(𝗥, ℬ(𝗥))$ is
     a measure. ⦉
-
-  ‖ \end{expl} ⦉
-⦉
-
-¶ ⦊
-  ‖ \begin{expl} ⦉
-
+</statement>
+<statement type='example'>
   ‖ Let $𝒜$ the co-finite algebra on $N$. ⦉
 
   ‖ Let $μ: 𝒜 → [0, +∞]$ be such that $μ(A)$ is 1 if $A$ is
@@ -137,26 +104,18 @@ needs:
 
   ‖ Observe that if $A_n = \set{n}$ the $μ(∪_{n} A_n) = 1$ but
     $∑_{n} μ(A_n) = 0$. ⦉
+</statement>
+<statement type='example'>
+  ¶ ⦊
+    ‖ Let $(A, 𝒜)$ a measurable space. ⦉
 
-  ‖ \end{expl} ⦉
-⦉
+    ‖ Let $μ: 𝒜 → [0, +∞]$ be $0$ if $A = ∅$ and $μ(A)$ is
+      $+∞$ otherwise. ⦉
 
-¶ ⦊
-  ‖ \begin{expl} ⦉
-
-  ‖ Let $(A, 𝒜)$ a measurable space. ⦉
-
-  ‖ Let $μ: 𝒜 → [0, +∞]$ be $0$ if $A = ∅$ and $μ(A)$ is
-    $+∞$ otherwise. ⦉
-
-  ‖ Then $μ$ is a measure. ⦉
-
-  ‖ \end{expl} ⦉
-⦉
-
-¶ ⦊
-  ‖ \begin{expl} ⦉
-
+    ‖ Then $μ$ is a measure. ⦉
+  ⦉
+</statement>
+<statement type='example'>
   ‖ Let $A$ be set with at least two elements ($\card{A} ≥ 2$). ⦉
 
   ‖ Let $𝒜 = \powerset{A}$. ⦉
@@ -165,172 +124,44 @@ needs:
     and $μ(A) = 1$ otherwise. ⦉
 
   ‖ Then $μ$ is not a measure, nor is $μ$ finitely additive. ⦉
+  <proof>
+    ‖ Let $B, C ∈ 𝒜$, ⦉
 
-  ‖ \begin{proof} ⦉
+    ‖ $B ∩ C = ∅$ ⦉
 
-  ‖ Let $B, C ∈ 𝒜$, ⦉
+    ‖ then using finite additivity ⦉
 
-  ‖ $B ∩ C = ∅$ ⦉
-
-  ‖ then using finite additivity ⦉
-
-  ‖ we obtain a contradiction ⦉
-
-  ‖ $ ⦉
-
-  ‖ 1 = μ(B ∪ C) = μ(B) + μ(C) = 2 ⦉
-
-  ‖ $. ⦉
-
-  ‖ \end{proof} ⦉
-
-  ‖ \end{expl} ⦉
-⦉
-
-¶ ⦊
-  ‖ \ssection{Why} ⦉
-⦉
-
-¶ ⦊
-  ‖ We want to generalize the notions of length, area, and
-    volume. ⦉
-⦉
-
-¶ ⦊
-  ‖ \ssection{Definition} ⦉
-⦉
-
-¶ ⦊
-  ‖ A ❬measurable space❭
-
-    ‖ is a sigma algebra. ⦉
-
-    ‖ We call the ⦉
-
-    ‖ \rt{distinguished subsets}{distinguishedsubsets} ⦉
-
-    ‖ the \ct{measurable sets}{measurablesets}. ⦉⦉
-  ¶ ⦊
-    ‖ A ⦉
-
-    ‖ \ct{measure}{measure} ⦉
-
-    ‖ on a measurable space ⦉
-
-    ‖ is a function from the sigma algebra ⦉
-
-    ‖ to the positive extended reals. ⦉
-
-    ‖ A ⦉
-
-    ‖ \ct{measure space}{measurespace} ⦉
-
-    ‖ is a measurable space and a measure. ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ \ssubsection{Notation} ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ \ssubsection{Properties} ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ \begin{prop} ⦉
-
-    ‖ Let $(A, 𝒜)$ be a measurable space and ⦉
-
-    ‖ $m: 𝒜 → [0, ∈fty]$ be a measure. ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ If $B ⊂ C ⊂ A$, then $m(B) ≤ m(C)$. ⦉
-
-    ‖ We call this property the of measures ⦉
-
-    ‖ \ct{monotonicity of measure}{}. ⦉
-
-    ‖ \end{prop} ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ \begin{prop} ⦉
-
-    ‖ For a measure space $(A, 𝒜, m)$. ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ If $B ⊂ C ⊂ A$, then $m(B) ≤ m(C)$. ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ We call this property the ⦉
-
-    ‖ \ct{monotonicity of measure}{}. ⦉
-
-    ‖ \end{prop} ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ \begin{prop} ⦉
-
-    ‖ For a measure space $(A, 𝒜, m)$. ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ If $\set{A_n} ⊂ 𝒜$ a countable family, ⦉
-
-    ‖ then $m(∪ A_n) ≤ ∑_{i} m(A_i)$. ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ We this property the ⦉
-
-    ‖ \ct{sub-additivty of measure}{}. ⦉
-
-    ‖ \end{prop} ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ \begin{prop} ⦉
-
-    ‖ For a measure space $(A, 𝒜, m)$. ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ If $\set{A_n} ⊂ 𝒜$ a countable family, ⦉
-
-    ‖ then $m(∪ A_n) ≤ ∑_{i} m(A_i)$. ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ We this property the ⦉
-
-    ‖ \ct{sub-additivty of measure}{}. ⦉
-
-    ‖ \end{prop} ⦉
-  ⦉
-
-  ¶ ⦊
-    ‖ \begin{prop} ⦉
-
-    ‖ For a measure space $(A, 𝒜, m)$.
+    ‖ We obtain a contradiction
       ◇ ⦊
-        ‖ m(∪_{n = 1}^{∞} A_i) = \lim_{n → ∈fty} m(A_i) ⦉
+        ‖ 1 = μ(B ∪ C) ≠ μ(B) + μ(C) = 2 ⦉
       ⦉⦉
+  </proof>
+</statement>
 
-    ‖ \end{prop} ⦉
-  ⦉
+§§ Properties ⦉
+<statement type='proposition' text='monotonicity'>
+  ‖ Suppose $(A, 𝒜, μ)$ is measure space. ⦉
 
-  ¶ ⦊
-    ‖ \begin{prop} ⦉
-
-    ‖ For a measure space $(A, 𝒜, m)$. ⦉
+  ‖ Then
     ◇ ⦊
-      ‖ m(∩_{n = 1}^{∈fty} A_i) = \lim_{n → ∈fty} m(A_i) ⦉
-    ⦉
+      ‖ μ(B) ≤ μ(C) \quad \text{for all } B ⊂ C ⊂ A ⦉
+    ⦉⦉
+</statement>
+<statement type='proposition' text='subaddivity'>
+  ‖ Suppose $(A, 𝒜, m)$ is a measure space and $\set{A_n} ⊂ 𝒜$
+    is a countable family. ⦉
 
-    ‖ \end{prop} ⦉
+  ‖ Then $m(∪ A_n) ≤ ∑_{i} m(A_i)$. ⦉
+</statement>
+<statement type='proposition'>
+  ‖ For a measure space $(A, 𝒜, m)$.
+    ◇ ⦊
+      ‖ m(∪_{n = 1}^{∞} A_i) = \lim_{n → ∞} m(A_i) ⦉
+    ⦉⦉
+</statement>
+<statement type='proposition'>
+  ‖ For a measure space $(A, 𝒜, m)$. ⦉
+  ◇ ⦊
+    ‖ m(∩_{n = 1}^{∞} A_i) = \lim_{n → ∞} m(A_i) ⦉
   ⦉
-⦉
+</statement>

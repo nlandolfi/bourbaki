@@ -1,9 +1,31 @@
 
 \section*{Definition}
 
-An optimization problem is $(X, f)$ is an \t{inequality constrained space optimization problem} if $X \subset \R ^n$, $f: \R ^n \to \R $, and there exists $g: \R ^n \to \R ^n$ so that
+An optimization problem is $(X, f)$ is an \t{inequality constrained space optimization problem} if $X \subset \R ^n$, $f: \R ^n \to \R $, and there exists $g: \R ^n \to \R ^m$ so that
 \[
-X = \set{x \in \R ^n}{g(x) \leq 0}
+X = \Set{x \in \R ^n}{g(x) \leq 0}
 \]
+For this reason, $(f, g)$ is sometimes called the \t{problem data} (\t{abstract problem data}) of the problem.
+
+\subsection*{Notation}
+
+We often write such problems as: given $f: \R ^n \to \R $ and $g: \R ^n \to \R ^m$, find $x \in \R ^n$ to
+\[
+\begin{aligned}
+\text{minimize} & \quad f(x) \\
+\text{subject to} & \quad g(x) \leq 0 \\
+\end{aligned}
+\]
+Some authors abbreviate inequality constrained space optimization problem as ICP.
+
+\subsection*{Handles equality constraints}
+
+Suppose $f: \R ^n \to \R $ and $h: \R ^n \to \R ^m$ are the (abstract) problem data for an \textit{equality} constrained space optimization problem.
+Define $g: \R ^n \to \R ^{2m}$ so that
+\[
+g(x) = (h(x), -h(x)) \quad \text{for all } x \in \R ^n
+\]
+Then the ECP $(f, h)$ and ICP $(f, g)$ have the same feasible set and optimal solutions.
+In other words, given an equality constrained problem we can always write it as an inequality constrained problem.
 
 \blankpage

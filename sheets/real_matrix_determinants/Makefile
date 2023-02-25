@@ -1,0 +1,55 @@
+# generated automatically by bbk_sheet
+
+.PHONY: make o spell s clean remake
+
+make:
+	make graph.pdf
+	make real_matrix_determinants.pdf
+
+sheet.tex: sheet.lit
+	lit -in sheet.lit -out sheet.tex
+
+real_matrix_determinants.tex: sheet.tex
+	bbk_sheet -mode c -in sheet.tex > real_matrix_determinants.tex
+
+real_matrix_determinants.pdf: ../../*.tex ../../trademark.pdf *.tex real_matrix_determinants.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode real_matrix_determinants.tex
+	../../latexrun real_matrix_determinants.tex
+	make terms
+
+graph.csv: sheet.tex
+	bbk_sheet -mode g -in sheet.tex > graph.csv
+
+graph.graphviz: graph.csv
+	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+
+graph.pdf: graph.graphviz
+	dot graph.graphviz -o graph.pdf -T pdf
+
+open: real_matrix_determinants.pdf
+	open real_matrix_determinants.pdf
+
+o:
+	make open
+
+terms: real_matrix_determinants.tex
+	bbk_sheet -mode ts real_matrix_determinants.tex
+
+spell:
+	aspell -c sheet.tex
+
+s:
+	make spell
+
+reset:
+	rm -f graph.pdf
+	rm -f graph.csv
+	rm -f graph.graphviz
+
+clean:
+	make reset
+
+remake:
+	rm -f real_matrix_determinants.*
+	make reset
+	bbk_sheet -mode mk > Makefile
