@@ -17,6 +17,8 @@ import (
 	"sync"
 	"text/template"
 	"time"
+
+	"github.com/nlandolfi/lit"
 )
 
 // Set using link flags; e.g., -X main.Version=...
@@ -61,6 +63,8 @@ func main() {
 		rmMain(s)
 	case "mv":
 		mvMain(s)
+	case "mk":
+		mkMain(s)
 	case "sheets":
 		sheetsMain(s)
 	case "all":
@@ -147,7 +151,7 @@ func checkMain(s *state) {
 		log.Fatal(err)
 	}
 	//	log.Printf("%+v", ss.Sheets)
-	s.info("%d sheets parsed in %d", len(ss.Sheets), time.Now().Sub(st))
+	s.info("%d sheets parsed in %s", len(ss.Sheets), time.Now().Sub(st).String())
 }
 
 const termsHelp = `bbk terms
@@ -196,11 +200,13 @@ func graphMain(s *state) {
 
 const rmHelp = `bbk rm <from> <to> {-dry} {-sheets <path>}
 
+WARNING: WILL NOT UPDATE LINKS (as of now 2/25/23)
+
 Like bbk mv, except doesn't overwrite the changed directory.
 In other words, this EXPECTS to be a sheet.
 
 Examples
-  - bbk mr probability_distributions outcome_probabilities
+  - bbk rm probability_distributions outcome_probabilities
 
 	  All sheets will now point to outcome_probabilties that 
     used to point to probability_distributions, but the
@@ -215,6 +221,8 @@ const mvHelp = `bbk mv <from> <to> {-dry} {-sheets <path>}
 
 Change the name of a sheet. Useful because it will find and 
 replace the name in all other sheets as well.
+
+WARNING: WILL NOT UPDATE LINKS (as of now 2/25/23)
 
 Examples
   - bbk mv markov_chains memory_chains
@@ -345,6 +353,66 @@ func mv_rm_Main(s *state, overwriteTo bool) {
 		}
 	}
 }
+
+const mkHelp = `bbk mk <name> {-sheets <path>}
+
+Create the name of a sheet. Useful because it will find and 
+replace the name in all other sheets as well.
+
+
+Examples
+  - bbk mk cohomologies
+`
+
+func mkMain(s *state) {
+	fs := flag.NewFlagSet("mv", flag.ContinueOnError)
+
+	var (
+		sheetsDir = fs.String("sheets", ".", "the sheets directory")
+	)
+
+	if len(s.Args) < 3 {
+		s.info(mkHelp[:strings.Index(mvHelp, "\n")])
+		return
+	}
+
+	name := s.Args[2]
+
+	if err := fs.Parse(s.Args[3:]); err != nil {
+		s.error("parsing flags: %v", err)
+		return
+	}
+
+	ss, err := bbk.ParseSheets(os.DirFS(*sheetsDir))
+	if err != nil {
+		s.error("parsing sheet set: %v", err)
+		return
+	}
+	if _, ok := ss.Sheets[name]; ok {
+		s.error("%s already exists; see bbk {mv|rm}")
+		return
+	}
+
+	sd := &bbk.SheetDir{
+		Sheet: &bbk.Sheet{
+			Config: bbk.SheetConfig{
+				Name: name,
+			},
+			LitNode: blankLitNode,
+		},
+	}
+
+	if err := bbk.OverwriteSheetDir(name, sd); err != nil {
+		s.error("error: %v", err)
+		return
+	}
+}
+
+var blankLitNode *lit.Node = lit.Must(lit.ParseLit(`
+<tex> 
+	‖ \blankpage ⦉ 
+</tex>
+`))
 
 const sheetsHelp = `bbk sheets
 
