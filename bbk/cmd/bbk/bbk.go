@@ -32,9 +32,9 @@ var (
 const basicHelp = `bbk <command>
     - check
     - terms 
-		- mv <from> <to>
-		- sheets
-		- all
+    - mv <from> <to>
+    - sheets
+    - all
     - help <command>
     - version`
 
@@ -251,12 +251,20 @@ func mvMain(s *state) {
 
 	from, to := s.Args[2], s.Args[3]
 
-	_, err := bbk.ParseSheetSet(os.DirFS("."))
+	ss, err := bbk.ParseSheetSet(os.DirFS("."))
 	if err != nil {
 		s.error("parsing sheet set: %v", err)
+		return
+	}
+
+	fromSheet, ok := ss.Sheets[from]
+	if !ok {
+		s.error("sheet %s not found", from)
+		return
 	}
 
 	log.Printf("not implemented: %s -> %s", from, to)
+	log.Print(fromSheet)
 }
 
 const sheetsHelp = `bbk sheets
