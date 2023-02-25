@@ -92,7 +92,9 @@
                 span: ["\\mathword{span}"],
                 lin: ["\\mathword{lin}"],
                 Int: ["\\mathword{Int}"],
+                cl: ["\\mathword{cl}"],
                 Bdry: ["\\mathword{Bdry}"],
+                null: ["\\mathword{null}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 codim: ["\\mathword{codim}"],
@@ -812,6 +814,20 @@
             <span class="caret">›</span>
           </div>
         
+          <div class="need2" tabindex="0" onclick="location.href='./ring_ideals.html'" onkeypress="location.href='./ring_ideals.html'">
+            <span>
+            Ring Ideals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./semirings.html'" onkeypress="location.href='./semirings.html'">
+            <span>
+            Semirings
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
           <div class="need2" tabindex="0" onclick="location.href='./subrings.html'" onkeypress="location.href='./subrings.html'">
             <span>
             Subrings
@@ -846,68 +862,77 @@ refs:
 
 <p>
  <span class='run'>We generalize the algebraic structure of
-  addition and multiplication over the integers.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
+  <i>addition</i> and <i>multiplication</i> over the
+  integers.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
 </p>
 
 <h1 id='Definition'>Definition</h1>
 
 <p>
  <span class='run'>A <span class='term'>ring</span> (or
-  <span class='term'>ring with identity</span>) $(A,
-  f, g)$ is a set $A$ and two operations on $A$
-  satisfying the following set of conditions.</span>
+  <span class='term'>ring with identity</span>) $(R,
+  f, g)$ is a set $A$ and two binary operations
+  on $R$ satisfying the following set of
+  conditions.</span>
 </p>
 
 
 <p>
  <span class='run'>(A)</span>
 
- <span class='run'>(i) $f$ is associative.</span>
+ <span class='run'>(i) $f$ is <i>associative</i>.</span>
 
  <span class='run'>(ii) $f$ is <i>commutative</i>,</span>
 
- <span class='run'>(iii) $A$ has an identity for $f$ (i.e., is
-  $e \in A$ with $f(a, e) = f(e, a) = a$ for
-  all $a \in A$</span>
+ <span class='run'>(iii) $A$ has an <i>identity element</i> for
+  $f$ (i.e., there is $e \in R$ with $f(r, e) =
+  f(e, r) = r$ for all $r \in R$</span>
 
- <span class='run'>(iv) $A$ has inverse elements for $f$ (i.e.,
-  for any $a \in A$, there is $\tilde{a} $
-  satisfying $f(a,\tilde{a}) = f(\tilde{a}, b) = e$)</span>
+ <span class='run'>(iv) $R$ has <i>inverse elements</i> for $f$
+  (i.e., for any $r \in R$, there is $\tilde{r}
+  $ satisfying $f(r,\tilde{r}) = f(\tilde{r}, r) =
+  e$)</span>
 </p>
 
 
 <p>
  <span class='run'>(B)</span>
 
- <span class='run'>(i) $g$ is associative;</span>
+ <span class='run'>(i) $g$ is <i>associative</i>;</span>
 
- <span class='run'>(ii) $A$ has an identity element for $g$
-  (i.e., there is $\tilde{e} \in A$ satisfying
-  $g(a, \tilde{e}) = g(\tilde{e},a) = a$)</span>
+ <span class='run'>(ii) $R$ has an <i>identity element</i> for $g$
+  (i.e., for any $r \in R$, there is $\tilde{e}
+  \in A$ satisfying $g(r, \tilde{e}) =
+  g(\tilde{e},r) = r$)</span>
 </p>
 
 
 <p>
  <span class='run'>(C)</span>
 
- <span class='run'>(i) $g$ left distributes: $g(f(a, b), c) =
-  f(g(a,c), g(b,c)$;</span>
+ <span class='run'>(i) $g$ <i>left distributes</i>:
+  <p>\[
+   g(f(x, y), \alpha ) = f(g(\alpha ,x), g(\alpha ,y)) \quad
+    \text{for all } x, y, \alpha  \in R
+  \]</p></span>
 
- <span class='run'>(ii) $g$ right distributes: $g(c,f(a,b)) =
-  f(g(c,a), g(c,b))$.</span>
+ <span class='run'>(ii) $g$ <i>right distributes</i>:
+  <p>\[
+   g(\alpha , f(x,y)) = f(g(\alpha ,x), g(\alpha ,y)) \quad
+    \text{for all } x, y, \alpha  \in R
+  \]</p></span>
 </p>
 
 
 <p>
  <span class='run'>Conditions (A) concern $f$, conditions (B)
   concern $g$, and conditions (C) relate the two.</span>
+</p>
 
- <span class='run'>Define $\psi : \Z  \times  \Z  \to \Z $ by
-  $\psi (a, b) = a+b$ and $\pi : \Z  \times  \Z
-  \to \Z $ by $\pi(a, b) = a\cdot b$.</span>
 
- <span class='run'>We have defined a ring so that $(\Z , \psi ,
-  \pi )$ is one.</span>
+<p>
+ <span class='run'>Clearly, $\Z $ with addition and multiplication
+  is a ring.</span>
 
  <span class='run'>The element referred to in (A.2) is $0 \in
   \Z $, so we refer to this element in any ring
@@ -923,10 +948,26 @@ refs:
  <span class='run'>We call to $f$ <span class='term'>ring
   addition</span> and $g$ <span class='term'>ring
   multiplication</span>.</span>
+</p>
 
- <span class='run'>Although integer products are commutative, we
-  have not required this aspect (future editions
-  will elaborate).</span>
+
+<p>
+ <!--
+ <div data-littype='run'> Although integer products are commutative, we have not
+    required this aspect (future editions will elaborate). </div>
+    -->
+
+ <span class='run'>A ring which for which multiplication is
+  commutative is called a
+  <span class='term'>commutative ring</span>.</span>
+
+ <span class='run'>Note that a ring is <i>always</i> commutative
+  with respect to addition, here the term
+  commutative refers to multiplication.</span>
+
+ <span class='run'>A ring for which there are inverse elements,
+  excepting 0, is called a
+  <span class='term'>division ring</span>).</span>
 </p>
 
 <h2 id='Notation'>Notation</h2>
@@ -1052,6 +1093,20 @@ refs:
           <div class="need" tabindex="0" onclick="location.href='./polynomials.html'" onkeypress="location.href='./polynomials.html'">
             <span>
             Polynomials
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./ring_ideals.html'" onkeypress="location.href='./ring_ideals.html'">
+            <span>
+            Ring Ideals
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./semirings.html'" onkeypress="location.href='./semirings.html'">
+            <span>
+            Semirings
             </span>
             <span class="caret">›</span>
           </div>
@@ -1225,7 +1280,7 @@ refs:
 
 
     <span id="footer">
-      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version 0396d7940.
+      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version ed752c6be.
     </span>
   </body>
 </html>

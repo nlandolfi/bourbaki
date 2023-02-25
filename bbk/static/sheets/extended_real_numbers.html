@@ -92,7 +92,9 @@
                 span: ["\\mathword{span}"],
                 lin: ["\\mathword{lin}"],
                 Int: ["\\mathword{Int}"],
+                cl: ["\\mathword{cl}"],
                 Bdry: ["\\mathword{Bdry}"],
+                null: ["\\mathword{null}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 codim: ["\\mathword{codim}"],
@@ -992,6 +994,13 @@
         <div class="needlabel2"> Needed by: </div>
         
         
+          <div class="need2" tabindex="0" onclick="location.href='./convex_multivariate_functions.html'" onkeypress="location.href='./convex_multivariate_functions.html'">
+            <span>
+            Convex Multivariate Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
           <div class="need2" tabindex="0" onclick="location.href='./integrable_function_space.html'" onkeypress="location.href='./integrable_function_space.html'">
             <span>
             Integrable Function Space
@@ -1027,6 +1036,13 @@
             <span class="caret">›</span>
           </div>
         
+          <div class="need2" tabindex="0" onclick="location.href='./real_function_epigraphs.html'" onkeypress="location.href='./real_function_epigraphs.html'">
+            <span>
+            Real Function Epigraphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
           <div class="need2" tabindex="0" onclick="location.href='./real_integral_dominated_convergence.html'" onkeypress="location.href='./real_integral_dominated_convergence.html'">
             <span>
             Real Integral Dominated Convergence
@@ -1044,13 +1060,6 @@
           <div class="need2" tabindex="0" onclick="location.href='./real_integral_series_convergence.html'" onkeypress="location.href='./real_integral_series_convergence.html'">
             <span>
             Real Integral Series Convergence
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need2" tabindex="0" onclick="location.href='./signed_measures.html'" onkeypress="location.href='./signed_measures.html'">
-            <span>
-            Signed Measures
             </span>
             <span class="caret">›</span>
           </div>
@@ -1078,6 +1087,7 @@ needs:
     - operations
 refs:
     - paul_halmos/measure_theory/0_prerequisites
+    - rockafeller/p24
 -->
 <h1 id='Why'>Why</h1>
 
@@ -1095,6 +1105,15 @@ refs:
   which we call <span class='term'>positive
   infinity</span> and the other we call
   <span class='term'>negative infinity</span>.</span>
+
+ <span class='run'>We call an element of the extended real
+  numbers <span class='term'>finite</span> if it is
+  not positive or negative infinity.</span>
+
+ <span class='run'>Otherwise, we call it
+  <span class='term'>infinite</span> (the only two
+  infinite extended real numbers are exactly the
+  two elements positive and negative infinity).</span>
 </p>
 
 <h2 id='Notation'>Notation</h2>
@@ -1110,33 +1129,176 @@ refs:
   \set{+\infty,-\infty}$.</span>
 </p>
 
-<h1 id='Extended_arithmetic'>Extended arithmetic</h1>
+<h1 id='Intervals'>Intervals</h1>
 
 <p>
- <span class='run'>We extend addition to all but one ordered pair
-  of elements of the new set.</span>
+ <span class='run'>We extend intervals in the obvious way.</span>
 
- <span class='run'>The sum of any real number with a real number
-  is defined as before.</span>
+ <span class='run'>We define
+  <p>\[
+   [-\infty, \alpha ) := \Set{x \in \R }{x <\alpha } \cup
+    \set{-\infty}
+  \]</p>
+  <p>\[
+   [-\infty, \alpha ] := \Set{x \in \R }{x \leq \alpha } \cup
+    \set{-\infty}
+  \]</p></span>
 
- <span class='run'>The sum any real number with positive infinity
-  is positive infinity.</span>
+ <span class='run'>Similarly,
+  <p>\[
+   (\alpha , +\infty] := \Set{x \in \R }{x > \alpha } \cup
+    \set{+\infty}
+  \]</p>
+  <p>\[
+   [\alpha , +\infty] := \Set{x \in \R }{x \geq \alpha } \cup
+    \set{+\infty}
+  \]</p></span>
 
- <span class='run'>The sum any real number with negative infinity
-  is negative infinity.</span>
+ <span class='run'>We to obtain useful notation if we make these
+  open
+  <p>\[
+   (-\infty, \alpha ) := \Set{x \in \R }{x <\alpha }
+  \]</p>
+  <p>\[
+   (-\infty, \alpha ] := \Set{x \in \R }{x \leq \alpha }
+  \]</p>
+  <p>\[
+   (\alpha , +\infty) := \Set{x \in \R }{x > \alpha }
+  \]</p>
+  <p>\[
+   (\alpha , +\infty) := \Set{x \in \R }{x \geq \alpha }
+  \]</p></span>
 
- <span class='run'>The sum of positive infinity with positive
-  infinity is positive infinity.</span>
+ <span class='run'>Finally, we sometimes denote $\R $ by $(-\infty,
+  \infty)$ and $\Rbar$ by $[-\infty, +\infty]$,
+  referring to the <span class='term'>real
+  line</span> and <span class='term'>extended real
+  line</span> respectively.</span>
 
- <span class='run'>The sum of negative infinity with negative
-  infinity is negative infinity.</span>
+ <span class='run'>We refer to any of the aforementioned sets as
+  <span class='term'>extended real intervals</span>.</span>
 
- <span class='run'>We do not define the sum of positive infinity
-  and negative infinity.</span>
+ <span class='run'>The following notations are sometime useful
+  <p>\[
+   \Rbar_+ := [0, \infty] \quad \text{ and } \quad \Rbar_{++}
+    := (0, \infty].
+  \]</p></span>
+
+ <h1 id='Extended_order'>Extended order</h1>
+
+ <p>
+  <span class='run'>Naturally, we define $-\infty &lt; a &lt;
+   +\infty$ for every $\alpha  \in \R $.</span>
+
+  <span class='run'>This new extended order can be put to good
+   use, mostly notationally.</span>
+
+  <span class='run'>For example, the intervals above can be
+   rewritten by selecting $x$ from $\Rbar$.</span>
+
+  <span class='run'>As a particular example, we can write
+   <p>\[
+    [-\infty, \alpha ] =\Set{x \in \Rbar}{-\infty \leq x \leq
+     \alpha }
+   \]</p>
+   and likewise for the other sets.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>It is logically consistent to define the
+   greatest lower bound of the empty set to be
+   $+\infty$ and likwise the least upper bound of
+   the empty set to be $-\infty$.</span>
+
+  <span class='run'>In symbols,
+   <p>\[
+    \inf \varnothing := +\infty \quad \text{ and } \quad \sup
+     \varnothing = -\infty
+   \]</p></span>
+ </p>
+
+ <h1 id='Extended_arithmetic'>Extended arithmetic</h1>
+
+ <p>
+  <span class='run'>We extend addition to all but one ordered
+   pair of elements of the new set.</span>
+  <ol>
+   <li><span class='run'>The sum of any real number with a real number
+     is defined as before.</span></li>
+
+   <li><span class='run'>The sum of positive infinity with positive
+     infinity is positive infinity.</span>
+
+    <span class='run'>The sum any real number with positive
+     infinity is positive infinity.</span>
+
+    <span class='run'>In symbols,
+     <p>\[
+      \alpha  + \infty = \infty + \alpha  = \infty \quad
+       \text{for } -\infty < \alpha  \leq \infty
+     \]</p></span></li>
+
+   <li><span class='run'>The sum any real number with negative infinity
+     is negative infinity.</span>
+
+    <span class='run'>The sum of negative infinity with negative
+     infinity is negative infinity.</span>
+
+    <span class='run'>In symbols,
+     <p>\[
+      \alpha  - \infty = -\infty + \alpha  = -\infty \quad
+       \text{for } -\infty \leq x < \infty
+     \]</p></span></li>  </ol>
+
+  <span class='run'>We do not define the sum of positive infinity
+   and negative infinity.</span>
+
+  <span class='run'>In other words, the combinations $\infty -
+   \infty$ and $-\infty + \infty$ are undefined
+   and are avoided.</span>
+ </p>
+
+
+ <p>
+  <span class='run'>Similarly, we extend multiplication
+   <p>\[
+    \alpha \infty = \infty\alpha  = \infty, \quad \alpha (-\infty)
+     = (-\infty)\alpha  = -\infty \quad \text{for } 0 < \alpha
+     \leq \infty,
+   \]</p>
+   <p>\[
+    \alpha \infty = \infty\alpha  = -\infty, \quad \alpha (-\infty)
+     = (-\infty)\alpha  = \infty \quad \text{for } -\infty \leq <
+     \alpha  < 0,
+   \]</p>
+   <p>\[
+    0\infty = \infty0 = 0 = 0(-\infty) = (-\infty)0, \quad
+     -(-\infty) = \infty
+   \]</p></span>
+ </p>
+
+
+ <p>
+  <span class='run'>Under these rules, the familiar laws remain
+   commutative, associative, and multiplication
+   distributes over addition.</span>
+
+  <span class='run'>This is provided, of course, that we never
+   form the sum $\infty - \infty$ or $-\infty +
+   \infty$.</span>
+
+  <span class='run'>These can be verified by testing all possible
+   finte combinations for the values in the laws.</span>
+
+  <span class='run'>Avoiding a forbidden sum requires some cautious
+   attention, like dividing by zero, and in
+   practice one or the other of the infinities
+   tends to be excluded by hypothesis.</span>
+ </p>
+
 </p>
 
-<h1 id='Intervals'>Intervals</h1>
-<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup><hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will discuss.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1182,6 +1344,13 @@ refs:
       
         <div disabled class="need label"> Needed by: </div>
         
+          <div class="need" tabindex="0" onclick="location.href='./convex_multivariate_functions.html'" onkeypress="location.href='./convex_multivariate_functions.html'">
+            <span>
+            Convex Multivariate Functions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
           <div class="need" tabindex="0" onclick="location.href='./integrable_function_space.html'" onkeypress="location.href='./integrable_function_space.html'">
             <span>
             Integrable Function Space
@@ -1217,6 +1386,13 @@ refs:
             <span class="caret">›</span>
           </div>
         
+          <div class="need" tabindex="0" onclick="location.href='./real_function_epigraphs.html'" onkeypress="location.href='./real_function_epigraphs.html'">
+            <span>
+            Real Function Epigraphs
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
           <div class="need" tabindex="0" onclick="location.href='./real_integral_dominated_convergence.html'" onkeypress="location.href='./real_integral_dominated_convergence.html'">
             <span>
             Real Integral Dominated Convergence
@@ -1234,13 +1410,6 @@ refs:
           <div class="need" tabindex="0" onclick="location.href='./real_integral_series_convergence.html'" onkeypress="location.href='./real_integral_series_convergence.html'">
             <span>
             Real Integral Series Convergence
-            </span>
-            <span class="caret">›</span>
-          </div>
-        
-          <div class="need" tabindex="0" onclick="location.href='./signed_measures.html'" onkeypress="location.href='./signed_measures.html'">
-            <span>
-            Signed Measures
             </span>
             <span class="caret">›</span>
           </div>
@@ -1407,7 +1576,7 @@ refs:
 
 
     <span id="footer">
-      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version 0396d7940.
+      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version ed752c6be.
     </span>
   </body>
 </html>

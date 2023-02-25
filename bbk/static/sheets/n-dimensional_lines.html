@@ -92,7 +92,9 @@
                 span: ["\\mathword{span}"],
                 lin: ["\\mathword{lin}"],
                 Int: ["\\mathword{Int}"],
+                cl: ["\\mathword{cl}"],
                 Bdry: ["\\mathword{Bdry}"],
+                null: ["\\mathword{null}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 codim: ["\\mathword{codim}"],
@@ -941,9 +943,23 @@
         <div class="needlabel2"> Needed by: </div>
         
         
+          <div class="need2" tabindex="0" onclick="location.href='./n-dimensional_half-lines.html'" onkeypress="location.href='./n-dimensional_half-lines.html'">
+            <span>
+            N-Dimensional Half-Lines
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
           <div class="need2" tabindex="0" onclick="location.href='./n-dimensional_line_segments.html'" onkeypress="location.href='./n-dimensional_line_segments.html'">
             <span>
             N-Dimensional Line Segments
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./n-dimensional_rays.html'" onkeypress="location.href='./n-dimensional_rays.html'">
+            <span>
+            N-Dimensional Rays
             </span>
             <span class="caret">›</span>
           </div>
@@ -986,7 +1002,7 @@ needs:
 <h1 id='Definition'>Definition</h1>
 
 <p>
- <span class='run'>Given two distinct points $x \neq y$ in
+ <span class='run'>Given two distinct points $x$ and $y$ in
   $\R ^n$, the <span class='term'>line</span> through
   $x$ and $y$ is the set of points expressable
   as the sum of $x$ and $\alpha (y-x)$ where
@@ -996,18 +1012,30 @@ needs:
 
 <p>
  <span class='run'>In other words, the line through $x$ and $y$
-  is
+  is the set
   <p>\[
    \Set{z \in \R ^n}{\exists  \alpha  \in \R , z = x +
-    \alpha (y - x)}.
+    \alpha (y - x)} = \Set{x + \alpha (y-x)}{\alpha  \in \R }
+  \]</p></span>
+
+ <span class='run'>The second expression is notation for the
+  first, and is called the
+  <span class='term'>set-generator notation</span>.</span>
+
+ <span class='run'>Notice that if $z = x + \alpha (y-x)$, then
+  <p>\[
+   z = (1 - \alpha )x + \alpha y,
   \]</p>
-  <span class='run'>Notice that if $z = x + \alpha (x-y)$, then
-   <p>\[
-    z = (1 - \alpha )x + \alpha y,
-   \]</p>
-   where $\alpha  \in \R $ and $x, y \in \R ^n$.</span></span>
+  where $\alpha  \in \R $ and $x, y \in \R ^n$.</span>
+
+ <span class='run'>This highlights the obvious (and obviously
+  desirable) property that the definition is
+  symmetric in $x$ and $y$.</span>
 </p>
 
+<h2 id='Visualization_in_the_plane'>Visualization in the plane</h2>
+
+<div style='display: flex; flex-direction: row; justify-content: center;text-align:center'><div><img src="./graphics/L(x-y).pdf" width="100%"/></div></div>
 <h2 id='Notation'>Notation</h2>
 
 <p>
@@ -1015,13 +1043,23 @@ needs:
   $L(x,y)$.</span>
 </p>
 
-<div class='proposition'>
- <span class='run'>Suppose $x, y \in \R ^n$.</span>
+<h1 id='Properties'>Properties</h1>
 
- <span class='run'>If $u, v \in L(x, y)$ satisfy $u\neq v$, then
+<p>
+ <span class='run'>There are a few nice properties.</span>
+
+ <span class='run'>If $x \neq y$, then $L(x, y) = L(y, x)$.</span>
+
+ <span class='run'>Also, if $v$ and $w$ are in $L(x, y)$ and $v
+  \neq w$, then the line through $v$ and $w$ is
+  the same as the line through $x$ and $y$.</span>
+
+ <span class='run'>In symbols
   <p>\[
-   L(u, v) = L(x, y)
-  \]</p></span></div>
+   L(v, w) = L(x, y)
+  \]</p></span>
+</p>
+
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1060,9 +1098,23 @@ needs:
       
         <div disabled class="need label"> Needed by: </div>
         
+          <div class="need" tabindex="0" onclick="location.href='./n-dimensional_half-lines.html'" onkeypress="location.href='./n-dimensional_half-lines.html'">
+            <span>
+            N-Dimensional Half-Lines
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
           <div class="need" tabindex="0" onclick="location.href='./n-dimensional_line_segments.html'" onkeypress="location.href='./n-dimensional_line_segments.html'">
             <span>
             N-Dimensional Line Segments
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./n-dimensional_rays.html'" onkeypress="location.href='./n-dimensional_rays.html'">
+            <span>
+            N-Dimensional Rays
             </span>
             <span class="caret">›</span>
           </div>
@@ -1243,7 +1295,7 @@ needs:
 
 
     <span id="footer">
-      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version 0396d7940.
+      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version ed752c6be.
     </span>
   </body>
 </html>

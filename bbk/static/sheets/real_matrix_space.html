@@ -92,7 +92,9 @@
                 span: ["\\mathword{span}"],
                 lin: ["\\mathword{lin}"],
                 Int: ["\\mathword{Int}"],
+                cl: ["\\mathword{cl}"],
                 Bdry: ["\\mathword{Bdry}"],
+                null: ["\\mathword{null}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 codim: ["\\mathword{codim}"],
@@ -1066,6 +1068,14 @@
 
 \newcommand{\Q}{\mathbfsf{Q}}
 
+<!-- \renewcommand{\span}{\mathword{span}} -->
+
+\renewcommand{\span}{\mathword{span}}
+
+<!-- \newcommand{\lin}{\mathword{lin}} -->
+
+\newcommand{\lin}{\mathword{lin}}
+
 <!-- \newcommand{\tp}{\top} -->
 
 \newcommand{\tp}{\top}
@@ -1085,14 +1095,6 @@
 <!-- \newcommand{\tranposep}[1]{\transposep{#1}} -->
 
 \newcommand{\tranposep}[1]{\transposep{#1}}
-
-<!-- \renewcommand{\span}{\mathword{span}} -->
-
-\renewcommand{\span}{\mathword{span}}
-
-<!-- \newcommand{\lin}{\mathword{lin}} -->
-
-\newcommand{\lin}{\mathword{lin}}
 
 <!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
 
@@ -1238,16 +1240,16 @@
         <div class="needlabel2"> Needs: </div>
         
           
-              <div class="need2" tabindex="0" onclick="location.href='./subspaces.html'" onkeypress="location.href='./subspaces.html'">
+              <div class="need2" tabindex="0" onclick="location.href='./symmetric_matrices.html'" onkeypress="location.href='./symmetric_matrices.html'">
                 <span>
-                  Subspaces
+                  Symmetric Matrices
                 </span>
                 <span class="caret">›</span>
               </div>
           
-              <div class="need2" tabindex="0" onclick="location.href='./symmetric_matrices.html'" onkeypress="location.href='./symmetric_matrices.html'">
+              <div class="need2" tabindex="0" onclick="location.href='./vector_subspaces.html'" onkeypress="location.href='./vector_subspaces.html'">
                 <span>
-                  Symmetric Matrices
+                  Vector Subspaces
                 </span>
                 <span class="caret">›</span>
               </div>
@@ -1266,6 +1268,13 @@
           <div class="need2" tabindex="0" onclick="location.href='./matrix_scalar_product.html'" onkeypress="location.href='./matrix_scalar_product.html'">
             <span>
             Matrix Scalar Product
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real_positive_semidefinite_matrix_cone.html'" onkeypress="location.href='./real_positive_semidefinite_matrix_cone.html'">
+            <span>
+            Real Positive Semidefinite Matrix Cone
             </span>
             <span class="caret">›</span>
           </div>
@@ -1290,26 +1299,27 @@
 name: real_matrix_space
 needs:
     - vectors
-    - subspaces
+    - vector_subspaces
     - symmetric_matrices
 -->
 <h1 id='Why'>Why</h1>
 
 <p>
- <span class='run'>We can view the set of real-valued $n
-  \times k$ matrices as a vector space over $\R $.</span>
+ <span class='run'>We can add and scale matrices, so the $m
+  \times  n$ matrices are a vector space over
+  $\R $.</span>
 </p>
 
 <h1 id='Definition'>Definition</h1>
 
 <p>
  <span class='run'>The <span class='term'>matrix sum</span> of two
-  matrices $A, B \in \R ^{n \times k}$ is the
-  matrix $C \in \R ^{n \times k}$ defined by
+  matrices $A, B \in \R ^{m \times  n}$ is the
+  matrix $C \in \R ^{m \times  n}$ defined by
   $C_{ij} = A_{ij} + B_{ij}$.</span>
 
  <span class='run'>In other words, the matrix $C$ is given by
-  summing the entires of $A$ and $B$ “entry-wise”.</span>
+  summing the entries of $A$ and $B$ “entry-wise”.</span>
 
  <span class='run'>We denote the matrix sum by $A + B$.</span>
 </p>
@@ -1317,9 +1327,9 @@ needs:
 
 <p>
  <span class='run'>For $\alpha  \in \R $, the
-  <span class='term'>$\alpha $-scaled version</span> of
-  $A \in \R ^{n \times k}$ is the matrix $C \in
-  \R ^{n \times k}$ given by $C_{ij} = \alpha
+  <span class='term'>$\alpha $-scaling</span> of $A
+  \in \R ^{m \times  n}$ is the matrix $C \in
+  \R ^{m \times  n}$ defined by $C_{ij} = \alpha
   A_{ij}$.</span>
 
  <span class='run'>In other words, the matrix $C$ is given by
@@ -1334,20 +1344,35 @@ needs:
 
 
 <p>
- <span class='run'>The <span class='term'>$n \times k$-matrix
-  space</span> is the vector space over $\R ^{n
-  \times  k}$ in which addition is given by the
-  matrix sumer and scalar multiplication by
-  entry-wise scaling.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
+ <span class='run'>The <span class='term'>matrix space</span> (or
+  <span class='term'>matrix vector space</span>) is
+  the vector space $\R ^{m \times  n}$ in which
+  addition is given by the matrix sums and scalar
+  multiplication by entry-wise scaling.</span>
+
+ <span class='run'>Sometimes we reference explicitly the
+  <span class='term'>$m\times n$ matrix space</span>.</span>
 </p>
 
-<h2 id='Subspace_of_symmetric_matrices'>Subspace of symmetric matrices</h2>
+<h2 id='Subspaces_of_symmetric_matrices'>Subspaces of symmetric matrices</h2>
 
 <p>
- <span class='run'>The subset of symmetric $n$ by $n$ matrices is
-  a subset of $\R ^{n \times  n}$.</span>
+ <span class='run'>Consider the space of square matrices $\R ^{n
+  \times  n}$.</span>
+
+ <span class='run'>It is obvious that the subset of symmetric
+  matrices is a subspace.</span>
+
+ <span class='run'>Adding two symmetric matrices gives a symmetric
+  matrix.</span>
+
+ <span class='run'>Scaling a symmetric matrix by a real number
+  gives a symmetric matrix.</span>
+
+ <span class='run'>The matrix all of whose entries are 0 is
+  symmetric.</span>
 </p>
-<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will rework this sheet.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1375,16 +1400,16 @@ needs:
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./subspaces.html'" onkeypress="location.href='./subspaces.html'">
+            <div class="need" tabindex="0" onclick="location.href='./symmetric_matrices.html'" onkeypress="location.href='./symmetric_matrices.html'">
               <span>
-                Subspaces
+                Symmetric Matrices
               </span>
               <span class="caret">›</span>
             </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./symmetric_matrices.html'" onkeypress="location.href='./symmetric_matrices.html'">
+            <div class="need" tabindex="0" onclick="location.href='./vector_subspaces.html'" onkeypress="location.href='./vector_subspaces.html'">
               <span>
-                Symmetric Matrices
+                Vector Subspaces
               </span>
               <span class="caret">›</span>
             </div>
@@ -1403,6 +1428,13 @@ needs:
           <div class="need" tabindex="0" onclick="location.href='./matrix_scalar_product.html'" onkeypress="location.href='./matrix_scalar_product.html'">
             <span>
             Matrix Scalar Product
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./real_positive_semidefinite_matrix_cone.html'" onkeypress="location.href='./real_positive_semidefinite_matrix_cone.html'">
+            <span>
+            Real Positive Semidefinite Matrix Cone
             </span>
             <span class="caret">›</span>
           </div>
@@ -1569,7 +1601,7 @@ needs:
 
 
     <span id="footer">
-      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version 0396d7940.
+      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version ed752c6be.
     </span>
   </body>
 </html>

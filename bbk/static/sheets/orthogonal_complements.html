@@ -92,7 +92,9 @@
                 span: ["\\mathword{span}"],
                 lin: ["\\mathword{lin}"],
                 Int: ["\\mathword{Int}"],
+                cl: ["\\mathword{cl}"],
                 Bdry: ["\\mathword{Bdry}"],
+                null: ["\\mathword{null}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 codim: ["\\mathword{codim}"],
@@ -156,7 +158,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 112 0 -->
+      <!-- 116 0 -->
 
 <!-- % use \powerset{A} for power set of A -->
 
@@ -914,6 +916,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- \renewcommand{\span}{\mathword{span}} -->
+
+\renewcommand{\span}{\mathword{span}}
+
+<!-- \newcommand{\lin}{\mathword{lin}} -->
+
+\newcommand{\lin}{\mathword{lin}}
+
 <!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
 
 \newcommand{\RVec}[1]{\Vec{\R}{#1}}
@@ -1061,6 +1071,13 @@
                 <span class="caret">›</span>
               </div>
           
+              <div class="need2" tabindex="0" onclick="location.href='./vector_subspaces.html'" onkeypress="location.href='./vector_subspaces.html'">
+                <span>
+                  Vector Subspaces
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
         
         <div class="needlabel2"> Needed by: </div>
         
@@ -1099,6 +1116,9 @@
 name: orthogonal_complements
 needs:
     - real_inner_products
+    - vector_subspaces
+refs:
+    - axler/193
 -->
 <h1 id='Definition'>Definition</h1>
 
@@ -1109,16 +1129,58 @@ needs:
   vector in the subset.</span>
 </p>
 
+
+<p>
+ <span class='run'>Here is the definition in symbols.</span>
+
+ <span class='run'>Given an inner product space $V$ and a
+  <i>subset</i> $U \subset V$, the orthogonal
+  complement of $V$ is
+  <p>\[
+   \Set{v \in V}{\ip{v, u} = 0 \text{ for every } u \in U}
+  \]</p></span>
+</p>
+
 <h2 id='Notation'>Notation</h2>
 
 <p>
- <span class='run'>Let $(V, \F )$ be a vector space and $U
-  \subset V$.</span>
-
  <span class='run'>We denote the orthogonal complement of $U$ by
   $U^{\perp}$.</span>
 </p>
 
+<h2 id='Examples'>Examples</h2>
+
+<p>
+ <span class='run'><i>Complements of lines and planes in
+  $\R ^3$.</i></span>
+
+ <span class='run'>If $U$ is a line in $\R ^3$, then $U^\perp $
+  is the plane containing the origin that is
+  perpendicular to $U$.</span>
+
+ <span class='run'>Conversely, if $U$ is a plane in $\R ^3$
+  containing the origin, then $U^\perp $ is the
+  line containing the origin that is perpendicular
+  to $U$.</span>
+</p>
+
+<h2 id='Properties'>Properties</h2>
+
+<div class='proposition'>
+ <span class='run'>Suppose $V$ is an inner product space.</span>
+
+ <span class='run'>Given any <i>subset</i> $U \subset V$,
+  <ol>
+   <li>$U^\perp $ is a subspace of $V$.</li>
+
+   <li>$\set{0}^\perp  = V$</li>
+
+   <li>$V^\perp  = \set{0}$</li>
+
+   <li>$U \cap  U^\perp  \subset \set{0}$</li>
+
+   <li>if $W \subset U$, then $W^\perp  \subset U^\perp $</li>  </ol>
+</span></div>
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -1149,6 +1211,13 @@ needs:
             <div class="need" tabindex="0" onclick="location.href='./real_inner_products.html'" onkeypress="location.href='./real_inner_products.html'">
               <span>
                 Real Inner Products
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
+            <div class="need" tabindex="0" onclick="location.href='./vector_subspaces.html'" onkeypress="location.href='./vector_subspaces.html'">
+              <span>
+                Vector Subspaces
               </span>
               <span class="caret">›</span>
             </div>
@@ -1333,7 +1402,7 @@ needs:
 
 
     <span id="footer">
-      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version 0396d7940.
+      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version ed752c6be.
     </span>
   </body>
 </html>

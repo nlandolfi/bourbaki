@@ -92,7 +92,9 @@
                 span: ["\\mathword{span}"],
                 lin: ["\\mathword{lin}"],
                 Int: ["\\mathword{Int}"],
+                cl: ["\\mathword{cl}"],
                 Bdry: ["\\mathword{Bdry}"],
+                null: ["\\mathword{null}"],
                 epi: ["\\mathword{epi}"],
                 proj: ["\\mathword{proj}"],
                 codim: ["\\mathword{codim}"],
@@ -156,7 +158,7 @@
     </span>
 
     <span style="display:none">
-      <!-- 148 0 -->
+      <!-- 152 0 -->
 
 <!-- % use \powerset{A} for power set of A -->
 
@@ -842,14 +844,6 @@
 
 \renewcommand{\Vec}[2]{{#1}^{#2}}
 
-<!-- \renewcommand{\span}{\mathword{span}} -->
-
-\renewcommand{\span}{\mathword{span}}
-
-<!-- \newcommand{\lin}{\mathword{lin}} -->
-
-\newcommand{\lin}{\mathword{lin}}
-
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -922,6 +916,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 <!-- \def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]} -->
 
 \def\barray#1{\left[\hskip 0.5\arraycolsep\begin{matrix}#1\end{matrix}\hskip 0.5\arraycolsep\right]}
@@ -934,13 +940,25 @@
 
 % \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 
-<!-- \renewcommand{\dim}{\mathword{dim}} -->
+<!-- \renewcommand{\span}{\mathword{span}} -->
 
-\renewcommand{\dim}{\mathword{dim}}
+\renewcommand{\span}{\mathword{span}}
 
-<!-- \newcommand{\aff}{\mathword{aff}} -->
+<!-- \newcommand{\lin}{\mathword{lin}} -->
 
-\newcommand{\aff}{\mathword{aff}}
+\newcommand{\lin}{\mathword{lin}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 <!-- \newcommand{\RVec}[1]{\Vec{\R}{#1}} -->
 
@@ -1113,6 +1131,18 @@
 <!-- \newcommand{\tranposep}[1]{\transposep{#1}} -->
 
 \newcommand{\tranposep}[1]{\transposep{#1}}
+
+<!-- \renewcommand{\dim}{\mathword{dim}} -->
+
+\renewcommand{\dim}{\mathword{dim}}
+
+<!-- \newcommand{\aff}{\mathword{aff}} -->
+
+\newcommand{\aff}{\mathword{aff}}
+
+<!-- \newcommand{\Int}{\mathword{Int}} -->
+
+\newcommand{\Int}{\mathword{Int}}
     </span>
 
 
@@ -1210,6 +1240,13 @@
         <div class="needlabel2"> Needs: </div>
         
           
+              <div class="need2" tabindex="0" onclick="location.href='./affine_set_dimensions.html'" onkeypress="location.href='./affine_set_dimensions.html'">
+                <span>
+                  Affine Set Dimensions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
               <div class="need2" tabindex="0" onclick="location.href='./real_balls.html'" onkeypress="location.href='./real_balls.html'">
                 <span>
                   Real Balls
@@ -1224,9 +1261,30 @@
                 <span class="caret">›</span>
               </div>
           
+              <div class="need2" tabindex="0" onclick="location.href='./topological_interiors.html'" onkeypress="location.href='./topological_interiors.html'">
+                <span>
+                  Topological Interiors
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
         
         <div class="needlabel2"> Needed by: </div>
         
+        
+          <div class="need2" tabindex="0" onclick="location.href='./linear_optimization_problems.html'" onkeypress="location.href='./linear_optimization_problems.html'">
+            <span>
+            Linear Optimization Problems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./polyhedra.html'" onkeypress="location.href='./polyhedra.html'">
+            <span>
+            Polyhedra
+            </span>
+            <span class="caret">›</span>
+          </div>
         
           <div class="need2" tabindex="0" onclick="location.href='./real_convex_sets_and_halfspaces.html'" onkeypress="location.href='./real_convex_sets_and_halfspaces.html'">
             <span>
@@ -1256,11 +1314,18 @@ name: real_polyhedra
 needs:
     - real_halfspaces
     - real_balls
+    - affine_set_dimensions
+    - topological_interiors
+refs:
+    - combinaopt/p51
 -->
+<!-- can prob drop topological considerations? -->
+
 <h1 id='Definition'>Definition</h1>
 
 <p>
- <span class='run'>A <span class='term'>polyhedron</span> is a set
+ <span class='run'>A <span class='term'>polyhedron</span> (or
+  <span class='term'>real polyhedron</span>) is a set
   $P \subset \R ^n$ for which there exists $A \in
   \R ^{m \times  n}$ and $b \in \R ^{m}$
   satisfying
@@ -1269,14 +1334,19 @@ needs:
   \]</p></span>
 
  <span class='run'>In other words, a polyhedron is an intersection
-  of finitely many halfpsaces.</span>
+  of finitely many halfspaces.</span>
+
+ <span class='run'>If $A$ and $b$ are rational, then $P$ is
+  called a <span class='term'>rational
+  polyhedron</span>.</span>
 </p>
 
 
 <p>
- <span class='run'>A polyhedron $P$ is
-  <span class='term'>polytope</span> if it is
-  <i>bounded</i>..</span>
+ <span class='run'>A polyhedron $P$ is a
+  <span class='term'>polytope</span> (a
+  <span class='term'>real polytope</span>) if it is
+  <i>bounded</i>.</span>
 
  <span class='run'>In other words, there exists $x_0 \in P$ and
   $M &gt; 0$ such that
@@ -1286,6 +1356,21 @@ needs:
 
  <span class='run'>Here $B_M(x_0)$ denotes the open ball of radius
   $M$, as usual.</span>
+</p>
+
+
+<p>
+ <span class='run'>As usual, the dimension of a polyhedron $P$ is
+  the dimension of the affine hull of $P$, which
+  we denote by $\dim P$.</span>
+
+ <span class='run'>$P$ is called
+  <span class='term'>full-dimensional</span> if $\dim
+  P = n$.</span>
+
+ <span class='run'>An equivalent condition for $P$ to be
+  full-dimensional is that there exist an interior
+  point of $P$ (as a subset of $\R ^n$)</span>
 </p>
 
 
@@ -1318,6 +1403,13 @@ needs:
       
         <div disabled class="need label"> Needs: </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./affine_set_dimensions.html'" onkeypress="location.href='./affine_set_dimensions.html'">
+              <span>
+                Affine Set Dimensions
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
             <div class="need" tabindex="0" onclick="location.href='./real_balls.html'" onkeypress="location.href='./real_balls.html'">
               <span>
                 Real Balls
@@ -1332,9 +1424,30 @@ needs:
               <span class="caret">›</span>
             </div>
         
+            <div class="need" tabindex="0" onclick="location.href='./topological_interiors.html'" onkeypress="location.href='./topological_interiors.html'">
+              <span>
+                Topological Interiors
+              </span>
+              <span class="caret">›</span>
+            </div>
+        
       
       
         <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./linear_optimization_problems.html'" onkeypress="location.href='./linear_optimization_problems.html'">
+            <span>
+            Linear Optimization Problems
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./polyhedra.html'" onkeypress="location.href='./polyhedra.html'">
+            <span>
+            Polyhedra
+            </span>
+            <span class="caret">›</span>
+          </div>
         
           <div class="need" tabindex="0" onclick="location.href='./real_convex_sets_and_halfspaces.html'" onkeypress="location.href='./real_convex_sets_and_halfspaces.html'">
             <span>
@@ -1505,7 +1618,7 @@ needs:
 
 
     <span id="footer">
-      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version 0396d7940.
+      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version ed752c6be.
     </span>
   </body>
 </html>
