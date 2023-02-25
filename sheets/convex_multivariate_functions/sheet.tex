@@ -5,11 +5,85 @@ We generalize convex functions to $\R ^n$.
 
 \section*{Definition}
 
-Let $A$ be a convex subset of $\R ^n$.
-The function $f: A \to \R $ is \t{convex} if for any $a, b \in A$ and $t \in [0, 1]$,
+Given a set $S \subset \R ^n$ and a function $f: S \to \Rbar$, the set
 \[
-f(ta + (1-t)b) \leq tf(a) + (1-t)f(b).
+\Set{(x, \alpha ) \in S \times  \R }{f(x) \leq \alpha } \subset \R ^{n+1}
 \]
-It is \t{concave} if $-f$ is convex.
+is called the \t{epigraph} of $f$ and is denoted by $\epi f$.
+The epigraph is a subset of $\R ^{n+1}$.
+Recall that $\Rbar = \R  \cup \set{-\infty, +\infty}$ denotes the extended real numbers.
+
+The function $f$ is \t{convex} if $\epi f$ is a convex subset of $\R ^{n+1}$.
+$f$ is \t{concave} if $-f$ is convex.
+$f$ is \t{affine} if it is finite, convex and concave.
+
+\subsection*{Visualization of epigraph}
+
+\begin{center}\includegraphics[width=0.80\textwidth]{./graphics/cvxepi.pdf}\end{center}
+\subsection*{Effective Domains}
+
+Suppose $f: S \to \R $ is convex.
+Since our definition of epigraph restricts the last coordinate to be real, no points $x \in S$ for which $f(x) = +\infty$ are ``included'' in the epigraph.
+The \t{effective domain} (or just \t{domain}) of a convex function $f: S \to \Rbar$ is the linear projection of the first $n$ coordinates of $\epi f$.
+In other words,
+\[
+\dom f = \Set{x \in S}{\exists  \alpha  \in \R , (x, \alpha ) \in \epi f} = \Set{x \in S}{f(x) < +\infty}
+\]
+
+If we define the linear projection (canonical projection) $\pi : \R ^{n +1} \to \R $ by $\pi (x,\alpha ) = x$ where $x \in \R ^{n+1}$ and $\alpha  \in \R ^n$, then
+\[
+\dom f = \pi (\epi f)
+\]
+Since $\pi $ is linear and $\epi f$ is convex by assumption, $\dom f$ is \textit{convex}.
+To say this again, the effective domain of a convex function is convex.
+% todo: prove earlier in sheets 
+
+% see rockafeller 23 for more on why we have effective domains 
+
+
+Notice that the restriction $f_{\mid \dom f}$ has the same epigraph as $f$.
+For this reason, $f$ is convex if and only if $f_{\mid \dom f}$ is convex.
+Clearly then $f$ restricted to its domain is the principal object of interest.
+The usefulness of these technicalities is that any convex $f: S \to \Rbar$ can be extended to a convex function $\bar{f}: \R ^n \to \Rbar$ with the same effective domain.
+Define $\bar{f}$ so that
+\[
+\bar{f}(x) =
+\begin{cases}
+f(x) & x \in S \\
++\infty & \text{otherwise}
+\end{cases}
+\]
+Henceforth, by \t{convex function} will be understood an extended real value function, possibly taking value $+\infty$, defined on all of $\R ^n$ whose epigraph is convex.
+The upshot is that in constructing a convex function from other convex functions, the effective domains are specified implicitly.
+% <div data-littype='run'> Let $A$ be a convex subset of $𝗥^n$. </div>
+% <div data-littype='run'> The function $f: A → 𝗥$ is ❬convex❭ if for any $a, b ∈
+%    A$ and $t ∈ [0, 1]$,
+%    <div data-littype='displaymath'>
+%     <div data-littype='run'> f(ta + (1-t)b) ≤ tf(a) + (1-t)f(b). </div>
+%    </div></div>
+% <div data-littype='run'> It is ❬concave❭ if $-f$ is convex. </div>
+%</div>
+
+
+\subsection*{Proper convex functions}
+
+A convex function $f$ is \t{proper} if there exists $x$ such that $f(x) < \infty$ and $f(x) > \infty$ for all $x \in \R ^n$.
+Roughly speaking, $f$ is proper if its epigraph is nonempty and contains no vertical lines.
+$f$ is proper if and only if $\dom f$ is nonempty and $f_{\mid \dom f}$ is finite.
+
+The proper convex functions arise naturally by taking a function $f: C \to \R $ defined on a convex subset $C \subset \R ^n$ and extending it to have value $+\infty$ outside of $C$.
+A convex function which is not proper is \t{improper}.
+
+Of course, proper convex functions are our main object of study, but improper ones arise from time to time and it is more convenient to admit them than exclude them.
+
+For an example of an improper convex function, define $f: \R ^n \to \R $ by
+\[
+f(x) = \begin{cases}
+-\infty & \text{ if } \norm{x} < 1, \\
+0 & \text{ if } \norm{x} = 1, \\
++\infty & \text{ if } \norm{x} > 1, \\
+\end{cases}
+\]
+
 
 \blankpage
