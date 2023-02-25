@@ -139,9 +139,8 @@ type SheetConfig struct {
 }
 
 type Sheet struct {
-	ConfigFromComment *lit.Node
-	Config            SheetConfig
-	LitNode           *lit.Node
+	Config  SheetConfig
+	LitNode *lit.Node
 }
 
 // Use ParseSheet to parse a sheet.lit file

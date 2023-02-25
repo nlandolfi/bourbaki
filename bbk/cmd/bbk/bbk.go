@@ -16,9 +16,6 @@ import (
 	"sync"
 	"text/template"
 	"time"
-
-	"github.com/nlandolfi/lit"
-	"gopkg.in/yaml.v3"
 )
 
 // Set using link flags; e.g., -X main.Version=...
@@ -54,8 +51,6 @@ func main() {
 		helpMain(s)
 	case "check":
 		checkMain(s)
-	case "test", "t":
-		testMain(s)
 	case "terms":
 		termsMain(s)
 	case "graph":
@@ -149,45 +144,6 @@ func checkMain(s *state) {
 	}
 	//	log.Printf("%+v", ss.Sheets)
 	s.info("%d sheets parsed in %d", len(ss.Sheets), time.Now().Sub(st))
-}
-
-func testMain(s *state) {
-	// for now must run from sheets directory
-	ss, err := bbk.ParseSheetSet(os.DirFS("."))
-	if err != nil {
-		log.Fatal(err)
-	}
-	//	log.Printf("%+v", ss.Sheets)
-	log.Printf("%d sheets", len(ss.Sheets))
-
-	for name, s := range ss.Sheets {
-		if s.ConfigFromComment != nil {
-			bs, err := yaml.Marshal(s.Config)
-			if err != nil {
-				log.Fatal(err)
-			}
-			y := make(map[interface{}]interface{})
-			if err := yaml.Unmarshal(bs, &y); err != nil {
-				log.Fatal(err)
-			}
-			s.LitNode.InsertBefore(&lit.Node{
-				Type: lit.YAMLNode,
-				// wont have data but who cares
-				YAML:      y,
-				IsComment: true,
-			}, s.ConfigFromComment)
-			s.LitNode.RemoveChild(s.ConfigFromComment)
-		}
-		f, err := os.Create(path.Join("./", name, "sheet.lit"))
-		if err != nil {
-			log.Fatal(err)
-		}
-		// TODO: shouldn't WriteLit possibly return errors?? -NCL 1/25/23
-		lit.WriteLit(f, s.LitNode, lit.DefaultWriteOpts)
-		if err := f.Close(); err != nil {
-			log.Fatal(err)
-		}
-	}
 }
 
 const termsHelp = `bbk terms
