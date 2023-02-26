@@ -1,9 +1,8 @@
 <!--yaml
 name: expectation_deviation_upper_bound
 needs:
-    - variance
     - tail_measure_upper_bound
-    - absolute_value
+wikipedia: https://en.wikipedia.org/wiki/Chebyshev%27s_inequality
 -->
 
 § Why ⦉
@@ -13,13 +12,16 @@ needs:
 ⦉
 
 § Result ⦉
-<statement type='proposition'>
-  ‖ Let $f$ be a square-integrable real-valued random variable on
-    the probability space $(X, 𝒜, μ)$. ⦉
 
-  ‖ Then for $t > 0$,
+<!-- TODO: assumptions of integrability -->
+<statement type='proposition'>
+  ‖ Suppose $f: Ω → 𝗥$ is measurable on the probability space
+    $(Ω, ℱ, P)$. ⦉
+
+  ‖ Then
     ◇ ⦊
-      ‖ μ[\abs{f - 𝗘(f)} ≥ t] ≤ \frac{\var f}{t^2}. ⦉
+      ‖ P[\abs{f - 𝗘(f)} ≥ t] ≤ \frac{\var f}{t^2} \quad \text{
+        for all } t > 0 ⦉
     ⦉⦉
   <proof>
     ‖ The symbols $\abs{f - 𝗘(f)} ≥ t$ denote the set $\Set*{x
@@ -36,8 +38,11 @@ needs:
       </a>
       ,
       ◇ ⦊
-        ‖ μ(\Set*{x ∈ X}{({f(x) - 𝗘(f)})^2 ≥ t^2}) ≤ \frac{𝗘(f -
-          𝗘(f))^2}{t^2}. ⦉
+        ‖ P(\Set*{x ∈ X}{({f(x) - 𝗘(f)})^2 ≥ t^2}) ⦉
+
+        ‖ ≤ ⦉
+
+        ‖ \frac{𝗘(f - 𝗘(f))^2}{t^2}. ⦉
       ⦉⦉
 
     ‖ We recognize the numerator of the right hand side as the␣
@@ -48,7 +53,8 @@ needs:
   </proof>
 </statement>
 ¶ ⦊
-  ‖ The above is also called ❬Chebychev’s Inequality❭. ⦉
+  ‖ The above is also called ❬Chebychev’s Inequality❭ (or the
+    ❬Chebyshev inequality❭). ⦉
 ⦉
 
 <tex>

@@ -200,10 +200,14 @@ func graphMain(s *state) {
 
 const rmHelp = `bbk rm <from> <to> {-dry} {-sheets <path>}
 
-WARNING: WILL NOT UPDATE LINKS (as of now 2/25/23)
-
 Like bbk mv, except doesn't overwrite the changed directory.
 In other words, this EXPECTS to be a sheet.
+
+WARNING: WILL NOT UPDATE LINKS (as of now 2/25/23)
+
+If you want to remove a directory that has no needs, just
+
+    rm -rf <dir>
 
 Examples
   - bbk rm probability_distributions outcome_probabilities
@@ -340,15 +344,23 @@ func mv_rm_Main(s *state, overwriteTo bool) {
 		s.error("os.RemoveAll: %v", err)
 		return
 	}
+	for n := range touched {
+		if err := bbk.OverwriteSheetDir(n, ss.Sheets[n]); err != nil {
+			s.error("os.OverwriteSheetDir: %v", err)
+			return
+		}
+	}
 	if overwriteTo {
 		if err := bbk.OverwriteSheetDir(to, fromSheet); err != nil {
 			s.error("os.OverwriteSheetDir: %v", err)
 			return
 		}
-	}
-	for n := range touched {
-		if err := bbk.OverwriteSheetDir(n, ss.Sheets[n]); err != nil {
-			s.error("os.OverwriteSheetDir: %v", err)
+		c := exec.Command("make")
+		c.Dir = to
+		bs, err := c.CombinedOutput()
+		if err != nil {
+			fmt.Print(string(bs))
+			s.error("%q: %v", to, err)
 			return
 		}
 	}
@@ -404,6 +416,15 @@ func mkMain(s *state) {
 
 	if err := bbk.OverwriteSheetDir(name, sd); err != nil {
 		s.error("error: %v", err)
+		return
+	}
+
+	c := exec.Command("make")
+	c.Dir = name
+	bs, err := c.CombinedOutput()
+	if err != nil {
+		fmt.Print(string(bs))
+		s.error("%q: %v", name, err)
 		return
 	}
 }
