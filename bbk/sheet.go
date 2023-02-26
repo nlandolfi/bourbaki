@@ -226,7 +226,7 @@ func OverwriteSheetDir(dir string, sd *SheetDir) error {
 	if err != nil {
 		return fmt.Errorf("os.Create: %w", err)
 	}
-	if _, err := fmt.Fprintf(f, sd.MacrosTexFile); err != nil {
+	if _, err := f.Write([]byte(sd.MacrosTexFile)); err != nil {
 		return fmt.Errorf("fmt.Fprintf: %w", err)
 	}
 	if err := f.Close(); err != nil {
