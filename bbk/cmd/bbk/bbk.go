@@ -32,7 +32,7 @@ var (
 const basicHelp = `bbk <command>
     - check
     - terms 
-		- rm <from> <to>
+    - rm <from> <to>
     - mv <from> <to>
     - sheets
     - all

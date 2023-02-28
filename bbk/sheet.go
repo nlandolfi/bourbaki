@@ -206,7 +206,7 @@ func OverwriteSheetDir(dir string, sd *SheetDir) error {
 		if err != nil {
 			return fmt.Errorf("os.Mkdir error: %w", err)
 		}
-	}
+	} // handle error?
 
 	// write the Makefile
 	tmpl := template.Must(template.New("").Parse(MakefileTemplate2))
