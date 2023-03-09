@@ -3,6 +3,7 @@ name: outcome_variables
 needs:
     - uncertain_outcomes
     - uncertain_events
+    - event_probabilities
 -->
 
 § Why ⦉
@@ -13,6 +14,7 @@ needs:
   ‖ These may be useful to specify events. ⦉
 ⦉
 
+§ Definition ⦉
 ¶ ⦊
   ‖ An ❬outcome variable❭ (or ❬random variable❭) is a function
     from $Ω$ to $V$, where $V$ is a set. ⦉
@@ -21,24 +23,57 @@ needs:
     random variable. ⦉
 ⦉
 
-§ Example: two dice ⦉
+§§ Notation ⦉
 ¶ ⦊
-  ‖ We want to talk about the sum of the pips shown facing up
-    after rolling two dice. ⦉
+  ‖ Standard convention denotes outcome random variables by
+    capitals $X, Y, Z$ and elements of their codomain by
+    corresponding lower-case, $x, y, z$. ⦉
 
-  ‖ We may take as our set of outcome $\set{1, …, 12}$, whose
-    elements correspond to the sum. ⦉
+  ‖ Thus, if $X: Ω → V$ is a random variable then the lower
+    case $x$ is often reserved for an element of $V$. ⦉
+
+  ‖ The event $\Set{ω ∈ Ω}{X(ω) = x}$, where $x ∈ V$, is
+    often abbreviated $\set{X = x}$. ⦉
+
+  ‖ The probability of this event is often abbreviated $P(X =
+    x)$. ⦉
+⦉
+
+¶ ⦊
+  ‖ Similarly, for a subset $A ⊂ V$, the event $\Set{ω ∈
+    Ω}{X(ω) ∈ A}$ is often abbreviated $\set{X ∈ A}$ and its
+    probability abbreviated $P(X ∈ A)$.
+    † ⦊
+      ‖ Occasionally, in the present edition of these sheets, we
+        use the notation $P[X = a]$. ⦉
+    ⦉⦉
+
+  ‖ If $X: Ω → V_1$ and $Y: Ω → V_2$, and $A ⊂ V_1$ and $B
+    ⊂ V_2$, then the event $\set{X ∈ A} ∩ \set{Y ∈ B}$ is
+    often written $\set{X ∈ A, Y ∈ B}$. ⦉
+⦉
+
+§ Examples ⦉
+¶ ⦊
+  ‖ ‹Sum of two dice.› ⦉
+
+  ‖ Suppose we model rolling two dice. ⦉
+
+  ‖ We are interested in the sum of the pips shown facing up. ⦉
+
+  ‖ Suppose we take as the set of outcome $\set{1, …, 12}$,
+    whose elements correspond to the sum. ⦉
 
   ‖ We interpret $\Set{x ∈ Ω}{x ≥ 10}$ as the event that the
     sum of the two dice is greater than or equal to 10. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ Alternatively, we may take the outcomes $\set{1, …, 6}^2$
-    and define an outcome variable $s: \set{1, …, 6}^2 → \set{1,
-    …, 12}$ by
+  ‖ Alternatively, we may take the usual set of outcomes
+    $\set{1, …, 6}^2$ and define an outcome variable $s: \set{1,
+    …, 6}^2 → \set{1, …, 12}$ by
     ◇ ⦊
-      ‖ s((d_1, d_2)) = d_1 + d_2. ⦉
+      ‖ s(d_1, d_2) = d_1 + d_2. ⦉
     ⦉⦉
 
   ‖ We interpret this natural-number-valued outcome variable $s$
@@ -46,9 +81,72 @@ needs:
 
   ‖ The event that the sum of the two dice is greater than or
     equal to to 10 corresponds to the set $\Set{(d_1, d_2) ∈
-    \set{1, …, 6}}{s((d_1, d_2)) ≥ 10}$. ⦉
+    \set{1, …, 6}}{s(d_1, d_2) ≥ 10}$. ⦉
 ⦉
 
+<!-- math151 notes -->
+¶ ⦊
+  ‖ As a third alternative, again take the usual set of
+    outcomes $Ω = \set{1, …, 6}^2$. ⦉
+
+  ‖ Define the outcome variable $X: Ω → 𝗡$ to be the number
+    of pips showing on the first die, $Y: Ω → 𝗡$ to be the
+    number of pips showing on the second die, and define $Z: Ω
+    → 𝗡$ by
+    ◇ ⦊
+      ‖ Z(ω) = X(ω) + Y(ω) \quad \text{for all } ω ∈ Ω ⦉
+    ⦉⦉
+
+  ‖ A standard notation for this relation between $Z$ and $X,Y$
+    by $Z = X + Y$. ⦉
+
+  ‖ For example, if $ω = (2,5)$, $X(ω) = 2$, $Y(ω) = 5$, and
+    $Z(ω) = 7$. ⦉
+
+  ‖ The event $\set{Z = 4}$ is the set $\set{(2,2), (1,3),
+    (3,1)}$ ⦉
+
+  ‖ If we take the usual distribution $p$ on $Ω$ with $p(ω) =
+    1/36$ for every $ω$, the the probability of this event is
+    ◇ ⦊
+      ‖ P(Z = 4) = p(2,2) + p(1,3) + p(3, 1) = 1/36+1/36+1/36
+        = 1/12 ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ The preceding three paragraphs highlight that there are
+    several ways of denoting the same situation. ⦉
+⦉
+
+¶ ⦊
+  ‖ ‹Tossing a fair coin $n$ times.› ⦉
+
+  ‖ As before, we model $n$ tosses of a fair coin with the
+    sample space $Ω = \set{0,1}^n$. ⦉
+
+  ‖ Define $X_i: Ω → \set{0,1}$ by $X_i(ω) = ω_i$. ⦉
+
+  ‖ We interpret $\Set{ω ∈ Ω}{X_i(ω) = 1}$ as the event that
+    toss $i$ turns up heads, and likewise $\Set{ω ∈ Ω}{X_i(ω) =
+    0}$ as the event that toss $i$ turns up tails, for $i =
+    1, …, n$. ⦉
+
+  ‖ We can define the function $X: Ω → {0,1}^n$ by $X(ω) = ω$
+    or by saying $X = (X_1, …, X_n)$. ⦉
+
+  ‖ Suppose we define $H: Ω → 𝗡$ by
+    ◇ ⦊
+      ‖ H(ω) = ∑_{i= 1}^{n} X_i(ω) ⦉
+    ⦉⦉
+
+  ‖ Or, alternatively, $H = ∑_{i = 1}^{n} X_i$. ⦉
+
+  ‖ In this case, we interpret $H$ as the number of heads
+    observed in the $n$ tosses. ⦉
+⦉
+
+<!-- math 151 -->
 <tex>
   ‖ \blankpage ⦉
 </tex>

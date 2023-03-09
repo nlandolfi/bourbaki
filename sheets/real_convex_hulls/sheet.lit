@@ -2,36 +2,155 @@
 name: real_convex_hulls
 needs:
     - real_convex_sets
+    - geometry
 -->
 
-§ Definition ⦉
+§ Why ⦉
 ¶ ⦊
-  ‖ The ❬convex hull❭ (or ❬real convex hull❭) of a set $A ⊂
-    𝗥^n$ is the intersection of all convex sets containing the
-    set. ⦉
-
-  ‖ In other words, it is the smallest convex set containing
-    $A$. ⦉
+  ‖ Here are a few questions, which turn out to be related. ⦉
 ⦉
 
-§§ Notation ⦉
 ¶ ⦊
-  ‖ We denote the convex hull of $S ⊂ 𝗥^n$ by $\conv S$. ⦉
+  ‖ (1) What is the smallest convex set containing a given
+    (possibly nonconvex) set $A ⊂ 𝗥^n$. ⦉
 ⦉
 
-§ Characterization ⦉
-<statement type='proposition'>
-  ‖ Let $S ⊂ 𝗥^n$. $\conv S$ is the set of all convex
-    combinations of elements of $S$. ⦉
-</statement>
-<statement type='proposition'>
-  ‖ The convex hull of $\set{b_1, …, b_m} ⊂ 𝗥^n$ consists of
-    all vectors
+¶ ⦊
+  ‖ (2) Suppose we want to describe the set of points a
+    rectangle in the plane. ⦉
+
+  ‖ It seems natural that we should be able to do so by
+    specifying the four vertices $v_1, v_2, v_3, v_4 ∈ 𝗥^2$, and
+    then saying, roughly that the points in of any of these
+    vertices, or any point on a segment between these two points
+    is in the rectangle. ⦉
+
+  ‖ Define a function $κ: \powerset{𝗥^2} → \powerset{𝗥^2}$ by
     ◇ ⦊
-      ‖ λ_1b_1 + λ_2b_2 + ⋯ + λ_mb_m. ⦉
-    ⦉
-    where $λ_i ≥ 0$ and $∑_{i}λ_i = 1$. ⦉
-</statement>
-<tex>
-  ‖ \blankpage ⦉
-</tex>
+      ‖ κ(A) = ∪_{x, y ∈ A} [a, b] ⦉
+    ⦉⦉
+
+  ‖ Then
+    ◇ ⦊
+      ‖ κ(\set{v_1, v_2, v_3, v_4}) = ⦉
+
+      ‖ ∪ [v_1, v_2] ∪ [v_1, v_3] ∪ [v_1, v_4] ⦉
+
+      ‖ ∪ [v_2, v_3] ∪ [v_2, v_4] ⦉
+
+      ‖ ∪ [v_3, v_4] ⦉
+    ⦉⦉
+
+  ‖ Then it is natural to say $S_1 ⊂ R$. ⦉
+
+  ‖ Are there points not in $S_1$ but in $R$? ⦉
+
+  ‖ Sure, all the points on the red line. ⦉
+  <center>
+    <img src='./graphics/convexhullrect.pdf' width='100%'/>
+  </center>
+
+  ‖ So consider a convex combination of two of them, say
+    ◇ ⦊
+      ‖ u_1 = v_1 + α(v_2 - v_1) \quad \text{ and } \quad u_2
+        = v_3 + β(v_2 - v_3) ⦉
+    ⦉⦉
+
+  ‖ Now pick a $λ ∈ [0,1]$ and form
+    ◇ ⦊
+      ‖ \begin{aligned} ⦉
+
+      ‖ λu_1 + (1-λ)u_2 ⦉
+
+      ‖ &= λ(1-α)v_1 + λαv_2 + (1-λ)(1-β)v_2 + (1-λ)βv_3 \\ ⦉
+
+      ‖ &= λ(1-α)v_1 + (λα + (1-λ)(1-β))v_2 + (1-λ)βv_3 ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ Notice that each of the coefficients on $v_1, v_2, v_3$ are
+    nonnegative. ⦉
+
+  ‖ Moreover, notice that
+    ◇ ⦊
+      ‖ λ(1-α) + λα + (1-λ)(1-β) + (1-λ)β = λ + (1-λ) = 1 ⦉
+    ⦉⦉
+
+  ‖ In other words, the points on the line segment between
+    $u_1$ and $u_2$ are points which can be written as a sum
+    of the vertices of the square, scaled by nonnegative
+    coefficients which sum to one. ⦉
+
+  ‖ A natural question is: does $R = κ(κ(S))$? ⦉
+⦉
+
+§ Definitions ⦉
+¶ ⦊
+  ‖ A ❬convex combination❭ is a linear combination whose sequence
+    of scalars is nonnegative and sums to one. ⦉
+
+  ‖ Given any set $A ⊂ 𝗥^n$, the convex hull of $A$ is ⦉
+  ¶ ⦊
+    ‖ And
+
+      ‖ What is the smallest convex
+
+        ‖ Suppose we want to describe a rectangle in the plane. ⦉
+
+        ‖ We can give its four verices $v_1, v_2, v_3, v_4 ∈
+          𝗥^2$ and then say that the set we speak of the set
+          of all line ⦉
+
+        ‖ segments between the two points. ⦉⦉
+
+      ‖ Suppose we take some points in
+
+        ‖ What is the smallest convex set containing a given
+          (possibly nonconvex) set? ⦉
+
+        ‖ Alternatively, given some points $x_1, …, x_n ∈ 𝗥^d$,
+          can ⦉
+
+        § Definition ⦉
+        ¶ ⦊
+          ‖ We have seen that convex sets are closed under
+            intersection. ⦉
+
+          ‖ Clearly $𝗥^n$ is a convex set. ⦉
+
+          ‖ So the set of convex sets in $𝗥^n$ containing $A ⊂
+            𝗥^n$ has at least one member. ⦉
+
+          ‖ The ❬convex hull❭ (or ❬real convex hull❭) of a set
+            $A ⊂ 𝗥^n$ is the intersection of all convex sets
+            containing the set. ⦉
+
+          ‖ In other words, it is the smallest convex set
+            containing $A$. ⦉
+        ⦉
+
+        §§ Notation ⦉
+        ¶ ⦊
+          ‖ We denote the convex hull of $S ⊂ 𝗥^n$ by $\conv
+            S$. ⦉
+        ⦉
+
+        § Characterization ⦉
+        <statement type='proposition'>
+          ‖ Let $S ⊂ 𝗥^n$. $\conv S$ is the set of all convex
+            combinations of elements of $S$. ⦉
+        </statement>
+        <statement type='proposition'>
+          ‖ The convex hull of $\set{b_1, …, b_m} ⊂ 𝗥^n$
+            consists of all vectors
+            ◇ ⦊
+              ‖ λ_1b_1 + λ_2b_2 + ⋯ + λ_mb_m. ⦉
+            ⦉
+            where $λ_i ≥ 0$ and $∑_{i}λ_i = 1$. ⦉
+        </statement>
+        <tex>
+          ‖ \blankpage ⦉
+        </tex>⦉⦉
+  ⦉
+⦉
