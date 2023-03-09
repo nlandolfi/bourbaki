@@ -4,20 +4,64 @@
 We want to talk about particular attributes of an outcome, instead of the details of the outcomes themselves.
 These may be useful to specify events.
 
+\section*{Definition}
+
 An \t{outcome variable} (or \t{random variable}) is a function from $\Omega $ to $V$, where $V$ is a set.
 In this context, $V$ is called the set of \t{values} of the random variable.
 
-\section*{Example: two dice}
+\section*{Examples}
 
-We want to talk about the sum of the pips shown facing up after rolling two dice.
-We may take as our set of outcome $\set{1, \dots , 12}$, whose elements correspond to the sum.
+\textit{Sum of two dice.}
+Suppose we model rolling two dice.
+We are interested in the sum of the pips shown facing up.
+Suppose we take as the set of outcome $\set{1, \dots , 12}$, whose elements correspond to the sum.
 We interpret $\Set{x \in \Omega }{x \geq 10}$ as the event that the sum of the two dice is greater than or equal to 10.
 
-Alternatively, we may take the outcomes $\set{1, \dots , 6}^2$ and define an outcome variable $s: \set{1, \dots , 6}^2 \to \set{1, \dots , 12}$ by
+Alternatively, we may take the usual set of outcomes $\set{1, \dots , 6}^2$ and define an outcome variable $s: \set{1, \dots , 6}^2 \to \set{1, \dots , 12}$ by
 \[
-s((d_1, d_2)) = d_1 + d_2.
+s(d_1, d_2) = d_1 + d_2.
 \]
 We interpret this natural-number-valued outcome variable $s$ as sum of the two dice.
-The event that the sum of the two dice is greater than or equal to to 10 corresponds to the set $\Set{(d_1, d_2) \in \set{1, \dots , 6}}{s((d_1, d_2)) \geq 10}$.
+The event that the sum of the two dice is greater than or equal to to 10 corresponds to the set $\Set{(d_1, d_2) \in \set{1, \dots , 6}}{s(d_1, d_2) \geq 10}$.
+
+% math151 notes 
+
+As a third alternative, again take the usual set of outcomes $\Omega  = \set{1, \dots , 6}^2$.
+Define the outcome variable $X: \Omega  \to \N  $ to be the number of pips showing on the first die, $Y: \Omega  \to \N  $ to be the number of pips showing on the second die, and define $Z: \Omega  \to \N  $ by
+\[
+Z(\omega ) = X(\omega ) + Y(\omega ) \quad \text{for all } \omega  \in \Omega
+\]
+A standard notation for this relation between $Z$ and $X,Y$ by $Z = X + Y$.
+For example, if $\omega  = (2,5)$, $X(\omega ) = 2$, $Y(\omega ) = 5$, and $Z(\omega ) = 7$.
+
+The preceding three paragraphs highlight that there are several ways of denoting the same situation.
+
+\textit{Tossing a fair coin $n$ times.}
+As before, we model $n$ tosses of a fair coin with the sample space $\Omega  = \set{0,1}^n$.
+Define $X_i: \Omega  \to \set{0,1}$ by $X_i(\omega ) = \omega _i$.
+We interpret $\Set{\omega  \in \Omega }{X_i(\omega ) = 1}$ as the event that toss $i$ turns up heads, and likewise $\Set{\omega \in \Omega }{X_i(\omega ) = 0}$ as the event that toss $i$ turns up tails, for $i = 1, \dots , n$.
+We can define the function $X: \Omega  \to {0,1}^n$ by $X(\omega ) = \omega $ or by saying $X = (X_1, \dots , X_n)$.
+Suppose we define $H: \Omega  \to \N  $ by
+\[
+H(\omega ) = \sum_{i= 1}^{n} X_i(\omega )
+\]
+Or, alternatively, $H = \sum_{i = 1}^{n} X_i$.
+In this case, we interpret $H$ as the number of heads observed in the $n$ tosses.
+
+% math 151 
+
+\subsection*{Notation}
+
+We often denote outcome variables by upper case letters $X: \Omega  \to V$.
+The event $\Set{\omega  \in \Omega }{X(\omega ) = x}$, where $x \in V$, is often abbreviated $\set{X = x}$.
+The probability of this even is often abbreviated $P(X = x)$.
+
+Similarly, for a subset $U \subset V$, the event $\Set{\omega \in \Omega }{X(\omega ) \in U}$ is often abbreviated $\set{X \in A}$ and its probability abbreviated $P(X \in A)$.
+
+Suppose $X: \Omega  \to V_1$ and $Y: \Omega  \to V_2$, and $A \subset V_1$ and $B \subset V_2$, then the event
+\[
+\set{X \in A} \cap  \set{Y \in B}
+\]
+is often written $\set{X \in A, Y \in B}$.
 
 \blankpage
