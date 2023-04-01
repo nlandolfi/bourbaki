@@ -1,0 +1,160 @@
+<!--yaml
+name: knapsack_problems
+needs:
+    - optimization_problems
+    - characteristic_functions
+refs:
+    - martello_and_roth/chapter_1
+wikipedia: https://en.wikipedia.org/wiki/Knapsack_problem
+-->
+
+§ Why ⦉
+¶ ⦊
+  ‖ Suppose we want to fill up a backpack by selecting from
+    various objects which gives us differing amounts of comfort. ⦉
+
+  ‖ We only have so much space in the backpack. ⦉
+⦉
+
+§ Definition ⦉
+¶ ⦊
+  ‖ Number the objects $1, …, n$. ⦉
+
+  ‖ Model the amount of space needed for a subset $H ⊂ \set{1,
+    …, n}$ of the $n$ items by $s(H)$; here $s: \powerset{S} →
+    𝗥_+$. ⦉
+
+  ‖ Model the comfort (or value) they provide by $v(H)$; here
+    $v: \powerset{\set{1,…, n}} → 𝗥$. ⦉
+
+  ‖ Given a space constraint $c$, we want to find $H ⊂ P$ to ⦉
+  ◇ ⦊
+    ‖ \begin{aligned} ⦉
+
+    ‖ \text{maximize} & \quad v(H) ᜶ ⦉
+
+    ‖ \text{subject to } & \quad s(H) ≤ c ᜶ ⦉
+
+    ‖ \end{aligned} ⦉
+  ⦉
+
+  ‖ In other words, find the susbet of items which will fit in
+    the bag and maximize the value. ⦉
+
+  ‖ Such problems are called ❬knapsack problems❭. ⦉
+⦉
+
+§§ Linear formulation ⦉
+¶ ⦊
+  ‖ It is natural to expect the space constraint to be additive ⦉
+
+  ‖ In other words $H ∩ G = ∅$ means $s(H ∪ G) = s(H) +
+    s(G)$, from which we conclude that the function is monotonic
+    (using the fact that it is nonnegative). ⦉
+
+  ‖ I.e., given $G ⊂ H$, we have $s(G) ≤ S(H)$. ⦉
+
+  ‖ Suppose we also model the value function as additive. ⦉
+
+  ‖ Given $H ∩ G = ∅$, then $v(H ∪ G) = v(H) + v(G)$. ⦉
+⦉
+
+¶ ⦊
+  ‖ It turns out that additivity is sufficient to have a linear
+    representation for both $s$ and $v$. ⦉
+
+  ‖ For $H ⊂ P$, denote by $χ_H: P → \set{0,1}$ the
+    characteristic function of $H$. ⦉
+
+  ‖ In other words, $χ_H$ is defined by
+    ◇ ⦊
+      ‖ x_H(i) = \begin{cases} ⦉
+
+      ‖ 1 & \text{ if } i ∈ H ᜶ ⦉
+
+      ‖ 0 & \text{ otherwise } ⦉
+
+      ‖ \end{cases} ⦉
+    ⦉⦉
+
+  ‖ Then there exists $p: \set{1, …, n} → 𝗥$ and $w: \set{1,
+    …, n} → 𝗥_+$ such that
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ v(H) = ∑_{i = 1}^{n} p(i) χ_H(i) \quad \text{for all }
+        H ⊂ \set{1, …, n} ⦉
+    ⦉
+    and
+    ◇ ⦊
+      ‖ s(H) = ∑_{i = 1}^{n} w(i) χ_H(i) \quad \text{for all }
+        H ⊂ \set{1, …, n} ⦉
+    ⦉⦉
+⦉
+
+¶ ⦊
+  ‖ We can formulate the following problem: given $c ∈ 𝗥_+$,
+    $w: \set{0,1} → 𝗥_+$ and $p: \set{0,1}^n → 𝗥$, find $H ⊂
+    \set{1, …, n}$ to
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ \begin{aligned} ⦉
+
+      ‖ \text{maximize} & \quad \textstyle ∑_{i = 1}^{n} p(i)
+        χ_{H}(i) ᜶ ⦉
+
+      ‖ \text{subject to} & \quad \textstyle ∑_{i = 1}^{n} w_i
+        χ_{H}(i) ≤ c ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ It is common to identify $χ_H$ with a list $x ∈ \{0,1\}^n$
+    and to find $x$ to
+    ◇ ⦊
+      ‖ \textstyle ⦉
+
+      ‖ \begin{aligned} ⦉
+
+      ‖ \text{maximize} & \quad \textstyle \sum_i p_i x_i ᜶ ⦉
+
+      ‖ \text{subject to} & \quad \textstyle ∑_i w_i x_i ≤ c ᜶ ⦉
+
+      ‖ & \quad x_i ∈ \{0,1\} \text{ for all i } = 1, …, n ᜶ ⦉
+
+      ‖ \end{aligned} ⦉
+    ⦉⦉
+
+  ‖ This problem is often called the ❬zero-one knapsack problem❭
+    (or ❬0-1 knapsack problem❭). ⦉
+
+  ‖ The ‹problem data› is the triple $(p, w, c)$. ⦉
+⦉
+
+§§ Alternative perspectives ⦉
+¶ ⦊
+  ‖ Suppose instead the $n$ objects are investments, the $i$th
+    investment requiring $w_i$ investment, returning $p_i$. ⦉
+
+  ‖ Given that we have $c$ dollars in capital, how should we
+    allocate the funds to the investments to maximize return. ⦉
+⦉
+
+¶ ⦊
+  ‖ Other areas in which these problems are used as models
+    include capital budgeting, cargo loading ⦉
+  <tex>
+    ‖ \blankpage ⦉
+  </tex>
+⦉
+
+§§ Terminology ⦉
+¶ ⦊
+  ‖ We generally refer to the $n$ ❬items❭, the $i$th such item
+    having ❬weight❭ $w_i$ and profit $p_i$. ⦉
+
+  ‖ Sometimes such problems are called ❬single knapsack problems❭
+    (one container), in contrast with ❬multiple knapsack problems❭
+    (in which there are multiple containers). ⦉
+⦉

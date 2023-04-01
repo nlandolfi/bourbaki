@@ -1,4 +1,4 @@
-graph.csv: ../sheets/*/*.tex
+graph.csv: ../sheets/*/*.lit
 	bbk_implicit_graph > graph.csv
 graph.graphviz: graph.csv *.tmpl
 	bbk_graph --tmpl graph.tmpl > graph.graphviz

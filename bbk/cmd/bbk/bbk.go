@@ -12,6 +12,7 @@ import (
 	"os"
 	"os/exec"
 	"path"
+	"runtime"
 	"sort"
 	"strings"
 	"sync"
@@ -26,15 +27,18 @@ var (
 	Version   string // e.g. 0.1.0
 	GitSHA    string
 	BuildDate string
+	GoVersion = runtime.Version()
 )
 
 // the help string that is printed for command `bbk`
 const basicHelp = `bbk <command>
     - check
-    - terms 
-    - rm <from> <to>
+    - mk <name>
     - mv <from> <to>
+    - rm <from> <to>
+    - terms 
     - sheets
+    - graph
     - all
     - help <command>
     - version`
@@ -70,7 +74,7 @@ func main() {
 	case "all":
 		allMain(s)
 	case "version", "v":
-		s.info("bbk version %s \n  SHA %s \n  Built at %s", Version, GitSHA, BuildDate)
+		s.info("bbk version %s (%s)\n  SHA %s \n  Built at %s", Version, GoVersion, GitSHA, BuildDate)
 	default:
 		fmt.Printf("unknown subcommand: %q", cmd)
 		fmt.Printf("\n")
@@ -124,6 +128,10 @@ func helpMain(s *state) {
 		s.info(termsHelp)
 	case "mv":
 		s.info(mvHelp)
+	case "rm":
+		s.info(rmHelp)
+	case "mk":
+		s.info(mkHelp)
 	case "check":
 		s.info(checkHelp)
 	case "sheets":
@@ -212,9 +220,9 @@ If you want to remove a directory that has no needs, just
 Examples
   - bbk rm probability_distributions outcome_probabilities
 
-	  All sheets will now point to outcome_probabilties that 
+    All sheets will now point to outcome_probabilties that 
     used to point to probability_distributions, but the
-		outcome_probabilities sheet will remain unchanged.
+    outcome_probabilities sheet will remain unchanged.
 `
 
 func rmMain(s *state) {
