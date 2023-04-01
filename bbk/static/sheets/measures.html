@@ -38,6 +38,7 @@
           ],
         macros: {
                 powerset: ["\\mathcal{P}(#1)", 1],
+                pow: ["\\powerset{#1}", 1],
                 CV: "\\mathcal{V}",
                 ceil: ["\\lceil #1 \\rceil", 1],
                 num: ["\\abs{#1}",1],
@@ -51,6 +52,7 @@
                 F: ["\\mathbfsf{F}"],
                 E: ["\\mathbfsf{E}"],
                 aff: ["\\mathword{aff}"],
+                ex: ["\\mathword{ex}"],
                 upto: ["\\set{1,\\dots,#1}", 1],
                 eqc: ["[#1]", 1],
                 adj: ["\\mathword{adj}"],
@@ -63,6 +65,7 @@
                 seqt: ["#1_n", 1],
                 union: ["\\cup"],
                 intersection: ["\\cap"],
+                vol: ["\\mathword{vol}"],
                 dom: ["\\mathword{dom}"],
                 range: ["\\mathword{range}"],
                 ran: ["\\mathword{range}"],
@@ -623,6 +626,10 @@
 <!-- \newcommand{\powerset}[1]{\CP(#1)} -->
 
 \newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- \newcommand{\pow}[1]{\powerset{#1}} -->
+
+\newcommand{\pow}[1]{\powerset{#1}}
 
 <!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -1245,6 +1252,8 @@ needs:
     - sigma_algebras
     - extended_real_numbers
     - length_measure
+refs:
+    - halmos/measure_theory/chapter_02
 wikipedia: https://en.wikipedia.org/wiki/Measure_(mathematics)
 -->
 <h1 id='Why'>Why</h1>
@@ -1264,7 +1273,7 @@ wikipedia: https://en.wikipedia.org/wiki/Measure_(mathematics)
   <span class='term'>finitely additive</span> if
   <p>\[
    f(\cup_{i = 1}^{n} A_i) = \sum_{i = 1}^{n} f(A_i) \quad
-    \text{for all } A_1, \dots , A_n \in \mathcal{A}
+    \text{for all disjoint } A_1, \dots , A_n \in \mathcal{A}
   \]</p></span>
 </p>
 
@@ -1277,8 +1286,8 @@ wikipedia: https://en.wikipedia.org/wiki/Measure_(mathematics)
   additive</span> if
   <p>\[
    f(\cup_{i = 1}^{\infty} F_i) = \sum_{i =1 }^{\infty} f(F_i)
-    \quad \text{for all sequences } \set{F_i}_{i \in \N  } \text{
-    in } \mathcal{F}
+    \quad \text{for all disjoint sequences } \set{F_i}_{i \in \N  }
+    \text{ in } \mathcal{F}
   \]</p></span>
 </p>
 
@@ -1749,7 +1758,7 @@ wikipedia: https://en.wikipedia.org/wiki/Measure_(mathematics)
 
 
     <span id="footer">
-      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version e50485100.
+      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version 6a1bec7fc.
     </span>
   </body>
 </html>

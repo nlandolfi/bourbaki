@@ -6,6 +6,1081 @@
     <script src="../pdfjs/build/pdf.js"></script>
   </head>
   <body>
+
+  <!-- BEGIN MATHJAX -->
+  <script src="../mathjax/polyfill.min.js"></script>
+  <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {Augment: {
+      Definitions: {macros: {nicefrac: 'XFrac'}},
+      Parse: {prototype: {
+        XFrac: function (name) {
+          var num = this.ParseArg(name);
+          var den = this.ParseArg(name);
+          this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
+        }
+      }}
+    }}
+  });
+  </script>
+  <script>
+    MathJax = {
+      loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics', 'input/tex', 'output/svg']},
+      tex: {
+        inlineMath: [
+            ['\\(', '\\)'],
+            ['$', '$']
+          ],
+        displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]']
+          ],
+        macros: {
+                powerset: ["\\mathcal{P}(#1)", 1],
+                pow: ["\\powerset{#1}", 1],
+                CV: "\\mathcal{V}",
+                ceil: ["\\lceil #1 \\rceil", 1],
+                num: ["\\abs{#1}",1],
+                card: ["\\abs{#1}",1],
+                R: ["\\mathbfsf{R}"],
+                C: ["\\mathbfsf{C}"],
+                N: ["\\mathbfsf{N}"],
+                Q: ["\\mathbfsf{Q}"],
+                S: ["\\mathbfsf{S}"],
+                Z: ["\\mathbfsf{Z}"],
+                F: ["\\mathbfsf{F}"],
+                E: ["\\mathbfsf{E}"],
+                aff: ["\\mathword{aff}"],
+                ex: ["\\mathword{ex}"],
+                upto: ["\\set{1,\\dots,#1}", 1],
+                eqc: ["[#1]", 1],
+                adj: ["\\mathword{adj}"],
+                def: ["\\mathword{def}"],
+                pa: ["\\mathword{pa}"],
+                ch: ["\\mathword{ch}"],
+                str: ["\\mathword{str}"],
+                textsc: ['\\style{font-variant-caps: small-caps}{\\text{#1}}', 1],
+                seq: ["(#1_n)_{n}", 1],
+                seqt: ["#1_n", 1],
+                union: ["\\cup"],
+                intersection: ["\\cap"],
+                vol: ["\\mathword{vol}"],
+                dom: ["\\mathword{dom}"],
+                range: ["\\mathword{range}"],
+                ran: ["\\mathword{range}"],
+                relcomplement: ["C_{#2}({#1})", 2],
+                complement: ["C({#1})", 1],
+                re: ["\\mathword{Re}"],
+                im: ["\\mathword{Im}"],
+                dual: ["{#1}^*", 1],
+                norm: ["\\lVert #1 \\rVert", 1],
+                dnorm: ["\\norm{#1}_*", 1],
+                Cmod: ["\\abs{#1}", 1],
+                Cabs: ["\\Cmod{#1}", 1],
+                vmeas: ["\\abs{#1}", 1],
+                tvnorm: ["\\norm{#1}", 1],
+                nneri: ["\\nneri", 1],
+                nneri: ["[0,\\infty]"],
+                eri: ["[-\\infty,\\infty]"],
+                Rbar: ["\\bar{\\R}"],
+                pushforward: ["#1 \\circ #2^{-1}", 2],
+                rvlaw: ["{#1}_{#2}", 2],
+                var: ["\\mathword{var}"],
+                cov: ["\\mathword{cov}"],
+                std: ["\\mathword{std}"],
+                Cconj: ["#1^{*}", 1],
+                Cconjp: ["\\left(#1\\right))^{*}", 1],
+                ssuc: ["{#1}^{+}", 1],
+                span: ["\\mathword{span}"],
+                lin: ["\\mathword{lin}"],
+                Int: ["\\mathword{Int}"],
+                cl: ["\\mathword{cl}"],
+                Bdry: ["\\mathword{Bdry}"],
+                null: ["\\mathword{null}"],
+                epi: ["\\mathword{epi}"],
+                proj: ["\\mathword{proj}"],
+                codim: ["\\mathword{codim}"],
+                argmin: ["\\mathword{argmin}"],
+                argmax: ["\\mathword{argmax}"],
+                goesto: ["\\longrightarrow"],
+                normaldensity: ["\\frac{1}{\\sqrt{2\\pi}#3}\\exp\\left(-\\frac{1}{2}\\left(\\frac{#1-#2}{#3}\\right)^2\\right)", 3],
+                SimpleF: ["\\mathword{SF}"],
+                supnorm: ["\\norm{#1}_{\\sup}", 1],
+                inv: ["{#1}^{-1}", 1],
+                conv: ["\\mathword{conv}"],
+                B: ["\\mathbfsf{B}"],
+                true: ["\\texttt{true}"],
+                false: ["\\texttt{false}"],
+                lev: ["\\mathword{lev}"],
+                dsc: ["\\mathword{dsc}"],
+                anc: ["\\mathword{anc}"],
+                transpose: ["{#1}^\\top", 1],
+                Msqrt: ["#1^{1/2}", 1],
+                Msqrtp: ["\\left(#1\right\)^{1/2}", 1],
+                tp: ["\\top"],
+                mgaussiandensity: [ "\\frac{1}{\\sqrt{(2\\pi)^{d} \\det #3}} \\exp\\left(-\\frac{1}{2} (#1 - #2)^\\tp #3^{-1} (#1 - #2)\\right)", 3],
+                row: ["\\mathword{row}"],
+                col: ["\\mathword{col}"],
+                adjp: ["\\adj^{+}"],
+                adjh: ["\\adj^{+}"],
+                adjn: ["\\adj^{-}"],
+                adjl: ["\\adj^{-}"],
+                blink: ["\\star"],
+                pause: ["\\square"],
+                fdesc: ["\\mathword{fdesc}"],
+                loss: ["\\ell"],
+                maximizationn: ["\\begin{aligned} \\textbf{find} & \\quad #1 \\\\ \\textbf{to maximize} & \\quad #2 \\\\ \\textbf{subject to} & \\quad #3 \\end{aligned}", 3],
+                normal: ["\\mathcal{N}(#1, #2)", 2],
+                perm: ["\\mathword{perm}"],
+                sgn: ["\\mathword{sgn}"],
+                rvcdf: ["F_{#1}", 1],
+                id: ["\\mathword{id}"],
+                idfn: ["\\mathword{id}_{#1}", 1],
+                floatsingle: ["{\\tt float32}"],
+                floatdouble: ["{\\tt float64}"],
+                Sym: ["\\mathword{Sym}"],
+                symdiff: ["+"],
+                      },
+        packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
+      },
+    };
+  </script>
+
+    <span style="display:none">
+\(\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}\)
+\( \DeclarePairedDelimiter{\set}{\{}{\}}\)
+\( \DeclarePairedDelimiter{\parens}{\left(}{\right)}\)
+\(\DeclarePairedDelimiterX{\innerproduct}[1]{\langle}{\rangle}{#1}\)
+\(\newcommand{\ip}[1]{\innerproduct{#1}}\)
+\(\newcommand{\bmat}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
+\(\newcommand{\barray}[1]{\left[\hspace{2.0pt}\begin{matrix}#1\end{matrix}\hspace{2.0pt}\right]}\)
+\(\newcommand{\mat}[1]{\begin{matrix}#1\end{matrix}}\)
+\(\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}\)
+\(\newcommand{\mathword}[1]{\mathop{\textup{#1}}}\)
+    </span>
+
+    <span style="display:none">
+      <!-- 88 0 -->
+
+<!-- % objects macros -->
+
+% objects macros
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\Z}{\mathbfsf{Z}} -->
+
+\newcommand{\Z}{\mathbfsf{Z}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \set{stuff} for { stuff } -->
+
+% use \set{stuff} for { stuff }
+
+<!-- % use \set* for autosizing delimiters -->
+
+% use \set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiter{\set}{\{}{\}} -->
+
+\DeclarePairedDelimiter{\set}{\{}{\}}
+
+<!--  -->
+
+
+
+<!-- % usual epsilon is too close to \in -->
+
+% usual epsilon is too close to \in
+
+<!-- \renewcommand{\epsilon}{\varepsilon} -->
+
+\renewcommand{\epsilon}{\varepsilon}
+
+<!--  -->
+
+
+
+<!-- % usual emptyset is too close to 0 -->
+
+% usual emptyset is too close to 0
+
+<!-- \renewcommand{\emptyset}{\varnothing} -->
+
+\renewcommand{\emptyset}{\varnothing}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\SA}{\mathcal{A}} -->
+
+\newcommand{\SA}{\mathcal{A}}
+
+<!-- \newcommand{\SB}{\mathcal{B}} -->
+
+\newcommand{\SB}{\mathcal{B}}
+
+<!-- \newcommand{\SC}{\mathcal{C}} -->
+
+\newcommand{\SC}{\mathcal{C}}
+
+<!-- \newcommand{\SD}{\mathcal{D}} -->
+
+\newcommand{\SD}{\mathcal{D}}
+
+<!-- \newcommand{\SE}{\mathcal{E}} -->
+
+\newcommand{\SE}{\mathcal{E}}
+
+<!-- \newcommand{\SF}{\mathcal{F}} -->
+
+\newcommand{\SF}{\mathcal{F}}
+
+<!-- \newcommand{\SG}{\mathcal{G}} -->
+
+\newcommand{\SG}{\mathcal{G}}
+
+<!-- \newcommand{\SH}{\mathcal{H}} -->
+
+\newcommand{\SH}{\mathcal{H}}
+
+<!-- \newcommand{\SI}{\mathcal{I}} -->
+
+\newcommand{\SI}{\mathcal{I}}
+
+<!-- \newcommand{\SJ}{\mathcal{J}} -->
+
+\newcommand{\SJ}{\mathcal{J}}
+
+<!-- \newcommand{\SK}{\mathcal{K}} -->
+
+\newcommand{\SK}{\mathcal{K}}
+
+<!-- \newcommand{\SL}{\mathcal{L}} -->
+
+\newcommand{\SL}{\mathcal{L}}
+
+<!-- \newcommand{\SM}{\mathcal{M}} -->
+
+\newcommand{\SM}{\mathcal{M}}
+
+<!-- \newcommand{\SN}{\mathcal{N}} -->
+
+\newcommand{\SN}{\mathcal{N}}
+
+<!-- \newcommand{\SO}{\mathcal{O}} -->
+
+\newcommand{\SO}{\mathcal{O}}
+
+<!-- \newcommand{\SP}{\mathcal{P}} -->
+
+\newcommand{\SP}{\mathcal{P}}
+
+<!-- \newcommand{\SQ}{\mathcal{Q}} -->
+
+\newcommand{\SQ}{\mathcal{Q}}
+
+<!-- \newcommand{\SR}{\mathcal{R}} -->
+
+\newcommand{\SR}{\mathcal{R}}
+
+<!-- %\newcommand{\SS}{\mathcal{S}} -->
+
+%\newcommand{\SS}{\mathcal{S}}
+
+<!-- \newcommand{\ST}{\mathcal{T}} -->
+
+\newcommand{\ST}{\mathcal{T}}
+
+<!-- \newcommand{\SU}{\mathcal{U}} -->
+
+\newcommand{\SU}{\mathcal{U}}
+
+<!-- \newcommand{\SV}{\mathcal{V}} -->
+
+\newcommand{\SV}{\mathcal{V}}
+
+<!-- \newcommand{\SW}{\mathcal{W}} -->
+
+\newcommand{\SW}{\mathcal{W}}
+
+<!-- \newcommand{\SX}{\mathcal{X}} -->
+
+\newcommand{\SX}{\mathcal{X}}
+
+<!-- \newcommand{\SY}{\mathcal{Y}} -->
+
+\newcommand{\SY}{\mathcal{Y}}
+
+<!-- \newcommand{\SZ}{\mathcal{Z}} -->
+
+\newcommand{\SZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\CA}{\mathcal{A}} -->
+
+\newcommand{\CA}{\mathcal{A}}
+
+<!-- \newcommand{\CB}{\mathcal{B}} -->
+
+\newcommand{\CB}{\mathcal{B}}
+
+<!-- \newcommand{\CC}{\mathcal{C}} -->
+
+\newcommand{\CC}{\mathcal{C}}
+
+<!-- \newcommand{\CD}{\mathcal{D}} -->
+
+\newcommand{\CD}{\mathcal{D}}
+
+<!-- \newcommand{\CE}{\mathcal{E}} -->
+
+\newcommand{\CE}{\mathcal{E}}
+
+<!-- \newcommand{\CF}{\mathcal{F}} -->
+
+\newcommand{\CF}{\mathcal{F}}
+
+<!-- \newcommand{\CG}{\mathcal{G}} -->
+
+\newcommand{\CG}{\mathcal{G}}
+
+<!-- \newcommand{\CH}{\mathcal{H}} -->
+
+\newcommand{\CH}{\mathcal{H}}
+
+<!-- \newcommand{\CI}{\mathcal{I}} -->
+
+\newcommand{\CI}{\mathcal{I}}
+
+<!-- \newcommand{\CJ}{\mathcal{J}} -->
+
+\newcommand{\CJ}{\mathcal{J}}
+
+<!-- \newcommand{\CK}{\mathcal{K}} -->
+
+\newcommand{\CK}{\mathcal{K}}
+
+<!-- \newcommand{\CL}{\mathcal{L}} -->
+
+\newcommand{\CL}{\mathcal{L}}
+
+<!-- \newcommand{\CM}{\mathcal{M}} -->
+
+\newcommand{\CM}{\mathcal{M}}
+
+<!-- \newcommand{\CN}{\mathcal{N}} -->
+
+\newcommand{\CN}{\mathcal{N}}
+
+<!-- \newcommand{\CO}{\mathcal{O}} -->
+
+\newcommand{\CO}{\mathcal{O}}
+
+<!-- \newcommand{\CP}{\mathcal{P}} -->
+
+\newcommand{\CP}{\mathcal{P}}
+
+<!-- \newcommand{\CQ}{\mathcal{Q}} -->
+
+\newcommand{\CQ}{\mathcal{Q}}
+
+<!-- \newcommand{\CR}{\mathcal{R}} -->
+
+\newcommand{\CR}{\mathcal{R}}
+
+<!-- \newcommand{\CS}{\mathcal{S}} -->
+
+\newcommand{\CS}{\mathcal{S}}
+
+<!-- \newcommand{\CT}{\mathcal{T}} -->
+
+\newcommand{\CT}{\mathcal{T}}
+
+<!-- \newcommand{\CU}{\mathcal{U}} -->
+
+\newcommand{\CU}{\mathcal{U}}
+
+<!-- \newcommand{\CV}{\mathcal{V}} -->
+
+\newcommand{\CV}{\mathcal{V}}
+
+<!-- \newcommand{\CW}{\mathcal{W}} -->
+
+\newcommand{\CW}{\mathcal{W}}
+
+<!-- \newcommand{\CX}{\mathcal{X}} -->
+
+\newcommand{\CX}{\mathcal{X}}
+
+<!-- \newcommand{\CY}{\mathcal{Y}} -->
+
+\newcommand{\CY}{\mathcal{Y}}
+
+<!-- \newcommand{\CZ}{\mathcal{Z}} -->
+
+\newcommand{\CZ}{\mathcal{Z}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\comp}{\circ} -->
+
+\newcommand{\comp}{\circ}
+
+<!-- \newcommand{\composed}{\circ} -->
+
+\newcommand{\composed}{\circ}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\idfn}[1]{\text{id}_{#1}} -->
+
+\newcommand{\idfn}[1]{\text{id}_{#1}}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\inv}[1]{{#1}^{-1}} -->
+
+\newcommand{\inv}[1]{{#1}^{-1}}
+
+<!-- \newcommand{\inverse}[1]{\inv{#1}} -->
+
+\newcommand{\inverse}[1]{\inv{#1}}
+
+<!-- \newcommand{\invp}[1]{\left({#1}\right)^{-1}} -->
+
+\newcommand{\invp}[1]{\left({#1}\right)^{-1}}
+
+<!-- \newcommand{\inversep}[1]{\invp{#1}} -->
+
+\newcommand{\inversep}[1]{\invp{#1}}
+
+<!-- \newcommand{\eqc}[1]{[#1]} -->
+
+\newcommand{\eqc}[1]{[#1]}
+
+<!-- % absolute_value macros -->
+
+% absolute_value macros
+
+<!-- % \ifdefined\abs -->
+
+% \ifdefined\abs
+
+<!-- % \else -->
+
+% \else
+
+<!-- %  \newcommand{\abs}[1]{\left|#1\right|} -->
+
+%  \newcommand{\abs}[1]{\left|#1\right|}
+
+<!-- % \fi -->
+
+% \fi
+
+<!-- % the above was creating issues - NCL 2/24/2022 -->
+
+% the above was creating issues - NCL 2/24/2022
+
+<!--  -->
+
+
+
+<!-- % following (roughly) the example of set_numbers/macros -->
+
+% following (roughly) the example of set_numbers/macros
+
+<!-- % \newcommand{\intabs}[1]{\left|#1\right|} -->
+
+% \newcommand{\intabs}[1]{\left|#1\right|}
+
+<!-- \DeclarePairedDelimiter{\abs}{\lvert}{\rvert} -->
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\Q}{\mathbfsf{Q}} -->
+
+\newcommand{\Q}{\mathbfsf{Q}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\relcomplement}[2]{C_{#2}({#1})} -->
+
+\newcommand{\relcomplement}[2]{C_{#2}({#1})}
+
+<!-- \renewcommand{\complement}[1]{C({#1})} -->
+
+\renewcommand{\complement}[1]{C({#1})}
+
+<!-- \newcommand{\dom}{\mathword{dom}} -->
+
+\newcommand{\dom}{\mathword{dom}}
+
+<!-- \newcommand{\ran}{\mathword{range}} -->
+
+\newcommand{\ran}{\mathword{range}}
+
+<!-- \newcommand{\range}{\ran} -->
+
+\newcommand{\range}{\ran}
+
+<!-- \newcommand{\R}{\mathbfsf{R}} -->
+
+\newcommand{\R}{\mathbfsf{R}}
+
+<!-- %see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses -->
+
+%see: https://tex.stackexchange.com/questions/203544/how-to-add-a-circle-on-left-right-parentheses
+
+<!-- \def\oright#1{\right#1\mskip-10mu\circ} -->
+
+\def\oright#1{\right#1\mskip-10mu\circ}
+
+<!-- \def\oleft#1{\circ\mskip-10mu\left#1} -->
+
+\def\oleft#1{\circ\mskip-10mu\left#1}
+
+<!-- \newcommand{\I}{\mathbfsf{I}} -->
+
+\newcommand{\I}{\mathbfsf{I}}
+
+<!-- \newcommand{\oi}[1]{(#1)} -->
+
+\newcommand{\oi}[1]{(#1)}
+
+<!-- \newcommand{\ci}[1]{[#1]} -->
+
+\newcommand{\ci}[1]{[#1]}
+
+<!-- \newcommand{\oci}[1]{(#1]} -->
+
+\newcommand{\oci}[1]{(#1]}
+
+<!-- \newcommand{\coi}[1]{[#1)} -->
+
+\newcommand{\coi}[1]{[#1)}
+
+<!-- % use \powerset{A} for power set of A -->
+
+% use \powerset{A} for power set of A
+
+<!-- % \newcommand{\powerset}[1]{{#1}^*} -->
+
+% \newcommand{\powerset}[1]{{#1}^*}
+
+<!-- \newcommand{\powerset}[1]{\CP(#1)} -->
+
+\newcommand{\powerset}[1]{\CP(#1)}
+
+<!-- \newcommand{\pow}[1]{\powerset{#1}} -->
+
+\newcommand{\pow}[1]{\powerset{#1}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\cross}{\times} -->
+
+\newcommand{\cross}{\times}
+
+<!--  -->
+
+
+
+<!-- \newcommand{\op}[1]{\left(#1\right)} -->
+
+\newcommand{\op}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tuple}[1]{\left(#1\right)} -->
+
+\newcommand{\tuple}[1]{\left(#1\right)}
+
+<!-- \newcommand{\tu}[1]{\left(#1\right)} -->
+
+\newcommand{\tu}[1]{\left(#1\right)}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- % use \Set{a}{b} for {a | b} -->
+
+% use \Set{a}{b} for {a | b}
+
+<!-- % use \Set* for autosizing delimiters -->
+
+% use \Set* for autosizing delimiters
+
+<!-- \DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2} -->
+
+\DeclarePairedDelimiterX{\Set}[2]{\{}{\}}{#1 \nonscript\;\delimsize\vert\nonscript\; #2}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- % mnemonic for (s)et(suc)cesor -->
+
+% mnemonic for (s)et(suc)cesor
+
+<!-- \newcommand{\ssuc}[1]{{#1}^{+}} -->
+
+\newcommand{\ssuc}[1]{{#1}^{+}}
+
+<!-- \renewcommand{\setminus}{-} -->
+
+\renewcommand{\setminus}{-}
+
+<!-- \newcommand{\symdiff}{+} -->
+
+\newcommand{\symdiff}{+}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- \newcommand{\id}{\mathword{id}} -->
+
+\newcommand{\id}{\mathword{id}}
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\product}{\prod} -->
+
+\newcommand{\product}{\prod}
+
+<!-- % use \num{A} for |A| -->
+
+% use \num{A} for |A|
+
+<!-- \newcommand{\num}[1]{\left|#1\right|} -->
+
+\newcommand{\num}[1]{\left|#1\right|}
+
+<!-- \newcommand{\intersect}{\cap} -->
+
+\newcommand{\intersect}{\cap}
+
+<!-- \newcommand{\intersection}{\cap} -->
+
+\newcommand{\intersection}{\cap}
+
+<!-- \newcommand{\N}{\mathbfsf{N}} -->
+
+\newcommand{\N}{\mathbfsf{N}}
+
+<!-- \newcommand{\upto}[1]{\set{1, 2, \dots, #1}} -->
+
+\newcommand{\upto}[1]{\set{1, 2, \dots, #1}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!-- \newcommand{\union}{\,\cup\,} -->
+
+\newcommand{\union}{\,\cup\,}
+
+<!-- \newcommand{\bunion}{\bigcup} -->
+
+\newcommand{\bunion}{\bigcup}
+
+<!-- \newcommand{\bintersection}{\bigcap} -->
+
+\newcommand{\bintersection}{\bigcap}
+
+<!-- \newcommand{\PE}{\mathbfsf{P}} -->
+
+\newcommand{\PE}{\mathbfsf{P}}
+
+<!-- %%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%% MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+<!--  -->
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    </span>
+
+
+
+<style>
+
+.body {
+  background: white;
+}
+
+.needlabel2 {
+  font-weight: bold; 
+  font-size: 0.7em; 
+  font-family: Computer Modern Sans;
+  margin: 4px;
+}
+
+.neednone2 {
+  font-size: 0.75em;
+  font-family: Computer Modern Sans;
+  padding: 6px;
+  margin: 2px 10px;
+}
+
+.need2 {
+  font-family: Computer Modern Sans;
+  padding: 5px 7px;
+  border-radius: 5px;
+  margin: 1px 10px;
+  font-size: 0.75em;
+}
+
+.need2:hover {
+  cursor: pointer;
+  background: #E8E8E8;
+}
+
+.lit {
+  margin: 0 0 1in 0;
+  font-family: Computer Modern Serif;
+  font-family: Computer Modern Concrete Roman;
+  max-width: 6in;
+  min-width: 6in;
+  text-align: justify;
+  padding: 0;
+  min-height: 11in;
+  background: white;
+  line-height: 1.5em;
+}
+
+.sidebar2 {
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 0.3in;
+  min-width: 1in;
+}
+
+.search2 {
+  font-family: Computer Modern Sans; 
+  border:none; 
+  margin-left: 14px; 
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .body {
+    background: black;
+  }
+  .need2:hover {
+    background: #3B3B3B;
+  }
+
+  .lit {
+    background: black;
+  }
+  .search2 {
+    background: black;
+  }
+}
+
+</style>
+
+<div class="body" style="display: flex; flex-direction: column">
+  <!-- top bar -->
+  <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;">
+      <img style="height: 20px" src="../trademark.jpg">
+      <form method="GET" action="/search" >
+        <input class="search2" style="" name="query"placeholder="search...">
+      </form>
+  </div>
+  <!-- main -->
+  <div style="display: flex; flex-direction: row;">
+    <div style="padding: 20px; flex-basis: 0; flex-grow: 1">
+      <div class="sidebar2">
+        <div class="needlabel2"> Needs: </div>
+        
+          
+              <div class="need2" tabindex="0" onclick="location.href='./outcome_variables.html'" onkeypress="location.href='./outcome_variables.html'">
+                <span>
+                  Outcome Variables
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+              <div class="need2" tabindex="0" onclick="location.href='./set_partitions.html'" onkeypress="location.href='./set_partitions.html'">
+                <span>
+                  Set Partitions
+                </span>
+                <span class="caret">›</span>
+              </div>
+          
+        
+        <div class="needlabel2"> Needed by: </div>
+        
+        
+          <div class="need2" tabindex="0" onclick="location.href='./cumulative_distributions.html'" onkeypress="location.href='./cumulative_distributions.html'">
+            <span>
+            Cumulative Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./outcome_variable_expectation.html'" onkeypress="location.href='./outcome_variable_expectation.html'">
+            <span>
+            Outcome Variable Expectation
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need2" tabindex="0" onclick="location.href='./real-valued_outcome_variables.html'" onkeypress="location.href='./real-valued_outcome_variables.html'">
+            <span>
+            Real-Valued Outcome Variables
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+      
+        <div class="needlabel2"> Links: </div>
+      <div class="need2" tabindex="0" onclick="location.href='./outcome_variable_probabilities.pdf#page=2'" onkeypress="location.href='./outcome_variable_probabilities.pdf#page=2'">
+        <span> Sheet PDF </span>
+        <span class="caret">›</span>
+      </div>
+      <div class="need2" tabindex="0" onclick="location.href='./outcome_variable_probabilities-graph.pdf'" onkeypress="location.href='./outcome_variable_probabilities-graph.pdf'">
+        <span> Graph PDF </span>
+        <span class="caret">›</span>
+      </div>
+      
+        </div>
+
+      </div>
+    <div class="lit">
+      <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> Outcome Variable Probabilities </h1> 
+      <!--yaml>
+name: outcome_variable_probabilities
+needs:
+    - outcome_variables
+    - set_partitions
+-->
+<h1 id='Why'>Why</h1>
+
+<p>
+ <span class='run'>Given an outcome variable $X: \Omega  \to V$,
+  and some probabilities on a sample space
+  $\Omega $, there is a natural set of
+  probabilities to associate with outcomes in $V$.</span>
+</p>
+
+<h1 id='Result'>Result</h1>
+
+<p>
+ <span class='run'>Suppose $X: \Omega  \to V$ is a random
+  variable on a finite sample space $\Omega $.</span>
+
+ <span class='run'>Given $p: \Omega  \to \R $ is a probability
+  distribution inducing probability measure $P:
+  \pow{\Omega } \to \R $, define the function $q:
+  V \to \R $ by
+  <p>\[
+   q(x) = P(X = x)
+  \]</p></span>
+
+ <span class='run'>It is easy to verify that $q$ is nonnegative
+  and normalized.</span>
+
+ <span class='run'>The latter fact follows from the observation
+  that the sets $\set{X^{-1}(x)}{x \in V}$
+  partition the set $\Omega $.</span>
+</p>
+
+
+<p>
+ <span class='run'>The function $q$ is sometimes called the
+  <span class='term'>distribution of $X$</span> (the
+  <span class='term'>induced distribution</span>,
+  <span class='term'>induced probability
+  distribution</span>) of the random variable $X$.</span>
+</p>
+
+<h2 id='Notation'>Notation</h2>
+
+<p>
+ <span class='run'>Given a random variable $X: \Omega  \to V$,
+  and some distribution $p: \Omega  \to \R $, it
+  is common to denote the induced distribution by
+  $p_X$.</span>
+
+ <span class='run'>Given a distribution $q: V \to \R $ and a
+  random variable $X: \Omega  \to V$ it is common
+  to see the notation $X \sim q$ as an
+  abbreviation of the sentence “The random variable
+  $X$ has distribution $q$.</span>
+</p>
+
+<h2 id='Computation'>Computation</h2>
+
+<p>
+ <span class='run'>Suppose $X: \Omega  \to V$ is a random
+  variable and $f: V \to U$.</span>
+
+ <span class='run'>Define $Y: \Omega  \to V$ by $y(\omega ) \equiv
+  f(x(\omega ))$ for every $\omega  \in \Omega $.</span>
+
+ <span class='run'>We frequently denote this by $Y = f(X)$.</span>
+
+ <span class='run'>$Y$ is a random variable with induced
+  distribution $p_{Y}: \Omega  \to \R $ satisfying
+  <p>\[
+   \textstyle
+
+   p_{Y}(y) = \sum_{\omega  \in \Omega  \mid  Y(\omega ) = y}
+    p(\omega ) = \sum_{x \in V \mid  f(x) = b} p_X(x).
+  \]</p></span>
+
+ <span class='run'>Consequently, as a matter of practical
+  computation, we can evaluate probabilities having
+  to do with the outcome variable $X$ using $p_X$
+  instead of $p$ and same with $Y$.<sup id='footnote-1-reference' class='lit-footnote-sup'><a href='#footnote-1' class='lit-footnote-a'>1</a></sup></span>
+</p>
+<hr style='margin-top:0.5in'><ol class='footnotes'><li id='footnote-1'> <span class='run'>Future editions will give an example.</span> <a href='#footnote-1-reference'>↩︎</a></li></ol>
+    </div>
+    <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
+  </div>
+    
+
+
+
+    <!-- BEGIN OLD -->
     <div class="header">
       <span class="listing no-border" id="header-trademark-and-title">
         <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
@@ -25,81 +1100,55 @@
       
         <div disabled class="need label"> Needs: </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./event_probabilities.html'" onkeypress="location.href='./event_probabilities.html'">
+            <div class="need" tabindex="0" onclick="location.href='./outcome_variables.html'" onkeypress="location.href='./outcome_variables.html'">
               <span>
-                Event Probabilities
+                Outcome Variables
               </span>
               <span class="caret">›</span>
             </div>
         
-            <div class="need" tabindex="0" onclick="location.href='./uncertain_outcomes.html'" onkeypress="location.href='./uncertain_outcomes.html'">
+            <div class="need" tabindex="0" onclick="location.href='./set_partitions.html'" onkeypress="location.href='./set_partitions.html'">
               <span>
-                Uncertain Outcomes
+                Set Partitions
               </span>
               <span class="caret">›</span>
             </div>
         
       
+      
+        <div disabled class="need label"> Needed by: </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./cumulative_distributions.html'" onkeypress="location.href='./cumulative_distributions.html'">
+            <span>
+            Cumulative Distributions
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./outcome_variable_expectation.html'" onkeypress="location.href='./outcome_variable_expectation.html'">
+            <span>
+            Outcome Variable Expectation
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
+          <div class="need" tabindex="0" onclick="location.href='./real-valued_outcome_variables.html'" onkeypress="location.href='./real-valued_outcome_variables.html'">
+            <span>
+            Real-Valued Outcome Variables
+            </span>
+            <span class="caret">›</span>
+          </div>
+        
       
     </div>
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {Augment: {
-    Definitions: {macros: {nicefrac: 'XFrac'}},
-    Parse: {prototype: {
-      XFrac: function (name) {
-        var num = this.ParseArg(name);
-        var den = this.ParseArg(name);
-        this.Push(MathJax.ElementJax.mml.mfrac(num,den).With({bevelled: true}));
-      }
-    }}
-  }}
-});
-</script>
-    <script>
-      MathJax = {
-        loader: {load: ['[tex]/mathtools', '[tex]/upgreek', '[tex]/physics']},
-        tex: {
-          inlineMath: [
-              ['\\(', '\\)'],
-              ['$', '$']
-            ],
-          displayMath: [
-              ['$$', '$$'],
-              ['\\[', '\\]']
-            ],
-          macros: {
-          },
-          packages: {'[+]': ['mathtools', 'upgreek', 'physics']},
-        },
-      };
-    </script>
-    <script src="../mathjax/polyfill.min.js"></script>
-    <script id="MathJax-script" async src="../mathjax/tex-mml-chtml.js"></script>
-    <!--
-      <link rel="stylesheet" href="../katex/katex.min.css">
-      <script src="../katex/katex.min.js"></script>
-      <script src="../katex/auto-render.min.js"></script>
-      <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(
-          document.body,
-          {
-            delimiters: [
-              {left: "$$", right: "$$", display: true},
-              {left: "$", right: "$", display: false},
-            ],
-          },
-        );
-      });
-    </script>
-    -->
     <script src="../cytoscape/cytoscape.min.js"></script>
 
+    <!--
     <div id="sheet-card" class="card">
-      <div class="sheet-listing"><p class="sheet"> \section*{Why}</p></div><div class="sheet-listing"><p class="sheet"> Given a probability measure on the events of a set of outcomes, we can discuss probabilities of outcome variables.</p></div><div class="sheet-listing"><p class="sheet"> \section*{Definition}</p></div><div class="sheet-listing"><p class="sheet"> Let $p: \Omega  \to \R $ be a probability distribution with corresponding probability measure $\mathbfsf{P} : \powerset{\Omega } \to \R $. Suppose $x: \Omega  \to V$ is an outcome variable. The \t{probability $x = a$}, for $a \in \Omega $, is \[ \textstyle \mathbfsf{P} (\Set{\omega  \in \Omega }{x(\omega ) = a}). \] From the definition of $\mathbfsf{P} $, we express the above as \[ \textstyle \sum_{\omega  \in \Omega  \mid x(\omega ) = a} p(\omega ). \] We refer to the probability of the <i>event</i> that $x = a$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Notation}</p></div><div class="sheet-listing"><p class="sheet"> We denote the probability that $x = a$ by $\mathbfsf{P} [x =a]$. Our square brackets deviate from the slightly slippery but universally standard notation $\mathbfsf{P} (x = a)$. We prefer the square brackets, since $x=a$ is not itself an argument to $\mathbfsf{P} $, but shorthand for $(\Set{\omega  \in \Omega }{x(\omega ) = a})$.</p></div><div class="sheet-listing"><p class="sheet"> Accordingly, there are many similar notations. For example $V = \R $, $\mathbfsf{P} [x \geq a]$ is $\mathbfsf{P} (\Set{\omega  \in \Omega }{x(\omega ) \geq a})$. Or, $\mathbfsf{P} [x \in C]$ means $\mathbfsf{P} (\Set{x \in \Omega }{x(\omega ) \in C})$. Since the <i>event} that $x = a$ is the inverse image of $\set{a}$ under $x$, we also use the notation $x^{-1</i>(a)$. Or generally, $x^{-1}(C)$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Example: sum of two dice}</p></div><div class="sheet-listing"><p class="sheet"> Define $\Omega  = \set{1, \dots , 6}^2$ and define $p: \Omega \to \R $ with $p(\omega ) = \nicefrac{1}{36}$ for each $\omega \in \Omega $. Define $x: \Omega  \to \N $ by $x(\omega _1, \omega _2) = \omega _1 + \omega _2$. Then $\mathbfsf{P} [x = 4] = p((2, 2)) + p(1, 3) + p(3, 1) = \nicefrac{1}{12}$.</p></div><div class="sheet-listing"><p class="sheet"> \subsection*{Induced probabiliity}</p></div><div class="sheet-listing"><p class="sheet"> For $x: \Omega  \to V$, the events $x^{-1}(a)$ for $a \in V$ partition $\Omega $. Define $q: V \to \R $ by \[ q(a) = \mathbfsf{P} [x = a]. \] Since $\cup_{a \in V} x^{-1}(a) = \Omega $, $\sum_{a \in A} q(a) = 1$.</p></div><div class="sheet-listing"><p class="sheet"> We call $q$ the \t{induced distribution} (or \t{induced probability mass function}) of the random variable $x$. It is common to denote it by $p_{x}$. Thus we can think of $V$ as a set of outcomes, which we call the outcomes \t{induced} by $x$.</p></div><div class="sheet-listing"><p class="sheet"> If $x: \Omega  \to V$ is a random variable and $f: V \to U$, then if we define $y: \Omega  \to V$ so that $y \equiv f(x)$, $y$ is a random variable with induced distribution $p_{y}: \Omega  \to \R $ satisfying \[ \textstyle p_{y}(b) = \sum_{a \in V \mid y(a) = b} p_x(a). \]</p></div><div class="sheet-listing"><p class="sheet"> As a matter of practical computation, we can evaluate probabilities having to do with the outcome variable $x$ using $p_x$ instead of $p$. For example with $x$ as in the example above, $\mathbfsf{P} (x = 4 \text{ or } x = 5) = p_x(4) + p_x(5)$, rather than $\sum_{\omega  \in \Omega  \mid x(\omega ) = 4 \text{ or } x(\omega ) = 5} p(\omega )$.</p></div>
+      
     </div>
+    -->
 
     <div style="display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap">
 
@@ -201,159 +1250,6 @@ MathJax.Hub.Config({
     </iframe>
     -->
 
-  
-    <div class="lit">
-    <!--
-!name:outcome_variable_events
-!need:uncertain_outcomes
-!need:event_probabilities
--->
-
-<h1>
-Why </h1>
-
-<p>
- <span class='run'>Given a probability measure on the events of a
-  set of outcomes, we can discuss probabilities of
-  outcome variables. </span>
-</p>
-
-<h1>
-Definition </h1>
-
-<p>
- <span class='run'>Let $p: Ω → 𝗥$ be a probability distribution
-  with corresponding probability measure $𝗣:
-  \powerset{Ω} → 𝗥$. </span>
-
- <span class='run'>Suppose $x: Ω → V$ is an outcome variable. </span>
-
- <span class='run'>The <span class='term'>probability $x = a$</span>,
-  for $a ∈ Ω$, is
-  <p>\[
-   \textstyle </span>
-
-   𝗣(\Set{ω ∈ Ω}{x(ω) = a}). </span>
-  \]</p></span>
-
- <span class='run'>From the definition of $𝗣$, we express the
-  above as
-  <p>\[
-   \textstyle </span>
-
-   ∑_{ω ∈ Ω | x(ω) = a} p(ω). </span>
-  \]</p></span>
-
- <span class='run'>We refer to the probability of the <i>event</i>
-  that $x = a$. </span>
-</p>
-
-<h2>
-Notation </h2>
-
-<p>
- <span class='run'>We denote the probability that $x = a$ by
-  $𝗣[x =a]$. </span>
-
- <span class='run'>Our square brackets deviate from the slightly
-  slippery but universally standard notation $𝗣(x =
-  a)$. </span>
-
- <span class='run'>We prefer the square brackets, since $x=a$ is
-  not itself an argument to $𝗣$, but shorthand
-  for $(\Set{ω ∈ Ω}{x(ω) = a})$. </span>
-</p>
-
-
-<p>
- <span class='run'>Accordingly, there are many similar notations. </span>
-
- <span class='run'>For example $V = 𝗥$, $𝗣[x ≥ a]$ is $𝗣(\Set{ω
-  ∈ Ω}{x(ω) ≥ a})$. </span>
-
- <span class='run'>Or, $𝗣[x ∈ C]$ means $𝗣(\Set{x ∈ Ω}{x(ω) ∈
-  C})$. </span>
-
- <span class='run'>Since the <i>event</i> that $x = a$ is the
-  inverse image of $\set{a}$ under $x$, we also
-  use the notation $x^{-1}(a)$. </span>
-
- <span class='run'>Or generally, $x^{-1}(C)$. </span>
-</p>
-
-<h2>
-Example: sum of two dice </h2>
-
-<p>
- <span class='run'>Define $Ω = \set{1, …, 6}^2$ and define $p: Ω
-  → 𝗥$ with $p(ω) = \nicefrac{1}{36}$ for each $ω
-  ∈ Ω$. </span>
-
- <span class='run'>Define $x: Ω → 𝗡$ by $x(ω_1, ω_2) = ω_1 +
-  ω_2$. </span>
-
- <span class='run'>Then $𝗣[x = 4] = p((2, 2)) + p(1, 3) + p(3,
-  1) = \nicefrac{1}{12}$. </span>
-</p>
-
-<h2>
-Induced probabiliity </h2>
-
-<p>
- <span class='run'>For $x: Ω → V$, the events $x^{-1}(a)$ for $a
-  ∈ V$ partition $Ω$. </span>
-
- <span class='run'>Define $q: V → 𝗥$ by
-  <p>\[
-   q(a) = 𝗣[x = a]. </span>
-  \]</p></span>
-
- <span class='run'>Since $∪_{a ∈ V} x^{-1}(a) = Ω$, $∑_{a ∈ A}
-  q(a) = 1$. </span>
-</p>
-
-
-<p>
- <span class='run'>We call $q$ the <span class='term'>induced
-  distribution</span> (or <span class='term'>induced
-  probability mass function</span>) of the random
-  variable $x$. </span>
-
- <span class='run'>It is common to denote it by $p_{x}$. </span>
-
- <span class='run'>Thus we can think of $V$ as a set of
-  outcomes, which we call the outcomes
-  <span class='term'>induced</span> by $x$. </span>
-</p>
-
-
-<p>
- <span class='run'>If $x: Ω → V$ is a random variable and $f:
-  V → U$, then if we define $y: Ω → V$ so
-  that $y \equiv f(x)$, $y$ is a random variable
-  with induced distribution $p_{y}: Ω → 𝗥$
-  satisfying
-  <p>\[
-   \textstyle </span>
-
-   p_{y}(b) = ∑_{a ∈ V | y(a) = b} p_x(a). </span>
-  \]</p></span>
-</p>
-
-
-<p>
- <span class='run'>As a matter of practical computation, we can
-  evaluate probabilities having to do with the
-  outcome variable $x$ using $p_x$ instead of $p$. </span>
-
- <span class='run'>For example with $x$ as in the example above,
-  $𝗣(x = 4 \text{ or } x = 5) = p_x(4) +
-  p_x(5)$, rather than $∑_{ω ∈ Ω | x(ω) = 4
-  \text{ or } x(ω) = 5} p(ω)$. </span>
-</p>
-
-    </div>
-  
 
   <!--
   <div id="cy" style="height:1000px;width:1000px;">
@@ -405,7 +1301,7 @@ Induced probabiliity </h2>
 
 
     <span id="footer">
-      Copyright 2022 The Bourbaki Authors. Version 8bfe0f53e.
+      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version 6a1bec7fc.
     </span>
   </body>
 </html>

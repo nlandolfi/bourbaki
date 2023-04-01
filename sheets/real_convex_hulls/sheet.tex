@@ -1,14 +1,72 @@
 
-\section*{Definition}
+\section*{Why}
 
+Here are a few questions, which turn out to be related.
+
+(1) What is the smallest convex set containing a given (possibly nonconvex) set $A \subset \R ^n$.
+
+(2) Suppose we want to describe the set of points a rectangle in the plane.
+It seems natural that we should be able to do so by specifying the four vertices $v_1, v_2, v_3, v_4 \in \R ^2$, and then saying, roughly that the points in of any of these vertices, or any point on a segment between these two points is in the rectangle.
+Define a function $\kappa : \powerset{\R ^2} \to \powerset{\R ^2}$ by
+\[
+\kappa (A) = \cup_{x, y \in A} [a, b]
+\]
+Then
+\[
+\kappa (\set{v_1, v_2, v_3, v_4}) =
+\cup [v_1, v_2] \cup [v_1, v_3] \cup [v_1, v_4]
+\cup [v_2, v_3] \cup [v_2, v_4]
+\cup [v_3, v_4]
+\]
+Then it is natural to say $S_1 \subset R$.
+Are there points not in $S_1$ but in $R$?
+Sure, all the points on the red line.
+\begin{center}  \includegraphics[width=0.100\textwidth]{./graphics/convexhullrect.pdf}\end{center}
+So consider a convex combination of two of them, say
+\[
+u_1 = v_1 + \alpha (v_2 - v_1) \quad \text{ and } \quad u_2 = v_3 + \beta (v_2 - v_3)
+\]
+Now pick a $\lambda  \in [0,1]$ and form
+\[
+\begin{aligned}
+\lambda u_1 + (1-\lambda )u_2
+&= \lambda (1-\alpha )v_1 + \lambda \alpha v_2 + (1-\lambda )(1-\beta )v_2 + (1-\lambda )\beta v_3 \\
+&= \lambda (1-\alpha )v_1 + (\lambda \alpha  + (1-\lambda )(1-\beta ))v_2 + (1-\lambda )\beta v_3
+\end{aligned}
+\]
+Notice that each of the coefficients on $v_1, v_2, v_3$ are nonnegative.
+Moreover, notice that
+\[
+\lambda (1-\alpha ) + \lambda \alpha  + (1-\lambda )(1-\beta ) + (1-\lambda )\beta  = \lambda  + (1-\lambda ) = 1
+\]
+In other words, the points on the line segment between $u_1$ and $u_2$ are points which can be written as a sum of the vertices of the square, scaled by nonnegative coefficients which sum to one.
+A natural question is: does $R = \kappa (\kappa (S))$?
+
+\section*{Definitions}
+
+A \t{convex combination} is a linear combination whose sequence of scalars is nonnegative and sums to one.
+Given any set $A \subset \R ^n$, the convex hull of $A$ is
+And
+What is the smallest convex
+Suppose we want to describe a rectangle in the plane.
+We can give its four verices $v_1, v_2, v_3, v_4 \in \R ^2$ and then say that the set we speak of the set of all line
+segments between the two points.
+Suppose we take some points in
+What is the smallest convex set containing a given (possibly nonconvex) set?
+Alternatively, given some points $x_1, \dots , x_n \in \R ^d$, can
+        \section*{Definition}
+
+We have seen that convex sets are closed under intersection.
+Clearly $\R ^n$ is a convex set.
+So the set of convex sets in $\R ^n$ containing $A \subset \R ^n$ has at least one member.
 The \t{convex hull} (or \t{real convex hull}) of a set $A \subset \R ^n$ is the intersection of all convex sets containing the set.
 In other words, it is the smallest convex set containing $A$.
 
-\subsection*{Notation}
+        \subsection*{Notation}
 
 We denote the convex hull of $S \subset \R ^n$ by $\conv S$.
 
-\section*{Characterization}
+        \section*{Characterization}
 
 \begin{proposition}
 Let $S \subset \R ^n$. $\conv S$ is the set of all convex combinations of elements of $S$.
@@ -23,3 +81,4 @@ where $\lambda _i \geq 0$ and $\sum_{i}\lambda _i = 1$.
 \end{proposition}
 
 \blankpage
+
