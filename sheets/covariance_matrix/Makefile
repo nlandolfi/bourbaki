@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-covariance_matrix.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+covariance_matrix.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > covariance_matrix.tex
 
 covariance_matrix.pdf: ../../*.tex ../../trademark.pdf *.tex covariance_matrix.tex graph.pdf

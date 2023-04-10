@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-directed_acyclic_graph_ancestry_partial_order.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+directed_acyclic_graph_ancestry_partial_order.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > directed_acyclic_graph_ancestry_partial_order.tex
 
 directed_acyclic_graph_ancestry_partial_order.pdf: ../../*.tex ../../trademark.pdf *.tex directed_acyclic_graph_ancestry_partial_order.tex graph.pdf

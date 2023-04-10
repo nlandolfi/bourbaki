@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-quadratic_form_inequalities.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+quadratic_form_inequalities.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > quadratic_form_inequalities.tex
 
 quadratic_form_inequalities.pdf: ../../*.tex ../../trademark.pdf *.tex quadratic_form_inequalities.tex graph.pdf

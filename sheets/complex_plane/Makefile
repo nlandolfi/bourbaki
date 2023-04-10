@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-complex_plane.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+complex_plane.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > complex_plane.tex
 
 complex_plane.pdf: ../../*.tex ../../trademark.pdf *.tex complex_plane.tex graph.pdf

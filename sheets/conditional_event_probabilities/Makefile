@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-conditional_event_probabilities.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+conditional_event_probabilities.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_event_probabilities.tex
 
 conditional_event_probabilities.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_event_probabilities.tex graph.pdf

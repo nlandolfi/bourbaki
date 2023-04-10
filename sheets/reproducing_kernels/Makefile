@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-reproducing_kernels.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+reproducing_kernels.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > reproducing_kernels.tex
 
 reproducing_kernels.pdf: ../../*.tex ../../trademark.pdf *.tex reproducing_kernels.tex graph.pdf

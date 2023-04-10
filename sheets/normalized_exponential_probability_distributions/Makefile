@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-normalized_exponential_probability_distributions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+normalized_exponential_probability_distributions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > normalized_exponential_probability_distributions.tex
 
 normalized_exponential_probability_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex normalized_exponential_probability_distributions.tex graph.pdf

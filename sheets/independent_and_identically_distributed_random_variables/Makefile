@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-independent_and_identically_distributed_random_variables.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+independent_and_identically_distributed_random_variables.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > independent_and_identically_distributed_random_variables.tex
 
 independent_and_identically_distributed_random_variables.pdf: ../../*.tex ../../trademark.pdf *.tex independent_and_identically_distributed_random_variables.tex graph.pdf

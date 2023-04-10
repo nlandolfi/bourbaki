@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-list_classifiers.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+list_classifiers.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > list_classifiers.tex
 
 list_classifiers.pdf: ../../*.tex ../../trademark.pdf *.tex list_classifiers.tex graph.pdf

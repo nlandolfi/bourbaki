@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-complete_normed_spaces.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+complete_normed_spaces.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > complete_normed_spaces.tex
 
 complete_normed_spaces.pdf: ../../*.tex ../../trademark.pdf *.tex complete_normed_spaces.tex graph.pdf

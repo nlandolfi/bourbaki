@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-integer_rational_homomorphism.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+integer_rational_homomorphism.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > integer_rational_homomorphism.tex
 
 integer_rational_homomorphism.pdf: ../../*.tex ../../trademark.pdf *.tex integer_rational_homomorphism.tex graph.pdf

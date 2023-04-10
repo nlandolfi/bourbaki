@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-empirical_cumulative_distribution_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+empirical_cumulative_distribution_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > empirical_cumulative_distribution_functions.tex
 
 empirical_cumulative_distribution_functions.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_cumulative_distribution_functions.tex graph.pdf

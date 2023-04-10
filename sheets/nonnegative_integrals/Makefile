@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-nonnegative_integrals.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+nonnegative_integrals.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > nonnegative_integrals.tex
 
 nonnegative_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex nonnegative_integrals.tex graph.pdf

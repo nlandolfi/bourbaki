@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-space_vectors.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+space_vectors.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > space_vectors.tex
 
 space_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex space_vectors.tex graph.pdf

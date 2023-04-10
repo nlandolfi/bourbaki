@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-correlation.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+correlation.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > correlation.tex
 
 correlation.pdf: ../../*.tex ../../trademark.pdf *.tex correlation.tex graph.pdf

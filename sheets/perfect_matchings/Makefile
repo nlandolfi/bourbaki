@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-perfect_matchings.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+perfect_matchings.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > perfect_matchings.tex
 
 perfect_matchings.pdf: ../../*.tex ../../trademark.pdf *.tex perfect_matchings.tex graph.pdf

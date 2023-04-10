@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-random_variables.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+random_variables.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > random_variables.tex
 
 random_variables.pdf: ../../*.tex ../../trademark.pdf *.tex random_variables.tex graph.pdf

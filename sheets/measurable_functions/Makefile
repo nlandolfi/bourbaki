@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-measurable_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+measurable_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > measurable_functions.tex
 
 measurable_functions.pdf: ../../*.tex ../../trademark.pdf *.tex measurable_functions.tex graph.pdf

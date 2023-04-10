@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-floating_point_representations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+floating_point_representations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > floating_point_representations.tex
 
 floating_point_representations.pdf: ../../*.tex ../../trademark.pdf *.tex floating_point_representations.tex graph.pdf

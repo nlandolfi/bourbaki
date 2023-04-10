@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-logarithm.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+logarithm.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > logarithm.tex
 
 logarithm.pdf: ../../*.tex ../../trademark.pdf *.tex logarithm.tex graph.pdf

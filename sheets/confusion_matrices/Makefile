@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-confusion_matrices.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+confusion_matrices.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > confusion_matrices.tex
 
 confusion_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex confusion_matrices.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-natural_arithmetic.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+natural_arithmetic.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > natural_arithmetic.tex
 
 natural_arithmetic.pdf: ../../*.tex ../../trademark.pdf *.tex natural_arithmetic.tex graph.pdf

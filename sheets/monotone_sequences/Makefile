@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-monotone_sequences.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+monotone_sequences.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_sequences.tex
 
 monotone_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_sequences.tex graph.pdf

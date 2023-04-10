@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-translate_sets.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+translate_sets.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > translate_sets.tex
 
 translate_sets.pdf: ../../*.tex ../../trademark.pdf *.tex translate_sets.tex graph.pdf

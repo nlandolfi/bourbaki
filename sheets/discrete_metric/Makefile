@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-discrete_metric.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+discrete_metric.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > discrete_metric.tex
 
 discrete_metric.pdf: ../../*.tex ../../trademark.pdf *.tex discrete_metric.tex graph.pdf

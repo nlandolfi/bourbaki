@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-outcome_variable_expectation.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+outcome_variable_expectation.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > outcome_variable_expectation.tex
 
 outcome_variable_expectation.pdf: ../../*.tex ../../trademark.pdf *.tex outcome_variable_expectation.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-converse_relations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+converse_relations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > converse_relations.tex
 
 converse_relations.pdf: ../../*.tex ../../trademark.pdf *.tex converse_relations.tex graph.pdf

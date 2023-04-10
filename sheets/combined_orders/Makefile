@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-combined_orders.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+combined_orders.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > combined_orders.tex
 
 combined_orders.pdf: ../../*.tex ../../trademark.pdf *.tex combined_orders.tex graph.pdf

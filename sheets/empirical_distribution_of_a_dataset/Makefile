@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-empirical_distribution_of_a_dataset.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+empirical_distribution_of_a_dataset.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > empirical_distribution_of_a_dataset.tex
 
 empirical_distribution_of_a_dataset.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_distribution_of_a_dataset.tex graph.pdf

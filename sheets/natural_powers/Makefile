@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-natural_powers.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+natural_powers.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > natural_powers.tex
 
 natural_powers.pdf: ../../*.tex ../../trademark.pdf *.tex natural_powers.tex graph.pdf

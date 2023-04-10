@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-expectation_deviation_upper_bound.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+expectation_deviation_upper_bound.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > expectation_deviation_upper_bound.tex
 
 expectation_deviation_upper_bound.pdf: ../../*.tex ../../trademark.pdf *.tex expectation_deviation_upper_bound.tex graph.pdf

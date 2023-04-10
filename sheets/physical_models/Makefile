@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-physical_models.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+physical_models.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > physical_models.tex
 
 physical_models.pdf: ../../*.tex ../../trademark.pdf *.tex physical_models.tex graph.pdf

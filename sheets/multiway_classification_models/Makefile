@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-multiway_classification_models.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+multiway_classification_models.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > multiway_classification_models.tex
 
 multiway_classification_models.pdf: ../../*.tex ../../trademark.pdf *.tex multiway_classification_models.tex graph.pdf

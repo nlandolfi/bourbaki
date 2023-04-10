@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-identity_elements.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+identity_elements.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > identity_elements.tex
 
 identity_elements.pdf: ../../*.tex ../../trademark.pdf *.tex identity_elements.tex graph.pdf

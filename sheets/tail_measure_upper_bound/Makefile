@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-tail_measure_upper_bound.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+tail_measure_upper_bound.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > tail_measure_upper_bound.tex
 
 tail_measure_upper_bound.pdf: ../../*.tex ../../trademark.pdf *.tex tail_measure_upper_bound.tex graph.pdf

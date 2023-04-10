@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-profit_maximizing_production_allocation.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+profit_maximizing_production_allocation.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > profit_maximizing_production_allocation.tex
 
 profit_maximizing_production_allocation.pdf: ../../*.tex ../../trademark.pdf *.tex profit_maximizing_production_allocation.tex graph.pdf

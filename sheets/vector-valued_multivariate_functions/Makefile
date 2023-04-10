@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-vector-valued_multivariate_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+vector-valued_multivariate_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > vector-valued_multivariate_functions.tex
 
 vector-valued_multivariate_functions.pdf: ../../*.tex ../../trademark.pdf *.tex vector-valued_multivariate_functions.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-iterated_rectangular_integrals.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+iterated_rectangular_integrals.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > iterated_rectangular_integrals.tex
 
 iterated_rectangular_integrals.pdf: ../../*.tex ../../trademark.pdf *.tex iterated_rectangular_integrals.tex graph.pdf

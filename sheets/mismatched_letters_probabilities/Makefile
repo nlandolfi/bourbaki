@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-mismatched_letters_probabilities.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+mismatched_letters_probabilities.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > mismatched_letters_probabilities.tex
 
 mismatched_letters_probabilities.pdf: ../../*.tex ../../trademark.pdf *.tex mismatched_letters_probabilities.tex graph.pdf

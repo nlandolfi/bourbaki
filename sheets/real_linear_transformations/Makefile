@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-real_linear_transformations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+real_linear_transformations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > real_linear_transformations.tex
 
 real_linear_transformations.pdf: ../../*.tex ../../trademark.pdf *.tex real_linear_transformations.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-bounded_linear_norm.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+bounded_linear_norm.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > bounded_linear_norm.tex
 
 bounded_linear_norm.pdf: ../../*.tex ../../trademark.pdf *.tex bounded_linear_norm.tex graph.pdf

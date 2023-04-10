@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-length_measure.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+length_measure.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > length_measure.tex
 
 length_measure.pdf: ../../*.tex ../../trademark.pdf *.tex length_measure.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-complete_metric_spaces.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+complete_metric_spaces.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > complete_metric_spaces.tex
 
 complete_metric_spaces.pdf: ../../*.tex ../../trademark.pdf *.tex complete_metric_spaces.tex graph.pdf

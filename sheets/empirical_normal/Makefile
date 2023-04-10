@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-empirical_normal.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+empirical_normal.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > empirical_normal.tex
 
 empirical_normal.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_normal.tex graph.pdf

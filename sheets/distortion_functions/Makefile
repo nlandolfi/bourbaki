@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-distortion_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+distortion_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > distortion_functions.tex
 
 distortion_functions.pdf: ../../*.tex ../../trademark.pdf *.tex distortion_functions.tex graph.pdf

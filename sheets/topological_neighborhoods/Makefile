@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-topological_neighborhoods.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+topological_neighborhoods.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > topological_neighborhoods.tex
 
 topological_neighborhoods.pdf: ../../*.tex ../../trademark.pdf *.tex topological_neighborhoods.tex graph.pdf

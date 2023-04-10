@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-roots_of_one.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+roots_of_one.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > roots_of_one.tex
 
 roots_of_one.pdf: ../../*.tex ../../trademark.pdf *.tex roots_of_one.tex graph.pdf

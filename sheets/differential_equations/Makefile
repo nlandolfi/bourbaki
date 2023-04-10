@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-differential_equations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+differential_equations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > differential_equations.tex
 
 differential_equations.pdf: ../../*.tex ../../trademark.pdf *.tex differential_equations.tex graph.pdf

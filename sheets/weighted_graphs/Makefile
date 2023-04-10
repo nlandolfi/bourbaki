@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-weighted_graphs.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+weighted_graphs.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > weighted_graphs.tex
 
 weighted_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex weighted_graphs.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-ordered_pairs.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+ordered_pairs.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > ordered_pairs.tex
 
 ordered_pairs.pdf: ../../*.tex ../../trademark.pdf *.tex ordered_pairs.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-third_degree_equations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+third_degree_equations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > third_degree_equations.tex
 
 third_degree_equations.pdf: ../../*.tex ../../trademark.pdf *.tex third_degree_equations.tex graph.pdf

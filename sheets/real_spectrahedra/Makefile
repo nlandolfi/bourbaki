@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-real_spectrahedra.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+real_spectrahedra.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > real_spectrahedra.tex
 
 real_spectrahedra.pdf: ../../*.tex ../../trademark.pdf *.tex real_spectrahedra.tex graph.pdf

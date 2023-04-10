@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-circulant_matrix_eigendecompositions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+circulant_matrix_eigendecompositions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > circulant_matrix_eigendecompositions.tex
 
 circulant_matrix_eigendecompositions.pdf: ../../*.tex ../../trademark.pdf *.tex circulant_matrix_eigendecompositions.tex graph.pdf

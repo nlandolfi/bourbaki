@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-digital_images.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+digital_images.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > digital_images.tex
 
 digital_images.pdf: ../../*.tex ../../trademark.pdf *.tex digital_images.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-plane_distance.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+plane_distance.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > plane_distance.tex
 
 plane_distance.pdf: ../../*.tex ../../trademark.pdf *.tex plane_distance.tex graph.pdf

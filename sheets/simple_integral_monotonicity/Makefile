@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-simple_integral_monotonicity.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+simple_integral_monotonicity.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > simple_integral_monotonicity.tex
 
 simple_integral_monotonicity.pdf: ../../*.tex ../../trademark.pdf *.tex simple_integral_monotonicity.tex graph.pdf

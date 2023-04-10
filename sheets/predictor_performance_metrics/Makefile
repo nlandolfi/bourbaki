@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-predictor_performance_metrics.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+predictor_performance_metrics.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > predictor_performance_metrics.tex
 
 predictor_performance_metrics.pdf: ../../*.tex ../../trademark.pdf *.tex predictor_performance_metrics.tex graph.pdf

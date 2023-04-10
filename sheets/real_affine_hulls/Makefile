@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-real_affine_hulls.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+real_affine_hulls.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > real_affine_hulls.tex
 
 real_affine_hulls.pdf: ../../*.tex ../../trademark.pdf *.tex real_affine_hulls.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-cumulative_distributions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+cumulative_distributions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > cumulative_distributions.tex
 
 cumulative_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex cumulative_distributions.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-generalized_inclusion-exclusion_formula.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+generalized_inclusion-exclusion_formula.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > generalized_inclusion-exclusion_formula.tex
 
 generalized_inclusion-exclusion_formula.pdf: ../../*.tex ../../trademark.pdf *.tex generalized_inclusion-exclusion_formula.tex graph.pdf

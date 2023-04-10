@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-integrable_function_space.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+integrable_function_space.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > integrable_function_space.tex
 
 integrable_function_space.pdf: ../../*.tex ../../trademark.pdf *.tex integrable_function_space.tex graph.pdf

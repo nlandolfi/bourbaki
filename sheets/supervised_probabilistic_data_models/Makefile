@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-supervised_probabilistic_data_models.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+supervised_probabilistic_data_models.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > supervised_probabilistic_data_models.tex
 
 supervised_probabilistic_data_models.pdf: ../../*.tex ../../trademark.pdf *.tex supervised_probabilistic_data_models.tex graph.pdf

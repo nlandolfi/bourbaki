@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-optimal_spanning_trees.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+optimal_spanning_trees.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > optimal_spanning_trees.tex
 
 optimal_spanning_trees.pdf: ../../*.tex ../../trademark.pdf *.tex optimal_spanning_trees.tex graph.pdf

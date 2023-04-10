@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-number_base_notation.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+number_base_notation.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > number_base_notation.tex
 
 number_base_notation.pdf: ../../*.tex ../../trademark.pdf *.tex number_base_notation.tex graph.pdf

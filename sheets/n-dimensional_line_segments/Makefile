@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-n-dimensional_line_segments.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+n-dimensional_line_segments.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > n-dimensional_line_segments.tex
 
 n-dimensional_line_segments.pdf: ../../*.tex ../../trademark.pdf *.tex n-dimensional_line_segments.tex graph.pdf

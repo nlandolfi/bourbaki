@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-multiple_knapsack_problems.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+multiple_knapsack_problems.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > multiple_knapsack_problems.tex
 
 multiple_knapsack_problems.pdf: ../../*.tex ../../trademark.pdf *.tex multiple_knapsack_problems.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-optimal_average_codeword_length.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+optimal_average_codeword_length.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > optimal_average_codeword_length.tex
 
 optimal_average_codeword_length.pdf: ../../*.tex ../../trademark.pdf *.tex optimal_average_codeword_length.tex graph.pdf

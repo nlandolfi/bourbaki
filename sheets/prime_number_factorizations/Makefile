@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-prime_number_factorizations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+prime_number_factorizations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > prime_number_factorizations.tex
 
 prime_number_factorizations.pdf: ../../*.tex ../../trademark.pdf *.tex prime_number_factorizations.tex graph.pdf

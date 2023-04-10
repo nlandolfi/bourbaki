@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-equivalence_relations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+equivalence_relations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > equivalence_relations.tex
 
 equivalence_relations.pdf: ../../*.tex ../../trademark.pdf *.tex equivalence_relations.tex graph.pdf

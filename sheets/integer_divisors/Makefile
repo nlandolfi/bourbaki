@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-integer_divisors.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+integer_divisors.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > integer_divisors.tex
 
 integer_divisors.pdf: ../../*.tex ../../trademark.pdf *.tex integer_divisors.tex graph.pdf

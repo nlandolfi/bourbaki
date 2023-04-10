@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-integer_additive_inverses.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+integer_additive_inverses.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > integer_additive_inverses.tex
 
 integer_additive_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex integer_additive_inverses.tex graph.pdf

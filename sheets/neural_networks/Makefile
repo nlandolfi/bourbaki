@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-neural_networks.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+neural_networks.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > neural_networks.tex
 
 neural_networks.pdf: ../../*.tex ../../trademark.pdf *.tex neural_networks.tex graph.pdf

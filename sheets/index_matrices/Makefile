@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-index_matrices.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+index_matrices.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > index_matrices.tex
 
 index_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex index_matrices.tex graph.pdf

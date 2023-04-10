@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-universal_character_code.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+universal_character_code.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > universal_character_code.tex
 
 universal_character_code.pdf: ../../*.tex ../../trademark.pdf *.tex universal_character_code.tex graph.pdf

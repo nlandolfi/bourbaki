@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-convergence_in_measure.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+convergence_in_measure.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > convergence_in_measure.tex
 
 convergence_in_measure.pdf: ../../*.tex ../../trademark.pdf *.tex convergence_in_measure.tex graph.pdf

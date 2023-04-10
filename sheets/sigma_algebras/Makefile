@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-sigma_algebras.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+sigma_algebras.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > sigma_algebras.tex
 
 sigma_algebras.pdf: ../../*.tex ../../trademark.pdf *.tex sigma_algebras.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-projections_on_subspaces.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+projections_on_subspaces.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > projections_on_subspaces.tex
 
 projections_on_subspaces.pdf: ../../*.tex ../../trademark.pdf *.tex projections_on_subspaces.tex graph.pdf

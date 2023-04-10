@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-greatest_lower_bounds.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+greatest_lower_bounds.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > greatest_lower_bounds.tex
 
 greatest_lower_bounds.pdf: ../../*.tex ../../trademark.pdf *.tex greatest_lower_bounds.tex graph.pdf

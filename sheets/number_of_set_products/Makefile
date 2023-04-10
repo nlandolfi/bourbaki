@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-number_of_set_products.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+number_of_set_products.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > number_of_set_products.tex
 
 number_of_set_products.pdf: ../../*.tex ../../trademark.pdf *.tex number_of_set_products.tex graph.pdf

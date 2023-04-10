@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-cumulative_distribution_function_and_law.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+cumulative_distribution_function_and_law.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > cumulative_distribution_function_and_law.tex
 
 cumulative_distribution_function_and_law.pdf: ../../*.tex ../../trademark.pdf *.tex cumulative_distribution_function_and_law.tex graph.pdf

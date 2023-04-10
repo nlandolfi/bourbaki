@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-plane_vectors.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+plane_vectors.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > plane_vectors.tex
 
 plane_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex plane_vectors.tex graph.pdf

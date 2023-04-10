@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-matrix_rings.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+matrix_rings.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_rings.tex
 
 matrix_rings.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_rings.tex graph.pdf

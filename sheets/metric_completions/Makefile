@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-metric_completions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+metric_completions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > metric_completions.tex
 
 metric_completions.pdf: ../../*.tex ../../trademark.pdf *.tex metric_completions.tex graph.pdf

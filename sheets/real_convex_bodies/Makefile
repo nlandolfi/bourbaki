@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-real_convex_bodies.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+real_convex_bodies.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > real_convex_bodies.tex
 
 real_convex_bodies.pdf: ../../*.tex ../../trademark.pdf *.tex real_convex_bodies.tex graph.pdf

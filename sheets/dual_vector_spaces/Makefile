@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-dual_vector_spaces.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+dual_vector_spaces.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > dual_vector_spaces.tex
 
 dual_vector_spaces.pdf: ../../*.tex ../../trademark.pdf *.tex dual_vector_spaces.tex graph.pdf

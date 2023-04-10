@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-topological_fields.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+topological_fields.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > topological_fields.tex
 
 topological_fields.pdf: ../../*.tex ../../trademark.pdf *.tex topological_fields.tex graph.pdf

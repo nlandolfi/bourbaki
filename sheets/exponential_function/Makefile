@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-exponential_function.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+exponential_function.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > exponential_function.tex
 
 exponential_function.pdf: ../../*.tex ../../trademark.pdf *.tex exponential_function.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-matrix_determinant_of_inverses.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+matrix_determinant_of_inverses.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > matrix_determinant_of_inverses.tex
 
 matrix_determinant_of_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex matrix_determinant_of_inverses.tex graph.pdf

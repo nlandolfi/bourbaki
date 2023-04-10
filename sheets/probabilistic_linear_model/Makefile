@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-probabilistic_linear_model.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+probabilistic_linear_model.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > probabilistic_linear_model.tex
 
 probabilistic_linear_model.pdf: ../../*.tex ../../trademark.pdf *.tex probabilistic_linear_model.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-independent_set_of_real_vectors.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+independent_set_of_real_vectors.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > independent_set_of_real_vectors.tex
 
 independent_set_of_real_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex independent_set_of_real_vectors.tex graph.pdf

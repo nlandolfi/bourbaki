@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-maximum_likelihood_distributions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+maximum_likelihood_distributions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > maximum_likelihood_distributions.tex
 
 maximum_likelihood_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex maximum_likelihood_distributions.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-higher_order_derivatives.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+higher_order_derivatives.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > higher_order_derivatives.tex
 
 higher_order_derivatives.pdf: ../../*.tex ../../trademark.pdf *.tex higher_order_derivatives.tex graph.pdf

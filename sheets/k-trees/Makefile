@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-k-trees.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+k-trees.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > k-trees.tex
 
 k-trees.pdf: ../../*.tex ../../trademark.pdf *.tex k-trees.tex graph.pdf

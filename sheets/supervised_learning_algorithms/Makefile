@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-supervised_learning_algorithms.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+supervised_learning_algorithms.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > supervised_learning_algorithms.tex
 
 supervised_learning_algorithms.pdf: ../../*.tex ../../trademark.pdf *.tex supervised_learning_algorithms.tex graph.pdf

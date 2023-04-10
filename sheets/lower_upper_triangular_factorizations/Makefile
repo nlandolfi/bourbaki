@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-lower_upper_triangular_factorizations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+lower_upper_triangular_factorizations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > lower_upper_triangular_factorizations.tex
 
 lower_upper_triangular_factorizations.pdf: ../../*.tex ../../trademark.pdf *.tex lower_upper_triangular_factorizations.tex graph.pdf

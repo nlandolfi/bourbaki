@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-chordal_graphs_and_vertex_separators.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+chordal_graphs_and_vertex_separators.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > chordal_graphs_and_vertex_separators.tex
 
 chordal_graphs_and_vertex_separators.pdf: ../../*.tex ../../trademark.pdf *.tex chordal_graphs_and_vertex_separators.tex graph.pdf

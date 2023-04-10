@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-uncertain_outcomes.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+uncertain_outcomes.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > uncertain_outcomes.tex
 
 uncertain_outcomes.pdf: ../../*.tex ../../trademark.pdf *.tex uncertain_outcomes.tex graph.pdf

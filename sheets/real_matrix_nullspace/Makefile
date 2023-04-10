@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-real_matrix_nullspace.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+real_matrix_nullspace.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > real_matrix_nullspace.tex
 
 real_matrix_nullspace.pdf: ../../*.tex ../../trademark.pdf *.tex real_matrix_nullspace.tex graph.pdf

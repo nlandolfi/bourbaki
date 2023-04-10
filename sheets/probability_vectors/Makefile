@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-probability_vectors.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+probability_vectors.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > probability_vectors.tex
 
 probability_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex probability_vectors.tex graph.pdf

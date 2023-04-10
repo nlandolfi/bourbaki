@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-prime_numbers.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+prime_numbers.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > prime_numbers.tex
 
 prime_numbers.pdf: ../../*.tex ../../trademark.pdf *.tex prime_numbers.tex graph.pdf

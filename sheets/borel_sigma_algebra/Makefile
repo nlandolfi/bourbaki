@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-borel_sigma_algebra.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+borel_sigma_algebra.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > borel_sigma_algebra.tex
 
 borel_sigma_algebra.pdf: ../../*.tex ../../trademark.pdf *.tex borel_sigma_algebra.tex graph.pdf

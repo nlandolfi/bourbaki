@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-orthogonal_triangular_decomposition.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+orthogonal_triangular_decomposition.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > orthogonal_triangular_decomposition.tex
 
 orthogonal_triangular_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex orthogonal_triangular_decomposition.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-scaled_sets.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+scaled_sets.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > scaled_sets.tex
 
 scaled_sets.pdf: ../../*.tex ../../trademark.pdf *.tex scaled_sets.tex graph.pdf

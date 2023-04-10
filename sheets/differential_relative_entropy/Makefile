@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-differential_relative_entropy.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+differential_relative_entropy.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > differential_relative_entropy.tex
 
 differential_relative_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex differential_relative_entropy.tex graph.pdf

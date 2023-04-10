@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-continuous-time_linear_dynamical_systems_with_inputs_and_outputs.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+continuous-time_linear_dynamical_systems_with_inputs_and_outputs.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > continuous-time_linear_dynamical_systems_with_inputs_and_outputs.tex
 
 continuous-time_linear_dynamical_systems_with_inputs_and_outputs.pdf: ../../*.tex ../../trademark.pdf *.tex continuous-time_linear_dynamical_systems_with_inputs_and_outputs.tex graph.pdf

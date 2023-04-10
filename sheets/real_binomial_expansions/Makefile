@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-real_binomial_expansions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+real_binomial_expansions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > real_binomial_expansions.tex
 
 real_binomial_expansions.pdf: ../../*.tex ../../trademark.pdf *.tex real_binomial_expansions.tex graph.pdf

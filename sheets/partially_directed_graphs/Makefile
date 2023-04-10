@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-partially_directed_graphs.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+partially_directed_graphs.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > partially_directed_graphs.tex
 
 partially_directed_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex partially_directed_graphs.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-logistic_probabilistic_models.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+logistic_probabilistic_models.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > logistic_probabilistic_models.tex
 
 logistic_probabilistic_models.pdf: ../../*.tex ../../trademark.pdf *.tex logistic_probabilistic_models.tex graph.pdf

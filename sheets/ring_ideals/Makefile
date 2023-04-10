@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-ring_ideals.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+ring_ideals.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > ring_ideals.tex
 
 ring_ideals.pdf: ../../*.tex ../../trademark.pdf *.tex ring_ideals.tex graph.pdf

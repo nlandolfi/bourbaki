@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-nonnegative_operators.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+nonnegative_operators.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > nonnegative_operators.tex
 
 nonnegative_operators.pdf: ../../*.tex ../../trademark.pdf *.tex nonnegative_operators.tex graph.pdf

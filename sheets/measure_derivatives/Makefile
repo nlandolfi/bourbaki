@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-measure_derivatives.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+measure_derivatives.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > measure_derivatives.tex
 
 measure_derivatives.pdf: ../../*.tex ../../trademark.pdf *.tex measure_derivatives.tex graph.pdf

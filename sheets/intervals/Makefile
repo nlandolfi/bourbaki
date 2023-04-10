@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-intervals.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+intervals.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > intervals.tex
 
 intervals.pdf: ../../*.tex ../../trademark.pdf *.tex intervals.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-quadratic_equation_solutions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+quadratic_equation_solutions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > quadratic_equation_solutions.tex
 
 quadratic_equation_solutions.pdf: ../../*.tex ../../trademark.pdf *.tex quadratic_equation_solutions.tex graph.pdf

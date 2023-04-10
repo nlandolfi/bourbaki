@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-independent_events.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+independent_events.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > independent_events.tex
 
 independent_events.pdf: ../../*.tex ../../trademark.pdf *.tex independent_events.tex graph.pdf

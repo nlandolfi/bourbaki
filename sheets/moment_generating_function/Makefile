@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-moment_generating_function.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+moment_generating_function.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > moment_generating_function.tex
 
 moment_generating_function.pdf: ../../*.tex ../../trademark.pdf *.tex moment_generating_function.tex graph.pdf

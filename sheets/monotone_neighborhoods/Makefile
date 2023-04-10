@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-monotone_neighborhoods.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+monotone_neighborhoods.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > monotone_neighborhoods.tex
 
 monotone_neighborhoods.pdf: ../../*.tex ../../trademark.pdf *.tex monotone_neighborhoods.tex graph.pdf

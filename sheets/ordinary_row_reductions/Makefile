@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-ordinary_row_reductions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+ordinary_row_reductions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > ordinary_row_reductions.tex
 
 ordinary_row_reductions.pdf: ../../*.tex ../../trademark.pdf *.tex ordinary_row_reductions.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-quantified_statements.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+quantified_statements.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > quantified_statements.tex
 
 quantified_statements.pdf: ../../*.tex ../../trademark.pdf *.tex quantified_statements.tex graph.pdf

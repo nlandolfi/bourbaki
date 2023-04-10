@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-projector_matrices.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+projector_matrices.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > projector_matrices.tex
 
 projector_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex projector_matrices.tex graph.pdf

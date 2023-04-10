@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-general_linear_groups.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+general_linear_groups.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > general_linear_groups.tex
 
 general_linear_groups.pdf: ../../*.tex ../../trademark.pdf *.tex general_linear_groups.tex graph.pdf

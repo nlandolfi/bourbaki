@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-nondeterministic_finite_automata.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+nondeterministic_finite_automata.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > nondeterministic_finite_automata.tex
 
 nondeterministic_finite_automata.pdf: ../../*.tex ../../trademark.pdf *.tex nondeterministic_finite_automata.tex graph.pdf

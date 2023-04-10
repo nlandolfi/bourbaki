@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-linearly_dependent_vectors.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+linearly_dependent_vectors.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > linearly_dependent_vectors.tex
 
 linearly_dependent_vectors.pdf: ../../*.tex ../../trademark.pdf *.tex linearly_dependent_vectors.tex graph.pdf

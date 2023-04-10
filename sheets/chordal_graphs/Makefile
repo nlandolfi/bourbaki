@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-chordal_graphs.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+chordal_graphs.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > chordal_graphs.tex
 
 chordal_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex chordal_graphs.tex graph.pdf

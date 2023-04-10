@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-conditional_dependency_graph.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+conditional_dependency_graph.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > conditional_dependency_graph.tex
 
 conditional_dependency_graph.pdf: ../../*.tex ../../trademark.pdf *.tex conditional_dependency_graph.tex graph.pdf

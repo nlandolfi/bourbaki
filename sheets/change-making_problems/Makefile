@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-change-making_problems.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+change-making_problems.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > change-making_problems.tex
 
 change-making_problems.pdf: ../../*.tex ../../trademark.pdf *.tex change-making_problems.tex graph.pdf

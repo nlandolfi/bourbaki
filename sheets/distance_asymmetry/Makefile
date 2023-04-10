@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-distance_asymmetry.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+distance_asymmetry.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > distance_asymmetry.tex
 
 distance_asymmetry.pdf: ../../*.tex ../../trademark.pdf *.tex distance_asymmetry.tex graph.pdf

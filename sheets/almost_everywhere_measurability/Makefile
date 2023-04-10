@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-almost_everywhere_measurability.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+almost_everywhere_measurability.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > almost_everywhere_measurability.tex
 
 almost_everywhere_measurability.pdf: ../../*.tex ../../trademark.pdf *.tex almost_everywhere_measurability.tex graph.pdf

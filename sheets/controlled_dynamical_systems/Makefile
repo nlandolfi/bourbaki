@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-controlled_dynamical_systems.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+controlled_dynamical_systems.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > controlled_dynamical_systems.tex
 
 controlled_dynamical_systems.pdf: ../../*.tex ../../trademark.pdf *.tex controlled_dynamical_systems.tex graph.pdf

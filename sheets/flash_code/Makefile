@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-flash_code.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+flash_code.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > flash_code.tex
 
 flash_code.pdf: ../../*.tex ../../trademark.pdf *.tex flash_code.tex graph.pdf

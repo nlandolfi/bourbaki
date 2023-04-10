@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-mutual_information.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+mutual_information.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > mutual_information.tex
 
 mutual_information.pdf: ../../*.tex ../../trademark.pdf *.tex mutual_information.tex graph.pdf

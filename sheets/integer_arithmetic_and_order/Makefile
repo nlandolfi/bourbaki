@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-integer_arithmetic_and_order.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+integer_arithmetic_and_order.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > integer_arithmetic_and_order.tex
 
 integer_arithmetic_and_order.pdf: ../../*.tex ../../trademark.pdf *.tex integer_arithmetic_and_order.tex graph.pdf

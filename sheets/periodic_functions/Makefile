@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-periodic_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+periodic_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > periodic_functions.tex
 
 periodic_functions.pdf: ../../*.tex ../../trademark.pdf *.tex periodic_functions.tex graph.pdf

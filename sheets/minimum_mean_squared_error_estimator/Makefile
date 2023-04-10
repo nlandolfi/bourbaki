@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-minimum_mean_squared_error_estimator.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+minimum_mean_squared_error_estimator.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > minimum_mean_squared_error_estimator.tex
 
 minimum_mean_squared_error_estimator.pdf: ../../*.tex ../../trademark.pdf *.tex minimum_mean_squared_error_estimator.tex graph.pdf

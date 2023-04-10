@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-hyperrectangles.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+hyperrectangles.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > hyperrectangles.tex
 
 hyperrectangles.pdf: ../../*.tex ../../trademark.pdf *.tex hyperrectangles.tex graph.pdf

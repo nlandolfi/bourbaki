@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-canonical_maps.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+canonical_maps.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > canonical_maps.tex
 
 canonical_maps.pdf: ../../*.tex ../../trademark.pdf *.tex canonical_maps.tex graph.pdf

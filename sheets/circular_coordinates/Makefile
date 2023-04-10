@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-circular_coordinates.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+circular_coordinates.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > circular_coordinates.tex
 
 circular_coordinates.pdf: ../../*.tex ../../trademark.pdf *.tex circular_coordinates.tex graph.pdf

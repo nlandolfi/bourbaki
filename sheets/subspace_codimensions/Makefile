@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-subspace_codimensions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+subspace_codimensions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > subspace_codimensions.tex
 
 subspace_codimensions.pdf: ../../*.tex ../../trademark.pdf *.tex subspace_codimensions.tex graph.pdf

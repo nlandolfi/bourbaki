@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-relation_composites.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+relation_composites.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > relation_composites.tex
 
 relation_composites.pdf: ../../*.tex ../../trademark.pdf *.tex relation_composites.tex graph.pdf

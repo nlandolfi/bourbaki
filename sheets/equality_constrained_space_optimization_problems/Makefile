@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-equality_constrained_space_optimization_problems.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+equality_constrained_space_optimization_problems.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > equality_constrained_space_optimization_problems.tex
 
 equality_constrained_space_optimization_problems.pdf: ../../*.tex ../../trademark.pdf *.tex equality_constrained_space_optimization_problems.tex graph.pdf

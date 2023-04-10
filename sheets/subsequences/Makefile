@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-subsequences.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+subsequences.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > subsequences.tex
 
 subsequences.pdf: ../../*.tex ../../trademark.pdf *.tex subsequences.tex graph.pdf

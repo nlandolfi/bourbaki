@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-standard_deviation.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+standard_deviation.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > standard_deviation.tex
 
 standard_deviation.pdf: ../../*.tex ../../trademark.pdf *.tex standard_deviation.tex graph.pdf

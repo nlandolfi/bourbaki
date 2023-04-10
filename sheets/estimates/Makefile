@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-estimates.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+estimates.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > estimates.tex
 
 estimates.pdf: ../../*.tex ../../trademark.pdf *.tex estimates.tex graph.pdf

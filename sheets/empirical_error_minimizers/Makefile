@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-empirical_error_minimizers.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+empirical_error_minimizers.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > empirical_error_minimizers.tex
 
 empirical_error_minimizers.pdf: ../../*.tex ../../trademark.pdf *.tex empirical_error_minimizers.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-density_likelihood.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+density_likelihood.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > density_likelihood.tex
 
 density_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex density_likelihood.tex graph.pdf

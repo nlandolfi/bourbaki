@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-inverses_of_composite_relations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+inverses_of_composite_relations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > inverses_of_composite_relations.tex
 
 inverses_of_composite_relations.pdf: ../../*.tex ../../trademark.pdf *.tex inverses_of_composite_relations.tex graph.pdf

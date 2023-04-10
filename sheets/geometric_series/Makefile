@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-geometric_series.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+geometric_series.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > geometric_series.tex
 
 geometric_series.pdf: ../../*.tex ../../trademark.pdf *.tex geometric_series.tex graph.pdf

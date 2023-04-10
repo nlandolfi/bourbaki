@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-directed_paths.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+directed_paths.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > directed_paths.tex
 
 directed_paths.pdf: ../../*.tex ../../trademark.pdf *.tex directed_paths.tex graph.pdf

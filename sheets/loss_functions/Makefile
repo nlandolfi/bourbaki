@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-loss_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+loss_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > loss_functions.tex
 
 loss_functions.pdf: ../../*.tex ../../trademark.pdf *.tex loss_functions.tex graph.pdf

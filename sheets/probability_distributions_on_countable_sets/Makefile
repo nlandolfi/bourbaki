@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-probability_distributions_on_countable_sets.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+probability_distributions_on_countable_sets.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > probability_distributions_on_countable_sets.tex
 
 probability_distributions_on_countable_sets.pdf: ../../*.tex ../../trademark.pdf *.tex probability_distributions_on_countable_sets.tex graph.pdf

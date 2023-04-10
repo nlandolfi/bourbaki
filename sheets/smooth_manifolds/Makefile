@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-smooth_manifolds.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+smooth_manifolds.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > smooth_manifolds.tex
 
 smooth_manifolds.pdf: ../../*.tex ../../trademark.pdf *.tex smooth_manifolds.tex graph.pdf

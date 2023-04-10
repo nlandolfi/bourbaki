@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-data_fitting.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+data_fitting.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > data_fitting.tex
 
 data_fitting.pdf: ../../*.tex ../../trademark.pdf *.tex data_fitting.tex graph.pdf

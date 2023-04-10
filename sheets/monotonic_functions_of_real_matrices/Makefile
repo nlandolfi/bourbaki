@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-monotonic_functions_of_real_matrices.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+monotonic_functions_of_real_matrices.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > monotonic_functions_of_real_matrices.tex
 
 monotonic_functions_of_real_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex monotonic_functions_of_real_matrices.tex graph.pdf

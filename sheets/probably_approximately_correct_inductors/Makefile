@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-probably_approximately_correct_inductors.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+probably_approximately_correct_inductors.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > probably_approximately_correct_inductors.tex
 
 probably_approximately_correct_inductors.pdf: ../../*.tex ../../trademark.pdf *.tex probably_approximately_correct_inductors.tex graph.pdf

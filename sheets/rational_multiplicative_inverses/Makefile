@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-rational_multiplicative_inverses.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+rational_multiplicative_inverses.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > rational_multiplicative_inverses.tex
 
 rational_multiplicative_inverses.pdf: ../../*.tex ../../trademark.pdf *.tex rational_multiplicative_inverses.tex graph.pdf

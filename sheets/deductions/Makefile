@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-deductions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+deductions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > deductions.tex
 
 deductions.pdf: ../../*.tex ../../trademark.pdf *.tex deductions.tex graph.pdf

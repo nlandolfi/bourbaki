@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-real_inner_product_norms.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+real_inner_product_norms.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > real_inner_product_norms.tex
 
 real_inner_product_norms.pdf: ../../*.tex ../../trademark.pdf *.tex real_inner_product_norms.tex graph.pdf

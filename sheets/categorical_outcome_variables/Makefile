@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-categorical_outcome_variables.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+categorical_outcome_variables.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > categorical_outcome_variables.tex
 
 categorical_outcome_variables.pdf: ../../*.tex ../../trademark.pdf *.tex categorical_outcome_variables.tex graph.pdf

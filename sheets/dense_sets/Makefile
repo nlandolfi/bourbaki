@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-dense_sets.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+dense_sets.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > dense_sets.tex
 
 dense_sets.pdf: ../../*.tex ../../trademark.pdf *.tex dense_sets.tex graph.pdf

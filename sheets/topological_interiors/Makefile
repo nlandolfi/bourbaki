@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-topological_interiors.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+topological_interiors.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > topological_interiors.tex
 
 topological_interiors.pdf: ../../*.tex ../../trademark.pdf *.tex topological_interiors.tex graph.pdf

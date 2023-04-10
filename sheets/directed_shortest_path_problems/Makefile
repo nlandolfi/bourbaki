@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-directed_shortest_path_problems.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+directed_shortest_path_problems.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > directed_shortest_path_problems.tex
 
 directed_shortest_path_problems.pdf: ../../*.tex ../../trademark.pdf *.tex directed_shortest_path_problems.tex graph.pdf

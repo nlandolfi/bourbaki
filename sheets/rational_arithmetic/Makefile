@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-rational_arithmetic.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+rational_arithmetic.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > rational_arithmetic.tex
 
 rational_arithmetic.pdf: ../../*.tex ../../trademark.pdf *.tex rational_arithmetic.tex graph.pdf

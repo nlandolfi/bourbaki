@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-rational_real_homomorphism.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+rational_real_homomorphism.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > rational_real_homomorphism.tex
 
 rational_real_homomorphism.pdf: ../../*.tex ../../trademark.pdf *.tex rational_real_homomorphism.tex graph.pdf

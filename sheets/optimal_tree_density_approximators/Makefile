@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-optimal_tree_density_approximators.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+optimal_tree_density_approximators.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > optimal_tree_density_approximators.tex
 
 optimal_tree_density_approximators.pdf: ../../*.tex ../../trademark.pdf *.tex optimal_tree_density_approximators.tex graph.pdf

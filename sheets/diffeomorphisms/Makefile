@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-diffeomorphisms.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+diffeomorphisms.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > diffeomorphisms.tex
 
 diffeomorphisms.pdf: ../../*.tex ../../trademark.pdf *.tex diffeomorphisms.tex graph.pdf

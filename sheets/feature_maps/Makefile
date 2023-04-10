@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-feature_maps.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+feature_maps.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > feature_maps.tex
 
 feature_maps.pdf: ../../*.tex ../../trademark.pdf *.tex feature_maps.tex graph.pdf

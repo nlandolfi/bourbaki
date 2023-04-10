@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-complete_fields.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+complete_fields.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > complete_fields.tex
 
 complete_fields.pdf: ../../*.tex ../../trademark.pdf *.tex complete_fields.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-row_reducer_matrices.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+row_reducer_matrices.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > row_reducer_matrices.tex
 
 row_reducer_matrices.pdf: ../../*.tex ../../trademark.pdf *.tex row_reducer_matrices.tex graph.pdf

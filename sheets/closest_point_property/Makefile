@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-closest_point_property.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+closest_point_property.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > closest_point_property.tex
 
 closest_point_property.pdf: ../../*.tex ../../trademark.pdf *.tex closest_point_property.tex graph.pdf

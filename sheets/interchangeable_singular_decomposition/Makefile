@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-interchangeable_singular_decomposition.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+interchangeable_singular_decomposition.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > interchangeable_singular_decomposition.tex
 
 interchangeable_singular_decomposition.pdf: ../../*.tex ../../trademark.pdf *.tex interchangeable_singular_decomposition.tex graph.pdf

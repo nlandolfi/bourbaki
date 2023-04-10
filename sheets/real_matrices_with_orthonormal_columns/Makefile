@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-real_matrices_with_orthonormal_columns.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+real_matrices_with_orthonormal_columns.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > real_matrices_with_orthonormal_columns.tex
 
 real_matrices_with_orthonormal_columns.pdf: ../../*.tex ../../trademark.pdf *.tex real_matrices_with_orthonormal_columns.tex graph.pdf

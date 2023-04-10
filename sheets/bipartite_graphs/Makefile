@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-bipartite_graphs.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+bipartite_graphs.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > bipartite_graphs.tex
 
 bipartite_graphs.pdf: ../../*.tex ../../trademark.pdf *.tex bipartite_graphs.tex graph.pdf

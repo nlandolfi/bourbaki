@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-peano_axioms.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+peano_axioms.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > peano_axioms.tex
 
 peano_axioms.pdf: ../../*.tex ../../trademark.pdf *.tex peano_axioms.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-range_and_null_space.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+range_and_null_space.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > range_and_null_space.tex
 
 range_and_null_space.pdf: ../../*.tex ../../trademark.pdf *.tex range_and_null_space.tex graph.pdf

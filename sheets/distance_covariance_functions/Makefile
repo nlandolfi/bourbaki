@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-distance_covariance_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+distance_covariance_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > distance_covariance_functions.tex
 
 distance_covariance_functions.pdf: ../../*.tex ../../trademark.pdf *.tex distance_covariance_functions.tex graph.pdf

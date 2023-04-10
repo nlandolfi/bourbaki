@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-tape_machine.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+tape_machine.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > tape_machine.tex
 
 tape_machine.pdf: ../../*.tex ../../trademark.pdf *.tex tape_machine.tex graph.pdf

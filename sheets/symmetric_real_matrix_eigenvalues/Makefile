@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-symmetric_real_matrix_eigenvalues.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+symmetric_real_matrix_eigenvalues.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > symmetric_real_matrix_eigenvalues.tex
 
 symmetric_real_matrix_eigenvalues.pdf: ../../*.tex ../../trademark.pdf *.tex symmetric_real_matrix_eigenvalues.tex graph.pdf

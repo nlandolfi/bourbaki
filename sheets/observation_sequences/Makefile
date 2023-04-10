@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-observation_sequences.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+observation_sequences.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > observation_sequences.tex
 
 observation_sequences.pdf: ../../*.tex ../../trademark.pdf *.tex observation_sequences.tex graph.pdf

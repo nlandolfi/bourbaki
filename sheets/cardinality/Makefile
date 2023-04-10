@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-cardinality.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+cardinality.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > cardinality.tex
 
 cardinality.pdf: ../../*.tex ../../trademark.pdf *.tex cardinality.tex graph.pdf

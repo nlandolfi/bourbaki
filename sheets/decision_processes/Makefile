@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-decision_processes.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+decision_processes.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > decision_processes.tex
 
 decision_processes.pdf: ../../*.tex ../../trademark.pdf *.tex decision_processes.tex graph.pdf

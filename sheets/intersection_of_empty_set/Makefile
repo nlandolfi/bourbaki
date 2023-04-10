@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-intersection_of_empty_set.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+intersection_of_empty_set.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > intersection_of_empty_set.tex
 
 intersection_of_empty_set.pdf: ../../*.tex ../../trademark.pdf *.tex intersection_of_empty_set.tex graph.pdf

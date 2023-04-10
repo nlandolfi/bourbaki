@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-monic_polynomials.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+monic_polynomials.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > monic_polynomials.tex
 
 monic_polynomials.pdf: ../../*.tex ../../trademark.pdf *.tex monic_polynomials.tex graph.pdf

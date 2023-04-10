@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-subspace_sums.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+subspace_sums.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > subspace_sums.tex
 
 subspace_sums.pdf: ../../*.tex ../../trademark.pdf *.tex subspace_sums.tex graph.pdf

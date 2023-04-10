@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-functional_analysis.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+functional_analysis.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > functional_analysis.tex
 
 functional_analysis.pdf: ../../*.tex ../../trademark.pdf *.tex functional_analysis.tex graph.pdf

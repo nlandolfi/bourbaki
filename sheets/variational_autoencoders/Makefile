@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-variational_autoencoders.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+variational_autoencoders.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > variational_autoencoders.tex
 
 variational_autoencoders.pdf: ../../*.tex ../../trademark.pdf *.tex variational_autoencoders.tex graph.pdf

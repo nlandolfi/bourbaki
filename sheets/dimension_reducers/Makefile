@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-dimension_reducers.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+dimension_reducers.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > dimension_reducers.tex
 
 dimension_reducers.pdf: ../../*.tex ../../trademark.pdf *.tex dimension_reducers.tex graph.pdf

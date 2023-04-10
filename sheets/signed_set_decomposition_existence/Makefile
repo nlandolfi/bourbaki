@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-signed_set_decomposition_existence.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+signed_set_decomposition_existence.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > signed_set_decomposition_existence.tex
 
 signed_set_decomposition_existence.pdf: ../../*.tex ../../trademark.pdf *.tex signed_set_decomposition_existence.tex graph.pdf

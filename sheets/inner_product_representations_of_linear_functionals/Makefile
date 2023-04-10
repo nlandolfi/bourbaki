@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-inner_product_representations_of_linear_functionals.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+inner_product_representations_of_linear_functionals.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > inner_product_representations_of_linear_functionals.tex
 
 inner_product_representations_of_linear_functionals.pdf: ../../*.tex ../../trademark.pdf *.tex inner_product_representations_of_linear_functionals.tex graph.pdf

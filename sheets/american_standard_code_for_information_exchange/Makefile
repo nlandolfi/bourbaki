@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-american_standard_code_for_information_exchange.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+american_standard_code_for_information_exchange.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > american_standard_code_for_information_exchange.tex
 
 american_standard_code_for_information_exchange.pdf: ../../*.tex ../../trademark.pdf *.tex american_standard_code_for_information_exchange.tex graph.pdf

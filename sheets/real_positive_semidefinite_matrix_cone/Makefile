@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-real_positive_semidefinite_matrix_cone.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+real_positive_semidefinite_matrix_cone.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > real_positive_semidefinite_matrix_cone.tex
 
 real_positive_semidefinite_matrix_cone.pdf: ../../*.tex ../../trademark.pdf *.tex real_positive_semidefinite_matrix_cone.tex graph.pdf

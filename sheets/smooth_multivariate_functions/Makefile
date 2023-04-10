@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-smooth_multivariate_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+smooth_multivariate_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > smooth_multivariate_functions.tex
 
 smooth_multivariate_functions.pdf: ../../*.tex ../../trademark.pdf *.tex smooth_multivariate_functions.tex graph.pdf

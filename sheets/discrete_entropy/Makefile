@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-discrete_entropy.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+discrete_entropy.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > discrete_entropy.tex
 
 discrete_entropy.pdf: ../../*.tex ../../trademark.pdf *.tex discrete_entropy.tex graph.pdf

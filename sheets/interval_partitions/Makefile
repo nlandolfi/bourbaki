@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-interval_partitions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+interval_partitions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > interval_partitions.tex
 
 interval_partitions.pdf: ../../*.tex ../../trademark.pdf *.tex interval_partitions.tex graph.pdf

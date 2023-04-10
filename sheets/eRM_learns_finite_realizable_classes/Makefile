@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-eRM_learns_finite_realizable_classes.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+eRM_learns_finite_realizable_classes.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > eRM_learns_finite_realizable_classes.tex
 
 eRM_learns_finite_realizable_classes.pdf: ../../*.tex ../../trademark.pdf *.tex eRM_learns_finite_realizable_classes.tex graph.pdf

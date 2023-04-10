@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-orthogonal_real_subspaces.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+orthogonal_real_subspaces.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > orthogonal_real_subspaces.tex
 
 orthogonal_real_subspaces.pdf: ../../*.tex ../../trademark.pdf *.tex orthogonal_real_subspaces.tex graph.pdf

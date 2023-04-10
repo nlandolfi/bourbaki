@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-projections_on_affine_sets.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+projections_on_affine_sets.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > projections_on_affine_sets.tex
 
 projections_on_affine_sets.pdf: ../../*.tex ../../trademark.pdf *.tex projections_on_affine_sets.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-rooted_tree_distributions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+rooted_tree_distributions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > rooted_tree_distributions.tex
 
 rooted_tree_distributions.pdf: ../../*.tex ../../trademark.pdf *.tex rooted_tree_distributions.tex graph.pdf

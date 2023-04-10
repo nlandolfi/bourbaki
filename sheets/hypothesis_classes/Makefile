@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-hypothesis_classes.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+hypothesis_classes.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > hypothesis_classes.tex
 
 hypothesis_classes.pdf: ../../*.tex ../../trademark.pdf *.tex hypothesis_classes.tex graph.pdf

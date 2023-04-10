@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-finite_signed_measures.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+finite_signed_measures.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > finite_signed_measures.tex
 
 finite_signed_measures.pdf: ../../*.tex ../../trademark.pdf *.tex finite_signed_measures.tex graph.pdf

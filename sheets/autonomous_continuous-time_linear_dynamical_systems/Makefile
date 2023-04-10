@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-autonomous_continuous-time_linear_dynamical_systems.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+autonomous_continuous-time_linear_dynamical_systems.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > autonomous_continuous-time_linear_dynamical_systems.tex
 
 autonomous_continuous-time_linear_dynamical_systems.pdf: ../../*.tex ../../trademark.pdf *.tex autonomous_continuous-time_linear_dynamical_systems.tex graph.pdf

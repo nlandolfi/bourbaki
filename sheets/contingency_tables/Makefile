@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-contingency_tables.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+contingency_tables.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > contingency_tables.tex
 
 contingency_tables.pdf: ../../*.tex ../../trademark.pdf *.tex contingency_tables.tex graph.pdf

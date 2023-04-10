@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-memory_chains.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+memory_chains.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > memory_chains.tex
 
 memory_chains.pdf: ../../*.tex ../../trademark.pdf *.tex memory_chains.tex graph.pdf

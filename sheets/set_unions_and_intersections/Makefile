@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-set_unions_and_intersections.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+set_unions_and_intersections.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > set_unions_and_intersections.tex
 
 set_unions_and_intersections.pdf: ../../*.tex ../../trademark.pdf *.tex set_unions_and_intersections.tex graph.pdf

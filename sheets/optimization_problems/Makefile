@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-optimization_problems.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+optimization_problems.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > optimization_problems.tex
 
 optimization_problems.pdf: ../../*.tex ../../trademark.pdf *.tex optimization_problems.tex graph.pdf

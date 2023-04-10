@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-family_products_and_unions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+family_products_and_unions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > family_products_and_unions.tex
 
 family_products_and_unions.pdf: ../../*.tex ../../trademark.pdf *.tex family_products_and_unions.tex graph.pdf

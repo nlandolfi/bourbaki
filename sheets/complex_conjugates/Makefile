@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-complex_conjugates.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+complex_conjugates.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > complex_conjugates.tex
 
 complex_conjugates.pdf: ../../*.tex ../../trademark.pdf *.tex complex_conjugates.tex graph.pdf

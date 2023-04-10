@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-normal_densities.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+normal_densities.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > normal_densities.tex
 
 normal_densities.pdf: ../../*.tex ../../trademark.pdf *.tex normal_densities.tex graph.pdf

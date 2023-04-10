@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-set_numbers_and_arithmetic.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+set_numbers_and_arithmetic.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > set_numbers_and_arithmetic.tex
 
 set_numbers_and_arithmetic.pdf: ../../*.tex ../../trademark.pdf *.tex set_numbers_and_arithmetic.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-prefix-free_codes.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+prefix-free_codes.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > prefix-free_codes.tex
 
 prefix-free_codes.pdf: ../../*.tex ../../trademark.pdf *.tex prefix-free_codes.tex graph.pdf

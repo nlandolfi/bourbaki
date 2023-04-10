@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-inverse_elements.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+inverse_elements.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > inverse_elements.tex
 
 inverse_elements.pdf: ../../*.tex ../../trademark.pdf *.tex inverse_elements.tex graph.pdf

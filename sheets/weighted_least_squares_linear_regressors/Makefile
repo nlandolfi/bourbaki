@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-weighted_least_squares_linear_regressors.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+weighted_least_squares_linear_regressors.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > weighted_least_squares_linear_regressors.tex
 
 weighted_least_squares_linear_regressors.pdf: ../../*.tex ../../trademark.pdf *.tex weighted_least_squares_linear_regressors.tex graph.pdf

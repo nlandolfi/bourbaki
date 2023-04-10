@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-birthday_probabilities.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+birthday_probabilities.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > birthday_probabilities.tex
 
 birthday_probabilities.pdf: ../../*.tex ../../trademark.pdf *.tex birthday_probabilities.tex graph.pdf

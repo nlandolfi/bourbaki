@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-choice_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+choice_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > choice_functions.tex
 
 choice_functions.pdf: ../../*.tex ../../trademark.pdf *.tex choice_functions.tex graph.pdf

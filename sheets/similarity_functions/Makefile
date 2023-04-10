@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-similarity_functions.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+similarity_functions.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > similarity_functions.tex
 
 similarity_functions.pdf: ../../*.tex ../../trademark.pdf *.tex similarity_functions.tex graph.pdf

@@ -9,7 +9,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-vector_space_of_linear_transformations.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+vector_space_of_linear_transformations.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > vector_space_of_linear_transformations.tex
 
 vector_space_of_linear_transformations.pdf: ../../*.tex ../../trademark.pdf *.tex vector_space_of_linear_transformations.tex graph.pdf
