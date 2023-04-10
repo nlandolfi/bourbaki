@@ -40,6 +40,7 @@ const basicHelp = `bbk <command>
     - sheets
     - graph
     - all
+    - macros
     - help <command>
     - version`
 
@@ -71,6 +72,12 @@ func main() {
 		mkMain(s)
 	case "sheets":
 		sheetsMain(s)
+	case "sheet":
+		sheetMain(s)
+	case "macros":
+		macrosMain(s)
+	case "macrosUpdate":
+		macrosUpdateMain(s)
 	case "all":
 		allMain(s)
 	case "version", "v":
@@ -160,6 +167,55 @@ func checkMain(s *state) {
 	}
 	//	log.Printf("%+v", ss.Sheets)
 	s.info("%d sheets parsed in %s", len(ss.Sheets), time.Now().Sub(st).String())
+}
+
+func macrosUpdateMain(s *state) {
+	// for now must run from sheets directory
+	//st := time.Now()
+	dir := os.DirFS(".")
+	ss, err := bbk.ParseSheetSet(dir)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var names = make([]string, 0, len(ss.Sheets))
+	for name := range ss.Sheets {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	for _, name := range names {
+		sheet := ss.Sheets[name]
+		sf, err := dir.Open(path.Join(name, "macros.tex"))
+		if err == os.ErrNotExist {
+			continue
+		}
+		if err != nil {
+			s.error("dir.Open(%q/macros.tex): %v", name, err)
+		}
+		data, err := io.ReadAll(sf)
+		if err != nil {
+			log.Fatal("io.ReadAll: %v", err)
+		}
+		if len(strings.TrimSpace(string(data))) == 0 {
+			continue
+		}
+		if err := sf.Close(); err != nil {
+			log.Fatal("sf.Close: %v", err)
+		}
+		sheet.LitNode.AppendChild(&lit.Node{
+			Type: lit.CommentNode,
+			Data: fmt.Sprintf("macros.tex\n%s", data),
+		})
+		sf2, err := os.Create(path.Join(name, "sheet.lit"))
+		if err != nil {
+			log.Fatalf("os.Open: %v", err)
+		}
+		if err := bbk.WriteSheet(sf2, sheet); err != nil {
+			log.Fatalf("WriteLit: %v", err)
+		}
+		if err := sf2.Close(); err != nil {
+			log.Fatalf("Close: %v", err)
+		}
+	}
 }
 
 const termsHelp = `bbk terms
@@ -592,6 +648,171 @@ func sheetsMain(s *state) {
 	close(ch)
 
 	wg.Wait()
+}
+
+const sheetHelp = `bbk sheet
+
+This is the old bbk sheet command.
+
+Examples
+  - bbk sheet
+`
+
+func sheetMain(s *state) {
+	fs := flag.NewFlagSet("sheet", flag.ContinueOnError)
+
+	var (
+		//inFile = flag.String("in", "sheet.tex", "sheet file")
+		// create, makefile, graph
+		mode      = flag.String("mode", "mk", "which mode {c, mk, g, ts}")
+		sheetsDir = flag.String("sheets", "../", "where to find other sheets")
+	)
+
+	fs.Parse(s.Args)
+
+	results, err := bbk.ParseAll(*sheetsDir)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	rs := make(map[string]*bbk.ParseResult, len(results))
+	for _, p := range results {
+		rs[p.Config.Name] = p
+	}
+
+	// just want to get the name
+	f, err := os.Open("sheet.tex")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+	// just want to get the name
+	g, err := os.Open("macros.tex")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer g.Close()
+	h, err := os.Open("sheet.lit")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer h.Close()
+	partialp := bbk.Parse(f, g, h)
+	p, ok := rs[partialp.Config.Name]
+	if !ok {
+		log.Fatalf("name %q not found among sheets", partialp.Config.Name)
+	}
+
+	switch *mode {
+	case "c":
+		sheetWriteFile(rs, p)
+	case "g":
+		sheetWriteGraph(rs, p)
+	case "ts":
+		w := os.Stdout
+		fmt.Fprintf(w, "%d terms\n", len(p.Terms))
+		for _, t := range p.Terms {
+			fmt.Fprintf(w, " - %s\n", t)
+		}
+	case "mk":
+		tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate))
+
+		if err := tmpl.Execute(os.Stdout, p); err != nil {
+			log.Fatal(err)
+		}
+	default:
+		log.Fatalf("unknown mode: %q", *mode)
+	}
+}
+
+func sheetWriteFile(all map[string]*bbk.ParseResult, p *bbk.ParseResult) {
+	fmt.Fprintln(os.Stdout, "\\input{../../sheet.tex}")
+	fmt.Fprintln(os.Stdout, "\\sbasic")
+	for _, n := range p.AllNeeds {
+		fmt.Fprintf(os.Stdout, "\\input{../%s/macros.tex}\n", n)
+	}
+	fmt.Fprintln(os.Stdout, "\\input{./macros.tex}")
+	fmt.Fprintln(os.Stdout, "\\sstart")
+	fmt.Fprintln(os.Stdout, "\\bpage\\clearpage")
+	fmt.Fprintf(os.Stdout, "\\stitle{%s}{%s}\n", bbk.Title(p.Config.Name), p.Config.Name)
+	//fmt.Fprintf(os.Stdout, "{\\small Needs: %s}\n", strings.Join(p.Needs, ", "))
+	/*
+		for _, l := range p.Lines {
+			fmt.Fprintln(os.Stdout, l)
+		}
+	*/
+	fmt.Fprintln(os.Stdout, "\\input{sheet}")
+	fmt.Fprintln(os.Stdout, "\\clearpage\\gpage{graph}")
+	fmt.Fprintln(os.Stdout, "\\strats")
+}
+
+func sheetWriteGraph(rs map[string]*bbk.ParseResult, p *bbk.ParseResult) {
+	var rows = [][]string{
+		[]string{"name", "need"},
+	}
+	seen := map[*bbk.ParseResult]bool{}
+	q := []*bbk.ParseResult{p}
+	for len(q) > 0 {
+		next := q[0]
+		q = q[1:]
+
+		if seen[next] {
+			continue
+		}
+
+		seen[next] = true
+
+		for _, n := range next.Config.Needs {
+			q = append(q, rs[n])
+			rows = append(rows, []string{bbk.NodeName(next.Config.Name), bbk.NodeName(n)})
+		}
+	}
+
+	// if no needs
+	if len(rows) == 1 {
+		// add a single entry for the node
+		rows = append(rows,
+			[]string{bbk.NodeName(p.Config.Name), ""},
+		)
+	}
+	f, err := os.Create("graph.csv")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+	w := csv.NewWriter(f)
+	if err := w.WriteAll(rows); err != nil {
+		log.Fatal(err)
+	}
+}
+
+const macrosHelp = `bbk macros
+
+This is a command to generate a macros.tex file from a sheet.lit 
+inline comment.
+
+Examples
+  - bbk macros sheet.lit
+`
+
+func macrosMain(s *state) {
+	if len(os.Args) < 3 {
+		s.info(macrosHelp[:strings.Index(macrosHelp, "\n")])
+	}
+	sf, err := os.Open(os.Args[2])
+	if err != nil {
+		s.error("os.Open(%q): %v", os.Args[2], err)
+	}
+	defer sf.Close()
+	sheet, err := bbk.ParseSheet(sf)
+	if err != nil {
+		s.error("ParseSheet %v", err)
+	}
+	for c := sheet.LitNode.FirstChild; c != nil; c = c.NextSibling {
+		if c.Type == lit.CommentNode && len(c.Data) > 5 && c.Data[:6] == "macros" {
+			fmt.Print(strings.TrimSpace(c.Data[strings.Index(c.Data, "\n"):]))
+		}
+	}
 }
 
 const allHelp = `bbk all

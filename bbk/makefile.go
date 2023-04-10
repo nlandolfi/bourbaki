@@ -11,7 +11,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 {{ end }}
-{{ .Config.Name }}.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+{{ .Config.Name }}.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > {{ .Config.Name }}.tex
 
 {{ .Config.Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Config.Name }}.tex graph.pdf
@@ -68,7 +71,10 @@ make:
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
 
-{{ .Config.Name }}.tex: sheet.tex
+macros.tex: sheet.lit
+	bbk macros sheet.lit > macros.tex
+
+{{ .Config.Name }}.tex: sheet.tex macros.tex
 	bbk_sheet -mode c -in sheet.tex > {{ .Config.Name }}.tex
 
 {{ .Config.Name }}.pdf: ../../*.tex ../../trademark.pdf *.tex {{ .Config.Name }}.tex graph.pdf
