@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 density_likelihood.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > density_likelihood.tex
+	bbk sheet -mode c -in sheet.tex > density_likelihood.tex
 
 density_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex density_likelihood.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode density_likelihood.tex
@@ -21,10 +21,10 @@ density_likelihood.pdf: ../../*.tex ../../trademark.pdf *.tex density_likelihood
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: density_likelihood.tex
-	bbk_sheet -mode ts density_likelihood.tex
+	bbk sheet -mode ts density_likelihood.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f density_likelihood.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

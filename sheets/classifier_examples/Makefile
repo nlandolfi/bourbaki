@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 classifier_examples.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > classifier_examples.tex
+	bbk sheet -mode c -in sheet.tex > classifier_examples.tex
 
 classifier_examples.pdf: ../../*.tex ../../trademark.pdf *.tex classifier_examples.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode classifier_examples.tex
@@ -21,10 +21,10 @@ classifier_examples.pdf: ../../*.tex ../../trademark.pdf *.tex classifier_exampl
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: classifier_examples.tex
-	bbk_sheet -mode ts classifier_examples.tex
+	bbk sheet -mode ts classifier_examples.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f classifier_examples.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

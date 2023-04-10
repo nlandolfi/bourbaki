@@ -12,6 +12,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"text/template"
@@ -60,6 +61,32 @@ func (p *ParseResult) MacrosHTML() string {
 	return b.String()
 }
 
+func AllNeeds(sheet *Sheet, ss *SheetSet) []string {
+	an := make([]string, 0)
+	needs := make([]string, len(sheet.Config.Needs))
+	seen := map[string]bool{}
+	copy(needs, sheet.Config.Needs)
+	for len(needs) > 0 {
+		n := needs[0]
+		needs = needs[1:]
+		if seen[n] {
+			continue
+		}
+		seen[n] = true
+		an = append(an, n)
+		for _, nn := range ss.Sheets[n].Config.Needs {
+			needs = append(needs, nn)
+		}
+	}
+
+	// reverse in place
+	// works?
+	for i, j := 0, len(an)-1; i < j; i, j = i+1, j-1 {
+		an[i], an[j] = an[j], an[i]
+	}
+	return an
+}
+
 func allNeeds(p *ParseResult, all map[string]*ParseResult) []string {
 	an := make([]string, 0)
 	needs := make([]string, len(p.Config.Needs))
@@ -91,6 +118,15 @@ type ByName []*ParseResult
 func (s ByName) Len() int           { return len(s) }
 func (s ByName) Less(i, j int) bool { return s[i].Config.Name < s[j].Config.Name }
 func (s ByName) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+
+func MacrosOrEmpty(sheet *Sheet) string {
+	for c := sheet.LitNode.FirstChild; c != nil; c = c.NextSibling {
+		if c.Type == lit.CommentNode && len(c.Data) > 5 && c.Data[:6] == "macros" {
+			return strings.TrimSpace(c.Data[strings.Index(c.Data, "\n"):])
+		}
+	}
+	return ""
+}
 
 func Parse(sheet, macros, lf io.Reader) *ParseResult {
 	p := new(ParseResult)
@@ -273,6 +309,32 @@ func ParseSheet(r io.Reader) (*Sheet, error) {
 	n.RemoveChild(n.FirstChild)
 
 	return s, nil
+}
+
+var termsRegex = regexp.MustCompile("❬([^❭]*?)❭")
+
+func ParseTerms(s *Sheet) ([]string, error) {
+	// hack for now
+	var b bytes.Buffer
+	if err := lit.WriteLit(&b, s.LitNode, &lit.WriteOpts{Prefix: "", Indent: ""}); err != nil {
+		return nil, err
+	}
+	matches := termsRegex.FindAllStringSubmatch(b.String(), -1) // Find all matches in text
+
+	var out []string = make([]string, 0, len(matches))
+
+	for _, match := range matches {
+		// nonsense for hack, later this should all use lit's tokenization
+		unclean := strings.Replace(match[1], "\n", " ", -1)
+
+		pieces := strings.Split(unclean, " ")
+		for i, p := range pieces {
+			pieces[i] = strings.TrimSpace(p)
+		}
+
+		out = append(out, strings.Join(pieces, " ")) //  the matched text (capturing group 1)
+	}
+	return out, nil
 }
 
 type SheetSet struct {

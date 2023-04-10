@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 characteristic_functions.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > characteristic_functions.tex
+	bbk sheet -mode c -in sheet.tex > characteristic_functions.tex
 
 characteristic_functions.pdf: ../../*.tex ../../trademark.pdf *.tex characteristic_functions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode characteristic_functions.tex
@@ -21,10 +21,10 @@ characteristic_functions.pdf: ../../*.tex ../../trademark.pdf *.tex characterist
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: characteristic_functions.tex
-	bbk_sheet -mode ts characteristic_functions.tex
+	bbk sheet -mode ts characteristic_functions.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f characteristic_functions.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

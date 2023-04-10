@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 american_standard_code_for_information_exchange.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > american_standard_code_for_information_exchange.tex
+	bbk sheet -mode c -in sheet.tex > american_standard_code_for_information_exchange.tex
 
 american_standard_code_for_information_exchange.pdf: ../../*.tex ../../trademark.pdf *.tex american_standard_code_for_information_exchange.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode american_standard_code_for_information_exchange.tex
@@ -21,10 +21,10 @@ american_standard_code_for_information_exchange.pdf: ../../*.tex ../../trademark
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: american_standard_code_for_information_exchange.tex
-	bbk_sheet -mode ts american_standard_code_for_information_exchange.tex
+	bbk sheet -mode ts american_standard_code_for_information_exchange.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f american_standard_code_for_information_exchange.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

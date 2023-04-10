@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 spanning_trees.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > spanning_trees.tex
+	bbk sheet -mode c -in sheet.tex > spanning_trees.tex
 
 spanning_trees.pdf: ../../*.tex ../../trademark.pdf *.tex spanning_trees.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode spanning_trees.tex
@@ -21,10 +21,10 @@ spanning_trees.pdf: ../../*.tex ../../trademark.pdf *.tex spanning_trees.tex gra
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: spanning_trees.tex
-	bbk_sheet -mode ts spanning_trees.tex
+	bbk sheet -mode ts spanning_trees.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f spanning_trees.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

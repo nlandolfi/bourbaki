@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 prime_number_factorizations.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > prime_number_factorizations.tex
+	bbk sheet -mode c -in sheet.tex > prime_number_factorizations.tex
 
 prime_number_factorizations.pdf: ../../*.tex ../../trademark.pdf *.tex prime_number_factorizations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode prime_number_factorizations.tex
@@ -21,10 +21,10 @@ prime_number_factorizations.pdf: ../../*.tex ../../trademark.pdf *.tex prime_num
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: prime_number_factorizations.tex
-	bbk_sheet -mode ts prime_number_factorizations.tex
+	bbk sheet -mode ts prime_number_factorizations.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f prime_number_factorizations.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

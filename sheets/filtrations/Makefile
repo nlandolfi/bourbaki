@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 filtrations.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > filtrations.tex
+	bbk sheet -mode c -in sheet.tex > filtrations.tex
 
 filtrations.pdf: ../../*.tex ../../trademark.pdf *.tex filtrations.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode filtrations.tex
@@ -21,10 +21,10 @@ filtrations.pdf: ../../*.tex ../../trademark.pdf *.tex filtrations.tex graph.pdf
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: filtrations.tex
-	bbk_sheet -mode ts filtrations.tex
+	bbk sheet -mode ts filtrations.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f filtrations.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

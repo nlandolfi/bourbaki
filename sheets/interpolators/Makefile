@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 interpolators.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > interpolators.tex
+	bbk sheet -mode c -in sheet.tex > interpolators.tex
 
 interpolators.pdf: ../../*.tex ../../trademark.pdf *.tex interpolators.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode interpolators.tex
@@ -21,10 +21,10 @@ interpolators.pdf: ../../*.tex ../../trademark.pdf *.tex interpolators.tex graph
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: interpolators.tex
-	bbk_sheet -mode ts interpolators.tex
+	bbk sheet -mode ts interpolators.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f interpolators.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

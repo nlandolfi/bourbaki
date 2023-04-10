@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 modular_arithmetic.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > modular_arithmetic.tex
+	bbk sheet -mode c -in sheet.tex > modular_arithmetic.tex
 
 modular_arithmetic.pdf: ../../*.tex ../../trademark.pdf *.tex modular_arithmetic.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode modular_arithmetic.tex
@@ -21,10 +21,10 @@ modular_arithmetic.pdf: ../../*.tex ../../trademark.pdf *.tex modular_arithmetic
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: modular_arithmetic.tex
-	bbk_sheet -mode ts modular_arithmetic.tex
+	bbk sheet -mode ts modular_arithmetic.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f modular_arithmetic.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

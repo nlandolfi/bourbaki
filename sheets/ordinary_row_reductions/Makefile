@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 ordinary_row_reductions.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > ordinary_row_reductions.tex
+	bbk sheet -mode c -in sheet.tex > ordinary_row_reductions.tex
 
 ordinary_row_reductions.pdf: ../../*.tex ../../trademark.pdf *.tex ordinary_row_reductions.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode ordinary_row_reductions.tex
@@ -21,10 +21,10 @@ ordinary_row_reductions.pdf: ../../*.tex ../../trademark.pdf *.tex ordinary_row_
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: ordinary_row_reductions.tex
-	bbk_sheet -mode ts ordinary_row_reductions.tex
+	bbk sheet -mode ts ordinary_row_reductions.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f ordinary_row_reductions.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile

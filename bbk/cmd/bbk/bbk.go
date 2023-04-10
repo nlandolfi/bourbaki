@@ -521,35 +521,16 @@ func sheetsMain(s *state) {
 		return
 	}
 
-	rs, err := bbk.ParseAll(*sheetsDir)
-
+	ss, err := bbk.ParseSheetSet(os.DirFS(*sheetsDir))
 	if err != nil {
-		log.Fatalf("bbk.ParseAll: %v", err)
-	}
-	results := make(map[string]*bbk.ParseResult, len(rs))
-	for _, p := range rs {
-		results[p.Config.Name] = p
+		log.Fatal(err)
 	}
 
-	if len(results) == 0 {
-		log.Printf("warning: no sheets parsed")
-	}
-
-	names := make([]string, 0, len(results))
-	for n := range results {
+	names := make([]string, 0, len(ss.Sheets))
+	for n := range ss.Sheets {
 		names = append(names, n)
 	}
 	sort.Strings(names)
-
-	var missingLit int
-	for _, name := range names {
-		r := results[name]
-		if !r.HasLitFile {
-			log.Print(r.Config.Name)
-			missingLit += 1
-		}
-	}
-	log.Printf("%d/%d missing lit files", missingLit, len(results))
 
 	if *dry {
 		return
@@ -576,13 +557,13 @@ func sheetsMain(s *state) {
 		}
 	*/
 
-	tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate))
+	tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate2))
 	for _, name := range names {
 		out, err := os.Create(path.Join(*sheetsDir, name, "Makefile"))
 		if err != nil {
 			log.Fatalf("os.Create: %v", err)
 		}
-		if err := tmpl.Execute(out, results[name]); err != nil {
+		if err := tmpl.Execute(out, ss.Sheets[name]); err != nil {
 			log.Fatal(err)
 		}
 		if err := out.Close(); err != nil {
@@ -610,7 +591,7 @@ func sheetsMain(s *state) {
 	*/
 
 	var wg sync.WaitGroup
-	ch := make(chan string, len(results))
+	ch := make(chan string, len(ss.Sheets))
 
 	// these are the workers
 	for i := 0; i < 32; i++ {
@@ -662,62 +643,50 @@ func sheetMain(s *state) {
 	fs := flag.NewFlagSet("sheet", flag.ContinueOnError)
 
 	var (
-		//inFile = flag.String("in", "sheet.tex", "sheet file")
+		_ = fs.String("in", "sheet.tex", "sheet file")
 		// create, makefile, graph
-		mode      = flag.String("mode", "mk", "which mode {c, mk, g, ts}")
-		sheetsDir = flag.String("sheets", "../", "where to find other sheets")
+		mode      = fs.String("mode", "mk", "which mode {c, mk, g, ts}")
+		sheetsDir = fs.String("sheets", "../", "where to find other sheets")
 	)
 
-	fs.Parse(s.Args)
+	fs.Parse(s.Args[2:])
 
-	results, err := bbk.ParseAll(*sheetsDir)
+	ss, err := bbk.ParseSheetSet(os.DirFS(*sheetsDir))
 	if err != nil {
-		log.Fatal(err)
-	}
-
-	rs := make(map[string]*bbk.ParseResult, len(results))
-	for _, p := range results {
-		rs[p.Config.Name] = p
+		s.error("parsing sheet set: %v", err)
+		return
 	}
 
 	// just want to get the name
-	f, err := os.Open("sheet.tex")
+	f, err := os.Open("sheet.lit")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer f.Close()
-	// just want to get the name
-	g, err := os.Open("macros.tex")
+	sheet, err := bbk.ParseSheet(f)
 	if err != nil {
 		log.Fatal(err)
-	}
-	defer g.Close()
-	h, err := os.Open("sheet.lit")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer h.Close()
-	partialp := bbk.Parse(f, g, h)
-	p, ok := rs[partialp.Config.Name]
-	if !ok {
-		log.Fatalf("name %q not found among sheets", partialp.Config.Name)
 	}
 
 	switch *mode {
 	case "c":
-		sheetWriteFile(rs, p)
+		sheetWriteFile(ss, sheet)
 	case "g":
-		sheetWriteGraph(rs, p)
+		sheetWriteGraph(ss, sheet)
 	case "ts":
 		w := os.Stdout
-		fmt.Fprintf(w, "%d terms\n", len(p.Terms))
-		for _, t := range p.Terms {
+		ts, err := bbk.ParseTerms(sheet)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Fprintf(w, "%d terms\n", len(ts))
+		for _, t := range ts {
 			fmt.Fprintf(w, " - %s\n", t)
 		}
 	case "mk":
-		tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate))
+		tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate2))
 
-		if err := tmpl.Execute(os.Stdout, p); err != nil {
+		if err := tmpl.Execute(os.Stdout, sheet); err != nil {
 			log.Fatal(err)
 		}
 	default:
@@ -725,16 +694,28 @@ func sheetMain(s *state) {
 	}
 }
 
-func sheetWriteFile(all map[string]*bbk.ParseResult, p *bbk.ParseResult) {
+func sheetWriteFile(ss *bbk.SheetSet, sheet *bbk.Sheet) {
 	fmt.Fprintln(os.Stdout, "\\input{../../sheet.tex}")
 	fmt.Fprintln(os.Stdout, "\\sbasic")
-	for _, n := range p.AllNeeds {
-		fmt.Fprintf(os.Stdout, "\\input{../%s/macros.tex}\n", n)
+	// just inline macros...
+	for _, n := range bbk.AllNeeds(sheet, ss) {
+		need := ss.Sheets[n]
+		if mstring := bbk.MacrosOrEmpty(need); mstring != "" {
+			fmt.Fprintf(os.Stdout, "% macros from %q\n", need.Config.Name)
+			fmt.Fprintln(os.Stdout, mstring)
+		}
 	}
-	fmt.Fprintln(os.Stdout, "\\input{./macros.tex}")
+	//for _, n := range bbk.AllNeeds(sheet, ss) {
+	//		fmt.Fprintf(os.Stdout, "\\input{../%s/macros.tex}\n", n)
+	//	}
+	//fmt.Fprintln(os.Stdout, "\\input{./macros.tex}")
+	if mstring := bbk.MacrosOrEmpty(sheet); mstring != "" {
+		fmt.Fprintf(os.Stdout, "% macros from %q\n", sheet.Config.Name)
+		fmt.Fprintln(os.Stdout, mstring)
+	}
 	fmt.Fprintln(os.Stdout, "\\sstart")
 	fmt.Fprintln(os.Stdout, "\\bpage\\clearpage")
-	fmt.Fprintf(os.Stdout, "\\stitle{%s}{%s}\n", bbk.Title(p.Config.Name), p.Config.Name)
+	fmt.Fprintf(os.Stdout, "\\stitle{%s}{%s}\n", bbk.Title(sheet.Config.Name), sheet.Config.Name)
 	//fmt.Fprintf(os.Stdout, "{\\small Needs: %s}\n", strings.Join(p.Needs, ", "))
 	/*
 		for _, l := range p.Lines {
@@ -746,12 +727,12 @@ func sheetWriteFile(all map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 	fmt.Fprintln(os.Stdout, "\\strats")
 }
 
-func sheetWriteGraph(rs map[string]*bbk.ParseResult, p *bbk.ParseResult) {
+func sheetWriteGraph(ss *bbk.SheetSet, sheet *bbk.Sheet) {
 	var rows = [][]string{
 		[]string{"name", "need"},
 	}
-	seen := map[*bbk.ParseResult]bool{}
-	q := []*bbk.ParseResult{p}
+	seen := map[*bbk.Sheet]bool{}
+	q := []*bbk.Sheet{sheet}
 	for len(q) > 0 {
 		next := q[0]
 		q = q[1:]
@@ -763,7 +744,7 @@ func sheetWriteGraph(rs map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 		seen[next] = true
 
 		for _, n := range next.Config.Needs {
-			q = append(q, rs[n])
+			q = append(q, ss.Sheets[n])
 			rows = append(rows, []string{bbk.NodeName(next.Config.Name), bbk.NodeName(n)})
 		}
 	}
@@ -772,7 +753,7 @@ func sheetWriteGraph(rs map[string]*bbk.ParseResult, p *bbk.ParseResult) {
 	if len(rows) == 1 {
 		// add a single entry for the node
 		rows = append(rows,
-			[]string{bbk.NodeName(p.Config.Name), ""},
+			[]string{bbk.NodeName(sheet.Config.Name), ""},
 		)
 	}
 	f, err := os.Create("graph.csv")

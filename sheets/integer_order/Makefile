@@ -1,4 +1,4 @@
-# generated automatically by bbk_sheet
+# generated automatically by bbk sheet
 
 .PHONY: make o spell s clean remake
 
@@ -13,7 +13,7 @@ macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
 integer_order.tex: sheet.tex macros.tex
-	bbk_sheet -mode c -in sheet.tex > integer_order.tex
+	bbk sheet -mode c -in sheet.tex > integer_order.tex
 
 integer_order.pdf: ../../*.tex ../../trademark.pdf *.tex integer_order.tex graph.pdf
 	# pdflatex --file-line-error -interaction=nonstopmode integer_order.tex
@@ -21,10 +21,10 @@ integer_order.pdf: ../../*.tex ../../trademark.pdf *.tex integer_order.tex graph
 	make terms
 
 graph.csv: sheet.tex
-	bbk_sheet -mode g -in sheet.tex > graph.csv
+	bbk sheet -mode g -in sheet.tex > graph.csv
 
 graph.graphviz: graph.csv
-	bbk graph --csv graph.csv --tmpl ../../graph/graph.tmpl > graph.graphviz
+	bbk graph --csv graph.csv --tmpl ../../bbk/static/graph.tmpl > graph.graphviz
 
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
@@ -36,7 +36,7 @@ o:
 	make open
 
 terms: integer_order.tex
-	bbk_sheet -mode ts integer_order.tex
+	bbk sheet -mode ts integer_order.tex
 
 spell:
 	aspell -c sheet.tex
@@ -55,4 +55,4 @@ clean:
 remake:
 	rm -f integer_order.*
 	make reset
-	bbk_sheet -mode mk > Makefile
+	bbk sheet -mode mk > Makefile
