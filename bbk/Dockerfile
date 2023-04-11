@@ -18,7 +18,7 @@ COPY . ./
 
 # Build the binary.
 ##RUN go build -o server -mod readonly -v ./cmd/serve/bbk_serve.go
-COPY ./cmd/serve/bbk_serve server
+COPY ./cmd/bbk/bbk_linux_cmd bbk_linux_cmd
 
 # Use the official Debian slim image for a lean production container.
 # https://hub.docker.com/_/debian
@@ -29,9 +29,9 @@ RUN set -x && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -
     rm -rf /var/lib/apt/lists/*
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder /app/server /app/server
+COPY --from=builder /app/bbk_linux_cmd /app/bbk_linux_cmd
 # Copy in the static
 COPY ./static /static
 
 # Run the web service on container startup.
-CMD ["/app/server"]
+CMD ["/app/bbk_linux_cmd", "serve"]
