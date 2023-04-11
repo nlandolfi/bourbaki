@@ -161,11 +161,11 @@
     </span>
 
     <span style="display:none">
-      {{ .MacrosHTML }}
+      {{/* .MacrosHTML */}}
     </span>
 
 
-{{ if .HasLitFile }}
+{{ if true }}
 <style>
 
 .body {
@@ -270,8 +270,8 @@
           <div class="neednone2">None.</div>
         {{ end }}
         <div class="needlabel2"> Needed by: </div>
-        {{ if .NeededBy }}
-        {{ range $k, $v := .NeededBy }}
+        {{ if needed_by .Sheet }}
+        {{ range $k, $v := needed_by .Sheet }}
           <div class="need2" tabindex="0" onclick="location.href='./{{ $v }}.html'" onkeypress="location.href='./{{ $v }}.html'">
             <span>
             {{ title $v }}
@@ -302,7 +302,7 @@
       </div>
     <div class="lit">
       <h1 class="title smallcaps" style="text-align: center; font-size: 1.1em; font-weight: 100"> {{ title .Config.Name }} </h1> 
-      {{ .LitHTML }}
+      {{ .Sheet.LitHTML }}
     </div>
     <div style="padding: 20px; flex-grow: 1; flex-basis: 0"></div>
   </div>
@@ -340,9 +340,9 @@
       {{ else }}
         <div disabled class="need label"> No needs. </div>
       {{ end }}
-      {{ if .NeededBy }}
+      {{ if needed_by .Sheet }}
         <div disabled class="need label"> Needed by: </div>
-        {{ range $k, $v := .NeededBy }}
+        {{ range $k, $v := needed_by .Sheet }}
           <div class="need" tabindex="0" onclick="location.href='./{{ $v }}.html'" onkeypress="location.href='./{{ $v }}.html'">
             <span>
             {{ title $v }}

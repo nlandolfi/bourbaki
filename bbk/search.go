@@ -6,19 +6,25 @@ import (
 	"strings"
 )
 
+type SheetResult struct {
+	Config SheetConfig
+	Terms  []string
+	RawTex string
+}
+
 type SearchData struct {
-	Results []*ParseResult
+	Results []*SheetResult
 	Version string
 }
 
 type SearchResult struct {
-	*ParseResult
+	*SheetResult
 	Reasons []string
 	Ranks   []float64
 	Rank    float64
 }
 
-func NewSearcher(results map[string]*ParseResult) *Searcher {
+func NewSearcher(results map[string]*SheetResult, staticDir string) *Searcher {
 	names := make([]string, 0, len(results))
 	for n := range results {
 		names = append(names, n)
@@ -26,14 +32,15 @@ func NewSearcher(results map[string]*ParseResult) *Searcher {
 	sort.Strings(names)
 
 	var s = Searcher{
-		names:  names,
-		sheets: results,
+		names:     names,
+		sheets:    results,
+		StaticDir: staticDir,
 	}
 	s.spacenames = make([]string, len(names))
 	for i, n := range s.names {
 		s.spacenames[i] = strings.ReplaceAll(n, "_", " ")
 	}
-	s.terms = make(map[string][]*ParseResult)
+	s.terms = make(map[string][]*SheetResult)
 	for _, r := range results {
 		for _, t := range r.Terms {
 			s.terms[t] = append(s.terms[t], r)
@@ -43,24 +50,25 @@ func NewSearcher(results map[string]*ParseResult) *Searcher {
 }
 
 type Searcher struct {
+	StaticDir  string
 	names      []string
 	spacenames []string
-	sheets     map[string]*ParseResult
-	terms      map[string][]*ParseResult
+	sheets     map[string]*SheetResult
+	terms      map[string][]*SheetResult
 }
 
 func RewriteQuery(q string) string {
 	return strings.ToLower(q)
 }
 
-func addresult(rs map[*ParseResult]*SearchResult, pr *ParseResult, reason string, rank float64) {
+func addresult(rs map[*SheetResult]*SearchResult, pr *SheetResult, reason string, rank float64) {
 	if pr == nil {
 		log.Fatal("attempting to add nil parse result")
 	}
 	sr, ok := rs[pr]
 	if !ok {
 		sr = &SearchResult{
-			ParseResult: pr,
+			SheetResult: pr,
 		}
 		rs[pr] = sr
 	}
@@ -72,7 +80,7 @@ func addresult(rs map[*ParseResult]*SearchResult, pr *ParseResult, reason string
 }
 
 func (s *Searcher) Search(q string) []*SearchResult {
-	rs := make(map[*ParseResult]*SearchResult)
+	rs := make(map[*SheetResult]*SearchResult)
 	for i, name := range s.spacenames {
 		if q == name {
 			addresult(rs, s.sheets[s.names[i]], "name exact match", 1)
@@ -100,9 +108,9 @@ func (s *Searcher) Search(q string) []*SearchResult {
 		}
 	}
 	for _, pr := range s.sheets {
-		if strings.Contains(strings.ToLower(pr.Body), q) {
+		if strings.Contains(strings.ToLower(pr.RawTex), q) {
 			addresult(rs, pr, "body contains query",
-				float64(len(q))/float64(len(pr.Body)),
+				float64(len(q))/float64(len(pr.RawTex)),
 			)
 		}
 	}

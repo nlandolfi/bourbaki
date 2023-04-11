@@ -40,6 +40,12 @@ type ParseResult struct {
 	globalResultsMap map[string]*ParseResult
 }
 
+func (s *Sheet) LitHTML() string {
+	var b bytes.Buffer
+	lit.WriteHTML(&b, s.LitNode, &lit.WriteOpts{Prefix: "", Indent: " "})
+	return b.String()
+}
+
 func (p *ParseResult) LitHTML() string {
 	var b bytes.Buffer
 	lit.WriteHTML(&b, p.litNode, &lit.WriteOpts{Prefix: "", Indent: " "})

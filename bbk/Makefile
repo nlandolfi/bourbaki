@@ -1,5 +1,5 @@
 compile:
-	bbk_compile_screen
+	bbk compile_screen
 local:
 	bbk_serve -static-dir ./static -local-audit
 deploy:

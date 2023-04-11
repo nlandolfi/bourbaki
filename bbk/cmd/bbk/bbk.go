@@ -4,14 +4,19 @@ import (
 	"bbk"
 	"bufio"
 	"bytes"
+	"compress/gzip"
 	"encoding/csv"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
+	"net/http"
 	"os"
 	"os/exec"
 	"path"
+	"path/filepath"
 	"runtime"
 	"sort"
 	"strings"
@@ -20,6 +25,7 @@ import (
 	"time"
 
 	"github.com/nlandolfi/lit"
+	"github.com/nlandolfi/spin/infra/audit"
 )
 
 // Set using link flags; e.g., -X main.Version=...
@@ -41,6 +47,8 @@ const basicHelp = `bbk <command>
     - graph
     - all
     - macros
+		- compile_screen
+		- serve
     - help <command>
     - version`
 
@@ -78,6 +86,10 @@ func main() {
 		macrosMain(s)
 	case "macrosUpdate":
 		macrosUpdateMain(s)
+	case "compile_screen":
+		compileScreenMain(s)
+	case "serve":
+		serveMain(s)
 	case "all":
 		allMain(s)
 	case "version", "v":
@@ -215,6 +227,316 @@ func macrosUpdateMain(s *state) {
 		if err := sf2.Close(); err != nil {
 			log.Fatalf("Close: %v", err)
 		}
+	}
+}
+
+func serveMain(s *state) {
+	fs := flag.NewFlagSet("sheet", flag.ContinueOnError)
+
+	var (
+		staticDir  = fs.String("static-dir", "/static", "directory of static files")
+		localAudit = fs.Bool("local-audit", false, "only locally log audit")
+		auditURL   = fs.String("audit-url", "https://audit-5rcmpbrboq-uw.a.run.app", "audit service to use")
+	)
+
+	/* TODO: bring back audit log
+	var noKey = &spin.Key{
+		Name: "bbk-no-key",
+		Type: "bbk-no-key",
+	}
+	*/
+
+	if err := fs.Parse(os.Args[2:]); err != nil {
+		log.Fatal(err)
+	}
+
+	var auditLogger audit.Logger
+	if *localAudit {
+		auditLogger = &audit.LocalLogger{log.Default()}
+	} else {
+		auditLogger = audit.NewClient(*auditURL)
+	}
+	as := &audit.Service{
+		Name:   "bbk-serve",
+		Logger: auditLogger,
+	}
+
+	f, err := os.Open(path.Join(*staticDir, "results.json.gzip"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	r, err := gzip.NewReader(f)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var sd bbk.SearchData
+	if err := json.NewDecoder(r).Decode(&sd); err != nil {
+		log.Fatal(err)
+	}
+	var results = make(map[string]*bbk.SheetResult, len(sd.Results))
+	for _, r := range sd.Results {
+		results[r.Config.Name] = r
+	}
+	srcher := &searcher{sd.Version, bbk.NewSearcher(results, *staticDir), as}
+
+	m := http.NewServeMux()
+	m.HandleFunc("/search", srcher.search)
+	m.HandleFunc("/search_json", srcher.search_json)
+
+	fsfs := http.FileServer(http.Dir(*staticDir))
+	m.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fsfs.ServeHTTP(w, r)
+
+		// LOGGING
+		data := map[string]string{
+			"remote-addr": r.RemoteAddr,
+			"url":         r.URL.String(),
+			"version":     sd.Version,
+		}
+		for k, vs := range r.Header {
+			data[k] = strings.Join(vs, ",,")
+		}
+		// TODO: bring back audit log
+		//srcher.AuditLog.Put("get", noKey, data)
+	}))
+	log.Fatal(http.ListenAndServe(":8080", m))
+}
+
+type searcher struct {
+	Version string
+	*bbk.Searcher
+	AuditLog *audit.Service
+}
+
+func (s *searcher) data(r *http.Request) *SearchData {
+	start := time.Now()
+	var sd SearchData
+	sd.Version = s.Version
+	sd.RemoteAddr = r.RemoteAddr
+	sd.Query = r.FormValue("query")
+	sd.RewrittenQuery = bbk.RewriteQuery(sd.Query)
+	if sd.RewrittenQuery != "" {
+		sd.Results = s.Search(sd.RewrittenQuery)
+		sd.Searched = true
+	}
+	sd.SearchDuration = time.Now().Sub(start)
+	return &sd
+}
+
+func (s *searcher) log(action string, sd *SearchData, r *http.Request) {
+	data := map[string]string{
+		"remote-addr":     sd.RemoteAddr,
+		"query":           sd.Query,
+		"rewritten-query": sd.RewrittenQuery,
+		"duration":        fmt.Sprintf("%d", sd.SearchDuration),
+		"version":         sd.Version,
+	}
+	for k, vs := range r.Header {
+		data[k] = strings.Join(vs, ",,")
+	}
+	// TODO: bring back audit log
+	//s.AuditLog.Put("search", noKey, data)
+}
+
+func (s *searcher) search(w http.ResponseWriter, r *http.Request) {
+	sd := s.data(r)
+	searchTemplate := template.Must(
+		template.New("search.tmpl").Funcs(
+			template.FuncMap{
+				"title":   bbk.Title,
+				"reasons": reasons,
+			},
+		).ParseFiles(path.Join(s.Searcher.StaticDir, "search.tmpl")))
+	if err := searchTemplate.Execute(w, sd); err != nil {
+		http.Error(w, "internal", 500)
+		log.Fatal(err)
+	}
+	s.log("search", sd, r)
+}
+
+func (s *searcher) search_json(w http.ResponseWriter, r *http.Request) {
+	sd := s.data(r)
+	if err := json.NewEncoder(w).Encode(sd); err != nil {
+		http.Error(w, "internal", 500)
+		log.Fatal(err)
+	}
+	s.log("search-json", sd, r)
+}
+
+type SearchData struct {
+	Version        string
+	RemoteAddr     string
+	Query          string
+	RewrittenQuery string
+	Results        []*bbk.SearchResult
+	Searched       bool
+	SearchDuration time.Duration
+}
+
+func reasons(sr *bbk.SearchResult) string {
+	return strings.Join(sr.Reasons, ", ")
+}
+
+func compileScreenMain(s *state) {
+	fs := flag.NewFlagSet("sheet", flag.ContinueOnError)
+
+	sheetsDir := fs.String("sheets-dir", "../sheets", "the sheets directory")
+	staticDir := fs.String("static-dir", "./static", "directory of static files")
+
+	if err := fs.Parse(os.Args[2:]); err != nil {
+		log.Fatal(err)
+	}
+
+	ss, err := bbk.ParseSheetSet(os.DirFS(*sheetsDir))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if len(ss.Sheets) == 0 {
+		log.Printf("warning: no sheets found")
+	}
+
+	cmd := exec.Command("git", "rev-parse", "HEAD")
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	if err := cmd.Run(); err != nil {
+		log.Fatal(err)
+	}
+	gitCommit := out.String()
+
+	// log.Printf("%d sheets", len(results))
+
+	sheetTemplate := template.Must(
+		template.New("sheet.tmpl").Funcs(
+			template.FuncMap{
+				"title": bbk.Title,
+				"needed_by": func(s *bbk.Sheet) (out []string) {
+					for _, os := range ss.Sheets {
+						for _, n := range os.Config.Needs {
+							if n == s.Config.Name {
+								out = append(out, os.Config.Name)
+							}
+						}
+					}
+					sort.Strings(out)
+					return
+				},
+			},
+		).ParseFiles(path.Join(*staticDir, "sheet.tmpl")))
+
+	type SheetData struct {
+		*bbk.Sheet
+		Version string
+	}
+
+	for _, p := range ss.Sheets {
+		name := p.Config.Name
+		out, err := os.Create(filepath.Join(*staticDir, "sheets", fmt.Sprintf("%s.html", name)))
+		if err != nil {
+			log.Fatalf("os.Create: %v", err)
+		}
+		if err := sheetTemplate.Execute(out, &SheetData{p, gitCommit[:9]}); err != nil {
+			log.Fatal(err)
+		}
+		out.Close()
+
+		_, err = bbk.CopyFile(
+			filepath.Join(*sheetsDir, name, fmt.Sprintf("%s.pdf", name)),
+			filepath.Join(*staticDir, "sheets", fmt.Sprintf("%s.pdf", name)),
+		)
+		if err != nil {
+			log.Printf("error transferring %s/sheet.pdf: %v", name, err)
+		}
+
+		_, err = bbk.CopyFile(
+			filepath.Join(*sheetsDir, name, "graph.pdf"),
+			filepath.Join(*staticDir, "sheets", fmt.Sprintf("%s-graph.pdf", name)),
+		)
+		if err != nil {
+			log.Printf("error transferring %s/graph.pdf: %v", name, err)
+		}
+
+		// BUG: if two of the same named graphics, then an error
+		graphicsDir := filepath.Join(*sheetsDir, name, "graphics")
+		_, err = os.Stat(graphicsDir)
+		var hasGraphics bool
+		if os.IsNotExist(err) {
+		} else if err != nil {
+		} else {
+			hasGraphics = true
+		}
+		if hasGraphics {
+			toDir := filepath.Join(*staticDir, "sheets", "graphics")
+			os.Mkdir(toDir, 0700)
+			fs, err := ioutil.ReadDir(graphicsDir)
+			if err != nil {
+				log.Fatal(err)
+			}
+			for _, fi := range fs {
+				_, err = bbk.CopyFile(
+					filepath.Join(graphicsDir, fi.Name()),
+					filepath.Join(toDir, fi.Name()),
+				)
+				if err != nil {
+					log.Printf("error transferring %s/%s: %v", p, fi.Name(), err)
+				}
+			}
+		}
+	}
+
+	type IndexData struct {
+		Results []*bbk.Sheet
+		Version string
+	}
+
+	indexTemplate := template.Must(
+		template.New("index.tmpl").Funcs(
+			template.FuncMap{
+				"title": bbk.Title,
+			},
+		).ParseFiles(filepath.Join(*staticDir, "index.tmpl")))
+
+	f, err := os.Create(filepath.Join(*staticDir, "index.html"))
+	if err != nil {
+		log.Fatalf("os.Create index.html: %v", err)
+	}
+	var results []*bbk.Sheet = make([]*bbk.Sheet, 0, len(ss.Sheets))
+	for _, s := range ss.Sheets {
+		results = append(results, s)
+	}
+	if err := indexTemplate.Execute(f, &IndexData{results, gitCommit[:9]}); err != nil {
+		log.Fatalf("executing index template: %v", err)
+	}
+	f.Close()
+
+	f, err = os.Create(filepath.Join(*staticDir, "results.json.gzip"))
+	if err != nil {
+		log.Fatalf("os.Create results.json.gzip: %v", err)
+	}
+	var rs []*bbk.SheetResult = make([]*bbk.SheetResult, len(results))
+	var b bytes.Buffer
+	for i, r := range results {
+		b.Reset()
+		lit.WriteTex(&b, r.LitNode, &lit.WriteOpts{Prefix: "", Indent: " "})
+		ts, err := bbk.ParseTerms(r)
+		if err != nil {
+			log.Fatal(err)
+		}
+		rs[i] = &bbk.SheetResult{
+			Config: r.Config,
+			Terms:  ts,
+			RawTex: b.String(),
+		}
+	}
+	w := gzip.NewWriter(f)
+	if err := json.NewEncoder(w).Encode(&bbk.SearchData{rs, gitCommit[:9]}); err != nil {
+		log.Fatalf("json encoding results: %v", err)
+	}
+	if err := w.Close(); err != nil {
+		log.Fatalf("gzip writer close: %v", err)
+	}
+	if err := f.Close(); err != nil {
+		log.Fatalf("results.json.gzip close: %v", err)
 	}
 }
 
