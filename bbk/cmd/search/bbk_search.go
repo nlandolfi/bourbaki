@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"flag"
 	"fmt"
 	"log"
@@ -11,26 +12,40 @@ import (
 	"strings"
 
 	"bbk"
+
+	"github.com/nlandolfi/lit"
 )
 
 var (
 	sheetsDir = flag.String("sheets-dir", "../../sheets", "the sheets directory")
+	staticDir = flag.String("static-dir", "./static", "the static directory")
 )
 
 func main() {
 	flag.Parse()
 
-	results, err := bbk.ParseAll(*sheetsDir)
+	ss, err := bbk.ParseSheetSet(os.DirFS(*sheetsDir))
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	rs := make(map[string]*bbk.ParseResult, len(results))
-	for _, p := range results {
-		rs[p.Config.Name] = p
+	var results = make(map[string]*bbk.SheetResult, len(ss.Sheets))
+	var b bytes.Buffer
+	for _, r := range ss.Sheets {
+		b.Reset()
+		lit.WriteTex(&b, r.LitNode, &lit.WriteOpts{Prefix: "", Indent: " "})
+		ts, err := bbk.ParseTerms(r)
+		if err != nil {
+			log.Fatal(err)
+		}
+		results[r.Config.Name] = &bbk.SheetResult{
+			Config: r.Config,
+			Terms:  ts,
+			RawTex: b.String(),
+		}
 	}
 
-	s := bbk.NewSearcher(rs)
+	s := bbk.NewSearcher(results, *staticDir)
 
 	var c Config
 	c.MaxResults = 3

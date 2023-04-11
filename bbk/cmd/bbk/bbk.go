@@ -831,7 +831,7 @@ func sheetsMain(s *state) {
 		}
 	*/
 
-	tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate2))
+	tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate))
 	for _, name := range names {
 		out, err := os.Create(path.Join(*sheetsDir, name, "Makefile"))
 		if err != nil {
@@ -958,7 +958,7 @@ func sheetMain(s *state) {
 			fmt.Fprintf(w, " - %s\n", t)
 		}
 	case "mk":
-		tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate2))
+		tmpl := template.Must(template.New("").Parse(bbk.MakefileTemplate))
 
 		if err := tmpl.Execute(os.Stdout, sheet); err != nil {
 			log.Fatal(err)

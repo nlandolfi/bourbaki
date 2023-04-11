@@ -251,7 +251,7 @@ func OverwriteSheetDir(dir string, sd *SheetDir) error {
 	} // handle error?
 
 	// write the Makefile
-	tmpl := template.Must(template.New("").Parse(MakefileTemplate2))
+	tmpl := template.Must(template.New("").Parse(MakefileTemplate))
 	f, err := os.Create(path.Join(dir, "Makefile"))
 	if err != nil {
 		return fmt.Errorf("os.Create: %w", err)
