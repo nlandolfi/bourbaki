@@ -1,7 +1,7 @@
 compile:
 	bbk compile_screen
 local:
-	bbk_serve -static-dir ./static -local-audit
+	bbk serve -static-dir ./static -local-audit
 deploy:
 	rm cmd/bbk/bbk_linux_cmd
 	cd cmd/bbk/ && make linux
