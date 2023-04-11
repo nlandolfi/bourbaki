@@ -1136,19 +1136,19 @@ func allMain(s *state) {
 		s.error("parsing flags: %v", err)
 		return
 	}
-	results, err := bbk.ParseAll(*sheetsDir)
+	ss, err := bbk.ParseSheetSet(os.DirFS(*sheetsDir))
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	rs := make(map[string]*bbk.ParseResult, len(results))
-	for _, p := range results {
+	rs := make(map[string]*bbk.Sheet, len(ss.Sheets))
+	for _, p := range ss.Sheets {
 		rs[p.Config.Name] = p
 	}
 
 	// get the template
 	order := mustGetAllSheetsOrder("sheets.csv")
-	orderedResults := make([]*bbk.ParseResult, len(order))
+	orderedResults := make([]*bbk.Sheet, len(order))
 	for i, n := range order {
 		r, ok := rs[n]
 		if !ok {

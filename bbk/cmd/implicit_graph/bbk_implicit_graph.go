@@ -33,18 +33,6 @@ func main() {
 			continue
 		}
 
-		sheetfile, err := os.Open(fmt.Sprintf("../sheets/%s/sheet.tex", f.Name()))
-		if os.IsNotExist(err) {
-			continue
-		} else if err != nil {
-			log.Fatalf("opening sheet.tex: %v", err)
-		}
-		macrosfile, err := os.Open(fmt.Sprintf("../sheets/%s/macros.tex", f.Name()))
-		if os.IsNotExist(err) {
-			continue
-		} else if err != nil {
-			log.Fatalf("opening macros.tex: %v", err)
-		}
 		litfile, err := os.Open(fmt.Sprintf("../sheets/%s/sheet.lit", f.Name()))
 		if os.IsNotExist(err) {
 			continue
@@ -52,7 +40,7 @@ func main() {
 			log.Fatalf("opening sheet.lit: %v", err)
 		}
 
-		p := bbk.Parse(sheetfile, macrosfile, litfile)
+		p, err := bbk.ParseSheet(litfile)
 		if p.Config.Name == "" {
 			log.Fatalf("no name for file %v", f)
 		}
@@ -67,9 +55,9 @@ func main() {
 			entries = append(entries, []string{bbk.Title(p.Config.Name), ""})
 		}
 
-		sheetfile.Close()
-		macrosfile.Close()
-		litfile.Close()
+		if err := litfile.Close(); err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	w := csv.NewWriter(os.Stdout)

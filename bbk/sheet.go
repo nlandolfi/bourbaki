@@ -1,19 +1,14 @@
 package bbk
 
 import (
-	"bufio"
 	"bytes"
 	"errors"
 	"fmt"
 	"io"
 	"io/fs"
-	"io/ioutil"
-	"log"
 	"os"
 	"path"
-	"path/filepath"
 	"regexp"
-	"sort"
 	"strings"
 	"text/template"
 
@@ -21,49 +16,9 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-type ParseResult struct {
-	Lines       []string
-	Body        string
-	NeedsParsed []*ParseResult
-	Terms       []string
-	MacrosLines []string
-	AllNeeds    []string
-
-	// only set if returned
-	//from ParseAll
-	NeededBy []string
-
-	HasLitFile bool
-	litNode    *lit.Node
-	Config     SheetConfig
-
-	globalResultsMap map[string]*ParseResult
-}
-
 func (s *Sheet) LitHTML() string {
 	var b bytes.Buffer
 	lit.WriteHTML(&b, s.LitNode, &lit.WriteOpts{Prefix: "", Indent: " "})
-	return b.String()
-}
-
-func (p *ParseResult) LitHTML() string {
-	var b bytes.Buffer
-	lit.WriteHTML(&b, p.litNode, &lit.WriteOpts{Prefix: "", Indent: " "})
-	return b.String()
-}
-
-func (p *ParseResult) MacrosHTML() string {
-	var b bytes.Buffer
-	fmt.Fprintf(&b, "<!-- %d %d -->", len(p.AllNeeds), len(p.NeedsParsed))
-	for _, need := range p.AllNeeds {
-		pr := p.globalResultsMap[need]
-		for _, l := range pr.MacrosLines {
-			fmt.Fprintf(&b, "\n\n<!-- %s -->\n\n", l)
-			//			fmt.Fprint(&b, "\\(")
-			fmt.Fprint(&b, l)
-			//			fmt.Fprint(&b, "\\)\n")
-		}
-	}
 	return b.String()
 }
 
@@ -93,38 +48,6 @@ func AllNeeds(sheet *Sheet, ss *SheetSet) []string {
 	return an
 }
 
-func allNeeds(p *ParseResult, all map[string]*ParseResult) []string {
-	an := make([]string, 0)
-	needs := make([]string, len(p.Config.Needs))
-	seen := map[string]bool{}
-	copy(needs, p.Config.Needs)
-	for len(needs) > 0 {
-		n := needs[0]
-		needs = needs[1:]
-		if seen[n] {
-			continue
-		}
-		seen[n] = true
-		an = append(an, n)
-		for _, nn := range all[n].Config.Needs {
-			needs = append(needs, nn)
-		}
-	}
-
-	// reverse in place
-	// works?
-	for i, j := 0, len(an)-1; i < j; i, j = i+1, j-1 {
-		an[i], an[j] = an[j], an[i]
-	}
-	return an
-}
-
-type ByName []*ParseResult
-
-func (s ByName) Len() int           { return len(s) }
-func (s ByName) Less(i, j int) bool { return s[i].Config.Name < s[j].Config.Name }
-func (s ByName) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
-
 func MacrosOrEmpty(sheet *Sheet) string {
 	for c := sheet.LitNode.FirstChild; c != nil; c = c.NextSibling {
 		if c.Type == lit.CommentNode && len(c.Data) > 5 && c.Data[:6] == "macros" {
@@ -132,47 +55,6 @@ func MacrosOrEmpty(sheet *Sheet) string {
 		}
 	}
 	return ""
-}
-
-func Parse(sheet, macros, lf io.Reader) *ParseResult {
-	p := new(ParseResult)
-
-	scanner := bufio.NewScanner(macros)
-	for scanner.Scan() {
-		t := scanner.Text()
-		p.MacrosLines = append(p.MacrosLines, t)
-	}
-	if err := scanner.Err(); err != nil {
-		fmt.Fprintf(os.Stderr, "bbk.Parse: reading macros %v\n", err)
-	}
-
-	scanner = bufio.NewScanner(sheet)
-
-	for scanner.Scan() {
-		t := scanner.Text()
-		p.Lines = append(p.Lines, t)
-	}
-	if err := scanner.Err(); err != nil {
-		fmt.Fprintf(os.Stderr, "bbk.Parse: reading sheet %v\n", err)
-	}
-	p.Body = strings.Join(p.Lines, " ")
-	p.Terms = Terms(p.Body)
-	p.HasLitFile = true
-	bs, err := ioutil.ReadAll(lf)
-	if err != nil {
-		log.Fatal(err)
-	}
-	n, err := lit.ParseLit(string(bs))
-	if err != nil {
-		log.Fatal(err)
-	}
-	p.litNode = n
-	if p.litNode.FirstChild.Type == lit.YAMLNode {
-		if err := yaml.Unmarshal([]byte(n.FirstChild.Data), &p.Config); err != nil {
-			log.Fatal(err)
-		}
-	}
-	return p
 }
 
 type SheetConfig struct {
@@ -422,83 +304,6 @@ func ParseSheetSet(dir fs.FS) (*SheetSet, error) {
 		ss.Sheets[s.Config.Name] = s
 	}
 	return &ss, nil
-}
-
-func ParseAll(sheetsdir string) ([]*ParseResult, error) {
-	files, err := ioutil.ReadDir(sheetsdir)
-	if err != nil {
-		return nil, err
-	}
-	results := make([]*ParseResult, 0, len(files))
-	m := make(map[string]*ParseResult)
-	for _, f := range files {
-		if !f.IsDir() {
-			continue
-		}
-
-		sheetfile, err := os.Open(filepath.Join(sheetsdir, f.Name(), "sheet.tex"))
-		if os.IsNotExist(err) {
-			log.Printf("bbk.ParseAll: directory %q lacks sheets.tex", f.Name())
-			continue
-		} else if err != nil {
-			log.Fatalf("bbk.ParseAll: opening sheet.tex %v", err)
-		}
-		macrosfile, err := os.Open(filepath.Join(sheetsdir, f.Name(), "macros.tex"))
-		if os.IsNotExist(err) {
-			log.Printf("bbk.ParseAll: directory %q lacks macros.tex", f.Name())
-			continue
-		} else if err != nil {
-			log.Fatalf("bbk.ParseAll: opening macros.tex %v", err)
-		}
-		litfile, err := os.Open(filepath.Join(sheetsdir, f.Name(), "sheet.lit"))
-		if os.IsNotExist(err) {
-			log.Printf("bbk.ParseAll: directory %q lacks sheet.lit", f.Name())
-			continue
-		} else if err != nil {
-			log.Fatalf("bbk.ParseAll: opening sheet.lit %v", err)
-		}
-
-		p := Parse(sheetfile, macrosfile, litfile)
-		if err := sheetfile.Close(); err != nil {
-			log.Fatal(err)
-		}
-		if err := macrosfile.Close(); err != nil {
-			log.Fatal(err)
-		}
-		if err := litfile.Close(); err != nil {
-			log.Fatal(err)
-		}
-
-		if p.Config.Name == "" {
-			log.Fatalf("no name for file %v", f)
-		}
-		m[p.Config.Name] = p
-		results = append(results, p)
-
-	}
-
-	for _, p := range results {
-		for _, n := range p.Config.Needs {
-			o, ok := m[n]
-			if !ok {
-				log.Fatalf("bbk.ParseAll: %q references missing %q", p.Config.Name, n)
-			}
-
-			o.NeededBy = append(o.NeededBy, p.Config.Name)
-		}
-	}
-
-	sort.Sort(ByName(results))
-
-	for _, p := range results {
-		sort.Strings(p.Config.Needs)
-		sort.Strings(p.NeededBy)
-	}
-	for _, p := range results {
-		p.AllNeeds = allNeeds(p, m)
-		p.globalResultsMap = m
-	}
-	return results, nil
 }
 
 func Terms(s string) []string {
