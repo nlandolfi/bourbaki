@@ -84,8 +84,6 @@ func main() {
 		sheetMain(s)
 	case "macros":
 		macrosMain(s)
-	case "macrosUpdate":
-		macrosUpdateMain(s)
 	case "compile_screen":
 		compileScreenMain(s)
 	case "serve":
@@ -179,55 +177,6 @@ func checkMain(s *state) {
 	}
 	//	log.Printf("%+v", ss.Sheets)
 	s.info("%d sheets parsed in %s", len(ss.Sheets), time.Now().Sub(st).String())
-}
-
-func macrosUpdateMain(s *state) {
-	// for now must run from sheets directory
-	//st := time.Now()
-	dir := os.DirFS(".")
-	ss, err := bbk.ParseSheetSet(dir)
-	if err != nil {
-		log.Fatal(err)
-	}
-	var names = make([]string, 0, len(ss.Sheets))
-	for name := range ss.Sheets {
-		names = append(names, name)
-	}
-	sort.Strings(names)
-	for _, name := range names {
-		sheet := ss.Sheets[name]
-		sf, err := dir.Open(path.Join(name, "macros.tex"))
-		if err == os.ErrNotExist {
-			continue
-		}
-		if err != nil {
-			s.error("dir.Open(%q/macros.tex): %v", name, err)
-		}
-		data, err := io.ReadAll(sf)
-		if err != nil {
-			log.Fatal("io.ReadAll: %v", err)
-		}
-		if len(strings.TrimSpace(string(data))) == 0 {
-			continue
-		}
-		if err := sf.Close(); err != nil {
-			log.Fatal("sf.Close: %v", err)
-		}
-		sheet.LitNode.AppendChild(&lit.Node{
-			Type: lit.CommentNode,
-			Data: fmt.Sprintf("macros.tex\n%s", data),
-		})
-		sf2, err := os.Create(path.Join(name, "sheet.lit"))
-		if err != nil {
-			log.Fatalf("os.Open: %v", err)
-		}
-		if err := bbk.WriteSheet(sf2, sheet); err != nil {
-			log.Fatalf("WriteLit: %v", err)
-		}
-		if err := sf2.Close(); err != nil {
-			log.Fatalf("Close: %v", err)
-		}
-	}
 }
 
 func serveMain(s *state) {
