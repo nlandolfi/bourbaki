@@ -1,4 +1,4 @@
-VERSION = 0.0.8
+VERSION = 0.0.9
 BUILD_DATE = $(shell date +'%Y-%m-%d_%T')
 GIT_SHA = $(shell git rev-parse HEAD)
 

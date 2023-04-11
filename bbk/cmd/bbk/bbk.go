@@ -12,6 +12,7 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
 	"os"
 	"os/exec"
@@ -90,6 +91,8 @@ func main() {
 		serveMain(s)
 	case "all":
 		allMain(s)
+	case "rand":
+		randMain(s)
 	case "version", "v":
 		s.info("bbk version %s (%s)\n  SHA %s \n  Built at %s", Version, GoVersion, GitSHA, BuildDate)
 	default:
@@ -1064,6 +1067,53 @@ func macrosMain(s *state) {
 		if c.Type == lit.CommentNode && len(c.Data) > 5 && c.Data[:6] == "macros" {
 			fmt.Print(strings.TrimSpace(c.Data[strings.Index(c.Data, "\n"):]))
 		}
+	}
+}
+
+const randHelp = `bbk rand
+
+Open a random sheet.
+
+Examples
+  - bbk rand
+`
+
+func randMain(s *state) {
+	if len(s.Args) < 2 {
+		s.info(randHelp[:strings.Index(randHelp, "\n")])
+		return
+	}
+
+	fs := flag.NewFlagSet("all", flag.ContinueOnError)
+	sheetsDir := fs.String("sheets", ".", "where to find other sheets")
+	if err := fs.Parse(s.Args[2:]); err != nil {
+		s.error("parsing flags: %v", err)
+		return
+	}
+	ss, err := bbk.ParseSheetSet(os.DirFS(*sheetsDir))
+	if err != nil {
+		s.error("error: %v", err)
+	}
+	rand.Seed(time.Now().UnixNano())
+	min := 0
+	max := len(ss.Sheets) - 1
+	randomInt := rand.Intn(max-min+1) + min
+
+	var i int
+	var sheet *bbk.Sheet
+	for _, s := range ss.Sheets {
+		if i == randomInt {
+			sheet = s
+			break
+		}
+		i += 1
+	}
+
+	cmd := exec.Command("vi", path.Join(*sheetsDir, fmt.Sprintf("%s/sheet.lit", sheet.Config.Name)))
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	if err := cmd.Run(); err != nil {
+		log.Fatal(err)
 	}
 }
 
