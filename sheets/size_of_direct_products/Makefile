@@ -4,7 +4,7 @@
 
 make:
 	make graph.pdf
-	make size_of_direct_product.pdf
+	make size_of_direct_products.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
@@ -12,12 +12,12 @@ sheet.tex: sheet.lit
 macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
-size_of_direct_product.tex: sheet.tex macros.tex
-	bbk sheet -mode c -in sheet.tex > size_of_direct_product.tex
+size_of_direct_products.tex: sheet.tex macros.tex
+	bbk sheet -mode c -in sheet.tex > size_of_direct_products.tex
 
-size_of_direct_product.pdf: ../../*.tex ../../trademark.pdf *.tex size_of_direct_product.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode size_of_direct_product.tex
-	../../latexrun size_of_direct_product.tex
+size_of_direct_products.pdf: ../../*.tex ../../trademark.pdf *.tex size_of_direct_products.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode size_of_direct_products.tex
+	../../latexrun size_of_direct_products.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -29,14 +29,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: size_of_direct_product.pdf
-	open size_of_direct_product.pdf
+open: size_of_direct_products.pdf
+	open size_of_direct_products.pdf
 
 o:
 	make open
 
-terms: size_of_direct_product.tex
-	bbk sheet -mode ts size_of_direct_product.tex
+terms: size_of_direct_products.tex
+	bbk sheet -mode ts size_of_direct_products.tex
 
 spell:
 	aspell -c sheet.tex
@@ -53,6 +53,6 @@ clean:
 	make reset
 
 remake:
-	rm -f size_of_direct_product.*
+	rm -f size_of_direct_products.*
 	make reset
 	bbk sheet -mode mk > Makefile
