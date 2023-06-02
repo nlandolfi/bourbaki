@@ -456,6 +456,7 @@ func compileScreenMain(s *state) {
 	for _, s := range ss.Sheets {
 		results = append(results, s)
 	}
+	sort.Sort(SheetsByName(results))
 	if err := indexTemplate.Execute(f, &IndexData{results, gitCommit[:9]}); err != nil {
 		log.Fatalf("executing index template: %v", err)
 	}
@@ -491,6 +492,12 @@ func compileScreenMain(s *state) {
 		log.Fatalf("results.json.gzip close: %v", err)
 	}
 }
+
+type SheetsByName []*bbk.Sheet
+
+func (a SheetsByName) Len() int           { return len(a) }
+func (a SheetsByName) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a SheetsByName) Less(i, j int) bool { return a[i].Config.Name < a[j].Config.Name }
 
 const termsHelp = `bbk terms
 `
