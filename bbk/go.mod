@@ -3,7 +3,7 @@ module bbk
 go 1.20
 
 require (
-	github.com/nlandolfi/lit v0.0.0-20230401211425-1d50c8247dbe
+	github.com/nlandolfi/lit v0.0.0-20230504195102-72b623c1a1e3
 	github.com/nlandolfi/spin v0.0.0-20220124175644-66083e100e91
 	github.com/spinsrv/spin v0.0.0-20230403011007-815ece47f57e
 	gopkg.in/yaml.v3 v3.0.1
