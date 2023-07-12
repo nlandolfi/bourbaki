@@ -253,9 +253,10 @@
 </style>
 
 <div class="body" style="display: flex; flex-direction: column">
+  <span id="NEW-PAGE"> <!-- BEGIN NEW -->
   <!-- top bar -->
   <div style="display:flex; flex-direction: row; padding:25px 0 0 25px;align-items:center;">
-      <img style="height: 30px" src="../trademark.jpg">
+    <img onclick="location.href='/'" style="height: 30px; cursor: pointer" src="../trademark.jpg">
       <form method="GET" action="/search" >
         <input class="search2" style="" name="query"placeholder="search...">
       </form>
@@ -320,7 +321,9 @@
 
 
 
+    </span> <!-- END NEW -->
     <!-- BEGIN OLD -->
+    <span id="OLD-PAGE" style="display: none">
     <div class="header">
       <span class="listing no-border" id="header-trademark-and-title">
         <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
@@ -520,9 +523,36 @@
     </script>
     -->
 
+    </span> <!-- END OLD -->
+
+
 
     <span id="footer">
-      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version {{ .Version }}.
-    </span>
+      Copyright © 2023 The Bourbaki Authors — All rights reserved — Version <a href="https://github.com/nlandolfi/bourbaki/commit/{{ .Version }}">{{ .Version }}</a> — <a href="/about.html"> About </a> — <a id="SHOW-OLD-BUTTON" onclick="toggleOld()" style="cursor:pointer; text-decoration: underline"> Show the old page view </a>
+    </span> 
+
+    <script>
+      var oldShown = false;
+      var old = document.getElementById("OLD-PAGE");
+      var newPage = document.getElementById("NEW-PAGE");
+      var toggleButton = document.getElementById("SHOW-OLD-BUTTON");
+      console.log(old)
+
+      function toggleOld() {
+        console.log("here");
+        oldShown = !oldShown;
+        if (oldShown) {
+          console.log("updated");
+          old.style.display = "block";
+          newPage.style.display = "none";
+          toggleButton.innerHTML = "Hide the old page view"
+        } else {
+          console.log("updated 2");
+          old.style.display = "none";
+          newPage.style.display = "block";
+          toggleButton.innerHTML = "Show the old page view"
+        }
+      }
+    </script>
   </body>
 </html>
