@@ -321,6 +321,7 @@
 
 
     <!-- BEGIN OLD -->
+    <span id="OLD-PAGE" style="display: none">
     <div class="header">
       <span class="listing no-border" id="header-trademark-and-title">
         <img id="header-trademark" src="../trademark.jpg" onclick="location.href='../index.html'">
@@ -520,9 +521,33 @@
     </script>
     -->
 
+    </span> <!-- END OLD -->
+
+
 
     <span id="footer">
-      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version {{ .Version }}.
-    </span>
+      Copyright © 2023 The Bourbaki Authors. All rights reserved. Version {{ .Version }}. <a id="SHOW-OLD-BUTTON" onclick="toggleOld()" style="cursor:pointer; text-decoration: underline"> Show the old page view </a>
+    </span> 
+
+    <script>
+      var oldShown = false;
+      var old = document.getElementById("OLD-PAGE");
+      var toggleButton = document.getElementById("SHOW-OLD-BUTTON");
+      console.log(old)
+
+      function toggleOld() {
+        console.log("here");
+        oldShown = !oldShown;
+        if (oldShown) {
+          console.log("updated");
+          old.style.display = "block";
+          toggleButton.innerHTML = "Hide the old page view"
+        } else {
+          console.log("updated 2");
+          old.style.display = "none";
+          toggleButton.innerHTML = "Show the old page view"
+        }
+      }
+    </script>
   </body>
 </html>
