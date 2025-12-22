@@ -4,7 +4,7 @@
 
 make:
 	make graph.pdf
-	make homomorphisms.pdf
+	make group_cosets.pdf
 
 sheet.tex: sheet.lit
 	lit -in sheet.lit -out sheet.tex
@@ -12,12 +12,12 @@ sheet.tex: sheet.lit
 macros.tex: sheet.lit
 	bbk macros sheet.lit > macros.tex
 
-homomorphisms.tex: sheet.tex macros.tex
-	bbk sheet -mode c -in sheet.tex > homomorphisms.tex
+group_cosets.tex: sheet.tex macros.tex
+	bbk sheet -mode c -in sheet.tex > group_cosets.tex
 
-homomorphisms.pdf: ../../*.tex ../../trademark.pdf *.tex homomorphisms.tex graph.pdf
-	# pdflatex --file-line-error -interaction=nonstopmode homomorphisms.tex
-	../../latexrun homomorphisms.tex
+group_cosets.pdf: ../../*.tex ../../trademark.pdf *.tex group_cosets.tex graph.pdf
+	# pdflatex --file-line-error -interaction=nonstopmode group_cosets.tex
+	../../latexrun group_cosets.tex
 	make terms
 
 graph.csv: sheet.tex
@@ -29,14 +29,14 @@ graph.graphviz: graph.csv
 graph.pdf: graph.graphviz
 	dot graph.graphviz -o graph.pdf -T pdf
 
-open: homomorphisms.pdf
-	open homomorphisms.pdf
+open: group_cosets.pdf
+	open group_cosets.pdf
 
 o:
 	make open
 
-terms: homomorphisms.tex
-	bbk sheet -mode ts homomorphisms.tex
+terms: group_cosets.tex
+	bbk sheet -mode ts group_cosets.tex
 
 spell:
 	aspell -c sheet.tex
@@ -53,6 +53,6 @@ clean:
 	make reset
 
 remake:
-	rm -f homomorphisms.*
+	rm -f group_cosets.*
 	make reset
 	bbk sheet -mode mk > Makefile

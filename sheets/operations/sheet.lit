@@ -8,6 +8,7 @@ refs:
     - paul_halmos∕naive_set_theory∕section_04
     - paul_halmos/naive_set_theory/section_06
     - paul_halmos∕naive_set_theory∕section_08
+wikipedia: https://en.wikipedia.org/wiki/Binary_operation
 -->
 
 § Why ⦉
@@ -20,62 +21,97 @@ refs:
 
 § Definition ⦉
 ¶ ⦊
-  ‖ An ❬operation❭ (or ❬binary operation❭, ❬law of composition❭)
-    on a set $A$ is a function from $A × A$ to $A$. ⦉
-⦉
+  ‖ Given a set $S$, an ❬operation❭ (or ❬binary operation❭, ❬law
+    of composition❭) on $S$ is a function from $S × S$ to $S$. ⦉
 
-¶ ⦊
+  ‖ Sometimes we say that an operation on $S$ is a law of
+    composition ‹of $S$ into itself›. ⦉
+
   ‖ Roughly speaking, operations ❬combine❭ (or ❬compose❭) elements. ⦉
 
   ‖ We ❬operate❭ on ordered pairs. ⦉
 ⦉
 
+<!-- other terminology? operator? -->
+
+<!-- lang2002algebra p.3 -->
+
 §§ Example: set operations ⦉
 ¶ ⦊
-  ‖ Let $X$ be a set. ⦉
+  ‖ Suppose $X$ is a set and define $g: \powerset{X} ×
+    \powerset{X} → \powerset{X}$ by
+    ◇ ⦊
+      ‖ g(A, B) = A ∪ B \quad \text{for all } A, B ∈
+        \powerset{X} ⦉
+    ⦉⦉
 
-  ‖ Define $g: \powerset{X} × \powerset{X} → \powerset{X}$ by
-    $g(A, B) = A ∪ B$. ⦉
-
-  ‖ Then $g$, the function which associates with two sets their␣
+  ‖ In other words, the function $g$ associates to each pair of
+    two sets their␣
     <a href='/sheets/pair_unions.html'>
       ‖ union ⦉
     </a>
-    ␣is an operation on $\powerset{X}$. ⦉
+    . ⦉
 
-  ‖ Likewise, define $h : \powerset{X} × \powerset{X} →
-    \powerset{X}$ by $h(A, B) = A ∩ B$. ⦉
+  ‖ Hence, $g$ is an operation on $\powerset{X}$. ⦉
+
+  ‖ Similarly, define $h : \powerset{X} × \powerset{X} →
+    \powerset{X}$ by
+    ◇ ⦊
+      ‖ h(A, B) = A ∩ B \quad \text{for all } A, B ∈
+        \powerset{X} ⦉
+    ⦉⦉
+
+  ‖ The function $h$ is also an operation on $\powerset{X}$. ⦉
+
+  ‖ It associates to each pair of two sets their␣
+    <a href='/sheets/pair_intersections.html'>
+      ‖ intersection. ⦉
+    </a>⦉
+
+  ‖ For convenience, we often denote the ‹operations› $g$ and
+    $h$ for any given $X$ by $∪$ and $∩$, respectively. ⦉
 ⦉
 
-§§ Naming their properties ⦉
+§ Properties ⦉
 ¶ ⦊
-  ‖ $∪$ has several nice properties. ⦉
+  ‖ The operation $∪$, regardless of $X$, has two important
+    properties. ⦉
 
-  ‖ For one $A ∪ B = B ∪ A$ and $(A ∪ B) ∪ C = A ∪ (B
-    ∪ C)$. ⦉
+  ‖ First,
+    ◇ ⦊
+      ‖ A ∪ B = B ∪ A \quad \text{for all } A, B ∈
+        \powerset{X} ⦉
+    ⦉⦉
+
+  ‖ Second,
+    ◇ ⦊
+      ‖ (A ∪ B) ∪ C = A ∪ (B ∪ C) \quad \text{for all } A,
+        B, C ∈ \powerset{X} ⦉
+    ⦉⦉
 ⦉
 
 ¶ ⦊
-  ‖ An operation with the first property, that the ordered pair
-    $(A, B)$ and $(B, A)$ have the same result is called
-    ❬commutative❭. ⦉
+  ‖ We call any operation with the first property ❬commutative❭. ⦉
 
-  ‖ An operation with the second property, that when given three
-    objects the order in which we operate does not matter is
-    called ❬associative❭. ⦉
+  ‖ In other words, a ❬commutative operation❭ is any operation
+    for which the ordered pair $(A, B)$ and $(B, A)$ have the
+    same result. ⦉
+
+  ‖ We call any operation with the second property ❬associative❭. ⦉
+
+  ‖ In other words, an ❬associative operation❭ is any operation
+    for which, given three objects, the order in which we
+    operate does not matter. ⦉
 
   ‖ $∩$ shares these properties with $∪$. ⦉
 ⦉
 
 ¶ ⦊
-  ‖ We call the operation of ❬forming unions❭ the function $(A,
-    B) \mapsto A ∪ B$. ⦉
+  ‖ We refer to $∪$ as the operation of forming union and $∩$
+    as the operation of forming intersections. ⦉
 
-  ‖ We call the operation of ❬forming intersections❭ the function
-    $(A, B) \mapsto A ∩ B$. ⦉
-
-  ‖ We call the operation of ❬forming symmetric differences❭ the
-    function $(A, B) \mapsto A \symdiff B$. ⦉
+  ‖ Similarly, we call function $(A, B) ↦ A ∆ B$ the operation
+    of forming symmetric differences. ⦉
 
   ‖ Since forming unions commutes and is associative and likewise
     with forming intersections, forming symmetric differences also
@@ -84,14 +120,36 @@ refs:
 
 § Algebras ⦉
 ¶ ⦊
-  ‖ Of course, any operation is defined on some set. ⦉
+  ‖ In general, we speak of a set and an operation on the set. ⦉
 
-  ‖ For this reason, we define an ❬algebra❭ (or ❬algebraic
-    structure❭) as an ordered pair whose first element is a
+  ‖ An ❬algebra❭ (or ❬algebraic structure❭, or ❬magma❭),
+    therefore, is an ordered pair whose first element is a
     non-empty set and whose second element is an operation on
     that set. ⦉
 
   ‖ The ❬ground set❭ (or ❬underlying set❭, ❬carrier set❭,
     ❬domain❭) of the algebra is the set on which the operation
     is defined. ⦉
+⦉
+
+¶ ⦊
+  ‖ Given elements $a, b$ in a ground set $S$, the image of
+    the ordered pair $(a, b)$ under an operation is sometimes
+    called their ❬composition❭ (or ❬product❭). ⦉
+
+  ‖ We denote the product of $a$ and $b$ by $a·b$ when we
+    have no symbol for the operation. ⦉
+
+  ‖ This notation is often even further abbreviated to $ab$. ⦉
+⦉
+
+¶ ⦊
+  ‖ The notation $a + b$ also sometimes used to denote the
+    image of $(a,b)$ under some operation. ⦉
+
+  ‖ It is reserved by convention, however, to the case in which
+    the operation is ‹commutative›. ⦉
+
+  ‖ In this case, the term ❬sum❭ is preferred to the term
+    product. ⦉
 ⦉
