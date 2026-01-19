@@ -48,8 +48,8 @@ const basicHelp = `bbk <command>
     - graph
     - all
     - macros
-		- compile_screen
-		- serve
+    - compile_screen
+    - serve
     - help <command>
     - version`
 
